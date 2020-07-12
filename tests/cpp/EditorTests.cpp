@@ -786,7 +786,23 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(EditorTests, TestAddPersonalInformation) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
 
+    PersonalInformation information = editor.newPersonalInformation();
+    information.addAccountName("1234-1234-1234-1234")
+        .addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta")
+        .addMbox("annotations@uw.edu")
+        .addName("Ciaran Welsh");
+    editor.addPersonalInformation(information);
+    std::string actual = rdf.toString("turtle");
+    std::string expected = "";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
 
 /*****************************************************************
  * Test PhysicalEntity memory accountability
@@ -1867,18 +1883,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
     ASSERT_EQ(0, rdf.size());
     triple1.freeTriple();
 
-}
-
-TEST_F(EditorTestsDeletePhysicalEntity, TestRemovePhysicalEntityInLoop) {
-    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity
-            .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
-            .setIdentity("uniprot:PD12345")
-            .addLocation("fma:fma:1234");
-    editor.addPhysicalEntity(physicalEntity);
-    ASSERT_EQ(4, rdf.size());
-    editor.removePhysicalEntity(physicalEntity);
-    ASSERT_EQ(0, rdf.size());
 }
 
 

@@ -7,7 +7,18 @@
 libOmexMeta documentation!
 ##########################
 
-# todo put github badges here
+# todo
+--------
+- put github badges here
+- Maybe thing about choosing a different theme as well, this one is overused.
+- Learn how to have a floating box in sphinx and then have language tags to flip example tabs between python, C and C++
+
+Begin listing examples that will be needed
+------------------------------------------
+- How to make a triple
+   - triple IS a singular annotation
+- How to set the self information.
+- how to read, write, edit, use storages.
 
 LibOMEXmeta is a library aimed at providing developer-level support for
 reading, writing, editing and managing semantic annotations for biosimulation

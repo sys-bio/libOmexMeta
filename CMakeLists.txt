@@ -11,15 +11,13 @@ set(VERSION_MINOR 1)
 set(VERSION_MICRO 11)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
+project(libOmexMeta VERSION "${LIBOMEXMETA_VERSION}")
 
 # configure VERSION.txt for Python to read
-configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
-
-project(libOmexMeta VERSION "${LIBOMEXMETA_VERSION}")
+configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt" @ONLY)
 
 ######################################################
 # Load stuff
-
 # set the module path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
@@ -57,6 +55,7 @@ set(CXX_STANDARD_REQUIRED ON)
 if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
 endif (MSVC)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 # pic - needed on linux ignored on other platofrms
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -105,25 +104,34 @@ if (WITH_SANITIZER)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
 endif ()
 
+#set(CMAKE_CXX_FLAGS "-O0")
+#set(CMAKE_C_FLAGS "-O0")
+#set(CMAKE_CXX_FLAGS_RELEASE "-O0")
+#set(CMAKE_C_FLAGS_RELEASE "-O0")
+#set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+#set(CMAKE_C_FLAGS_DEBUG "-O0")
+#set(CMAKE_CXX_FLAGS "-O0")
+#set(CMAKE_C_FLAGS "-O0")
+
 option(WITH_BDB "build user suport for berkely database" ON)
 if (${WITH_BDB})
     add_definitions(-DWITH_BDB)
 endif ()
 
-if (NOT PLATFORM STREQUAL "windows-msvc")
-    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        #  remove optimizations for Debug builds.
-        #  and add -g -> instructs compiler to generate and retain
-        #  source level debug information.
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
-
-    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        # set optimizations to highest level for Release builds
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
-    endif ()
-endif (NOT PLATFORM STREQUAL "windows-msvc")
+#if (NOT PLATFORM STREQUAL "windows-msvc")
+#    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#        #  remove optimizations for Debug builds.
+#        #  and add -g -> instructs compiler to generate and retain
+#        #  source level debug information.
+#        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
+#        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
+#
+#    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#        # set optimizations to highest level for Release builds
+#        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
+#        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
+#    endif ()
+#endif (NOT PLATFORM STREQUAL "windows-msvc")
 # run the tests and generate coverage output
 option(WITH_COVERAGE OFF)
 
@@ -141,7 +149,7 @@ endif ()
 
 if (${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     message(FATAL_ERROR "In source builds are disabled")
-endif()
+endif ()
 
 # set gtest libraries which are different between debug and release.
 #if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -150,6 +158,10 @@ set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
 #    set(GTEST_LIBS gtest gtest_main)
 #endif ()
 
+if (PLATFORM STREQUAL "linux")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -fPIC")
+endif ()
 
 
 ############################################################3

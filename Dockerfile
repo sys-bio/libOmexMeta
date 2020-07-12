@@ -22,9 +22,10 @@ RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
                       libxslt1-dev postgresql postgresql-contrib  libdb-dev \
                       libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
-                      libpthread-stubs0-dev libltdl-dev git \
+                      libpthread-stubs0-dev libltdl-dev git
     && apt-get install -y curl unzip tar \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10  100
 
 
 # create conda environment, install some python deps and pyomexmeta

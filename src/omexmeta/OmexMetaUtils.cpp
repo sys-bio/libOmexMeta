@@ -247,7 +247,7 @@ namespace omexmeta {
 
     }
 
-    std::string OmexMetaUtils::addLocalPrefixToMetaid(std::string metaid, const std::string &local) {
+    std::string OmexMetaUtils::addLocalPrefixToMetaid(std::string metaid, std::string local) {
         // if metaid already has local in the string, we just return
         if (metaid.find(local) != std::string::npos) {
             return metaid;
@@ -255,10 +255,11 @@ namespace omexmeta {
         // Otherwise we concatonate:
         // first we check if local has the # at the end. It should do.
         if (!OmexMetaUtils::stringHasEnding(local, "#")) {
-            throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
-                                        "Was expecting a local prefix to end with a '#' "
-                                        "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
-                                        "Recieved: " + local);
+            local = local + "#";
+//            throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
+//                                        "Was expecting a local prefix to end with a '#' "
+//                                        "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
+//                                        "Recieved: " + local);
         }
         // if metaid also begins with '#' character, remove it.
         if (metaid.rfind('#', 0) == 0) {

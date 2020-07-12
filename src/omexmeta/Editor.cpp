@@ -210,6 +210,15 @@ namespace omexmeta {
         triples.freeTriples();
     }
 
+    void Editor::addPersonalInformation(PersonalInformation* personalInformation) const {
+        Triples triples = personalInformation->getTriples();
+        for (auto &triple : triples) {
+            model_.addStatement(triple);
+        }
+        std::cout << __FILE__ << ":" << __LINE__ << "warning: experimental free: " << std::endl;
+        triples.freeTriples();
+    }
+
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
         model_.removeStatement(stmt);
@@ -246,6 +255,12 @@ namespace omexmeta {
 
     PhysicalProcess Editor::newPhysicalProcess() {
         return PhysicalProcess(model_.get(), getLocalName());
+    }
+
+    PersonalInformation Editor::newPersonalInformation() {
+        std::cout << "Local Name: " << getLocalName() << std::endl;
+        std::cout << "mdoe Name: " << getModelName() << std::endl;
+        return PersonalInformation(model_.get(), getLocalName(), getModelName());
     }
 
     void Editor::addCreator(std::string orcid_id) {

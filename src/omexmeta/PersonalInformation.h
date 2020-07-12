@@ -75,23 +75,31 @@ namespace omexmeta {
 
         PersonalInformation &addCreator(const std::string& value);
 
-        PersonalInformation &addCurator(const std::string& value);
+//        PersonalInformation &addCurator(const std::string &value);
 
-        PersonalInformation &addName(const std::string& value);
+        PersonalInformation &addName(const std::string &value);
 
-        PersonalInformation &addMbox(const std::string& value);
+        PersonalInformation &addMbox(const std::string &value);
 
-        PersonalInformation &addAccountName(const std::string& value);
+        PersonalInformation &addAccountName(const std::string &value);
 
-        PersonalInformation &addAccountServiceHomepage(const std::string& value);
+        PersonalInformation &addAccountServiceHomepage(const std::string &value);
 
         PersonalInformation &addFoafBlank(const std::string &predicate, const std::string &blank_value);
+
+        PersonalInformation &addDC(const std::string &predicate, const LibrdfNode &value_node);
+
+        PersonalInformation &addDCBlank(const std::string &predicate, const std::string &blank_value);
+
+        PersonalInformation &addDCUri(const std::string &predicate, const std::string &uri_value);
+
+        PersonalInformation &addDCLiteral(const std::string &predicate, const std::string &literal_value);
 
         PersonalInformation &addFoafUri(const std::string &predicate, const std::string &uri_value);
 
         PersonalInformation &addFoafLiteral(const std::string &predicate, const std::string &literal_value);
 
-        PersonalInformation &addFoaf(const std::string &predicate, const LibrdfNode& value_node);
+        PersonalInformation &addFoaf(const std::string &predicate, const LibrdfNode &value_node);
 
         const std::string &getMetaid() const;
 

@@ -50,7 +50,8 @@ namespace omexmeta {
 
     std::string PersonalInformation::generateMetaId() const {
         std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
-        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, local_uri_);
+        std::cout << "personal info: " << getModelName() << std::endl;
+        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, getModelName());
     }
 
     PersonalInformation &
@@ -63,6 +64,14 @@ namespace omexmeta {
         return *this;
     }
 
+    PersonalInformation &
+    PersonalInformation::addDC(const std::string &predicate, const LibrdfNode& value_node) {
+        LibrdfNode subject = LibrdfNode::fromUriString(metaid_);
+        DCTerm dc(predicate);
+        Triple triple(subject.get(), dc.getNode(), value_node.get());
+        triples_.move_back(triple);
+        return *this;
+    }
 
     PersonalInformation &
     PersonalInformation::addFoafBlank(const std::string &predicate, const std::string &blank_value) {
@@ -87,8 +96,26 @@ namespace omexmeta {
         return *this;
     }
 
-    PersonalInformation &PersonalInformation::addCurator(const std::string& value) {
-        addFoafLiteral("curator", value);
+    PersonalInformation &
+    PersonalInformation::addDCBlank(const std::string &predicate, const std::string &blank_value) {
+        LibrdfNode blank_node = LibrdfNode::fromBlank(blank_value);
+        addDC(predicate, blank_node);
+        return *this;
+    }
+
+    PersonalInformation &
+    PersonalInformation::addDCUri(const std::string &predicate, const std::string &uri_value) {
+        DCTerm dcTerm(predicate);
+        LibrdfNode uri_node = LibrdfNode::fromUriString(uri_value);
+        addDC(predicate, uri_node);
+        return *this;
+    }
+
+    PersonalInformation &
+    PersonalInformation::addDCLiteral(const std::string &predicate, const std::string &literal_value) {
+        DCTerm dcTerm(predicate);
+        LibrdfNode literal_node = LibrdfNode::fromLiteral(literal_value);
+        addDC(predicate, literal_node);
         return *this;
     }
 
@@ -111,7 +138,10 @@ namespace omexmeta {
         addFoafUri("accountServiceHomepage", value);
         return *this;
     }
-
+    PersonalInformation &PersonalInformation::addCreator(const std::string &value) {
+        addFoafUri("creator", value);
+        return *this;
+    }
     const std::string &PersonalInformation::getLocalUri() const {
         return local_uri_;
     }
@@ -156,6 +186,8 @@ namespace omexmeta {
     void PersonalInformation::freeTriples() {
         triples_.freeTriples();
     }
+
+
 
 
 }

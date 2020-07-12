@@ -312,10 +312,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
             SEMSIM_TYPE_SBML
     );
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
-    SingularAnnotation_setAbout(singularAnnotation, "myomex", "mymodel.xml", "metaid6");
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid6");
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
-    const char *expected = "http://MyOmexLibrary/myomex/mymodel.xml/metaid6";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#metaid6";
     ASSERT_STREQ(expected, actual);
 
     Editor_delete(editor_ptr);
@@ -332,7 +331,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
             SEMSIM_TYPE_SBML
     );
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
     SingularAnnotation_setPredicate(singularAnnotation,
                                     "bqbiol", "is");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
@@ -354,7 +353,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
             SEMSIM_TYPE_SBML
     );
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
     const char *expected = "http://predicate.com/from/uri";
@@ -388,7 +387,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
             SEMSIM_TYPE_SBML
     );
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
     SingularAnnotation_setResourceLiteral(singularAnnotation,
                                           "LiterallyAString");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
@@ -410,7 +409,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
             SEMSIM_TYPE_SBML
     );
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
     SingularAnnotation_setResourceUri(singularAnnotation,
                                       "uniprot:PD98723");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
@@ -431,7 +430,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
             SEMSIM_TYPE_SBML
     );
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
     SingularAnnotation_setResourceBlank(singularAnnotation, "Nothing");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
     const char *expected = "Nothing";
@@ -832,7 +831,7 @@ TEST_F(CAPITests, EditorgetArchiveName) {
             SEMSIM_TYPE_SBML
     );
     char *actual = Editor_getArchiveName(editor_ptr);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -847,7 +846,7 @@ TEST_F(CAPITests, EditorgetLocalName) {
             SEMSIM_TYPE_SBML
     );
     char *actual = Editor_getLocalName(editor_ptr);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -862,7 +861,7 @@ TEST_F(CAPITests, EditorgetModelName) {
             SEMSIM_TYPE_SBML
     );
     char *actual = Editor_getModelName(editor_ptr);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected =  "http://myOmexLibrary.org/MyOmex.omex/mymodel.xml";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -877,7 +876,7 @@ TEST_F(CAPITests, EditorgetOmexRepository) {
             SEMSIM_TYPE_SBML
     );
     char *actual = Editor_getOmexRepository(editor_ptr);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -891,8 +890,8 @@ TEST_F(CAPITests, EditorsetOmexRepository) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
     );
-    Editor_setOmexRepository(editor_ptr, "newOmexRepo");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    Editor_setOmexRepository(editor_ptr, "http://newOmexRepo.org");
+    const char *expected = "http://newOmexRepo.org";
     char *actual = Editor_getOmexRepository(editor_ptr);
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -909,13 +908,12 @@ TEST_F(CAPITests, EditorsetArchiveName) {
     );
     Editor_setArchiveName(editor_ptr, "newArchive");
     char *actual = Editor_getArchiveName(editor_ptr);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/newArchive.omex";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
-
 }
 
 TEST_F(CAPITests, EditorsetModelName) {
@@ -925,7 +923,7 @@ TEST_F(CAPITests, EditorsetModelName) {
             SEMSIM_TYPE_SBML
     );
     Editor_setModelName(editor_ptr, "newModelName");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/newModelName";
     char *actual = Editor_getModelName(editor_ptr);
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -942,7 +940,7 @@ TEST_F(CAPITests, EditorsetLocalName) {
             SEMSIM_TYPE_SBML
     );
     Editor_setLocalName(editor_ptr, "newLocalName");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/newLocalName.rdf";
     char *actual = Editor_getLocalName(editor_ptr);
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -959,7 +957,14 @@ TEST_F(CAPITests, EditoraddCreator) {
             SEMSIM_TYPE_SBML
     );
     Editor_addCreator(editor_ptr, "1234-1234-1234-1234");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -976,7 +981,14 @@ TEST_F(CAPITests, EditoraddCurator) {
             SEMSIM_TYPE_SBML
     );
     Editor_addCurator(editor_ptr, "1234-1234-1234-1234");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex>\n"
+                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -992,7 +1004,14 @@ TEST_F(CAPITests, Editortaxon) {
             SEMSIM_TYPE_SBML
     );
     Editor_addTaxon(editor_ptr, "9898");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://biomodels.net/biology-qualifiers/hasTaxon> <NCBI_Taxon:9898> .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1008,8 +1027,15 @@ TEST_F(CAPITests, Editorpubmed) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
     );
-    Editor_addCreator(editor_ptr, "12345678");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    Editor_addPubmed(editor_ptr, "12345678");
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/12345678> .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1026,7 +1052,14 @@ TEST_F(CAPITests, EditoraddDescription) {
             SEMSIM_TYPE_SBML
     );
     Editor_addDescription(editor_ptr, "A model");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://purl.org/dc/terms/description> \"A model\"^^rdf:string .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1043,7 +1076,14 @@ TEST_F(CAPITests, EditoraddDateCreated) {
             SEMSIM_TYPE_SBML
     );
     Editor_addDateCreated(editor_ptr, "14/01/1991");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1061,7 +1101,10 @@ TEST_F(CAPITests, EditoraddPersonalInformation) {
     );
 
 //    Editor_addPersonalInformation(editor_ptr, p);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1078,7 +1121,14 @@ TEST_F(CAPITests, EditoraddParentModel) {
             SEMSIM_TYPE_SBML
     );
     Editor_addParentModel(editor_ptr, "BIOMD000001.xml");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/base> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/base/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/base/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://biomodels.net/model-qualifiers/isDerivedFrom> <https://identifiers.org/biomod/BIOMD000001.xml> .\n"
+                           "\n";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1096,7 +1146,7 @@ TEST_F(CAPITests, PersonalInformationgetLocalUri) {
     );
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     char *actual = PersonalInformation_getLocalUri(information);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1113,7 +1163,7 @@ TEST_F(CAPITests, PersonalInformationsetLocalUri) {
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_setLocalUri(information, "localUri");
     char *actual = PersonalInformation_getLocalUri(information);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "localUri";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1138,23 +1188,23 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, PersonalInformationaddCurator) {
-    RDF *rdf_ptr = RDF_new();
-    Editor *editor_ptr = rdf_ptr->toEditorPtr(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML
-    );
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
-    PersonalInformation_addCurator(information, "2134-1234-1234-1234");
-    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected, actual);
-    Editor_delete(editor_ptr);
-    free_c_char_star(actual);
-    RDF_delete(rdf_ptr);
-
-}
+//TEST_F(CAPITests, PersonalInformationaddCurator) {
+//    RDF *rdf_ptr = RDF_new();
+//    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML
+//    );
+//    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+//    PersonalInformation_addCurator(information, "2134-1234-1234-1234");
+//    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+//    const char *expected = "https://identifiers.org/uniprot/PD7363";
+//    std::cout << actual << std::endl;
+//    ASSERT_STREQ(expected, actual);
+//    Editor_delete(editor_ptr);
+//    free_c_char_star(actual);
+//    RDF_delete(rdf_ptr);
+//
+//}
 
 TEST_F(CAPITests, PersonalInformationaddName) {
     RDF *rdf_ptr = RDF_new();
@@ -1181,7 +1231,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
             SEMSIM_TYPE_SBML
     );
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
-    PersonalInformation_addCreator(information, "cwelsh2@ue.edu");
+    PersonalInformation_addMbox(information, "cwelsh2@ue.edu");
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "https://identifiers.org/uniprot/PD7363";
     std::cout << actual << std::endl;
@@ -1270,7 +1320,8 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
     );
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     char *actual = PersonalInformation_getMetaid(information);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    editor_ptr->addPersonalInformation(information);
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PersonalInfo0000";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1287,7 +1338,7 @@ TEST_F(CAPITests, PersonalInformationsetMetaid) {
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_setMetaid(information, "NewMEtaid");
     char *actual = PersonalInformation_getMetaid(information);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "NewMEtaid";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1303,7 +1354,7 @@ TEST_F(CAPITests, PersonalInformationgetModelName) {
     );
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     char *actual = PersonalInformation_getModelName(information);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "http://myOmexLibrary.org/MyOmex.omex/mymodel.xml";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1321,7 +1372,7 @@ TEST_F(CAPITests, PersonalInformationsetModelName) {
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_setModelName(information, "newModelName");
     char *actual = PersonalInformation_getModelName(information);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    const char *expected = "newModelName";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);

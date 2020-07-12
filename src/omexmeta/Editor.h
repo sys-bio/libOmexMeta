@@ -67,10 +67,10 @@ namespace omexmeta {
         const LibrdfModel &model_;
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
-        std::string repository_name_ = "http://myOmexLibrary.org/";
-        std::string archive_name_ = "http://myOmexLibrary.org/MyOmex.omex";
-        std::string model_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.xml";
-        std::string local_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#";
+        std::string repository_name_ = "http://MyOmexLibrary.org/";
+        std::string archive_name_ = repository_name_ + "MyOmex.omex";
+        std::string model_name_ = archive_name_ + "/mymodel.xml";
+        std::string local_name_ = archive_name_ + "/mymodel.rdf#";
 
     private:
         void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
@@ -234,6 +234,8 @@ namespace omexmeta {
 
         PhysicalProcess newPhysicalProcess();
 
+        PersonalInformation newPersonalInformation();
+
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
         void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
@@ -327,6 +329,8 @@ namespace omexmeta {
         SingularAnnotation newSingularAnnotation(std::string metaid) const;
 
         void addParentModel(const std::string &biomod_id);
+
+        void addPersonalInformation(PersonalInformation *personalInformation) const;
     };
 
 }
