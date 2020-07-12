@@ -4,7 +4,7 @@
 
 set(TEST_SOURCES
         SBMLFactory.h
-        SemsimUtilsTests.cpp
+        OmexMetaUtilsTests.cpp
         SubjectTests.cpp
         ResourceTests.cpp
         PredicateTests.cpp

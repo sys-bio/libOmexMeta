@@ -175,7 +175,8 @@ namespace omexmeta {
 
 
     std::string
-    RDF::toString(const std::string &format, const std::string& omex_name, const std::string& model_name, std::string base_uri, const char *mime_type,
+    RDF::toString(const std::string &format, const std::string &omex_name, const std::string &model_name,
+                  std::string base_uri, const char *mime_type,
                   const char *type_uri) {
         base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
@@ -184,7 +185,7 @@ namespace omexmeta {
             serializer.setNamespace(it.first, it.second);
         }
         std::vector<std::string> vec = OmexMetaUtils::configureSelfStrings(omex_name, model_name);
-        serializer.setNamespace(vec[0],  "myOMEXlib");
+        serializer.setNamespace(vec[0], "myOMEXlib");
         serializer.setNamespace(vec[1], "myOMEX");
         serializer.setNamespace(vec[2], "local");
         return serializer.toString(base_uri, model_);
@@ -230,40 +231,128 @@ namespace omexmeta {
     }
 
     std::ostringstream RDF::listOptions() {
-    raptor_world *raptor_world_ptr = World::getRaptor();
-    int num_raptor_options = (int) raptor_option_get_count() - 1;
-    std::ostringstream os;
-    os << "option, name, label, domain, value type, uri" << std::endl;
-    int i = 0;
-    while (i != num_raptor_options) {
-        raptor_option_description *parser_opt = raptor_world_get_option_description(
-                raptor_world_ptr,
-                RAPTOR_DOMAIN_PARSER,
-                (raptor_option) i
-        );
-        if (parser_opt) {
-            os << parser_opt->option << "," << parser_opt->name << "," << parser_opt->label << ","
-               << parser_opt->domain
-               << "," << parser_opt->value_type << "," << raptor_uri_to_string(parser_opt->uri) << std::endl;
-        } else {
-            raptor_option_description *serializer_opt = raptor_world_get_option_description(
+        raptor_world *raptor_world_ptr = World::getRaptor();
+        int num_raptor_options = (int) raptor_option_get_count() - 1;
+        std::ostringstream os;
+        os << "option, name, label, domain, value type, uri" << std::endl;
+        int i = 0;
+        while (i != num_raptor_options) {
+            raptor_option_description *parser_opt = raptor_world_get_option_description(
                     raptor_world_ptr,
-
-                    RAPTOR_DOMAIN_SERIALIZER,
+                    RAPTOR_DOMAIN_PARSER,
                     (raptor_option) i
             );
-            if (serializer_opt) {
-                os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label
-                   << ","
-                   << serializer_opt->domain
-                   << "," << serializer_opt->value_type << "," << raptor_uri_to_string(serializer_opt->uri)
-                   << std::endl;
+            if (parser_opt) {
+                os << parser_opt->option << "," << parser_opt->name << "," << parser_opt->label << ","
+                   << parser_opt->domain
+                   << "," << parser_opt->value_type << "," << raptor_uri_to_string(parser_opt->uri) << std::endl;
+            } else {
+                raptor_option_description *serializer_opt = raptor_world_get_option_description(
+                        raptor_world_ptr,
+
+                        RAPTOR_DOMAIN_SERIALIZER,
+                        (raptor_option) i
+                );
+                if (serializer_opt) {
+                    os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label
+                       << ","
+                       << serializer_opt->domain
+                       << "," << serializer_opt->value_type << "," << raptor_uri_to_string(serializer_opt->uri)
+                       << std::endl;
+                }
+            }
+            i++;
+        };
+        return os;
+    }
+
+    const std::string &RDF::getRepositoryName() const {
+        return repository_name_;
+    }
+
+    void RDF::setRepositoryName(std::string repositoryName) {
+        if (!OmexMetaUtils::startsWith(repositoryName, "http")) {
+            throw std::invalid_argument("std::invalid_argument: RDF::setRepositoryName: "
+                                        "Specified \"repositoryName\" argument \"" + repositoryName
+                                        + "\" does not begin with \"http\". Example: \"http://MyOmexRepository.org\"");
+        }
+        if (!OmexMetaUtils::endsWith(repositoryName, "/")) {
+            repositoryName += "/";
+        }
+        repository_name_ = repositoryName;
+    }
+
+    const std::string &RDF::getArchiveName() const {
+        return archive_name_;
+    }
+
+    void RDF::setArchiveName(std::string archiveName) {
+        if (OmexMetaUtils::startsWith(archiveName, "http")) {
+            throw std::invalid_argument("std::invalid_argument: RDF::setArchiveName: "
+                                        "Specified \"archiveName\" argument \"" + archiveName
+                                        + "\" begins with \"http\". Since the archive url is built "
+                                          "using the repositoryName argument, please only specify "
+                                          "the name of the omex archive. Like \"myOmexFile.omex\"");
+        }
+        if (!OmexMetaUtils::endsWith(archiveName, ".omex")) {
+            archiveName = archiveName + ".omex";
+        }
+        archive_name_ = getRepositoryName() + archiveName;
+    }
+
+    const std::string &RDF::getModelName() const {
+        return model_name_;
+    }
+
+    void RDF::setModelName(std::string modelName) {
+        if (OmexMetaUtils::startsWith(modelName, "http")) {
+            throw std::invalid_argument("std::invalid_argument: RDF::setModelName: "
+                                        "Specified \"modelName\" argument \"" + modelName
+                                        + "\" begins with \"http\". Since the model url is built "
+                                          "using the repositoryName argument, please only specify "
+                                          "the name of the model. Like \"MyModel.sbml\"");
+        }
+        std::vector<std::string> suffexes = {".xml", ".sbml", ".cellml"};
+        bool good = false;
+        for (auto &it : suffexes) {
+            if (OmexMetaUtils::endsWith(modelName, it)) {
+                good = true;
             }
         }
-        i++;
-    };
-    return os;
-}
+        // automaticall add .xml if one of the above suffixes was not detected
+        if (!good) {
+            modelName += ".xml";
+        }
+
+        if (OmexMetaUtils::endsWith(modelName, "/")) {
+            model_name_ = getArchiveName() + "/" + modelName;
+        } else {
+            model_name_ = getArchiveName() + modelName;
+        }
+
+        // Since the model name is also used for the local name we
+        // figure that out here. We know modelName definitely contains
+        // a suffux like .xml.
+        // we need to remove it so we can add .rdf.
+        // We do this in a way that enables multiple "." in a model_name
+        std::vector<std::string> split = OmexMetaUtils::splitStringBy(modelName, '.');
+        if (split.size() <= 1) {
+            throw std::logic_error("std::logic_error: RDF::setModelName: You should never get a "
+                                   "a value less than 2 here because you are splitting a string. "
+                                   "If you are seeing this message this is a bug. Please report "
+                                   "it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)");
+        }
+        // remove the last element which should contain the extension.
+        split.pop_back();
+
+        // build up the string again with any dots that appeared before the final
+        std::ostringstream os;
+        for (auto &it : split) {
+            os << it << ".";
+        }
+        // Now we can build up the local string
+        local_name_ = getArchiveName() + "/" + os.str() + "rdf#";
+    }
 
 
 }

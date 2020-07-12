@@ -82,7 +82,7 @@ namespace omexmeta {
          * @param fullString the string to test
          * @param ending the ending to test for
          */
-        static bool stringHasEnding(std::string const &full_string, std::string const &ending);
+        static bool endsWith(std::string const &full_string, std::string const &ending);
 
         static bool
         assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string);
@@ -101,6 +101,8 @@ namespace omexmeta {
         static std::string addLocalPrefixToMetaid(std::string metaid, std::string local);
 
         static std::string stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
+
+        static bool startsWith(const std::string &full_string, const std::string &start);
     };
 }
 

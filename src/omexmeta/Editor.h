@@ -67,13 +67,13 @@ namespace omexmeta {
         const LibrdfModel &model_;
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
+
         std::string repository_name_ = "http://MyOmexLibrary.org/";
         std::string archive_name_ = repository_name_ + "MyOmex.omex";
         std::string model_name_ = archive_name_ + "/mymodel.xml";
         std::string local_name_ = archive_name_ + "/mymodel.rdf#";
-
-    private:
         void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
+
 
     public:
 

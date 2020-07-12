@@ -145,13 +145,16 @@ namespace omexmeta {
                || uri.rfind(file_prefix, 0) == 0;
     }
 
-    bool OmexMetaUtils::stringHasEnding(const std::string &full_string, const std::string &ending) {
+    bool OmexMetaUtils::endsWith(const std::string &full_string, const std::string &ending) {
         if (full_string.length() >= ending.length()) {
             return (0 == full_string.compare(full_string.length() - ending.length(), ending.length(), ending));
         } else {
             return false;
         }
+    }
 
+    bool OmexMetaUtils::startsWith(const std::string &full_string, const std::string &start) {
+        return full_string.rfind(start) == 0;
     }
 
     /*
@@ -208,7 +211,7 @@ namespace omexmeta {
         std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
         bool has_appropriate_extension = false;
         for (auto &it : suffixes) {
-            if (OmexMetaUtils::stringHasEnding(model_name, it)) {
+            if (OmexMetaUtils::endsWith(model_name, it)) {
                 has_appropriate_extension = true;
                 break;
                 }
@@ -254,7 +257,7 @@ namespace omexmeta {
         }
         // Otherwise we concatonate:
         // first we check if local has the # at the end. It should do.
-        if (!OmexMetaUtils::stringHasEnding(local, "#")) {
+        if (!OmexMetaUtils::endsWith(local, "#")) {
             local = local + "#";
 //            throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
 //                                        "Was expecting a local prefix to end with a '#' "

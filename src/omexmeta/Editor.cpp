@@ -359,7 +359,7 @@ namespace omexmeta {
 
     void Editor::setArchiveName(std::string archive_name) {
         // archives end in .omex
-        if (!OmexMetaUtils::stringHasEnding(archive_name, ".omex")) {
+        if (!OmexMetaUtils::endsWith(archive_name, ".omex")) {
             archive_name = archive_name + ".omex";
         }
         // Check if model_name is already a valid uri
@@ -408,7 +408,7 @@ namespace omexmeta {
 
     void Editor::setLocalName(std::string local_name) {
         // local names have the .rdf suffix
-        if (!OmexMetaUtils::stringHasEnding(local_name, ".rdf")) {
+        if (!OmexMetaUtils::endsWith(local_name, ".rdf")) {
             local_name = local_name + ".rdf";
         }
         if (getArchiveName().empty()) {
