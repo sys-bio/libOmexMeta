@@ -15,7 +15,7 @@
 #include "RaptorIOStream.h"
 #include "LibrdfNode.h"
 #include "LibrdfModel.h"
-
+#include <stdlib.h>
 
 namespace redland {
 

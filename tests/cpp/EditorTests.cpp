@@ -201,7 +201,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
 
     std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf##OmexMetaId0009\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
@@ -248,7 +248,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     );
 
     std::string actual = rdf.toString("rdfxml");
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf##OmexMetaId0008\">\n"
                            "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
@@ -270,7 +270,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     );
 
     std::string actual = rdf.toString("rdfxml");
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf##OmexMetaId0008\">\n"
                            "    <dcterms:description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
@@ -296,7 +296,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
     std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/#OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
@@ -332,7 +332,7 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPattern) {
 
     std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/#OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02636\"/>\n"
@@ -403,7 +403,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     editor.addCompositeAnnotation(&process);
 
     std::string actual = rdf.toString("rdfxml-abbrev");
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
@@ -466,7 +466,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
 
     std::string actual = rdf.toString("rdfxml-abbrev");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"

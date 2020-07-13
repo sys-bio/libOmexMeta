@@ -102,7 +102,7 @@ TEST_F(RDFTests, TestFromStringTurtleBag) {
 
 TEST_F(RDFTests, TestToString) {
     RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
@@ -123,7 +123,7 @@ TEST_F(RDFTests, TestToString) {
 }
 
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
-    std::string rdf_string1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string rdf_string1 = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                               "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                               "   xmlns:local=\"http://omex-library.org/NewModel.rdf#\"\n"
                               "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex\"\n"
@@ -134,7 +134,7 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
                               "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
                               "  </rdf:Description>\n"
                               "</rdf:RDF>";
-    std::string rdf_string2 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string rdf_string2 = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                               "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                               "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                               "   xml:base=\"file://./Annotation.rdf\">\n"

@@ -48,7 +48,7 @@ TEST_F(CAPITests, RDFToString) {
     std::string actual = rdf_ptr->toString("rdfxml-abbrev");
 
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
@@ -721,7 +721,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     );
 //    Editor_toRDF(editor_ptr);
 
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"

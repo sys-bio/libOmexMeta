@@ -140,6 +140,7 @@ namespace redland {
         setOption("relativeURIs", "1");
         setOption("writeBaseURI", "0");
         setOption("xmlDeclaration", "1");
+        setOption("xmlVersion", "1.1");
     }
 
 
