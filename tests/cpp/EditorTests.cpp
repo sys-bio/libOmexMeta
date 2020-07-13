@@ -202,7 +202,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf##OmexMetaId0009\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
@@ -225,8 +225,8 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<#OmexMetaId0008>\n"
@@ -249,7 +249,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
 
     std::string actual = rdf.toString("rdfxml");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf##OmexMetaId0008\">\n"
                            "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
@@ -271,7 +271,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
 
     std::string actual = rdf.toString("rdfxml");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf##OmexMetaId0008\">\n"
                            "    <dcterms:description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
@@ -297,7 +297,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/#OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
                            "  </rdf:Description>\n"
@@ -333,11 +333,12 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPattern) {
     std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/#OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02636\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     singularAnnotation.freeStatement();
 
@@ -405,8 +406,8 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\">\n"
@@ -429,7 +430,8 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -467,8 +469,8 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalForce0000\">\n"
@@ -487,7 +489,8 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                            "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB1234\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -523,12 +526,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
     editor.addCreator("0000-1111-2222-3333");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n\n";
+                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
+                           "\n"
+                           "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -543,12 +548,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
     editor.addCurator("0000-1111-2222-3333");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n\n";
+                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
+                           "\n"
+                           "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -563,12 +570,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
     editor.addDateCreated("14/01/1991");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n\n";
+                           "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n"
+                           "\n"
+                           "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -584,12 +593,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
                           "heart failure.");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n\n";
+                           "    <http://purl.org/dc/terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n"
+                           "\n"
+                           "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -604,13 +615,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
     editor.addPubmed("27887851");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/27887851> .\n"
-                           "\n";
+                           "\n"
+                           "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -625,13 +637,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
     editor.addParentModel("BIOMD0000011");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://biomodels.net/model-qualifiers/isDerivedFrom> <https://identifiers.org/biomod/BIOMD0000011> .\n"
-                           "\n";
+                           "\n"
+                           "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -771,10 +784,7 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
     PersonalInformation information = editor.newPersonalInformation();
     information.addMbox("annot@uw.edu");
     editor.addPersonalInformation(&information);
-    std::cout << rdf.toString("turtle") << std::endl;
     ASSERT_EQ(2, rdf.size());
-    editor.removePersonalInformation(&information);
-    std::cout << rdf.toString("turtle") << std::endl;
     int actual = rdf.size();
     ASSERT_EQ(0, actual);
 }
@@ -808,27 +818,28 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
 
     PersonalInformation information = editor.newPersonalInformation();
     information.addAccountName("1234-1234-1234-1234")
-        .addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta")
-        .addMbox("annotations@uw.edu")
-        .addName("Ciaran Welsh");
+            .addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta")
+            .addMbox("annotations@uw.edu")
+            .addName("Ciaran Welsh");
     editor.addPersonalInformation(&information);
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n"
                            "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n"
                            "    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n"
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
-                           "\n";
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

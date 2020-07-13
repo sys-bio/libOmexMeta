@@ -86,22 +86,23 @@ TEST_F(ReadAndWriteTests, TestDefaultConstructor) {
 TEST_F(ReadAndWriteTests, singularannotation1turtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:metaid_1\n"
-                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n\n";
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
+                           "\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "turtle", expected);
 }
 
 
 TEST_F(ReadAndWriteTests, singularannotation1rdfxmlxmp) {
-    std::string expected = "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+    std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
@@ -114,23 +115,25 @@ TEST_F(ReadAndWriteTests, singularannotation1rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "rdfxml", expected);
 }
 
@@ -139,18 +142,19 @@ TEST_F(ReadAndWriteTests, singularannotation1dot) {
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" \[ label=\"bqbiol:is\" \];\n"
                            "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#metaid_1\" [ label=\"myOMEXlib:/NewModel.rdf#metaid_1\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#metaid_1\" \[ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#metaid_1\", shape = ellipse, color = blue \];\n"
+                           "\t\"Rhttps://identifiers.org/uniprot/P0DP23\" \[ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue \];\n"
                            "\n"
                            "\t// Anonymous nodes\n"
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/NewOmex.omex\\nmyOMEX: http://omex-library.org/NewOmex.omex/NewModel.xml#\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n";
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "}\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "dot", expected);
 }
 
@@ -238,12 +242,13 @@ TEST_F(ReadAndWriteTests, singularannotation2turtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:modelmeta1\n"
                            "    bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
+                           "\n"
                            "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.singular_annotation2, "turtle", expected);
 }
@@ -252,12 +257,15 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
-                           "  </rdf:Description>\n";
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "\n"
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.singular_annotation2, "rdfxml-xmp", expected);
 }
 
@@ -266,37 +274,47 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxmlabbrev) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#modelmeta1\">\n"
                            "    <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation2, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#modelmeta1\">\n"
                            "    <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation2, "rdfxml", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2dot) {
-    std::string expected = "digraph .*\n"
+    std::string expected = "digraph {\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" .* label=\"bqmodel:isDescribedBy\" .*;\n"
+                           "\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n"
+                           "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#modelmeta1\" .* label=\"myOMEXlib:/NewModel.rdf#modelmeta1\", shape = ellipse, color = blue .*;\n"
-                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" .* label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#modelmeta1\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#modelmeta1\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n"
+                           "\n"
                            "\t// Anonymous nodes\n"
-                           "\t// Literals\n";
-    assertReadAndWriteRegularExpressionSplitByNewline(samples.singular_annotation2, "dot", expected);
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.singular_annotation2, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2jsontriples) {
@@ -383,25 +401,28 @@ TEST_F(ReadAndWriteTests, singularannotation3ntriples) {
 TEST_F(ReadAndWriteTests, singularannotation3turtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:meta1\n"
-                           "    bqbiol:is <https://identifiers.org/chebi/CHEBI:15422> .\n\n";
+                           "    bqbiol:is <https://identifiers.org/chebi/CHEBI:15422> .\n"
+                           "\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation3, "turtle", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation3rdfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.singular_annotation3, "rdfxml-xmp", expected);
 }
 
@@ -409,23 +430,25 @@ TEST_F(ReadAndWriteTests, singularannotation3rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#meta1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation3, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation3rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#meta1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation3, "rdfxml", expected);
 }
 
@@ -434,18 +457,19 @@ TEST_F(ReadAndWriteTests, singularannotation3dot) {
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n"
                            "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#meta1\" [ label=\"myOMEXlib:/NewModel.rdf#meta1\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#meta1\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#meta1\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"https://identifiers.org/chebi/CHEBI:15422\", shape = ellipse, color = blue ];\n"
                            "\n"
                            "\t// Anonymous nodes\n"
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/NewOmex.omex\\nmyOMEX: http://omex-library.org/NewOmex.omex/NewModel.xml#\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n";
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "}\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation3, "dot", expected);
 }
 
@@ -533,13 +557,14 @@ TEST_F(ReadAndWriteTests, singularannotation4turtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:meta2\n"
                            "    dcterms:description \"Cardiomyocyte cytosolic ATP concentration\" .\n"
-                           "\n";
+                           "\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation4, "turtle", expected);
 }
 
@@ -547,13 +572,13 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.singular_annotation4, "rdfxml-xmp", expected);
 }
 
@@ -562,23 +587,25 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#meta2\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation4, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation4rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#meta2\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation4, "rdfxml", expected);
 }
 
@@ -587,18 +614,19 @@ TEST_F(ReadAndWriteTests, singularannotation4dot) {
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];\n"
                            "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#meta2\" [ label=\"myOMEXlib:/NewModel.rdf#meta2\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#meta2\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#meta2\", shape = ellipse, color = blue ];\n"
                            "\n"
                            "\t// Anonymous nodes\n"
                            "\n"
                            "\t// Literals\n"
                            "\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: http://purl.org/dc/terms/\\nmyOMEXlib: http://omex-library.org/NewOmex.omex\\nmyOMEX: http://omex-library.org/NewOmex.omex/NewModel.xml#\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n";
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: http://purl.org/dc/terms/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "}\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation4, "dot", expected);
 }
 
@@ -691,8 +719,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpentriples) {
 TEST_F(ReadAndWriteTests, compositeannotationpeturtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:VLV\n"
@@ -702,15 +730,16 @@ TEST_F(ReadAndWriteTests, compositeannotationpeturtle) {
                            "local:entity_0\n"
                            "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
                            "    bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .\n"
-                           "\n";
+                           "\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pe, "turtle", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationperdfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#entity_0\"/>\n"
@@ -720,7 +749,8 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlxmp) {
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pe, "rdfxml-xmp", expected);
 }
 
@@ -728,8 +758,8 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#VLV\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#entity_0\"/>\n"
@@ -750,15 +780,15 @@ TEST_F(ReadAndWriteTests, compositeannotationpedot) {
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#VLV\" -> \"RmyOMEXlib:/NewModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#VLV\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
                            "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#VLV\" [ label=\"myOMEXlib:/NewModel.rdf#VLV\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#VLV\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#VLV\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#entity_0\" [ label=\"myOMEXlib:/NewModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
                            "\n"
@@ -766,7 +796,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpedot) {
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/NewOmex.omex\\nmyOMEX: http://omex-library.org/NewOmex.omex/NewModel.xml#\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
                            "}\n"
                            "";
     assertReadAndWrite(samples.composite_annotation_pe, "dot", expected);
@@ -950,8 +980,8 @@ TEST_F(ReadAndWriteTests, compositeannotationppturtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:mediator_0\n"
@@ -973,15 +1003,15 @@ TEST_F(ReadAndWriteTests, compositeannotationppturtle) {
                            "local:source_0\n"
                            "    semsim:hasMultiplier \"1.0\" ;\n"
                            "    semsim:hasPhysicalEntityReference local:special_metaid_0 .\n"
-                           "";
+                           "\n";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pp, "turtle", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
@@ -1004,7 +1034,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
                            "    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#special_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pp, "rdfxml-xmp", expected);
 }
 
@@ -1012,8 +1043,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#mediator_0\">\n"
@@ -1043,7 +1074,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, compositeannotationpprdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#property_metaid_0\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#process_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
@@ -1074,39 +1105,48 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxml) {
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#mediator_0\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#special_metaid_2\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pp, "rdfxml", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationppdot) {
-    std::string expected = "digraph .*\n"
+    std::string expected = "digraph {\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#property_metaid_0\" -> \"RmyOMEXlib:/NewModel.rdf#process_metaid_0\" .* label=\"bqbiol:isPropertyOf\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" .* label=\"bqbiol:isVersionOf\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/NewModel.rdf#source_0\" .* label=\"semsim:hasSourceParticipant\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/NewModel.rdf#sink_0\" .* label=\"semsim:hasSinkParticipant\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/NewModel.rdf#mediator_0\" .* label=\"semsim:hasMediatorParticipant\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#source_0\" -> \"L1.0\" .* label=\"semsim:hasMultiplier\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#source_0\" -> \"RmyOMEXlib:/NewModel.rdf#special_metaid_0\" .* label=\"semsim:hasPhysicalEntityReference\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#sink_0\" -> \"L2.0\" .* label=\"semsim:hasMultiplier\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#sink_0\" -> \"RmyOMEXlib:/NewModel.rdf#special_metaid_1\" .* label=\"semsim:hasPhysicalEntityReference\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#mediator_0\" -> \"RmyOMEXlib:/NewModel.rdf#special_metaid_2\" .* label=\"semsim:hasPhysicalEntityReference\" .*;\n"
+                           "\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#property_metaid_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#process_metaid_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#process_metaid_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#process_metaid_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#source_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#sink_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#mediator_0\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#property_metaid_0\" .* label=\"myOMEXlib:/NewModel.rdf#property_metaid_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#process_metaid_0\" .* label=\"myOMEXlib:/NewModel.rdf#process_metaid_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" .* label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#source_0\" .* label=\"myOMEXlib:/NewModel.rdf#source_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#sink_0\" .* label=\"myOMEXlib:/NewModel.rdf#sink_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#mediator_0\" .* label=\"myOMEXlib:/NewModel.rdf#mediator_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#special_metaid_0\" .* label=\"myOMEXlib:/NewModel.rdf#special_metaid_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#special_metaid_1\" .* label=\"myOMEXlib:/NewModel.rdf#special_metaid_1\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#special_metaid_2\" .* label=\"myOMEXlib:/NewModel.rdf#special_metaid_2\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#property_metaid_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#property_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#process_metaid_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#process_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#source_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#source_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#sink_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#sink_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#mediator_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#mediator_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_1\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_1\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_2\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#special_metaid_2\", shape = ellipse, color = blue ];\n"
+                           "\n"
                            "\t// Anonymous nodes\n"
+                           "\n"
                            "\t// Literals\n"
-                           "\t\"L1.0\" .* label=\"1.0\", shape = record .*;\n"
-                           "\t\"L2.0\" .* label=\"2.0\", shape = record .*;\n";
-    assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pp, "dot", expected);
+                           "\t\"L1.0\" [ label=\"1.0\", shape = record ];\n"
+                           "\t\"L2.0\" [ label=\"2.0\", shape = record ];\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.composite_annotation_pp, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationppjsontriples) {
@@ -1451,8 +1491,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfturtle) {
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:force_0\n"
@@ -1468,8 +1508,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpfturtle) {
                            "\n"
                            "local:source_0\n"
                            "    semsim:hasPhysicalEntityReference local:special_metaid_0 .\n"
-                           "\n";
-
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pf, "turtle", expected);
 }
 
@@ -1477,8 +1516,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
@@ -1495,7 +1534,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlxmp) {
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#special_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pf, "rdfxml-xmp", expected);
 }
 
@@ -1504,8 +1544,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlabbrev) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0\">\n"
@@ -1522,13 +1562,14 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlabbrev) {
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#special_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
-    assertReadAndWrite(samples.composite_annotation_pf, "rdfxml-abbrev", expected);
+                           "</rdf:RDF>\n"
+                           "";
+                           assertReadAndWrite(samples.composite_annotation_pf, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpfrdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#parameter_metaid_0\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0\"/>\n"
                            "  </rdf:Description>\n"
@@ -1547,7 +1588,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxml) {
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#special_metaid_1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pf, "rdfxml", expected);
 }
 
@@ -1783,8 +1825,8 @@ TEST_F(ReadAndWriteTests, tabulardataturtle) {
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:VleftCorArt\n"
@@ -1794,6 +1836,7 @@ TEST_F(ReadAndWriteTests, tabulardataturtle) {
                            "local:entity_0\n"
                            "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
                            "    bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .\n"
+                           "\n"
                            "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.tabular_data1, "turtle", expected);
 }
@@ -1802,8 +1845,8 @@ TEST_F(ReadAndWriteTests, tabulardatardfxmlxmp) {
     std::string expected = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
@@ -1814,7 +1857,8 @@ TEST_F(ReadAndWriteTests, tabulardatardfxmlxmp) {
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWriteRegularExpressionSplitByNewline(samples.tabular_data1, "rdfxml-xmp", expected);
 }
 
@@ -1823,8 +1867,8 @@ TEST_F(ReadAndWriteTests, tabulardatardfxmlabbrev) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#VleftCorArt\">\n"
@@ -1841,7 +1885,7 @@ TEST_F(ReadAndWriteTests, tabulardatardfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, tabulardatardfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\" xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#VleftCorArt\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
@@ -1854,27 +1898,35 @@ TEST_F(ReadAndWriteTests, tabulardatardfxml) {
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#entity_0\">\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.tabular_data1, "rdfxml", expected);
 }
 
 TEST_F(ReadAndWriteTests, tabulardatadot) {
-    std::string expected = "digraph .*\n"
+    std::string expected = "digraph {\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" .* label=\"bqbiol:isVersionOf\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#VleftCorArt\" -> \"RmyOMEXlib:/NewModel.rdf#entity_0\" .* label=\"bqbiol:isPropertyOf\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" .* label=\"bqbiol:is\" .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" .* label=\"bqbiol:isPartOf\" .*;\n"
+                           "\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#VleftCorArt\" -> \"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
+                           "\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#VleftCorArt\" .* label=\"myOMEXlib:/NewModel.rdf#VleftCorArt\", shape = ellipse, color = blue .*;\n"
-                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" .* label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue .*;\n"
-                           "\t\"RmyOMEXlib:/NewModel.rdf#entity_0\" .* label=\"myOMEXlib:/NewModel.rdf#entity_0\", shape = ellipse, color = blue .*;\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" .* label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue .*;\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" .* label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#VleftCorArt\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#VleftCorArt\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
+                           "\t\"RmyOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\" [ label=\"myOMEXlib:NewOmex.omex/NewModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
+                           "\n"
                            "\t// Anonymous nodes\n"
-                           "\t// Literals\n";
-    assertReadAndWriteRegularExpressionSplitByNewline(samples.tabular_data1, "dot", expected);
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "}\n";
+    assertReadAndWrite(samples.tabular_data1, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, tabulardatajsontriples) {

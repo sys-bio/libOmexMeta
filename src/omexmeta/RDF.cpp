@@ -102,7 +102,6 @@ namespace omexmeta {
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
-
     }
 
     /*
@@ -163,18 +162,6 @@ namespace omexmeta {
         return keep_map;
     }
 
-//    std::string RDF::toString(const std::string &format, std::string base_uri,
-//                              const char *mime_type, const char *type_uri) {
-//        base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
-//        LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
-//        // remember to add namespaces taken from parser
-//        for (auto &it: namespaces_) {
-//            serializer.setNamespace(it.first, it.second);
-//        }
-//        return serializer.toString(base_uri, model_);
-//    }
-
-
     std::string
     RDF::toString(const std::string &format,
                   std::string base_uri, const char *mime_type,
@@ -185,8 +172,8 @@ namespace omexmeta {
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
-        serializer.setNamespace(getArchiveUri(), "myOMEXlib");
-        serializer.setNamespace(getModelUri(), "myOMEX");
+        serializer.setNamespace(getRepositoryUri(), "myOMEXlib");
+        serializer.setNamespace(getArchiveUri(), "myOMEX");
         serializer.setNamespace(getLocalUri(), "local");
         return serializer.toString(base_uri, model_);
     }

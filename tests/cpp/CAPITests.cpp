@@ -51,13 +51,14 @@ TEST_F(CAPITests, RDFToString) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     RDF_delete(rdf_ptr);
 }
@@ -85,12 +86,14 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
     char *actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:metaid_1\n"
-                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n\n";
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
     RDF_delete(rdf_ptr);
@@ -942,13 +945,14 @@ TEST_F(CAPITests, EditoraddCreator) {
             SEMSIM_TYPE_SBML);
     Editor_addCreator(editor_ptr, "1234-1234-1234-1234");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -965,13 +969,14 @@ TEST_F(CAPITests, EditoraddCurator) {
             SEMSIM_TYPE_SBML);
     Editor_addCurator(editor_ptr, "1234-1234-1234-1234");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex>\n"
                            "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -987,13 +992,14 @@ TEST_F(CAPITests, Editortaxon) {
             SEMSIM_TYPE_SBML);
     Editor_addTaxon(editor_ptr, "9898");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://biomodels.net/biology-qualifiers/hasTaxon> <NCBI_Taxon:9898> .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1010,13 +1016,14 @@ TEST_F(CAPITests, Editorpubmed) {
             SEMSIM_TYPE_SBML);
     Editor_addPubmed(editor_ptr, "12345678");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/12345678> .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1033,13 +1040,14 @@ TEST_F(CAPITests, EditoraddDescription) {
             SEMSIM_TYPE_SBML);
     Editor_addDescription(editor_ptr, "A model");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://purl.org/dc/terms/description> \"A model\"^^rdf:string .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1056,13 +1064,14 @@ TEST_F(CAPITests, EditoraddDateCreated) {
             SEMSIM_TYPE_SBML);
     Editor_addDateCreated(editor_ptr, "14/01/1991");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1080,9 +1089,11 @@ TEST_F(CAPITests, EditoraddPersonalInformation) {
 
 //    Editor_addPersonalInformation(editor_ptr, p);
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n";
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1099,13 +1110,14 @@ TEST_F(CAPITests, EditoraddParentModel) {
             SEMSIM_TYPE_SBML);
     Editor_addParentModel(editor_ptr, "BIOMD000001.xml");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                            "    <http://biomodels.net/model-qualifiers/isDerivedFrom> <https://identifiers.org/biomod/BIOMD000001.xml> .\n"
-                           "\n";
+                           "\n"
+                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1158,16 +1170,18 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://purl.org/dc/terms/creator> <2134-1234-1234-1234> .\n"
-                           "\n";
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    dcterms:creator <2134-1234-1234-1234> .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1204,16 +1218,19 @@ TEST_F(CAPITests, PersonalInformationaddName) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://xmlns.com/foaf/0.1/name> \"Ciaran Welsh\"^^rdf:string .\n"
-                           "\n";
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1232,16 +1249,19 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://xmlns.com/foaf/0.1/mbox> \"cwelsh2@ue.edu\"^^rdf:string .\n"
-                           "\n";
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    foaf:mbox \"cwelsh2@ue.edu\"^^rdf:string .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1260,15 +1280,17 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://xmlns.com/foaf/0.1/accountName> <https://orcid.org/2134-1234-1234-1234> .\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    foaf:accountName <https://orcid.org/2134-1234-1234-1234> .\n"
                            "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -1288,16 +1310,19 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://xmlns.com/foaf/0.1/accountServiceHomepage> <https://github.com/sys-bio/libOmexMeta> .\n"
-                           "\n";
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1312,20 +1337,23 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
-    PersonalInformation_addFoafUri(information, "accountServiceHomepage", "https://github.com/sys-bio/libOmexMeta");
+    PersonalInformation_addFoafLiteral(information, "accountServiceHomepage", "https://github.com/sys-bio/libOmexMeta");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://xmlns.com/foaf/0.1/accountServiceHomepage> _:httpszzzgithubzcomzsyszbiozlibOmexMeta .\n"
-                           "\n";
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    foaf:accountServiceHomepage \"https://github.com/sys-bio/libOmexMeta\"^^rdf:string .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -1342,17 +1370,19 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     PersonalInformation_addFoafLiteral(information, "name", "Ciaran Welsh");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
-    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> myOMEX:PersonalInfo0000 .\n"
-                           "\n"
-                           "myOMEX:PersonalInfo0000\n"
-                           "    <http://xmlns.com/foaf/0.1/name> \"Ciaran Welsh\"^^rdf:string .\n"
-                           "\n";
+    const char *expected =  "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                            "\n"
+                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
+                            "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                            "\n"
+                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                            "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);

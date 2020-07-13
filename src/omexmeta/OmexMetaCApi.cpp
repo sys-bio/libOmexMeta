@@ -681,7 +681,7 @@ namespace omexmeta {
 
     PersonalInformation *
     PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value) {
-        information->addFoafBlank(predicate, uri_value);
+        information->addFoafUri(predicate, uri_value);
         return information;
     }
 
