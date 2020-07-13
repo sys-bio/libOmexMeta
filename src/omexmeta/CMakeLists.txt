@@ -23,7 +23,7 @@ set(OMEXMETA_HEADERS
         "PhysicalForce.h"
         "AnnotationType.h"
         "Editor.h"
-        "SemsimCApi.h"
+        "OmexMetaCApi.h"
         PersonalInformation.cpp PersonalInformation.h)
 
 set(OMEXMETA_SOURCES
@@ -46,7 +46,7 @@ set(OMEXMETA_SOURCES
         "Editor.cpp"
         "PhysicalProcess.cpp"
         "PhysicalForce.cpp"
-        "SemsimCApi.cpp"
+        "OmexMetaCApi.cpp"
         PersonalInformation.cpp PersonalInformation.h)
 
 
@@ -157,6 +157,12 @@ if (${BUILD_SHARED_LIBS})
 
         # On linux we only need a few dynamic libraries due to static linking the rest.
         install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
+        install(FILES ${LIBXML2_LIBRARY}
+                ${LIBXSLT_LIBRARY}
+                ${SQLITE3_LIBRARY}
+                ${BERKELY_LIBRARY}
+                ${POSTGRESQL_LIBRARY}
+                DESTINATION ${PYOMEXMETA_DIR})
 
         # I had issues installing a few of the dynamic libraries, namely:
         #       - ${LIBXML2_LIBRARY}
@@ -176,7 +182,7 @@ if (${BUILD_SHARED_LIBS})
         # The exception is the libstdc++ library. Since ive build
         # using a later version than is easily obtainably
         # using apt-get, I just distribute along with python
-#        install(FILES ${LIBSTDCXX6_LIBRARY} DESTINATION ${PYOMEXMETA_DIR})
+        #        install(FILES ${LIBSTDCXX6_LIBRARY} DESTINATION ${PYOMEXMETA_DIR})
 
 
         # curl was statically linked in the end

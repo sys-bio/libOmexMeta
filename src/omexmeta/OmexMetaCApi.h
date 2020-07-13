@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/8/2020.
 //
 
-#ifndef LIBOMEXMETA_SEMSIMCAPI_H
-#define LIBOMEXMETA_SEMSIMCAPI_H
+#ifndef LIBOMEXMETA_OMEXMETACAPI_H
+#define LIBOMEXMETA_OMEXMETACAPI_H
 
 #include "omexmeta/RDF.h"
 #include "omexmeta/Editor.h"
@@ -93,6 +93,14 @@ namespace omexmeta {
     SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
 
     SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
+    
+    SEMSIM_API char* RDF_getRepositoryUri(RDF *rdf_ptr);
+
+    SEMSIM_API char* RDF_getArchiveUri(RDF *rdf_ptr);
+
+    SEMSIM_API char* RDF_getModelUri(RDF *rdf_ptr);
+
+    SEMSIM_API char* RDF_getLocalUri(RDF *rdf_ptr);
 
     SEMSIM_API Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
 
@@ -112,6 +120,8 @@ namespace omexmeta {
 
     SEMSIM_API void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
+    SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
+
     SEMSIM_API void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
     SEMSIM_API void Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
@@ -119,6 +129,8 @@ namespace omexmeta {
     SEMSIM_API void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
     SEMSIM_API void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+
+    SEMSIM_API void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
 
     SEMSIM_API void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
 
@@ -129,21 +141,17 @@ namespace omexmeta {
     SEMSIM_API int Editor_getNumMetaIds(Editor *editor_ptr);
 
     SEMSIM_API void Editor_delete(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getArchiveUri(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getLocalUri(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getModelUri(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getOmexRepository(Editor *editor_ptr);
-    SEMSIM_API void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_uri);
-    SEMSIM_API void Editor_setArchiveUri(Editor *editor_ptr, std::string archive_uri);
-    SEMSIM_API void Editor_setModelUri(Editor *editor_ptr, std::string model_uri);
-    SEMSIM_API void Editor_setLocalUri(Editor *editor_ptr, std::string local_uri);
-    SEMSIM_API void Editor_addCreator(Editor *editor_ptr, std::string orcid_id);
-    SEMSIM_API void Editor_addCurator(Editor *editor_ptr, std::string orcid_id);
+
+    SEMSIM_API char*Editor_getArchiveUri(Editor *editor_ptr);
+    SEMSIM_API char*Editor_getLocalUri(Editor *editor_ptr);
+    SEMSIM_API char*Editor_getModelUri(Editor *editor_ptr);
+    SEMSIM_API char*Editor_getRepositoryUri(Editor *editor_ptr);
+    SEMSIM_API void Editor_addCreator(Editor *editor_ptr, const char* orcid_id);
+    SEMSIM_API void Editor_addCurator(Editor *editor_ptr, const char* orcid_id);
     SEMSIM_API void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
     SEMSIM_API void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
     SEMSIM_API void Editor_addDescription(Editor *editor_ptr, const char *date);
     SEMSIM_API void Editor_addDateCreated(Editor *editor_ptr, const char *date);
-    SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
     SEMSIM_API void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
 /*********************************************************************
@@ -273,8 +281,11 @@ namespace omexmeta {
 
     SEMSIM_API char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
 
-
     SEMSIM_API char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+
+/*********************************************************************
+ * PersonalInformation class methods
+ */
 
     SEMSIM_API PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
 
@@ -323,7 +334,7 @@ namespace omexmeta {
 #endif
 }
 
-#endif //LIBOMEXMETA_SEMSIMCAPI_H
+#endif //LIBOMEXMETA_OMEXMETACAPI_H
 
 
 

@@ -7,7 +7,7 @@
 
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
-#include "omexmeta/SemsimCApi.h"
+#include "omexmeta/OmexMetaCApi.h"
 #include "omexmeta/RDF.h"
 #include "SBMLFactory.h"
 #include "omexmeta/SemsimXmlAssistant.h"
@@ -804,19 +804,47 @@ TEST_F(CAPITests, TestRDFTwice3) {
     RDF_delete(rdf_ptr2);
 }
 
-TEST_F(CAPITests, EditorgetArchiveUri) {
+TEST_F(CAPITests, RDFgetArchiveUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML);
-    char *actual = Editor_getArchiveUri(editor_ptr);
+    char *actual = RDF_getArchiveUri(rdf_ptr);
     const char *expected = "http://omex-library.org/NewOmex.omex";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
-    Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
 }
+
+
+TEST_F(CAPITests, RDFgetLocalUri) {
+    RDF *rdf_ptr = RDF_new();
+    char *actual = RDF_getLocalUri(rdf_ptr);
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDFgetModelUri) {
+    RDF *rdf_ptr = RDF_new();
+    char *actual = RDF_getModelUri(rdf_ptr);
+    const char *expected =  "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDFgetOmexRepository) {
+    RDF *rdf_ptr = RDF_new();
+    char *actual = RDF_getRepositoryUri(rdf_ptr);
+    const char *expected = "http://omex-library.org/";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
 
 TEST_F(CAPITests, EditorgetLocalUri) {
     RDF *rdf_ptr = RDF_new();
@@ -851,7 +879,7 @@ TEST_F(CAPITests, EditorgetOmexRepository) {
     Editor* editor_ptr = RDF_toEditor(rdf_ptr,
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
-    char *actual = Editor_getOmexRepository(editor_ptr);
+    char *actual = Editor_getRepositoryUri(editor_ptr);
     const char *expected = "http://omex-library.org/";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
@@ -867,7 +895,7 @@ TEST_F(CAPITests, EditorsetOmexRepository) {
             SEMSIM_TYPE_SBML);
     RDF_setRepositoryUri(rdf_ptr, "http://newOmexRepo.org");
     const char *expected = "http://newOmexRepo.org/";
-    char *actual = Editor_getOmexRepository(editor_ptr);
+    char *actual = Editor_getRepositoryUri(editor_ptr);
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);

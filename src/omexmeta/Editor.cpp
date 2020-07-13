@@ -258,6 +258,15 @@ namespace omexmeta {
         removePhysicalPhenomenon(&physicalEntity);
     }
 
+    void Editor::removePersonalInformation(PersonalInformation *information) const {
+        Triples triples = information->getTriples();
+        while (!triples.isEmpty()) {
+            Triple triple = triples.pop();
+            model_.removeStatement(triple.getStatement());
+            triple.freeTriple();
+        }
+    }
+
     void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
         removePhysicalPhenomenon(&physicalForce);
     }
@@ -372,7 +381,7 @@ namespace omexmeta {
         return archive_uri_;
     }
 
-    std::string Editor::getOmexRepository() const {
+    std::string Editor::getRepositoryUri() const {
         return repository_uri_;
     }
 

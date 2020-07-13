@@ -2,7 +2,7 @@
 // Created by Ciaran on 5/8/2020.
 //
 
-#include "omexmeta/SemsimCApi.h"
+#include "omexmeta/OmexMetaCApi.h"
 
 #include <utility>
 
@@ -138,6 +138,33 @@ namespace omexmeta {
         rdf_ptr->setModelUri(std::move(model_uri));
     }
 
+    char *RDF_getRepositoryUri(RDF *rdf_ptr) {
+        const std::string &str = rdf_ptr->getRepositoryUri();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    char *RDF_getArchiveUri(RDF *rdf_ptr) {
+        const std::string &str = rdf_ptr->getArchiveUri();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    char *RDF_getModelUri(RDF *rdf_ptr) {
+        const std::string &str = rdf_ptr->getModelUri();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    char *RDF_getLocalUri(RDF *rdf_ptr) {
+        const std::string &str = rdf_ptr->getLocalUri();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
 
     Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type) {
         return rdf_ptr->toEditorPtr(xml, type);
@@ -153,6 +180,22 @@ namespace omexmeta {
 
     void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
         editor_ptr->addSingleAnnotation(*singularAnnotation);
+    }
+
+    void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
+        editor_ptr->addPhysicalEntity(*physicalEntity);
+    }
+
+    void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
+        editor_ptr->addPhysicalProcess(*physicalProcess);
+    }
+
+    void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
+        editor_ptr->addPhysicalForce(*physicalForce);
+    }
+
+    void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation) {
+        editor_ptr->addPersonalInformation(personalInformation);
     }
 
     void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
@@ -171,16 +214,8 @@ namespace omexmeta {
         editor_ptr->removePhysicalForce(*physicalForce);
     }
 
-    void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
-        editor_ptr->addPhysicalEntity(*physicalEntity);
-    }
-
-    void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
-        editor_ptr->addPhysicalProcess(*physicalProcess);
-    }
-
-    void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
-        editor_ptr->addPhysicalForce(*physicalForce);
+    void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information) {
+        editor_ptr->removePersonalInformation(information);
     }
 
     void Editor_checkValidMetaid(Editor *editor_ptr, const char *id) {
@@ -237,34 +272,18 @@ namespace omexmeta {
         return cstr;
     }
 
-    char *Editor_getOmexRepository(Editor *editor_ptr) {
-        std::string str = editor_ptr->getOmexRepository();
+    char *Editor_getRepositoryUri(Editor *editor_ptr) {
+        std::string str = editor_ptr->getRepositoryUri();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
         strcpy(cstr, str.c_str());
         return cstr;
     }
-//
-//    void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_uri) {
-//        editor_ptr->setOmexRepository(std::move(repository_uri));
-//    }
-//
-//    void Editor_setArchiveUri(Editor *editor_ptr, std::string archive_uri) {
-//        editor_ptr->setArchiveUri(std::move(archive_uri));
-//    }
-//
-//    void Editor_setModelUri(Editor *editor_ptr, std::string model_uri) {
-//        editor_ptr->setModelUri(std::move(model_uri));
-//    }
-//
-//    void Editor_setLocalUri(Editor *editor_ptr, std::string local_uri) {
-//        editor_ptr->setLocalUri(std::move(local_uri));
-//    }
 
-    void Editor_addCreator(Editor *editor_ptr, std::string orcid_id) {
-        editor_ptr->addCreator(std::move(orcid_id));
+    void Editor_addCreator(Editor *editor_ptr, const char* orcid_id) {
+        editor_ptr->addCreator(orcid_id);
     }
 
-    void Editor_addCurator(Editor *editor_ptr, std::string orcid_id) {
+    void Editor_addCurator(Editor *editor_ptr, const char* orcid_id) {
         editor_ptr->addCurator(std::move(orcid_id));
     }
 
@@ -284,10 +303,6 @@ namespace omexmeta {
         editor_ptr->addDateCreated(date);
     }
 
-    void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation) {
-        editor_ptr->addPersonalInformation(personalInformation);
-    }
-
     void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id) {
         editor_ptr->addParentModel(biomod_id);
     }
@@ -296,7 +311,7 @@ namespace omexmeta {
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char* metaid) {
+    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char *metaid) {
         auto *singularAnnotation = new SingularAnnotation();
         singularAnnotation->setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, editor_ptr->getLocalUri()));
         return singularAnnotation;

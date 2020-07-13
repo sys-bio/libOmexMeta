@@ -197,6 +197,14 @@ namespace omexmeta {
          */
         void removePhysicalEntity(PhysicalEntity &physicalEntity) const;
 
+
+
+        /*
+         * @brief remove triples associated with a PersonalInformation object from the rdf graph
+         * @param information the PersonalInformation object to remove.
+         */
+        void removePersonalInformation(PersonalInformation *information) const;
+
         /*
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph
          * @param physicalProcess An instance of a PhysicalProcess object to add to the rdf graph.
@@ -298,7 +306,7 @@ namespace omexmeta {
         /*
          * @brief get the current value of archive_uri_
          */
-        [[nodiscard]] std::string getOmexRepository() const;
+        [[nodiscard]] std::string getRepositoryUri() const;
 
         /*
          * @brief set the name local to the current rdf document.

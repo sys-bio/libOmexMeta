@@ -373,9 +373,9 @@ if (BUILD_TESTS)
     add_subdirectory(tests/cpp)
 
     if (WITH_COVERAGE)
-        if (NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-            message(FATAL_ERROR "\"WITH_COVERAGE=ON\" must only be used in debug mode because compiler optimizations in release mode will bias coverage results")
-        endif ()
+#        if (NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#            message(FATAL_ERROR "\"WITH_COVERAGE=ON\" must only be used in debug mode because compiler optimizations in release mode will bias coverage results")
+#        endif ()
 
         set(GCOVR_PATH "/home/ciaran/miniconda3/bin/gcovr" CACHE FILEPATH "Full path to gcovr")
         if (NOT GCOVR_PATH)

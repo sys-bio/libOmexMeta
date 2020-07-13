@@ -4,6 +4,7 @@ import ctypes as ct
 import os
 import sys
 from typing import List
+
 if sys.platform == "win32":
     try:
         import win32api
@@ -65,6 +66,14 @@ libomexmeta = Util.load_lib()
 
 
 class PyOmexMetaAPI:
+    """
+    todo: Explain why we use return int64 type for functions that return char*:
+
+    Encourage developers to mainain the order of functions loaded here
+    to be as close as possible as that in OmexMetaCApi.h as it facilitates development
+
+    Explain decision to only set self uri's from RDF not editor.
+    """
 
     # RDF methods
     @staticmethod
@@ -138,9 +147,29 @@ class PyOmexMetaAPI:
     rdf_query_results_as_str = Util.load_func("RDF_queryResultsAsStr", [ct.c_int64, ct.c_char_p, ct.c_char_p],
                                               ct.c_int64)
 
+    # void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
+    rdf_set_repository_uri = Util.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_int64], None)
+
+    # SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
+    rdf_set_archive_uri = Util.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_int64], None)
+
+    # SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
+    rdf_set_model_uri = Util.load_func("RDF_setModelUri", [ct.c_int64, ct.c_int64], None)
+
+    # char* RDF_getRepositoryUri(RDF *rdf_ptr);
+    rdf_get_repository_uri = Util.load_func("RDF_getRepositoryUri", [ct.c_int64], ct.c_int64)
+
+    # char* RDF_getArchiveUri(RDF *rdf_ptr);
+    rdf_get_archive_uri = Util.load_func("RDF_getArchiveUri", [ct.c_int64], ct.c_int64)
+    #
+    # char* RDF_getModelUri(RDF *rdf_ptr);
+    rdf_get_model_uri = Util.load_func("RDF_getModelUri", [ct.c_int64], ct.c_int64)
+    #
+    # char* RDF_getLocalUri(RDF *rdf_ptr);
+    rdf_get_local_uri = Util.load_func("RDF_getLocalUri", [ct.c_int64], ct.c_int64)
+
     # Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_int], ct.c_int64)
-
     #################################################################
     # Editor methods
     #
@@ -159,12 +188,33 @@ class PyOmexMetaAPI:
     # void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
     editor_add_physical_process = Util.load_func("Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64],
                                                  ct.c_void_p)
+
     # void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
     editor_add_physical_force = Util.load_func("Editor_addPhysicalForce", [ct.c_int64, ct.c_int64],
                                                ct.c_void_p)
+
     # void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
     editor_check_valid_metaid = Util.load_func("Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
                                                ct.c_void_p)
+
+    # void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+    editor_remove_single_annotation = Util.load_func("Editor_removeSingleAnnotation", [ct.c_int64], None)
+
+    # void Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
+    editor_remove_physical_entity = Util.load_func("Editor_removePhysicalEntity", [ct.c_int64], None)
+
+    # void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+    editor_remove_physical_process = Util.load_func("Editor_removePhysicalProcess", [ct.c_int64], None)
+
+    # void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    editor_remove_physical_force = Util.load_func("Editor_removePhysicalForce", [ct.c_int64], None)
+
+    # void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
+    editor_remove_personal_information = Util.load_func("Editor_removePersonalInformation", [ct.c_int64], None)
+
+    # SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
+    editor_add_personal_information = Util.load_func("Editor_addPersonalInformation", [ct.c_int64, ct.c_int64], None)
+
     # char *Editor_getMetaId(Editor *editor_ptr, int index);
     editor_get_metaid = Util.load_func("Editor_getMetaId", [ct.c_int64, ct.c_int64], ct.c_int64)
 
@@ -174,18 +224,59 @@ class PyOmexMetaAPI:
     # char *Editor_getXml(Editor *editor_ptr);
     editor_get_xml = Util.load_func("Editor_getXml", [ct.c_int64], ct.c_int64)
 
+    # SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char *metaid);
     editor_new_singular_annotation = Util.load_func("SingularAnnotation_new", [ct.c_int64],
                                                     ct.c_int64)
+    # PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
     editor_new_physical_entity = Util.load_func("PhysicalEntity_new", [ct.c_int64], ct.c_int64)
+
+    # PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
     editor_new_physical_process = Util.load_func("PhysicalProcess_new", [ct.c_int64], ct.c_int64)
+
+    # PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
     editor_new_physical_force = Util.load_func("PhysicalForce_new", [ct.c_int64], ct.c_int64)
+
+    # void Editor_delete(Editor *editor_ptr);
     editor_delete = Util.load_func("Editor_delete", [ct.c_int64], None)
+
+    # char*Editor_getArchiveUri(Editor *editor_ptr);
+    editor_get_archive_uri = Util.load_func("Editor_getArchiveUri", [ct.c_int64], ct.c_int64)
+
+    # char*Editor_getLocalUri(Editor *editor_ptr);
+    editor_get_local_uri = Util.load_func("Editor_getLocalUri", [ct.c_int64], ct.c_int64)
+
+    # char*Editor_getModelUri(Editor *editor_ptr);
+    editor_get_model_uri = Util.load_func("Editor_getModelUri", [ct.c_int64], ct.c_int64)
+
+    # char*Editor_getRepositoryUri(Editor *editor_ptr);
+    editor_get_repository_uri = Util.load_func("Editor_getRepositoryUri", [ct.c_int64], ct.c_int64)
+
+    # void Editor_addCreator(Editor *editor_ptr, std::string orcid_id);
+    editor_add_creator = Util.load_func("Editor_addCreator", [ct.c_int64, ct.c_char_p], None)
+
+    # void Editor_addCurator(Editor *editor_ptr, std::string orcid_id);
+    editor_add_curator = Util.load_func("Editor_addCurator", [ct.c_int64, ct.c_char_p], None)
+
+    # void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    editor_get_taxon = Util.load_func("Editor_addTaxon", [ct.c_int64, ct.c_char_p], None)
+
+    # void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    editor_add_pubmed = Util.load_func("Editor_addPubmed", [ct.c_int64, ct.c_char_p], None)
+
+    # void Editor_addDescription(Editor *editor_ptr, const char *date);
+    editor_add_description = Util.load_func("Editor_addDescription", [ct.c_int64, ct.c_char_p], None)
+
+    # void Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    editor_add_date_created = Util.load_func("Editor_addDateCreated", [ct.c_int64, ct.c_char_p], None)
+
+    # void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
+    editor_add_parent_model = Util.load_func("Editor_addParentModel", [ct.c_int64, ct.c_char_p], None)
 
     #################################################################
     # SingularAnnotations methods
     #
 
-    #      SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+    # SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
     singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
@@ -329,3 +420,55 @@ class PyOmexMetaAPI:
 
     # void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
     physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
+
+    #################################################################
+    # PersonalInformation Methods
+    #
+
+    # PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
+    personal_information_new = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
+
+    # char *PersonalInformation_getLocalUri(PersonalInformation *information);
+    personal_information_new = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
+
+    # void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
+    personal_information_new = Util.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p], None)
+
+    # PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
+    personal_information_new = Util.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
+    personal_information_new = Util.load_func("PersonalInformation_addName", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char *value);
+    personal_information_new = Util.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
+    personal_information_new = Util.load_func("PersonalInformation_addAccountName", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
+    personal_information_new = Util.load_func("PersonalInformation_addAccountServiceHomepage", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
+    personal_information_new = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
+    personal_information_new = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,const char *literal_value);
+    personal_information_new = Util.load_func("PersonalInformation_addFoafLiteral", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+
+    # PersonalInformation *PersonalInformation_addFoaf(PersonalInformation *information, const char *predicate, const LibrdfNode &value_node);
+    personal_information_new = Util.load_func("PersonalInformation_addFoaf", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+
+    # char *PersonalInformation_getMetaid(PersonalInformation *information);
+    personal_information_new = Util.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
+
+    # void PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
+    personal_information_new = Util.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], None)
+
+    # char *PersonalInformation_getModelUri(PersonalInformation *information);
+    personal_information_new = Util.load_func("PersonalInformation_getModelUri", [ct.c_int64], ct.c_int64)
+
+    # void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
+    personal_information_new = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p], None)

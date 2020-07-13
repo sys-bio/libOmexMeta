@@ -50,7 +50,7 @@ TEST_F(EditorTests, TestRepositoryName1) {
             SEMSIM_TYPE_SBML);
 
     std::string expected = "http://omex-library.org/";
-    std::string actual = editor.getOmexRepository();
+    std::string actual = editor.getRepositoryUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -62,7 +62,7 @@ TEST_F(EditorTests, TestepositoryName2) {
 
     std::string expected = "http://myCustomOmexLibrary.org/";
     rdf.setRepositoryUri(expected);
-    std::string actual = editor.getOmexRepository();
+    std::string actual = editor.getRepositoryUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -757,6 +757,22 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
     editor.addPhysicalForce(physicalForce);
     ASSERT_EQ(8, rdf.size());
     editor.removePhysicalForce(physicalForce);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(EditorTests, TestRemovePersonalInformation) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PersonalInformation information = editor.newPersonalInformation();
+    information.addMbox("annot@uw.edu");
+    editor.addPersonalInformation(information);
+    ASSERT_EQ(2, rdf.size());
+    editor.removePersonalInformation(&information);
     int expected = 0;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
