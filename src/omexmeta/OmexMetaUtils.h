@@ -96,7 +96,8 @@ namespace omexmeta {
          * @param model_name the name of the model your are annotating. Extension should
          * be included or it will be given the ".xml" suffix.
          */
-        static std::vector<std::string> configureSelfStrings(std::string omex_name, std::string model_name);
+        static std::vector<std::string>
+        configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name);
 
         static std::string addLocalPrefixToMetaid(std::string metaid, std::string local);
 

@@ -31,7 +31,7 @@ namespace omexmeta {
         Triples triples_;
         std::string local_uri_;
         std::string metaid_;
-        std::string model_name_;
+        std::string model_uri_;
 
     private:
         [[nodiscard]] std::string generateMetaId() const;
@@ -43,7 +43,7 @@ namespace omexmeta {
 
         ~PersonalInformation() = default;
 
-        PersonalInformation(librdf_model *model, std::string local_uri, std::string model_name);
+        PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri);
 
         /*
          * @brief Copy constructor for PersonalInformation
@@ -105,9 +105,9 @@ namespace omexmeta {
 
         void setMetaid(const std::string &metaid);
 
-        const std::string &getModelName() const;
+        const std::string &getModelUri() const;
 
-        void setModelName(const std::string &modelName);
+        void setModelUri(const std::string &modelUri);
 
         Triples getTriples();
 

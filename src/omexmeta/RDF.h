@@ -20,28 +20,26 @@ namespace omexmeta {
 
         typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-        std::string repository_name_ = "http://MyOmexLibrary.org/";
-        std::string archive_name_ = repository_name_ + "MyOmex.omex";
-        std::string model_name_ = archive_name_ + "/mymodel.xml";
-        std::string local_name_ = archive_name_ + "/mymodel.rdf#";
+        std::string repository_uri_ = "http://omex-library.org/";
+        std::string archive_uri_ = repository_uri_ + "NewOmex.omex";
+        std::string model_uri_ = archive_uri_ + "/NewModel.xml#";
+        std::string local_uri_ = archive_uri_ + "/NewModel.rdf#";
     public:
-        const std::string &getRepositoryName() const;
+        const std::string &getRepositoryUri() const;
 
-        void setRepositoryName(std::string repositoryName);
+        void setRepositoryUri(std::string repositoryName);
 
-        const std::string &getArchiveName() const;
+        const std::string &getArchiveUri() const;
 
-        void setArchiveName(std::string archiveName);
+        void setArchiveUri(std::string archiveName);
 
-        const std::string &getModelName() const;
+        const std::string &getModelUri() const;
 
-        void setModelName(std::string modelName);
+        void setModelUri(std::string modelName);
 
-        const std::string &getLocalName() const;
+        const std::string &getLocalUri() const;
 
-        void setLocalName(std::string localName);
 
-    public:
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
         const std::string myomexlib_ = "http://myOmexLibrary.org/";
@@ -139,7 +137,7 @@ namespace omexmeta {
          * fully with RDF::addFromString() method.
          *
          */
-        static void
+        [[maybe_unused]] static void
         fromString(RDF *rdf, const std::string &str, const std::string &format,
                    std::string base_uri = "Annotations.rdf");
 
@@ -157,8 +155,6 @@ namespace omexmeta {
 //                             const char *mime_type = nullptr, const char *type_uri = nullptr);
 
         std::string toString(const std::string &format = "rdfxml-abbrev",
-                             const std::string& omex_name = "myomex.omex",
-                             const std::string& model_name = "mymodel.xml",
                              std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 

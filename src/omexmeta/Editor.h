@@ -68,12 +68,12 @@ namespace omexmeta {
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
 
-        std::string repository_name_ = "http://MyOmexLibrary.org/";
-        std::string archive_name_ = repository_name_ + "MyOmex.omex";
-        std::string model_name_ = archive_name_ + "/mymodel.xml";
-        std::string local_name_ = archive_name_ + "/mymodel.rdf#";
-        void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
+        const std::string& repository_uri_ ;
+        const std::string& archive_uri_ ;
+        const std::string& model_uri_ ;
+        const std::string& local_uri_ ;
 
+        void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
 
     public:
 
@@ -94,8 +94,14 @@ namespace omexmeta {
          * the user chooses cellml the elements returned by CellMLAssistant::getValidElements()
          * are used. If the type is unknown, then all elements are given metaids.
          */
+//        explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
+//                        const LibrdfModel &model, NamespaceMap &ns_map);
         explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
-                        const LibrdfModel &model, NamespaceMap &ns_map);
+                        const LibrdfModel &model, NamespaceMap &ns_map,
+                        const std::string& repository_uri,
+                        const std::string& archive_uri,
+                        const std::string& model_uri,
+                        const std::string& local_uri);
 
         /*
          * We no longer required to free the
@@ -251,46 +257,46 @@ namespace omexmeta {
          * This is the namespace attached to the `myOMEXlib`
          * prefix.
          */
-        void setOmexRepository(std::string repository_name);
+//        void setOmexRepository(std::string repository_name);
 
         /*
-         * @brief setter for the archive_name_ attribute.
+         * @brief setter for the archive_uri_ attribute.
          *
          * If @param archive_name already begins with "http",
          * "https://: or "file://", the archive_name is assumed
          * properly formatted and used without modification. If
          * @param archive_name does not begin with one of these
-         * three prefixes, the current repository_name_ (which
+         * three prefixes, the current repository_uri_ (which
          * defaults to `https://myOmexLibrary.org/`) is used as the namespace. For example
-         * setting archive_name_ to "myOmex" becomes "https://myOmexLibrary.org/myOmex.omex".
+         * setting archive_uri_ to "myOmex" becomes "https://myOmexLibrary.org/NewOmex.omex".
          */
-        void setArchiveName(std::string archive_name);
+//        void setArchiveUri(std::string archive_name);
 
         /*
-         * @brief get the current value of archive_name_
+         * @brief get the current value of archive_uri_
          */
-        [[nodiscard]] std::string getArchiveName() const;
+        [[nodiscard]] std::string getArchiveUri() const;
 
         /*
          * @brief Set the models name (myOMEX)
          * @param The value of model_name. This is
          * by definition relative to the repository_name attribute.
          */
-        void setModelName(std::string model_name);
+//        void setModelUri(std::string model_name);
 
         /*
-         * @brief get the current value of local_name_
+         * @brief get the current value of local_uri_
          */
-        std::string getLocalName() const;
+        std::string getLocalUri() const;
 
         /*
-         * @brief get the current value of model_name_
+         * @brief get the current value of model_uri_
          */
-        [[nodiscard]] std::string getModelName() const;
+        [[nodiscard]] std::string getModelUri() const;
 
 
         /*
-         * @brief get the current value of archive_name_
+         * @brief get the current value of archive_uri_
          */
         [[nodiscard]] std::string getOmexRepository() const;
 
@@ -300,13 +306,13 @@ namespace omexmeta {
          *
          * The local_name string should contain the omex
          * repository and the model name. For example:
-         * "http://myOmexLibrary.org/myOmex.omex/myModel.rdf".
+         * "http://myOmexLibrary.org/NewOmex.omex/myModel.rdf".
          * Note that the corresponsing model should be:
-         * "http://myOmexLibrary.org/myOmex.omex/myModel.sbml" or
-         * "http://myOmexLibrary.org/myOmex.omex/myModel.xml" or
-         * "http://myOmexLibrary.org/myOmex.omex/myModel.cellml".
+         * "http://myOmexLibrary.org/NewOmex.omex/myModel.sbml" or
+         * "http://myOmexLibrary.org/NewOmex.omex/myModel.xml" or
+         * "http://myOmexLibrary.org/NewOmex.omex/myModel.cellml".
          */
-        void setLocalName(std::string local_name);
+//        void setLocalUri(std::string local_name);
 
         LibrdfNode createNodeWithLocalUri(const std::string& string) const;
 
@@ -324,7 +330,7 @@ namespace omexmeta {
 
         void addDateCreated(const std::string &date);
 
-        void addPersonalInformation(PersonalInformation &personalInformation) const;
+        void addPersonalInformation(PersonalInformation &personalInformation);
 
         SingularAnnotation newSingularAnnotation(std::string metaid) const;
 

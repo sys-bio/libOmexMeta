@@ -310,9 +310,9 @@ TEST(TriplesTestsNoFixture, TestStr) {
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://subject1.com/subject1\">\n"
                            "    <ns1:predicate1 xmlns:ns1=\"http://predicate1.com/\"\n"
@@ -404,40 +404,40 @@ TEST(TriplesTestsNoFixture, TestUsagesPhysicalForce) {
     // replicate physical force without actually using physical force
     Triples triples1(6);
     triples1.emplace_back(
-            LibrdfNode::fromUriString("./MyModel.sbml#parameter_metaid_0").get(),
+            LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0").get(),
             LibrdfNode::fromUriString("isPropertyOf").get(),
-            LibrdfNode::fromUriString("./MyModel.sbml#force_0").get()
+            LibrdfNode::fromUriString("./NewModel.sbml#force_0").get()
     );
 
     triples1.emplace_back(
-            LibrdfNode::fromUriString("./MyModel.sbml#parameter_metaid_0").get(),
+            LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0").get(),
             LibrdfNode::fromUriString("isVersionOf").get(),
             LibrdfNode::fromUriString("https://identifiers.org/opb/OPB_01058").get()
     );
 
     triples1.emplace_back(
-            LibrdfNode::fromUriString("./MyModel.sbml#force_0").get(),
+            LibrdfNode::fromUriString("./NewModel.sbml#force_0").get(),
             LibrdfNode::fromUriString("hasSourceParticipant").get(),
-            LibrdfNode::fromUriString("./MyModel.sbml#source_0").get()
+            LibrdfNode::fromUriString("./NewModel.sbml#source_0").get()
     );
 
 
     triples1.emplace_back(
-            LibrdfNode::fromUriString("./MyModel.sbml#force_0").get(),
+            LibrdfNode::fromUriString("./NewModel.sbml#force_0").get(),
             LibrdfNode::fromUriString("hasSinkParticipant").get(),
-            LibrdfNode::fromUriString("./MyModel.sbml#sink_0").get()
+            LibrdfNode::fromUriString("./NewModel.sbml#sink_0").get()
     );
 
     triples1.emplace_back(
-            LibrdfNode::fromUriString("./MyModel.sbml#source_0").get(),
+            LibrdfNode::fromUriString("./NewModel.sbml#source_0").get(),
             LibrdfNode::fromUriString("hasPhysicalEntityReference").get(),
-            LibrdfNode::fromUriString("./MyModel.sbml#species_metaid_0").get()
+            LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_0").get()
     );
 
     triples1.emplace_back(
-            LibrdfNode::fromUriString("./MyModel.sbml#sink_0").get(),
+            LibrdfNode::fromUriString("./NewModel.sbml#sink_0").get(),
             LibrdfNode::fromUriString("hasPhysicalEntityReference").get(),
-            LibrdfNode::fromUriString("./MyModel.sbml#species_metaid_1").get()
+            LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_1").get()
     );
 
     Triple triple1 = triples1.pop_front();

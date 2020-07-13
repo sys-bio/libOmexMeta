@@ -141,7 +141,8 @@ namespace omexmeta {
         write_base_uri_uri.freeUri();
         write_base_uri_node.freeNode();
 
-        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings(std::move(omex_name), std::move(model_name));
+        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings("http://omex-library.org/", std::move(omex_name),
+                                                                             std::move(model_name));
 
         // make uri's for the namespaces
         librdf_uri *myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());

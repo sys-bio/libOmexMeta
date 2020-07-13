@@ -15,7 +15,7 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
-    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     ParticipantTests() {
         model = LibrdfModel(storage.get());
@@ -84,13 +84,13 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     );
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0015\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::string actual = triple.str();
@@ -111,13 +111,13 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     triples.move_back(triple);
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0015\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::string actual = triples[0].str();
@@ -133,17 +133,17 @@ TEST_F(ParticipantTests, TestToTriples1) {
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0015\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -157,16 +157,16 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0015\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -181,16 +181,16 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MediatorParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0015\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MediatorParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -203,7 +203,7 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    std::string local_uri = "http://MyOmexLibrary/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
     ParticipantTestsToTriplesTwice() {
         model = LibrdfModel(storage.get());
 

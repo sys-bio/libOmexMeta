@@ -54,7 +54,7 @@ namespace omexmeta {
         // deal with namespaces
         Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
-        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings(omex_name, model_name);
+        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings("http://omex-library.org/", omex_name, model_name);
 
         // make uri's for the namespaces
         librdf_uri* myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[0].c_str());
@@ -92,7 +92,7 @@ namespace omexmeta {
             LibrdfNode::freeNode(getSubject());
 
         setSubject(LibrdfNode::fromUriString(
-                "http://MyOmexLibrary/" + omex_name + "/" + model_name + "/" + metaid
+                "http://omex-library/" + omex_name + "/" + model_name + "/" + metaid
                 ).get());
         return *this;
     }
@@ -102,7 +102,7 @@ namespace omexmeta {
             throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
                                         "begin with \"http\" which suggests that it is not properly"
                                         "formatted. Metaid's should look like: "
-                                        "\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0000\"");
+                                        "\"http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\"");
         }
         setSubject(LibrdfNode::fromUriString(metaid).get());
 

@@ -15,7 +15,7 @@ class TripleTests : public ::testing::Test {
 public:
 
     AnnotationSamples samples;
-    std::string subject_str = "./MyModel#metaid_0";
+    std::string subject_str = "./NewModel#metaid_0";
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
     std::string resource_namespace = "uniprot";
     std::string resource_id = "P0DP23";
@@ -148,7 +148,7 @@ TEST_F(TripleTests, TestStatementResource) {
 TEST(TripleTestsNoFixture, TestAbout) {
     Triple triple;
     triple.setAbout("myomex", "mymodel.xml", "metaid2");
-    std::string expected = "http://MyOmexLibrary/myomex/mymodel.xml/metaid2";
+    std::string expected = "http://omex-library/myomex/mymodel.xml/metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
@@ -195,7 +195,7 @@ TEST_F(TripleTests, TestStatementSubject) {
     librdf_node *n = librdf_statement_get_subject(statement);
     librdf_uri *uri = librdf_node_get_uri(n);
     unsigned char *s = librdf_uri_as_string(uri);
-    std::string expected = "./MyModel#metaid_0";
+    std::string expected = "./NewModel#metaid_0";
     ASSERT_STREQ(expected.c_str(), (const char *) s);
     triple.freeStatement();
 }
@@ -215,12 +215,12 @@ TEST_F(TripleTests, TestBuilderPattern1) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
 //                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.xml/#metaid1\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex.omex/mymodel.xml/#metaid1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -244,12 +244,12 @@ TEST_F(TripleTests, TestBuilderPattern2) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
 //                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.sbml/#metaid00001\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex.omex/mymodel.sbml/#metaid00001\">\n"
                            "    <bqbiol:is rdf:nodeID=\"Blank\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -272,13 +272,13 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
 
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
+                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
 //                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex/mymodel.xml/metaid1\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/metaid1\">\n"
                            "    <semsim:hasSourceParticipant rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -297,7 +297,7 @@ class TripleTestsVector : public ::testing::Test {
 public:
 
     AnnotationSamples samples;
-    std::string subject_str = "./MyModel#metaid_0";
+    std::string subject_str = "./NewModel#metaid_0";
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
     std::string resource_namespace = "uniprot";
     std::string resource_id = "P0DP23";

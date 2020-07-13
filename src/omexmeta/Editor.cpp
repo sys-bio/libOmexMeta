@@ -8,13 +8,30 @@
 #include "filesystem"
 
 namespace omexmeta {
+//    Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
+//                   const LibrdfModel &model, NamespaceMap &nsmap)
+//            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {
+//        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
+//        std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
+//        xml_ = xml_and_metaids.first;
+//        //todo create a structure mapping metaids to more useful information for the user.
+//        metaids_ = xml_and_metaids.second;
+//    }
+
     Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
-                   const LibrdfModel &model, NamespaceMap &nsmap)
-            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {
+                   const LibrdfModel &model, NamespaceMap &nsmap,
+                   const std::string& repository_uri,
+                   const std::string& archive_uri,
+                   const std::string& model_uri,
+                   const std::string& local_uri)
+            : model_(model), create_ids_(create_ids), namespaces_(nsmap),
+              repository_uri_(repository_uri),
+              archive_uri_(archive_uri),
+              model_uri_(model_uri),
+              local_uri_(local_uri) {
         XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
-        //todo create a structure mapping metaids to more useful information for the user.
         metaids_ = xml_and_metaids.second;
     }
 
@@ -160,7 +177,7 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         physicalEntity.setAbout(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalName())
+                OmexMetaUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalUri())
         );
         checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
@@ -178,7 +195,7 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         physicalProcess.setAbout(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalName())
+                OmexMetaUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalUri())
         );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
 
@@ -196,21 +213,25 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         physicalForce.setAbout(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalName())
+                OmexMetaUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalUri())
         );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
 
-    void Editor::addPersonalInformation(PersonalInformation& personalInformation) const {
+    void Editor::addPersonalInformation(PersonalInformation &personalInformation) {
         Triples triples = personalInformation.getTriples();
         for (auto &triple : triples) {
-            model_.addStatement(triple);
+            // collect the namespace from the triple
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            // add to the model
+            model_.addStatement(triple.getStatement());
+            // remember to free it.
+            triple.freeStatement();
         }
-        std::cout << __FILE__ << ":" << __LINE__ << "warning: experimental free: " << std::endl;
         triples.freeTriples();
     }
 
-    void Editor::addPersonalInformation(PersonalInformation* personalInformation) const {
+    void Editor::addPersonalInformation(PersonalInformation *personalInformation) const {
         Triples triples = personalInformation->getTriples();
         for (auto &triple : triples) {
             model_.addStatement(triple);
@@ -246,21 +267,19 @@ namespace omexmeta {
     }
 
     PhysicalEntity Editor::newPhysicalEntity() {
-        return PhysicalEntity(model_.get(), getLocalName());
+        return PhysicalEntity(model_.get(), getLocalUri());
     }
 
     PhysicalForce Editor::newPhysicalForce() {
-        return PhysicalForce(model_.get(), getLocalName());
+        return PhysicalForce(model_.get(), getLocalUri());
     }
 
     PhysicalProcess Editor::newPhysicalProcess() {
-        return PhysicalProcess(model_.get(), getLocalName());
+        return PhysicalProcess(model_.get(), getLocalUri());
     }
 
     PersonalInformation Editor::newPersonalInformation() {
-        std::cout << "Local Name: " << getLocalName() << std::endl;
-        std::cout << "mdoe Name: " << getModelName() << std::endl;
-        return PersonalInformation(model_.get(), getLocalName(), getModelName());
+        return PersonalInformation(model_.get(), getLocalUri(), getModelUri());
     }
 
     void Editor::addCreator(std::string orcid_id) {
@@ -269,7 +288,7 @@ namespace omexmeta {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getModelUri()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
@@ -283,7 +302,7 @@ namespace omexmeta {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(
-                LibrdfNode::fromUriString(getArchiveName()).get(),
+                LibrdfNode::fromUriString(getArchiveUri()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
@@ -293,7 +312,7 @@ namespace omexmeta {
 
     void Editor::addDateCreated(const std::string &date) {
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getModelUri()).get(),
                 PredicateFactory("dc", "created")->getNode(),
                 LibrdfNode::fromLiteral(date).get()
         );
@@ -303,7 +322,7 @@ namespace omexmeta {
 
     void Editor::addDescription(const std::string &date) {
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getModelUri()).get(),
                 PredicateFactory("dc", "description")->getNode(),
                 LibrdfNode::fromLiteral(date).get()
         );
@@ -313,7 +332,7 @@ namespace omexmeta {
 
     void Editor::addPubmed(const std::string &pubmedid) {
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getModelUri()).get(),
                 PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
                 LibrdfNode::fromUriString("pubmed:" + pubmedid).get()
         );
@@ -323,7 +342,7 @@ namespace omexmeta {
 
     void Editor::addParentModel(const std::string &biomod_id) {
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getModelUri()).get(),
                 PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
                 LibrdfNode::fromUriString("biomod:" + biomod_id).get()
         );
@@ -333,7 +352,7 @@ namespace omexmeta {
 
     void Editor::addTaxon(const std::string &taxon_id) {
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getModelUri()).get(),
                 PredicateFactory("bqbiol", "hasTaxon")->getNode(),
                 LibrdfNode::fromUriString("NCBI_Taxon:" + taxon_id).get()
         );
@@ -341,108 +360,35 @@ namespace omexmeta {
         triple.freeTriple();
     }
 
-    std::string Editor::getLocalName() const {
-        return local_name_;
+    std::string Editor::getLocalUri() const {
+        return local_uri_;
     }
 
-    std::string Editor::getModelName() const {
-        return model_name_;
+    std::string Editor::getModelUri() const {
+        return model_uri_;
     }
 
-    std::string Editor::getArchiveName() const {
-        return archive_name_;
+    std::string Editor::getArchiveUri() const {
+        return archive_uri_;
     }
 
     std::string Editor::getOmexRepository() const {
-        return repository_name_;
-    }
-
-    void Editor::setArchiveName(std::string archive_name) {
-        // archives end in .omex
-        if (!OmexMetaUtils::endsWith(archive_name, ".omex")) {
-            archive_name = archive_name + ".omex";
-        }
-        // Check if model_name is already a valid uri
-        if (OmexMetaUtils::isFormattedUri(archive_name)) {
-            // if so, also check that its relative to
-            // the repository name, otherwise it does not
-            // make sense
-            if (archive_name.rfind(getOmexRepository(), 0) != 0) {
-                std::ostringstream os;
-                os << "std::invalid_argument: Editor::setArchiveName: "
-                   << "A full uri has been given as the archive_name "
-                      "attribute (\"" + archive_name + "\") but this does not "
-                   << "match the uri given for the repository name : \"" + getOmexRepository() + "\"";
-                throw std::invalid_argument(os.str());
-            }
-            archive_name_ = std::move(archive_name);
-        } else {
-            archive_name_ = getOmexRepository() + archive_name;
-        }
-    }
-
-    void Editor::setModelName(std::string model_name) {
-        // Check if model_name is already a valid uri
-        if (OmexMetaUtils::isFormattedUri(model_name)) {
-            // if so, also check that its relative to
-            // the archive name, otherwise it does not
-            // make sense
-            if (model_name.rfind(getArchiveName(), 0) != 0) {
-                std::ostringstream os;
-                os << "std::invalid_argument: Editor::setModelName: "
-                   << "A full uri has been given as the model_name "
-                      "attribute (\"" + model_name + "\") but this does not "
-                   << "match the uri given for the archive name : \"" + getModelName() + "\"";
-                throw std::invalid_argument(os.str());
-            }
-            model_name_ = std::move(model_name);
-        } else {
-            if (getArchiveName().empty()) {
-                throw std::logic_error("std::logic_error: Editor::setModelName: "
-                                       "Trying to set a model name without an archive name. Please"
-                                       " first use setArchiveName. ");
-            }
-            model_name_ = getArchiveName() + "/" + model_name;
-        }
-    }
-
-    void Editor::setLocalName(std::string local_name) {
-        // local names have the .rdf suffix
-        if (!OmexMetaUtils::endsWith(local_name, ".rdf")) {
-            local_name = local_name + ".rdf";
-        }
-        if (getArchiveName().empty()) {
-            throw std::logic_error("std::logic_error: Editor::setModelName: "
-                                   "Trying to set a model name without an archive name. Please"
-                                   " first use setArchiveName. ");
-        }
-        local_name_ = getArchiveName() + "/" + local_name;
-    }
-
-    void Editor::setOmexRepository(std::string repository_name) {
-        if (OmexMetaUtils::isFormattedUri(repository_name)) {
-            repository_name_ = std::move(repository_name);
-        } else {
-            throw std::invalid_argument("std::invalid_argument: Editor::setOmexRepository "
-                                        "repository_name"
-                                        " argument \"" + repository_name + "\" is not formatted like a "
-                                                                           "proper url. ");
-        }
+        return repository_uri_;
     }
 
     LibrdfNode Editor::createNodeWithLocalUri(const std::string &string) const {
-        if (getLocalName().empty()) {
+        if (getLocalUri().empty()) {
             throw std::logic_error("std::logic_error: Editor::createNodeWithLocalUri: "
                                    "Trying to create a node with a uri relative to "
                                    "the local namespace without previously setting the local "
-                                   "namespace. Please use the setLocalName() method. ");
+                                   "namespace. Please use the setLocalUri() method. ");
         }
-        return LibrdfNode::fromUriString(getLocalName() + string);
+        return LibrdfNode::fromUriString(getLocalUri() + string);
     }
 
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
         SingularAnnotation singularAnnotation;
-        singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalName()));
+        singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalUri()));
         return singularAnnotation;
     }
 

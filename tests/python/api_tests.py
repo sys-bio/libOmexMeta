@@ -74,8 +74,8 @@ class TestStrings:
    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
             xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"
             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"
-            xml:base=\"file://./MyModel.rdf\">
-   <rdf:Description rdf:about=\"./MyModel.xml#modelmeta1\">
+            xml:base=\"file://./NewModel.rdf\">
+   <rdf:Description rdf:about=\"./NewModel.xml#modelmeta1\">
        <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\" />
    </rdf:Description>
 </rdf:RDF>"""
@@ -168,7 +168,7 @@ class TestAPI(unittest.TestCase):
    xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xml:base="file://basey.rdf">
-  <rdf:Description rdf:about="file://./MyModel.xml#modelmeta1">
+  <rdf:Description rdf:about="file://./NewModel.xml#modelmeta1">
     <bqmodel:isDescribedBy rdf:resource="https://identifiers.org/pubmed/12991237"/>
   </rdf:Description>
 </rdf:RDF>
@@ -186,7 +186,7 @@ class TestAPI(unittest.TestCase):
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
 
-<file://./MyModel.xml#modelmeta1>
+<file://./NewModel.xml#modelmeta1>
     bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .
 
 """

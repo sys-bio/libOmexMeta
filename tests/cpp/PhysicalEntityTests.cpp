@@ -19,7 +19,7 @@ public:
     LibrdfModel model;
 
     PhysicalProperty physical_property;
-    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     PhysicalEntityTests() {
         model = LibrdfModel(storage.get());
@@ -45,7 +45,7 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
                     })
     );
     std::string actual = physicalEntity.getAbout();
-    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
@@ -169,7 +169,7 @@ TEST_F(PhysicalEntityTests, TestSubject) {
                     })
     );
     std::string actual = physicalEntity.getSubjectStr();
-    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
@@ -187,7 +187,7 @@ TEST_F(PhysicalEntityTests, TestSubjectFromAbout) {
                     })
     );
     std::string actual = physicalEntity.getAbout();
-    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
@@ -214,7 +214,7 @@ TEST(PhysicalEntityTestsNoFixture, TestToTripleRefCounts) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
 
-    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     // ensure physical property has 1 reference
     PhysicalProperty property("metaid", "opb:opb_1234", local_uri);
@@ -328,17 +328,17 @@ TEST_F(PhysicalEntityTests, TestTriples) {
     Triples triples = physicalEntity.toTriples();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -363,16 +363,16 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
 
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA:9690\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#VLV\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#VLV\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -431,17 +431,17 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
     std::string actual = triples.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -463,11 +463,11 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
     ASSERT_EQ(5, triples.size());
     std::string actual = triples.str("ntriples", "TestPhysicalEntityBuilder2");
     printf("%s", actual.c_str());
-    std::string expected = "<http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000> .\n"
-                           "<http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .\n"
-                           "<http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .\n"
-                           "<http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .\n"
-                           "<http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .\n";
+    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> .\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
@@ -476,11 +476,11 @@ TEST(PhysicalEntityTestsNoFixture, TestEquality) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
 
-    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     PhysicalEntity physicalEntity1(
             model.get(),
-            "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#",
+            "http://omex-library.org/NewOmex.omex/NewModel.rdf#",
             PhysicalProperty("metaid", "opb:opb_1234", local_uri),
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
@@ -490,7 +490,7 @@ TEST(PhysicalEntityTestsNoFixture, TestEquality) {
     );
     PhysicalEntity physicalEntity2(
             model.get(),
-            "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#",
+            "http://omex-library.org/NewOmex.omex/NewModel.rdf#",
             PhysicalProperty("metaid", "opb:opb_1234", local_uri),
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(

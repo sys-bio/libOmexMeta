@@ -201,28 +201,40 @@ namespace omexmeta {
     }
 
     std::vector<std::string>
-    OmexMetaUtils::configureSelfStrings(std::string omex_name, std::string model_name) {
+    OmexMetaUtils::configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name) {
         std::vector<std::string> vec;
         // create the default namespaces.
-        std::string myomexlib_string = "http://MyOmexLibrary.org/" + omex_name;
+        if (!OmexMetaUtils::endsWith(repository_name, "/")){
+            repository_name += "/";
+        }
+
+        if (!OmexMetaUtils::endsWith(omex_name, ".omex")){
+            omex_name += ".omex";
+        }
+
+        std::string myomexlib_string = repository_name + omex_name;
         vec.push_back(myomexlib_string);
+
+        if (!OmexMetaUtils::endsWith(model_name, "#")) {
+            model_name += "#";
+        }
         // we make myomex_string relative to myomexlib_string
         // logic for adding appropriate extension if not exist
-        std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
+        std::vector<std::string> suffixes = {".xml#", ".cellml#", ".sbml#"};
         bool has_appropriate_extension = false;
         for (auto &it : suffixes) {
             if (OmexMetaUtils::endsWith(model_name, it)) {
                 has_appropriate_extension = true;
                 break;
-                }
+            }
         }
 
         std::string myomex_string;
         if (has_appropriate_extension) {
             myomex_string = myomexlib_string + +"/" + model_name;
-            } else {
-            myomex_string = myomexlib_string + "/" + model_name + ".xml";
-            }
+        } else {
+            myomex_string = myomexlib_string + "/" + model_name + ".xml#";
+        }
         vec.push_back(myomex_string);
         assert(!myomex_string.empty());
         // now we know we have a string that definitely contains a suffux like .xml

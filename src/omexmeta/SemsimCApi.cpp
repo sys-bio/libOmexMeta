@@ -13,19 +13,6 @@ namespace omexmeta {
             free(c);
     }
 
-    void free_c_char_star_star(char **c, int size) {
-        if (!c)
-            return;
-        std::cout << size << std::endl;
-        for (int i = 0; i < size; i++) {
-            std::cout << i << std::endl;
-            std::cout << __FILE__ << ":" << __LINE__ << ": " << c << std::endl;
-            free(c);
-            c++;
-        }
-        free(c);
-    }
-
     /*
      * For testing.
      */
@@ -59,7 +46,7 @@ namespace omexmeta {
      * free a world instance, its best to replace it
      * immediately
      */
-    void free_world(librdf_world *world) {
+    [[maybe_unused]] void free_world(librdf_world *world) {
         if (world != nullptr) {
             World::free(world);
             world = World::getWorld();
@@ -139,6 +126,19 @@ namespace omexmeta {
         return rdf_ptr->size();
     }
 
+    void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri) {
+        rdf_ptr->setRepositoryUri(std::move(repository_uri));
+    }
+
+    void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri) {
+        rdf_ptr->setArchiveUri(std::move(archive_uri));
+    }
+
+    void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri) {
+        rdf_ptr->setModelUri(std::move(model_uri));
+    }
+
+
     Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type) {
         return rdf_ptr->toEditorPtr(xml, type);
     }
@@ -216,22 +216,22 @@ namespace omexmeta {
         delete editor_ptr;
     }
 
-    char *Editor_getArchiveName(Editor *editor_ptr) {
-        std::string str = editor_ptr->getArchiveName();
+    char *Editor_getArchiveUri(Editor *editor_ptr) {
+        std::string str = editor_ptr->getArchiveUri();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
         strcpy(cstr, str.c_str());
         return cstr;
     }
 
-    char *Editor_getLocalName(Editor *editor_ptr) {
-        std::string str = editor_ptr->getLocalName();
+    char *Editor_getLocalUri(Editor *editor_ptr) {
+        std::string str = editor_ptr->getLocalUri();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
         strcpy(cstr, str.c_str());
         return cstr;
     }
 
-    char *Editor_getModelName(Editor *editor_ptr) {
-        std::string str = editor_ptr->getModelName();
+    char *Editor_getModelUri(Editor *editor_ptr) {
+        std::string str = editor_ptr->getModelUri();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
         strcpy(cstr, str.c_str());
         return cstr;
@@ -243,22 +243,22 @@ namespace omexmeta {
         strcpy(cstr, str.c_str());
         return cstr;
     }
-
-    void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_name) {
-        editor_ptr->setOmexRepository(std::move(repository_name));
-    }
-
-    void Editor_setArchiveName(Editor *editor_ptr, std::string archive_name) {
-        editor_ptr->setArchiveName(std::move(archive_name));
-    }
-
-    void Editor_setModelName(Editor *editor_ptr, std::string model_name) {
-        editor_ptr->setModelName(std::move(model_name));
-    }
-
-    void Editor_setLocalName(Editor *editor_ptr, std::string local_name) {
-        editor_ptr->setLocalName(std::move(local_name));
-    }
+//
+//    void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_uri) {
+//        editor_ptr->setOmexRepository(std::move(repository_uri));
+//    }
+//
+//    void Editor_setArchiveUri(Editor *editor_ptr, std::string archive_uri) {
+//        editor_ptr->setArchiveUri(std::move(archive_uri));
+//    }
+//
+//    void Editor_setModelUri(Editor *editor_ptr, std::string model_uri) {
+//        editor_ptr->setModelUri(std::move(model_uri));
+//    }
+//
+//    void Editor_setLocalUri(Editor *editor_ptr, std::string local_uri) {
+//        editor_ptr->setLocalUri(std::move(local_uri));
+//    }
 
     void Editor_addCreator(Editor *editor_ptr, std::string orcid_id) {
         editor_ptr->addCreator(std::move(orcid_id));
@@ -284,7 +284,7 @@ namespace omexmeta {
         editor_ptr->addDateCreated(date);
     }
 
-    void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation &personalInformation) {
+    void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation) {
         editor_ptr->addPersonalInformation(personalInformation);
     }
 
@@ -298,7 +298,7 @@ namespace omexmeta {
  */
     SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char* metaid) {
         auto *singularAnnotation = new SingularAnnotation();
-        singularAnnotation->setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, editor_ptr->getLocalName()));
+        singularAnnotation->setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, editor_ptr->getLocalUri()));
         return singularAnnotation;
     }
 
@@ -324,9 +324,9 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
-    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_name, const char *model_name,
+    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_uri, const char *model_uri,
                                 const char *about) {
-        singular_annotation->setAbout(omex_name, model_name, about);
+        singular_annotation->setAbout(omex_uri, model_uri, about);
         return singular_annotation;
     };
 
@@ -394,7 +394,7 @@ namespace omexmeta {
  * PhysicalEntity class methods
  */
     PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr) {
-        return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getLocalName());
+        return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getLocalUri());
     }
 
     void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr) {
@@ -472,7 +472,7 @@ namespace omexmeta {
  * PhysicalProcess class methods
  */
     PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr) {
-        return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getLocalName());
+        return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getLocalUri());
     }
 
     void PhysicalProcess_delete(PhysicalProcess *physicalProcess) {
@@ -550,7 +550,7 @@ namespace omexmeta {
  * PhysicalForce class methods
  */
     PhysicalForce *PhysicalForce_new(Editor *editor_ptr) {
-        return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getLocalName());
+        return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getLocalUri());
     }
 
     void PhysicalForce_delete(PhysicalForce *physicalForce) {
@@ -613,7 +613,7 @@ namespace omexmeta {
  * PersonalInformation class methods
  */
     PersonalInformation *PersonalInformation_new(Editor *editor_ptr) {
-        return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalName(), editor_ptr->getModelName());
+        return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalUri(), editor_ptr->getModelUri());
     }
 
     char *PersonalInformation_getLocalUri(PersonalInformation *information) {
@@ -673,7 +673,7 @@ namespace omexmeta {
     PersonalInformation *
     PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,
                                        const char *literal_value) {
-        information->addFoafBlank(predicate, literal_value);
+        information->addFoafLiteral(predicate, literal_value);
         return information;
     }
 
@@ -694,15 +694,15 @@ namespace omexmeta {
         information->setMetaid(metaid);
     }
 
-    char *PersonalInformation_getModelName(PersonalInformation *information) {
-        std::string about = information->getModelName();
+    char *PersonalInformation_getModelUri(PersonalInformation *information) {
+        std::string about = information->getModelUri();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
     }
 
-    void PersonalInformation_setModelName(PersonalInformation *information, const char *modelName) {
-        information->setModelName(modelName);
+    void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri) {
+        information->setModelUri(modelUri);
     }
 
 

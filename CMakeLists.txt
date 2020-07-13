@@ -99,9 +99,15 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_SANITIZER "link with address sanitizer for memory debugging" OFF)
 if (WITH_SANITIZER)
-    SET(ADDRESS_SANITIZER_FLAGS "-g -fsanitize=address")
-    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
+    if (${PLATFORM} STREQUAL "linux")
+        SET(ADDRESS_SANITIZER_FLAGS "-g -fsanitize=address")
+        SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
+    elseif (${PLATFORM} STREQUAL "windows-msvc")
+
+    elseif (${PLATFORM} STREQUAL "macos")
+        message(FATAL_ERROR "Sad face mac user =[")
+    endif ()
 endif ()
 
 #set(CMAKE_CXX_FLAGS "-O0")

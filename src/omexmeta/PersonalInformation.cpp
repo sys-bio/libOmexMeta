@@ -7,8 +7,8 @@
 
 namespace omexmeta {
 
-    PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri, std::string model_name)
-            : model_(model), local_uri_(local_uri), model_name_(model_name) {
+    PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri)
+            : model_(model), local_uri_(local_uri), model_uri_(model_uri) {
         metaid_ = generateMetaId();
         createSubject();
     }
@@ -22,7 +22,7 @@ namespace omexmeta {
         information.model_ = nullptr;
         local_uri_ = information.local_uri_;
         triples_ = std::move(information.triples_);
-        model_name_ = information.model_name_;
+        model_uri_ = information.model_uri_;
     }
 
     /*
@@ -34,7 +34,7 @@ namespace omexmeta {
             information.model_ = nullptr;
             local_uri_ = information.local_uri_;
             triples_ = std::move(information.triples_);
-            model_name_ = information.model_name_;
+            model_uri_ = information.model_uri_;
         }
         return *this;
     }
@@ -50,8 +50,7 @@ namespace omexmeta {
 
     std::string PersonalInformation::generateMetaId() const {
         std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
-        std::cout << "personal info: " << getModelName() << std::endl;
-        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, getModelName());
+        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, getModelUri());
     }
 
     PersonalInformation &
@@ -139,7 +138,7 @@ namespace omexmeta {
         return *this;
     }
     PersonalInformation &PersonalInformation::addCreator(const std::string &value) {
-        addFoafUri("creator", value);
+        addDCUri("creator", value);
         return *this;
     }
     const std::string &PersonalInformation::getLocalUri() const {
@@ -151,12 +150,12 @@ namespace omexmeta {
     }
 
     void PersonalInformation::createSubject() {
-        if (model_name_.empty()) {
+        if (model_uri_.empty()) {
             throw std::invalid_argument("std::invalid_argument: PersonalInformation::createSubject:"
                                         "Trying to create a PersonalInformation composite annotation triples without"
-                                        "a `model_name`. Please use setModelName() and try again.");
+                                        "a `model_uri`. Please use setModelUri() and try again.");
         }
-        LibrdfNode n = LibrdfNode::fromUriString(model_name_);
+        LibrdfNode n = LibrdfNode::fromUriString(model_uri_);
         DCTerm creator("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
         Triple triple(n.get(), creator.getNode(), r.get());
@@ -175,12 +174,12 @@ namespace omexmeta {
         metaid_ = metaid;
     }
 
-    const std::string &PersonalInformation::getModelName() const {
-        return model_name_;
+    const std::string &PersonalInformation::getModelUri() const {
+        return model_uri_;
     }
 
-    void PersonalInformation::setModelName(const std::string &modelName) {
-        model_name_ = modelName;
+    void PersonalInformation::setModelUri(const std::string &modelUri) {
+        model_uri_ = modelUri;
     }
 
     void PersonalInformation::freeTriples() {

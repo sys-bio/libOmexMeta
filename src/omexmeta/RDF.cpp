@@ -70,7 +70,8 @@ namespace omexmeta {
         return rdf;
     }
 
-    void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri) {
+    [[maybe_unused]] void
+    RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri) {
         // if the base_uri is a web uri we leave it alone
         base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
 
@@ -175,7 +176,7 @@ namespace omexmeta {
 
 
     std::string
-    RDF::toString(const std::string &format, const std::string &omex_name, const std::string &model_name,
+    RDF::toString(const std::string &format,
                   std::string base_uri, const char *mime_type,
                   const char *type_uri) {
         base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
@@ -184,31 +185,30 @@ namespace omexmeta {
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
-        std::vector<std::string> vec = OmexMetaUtils::configureSelfStrings(omex_name, model_name);
-        serializer.setNamespace(vec[0], "myOMEXlib");
-        serializer.setNamespace(vec[1], "myOMEX");
-        serializer.setNamespace(vec[2], "local");
+        serializer.setNamespace(getArchiveUri(), "myOMEXlib");
+        serializer.setNamespace(getModelUri(), "myOMEX");
+        serializer.setNamespace(getLocalUri(), "local");
         return serializer.toString(base_uri, model_);
     }
-
 
     librdf_model *RDF::getModel() const {
         return model_.get();
     }
 
     Editor RDF::toEditor(const std::string &xml, SemsimXmlType type) {
-        return Editor(xml, type, false, model_, namespaces_);
+        return Editor(xml, type, false, model_, namespaces_,
+                      getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
     }
 
     Editor *RDF::toEditorPtr(const std::string &xml, SemsimXmlType type) {
-        auto *editor = new Editor(xml, type, false, model_, namespaces_);
+        auto *editor = new Editor(xml, type, false, model_, namespaces_,
+                                  getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
         return editor;
     }
 
     librdf_storage *RDF::getStorage() const {
         return storage_.get();
     }
-
 
     int RDF::commitTransaction() const {
         return librdf_model_transaction_commit(getModel());
@@ -249,7 +249,6 @@ namespace omexmeta {
             } else {
                 raptor_option_description *serializer_opt = raptor_world_get_option_description(
                         raptor_world_ptr,
-
                         RAPTOR_DOMAIN_SERIALIZER,
                         (raptor_option) i
                 );
@@ -266,29 +265,29 @@ namespace omexmeta {
         return os;
     }
 
-    const std::string &RDF::getRepositoryName() const {
-        return repository_name_;
+    const std::string &RDF::getRepositoryUri() const {
+        return repository_uri_;
     }
 
-    void RDF::setRepositoryName(std::string repositoryName) {
+    void RDF::setRepositoryUri(std::string repositoryName) {
         if (!OmexMetaUtils::startsWith(repositoryName, "http")) {
-            throw std::invalid_argument("std::invalid_argument: RDF::setRepositoryName: "
+            throw std::invalid_argument("std::invalid_argument: RDF::setRepositoryUri: "
                                         "Specified \"repositoryName\" argument \"" + repositoryName
                                         + "\" does not begin with \"http\". Example: \"http://MyOmexRepository.org\"");
         }
         if (!OmexMetaUtils::endsWith(repositoryName, "/")) {
             repositoryName += "/";
         }
-        repository_name_ = repositoryName;
+        repository_uri_ = repositoryName;
     }
 
-    const std::string &RDF::getArchiveName() const {
-        return archive_name_;
+    const std::string &RDF::getArchiveUri() const {
+        return archive_uri_;
     }
 
-    void RDF::setArchiveName(std::string archiveName) {
+    void RDF::setArchiveUri(std::string archiveName) {
         if (OmexMetaUtils::startsWith(archiveName, "http")) {
-            throw std::invalid_argument("std::invalid_argument: RDF::setArchiveName: "
+            throw std::invalid_argument("std::invalid_argument: RDF::setArchiveUri: "
                                         "Specified \"archiveName\" argument \"" + archiveName
                                         + "\" begins with \"http\". Since the archive url is built "
                                           "using the repositoryName argument, please only specify "
@@ -297,22 +296,28 @@ namespace omexmeta {
         if (!OmexMetaUtils::endsWith(archiveName, ".omex")) {
             archiveName = archiveName + ".omex";
         }
-        archive_name_ = getRepositoryName() + archiveName;
+        archive_uri_ = getRepositoryUri() + archiveName;
     }
 
-    const std::string &RDF::getModelName() const {
-        return model_name_;
+    const std::string &RDF::getModelUri() const {
+        return model_uri_;
     }
 
-    void RDF::setModelName(std::string modelName) {
+    void RDF::setModelUri(std::string modelName) {
         if (OmexMetaUtils::startsWith(modelName, "http")) {
-            throw std::invalid_argument("std::invalid_argument: RDF::setModelName: "
+            throw std::invalid_argument("std::invalid_argument: RDF::setModelUri: "
                                         "Specified \"modelName\" argument \"" + modelName
                                         + "\" begins with \"http\". Since the model url is built "
                                           "using the repositoryName argument, please only specify "
-                                          "the name of the model. Like \"MyModel.sbml\"");
+                                          "the name of the model. Like \"NewModel.sbml\"");
         }
-        std::vector<std::string> suffexes = {".xml", ".sbml", ".cellml"};
+        // first we make sure the suffix ends with a "#"
+        if (!OmexMetaUtils::endsWith(modelName, "#")) {
+            modelName += "#";
+        }
+
+        // Now we check for file extension
+        std::vector<std::string> suffexes = {".xml#", ".sbml#", ".cellml#"};
         bool good = false;
         for (auto &it : suffexes) {
             if (OmexMetaUtils::endsWith(modelName, it)) {
@@ -321,13 +326,16 @@ namespace omexmeta {
         }
         // automaticall add .xml if one of the above suffixes was not detected
         if (!good) {
-            modelName += ".xml";
+            // remember to remove the trailing "#"
+            modelName.pop_back();
+            modelName += ".xml#";
         }
 
-        if (OmexMetaUtils::endsWith(modelName, "/")) {
-            model_name_ = getArchiveName() + "/" + modelName;
+        // concatonate archive and model, being sensitive to ending "/"
+        if (OmexMetaUtils::endsWith(getArchiveUri(), "/")) {
+            model_uri_ = getArchiveUri() + modelName;
         } else {
-            model_name_ = getArchiveName() + modelName;
+            model_uri_ = getArchiveUri() + "/" + modelName;
         }
 
         // Since the model name is also used for the local name we
@@ -337,7 +345,7 @@ namespace omexmeta {
         // We do this in a way that enables multiple "." in a model_name
         std::vector<std::string> split = OmexMetaUtils::splitStringBy(modelName, '.');
         if (split.size() <= 1) {
-            throw std::logic_error("std::logic_error: RDF::setModelName: You should never get a "
+            throw std::logic_error("std::logic_error: RDF::setModelUri: You should never get a "
                                    "a value less than 2 here because you are splitting a string. "
                                    "If you are seeing this message this is a bug. Please report "
                                    "it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)");
@@ -351,8 +359,11 @@ namespace omexmeta {
             os << it << ".";
         }
         // Now we can build up the local string
-        local_name_ = getArchiveName() + "/" + os.str() + "rdf#";
+        local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
     }
 
 
+    const std::string &RDF::getLocalUri() const {
+        return local_uri_;
+    }
 }

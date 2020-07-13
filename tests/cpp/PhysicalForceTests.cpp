@@ -19,7 +19,7 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
-    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     PhysicalProperty physical_property;
 
@@ -67,7 +67,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
             sink_participants
     );
     std::string actual = force.getSubjectStr();
-    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
@@ -133,7 +133,7 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty2) {
             sink_participants
     );
     std::string actual = force.getPhysicalProperty().getSubjectStr();
-    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
@@ -226,25 +226,25 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
     std::string actual = triples.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SourceParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntityReference2\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#PhysicalForce0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -255,7 +255,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
 
 
 TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
-    std::string local_uri = "http://MyOmexLibrary/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
     RDF rdf;
     PhysicalForce force(rdf.getModel());
     force.setLocalUri(local_uri);
@@ -269,28 +269,28 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     std::string actual = triples.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
-                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
+                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#Force5\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#PhysicalForce0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex.omex/mymodel.rdf#Force5\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library/myomex.omex/mymodel.rdf#PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#SourceParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex.omex/mymodel.rdf#PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library/myomex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"http://omex-library/myomex.omex/mymodel.rdf#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex.omex/mymodel.rdf#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#PhysicalEntityReference2\"/>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#PhysicalEntityReference3\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library/myomex.omex/mymodel.rdf#PhysicalEntityReference2\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library/myomex.omex/mymodel.rdf#PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library/myomex.omex/mymodel.rdf#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://MyOmexLibrary/myomex.omex/mymodel.rdf#PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library/myomex.omex/mymodel.rdf#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
@@ -300,7 +300,7 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
 
 
 TEST(PhysicalForceTestsNoFixture, TestGenerateTheSamePhysicalForceTwice) {
-    std::string local_uri = "http://MyOmexLibrary/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
     RDF rdf;
     PhysicalForce force(rdf.getModel());
     force.setLocalUri(local_uri);
@@ -331,7 +331,7 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
-    std::string local_uri = "http://MyOmexLibrary/myomex.omex/mymodel.rdf#";
+    std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
 
 
     PhysicalForceEqualityTests() {

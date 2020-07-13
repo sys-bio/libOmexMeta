@@ -37,7 +37,7 @@ namespace omexmeta {
  *
  */
 
-    SEMSIM_API void free_world(librdf_world *world);
+    SEMSIM_API [[maybe_unused]] [[maybe_unused]] void free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
@@ -88,6 +88,12 @@ namespace omexmeta {
 
     SEMSIM_API int RDF_size(RDF *rdf_ptr);
 
+    SEMSIM_API void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
+
+    SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
+
+    SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
+
     SEMSIM_API Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
 
 //RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
@@ -123,32 +129,32 @@ namespace omexmeta {
     SEMSIM_API int Editor_getNumMetaIds(Editor *editor_ptr);
 
     SEMSIM_API void Editor_delete(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getArchiveName(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getLocalName(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getModelName(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getArchiveUri(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getLocalUri(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getModelUri(Editor *editor_ptr);
     SEMSIM_API char *Editor_getOmexRepository(Editor *editor_ptr);
-    SEMSIM_API void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_name);
-    SEMSIM_API void Editor_setArchiveName(Editor *editor_ptr, std::string archive_name);
-    SEMSIM_API void Editor_setModelName(Editor *editor_ptr, std::string model_name);
-    SEMSIM_API void Editor_setLocalName(Editor *editor_ptr, std::string local_name);
+    SEMSIM_API void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_uri);
+    SEMSIM_API void Editor_setArchiveUri(Editor *editor_ptr, std::string archive_uri);
+    SEMSIM_API void Editor_setModelUri(Editor *editor_ptr, std::string model_uri);
+    SEMSIM_API void Editor_setLocalUri(Editor *editor_ptr, std::string local_uri);
     SEMSIM_API void Editor_addCreator(Editor *editor_ptr, std::string orcid_id);
     SEMSIM_API void Editor_addCurator(Editor *editor_ptr, std::string orcid_id);
-    SEMSIM_API void Editor_addTaxon(Editor *editor_ptr, const char*taxon_id);
-    SEMSIM_API void Editor_addPubmed(Editor *editor_ptr, const char*pubmedid);
-    SEMSIM_API void Editor_addDescription(Editor *editor_ptr, const char*date);
-    SEMSIM_API void Editor_addDateCreated(Editor *editor_ptr, const char*date);
-    SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation &personalInformation);
-    SEMSIM_API void Editor_addParentModel(Editor *editor_ptr, const char*biomod_id);
+    SEMSIM_API void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    SEMSIM_API void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    SEMSIM_API void Editor_addDescription(Editor *editor_ptr, const char *date);
+    SEMSIM_API void Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
+    SEMSIM_API void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SEMSIM_API SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char* metaid);
+    SEMSIM_API SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char *metaid);
 
     SEMSIM_API void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
     SEMSIM_API SingularAnnotation *
-    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_name, const char *model_name,
+    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_uri, const char *model_uri,
                                 const char *about);
 
     SEMSIM_API SingularAnnotation *
@@ -274,40 +280,42 @@ namespace omexmeta {
 
     SEMSIM_API char *PersonalInformation_getLocalUri(PersonalInformation *information);
 
-    SEMSIM_API void PersonalInformation_setLocalUri(PersonalInformation *information, const char*localUri);
+    SEMSIM_API void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
 
-    SEMSIM_API PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char*value);
+    SEMSIM_API PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
 
 //    SEMSIM_API PersonalInformation *PersonalInformation_addCurator(PersonalInformation *information, const char*value);
 
-    SEMSIM_API PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char*value);
+    SEMSIM_API PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
 
-    SEMSIM_API PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char*value);
-
-    SEMSIM_API PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const char*value);
+    SEMSIM_API PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char *value);
 
     SEMSIM_API PersonalInformation *
-    PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char*value);
+    PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
 
     SEMSIM_API PersonalInformation *
-    PersonalInformation_addFoafBlank(PersonalInformation *information, const char*predicate, const char*blank_value);
+    PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
 
     SEMSIM_API PersonalInformation *
-    PersonalInformation_addFoafUri(PersonalInformation *information, const char*predicate, const char*uri_value);
+    PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
 
     SEMSIM_API PersonalInformation *
-    PersonalInformation_addFoafLiteral(PersonalInformation *information, const char*predicate, const char*literal_value);
+    PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
 
     SEMSIM_API PersonalInformation *
-    PersonalInformation_addFoaf(PersonalInformation *information, const char*predicate, const LibrdfNode &value_node);
+    PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,
+                                       const char *literal_value);
+
+    SEMSIM_API PersonalInformation *
+    PersonalInformation_addFoaf(PersonalInformation *information, const char *predicate, const LibrdfNode &value_node);
 
     SEMSIM_API char *PersonalInformation_getMetaid(PersonalInformation *information);
 
-    SEMSIM_API void PersonalInformation_setMetaid(PersonalInformation *information, const char*metaid);
+    SEMSIM_API void PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
 
-    SEMSIM_API char *PersonalInformation_getModelName(PersonalInformation *information);
+    SEMSIM_API char *PersonalInformation_getModelUri(PersonalInformation *information);
 
-    SEMSIM_API void PersonalInformation_setModelName(PersonalInformation *information, const char*modelName);
+    SEMSIM_API void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
 
 
 #ifdef __cplusplus
