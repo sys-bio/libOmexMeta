@@ -785,6 +785,7 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
     information.addMbox("annot@uw.edu");
     editor.addPersonalInformation(&information);
     ASSERT_EQ(2, rdf.size());
+    editor.removePersonalInformation(&information);
     int actual = rdf.size();
     ASSERT_EQ(0, actual);
 }
