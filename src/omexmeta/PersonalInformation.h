@@ -112,6 +112,8 @@ namespace omexmeta {
         Triples getTriples();
 
         void freeTriples();
+
+        void setTriples(Triples triples);
     };
 }
 

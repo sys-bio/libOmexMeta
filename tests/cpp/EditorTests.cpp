@@ -788,6 +788,7 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
     editor.removePersonalInformation(&information);
     int actual = rdf.size();
     ASSERT_EQ(0, actual);
+    information.freeTriples();
 }
 
 

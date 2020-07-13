@@ -135,6 +135,12 @@ namespace omexmeta {
     }
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
+        /*
+         * Implementation note: This method generates triples on the
+         * fly and then frees. This was implemented this way as it helped avoid
+         * memory issues but perhaps a better implementation would be similar to
+         * that in the PersonalInformation class.
+         */
         Triples triples = phenomenonPtr->toTriples();
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
@@ -219,16 +225,18 @@ namespace omexmeta {
     }
 
     void Editor::addPersonalInformation(PersonalInformation *personalInformation) {
+        // take the triples object - this is not a copy
         Triples triples = personalInformation->getTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
             // add to the model
             model_.addStatement(triple.getStatement());
-            // remember to free it.
-            triple.freeStatement();
+//             remember to free it.
+//            triple.freeStatement();
         }
-        triples.freeTriples();
+        // give the triples object back so we can reuse it in a potential call to delete
+        personalInformation->setTriples(std::move(triples));
     }
 
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
@@ -253,9 +261,8 @@ namespace omexmeta {
         Triples triples = information->getTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
-            std::cout << triple.str("turtle") << std::endl;
             model_.removeStatement(triple.getStatement());
-            triple.freeTriple();
+//            triple.freeTriple();
         }
     }
 

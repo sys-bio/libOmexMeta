@@ -133,14 +133,20 @@ namespace omexmeta {
         return *this;
     }
 
+    void PersonalInformation::setTriples(Triples triples) {
+        triples_ = std::move(triples);
+    }
+
     PersonalInformation &PersonalInformation::addAccountServiceHomepage(const std::string& value) {
         addFoafUri("accountServiceHomepage", value);
         return *this;
     }
+
     PersonalInformation &PersonalInformation::addCreator(const std::string &value) {
         addDCUri("creator", value);
         return *this;
     }
+
     const std::string &PersonalInformation::getLocalUri() const {
         return local_uri_;
     }
