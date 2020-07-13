@@ -223,7 +223,13 @@ namespace omexmeta {
          */
         void addPhysicalForce(PhysicalForce &physicalForce);
 
-/*
+        /*
+         * @brief add a PersonalInformation class to the rdf model
+         * @param personalInformation An instance of a PersonalInformation object to add to the rdf graph.
+         */
+        void addPersonalInformation(PersonalInformation *personalInformation);
+
+        /*
          * @brief remove triples associated with a a PhysicalForce object from the rdf graph
          * @param physicalForce the PhysicalForce to remove
          */
@@ -337,8 +343,6 @@ namespace omexmeta {
         void addDescription(const std::string &date);
 
         void addDateCreated(const std::string &date);
-
-        void addPersonalInformation(PersonalInformation &personalInformation);
 
         SingularAnnotation newSingularAnnotation(std::string metaid) const;
 

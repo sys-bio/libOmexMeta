@@ -99,17 +99,17 @@ class TestAPI(unittest.TestCase):
     def test_rdf_obj(self):
         self.assertIsInstance(self.rdf, int)
 
-#     def test_rdf_from_string(self):
-#         rdf = PyOmexMetaAPI.rdf_from_string(
-#             TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
-#             "memory".encode(), "libOmexMetaStore".encode(), None, None
-#         )
-#         expected = 1
-#         actual = PyOmexMetaAPI.rdf_size(rdf)
-#         self.assertEqual(expected, actual)
-#
-#     def test_rdf_add_from_string(self):
-#         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(),
+    def test_rdf_from_string(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        expected = 1
+        actual = PyOmexMetaAPI.rdf_size(rdf)
+        self.assertEqual(expected, actual)
+
+    # def test_rdf_add_from_string(self):
+    #     PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(),
 #                                         "test_rdf_from_string.rdf".encode())
 #         expected = 1
 #         actual = PyOmexMetaAPI.rdf_size(self.rdf)

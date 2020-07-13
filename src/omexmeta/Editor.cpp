@@ -218,8 +218,8 @@ namespace omexmeta {
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
 
-    void Editor::addPersonalInformation(PersonalInformation &personalInformation) {
-        Triples triples = personalInformation.getTriples();
+    void Editor::addPersonalInformation(PersonalInformation *personalInformation) {
+        Triples triples = personalInformation->getTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
@@ -228,15 +228,6 @@ namespace omexmeta {
             // remember to free it.
             triple.freeStatement();
         }
-        triples.freeTriples();
-    }
-
-    void Editor::addPersonalInformation(PersonalInformation *personalInformation) const {
-        Triples triples = personalInformation->getTriples();
-        for (auto &triple : triples) {
-            model_.addStatement(triple);
-        }
-        std::cout << __FILE__ << ":" << __LINE__ << "warning: experimental free: " << std::endl;
         triples.freeTriples();
     }
 
@@ -262,6 +253,7 @@ namespace omexmeta {
         Triples triples = information->getTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
+            std::cout << triple.str("turtle") << std::endl;
             model_.removeStatement(triple.getStatement());
             triple.freeTriple();
         }

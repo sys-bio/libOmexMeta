@@ -770,12 +770,13 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
 
     PersonalInformation information = editor.newPersonalInformation();
     information.addMbox("annot@uw.edu");
-    editor.addPersonalInformation(information);
+    editor.addPersonalInformation(&information);
+    std::cout << rdf.toString("turtle") << std::endl;
     ASSERT_EQ(2, rdf.size());
     editor.removePersonalInformation(&information);
-    int expected = 0;
+    std::cout << rdf.toString("turtle") << std::endl;
     int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
+    ASSERT_EQ(0, actual);
 }
 
 
@@ -810,7 +811,7 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
         .addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta")
         .addMbox("annotations@uw.edu")
         .addName("Ciaran Welsh");
-    editor.addPersonalInformation(information);
+    editor.addPersonalInformation(&information);
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
