@@ -1139,6 +1139,7 @@ TEST_F(CAPITests, PersonalInformationgetLocalUri) {
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1156,6 +1157,7 @@ TEST_F(CAPITests, PersonalInformationsetLocalUri) {
     const char *expected = "localUri";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1185,7 +1187,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
-    PersonalInformation_freeTriples(information);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1235,6 +1237,7 @@ TEST_F(CAPITests, PersonalInformationaddName) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1266,6 +1269,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1296,6 +1300,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
                            "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1327,6 +1332,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1358,6 +1364,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1387,10 +1394,10 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
                             "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
-    PersonalInformation_delete(information);
 }
 
 TEST_F(CAPITests, PersonalInformationgetMetaid) {
@@ -1405,6 +1412,7 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1422,6 +1430,7 @@ TEST_F(CAPITests, PersonalInformationsetMetaid) {
     const char *expected = "NewMEtaid";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1438,6 +1447,7 @@ TEST_F(CAPITests, PersonalInformationgetModelName) {
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1456,6 +1466,7 @@ TEST_F(CAPITests, PersonalInformationsetModelUri) {
     const char *expected = "newModelName";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);

@@ -630,10 +630,6 @@ namespace omexmeta {
         return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalUri(), editor_ptr->getModelUri());
     }
 
-    void PersonalInformation_freeTriples(PersonalInformation* information) {
-        information->freeTriples();
-    }
-
     void PersonalInformation_delete(PersonalInformation* information) {
         delete information;
     }

@@ -41,7 +41,7 @@ namespace omexmeta {
     public:
         PersonalInformation() = default;
 
-        ~PersonalInformation() = default;
+        ~PersonalInformation();
 
         PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri);
 

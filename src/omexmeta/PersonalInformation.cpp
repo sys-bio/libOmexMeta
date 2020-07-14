@@ -13,6 +13,9 @@ namespace omexmeta {
         createSubject();
     }
 
+    PersonalInformation::~PersonalInformation(){
+        freeTriples();
+    }
 
     /*
      * @brief move constructor
