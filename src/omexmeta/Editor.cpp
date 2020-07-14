@@ -394,8 +394,15 @@ namespace omexmeta {
         return LibrdfNode::fromUriString(getLocalUri() + string);
     }
 
+    SingularAnnotation Editor::newSingularAnnotation() const {
+        SingularAnnotation singularAnnotation;
+        singularAnnotation.setLocalUri(getModelUri());
+        return singularAnnotation;
+    }
+
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
         SingularAnnotation singularAnnotation;
+        singularAnnotation.setLocalUri(getModelUri());
         singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalUri()));
         return singularAnnotation;
     }

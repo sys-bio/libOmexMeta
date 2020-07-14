@@ -309,9 +309,8 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid6");
-    SingularAnnotation_setAbout(singularAnnotation);
-
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation_setAbout(singularAnnotation, "metaid6");
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid6";
     ASSERT_STREQ(expected, actual);
@@ -329,7 +328,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setPredicate(singularAnnotation,
                                     "bqbiol", "is");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
@@ -350,7 +349,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
     const char *expected = "http://predicate.com/from/uri";
@@ -382,7 +381,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setResourceLiteral(singularAnnotation,
                                           "LiterallyAString");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
@@ -403,7 +402,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setResourceUri(singularAnnotation,
                                       "uniprot:PD98723");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
@@ -423,7 +422,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid");
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setResourceBlank(singularAnnotation, "Nothing");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
     const char *expected = "Nothing";

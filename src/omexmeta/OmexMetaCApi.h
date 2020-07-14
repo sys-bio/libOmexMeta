@@ -157,13 +157,12 @@ namespace omexmeta {
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SEMSIM_API SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char *metaid);
+    SEMSIM_API SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
 
     SEMSIM_API void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
     SEMSIM_API SingularAnnotation *
-    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_uri, const char *model_uri,
-                                const char *about);
+    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
     SEMSIM_API SingularAnnotation *
     SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);

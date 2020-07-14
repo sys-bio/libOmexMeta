@@ -286,9 +286,8 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation singularAnnotation;
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation
-            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -298,47 +297,48 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/#OmexMetaId0001\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     singularAnnotation.freeStatement();
 
 }
 
-TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPattern) {
+TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation singularAnnotation;
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation
-            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
     editor.removeSingleAnnotation(singularAnnotation);
 
-    SingularAnnotation singularAnnotation2;
+    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation2
-            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02636");
 
     editor.addSingleAnnotation(singularAnnotation2);
 
-    std::string actual = rdf.toString("rdfxml");
+    std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\" xmlns:myOMEXlib=\"http://omex-library.org/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library/myomex/mymodel.xml/#OmexMetaId0001\">\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02636\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:OmexMetaId0001\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02636> .\n"
+                           "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     singularAnnotation.freeStatement();
 
@@ -503,9 +503,8 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
             SEMSIM_TYPE_SBML);
 
 
-    SingularAnnotation singularAnnotation;
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation
-            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0000")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
@@ -739,9 +738,8 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation singularAnnotation;
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation
-            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0000")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 

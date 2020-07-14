@@ -311,9 +311,9 @@ namespace omexmeta {
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char *metaid) {
+    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr) {
         auto *singularAnnotation = new SingularAnnotation();
-        singularAnnotation->setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, editor_ptr->getLocalUri()));
+        singularAnnotation->setLocalUri(editor_ptr->getLocalUri());
         return singularAnnotation;
     }
 
@@ -339,9 +339,8 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
-    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_uri, const char *model_uri,
-                                const char *about) {
-        singular_annotation->setAbout(omex_uri, model_uri, about);
+    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about) {
+        singular_annotation->setAbout(about);
         return singular_annotation;
     };
 

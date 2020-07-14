@@ -33,12 +33,7 @@ namespace omexmeta {
     class Triple : public LibrdfStatement {
 
         Triple(librdf_statement *statement);
-        std::string model_uri; // like http:/omex-library.org/omex-archive.omex/model.xml
-
-    public:
-        const std::string &getModelUri() const;
-
-        void setModelUri(const std::string &modelUri);
+        std::string local_uri_; // like http:/omex-library.org/omex-archive.omex/model.xml
 
     public:
 
@@ -53,6 +48,9 @@ namespace omexmeta {
 
         static Triple fromRawStatementPtr(librdf_statement *statement);
 
+        const std::string &getLocalUri() const;
+
+        void setLocalUri(std::string localUri);
         /*
          * @brief serialize the triple using a @format serializer.
          *
@@ -67,7 +65,9 @@ namespace omexmeta {
 
         void freeTriple();
 
-        Triple &setAbout(const std::string& omex_name, const std::string& model_name, const std::string &metaid);
+        Triple &setAbout(std::string omex_name, const std::string& model_name, std::string metaid);
+
+        Triple &setAbout(std::string metaid);
 
         std::string getAbout() const;
 
@@ -87,7 +87,8 @@ namespace omexmeta {
 
         void freeTripleAndUris();
 
-        Triple &setAbout(const std::string &metaid);
+//        Triple &setAbout(const std::string &metaid);
+
     };
 
     typedef Triple SingularAnnotation;

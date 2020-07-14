@@ -349,6 +349,8 @@ namespace omexmeta {
         void addParentModel(const std::string &biomod_id);
 
         void addPersonalInformation(PersonalInformation *personalInformation) const;
+
+        SingularAnnotation newSingularAnnotation() const;
     };
 
 }
