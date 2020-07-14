@@ -126,15 +126,15 @@ namespace omexmeta {
         return rdf_ptr->size();
     }
 
-    void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri) {
+    void RDF_setRepositoryUri(RDF *rdf_ptr, const char* repository_uri) {
         rdf_ptr->setRepositoryUri(std::move(repository_uri));
     }
 
-    void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri) {
+    void RDF_setArchiveUri(RDF *rdf_ptr, const char* archive_uri) {
         rdf_ptr->setArchiveUri(std::move(archive_uri));
     }
 
-    void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri) {
+    void RDF_setModelUri(RDF *rdf_ptr, const char* model_uri) {
         rdf_ptr->setModelUri(std::move(model_uri));
     }
 

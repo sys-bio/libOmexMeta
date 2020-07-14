@@ -148,13 +148,13 @@ class PyOmexMetaAPI:
                                               ct.c_int64)
 
     # void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
-    rdf_set_repository_uri = Util.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_int64], None)
+    rdf_set_repository_uri = Util.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], None)
 
-    # SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
-    rdf_set_archive_uri = Util.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_int64], None)
+    # void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
+    rdf_set_archive_uri = Util.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_char_p], None)
 
-    # SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
-    rdf_set_model_uri = Util.load_func("RDF_setModelUri", [ct.c_int64, ct.c_int64], None)
+    # void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
+    rdf_set_model_uri = Util.load_func("RDF_setModelUri", [ct.c_int64, ct.c_char_p], None)
 
     # char* RDF_getRepositoryUri(RDF *rdf_ptr);
     rdf_get_repository_uri = Util.load_func("RDF_getRepositoryUri", [ct.c_int64], ct.c_int64)
@@ -260,7 +260,7 @@ class PyOmexMetaAPI:
     editor_add_curator = Util.load_func("Editor_addCurator", [ct.c_int64, ct.c_char_p], None)
 
     # void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
-    editor_get_taxon = Util.load_func("Editor_addTaxon", [ct.c_int64, ct.c_char_p], None)
+    editor_add_taxon = Util.load_func("Editor_addTaxon", [ct.c_int64, ct.c_char_p], None)
 
     # void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
     editor_add_pubmed = Util.load_func("Editor_addPubmed", [ct.c_int64, ct.c_char_p], None)
@@ -428,7 +428,7 @@ class PyOmexMetaAPI:
     #
 
     # PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
-    personal_information_new = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
+    editor_personal_information_new = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
 
     # char *PersonalInformation_getLocalUri(PersonalInformation *information);
     personal_get_local_uri = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
@@ -454,7 +454,7 @@ class PyOmexMetaAPI:
                                               [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
-    personal_information_add_foaf_blank = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_foaf_blank = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
     personal_information_add_foaf_uri = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p],
@@ -463,10 +463,6 @@ class PyOmexMetaAPI:
     # PersonalInformation *PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,const char *literal_value);
     personal_information_add_foaf_literal = Util.load_func("PersonalInformation_addFoafLiteral",
                                               [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
-
-    # PersonalInformation *PersonalInformation_addFoaf(PersonalInformation *information, const char *predicate, const LibrdfNode &value_node);
-    personal_information_add_foaf = Util.load_func("PersonalInformation_addFoaf", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                              ct.c_int64)
 
     # char *PersonalInformation_getMetaid(PersonalInformation *information);
     personal_information_get_metaid = Util.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
@@ -480,4 +476,4 @@ class PyOmexMetaAPI:
     # void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
     personal_information_set_model_uri = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p], None)
 
-    personal_information_free = Util.load_func("PersonalInformation_free", [ct.c_int64], None)
+    personal_information_delete = Util.load_func("PersonalInformation_delete", [ct.c_int64], None)

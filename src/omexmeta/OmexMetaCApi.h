@@ -37,7 +37,7 @@ namespace omexmeta {
  *
  */
 
-    SEMSIM_API [[maybe_unused]] [[maybe_unused]] void free_world(librdf_world *world);
+    SEMSIM_API [[maybe_unused]] void free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
@@ -88,11 +88,11 @@ namespace omexmeta {
 
     SEMSIM_API int RDF_size(RDF *rdf_ptr);
 
-    SEMSIM_API void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
+    SEMSIM_API void RDF_setRepositoryUri(RDF *rdf_ptr, const char* repository_uri);
 
-    SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
+    SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, const char* archive_uri);
 
-    SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
+    SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, const char* model_uri);
     
     SEMSIM_API char* RDF_getRepositoryUri(RDF *rdf_ptr);
 
