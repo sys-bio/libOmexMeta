@@ -310,6 +310,8 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
             SEMSIM_TYPE_SBML);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr, "metaid6");
+    SingularAnnotation_setAbout(singularAnnotation);
+
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid6";
     ASSERT_STREQ(expected, actual);

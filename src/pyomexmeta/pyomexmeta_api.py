@@ -81,6 +81,7 @@ class PyOmexMetaAPI:
         """Uses ctypes to transfer a C string to a python string and free the C string"""
         free_func = Util.load_func("free_c_char_star", [ct.c_void_p], None)
         string = ct.cast(c_string_ptr, ct.c_char_p).value
+        print(string)
         decoded_str = string.decode()
         free_func(c_string_ptr)  # free the data
         del c_string_ptr  # free the ptr
@@ -276,8 +277,8 @@ class PyOmexMetaAPI:
     # SingularAnnotations methods
     #
 
-    # SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
-    singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_uri, const char *model_uri, const char *about);
+    singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
     singular_annotation_set_predicate = Util.load_func("SingularAnnotation_setPredicate",
@@ -444,22 +445,27 @@ class PyOmexMetaAPI:
     personal_information_new = Util.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addAccountName", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_new = Util.load_func("PersonalInformation_addAccountName", [ct.c_int64, ct.c_char_p],
+                                              ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addAccountServiceHomepage", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_new = Util.load_func("PersonalInformation_addAccountServiceHomepage",
+                                              [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
     personal_information_new = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
-    personal_information_new = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    personal_information_new = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                              ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,const char *literal_value);
-    personal_information_new = Util.load_func("PersonalInformation_addFoafLiteral", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    personal_information_new = Util.load_func("PersonalInformation_addFoafLiteral",
+                                              [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoaf(PersonalInformation *information, const char *predicate, const LibrdfNode &value_node);
-    personal_information_new = Util.load_func("PersonalInformation_addFoaf", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    personal_information_new = Util.load_func("PersonalInformation_addFoaf", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                              ct.c_int64)
 
     # char *PersonalInformation_getMetaid(PersonalInformation *information);
     personal_information_new = Util.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)

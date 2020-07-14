@@ -16,7 +16,7 @@ macro(FindDependencies)
             "/usr/include/x86_64-linux-gnu"
             "/mnt/d/usr/include/x86_64-linux-gnu"
             "/mnt/c/usr/include/x86_64-linux-gnu"
-
+            "/lib/x86_64-linux-gnu/"
             )
 
     # libxml2
@@ -100,13 +100,13 @@ macro(FindDependencies)
                 )
     endif ()
 
-    find_file(LIBCHARSET_LIBRARY
-            NAMES libcharset.dll libcharset.so
-            PATHS ${VCPKG_X64_BIN_DIR}
-            ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            REQUIRED
-            )
+#    find_file(LIBCHARSET_LIBRARY
+#            NAMES libcharset.dll libcharset.so
+#            PATHS ${VCPKG_X64_BIN_DIR}
+#            ${DEFAULT_LINUX_LOCATIONS}
+#            NO_DEFAULT_PATH
+#            REQUIRED
+#            )
     #       POSSIBLY NOT NEEDED
     #        find_path(LIBCHARSETL_INCLUDE_DIR
     #                NAMES curl/curl.h
@@ -163,7 +163,7 @@ macro(FindDependencies)
             )
 
     find_file(YAJL_LIBRARY
-            NAMES yajl.dll libyajl.so
+            NAMES yajl.dll libyajl.so libyajl.so libyajl.so.2
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -185,7 +185,7 @@ macro(FindDependencies)
             )
 
     find_file(LZMA_LIBRARY
-            NAMES lzma.dll liblzma.so
+            NAMES lzma.dll liblzma.so liblzma.so.5 lzma.so.5
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH

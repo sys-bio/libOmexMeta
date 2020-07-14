@@ -147,9 +147,7 @@ if (${BUILD_SHARED_LIBS})
             )
 
     # for automatically installing to folder containing python api
-    install(TARGETS OmexMeta
-            LIBRARY DESTINATION ${PYOMEXMETA_DIR}
-            )
+    install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
 
 
     # install the shared library dependencies

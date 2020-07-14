@@ -33,7 +33,12 @@ namespace omexmeta {
     class Triple : public LibrdfStatement {
 
         Triple(librdf_statement *statement);
+        std::string model_uri; // like http:/omex-library.org/omex-archive.omex/model.xml
 
+    public:
+        const std::string &getModelUri() const;
+
+        void setModelUri(const std::string &modelUri);
 
     public:
 

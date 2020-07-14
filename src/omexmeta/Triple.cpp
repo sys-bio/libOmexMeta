@@ -175,5 +175,13 @@ namespace omexmeta {
         freeStatementAndUris();
     }
 
+    const std::string &Triple::getModelUri() const {
+        return model_uri;
+    }
+
+    void Triple::setModelUri(const std::string &modelUri) {
+        model_uri = modelUri;
+    }
+
 }
 
