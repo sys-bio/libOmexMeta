@@ -313,8 +313,9 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
+            .setAbout("#OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -341,6 +342,7 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     singularAnnotation.freeStatement();
+    singularAnnotation2.freeStatement();
 
 }
 
@@ -730,6 +732,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
     std::string actual = singularAnnotation.str("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    singularAnnotation.freeTriple();
 }
 
 TEST_F(EditorTests, TestRemoveSingularAnnotation) {
@@ -786,7 +789,6 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
     editor.removePersonalInformation(&information);
     int actual = rdf.size();
     ASSERT_EQ(0, actual);
-    information.freeTriples();
 }
 
 

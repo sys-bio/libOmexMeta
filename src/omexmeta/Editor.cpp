@@ -262,7 +262,7 @@ namespace omexmeta {
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
             model_.removeStatement(triple.getStatement());
-//            triple.freeTriple();
+            triple.freeTriple();
         }
     }
 
