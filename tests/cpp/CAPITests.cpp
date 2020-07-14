@@ -1185,6 +1185,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
+    PersonalInformation_freeTriples(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1389,6 +1390,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
+    PersonalInformation_delete(information);
 }
 
 TEST_F(CAPITests, PersonalInformationgetMetaid) {

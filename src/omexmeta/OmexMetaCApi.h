@@ -288,6 +288,10 @@ namespace omexmeta {
 
     SEMSIM_API PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
 
+    SEMSIM_API void PersonalInformation_freeTriples(PersonalInformation* information);
+
+    SEMSIM_API void PersonalInformation_delete(PersonalInformation* information);
+
     SEMSIM_API char *PersonalInformation_getLocalUri(PersonalInformation *information);
 
     SEMSIM_API void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);

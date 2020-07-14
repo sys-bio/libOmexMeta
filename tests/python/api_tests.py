@@ -82,7 +82,6 @@ class TestStrings:
 
 
 class TestAPI(unittest.TestCase):
-
     maxDiff = None
 
     def setUp(self) -> None:
@@ -99,6 +98,15 @@ class TestAPI(unittest.TestCase):
     def test_rdf_obj(self):
         self.assertIsInstance(self.rdf, int)
 
+    def test_rdf_size(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        expected = 1
+        actual = PyOmexMetaAPI.rdf_size(rdf)
+        self.assertEqual(expected, actual)
+
     def test_rdf_from_string(self):
         rdf = PyOmexMetaAPI.rdf_from_string(
             TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
@@ -110,7 +118,7 @@ class TestAPI(unittest.TestCase):
 
     def test_rdf_add_from_string(self):
         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(),
-                                        "test_rdf_from_string.rdf".encode())
+                                          "test_rdf_from_string.rdf".encode())
         expected = 1
         actual = PyOmexMetaAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
@@ -160,7 +168,7 @@ class TestAPI(unittest.TestCase):
 
     def test_rdf_to_string(self):
         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
-                                        "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
         string_ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "basey.rdf".encode())
         actual2 = PyOmexMetaAPI.get_and_free_c_str(string_ptr)
         print(actual2)
@@ -180,11 +188,11 @@ class TestAPI(unittest.TestCase):
 
     def test_rdf_get_base_uri(self):
         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
-                                        "rdfxml".encode(), "base_uri.rdf".encode())
+                                          "rdfxml".encode(), "base_uri.rdf".encode())
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "test_rdf_get_base_uri".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
-        expected  = """@base <file://test_rdf_get_base_uri> .
+        expected = """@base <file://test_rdf_get_base_uri> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
@@ -201,6 +209,135 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         self.assertIsInstance(editor_ptr, int)
         PyOmexMetaAPI.editor_delete(editor_ptr)
+
+    def test_rdf_query_results_as_str(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        q = PyOmexMetaAPI.rdf_query_results_as_str(rdf, query)
+        print(q)
+
+    def test_rdf_get_repository(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_repository_uri(rdf)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_rdf_get_archive_uri(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_archive_uri(rdf)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_rdf_get_model_uri(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_model_uri(rdf)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_rdf_get_local_uri(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_local_uri(rdf)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_rdf_set_repository(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        PyOmexMetaAPI.rdf_set_repository_uri("http://my-awesome-omex.org/")
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_repository_uri(rdf)
+        )
+        expected = "http://my-awesome-omex.org/"
+        self.assertEqual(expected, actual)
+
+    def test_rdf_set_archive_uri(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        PyOmexMetaAPI.rdf_set_archive_uri("my-awesome-omex.omex")
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_archive_uri(rdf)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_rdf_set_model_uri(self):
+        rdf = PyOmexMetaAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        PyOmexMetaAPI.rdf_set_model_uri("my-awesome-model.sbml")
+        actual_model = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_model_uri(rdf)
+        )
+        actual_local = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_local_uri(rdf)
+        )
+        expected = ""
+        self.assertEqual(expected, actual_model)
+        self.assertEqual(expected, actual_local)
+
+    def test_editor_add_namespace(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        PyOmexMetaAPI.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
+        singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
+        singular_annotation = PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
+        singular_annotation = PyOmexMetaAPI.singular_annotation_set_predicate_uri(singular_annotation,
+                                                                                  "https://predicate.com/from/uri".encode())
+        singular_annotation = PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation,
+                                                                                 "http://uri.com".encode())
+        PyOmexMetaAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
+
+        actual = PyOmexMetaAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "namespace_test.rdf".encode())
+        actual = PyOmexMetaAPI.get_and_free_c_str(actual)
+        print(actual)
+
+        expected = r"""<?xml version="1.1" encoding="utf-8"?>
+    <rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
+       xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
+       xmlns:myOMEXlib="http://omex-library.org/"
+       xmlns:ns_="https://namespace.com"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
+        <ns1:uri xmlns:ns1="https://predicate.com/from/"
+           rdf:resource="http://uri.com"/>
+      </rdf:Description>
+    </rdf:RDF>
+    """
+        self.assertEqual(expected, actual)
+        PyOmexMetaAPI.editor_delete(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
     def test_editor_new_singular_annotation(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
@@ -230,37 +367,6 @@ class TestAPI(unittest.TestCase):
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_force_delete(physical_force)
 
-    def test_editor_add_namespace(self):
-        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        PyOmexMetaAPI.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
-        singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        singular_annotation = PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
-        singular_annotation = PyOmexMetaAPI.singular_annotation_set_predicate_uri(singular_annotation,
-                                                                                "https://predicate.com/from/uri".encode())
-        singular_annotation = PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation,
-                                                                                   "http://uri.com".encode())
-        PyOmexMetaAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
-
-        actual = PyOmexMetaAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "namespace_test.rdf".encode())
-        actual = PyOmexMetaAPI.get_and_free_c_str(actual)
-        print(actual)
-
-        expected = r"""<?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
-   xmlns:ns_="https://namespace.com"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about=">
-    <ns1:uri xmlns:ns1="https://predicate.com/from/"
-       rdf:resource="http://uri.com"/>
-  </rdf:Description>
-</rdf:RDF>
-"""
-        self.assertEqual(expected, actual)
-        PyOmexMetaAPI.editor_delete(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
-
     def test_editor_check_valid_metaid(self):
         """
         This test can't officially be tested because when this test fails it crashes
@@ -270,6 +376,21 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         PyOmexMetaAPI.editor_check_valid_metaid(editor_ptr, "#OmexMetaId0000".encode())
         PyOmexMetaAPI.editor_delete(editor_ptr)
+
+    def test_editor_remove_physical_entity(self):
+        pass
+
+    def test_editor_remove_physical_process(self):
+        pass
+
+    def test_editor_remove_physical_force(self):
+        pass
+
+    def test_editor_remove_singular_annotation(self):
+        pass
+
+    def test_editor_remove_personal_information(self):
+        pass
 
     def test_editor_get_metaid(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
@@ -349,6 +470,94 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
+    def test_editor_get_archive_uri(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_get_archive_uri(editor_ptr)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_get_local_uri(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_get_local_uri(editor_ptr)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_get_model_uri(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_get_model_uri(editor_ptr)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_get_repository_uri(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_get_repository_uri(editor_ptr)
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_add_creator(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_add_creator(editor_ptr, "1234-1234-1234-1234".encode())
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_add_curator(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_add_curator(editor_ptr, "1234-1234-1234-1234".encode())
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_get_taxon(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_get_taxon(editor_ptr, "9898".encode())
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_add_pubmed(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_add_pubmed(editor_ptr, "1234568".encode())
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_add_description(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_add_description(editor_ptr, "An awesome model".encode())
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_add_date_created(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_add_date_created(editor_ptr, "14/01/1001")
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
+    def test_editor_add_parent_model(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.editor_get_archive_uri(editor_ptr, "BIOMDtoomany0s1.xml")
+        )
+        expected = ""
+        self.assertEqual(expected, actual)
+
     def test_singular_annotation_about(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
@@ -375,7 +584,7 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
         PyOmexMetaAPI.singular_annotation_set_predicate_uri(singular_annotation,
-                                                          "https://predicate.com/from/uri".encode())
+                                                            "https://predicate.com/from/uri".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_predicate(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         expected = "https://predicate.com/from/uri"
@@ -432,7 +641,7 @@ class TestAPI(unittest.TestCase):
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex/NewModel.xml#"
    xmlns:myOMEXlib="http://omex-library.org/NewOmex.omex"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about=">
+  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
   </rdf:Description>
 </rdf:RDF>
@@ -457,7 +666,7 @@ class TestAPI(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library/cytosol//H>
+local:cytosol
     bqbiol:is <https://identifiers.org/uniprot/PD12345> .
 
 """
@@ -503,7 +712,8 @@ class TestAPI(unittest.TestCase):
     def test_physical_entity_str(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
-        PyOmexMetaAPI.physical_entity_set_physical_property(physical_entity, "cytosol".encode(), "opb:opb12345".encode())
+        PyOmexMetaAPI.physical_entity_set_physical_property(physical_entity, "cytosol".encode(),
+                                                            "opb:opb12345".encode())
         PyOmexMetaAPI.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
@@ -555,7 +765,8 @@ class TestAPI(unittest.TestCase):
     def test_editor_add_physical_entity(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
-        PyOmexMetaAPI.physical_entity_set_physical_property(physical_entity, "cytosol".encode(), "opb:opb12345".encode())
+        PyOmexMetaAPI.physical_entity_set_physical_property(physical_entity, "cytosol".encode(),
+                                                            "opb:opb12345".encode())
         PyOmexMetaAPI.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
@@ -588,7 +799,7 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
         PyOmexMetaAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(),
-                                                           "opb:opb12345".encode())
+                                                             "opb:opb12345".encode())
         PyOmexMetaAPI.physical_process_add_source(
             physical_process, 1.0, "Entity1".encode())
 
@@ -598,7 +809,7 @@ class TestAPI(unittest.TestCase):
         PyOmexMetaAPI.physical_process_add_mediator(
             physical_process, 1.0, "Entity3".encode())
         ptr = PyOmexMetaAPI.physical_process_str(physical_process, "html".encode(),
-                                               "html_physical_process_ann.rdf".encode())
+                                                 "html_physical_process_ann.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -678,7 +889,7 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
         PyOmexMetaAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(),
-                                                           "opb:opb12345".encode())
+                                                             "opb:opb12345".encode())
         PyOmexMetaAPI.physical_process_add_source(
             physical_process, 1.0, "Entity1".encode())
 
@@ -736,7 +947,7 @@ class TestAPI(unittest.TestCase):
 
         PyOmexMetaAPI.editor_add_physical_force(editor_ptr, physical_force)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(),
-                                        "PhysicalForce.rdf".encode())
+                                          "PhysicalForce.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -779,7 +990,7 @@ local:cytosol
             physical_force, 1.0, "Entity2".encode())
 
         ptr = PyOmexMetaAPI.physical_force_str(physical_force, "turtle".encode(),
-                                             "html_physical_process_ann.rdf".encode())
+                                               "html_physical_process_ann.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -809,6 +1020,57 @@ local:cytosol
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_force_delete(physical_force)
+
+    def test_personal_information_new(self):
+        personal_information_new()
+
+    # def test_personal_get_local_uri(self):
+    #     personal_get_local_uri()
+    #
+    # def test_personal_information_set_local_uri(self):
+    #     personal_information_set_local_uri()
+    #
+    # def test_personal_information_add_creator(self):
+    #     personal_information_add_creator()
+    #
+    # def test_personal_information_add_name(self):
+    #     personal_information_add_name()
+    #
+    # def test_personal_information_add_mbox(self):
+    #     personal_information_add_mbox()
+    #
+    # def test_personal_information_add_account_name(self):
+    #     personal_information_add_account_name()
+    #
+    # def test_personal_information_add_account_service_homepage(self):
+    #     personal_information_add_account_service_homepage()
+    #
+    # def test_personal_information_add_foaf_blank(self):
+    #     personal_information_add_foaf_blank()
+    #
+    # def test_personal_information_add_foaf_uri(self):
+    #     personal_information_add_foaf_uri()
+    #
+    # def test_personal_information_add_foaf_literal(self):
+    #     personal_information_add_foaf_literal()
+    #
+    # def test_personal_information_add_foaf(self):
+    #     personal_information_add_foaf()
+    #
+    # def test_personal_information_get_metaid(self):
+    #     personal_information_get_metaid()
+    #
+    # def test_personal_information_set_metaid(self):
+    #     personal_information_set_metaid()
+    #
+    # def test_personal_information_get_model_uri(self):
+    #     personal_information_get_model_uri()
+    #
+    # def test_personal_information_set_model_uri(self):
+    #     personal_information_set_model_uri()
+    #
+    # def test_personal_information_free(self):
+    #     personal_information_free()
 
 
 if __name__ == "__main__":

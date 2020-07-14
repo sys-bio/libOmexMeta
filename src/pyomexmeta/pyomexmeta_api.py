@@ -81,7 +81,6 @@ class PyOmexMetaAPI:
         """Uses ctypes to transfer a C string to a python string and free the C string"""
         free_func = Util.load_func("free_c_char_star", [ct.c_void_p], None)
         string = ct.cast(c_string_ptr, ct.c_char_p).value
-        print(string)
         decoded_str = string.decode()
         free_func(c_string_ptr)  # free the data
         del c_string_ptr  # free the ptr
@@ -162,9 +161,11 @@ class PyOmexMetaAPI:
 
     # char* RDF_getArchiveUri(RDF *rdf_ptr);
     rdf_get_archive_uri = Util.load_func("RDF_getArchiveUri", [ct.c_int64], ct.c_int64)
+
     #
     # char* RDF_getModelUri(RDF *rdf_ptr);
     rdf_get_model_uri = Util.load_func("RDF_getModelUri", [ct.c_int64], ct.c_int64)
+
     #
     # char* RDF_getLocalUri(RDF *rdf_ptr);
     rdf_get_local_uri = Util.load_func("RDF_getLocalUri", [ct.c_int64], ct.c_int64)
@@ -225,9 +226,9 @@ class PyOmexMetaAPI:
     # char *Editor_getXml(Editor *editor_ptr);
     editor_get_xml = Util.load_func("Editor_getXml", [ct.c_int64], ct.c_int64)
 
-    # SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, const char *metaid);
-    editor_new_singular_annotation = Util.load_func("SingularAnnotation_new", [ct.c_int64],
-                                                    ct.c_int64)
+    # SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
+    editor_new_singular_annotation = Util.load_func("SingularAnnotation_new", [ct.c_int64], ct.c_int64)
+
     # PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
     editor_new_physical_entity = Util.load_func("PhysicalEntity_new", [ct.c_int64], ct.c_int64)
 
@@ -277,8 +278,8 @@ class PyOmexMetaAPI:
     # SingularAnnotations methods
     #
 
-    # SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_uri, const char *model_uri, const char *about);
-    singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    # SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+    singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
     singular_annotation_set_predicate = Util.load_func("SingularAnnotation_setPredicate",
@@ -430,51 +431,53 @@ class PyOmexMetaAPI:
     personal_information_new = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
 
     # char *PersonalInformation_getLocalUri(PersonalInformation *information);
-    personal_information_new = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
+    personal_get_local_uri = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
 
     # void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
-    personal_information_new = Util.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p], None)
+    personal_information_set_local_uri = Util.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p], None)
 
     # PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_creator = Util.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addName", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_name = Util.load_func("PersonalInformation_addName", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_mbox = Util.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addAccountName", [ct.c_int64, ct.c_char_p],
+    personal_information_add_account_name = Util.load_func("PersonalInformation_addAccountName", [ct.c_int64, ct.c_char_p],
                                               ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
-    personal_information_new = Util.load_func("PersonalInformation_addAccountServiceHomepage",
+    personal_information_add_account_service_homepage = Util.load_func("PersonalInformation_addAccountServiceHomepage",
                                               [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
-    personal_information_new = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_foaf_blank = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
-    personal_information_new = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+    personal_information_add_foaf_uri = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p],
                                               ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,const char *literal_value);
-    personal_information_new = Util.load_func("PersonalInformation_addFoafLiteral",
+    personal_information_add_foaf_literal = Util.load_func("PersonalInformation_addFoafLiteral",
                                               [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoaf(PersonalInformation *information, const char *predicate, const LibrdfNode &value_node);
-    personal_information_new = Util.load_func("PersonalInformation_addFoaf", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+    personal_information_add_foaf = Util.load_func("PersonalInformation_addFoaf", [ct.c_int64, ct.c_char_p, ct.c_char_p],
                                               ct.c_int64)
 
     # char *PersonalInformation_getMetaid(PersonalInformation *information);
-    personal_information_new = Util.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
+    personal_information_get_metaid = Util.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
 
     # void PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
-    personal_information_new = Util.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], None)
+    personal_information_set_metaid = Util.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], None)
 
     # char *PersonalInformation_getModelUri(PersonalInformation *information);
-    personal_information_new = Util.load_func("PersonalInformation_getModelUri", [ct.c_int64], ct.c_int64)
+    personal_information_get_model_uri = Util.load_func("PersonalInformation_getModelUri", [ct.c_int64], ct.c_int64)
 
     # void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
-    personal_information_new = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p], None)
+    personal_information_set_model_uri = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p], None)
+
+    personal_information_free = Util.load_func("PersonalInformation_free", [ct.c_int64], None)

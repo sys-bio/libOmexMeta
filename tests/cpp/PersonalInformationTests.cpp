@@ -46,6 +46,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf){
                            "<TestModel.sbml#PersonalInfo0000>\n"
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
@@ -68,6 +69,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 
@@ -91,6 +93,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
                            "    foaf:accountName <https://orcid.org/0000-0001-8254-4957> .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PersonalInformationTests, TestAddName) {
@@ -113,6 +116,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PersonalInformationTests, TestMBox) {
@@ -135,6 +139,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
                            "    foaf:mbox \"annotations@uw.edu\"^^rdf:string .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PersonalInformationTests, TestAccountName) {
@@ -157,6 +162,7 @@ TEST_F(PersonalInformationTests, TestAccountName) {
                            "    foaf:accountName <https://orcid.org/0000-0001-9876-3928> .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
@@ -179,6 +185,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
                            "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PersonalInformationTests, TestMultipleEntries) {
@@ -208,6 +215,7 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 

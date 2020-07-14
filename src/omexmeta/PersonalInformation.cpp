@@ -59,7 +59,6 @@ namespace omexmeta {
         Foaf foaf(predicate);
         Triple triple(subject.get(), foaf.getNode(), value_node.get());
         triples_.move_back(triple);
-        // todo throw error if foaf already present in list
         return *this;
     }
 
@@ -84,6 +83,7 @@ namespace omexmeta {
         Foaf foaf(predicate);
         LibrdfNode uri_node = LibrdfNode::fromUriString(uri_value);
         addFoaf(predicate, uri_node);
+        foaf.freeNode();
         return *this;
     }
 
@@ -92,6 +92,7 @@ namespace omexmeta {
         Foaf foaf(predicate);
         LibrdfNode literal_node = LibrdfNode::fromLiteral(literal_value);
         addFoaf(predicate, literal_node);
+        foaf.freeNode();
         return *this;
     }
 
@@ -107,6 +108,7 @@ namespace omexmeta {
         DCTerm dcTerm(predicate);
         LibrdfNode uri_node = LibrdfNode::fromUriString(uri_value);
         addDC(predicate, uri_node);
+        dcTerm.freeNode();
         return *this;
     }
 
@@ -115,6 +117,7 @@ namespace omexmeta {
         DCTerm dcTerm(predicate);
         LibrdfNode literal_node = LibrdfNode::fromLiteral(literal_value);
         addDC(predicate, literal_node);
+        dcTerm.freeNode();
         return *this;
     }
 

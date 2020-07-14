@@ -630,6 +630,14 @@ namespace omexmeta {
         return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalUri(), editor_ptr->getModelUri());
     }
 
+    void PersonalInformation_freeTriples(PersonalInformation* information) {
+        information->freeTriples();
+    }
+
+    void PersonalInformation_delete(PersonalInformation* information) {
+        delete information;
+    }
+
     char *PersonalInformation_getLocalUri(PersonalInformation *information) {
         std::string about = information->getLocalUri();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
