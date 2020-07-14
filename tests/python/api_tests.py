@@ -1124,7 +1124,8 @@ local:cytosol
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -1150,7 +1151,8 @@ local:cytosol
     foaf:mbox "annotations.uw.edu"^^rdf:string .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -1176,7 +1178,8 @@ local:cytosol
     foaf:accountName <https://orcid.org/1234-1234-1234-1234> .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -1205,7 +1208,8 @@ local:cytosol
     foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -1231,7 +1235,8 @@ local:cytosol
     foaf:name _:Blank .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -1257,7 +1262,8 @@ local:cytosol
     foaf:mbox <http://uri.com/> .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -1283,7 +1289,8 @@ local:cytosol
     foaf:name "literal"^^rdf:string .
 
 """
-        self.assertEqual(expected, actual)
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
