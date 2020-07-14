@@ -57,7 +57,7 @@ TEST_F(LibrdfSerializerTests, TestToString) {
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
 //    LibrdfUri uri("base_uri");
     std::string actual = serializer1.toString("base_uri", model);
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"https://subject.com\">\n"
                            "    <ns0:predicate.com xmlns:ns0=\"https://\" rdf:resource=\"https://resource.com\"/>\n"
