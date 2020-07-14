@@ -1,6 +1,7 @@
 import os
 import site
 import unittest
+import ctypes as ct
 
 # take care of directories so we can test the pyomexmeta api
 test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
@@ -1060,16 +1061,16 @@ local:cytosol
 
     def test_personal_information_new(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         self.assertTrue(True)  # if we get this far we pass. Bad test but who's counting
 
     def test_personal_get_local_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         actual = PyOmexMetaAPI.get_and_free_c_str(
-            PyOmexMetaAPI.personal_get_local_uri(information)
+            PyOmexMetaAPI.personal_information_get_local_uri(information)
         )
         expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#"
         self.assertEqual(expected, actual)
@@ -1078,7 +1079,7 @@ local:cytosol
 
     def test_personal_information_add_creator(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_creator(information, "1234-1234-1234-1234".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1103,7 +1104,7 @@ local:cytosol
 
     def test_personal_information_add_name(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_name(information, "Ciaran Welsh".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1129,7 +1130,7 @@ local:cytosol
 
     def test_personal_information_add_mbox(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_mbox(information, "annotations.uw.edu".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1155,7 +1156,7 @@ local:cytosol
 
     def test_personal_information_add_account_name(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_account_name(information, "1234-1234-1234-1234".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1181,7 +1182,7 @@ local:cytosol
 
     def test_personal_information_add_account_service_homepage(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_account_service_homepage(
             information,
             "https://github.com/sys-bio/libOmexMeta".encode()
@@ -1210,7 +1211,7 @@ local:cytosol
 
     def test_personal_information_add_foaf_blank(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_foaf_blank(information, "name".encode(), "Blank".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1236,7 +1237,7 @@ local:cytosol
 
     def test_personal_information_add_foaf_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_foaf_uri(information, "mbox".encode(), "http://uri.com/".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1262,7 +1263,7 @@ local:cytosol
 
     def test_personal_information_add_foaf_literal(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_add_foaf_literal(information, "name".encode(), "literal".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
@@ -1289,7 +1290,7 @@ local:cytosol
 
     def test_personal_information_get_metaid(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.personal_information_get_metaid(information)
@@ -1301,7 +1302,7 @@ local:cytosol
 
     def test_personal_information_get_model_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.personal_information_get_model_uri(information)
@@ -1313,7 +1314,7 @@ local:cytosol
 
     def test_personal_information_set_model_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        information = PyOmexMetaAPI.editor_personal_information_new(editor_ptr)
+        information = PyOmexMetaAPI.editor_new_personal_information(editor_ptr)
         PyOmexMetaAPI.personal_information_set_model_uri(information, "awesome-model.xml".encode())
         PyOmexMetaAPI.editor_add_personal_information(editor_ptr, information)
         actual = PyOmexMetaAPI.get_and_free_c_str(

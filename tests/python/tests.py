@@ -149,6 +149,51 @@ class TestRDF(unittest.TestCase):
         RDF.add_from_file(rdf, self.sbml_file, "rdfxml")
         self.assertEqual(6, len(rdf))
 
+    def test_set_repository_uri(self):
+        rdf = RDF()
+        rdf.set_repository_uri("https://my-awesome-repository.org")
+        actual = rdf.get_repository_uri()
+        expected = "https://my-awesome-repository.org/"
+        self.assertEqual(expected, actual)
+
+    def test_set_archive_uri(self):
+        rdf = RDF()
+        rdf.set_archive_uri("my-awesome-archive.omex")
+        actual = rdf.get_archive_uri()
+        expected = "http://omex-library.org/my-awesome-archive.omex"
+        self.assertEqual(expected, actual)
+
+    def test_set_model_uri(self):
+        rdf = RDF()
+        rdf.set_model_uri("my-awesome-model.xml")
+        actual = rdf.get_model_uri()
+        expected = "http://omex-library.org/NewOmex.omex/my-awesome-model.xml#"
+        self.assertEqual(expected, actual)
+
+    def test_get_repository_uri(self):
+        rdf = RDF()
+        actual = rdf.get_repository_uri()
+        expected = "http://omex-library.org/"
+        self.assertEqual(expected, actual)
+
+    def test_get_archive_uri(self):
+        rdf = RDF()
+        actual = rdf.get_archive_uri()
+        expected = "http://omex-library.org/NewOmex.omex"
+        self.assertEqual(expected, actual)
+
+    def test_get_model_uri(self):
+        rdf = RDF()
+        actual = rdf.get_model_uri()
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#"
+        self.assertEqual(expected, actual)
+
+    def test_get_local_uri(self):
+        rdf = RDF()
+        actual = rdf.get_local_uri()
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#"
+        self.assertEqual(expected, actual)
+
     def test_query(self):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
         q = """SELECT ?x ?y ?z 
@@ -197,14 +242,15 @@ class EditorTests(unittest.TestCase):
                     .set_about("cytosol") \
                     .set_predicate("bqbiol", "is") \
                     .set_resource_uri("uniprot:PD88776")
-        expected = """<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xml:base="file://./Annotations.rdf">
-  <rdf:Description rdf:about="cytosol">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD88776"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:cytosol
+    bqbiol:is <https://identifiers.org/uniprot/PD88776> .
+
 """
         actual = str(self.rdf)
         self.assertEqual(expected, actual)
@@ -217,32 +263,33 @@ class EditorTests(unittest.TestCase):
                     .add_source(1.0, "physicalEntity4") \
                     .add_sink(1.0, "PhysicalEntity7") \
                     .add_mediator(1.0, "PhysicalEntity8")
-        expected = """<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-   xml:base="file://./Annotations.rdf">
-  <rdf:Description rdf:about="MediatorParticipant0000">
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity8"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0001">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference local:PhysicalEntity8 .
+
+local:OmexMetaId0001
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb_275> .
+
+local:PhysicalProcess0000
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:PhysicalEntity7 .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:physicalEntity4 .
+
 """
         actual = str(self.rdf)
         print(actual)
@@ -256,28 +303,60 @@ class EditorTests(unittest.TestCase):
                     .set_physical_property("OmexMetaId0004", "opb/opb_275") \
                     .add_source(1.0, "physicalEntity4") \
                     .add_sink(1.0, "PhysicalEntity7")
-        expected = """<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-   xml:base="file://./Annotations.rdf">
-  <rdf:Description rdf:about="OmexMetaId0004">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalForce0000">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:OmexMetaId0004
+    bqbiol:isPropertyOf local:PhysicalForce0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb_275> .
+
+local:PhysicalForce0000
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:PhysicalEntity7 .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:physicalEntity4 .
+
+"""
+        actual = str(self.rdf)
+
+        print(actual)
+
+        self.assertEqual(expected, actual)
+
+    def test_context_manager_personal_information(self):
+        with self.rdf.to_editor(xml, "sbml") as editor:
+            with editor.new_personal_information() as information:
+                information \
+                    .add_creator("1234-1234-1234-1234") \
+                    .add_mbox("annotations@uw.edu")\
+                    .add_name("Ciaran Welsh")
+        print(self.rdf)
+
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#>
+    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    dcterms:creator <1234-1234-1234-1234> ;
+    foaf:mbox "annotations@uw.edu"^^rdf:string ;
+    foaf:name "Ciaran Welsh"^^rdf:string .
+
 """
         actual = str(self.rdf)
 
@@ -312,14 +391,14 @@ class AnnotateAModelTest(unittest.TestCase):
             metaids = editor.get_metaids()
 
         expected = ['SmadNuclearTransport',
-                    'OmexMetaId0000',
-                    'OmexMetaId0001',
-                    'OmexMetaId0002',
-                    'OmexMetaId0003',
-                    'OmexMetaId0004',
-                    'OmexMetaId0005',
-                    'OmexMetaId0006',
-                    'OmexMetaId0007']
+                    '#OmexMetaId0000',
+                    '#OmexMetaId0001',
+                    '#OmexMetaId0002',
+                    '#OmexMetaId0003',
+                    '#OmexMetaId0004',
+                    '#OmexMetaId0005',
+                    '#OmexMetaId0006',
+                    '#OmexMetaId0007']
         actual = metaids
         self.assertEqual(expected, actual)
 
@@ -329,30 +408,30 @@ class AnnotateAModelTest(unittest.TestCase):
             xml_with_metaids = editor.get_xml()
 
         expected = """<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created by libAntimony version v2.11.0 with libSBML version 5.18.0. -->
+<!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. -->
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model metaid="SmadNuclearTransport" id="SmadNuclearTransport">
     <listOfCompartments>
-      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="OmexMetaId0000"/>
-      <compartment id="nucleus" spatialDimensions="3" constant="true" metaid="OmexMetaId0001"/>
+      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="#OmexMetaId0000"/>
+      <compartment id="nucleus" spatialDimensions="3" constant="true" metaid="#OmexMetaId0001"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="Smad3Cyt" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="OmexMetaId0002"/>
-      <species id="Smad3Nuc" compartment="nucleus" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="OmexMetaId0003"/>
+      <species id="Smad3Cyt" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="#OmexMetaId0002"/>
+      <species id="Smad3Nuc" compartment="nucleus" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="#OmexMetaId0003"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="k1" value="0.1" constant="true"/>
       <parameter id="k2" value="1" constant="true"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r1" reversible="false" fast="false" metaid="OmexMetaId0004">
+      <reaction id="r1" reversible="false" fast="false" metaid="#OmexMetaId0004">
         <listOfReactants>
           <speciesReference species="Smad3Nuc" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="Smad3Cyt" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw metaid="OmexMetaId0005">
+        <kineticLaw metaid="#OmexMetaId0005">
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
@@ -362,14 +441,14 @@ class AnnotateAModelTest(unittest.TestCase):
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r2" reversible="false" fast="false" metaid="OmexMetaId0006">
+      <reaction id="r2" reversible="false" fast="false" metaid="#OmexMetaId0006">
         <listOfReactants>
           <speciesReference species="Smad3Cyt" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="Smad3Nuc" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw metaid="OmexMetaId0007">
+        <kineticLaw metaid="#OmexMetaId0007">
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
@@ -384,7 +463,7 @@ class AnnotateAModelTest(unittest.TestCase):
 </sbml>
 """
         actual = xml_with_metaids
-
+        print(actual)
         self.assertEqual(expected, actual)
 
     def test_annotate_model(self):
@@ -435,67 +514,48 @@ class AnnotateAModelTest(unittest.TestCase):
                     .add_source(1, "OmexMetaId0002") \
                     .add_sink(1, "OmexMetaId0003")
 
-        expected = """<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-   xml:base="file://./Annotations.rdf">
-  <rdf:Description rdf:about="OmexMetaId0002">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0003">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0001"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0004">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0005">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0001"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalEntity0000">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P84022"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_264020"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_7163"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalEntity0001">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P84022"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_63840"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_63877"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_7163"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalProcess0001">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0001"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0001"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0002"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SinkParticipant0001">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0003"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SmadNuclearTransport">
-    <ns1:author xmlns:ns1="https://unknownpredicate.com/changeme#"
-       rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#string">Ciaran Welsh</ns1:author>
-  </rdf:Description>
-  <rdf:Description rdf:about="SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0003"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="SourceParticipant0001">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0002"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:OmexMetaId0002
+    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
+
+local:OmexMetaId0003
+    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
+
+local:OmexMetaId0004
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00237> .
+
+local:OmexMetaId0005
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00237> .
+
+local:PhysicalEntity0000
+    bqbiol:is <https://identifiers.org/uniprot/P84022> ;
+    bqbiol:isPartOf <https://identifiers.org/obo/FMA_264020>, <https://identifiers.org/obo/FMA_63840>, <https://identifiers.org/obo/FMA_63877>, <https://identifiers.org/obo/FMA_7163> .
+
+local:PhysicalProcess0000
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:OmexMetaId0002, local:OmexMetaId0003 .
+
+local:SmadNuclearTransport
+    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:OmexMetaId0002, local:OmexMetaId0003 .
+
 """
         actual = str(rdf)
         print(actual)

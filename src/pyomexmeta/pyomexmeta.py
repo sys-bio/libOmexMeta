@@ -25,7 +25,8 @@ def _xml_type_factory(xml_type: str):
 
 class RDF:
 
-    def __init__(self, storage_type: str = "memory", storage_name: str = "libOmexMetaStore", storage_options: str = None,
+    def __init__(self, storage_type: str = "memory", storage_name: str = "libOmexMetaStore",
+                 storage_options: str = None,
                  model_options: str = None, rdf_ptr: ct.c_int64 = None):
         # when pointer argument not given by user, create new instance of RDF
         # argument is only given manually when static methods are used and
@@ -40,21 +41,17 @@ class RDF:
         else:
             self._obj = rdf_ptr
 
-
     def __len__(self):
         """Returns the number of individual Triples stored in the rdf model"""
         return PyOmexMetaAPI.rdf_size(self._obj)
 
-
     def __str__(self):
         """Defaults to rdfxml-abbrev syntax"""
-        return self.to_string("rdfxml-abbrev")
-
+        return self.to_string("turtle")
 
     def __del__(self):
         """deletes the RDF instance"""
         self.delete()
-
 
     def _set_rdf_ptr(self, ptr: ct.c_int64):
         """
@@ -69,7 +66,6 @@ class RDF:
         self.delete()
         # then do the switch
         self._obj = ptr
-
 
     @staticmethod
     def from_string(rdf_string: str, format: str = "guess", base_uri: str = "Annotations.rdf",
@@ -86,10 +82,8 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
-
     def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "Annotations.rdf") -> None:
         PyOmexMetaAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
-
 
     @staticmethod
     def from_uri(uri_string: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
@@ -105,10 +99,8 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
-
     def add_from_uri(self, uri_string: str, format: str) -> None:
         PyOmexMetaAPI.rdf_add_from_uri(self._obj, uri_string.encode(), format.encode())
-
 
     @staticmethod
     def from_file(filename: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
@@ -123,31 +115,49 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
-
     def add_from_file(self, filename: str, format: str) -> None:
         PyOmexMetaAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
-
 
     def delete(self) -> None:
         """destructor. Delete the dynamically allocated rdf object"""
         PyOmexMetaAPI.rdf_delete(self._obj)
 
+    def query_results_as_string(self, query_string: str, results_format: str):
+        return PyOmexMetaAPI.rdf_query_results_as_str(self._obj, query_string.encode(), results_format.encode())
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
         str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
         thestring = PyOmexMetaAPI.get_and_free_c_str(str_ptr)
         return thestring
 
+    def set_repository_uri(self, repository_uri: str) -> None:
+        PyOmexMetaAPI.rdf_set_repository_uri(self._obj, repository_uri.encode())
 
-    def get_base_uri(self) -> str:
-        return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.rdf_get_base_uri(self._obj))
+    def set_archive_uri(self, archive_url: str) -> None:
+        PyOmexMetaAPI.rdf_set_archive_uri(self._obj, archive_url.encode())
 
+    def set_model_uri(self, model_uri: str) -> None:
+        PyOmexMetaAPI.rdf_set_model_uri(self._obj, model_uri.encode())
 
-    def set_base_uri(self, uri: str) -> None:
-        if not os.path.isfile(uri):
-            uri = os.path.join(os.path.realpath(os.getcwd()), uri)
-        PyOmexMetaAPI.rdf_set_base_uri(self._obj, uri.encode())
+    def get_repository_uri(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_repository_uri(self._obj)
+        )
 
+    def get_archive_uri(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_archive_uri(self._obj)
+        )
+
+    def get_model_uri(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_model_uri(self._obj)
+        )
+
+    def get_local_uri(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.rdf_get_local_uri(self._obj)
+        )
 
     def query(self, query_str: str, results_format: str) -> str:
         results_crlf = PyOmexMetaAPI.get_and_free_c_str(
@@ -157,11 +167,9 @@ class RDF:
         results_lf = PyOmexMetaAPI.crlf_to_lr(results_crlf)
         return results_lf
 
-
     def to_editor(self, xml: str, xmltype: str) -> Editor:
         return Editor(PyOmexMetaAPI.rdf_to_editor(self._obj, xml.encode(),
                                                   _xml_type_factory(xml_type=xmltype)))
-
 
     def draw(self, filename: str):
         """
@@ -215,6 +223,9 @@ class Editor:
     def add_physical_force(self, physical_force: PhysicalForce) -> None:
         PyOmexMetaAPI.editor_add_physical_force(self._obj, physical_force.get_ptr())
 
+    def add_personal_information(self, personal_information: PersonalInformation) -> None:
+        PyOmexMetaAPI.editor_add_personal_information(self._obj, personal_information.get_ptr())
+
     def check_valid_metaid(self, id: str) -> None:
         PyOmexMetaAPI.editor_check_valid_metaid(self._obj, id)
 
@@ -223,6 +234,21 @@ class Editor:
         return [PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.editor_get_metaid(self._obj, id)
         ) for id in range(num_ids)]
+
+    def remove_single_annotation(self, single_annotaiton_ptr: ct.c_int64) -> None:
+        PyOmexMetaAPI.editor_remove_single_annotation(self._obj, single_annotaiton_ptr)
+
+    def remove_physical_entity(self, physical_entity_ptr: ct.c_int64) -> None:
+        PyOmexMetaAPI.editor_remove_physical_entity(self._obj, physical_entity_ptr)
+
+    def remove_physical_process(self, physical_process_ptr: ct.c_int64) -> None:
+        PyOmexMetaAPI.editor_remove_physical_process(self._obj, physical_process_ptr)
+
+    def remove_physical_force(self, physical_force_ptr: ct.c_int64) -> None:
+        PyOmexMetaAPI.editor_remove_physical_force(self._obj, physical_force_ptr)
+
+    def remove_personal_information(self, personal_information_ptr: ct.c_int64) -> None:
+        PyOmexMetaAPI.editor_remove_personal_information(self._obj, personal_information_ptr)
 
     def get_xml(self) -> str:
         return PyOmexMetaAPI.get_and_free_c_str(
@@ -236,6 +262,14 @@ class Editor:
             yield singular_annotation
         finally:
             self.add_singular_annotation(singular_annotation)
+
+    @contextmanager
+    def new_personal_information(self) -> SingularAnnotation:
+        information = PersonalInformation(PyOmexMetaAPI.editor_new_personal_information(self._obj))
+        try:
+            yield information
+        finally:
+            self.add_personal_information(information)
 
     @contextmanager
     def new_physical_entity(self) -> PhysicalEntity:
@@ -327,10 +361,6 @@ class PhysicalEntity:
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def set_about(self, about: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_set_about(self._obj, about.encode())
-        return self
-
     def set_physical_property(self, about: str, property: str) -> PhysicalEntity:
         self._obj = PyOmexMetaAPI.physical_entity_set_physical_property(self.get_ptr(), about.encode(),
                                                                         property.encode())
@@ -343,12 +373,6 @@ class PhysicalEntity:
     def add_location(self, location: str) -> PhysicalEntity:
         self._obj = PyOmexMetaAPI.physical_entity_add_location(self.get_ptr(), location.encode())
         return self
-
-    def get_about(self) -> str:
-        return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.physical_entity_get_about(self.get_ptr()))
-
-    def get_physical_property(self) -> str:
-        return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.physical_entity_get_physical_property(self.get_ptr()))
 
     def get_identity(self) -> str:
         return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.physical_entity_get_identity(self.get_ptr()))
@@ -381,10 +405,6 @@ class PhysicalProcess:
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def set_about(self, about: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_set_about(self._obj, about.encode())
-        return self
-
     def set_physical_property(self, about: str, property: str) -> PhysicalProcess:
         self._obj = PyOmexMetaAPI.physical_process_set_physical_property(self._obj, about.encode(), property.encode())
         return self
@@ -410,9 +430,6 @@ class PhysicalProcess:
     def __str__(self):
         return self.to_string("rdfxml-abbrev")
 
-    def get_about(self) -> str:
-        return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.physical_process_get_about(self._obj))
-
     def delete(self) -> None:
         PyOmexMetaAPI.physical_process_delete(self._obj)
 
@@ -424,10 +441,6 @@ class PhysicalForce:
 
     def get_ptr(self) -> ct.c_int64:
         return self._obj
-
-    def set_about(self, about: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_set_about(self._obj, about.encode())
-        return self
 
     def set_physical_property(self, about: str, property: str) -> PhysicalForce:
         self._obj = PyOmexMetaAPI.physical_force_set_physical_property(self._obj, about.encode(), property.encode())
@@ -449,12 +462,77 @@ class PhysicalForce:
     def __str__(self):
         return self.to_string("rdfxml-abbrev")
 
-    def get_about(self) -> str:
-        return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.physical_force_get_about(self._obj))
-
-    def get_physical_property(self) -> str:
-        return PyOmexMetaAPI.get_and_free_c_str(
-            PyOmexMetaAPI.physical_force_get_physical_property(self._obj))
-
     def delete(self) -> None:
         PyOmexMetaAPI.physical_force_delete(self._obj)
+
+
+class PersonalInformation:
+
+    def __init__(self, personal_information_ptr: ct.c_int64):
+        self._obj = personal_information_ptr
+
+    def get_ptr(self) -> ct.c_int64:
+        return self._obj
+
+    def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.physical_force_str(self._obj, format.encode(), base_uri.encode()))
+
+    def get_local_uri(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.personal_information_get_local_uri(self._obj)
+        )
+
+    def set_local_uri(self, local_uri: str) -> None:
+        PyOmexMetaAPI.personal_information_set_local_uri(self._obj, local_uri.encode())
+
+    def add_creator(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_creator(self._obj, value.encode())
+        return self
+
+    def add_name(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_name(self._obj, value.encode())
+        return self
+
+    def add_mbox(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_mbox(self._obj, value.encode())
+        return self
+
+    def add_account_name(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_account_name(self._obj, value.encode())
+        return self
+
+    def add_account_service_homepage(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_account_service_homepage(self._obj, value.encode())
+        return self
+
+    def add_foaf_blank(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_foaf_blank(self._obj, value.encode())
+        return self
+
+    def add_foaf_uri(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_foaf_uri(self._obj, value.encode())
+        return self
+
+    def add_foaf_literal(self, value: str) -> PersonalInformation:
+        PyOmexMetaAPI.personal_information_add_foaf_literal(self._obj, value.encode())
+        return self
+
+    def get_metaid(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.personal_information_get_metaid(self._obj)
+        )
+
+    def set_metaid(self, metaid: str) -> None:
+        PyOmexMetaAPI.personal_information_set_metaid(self._obj, metaid.encode())
+
+    def get_model_uri(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.personal_information_get_model_uri(self._obj)
+        )
+
+    def set_model_uri(self, model_uri: str) -> None:
+        PyOmexMetaAPI.personal_information_set_model_uri(self._obj, model_uri.encode())
+
+    def delete(self):
+        PyOmexMetaAPI.personal_information_delete(self._obj)

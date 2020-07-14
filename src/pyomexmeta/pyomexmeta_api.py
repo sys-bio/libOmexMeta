@@ -4,6 +4,7 @@ import ctypes as ct
 import os
 import sys
 from typing import List
+from functools import wraps
 
 if sys.platform == "win32":
     try:
@@ -428,10 +429,10 @@ class PyOmexMetaAPI:
     #
 
     # PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
-    editor_personal_information_new = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
+    editor_new_personal_information = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
 
     # char *PersonalInformation_getLocalUri(PersonalInformation *information);
-    personal_get_local_uri = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
+    personal_information_get_local_uri = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
 
     # void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
     personal_information_set_local_uri = Util.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p], None)
@@ -476,4 +477,5 @@ class PyOmexMetaAPI:
     # void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
     personal_information_set_model_uri = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p], None)
 
+    # void PersonalInformation_delete(PersonalInformation* information);
     personal_information_delete = Util.load_func("PersonalInformation_delete", [ct.c_int64], None)
