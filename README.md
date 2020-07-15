@@ -41,27 +41,27 @@ Note: documentation is currently out of date but being updated presently
 # Installation
 ## Python
 
-Use pip. At this time I've only uploaded to test pypi so you'll have to download it from test pypi as well. On linux:
+On linux, grab some dependencies:
 
-    $ pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+    $ sudo apt install libxml2 libxml2-dev libxslt1-dev libpq-dev
+
+Windows is self-contained.
+
+Now use pip. 
+
+    $ pip install pyomexmeta
     # verify its worked
     $ ipython -c "import pyomexmeta"
     
-On Windows: 
-
-    > pip install pywin32
-    > pip install --index-url https://test.pypi.org/simple/ pyomexmeta
-
-The additionally dependencency on windows needs to be handled manually for now since it breaks the pip installation when I add it to the `install_requires` field - very annoying. 
-
 Python 3 only - if you're not using Python 3, I recommend you upgrade. 
 
 ## Docker
 You can get a docker image using 
 
-    $ docker pull ciaranwelsh/libomexmeta:v0.1.10
+    $ docker pull ciaranwelsh/libomexmeta:v1.1.0
     
-This is an Ubunut 18.04 based container that has libOmexMeta prebuilt and installed under `/libOmexMeta/install-docker`. See [dockerfile](https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile) for full set of commands to build libOmexMeta on ubuntu. 
+This is an Ubuntu 18.04 based container that has libOmexMeta prebuilt and installed under `/libOmexMeta/install-docker`. See [dockerfile](https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile) for full set of commands to build libOmexMeta on ubuntu. 
+Conda is preconfigured and pyomexmeta is installed. 
 
 ## Downloading Binaries
 You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10)
