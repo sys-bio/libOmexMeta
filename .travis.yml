@@ -36,10 +36,10 @@ before_install:
   - PATH=~/miniconda3/bin:$PATH
   - sudo apt-get install -y yajl-tools flex bison sqlite3 libsqlite3-dev libxml2 libxml2-dev libxslt1-dev postgresql postgresql-contrib libdb-dev libdb-dev gcc-10 g++-10 gcc-9 g++-9 flex bison doxygen python3-sphinx libldap-dev libpthread-stubs0-dev libltdl-dev git slapd ldap-utils graphviz libssl-dev
   - sudo apt-get install -y curl unzip tar
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9  100
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-9 100
-  - sudo update-alternatives --install /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-9 100
-  - sudo update-alternatives --install /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-9 100
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-10 100
+  - sudo update-alternatives --install /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-10 100
+  - sudo update-alternatives --install /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-10 100
   - conda init bash
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7

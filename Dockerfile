@@ -19,10 +19,7 @@ RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 # install the dependency shared libraries for pyomexmeta
 # we also install the gcc 10.1 compilers, and documentation libraries
 # and set gcc-10.1 to default.
-RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
-                      libxslt1-dev postgresql postgresql-contrib  libdb-dev \
-                      libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
-                      libpthread-stubs0-dev libltdl-dev git
+RUN apt-get install -y yajl-tools flex bison sqlite3 libsqlite3-dev libxml2 libxml2-dev libxslt1-dev postgresql postgresql-contrib libdb-dev libdb-dev gcc-10 g++-10 gcc-9 g++-9 flex bison doxygen python3-sphinx libldap-dev libpthread-stubs0-dev libltdl-dev git slapd ldap-utils graphviz libssl-dev \
     && apt-get install -y curl unzip tar \
     && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10  100
@@ -31,9 +28,9 @@ RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
 # create conda environment, install some python deps and pyomexmeta
 RUN conda init bash \
     && . ~/.bashrc \
-    && conda create --name pyomexmeta-test python=3.7 \
-    && conda activate pyomexmeta-test \
-    && pip install ipython sphinx breathe\
+    && conda create --name omex python=3.7 \
+    && conda activate omex \
+    && pip install cpp-coveralls gcovr ipython codecov nose graphviz coverage sphinx breathe python-libcombine tellurium \
     && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
 
 # install cmake

@@ -37,9 +37,12 @@ class Util:
                     raise FileNotFoundError("Dependency library libpq.so was not found. Run "
                                             "\"$ sudo apt install -y libpq-dev\"")
 
-                elif "libstdc++.so.6: version `GLIBCXX_3.4.26' not found" in str(e):
+                elif "libc.so.6:" in str(e):
                     raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
-                                            "\"$ sudo apt install -y g++-10\"")
+                                            "\"$ sudo apt install -y software-properties-common "
+                                            "&& sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test "
+                                            "&& apt-get update "
+                                            "&& sudo apt install -y g++-10\"")
                 else:
                     raise e
 

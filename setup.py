@@ -51,9 +51,8 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "libcharset.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcrypto-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcurl.dll"),
-    os.path.join(PYOMEXMETA_DIR, "libdb48.dll"),
+    os.path.join(PYOMEXMETA_DIR, "libdb-5.3.so"),
     os.path.join(PYOMEXMETA_DIR, "libiconv.dll"),
-    os.path.join(PYOMEXMETA_DIR, "libOmexMeta.so"),
     os.path.join(PYOMEXMETA_DIR, "libpq.dll"),
     os.path.join(PYOMEXMETA_DIR, "libssl-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libxml2.dll"),
@@ -66,13 +65,24 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "yajl.dll"),
     os.path.join(PYOMEXMETA_DIR, "zlib1.dll"),
     # linux dependencies
+    os.path.join(PYOMEXMETA_DIR, "libOmexMeta.so"),
+    # os.path.join(PYOMEXMETA_DIR, "libsqlite3.so"),
+    # os.path.join(PYOMEXMETA_DIR, "libxml2.so"),
+    # Problem with distributing linux dependencies:
+    #   The .so files are actually symlinks. They have a size of 0 and do not
+    #   get packaged into a pip wheel. On linux, its therefore easier to
+    #   get users to install dependencies manually.  One solution is
+    #   to copy over the actual so files (i.e. with version number) in cmake
+    #   instead of the symlink. Another way is to use .so from vcpkg - though this
+    #   isn't yet possible since vcpkg doesn't support shared libraries for most packages.
 ]
-if sys.platform == "win32":
-    binaries = [j for j in binaries if j.endswith(".dll")]
-elif sys.platform == 'linux':
-    binaries = [j for j in binaries if j.endswith(".so")]
-else:
-    raise ValueError("whoops")
+# this doesn't work - you have to build on differet platforms for this to work
+# if sys.platform == "win32":
+#     binaries = [j for j in binaries if j.endswith(".dll")]
+# elif sys.platform == 'linux':
+#     binaries = [j for j in binaries if j.endswith(".so")]
+# else:
+#     raise ValueError("whoops")
 
 for i in binaries:
     print(i)
