@@ -230,13 +230,13 @@ class EditorTests(unittest.TestCase):
 
     def setUp(self) -> None:
         self.rdf = RDF()
-        self.editor = self.rdf.to_editor(XML, "sbml")
+        self.editor = self.rdf.to_editor(XML, "sbml", True)
 
     def test_to_editor(self):
         self.assertIsInstance(self.editor, Editor)
 
     def test_context_manager_single_annotation(self):
-        with self.rdf.to_editor(XML, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml", True) as editor:
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation \
                     .set_about("cytosol") \
@@ -256,7 +256,7 @@ local:cytosol
         self.assertEqual(expected, actual)
 
     def test_context_manager_physical_process(self):
-        with self.rdf.to_editor(XML, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml", True) as editor:
             with editor.new_physical_process() as physical_process:
                 physical_process \
                     .set_physical_property("OmexMetaId0001", "opb/opb_275") \
@@ -298,7 +298,7 @@ local:SourceParticipant0000
             self.assertTrue(i.strip() in actual)
 
     def test_context_manager_physical_force(self):
-        with self.rdf.to_editor(XML, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml", True) as editor:
             with editor.new_physical_force() as physical_force:
                 physical_force \
                     .set_physical_property("OmexMetaId0004", "opb/opb_275") \
@@ -336,7 +336,7 @@ local:SourceParticipant0000
             self.assertTrue(i.strip() in actual)
 
     def test_context_manager_personal_information(self):
-        with self.rdf.to_editor(XML, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml", True) as editor:
             with editor.new_personal_information() as information:
                 information \
                     .add_creator("1234-1234-1234-1234") \
@@ -389,7 +389,7 @@ class AnnotateAModelTest(unittest.TestCase):
 
     def test_get_metaids(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, "sbml") as editor:
+        with rdf.to_editor(self.sbml, "sbml", generate_new_metaids=True) as editor:
             metaids = editor.get_metaids()
 
         expected = ['SmadNuclearTransport',
@@ -406,7 +406,7 @@ class AnnotateAModelTest(unittest.TestCase):
 
     def test_get_xml(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, "sbml") as editor:
+        with rdf.to_editor(self.sbml, "sbml", generate_new_metaids=True) as editor:
             xml_with_metaids = editor.get_xml()
 
         expected = """<?xml version="1.0" encoding="UTF-8"?>
@@ -478,7 +478,7 @@ class AnnotateAModelTest(unittest.TestCase):
 
         """
         rdf = RDF()
-        with rdf.to_editor(self.sbml, "sbml") as editor:
+        with rdf.to_editor(self.sbml, "sbml", generate_new_metaids=True) as editor:
             # model level annotations
             with editor.new_singular_annotation() as author:
                 author.set_about("SmadNuclearTransport") \
@@ -697,7 +697,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         sbml2 = te.antimonyToSBML(ant2)
 
         rdf = RDF()
-        with rdf.to_editor(sbml1, "sbml") as editor:
+        with rdf.to_editor(sbml1, "sbml", True) as editor:
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation.set_about("OmexMetaId0000") \
@@ -729,7 +729,7 @@ class DrawTests(unittest.TestCase):
 
     def test(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, "sbml") as editor:
+        with rdf.to_editor(self.sbml, "sbml", generate_new_metaids=True) as editor:
             with editor.new_singular_annotation() as s:
                 s.set_about("OmexMetaId0000") \
                     .set_predicate("bqbiol", "is") \
