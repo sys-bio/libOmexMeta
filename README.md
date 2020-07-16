@@ -37,9 +37,9 @@ libOmexMeta has not been tested on a Mac.
 
 # Documentation
 
-https://sys-bio.github.io/libomexmeta-docs/
+https://sys-bio.github.io/libOmexMeta/
 
-Note: documentation is currently out of date but being updated presently 
+Note: documentation is being written presently 
 
 # Installation
 ## Python
