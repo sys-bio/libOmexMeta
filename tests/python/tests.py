@@ -126,6 +126,19 @@ class TestRDF(unittest.TestCase):
         print(rdf)
         self.assertEqual(6, len(rdf))
 
+    def test_from_string_for_docs(self):
+        rdf_str = """
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#>
+<http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .
+"""
+        rdf = RDF.from_string(rdf_str, format="turtle")
+        self.assertEqual(1, len(rdf))
+
+
     def test_add_from_string(self):
         rdf = RDF()
         RDF.add_from_string(rdf, self.rdf_str, "rdfxml", "test_add_from_string.rdf")
@@ -796,7 +809,7 @@ end"""
         print(sbml)
 
         rdf = RDF()
-        with rdf.to_editor(sbml, "sbml") as editor:
+        with rdf.to_editor(sbml, "sbml", True) as editor:
             print(editor.get_metaids()) # prints out model metaids
 
             with editor.new_singular_annotation() as identity:

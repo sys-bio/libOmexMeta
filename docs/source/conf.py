@@ -33,7 +33,7 @@ release = '0.0.1'
 extensions = [
     "breathe",
     "sphinxcontrib.bibtex",
-    "sphinx_tabs.tabs"
+    "sphinx_tabs.tabs",
     "sphinx.ext.doctest"
 ]
 doctest_global_setup = '''

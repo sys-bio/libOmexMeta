@@ -7,7 +7,7 @@ LibOmexMeta Examples
    :maxdepth: 1
    :hidden:
 
-   reading_rdf.rst
+   reading_rdf/reading_rdf.rst
 
 
 

@@ -34,12 +34,12 @@ Features
   * rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess
 
 `Serializers <http://librdf.org/raptor/api-1.4/raptor-serializers.html>`_
------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
    * ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, rss-1.0, atom, dot, json-triples, json, nquads, html
 
 `Querying <http://librdf.org/rasqal/docs/api/>`_
------------------------------------------------
+------------------------------------------------
 
   * Languages
     * `SPARQL <https://www.w3.org/TR/sparql11-query/>`_, `LAQRS <https://www.dajobe.org/2007/04/laqrs/>`_

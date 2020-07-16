@@ -4,3 +4,4 @@ sphinx-tabs
 recommonmark
 beautifulsoup4
 requests
+sphinxcontrib-programoutput
