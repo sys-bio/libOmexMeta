@@ -1241,7 +1241,6 @@ TEST_F(CAPITests, PersonalInformationaddName) {
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
-
 }
 
 TEST_F(CAPITests, PersonalInformationaddMbox) {

@@ -5,8 +5,12 @@ import os
 from contextlib import contextmanager
 from typing import List
 
-from .pyomexmeta_api import PyOmexMetaAPI
-
+try:
+    # for use from outside the package, as a python package
+    from .pyomexmeta_api import PyOmexMetaAPI
+except ImportError:
+    # for internal use
+    from pyomexmeta_api import PyOmexMetaAPI
 
 def _xml_type_factory(xml_type: str):
     """
