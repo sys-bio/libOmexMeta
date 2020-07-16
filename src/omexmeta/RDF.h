@@ -159,9 +159,9 @@ namespace omexmeta {
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
 
-        Editor toEditor(const std::string &xml, SemsimXmlType type);
+        Editor toEditor(const std::string &xml, SemsimXmlType type, bool generate_new_metaids = false);
 
-        Editor *toEditorPtr(const std::string &xml, SemsimXmlType type);
+        Editor *toEditorPtr(const std::string &xml, SemsimXmlType type, bool generate_new_metaids = false);
 
         librdf_model *getModel() const;
 

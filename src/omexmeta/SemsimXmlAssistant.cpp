@@ -6,8 +6,10 @@
 #include "HERE.h"
 
 namespace omexmeta {
-    SemsimXmlAssistant::SemsimXmlAssistant(std::string xml, std::string base, int metaid_num_digits) :
-            xml_(std::move(xml)), metaid_base(std::move(base)), metaid_num_digits_(metaid_num_digits) {
+    SemsimXmlAssistant::SemsimXmlAssistant(std::string xml, std::string metaid_base, int metaid_num_digits,
+                                           bool generate_new_metaids) :
+            xml_(std::move(xml)), metaid_base_(std::move(metaid_base)), metaid_num_digits_(metaid_num_digits),
+            generate_new_metaids_(generate_new_metaids) {
     }
 
     std::vector<std::string> SemsimXmlAssistant::getValidElements() const {
@@ -26,7 +28,7 @@ namespace omexmeta {
 
     void SemsimXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
         //todo make OmexMetaId sting
-        MetaID metaId("OmexMetaId", 0, 4);
+        MetaID metaId(getMetaidBase(), 0, getMetaidNumDigits());
         xmlNode *cur_node;
         cur_node = a_node;
         long count = 0;
@@ -39,22 +41,25 @@ namespace omexmeta {
                               std::string((const char *) cur_node->name)) != valid_elements.end()
                     || (valid_elements.size() == 1 && valid_elements[0] == "Any")) {
                     // test to see whether the element has the metaid attribute
-                    bool has_meta_id = xmlHasProp(cur_node, (const xmlChar *) "metaid");
-                    if (!has_meta_id) {
-                        // if not, we add one and give it a unique value
-                        std::string id;
-                        SemsimXmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
-                        //todo make the metaid string a parameter so we can call it cmeta in cellml
-                        xmlNewProp(cur_node, (const xmlChar *) "metaid", (const xmlChar *) id.c_str());
-                        seen_metaids.push_back(id);
-                        count += 1;
+                    bool has_meta_id_value = xmlHasProp(cur_node, (const xmlChar *) metaIdTagName().c_str());
+                    if (!has_meta_id_value) {
+                        // next we check to see whether the user wants us to add a metaid for them
+                        // By collect only, we meet, "we collect the metaids but do not add new ones"
+                        if (generateNewMetaids()) {
+                            // If we don't already have metaid and user wants us to add one, we generate a unique id
+                            std::string id;
+                            SemsimXmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
+                            xmlNewProp(cur_node, (const xmlChar *) metaIdTagName().c_str(),
+                                       (const xmlChar *) id.c_str());
+                            seen_metaids.push_back(id);
+                            count += 1;
+                        }
                     } else {
                         // if so, we take note by adding it to seen_metaids.
-                        xmlChar *id = xmlGetProp(cur_node, (const xmlChar *) "metaid");
+                        xmlChar *id = xmlGetProp(cur_node, (const xmlChar *) metaIdTagName().c_str());
                         seen_metaids.emplace_back((const char *) id);
                         xmlFree(id);
                     }
-
                 }
             }
             // recursion, we do this for every node
@@ -86,6 +91,22 @@ namespace omexmeta {
         return sbml_with_metaid;
     }
 
+    std::string SemsimXmlAssistant::metaIdTagName() const {
+        return "metaid";
+    }
+
+    bool SemsimXmlAssistant::generateNewMetaids() const {
+        return generate_new_metaids_;
+    }
+
+    const std::string &SemsimXmlAssistant::getMetaidBase() const {
+        return metaid_base_;
+    }
+
+    int SemsimXmlAssistant::getMetaidNumDigits() const {
+        return metaid_num_digits_;
+    }
+
     std::vector<std::string> SBMLAssistant::getValidElements() const {
         std::vector<std::string> valid_elements_ = {
                 "model",
@@ -97,6 +118,10 @@ namespace omexmeta {
                 "localParameter",
         };
         return valid_elements_;
+    }
+
+    std::string SBMLAssistant::metaIdTagName() const {
+        return "metaid";
     }
 
     std::vector<std::string> CellMLAssistant::getValidElements() const {
@@ -112,18 +137,24 @@ namespace omexmeta {
         return valid_elements_;
     }
 
-    XmlAssistantPtr SemsimXmlAssistantFactory::generate(const std::string &xml, SemsimXmlType type) {
+    std::string CellMLAssistant::metaIdTagName() const {
+        return "cmeta";
+    }
+
+    XmlAssistantPtr
+    SemsimXmlAssistantFactory::generate(const std::string &xml, SemsimXmlType type, bool generate_new_metaids,
+                                        std::string metaid_base, int metaid_num_digits) {
         switch (type) {
             case SEMSIM_TYPE_SBML: {
-                SBMLAssistant sbmlAssistant(xml);
+                SBMLAssistant sbmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<SBMLAssistant>(sbmlAssistant);
             }
             case SEMSIM_TYPE_CELLML: {
-                CellMLAssistant cellMlAssistant(xml);
+                CellMLAssistant cellMlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<CellMLAssistant>(cellMlAssistant);
             }
             case SEMSIM_TYPE_OTHER: {
-                SemsimXmlAssistant xmlAssistant(xml);
+                SemsimXmlAssistant xmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<SemsimXmlAssistant>(xmlAssistant);
             }
             default:

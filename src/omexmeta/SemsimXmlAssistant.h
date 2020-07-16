@@ -24,8 +24,9 @@ namespace omexmeta {
 
     class SemsimXmlAssistant {
         std::string xml_;
-        std::string metaid_base;
+        std::string metaid_base_;
         int metaid_num_digits_;
+        bool generate_new_metaids_;
 
         void addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids);
 
@@ -34,12 +35,19 @@ namespace omexmeta {
                 const MetaID &metaid_gen, std::string &id);
 
     public:
+        const std::string &getMetaidBase() const;
 
-        explicit SemsimXmlAssistant(std::string xml, std::string base = "MetaID", int metaid_num_digits = 4);
+        int getMetaidNumDigits() const;
+
+        [[nodiscard]] bool generateNewMetaids() const;
+
+        explicit SemsimXmlAssistant(std::string xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
         [[nodiscard]] virtual std::vector<std::string> getValidElements() const;
+
+        [[nodiscard]] virtual std::string metaIdTagName() const;
     };
 
 
@@ -50,6 +58,7 @@ namespace omexmeta {
 
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
+        std::string metaIdTagName() const override;
 
     };
 
@@ -60,6 +69,8 @@ namespace omexmeta {
 
         std::vector<std::string> getValidElements() const override;
 
+        std::string metaIdTagName() const override;
+
     };
 
     typedef std::unique_ptr<SemsimXmlAssistant> XmlAssistantPtr;
@@ -67,7 +78,7 @@ namespace omexmeta {
     class SemsimXmlAssistantFactory {
     public:
 
-        static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type);
+        static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type, bool generate_new_metaids = false, std::string metaid_base = "OmexMetaId", int metaid_num_digits = 4);
     };
 }
 #endif //LIBOMEXMETA_SEMSIMXMLASSISTANT_H

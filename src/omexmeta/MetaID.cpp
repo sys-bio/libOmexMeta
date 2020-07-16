@@ -5,15 +5,15 @@
 
 #include "omexmeta/MetaID.h"
 
-omexmeta::MetaID::MetaID(std::string base, long number, int num_digits) :
+omexmeta::MetaID::MetaID(std::string base, long start_number, int num_digits) :
         base_(std::move(base)),
-        number_(number),
+        start_number_(start_number),
         num_digits_(num_digits) {
 
     // check that we're not asked to do the impossible
-    if (number_ > maxNumber()) {
+    if (start_number_ > maxNumber()) {
         std::ostringstream err_stream;
-        err_stream << "The maximum number of IDs you can have with " << num_digits_ <<
+        err_stream << "The maximum start_number of IDs you can have with " << num_digits_ <<
                    " is " << maxNumber() << ". Please increase the num_digits_ argument." << std::endl;
         throw std::invalid_argument(err_stream.str());
     }
@@ -55,7 +55,7 @@ int omexmeta::MetaID::countDigits(long long int n) {
 }
 
 std::string omexmeta::MetaID::generate() const {
-    return generate(number_);
+    return generate(start_number_);
 }
 
 std::string omexmeta::MetaID::generate(long n) const {

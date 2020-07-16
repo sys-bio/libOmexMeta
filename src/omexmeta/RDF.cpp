@@ -182,13 +182,13 @@ namespace omexmeta {
         return model_.get();
     }
 
-    Editor RDF::toEditor(const std::string &xml, SemsimXmlType type) {
-        return Editor(xml, type, false, model_, namespaces_,
+    Editor RDF::toEditor(const std::string &xml, SemsimXmlType type, bool generate_new_metaids) {
+        return Editor(xml, type, false, model_, namespaces_, generate_new_metaids,
                       getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
     }
 
-    Editor *RDF::toEditorPtr(const std::string &xml, SemsimXmlType type) {
-        auto *editor = new Editor(xml, type, false, model_, namespaces_,
+    Editor *RDF::toEditorPtr(const std::string &xml, SemsimXmlType type, bool generate_new_metaids) {
+        auto *editor = new Editor(xml, type, false, model_, namespaces_, generate_new_metaids,
                                   getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
         return editor;
     }

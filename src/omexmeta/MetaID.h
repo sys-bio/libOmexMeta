@@ -18,22 +18,22 @@ namespace omexmeta {
     class MetaID {
     private:
         std::string base_;
-        long number_;
+        long start_number_;
         int num_digits_;
 
     public:
         /*
          * @brief an ID generator used when creating IDs in the Editor.
          * @param base_ the constant portion of the id. Like semsim in semsim00001
-         * @param number_ the number portion of the id, like 1 in semsim00001
-         * @param num_digits specifies the number of digits to use in the id. So semsim00001 has 5 digits.
+         * @param start_number_ the start_number portion of the id, like 1 in semsim00001
+         * @param num_digits specifies the start_number of digits to use in the id. So semsim00001 has 5 digits.
          *
          * Example
          * -------
          * MetaID metaid("ANewMetaID", 15, 3);
          * std::string id = metaid.generate();
          */
-        MetaID(std::string base, long number, int num_digits = 4);
+        MetaID(std::string base, long start_number, int num_digits = 4);
 
         bool operator==(const MetaID &rhs) const;
 

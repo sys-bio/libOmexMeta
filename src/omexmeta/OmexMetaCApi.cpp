@@ -166,8 +166,8 @@ namespace omexmeta {
         return cstr;
     }
 
-    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type) {
-        return rdf_ptr->toEditorPtr(xml, type);
+    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type, bool generate_new_metaids) {
+        return rdf_ptr->toEditorPtr(xml, type, generate_new_metaids);
     }
 
 /*********************************************************************

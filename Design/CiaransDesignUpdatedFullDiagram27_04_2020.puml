@@ -133,7 +133,7 @@ namespace omexmeta {
 		+{static} countDigits(long n) : int
 		+maxNumber() : int {query}
 		-num_digits_ : int
-		-number_ : long
+		-start_number_ : long
 		-base_ : std::string
 		+generate() : std::string {query}
 		+generate(long n) : std::string {query}
@@ -547,7 +547,7 @@ namespace omexmeta {
 		+SemsimXmlAssistant(std::string xml, std::string base, int metaid_num_digits)
 		-metaid_num_digits_ : int
 		+addMetaIds() : std::pair<std::string , std::vector<std::string> >
-		-metaid_base : std::string
+		-metaid_base_ : std::string
 		-xml_ : std::string
 		+getValidElements() : std::vector<std::string>& {query}
 		-addMetaIdsRecursion(xmlNode* a_node, std::vector<std::string>& seen_metaids) : void

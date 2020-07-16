@@ -67,6 +67,7 @@ namespace omexmeta {
         const LibrdfModel &model_;
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
+        bool generate_new_metaids_;
 
         const std::string& repository_uri_ ;
         const std::string& archive_uri_ ;
@@ -97,11 +98,11 @@ namespace omexmeta {
 //        explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
 //                        const LibrdfModel &model, NamespaceMap &ns_map);
         explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
-                        const LibrdfModel &model, NamespaceMap &ns_map,
-                        const std::string& repository_uri,
-                        const std::string& archive_uri,
-                        const std::string& model_uri,
-                        const std::string& local_uri);
+                        const LibrdfModel &model, NamespaceMap &ns_map, bool generate_new_metaids = false,
+                        const std::string& repository_uri = std::string(),
+                        const std::string& archive_uri = std::string(),
+                        const std::string& model_uri = std::string(),
+                        const std::string& local_uri = std::string());
 
         /*
          * We no longer required to free the

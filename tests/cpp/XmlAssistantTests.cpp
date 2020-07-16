@@ -42,21 +42,21 @@ TEST_F(SemsimXmlAssistantTests, TestValidElementsSBML) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(SemsimXmlAssistantTests, TestCellMlValidElements) {
-    MetaID metaId("OmexMetaId", 0, 4);
-    std::string model_string = SBMLFactory::getSBMLString(SBML_ANNOTATED);
-    std::cout << model_string << std::endl;
-    CellMLAssistant assistant(model_string, "ID", 4);
-    const std::vector<std::string> &actual = assistant.getValidElements();
-    std::vector<std::string> expected = {"model", "unit", "compartment",
-                                         "species", "reaction", "kineticLaw",
-                                         "localParameter"};
-    ASSERT_EQ(expected, actual);
-}
+//TEST_F(SemsimXmlAssistantTests, TestCellMlValidElements) {
+//    MetaID metaId("OmexMetaId", 0, 4);
+//    std::string model_string = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+//    std::cout << model_string << std::endl;
+//    CellMLAssistant assistant(model_string, "ID", 4);
+//    const std::vector<std::string> &actual = assistant.getValidElements();
+//    std::vector<std::string> expected = {"model", "unit", "compartment",
+//                                         "species", "reaction", "kineticLaw",
+//                                         "localParameter"};
+//    ASSERT_EQ(expected, actual);
+//}
 
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsAll) {
     std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
-    SemsimXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4);
+    SemsimXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4, true);
     auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
     std::cout << sbml << std::endl;
@@ -122,7 +122,7 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsAll) {
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsSBML) {
     std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
     MetaID metaId("OmexMetaId", 0, 4);
-    SBMLAssistant assistant(sbml, "OmexMetaId", 4);
+    SBMLAssistant assistant(sbml, "OmexMetaId", 4, true);
     auto sbml_with_metaids = assistant.addMetaIds();
     sbml = sbml_with_metaids.first;
     std::cout << sbml << std::endl;
@@ -182,6 +182,61 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsSBML) {
                            "  </model>\n"
                            "</sbml>\n";
     ASSERT_STREQ(expected.c_str(), sbml.c_str());
+}
+
+TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseSBML) {
+    std::string sbml = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+    SemsimXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4, false);
+    auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
+    sbml = sbml_and_meta_ids.first;
+    std::cout << sbml << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                           "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
+                           "  <model id=\"beta_cell_model\">\n"
+                           "    <listOfUnitDefinitions>\n"
+                           "      <unitDefinition id=\"molar\">\n"
+                           "        <listOfUnits>\n"
+                           "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\"/>\n"
+                           "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\"/>\n"
+                           "        </listOfUnits>\n"
+                           "      </unitDefinition>\n"
+                           "    </listOfUnitDefinitions>\n"
+                           "    <listOfCompartments>\n"
+                           "      <compartment metaid=\"#cytosol\" id=\"cytosol\" size=\"1\" constant=\"true\"/>\n"
+                           "    </listOfCompartments>\n"
+                           "    <listOfSpecies>\n"
+                           "      <species metaid=\"#glucose\" id=\"glucose\" compartment=\"cytosol\" initialConcentration=\"0\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "    </listOfSpecies>\n"
+                           "    <listOfReactions>\n"
+                           "      <reaction id=\"glucose_import\" reversible=\"false\">\n"
+                           "        <listOfProducts>\n"
+                           "          <speciesReference species=\"glucose\" constant=\"false\"/>\n"
+                           "        </listOfProducts>\n"
+                           "        <kineticLaw>\n"
+                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "            <ci> glucose_import_rate </ci>\n"
+                           "          </math>\n"
+                           "          <listOfLocalParameters>\n"
+                           "            <localParameter id=\"glucose_import_rate\" value=\"1\"/>\n"
+                           "          </listOfLocalParameters>\n"
+                           "        </kineticLaw>\n"
+                           "      </reaction>\n"
+                           "    </listOfReactions>\n"
+                           "  </model>\n"
+                           "</sbml>\n";
+    ASSERT_STREQ(expected.c_str(), sbml.c_str());
+}
+
+TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaid) {
+    std::string sbml = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+    SemsimXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4, false);
+    auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
+    std::vector<std::string> metaids = sbml_and_meta_ids.second;
+    for (auto &it: metaids) {
+        std::cout << it << std::endl;
+    }
+    std::vector<std::string> expected = {"#cytosol", "#glucose"};
+    ASSERT_EQ(expected, metaids);
 }
 
 

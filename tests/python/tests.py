@@ -86,21 +86,20 @@ class TestRDF(unittest.TestCase):
     <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-       xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-       xml:base="file://./annotations.rdf">
-      <rdf:Description rdf:about="force_0">
-        <semsim:hasSinkParticipant rdf:resource="sink_0"/>
-        <semsim:hasSourceParticipant rdf:resource="source_0"/>
+       xmlns:semsim="http://www.bhi.washington.edu/semsim#">
+      <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0">
+        <semsim:hasSinkParticipant rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0"/>
+        <semsim:hasSourceParticipant rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0"/>
       </rdf:Description>
-      <rdf:Description rdf:about="parameter_metaid_0">
-        <bqbiol:isPropertyOf rdf:resource="force_0"/>
+      <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#parameter_metaid_0">
+        <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0"/>
         <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_01058"/>
       </rdf:Description>
-      <rdf:Description rdf:about="sink_0">
-        <semsim:hasPhysicalEntityReference rdf:resource="species_metaid_1"/>
+      <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0">
+        <semsim:hasPhysicalEntityReference rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid_1"/>
       </rdf:Description>
-      <rdf:Description rdf:about="source_0">
-        <semsim:hasPhysicalEntityReference rdf:resource="species_metaid_0"/>
+      <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0">
+        <semsim:hasPhysicalEntityReference rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid_0"/>
       </rdf:Description>
     </rdf:RDF>"""
 

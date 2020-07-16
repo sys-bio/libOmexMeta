@@ -88,21 +88,22 @@ namespace omexmeta {
 
     SEMSIM_API int RDF_size(RDF *rdf_ptr);
 
-    SEMSIM_API void RDF_setRepositoryUri(RDF *rdf_ptr, const char* repository_uri);
+    SEMSIM_API void RDF_setRepositoryUri(RDF *rdf_ptr, const char *repository_uri);
 
-    SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, const char* archive_uri);
+    SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, const char *archive_uri);
 
-    SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, const char* model_uri);
-    
-    SEMSIM_API char* RDF_getRepositoryUri(RDF *rdf_ptr);
+    SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, const char *model_uri);
 
-    SEMSIM_API char* RDF_getArchiveUri(RDF *rdf_ptr);
+    SEMSIM_API char *RDF_getRepositoryUri(RDF *rdf_ptr);
 
-    SEMSIM_API char* RDF_getModelUri(RDF *rdf_ptr);
+    SEMSIM_API char *RDF_getArchiveUri(RDF *rdf_ptr);
 
-    SEMSIM_API char* RDF_getLocalUri(RDF *rdf_ptr);
+    SEMSIM_API char *RDF_getModelUri(RDF *rdf_ptr);
 
-    SEMSIM_API Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
+    SEMSIM_API char *RDF_getLocalUri(RDF *rdf_ptr);
+
+    SEMSIM_API Editor *
+    RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type, bool generate_new_metaids = false);
 
 //RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
 
@@ -142,12 +143,12 @@ namespace omexmeta {
 
     SEMSIM_API void Editor_delete(Editor *editor_ptr);
 
-    SEMSIM_API char*Editor_getArchiveUri(Editor *editor_ptr);
-    SEMSIM_API char*Editor_getLocalUri(Editor *editor_ptr);
-    SEMSIM_API char*Editor_getModelUri(Editor *editor_ptr);
-    SEMSIM_API char*Editor_getRepositoryUri(Editor *editor_ptr);
-    SEMSIM_API void Editor_addCreator(Editor *editor_ptr, const char* orcid_id);
-    SEMSIM_API void Editor_addCurator(Editor *editor_ptr, const char* orcid_id);
+    SEMSIM_API char *Editor_getArchiveUri(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getLocalUri(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getModelUri(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getRepositoryUri(Editor *editor_ptr);
+    SEMSIM_API void Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
+    SEMSIM_API void Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
     SEMSIM_API void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
     SEMSIM_API void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
     SEMSIM_API void Editor_addDescription(Editor *editor_ptr, const char *date);
@@ -288,7 +289,7 @@ namespace omexmeta {
 
     SEMSIM_API PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
 
-    SEMSIM_API void PersonalInformation_delete(PersonalInformation* information);
+    SEMSIM_API void PersonalInformation_delete(PersonalInformation *information);
 
     SEMSIM_API char *PersonalInformation_getLocalUri(PersonalInformation *information);
 

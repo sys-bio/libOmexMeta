@@ -19,17 +19,18 @@ namespace omexmeta {
 //    }
 
     Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
-                   const LibrdfModel &model, NamespaceMap &nsmap,
+                   const LibrdfModel &model, NamespaceMap &nsmap, bool generate_new_metaids,
                    const std::string& repository_uri,
                    const std::string& archive_uri,
                    const std::string& model_uri,
                    const std::string& local_uri)
-            : model_(model), create_ids_(create_ids), namespaces_(nsmap),
+            : model_(model), create_ids_(create_ids), namespaces_(nsmap), generate_new_metaids_(generate_new_metaids),
               repository_uri_(repository_uri),
               archive_uri_(archive_uri),
               model_uri_(model_uri),
               local_uri_(local_uri) {
-        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
+        // hard code the metaid base and number of needed digits for now,
+        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "OmexMetaId", 4);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
