@@ -1,1 +1,6 @@
 win32api; platform_system=="Windows"
+breathe
+sphinx-tabs
+recommonmark
+beautifulsoup4
+requests

@@ -1,5 +1,5 @@
-Reading and Writing RDF
-=======================
+Reading RDF
+============
 
 Reading RDF graphs revolves around the `from*` and `add_from*` methods,
 where the wildcard `*` is one of `string`, `url` or `filename`. The `from*`
@@ -9,19 +9,24 @@ existing `RDF` graph.
 Reading from a string
 ---------------------
 
-.. code-block:: python
+.. tabs::
 
-    from pyomexmeta import RDF
-    rdf_str = """<?xml version="1.0" encoding="utf-8"?>
-    <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-       xml:base="file://./Annotations.rdf">
-      <rdf:Description rdf:about="OmexMetaId0000">
-        <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
-      </rdf:Description>
-    </rdf:RDF>"""
+   .. tab:: Python
 
-    rdf = RDF.from_string(rdf_str)
+      .. doctest::
+         :pyversion: >3.7
+
+          >>> from pyomexmeta import RDF
+          >>> rdf_str = """<?xml version="1.0" encoding="utf-8"?>
+        <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xml:base="file://./Annotations.rdf">
+          <rdf:Description rdf:about="OmexMetaId0000">
+            <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
+          </rdf:Description>
+        </rdf:RDF>"""
+
+        rdf = RDF.from_string(rdf_str)
 
 Adding to an existing graph from a string
 -----------------------------------------
@@ -66,6 +71,35 @@ Adding to an existing graph from a string
     <metaid_1>\n"
     bqbiol:is <https://identifiers.org/uniprot/P0DP23> .
     '''
+
+.
+
+   .. tab:: C++
+
+      Pears are green.
+
+   .. tab:: C
+
+      Oranges are orange.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

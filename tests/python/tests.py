@@ -24,7 +24,7 @@ try:
 except ImportError:
     raise ImportError("package \"tellurium\" not found. Please `pip install tellurium`")
 
-xml = """<?xml version="1.0" encoding="UTF-8"?>
+XML = """<?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
   <model id="TestModelNotAnnotated">
     <listOfUnitDefinitions>
@@ -124,6 +124,7 @@ class TestRDF(unittest.TestCase):
 
     def test_from_string(self):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
+        print(rdf)
         self.assertEqual(6, len(rdf))
 
     def test_add_from_string(self):
@@ -230,13 +231,13 @@ class EditorTests(unittest.TestCase):
 
     def setUp(self) -> None:
         self.rdf = RDF()
-        self.editor = self.rdf.to_editor(xml, "sbml")
+        self.editor = self.rdf.to_editor(XML, "sbml")
 
     def test_to_editor(self):
         self.assertIsInstance(self.editor, Editor)
 
     def test_context_manager_single_annotation(self):
-        with self.rdf.to_editor(xml, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml") as editor:
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation \
                     .set_about("cytosol") \
@@ -256,7 +257,7 @@ local:cytosol
         self.assertEqual(expected, actual)
 
     def test_context_manager_physical_process(self):
-        with self.rdf.to_editor(xml, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml") as editor:
             with editor.new_physical_process() as physical_process:
                 physical_process \
                     .set_physical_property("OmexMetaId0001", "opb/opb_275") \
@@ -298,7 +299,7 @@ local:SourceParticipant0000
             self.assertTrue(i.strip() in actual)
 
     def test_context_manager_physical_force(self):
-        with self.rdf.to_editor(xml, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml") as editor:
             with editor.new_physical_force() as physical_force:
                 physical_force \
                     .set_physical_property("OmexMetaId0004", "opb/opb_275") \
@@ -336,7 +337,7 @@ local:SourceParticipant0000
             self.assertTrue(i.strip() in actual)
 
     def test_context_manager_personal_information(self):
-        with self.rdf.to_editor(xml, "sbml") as editor:
+        with self.rdf.to_editor(XML, "sbml") as editor:
             with editor.new_personal_information() as information:
                 information \
                     .add_creator("1234-1234-1234-1234") \
@@ -793,6 +794,7 @@ model SBML1
     r1: B => A; k2*B
 end"""
         sbml = te.antimonyToSBML(ant)
+        print(sbml)
 
         rdf = RDF()
         with rdf.to_editor(sbml, "sbml") as editor:

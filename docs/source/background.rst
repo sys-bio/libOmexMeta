@@ -60,7 +60,7 @@ use cases of composite annotations :cite:`gennari2011multiple,neal2018harmonizin
 
 
 References
-==========
+-----------
 
 .. bibliography:: refs.bib
    :cited:

@@ -26,8 +26,7 @@ def _xml_type_factory(xml_type: str):
 class RDF:
 
     def __init__(self, storage_type: str = "memory", storage_name: str = "libOmexMetaStore",
-                 storage_options: str = None,
-                 model_options: str = None, rdf_ptr: ct.c_int64 = None):
+                 storage_options: str = None, model_options: str = None, rdf_ptr: ct.c_int64 = None):
         # when pointer argument not given by user, create new instance of RDF
         # argument is only given manually when static methods are used and
         # this is hidden from users.

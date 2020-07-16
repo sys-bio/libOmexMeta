@@ -1,78 +1,62 @@
-.. libomexmeta documentation master file, created by
-   sphinx-quickstart on Tue Jun  9 22:30:47 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ##########################
 libOmexMeta documentation!
 ##########################
 
-# todo
---------
-- put github badges here
-- Maybe thing about choosing a different theme as well, this one is overused.
-- Learn how to have a floating box in sphinx and then have language tags to flip example tabs between python, C and C++
-
-Begin listing examples that will be needed
-------------------------------------------
-- How to make a triple
-   - triple IS a singular annotation
-- How to set the self information.
-- how to read, write, edit, use storages.
-
 LibOMEXmeta is a library aimed at providing developer-level support for
 reading, writing, editing and managing semantic annotations for biosimulation
-models.  The [COMBINE modeling community](http://co.mbine.org/)  has developed
+models.  The `COMBINE modeling community <http://co.mbine.org/>`_  has developed
 consensus around how best to annotate models and how to package these models
 into archives (OMEX files) that include the modeling source code, the annotations,
 files that describe parameters and settings needed for simulations (in a SEDML file),
 and potentially the data used for these modeling efforts. This consensus was initially
-described in the  publication ["Harmonizing semantic annotations for computational
-models in biology" (Briefings in Bioinformatics, 2018)](https://academic.oup.com/bib/article/20/2/540/5164345).
+described in the  publication `"Harmonizing semantic annotations for computational
+models in biology" (Briefings in Bioinformatics, 2018) <https://academic.oup.com/bib/article/20/2/540/5164345)>`_.
 
 The goal of semantic annotations are to make explicit the biology that underlies the
 semantics of biosimulation models. By using standard knowledge resources about biology
 and biological processes (such as CheBI, Uniprot, and ontologies of anatomy), we can
 make the models more understandable, reusable and reproducible. More information can
-be found at the [OMEX Metadata Specification web page](http://co.mbine.org/standards/omex-metadata).
+be found at the `OMEX Metadata Specification web page <http://co.mbine.org/standards/omex-metadata>`_.
 
-Libsemsim is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). Libsemsim uses [RDF](https://www.w3.org/RDF/) as a framework for representing these annotations. At the core of libOmexMeta are the [Redland libraries](http://librdf.org/):
-    - [raptor2](http://librdf.org/raptor/) for parsing RDF syntax into RDF graphs and serializing the output
-    - [rasqal](http://librdf.org/rasqal/) for querying RDF graphs
-    - [librdf](http://librdf.org/) as a front end to raptor2 and rasqal and for triple stores.
+Libsemsim is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). Libsemsim uses `RDF <https://www.w3.org/RDF/>`_
+as a framework for representing these annotations. At the core of libOmexMeta are the `Redland libraries <http://librdf.org/>`_:
+
+    * `raptor2 <http://librdf.org/raptor/>`_ for parsing RDF syntax into RDF graphs and serializing the output
+    * `rasqal <http://librdf.org/rasqal/>`_ for querying RDF graphs
+    * `librdf <http://librdf.org/>`_ as a front end to raptor2 and rasqal and for triple stores.
 
 Features
 ========
 
-[Parsers](http://librdf.org/raptor/api-1.4/raptor-parsers.html)
----------------------------------------------------------------
+`Parsers <http://librdf.org/raptor/api-1.4/raptor-parsers.html>`_
+------------------------------------------------------------------
 
-  - rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess
+  * rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess
 
-[Serializers](http://librdf.org/raptor/api-1.4/raptor-serializers.html)
+`Serializers <http://librdf.org/raptor/api-1.4/raptor-serializers.html>`_
 -----------------------------------------------------------------------
 
-   - ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, rss-1.0, atom, dot, json-triples, json, nquads, html
+   * ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, rss-1.0, atom, dot, json-triples, json, nquads, html
 
-[Querying](http://librdf.org/rasqal/docs/api/)
+`Querying <http://librdf.org/rasqal/docs/api/>`_
 -----------------------------------------------
 
-  - Languages
-    - [SPARQL](https://www.w3.org/TR/sparql11-query/), [LAQRS](https://www.dajobe.org/2007/04/laqrs/)
-  - Query result formats:
-    - xml, json, table, csv, mkr, tsv, html, turtle, rdfxml,
+  * Languages
+    * `SPARQL <https://www.w3.org/TR/sparql11-query/>`_, `LAQRS <https://www.dajobe.org/2007/04/laqrs/>`_
+  * Query result formats:
+    * xml, json, table, csv, mkr, tsv, html, turtle, rdfxml,
 
-### [Storages modules](http://librdf.org/docs/api/redland-storage-modules.html)
+`Storages modules <http://librdf.org/docs/api/redland-storage-modules.html>`_
 --------------------------------------------------------------------------------
 
-  - hashes, memory, file, mysql, sqlite, uri, tstore (may be supported on request), postgresql (supported but not tested), virtuoso (may be supported on request),
+  * hashes, memory, file, mysql, sqlite, uri, tstore (may be supported on request), postgresql (supported but not tested), virtuoso (may be supported on request)
 
 
 Platform
 ========
 
-  - Windows
-  - Linux Ubuntu 18.04, untested on other flavours.
+  * Windows
+  * Linux Ubuntu 18.04, untested on other flavours.
 
 libOmexMeta has not been tested on a Mac.
 
@@ -84,27 +68,37 @@ Installation
 Python
 ------
 
-Use pip. At this time I've only uploaded to test pypi so you'll have to download it from test pypi as well. On linux:
-    $ pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+On linux, grab some dependencies:
+
+.. code-block:: bash
+
+    $ sudo apt install libxml2 libxml2-dev libxslt1-dev libpq-dev
+
+Windows is self-contained.
+
+Now use pip.
+
+.. code-block:: bash
+
+    $ pip install pyomexmeta
     # verify its worked
     $ ipython -c "import pyomexmeta"
-
-On Windows:
-    > pip install pywin32
-    > pip install --index-url https://test.pypi.org/simple/ pyomexmeta
-
-The additionally dependencency on windows needs to be handled manually for now since it breaks the pip installation when I add it to the `install_requires` field - very annoying.
 
 Python 3 only - if you're not using Python 3, I recommend you upgrade.
 
 Docker
-======
+-------
 
 You can get a docker image using
 
-    $ docker pull ciaranwelsh/libomexmeta:v0.1.10
+.. code-block:: bash
 
-This is an Ubunut 18.04 based container that has libOmexMeta prebuilt and installed under `/libOmexMeta/install-docker`. See [dockerfile](https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile) for full set of commands to build libOmexMeta on ubuntu.
+    $ docker pull ciaranwelsh/libomexmeta:v1.1.0
+
+This is an Ubuntu 18.04 based container that has libOmexMeta prebuilt and installed
+under `/libOmexMeta/install-docker`. See `dockerfile <https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile>`_ for full set of commands to build libOmexMeta on ubuntu.
+Conda is preconfigured and pyomexmeta is installed.
+
 
 Downloading Binaries
 ====================
@@ -116,10 +110,11 @@ Building from source
 
 See above for docker image which does this for you already on linux builds. The build process is similar on both windows and linux, but linux has some additional dependencies installed via `apt-get`.
 
-### On Linux only, install some dependencies using apt
-Note, the build process is not yet fully optimized for linux and will be improved
+On Linux only
+-------------
 
-Pick up some dependencies
+Install some dependencies using apt
+Note, the build process is not yet fully optimized for linux and will be improved
 
 .. code-block:: bash
 
@@ -170,7 +165,7 @@ Configure vcpkg and install dependencies on Windows
 Build libOmexMeta
 ------------------
 
-Use [CMake > 15.7](https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz)
+Use `CMake > 15.7 <https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz>`_
 
 .. code-block:: bash
 
@@ -183,12 +178,11 @@ Use [CMake > 15.7](https://github.com/Kitware/CMake/releases/download/v3.15.7/cm
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :hidden:
 
    background.rst
-   python/python.rst
-   cpp/cpp.rst
+   Examples/examples.rst
    APIReference/api_reference.rst
 
 

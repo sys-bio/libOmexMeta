@@ -33,9 +33,29 @@ release = '0.0.1'
 extensions = [
     "breathe",
     "sphinxcontrib.bibtex",
-    # "sphinxcontrib-inlinesyntaxhighlight",
+    "sphinx_tabs.tabs"
+    "sphinx.ext.doctest"
 ]
-
+doctest_global_setup = '''
+try:
+    
+    import os
+    import site
+    import unittest
+    
+    # take care of directories so we can test the pyomexmeta api
+    docs_dir = os.path.abspath(os.path.dirname(__file__))
+    proj_dir = os.path.dirname(docs_dir)
+    src_dir = os.path.join(proj_dir, "src")
+    pyomexmeta_dir = os.path.join(src_dir, "pyomexmeta")
+    
+    site.addsitedir(src_dir)
+    
+    from pyomexmeta import PyOmexMetaAPI
+except ImportError as e:
+    print("could not import pyomexmeta, is it installed? ")
+    raise e
+'''
 # Breathe Configuration
 breathe_default_project = "libomexmeta"
 
