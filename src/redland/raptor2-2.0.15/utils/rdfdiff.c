@@ -658,7 +658,7 @@ rdfdiff_statement_exists(rdfdiff_file *file, const raptor_statement *statement) 
 
 
 /*
- * rdfdiff_collect_statements - Called when parsing "from" file to build a
+ * rdfdiff_collect_statements - Called when parsing "from" file to docs-build a
  * list of statements for comparison with those in the "to" file.
  */
 static void

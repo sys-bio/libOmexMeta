@@ -24,7 +24,7 @@ add_test(
 # tests_properties is apparently different to target properties
 set_tests_properties(redland-wrapper-tests PROPERTIES DEPENDS redland-wrapper-tests)
 
-# set the RPATH for both install and build builds
+# set the RPATH for both install and docs-build builds
 set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})
 set_target_properties(redland-wrapper-tests PROPERTIES BUILD_RPATH ${RPATH})
 
@@ -65,10 +65,10 @@ install(
 )
 
 
-# copies dependencies into build directory. Commented out for now, delete in future if definately not needed.
+# copies dependencies into docs-build directory. Commented out for now, delete in future if definately not needed.
 #foreach (lib ${LIBRARIES})
 #    message(STATUS "copying ${lib} to ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-#    add_custom_command(TARGET redland-wrapper-tests POST_BUILD        # Adds a post-build event to MyTest
+#    add_custom_command(TARGET redland-wrapper-tests POST_BUILD        # Adds a post-docs-build event to MyTest
 #            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
 #            "${lib}"      # <--this is in-file
 #            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")

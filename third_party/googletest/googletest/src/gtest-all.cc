@@ -30,7 +30,7 @@
 //
 // Google C++ Testing and Mocking Framework (Google Test)
 //
-// Sometimes it's desirable to build Google Test by compiling a single file.
+// Sometimes it's desirable to docs-build Google Test by compiling a single file.
 // This file serves this purpose.
 
 // This line ensures that gtest.h can be compiled on its own, even

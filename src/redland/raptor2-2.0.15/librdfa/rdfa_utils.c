@@ -296,7 +296,7 @@ void rdfa_create_list_mapping(
         value = rdfa_create_list(MAX_LIST_ITEMS);
         value->user_data = context->depth;
 
-        /* build the real key to use when updating the mapping */
+        /* docs-build the real key to use when updating the mapping */
         str_size = strlen(subject);
         realkey = strdup(subject);
         realkey = rdfa_n_append_string(realkey, &str_size, " ", 1);

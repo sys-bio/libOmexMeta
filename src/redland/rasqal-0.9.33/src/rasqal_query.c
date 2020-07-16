@@ -66,7 +66,7 @@
  * execution and executing them to return a result set.
  *
  * Queries are constructed from a syntax in some query language
- * syntax and build an RDF query API structure based on triple
+ * syntax and docs-build an RDF query API structure based on triple
  * patterns, filter expressions, graph patterns above them operating
  * over a set of graphs.
  *

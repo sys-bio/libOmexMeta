@@ -39,7 +39,7 @@ else
     NPROCESSORS=2
 fi
 
-# as of 2017-09-04 Travis CI reports 32 processors, but GCC build
+# as of 2017-09-04 Travis CI reports 32 processors, but GCC docs-build
 # crashes if parallelized too much (maybe memory consumption problem),
 # so limit to 4 processors for the time being.
 if [ $NPROCESSORS -gt 4 ] ; then

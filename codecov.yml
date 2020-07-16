@@ -13,7 +13,7 @@ coverage:
 
 #- <files in coverage report>::<corresponding paths in git/hg project>
 #fixes:
-#  - "/home/travis/build/sys-bio/libOmexMeta"
+#  - "/home/travis/docs-build/sys-bio/libOmexMeta"
 parsers:
   gcov:
     branch_detection:
@@ -28,25 +28,25 @@ parsers:
 #  - src/redland/rasqal-0.9.33/**/*
 #  - src/redland/redland-1.0.17/**/*
 #  - src/redland/RedlandAPIWrapper/test/*
-#  - cmake-build-release-wsl-ubuntu1804/**/*
+#  - cmake-docs-build-release-wsl-ubuntu1804/**/*
 #  - third_party/**/*
-#  - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
-#  - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/rasqal-0.9.33**/*
-#  - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/redland-1.0.17**/*
-#  - cmake-build-release-wsl-ubuntu1804/tests/**/*
-#  - cmake-build-release-wsl-ubuntu1804/third_party/**/*
+#  - cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
+#  - cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/rasqal-0.9.33**/*
+#  - cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/redland-1.0.17**/*
+#  - cmake-docs-build-release-wsl-ubuntu1804/tests/**/*
+#  - cmake-docs-build-release-wsl-ubuntu1804/third_party/**/*
 #  - ${HOME}/libOmexMeta/tests/**/*
 #  - ${HOME}/libOmexMeta/src/redland/raptor2-2.0.15/**/*
 #  - ${HOME}/libOmexMeta/src/redland/rasqal-0.9.33/**/*
 #  - ${HOME}/libOmexMeta/src/redland/redland-1.0.17/**/*
 #  - ${HOME}/libOmexMeta/src/redland/RedlandAPIWrapper/test/*
-#  - ${HOME}/libOmexMeta/cmake-build-release-wsl-ubuntu1804/**/*
+#  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/**/*
 #  - ${HOME}/libOmexMeta/third_party/**/*
-#  - ${HOME}/libOmexMeta/cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
-#  - ${HOME}/libOmexMeta/cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/rasqal-0.9.33**/*
-#  - ${HOME}/libOmexMeta/cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/redland-1.0.17**/*
-#  - ${HOME}/libOmexMeta/cmake-build-release-wsl-ubuntu1804/tests/**/*
-#  - ${HOME}/libOmexMeta/cmake-build-release-wsl-ubuntu1804/third_party/**/*
+#  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
+#  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/rasqal-0.9.33**/*
+#  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/redland-1.0.17**/*
+#  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/tests/**/*
+#  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/third_party/**/*
 #  -
 comment:
   layout: header

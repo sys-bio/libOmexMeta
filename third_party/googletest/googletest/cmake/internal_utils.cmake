@@ -53,7 +53,7 @@ macro(fix_default_compiler_settings_)
   endif()
 endmacro()
 
-# Defines the compiler/linker flags used to build Google Test and
+# Defines the compiler/linker flags used to docs-build Google Test and
 # Google Mock.  You can tweak these definitions to suit your need.  A
 # variable's value is empty before it's explicitly assigned to.
 macro(config_compiler_and_linker)
@@ -155,7 +155,7 @@ function(cxx_library_with_type name type cxx_flags)
   set_target_properties(${name}
     PROPERTIES
     DEBUG_POSTFIX "d")
-  # Set the output directory for build artifacts
+  # Set the output directory for docs-build artifacts
   set_target_properties(${name}
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
@@ -192,7 +192,7 @@ endfunction()
 
 ########################################################################
 #
-# Helper functions for creating build targets.
+# Helper functions for creating docs-build targets.
 
 function(cxx_shared_library name cxx_flags)
   cxx_library_with_type(${name} SHARED "${cxx_flags}" ${ARGN})
@@ -275,7 +275,7 @@ function(py_test name)
   if (PYTHONINTERP_FOUND)
     if ("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" VERSION_GREATER 3.1)
       if (CMAKE_CONFIGURATION_TYPES)
-        # Multi-configuration build generators as for Visual Studio save
+        # Multi-configuration docs-build generators as for Visual Studio save
         # output in a subdirectory of CMAKE_CURRENT_BINARY_DIR (Debug,
         # Release etc.), so we have to provide it here.
         if (WIN32 OR MINGW)
@@ -289,7 +289,7 @@ function(py_test name)
               --build_dir=${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG> ${ARGN})
         endif()
       else (CMAKE_CONFIGURATION_TYPES)
-        # Single-configuration build generators like Makefile generators
+        # Single-configuration docs-build generators like Makefile generators
         # don't have subdirs below CMAKE_CURRENT_BINARY_DIR.
         if (WIN32 OR MINGW)
           add_test(NAME ${name}

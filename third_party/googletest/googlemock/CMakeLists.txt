@@ -2,7 +2,7 @@
 # Note: CMake support is community-based. The maintainers do not use CMake
 # internally.
 #
-# CMake build script for Google Mock.
+# CMake docs-build script for Google Mock.
 #
 # To run the tests for Google Mock itself on Linux, use 'make test' or
 # ctest.  You can select which tests to run using 'ctest -R regex'.
@@ -74,7 +74,7 @@ set(gmock_build_include_dirs
   "${gmock_SOURCE_DIR}/include"
   "${gmock_SOURCE_DIR}"
   "${gtest_SOURCE_DIR}/include"
-  # This directory is needed to build directly from Google Test sources.
+  # This directory is needed to docs-build directly from Google Test sources.
   "${gtest_SOURCE_DIR}")
 include_directories(${gmock_build_include_dirs})
 
@@ -83,7 +83,7 @@ include_directories(${gmock_build_include_dirs})
 # Defines the gmock & gmock_main libraries.  User tests should link
 # with one of them.
 
-# Google Mock libraries.  We build them using more strict warnings than what
+# Google Mock libraries.  We docs-build them using more strict warnings than what
 # are used for other targets, to ensure that Google Mock can be compiled by
 # a user aggressive about warnings.
 if (MSVC)
@@ -104,8 +104,8 @@ else()
   target_link_libraries(gmock_main PUBLIC gmock)
 endif()
 # If the CMake version supports it, attach header directory information
-# to the targets for when we are part of a parent build (ie being pulled
-# in via add_subdirectory() rather than being a standalone build).
+# to the targets for when we are part of a parent docs-build (ie being pulled
+# in via add_subdirectory() rather than being a standalone docs-build).
 if (DEFINED CMAKE_VERSION AND NOT "${CMAKE_VERSION}" VERSION_LESS "2.8.11")
   target_include_directories(gmock SYSTEM INTERFACE
     "$<BUILD_INTERFACE:${gmock_build_include_dirs}>"
@@ -127,7 +127,7 @@ install_project(gmock gmock_main)
 # You can skip this section if you aren't interested in testing
 # Google Mock itself.
 #
-# The tests are not built by default.  To build them, set the
+# The tests are not built by default.  To docs-build them, set the
 # gmock_build_tests option to ON.  You can do it by running ccmake
 # or specifying the -Dgmock_build_tests=ON flag when running cmake.
 

@@ -106,7 +106,7 @@
 # 5. Use the functions described below to create a custom make target which
 #    runs your test executable and produces a code coverage report.
 #
-# 6. Build a Debug build:
+# 6. Build a Debug docs-build:
 #      cmake -DCMAKE_BUILD_TYPE=Debug ..
 #      make
 #      make my_coverage_target
@@ -185,7 +185,7 @@ endif()
 # setup_target_for_coverage_lcov(
 #     NAME testrunner_coverage                    # New target name
 #     EXECUTABLE testrunner -j ${PROCESSOR_COUNT} # Executable in PROJECT_BINARY_DIR
-#     DEPENDENCIES testrunner                     # Dependencies to build first
+#     DEPENDENCIES testrunner                     # Dependencies to docs-build first
 #     BASE_DIRECTORY "../"                        # Base directory for report
 #                                                 #  (defaults to PROJECT_SOURCE_DIR)
 #     EXCLUDE "src/dir1/*" "src/dir2/*"           # Patterns to exclude (can be relative
@@ -287,7 +287,7 @@ endfunction() # setup_target_for_coverage_lcov
 # setup_target_for_coverage_gcovr_xml(
 #     NAME ctest_coverage                    # New target name
 #     EXECUTABLE ctest -j ${PROCESSOR_COUNT} # Executable in PROJECT_BINARY_DIR
-#     DEPENDENCIES executable_target         # Dependencies to build first
+#     DEPENDENCIES executable_target         # Dependencies to docs-build first
 #     BASE_DIRECTORY "../"                   # Base directory for report
 #                                            #  (defaults to PROJECT_SOURCE_DIR)
 #     EXCLUDE "src/dir1/*" "src/dir2/*"      # Patterns to exclude (can be relative
@@ -359,7 +359,7 @@ endfunction() # setup_target_for_coverage_gcovr_xml
 # setup_target_for_coverage_gcovr_html(
 #     NAME ctest_coverage                    # New target name
 #     EXECUTABLE ctest -j ${PROCESSOR_COUNT} # Executable in PROJECT_BINARY_DIR
-#     DEPENDENCIES executable_target         # Dependencies to build first
+#     DEPENDENCIES executable_target         # Dependencies to docs-build first
 #     BASE_DIRECTORY "../"                   # Base directory for report
 #                                            #  (defaults to PROJECT_SOURCE_DIR)
 #     EXCLUDE "src/dir1/*" "src/dir2/*"      # Patterns to exclude (can be relative

@@ -1184,7 +1184,7 @@ rasqal_query_enumerate_graph_patterns(rasqal_query *query) {
  * rasqal_query_build_variables_use:
  * @query: query
  *
- * INTERNAL - build structures recording variable use in the query
+ * INTERNAL - docs-build structures recording variable use in the query
  *
  * Should be called if the query variable usage is modified such as
  * a variable added during query planning.

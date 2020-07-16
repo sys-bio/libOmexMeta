@@ -338,7 +338,7 @@ if __name__ == '__main__':
           """Unable to write a golden file when compiled in an environment
 that does not support all the required features (death tests,
 typed tests, stack traces, and multiple threads).
-Please build this test and generate the golden file using Blaze on Linux.""")
+Please docs-build this test and generate the golden file using Blaze on Linux.""")
 
       sys.stderr.write(message)
       sys.exit(1)

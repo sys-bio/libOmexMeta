@@ -1751,7 +1751,7 @@ YY_DECL {
 			 * yy_get_previous_state() go ahead and do it
 			 * for us because it doesn't know how to deal
 			 * with the possibility of jamming (and we don't
-			 * want to build jamming into it because then it
+			 * want to docs-build jamming into it because then it
 			 * will run more slowly).
 			 */
 

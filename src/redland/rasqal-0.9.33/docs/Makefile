@@ -483,7 +483,7 @@ CLEANFILES = $(SCANOBJ_FILES) $(REPORT_FILES) $(DOC_STAMPS) gtkdoc-check.test
 #HTML_BUILD_STAMP = 
 HTML_BUILD_STAMP = html-build.stamp
 PDF_BUILD_STAMP = 
-#PDF_BUILD_STAMP = pdf-build.stamp
+#PDF_BUILD_STAMP = pdf-docs-build.stamp
 
 #### setup ####
 GTK_DOC_V_SETUP = $(GTK_DOC_V_SETUP_$(V))

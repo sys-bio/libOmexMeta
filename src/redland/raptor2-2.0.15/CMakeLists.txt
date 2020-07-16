@@ -198,7 +198,7 @@ ENDIF (LIBXML2_FOUND)
 
 SET(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries instead of static ones.")
 
-# change from the original to always build both static and shared
+# change from the original to always docs-build both static and shared
 SET(RAPTOR_STATIC TRUE)
 
 SET(RAPTOR_XML_INIT none)
@@ -291,7 +291,7 @@ ENDIF (CMAKE_GENERATOR MATCHES "Makefiles")
 SUBDIRS(src)
 
 # comment out utils because 1) we don't want to use them and 2) they
-# do not compile with cmake script (yet). Note they work fine with autotools build system
+# do not compile with cmake script (yet). Note they work fine with autotools docs-build system
 #SUBDIRS(utils)
 
 ################################################################

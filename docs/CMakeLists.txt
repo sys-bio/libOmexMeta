@@ -35,7 +35,7 @@ add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 #   Sphinx
 #
 
-#Look for an executable called sphinx-build
+#Look for an executable called sphinx-docs-build
 find_program(SPHINX_EXECUTABLE
         NAMES sphinx-build
         PATHS

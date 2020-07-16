@@ -7,11 +7,10 @@ INSTALL
 install
 install*
 cmake-build*
-build-*
 build*
-build2
-build2-*
-*.tar.gz
+build-linux
+build-windows
+build-macos*.tar.gz
 *.zip
 # some files in libxml2/test were breaking git. They are not essential and are ignored
 third_party/libxml2/test 
@@ -23,9 +22,7 @@ autom4te.cache
 *.Po
 *.Plo
 install-linux
-build-linux
-build-windows
-build-macos
+
 .deps
 dist
 pyomexmeta.egg-info

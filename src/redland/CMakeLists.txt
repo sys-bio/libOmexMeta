@@ -404,7 +404,7 @@ add_library(redland-combined-static STATIC
 # ensure PIC is on for linux builds. Ignored on windows
 set_target_properties(redland-combined-static PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-# set runtime to MultiThreaded for static .lib build on windows. Ignored on other systems.
+# set runtime to MultiThreaded for static .lib docs-build on windows. Ignored on other systems.
 #if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
 #    set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 #elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -459,7 +459,7 @@ endif ()
 
 # On windows I run into trouble trying to link to
 # static redland-combined. Its easier on windows
-# to build a dynamic library and link that. Its not used
+# to docs-build a dynamic library and link that. Its not used
 # on linux, (but certainly could be)
 
 if (BUILD_SHARED_LIBS)

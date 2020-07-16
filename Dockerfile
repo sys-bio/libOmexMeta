@@ -51,7 +51,7 @@ RUN /vcpkg/vcpkg install libiconv pcre yajl libpq sqlite3
 RUN /vcpkg/vcpkg install openssl curl
 
 
-# get the libOmexMeta source and build
+# get the libOmexMeta source and docs-build
 RUN git clone https://github.com/sys-bio/libOmexMeta.git \
     && cd libOmexMeta \
     && mkdir build && cd build \

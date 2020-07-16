@@ -806,7 +806,7 @@ rasqal_query_results_ensure_have_row_internal(rasqal_query_results *query_result
         query_results->finished = 1;
 
     if (query_results->row && !query_results->vars_table_init) {
-        /* build variables table once from first row seen */
+        /* docs-build variables table once from first row seen */
         int i;
 
         query_results->vars_table_init = 1;

@@ -254,7 +254,7 @@ namespace omexmeta {
             os << it << ".";
         }
 
-        // Now we can build up the local string
+        // Now we can docs-build up the local string
         std::string local_string = myomexlib_string + "/" + os.str() + "rdf#";
         vec.push_back(local_string);
         assert(vec.size() == 3);

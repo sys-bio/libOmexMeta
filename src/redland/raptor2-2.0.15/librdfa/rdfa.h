@@ -80,7 +80,7 @@
 /* Activate the stupid Windows DLL exporting mechanism if we're building for Windows */
 /*
  * Commented out by ciaran welsh 19/06/2020
- * since we have included these elsewhere in the combined build
+ * since we have included these elsewhere in the combined docs-build
  */
 //#ifdef WIN32
 //#define RAPTOR_API __declspec(RAPTOR_API)

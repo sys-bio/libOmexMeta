@@ -50,7 +50,7 @@
 #
 # MODE must be one of the following:
 #
-#         clean              remove files from the build directory
+#         clean              remove files from the docs-build directory
 #         compile            compile a source file into a libtool object
 #         execute            automatically set library path, then run a program
 #         finish             complete the installation of libtool libraries
@@ -1472,12 +1472,12 @@ EOF
 ##################################################
 
 # func_convert_core_file_wine_to_w32 ARG
-# Helper function used by file name conversion functions when $build is *nix,
+# Helper function used by file name conversion functions when $docs-build is *nix,
 # and $host is mingw, cygwin, or some other w32 environment. Relies on a
 # correctly configured wine environment available, with the winepath program
-# in $build's $PATH.
+# in $docs-build's $PATH.
 #
-# ARG is the $build file name to be converted to w32 format.
+# ARG is the $docs-build file name to be converted to w32 format.
 # Result is available in $func_convert_core_file_wine_to_w32_result, and will
 # be empty on error (or when ARG is empty)
 func_convert_core_file_wine_to_w32 ()
@@ -1503,12 +1503,12 @@ func_convert_core_file_wine_to_w32 ()
 
 
 # func_convert_core_path_wine_to_w32 ARG
-# Helper function used by path conversion functions when $build is *nix, and
+# Helper function used by path conversion functions when $docs-build is *nix, and
 # $host is mingw, cygwin, or some other w32 environment. Relies on a correctly
-# configured wine environment available, with the winepath program in $build's
+# configured wine environment available, with the winepath program in $docs-build's
 # $PATH. Assumes ARG has no leading or trailing path separator characters.
 #
-# ARG is path to be converted from $build format to win32.
+# ARG is path to be converted from $docs-build format to win32.
 # Result is available in $func_convert_core_path_wine_to_w32_result.
 # Unconvertible file (directory) names in ARG are skipped; if no directory names
 # are convertible, then the result may be empty.
@@ -1539,11 +1539,11 @@ func_convert_core_path_wine_to_w32 ()
 
 # func_cygpath ARGS...
 # Wrapper around calling the cygpath program via LT_CYGPATH. This is used when
-# when (1) $build is *nix and Cygwin is hosted via a wine environment; or (2)
-# $build is MSYS and $host is Cygwin, or (3) $build is Cygwin. In case (1) or
+# when (1) $docs-build is *nix and Cygwin is hosted via a wine environment; or (2)
+# $docs-build is MSYS and $host is Cygwin, or (3) $docs-build is Cygwin. In case (1) or
 # (2), returns the Cygwin file name or path in func_cygpath_result (input
 # file name or path is assumed to be in w32 format, as previously converted
-# from $build's *nix or MSYS format). In case (3), returns the w32 file name
+# from $docs-build's *nix or MSYS format). In case (3), returns the w32 file name
 # or path in func_cygpath_result (input file name or path is assumed to be in
 # Cygwin format). Returns an empty string on error.
 #
@@ -1583,7 +1583,7 @@ func_convert_core_msys_to_w32 ()
 
 
 # func_convert_file_check ARG1 ARG2
-# Verify that ARG1 (a file name in $build format) was converted to $host
+# Verify that ARG1 (a file name in $docs-build format) was converted to $host
 # format in ARG2. Otherwise, emit an error message, but continue (resetting
 # func_to_host_file_result to ARG1).
 func_convert_file_check ()
@@ -1601,7 +1601,7 @@ func_convert_file_check ()
 
 
 # func_convert_path_check FROM_PATHSEP TO_PATHSEP FROM_PATH TO_PATH
-# Verify that FROM_PATH (a path in $build format) was converted to $host
+# Verify that FROM_PATH (a path in $docs-build format) was converted to $host
 # format in TO_PATH. Otherwise, emit an error message, but continue, resetting
 # func_to_host_file_result to a simplistic fallback value (see below).
 func_convert_path_check ()
@@ -1644,16 +1644,16 @@ func_convert_path_front_back_pathsep ()
 
 
 ##################################################
-# $build to $host FILE NAME CONVERSION FUNCTIONS #
+# $docs-build to $host FILE NAME CONVERSION FUNCTIONS #
 ##################################################
 # invoked via `$to_host_file_cmd ARG'
 #
-# In each case, ARG is the path to be converted from $build to $host format.
+# In each case, ARG is the path to be converted from $docs-build to $host format.
 # Result will be available in $func_to_host_file_result.
 
 
 # func_to_host_file ARG
-# Converts the file name ARG from $build format to $host format. Return result
+# Converts the file name ARG from $docs-build format to $host format. Return result
 # in func_to_host_file_result.
 func_to_host_file ()
 {
@@ -1664,7 +1664,7 @@ func_to_host_file ()
 
 
 # func_to_tool_file ARG LAZY
-# converts the file name ARG from $build format to toolchain format. Return
+# converts the file name ARG from $docs-build format to toolchain format. Return
 # result in func_to_tool_file_result.  If the conversion in use is listed
 # in (the comma separated) LAZY, no conversion takes place.
 func_to_tool_file ()
@@ -1717,7 +1717,7 @@ func_convert_file_cygwin_to_w32 ()
   $opt_debug
   func_to_host_file_result="$1"
   if test -n "$1"; then
-    # because $build is cygwin, we call "the" cygpath in $PATH; no need to use
+    # because $docs-build is cygwin, we call "the" cygpath in $PATH; no need to use
     # LT_CYGPATH in this case.
     func_to_host_file_result=`cygpath -m "$1"`
   fi
@@ -1779,22 +1779,22 @@ func_convert_file_nix_to_cygwin ()
 
 
 #############################################
-# $build to $host PATH CONVERSION FUNCTIONS #
+# $docs-build to $host PATH CONVERSION FUNCTIONS #
 #############################################
 # invoked via `$to_host_path_cmd ARG'
 #
-# In each case, ARG is the path to be converted from $build to $host format.
+# In each case, ARG is the path to be converted from $docs-build to $host format.
 # The result will be available in $func_to_host_path_result.
 #
-# Path separators are also converted from $build format to $host format.  If
+# Path separators are also converted from $docs-build format to $host format.  If
 # ARG begins or ends with a path separator character, it is preserved (but
 # converted to $host format) on output.
 #
 # All path conversion functions are named using the following convention:
 #   file name conversion function    : func_convert_file_X_to_Y ()
 #   path conversion function         : func_convert_path_X_to_Y ()
-# where, for any given $build/$host combination the 'X_to_Y' value is the
-# same.  If conversion functions are added for new $build/$host combinations,
+# where, for any given $docs-build/$host combination the 'X_to_Y' value is the
+# same.  If conversion functions are added for new $docs-build/$host combinations,
 # the two new functions must follow this pattern, or func_init_to_host_path_cmd
 # will break.
 
@@ -1814,7 +1814,7 @@ func_init_to_host_path_cmd ()
 
 
 # func_to_host_path ARG
-# Converts the path ARG from $build format to $host format. Return result
+# Converts the path ARG from $docs-build format to $host format. Return result
 # in func_to_host_path_result.
 func_to_host_path ()
 {
@@ -2121,7 +2121,7 @@ func_mode_compile ()
       removelist="$lobj $libobj ${libobj}T"
     fi
 
-    # On Cygwin there's no "real" PIC flag so we must build both object types
+    # On Cygwin there's no "real" PIC flag so we must docs-build both object types
     case $host_os in
     cygwin* | mingw* | pw32* | os2* | cegcc*)
       pic_mode=default
@@ -2179,7 +2179,7 @@ compiler."
     func_quote_for_eval "$srcfile"
     qsrcfile=$func_quote_for_eval_result
 
-    # Only build a PIC object if we are building libtool libraries.
+    # Only docs-build a PIC object if we are building libtool libraries.
     if test "$build_libtool_libs" = yes; then
       # Without this assignment, base_compile gets emptied.
       fbsd_hideous_sh_bug=$base_compile
@@ -2187,7 +2187,7 @@ compiler."
       if test "$pic_mode" != no; then
 	command="$base_compile $qsrcfile $pic_flag"
       else
-	# Don't build PIC code
+	# Don't docs-build PIC code
 	command="$base_compile $qsrcfile"
       fi
 
@@ -2233,10 +2233,10 @@ compiler."
       fi
     fi
 
-    # Only build a position-dependent object if we build old libraries.
+    # Only docs-build a position-dependent object if we docs-build old libraries.
     if test "$build_old_libs" = yes; then
       if test "$pic_mode" != yes; then
-	# Don't build PIC code
+	# Don't docs-build PIC code
 	command="$base_compile $qsrcfile$pie_flag"
       else
 	command="$base_compile $qsrcfile $pic_flag"
@@ -2987,7 +2987,7 @@ func_mode_install ()
 	  srcname="$realname"
 	  test -n "$relink_command" && srcname="$realname"T
 
-	  # Install the shared library and build the symlinks.
+	  # Install the shared library and docs-build the symlinks.
 	  func_show_eval "$install_shared_prog $dir/$srcname $destdir/$realname" \
 	      'exit $?'
 	  tstripme="$stripme"
@@ -8039,7 +8039,7 @@ EOF
       old_library=
       dlname=
 
-      # Test again, we may have decided not to build it any more
+      # Test again, we may have decided not to docs-build it any more
       if test "$build_libtool_libs" = yes; then
 	# Remove ${wl} instances when linking with ld.
 	# FIXME: should test the right _cmds variable.
@@ -9087,7 +9087,7 @@ EOF
       ;;
     esac
 
-    # See if we need to build an old-fashioned archive.
+    # See if we need to docs-build an old-fashioned archive.
     for oldlib in $oldlibs; do
 
       if test "$build_libtool_libs" = convenience; then

@@ -1,4 +1,4 @@
-version: '{build}'
+version: '{docs-build}'
 
 os: Visual Studio 2015
 

@@ -31,7 +31,7 @@
 // Google C++ Mocking Framework (Google Mock)
 //
 // This file #includes all Google Mock implementation .cc files.  The
-// purpose is to allow a user to build Google Mock by compiling this
+// purpose is to allow a user to docs-build Google Mock by compiling this
 // file alone.
 
 // This line ensures that gmock.h can be compiled on its own, even

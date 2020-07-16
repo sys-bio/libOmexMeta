@@ -533,7 +533,7 @@ uninstall-am:
 
 .PHONY: build-core build-roqet check-lcoal
 
-# This sequence allows parallel building of build-core and then once
+# This sequence allows parallel building of docs-build-core and then once
 # that is built, parallel building of the dependent programs: roqet
 
 build-core:

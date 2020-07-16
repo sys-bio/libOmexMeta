@@ -30,7 +30,7 @@
 //
 // Tests for Google C++ Testing and Mocking Framework (Google Test)
 //
-// Sometimes it's desirable to build most of Google Test's own tests
+// Sometimes it's desirable to docs-build most of Google Test's own tests
 // by compiling a single file.  This file serves this purpose.
 #include "test/googletest-filepath-test.cc"
 #include "test/googletest-message-test.cc"

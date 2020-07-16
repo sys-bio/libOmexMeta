@@ -30,9 +30,9 @@ set(TEST_SOURCES
         CAPITests.cpp
         PersonalInformationTests.cpp)
 
-# build test executable
+# docs-build test executable
 add_executable(OmexMetaTests ${TEST_SOURCES})
-# set RPATH for both install and build builds
+# set RPATH for both install and docs-build builds
 set_target_properties(OmexMetaTests PROPERTIES INSTALL_RPATH ${RPATH})
 set_target_properties(OmexMetaTests PROPERTIES BUILD_RPATH ${RPATH})
 
@@ -78,7 +78,7 @@ install(
 
 #if (PLATFORM STREQUAL "windows-msvc")
 #    foreach (lib ${LIBRARIES_DLL})
-#        add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-build event to MyTest
+#        add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-docs-build event to MyTest
 #                COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
 #                "${lib}"      # <--this is in-file
 #                "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")

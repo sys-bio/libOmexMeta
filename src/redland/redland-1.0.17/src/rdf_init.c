@@ -135,7 +135,7 @@ const unsigned int librdf_version_decimal = LIBRDF_VERSION_DECIMAL;
  *
  * Create a new Redland execution environment.
  *
- * Once this constructor is called to build a #librdf_world object
+ * Once this constructor is called to docs-build a #librdf_world object
  * several functions may be called to set some parameters such as
  * librdf_world_set_error(), librdf_world_set_warning(),
  * librdf_world_set_logger(), librdf_world_set_digest(),

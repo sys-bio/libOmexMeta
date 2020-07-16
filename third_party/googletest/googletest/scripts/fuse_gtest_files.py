@@ -37,7 +37,7 @@ SYNOPSIS
 
        Scans GTEST_ROOT_DIR for Google Test source code, and generates
        two files: OUTPUT_DIR/gtest/gtest.h and OUTPUT_DIR/gtest/gtest-all.cc.
-       Then you can build your tests by adding OUTPUT_DIR to the include
+       Then you can docs-build your tests by adding OUTPUT_DIR to the include
        search path and linking with OUTPUT_DIR/gtest/gtest-all.cc.  These
        two files contain everything you need to use Google Test.  Hence
        you can "install" Google Test by copying them to wherever you want.

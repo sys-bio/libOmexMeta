@@ -527,7 +527,7 @@ uninstall-am:
 build-rapper:
 	@(cd $(top_builddir)/utils ; $(MAKE) rapper$(EXEEXT))
 
-#check-local: build-rapper check-json check-bad-json
+#check-local: docs-build-rapper check-json check-bad-json
 check-local:
 
 check-json: build-rapper $(check_json_deps)

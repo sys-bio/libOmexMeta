@@ -46,7 +46,7 @@ extern "C" {
 #define HAVE_STRICMP 1
 
 /* MS names for these functions */
-// next line breaks build on wntmsci12
+// next line breaks docs-build on wntmsci12
 //#define vsnprintf _vsnprintf
 //#define snprintf _snprintf
 #define access _access

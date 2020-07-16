@@ -37,7 +37,7 @@ struct librdf_hash_datum_s {
     librdf_world *world;
     void *data;
     size_t size;
-    /* used internally to build lists of these  */
+    /* used internally to docs-build lists of these  */
     struct librdf_hash_datum_s *next;
 };
 typedef struct librdf_hash_datum_s librdf_hash_datum;

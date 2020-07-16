@@ -6,7 +6,7 @@
 # The rdfdiff program cannot be directly executed until all the libtool
 # libraries that it depends on are installed.
 #
-# This wrapper script should never be moved out of the build directory.
+# This wrapper script should never be moved out of the docs-build directory.
 # If it is, it will not operate correctly.
 
 # Sed substitution that helps us do robust quoting.  It backslashifies

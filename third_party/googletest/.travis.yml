@@ -12,17 +12,17 @@ matrix:
     - os: linux
       before_install: chmod -R +x ./ci/*platformio.sh
       install: ./ci/install-platformio.sh
-      script: ./ci/build-platformio.sh
+      script: ./ci/docs-build-platformio.sh
     - os: linux
       dist: xenial
       compiler: gcc
       install: ./ci/install-linux.sh && ./ci/log-config.sh
-      script: ./ci/build-linux-bazel.sh
+      script: ./ci/docs-build-linux-bazel.sh
     - os: linux
       dist: xenial
       compiler: clang
       install: ./ci/install-linux.sh && ./ci/log-config.sh
-      script: ./ci/build-linux-bazel.sh
+      script: ./ci/docs-build-linux-bazel.sh
     - os: linux
       compiler: gcc
       env: BUILD_TYPE=Debug VERBOSE=1 CXX_FLAGS=-std=c++11
@@ -39,7 +39,7 @@ matrix:
       compiler: clang
       env: BUILD_TYPE=Release VERBOSE=1 CXX_FLAGS=-std=c++11 HOMEBREW_LOGS=~/homebrew-logs HOMEBREW_TEMP=~/homebrew-temp
 
-# These are the install and build (script) phases for the most common entries in the matrix.  They could be included
+# These are the install and docs-build (script) phases for the most common entries in the matrix.  They could be included
 # in each entry in the matrix, but that is just repetitive.
 install:
   - ./ci/install-${TRAVIS_OS_NAME}.sh

@@ -1,0 +1,113 @@
+Reading RDF
+============
+
+Reading RDF graphs revolves around the `from*` and `add_from*` methods,
+where the wildcard `*` is one of `string`, `url` or `filename`. The `from*`
+methods are static methods and create a new `RDF` graph while the `add_from*` methods add to the
+existing `RDF` graph.
+
+Reading from a string
+---------------------
+
+.. tabs::
+
+    .. tab:: Python
+
+        .. code-block:: python
+            :linenos:
+            :caption: Read from a string in Python
+
+            from pyomexmeta import RDF
+
+            rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+                         @prefix myOMEXlib: <http://omex-library.org/> .
+                         @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+                         @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+                         <http://omex-library.org/NewOmex.omex/NewModel.xml#>
+                             <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> ."""
+            rdf = RDF.from_string(rdf_str, format="turtle")
+            print(f"Number of annotations in graph: {len(rdf)}")
+
+        .. command-output:: python
+
+            Number of annotations in graph: 1
+
+    .. tab:: C++
+
+        .. code-block:: c++
+            :linenos:
+            :caption: Read from a string in C++
+
+                #include "omexmeta/RDF.h" // omexmeta::RDF
+                #include <iostream>     // std::cout, std::endl
+
+                using namespace omexmeta;
+
+                int main(){
+
+                    std::string rdf_str = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                          "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                                          "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                                          "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                          "\n"
+                                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
+                                          "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n\n";
+                    RDF rdf = RDF::fromString(rdf_string, "turtle");
+                    int number_of_annotations = rdf.size();
+                    std::cout << "Number of annotations in graph: " << number_of_annotations << std::endl;
+                }
+
+        .. program-output:: C++
+
+            Number of annotations in graph: 1
+
+        .. code-block:: C
+            :linenos:
+            :caption: Read from a string in C++
+
+                #include "omexmeta/RDF.h" // omexmeta::RDF
+
+                using namespace omexmeta;
+
+                int main(){
+
+                    const char* rdf_str = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                          "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                                          "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                                          "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                          "\n"
+                                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
+                                          "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n\n";
+                    RDF *rdf_ptr = RDF_fromString(rdf_string, "turtle");
+                    int number_of_annotations = rdf_size(rdf_ptr);
+                    printf("Number of annotations in graph: %d", number_of_annotations);
+                }
+
+        .. program-output:: C++
+
+            Number of annotations in graph: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

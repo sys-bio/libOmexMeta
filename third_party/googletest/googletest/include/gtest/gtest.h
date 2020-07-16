@@ -1138,7 +1138,7 @@ class TestEventListener {
 
 // The convenience class for users who need to override just one or two
 // methods and are not concerned that a possible change to a signature of
-// the methods they override will not be caught during the build.  For
+// the methods they override will not be caught during the docs-build.  For
 // comments about each method please see the definition of TestEventListener
 // above.
 class EmptyTestEventListener : public TestEventListener {

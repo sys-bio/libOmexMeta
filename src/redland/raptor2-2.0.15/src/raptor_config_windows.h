@@ -373,7 +373,7 @@
 
 /*
  * BUILD_SHARED_LIBS defaults to off in libomexmeta.
- * We build a static library and pull it into the main binary.
+ * We docs-build a static library and pull it into the main binary.
  */
 #ifdef BUILD_SHARED_LIBS
 /* DLL entry point */

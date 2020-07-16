@@ -201,7 +201,7 @@ GTK_DOC_V_SETUP = $(GTK_DOC_V_SETUP_
 GTK_DOC_V_SETUP_ = $(GTK_DOC_V_SETUP_
 @AM_DEFAULT_V@)
 GTK_DOC_V_SETUP_0 =
-@echo "  DOC   Preparing build";
+@echo "  DOC   Preparing docs-build";
 
 setup-build.stamp:
 -

@@ -1,6 +1,6 @@
-#A note on the build system. Occasionally you will
+#A note on the docs-build system. Occasionally you will
 #see "_CMakeLists.txt". This is an old version of the
-#build system. This will be deleted in due course.
+#docs-build system. This will be deleted in due course.
 
 cmake_minimum_required(VERSION 3.15)
 
@@ -87,7 +87,7 @@ option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if 
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 
-# build tests?
+# docs-build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 
 # verbose
@@ -417,7 +417,7 @@ if (BUILD_TESTS)
     endif (WITH_COVERAGE)
 endif (BUILD_TESTS)
 
-# build documentation.
+# docs-build documentation.
 if (BUILD_DOCS)
     add_subdirectory(docs)
 endif ()

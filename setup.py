@@ -76,7 +76,7 @@ binaries = [
     #   instead of the symlink. Another way is to use .so from vcpkg - though this
     #   isn't yet possible since vcpkg doesn't support shared libraries for most packages.
 ]
-# this doesn't work - you have to build on differet platforms for this to work
+# this doesn't work - you have to docs-build on differet platforms for this to work
 # if sys.platform == "win32":
 #     binaries = [j for j in binaries if j.endswith(".dll")]
 # elif sys.platform == 'linux':

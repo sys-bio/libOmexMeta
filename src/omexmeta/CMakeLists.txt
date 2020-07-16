@@ -172,12 +172,12 @@ if (${BUILD_SHARED_LIBS})
         # and which were dynamically linked. I later realized that in order to use these at run time you need both a smbolic
         # link link libx.so.1 which points to the actual library libx.so.1.0.15. Both
         # need to be copied into the pyomexmeta src directory which will then be incorporated
-        # into the python build.
+        # into the python docs-build.
         # This is a viable strategy, and should probably be implemented soon so users do not
         # need to manually install packages from apt. However, for now, we rely on users
         # installing these dependencies manually.
 
-        # The exception is the libstdc++ library. Since ive build
+        # The exception is the libstdc++ library. Since ive docs-build
         # using a later version than is easily obtainably
         # using apt-get, I just distribute along with python
         #        install(FILES ${LIBSTDCXX6_LIBRARY} DESTINATION ${PYOMEXMETA_DIR})

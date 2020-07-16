@@ -41,7 +41,7 @@ macro(FindDependencies)
 
     # libxslt
     # Note vcpkg port broken on x64-linux. I've reported
-    # the issue and we'll build in support for it when they
+    # the issue and we'll docs-build in support for it when they
     # have fixed it. For now, on linux, we can use the apt version.
     if (PLATFORM STREQUAL "windows-msvc")
         find_library(LIBXSLT_STATIC_LIBRARY

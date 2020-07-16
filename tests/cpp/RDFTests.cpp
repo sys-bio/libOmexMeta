@@ -129,7 +129,7 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
                               "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex\"\n"
                               "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
                               "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                              "   xml:base=\"/mnt/d/libOmexMeta/cmake-build-debug-wsl-ubuntu1804-gcc101/bin/\">\n"
+                              "   xml:base=\"/mnt/d/libOmexMeta/cmake-docs-build-debug-wsl-ubuntu1804-gcc101/bin/\">\n"
                               "  <rdf:Description rdf:about=\"http://omex-library.org/NewModel.omex#OmexMetaId0000\">\n"
                               "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
                               "  </rdf:Description>\n"

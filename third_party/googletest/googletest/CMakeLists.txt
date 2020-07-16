@@ -2,7 +2,7 @@
 # Note: CMake support is community-based. The maintainers do not use CMake
 # internally.
 #
-# CMake build script for Google Test.
+# CMake docs-build script for Google Test.
 #
 # To run the tests for Google Test itself on Linux, use 'make test' or
 # ctest.  You can select which tests to run using 'ctest -R regex'.
@@ -122,14 +122,14 @@ include_directories(${gtest_build_include_dirs})
 # Defines the gtest & gtest_main libraries.  User tests should link
 # with one of them.
 
-# Google Test libraries.  We build them using more strict warnings than what
+# Google Test libraries.  We docs-build them using more strict warnings than what
 # are used for other targets, to ensure that gtest can be compiled by a user
 # aggressive about warnings.
 cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
 cxx_library(gtest_main "${cxx_strict}" src/gtest_main.cc)
 # If the CMake version supports it, attach header directory information
-# to the targets for when we are part of a parent build (ie being pulled
-# in via add_subdirectory() rather than being a standalone build).
+# to the targets for when we are part of a parent docs-build (ie being pulled
+# in via add_subdirectory() rather than being a standalone docs-build).
 if (DEFINED CMAKE_VERSION AND NOT "${CMAKE_VERSION}" VERSION_LESS "2.8.11")
   target_include_directories(gtest SYSTEM INTERFACE
     "$<BUILD_INTERFACE:${gtest_build_include_dirs}>"
@@ -149,7 +149,7 @@ install_project(gtest gtest_main)
 #
 # Samples on how to link user tests with gtest or gtest_main.
 #
-# They are not built by default.  To build them, set the
+# They are not built by default.  To docs-build them, set the
 # gtest_build_samples option to ON.  You can do it by running ccmake
 # or specifying the -Dgtest_build_samples=ON flag when running cmake.
 
@@ -173,7 +173,7 @@ endif()
 # You can skip this section if you aren't interested in testing
 # Google Test itself.
 #
-# The tests are not built by default.  To build them, set the
+# The tests are not built by default.  To docs-build them, set the
 # gtest_build_tests option to ON.  You can do it by running ccmake
 # or specifying the -Dgtest_build_tests=ON flag when running cmake.
 

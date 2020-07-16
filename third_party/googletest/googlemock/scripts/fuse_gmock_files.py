@@ -39,7 +39,7 @@ SYNOPSIS
        code, assuming Google Test is in the GMOCK_ROOT_DIR/../googletest
        directory, and generates three files:
        OUTPUT_DIR/gtest/gtest.h, OUTPUT_DIR/gmock/gmock.h, and
-       OUTPUT_DIR/gmock-gtest-all.cc.  Then you can build your tests
+       OUTPUT_DIR/gmock-gtest-all.cc.  Then you can docs-build your tests
        by adding OUTPUT_DIR to the include search path and linking
        with OUTPUT_DIR/gmock-gtest-all.cc.  These three files contain
        everything you need to use Google Mock.  Hence you can

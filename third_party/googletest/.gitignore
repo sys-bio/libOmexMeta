@@ -1,4 +1,4 @@
-# Ignore CI build directory
+# Ignore CI docs-build directory
 build/
 xcuserdata
 cmake-build-debug/

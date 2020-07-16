@@ -39,7 +39,7 @@ IFS=" ""	$nl"
 file_conv=
 
 # func_file_conv build_file lazy
-# Convert a $build file to $host form and store it in $file
+# Convert a $docs-build file to $host form and store it in $file
 # Currently only supports Windows hosts. If the determined conversion
 # type is listed in (the comma separated) LAZY, no conversion will
 # take place.
@@ -302,7 +302,7 @@ cofile=$(echo "$cfile" | sed 's|^.*[\\/]||; s|^[a-zA-Z]:||; s/\.c$/.o/')
 # Create the lock directory.
 # Note: use '[/\\:.-]' here to ensure that we don't use the same name
 # that we are using for the .o file.  Also, base the name on the expected
-# object file name, since that is what matters with a parallel build.
+# object file name, since that is what matters with a parallel docs-build.
 lockdir=$(echo "$cofile" | sed -e 's|[/\\:.-]|_|g').d
 while true; do
   if mkdir "$lockdir" >/dev/null 2>&1; then

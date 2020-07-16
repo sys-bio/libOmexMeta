@@ -55,7 +55,7 @@
 // environment, so users usually don't need to worry about these
 // macros.  However, the automatic detection is not perfect.
 // Sometimes it's necessary for a user to define some of the following
-// macros in the build script to override Google Test's decisions.
+// macros in the docs-build script to override Google Test's decisions.
 //
 // If the user doesn't define a macro in the list, Google Test will
 // provide a default definition.  After this header is #included, all
@@ -475,7 +475,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 
 #  ifdef __GXX_RTTI
 // When building against STLport with the Android NDK and with
-// -frtti -fno-exceptions, the build fails at link time with undefined
+// -frtti -fno-exceptions, the docs-build fails at link time with undefined
 // references to __cxa_bad_typeid. Note sure if STL or toolchain bug,
 // so disable RTTI when detected.
 #   if GTEST_OS_LINUX_ANDROID && defined(_STLPORT_MAJOR) && \
@@ -1077,7 +1077,7 @@ template<typename To, typename From>  // use like this: DownCast_<T*>(foo);
 inline To DownCast_(From* f) {  // so we only accept pointers
   // Ensures that To is a sub-type of From *.  This test is here only
   // for compile-time type checking, and has no overhead in an
-  // optimized build at run-time, as it will be optimized away
+  // optimized docs-build at run-time, as it will be optimized away
   // completely.
   GTEST_INTENTIONAL_CONST_COND_PUSH_()
   if (false) {

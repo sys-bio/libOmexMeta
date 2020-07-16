@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Background to Semantic Annotations &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LibOmexMeta Examples" href="Examples/examples.html" />
+    <link rel="prev" title="libOmexMeta documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Background to Semantic Annotations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Examples/examples.html">LibOmexMeta Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APIReference/api_reference.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Background to Semantic Annotations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/background.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="background-to-semantic-annotations">
+<h1>Background to Semantic Annotations<a class="headerlink" href="#background-to-semantic-annotations" title="Permalink to this headline">¶</a></h1>
+<p>Biological models are often constructed with more
+attention to the <em>mathematical</em> detail of their encoding than
+the <em>biological</em> concepts that they represent.</p>
+<p>Consider models in the online <a class="reference external" href="https://www.ebi.ac.uk/biomodels/">BioModels repository</a>.
+These models are encoded in the <a class="reference external" href="http://sbml.org/Main_Page">Systems Biology Markup Language (SBML)</a>,
+which describes the states (“species” in SBML) and processes (“reactions” in SBML) that make up a dynamical system.
+From a purely mathematical perspective, this state/process representation can be translated directly
+into a set of differential equations (for deterministic simulations) or master equations (for stochastic simulations).
+This, the following would be a valid SBML model (using <a class="reference external" href="http://antimony.sourceforge.net/">Antimony</a> syntax):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a reaction J0 converts A to B</span>
+<span class="n">var</span> <span class="n">species</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span>
+<span class="n">J0</span><span class="p">:</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span><span class="p">;</span> <span class="n">k</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">B</span><span class="o">*</span><span class="n">C</span>
+<span class="c1"># variable initializations</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>However, this example is completely nonsensical from a biological perspective.
+What are the quantities A, B, and C? What is the process J0?
+To encode this information, SBML uses controlled-vocabulary (CV) terms to connect
+model elements to <em>resources</em>, which are URIs that point to ontology terms
+describing what the elements are intended to represent in the physical world.
+In the preceding example, assume that the reaction in question was
+the conversion of phosphoenol pyruvate (<cite>A</cite>) to pyruvate (<cite>B</cite>) by the enzyme pyruvate kinase (<cite>C</cite>).
+Chemical entities such as metabolites can be described via the ChEBI database:
+the <a class="reference external" href="https://identifiers.org/CHEBI:18021">CHEBI:18021</a> term describes phosphoenol pyruvate
+and <a class="reference external" href="https://identifiers.org/CHEBI:15361">CHEBI:15361</a> describes pyruvate.
+The pyruvate kinase enzyme can be described by the <a class="reference external" href="http://bioportal.bioontology.org/ontologies/PR?p=summary">Protein Ontology (PR)</a> as
+<a class="reference external" href="https://identifiers.org/pr/PR:000023655">PR_000023655</a> (if amino acid sequence / organism of origin is not important)
+or <a class="reference external" href="https://www.uniprot.org/">UniProt</a> (if amino acid sequence / organism <em>is</em> important).
+Using these ontology terms, we can encode the <em>chemical identity</em> of the variables
+in the model, but there are still quite a few key pieces of biological information that are missing.
+<em>Where</em> does this reaction take place? <em>What</em> type(s) of cell does it occur in?
+Some of this information can also be encoded in or extracted from SBML, with some difficulty, but not in a form suitable
+for automated semantic logic (such as would be possible using <a class="reference external" href="https://www.w3.org/TR/owl2-overview/">OWL</a>).</p>
+<p>Semantic annotations play an even more important role in CellML models.
+Unlike SBML, CellML does not have a structured way of specifying what model elements represent
+(abstractions such as species, reactions, and comaprtments are lost).
+Thus, semantic annotations are the only way to establish biological meaning in CellML models.</p>
+<p>To address these drawbacks, we previously developed <a class="reference external" href="http://sbp.bhi.washington.edu/projects/semgen">SimSem/SemGen</a>.
+SemSim is a library for working with semantic annotations in SBML and CellML models, and SemGen
+is a GUI application for annotating models <a class="bibtex reference internal" href="#bioinformatics-bty829" id="id1">[2]</a>.
+Both SemSim and SemGen were written in Java. This project (libOmexMEta) aims to provide a C++ / Python
+(via an extension module) implementation with a lean / reduced feature set.</p>
+<p>In both projects (Java/C++), the main goal is to provide a tool for working with <em>composite annotations</em>, which
+are “super-structures” composed on multiple RDF triples. Composite annotations are designed to address the
+limitations of current annotation systems in CellML and SBML. We have previously described the benefits and
+use cases of composite annotations <a class="bibtex reference internal" href="#gennari2011multiple" id="id2">[1]</a><a class="bibtex reference internal" href="#neal2018harmonizing" id="id3">[3]</a>.</p>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-background-0"><dl class="citation">
+<dt class="bibtex label" id="gennari2011multiple"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>John H Gennari, Maxwell L Neal, Michal Galdzicki, and Daniel L Cook. Multiple ontologies in action: composite annotations for biosimulation models. <em>Journal of biomedical informatics</em>, 44(1):146–154, 2011.</p>
+</dd>
+<dt class="bibtex label" id="bioinformatics-bty829"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Maxwell L Neal, Christopher T Thompson, Karam G Kim, Ryan C James, Daniel L Cook, Brian E Carlson, and John H Gennari. SemGen: a tool for semantics-based annotation and composition of biosimulation models. <em>Bioinformatics</em>, 35(9):1600–1602, 09 2018. <a class="reference external" href="https://doi.org/10.1093/bioinformatics/bty829">doi:10.1093/bioinformatics/bty829</a>.</p>
+</dd>
+<dt class="bibtex label" id="neal2018harmonizing"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Maxwell Lewis Neal, Matthias König, David Nickerson, Göksel Mısırlı, Reza Kalbasi, Andreas Dräger, Koray Atalag, Vijayalakshmi Chelliah, Michael T Cooling, Daniel L Cook, Sharon Crook, Miguel de Alba, Samuel H Friedman, Alan Garny, John H Gennari, Padraig Gleeson, Martin Golebiewski, Michael Hucka, Nick Juty, Chris Myers, Brett G Olivier, Herbert M Sauro, Martin Scharm, Jacky L Snoep, Vasundra Touré, Anil Wipat, Olaf Wolkenhauer, and Dagmar Waltemath. Harmonizing semantic annotations for computational models in biology. <em>Briefings in Bioinformatics</em>, 20(2):540–550, 11 2018. <a class="reference external" href="https://doi.org/10.1093/bib/bby087">doi:10.1093/bib/bby087</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Examples/examples.html" class="btn btn-neutral float-right" title="LibOmexMeta Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="libOmexMeta documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

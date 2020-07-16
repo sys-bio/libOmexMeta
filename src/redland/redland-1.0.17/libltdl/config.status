@@ -566,7 +566,7 @@ host_alias=''
 host='x86_64-pc-linux-gnu'
 host_os='linux-gnu'
 build_alias=''
-build='x86_64-pc-linux-gnu'
+docs-build='x86_64-pc-linux-gnu'
 build_os='linux-gnu'
 SED='/bin/sed'
 Xsed='/bin/sed -e 1s/^X//'
@@ -725,7 +725,7 @@ for var in reload_cmds old_postinstall_cmds old_postuninstall_cmds old_archive_c
     esac
 done
 
-ac_aux_dir='../build'
+ac_aux_dir='../docs-build'
 
 # See if we are running on zsh, and set the options that allow our
 # commands through without removal of \ escapes INIT.
@@ -767,7 +767,7 @@ if $ac_need_defaults; then
   test "${CONFIG_COMMANDS+set}" = set || CONFIG_COMMANDS=$config_commands
 fi
 
-# Have a temporary directory for convenience.  Make it in the build tree
+# Have a temporary directory for convenience.  Make it in the docs-build tree
 # simply because there is no reason against having it here, and in addition,
 # creating and moving files from /tmp can sometimes cause problems.
 # Hook for its removal unless debugging.
@@ -1100,7 +1100,7 @@ do
     do
       case $ac_f in
       -) ac_f="$ac_tmp/stdin";;
-      *) # Look for the file first in the build tree, then in the source tree
+      *) # Look for the file first in the docs-build tree, then in the source tree
 	 # (if the path is not absolute).  The absolute path cannot be DOS-style,
 	 # because $ac_f cannot contain `:'.
 	 test -f "$ac_f" ||

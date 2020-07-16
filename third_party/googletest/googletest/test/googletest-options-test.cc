@@ -32,7 +32,7 @@
 // This file tests classes and functions used internally by
 // Google Test.  They are subject to change without notice.
 //
-// This file is #included from gtest.cc, to avoid changing build or
+// This file is #included from gtest.cc, to avoid changing docs-build or
 // make-files on Windows and other platforms. Do not #include this file
 // anywhere else!
 

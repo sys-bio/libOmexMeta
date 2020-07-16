@@ -347,12 +347,12 @@ namespace omexmeta {
         // remove the last element which should contain the extension.
         split.pop_back();
 
-        // build up the string again with any dots that appeared before the final
+        // docs-build up the string again with any dots that appeared before the final
         std::ostringstream os;
         for (auto &it : split) {
             os << it << ".";
         }
-        // Now we can build up the local string
+        // Now we can docs-build up the local string
         local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
     }
 

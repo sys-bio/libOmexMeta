@@ -797,7 +797,7 @@ host
 build_os
 build_vendor
 build_cpu
-build
+docs-build
 RPM_RELEASE
 RELEASE_VERSION_FALSE
 RELEASE_VERSION_TRUE
@@ -1001,9 +1001,9 @@ do
   -bindir=* | --bindir=* | --bindi=* | --bind=* | --bin=* | --bi=*)
     bindir=$ac_optarg ;;
 
-  -build | --build | --buil | --bui | --bu)
+  -docs-build | --docs-build | --buil | --bui | --bu)
     ac_prev=build_alias ;;
-  -build=* | --build=* | --buil=* | --bui=* | --bu=*)
+  -docs-build=* | --docs-build=* | --buil=* | --bui=* | --bu=*)
     build_alias=$ac_optarg ;;
 
   -cache-file | --cache-file | --cache-fil | --cache-fi \
@@ -1379,7 +1379,7 @@ done
 # There might be people who depend on the old broken behavior: `$host'
 # used to hold the argument of --host etc.
 # FIXME: To remove some day.
-build=$build_alias
+docs-build=$build_alias
 host=$host_alias
 target=$target_alias
 
@@ -2411,7 +2411,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 ac_config_headers="$ac_config_headers src/raptor_config.h"
 
 ac_aux_dir=
-for ac_dir in build "$srcdir"/build; do
+for ac_dir in docs-build "$srcdir"/docs-build; do
   if test -f "$ac_dir/install-sh"; then
     ac_aux_dir=$ac_dir
     ac_install_sh="$ac_aux_dir/install-sh -c"
@@ -3106,7 +3106,7 @@ case $ac_cv_build in
 *-*-*) ;;
 *) as_fn_error $? "invalid value of canonical build" "$LINENO" 5;;
 esac
-build=$ac_cv_build
+docs-build=$ac_cv_build
 ac_save_IFS=$IFS; IFS='-'
 set x $ac_cv_build
 shift
@@ -4150,7 +4150,7 @@ else
   # using a relative directory.
   cp "$am_depcomp" conftest.dir
   cd conftest.dir
-  # We will build objects and dependencies in a subdirectory because
+  # We will docs-build objects and dependencies in a subdirectory because
   # it helps to detect inapplicable dependency modes.  For instance
   # both Tru64's cc and ICC support -MD to output dependencies as a
   # side effect of compilation, but ICC will put the dependencies in
@@ -5048,7 +5048,7 @@ else
   # using a relative directory.
   cp "$am_depcomp" conftest.dir
   cd conftest.dir
-  # We will build objects and dependencies in a subdirectory because
+  # We will docs-build objects and dependencies in a subdirectory because
   # it helps to detect inapplicable dependency modes.  For instance
   # both Tru64's cc and ICC support -MD to output dependencies as a
   # side effect of compilation, but ICC will put the dependencies in
@@ -6115,7 +6115,7 @@ $as_echo_n "checking how to convert $build file names to toolchain format... " >
 if ${lt_cv_to_tool_file_cmd+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  #assume ordinary cross tools, or native build.
+  #assume ordinary cross tools, or native docs-build.
 lt_cv_to_tool_file_cmd=func_convert_file_noop
 case $host in
   *-*-mingw* )
@@ -9459,7 +9459,7 @@ lt_prog_compiler_static=
             lt_prog_compiler_pic='-fPIC'
         ;;
       m68k)
-            # FIXME: we need at least 68020 code to build shared libraries, but
+            # FIXME: we need at least 68020 code to docs-build shared libraries, but
             # adding the '-m68020' flag to GCC prevents building anything better,
             # like '-m68040'.
             lt_prog_compiler_pic='-m68020 -resident32 -malways-restore-a4'
@@ -10760,7 +10760,7 @@ fi
           fi~
           $CC -o $tool_output_objdir$soname $libobjs $compiler_flags $deplibs "@$tool_output_objdir$soname.exp" -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~
           linknames='
-	# The linker will not automatically build a static lib if we build a DLL.
+	# The linker will not automatically docs-build a static lib if we docs-build a DLL.
 	# _LT_TAGVAR(old_archive_from_new_cmds, )='true'
 	enable_shared_with_static_runtimes=yes
 	exclude_expsyms='_NULL_IMPORT_DESCRIPTOR|_IMPORT_DESCRIPTOR_.*'
@@ -10791,7 +10791,7 @@ fi
 	shrext_cmds=.dll
 	# FIXME: Setting linknames here is a bad hack.
 	archive_cmds='$CC -o $lib $libobjs $compiler_flags `func_echo_all "$deplibs" | $SED '\''s/ -lc$//'\''` -link -dll~linknames='
-	# The linker will automatically build a .lib file if we build a DLL.
+	# The linker will automatically docs-build a .lib file if we docs-build a DLL.
 	old_archive_from_new_cmds='true'
 	# FIXME: Should let the user specify the lib program.
 	old_archive_cmds='lib -OUT:$oldlib$oldobjs$old_deplibs'

@@ -1407,7 +1407,7 @@ class Resource {
     +operator!=(const Resource& rhs) : bool 
     +operator==(const Resource& rhs) : bool 
     +operator<<(std::ostream& os, const Resource& resource) : std : : ostream&
-    +build() : std::string 
+    +docs-build() : std::string
     -identifier : std::string
     -identifiers_base : std::string
     -resource_namespace : std::string

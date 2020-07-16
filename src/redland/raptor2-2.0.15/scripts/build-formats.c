@@ -1,6 +1,6 @@
 /* -*- Mode: c; c-basic-offset: 2 -*-
  *
- * build-formats.c - Helper to print raptor syntaxes into docbook xml
+ * docs-build-formats.c - Helper to print raptor syntaxes into docbook xml
  *
  * Copyright (C) 2010, David Beckett http://www.dajobe.org/
  * 
@@ -28,7 +28,7 @@
 
 #include <raptor2.h>
 
-static const char *const program = "build-formats";
+static const char *const program = "docs-build-formats";
 
 static raptor_world *world = NULL;
 

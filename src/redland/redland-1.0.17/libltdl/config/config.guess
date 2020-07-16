@@ -1074,7 +1074,7 @@ EOF
 	# the processor, so we play safe by assuming i586.
 	# Note: whatever this is, it MUST be the same as what config.sub
 	# prints for the "djgpp" host, or else GDB configury will decide that
-	# this is a cross-build.
+	# this is a cross-docs-build.
 	echo i586-pc-msdosdjgpp
 	exit ;;
     Intel:Mach:3*:*)

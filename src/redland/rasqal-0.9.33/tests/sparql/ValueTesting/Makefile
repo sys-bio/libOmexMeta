@@ -573,7 +573,7 @@ uninstall-am:
 
 .PHONY: build-core build-roqet build-sparql-test-utils check-local get-testsuites-list get-testsuite-sparql-lexer get-testsuite-sparql-parser
 
-# This sequence allows parallel building of build-core and then once
+# This sequence allows parallel building of docs-build-core and then once
 # that is built, parallel building of the dependent programs: roqet,
 # sparql_lexer_test and sparql_parser_test
 build-core:

@@ -843,7 +843,7 @@ struct GTEST_API_ ConstCharPtr {
 };
 
 // Helper for declaring std::string within 'if' statement
-// in pre C++17 build environment.
+// in pre C++17 docs-build environment.
 struct TrueWithString {
   TrueWithString() = default;
   explicit TrueWithString(const char* str) : value(str) {}
