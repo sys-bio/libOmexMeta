@@ -153,7 +153,7 @@ namespace Legend {
 	    toFile(std::string filename, std::string format)
 	    toOmex(std::string filename, std::string format)
 	    query(std::string query, std::string query_language)
-	    toEditor(std::string xml, SemsimXmlType type)
+	    toEditor(std::string xml, OmexMetaXmlType type)
 
 	}
 
@@ -168,7 +168,7 @@ namespace Legend {
 	to do on the Editor class
 	}
 
-	class SemsimXmlAssistant
+	class OmexMetaXmlAssistant
 	class SBMLAssistant
 	class CellMLAssistant
 	class XmlAssistantPtr <<typedef shared_ptr>>
@@ -244,12 +244,12 @@ namespace Legend {
     PhysicalPhenomenonPtr --> Editor : takes as argument
     Triple --> Editor : takes as argument
 
-    SemsimXmlAssistant <|-- SBMLAssistant
-    SemsimXmlAssistant <|-- CellMLAssistant
-    SemsimXmlAssistant <-- XmlAssistantPtr
+    OmexMetaXmlAssistant <|-- SBMLAssistant
+    OmexMetaXmlAssistant <|-- CellMLAssistant
+    OmexMetaXmlAssistant <-- XmlAssistantPtr
     Editor *-- XmlAssistantPtr : mechanism for adding metaid's specifically for an XML
 
-    MetaID --* SemsimXmlAssistant
+    MetaID --* OmexMetaXmlAssistant
 
     Exception <|-- NullPointerException
     Exception <|-- NotImplementedException

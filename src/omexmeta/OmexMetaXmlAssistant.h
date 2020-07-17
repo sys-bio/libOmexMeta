@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#ifndef LIBOMEXMETA_SEMSIMXMLASSISTANT_H
-#define LIBOMEXMETA_SEMSIMXMLASSISTANT_H
+#ifndef LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
+#define LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
 
 
 #include <vector>
@@ -16,13 +16,13 @@
 #include "OmexMetaUtils.h"
 
 namespace omexmeta {
-    enum SemsimXmlType {
-        SEMSIM_TYPE_SBML,
-        SEMSIM_TYPE_CELLML,
-        SEMSIM_TYPE_OTHER,
+    enum OmexMetaXmlType {
+        OMEXMETA_TYPE_SBML,
+        OMEXMETA_TYPE_CELLML,
+        OMEXMETA_TYPE_OTHER,
     };
 
-    class SemsimXmlAssistant {
+    class OmexMetaXmlAssistant {
         std::string xml_;
         std::string metaid_base_;
         int metaid_num_digits_;
@@ -41,7 +41,7 @@ namespace omexmeta {
 
         [[nodiscard]] bool generateNewMetaids() const;
 
-        explicit SemsimXmlAssistant(std::string xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
+        explicit OmexMetaXmlAssistant(std::string xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
@@ -51,21 +51,21 @@ namespace omexmeta {
     };
 
 
-    class SBMLAssistant : public SemsimXmlAssistant {
+    class SBMLAssistant : public OmexMetaXmlAssistant {
 
     public:
         std::vector<std::string> getValidElements() const override;
 
-        using SemsimXmlAssistant::SemsimXmlAssistant;
+        using OmexMetaXmlAssistant::OmexMetaXmlAssistant;
 
         std::string metaIdTagName() const override;
 
     };
 
 
-    class CellMLAssistant : public SemsimXmlAssistant {
+    class CellMLAssistant : public OmexMetaXmlAssistant {
     public:
-        using SemsimXmlAssistant::SemsimXmlAssistant;
+        using OmexMetaXmlAssistant::OmexMetaXmlAssistant;
 
         std::vector<std::string> getValidElements() const override;
 
@@ -73,12 +73,12 @@ namespace omexmeta {
 
     };
 
-    typedef std::unique_ptr<SemsimXmlAssistant> XmlAssistantPtr;
+    typedef std::unique_ptr<OmexMetaXmlAssistant> XmlAssistantPtr;
 
     class SemsimXmlAssistantFactory {
     public:
 
-        static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type, bool generate_new_metaids = false, std::string metaid_base = "OmexMetaId", int metaid_num_digits = 4);
+        static XmlAssistantPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "OmexMetaId", int metaid_num_digits = 4);
     };
 }
-#endif //LIBOMEXMETA_SEMSIMXMLASSISTANT_H
+#endif //LIBOMEXMETA_OMEXMETAXMLASSISTANT_H

@@ -2,23 +2,23 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#include "SemsimXmlAssistant.h"
+#include "OmexMetaXmlAssistant.h"
 #include "HERE.h"
 
 namespace omexmeta {
-    SemsimXmlAssistant::SemsimXmlAssistant(std::string xml, std::string metaid_base, int metaid_num_digits,
-                                           bool generate_new_metaids) :
+    OmexMetaXmlAssistant::OmexMetaXmlAssistant(std::string xml, std::string metaid_base, int metaid_num_digits,
+                                               bool generate_new_metaids) :
             xml_(std::move(xml)), metaid_base_(std::move(metaid_base)), metaid_num_digits_(metaid_num_digits),
             generate_new_metaids_(generate_new_metaids) {
     }
 
-    std::vector<std::string> SemsimXmlAssistant::getValidElements() const {
+    std::vector<std::string> OmexMetaXmlAssistant::getValidElements() const {
         return std::vector<std::string>({"Any"});
     }
 
-    void SemsimXmlAssistant::generateMetaId(std::vector<std::string> &seen_metaids, long count,
-                                            const MetaID &metaid_gen,
-                                            std::string &id) {
+    void OmexMetaXmlAssistant::generateMetaId(std::vector<std::string> &seen_metaids, long count,
+                                              const MetaID &metaid_gen,
+                                              std::string &id) {
         id = metaid_gen.generate(count);
         if (std::find(seen_metaids.begin(), seen_metaids.end(), id) != seen_metaids.end()) {
             count += 1;
@@ -26,7 +26,7 @@ namespace omexmeta {
         }
     }
 
-    void SemsimXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
+    void OmexMetaXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
         //todo make OmexMetaId sting
         MetaID metaId(getMetaidBase(), 0, getMetaidNumDigits());
         xmlNode *cur_node;
@@ -48,7 +48,7 @@ namespace omexmeta {
                         if (generateNewMetaids()) {
                             // If we don't already have metaid and user wants us to add one, we generate a unique id
                             std::string id;
-                            SemsimXmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
+                            OmexMetaXmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
                             xmlNewProp(cur_node, (const xmlChar *) metaIdTagName().c_str(),
                                        (const xmlChar *) id.c_str());
                             seen_metaids.push_back(id);
@@ -68,12 +68,12 @@ namespace omexmeta {
     }
 
 
-    std::pair<std::string, std::vector<std::string>> SemsimXmlAssistant::addMetaIds() {
+    std::pair<std::string, std::vector<std::string>> OmexMetaXmlAssistant::addMetaIds() {
         LIBXML_TEST_VERSION;
         xmlDocPtr doc; /* the resulting document tree */
         doc = xmlParseDoc((const xmlChar *) xml_.c_str());
         if (doc == nullptr) {
-            throw NullPointerException("NullPointerException:  SemsimXmlAssistant::addMetaIds(): doc");
+            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): doc");
         }
         xmlNodePtr root_element = xmlDocGetRootElement(doc);
         std::vector<std::string> seen_metaids = {};
@@ -91,19 +91,19 @@ namespace omexmeta {
         return sbml_with_metaid;
     }
 
-    std::string SemsimXmlAssistant::metaIdTagName() const {
+    std::string OmexMetaXmlAssistant::metaIdTagName() const {
         return "metaid";
     }
 
-    bool SemsimXmlAssistant::generateNewMetaids() const {
+    bool OmexMetaXmlAssistant::generateNewMetaids() const {
         return generate_new_metaids_;
     }
 
-    const std::string &SemsimXmlAssistant::getMetaidBase() const {
+    const std::string &OmexMetaXmlAssistant::getMetaidBase() const {
         return metaid_base_;
     }
 
-    int SemsimXmlAssistant::getMetaidNumDigits() const {
+    int OmexMetaXmlAssistant::getMetaidNumDigits() const {
         return metaid_num_digits_;
     }
 
@@ -142,20 +142,20 @@ namespace omexmeta {
     }
 
     XmlAssistantPtr
-    SemsimXmlAssistantFactory::generate(const std::string &xml, SemsimXmlType type, bool generate_new_metaids,
+    SemsimXmlAssistantFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,
                                         std::string metaid_base, int metaid_num_digits) {
         switch (type) {
-            case SEMSIM_TYPE_SBML: {
+            case OMEXMETA_TYPE_SBML: {
                 SBMLAssistant sbmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<SBMLAssistant>(sbmlAssistant);
             }
-            case SEMSIM_TYPE_CELLML: {
+            case OMEXMETA_TYPE_CELLML: {
                 CellMLAssistant cellMlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<CellMLAssistant>(cellMlAssistant);
             }
-            case SEMSIM_TYPE_OTHER: {
-                SemsimXmlAssistant xmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
-                return std::make_unique<SemsimXmlAssistant>(xmlAssistant);
+            case OMEXMETA_TYPE_OTHER: {
+                OmexMetaXmlAssistant xmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                return std::make_unique<OmexMetaXmlAssistant>(xmlAssistant);
             }
             default:
                 throw std::invalid_argument("Not a correct type");

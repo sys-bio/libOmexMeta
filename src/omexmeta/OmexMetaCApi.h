@@ -7,7 +7,7 @@
 
 #include "omexmeta/RDF.h"
 #include "omexmeta/Editor.h"
-#include "omexmeta/SemsimXmlAssistant.h"
+#include "omexmeta/OmexMetaXmlAssistant.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/PhysicalForce.h"
@@ -52,7 +52,9 @@ namespace omexmeta {
 
     SEMSIM_API void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
 
-    SEMSIM_API char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri);
+    SEMSIM_API char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri = "BaseUri");
+
+    SEMSIM_API void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
 
     /*
      * @brief read RDF formatted annotations a string.
@@ -103,7 +105,7 @@ namespace omexmeta {
     SEMSIM_API char *RDF_getLocalUri(RDF *rdf_ptr);
 
     SEMSIM_API Editor *
-    RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type, bool generate_new_metaids = false);
+    RDF_toEditor(RDF *rdf_ptr, const char *xml, OmexMetaXmlType type, bool generate_new_metaids = false);
 
 //RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
 

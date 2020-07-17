@@ -28,7 +28,7 @@ set(TEST_SOURCES
         EditorTests.cpp
         RDFReadAndWriteTests.cpp
         CAPITests.cpp
-        PersonalInformationTests.cpp)
+        PersonalInformationTests.cpp DocTests.cpp)
 
 # docs-build test executable
 add_executable(OmexMetaTests ${TEST_SOURCES})

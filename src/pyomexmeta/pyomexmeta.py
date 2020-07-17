@@ -134,6 +134,9 @@ class RDF:
         thestring = PyOmexMetaAPI.get_and_free_c_str(str_ptr)
         return thestring
 
+    def to_file(self, format: str, filename: str) -> None:
+        PyOmexMetaAPI.rdf_to_file(self._obj, format.encode(), filename.encode())
+
     def set_repository_uri(self, repository_uri: str) -> None:
         PyOmexMetaAPI.rdf_set_repository_uri(self._obj, repository_uri.encode())
 

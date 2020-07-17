@@ -144,6 +144,9 @@ class PyOmexMetaAPI:
     # char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri);
     rdf_to_string = Util.load_func("RDF_toString", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
+    # void RDF_toFile(RDF *rdf_ptr, const char *format, const char *filename);
+    rdf_to_file = Util.load_func("RDF_toFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], None)
+
     # void RDF_delete(RDF *rdf_ptr);
     rdf_delete = Util.load_func("RDF_delete", [ct.c_int64], None)
 

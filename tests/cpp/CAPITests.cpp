@@ -10,7 +10,7 @@
 #include "omexmeta/OmexMetaCApi.h"
 #include "omexmeta/RDF.h"
 #include "SBMLFactory.h"
-#include "omexmeta/SemsimXmlAssistant.h"
+#include "omexmeta/OmexMetaXmlAssistant.h"
 #include <filesystem>
 #include <fstream>
 
@@ -21,9 +21,18 @@ public:
 
     AnnotationSamples samples = AnnotationSamples();
 
-    CAPITests() = default;
+    std::filesystem::path fnamep = std::filesystem::current_path() / +"annotation.rdf";
+    std::string fname;
+
+    CAPITests() {
+        fname = fnamep.string();
+
+    }
 
     void TearDown() override {
+        if (std::filesystem::exists(fname)) {
+            std::filesystem::remove(fname);
+        }
     };
 };
 
@@ -68,6 +77,12 @@ TEST_F(CAPITests, RDF_fromString) {
     int expected = 6;
     int actual = RDF_size(rdf_ptr);
     ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_toFile) {
+    RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
+    RDF_toFile(rdf_ptr, "turtle", fname.c_str());
     RDF_delete(rdf_ptr);
 }
 
@@ -193,9 +208,9 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
 TEST_F(CAPITests, TestCheckValidMetaid) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_checkValidMetaid(editor_ptr, "#OmexMetaId0000");
 
     Editor_delete(editor_ptr);
@@ -205,9 +220,9 @@ TEST_F(CAPITests, TestCheckValidMetaid) {
 TEST_F(CAPITests, TestGetMetaID) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     char *actual = Editor_getMetaId(editor_ptr, 0);
     std::cout << actual << std::endl;
     const char *expected = "#OmexMetaId0000";
@@ -221,9 +236,9 @@ TEST_F(CAPITests, TestGetMetaID) {
 TEST_F(CAPITests, TestGetNumMetaIDs) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     int actual = Editor_getNumMetaIds(editor_ptr);
     std::cout << actual << std::endl;
     int expected = 13;
@@ -235,9 +250,9 @@ TEST_F(CAPITests, TestGetNumMetaIDs) {
 TEST_F(CAPITests, TestEditorGetXml) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     char *actual = Editor_getXml(editor_ptr);
     const char *expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -305,9 +320,9 @@ TEST_F(CAPITests, TestEditorGetXml) {
 TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setAbout(singularAnnotation, "metaid6");
@@ -324,9 +339,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
 TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setPredicate(singularAnnotation,
@@ -345,9 +360,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
 TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
@@ -365,9 +380,9 @@ TEST_F(CAPITests, TestEditorPtrMem) {
 // verified with valgrind, not sure how to gtest
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     RDF_delete(rdf_ptr);
     delete editor_ptr;
@@ -377,9 +392,9 @@ TEST_F(CAPITests, TestEditorPtrMem) {
 TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setResourceLiteral(singularAnnotation,
@@ -398,9 +413,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
 TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setResourceUri(singularAnnotation,
@@ -418,9 +433,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
 TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setResourceBlank(singularAnnotation, "Nothing");
@@ -438,9 +453,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
 TEST_F(CAPITests, TestPhysicalEntity) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/OPB007");
@@ -477,9 +492,9 @@ TEST_F(CAPITests, TestPhysicalEntity) {
 
 TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     char *actual = PhysicalEntity_getIdentity(physical_entity_ptr);
@@ -498,9 +513,9 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
 
 TEST_F(CAPITests, TestPhysicalEntityLocations) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
@@ -525,9 +540,9 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
 
 TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
@@ -544,9 +559,9 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
 
 TEST_F(CAPITests, TestPhysicalEntityStr) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/opb_465");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
@@ -583,9 +598,9 @@ TEST_F(CAPITests, TestPhysicalEntityStr) {
 
 TEST_F(CAPITests, TestPhysicalProcess) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "Metaid0937", "opb/opb93864");
@@ -636,9 +651,9 @@ TEST_F(CAPITests, TestPhysicalProcess) {
 
 TEST_F(CAPITests, TestPhysicalForce) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "Metaid0937", "opb/opb93864");
@@ -684,9 +699,9 @@ TEST_F(CAPITests, TestPhysicalForce) {
 
 TEST_F(CAPITests, TestEditorToRDF) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "#OmexMetaId0006",
@@ -832,7 +847,7 @@ TEST_F(CAPITests, RDFgetLocalUri) {
 TEST_F(CAPITests, RDFgetModelUri) {
     RDF *rdf_ptr = RDF_new();
     char *actual = RDF_getModelUri(rdf_ptr);
-    const char *expected =  "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     free_c_char_star(actual);
@@ -852,9 +867,9 @@ TEST_F(CAPITests, RDFgetOmexRepository) {
 
 TEST_F(CAPITests, EditorgetLocalUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     char *actual = Editor_getLocalUri(editor_ptr);
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
     std::cout << actual << std::endl;
@@ -866,11 +881,11 @@ TEST_F(CAPITests, EditorgetLocalUri) {
 
 TEST_F(CAPITests, EditorgetModelUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     char *actual = Editor_getModelUri(editor_ptr);
-    const char *expected =  "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
@@ -880,9 +895,9 @@ TEST_F(CAPITests, EditorgetModelUri) {
 
 TEST_F(CAPITests, EditorgetOmexRepository) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     char *actual = Editor_getRepositoryUri(editor_ptr);
     const char *expected = "http://omex-library.org/";
     std::cout << actual << std::endl;
@@ -894,9 +909,9 @@ TEST_F(CAPITests, EditorgetOmexRepository) {
 
 TEST_F(CAPITests, EditorsetOmexRepository) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     RDF_setRepositoryUri(rdf_ptr, "http://newOmexRepo.org");
     const char *expected = "http://newOmexRepo.org/";
     char *actual = Editor_getRepositoryUri(editor_ptr);
@@ -909,9 +924,9 @@ TEST_F(CAPITests, EditorsetOmexRepository) {
 
 TEST_F(CAPITests, EditorsetArchiveUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     RDF_setArchiveUri(rdf_ptr, "newArchive");
     char *actual = Editor_getArchiveUri(editor_ptr);
     const char *expected = "http://omex-library.org/newArchive.omex";
@@ -924,9 +939,9 @@ TEST_F(CAPITests, EditorsetArchiveUri) {
 
 TEST_F(CAPITests, EditorsetModelUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     RDF_setModelUri(rdf_ptr, "newModelName");
     const char *expected = "http://omex-library.org/NewOmex.omex/newModelName.xml#";
     char *actual = Editor_getModelUri(editor_ptr);
@@ -941,9 +956,9 @@ TEST_F(CAPITests, EditorsetModelUri) {
 
 TEST_F(CAPITests, EditoraddCreator) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addCreator(editor_ptr, "1234-1234-1234-1234");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -965,9 +980,9 @@ TEST_F(CAPITests, EditoraddCreator) {
 
 TEST_F(CAPITests, EditoraddCurator) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addCurator(editor_ptr, "1234-1234-1234-1234");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -988,9 +1003,9 @@ TEST_F(CAPITests, EditoraddCurator) {
 
 TEST_F(CAPITests, Editortaxon) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addTaxon(editor_ptr, "9898");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -1012,9 +1027,9 @@ TEST_F(CAPITests, Editortaxon) {
 
 TEST_F(CAPITests, Editorpubmed) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addPubmed(editor_ptr, "12345678");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -1036,9 +1051,9 @@ TEST_F(CAPITests, Editorpubmed) {
 
 TEST_F(CAPITests, EditoraddDescription) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addDescription(editor_ptr, "A model");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -1060,9 +1075,9 @@ TEST_F(CAPITests, EditoraddDescription) {
 
 TEST_F(CAPITests, EditoraddDateCreated) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addDateCreated(editor_ptr, "14/01/1991");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -1084,9 +1099,9 @@ TEST_F(CAPITests, EditoraddDateCreated) {
 
 TEST_F(CAPITests, EditoraddPersonalInformation) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
 
 //    Editor_addPersonalInformation(editor_ptr, p);
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -1106,9 +1121,9 @@ TEST_F(CAPITests, EditoraddPersonalInformation) {
 
 TEST_F(CAPITests, EditoraddParentModel) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     Editor_addParentModel(editor_ptr, "BIOMD000001.xml");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
@@ -1130,9 +1145,9 @@ TEST_F(CAPITests, EditoraddParentModel) {
 
 TEST_F(CAPITests, PersonalInformationgetLocalUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     char *actual = PersonalInformation_getLocalUri(information);
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1147,9 +1162,9 @@ TEST_F(CAPITests, PersonalInformationgetLocalUri) {
 
 TEST_F(CAPITests, PersonalInformationsetLocalUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_setLocalUri(information, "localUri");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1165,9 +1180,9 @@ TEST_F(CAPITests, PersonalInformationsetLocalUri) {
 
 TEST_F(CAPITests, PersonalInformationaddCreator) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addCreator(information, "2134-1234-1234-1234");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1197,7 +1212,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
 //    RDF *rdf_ptr = RDF_new();
 //    Editor *editor_ptr = rdf_ptr->toEditorPtr(
 //            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-//            SEMSIM_TYPE_SBML
+//            OMEXMETA_TYPE_SBML
 //    );
 //    PersonalInformation *information = PersonalInformation_new(editor_ptr);
 //    PersonalInformation_addCurator(information, "2134-1234-1234-1234");
@@ -1213,10 +1228,10 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
 
 TEST_F(CAPITests, PersonalInformationaddName) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
-    
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
+
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addName(information, "Ciaran Welsh");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1245,9 +1260,9 @@ TEST_F(CAPITests, PersonalInformationaddName) {
 
 TEST_F(CAPITests, PersonalInformationaddMbox) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addMbox(information, "cwelsh2@ue.edu");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1277,9 +1292,9 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
 
 TEST_F(CAPITests, PersonalInformationaddAccountName) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addAccountName(information, "2134-1234-1234-1234");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1308,9 +1323,9 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
 
 TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addAccountServiceHomepage(information, "https://github.com/sys-bio/libOmexMeta");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1340,9 +1355,9 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
 
 TEST_F(CAPITests, PersonalInformationaddFoafUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addFoafLiteral(information, "accountServiceHomepage", "https://github.com/sys-bio/libOmexMeta");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1371,26 +1386,26 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
 
 TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_addFoafLiteral(information, "name", "Ciaran Welsh");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle", "base");
-    const char *expected =  "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
-                            "@prefix myOMEXlib: <http://omex-library.org/> .\n"
-                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
-                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                            "\n"
-                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                            "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
-                            "\n"
-                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
-                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
-                            "\n";
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
+                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
+                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                           "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     PersonalInformation_delete(information);
@@ -1401,9 +1416,9 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
 
 TEST_F(CAPITests, PersonalInformationgetMetaid) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     char *actual = PersonalInformation_getMetaid(information);
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1419,9 +1434,9 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
 
 TEST_F(CAPITests, PersonalInformationsetMetaid) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_setMetaid(information, "NewMEtaid");
     Editor_addPersonalInformation(editor_ptr, information);
@@ -1437,9 +1452,9 @@ TEST_F(CAPITests, PersonalInformationsetMetaid) {
 
 TEST_F(CAPITests, PersonalInformationgetModelName) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = PersonalInformation_getModelUri(information);
@@ -1455,9 +1470,9 @@ TEST_F(CAPITests, PersonalInformationgetModelName) {
 
 TEST_F(CAPITests, PersonalInformationsetModelUri) {
     RDF *rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
-            SEMSIM_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED).c_str(),
+                                      OMEXMETA_TYPE_SBML, true);
     PersonalInformation *information = PersonalInformation_new(editor_ptr);
     PersonalInformation_setModelUri(information, "newModelName");
     Editor_addPersonalInformation(editor_ptr, information);

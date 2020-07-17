@@ -3,7 +3,7 @@ set(SEMSIM_HEADERS
         "OmexMetaUtils.h"
         "CurlGet.h"
         "RDF.h"
-        "SemsimXmlAssistant.h"
+        "OmexMetaXmlAssistant.h"
 
         "Subject.h"
         "Resource.h"
@@ -37,7 +37,7 @@ set(SEMSIM_SOURCES
         "RDF.cpp"
         "Query.cpp"
         "CurlGet.cpp"
-        "SemsimXmlAssistant.cpp"
+        "OmexMetaXmlAssistant.cpp"
         "Subject.cpp"
         "Resource.cpp"
         "Predicate.cpp"

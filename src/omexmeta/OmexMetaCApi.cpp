@@ -113,6 +113,10 @@ namespace omexmeta {
         return cstr;
     }
 
+    void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename) {
+        rdf_ptr->toFile(format, filename);
+    }
+
     char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format) {
         Query query(rdf_ptr->getModel(), query_str);
         std::string results = query.resultsAsStr(results_format);
@@ -166,7 +170,7 @@ namespace omexmeta {
         return cstr;
     }
 
-    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type, bool generate_new_metaids) {
+    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, OmexMetaXmlType type, bool generate_new_metaids) {
         return rdf_ptr->toEditorPtr(xml, type, generate_new_metaids);
     }
 

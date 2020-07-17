@@ -26,7 +26,7 @@ namespace omexmeta {
 
 	class CellMLAssistant {
 		+getValidElements() : std::vector<std::string>& {query}
-		+SemsimXmlAssistant : using SemsimXmlAssistant::
+		+OmexMetaXmlAssistant : using OmexMetaXmlAssistant::
 	}
 
 
@@ -63,7 +63,7 @@ namespace omexmeta {
 
 
 	class Editor {
-		+Editor(const std::string& xml, SemsimXmlType type, librdf_world* world, librdf_model* model, omexmeta::NamespaceMap ns_map)
+		+Editor(const std::string& xml, OmexMetaXmlType type, librdf_world* world, librdf_model* model, omexmeta::NamespaceMap ns_map)
 		+getNamespaces() : NamespaceMap& {query}
 		-triples_ : NestedTriples
 		+getTripleList() : NestedTriples& {query}
@@ -288,7 +288,7 @@ namespace omexmeta {
 		+RDF(const RDF& libRdfModel)
 		+RDF(RDF&& libRdfModel)
 		+~RDF()
-		+toEditor(std::string xml, SemsimXmlType type) : Editor
+		+toEditor(std::string xml, OmexMetaXmlType type) : Editor
 		+{static} init() : LibRDFObjectsTuple
 		+{static} fromFile(std::string filename) : RDF
 		+{static} fromOmex(std::string filename_or_url) : RDF
@@ -428,7 +428,7 @@ namespace omexmeta {
 
 	class SBMLAssistant {
 		+getValidElements() : std::vector<std::string>& {query}
-		+SemsimXmlAssistant : using SemsimXmlAssistant::
+		+OmexMetaXmlAssistant : using OmexMetaXmlAssistant::
 	}
 
 
@@ -543,8 +543,8 @@ namespace omexmeta {
 
 
 
-	class SemsimXmlAssistant {
-		+SemsimXmlAssistant(std::string xml, std::string base, int metaid_num_digits)
+	class OmexMetaXmlAssistant {
+		+OmexMetaXmlAssistant(std::string xml, std::string base, int metaid_num_digits)
 		-metaid_num_digits_ : int
 		+addMetaIds() : std::pair<std::string , std::vector<std::string> >
 		-metaid_base_ : std::string
@@ -558,7 +558,7 @@ namespace omexmeta {
 
 
 	class SemsimXmlAssistantFactory {
-		+{static} generate(const std::string& xml, SemsimXmlType type) : XmlAssistantPtr
+		+{static} generate(const std::string& xml, OmexMetaXmlType type) : XmlAssistantPtr
 	}
 
 
@@ -574,10 +574,10 @@ namespace omexmeta {
 
 
 
-	enum SemsimXmlType {
-		SEMSIM_TYPE_CELLML
-		SEMSIM_TYPE_OTHER
-		SEMSIM_TYPE_SBML
+	enum OmexMetaXmlType {
+		OMEXMETA_TYPE_CELLML
+		OMEXMETA_TYPE_OTHER
+		OMEXMETA_TYPE_SBML
 	}
 
 
@@ -678,12 +678,12 @@ namespace omexmeta {
 
 
 
-	SemsimXmlAssistant <|-- CellMLAssistant
+	OmexMetaXmlAssistant <|-- CellMLAssistant
 
 
 
 
-	SemsimXmlAssistant <|-- SBMLAssistant
+	OmexMetaXmlAssistant <|-- SBMLAssistant
 
 
 
@@ -693,7 +693,7 @@ namespace omexmeta {
 /' Aggregation relationships '/
 
 
-	CellMLAssistant *-- SemsimXmlAssistant
+	CellMLAssistant *-- OmexMetaXmlAssistant
 
 
 
@@ -758,7 +758,7 @@ namespace omexmeta {
 
 
 
-	SBMLAssistant *-- SemsimXmlAssistant
+	SBMLAssistant *-- OmexMetaXmlAssistant
 
 
 
@@ -799,7 +799,7 @@ namespace omexmeta {
 
 
 
-	MetaID <.. SemsimXmlAssistant
+	MetaID <.. OmexMetaXmlAssistant
 
 
 
@@ -1089,17 +1089,17 @@ namespace omexmeta {
 
 
 
-	SemsimXmlAssistant <.. Editor
+	OmexMetaXmlAssistant <.. Editor
 
 
 
 
-	SemsimXmlAssistant <.. RDF
+	OmexMetaXmlAssistant <.. RDF
 
 
 
 
-	SemsimXmlAssistant <.. SemsimXmlAssistantFactory
+	OmexMetaXmlAssistant <.. SemsimXmlAssistantFactory
 
 
 }

@@ -191,6 +191,14 @@ class TestAPI(unittest.TestCase):
 """
         self.assertEqual(expected, actual2)
 
+    def test_rdf_to_file(self):
+        PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        fname = os.path.join(os.path.dirname(__file__), "annotations.rdf")
+        PyOmexMetaAPI.rdf_to_file(self.rdf, "rdfxml-abbrev".encode(), fname.encode())
+        self.assertTrue(os.path.isfile(fname))
+        os.remove(fname)
+
     def test_rdf_to_editor(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0, True)
         self.assertIsInstance(editor_ptr, int)
@@ -1293,7 +1301,6 @@ local:cytosol
             self.assertTrue(i.strip() in actual)
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
-
 
     def test_personal_information_get_metaid(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0, True)

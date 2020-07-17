@@ -6,7 +6,7 @@
 #define LIBOMEXMETA_EDITOR_H
 
 
-#include "omexmeta/SemsimXmlAssistant.h"
+#include "omexmeta/OmexMetaXmlAssistant.h"
 #include "omexmeta/Predicate.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Triple.h"
@@ -82,7 +82,7 @@ namespace omexmeta {
          * @brief constructor for Editor.
          * @param xml The valid xml content for annotation
          * @param create_ids. Autogenerate metaids for xml element that do not already have them
-         * @param SemsimXmlType indicated which type of xml is being annotated. SEMSIM_TYPE_SBML, SEMSIM_TYPE_CELLML or SEMSIM_TYPE_UNKNOWN.
+         * @param OmexMetaXmlType indicated which type of xml is being annotated. OMEXMETA_TYPE_SBML, OMEXMETA_TYPE_CELLML or SEMSIM_TYPE_UNKNOWN.
          * @param model a reference to the current model (owned by RDF).
          * @param nm_map a set of namespaces for current xml
          *
@@ -95,9 +95,9 @@ namespace omexmeta {
          * the user chooses cellml the elements returned by CellMLAssistant::getValidElements()
          * are used. If the type is unknown, then all elements are given metaids.
          */
-//        explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
+//        explicit Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
 //                        const LibrdfModel &model, NamespaceMap &ns_map);
-        explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
+        explicit Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
                         const LibrdfModel &model, NamespaceMap &ns_map, bool generate_new_metaids = false,
                         const std::string& repository_uri = std::string(),
                         const std::string& archive_uri = std::string(),

@@ -8,7 +8,7 @@
 #include "filesystem"
 
 namespace omexmeta {
-//    Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
+//    Editor::Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
 //                   const LibrdfModel &model, NamespaceMap &nsmap)
 //            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {
 //        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
@@ -18,7 +18,7 @@ namespace omexmeta {
 //        metaids_ = xml_and_metaids.second;
 //    }
 
-    Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
+    Editor::Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
                    const LibrdfModel &model, NamespaceMap &nsmap, bool generate_new_metaids,
                    const std::string& repository_uri,
                    const std::string& archive_uri,

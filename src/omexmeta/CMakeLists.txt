@@ -5,7 +5,7 @@ set(OMEXMETA_HEADERS
         "OmexMetaUtils.h"
         "CurlGet.h"
         "RDF.h"
-        "SemsimXmlAssistant.h"
+        "OmexMetaXmlAssistant.h"
 
         "Subject.h"
         "Resource.h"
@@ -24,14 +24,14 @@ set(OMEXMETA_HEADERS
         "AnnotationType.h"
         "Editor.h"
         "OmexMetaCApi.h"
-        PersonalInformation.cpp PersonalInformation.h)
+        PersonalInformation.cpp PersonalInformation.h OmexMeta.h)
 
 set(OMEXMETA_SOURCES
         "OmexMetaUtils.cpp"
         "RDF.cpp"
         "Query.cpp"
         "CurlGet.cpp"
-        "SemsimXmlAssistant.cpp"
+        "OmexMetaXmlAssistant.cpp"
         "Subject.cpp"
         "Resource.cpp"
         "Predicate.cpp"

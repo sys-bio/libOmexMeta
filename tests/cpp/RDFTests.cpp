@@ -299,7 +299,21 @@ TEST_F(RDFTests, TestParseFromFileNonStatic) {
 
     // clear up file we wrote
     std::remove(fname.c_str());
+}
 
+TEST_F(RDFTests, TestWriteToFile) {
+    // first create a file containing annotations
+    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    RDF rdf = RDF::fromString(samples.singular_annotation4);
+    int expected = 1;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+    rdf.toFile("turtle", fname);
+
+    std::filesystem::exists(fname);
+
+    // clear up file we wrote
+    std::remove(fname.c_str());
 }
 
 

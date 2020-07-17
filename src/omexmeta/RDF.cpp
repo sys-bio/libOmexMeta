@@ -5,6 +5,7 @@
 #include "RDF.h"
 
 #include <utility>
+#include <fstream>
 
 
 namespace omexmeta {
@@ -162,10 +163,9 @@ namespace omexmeta {
         return keep_map;
     }
 
-    std::string
-    RDF::toString(const std::string &format,
-                  std::string base_uri, const char *mime_type,
-                  const char *type_uri) {
+    std::string RDF::toString(const std::string &format,
+                              std::string base_uri, const char *mime_type,
+                              const char *type_uri) {
         base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
@@ -178,16 +178,29 @@ namespace omexmeta {
         return serializer.toString(base_uri, model_);
     }
 
+    void
+    RDF::toFile(const std::string &format, const std::string &filename, const char *mime_type, const char *type_uri) {
+        std::string syntax = toString(format, filename, mime_type, type_uri);
+        std::ofstream f(filename);
+        if (f.is_open()) {
+            f << syntax << std::endl;
+            f.flush();
+            f.close();
+        } else {
+            throw std::logic_error("std::logic_error: RDF::toFile: Could not open file for writing. ");
+        }
+    }
+
     librdf_model *RDF::getModel() const {
         return model_.get();
     }
 
-    Editor RDF::toEditor(const std::string &xml, SemsimXmlType type, bool generate_new_metaids) {
+    Editor RDF::toEditor(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids) {
         return Editor(xml, type, false, model_, namespaces_, generate_new_metaids,
                       getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
     }
 
-    Editor *RDF::toEditorPtr(const std::string &xml, SemsimXmlType type, bool generate_new_metaids) {
+    Editor *RDF::toEditorPtr(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids) {
         auto *editor = new Editor(xml, type, false, model_, namespaces_, generate_new_metaids,
                                   getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
         return editor;
@@ -230,7 +243,7 @@ namespace omexmeta {
                     (raptor_option) i
             );
             if (parser_opt) {
-                unsigned char* uri_string1 = raptor_uri_to_string(parser_opt->uri);
+                unsigned char *uri_string1 = raptor_uri_to_string(parser_opt->uri);
                 os << parser_opt->option << "," << parser_opt->name << "," << parser_opt->label << ","
                    << parser_opt->domain
                    << "," << parser_opt->value_type << "," << uri_string1 << std::endl;
@@ -243,7 +256,7 @@ namespace omexmeta {
                         (raptor_option) i
                 );
                 if (serializer_opt) {
-                    unsigned char* uri_string2 = raptor_uri_to_string(serializer_opt->uri);
+                    unsigned char *uri_string2 = raptor_uri_to_string(serializer_opt->uri);
                     os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label
                        << ","
                        << serializer_opt->domain
