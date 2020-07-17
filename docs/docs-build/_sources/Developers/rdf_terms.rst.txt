@@ -2,13 +2,13 @@ LibrdfNode Vs Subject/predicate/resource
 ========================================
 
 There is some duplicated functionality in OmexMeta which arose out of adapting
-the original design to unforeseen complications. `Subject`, `Predicate` and `Resource`
-objects all exist for the primary purpose of instantiating a `LibrdfNode`, which
-contains a `librdf_node*` and is the base component of a `librdf_statement`. The original
-intent was that `Subject`, `Predicate` and `Resource` place another layer of abstraction
-on top of `LibrdfNode` for convenience and quality control - i.e. a `Predicate` can
-only be a `Uri` type node while `Resource` can be any of `blank`, `uri` or `literal`.
-The reality is that `LibrdfNode` is already quite convenient as it has some static methods
+the original design to unforeseen complications. :code:`Subject`, :code:`Predicate` and :code:`Resource`
+objects all exist for the primary purpose of instantiating a :code:`LibrdfNode`, which
+contains a :code:`librdf_node` and is the base component of a :code:`librdf_statement`. The original
+intent was that :code:`Subject`, :code:`Predicate` and :code:`Resource` place another layer of abstraction
+on top of :code:`LibrdfNode` for convenience and quality control - i.e. a :code:`Predicate` can
+only be a :code:`Uri` type node while :code:`Resource` can be any of :code:`blank`, :code:`uri` or :code:`literal`.
+The reality is that :code:`LibrdfNode` is already quite convenient as it has some static methods
 for creating each type of node. For future improvements, it may be good to think about
-how we can consolidate the functionality provided by these two layers (`LibrdfNode` vs
-`Subject/Predicate/Resource`) in the creation of `LibrdfNode`s.
+how we can consolidate the functionality provided by these two layers (:code:`LibrdfNode` vs
+:code:`Subject` `Predicate`, `Resource`) in the creation of :code:`LibrdfNode`.

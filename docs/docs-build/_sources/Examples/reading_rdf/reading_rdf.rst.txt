@@ -212,7 +212,7 @@ Reading from a file
 
         .. code-block::
 
-            Number of annotations in graph: 1
+            Number of annotations in graph: 86
 
     .. tab:: C++
 
@@ -225,7 +225,7 @@ Reading from a file
 
         .. code-block::
 
-            Number of annotations in graph: 1
+            Number of annotations in graph: 86
 
     .. tab:: C
 
@@ -238,7 +238,7 @@ Reading from a file
 
         .. code-block::
 
-            Number of annotations in graph: 1
+            Number of annotations in graph: 86
 
 
 Adding from a file
@@ -257,7 +257,7 @@ Adding from a file
 
         .. code-block::
 
-            Number of annotations in graph: 2
+            Number of annotations in graph: 87
 
     .. tab:: C++
 
@@ -271,7 +271,7 @@ Adding from a file
 
         .. code-block::
 
-            Number of annotations in graph: 2
+            Number of annotations in graph: 87
 
     .. tab:: C
 
@@ -284,22 +284,7 @@ Adding from a file
 
         .. code-block::
 
-            Number of annotations in graph: 2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            Number of annotations in graph: 87
 
 
 

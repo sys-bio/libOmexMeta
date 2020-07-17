@@ -35,7 +35,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Redland Combined" href="redland_combined.html" />
+    <link rel="prev" title="Developing the Python API" href="python_api.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,10 +82,22 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">LibOmexMeta Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developers_index.html">Developers Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="uncopyable_object_problem.html">The “Uncopyable object” problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_system.html">The Error System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freeing_resources.html">Freeing Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation_of_composite_annotations.html">Implementation of Composite Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html">Developing the Python API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LibrdfNode Vs Subject/predicate/resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redland_combined.html">Redland Combined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redland_wrapper.html">Redland Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world_singleton.html">The <cite>World</cite> Singleton</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -130,6 +144,8 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="developers_index.html">Developers Documentation</a> &raquo;</li>
+        
       <li>LibrdfNode Vs Subject/predicate/resource</li>
     
     
@@ -152,16 +168,16 @@
   <div class="section" id="librdfnode-vs-subject-predicate-resource">
 <h1>LibrdfNode Vs Subject/predicate/resource<a class="headerlink" href="#librdfnode-vs-subject-predicate-resource" title="Permalink to this headline">¶</a></h1>
 <p>There is some duplicated functionality in OmexMeta which arose out of adapting
-the original design to unforeseen complications. <cite>Subject</cite>, <cite>Predicate</cite> and <cite>Resource</cite>
-objects all exist for the primary purpose of instantiating a <cite>LibrdfNode</cite>, which
-contains a <cite>librdf_node*</cite> and is the base component of a <cite>librdf_statement</cite>. The original
-intent was that <cite>Subject</cite>, <cite>Predicate</cite> and <cite>Resource</cite> place another layer of abstraction
-on top of <cite>LibrdfNode</cite> for convenience and quality control - i.e. a <cite>Predicate</cite> can
-only be a <cite>Uri</cite> type node while <cite>Resource</cite> can be any of <cite>blank</cite>, <cite>uri</cite> or <cite>literal</cite>.
-The reality is that <cite>LibrdfNode</cite> is already quite convenient as it has some static methods
+the original design to unforeseen complications. <code class="code docutils literal notranslate"><span class="pre">Subject</span></code>, <code class="code docutils literal notranslate"><span class="pre">Predicate</span></code> and <code class="code docutils literal notranslate"><span class="pre">Resource</span></code>
+objects all exist for the primary purpose of instantiating a <code class="code docutils literal notranslate"><span class="pre">LibrdfNode</span></code>, which
+contains a <code class="code docutils literal notranslate"><span class="pre">librdf_node</span></code> and is the base component of a <code class="code docutils literal notranslate"><span class="pre">librdf_statement</span></code>. The original
+intent was that <code class="code docutils literal notranslate"><span class="pre">Subject</span></code>, <code class="code docutils literal notranslate"><span class="pre">Predicate</span></code> and <code class="code docutils literal notranslate"><span class="pre">Resource</span></code> place another layer of abstraction
+on top of <code class="code docutils literal notranslate"><span class="pre">LibrdfNode</span></code> for convenience and quality control - i.e. a <code class="code docutils literal notranslate"><span class="pre">Predicate</span></code> can
+only be a <code class="code docutils literal notranslate"><span class="pre">Uri</span></code> type node while <code class="code docutils literal notranslate"><span class="pre">Resource</span></code> can be any of <code class="code docutils literal notranslate"><span class="pre">blank</span></code>, <code class="code docutils literal notranslate"><span class="pre">uri</span></code> or <code class="code docutils literal notranslate"><span class="pre">literal</span></code>.
+The reality is that <code class="code docutils literal notranslate"><span class="pre">LibrdfNode</span></code> is already quite convenient as it has some static methods
 for creating each type of node. For future improvements, it may be good to think about
-how we can consolidate the functionality provided by these two layers (<cite>LibrdfNode</cite> vs
-<cite>Subject/Predicate/Resource</cite>) in the creation of <a href="#id1"><span class="problematic" id="id2">`</span></a>LibrdfNode`s.</p>
+how we can consolidate the functionality provided by these two layers (<code class="code docutils literal notranslate"><span class="pre">LibrdfNode</span></code> vs
+<code class="code docutils literal notranslate"><span class="pre">Subject</span></code> <cite>Predicate</cite>, <cite>Resource</cite>) in the creation of <code class="code docutils literal notranslate"><span class="pre">LibrdfNode</span></code>.</p>
 </div>
 
 
@@ -169,6 +185,15 @@ how we can consolidate the functionality provided by these two layers (<cite>Lib
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="redland_combined.html" class="btn btn-neutral float-right" title="Redland Combined" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_api.html" class="btn btn-neutral float-left" title="Developing the Python API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
