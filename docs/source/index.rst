@@ -184,6 +184,7 @@ Use `CMake > 15.7 <https://github.com/Kitware/CMake/releases/download/v3.15.7/cm
    background.rst
    Examples/examples.rst
    APIReference/api_reference.rst
+   Developers/developers_index.rst
 
 
 

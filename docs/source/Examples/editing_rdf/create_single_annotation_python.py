@@ -49,13 +49,3 @@ with rdf.to_editor(sbml, "sbml") as editor:
             .set_predicate("dc", "description") \
             .set_resource_literal("This is a toy model for demonstration purposes")
 print(rdf)
-
-
-
-
-
-
-
-
-
-
