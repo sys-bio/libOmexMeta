@@ -343,7 +343,7 @@ class SingularAnnotation:
         return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.singular_annotation_get_about(self._obj))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev")
+        return self.to_string("turtle")
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
         return PyOmexMetaAPI.get_and_free_c_str(
@@ -399,7 +399,7 @@ class PhysicalEntity:
         )
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev")
+        return self.to_string("turtle")
 
     def delete(self) -> None:
         PyOmexMetaAPI.physical_entity_delete(self._obj)
@@ -436,7 +436,7 @@ class PhysicalProcess:
             PyOmexMetaAPI.physical_process_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev")
+        return self.to_string("turtle")
 
     def delete(self) -> None:
         PyOmexMetaAPI.physical_process_delete(self._obj)
@@ -468,7 +468,7 @@ class PhysicalForce:
             PyOmexMetaAPI.physical_force_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev")
+        return self.to_string("turtle")
 
     def delete(self) -> None:
         PyOmexMetaAPI.physical_force_delete(self._obj)

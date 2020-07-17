@@ -43,8 +43,8 @@ rdf = RDF()
 with rdf.to_editor(sbml, "sbml") as editor:
     print(editor.get_metaids())  # prints out model metaids
 
-    with editor.new_singular_annotation() as identity:
-        identity \
+    with editor.new_singular_annotation() as singular_annotation:
+        singular_annotation \
             .set_about('ToyModel') \
             .set_predicate("dc", "description") \
             .set_resource_literal("This is a toy model for demonstration purposes")

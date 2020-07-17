@@ -1,8 +1,6 @@
 #include "omexmeta/RDF.h" // omexmeta::RDF
 #include <cstdio>     // printf
 
-using namespace omexmeta;
-
 int main(){
 
     std::string fname = "/path/to/annotation_file.rdf";

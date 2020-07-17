@@ -41,7 +41,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Serializing RDF Graphs" href="../writing_rdf/writing_rdf.html" />
+    <link rel="prev" title="Background to Semantic Annotations" href="../background.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,8 +88,19 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reading RDF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-string">Reading from a string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-from-a-string">Adding from a string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-uri">Reading from a URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-from-a-uri">Adding from a URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-file">Reading from a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-from-a-file">Adding from a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Creating, removing and editing annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
@@ -1005,12 +1018,8 @@ formats are:</p>
 11
 12
 13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;     // printf</span><span class="cp"></span>
-
-<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 
@@ -1230,6 +1239,15 @@ formats are:</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../writing_rdf/writing_rdf.html" class="btn btn-neutral float-right" title="Serializing RDF Graphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../background.html" class="btn btn-neutral float-left" title="Background to Semantic Annotations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
