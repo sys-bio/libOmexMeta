@@ -347,6 +347,14 @@ RDF graph.
 
         .. code-block::
 
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+            @prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+            local:OmexMetaId0002
+                bqbiol:is <https://identifiers.org/uniprot/P01137> .
 
     .. tab:: C++
 
@@ -359,6 +367,14 @@ RDF graph.
 
         .. code-block::
 
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+            @prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+            myOMEX:OmexMetaId0001
+                bqbiol:is <https://identifiers.org/uniprot/P01137> .
 
     .. tab:: C
 
@@ -370,6 +386,17 @@ RDF graph.
         Output:
 
         .. code-block::
+
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+            @prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+            local:OmexMetaId0002
+                bqbiol:is <https://identifiers.org/uniprot/P01137> .
+
+
 
 And printing the triple before commiting it to the model.
 

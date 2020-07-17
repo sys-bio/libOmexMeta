@@ -368,10 +368,6 @@ TEST(DocTests, SingularAnnotationSerializeWithoutCommitingC) {
     // create editor object
     Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, OMEXMETA_TYPE_SBML, true);
 
-    // Print out metaids to console
-    const char* xml_with_metaids = Editor_getXml(editor_ptr);
-    printf("%s\n", xml_with_metaids);
-
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
@@ -432,10 +428,6 @@ TEST(DocTests, SingularAnnotationSerializeWithoutCommitingCpp) {
 
     // create editor object
     Editor editor = rdf.toEditor(sbml, OMEXMETA_TYPE_SBML, true);
-
-    // Print out metaids to console
-    std::string xml_with_metids = editor.getXml();
-    std::cout << xml_with_metids << std::endl;
 
     // create out annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();

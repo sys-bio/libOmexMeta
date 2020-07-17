@@ -45,10 +45,6 @@ int main(){
     // create editor object
     Editor editor = rdf.toEditor(sbml, OMEXMETA_TYPE_SBML, true);
 
-    // Print out metaids to console
-    std::string xml_with_metids = editor.getXml();
-    std::cout << xml_with_metids << std::endl;
-
     // create out annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
