@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creating, removing and editing annotations &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Creating, removing and editing annotations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/editing_rdf/editing_rdf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-removing-and-editing-annotations">
+<h1>Creating, removing and editing annotations<a class="headerlink" href="#creating-removing-and-editing-annotations" title="Permalink to this headline">¶</a></h1>
+<p>There’s a little more to creating new annotations compared to
+reading and writing them. There are a few additional classes that need
+to be introduced: <cite>Editor</cite>, <cite>SingleAnnotation</cite>, <cite>PersonalInformation</cite>,
+<cite>PhysicalEntity</cite>, <cite>PhysicalProcess</cite> and <cite>PhysicalForce</cite>. This document
+assumes background knowledge in what these different types of annotations are.</p>
+<p>To demonstrate libOmexMeta we first generate a sbml document using
+tellurium and antimony.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tellurium</span> <span class="k">as</span> <span class="nn">te</span>
+<span class="n">ant</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">model ToyModel</span>
+<span class="s2">    compartment cytosol = 1.0;</span>
+<span class="s2">    A in cytosol;</span>
+<span class="s2">    B in cytosol</span>
+<span class="s2">    A = 10;</span>
+<span class="s2">    B = 0;</span>
+<span class="s2">    k1 = 0.1;</span>
+<span class="s2">    k2 = 0.1;</span>
+<span class="s2">    r1: A =&gt; B; k1*A</span>
+<span class="s2">    r1: B =&gt; A; k2*B</span>
+<span class="s2">end&quot;&quot;&quot;</span>
+<span class="n">sbml</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">antimonyToSBML</span><span class="p">(</span><span class="n">ant</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sbml</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which produces:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="c">&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span>
+<span class="nt">&lt;sbml</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.sbml.org/sbml/level3/version1/core&quot;</span> <span class="na">level=</span><span class="s">&quot;3&quot;</span> <span class="na">version=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;model</span> <span class="na">metaid=</span><span class="s">&quot;ToyModel&quot;</span> <span class="na">id=</span><span class="s">&quot;ToyModel&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;listOfCompartments&gt;</span>
+      <span class="nt">&lt;compartment</span> <span class="na">id=</span><span class="s">&quot;cytosol&quot;</span> <span class="na">spatialDimensions=</span><span class="s">&quot;3&quot;</span> <span class="na">size=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/listOfCompartments&gt;</span>
+    <span class="nt">&lt;listOfSpecies&gt;</span>
+      <span class="nt">&lt;species</span> <span class="na">id=</span><span class="s">&quot;A&quot;</span> <span class="na">compartment=</span><span class="s">&quot;cytosol&quot;</span> <span class="na">initialConcentration=</span><span class="s">&quot;10&quot;</span> <span class="na">hasOnlySubstanceUnits=</span><span class="s">&quot;false&quot;</span> <span class="na">boundaryCondition=</span><span class="s">&quot;false&quot;</span> <span class="na">constant=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;species</span> <span class="na">id=</span><span class="s">&quot;B&quot;</span> <span class="na">compartment=</span><span class="s">&quot;cytosol&quot;</span> <span class="na">initialConcentration=</span><span class="s">&quot;0&quot;</span> <span class="na">hasOnlySubstanceUnits=</span><span class="s">&quot;false&quot;</span> <span class="na">boundaryCondition=</span><span class="s">&quot;false&quot;</span> <span class="na">constant=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/listOfSpecies&gt;</span>
+    <span class="nt">&lt;listOfParameters&gt;</span>
+      <span class="nt">&lt;parameter</span> <span class="na">id=</span><span class="s">&quot;k1&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;parameter</span> <span class="na">id=</span><span class="s">&quot;k2&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/listOfParameters&gt;</span>
+    <span class="nt">&lt;listOfReactions&gt;</span>
+      <span class="nt">&lt;reaction</span> <span class="na">id=</span><span class="s">&quot;r1&quot;</span> <span class="na">reversible=</span><span class="s">&quot;false&quot;</span> <span class="na">fast=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;listOfReactants&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;B&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/listOfReactants&gt;</span>
+        <span class="nt">&lt;listOfProducts&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;A&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/listOfProducts&gt;</span>
+        <span class="nt">&lt;kineticLaw&gt;</span>
+          <span class="nt">&lt;math</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;apply&gt;</span>
+              <span class="nt">&lt;times/&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> k2 <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> B <span class="nt">&lt;/ci&gt;</span>
+            <span class="nt">&lt;/apply&gt;</span>
+          <span class="nt">&lt;/math&gt;</span>
+        <span class="nt">&lt;/kineticLaw&gt;</span>
+      <span class="nt">&lt;/reaction&gt;</span>
+    <span class="nt">&lt;/listOfReactions&gt;</span>
+  <span class="nt">&lt;/model&gt;</span>
+<span class="nt">&lt;/sbml&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="creating-a-single-annotation">
+<h2>Creating a single annotation<a class="headerlink" href="#creating-a-single-annotation" title="Permalink to this headline">¶</a></h2>
+<p>A SingularAnnotation object is a typedef’d <cite>omexmeta::Triple</cite> object which is essentially
+a wrapper around the <cite>librdf_statement*</cite> object from the Redland Libraries. In this example
+we create a simple singular annotation for the top level <cite>model</cite> element of the sbml. We also
+add this annotation to our RDF graph and serialize to Turtle syntax.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Create a single annotation in Python</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">SingularAnnotation</span>
+
+<span class="n">sbml</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="s2">&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span>
+<span class="s2">&lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;</span>
+<span class="s2">  &lt;model metaid=&quot;ToyModel&quot; id=&quot;ToyModel&quot;&gt;</span>
+<span class="s2">    &lt;listOfCompartments&gt;</span>
+<span class="s2">      &lt;compartment id=&quot;cytosol&quot; spatialDimensions=&quot;3&quot; size=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">    &lt;/listOfCompartments&gt;</span>
+<span class="s2">    &lt;listOfSpecies&gt;</span>
+<span class="s2">      &lt;species id=&quot;A&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;</span>
+<span class="s2">      &lt;species id=&quot;B&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;</span>
+<span class="s2">    &lt;/listOfSpecies&gt;</span>
+<span class="s2">    &lt;listOfParameters&gt;</span>
+<span class="s2">      &lt;parameter id=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">      &lt;parameter id=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">    &lt;/listOfParameters&gt;</span>
+<span class="s2">    &lt;listOfReactions&gt;</span>
+<span class="s2">      &lt;reaction id=&quot;r1&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;</span>
+<span class="s2">        &lt;listOfReactants&gt;</span>
+<span class="s2">          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">        &lt;/listOfReactants&gt;</span>
+<span class="s2">        &lt;listOfProducts&gt;</span>
+<span class="s2">          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">        &lt;/listOfProducts&gt;</span>
+<span class="s2">        &lt;kineticLaw&gt;</span>
+<span class="s2">          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;</span>
+<span class="s2">            &lt;apply&gt;</span>
+<span class="s2">              &lt;times/&gt;</span>
+<span class="s2">              &lt;ci&gt; k2 &lt;/ci&gt;</span>
+<span class="s2">              &lt;ci&gt; B &lt;/ci&gt;</span>
+<span class="s2">            &lt;/apply&gt;</span>
+<span class="s2">          &lt;/math&gt;</span>
+<span class="s2">        &lt;/kineticLaw&gt;</span>
+<span class="s2">      &lt;/reaction&gt;</span>
+<span class="s2">    &lt;/listOfReactions&gt;</span>
+<span class="s2">  &lt;/model&gt;</span>
+<span class="s2">&lt;/sbml&gt;&quot;&quot;&quot;</span>
+
+<span class="c1"># create an empty RDF object</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="n">sbml</span><span class="p">,</span> <span class="s2">&quot;sbml&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">editor</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">editor</span><span class="o">.</span><span class="n">get_metaids</span><span class="p">())</span>  <span class="c1"># prints out model metaids</span>
+
+    <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">identity</span><span class="p">:</span>
+        <span class="n">identity</span> \
+            <span class="o">.</span><span class="n">set_about</span><span class="p">(</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">set_resource_literal</span><span class="p">(</span><span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">]</span>
+<span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">dcterms</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">purl</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dc</span><span class="o">/</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">ToyModel</span>
+    <span class="n">dcterms</span><span class="p">:</span><span class="n">description</span> <span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">string</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Create a single annotation in C++</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/omexmeta.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sbml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.0</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;&lt;sbml xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.sbml.org/sbml/level3/version1/core</span><span class="se">\&quot;</span><span class="s"> level=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> version=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s">ToyModel</span><span class="se">\&quot;</span><span class="s"> id=</span><span class="se">\&quot;</span><span class="s">ToyModel</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">cytosol</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;/listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cytosol</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">10</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cytosol</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;/listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k1</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k2</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;/listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;listOfReactions&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">r1</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; k2 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; B &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;    &lt;/listOfReactions&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;  &lt;/model&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;&lt;/sbml&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// create an empty RDF object</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">();</span>
+
+    <span class="c1">// create editor object</span>
+    <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toEditor</span><span class="p">(</span><span class="n">sbml</span><span class="p">,</span> <span class="n">OMEXMETA_TYPE_SBML</span><span class="p">);</span>
+
+    <span class="c1">// Print out metaids to console</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">metaids</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">getMetaids</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">id</span><span class="p">:</span> <span class="n">metaids</span><span class="p">){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">// create out annotation</span>
+    <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
+    <span class="n">singular_annotation</span>
+        <span class="p">.</span><span class="n">setAbout</span><span class="p">(</span><span class="s">&quot;ToyModel&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;dc&quot;</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setResourceLiteral</span><span class="p">(</span><span class="s">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">);</span>
+
+    <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
+
+    <span class="c1">// The Singular annotation object contains a dynamically allocated</span>
+    <span class="c1">// librdf_statement* from the redland libraries which must be freed</span>
+    <span class="c1">// by the caller. Now we&#39;ve use the singular_annotation object</span>
+    <span class="c1">// we can release the used memory.</span>
+    <span class="n">singular_annotation</span><span class="p">.</span><span class="n">freeTriple</span><span class="p">();</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ToyModel</span><span class="p">,</span>
+<span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">dcterms</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">purl</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dc</span><span class="o">/</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#ToyModel&gt;</span>
+    <span class="n">dcterms</span><span class="p">:</span><span class="n">description</span> <span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">string</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Create a single annotation in C</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/omexmeta.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sbml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.0</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;&lt;sbml xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.sbml.org/sbml/level3/version1/core</span><span class="se">\&quot;</span><span class="s"> level=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> version=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s">ToyModel</span><span class="se">\&quot;</span><span class="s"> id=</span><span class="se">\&quot;</span><span class="s">ToyModel</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">cytosol</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;/listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cytosol</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">10</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cytosol</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;/listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k1</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k2</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;/listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;listOfReactions&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">r1</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;        &lt;kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;              &lt;ci&gt; k2 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;              &lt;ci&gt; B &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;    &lt;/listOfReactions&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;  &lt;/model&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                   <span class="s">&quot;&lt;/sbml&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// create an empty RDF object</span>
+    <span class="n">RDF</span> <span class="o">*</span><span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_new</span><span class="p">();</span>
+
+    <span class="c1">// create editor object</span>
+    <span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span> <span class="o">=</span> <span class="n">RDF_toEditor</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="n">sbml</span><span class="p">,</span> <span class="n">OMEXMETA_TYPE_SBML</span><span class="p">);</span>
+
+    <span class="c1">// Print out metaids to console</span>
+    <span class="kt">int</span> <span class="n">number_of_metaids</span> <span class="o">=</span> <span class="n">Editor_getNumMetaIds</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">number_of_metaids</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">Editor_getMetaId</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">// create out annotation</span>
+    <span class="n">SingularAnnotation</span> <span class="o">*</span><span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">SingularAnnotation_new</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_setAbout</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;ToyModel&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_setPredicate</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;dc&quot;</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_setResourceLiteral</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">);</span>
+
+    <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
+    <span class="n">Editor_addSingleAnnotation</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">singular_annotation</span><span class="p">);</span>
+
+    <span class="c1">// generate the string</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">single_annotation_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">,</span> <span class="s">&quot;base_uri&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">single_annotation_string</span><span class="p">);</span>
+
+    <span class="n">free</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">single_annotation_string</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_delete</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
+    <span class="n">Editor_delete</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ToyModel</span><span class="p">,</span>
+<span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">dcterms</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">purl</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dc</span><span class="o">/</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#ToyModel&gt;</span>
+    <span class="n">dcterms</span><span class="p">:</span><span class="n">description</span> <span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">string</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first thing to notice is that the sbml string only has a
+single metaid called <cite>ToyModel</cite> as the metaid of the model attribute.
+Metaids are essential for annotation, given that you cannot annotate an
+element that does not have a metaid.</p>
+<p>Next we talk about metaid generation so we can annotate the other elements.</p>
+<p>And printing the triple before commiting it to the model.</p>
+<p>And talk about how the subject, predicate and resource objects work.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

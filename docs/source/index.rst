@@ -182,7 +182,9 @@ Use `CMake > 15.7 <https://github.com/Kitware/CMake/releases/download/v3.15.7/cm
    :hidden:
 
    background.rst
-   Examples/examples.rst
+   reading_rdf/reading_rdf.rst
+   writing_rdf/writing_rdf.rst
+   editing_rdf/editing_rdf.rst
    APIReference/api_reference.rst
    Developers/developers_index.rst
 
