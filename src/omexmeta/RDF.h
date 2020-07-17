@@ -6,7 +6,7 @@
 #define LIBOMEXMETA_RDF_H
 
 #include <unordered_map>
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "Editor.h"
 

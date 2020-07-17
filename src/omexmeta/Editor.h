@@ -15,7 +15,7 @@
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/PhysicalForce.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/PersonalInformation.h"

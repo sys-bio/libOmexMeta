@@ -1,0 +1,24 @@
+@startuml
+
+
+class SubjectNode {
+    UriNode
+    BlankNode
+}
+
+class PredicateNode {
+    UriNode
+}
+
+class ResourceNode {
+    UriNode
+    BlankNode
+    LiteralNode
+}
+
+Statement <-- SubjectNode
+Statement <-- PredicateNode
+Statement <-- ResourceNode
+
+
+@enduml

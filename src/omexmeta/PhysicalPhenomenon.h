@@ -13,7 +13,7 @@
 #include "omexmeta/MetaID.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/Query.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "HERE.h"
 
 using namespace redland;

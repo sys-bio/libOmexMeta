@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "omexmeta/PersonalInformation.h"
 
 using namespace omexmeta;

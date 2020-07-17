@@ -10,7 +10,7 @@
 #include "omexmeta/Subject.h"
 #include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/MetaID.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include <utility>
 #include "omexmeta/Triple.h"
 #include "omexmeta/Query.h"

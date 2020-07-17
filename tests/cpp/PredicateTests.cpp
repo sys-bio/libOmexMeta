@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "omexmeta/Predicate.h"
 
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 
 using namespace omexmeta;
 

@@ -9,7 +9,7 @@
 #include "omexmeta/Predicate.h"
 #include "omexmeta/Subject.h"
 #include "omexmeta/Resource.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "omexmeta/Error.h"
 #include <vector>
 

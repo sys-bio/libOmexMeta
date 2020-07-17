@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 #include "librdf.h"
 
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 
 using namespace omexmeta;
 

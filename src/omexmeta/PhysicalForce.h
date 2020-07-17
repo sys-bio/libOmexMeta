@@ -13,7 +13,7 @@
 
 #include "PhysicalPhenomenon.h"
 #include "Participant.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include <vector>
 #include "Participant.h"
 #include "PhysicalProperty.h"

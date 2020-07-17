@@ -6,7 +6,7 @@
 #define LIBOMEXMETA_METAID_H
 
 #include <string>
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include <sstream>
 #include <utility>
 #include <iostream>

@@ -1,0 +1,25 @@
+@startuml
+
+class BlankNode {
+    Disjoint from
+    literal or uri nodes
+    but otherwise arbitrary
+}
+
+class LiteralNode {
+    Literals are used for values
+     such as strings, numbers, and dates.
+}
+
+class UriNode {
+    "http://example.org/"
+}
+
+class Node
+
+Node <-- BlankNode
+Node <-- LiteralNode
+Node <-- UriNode
+
+
+@enduml

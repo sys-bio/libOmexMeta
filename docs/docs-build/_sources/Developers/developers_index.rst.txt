@@ -3,8 +3,8 @@ Developers Documentation
 =============================
 
 .. toctree::
-    :maxdepth: 2
-    :caption: Contents:
+    :maxdepth: 1
+    :hidden:
 
     uncopyable_object_problem.rst
     error_system.rst
@@ -13,7 +13,7 @@ Developers Documentation
     python_api.rst
     rdf_terms.rst
     redland_combined.rst
-    redland_wrapper.rst
     world_singleton
+    RedlandWrapper/redland_wrapper_index.rst
 
 

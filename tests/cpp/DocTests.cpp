@@ -8,7 +8,7 @@
 
 using namespace omexmeta;
 
-TEST(DocTests, TestEditorCreateSingleAnnotationCPP){
+TEST(DocTests, TestEditorCreateSingleAnnotationCPP) {
     std::string sbml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                        "<!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. -->\n"
                        "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
@@ -54,17 +54,17 @@ TEST(DocTests, TestEditorCreateSingleAnnotationCPP){
 
     // Print out metaids to console
     std::vector<std::string> metaids = editor.getMetaids();
-    for (auto &id: metaids){
-    std::cout << id << ", ";
+    for (auto &id: metaids) {
+        std::cout << id << ", ";
     }
     std::cout << std::endl;
 
     // create out annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
-        .setAbout("ToyModel")
-        .setPredicate("dc", "description")
-        .setResourceLiteral("This is a toy model for demonstration purposes");
+            .setAbout("ToyModel")
+            .setPredicate("dc", "description")
+            .setResourceLiteral("This is a toy model for demonstration purposes");
 
     // in C/C++ we need to manually add the annotation to the editor
     editor.addSingleAnnotation(singular_annotation);
@@ -138,7 +138,7 @@ TEST(DocTests, TestEditorCreateSingleAnnotationC) {
     Editor_addSingleAnnotation(editor_ptr, singular_annotation);
 
     // generate the string
-    const char* single_annotation_string = RDF_toString(rdf_ptr, "turtle", "base_uri");
+    const char *single_annotation_string = RDF_toString(rdf_ptr, "turtle", "base_uri");
     printf("%s", single_annotation_string);
 
     free((void *) single_annotation_string);
@@ -146,5 +146,44 @@ TEST(DocTests, TestEditorCreateSingleAnnotationC) {
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
 
+}
+
+TEST(DocTests, QuickExampleOfRedlandAPI) {
+    librdf_world *world = librdf_new_world();
+    librdf_storage *storage = librdf_new_storage(world, "memory", "SemsimMemoryStore", nullptr);
+    librdf_model *model = librdf_new_model(world, storage, nullptr);
+
+    librdf_statement *statement = librdf_new_statement_from_nodes(
+            world,
+            librdf_new_node_from_uri_string(
+                    world, (const unsigned char *) "https://subject.com"),
+            librdf_new_node_from_uri_string(
+                    world,
+                    (const unsigned char *) "https://predicate.com"),
+            librdf_new_node_from_uri_string(
+                    world,
+                    (const unsigned char *) "https://resource.com")
+    );
+
+    librdf_model_add_statement(model, statement);
+    librdf_free_statement(statement);
+    librdf_free_storage(storage);
+    librdf_free_model(model);
+    librdf_free_world(world);
+}
+
+
+TEST(DocTests, QuickExampleOfHowIveChangedIt) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
+    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("https//subject.com").get(),
+            LibrdfNode::fromUriString("https//predicate.com").get(),
+            LibrdfNode::fromUriString("https//resource.com").get()
+    );
+    model.addStatement(statement);
+    statement.freeStatement();
+    model.freeModel();
+    storage.freeStorage();
 }
 

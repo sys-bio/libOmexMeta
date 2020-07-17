@@ -5,7 +5,7 @@
 #ifndef LIBOMEXMETA_QUERY_H
 #define LIBOMEXMETA_QUERY_H
 
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/OmexMetaUtils.h"
 //#include "omexmeta/Triple.h"

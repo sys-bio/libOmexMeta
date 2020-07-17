@@ -9,7 +9,7 @@
 #include "omexmeta/Error.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
-#include "RedlandAPIWrapper.h"
+#include "RedlandWrapper.h"
 #include "Triple.h"
 #include "Triples.h"
 #include <regex>
