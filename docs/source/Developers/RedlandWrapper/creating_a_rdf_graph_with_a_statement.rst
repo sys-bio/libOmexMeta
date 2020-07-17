@@ -10,13 +10,14 @@ Redland API and the Redland Wrapper.
 
 .. tabs::
 
-    .. tab:: The Redland Wrapper
+    .. tab:: The Redland Library: librdf
 
         .. literalinclude:: creating_a_rdf_graph_with_a_statement_redland.c
             :linenos:
             :language: C
             :caption: Create a triple store, an RDF model and add a triple to the model, using the librdf redland API.
 
+    .. tab:: The Redland Wrapper
 
         .. literalinclude:: creating_a_rdf_graph_with_a_statement_wrapper.cpp
             :linenos:
