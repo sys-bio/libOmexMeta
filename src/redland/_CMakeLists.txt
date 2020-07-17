@@ -14,7 +14,7 @@ SET(RAPTOR_SOURCE_DIR ${RAPTOR_DIR}/src)
 SET(RASQAL_SOURCE_DIR ${RASQAL_DIR}/src)
 SET(LIBRDF_SOURCE_DIR ${LIBRDF_DIR}/src)
 
-SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
+SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandWrapper)
 SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
@@ -364,7 +364,7 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfUri.h
         ${WRAPPER_SOURCE_DIR}/RaptorIOStream.cpp
         ${WRAPPER_SOURCE_DIR}/RaptorIOStream.h
-        ${WRAPPER_SOURCE_DIR}/RedlandAPIWrapper.h
+        ${WRAPPER_SOURCE_DIR}/RedlandWrapper.h
         ${WRAPPER_SOURCE_DIR}/World.cpp
         ${WRAPPER_SOURCE_DIR}/World.h
         ${WRAPPER_SOURCE_DIR}/LibrdfException.h
@@ -429,7 +429,7 @@ INSTALL(
 option(BUILD_WRAPPER_TESTS "Build the tests for the redland api wrapper" OFF)
 
 if (${BUILD_WRAPPER_TESTS})
-    add_subdirectory(RedlandAPIWrapper/test)
+    add_subdirectory(RedlandWrapper/test)
 endif ()
 
 

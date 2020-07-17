@@ -72,7 +72,7 @@ after_success:
 #  - codecov # submit coverage : for python. No work.
   - gcovr -r .. -v  -e ${TRAVIS_BUILD_DIR}/src/redland/RedlandWrapperAPI/test --html-details --json-pretty {TRAVIS_BUILD_DIR}/src/omexmeta ${TRAVIS_BUILD_DIR}/src/omexmeta ${TRAVIS_BUILD_DIR}/src/redland/RedlandWrapperAPI/
   - bash <(curl -s https://codecov.io/bash) -t 03230181-dc42-4e8c-b1f6-46699ee5d066 -R /home/travis/docs-build/sys-bio/libOmexMeta
-  - coveralls --exclude tests --gcov-options '\-lp' -r ${TRAVIS_BUILD_DIR} -b ${TRAVIS_BUILD_DIR}/docs-build -i ${TRAVIS_BUILD_DIR}/docs-build/src/omexmeta/ -i ${TRAVIS_BUILD_DIR}/docs-build/src/redland/RedlandAPIWrapper -e ${TRAVIS_BUILD_DIR}/docs-build/src/redland/RedlandAPIWrapper/test -t LIcCj7cYF1DBxqHO80fauUQCiKkSsfBfC
+  - coveralls --exclude tests --gcov-options '\-lp' -r ${TRAVIS_BUILD_DIR} -b ${TRAVIS_BUILD_DIR}/docs-build -i ${TRAVIS_BUILD_DIR}/docs-build/src/omexmeta/ -i ${TRAVIS_BUILD_DIR}/docs-build/src/redland/RedlandWrapper -e ${TRAVIS_BUILD_DIR}/docs-build/src/redland/RedlandWrapper/test -t LIcCj7cYF1DBxqHO80fauUQCiKkSsfBfC
 
 
 #An example travis file : https://github.com/hpnog/computingProblems/blob/master/.travis.yml

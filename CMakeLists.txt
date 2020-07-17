@@ -329,7 +329,7 @@ set(INCLUDE_DIRECTORIES
         ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
 
         # wrapper includes
-        ${CMAKE_SOURCE_DIR}/src/redland/RedlandAPIWrapper/src
+        ${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src
 
         # libomexmeta includes
         ${CMAKE_SOURCE_DIR}/src
@@ -392,7 +392,7 @@ if (BUILD_TESTS)
                     ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
                     ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
                     ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
-                    ${CMAKE_BINARY_DIR}/src/redland/RedlandAPIWrapper/test
+                    ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
                     ${CMAKE_SOURCE_DIR}/tests
                     ${CMAKE_SOURCE_DIR}/test
                     ${CMAKE_SOURCE_DIR}/third_party

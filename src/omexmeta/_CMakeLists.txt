@@ -25,8 +25,8 @@ set(SEMSIM_HEADERS
         "SemsimCApi.h"
         #        "HERE.h"
         #        Log.h
-        #        RedlandAPIWrapper/RaptorIOStream.cpp
-        #        RedlandAPIWrapper/RaptorIOStream.h
+        #        RedlandWrapper/RaptorIOStream.cpp
+        #        RedlandWrapper/RaptorIOStream.h
         #        "_Reader.h"
         #        "Writer.h"
         #                "SemSim.h"

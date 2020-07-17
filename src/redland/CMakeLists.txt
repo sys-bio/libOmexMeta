@@ -14,7 +14,7 @@ project(redland-libraries-combined)
 SET(RAPTOR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/raptor2-2.0.15)
 SET(RASQAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/rasqal-0.9.33)
 SET(LIBRDF_DIR ${CMAKE_CURRENT_SOURCE_DIR}/redland-1.0.17)
-SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
+SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandWrapper)
 
 SET(RAPTOR_SOURCE_DIR ${RAPTOR_DIR}/src)
 SET(RASQAL_SOURCE_DIR ${RASQAL_DIR}/src)
@@ -384,7 +384,7 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfUri.h
         ${WRAPPER_SOURCE_DIR}/RaptorIOStream.cpp
         ${WRAPPER_SOURCE_DIR}/RaptorIOStream.h
-        ${WRAPPER_SOURCE_DIR}/RedlandAPIWrapper.h
+        ${WRAPPER_SOURCE_DIR}/RedlandWrapper.h
         ${WRAPPER_SOURCE_DIR}/World.cpp
         ${WRAPPER_SOURCE_DIR}/World.h
         ${WRAPPER_SOURCE_DIR}/LibrdfException.h
@@ -454,7 +454,7 @@ endif ()
 
 # When BUILD_TESTS is on, add the tests
 if (BUILD_TESTS)
-    add_subdirectory(RedlandAPIWrapper/test)
+    add_subdirectory(RedlandWrapper/test)
 endif ()
 
 # On windows I run into trouble trying to link to

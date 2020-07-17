@@ -27,7 +27,7 @@ parsers:
 #  - src/redland/raptor2-2.0.15/**/*
 #  - src/redland/rasqal-0.9.33/**/*
 #  - src/redland/redland-1.0.17/**/*
-#  - src/redland/RedlandAPIWrapper/test/*
+#  - src/redland/RedlandWrapper/test/*
 #  - cmake-docs-build-release-wsl-ubuntu1804/**/*
 #  - third_party/**/*
 #  - cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
@@ -39,7 +39,7 @@ parsers:
 #  - ${HOME}/libOmexMeta/src/redland/raptor2-2.0.15/**/*
 #  - ${HOME}/libOmexMeta/src/redland/rasqal-0.9.33/**/*
 #  - ${HOME}/libOmexMeta/src/redland/redland-1.0.17/**/*
-#  - ${HOME}/libOmexMeta/src/redland/RedlandAPIWrapper/test/*
+#  - ${HOME}/libOmexMeta/src/redland/RedlandWrapper/test/*
 #  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/**/*
 #  - ${HOME}/libOmexMeta/third_party/**/*
 #  - ${HOME}/libOmexMeta/cmake-docs-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*

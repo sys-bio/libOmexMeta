@@ -7,7 +7,7 @@
 find_package(Doxygen REQUIRED)
 
 set(DOXYGEN_INPUT_DIR1 "${CMAKE_SOURCE_DIR}/src/semsim")
-set(DOXYGEN_INPUT_DIR2 "${CMAKE_SOURCE_DIR}/src/redland/RedlandAPIWrapper/src")
+set(DOXYGEN_INPUT_DIR2 "${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src")
 set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/cpp")
 set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.xml)
 set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)

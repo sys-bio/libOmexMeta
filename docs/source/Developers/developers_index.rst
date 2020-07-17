@@ -6,6 +6,7 @@ Developers Documentation
     :maxdepth: 1
     :hidden:
 
+    RedlandWrapper/redland_wrapper_index.rst
     uncopyable_object_problem.rst
     error_system.rst
     freeing_resources.rst
@@ -14,6 +15,5 @@ Developers Documentation
     rdf_terms.rst
     redland_combined.rst
     world_singleton
-    RedlandWrapper/redland_wrapper_index.rst
 
 
