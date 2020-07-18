@@ -283,7 +283,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         PyOmexMetaAPI.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
         singular_annotation = PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
-        singular_annotation = PyOmexMetaAPI.singular_annotation_set_predicate_uri(singular_annotation,
+        singular_annotation = PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(singular_annotation,
                                                                                   "https://predicate.com/from/uri".encode())
         singular_annotation = PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation,
                                                                                  "http://uri.com".encode())
@@ -629,7 +629,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
     def test_singular_annotation_predicate_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0, True)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_predicate_uri(singular_annotation,
+        PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(singular_annotation,
                                                             "https://predicate.com/from/uri".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_predicate(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)

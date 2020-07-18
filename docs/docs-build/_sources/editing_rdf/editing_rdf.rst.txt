@@ -1,5 +1,6 @@
-Creating, removing and editing annotations
-============================================
+===================
+Editing Annotations
+===================
 
 There's a little more to creating new annotations compared to
 reading and writing them. There are a few additional classes that need
@@ -70,13 +71,16 @@ Which produces:
     </sbml>
 
 
-Creating a single annotation
-----------------------------
+Creating Single Annotations
+===========================
 
 A SingularAnnotation object is a typedef'd `omexmeta::Triple` object which is essentially
 a wrapper around the `librdf_statement*` object from the Redland Libraries. In this example
 we create a simple singular annotation for the top level `model` element of the sbml. We also
 add this annotation to our RDF graph and serialize to Turtle syntax.
+
+Simple example of creating a single annotation
+----------------------------------------------
 
 .. tabs::
 
@@ -147,10 +151,14 @@ add this annotation to our RDF graph and serialize to Turtle syntax.
 The first thing to notice is that the sbml string only has a
 single metaid called `ToyModel`, which is the metaid of the model element.
 Metaids are essential for annotation, given that you cannot annotate an
-element that does not have a metaid. If only some of your model elements have metaids,
-you can use the third argument to `toEditor` which defaults
+element that does not have a metaid.
 
+Using the `generate_new_metaids` argument
+-----------------------------------------
 
+If only some of your model elements have metaids,
+you can use the third argument to `toEditor`  to automatically
+create metaids
 
 .. tabs::
 
@@ -326,13 +334,14 @@ you can use the third argument to `toEditor` which defaults
             local:OmexMetaId0001
                 bqbiol:is <https://identifiers.org/uniprot/P01137> .
 
+Creating and Serializing a Single Annotation without adding to the model
+------------------------------------------------------------------------
 
 In the previous examples, we added the singular annotation we had just constructed to the
 RDF graph and then serialized the RDF graph to turtle syntax. It is also
 possible to serialize a singular annotation (a typedef'd Triple) and a
 set of annotations (a Triples class) without adding the annotations to the
 RDF graph.
-
 
 .. tabs::
 
@@ -397,10 +406,283 @@ RDF graph.
                 bqbiol:is <https://identifiers.org/uniprot/P01137> .
 
 
+Subjects, Predicates and Resources
+==================================
 
-And printing the triple before commiting it to the model.
+Singular annotations are Triples or RDF statements. Therefore  by definition
+they are composed of three nodes (or terms): the subject, the predicate and the
+resource. For a more detailed description of what these are, please
+refer to the `RDF 1.1: Concepts and Abstract Syntax document <https://www.w3.org/TR/rdf11-concepts/>`_.
+The RDF is a very general framework for storing information. In libOmexMeta
+we have restricted this generality in accordance with the OmexMeta specification
+1.1.
 
-And talk about how the subject, predicate and resource objects work.
+Subject
+---------
+
+A subject in libOmexMeta is the metaid of the element being element appended onto
+the local namespace. In RDF, the subject is the value of the `about` attribute. To set
+the subject of an annotation in libOmexMeta, use the `setAbout()` method. Although
+we focus on singular annotations here, this generalizes to the other
+of annotations supported by libOmexMeta.
+
+In this example, we have forced the generation of new metaids, which defaults
+to `#OmexMetaId` followed by a 4 digit number. Hence the metaid `#OmexMetaId0002`
+exists and is the metaid for the `Species` element with the name `"A"`
+(see xml above).
+
+.. warning::
+
+    The following example is not a complete example. It will fail because
+    a SingularAnnotation is only valid when all three of subject, predicate and
+    resource are specified. For brevity, we assume `sbml` is the same as in the
+    above examples.
+
+.. tabs:
+
+    .. tab: Python
+
+        .. code-block:: Python
+            :linenos:
+            :caption: Set the subject portion of the RDF triple in Python.
+
+            rdf = RDF()
+
+            with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+                with editor.new_singular_annotation() as singular_annotation:
+                    singular_annotation.set_about('#OmexMetaId0002')
+
+        .. code-block:: C++
+            :linenos:
+            :caption: Set the subject portion of the RDF triple in C++.
+
+            RDF rdf;
+            Editor editor = rdf.toEditor(sbml, "sbml", false);
+            SingularAnnotation singular_annotation = editor.newSingularAnnotation();
+            singular_annotation.setAbout("#OmexMetaId0002")
+
+        .. code-block:: C
+            :linenos:
+            :caption: Set the subject portion of the RDF triple in C.
+
+            // create an empty RDF object
+            RDF *rdf_ptr = RDF_new();
+
+            // create editor object
+            Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, OMEXMETA_TYPE_SBML, true);
+
+            // create out annotation
+            SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
+            SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
+
+
+However, leaving `generate_new_metaids=False` (the default) causes an error,
+because the metaid `#OmexMetaId0002` was not found in your model.
+
+
+.. tabs:
+
+    .. tab: Python
+
+        .. code-block:: Python
+            :linenos:
+            :caption: Raise error whilst setting the subject portion of the RDF triple in Python.
+
+            rdf = RDF()
+
+            with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+                with editor.new_singular_annotation() as singular_annotation:
+                    singular_annotation.set_about('#OmexMetaId0002')
+
+
+        .. code-block:: C++
+            :linenos:
+            :caption: Raise error whilst setting the subject portion of the RDF triple in C++.
+
+            RDF rdf;
+            Editor editor = rdf.toEditor(sbml, "sbml", false);
+            SingularAnnotation singular_annotation = editor.newSingularAnnotation();
+            singular_annotation.setAbout("#OmexMetaId0002")
+
+        .. code-block:: C
+            :linenos:
+            :caption: Raise error whilst setting the subject portion of the RDF triple in C.
+
+            // create an empty RDF object
+            RDF *rdf_ptr = RDF_new();
+
+            // create editor object
+            Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, OMEXMETA_TYPE_SBML, false);
+
+            // create out annotation
+            SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
+            SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
+
+
+Predicate
+---------
+
+Predicates in libOmexMeta are all subclasses of the Predicate class. Existing predicate
+classes include `BiomodelsBiologyQualifier`, `BiomodelsBiologyQualifier`,
+`DCTerm`, `SemSim` and `Foaf`. For convenience, these predicate classes
+are only ever instantiated using a Factory method, which takes two string arguments:
+the namespace and the term, i.e:
+
+.. list-table:: Build in namespaces and prefixes for Predicates.
+    :widths: 25 25
+    :header-rows: 1
+
+    * - Namespace
+      - Prefix
+    * - http://xmlns.com/foaf/0.1/
+      - foaf
+    * - https://dublincore.org/specifications/dublin-core/dcmi-terms/
+      - dc
+    * - http://biomodels.net/model-qualifiers/"
+      - bqmodel
+    * - http://biomodels.net/biology-qualifiers/"
+      - bqbiol
+    * - http://www.bhi.washington.edu/semsim#"
+      - semsim
+
+Each of these namespaces are referred to by their prefix. The term portion
+of the predicates are by defined by the namespace you are using and can easily
+be googled. An alternative strategy however, is simply to "get it wrong"
+and run your program and you will be provided with a full list of available
+terms for the prefix you are using.
+
+.. warning::
+
+    The following example will fail because the singular annotations
+    built are not complete.
+
+.. tabs:
+
+    .. tab: Python
+
+        .. code-block:: Python
+            :linenos:
+            :caption: Setting the Predicate portion of a singular annotation in Python
+
+            rdf = RDF()
+
+            with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+
+                # build an annotation with bqbiol predicate
+                with editor.new_singular_annotation() as bqbiol_singular_annotation:
+                    bqbiol_singular_annotation.set_predicate('bqbiol', 'is')
+
+                # build an annotation with bqmodel predicate
+                with editor.new_singular_annotation() as bqmodel_singular_annotation:
+                    bqmodel_singular_annotation.set_predicate('bqmodel', 'isDerivedFrom')
+
+                # build an annotation with dcterm predicate
+                with editor.new_singular_annotation() as dc_singular_annotation:
+                    dc_singular_annotation.set_predicate('dc', 'date')
+
+
+        .. code-block:: C++
+            :linenos:
+            :caption: Setting the Predicate portion of a singular annotation in C++
+
+            RDF rdf;
+            Editor editor = rdf.toEditor(sbml, "sbml", false);
+
+            SingularAnnotation bqbiol_singular_annotation = editor.newSingularAnnotation();
+            bqbiol_singular_annotation.setPredicate("bqbiol", "is")
+
+            SingularAnnotation bqmodel_singular_annotation = editor.newSingularAnnotation();
+            bqmodel_singular_annotation.setPredicate("bqmodel", "isDerivedFrom")
+
+            SingularAnnotation dc_singular_annotation = editor.newSingularAnnotation();
+            dc_singular_annotation.setPredicate("dc", "date")
+
+        .. code-block:: C
+            :linenos:
+            :caption:  Setting the Predicate portion of a singular annotation in C
+
+            // create an empty RDF object
+            RDF *rdf_ptr = RDF_new();
+
+            // create editor object
+            Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, OMEXMETA_TYPE_SBML, false);
+
+            // create out annotation
+            SingularAnnotation *bqbiol_singular_annotation = SingularAnnotation_new(editor_ptr);
+            SingularAnnotation_setPredicate(singular_annotation, "bqbiol", "is);
+
+            SingularAnnotation *bqmodel_singular_annotation = SingularAnnotation_new(editor_ptr);
+            SingularAnnotation_setPredicate(singular_annotation, "bqmodel", "isDerivedFrom);
+
+            SingularAnnotation *bqbiol_singular_annotation = SingularAnnotation_new(editor_ptr);
+            SingularAnnotation_setPredicate(singular_annotation, "dc", "date");
+
+
+
+It should be noted that these Predicate subclasses in libOmexMeta are only
+convenience structures to ease the collection of information from the user.
+It is also possible and sometimes necessary to
+manually give libOmexMeta the entire predicate string.  In C++, the setPredicate is overloaded
+to accept a single string, which indicates that this is a full uri. In C and Python,
+this is a different method call - see below.
+
+
+.. tabs::
+
+    .. tab:: python
+
+        .. literalinclude:: create_single_annotation_predicate_from_uri_python.py
+            :linenos:
+            :language: python
+            :caption: Create a single annotation in Python using an arbitrary uri
+
+        Output:
+
+        .. code-block::
+
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix myOMEXlib: <http://omex-library.org/> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+            local:OmexMetaId0001
+                <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
+
+
+    .. tab:: C++
+
+        .. literalinclude:: create_single_annotation_predicate_from_uri_cpp.cpp
+            :linenos:
+            :language: C++
+            :caption: Create a single annotation in C++ using an arbitrary uri
+
+        Output:
+
+        .. code-block::
+
+
+
+    .. tab:: C
+
+        .. literalinclude:: create_single_annotation_predicate_from_uri_c.c
+            :linenos:
+            :language: C
+            :caption: Create a single annotation in C using an arbitrary uri
+
+        Output:
+
+        .. code-block::
+
+
+
+
+
+
+
+
+
+
+
 
 
 

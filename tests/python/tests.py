@@ -495,7 +495,7 @@ class AnnotateAModelTest(unittest.TestCase):
             # model level annotations
             with editor.new_singular_annotation() as author:
                 author.set_about("SmadNuclearTransport") \
-                    .set_predicate_uri("https://unknownpredicate.com/changeme#author") \
+                    .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
                     .set_resource_literal("Ciaran Welsh")
 
             # annotate Smad3nuc

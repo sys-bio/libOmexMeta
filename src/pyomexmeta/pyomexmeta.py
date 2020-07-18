@@ -323,8 +323,8 @@ class SingularAnnotation:
         self._obj = PyOmexMetaAPI.singular_annotation_set_predicate(self._obj, namespace.encode(), term.encode())
         return self
 
-    def set_predicate_uri(self, uri: str) -> SingularAnnotation:
-        self._obj = PyOmexMetaAPI.singular_annotation_set_predicate_uri(self._obj, uri.encode())
+    def set_predicate_from_uri(self, uri: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(self._obj, uri.encode())
         return self
 
     def set_resource_literal(self, literal: str) -> SingularAnnotation:
