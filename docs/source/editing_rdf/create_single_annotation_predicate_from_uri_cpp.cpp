@@ -1,4 +1,6 @@
-##include "omexmeta/OmexMeta.h"
+#include "omexmeta/OmexMeta.h"
+
+using namespace omexmeta;
 
 int main(){
 
@@ -55,5 +57,5 @@ int main(){
     editor.addSingleAnnotation(singular_annotation);
     singular_annotation.freeTriple();
     std::cout << rdf.toString("turtle") << std::endl;
-    return 0
+    return 0;
 }

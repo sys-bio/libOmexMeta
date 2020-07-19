@@ -1,5 +1,6 @@
-#include "omexmeta/RDF.h" // omexmeta::RDF
+#include "omexmeta/OmexMeta.h" // omexmeta::RDF
 #include <iostream>     // std::cout, std::endl
+#include <filesystem>
 
 using namespace omexmeta;
 
@@ -15,11 +16,12 @@ int main(){
                           "     bqbiol:is <https://identifiers.org/uniprot/PD12345> .\n";
 
     // read the string into our RDF graph
-    RDF rdf = RDF::fromString(rdf_str, format="turtle");
+    RDF rdf = RDF::fromString(rdf_str, "turtle");
 
-    std::string fname = "/path/to/annotation_file.rdf";
+    std::filesystem::path fname = std::filesystem::current_path() /+ "annotation_file.rdf";
 
     // Add to our RDF graph
-    rdf.add_from_file(fname, "turtle"); // assume the content of annotation_file is turtle
+    rdf.addFromFile(fname.string(), "turtle"); // assume the content of annotation_file is turtle
+
     return 0;
 }

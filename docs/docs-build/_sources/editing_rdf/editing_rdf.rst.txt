@@ -480,9 +480,9 @@ However, leaving `generate_new_metaids=False` (the default) causes an error,
 because the metaid `#OmexMetaId0002` was not found in your model.
 
 
-.. tabs:
+.. tabs::
 
-    .. tab: Python
+    .. tab:: Python
 
         .. code-block:: Python
             :linenos:
@@ -494,6 +494,7 @@ because the metaid `#OmexMetaId0002` was not found in your model.
                 with editor.new_singular_annotation() as singular_annotation:
                     singular_annotation.set_about('#OmexMetaId0002')
 
+    .. tab:: C++
 
         .. code-block:: C++
             :linenos:
@@ -503,6 +504,8 @@ because the metaid `#OmexMetaId0002` was not found in your model.
             Editor editor = rdf.toEditor(sbml, "sbml", false);
             SingularAnnotation singular_annotation = editor.newSingularAnnotation();
             singular_annotation.setAbout("#OmexMetaId0002")
+
+    .. tab:: C
 
         .. code-block:: C
             :linenos:
@@ -556,9 +559,10 @@ terms for the prefix you are using.
     The following example will fail because the singular annotations
     built are not complete.
 
-.. tabs:
 
-    .. tab: Python
+.. tabs::
+
+    .. tab:: Python
 
         .. code-block:: Python
             :linenos:
@@ -660,7 +664,13 @@ this is a different method call - see below.
 
         .. code-block::
 
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix myOMEXlib: <http://omex-library.org/> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
+            local:OmexMetaId0001
+                <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
 
     .. tab:: C
 
@@ -673,10 +683,82 @@ this is a different method call - see below.
 
         .. code-block::
 
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix myOMEXlib: <http://omex-library.org/> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+            local:OmexMetaId0001
+                <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
 
 
+Resources
+----------
+
+A resource node can be any of the three types of node: a literal, uri or a blank node. Separate
+methods exist for each of these. In the next example we create a set of singular annotations
+that demonstrate the various usages of Resource.
 
 
+.. tabs::
+
+    .. tab:: Python
+
+        .. literalinclude:: create_single_annotation_resource.py
+            :linenos:
+            :language: python
+            :caption: Demonstration of options for the resource node in Python
+
+        Output:
+
+        .. code-block::
+
+            5
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+            @prefix dcterms: <http://purl.org/dc/terms/> .
+            @prefix myOMEXlib: <http://omex-library.org/> .
+            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+            local:OmexMetaId0001
+                dcterms:description _:BankzIdentifier .
+
+            local:OmexMetaId0002
+                bqbiol:is <https://identifiers.org/uniprot/PD1234> .
+
+            local:OmexMetaId0003
+                bqbiol:is <https://identifiers.org/string1/string2> .
+
+            local:OmexMetaId0004
+                bqbiol:is <https://identifiers.org/FMA/75132> .
+
+            local:ToyModel
+                dcterms:description "This is a toy model for demonstration purposes"^^rdf:string .
+
+
+    .. tab:: Python
+
+        .. literalinclude:: create_single_annotation_resource.cpp
+            :linenos:
+            :language: c++
+            :caption: Demonstration of options for the resource node in C++
+
+        Output:
+
+        .. code-block::
+
+
+    .. tab:: C
+
+        .. literalinclude:: create_single_annotation_resource.c
+            :linenos:
+            :language: C
+            :caption: Demonstration of options for the resource node in C
+
+        Output:
+
+        .. code-block::
 
 
 

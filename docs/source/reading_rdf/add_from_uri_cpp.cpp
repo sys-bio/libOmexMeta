@@ -18,10 +18,10 @@ int main(){
     std::string tyson2003 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml";
 
     // first create a RDF graph, by any means available - here we choose from_string
-    RDF rdf = RDF::fromString(rdf_str, format="turtle");
+    RDF rdf = RDF::fromString(rdf_str, "turtle");
 
     // And now add to it from a uri
-    rdf.add_from_uri(tyson2003, "rdfxml");
+    rdf.addFromUri(tyson2003, "rdfxml");
 
     std::cout << "Number of annotations in graph: " << rdf.size() << std::endl;
     return 0;

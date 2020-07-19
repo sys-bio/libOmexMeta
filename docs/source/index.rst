@@ -185,7 +185,7 @@ Use `CMake > 15.7 <https://github.com/Kitware/CMake/releases/download/v3.15.7/cm
    reading_rdf/reading_rdf.rst
    writing_rdf/writing_rdf.rst
    editing_rdf/editing_rdf.rst
-   APIReference/api_reference.rst
+   APIReference/html/index.html
    Developers/developers_index.rst
 
 

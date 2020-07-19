@@ -24,10 +24,9 @@ int main(){
                            "    bqbiol:is <https://identifiers.org/uniprot/PD12345> .\n";
 
     // read the first string into our RDF graph
-    RDF rdf = RDF.from_string(rdf_str1, format="turtle");
+    RDF rdf = RDF::fromString(rdf_str1, "turtle");
     // Add to our RDF graph by reading the second string
     rdf.addFromString(rdf_str2, "turtle");
-    int number_of_annotations = rdf.size();
-    print(f"Number of annotations in graph: {len(rdf)}");
+    std::cout << "Number of annotations in graph: " << rdf.size() << std::endl;
     return 0;
 }

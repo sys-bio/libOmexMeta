@@ -74,6 +74,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 # export all on windows. Ignored on other.
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
+
 ####################################################################
 # User options
 #
@@ -86,6 +87,7 @@ endif ()
 option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
+option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
 
 # docs-build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")

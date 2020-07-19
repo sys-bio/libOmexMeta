@@ -1,14 +1,29 @@
+##################################################################
+# Usage
+# -----
+# Build the libomexmeta-docs-sphinx.
+#
+# setup
+# ------
+# To setup, you first need to tell cmake which sphinx-build you are using.
+# do this with -DSPHINX_EXECUTABLE="/path/to/sphinx-build"
+# Be careful with conda environments, since its possible that
+# the target will find the python interpreter that you do not want to use.
+# You will need to:
+#   pip install sphinx breathe sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme
+# you will also need to ensure doxygen is installed and findable.
 
 ############################################################
 #   doxygen
 #
 
+
 # https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
 find_package(Doxygen REQUIRED)
 
-set(DOXYGEN_INPUT_DIR1 "${CMAKE_SOURCE_DIR}/src/semsim")
+set(DOXYGEN_INPUT_DIR1 "${CMAKE_SOURCE_DIR}/src/omexmeta")
 set(DOXYGEN_INPUT_DIR2 "${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src")
-set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/cpp")
+set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/docs-build/APIReference")
 set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.xml)
 set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
 set(DOXYFILE_OUT ${CMAKE_BINARY_DIR}/Doxyfile)
@@ -36,20 +51,27 @@ add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 #
 
 #Look for an executable called sphinx-docs-build
-find_program(SPHINX_EXECUTABLE
-        NAMES sphinx-build
-        PATHS
-        /home/ciaran/miniconda3/envs/py37/bin/
-        D:/miniconda3/bin
-        C:/miniconda3/bin
-        /mnt/d/miniconda3/bin
-        /mnt/c/miniconda3/bin
-        /root/miniconda3/bin
-        DOC "Path to sphinx-build executable bin directory"
-        )
+#find_program(SPHINX_EXECUTABLE
+#        NAMES sphinx-build
+#        PATHS
+#        /home/ciaran/miniconda3/bin
+#        /home/ciaran/miniconda3/envs/py37/bin/
+#        D:/miniconda3/bin
+#        C:/miniconda3/bin
+#        /mnt/d/miniconda3/bin
+#        /mnt/c/miniconda3/bin
+#        /root/miniconda3/bin
+#        DOC "Path to sphinx-build executable bin directory"
+#        )
+set(SPHINX_EXECUTABLE "/home/ciaran/miniconda3/bin/sphinx-build" CACHE FILEPATH
+        "absolute path to the sphinx-build executable. If you do not have sphinx-build
+you will need to install it. In your conda environment do: $conda activate <env>;
+pip install breathe sphinx sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme; which sphinx-build. Then copy the value of which sphinx-build into
+-DSPHINX_EXECUTABLE")
 
+message(STATUS "SPHINX_EXECUTABLE ${SPHINX_EXECUTABLE}")
 set(SPHINX_SOURCE ${CMAKE_SOURCE_DIR}/docs/source)
-set(SPHINX_BUILD ${CMAKE_SOURCE_DIR}/docs/build)
+set(SPHINX_BUILD ${CMAKE_SOURCE_DIR}/docs/docs-build)
 set(SPHINX_INDEX_FILE ${SPHINX_BUILD}/index.html)
 
 # Only regenerate Sphinx when:
@@ -71,16 +93,92 @@ add_custom_command(
         COMMENT "Generating documentation with Sphinx")
 
 
-
 add_custom_target(libomexmeta-docs-sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
 
 
 # Add an install target to install the docs
 include(GNUInstallDirs)
 install(DIRECTORY ${SPHINX_BUILD}
-DESTINATION ${CMAKE_INSTALL_DOCDIR})
+        DESTINATION ${CMAKE_INSTALL_DOCDIR})
 
+# Build the documentation examples
+if (BUILD_DOCS_EXAMPLES)
 
+    # I've automated this as much as possible. The idea is that
+    # I write the examples and compile the programs. Then I capture the
+    # output and save those to file as well. Then, we can easily include
+    # both code and output into sphinx using the `.. literalinclude` directive.
+    # This can be done using pure cmake, and I asked how here:
+    #   https://stackoverflow.com/questions/62978989/running-multiple-executables-with-a-single-command-in-cmake-and-collecting-the-r
+    # But instead I opted to write a python script that will run the examples.
+    #
+    # So, its cmakes job to build these examples. And its Pythons job to
+    # run the examples and write output to a known location. Then its
+    # sphinx's job to pickup both code and output and include them in
+    # the documentation.
+
+    add_executable(FromStringC source/reading_rdf/from_string_c.cpp)
+    add_executable(FromStringCpp source/reading_rdf/from_string_cpp.cpp)
+    add_executable(FromUriC source/reading_rdf/from_uri_c.cpp)
+    add_executable(FromUriCpp source/reading_rdf/from_uri_cpp.cpp)
+    add_executable(FromFileC source/reading_rdf/from_file_c.cpp)
+    add_executable(FromFileCpp source/reading_rdf/from_file_cpp.cpp)
+    add_executable(AddFromStringC source/reading_rdf/add_from_string_c.cpp)
+    add_executable(AddFromStringCpp source/reading_rdf/add_from_string_cpp.cpp)
+    add_executable(AddFromFileC source/reading_rdf/add_from_uri_c.cpp)
+    add_executable(AddFromFileCpp source/reading_rdf/add_from_file_cpp.cpp)
+    add_executable(AddFromUriC source/reading_rdf/add_from_uri_cpp.cpp)
+    add_executable(AddFromUriCpp source/reading_rdf/add_from_uri_cpp.cpp)
+
+    add_executable(CreateSingleAnnotationC source/editing_rdf/create_single_annotation_c.cpp)
+    add_executable(CreateSingleAnnotationCpp source/editing_rdf/create_single_annotation_cpp.cpp)
+    add_executable(CreateSingleAnnotationNoCommitC source/editing_rdf/create_single_annotation_no_commit_to_rdf_c.cpp)
+    add_executable(CreateSingleAnnotationNoCommitCpp source/editing_rdf/create_single_annotation_no_commit_to_rdf_cpp.cpp)
+    add_executable(CreateSingleAnnotationPredicateFromUriC source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
+    add_executable(CreateSingleAnnotationPredicateFromUriCpp source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
+    add_executable(CreateSingleAnnotationResourceC source/editing_rdf/create_single_annotation_resource_c.cpp)
+    add_executable(CreateSingleAnnotationResourceCpp source/editing_rdf/create_single_annotation_resource_cpp.cpp)
+    add_executable(CreateSingleAnnotationWithMetaidsC source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
+    add_executable(CreateSingleAnnotationWithMetaidsCpp source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
+
+    set(EXAMPLE_EXECUTABLES_TARGETS
+            "FromStringC"
+            "FromStringCpp"
+            "FromUriC"
+            "FromUriCpp"
+            "FromFileC"
+            "FromFileCpp"
+            "AddFromStringC"
+            "AddFromStringCpp"
+            "AddFromFileC"
+            "AddFromFileCpp"
+            "AddFromUriC"
+            "AddFromUriCpp"
+
+            "CreateSingleAnnotationC"
+            "CreateSingleAnnotationCpp"
+            "CreateSingleAnnotationNoCommitC"
+            "CreateSingleAnnotationNoCommitCpp"
+            "CreateSingleAnnotationPredicateFromUriC"
+            "CreateSingleAnnotationPredicateFromUriCpp"
+            "CreateSingleAnnotationResourceC"
+            "CreateSingleAnnotationResourceCpp"
+            "CreateSingleAnnotationWithMetaidsC"
+            "CreateSingleAnnotationWithMetaidsCpp"
+            )
+
+    set_target_properties(${EXAMPLE_EXECUTABLES_TARGETS} PROPERTIES
+            INCLUDE_DIRECTORIES "${INCLUDE_DIRECTORIES}"
+            LINK_LIBRARIES "$<TARGET_FILE:OmexMeta-static>;$<TARGET_FILE:redland-combined-static>;${LINK_LIBRARIES};pthread"
+            LINKER_LANGUAGE "CXX"
+            CXX_STANDARD 17
+            )
+
+    add_custom_target(AllDocExamples
+            DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
+            )
+
+endif ()
 
 
 

@@ -12,7 +12,7 @@ int main(){
                           "\n"
                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n\n";
-    RDF rdf = RDF::fromString(rdf_string, "turtle");
+    RDF rdf = RDF::fromString(rdf_str, "turtle");
     int number_of_annotations = rdf.size();
     std::cout << "Number of annotations in graph: " << number_of_annotations << std::endl;
     return 0;
