@@ -167,6 +167,9 @@ if (PLATFORM STREQUAL "linux")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 endif ()
 
+set(PYTHON_EXECUTABLE "/home/ciaran/miniconda3/bin/python" CACHE FILEPATH "Full path to python executable")
+
+
 
 ############################################################3
 # configure some paths relative to vcpkg root
