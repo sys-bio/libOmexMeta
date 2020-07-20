@@ -32,10 +32,14 @@ release = '0.0.1'
 # ones.
 extensions = [
     "breathe",
+    # "exhale",
+    # 'sphinx.ext.pngmath',
+    'sphinx.ext.todo',
     "sphinxcontrib.bibtex",
     "sphinx_tabs.tabs",
     "sphinx.ext.doctest"
 ]
+
 doctest_global_setup = '''
 try:
     
@@ -58,10 +62,31 @@ except ImportError as e:
 '''
 # Breathe Configuration
 breathe_default_project = "libomexmeta"
-
+# "D:\libOmexMeta\docs\source\conf.py"
 breathe_projects = {
-    "libomexmeta": "../doxygen-output/xml"
+    "libomexmeta": "../doxygen-output/xml/"
 }
+
+# # Setup the exhale extension
+# exhale_args = {
+#     # These arguments are required
+#     "containmentFolder":     "./APIReference",
+#     "rootFileName":          "api_reference_index.rst",
+#     "rootFileTitle":         "libOmexMeta API Reference",
+#     "doxygenStripFromPath":  "..",
+#     # Suggested optional arguments
+#     "createTreeView":        True,
+#     # TIP: if using the sphinx-bootstrap-theme, you need
+#     # "treeViewIsBootstrap": True,
+#     "exhaleExecutesDoxygen": False,
+#     "exhaleDoxygenStdin":    "INPUT = ../../src/omexmeta"
+# }
+#
+# # Tell sphinx what the primary language being documented is.
+# primary_domain = 'cpp'
+#
+# # Tell sphinx what the pygments highlight language should be.
+# highlight_language = 'cpp'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

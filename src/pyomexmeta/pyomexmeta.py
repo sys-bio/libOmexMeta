@@ -97,7 +97,7 @@ class RDF:
             uri_string.encode(), format.encode(),
             storage_type.encode(), storage_name.encode(),
             None if not storage_options else storage_options.encode(),
-            None if not storage_options else model_options.encode()
+            None if not model_options else model_options.encode()
         )
         rdf = RDF()
         rdf._set_rdf_ptr(rdf_ptr)

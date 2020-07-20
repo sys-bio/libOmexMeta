@@ -1,16 +1,10 @@
-libOmexMeta API reference
+
+libOmexMeta API Reference
 =========================
 
+.. include:: class_view_hierarchy.rst
 
-.. doxygenclass:: RDF
-   :project: libomexmeta
-   :members:
+.. include:: file_view_hierarchy.rst
 
-
-
-
-
-
-
-
+.. include:: unabridged_api.rst
 
