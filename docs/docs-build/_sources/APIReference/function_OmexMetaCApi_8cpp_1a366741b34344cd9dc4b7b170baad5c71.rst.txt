@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a366741b34344cd9dc4b7b170baad5c71:
+
+Function omexmeta::PersonalInformation_addCreator
+=================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PersonalInformation_addCreator(PersonalInformation *, const char *)

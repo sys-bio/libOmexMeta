@@ -1,0 +1,26 @@
+.. _exhale_class_classredland_1_1RaptorIOStream:
+
+Class RaptorIOStream
+====================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_RaptorIOStream.h`
+
+
+Nested Relationships
+--------------------
+
+
+Nested Types
+************
+
+- :ref:`exhale_struct_structredland_1_1RaptorIOStream_1_1deleter`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: redland::RaptorIOStream
+   :members:
+   :protected-members:
+   :undoc-members:

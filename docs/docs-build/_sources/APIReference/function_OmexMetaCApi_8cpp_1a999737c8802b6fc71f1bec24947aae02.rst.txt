@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a999737c8802b6fc71f1bec24947aae02:
+
+Function omexmeta::PhysicalForce_setPhysicalProperty
+====================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalForce_setPhysicalProperty(PhysicalForce *, const char *, const char *)

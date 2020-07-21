@@ -1,0 +1,2801 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="namespaceomexmeta" kind="namespace" language="C++">
+    <compoundname>omexmeta</compoundname>
+    <innerclass refid="classomexmeta_1_1AnnotationBuilderException" prot="public">omexmeta::AnnotationBuilderException</innerclass>
+    <innerclass refid="classomexmeta_1_1BiomodelsBiologyQualifier" prot="public">omexmeta::BiomodelsBiologyQualifier</innerclass>
+    <innerclass refid="classomexmeta_1_1BiomodelsModelQualifier" prot="public">omexmeta::BiomodelsModelQualifier</innerclass>
+    <innerclass refid="classomexmeta_1_1CellMLAssistant" prot="public">omexmeta::CellMLAssistant</innerclass>
+    <innerclass refid="classomexmeta_1_1CurlGet" prot="public">omexmeta::CurlGet</innerclass>
+    <innerclass refid="classomexmeta_1_1DCTerm" prot="public">omexmeta::DCTerm</innerclass>
+    <innerclass refid="classomexmeta_1_1Editor" prot="public">omexmeta::Editor</innerclass>
+    <innerclass refid="classomexmeta_1_1Exception" prot="public">omexmeta::Exception</innerclass>
+    <innerclass refid="classomexmeta_1_1Foaf" prot="public">omexmeta::Foaf</innerclass>
+    <innerclass refid="classomexmeta_1_1InappropriateResourceException" prot="public">omexmeta::InappropriateResourceException</innerclass>
+    <innerclass refid="classomexmeta_1_1LibRDFException" prot="public">omexmeta::LibRDFException</innerclass>
+    <innerclass refid="classomexmeta_1_1MediatorParticipant" prot="public">omexmeta::MediatorParticipant</innerclass>
+    <innerclass refid="classomexmeta_1_1MetaID" prot="public">omexmeta::MetaID</innerclass>
+    <innerclass refid="classomexmeta_1_1NotImplementedException" prot="public">omexmeta::NotImplementedException</innerclass>
+    <innerclass refid="classomexmeta_1_1NullPointerException" prot="public">omexmeta::NullPointerException</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaUtils" prot="public">omexmeta::OmexMetaUtils</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistant" prot="public">omexmeta::OmexMetaXmlAssistant</innerclass>
+    <innerclass refid="classomexmeta_1_1Participant" prot="public">omexmeta::Participant</innerclass>
+    <innerclass refid="classomexmeta_1_1PersonalInformation" prot="public">omexmeta::PersonalInformation</innerclass>
+    <innerclass refid="classomexmeta_1_1PhysicalEntity" prot="public">omexmeta::PhysicalEntity</innerclass>
+    <innerclass refid="classomexmeta_1_1PhysicalForce" prot="public">omexmeta::PhysicalForce</innerclass>
+    <innerclass refid="classomexmeta_1_1PhysicalPhenomenon" prot="public">omexmeta::PhysicalPhenomenon</innerclass>
+    <innerclass refid="classomexmeta_1_1PhysicalProcess" prot="public">omexmeta::PhysicalProcess</innerclass>
+    <innerclass refid="classomexmeta_1_1PhysicalProperty" prot="public">omexmeta::PhysicalProperty</innerclass>
+    <innerclass refid="classomexmeta_1_1Predicate" prot="public">omexmeta::Predicate</innerclass>
+    <innerclass refid="classomexmeta_1_1Query" prot="public">omexmeta::Query</innerclass>
+    <innerclass refid="classomexmeta_1_1RDF" prot="public">omexmeta::RDF</innerclass>
+    <innerclass refid="classomexmeta_1_1Resource" prot="public">omexmeta::Resource</innerclass>
+    <innerclass refid="classomexmeta_1_1SBMLAssistant" prot="public">omexmeta::SBMLAssistant</innerclass>
+    <innerclass refid="classomexmeta_1_1SemSim" prot="public">omexmeta::SemSim</innerclass>
+    <innerclass refid="classomexmeta_1_1SemsimXmlAssistantFactory" prot="public">omexmeta::SemsimXmlAssistantFactory</innerclass>
+    <innerclass refid="classomexmeta_1_1SinkParticipant" prot="public">omexmeta::SinkParticipant</innerclass>
+    <innerclass refid="classomexmeta_1_1SourceParticipant" prot="public">omexmeta::SourceParticipant</innerclass>
+    <innerclass refid="classomexmeta_1_1Subject" prot="public">omexmeta::Subject</innerclass>
+    <innerclass refid="classomexmeta_1_1Triple" prot="public">omexmeta::Triple</innerclass>
+    <innerclass refid="classomexmeta_1_1Triples" prot="public">omexmeta::Triples</innerclass>
+    <innerclass refid="classomexmeta_1_1ValueException" prot="public">omexmeta::ValueException</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7" prot="public" static="no">
+        <name>AnnotationType</name>
+        <enumvalue id="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a3824ab8797b64bb683236b279cc19008" prot="public">
+          <name>PHYSICAL_ENTITY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a6c3faf0bc18122cbbc7179c788ffb072" prot="public">
+          <name>PHYSICAL_PROCESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a6bde31f12751f0681a92d77283ff6bb1" prot="public">
+          <name>PHYSICAL_FORCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7aed56225d3530aa68f5f9000d5a25712b" prot="public">
+          <name>SINGULAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a986abc31d579b2dbb50e64fe50dfc49e" prot="public">
+          <name>UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/AnnotationType.h" line="16" column="1" bodyfile="src/omexmeta/AnnotationType.h" bodystart="16" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="enum" id="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fb" prot="public" static="no">
+        <name>OmexMetaXmlType</name>
+        <enumvalue id="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba3262bd1f62095e6bb270ecd33a5e3a6a" prot="public">
+          <name>OMEXMETA_TYPE_SBML</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba230cbeb9caea8d8070c9a18b61dec5e1" prot="public">
+          <name>OMEXMETA_TYPE_CELLML</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba54912b6c7ef981926cd424808c9a8dfb" prot="public">
+          <name>OMEXMETA_TYPE_OTHER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="19" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.h" bodystart="19" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="Editor_8h_1ad9c3f36d18cb218950d2780f2d4dc0a0" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>typedef std::unordered_map&lt; std::string, std::string &gt; omexmeta::NamespaceMap</definition>
+        <argsstring></argsstring>
+        <name>NamespaceMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="57" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="OmexMetaXmlAssistant_8h_1a602c5d1094d065496b79af07e9a3b28a" prot="public" static="no">
+        <type>std::unique_ptr&lt; <ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref> &gt;</type>
+        <definition>typedef std::unique_ptr&lt;OmexMetaXmlAssistant&gt; omexmeta::XmlAssistantPtr</definition>
+        <argsstring></argsstring>
+        <name>XmlAssistantPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="76" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a90b8619f565d06ee3a8fa4d1cfda893c" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;Participant&gt; omexmeta::ParticipantPtr</definition>
+        <argsstring></argsstring>
+        <name>ParticipantPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Participant.h" line="124" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a1c258e53336c37fdc17cf08a394f5198" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> &gt;</type>
+        <definition>typedef std::vector&lt;SourceParticipant&gt; omexmeta::Sources</definition>
+        <argsstring></argsstring>
+        <name>Sources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Participant.h" line="168" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1ac2d6392fea1506f1d5d13ebb155db3df" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1MediatorParticipant" kindref="compound">MediatorParticipant</ref> &gt;</type>
+        <definition>typedef std::vector&lt;MediatorParticipant&gt; omexmeta::Mediators</definition>
+        <argsstring></argsstring>
+        <name>Mediators</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Participant.h" line="169" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a57d60796797e34581e3c1780985f0b59" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkParticipant</ref> &gt;</type>
+        <definition>typedef std::vector&lt;SinkParticipant&gt; omexmeta::Sinks</definition>
+        <argsstring></argsstring>
+        <name>Sinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Participant.h" line="170" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="PhysicalPhenomenon_8h_1aeb3054fca8bdfaeeae91c2f3e1bd8c27" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;PhysicalPhenomenon&gt; omexmeta::PhysicalPhenomenonPtr</definition>
+        <argsstring></argsstring>
+        <name>PhysicalPhenomenonPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="141" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Predicate_8h_1a2edd0078a7f3b226df6fb3382d76471a" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;Predicate&gt; omexmeta::PredicatePtr</definition>
+        <argsstring></argsstring>
+        <name>PredicatePtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Predicate.h" line="359" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="359" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Predicate_8h_1af916f97aa87900541cf46ca66139fc14" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Predicate&gt; omexmeta::Predicates</definition>
+        <argsstring></argsstring>
+        <name>Predicates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Predicate.h" line="360" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="360" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Predicate_8h_1a84ba746aac1e9ee5c7256a2f2f393a41" prot="public" static="no">
+        <type>std::vector&lt; PredicatePtr &gt;</type>
+        <definition>typedef std::vector&lt;PredicatePtr&gt; omexmeta::PredicatePtrs</definition>
+        <argsstring></argsstring>
+        <name>PredicatePtrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Predicate.h" line="361" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="361" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Query_8h_1a08a1cea39a93f919e8c481f1307e9d64" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt;</type>
+        <definition>typedef std::unordered_map&lt;std::string, std::vector&lt;std::string&gt; &gt; omexmeta::ResultsMap</definition>
+        <argsstring></argsstring>
+        <name>ResultsMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Query.h" line="27" column="1" bodyfile="src/omexmeta/Query.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Resource_8h_1a211f941200e84d6258b6980a1101a978" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Resource&gt; omexmeta::Resources</definition>
+        <argsstring></argsstring>
+        <name>Resources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Resource.h" line="48" column="1" bodyfile="src/omexmeta/Resource.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Subject_8h_1a55c310aac91280285453df83fafa7d69" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Subject&gt; omexmeta::Subjects</definition>
+        <argsstring></argsstring>
+        <name>Subjects</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Subject.h" line="56" column="1" bodyfile="src/omexmeta/Subject.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triple_8h_1a7fc6fa4ba32424705fe4953ee297a795" prot="public" static="no">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref></type>
+        <definition>typedef Triple omexmeta::SingularAnnotation</definition>
+        <argsstring></argsstring>
+        <name>SingularAnnotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Triple.h" line="94" column="1" bodyfile="src/omexmeta/Triple.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triples_8h_1a866d550d1c1d6bdadd778a73fef571bb" prot="public" static="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &gt; &gt;</type>
+        <definition>typedef std::vector&lt;std::shared_ptr&lt;Triple&gt; &gt; omexmeta::SharedTripleVector</definition>
+        <argsstring></argsstring>
+        <name>SharedTripleVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Triples.h" line="24" column="1" bodyfile="src/omexmeta/Triples.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triples_8h_1a0591b044477ac1101740fd7db67088bc" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Triple&gt; omexmeta::TripleVector</definition>
+        <argsstring></argsstring>
+        <name>TripleVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Triples.h" line="25" column="1" bodyfile="src/omexmeta/Triples.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2594067cfd1f6a61df3017a394e17c01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::free_c_char_star</definition>
+        <argsstring>(char *c)</argsstring>
+        <name>free_c_char_star</name>
+        <param>
+          <type>char *</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="11" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae58d7b3e2d602063529868a45b57e873" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::_func_that_returns_dynamic_alloc_str</definition>
+        <argsstring>()</argsstring>
+        <name>_func_that_returns_dynamic_alloc_str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="19" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="19" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ade76bf79372ee7c6ff5765a2b962c1af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char **</type>
+        <definition>SEMSIM_API char ** omexmeta::_func_that_returns_dynamic_alloc_char_star_star</definition>
+        <argsstring>()</argsstring>
+        <name>_func_that_returns_dynamic_alloc_char_star_star</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="29" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="29" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a04ffcebeb8b1f9d16f39497d8a2445c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::free_world</definition>
+        <argsstring>(librdf_world *world)</argsstring>
+        <name>free_world</name>
+        <param>
+          <type>librdf_world *</type>
+          <declname>world</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="49" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="49" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1afb4d2a4f73d23bf0cf7c6a02942bb6a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>SEMSIM_API RDF * omexmeta::RDF_new</definition>
+        <argsstring>(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</argsstring>
+        <name>RDF_new</name>
+        <param>
+          <type>const char *</type>
+          <declname>storage_type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_options</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>model_options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="60" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="60" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a3bc3d3a6a47687dcdd6a5612dac6c8d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_delete</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="69" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a70f8f372cd867ac7ef5a8aa9023defaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>SEMSIM_API RDF * omexmeta::RDF_fromString</definition>
+        <argsstring>(const char *str, const char *format, const char *baseuri, const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</argsstring>
+        <name>RDF_fromString</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>baseuri</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_options</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>model_options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="73" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="73" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a231f93f0b6285fefd14a2b9c2291c252" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_addFromString</definition>
+        <argsstring>(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri)</argsstring>
+        <name>RDF_addFromString</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="82" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a40d1956db8a7fccdeac3fcc66f96c7e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>SEMSIM_API RDF * omexmeta::RDF_fromUri</definition>
+        <argsstring>(const char *uri_string, const char *format, const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</argsstring>
+        <name>RDF_fromUri</name>
+        <param>
+          <type>const char *</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_options</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>model_options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="86" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="86" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac6084a3267ee31fd19e534bd91092a0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_addFromUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *uri_string, const char *format)</argsstring>
+        <name>RDF_addFromUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="93" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="93" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a03d2c98713d318b2b61629150fce1f3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>SEMSIM_API RDF * omexmeta::RDF_fromFile</definition>
+        <argsstring>(const char *filename, const char *format, const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</argsstring>
+        <name>RDF_fromFile</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>storage_options</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>model_options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="97" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="97" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2d15671ea03bc2c34fc3eca19dc4a34e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_addFromFile</definition>
+        <argsstring>(RDF *rdf_ptr, const char *uri_string, const char *format)</argsstring>
+        <name>RDF_addFromFile</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="104" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a0abc772a6421e19aa40cd66a90f148fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::RDF_toString</definition>
+        <argsstring>(RDF *rdf_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>RDF_toString</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="108" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="108" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1acc8a0babd9991de85fc50304afb82a08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_toFile</definition>
+        <argsstring>(RDF *rdf_ptr, const char *format, const char *filename)</argsstring>
+        <name>RDF_toFile</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="116" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="116" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a75e60f25b525efa9212373f9fbf089e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::RDF_queryResultsAsStr</definition>
+        <argsstring>(RDF *rdf_ptr, const char *query_str, const char *results_format)</argsstring>
+        <name>RDF_queryResultsAsStr</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>query_str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>results_format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="120" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="120" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1afa3fd3cac3fdfdcfa40547c122031847" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>SEMSIM_API int omexmeta::RDF_size</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_size</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="129" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="129" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a6fd770f13dbdfef4f9b81c883a5a6801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_setRepositoryUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *repository_uri)</argsstring>
+        <name>RDF_setRepositoryUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>repository_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="133" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aa2bb2328d661d00b8558216735e7095c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_setArchiveUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *archive_uri)</argsstring>
+        <name>RDF_setArchiveUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>archive_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="137" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="137" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a86f1f1e176b008fbf6a59991bf5999db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_setModelUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *model_uri)</argsstring>
+        <name>RDF_setModelUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>model_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="141" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ab2043fd45ba0667c93b53f0361b5666d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::RDF_getRepositoryUri</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_getRepositoryUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="145" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="145" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a065138ba375bc77e286ea0f173f18c8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::RDF_getArchiveUri</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_getArchiveUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="152" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="152" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac45eae0f8360d270084ed1bf078a6b49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::RDF_getModelUri</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_getModelUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="159" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="159" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a24df88b09c50ad4fd9e35a8a19a82f79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::RDF_getLocalUri</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_getLocalUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="166" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="166" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aad2ca7a020aedde17f7debdf17e253c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>SEMSIM_API Editor * omexmeta::RDF_toEditor</definition>
+        <argsstring>(RDF *rdf_ptr, const char *xml, OmexMetaXmlType type, bool generate_new_metaids)</argsstring>
+        <name>RDF_toEditor</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>xml</declname>
+        </param>
+        <param>
+          <type>OmexMetaXmlType</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>generate_new_metaids</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="173" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a6a3dc728ba1b214d3028678805d6bb27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addNamespace</definition>
+        <argsstring>(Editor *editor_ptr, const char *namespace_, const char *prefix)</argsstring>
+        <name>Editor_addNamespace</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="181" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="181" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a1747f74d2f87299dc4a3a02326198c03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addSingleAnnotation</definition>
+        <argsstring>(Editor *editor_ptr, SingularAnnotation *singularAnnotation)</argsstring>
+        <name>Editor_addSingleAnnotation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="185" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="185" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac7b30a9883084e480eae169c0a6f8202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addPhysicalEntity</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalEntity *physicalEntity)</argsstring>
+        <name>Editor_addPhysicalEntity</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physicalEntity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="189" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="189" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ad6f18874d15427e7d5f55b9b3592deb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addPhysicalProcess</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalProcess *physicalProcess)</argsstring>
+        <name>Editor_addPhysicalProcess</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="193" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="193" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2cc0f1b7d7e993dfd66baa8ad26084d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addPhysicalForce</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalForce *physicalForce)</argsstring>
+        <name>Editor_addPhysicalForce</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="197" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="197" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a7add17a58eac3dc9183b326ba923f3ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addPersonalInformation</definition>
+        <argsstring>(Editor *editor_ptr, PersonalInformation *personalInformation)</argsstring>
+        <name>Editor_addPersonalInformation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>personalInformation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="201" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="201" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a4d8094aa4f47e9e32442a3fda84ee48c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_removeSingleAnnotation</definition>
+        <argsstring>(Editor *editor_ptr, SingularAnnotation *singularAnnotation)</argsstring>
+        <name>Editor_removeSingleAnnotation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="205" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="205" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1afb602ca86c9c9f4cd5467f841022beb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_removePhysicalEntity</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalEntity *physicalEntity)</argsstring>
+        <name>Editor_removePhysicalEntity</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physicalEntity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="209" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="209" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a36c5866f590f4a73458cbd69627f24da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_removePhysicalProcess</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalProcess *physicalProcess)</argsstring>
+        <name>Editor_removePhysicalProcess</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="213" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="213" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a76c434105975615e46486e7f27f44b27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_removePhysicalForce</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalForce *physicalForce)</argsstring>
+        <name>Editor_removePhysicalForce</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="217" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a7ce631c18bf1f80bfaccfe8ce88646ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_removePersonalInformation</definition>
+        <argsstring>(Editor *editor_ptr, PersonalInformation *information)</argsstring>
+        <name>Editor_removePersonalInformation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="221" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="221" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a257d15d5158f9dca2e37fc5306529259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_checkValidMetaid</definition>
+        <argsstring>(Editor *editor_ptr, const char *id)</argsstring>
+        <name>Editor_checkValidMetaid</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="225" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="225" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1addb9c62254a5a27354715a51f21acb2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::Editor_getMetaId</definition>
+        <argsstring>(Editor *editor_ptr, int index)</argsstring>
+        <name>Editor_getMetaId</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="229" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="229" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a9aa282fd475c7fe5c2ce12845f4f7355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>SEMSIM_API int omexmeta::Editor_getNumMetaIds</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getNumMetaIds</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="236" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="236" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a66f88e1f67ed3e11b2ca438e0fc784ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::Editor_getXml</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getXml</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="245" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="245" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a1d39a41e1a084de49920a4d3ec43aa32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_delete</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="252" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="252" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a935b4c8611d6585a6082814d1983c0d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::Editor_getArchiveUri</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getArchiveUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="258" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="258" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a1c7fb825834051d5a5ab201532ae306b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::Editor_getLocalUri</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getLocalUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="265" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="265" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a0afd0ae753655a6e3b0617e551327e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::Editor_getModelUri</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getModelUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="272" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="272" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a4755a9c8c4333238d6bfa41dac21b134" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::Editor_getRepositoryUri</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getRepositoryUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="279" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="279" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a49c458a672568d4a575932d28380e7fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addCreator</definition>
+        <argsstring>(Editor *editor_ptr, const char *orcid_id)</argsstring>
+        <name>Editor_addCreator</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>orcid_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="286" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="286" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a0f8295727c3340929820fb5898978d88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addCurator</definition>
+        <argsstring>(Editor *editor_ptr, const char *orcid_id)</argsstring>
+        <name>Editor_addCurator</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>orcid_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="290" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="290" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a6253e1a5b5d7f3162cd5373ae153bae1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addTaxon</definition>
+        <argsstring>(Editor *editor_ptr, const char *taxon_id)</argsstring>
+        <name>Editor_addTaxon</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>taxon_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="294" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="294" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a25a28289e3734d5f3822a5b7481a4a66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addPubmed</definition>
+        <argsstring>(Editor *editor_ptr, const char *pubmedid)</argsstring>
+        <name>Editor_addPubmed</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>pubmedid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="298" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="298" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a20d9511ad10cbbd15f169080bde90cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addDescription</definition>
+        <argsstring>(Editor *editor_ptr, const char *date)</argsstring>
+        <name>Editor_addDescription</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="302" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="302" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1af940d16829df457f097fe806101ebcad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addDateCreated</definition>
+        <argsstring>(Editor *editor_ptr, const char *date)</argsstring>
+        <name>Editor_addDateCreated</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="306" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="306" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2074a13370c95f2eb95b9e184731c0af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::Editor_addParentModel</definition>
+        <argsstring>(Editor *editor_ptr, const char *biomod_id)</argsstring>
+        <name>Editor_addParentModel</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>biomod_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="310" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="310" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ace3bf03d4b3d31f10853a89136dd8796" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>SingularAnnotation_new</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="318" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="318" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aecfd32e784e0e396d4211e8c58b23255" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::SingularAnnotation_delete</definition>
+        <argsstring>(SingularAnnotation *singularAnnotation)</argsstring>
+        <name>SingularAnnotation_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="324" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="324" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aa5b0f742c3488015d06d0b68c5b43d0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::SingularAnnotation_freeAll</definition>
+        <argsstring>(SingularAnnotation *singularAnnotation)</argsstring>
+        <name>SingularAnnotation_freeAll</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="331" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="331" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ab5a1995c636cc4d4f637025809423844" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::free_singular_annotation</definition>
+        <argsstring>(SingularAnnotation *singularAnnotationPtr)</argsstring>
+        <name>free_singular_annotation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotationPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="341" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="341" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a59a3672e23a88817e3fbb3c364231700" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_setAbout</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *about)</argsstring>
+        <name>SingularAnnotation_setAbout</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="346" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="346" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2f4a5c35fefa709d6ef73587c915610c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_setPredicate</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *namespace_, const char *term)</argsstring>
+        <name>SingularAnnotation_setPredicate</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="351" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="351" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a9e79d39c7dacc21a99c8a1ee1368e942" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_setPredicateFromUri</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *uri)</argsstring>
+        <name>SingularAnnotation_setPredicateFromUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="357" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="357" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ad043979e6492ebba70def6087165010d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_setResourceLiteral</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *literal)</argsstring>
+        <name>SingularAnnotation_setResourceLiteral</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>literal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="364" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="364" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a9ef043f7cb353d827f8edcfa32b20153" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_setResourceUri</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *identifiers_uri)</argsstring>
+        <name>SingularAnnotation_setResourceUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>identifiers_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="370" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="370" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a7dd259cd6b27a3e42da22db937ce9ffe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SEMSIM_API SingularAnnotation * omexmeta::SingularAnnotation_setResourceBlank</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *blank_id)</argsstring>
+        <name>SingularAnnotation_setResourceBlank</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>blank_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="376" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="376" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a09aaf0fb965a3c54768903b3f95eba16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::SingularAnnotation_getAbout</definition>
+        <argsstring>(SingularAnnotation *singular_annotation)</argsstring>
+        <name>SingularAnnotation_getAbout</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="381" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="381" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1af52606bea9afc7c6b7487b587d532ad1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::SingularAnnotation_getPredicate</definition>
+        <argsstring>(SingularAnnotation *singular_annotation)</argsstring>
+        <name>SingularAnnotation_getPredicate</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="388" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="388" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae8449eb64b4cb3efac28fea27f94923d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::SingularAnnotation_getResource</definition>
+        <argsstring>(SingularAnnotation *singular_annotation)</argsstring>
+        <name>SingularAnnotation_getResource</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="395" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="395" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a6407e1fbe440ac80a5c70d8a8efd3752" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::SingularAnnotation_str</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *format, const char *base_uri)</argsstring>
+        <name>SingularAnnotation_str</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="402" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="402" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a40251d2c4684f2a326713d313d65dd40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>SEMSIM_API PhysicalEntity * omexmeta::PhysicalEntity_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PhysicalEntity_new</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="414" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="414" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ad419e458404391d614e606b07d11570a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PhysicalEntity_delete</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="418" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="418" bodyend="423"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a9abd78f05905e6d184a81fd9624dbcfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PhysicalEntity_freeAll</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_freeAll</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="425" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="425" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a9d84f6beeb0da40ef3fd39d1062190aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>SEMSIM_API PhysicalEntity * omexmeta::PhysicalEntity_setPhysicalProperty</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property)</argsstring>
+        <name>PhysicalEntity_setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>subject_metaid</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="430" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="430" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac68c13f41d5ddcf1e4b8ec6c44122be8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>SEMSIM_API PhysicalEntity * omexmeta::PhysicalEntity_setIdentity</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *identity_resource)</argsstring>
+        <name>PhysicalEntity_setIdentity</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>identity_resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="436" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="436" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a090d56e50a0b22d6926a4a1e0e9b5567" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>SEMSIM_API PhysicalEntity * omexmeta::PhysicalEntity_addLocation</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *location_resource)</argsstring>
+        <name>PhysicalEntity_addLocation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>location_resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="441" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="441" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a171a251bc4807e1e26ecd6b76d67835e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalEntity_getAbout</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_getAbout</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="446" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="446" bodyend="451"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a7edde7fda6d457c680fcb162ac22bfc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalEntity_getIdentity</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_getIdentity</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="460" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="460" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a4569640ad8ce59edcef201f5f3824ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>SEMSIM_API int omexmeta::PhysicalEntity_getNumLocations</definition>
+        <argsstring>(PhysicalEntity *physicalEntity)</argsstring>
+        <name>PhysicalEntity_getNumLocations</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physicalEntity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="468" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="468" bodyend="470"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1afa8e33003201af57ace74aab4552b0f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalEntity_getLocation</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, int index)</argsstring>
+        <name>PhysicalEntity_getLocation</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="472" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="472" bodyend="477"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a42ba58aad14feb5396e9bbf2ffe6ac8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalEntity_str</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>PhysicalEntity_str</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="479" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="479" bodyend="486"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a8183b5144690cf3f873ba709dfc5341c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>SEMSIM_API PhysicalProcess * omexmeta::PhysicalProcess_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PhysicalProcess_new</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="492" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="492" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aa28971093a4be3dabb063469843a789c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PhysicalProcess_delete</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="496" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="496" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2e307011315fde17073c502c3bf2253a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PhysicalProcess_freeAll</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_freeAll</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="500" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="500" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a1237f9ce6afb4113d6312157610faa42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>SEMSIM_API PhysicalProcess * omexmeta::PhysicalProcess_setPhysicalProperty</definition>
+        <argsstring>(PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property)</argsstring>
+        <name>PhysicalProcess_setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>subject_metaid</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="507" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="507" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae9a9768a11e5a1a53a36ccd0d564cdfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>SEMSIM_API PhysicalProcess * omexmeta::PhysicalProcess_addSource</definition>
+        <argsstring>(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalProcess_addSource</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="515" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="515" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a867464e1e00afe9b1c850c7db4f1656c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>SEMSIM_API PhysicalProcess * omexmeta::PhysicalProcess_addSink</definition>
+        <argsstring>(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalProcess_addSink</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="523" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="523" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac54a96562427fe3f3b9946796969afd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>SEMSIM_API PhysicalProcess * omexmeta::PhysicalProcess_addMediator</definition>
+        <argsstring>(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalProcess_addMediator</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="531" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="531" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a63fc073ae29ceada6377ee9eb3696846" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalProcess_str</definition>
+        <argsstring>(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>PhysicalProcess_str</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="538" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="538" bodyend="545"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a738e9d39898919fb01bd9a7ed5af3687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* omexmeta::PhysicalProcess_getAbout</definition>
+        <argsstring>(PhysicalProcess *physical_process_ptr)</argsstring>
+        <name>PhysicalProcess_getAbout</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="547" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="547" bodyend="552"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aa7371fdf91f4c6c120e4559b23ad3585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int omexmeta::PhysicalProcess_getNumSources</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_getNumSources</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="554" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="554" bodyend="556"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1aaf4162aa78c2c7f73449705a3e0fc951" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int omexmeta::PhysicalProcess_getNumSinks</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_getNumSinks</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="558" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="558" bodyend="560"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a7ad65f0ec2f5c8433ebc126c75779520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int omexmeta::PhysicalProcess_getNumMediators</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_getNumMediators</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="562" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="562" bodyend="564"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a4437d98a077fa1c39bcbf2afa930a0ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>SEMSIM_API PhysicalForce * omexmeta::PhysicalForce_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PhysicalForce_new</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="570" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="570" bodyend="572"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a3fd476d941945107a6a0291101b20147" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PhysicalForce_delete</definition>
+        <argsstring>(PhysicalForce *physicalForce)</argsstring>
+        <name>PhysicalForce_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="574" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="574" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a93a5d378fedef3c456502f730a081727" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PhysicalForce_freeAll</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
+        <name>PhysicalForce_freeAll</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="579" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="579" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1adc302977513e541f932bb2463d49267f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>SEMSIM_API PhysicalForce * omexmeta::PhysicalForce_addSource</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalForce_addSource</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="585" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="585" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a8f6bb001fdb6907eb05c7a1450d89c4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>SEMSIM_API PhysicalForce * omexmeta::PhysicalForce_addSink</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalForce_addSink</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="592" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="592" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a999737c8802b6fc71f1bec24947aae02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>SEMSIM_API PhysicalForce * omexmeta::PhysicalForce_setPhysicalProperty</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property)</argsstring>
+        <name>PhysicalForce_setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>subject_metaid</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="598" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="598" bodyend="602"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1abe9d81f3530dd5b03a84def47b1b0513" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>SEMSIM_API int omexmeta::PhysicalForce_getNumSources</definition>
+        <argsstring>(PhysicalForce *physicalForce)</argsstring>
+        <name>PhysicalForce_getNumSources</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="604" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="604" bodyend="606"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a35b3bdd39e0d88fad9bab022640c6140" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>SEMSIM_API int omexmeta::PhysicalForce_getNumSinks</definition>
+        <argsstring>(PhysicalForce *physicalForce)</argsstring>
+        <name>PhysicalForce_getNumSinks</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="608" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="608" bodyend="610"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac6a34c85b864ba93bde80678383e0553" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalForce_str</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>PhysicalForce_str</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="612" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="612" bodyend="619"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a20c0b5c8fab0074bde9aa5e5ef31483c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PhysicalForce_getAbout</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
+        <name>PhysicalForce_getAbout</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="622" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="622" bodyend="627"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae7d2d0358cace729cb9e1943216553bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PersonalInformation_new</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="633" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="633" bodyend="635"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1afed64a746f2c47651f89bb52a27be281" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PersonalInformation_delete</definition>
+        <argsstring>(PersonalInformation *information)</argsstring>
+        <name>PersonalInformation_delete</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="637" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="637" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a5cae44b7b51098596d41da6889a054da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PersonalInformation_getLocalUri</definition>
+        <argsstring>(PersonalInformation *information)</argsstring>
+        <name>PersonalInformation_getLocalUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="641" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="641" bodyend="646"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae56d63835ab34d9fff46174f042a0fc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PersonalInformation_setLocalUri</definition>
+        <argsstring>(PersonalInformation *information, const char *localUri)</argsstring>
+        <name>PersonalInformation_setLocalUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>localUri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="648" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="648" bodyend="650"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a366741b34344cd9dc4b7b170baad5c71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addCreator</definition>
+        <argsstring>(PersonalInformation *information, const char *value)</argsstring>
+        <name>PersonalInformation_addCreator</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="652" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="652" bodyend="655"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a7c01442ec1322110c4315e9c24680c5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addName</definition>
+        <argsstring>(PersonalInformation *information, const char *value)</argsstring>
+        <name>PersonalInformation_addName</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="662" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="662" bodyend="665"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1af8d335f371bb0bb326611f4b271ed808" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addMbox</definition>
+        <argsstring>(PersonalInformation *information, const char *value)</argsstring>
+        <name>PersonalInformation_addMbox</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="667" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="667" bodyend="670"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a88cad1055c285bcc4089589886bfccb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addAccountName</definition>
+        <argsstring>(PersonalInformation *information, const char *value)</argsstring>
+        <name>PersonalInformation_addAccountName</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="672" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="672" bodyend="675"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a3c213fe7f922c034e6da7aa92faa9e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addAccountServiceHomepage</definition>
+        <argsstring>(PersonalInformation *information, const char *value)</argsstring>
+        <name>PersonalInformation_addAccountServiceHomepage</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="678" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="678" bodyend="681"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ad723a7d556dde73f19706f0216fd230b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addFoafBlank</definition>
+        <argsstring>(PersonalInformation *information, const char *predicate, const char *blank_value)</argsstring>
+        <name>PersonalInformation_addFoafBlank</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>blank_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="684" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="684" bodyend="687"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a9a4d5d0e57526ceaa25b42916cab151a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addFoafUri</definition>
+        <argsstring>(PersonalInformation *information, const char *predicate, const char *uri_value)</argsstring>
+        <name>PersonalInformation_addFoafUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="690" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="690" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a255bfeb09377d6199d96825cec0cbc35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addFoafLiteral</definition>
+        <argsstring>(PersonalInformation *information, const char *predicate, const char *literal_value)</argsstring>
+        <name>PersonalInformation_addFoafLiteral</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>literal_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="696" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="696" bodyend="700"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1afd29c234242182fddd7227b4ef3f7f65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+        <definition>SEMSIM_API PersonalInformation * omexmeta::PersonalInformation_addFoaf</definition>
+        <argsstring>(PersonalInformation *information, const char *predicate, const LibrdfNode &amp;value_node)</argsstring>
+        <name>PersonalInformation_addFoaf</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref> &amp;</type>
+          <declname>value_node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="703" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="703" bodyend="706"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a910605f0483d652c7c0cde1f1707e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PersonalInformation_getMetaid</definition>
+        <argsstring>(PersonalInformation *information)</argsstring>
+        <name>PersonalInformation_getMetaid</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="708" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="708" bodyend="713"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ad34abd30e16eb81b72522cb2b8324362" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PersonalInformation_setMetaid</definition>
+        <argsstring>(PersonalInformation *information, const char *metaid)</argsstring>
+        <name>PersonalInformation_setMetaid</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>metaid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="715" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="715" bodyend="717"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac2058a58789fe883478d389e3bd8f718" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>SEMSIM_API char * omexmeta::PersonalInformation_getModelUri</definition>
+        <argsstring>(PersonalInformation *information)</argsstring>
+        <name>PersonalInformation_getModelUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="719" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="719" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8cpp_1a8fc11310522b23ba7e917dd297921a37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>SEMSIM_API void omexmeta::PersonalInformation_setModelUri</definition>
+        <argsstring>(PersonalInformation *information, const char *modelUri)</argsstring>
+        <name>PersonalInformation_setModelUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
+          <declname>information</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>modelUri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="726" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="726" bodyend="728"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8h_1a9d7674ac63ed370deb2df2436131b51d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEMSIM_API void</type>
+        <definition>SEMSIM_API void omexmeta::free_c_char_star_star</definition>
+        <argsstring>(char **c, int size)</argsstring>
+        <name>free_c_char_star_star</name>
+        <param>
+          <type>char **</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.h" line="26" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8h_1a81b105f3d16bcb1ecb1b2815448aea73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEMSIM_API char *</type>
+        <definition>SEMSIM_API char* omexmeta::RDF_getBaseUri</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_getBaseUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.h" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="OmexMetaCApi_8h_1a000c176f0b27b90001ec0323df724fe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEMSIM_API void</type>
+        <definition>SEMSIM_API void omexmeta::RDF_setBaseUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *uri)</argsstring>
+        <name>RDF_setBaseUri</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="Predicate_8cpp_1a0a8d50daa10e421d0722520cdef0ab9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PredicatePtr</type>
+        <definition>PredicatePtr omexmeta::PredicateFactory</definition>
+        <argsstring>(std::string namespace_, const std::string &amp;term)</argsstring>
+        <name>PredicateFactory</name>
+        <param>
+          <type>std::string</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Predicate.cpp" line="263" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="263" bodyend="319"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/AnnotationType.h" line="12" column="1"/>
+  </compounddef>
+</doxygen>

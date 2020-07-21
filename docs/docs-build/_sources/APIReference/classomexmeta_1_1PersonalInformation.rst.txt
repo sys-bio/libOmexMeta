@@ -1,0 +1,16 @@
+.. _exhale_class_classomexmeta_1_1PersonalInformation:
+
+Class PersonalInformation
+=========================
+
+- Defined in :ref:`file_src_omexmeta_PersonalInformation.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::PersonalInformation
+   :members:
+   :protected-members:
+   :undoc-members:

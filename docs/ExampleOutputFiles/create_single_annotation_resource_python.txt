@@ -1,0 +1,24 @@
+5
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:OmexMetaId0001
+    dcterms:description _:BankIdentifier .
+
+local:OmexMetaId0002
+    bqbiol:is <https://identifiers.org/uniprot/PD1234> .
+
+local:OmexMetaId0003
+    bqbiol:is <https://identifiers.org/string1/string2> .
+
+local:OmexMetaId0004
+    bqbiol:is <https://identifiers.org/FMA/75132> .
+
+local:ToyModel
+    dcterms:description "This is a toy model for demonstration purposes"^^rdf:string .
+
+

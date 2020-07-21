@@ -1,0 +1,26 @@
+.. _exhale_class_classredland_1_1LibrdfStorage:
+
+Class LibrdfStorage
+===================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfStorage.h`
+
+
+Nested Relationships
+--------------------
+
+
+Nested Types
+************
+
+- :ref:`exhale_struct_structredland_1_1LibrdfStorage_1_1deleter`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: redland::LibrdfStorage
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8h_1a9d7674ac63ed370deb2df2436131b51d:
+
+Function omexmeta::free_c_char_star_star
+========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::free_c_char_star_star(char **, int)

@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a6253e1a5b5d7f3162cd5373ae153bae1:
+
+Function omexmeta::Editor_addTaxon
+==================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_addTaxon(Editor *, const char *)

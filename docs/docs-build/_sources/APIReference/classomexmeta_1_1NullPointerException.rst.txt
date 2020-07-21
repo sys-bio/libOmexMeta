@@ -1,0 +1,25 @@
+.. _exhale_class_classomexmeta_1_1NullPointerException:
+
+Class NullPointerException
+==========================
+
+- Defined in :ref:`file_src_omexmeta_Error.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public omexmeta::Exception`` (:ref:`exhale_class_classomexmeta_1_1Exception`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::NullPointerException
+   :members:
+   :protected-members:
+   :undoc-members:

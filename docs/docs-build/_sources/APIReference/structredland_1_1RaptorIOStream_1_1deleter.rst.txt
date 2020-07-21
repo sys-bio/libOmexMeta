@@ -1,0 +1,22 @@
+.. _exhale_struct_structredland_1_1RaptorIOStream_1_1deleter:
+
+Struct RaptorIOStream::deleter
+==============================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_RaptorIOStream.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classredland_1_1RaptorIOStream`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: redland::RaptorIOStream::deleter
+   :members:
+   :protected-members:
+   :undoc-members:

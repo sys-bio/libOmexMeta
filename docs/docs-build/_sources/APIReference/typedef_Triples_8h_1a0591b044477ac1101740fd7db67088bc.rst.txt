@@ -1,0 +1,13 @@
+.. _exhale_typedef_Triples_8h_1a0591b044477ac1101740fd7db67088bc:
+
+Typedef omexmeta::TripleVector
+==============================
+
+- Defined in :ref:`file_src_omexmeta_Triples.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: omexmeta::TripleVector

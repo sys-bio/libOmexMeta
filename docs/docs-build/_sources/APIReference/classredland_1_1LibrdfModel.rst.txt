@@ -1,0 +1,16 @@
+.. _exhale_class_classredland_1_1LibrdfModel:
+
+Class LibrdfModel
+=================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfModel.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: redland::LibrdfModel
+   :members:
+   :protected-members:
+   :undoc-members:

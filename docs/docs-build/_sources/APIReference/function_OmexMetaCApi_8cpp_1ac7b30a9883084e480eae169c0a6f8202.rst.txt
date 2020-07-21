@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ac7b30a9883084e480eae169c0a6f8202:
+
+Function omexmeta::Editor_addPhysicalEntity
+===========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_addPhysicalEntity(Editor *, PhysicalEntity *)

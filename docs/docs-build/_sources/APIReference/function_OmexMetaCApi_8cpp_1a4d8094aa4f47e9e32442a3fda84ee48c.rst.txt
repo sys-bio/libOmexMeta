@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a4d8094aa4f47e9e32442a3fda84ee48c:
+
+Function omexmeta::Editor_removeSingleAnnotation
+================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_removeSingleAnnotation(Editor *, SingularAnnotation *)

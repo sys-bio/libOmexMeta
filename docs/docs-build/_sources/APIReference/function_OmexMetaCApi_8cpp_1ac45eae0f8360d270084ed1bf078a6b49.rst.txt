@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ac45eae0f8360d270084ed1bf078a6b49:
+
+Function omexmeta::RDF_getModelUri
+==================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::RDF_getModelUri(RDF *)

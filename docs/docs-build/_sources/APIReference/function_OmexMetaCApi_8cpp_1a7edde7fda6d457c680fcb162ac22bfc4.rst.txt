@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a7edde7fda6d457c680fcb162ac22bfc4:
+
+Function omexmeta::PhysicalEntity_getIdentity
+=============================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalEntity_getIdentity(PhysicalEntity *)

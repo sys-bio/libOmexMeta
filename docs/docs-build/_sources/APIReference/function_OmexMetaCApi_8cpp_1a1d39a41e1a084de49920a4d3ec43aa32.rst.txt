@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a1d39a41e1a084de49920a4d3ec43aa32:
+
+Function omexmeta::Editor_delete
+================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_delete(Editor *)

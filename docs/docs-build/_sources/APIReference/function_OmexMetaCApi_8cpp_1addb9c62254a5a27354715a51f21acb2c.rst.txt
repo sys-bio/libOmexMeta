@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1addb9c62254a5a27354715a51f21acb2c:
+
+Function omexmeta::Editor_getMetaId
+===================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_getMetaId(Editor *, int)

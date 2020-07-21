@@ -1,0 +1,51 @@
+
+.. _file_src_omexmeta_OmexMeta.h:
+
+File OmexMeta.h
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/OmexMeta.h``)
+----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_OmexMeta.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``omexmeta/Editor.h`` (:ref:`file_src_omexmeta_Editor.h`)
+
+- ``omexmeta/PersonalInformation.h`` (:ref:`file_src_omexmeta_PersonalInformation.h`)
+
+- ``omexmeta/PhysicalEntity.h`` (:ref:`file_src_omexmeta_PhysicalEntity.h`)
+
+- ``omexmeta/PhysicalForce.h`` (:ref:`file_src_omexmeta_PhysicalForce.h`)
+
+- ``omexmeta/PhysicalProcess.h`` (:ref:`file_src_omexmeta_PhysicalProcess.h`)
+
+- ``omexmeta/RDF.h`` (:ref:`file_src_omexmeta_RDF.h`)
+
+- ``omexmeta/Triple.h`` (:ref:`file_src_omexmeta_Triple.h`)
+
+- ``omexmeta/Triples.h`` (:ref:`file_src_omexmeta_Triples.h`)
+
+
+
+
+

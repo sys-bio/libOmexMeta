@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a7ad65f0ec2f5c8433ebc126c75779520:
+
+Function omexmeta::PhysicalProcess_getNumMediators
+==================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalProcess_getNumMediators(PhysicalProcess *)

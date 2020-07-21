@@ -1,0 +1,13 @@
+.. _exhale_typedef_PhysicalPhenomenon_8h_1aeb3054fca8bdfaeeae91c2f3e1bd8c27:
+
+Typedef omexmeta::PhysicalPhenomenonPtr
+=======================================
+
+- Defined in :ref:`file_src_omexmeta_PhysicalPhenomenon.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: omexmeta::PhysicalPhenomenonPtr

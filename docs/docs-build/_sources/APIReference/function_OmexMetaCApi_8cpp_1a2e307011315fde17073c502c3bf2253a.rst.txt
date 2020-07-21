@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a2e307011315fde17073c502c3bf2253a:
+
+Function omexmeta::PhysicalProcess_freeAll
+==========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalProcess_freeAll(PhysicalProcess *)

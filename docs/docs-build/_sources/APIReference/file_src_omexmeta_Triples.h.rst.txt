@@ -1,0 +1,90 @@
+
+.. _file_src_omexmeta_Triples.h:
+
+File Triples.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/Triples.h``)
+---------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_Triples.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``RedlandWrapper.h`` (:ref:`file_src_redland_RedlandWrapper_src_RedlandWrapper.h`)
+
+- ``filesystem``
+
+- ``omexmeta/Error.h`` (:ref:`file_src_omexmeta_Error.h`)
+
+- ``omexmeta/Predicate.h`` (:ref:`file_src_omexmeta_Predicate.h`)
+
+- ``omexmeta/Resource.h`` (:ref:`file_src_omexmeta_Resource.h`)
+
+- ``omexmeta/Subject.h`` (:ref:`file_src_omexmeta_Subject.h`)
+
+- ``omexmeta/Triple.h`` (:ref:`file_src_omexmeta_Triple.h`)
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_OmexMeta.h`
+
+- :ref:`file_src_omexmeta_Participant.h`
+
+- :ref:`file_src_omexmeta_PersonalInformation.h`
+
+- :ref:`file_src_omexmeta_PhysicalPhenomenon.h`
+
+- :ref:`file_src_omexmeta_PhysicalProperty.h`
+
+- :ref:`file_src_omexmeta_Triples.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classomexmeta_1_1Triples`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_Triples_8h_1a866d550d1c1d6bdadd778a73fef571bb`
+
+- :ref:`exhale_typedef_Triples_8h_1a0591b044477ac1101740fd7db67088bc`
+

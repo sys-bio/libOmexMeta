@@ -1,0 +1,95 @@
+
+.. _file_src_omexmeta_OmexMetaXmlAssistant.h:
+
+File OmexMetaXmlAssistant.h
+===========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/OmexMetaXmlAssistant.h``)
+----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_OmexMetaXmlAssistant.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``MetaID.h`` (:ref:`file_src_omexmeta_MetaID.h`)
+
+- ``OmexMetaUtils.h`` (:ref:`file_src_omexmeta_OmexMetaUtils.h`)
+
+- ``iostream``
+
+- ``libxml/parser.h``
+
+- ``libxml/tree.h``
+
+- ``memory``
+
+- ``utility``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_Editor.h`
+
+- :ref:`file_src_omexmeta_OmexMetaCApi.h`
+
+- :ref:`file_src_omexmeta_OmexMetaXmlAssistant.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classomexmeta_1_1CellMLAssistant`
+
+- :ref:`exhale_class_classomexmeta_1_1OmexMetaXmlAssistant`
+
+- :ref:`exhale_class_classomexmeta_1_1SBMLAssistant`
+
+- :ref:`exhale_class_classomexmeta_1_1SemsimXmlAssistantFactory`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fb`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_OmexMetaXmlAssistant_8h_1a602c5d1094d065496b79af07e9a3b28a`
+

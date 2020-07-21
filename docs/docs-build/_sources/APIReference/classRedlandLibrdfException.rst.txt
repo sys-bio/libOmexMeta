@@ -1,0 +1,25 @@
+.. _exhale_class_classRedlandLibrdfException:
+
+Class RedlandLibrdfException
+============================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfException.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public Exception`` (:ref:`exhale_class_classException`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: RedlandLibrdfException
+   :members:
+   :protected-members:
+   :undoc-members:

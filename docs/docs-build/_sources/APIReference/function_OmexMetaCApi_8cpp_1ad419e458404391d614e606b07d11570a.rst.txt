@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ad419e458404391d614e606b07d11570a:
+
+Function omexmeta::PhysicalEntity_delete
+========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalEntity_delete(PhysicalEntity *)

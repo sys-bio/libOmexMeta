@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a04ffcebeb8b1f9d16f39497d8a2445c1:
+
+Function omexmeta::free_world
+=============================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::free_world(librdf_world *)

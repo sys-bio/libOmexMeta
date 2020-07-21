@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1afed64a746f2c47651f89bb52a27be281:
+
+Function omexmeta::PersonalInformation_delete
+=============================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PersonalInformation_delete(PersonalInformation *)

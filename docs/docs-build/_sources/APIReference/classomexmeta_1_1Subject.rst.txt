@@ -1,0 +1,16 @@
+.. _exhale_class_classomexmeta_1_1Subject:
+
+Class Subject
+=============
+
+- Defined in :ref:`file_src_omexmeta_Subject.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::Subject
+   :members:
+   :protected-members:
+   :undoc-members:

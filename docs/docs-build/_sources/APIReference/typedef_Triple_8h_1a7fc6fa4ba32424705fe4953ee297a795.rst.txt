@@ -1,0 +1,13 @@
+.. _exhale_typedef_Triple_8h_1a7fc6fa4ba32424705fe4953ee297a795:
+
+Typedef omexmeta::SingularAnnotation
+====================================
+
+- Defined in :ref:`file_src_omexmeta_Triple.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: omexmeta::SingularAnnotation

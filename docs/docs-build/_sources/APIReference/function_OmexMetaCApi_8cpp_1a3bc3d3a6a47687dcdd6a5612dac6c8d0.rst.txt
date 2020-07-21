@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a3bc3d3a6a47687dcdd6a5612dac6c8d0:
+
+Function omexmeta::RDF_delete
+=============================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::RDF_delete(RDF *)

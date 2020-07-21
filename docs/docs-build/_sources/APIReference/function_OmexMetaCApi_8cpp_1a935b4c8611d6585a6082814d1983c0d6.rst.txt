@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a935b4c8611d6585a6082814d1983c0d6:
+
+Function omexmeta::Editor_getArchiveUri
+=======================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_getArchiveUri(Editor *)

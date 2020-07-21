@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a7dd259cd6b27a3e42da22db937ce9ffe:
+
+Function omexmeta::SingularAnnotation_setResourceBlank
+======================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::SingularAnnotation_setResourceBlank(SingularAnnotation *, const char *)

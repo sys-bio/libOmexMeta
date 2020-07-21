@@ -1,0 +1,13 @@
+.. _exhale_function_LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5:
+
+Function redland::toIOStream
+============================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfSerializer.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: redland::toIOStream(const LibrdfUri&, const LibrdfModel *, const RaptorIOStream&)

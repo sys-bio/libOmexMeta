@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a24df88b09c50ad4fd9e35a8a19a82f79:
+
+Function omexmeta::RDF_getLocalUri
+==================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::RDF_getLocalUri(RDF *)

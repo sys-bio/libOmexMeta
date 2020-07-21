@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File OmexMetaUtils.cpp &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File OmexMetaUtils.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_OmexMetaUtils.cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-omexmetautils-cpp">
+<span id="program-listing-file-src-omexmeta-omexmetautils-cpp"></span><h1>Program Listing for File OmexMetaUtils.cpp<a class="headerlink" href="#program-listing-for-file-omexmetautils-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_OmexMetaUtils.cpp.html#file-src-omexmeta-omexmetautils-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/OmexMetaUtils.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 4/13/2020.</span>
+<span class="c1">//</span>
+<span class="cp">#include</span> <span class="cpf">&quot;OmexMetaUtils.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+    <span class="kt">bool</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">stat</span> <span class="n">buffer</span><span class="p">{};</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">buffer</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">removeFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Filename </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">filename</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> does not exist, so can&#39;t be removed&quot;</span><span class="p">;</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">removeIfExists</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">removeFile</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * wrapper around the CurlGet function, as the utils</span>
+<span class="cm"> * class seems like a good place for the download features.</span>
+<span class="cm"> */</span>
+    <span class="kt">void</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">download</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">url</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">CurlGet</span><span class="o">::</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span> <span class="kt">char</span> <span class="n">delimiter</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">tokens</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span> <span class="o">==</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// return the string in the vector</span>
+            <span class="n">tokens</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">tokens</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">token</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">istringstream</span> <span class="n">is</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">token</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+                <span class="n">tokens</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">tokens</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span>
+            <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">metaid_base</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">exclusions</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">q</span> <span class="o">=</span> <span class="s">&quot;SELECT ?subject ?predicate ?object</span><span class="se">\n</span><span class="s">&quot;</span>
+                        <span class="s">&quot;WHERE {?subject ?predicate ?object}&quot;</span><span class="p">;</span>
+        <span class="n">Query</span> <span class="nf">query</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
+        <span class="n">ResultsMap</span> <span class="n">results_map</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">resultsAsMap</span><span class="p">();</span>
+        <span class="n">query</span><span class="p">.</span><span class="n">freeQuery</span><span class="p">();</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">subjects</span> <span class="o">=</span> <span class="n">results_map</span><span class="p">[</span><span class="s">&quot;subject&quot;</span><span class="p">];</span>
+        <span class="c1">// add other exclusions to the subjects like</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">exclusions</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">subjects</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">MetaID</span> <span class="n">metaId</span><span class="p">(</span><span class="n">metaid_base</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+            <span class="n">metaid</span> <span class="o">=</span> <span class="n">metaId</span><span class="p">.</span><span class="n">generate</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">subjects</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">subjects</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">metaId</span><span class="p">.</span><span class="n">generate</span><span class="p">())</span> <span class="o">==</span> <span class="n">subjects</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">metaid</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">prepareBaseUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">absolute_path</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">file_prefix</span> <span class="o">=</span> <span class="s">&quot;file://&quot;</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">http_protocol</span> <span class="o">=</span> <span class="s">&quot;http://&quot;</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">https_protocol</span> <span class="o">=</span> <span class="s">&quot;https://&quot;</span><span class="p">;</span>
+
+        <span class="c1">// if the base_uri is a web_uri, we leave it alone</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">https_protocol</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">str</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">http_protocol</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// str already starts with &quot;http://&quot; or &quot;https:// do nothing</span>
+            <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Same if it already starts with a &quot;file:/&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">file_prefix</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// str already starts with &quot;file://&quot; do nothing</span>
+            <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// swap any backslashes with forward slashes</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">replace</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">str</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="sc">&#39;\\&#39;</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">absolute_path</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// otherwise we use the current working directory as an absolute path</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">out</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/=</span> <span class="n">str</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s">&quot;file://&quot;</span> <span class="o">+</span> <span class="n">out</span><span class="p">.</span><span class="n">string</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;file://&quot;</span> <span class="o">+</span> <span class="n">str</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">getNamespaceFromUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">splitStringBy</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="c1">// Uri&#39;s we want all begin with http.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;http&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: OmexMetaUtils::getNamespaceFromUri: </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                        <span class="o">+</span> <span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">&quot;. Predicate arguments are URI&#39;s, they should begin with &quot;http&quot;</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">);</span>
+
+        <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">&quot;//&quot;</span><span class="p">;</span> <span class="c1">// we keep the first part and add back the missing &#39;/&#39;</span>
+
+        <span class="c1">// iterate from second to penultimate, rebuilding the uri</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">last_index</span> <span class="o">=</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="c1">// The last element of the list we check for a &quot;#&quot; in namespacebool frag_in_ns = false;</span>
+        <span class="kt">bool</span> <span class="n">frag_in_ns</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="n">last_index</span><span class="p">].</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// frag is present</span>
+            <span class="n">frag_in_ns</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">frag_in_ns</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">split_on_hash</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="n">last_index</span><span class="p">],</span> <span class="sc">&#39;#&#39;</span><span class="p">);</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">split_on_hash</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;#&quot;</span><span class="p">;</span> <span class="c1">// remember to put it back</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="c1">//            os &lt;&lt; vec[last_index];</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">isFormattedUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">file_prefix</span> <span class="o">=</span> <span class="s">&quot;file://&quot;</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">http_protocol</span> <span class="o">=</span> <span class="s">&quot;http://&quot;</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">https_protocol</span> <span class="o">=</span> <span class="s">&quot;https://&quot;</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">uri</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">https_protocol</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+               <span class="o">||</span> <span class="n">uri</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">http_protocol</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+               <span class="o">||</span> <span class="n">uri</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">file_prefix</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">full_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">ending</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">full_string</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">ending</span><span class="p">.</span><span class="n">length</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">full_string</span><span class="p">.</span><span class="n">compare</span><span class="p">(</span><span class="n">full_string</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">-</span> <span class="n">ending</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">ending</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">ending</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">full_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">full_string</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief test that expected_string matches actual_string when</span>
+<span class="cm">     * split by new lines and matched as a regex</span>
+<span class="cm">     */</span>
+    <span class="kt">bool</span>
+    <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">assertRegexMatchSplitByNewLine</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">expected_string</span><span class="p">,</span>
+                                                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">actual_string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">all_lines_match</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="c1">// split the expected string into lines</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">omexmeta</span><span class="o">::</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">expected_string</span><span class="p">,</span> <span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+        <span class="c1">// we do search line by line</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">vec</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">regex</span> <span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="kt">bool</span> <span class="n">truth</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">regex_search</span><span class="p">(</span><span class="n">actual_string</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">truth</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">truth</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">all_lines_match</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;actual is:</span><span class="se">\n</span><span class="s"> &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">actual_string</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Failed on line</span><span class="se">\n</span><span class="s">: </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">all_lines_match</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span>
+    <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">assertMatchByNewLine</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">expected_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">actual_string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">all_lines_match</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="c1">// split the expected string into lines</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">omexmeta</span><span class="o">::</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">expected_string</span><span class="p">,</span> <span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+        <span class="c1">// we do search line by line</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">vec</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">actual_string</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// not found.</span>
+                <span class="n">all_lines_match</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;actual is:</span><span class="se">\n</span><span class="s"> &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">actual_string</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Failed on line:</span><span class="se">\n</span><span class="s"> </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">all_lines_match</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span>
+    <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">configureSelfStrings</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
+        <span class="c1">// create the default namespaces.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">repository_name</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">)){</span>
+            <span class="n">repository_name</span> <span class="o">+=</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">omex_name</span><span class="p">,</span> <span class="s">&quot;.omex&quot;</span><span class="p">)){</span>
+            <span class="n">omex_name</span> <span class="o">+=</span> <span class="s">&quot;.omex&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myomexlib_string</span> <span class="o">=</span> <span class="n">repository_name</span> <span class="o">+</span> <span class="n">omex_name</span><span class="p">;</span>
+        <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">myomexlib_string</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">model_name</span> <span class="o">+=</span> <span class="s">&quot;#&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// we make myomex_string relative to myomexlib_string</span>
+        <span class="c1">// logic for adding appropriate extension if not exist</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">suffixes</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;.xml#&quot;</span><span class="p">,</span> <span class="s">&quot;.cellml#&quot;</span><span class="p">,</span> <span class="s">&quot;.sbml#&quot;</span><span class="p">};</span>
+        <span class="kt">bool</span> <span class="n">has_appropriate_extension</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span> <span class="p">:</span> <span class="n">suffixes</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">it</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">has_appropriate_extension</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myomex_string</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">has_appropriate_extension</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">myomex_string</span> <span class="o">=</span> <span class="n">myomexlib_string</span> <span class="o">+</span> <span class="o">+</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">model_name</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">myomex_string</span> <span class="o">=</span> <span class="n">myomexlib_string</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s">&quot;.xml#&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">myomex_string</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">myomex_string</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span>
+        <span class="c1">// now we know we have a string that definitely contains a suffux like .xml</span>
+        <span class="c1">// we need to remove it so we can add .rdf.</span>
+        <span class="c1">// We do this in a way that enables multiple &quot;.&quot; in a model_name</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">split</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="sc">&#39;.&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">split</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;std::logic_error: Triple::str: You should never get a &quot;</span>
+                                   <span class="s">&quot;a value less than 2 here because you are splitting a string. &quot;</span>
+                                   <span class="s">&quot;If you are seeing this message this is a bug. Please report &quot;</span>
+                                   <span class="s">&quot;it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// remove the last element which should contain the extension.</span>
+        <span class="n">split</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span> <span class="p">:</span> <span class="n">split</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Now we can docs-build up the local string</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_string</span> <span class="o">=</span> <span class="n">myomexlib_string</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;rdf#&quot;</span><span class="p">;</span>
+        <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">local_string</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">vec</span><span class="p">;</span>
+
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">addLocalPrefixToMetaid</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// if metaid already has local in the string, we just return</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">metaid</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">local</span><span class="p">)</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">metaid</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Otherwise we concatonate:</span>
+        <span class="c1">// first we check if local has the # at the end. It should do.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">local</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">local</span> <span class="o">=</span> <span class="n">local</span> <span class="o">+</span> <span class="s">&quot;#&quot;</span><span class="p">;</span>
+<span class="c1">//            throw std::invalid_argument(&quot;std::invalid_argument: addLocalPrefixToMetaid: &quot;</span>
+<span class="c1">//                                        &quot;Was expecting a local prefix to end with a &#39;#&#39; &quot;</span>
+<span class="c1">//                                        &quot;character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. &quot;</span>
+<span class="c1">//                                        &quot;Recieved: &quot; + local);</span>
+        <span class="p">}</span>
+        <span class="c1">// if metaid also begins with &#39;#&#39; character, remove it.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">metaid</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="sc">&#39;#&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">metaid</span> <span class="o">=</span> <span class="n">metaid</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">metaid</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">local</span> <span class="o">+</span> <span class="n">metaid</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+    <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">stringReplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">string_to_replace</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">replacement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">size_t</span> <span class="n">start_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">((</span><span class="n">start_pos</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">string_to_replace</span><span class="p">,</span> <span class="n">start_pos</span><span class="p">))</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">start_pos</span><span class="p">,</span> <span class="n">string_to_replace</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">replacement</span><span class="p">);</span>
+            <span class="n">start_pos</span> <span class="o">+=</span> <span class="n">replacement</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

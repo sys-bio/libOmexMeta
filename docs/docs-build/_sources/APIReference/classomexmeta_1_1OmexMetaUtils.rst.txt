@@ -1,0 +1,16 @@
+.. _exhale_class_classomexmeta_1_1OmexMetaUtils:
+
+Class OmexMetaUtils
+===================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaUtils.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::OmexMetaUtils
+   :members:
+   :protected-members:
+   :undoc-members:

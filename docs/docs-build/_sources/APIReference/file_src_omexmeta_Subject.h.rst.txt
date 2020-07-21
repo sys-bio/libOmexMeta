@@ -1,0 +1,84 @@
+
+.. _file_src_omexmeta_Subject.h:
+
+File Subject.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/Subject.h``)
+---------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_Subject.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``LibrdfNode.h`` (:ref:`file_src_redland_RedlandWrapper_src_LibrdfNode.h`)
+
+- ``World.h`` (:ref:`file_src_redland_RedlandWrapper_src_World.h`)
+
+- ``iostream``
+
+- ``omexmeta/Error.h`` (:ref:`file_src_omexmeta_Error.h`)
+
+- ``omexmeta/HERE.h`` (:ref:`file_src_omexmeta_HERE.h`)
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_Participant.h`
+
+- :ref:`file_src_omexmeta_Triple.h`
+
+- :ref:`file_src_omexmeta_Triples.h`
+
+- :ref:`file_src_omexmeta_PhysicalEntity.h`
+
+- :ref:`file_src_omexmeta_PhysicalPhenomenon.h`
+
+- :ref:`file_src_omexmeta_Subject.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classomexmeta_1_1Subject`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_Subject_8h_1a55c310aac91280285453df83fafa7d69`
+

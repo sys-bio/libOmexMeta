@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="CMakeLists_8txt" kind="file" language="C++">
+    <compoundname>CMakeLists.txt</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="CMakeLists_8txt_1a14d18223e356c003060adae951fff395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>set</definition>
+        <argsstring>(OMEXMETA_HEADERS &quot;OmexMetaUtils.h&quot; &quot;CurlGet.h&quot; &quot;RDF.h&quot; &quot;OmexMetaXmlAssistant.h&quot; &quot;Subject.h&quot; &quot;Resource.h&quot; &quot;Query.h&quot; &quot;Predicate.h&quot; &quot;Triple.h&quot; &quot;Triples.h&quot; &quot;MetaID.h&quot; &quot;PhysicalProperty.h&quot; &quot;Participant.h&quot; &quot;PhysicalPhenomenon.h&quot; &quot;PhysicalEntity.h&quot; &quot;PhysicalProcess.h&quot; &quot;PhysicalForce.h&quot; &quot;AnnotationType.h&quot; &quot;Editor.h&quot; &quot;OmexMetaCApi.h&quot; PersonalInformation.cpp PersonalInformation.h OmexMeta.h) set(OMEXMETA_SOURCES &quot;OmexMetaUtils.cpp&quot; &quot;RDF.cpp&quot; &quot;Query.cpp&quot; &quot;CurlGet.cpp&quot; &quot;OmexMetaXmlAssistant.cpp&quot; &quot;Subject.cpp&quot; &quot;Resource.cpp&quot; &quot;Predicate.cpp&quot; &quot;Triple.cpp&quot; &quot;Triples.cpp&quot; &quot;PhysicalProperty.cpp&quot; &quot;MetaID.cpp&quot; &quot;Participant.cpp&quot; &quot;PhysicalEntity.cpp&quot; &quot;PhysicalPhenomenon.cpp&quot; &quot;Editor.cpp&quot; &quot;PhysicalProcess.cpp&quot; &quot;PhysicalForce.cpp&quot; &quot;OmexMetaCApi.cpp&quot; PersonalInformation.cpp PersonalInformation.h) add_library(OmexMeta-static STATIC $</argsstring>
+        <name>set</name>
+        <param>
+          <type>OMEXMETA_HEADERS &quot;OmexMetaUtils.h&quot; &quot;CurlGet.h&quot; &quot;RDF.h&quot; &quot;OmexMetaXmlAssistant.h&quot; &quot;Subject.h&quot; &quot;Resource.h&quot; &quot;Query.h&quot; &quot;Predicate.h&quot; &quot;Triple.h&quot; &quot;Triples.h&quot; &quot;MetaID.h&quot; &quot;PhysicalProperty.h&quot; &quot;Participant.h&quot; &quot;PhysicalPhenomenon.h&quot; &quot;PhysicalEntity.h&quot; &quot;PhysicalProcess.h&quot; &quot;PhysicalForce.h&quot; &quot;AnnotationType.h&quot; &quot;Editor.h&quot; &quot;OmexMetaCApi.h&quot; PersonalInformation.cpp PersonalInformation.h OmexMeta.</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/CMakeLists.txt" line="4" column="1" bodyfile="src/omexmeta/CMakeLists.txt" bodystart="4" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">##########################################################################</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Set<sp/>libOmexMeta<sp/>sources</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">set</highlight><highlight class="normal">(OMEXMETA_HEADERS</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OmexMetaUtils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;CurlGet.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RDF.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OmexMetaXmlAssistant.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Subject.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Resource.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Query.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Predicate.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Triples.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;MetaID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalProperty.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Participant.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalPhenomenon.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalEntity.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalProcess.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalForce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;AnnotationType.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Editor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OmexMetaCApi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PersonalInformation.cpp<sp/>PersonalInformation.h<sp/>OmexMeta.h)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">set</highlight><highlight class="normal">(OMEXMETA_SOURCES</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OmexMetaUtils.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RDF.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Query.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;CurlGet.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OmexMetaXmlAssistant.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Subject.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Resource.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Predicate.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Triple.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Triples.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalProperty.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;MetaID.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Participant.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalEntity.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalPhenomenon.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Editor.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalProcess.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalForce.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OmexMetaCApi.cpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PersonalInformation.cpp<sp/>PersonalInformation.h)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#####################################################################3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>static<sp/>library</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">add_library(OmexMeta-</highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>STATIC<sp/>${OMEXMETA_HEADERS}<sp/>${OMEXMETA_SOURCES})</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">#<sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal"><sp/>runtime<sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>windows<sp/>(ignored<sp/>on<sp/>other<sp/>systems)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(${CMAKE_BUILD_TYPE}<sp/>STREQUAL<sp/>&quot;Release&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>set_target_properties(OmexMeta-static<sp/>PROPERTIES<sp/>MSVC_RUNTIME_LIBRARY<sp/>&quot;MultiThreaded&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#elseif<sp/>(${CMAKE_BUILD_TYPE}<sp/>STREQUAL<sp/>&quot;Debug&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>set_target_properties(OmexMeta-static<sp/>PROPERTIES<sp/>MSVC_RUNTIME_LIBRARY<sp/>&quot;MultiThreadedDebug&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>add<sp/>redland-combined<sp/>as<sp/>dependency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">add_dependencies(OmexMeta-</highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespaceredland" kindref="compound">redland</ref>-combined-</highlight><highlight class="keyword">static</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">target_include_directories(OmexMeta-</highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>PRIVATE</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${INCLUDE_DIRECTORIES}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal">#<sp/>links</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">target_link_libraries(OmexMeta-</highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>PRIVATE</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$&lt;TARGET_FILE:<ref refid="namespaceredland" kindref="compound">redland</ref>-combined-</highlight><highlight class="keyword">static</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${LINK_LIBRARIES}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">#<sp/>install</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">install(TARGETS<sp/>OmexMeta-</highlight><highlight class="keyword">static</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXPORT<sp/>OmexMeta-</highlight><highlight class="keyword">static</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LIBRARY</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DESTINATION<sp/>lib</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUBLIC_HEADER<sp/>DESTINATION<sp/>include/<ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(${BUILD_SHARED_LIBS})</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>FIXME<sp/>some<sp/>redundancy<sp/>here.</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>RPATH:<sp/>on<sp/>linux<sp/>determines<sp/>where<sp/>shared<sp/>libraries<sp/>look<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>other<sp/>shared<sp/>library<sp/>dependencies.</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal">(CMAKE_BUILD_RPATH_USE_ORIGIN<sp/>ON)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/>set(CMAKE_INSTALL_RPATH<sp/>&quot;&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/>set(CMAKE_INSTALL_RPATH<sp/>&quot;.&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/>set(CMAKE_BUILD_RPATH<sp/>&quot;$ORIGIN:1&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/>set(CMAKE_INSTALL_RPATH<sp/>&quot;$ORIGIN:2&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/>shared<sp/>library</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>add_library(OmexMeta<sp/>SHARED<sp/></highlight><highlight class="stringliteral">&quot;${OMEXMETA_HEADERS}&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;${OMEXMETA_SOURCES}&quot;</highlight><highlight class="normal"><sp/>Preproc.h)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor">#<sp/>configure<sp/>RPATH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>set_target_properties(OmexMeta<sp/>PROPERTIES<sp/>INSTALL_RPATH<sp/>${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="107"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>set_target_properties(OmexMeta<sp/>PROPERTIES<sp/>BUILD_RPATH<sp/>${RPATH})</highlight></codeline>
+<codeline lineno="108"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/>set_target_properties(OmexMeta<sp/>PROPERTIES<sp/>BUILD_RPATH_USE_ORIGIN<sp/>TRUE)</highlight></codeline>
+<codeline lineno="109"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>GET_TARGET_PROPERTY(V<sp/>OmexMeta<sp/>INSTALL_RPATH)</highlight></codeline>
+<codeline lineno="110"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>MESSAGE(V<sp/>${V})</highlight></codeline>
+<codeline lineno="111"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="112"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>set<sp/>runtime<sp/>shared<sp/>for<sp/>windows<sp/>(ignored<sp/>on<sp/>other<sp/>systems)</highlight></codeline>
+<codeline lineno="113"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>if<sp/>(${CMAKE_BUILD_TYPE}<sp/>STREQUAL<sp/>&quot;</highlight><highlight class="normal">Release</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="114"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_property(TARGET<sp/>OmexMeta<sp/>PROPERTY</highlight></codeline>
+<codeline lineno="115"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MSVC_RUNTIME_LIBRARY<sp/>&quot;</highlight><highlight class="normal">MultiThreadedDLL</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="116"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>elseif<sp/>(${CMAKE_BUILD_TYPE}<sp/>STREQUAL<sp/>&quot;</highlight><highlight class="normal">Debug</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="117"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_property(TARGET<sp/>OmexMeta<sp/>PROPERTY</highlight></codeline>
+<codeline lineno="118"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MSVC_RUNTIME_LIBRARY<sp/>&quot;</highlight><highlight class="normal">MultiThreadedDebugDLL</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="119"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>endif<sp/>()</highlight></codeline>
+<codeline lineno="120"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="121"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>includes</highlight></codeline>
+<codeline lineno="122"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>target_include_directories(OmexMeta<sp/>PUBLIC</highlight></codeline>
+<codeline lineno="123"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${INCLUDE_DIRECTORIES}</highlight></codeline>
+<codeline lineno="124"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="125"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="126"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>msvc,<sp/>linux,<sp/>macos<sp/>values</highlight></codeline>
+<codeline lineno="127"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>On<sp/>msvc<sp/>this<sp/>is<sp/>the<sp/>lib<sp/>file<sp/>counterpart<sp/>to<sp/>the<sp/>redland-combined<sp/>dll</highlight></codeline>
+<codeline lineno="128"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>on<sp/>linux<sp/>simply<sp/>the<sp/>.a<sp/>file</highlight></codeline>
+<codeline lineno="129"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>only<sp/>for<sp/>shared<sp/>lib</highlight></codeline>
+<codeline lineno="130"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>SetCrossPlatform(REDLAND_LINK_LIBRARY<sp/>${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/redland-combined.lib<sp/>$&lt;TARGET_FILE:redland-combined-static&gt;<sp/>$&lt;TARGET_FILE:redland-combined-static&gt;)</highlight></codeline>
+<codeline lineno="131"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="132"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>links</highlight></codeline>
+<codeline lineno="133"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>target_link_libraries(OmexMeta<sp/>PUBLIC</highlight></codeline>
+<codeline lineno="134"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${REDLAND_LINK_LIBRARY}</highlight></codeline>
+<codeline lineno="135"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${LINK_LIBRARIES}</highlight></codeline>
+<codeline lineno="136"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="137"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="138"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>Technically<sp/>linux<sp/>version<sp/>depends<sp/>on<sp/>static<sp/>version<sp/>and<sp/>windows<sp/>depends<sp/>on<sp/>the<sp/>dynamic<sp/>library</highlight></codeline>
+<codeline lineno="139"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>add_dependencies(OmexMeta<sp/>redland-combined<sp/>redland-combined-static)</highlight></codeline>
+<codeline lineno="140"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="141"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>install<sp/>target</highlight></codeline>
+<codeline lineno="142"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>install(TARGETS<sp/>OmexMeta</highlight></codeline>
+<codeline lineno="143"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LIBRARY<sp/>DESTINATION<sp/>lib</highlight></codeline>
+<codeline lineno="144"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARCHIVE<sp/>DESTINATION<sp/>lib</highlight></codeline>
+<codeline lineno="145"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RUNTIME<sp/>DESTINATION<sp/>bin</highlight></codeline>
+<codeline lineno="146"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUBLIC_HEADER<sp/>DESTINATION<sp/>include/OmexMeta</highlight></codeline>
+<codeline lineno="147"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="148"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="149"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>for<sp/>automatically<sp/>installing<sp/>to<sp/>folder<sp/>containing<sp/>python<sp/>api</highlight></codeline>
+<codeline lineno="150"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>install(FILES<sp/>$&lt;TARGET_FILE:OmexMeta&gt;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
+<codeline lineno="151"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="152"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="153"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>#<sp/>install<sp/>the<sp/>shared<sp/>library<sp/>dependencies</highlight></codeline>
+<codeline lineno="154"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>if<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;</highlight><highlight class="normal">linux</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="155"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="156"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>On<sp/>linux<sp/>we<sp/>only<sp/>need<sp/>a<sp/>few<sp/>dynamic<sp/>libraries<sp/>due<sp/>to<sp/>static<sp/>linking<sp/>the<sp/>rest.</highlight></codeline>
+<codeline lineno="157"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>$&lt;TARGET_FILE:OmexMeta&gt;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
+<codeline lineno="158"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBXML2_LIBRARY}</highlight></codeline>
+<codeline lineno="159"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${LIBXSLT_LIBRARY}</highlight></codeline>
+<codeline lineno="160"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${SQLITE3_LIBRARY}</highlight></codeline>
+<codeline lineno="161"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${BERKELY_LIBRARY}</highlight></codeline>
+<codeline lineno="162"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${POSTGRESQL_LIBRARY}</highlight></codeline>
+<codeline lineno="163"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
+<codeline lineno="164"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="165"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>I<sp/>had<sp/>issues<sp/>installing<sp/>a<sp/>few<sp/>of<sp/>the<sp/>dynamic<sp/>libraries,<sp/>namely:</highlight></codeline>
+<codeline lineno="166"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>${LIBXML2_LIBRARY}</highlight></codeline>
+<codeline lineno="167"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>${LIBXSLT_LIBRARY}</highlight></codeline>
+<codeline lineno="168"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>${SQLITE3_LIBRARY}</highlight></codeline>
+<codeline lineno="169"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>${BERKELY_LIBRARY}</highlight></codeline>
+<codeline lineno="170"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>${POSTGRESQL_LIBRARY}</highlight></codeline>
+<codeline lineno="171"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Checkout<sp/>the<sp/>LINK_LIBRARIES<sp/>variable<sp/>for<sp/>details<sp/>on<sp/>which<sp/>were<sp/>statically</highlight></codeline>
+<codeline lineno="172"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>and<sp/>which<sp/>were<sp/>dynamically<sp/>linked.<sp/>I<sp/>later<sp/>realized<sp/>that<sp/>in<sp/>order<sp/>to<sp/>use<sp/>these<sp/>at<sp/>run<sp/>time<sp/>you<sp/>need<sp/>both<sp/>a<sp/>smbolic</highlight></codeline>
+<codeline lineno="173"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>link<sp/>link<sp/>libx.so.1<sp/>which<sp/>points<sp/>to<sp/>the<sp/>actual<sp/>library<sp/>libx.so.1.0.15.<sp/>Both</highlight></codeline>
+<codeline lineno="174"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>need<sp/>to<sp/>be<sp/>copied<sp/>into<sp/>the<sp/>pyomexmeta<sp/>src<sp/>directory<sp/>which<sp/>will<sp/>then<sp/>be<sp/>incorporated</highlight></codeline>
+<codeline lineno="175"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>into<sp/>the<sp/>python<sp/>docs-build.</highlight></codeline>
+<codeline lineno="176"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>This<sp/>is<sp/>a<sp/>viable<sp/>strategy,<sp/>and<sp/>should<sp/>probably<sp/>be<sp/>implemented<sp/>soon<sp/>so<sp/>users<sp/>do<sp/>not</highlight></codeline>
+<codeline lineno="177"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>need<sp/>to<sp/>manually<sp/>install<sp/>packages<sp/>from<sp/>apt.<sp/>However,<sp/>for<sp/>now,<sp/>we<sp/>rely<sp/>on<sp/>users</highlight></codeline>
+<codeline lineno="178"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>installing<sp/>these<sp/>dependencies<sp/>manually.</highlight></codeline>
+<codeline lineno="179"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="180"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>The<sp/>exception<sp/>is<sp/>the<sp/>libstdc++<sp/>library.<sp/>Since<sp/>ive<sp/>docs-build</highlight></codeline>
+<codeline lineno="181"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>using<sp/>a<sp/>later<sp/>version<sp/>than<sp/>is<sp/>easily<sp/>obtainably</highlight></codeline>
+<codeline lineno="182"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>using<sp/>apt-get,<sp/>I<sp/>just<sp/>distribute<sp/>along<sp/>with<sp/>python</highlight></codeline>
+<codeline lineno="183"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBSTDCXX6_LIBRARY}<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
+<codeline lineno="184"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="185"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="186"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>curl<sp/>was<sp/>statically<sp/>linked<sp/>in<sp/>the<sp/>end</highlight></codeline>
+<codeline lineno="187"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>&quot;</highlight><highlight class="normal">${CURL_LIBRARY}</highlight><highlight class="stringliteral">&quot;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR}<sp/>RENAME<sp/>libsqlite.so.0)</highlight></codeline>
+<codeline lineno="188"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="189"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>elseif<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;</highlight><highlight class="normal">windows-msvc</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="190"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Just<sp/>take<sp/>all<sp/>of<sp/>them<sp/>on<sp/>windows,<sp/>since<sp/>we&apos;ve<sp/>linked<sp/>dynamically<sp/>to<sp/>everything</highlight></codeline>
+<codeline lineno="191"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBRARIES}<sp/>DESTINATION<sp/>bin)</highlight></codeline>
+<codeline lineno="192"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="193"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Remember<sp/>to<sp/>copy<sp/>dependency<sp/>dlls<sp/>to<sp/>pyomexmeta<sp/>directory</highlight></codeline>
+<codeline lineno="194"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBRARIES}<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
+<codeline lineno="195"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>$&lt;TARGET_FILE:redland-combined&gt;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
+<codeline lineno="196"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="197"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>elseif<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;</highlight><highlight class="normal">macos</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="198"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message(STATUS<sp/>&quot;</highlight><highlight class="normal">macos<sp/>==<sp/>sad<sp/>face<sp/>=[</highlight><highlight class="stringliteral">&quot;)</highlight></codeline>
+<codeline lineno="199"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>endif<sp/>()</highlight></codeline>
+<codeline lineno="200"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="201"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="202"><highlight class="stringliteral">endif<sp/>()</highlight></codeline>
+<codeline lineno="203"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="204"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="205"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="206"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="207"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="208"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="209"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="210"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="211"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="212"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="213"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="214"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="215"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="216"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="217"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="218"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="219"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="220"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="221"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="222"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="223"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="224"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="225"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="226"><highlight class="stringliteral"></highlight></codeline>
+    </programlisting>
+    <location file="src/omexmeta/CMakeLists.txt"/>
+  </compounddef>
+</doxygen>

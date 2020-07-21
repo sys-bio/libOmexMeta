@@ -1,0 +1,13 @@
+.. _exhale_typedef_Query_8h_1a08a1cea39a93f919e8c481f1307e9d64:
+
+Typedef omexmeta::ResultsMap
+============================
+
+- Defined in :ref:`file_src_omexmeta_Query.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: omexmeta::ResultsMap

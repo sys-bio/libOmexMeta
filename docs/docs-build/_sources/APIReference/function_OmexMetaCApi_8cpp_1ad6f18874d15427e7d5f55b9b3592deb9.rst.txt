@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ad6f18874d15427e7d5f55b9b3592deb9:
+
+Function omexmeta::Editor_addPhysicalProcess
+============================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_addPhysicalProcess(Editor *, PhysicalProcess *)
