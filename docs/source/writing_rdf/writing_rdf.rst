@@ -5,7 +5,8 @@ Serializing is just a fancy term for writing the information
 in an RDF graph to a string or file. There are several syntaxes
 that are supported by libOmexMeta, including:
 
-    *
+    * ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, dot, json-triples, json, nquads, html
+
 
 Writing to string
 -----------------
@@ -14,39 +15,38 @@ Writing to string
 
     .. tab:: Python
 
-        .. literalinclude:: to_string_python.py
+        .. literalinclude:: writing_to_string_python.py
             :linenos:
             :language: python
             :caption: Write to a string in Python
 
-        Output:
-
-        .. code-block::
+        .. literalinclude:: ../../ExampleOutputFiles/writing_to_string_python.txt
+            :linenos:
+            :caption: Output
 
 
     .. tab:: C++
 
-        .. literalinclude:: to_string_cpp.cpp
+        .. literalinclude:: writing_to_string_cpp.cpp
             :linenos:
             :language: C++
             :caption: Write to a string in C++
 
-        Output:
-
-        .. code-block::
+        .. literalinclude:: ../../ExampleOutputFiles/writing_to_string_cpp.txt
+            :linenos:
+            :caption: Output
 
 
     .. tab:: C
 
-        .. literalinclude:: to_string_c.c
+        .. literalinclude:: writing_to_string_c.cpp
             :linenos:
             :language: C
             :caption: Write to a string in C
 
-        Output:
-
-        .. code-block::
-
+        .. literalinclude:: ../../ExampleOutputFiles/writing_to_string_c.txt
+            :linenos:
+            :caption: Output
 
 Writing to a file
 -----------------
@@ -55,42 +55,37 @@ Writing to a file
 
     .. tab:: Python
 
-        .. literalinclude:: to_file_python.py
+        .. literalinclude:: writing_to_file_python.py
             :linenos:
             :language: python
             :caption: Write to a file in Python
 
-        Output:
-
-        .. code-block::
-
+        .. literalinclude:: ../../ExampleOutputFiles/writing_to_file_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
 
-        .. literalinclude:: to_file_cpp.cpp
+        .. literalinclude:: writing_to_file_cpp.cpp
             :linenos:
             :language: C++
             :caption: Write to a file in C++
 
-        Output:
-
-        .. code-block::
+        .. literalinclude:: ../../ExampleOutputFiles/writing_to_file_cpp.txt
+            :linenos:
+            :caption: Output
 
 
     .. tab:: C
 
-        .. literalinclude:: to_file_c.c
+        .. literalinclude:: writing_to_file_c.c
             :linenos:
             :language: C
             :caption: Write to a file in C
 
-        Output:
-
-        .. code-block::
-
-
-
-
+        .. literalinclude:: ../../ExampleOutputFiles/writing_to_file_c.txt
+            :linenos:
+            :caption: Output
 
 
 

@@ -967,9 +967,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeak
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
-    Triples triples = physicalEntity.toTriples();
-    ASSERT_EQ(4, triples.size());
-    triples.freeTriples();
+//    editor.removePhysicalEntity(physicalEntity);
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple1) {

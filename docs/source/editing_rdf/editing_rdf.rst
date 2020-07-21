@@ -97,7 +97,7 @@ Simple example of creating a single annotation
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_cpp.cpppp
+        .. literalinclude:: create_single_annotation_cpp.CPP
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++
@@ -108,7 +108,7 @@ Simple example of creating a single annotation
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_c.cpppp
+        .. literalinclude:: create_single_annotation_c.CPP
             :linenos:
             :language: C
             :caption: Create a single annotation in C
@@ -142,13 +142,12 @@ create metaids
 
         .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_with_metaids_python.txt
             :linenos:
-            :language: python
             :caption: Output
 
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_with_metaids_cpp.cpppp
+        .. literalinclude:: create_single_annotation_with_metaids_cpp.CPP
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and create metaids
@@ -181,36 +180,36 @@ RDF graph.
 
     .. tab:: python
 
-        .. literalinclude:: create_single_annotation_no_commit_to_rdf_python.py
+        .. literalinclude:: create_single_annotation_no_commit_python.py
             :linenos:
             :language: python
             :caption: Create a single annotation in Python and serialize to turtle without commiting the triples to the current RDF graph
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_to_rdf_python.txt
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_python.txt
             :linenos:
             :caption: Output
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_no_commit_to_rdf_cpp.cpppp
+        .. literalinclude:: create_single_annotation_no_commit_cpp.CPP
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and serialize to turtle without commiting the triples to the current RDF graph
 
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_to_rdf_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_cpp.txt
             :linenos:
             :caption: Output
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_no_commit_to_rdf_c.cpp
+        .. literalinclude:: create_single_annotation_no_commit_c.cpp
             :linenos:
             :language: C
             :caption: Create a single annotation in C and serialize to turtle without commiting the triples to the current RDF graph
 
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_to_rdf_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_c.txt
             :linenos:
             :caption: Output
 
@@ -558,7 +557,7 @@ skin `FMA_7163` of the surface or the arm `FMA:24178`.
 
     .. tab:: C++
 
-        .. literalinclude:: create_physical_entity_cpp.py
+        .. literalinclude:: create_physical_entity_cpp.cpp
             :linenos:
             :language: C++
             :caption: Demonstrate the creation of a physical entity composite annotation in C++
@@ -569,7 +568,7 @@ skin `FMA_7163` of the surface or the arm `FMA:24178`.
 
     .. tab:: C
 
-        .. literalinclude:: create_physical_entity_c.py
+        .. literalinclude:: create_physical_entity_c.cpp
             :linenos:
             :language: C
             :caption: Demonstrate the creation of a physical entity composite annotation in C
@@ -579,8 +578,8 @@ skin `FMA_7163` of the surface or the arm `FMA:24178`.
             :caption: Output
 
 
-Physical Process
------------------
+Annotations on a Property of a Physical Process
+-----------------------------------------------
 
 .. tabs::
 
@@ -597,7 +596,7 @@ Physical Process
 
     .. tab:: C++
 
-        .. literalinclude:: create_physical_process_cpp.py
+        .. literalinclude:: create_physical_process_cpp.cpp
             :linenos:
             :language: C++
             :caption: Demonstrate the creation of a physical process composite annotation in C++
@@ -608,7 +607,7 @@ Physical Process
 
     .. tab:: C
 
-        .. literalinclude:: create_physical_process_c.py
+        .. literalinclude:: create_physical_process_c.cpp
             :linenos:
             :language: C
             :caption: Demonstrate the creation of a physical process composite annotation in C
@@ -619,8 +618,8 @@ Physical Process
 
 
 
-Physical Force
------------------
+Annotations on a Property of a Physical Force
+-----------------------------------------------
 
 .. tabs::
 
@@ -637,7 +636,7 @@ Physical Force
 
     .. tab:: C++
 
-        .. literalinclude:: create_physical_force_cpp.py
+        .. literalinclude:: create_physical_force_cpp.cpp
             :linenos:
             :language: C++
             :caption: Demonstrate the creation of a physical force composite annotation in C++
@@ -648,7 +647,7 @@ Physical Force
 
     .. tab:: C
 
-        .. literalinclude:: create_physical_force_c.py
+        .. literalinclude:: create_physical_force_c.cpp
             :linenos:
             :language: C
             :caption: Demonstrate the creation of a physical force composite annotation in C

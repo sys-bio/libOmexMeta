@@ -133,6 +133,7 @@ namespace omexmeta {
                 "reaction",
                 "kineticLaw",
                 "localParameter",
+                "parameter",
         };
         return valid_elements_;
     }

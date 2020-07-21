@@ -48,8 +48,8 @@ if (BUILD_DOCS_EXAMPLES)
 
     add_executable(CreateSingleAnnotationC source/editing_rdf/create_single_annotation_c.cpp)
     add_executable(CreateSingleAnnotationCpp source/editing_rdf/create_single_annotation_cpp.cpp)
-    add_executable(CreateSingleAnnotationNoCommitC source/editing_rdf/create_single_annotation_no_commit_to_rdf_c.cpp)
-    add_executable(CreateSingleAnnotationNoCommitCpp source/editing_rdf/create_single_annotation_no_commit_to_rdf_cpp.cpp)
+    add_executable(CreateSingleAnnotationNoCommitC source/editing_rdf/create_single_annotation_no_commit_c.cpp)
+    add_executable(CreateSingleAnnotationNoCommitCpp source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
     add_executable(CreateSingleAnnotationPredicateFromUriC source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
     add_executable(CreateSingleAnnotationPredicateFromUriCpp source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
     add_executable(CreateSingleAnnotationResourceC source/editing_rdf/create_single_annotation_resource_c.cpp)
@@ -64,6 +64,9 @@ if (BUILD_DOCS_EXAMPLES)
     add_executable(CreatePhysicalForceC source/editing_rdf/create_physical_force_c.cpp)
     add_executable(CreatePhysicalForceCpp source/editing_rdf/create_physical_force_cpp.cpp)
 
+    add_executable(WritingToStringC source/writing_rdf/writing_to_string_c.cpp)
+    add_executable(WritingToStringCpp source/writing_rdf/writing_to_string_cpp.cpp)
+
     set(EXAMPLE_EXECUTABLES_TARGETS
             "FromStringC"
             "FromStringCpp"
@@ -77,6 +80,9 @@ if (BUILD_DOCS_EXAMPLES)
             "AddFromFileCpp"
             "AddFromUriC"
             "AddFromUriCpp"
+
+            "WritingToStringC"
+            "WritingToStringCpp"
 
             "CreateSingleAnnotationC"
             "CreateSingleAnnotationCpp"
@@ -118,7 +124,7 @@ if (BUILD_DOCS_EXAMPLES)
     message(STATUS "PYTHON_EXECUTABLE ${PYTHON_EXECUTABLE}")
     # later we'll set the build docs target to depend on this
     add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER}
+            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE}
             DEPENDS AllDocExamples
             )
 

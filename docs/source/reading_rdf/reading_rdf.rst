@@ -43,7 +43,7 @@ Reading from a string
 
     .. tab:: C
 
-        .. literalinclude:: from_string_c.c
+        .. literalinclude:: from_string_c.cpp
             :linenos:
             :language: C
             :caption: Read from a string in C
@@ -83,7 +83,7 @@ Adding from a string
 
     .. tab:: C
 
-        .. literalinclude:: add_from_string_c.c
+        .. literalinclude:: add_from_string_c.cpp
             :linenos:
             :language: C
             :caption: Read from a string and add to existing graph in C
@@ -121,7 +121,7 @@ Reading from a URI
 
     .. tab:: C
 
-        .. literalinclude:: from_uri_c.c
+        .. literalinclude:: from_uri_c.cpp
             :linenos:
             :language: C
             :caption: Read from a URI in C
@@ -160,7 +160,7 @@ Adding from a URI
 
     .. tab:: C
 
-        .. literalinclude:: add_from_uri_c.c
+        .. literalinclude:: add_from_uri_c.cpp
             :linenos:
             :language: C
             :caption: Read from a uri and add to existing graph in C
@@ -200,7 +200,7 @@ Reading from a file
 
     .. tab:: C
 
-        .. literalinclude:: from_file_c.c
+        .. literalinclude:: from_file_c.cpp
             :linenos:
             :language: C
             :caption: Read from a file in C
@@ -239,7 +239,7 @@ Adding from a file
 
     .. tab:: C
 
-        .. literalinclude:: add_from_file_c.c
+        .. literalinclude:: add_from_file_c.cpp
             :linenos:
             :language: C
             :caption: Read from a file and add to existing graph in C
