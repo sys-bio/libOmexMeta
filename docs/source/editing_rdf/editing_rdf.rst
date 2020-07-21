@@ -97,7 +97,7 @@ Simple example of creating a single annotation
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_cpp.cpp
+        .. literalinclude:: create_single_annotation_cpp.cpppp
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++
@@ -108,7 +108,7 @@ Simple example of creating a single annotation
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_c.c
+        .. literalinclude:: create_single_annotation_c.cpppp
             :linenos:
             :language: C
             :caption: Create a single annotation in C
@@ -148,7 +148,7 @@ create metaids
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_with_metaids_cpp.cpp
+        .. literalinclude:: create_single_annotation_with_metaids_cpp.cpppp
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and create metaids
@@ -159,7 +159,7 @@ create metaids
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_with_metaids_c.c
+        .. literalinclude:: create_single_annotation_with_metaids_c.cpp
             :linenos:
             :language: C
             :caption: Create a single annotation in C and create metaids
@@ -192,7 +192,7 @@ RDF graph.
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_no_commit_to_rdf_cpp.cpp
+        .. literalinclude:: create_single_annotation_no_commit_to_rdf_cpp.cpppp
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and serialize to turtle without commiting the triples to the current RDF graph
@@ -204,7 +204,7 @@ RDF graph.
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_no_commit_to_rdf_c.c
+        .. literalinclude:: create_single_annotation_no_commit_to_rdf_c.cpp
             :linenos:
             :language: C
             :caption: Create a single annotation in C and serialize to turtle without commiting the triples to the current RDF graph
@@ -345,7 +345,7 @@ the namespace and the term, i.e:
 
     * - Namespace
       - Prefix
-    * - http://xmlns.com/foaf/0.1/
+    * - http://xmlns.cppom/foaf/0.1/
       - foaf
     * - https://dublincore.org/specifications/dublin-core/dcmi-terms/
       - dc
@@ -448,18 +448,9 @@ this is a different method call - see below.
             :language: python
             :caption: Create a single annotation in Python using an arbitrary uri
 
-        Output:
-
-        .. code-block::
-
-            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-            @prefix myOMEXlib: <http://omex-library.org/> .
-            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
-            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-            local:OmexMetaId0001
-                <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
-
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_predicate_from_uri_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
 
@@ -468,37 +459,20 @@ this is a different method call - see below.
             :language: C++
             :caption: Create a single annotation in C++ using an arbitrary uri
 
-        Output:
-
-        .. code-block::
-
-            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-            @prefix myOMEXlib: <http://omex-library.org/> .
-            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
-            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-            local:OmexMetaId0001
-                <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_predicate_from_uri_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_predicate_from_uri_c.c
+        .. literalinclude:: create_single_annotation_predicate_from_uri_c.cpp
             :linenos:
             :language: C
             :caption: Create a single annotation in C using an arbitrary uri
 
-        Output:
-
-        .. code-block::
-
-            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-            @prefix myOMEXlib: <http://omex-library.org/> .
-            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
-            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-            local:OmexMetaId0001
-                <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
-
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_predicate_from_uri_c.txt
+            :linenos:
+            :caption: Output
 
 Resources
 ----------
@@ -512,61 +486,178 @@ that demonstrate the various usages of Resource.
 
     .. tab:: Python
 
-        .. literalinclude:: create_single_annotation_resource.py
+        .. literalinclude:: create_single_annotation_resource_python.py
             :linenos:
             :language: python
             :caption: Demonstration of options for the resource node in Python
 
-        Output:
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_resource_python.txt
+            :linenos:
+            :caption: Output
 
-        .. code-block::
+    .. tab:: C++
 
-            5
-            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-            @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-            @prefix dcterms: <http://purl.org/dc/terms/> .
-            @prefix myOMEXlib: <http://omex-library.org/> .
-            @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
-            @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-            local:OmexMetaId0001
-                dcterms:description _:BankzIdentifier .
-
-            local:OmexMetaId0002
-                bqbiol:is <https://identifiers.org/uniprot/PD1234> .
-
-            local:OmexMetaId0003
-                bqbiol:is <https://identifiers.org/string1/string2> .
-
-            local:OmexMetaId0004
-                bqbiol:is <https://identifiers.org/FMA/75132> .
-
-            local:ToyModel
-                dcterms:description "This is a toy model for demonstration purposes"^^rdf:string .
-
-
-    .. tab:: Python
-
-        .. literalinclude:: create_single_annotation_resource.cpp
+        .. literalinclude:: create_single_annotation_resource_cpp.cpp
             :linenos:
             :language: c++
             :caption: Demonstration of options for the resource node in C++
 
-        Output:
-
-        .. code-block::
-
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_resource_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_resource.c
+        .. literalinclude:: create_single_annotation_resource_c.cpp
             :linenos:
             :language: C
             :caption: Demonstration of options for the resource node in C
 
-        Output:
+        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_resource_c.txt
+            :linenos:
+            :caption: Output
 
-        .. code-block::
+
+
+Creating Composite Annotations
+===============================
+
+Annotations on a Property of a Physical Entity
+-----------------------------------------------
+
+In this case we build a new model using tellurium and antimony in Python.
+For simplicity, the string was copied from Python and stored as a string
+for the C++ and C examples.
+
+In the example we create a PhysicalEntity type annotation of A, which
+has the metid `#OmexMetaId0001`. Our annotation states that we are
+simulating the chemical concetration (OPB:OPB_00340) of Smad3 (`uniprot/P84022') in the
+dermal fibroblasts `fma/FMA:63877` of the dermal papilla `fma:FMA:70737` in the
+skin `FMA_7163` of the surface or the arm `FMA:24178`.
+
+.. note::
+
+    You can add an arbitrary number of anatomical locations, but the order you
+    add them is meaningful. The first anatomical location you add will be at
+    the smallest level of biological organization which increases when you
+    add more locations.
+
+
+.. tabs::
+
+    .. tab:: Python
+
+        .. literalinclude:: create_physical_entity_python.py
+            :linenos:
+            :language: python
+            :caption: Demonstrate the creation of a physical entity composite annotation in Python
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_entity_python.txt
+            :linenos:
+            :caption: Output
+
+    .. tab:: C++
+
+        .. literalinclude:: create_physical_entity_cpp.py
+            :linenos:
+            :language: C++
+            :caption: Demonstrate the creation of a physical entity composite annotation in C++
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_entity_cpp.txt
+            :linenos:
+            :caption: Output
+
+    .. tab:: C
+
+        .. literalinclude:: create_physical_entity_c.py
+            :linenos:
+            :language: C
+            :caption: Demonstrate the creation of a physical entity composite annotation in C
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_entity_c.txt
+            :linenos:
+            :caption: Output
+
+
+Physical Process
+-----------------
+
+.. tabs::
+
+    .. tab:: Python
+
+        .. literalinclude:: create_physical_process_python.py
+            :linenos:
+            :language: python
+            :caption: Demonstrate the creation of a physical process composite annotation in Python
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_process_python.txt
+            :linenos:
+            :caption: Output
+
+    .. tab:: C++
+
+        .. literalinclude:: create_physical_process_cpp.py
+            :linenos:
+            :language: C++
+            :caption: Demonstrate the creation of a physical process composite annotation in C++
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_process_cpp.txt
+            :linenos:
+            :caption: Output
+
+    .. tab:: C
+
+        .. literalinclude:: create_physical_process_c.py
+            :linenos:
+            :language: C
+            :caption: Demonstrate the creation of a physical process composite annotation in C
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_process_c.txt
+            :linenos:
+            :caption: Output
+
+
+
+Physical Force
+-----------------
+
+.. tabs::
+
+    .. tab:: Python
+
+        .. literalinclude:: create_physical_force_python.py
+            :linenos:
+            :language: python
+            :caption: Demonstrate the creation of a physical force composite annotation in Python
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_force_python.txt
+            :linenos:
+            :caption: Output
+
+    .. tab:: C++
+
+        .. literalinclude:: create_physical_force_cpp.py
+            :linenos:
+            :language: C++
+            :caption: Demonstrate the creation of a physical force composite annotation in C++
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_force_cpp.txt
+            :linenos:
+            :caption: Output
+
+    .. tab:: C
+
+        .. literalinclude:: create_physical_force_c.py
+            :linenos:
+            :language: C
+            :caption: Demonstrate the creation of a physical force composite annotation in C
+
+        .. literalinclude:: ../../ExampleOutputFiles/create_physical_force_c.txt
+            :linenos:
+            :caption: Output
+
+
 
 
 

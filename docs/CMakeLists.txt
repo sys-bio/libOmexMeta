@@ -57,6 +57,13 @@ if (BUILD_DOCS_EXAMPLES)
     add_executable(CreateSingleAnnotationWithMetaidsC source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
     add_executable(CreateSingleAnnotationWithMetaidsCpp source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
 
+    add_executable(CreatePhysicalEntityC source/editing_rdf/create_physical_entity_c.cpp)
+    add_executable(CreatePhysicalEntityCpp source/editing_rdf/create_physical_entity_cpp.cpp)
+    add_executable(CreatePhysicalProcessC source/editing_rdf/create_physical_process_c.cpp)
+    add_executable(CreatePhysicalProcessCpp source/editing_rdf/create_physical_process_cpp.cpp)
+    add_executable(CreatePhysicalForceC source/editing_rdf/create_physical_force_c.cpp)
+    add_executable(CreatePhysicalForceCpp source/editing_rdf/create_physical_force_cpp.cpp)
+
     set(EXAMPLE_EXECUTABLES_TARGETS
             "FromStringC"
             "FromStringCpp"
@@ -81,6 +88,13 @@ if (BUILD_DOCS_EXAMPLES)
             "CreateSingleAnnotationResourceCpp"
             "CreateSingleAnnotationWithMetaidsC"
             "CreateSingleAnnotationWithMetaidsCpp"
+
+            "CreatePhysicalEntityC"
+            "CreatePhysicalEntityCpp"
+            "CreatePhysicalProcessC"
+            "CreatePhysicalProcessCpp"
+            "CreatePhysicalForceC"
+            "CreatePhysicalForceCpp"
             )
 
     set_target_properties(${EXAMPLE_EXECUTABLES_TARGETS} PROPERTIES
@@ -101,6 +115,7 @@ if (BUILD_DOCS_EXAMPLES)
         message(FATAL_ERROR "No Python script found where \"build_doc_examples.pu\" should be")
     endif ()
 
+    message(STATUS "PYTHON_EXECUTABLE ${PYTHON_EXECUTABLE}")
     # later we'll set the build docs target to depend on this
     add_custom_target(RunDocExamplesAndGenerateOutput
             COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER}

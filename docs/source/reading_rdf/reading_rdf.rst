@@ -26,11 +26,9 @@ Reading from a string
             :language: python
             :caption: Read from a string in Python
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 1
+        .. literalinclude:: ../../ExampleOutputFiles/from_string_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
 
@@ -39,11 +37,9 @@ Reading from a string
             :language: C++
             :caption: Read from a string in C++
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 1
+        .. literalinclude:: ../../ExampleOutputFiles/from_string_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
@@ -52,11 +48,9 @@ Reading from a string
             :language: C
             :caption: Read from a string in C
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 1
+        .. literalinclude:: ../../ExampleOutputFiles/from_string_c.txt
+            :linenos:
+            :caption: Output
 
 
 Adding from a string
@@ -71,11 +65,9 @@ Adding from a string
             :language: python
             :caption: Read from a string and add to existing graph in Python
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 2
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_string_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
 
@@ -85,11 +77,9 @@ Adding from a string
             :language: C++
             :caption: Read from a string and add to existing graph in C++
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 2
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_string_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
@@ -98,11 +88,9 @@ Adding from a string
             :language: C
             :caption: Read from a string and add to existing graph in C
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 2
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_string_c.txt
+            :linenos:
+            :caption: Output
 
 Reading from a URI
 ------------------
@@ -116,11 +104,9 @@ Reading from a URI
             :language: python
             :caption: Read from a URI in Python
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 86
+        .. literalinclude:: ../../ExampleOutputFiles/from_uri_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
 
@@ -129,11 +115,9 @@ Reading from a URI
             :language: C++
             :caption: Read from a URI in C++
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 86
+        .. literalinclude:: ../../ExampleOutputFiles/from_uri_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
@@ -142,11 +126,9 @@ Reading from a URI
             :language: C
             :caption: Read from a URI in C
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 86
+        .. literalinclude:: ../../ExampleOutputFiles/from_uri_c.txt
+            :linenos:
+            :caption: Output
 
 
 Adding from a URI
@@ -161,25 +143,20 @@ Adding from a URI
             :language: python
             :caption: Read from a uri and add to existing graph in Python
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 87
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_uri_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
-
 
         .. literalinclude:: add_from_uri_cpp.cpp
             :linenos:
             :language: C++
             :caption: Read from a uri and add to existing graph in C++
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 87
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_uri_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
@@ -188,11 +165,9 @@ Adding from a URI
             :language: C
             :caption: Read from a uri and add to existing graph in C
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 87
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_uri_c.txt
+            :linenos:
+            :caption: Output
 
 
 
@@ -208,11 +183,9 @@ Reading from a file
             :language: python
             :caption: Read from a file in Python
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 86
+        .. literalinclude:: ../../ExampleOutputFiles/from_file_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
 
@@ -221,11 +194,9 @@ Reading from a file
             :language: C++
             :caption: Read from a file in C++
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 86
+        .. literalinclude:: ../../ExampleOutputFiles/from_file_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
@@ -234,11 +205,9 @@ Reading from a file
             :language: C
             :caption: Read from a file in C
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 86
+        .. literalinclude:: ../../ExampleOutputFiles/from_file_c.txt
+            :linenos:
+            :caption: Output
 
 
 Adding from a file
@@ -253,25 +222,20 @@ Adding from a file
             :language: python
             :caption: Read from a file and add to existing graph in Python
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 87
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_file_python.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C++
-
 
         .. literalinclude:: add_from_file_cpp.cpp
             :linenos:
             :language: C++
             :caption: Read from a file and add to existing graph in C++
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 87
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_file_cpp.txt
+            :linenos:
+            :caption: Output
 
     .. tab:: C
 
@@ -280,11 +244,9 @@ Adding from a file
             :language: C
             :caption: Read from a file and add to existing graph in C
 
-        Output:
-
-        .. code-block::
-
-            Number of annotations in graph: 87
+        .. literalinclude:: ../../ExampleOutputFiles/add_from_file_c.txt
+            :linenos:
+            :caption: Output
 
 
 

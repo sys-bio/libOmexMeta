@@ -5,14 +5,15 @@
 
 left to right direction
 :User:
-:Editor:
+:Reader:
+:Writer:
 :Creator:
-:Viewer:
 :Querier:
-User <|-- Editor
+User <|-- Reader
+Reader <|-- Writer
+Reader <|-- Querier
 User <|-- Creator
-User <|-- Viewer
-User <|-- Querier
+
 ':application:
 ':Omex archive:
 ':Url:
@@ -25,38 +26,29 @@ User <|-- Querier
 (Local xml file) as local_file
 (Information) as info
 
-Editor -> remote_file
-Viewer -> remote_file
-Querier -> remote_file
-'User -> local_file : creates
-'User -> remote_file : wants
-remote_file --> local_file : download
-remote_file --> omex : download
+'Editor -> remote_file
+'Viewer -> remote_file
+'Querier -> remote_file
+''User -> local_file : creates
+''User -> remote_file : wants
+'remote_file --> local_file : download
+'remote_file --> omex : download
+
 rectangle libCombine {
     (Compress) as compress
     (Decompress) as decompress
     (Manifest) as manifest
 }
 omex --> decompress
-
+omex <-- compress
 
 (RDF File) as rdf_file
 
 rectangle libomexmeta{
-    (RDF Graph) as rdf_graph
-    (create) as create
-    (Edit) as edit
-
-    local_file -> create
-    create -> rdf_graph
-    edit -> rdf_graph
-
-    Editor --> edit
-    Creator --> create
-
-'    local_file --> rdf_graph : parse
-    rdf_graph <--> rdf_file : parse/serialize
-    rdf_graph --> info : querying
+    (RDF) as rdf
+'    rdf --> file
+'    rdf --> url
+'    rdf --> string
 
 
 '    (Edit/Create) as modify
@@ -66,12 +58,21 @@ rectangle libomexmeta{
 
 }
 
-decompress --> local_file
-decompress --> rdf_file
 
-local_file --> compress
-rdf_file --> compress
-compress -> omex
+
+(Read \nfrom file) as file
+(Read \nfrom URL) as url
+(Read \nfrom string) as string
+Reader --> file
+Reader --> string
+Reader --> url
+
+'decompress --> local_file
+'decompress --> rdf_file
+'
+'local_file --> compress
+'rdf_file --> compress
+'compress -> omex
 
 
 

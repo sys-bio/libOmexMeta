@@ -60,7 +60,10 @@ Platform
 
 libOmexMeta has not been tested on a Mac.
 
-Note: documentation is currently out of date but being updated presently
+.. note::
+
+    documentation is in the process of being written. If you have any questions on how to do something,
+    post a github issue and I will write you a new example.
 
 Installation
 ============
@@ -103,7 +106,7 @@ Conda is preconfigured and pyomexmeta is installed.
 Downloading Binaries
 ====================
 
-You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10)
+You can download binaries from the `releases tab <https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10>`_
 
 Building from source
 =====================
@@ -113,8 +116,11 @@ See above for docker image which does this for you already on linux builds. The 
 On Linux only
 -------------
 
-Install some dependencies using apt
-Note, the build process is not yet fully optimized for linux and will be improved
+Install some dependencies using apt.
+
+.. note::
+
+    The build process is not yet fully optimized for linux and will be improved
 
 .. code-block:: bash
 
@@ -151,7 +157,9 @@ Configure vcpkg and install dependencies on Linux
    $ vcpkg integrate install
    $ vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
 
-Note: this is where the linux build is not optimized.
+.. note::
+
+    This is where the linux build is not optimized.
 
 Configure vcpkg and install dependencies on Windows
 ----------------------------------------------------
@@ -185,6 +193,7 @@ Use `CMake > 15.7 <https://github.com/Kitware/CMake/releases/download/v3.15.7/cm
    reading_rdf/reading_rdf.rst
    writing_rdf/writing_rdf.rst
    editing_rdf/editing_rdf.rst
+   diagrams/diagrams_index.rst
    APIReference/api_reference_index.rst
    Developers/developers_index.rst
 
