@@ -10,4 +10,4 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: omexmeta::RDF_queryResultsAsStr(RDF *, const char *, const char *)
+.. doxygenfunction:: omexmeta::RDF_query(RDF *, const char *, const char *)

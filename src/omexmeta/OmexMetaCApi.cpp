@@ -117,12 +117,10 @@ namespace omexmeta {
         rdf_ptr->toFile(format, filename);
     }
 
-    char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format) {
-        Query query(rdf_ptr->getModel(), query_str);
-        std::string results = query.resultsAsStr(results_format);
+    char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format) {
+        std::string results = rdf_ptr->query(query_str, results_format);
         char *s = (char *) malloc((results.size() + 1) * sizeof(char *));
         strcpy(s, results.c_str());
-        query.freeQuery();
         return s;
     }
 

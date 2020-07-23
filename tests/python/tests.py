@@ -213,12 +213,12 @@ class TestRDF(unittest.TestCase):
         WHERE {?x ?y ?z}
         """
         expected = """x,y,z
-file://./force_0,http://www.bhi.washington.edu/semsim#hasSinkParticipant,file://./sink_0
-file://./force_0,http://www.bhi.washington.edu/semsim#hasSourceParticipant,file://./source_0
-file://./parameter_metaid_0,http://biomodels.net/biology-qualifiers/isPropertyOf,file://./force_0
-file://./parameter_metaid_0,http://biomodels.net/biology-qualifiers/isVersionOf,https://identifiers.org/opb/OPB_01058
-file://./sink_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference,file://./species_metaid_1
-file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference,file://./species_metaid_0
+http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0,http://www.bhi.washington.edu/semsim#hasSinkParticipant,http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0
+http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0,http://www.bhi.washington.edu/semsim#hasSourceParticipant,http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0
+http://omex-library.org/NewOmex.omex/NewModel.rdf#parameter_metaid_0,http://biomodels.net/biology-qualifiers/isPropertyOf,http://omex-library.org/NewOmex.omex/NewModel.rdf#force_0
+http://omex-library.org/NewOmex.omex/NewModel.rdf#parameter_metaid_0,http://biomodels.net/biology-qualifiers/isVersionOf,https://identifiers.org/opb/OPB_01058
+http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference,http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid_1
+http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference,http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid_0
 """
         self.maxDiff = None
         actual = rdf.query(q, "csv")

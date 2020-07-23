@@ -193,7 +193,7 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
 
     const char *query = "SELECT ?x ?y ?z \n"
                         "WHERE { ?x ?y ?z }";
-    char *results = RDF_queryResultsAsStr(rdf_ptr, query, "csv");
+    char *results = RDF_query(rdf_ptr, query, "csv");
     std::cout << results << std::endl;
     std::string expected = "x,y,z\n"
                            "http://omex-library.org/NewOmex.omex/NewModel.rdf#VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154\n"

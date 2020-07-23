@@ -10,10 +10,28 @@ rdf = RDF.from_uri(teusink_biomod_link, format="rdfxml",
                    storage_type="sqlite", storage_name="TeusinkAnnotations2000",
                    storage_options="new='yes'")
 
-# serialize to turtle
-print(rdf)
+# do a search for all annotations with glucode as resource: CHEBI:17234
+query_string = """
+SELECT ?x ?y
+WHERE {
+    ?x ?y <http://identifiers.org/obo.chebi/CHEBI:17234>
+}
+"""
 
-# draw a diagram
-fname = os.path.join(os.path.dirname(__file__), "TeusinkDiagram.pdf")
-rdf.draw(fname)
-plt.show()
+results_formats = [
+    "xml",
+    "json",
+    "table",
+    "csv",
+    "mkr",
+    "tsv",
+    "html",
+    "turtle",
+    "rdfxml",
+]
+
+for i in results_formats:
+    print("Sparql results format: {}".format(i))
+    print(rdf.query(query_string, results_format=i))
+    print("\n\n")
+

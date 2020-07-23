@@ -178,6 +178,13 @@ namespace omexmeta {
         return serializer.toString(base_uri, model_);
     }
 
+    std::string RDF::query(const std::string &query_str, const std::string &results_format) const {
+        Query query(getModel(), query_str);
+        std::string results = query.resultsAsStr(results_format);
+        query.freeQuery();
+        return results;
+    }
+
     void
     RDF::toFile(const std::string &format, const std::string &filename, const char *mime_type, const char *type_uri) {
         std::string syntax = toString(format, filename, mime_type, type_uri);

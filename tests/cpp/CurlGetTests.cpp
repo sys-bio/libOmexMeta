@@ -60,10 +60,10 @@ TEST_F(CurlGetTests, TestDownloadHtml) {
                               38702 - 1000, 38702 + 1000);
 }
 
-TEST_F(CurlGetTests, TestDownloadOmexFile) {
-    downloadAndCheckSizeRange(omex_file_url, omex_filename,
-                              4650, 4750);
-}
+//TEST_F(CurlGetTests, TestDownloadOmexFile) {
+//    downloadAndCheckSizeRange(omex_file_url, omex_filename,
+//                              4650, 4750);
+//}
 
 
 TEST_F(CurlGetTests, TestDownloadSBMLFile) {

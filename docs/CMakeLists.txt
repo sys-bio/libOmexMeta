@@ -67,6 +67,9 @@ if (BUILD_DOCS_EXAMPLES)
     add_executable(WritingToStringC source/writing_rdf/writing_to_string_c.cpp)
     add_executable(WritingToStringCpp source/writing_rdf/writing_to_string_cpp.cpp)
 
+    add_executable(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
+    add_executable(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
+
     set(EXAMPLE_EXECUTABLES_TARGETS
             "FromStringC"
             "FromStringCpp"
@@ -101,6 +104,9 @@ if (BUILD_DOCS_EXAMPLES)
             "CreatePhysicalProcessCpp"
             "CreatePhysicalForceC"
             "CreatePhysicalForceCpp"
+
+            "QueryingRdfGraphC"
+            "QueryingRdfGraphCpp"
             )
 
     set_target_properties(${EXAMPLE_EXECUTABLES_TARGETS} PROPERTIES
@@ -113,6 +119,8 @@ if (BUILD_DOCS_EXAMPLES)
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
             )
+
+    add_dependencies(AllDocExamples OmexMeta OmexMeta-static)
 
     # We now create a target that runs the Python script which runs the
     # executables.

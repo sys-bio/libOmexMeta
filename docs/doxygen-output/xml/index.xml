@@ -843,7 +843,7 @@
     <member refid="OmexMetaCApi_8cpp_1a2d15671ea03bc2c34fc3eca19dc4a34e" kind="function"><name>RDF_addFromFile</name></member>
     <member refid="OmexMetaCApi_8cpp_1a0abc772a6421e19aa40cd66a90f148fe" kind="function"><name>RDF_toString</name></member>
     <member refid="OmexMetaCApi_8cpp_1acc8a0babd9991de85fc50304afb82a08" kind="function"><name>RDF_toFile</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a75e60f25b525efa9212373f9fbf089e8" kind="function"><name>RDF_queryResultsAsStr</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a75e60f25b525efa9212373f9fbf089e8" kind="function"><name>RDF_query</name></member>
     <member refid="OmexMetaCApi_8cpp_1afa3fd3cac3fdfdcfa40547c122031847" kind="function"><name>RDF_size</name></member>
     <member refid="OmexMetaCApi_8cpp_1a6fd770f13dbdfef4f9b81c883a5a6801" kind="function"><name>RDF_setRepositoryUri</name></member>
     <member refid="OmexMetaCApi_8cpp_1aa2bb2328d661d00b8558216735e7095c" kind="function"><name>RDF_setArchiveUri</name></member>

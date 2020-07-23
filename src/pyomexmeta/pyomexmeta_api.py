@@ -150,8 +150,8 @@ class PyOmexMetaAPI:
     # void RDF_delete(RDF *rdf_ptr);
     rdf_delete = Util.load_func("RDF_delete", [ct.c_int64], None)
 
-    # char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format);
-    rdf_query_results_as_str = Util.load_func("RDF_queryResultsAsStr", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+    # char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    rdf_query_results_as_str = Util.load_func("RDF_query", [ct.c_int64, ct.c_char_p, ct.c_char_p],
                                               ct.c_int64)
 
     # void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);

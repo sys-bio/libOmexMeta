@@ -126,8 +126,8 @@ class RDF:
         """destructor. Delete the dynamically allocated rdf object"""
         PyOmexMetaAPI.rdf_delete(self._obj)
 
-    def query_results_as_string(self, query_string: str, results_format: str):
-        return PyOmexMetaAPI.rdf_query_results_as_str(self._obj, query_string.encode(), results_format.encode())
+    def query(self, query_string: str, results_format: str):
+        return PyOmexMetaAPI.rdf_query(self._obj, query_string.encode(), results_format.encode())
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
         str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())

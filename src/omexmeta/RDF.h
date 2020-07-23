@@ -39,7 +39,6 @@ namespace omexmeta {
 
         const std::string &getLocalUri() const;
 
-
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
         const std::string myomexlib_ = "http://myOmexLibrary.org/";
@@ -179,6 +178,8 @@ namespace omexmeta {
         int getTransactionRollback() const;
 
         static std::ostringstream listOptions();
+
+        std::string query(const std::string &query_str, const std::string &results_format) const;
     };
 }
 

@@ -86,7 +86,7 @@ namespace omexmeta {
 
     SEMSIM_API void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    SEMSIM_API char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    SEMSIM_API char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
 
     SEMSIM_API int RDF_size(RDF *rdf_ptr);
 

@@ -680,9 +680,9 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a75e60f25b525efa9212373f9fbf089e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
-        <definition>SEMSIM_API char * omexmeta::RDF_queryResultsAsStr</definition>
+        <definition>SEMSIM_API char * omexmeta::RDF_query</definition>
         <argsstring>(RDF *rdf_ptr, const char *query_str, const char *results_format)</argsstring>
-        <name>RDF_queryResultsAsStr</name>
+        <name>RDF_query</name>
         <param>
           <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
           <declname>rdf_ptr</declname>
