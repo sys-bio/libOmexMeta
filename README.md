@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/sys-bio/libOmexMeta.svg?branch=master)](https://travis-ci.org/sys-bio/libOmexMeta) 
-[![codecov](https://codecov.io/gh/sys-bio/libomexmeta/branch/master/graph/badge.svg)](https://codecov.io/gh/sys-bio/libomexmeta)
 [![PyPI version](https://badge.fury.io/py/pyomexmeta.svg)](https://badge.fury.io/py/pyomexmeta)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
