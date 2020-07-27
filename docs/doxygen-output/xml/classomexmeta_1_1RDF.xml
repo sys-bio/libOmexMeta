@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="43" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="43" bodyend="-1"/>
+        <location file="src/omexmeta/RDF.h" line="42" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da" prot="public" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="44" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="44" bodyend="-1"/>
+        <location file="src/omexmeta/RDF.h" line="43" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1RDF_1aae58e1da72231c07cf0742f3321cebcc" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="45" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="45" bodyend="-1"/>
+        <location file="src/omexmeta/RDF.h" line="44" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1RDF_1a5b1184955f2401c30116c7473be1ca1d" prot="public" static="no" mutable="no">
         <type>NamespaceMap</type>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="49" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="49" bodyend="-1"/>
+        <location file="src/omexmeta/RDF.h" line="48" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="28" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="275" bodyend="277"/>
+        <location file="src/omexmeta/RDF.h" line="28" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="282" bodyend="284"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a9e8669ac5cf5dbcaf235f535f7482a7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="30" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="279" bodyend="289"/>
+        <location file="src/omexmeta/RDF.h" line="30" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="286" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a1b3bd1292e77c1d87720f854ec5a04bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -199,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="32" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="291" bodyend="293"/>
+        <location file="src/omexmeta/RDF.h" line="32" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="298" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a77ba0cbdb6070ac78f14044197d79cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -216,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="34" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="295" bodyend="307"/>
+        <location file="src/omexmeta/RDF.h" line="34" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="302" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ac579ac8b79eb7d374a9077114837d2ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -229,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="36" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="309" bodyend="311"/>
+        <location file="src/omexmeta/RDF.h" line="36" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="316" bodyend="318"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ad5310903d0e1a7a7ee890478f18b6181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="38" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="313" bodyend="370"/>
+        <location file="src/omexmeta/RDF.h" line="38" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="320" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a58b64a5972f74564994028504d8d227c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -259,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="40" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="373" bodyend="375"/>
+        <location file="src/omexmeta/RDF.h" line="40" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="380" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aecb90e51830082f78ff055c045f4b439" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="51" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="14" bodyend="19"/>
+        <location file="src/omexmeta/RDF.h" line="50" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="14" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -305,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="55" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="21" bodyend="24"/>
+        <location file="src/omexmeta/RDF.h" line="54" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="21" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a87b1eb7fe49f4928e61c399edf49e09c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -318,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="57" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="26" bodyend="28"/>
+        <location file="src/omexmeta/RDF.h" line="56" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="26" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ad95c4a8588988efe399c7f984e304990" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -335,7 +335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="59" column="1"/>
+        <location file="src/omexmeta/RDF.h" line="58" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="61" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="30" bodyend="36"/>
+        <location file="src/omexmeta/RDF.h" line="60" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="30" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> &amp;</type>
@@ -369,7 +369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="63" column="1"/>
+        <location file="src/omexmeta/RDF.h" line="62" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ae3739bda3be0986547c31559381f3df4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> &amp;</type>
@@ -386,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="65" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="38" bodyend="47"/>
+        <location file="src/omexmeta/RDF.h" line="64" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="38" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a63247bb3a05957abf7320c060543c3ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="67" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="49" bodyend="51"/>
+        <location file="src/omexmeta/RDF.h" line="66" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="49" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ab6525e8db606ffd48425b05ad2a204d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -412,7 +412,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="69" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="53" bodyend="55"/>
+        <location file="src/omexmeta/RDF.h" line="68" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a4294d4ef2f2c7bafa9c90def27b6abf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -439,7 +439,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="90" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="90" bodyend="106"/>
+        <location file="src/omexmeta/RDF.h" line="89" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="90" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1af99201be3782319d32e963ca7bed5b2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -461,7 +461,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="111" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="130" bodyend="133"/>
+        <location file="src/omexmeta/RDF.h" line="110" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="130" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ac88eeb1a0f6911a2c1e4c43cef1b9047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -482,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="129" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="142" bodyend="145"/>
+        <location file="src/omexmeta/RDF.h" line="128" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="142" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1af5f598560ab2a4ebe661f9bdb8665755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unordered_map&lt; std::string, std::string &gt;</type>
@@ -499,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="152" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="155" bodyend="164"/>
+        <location file="src/omexmeta/RDF.h" line="151" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="155" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aca5e83398eb1739c02c7ab4852e09784" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -532,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="157" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="166" bodyend="179"/>
+        <location file="src/omexmeta/RDF.h" line="156" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="166" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aa2348d3e28641a2b1079fddcacfd50dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -563,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="161" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="182" bodyend="192"/>
+        <location file="src/omexmeta/RDF.h" line="160" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="189" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a1766b940e69990ce28b60309615c12ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref></type>
@@ -589,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="163" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="198" bodyend="201"/>
+        <location file="src/omexmeta/RDF.h" line="162" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="205" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aabdb57f01b0e83a4ac93e9548387cda9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -615,7 +615,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="165" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="203" bodyend="207"/>
+        <location file="src/omexmeta/RDF.h" line="164" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="210" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a8007b0ce5729c7dd3f8cab86d42216f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_model *</type>
@@ -628,7 +628,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="167" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="194" bodyend="196"/>
+        <location file="src/omexmeta/RDF.h" line="166" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="201" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a71b0e5f3b85a87c2231e7700d86060c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_storage *</type>
@@ -641,7 +641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="169" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="209" bodyend="211"/>
+        <location file="src/omexmeta/RDF.h" line="168" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="216" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a711f228bb86c5cbf9740f64b8633d04c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -654,7 +654,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="171" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="213" bodyend="215"/>
+        <location file="src/omexmeta/RDF.h" line="170" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1afa2b148ecb235b3ac9497fa3b528d2ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -667,7 +667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="173" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="217" bodyend="219"/>
+        <location file="src/omexmeta/RDF.h" line="172" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ad30bbe5c9b274713f87d4d4a5f2b28e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void *</type>
@@ -680,7 +680,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="175" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="221" bodyend="223"/>
+        <location file="src/omexmeta/RDF.h" line="174" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="228" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a278b78d5b1b88397c2eb4143f23dab8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -697,7 +697,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="177" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="225" bodyend="227"/>
+        <location file="src/omexmeta/RDF.h" line="176" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="232" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1af5c7c6104496c09762518d56e94e6048" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -710,7 +710,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="179" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="229" bodyend="231"/>
+        <location file="src/omexmeta/RDF.h" line="178" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="236" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::RDF::query</definition>
+        <argsstring>(const std::string &amp;query_str, const std::string &amp;results_format) const</argsstring>
+        <name>query</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>query_str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>results_format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/RDF.h" line="182" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="181" bodyend="186"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -739,7 +760,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="82" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="57" bodyend="72"/>
+        <location file="src/omexmeta/RDF.h" line="81" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="57" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref></type>
@@ -761,7 +782,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="103" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="117" bodyend="122"/>
+        <location file="src/omexmeta/RDF.h" line="102" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="117" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref></type>
@@ -782,7 +803,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="120" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="135" bodyend="140"/>
+        <location file="src/omexmeta/RDF.h" line="119" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="135" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ab2dadc7ff1cf25edbb401b2c879a21b0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -812,7 +833,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="141" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="75" bodyend="88"/>
+        <location file="src/omexmeta/RDF.h" line="140" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="75" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostringstream</type>
@@ -825,14 +846,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/RDF.h" line="181" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="233" bodyend="273"/>
+        <location file="src/omexmeta/RDF.h" line="180" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="240" bodyend="280"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/RDF.h" line="17" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="17" bodyend="182"/>
+    <location file="src/omexmeta/RDF.h" line="17" column="1" bodyfile="src/omexmeta/RDF.h" bodystart="17" bodyend="183"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1RDF_1ac88eeb1a0f6911a2c1e4c43cef1b9047" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>addFromFile</name></member>
       <member refid="classomexmeta_1_1RDF_1a4294d4ef2f2c7bafa9c90def27b6abf7" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>addFromString</name></member>
@@ -864,6 +885,7 @@
       <member refid="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>operator=</name></member>
       <member refid="classomexmeta_1_1RDF_1ae3739bda3be0986547c31559381f3df4" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>operator=</name></member>
       <member refid="classomexmeta_1_1RDF_1af5f598560ab2a4ebe661f9bdb8665755" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>propagateNamespacesFromParser</name></member>
+      <member refid="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>query</name></member>
       <member refid="classomexmeta_1_1RDF_1aecb90e51830082f78ff055c045f4b439" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>RDF</name></member>
       <member refid="classomexmeta_1_1RDF_1ad95c4a8588988efe399c7f984e304990" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>RDF</name></member>
       <member refid="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>RDF</name></member>

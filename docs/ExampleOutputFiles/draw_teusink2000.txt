@@ -447,4 +447,4 @@
     ] .
 
 
-RDF graph saved to "/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804/docs/TeusinkDiagram.svg"
+RDF graph saved to "/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804/docs/TeusinkDiagram.pdf"

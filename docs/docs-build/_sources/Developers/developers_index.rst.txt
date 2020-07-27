@@ -14,6 +14,7 @@ Developers Documentation
     python_api.rst
     rdf_terms.rst
     redland_combined.rst
-    world_singleton
+    world_singleton.rst
+    incrementing_version.rst
 
 
