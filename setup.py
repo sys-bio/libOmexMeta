@@ -52,6 +52,7 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "libcrypto-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcurl.dll"),
     os.path.join(PYOMEXMETA_DIR, "libdb-5.3.so"),
+    os.path.join(PYOMEXMETA_DIR, "libdb48.dll"),
     os.path.join(PYOMEXMETA_DIR, "libiconv.dll"),
     os.path.join(PYOMEXMETA_DIR, "libpq.dll"),
     os.path.join(PYOMEXMETA_DIR, "libssl-1_1-x64.dll"),
