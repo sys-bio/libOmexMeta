@@ -831,10 +831,63 @@ end"""
         # WHERE { ?x ?y ?z }"""
         # rdf.query(q, "res")
 
+    def test(self):
+        # import pyomexmeta as pyOM # my preference, see next line (though you can choose whichever suits you)
+        # from pyomexmeta import RDF
+        #
+        # import libcombine
+        # # Don't bother with argv - this is for
+        # # command line program, but there is no real need for this here
+        # # from sys import argv
+        #
+        # # os is useful for finding the file that we want
+        # import os
+        #
+        # # Lets just check what directory Python is running from:
+        # print(
+        #     os.getcwd())  # prints C:\Users\Ciaran\Desktop on mine, where I pasted your script and saved as example.py along with BIOMD0000000503.xml
+        #
+        # # now get a path to BIOMD0000000503.xml
+        # file = os.path.join(os.path.dirname(__file__), "BIOMD0000000503.xml")
+        #
+        # # make sure we got it right
+        # if not os.path.isfile(file):
+        #     raise ValueError(
+        #         "Didn't find your file at \"{}\". Put BIOMD0000000503.xml in the same directory as the python file containing this code".format(
+        #             file))
+        #
+        # # argv[0] =
+        # # "Documents\gennari\SemBIoProcess\CenterReproducbility\libOMEXmeta\testing\BIOMD0000000503.xml"
+        # # argv[1] =
+        # # "Documents\gennari\SemBIoProcess\CenterReproducbility\libOMEXmeta\BIOMD_503.rdf"
+        # # argv[2] = "turtle"
+        #
+        # # rdfstring = pyOM.RDF.from_file(argv[0],"rdfxml") # note that this produces the RDF *object, not the RDF string
+        # rdf = RDF.from_file(file, "rdfxml")
+        # # now we can get the string:
+        # turtle_string = rdf.to_string("turtle")
+        # print(turtle_string)
+        #
+        # # Incidently, because turtle is the default we can also do:
+        # print(rdf)  # we like python for its syntatic sugar
+        #
+        # # if you want to write a file you can do the standard python way:
+        # outfile = os.path.join(os.path.dirname(__file__), "output_turtle.rdf")
+        # with open(outfile, "w") as f:
+        #     f.write(turtle_string)
+        #
+        # # But this is what the RDF object does behind the scenes anyway:
+        # rdf.to_file("turtle", outfile)  # this line is equivalent to the above "with" statement
 
+        # actual = rdfstring.to_string(argv[2])
+        # print(actual, file=open(argv[1], 'w'))
 
-
-
+        # indicently, there is another way to read annotations from models in biomodels:
+        biomod_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000503.2?filename=BIOMD0000000503_url.xml"
+        rdf_from_uri = RDF.from_uri(biomod_url, "rdfxml")
+        # print(rdf_from_uri)
+        f = os.path.join(os.path.dirname(__file__), "outfile.rdf")
+        rdf_from_uri.to_file("turtle", f)
 
 
 if __name__ == "__main__":

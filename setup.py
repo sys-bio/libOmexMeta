@@ -65,6 +65,8 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "sqlite3.dll"),
     os.path.join(PYOMEXMETA_DIR, "yajl.dll"),
     os.path.join(PYOMEXMETA_DIR, "zlib1.dll"),
+    os.path.join(PYOMEXMETA_DIR, "api-ms-win-core-wow64-l1-1-0.dll"),
+    os.path.join(PYOMEXMETA_DIR, "vcruntime140_1.dll"),
     # linux dependencies
     os.path.join(PYOMEXMETA_DIR, "libOmexMeta.so"),
     # os.path.join(PYOMEXMETA_DIR, "libsqlite3.so"),

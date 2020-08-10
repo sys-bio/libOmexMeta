@@ -99,6 +99,7 @@ if (${BUILD_SHARED_LIBS})
     #    set(CMAKE_INSTALL_RPATH "$ORIGIN:2")
 
 
+    #     set_target_properties(${target} PROPERTIES SOVERSION ${ROADRUNNER_VERSION})
     # shared library
     add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
 
@@ -193,6 +194,25 @@ if (${BUILD_SHARED_LIBS})
         # Remember to copy dependency dlls to pyomexmeta directory
         install(FILES ${LIBRARIES} DESTINATION ${PYOMEXMETA_DIR})
         install(FILES $<TARGET_FILE:redland-combined> DESTINATION ${PYOMEXMETA_DIR})
+
+        # Find the vcruntime.dll for redistribution via pip
+        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            find_file(VCRUNTIME_LIBRARY NAMES vcruntime140_1d.dll PATHS C:/Windows/System32)
+        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+            find_file(VCRUNTIME_LIBRARY NAMES vcruntime140_1.dll PATHS C:/Windows/System32)
+        else ()
+            message(FATAL_ERROR "Only Release and Debug builds supported")
+        endif ()
+
+        # Find the api-ms-win-core-wow64-l1-1-0.dll for redistribution via pip
+        find_file(API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY NAMES api-ms-win-core-wow64-l1-1-0.dll PATHS C:/Windows/System32/downlevel)
+
+        install(PROGRAMS
+                ${VCRUNTIME_LIBRARY}
+                ${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}
+                DESTINATION ${PYOMEXMETA_DIR}
+                )
+
 
     elseif (PLATFORM STREQUAL "macos")
         message(STATUS "macos == sad face =[")
