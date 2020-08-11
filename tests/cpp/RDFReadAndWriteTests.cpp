@@ -153,8 +153,7 @@ TEST_F(ReadAndWriteTests, singularannotation1dot) {
                            "\t// Literals\n"
                            "\n"
                            "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
+                           "}\n";
     assertReadAndWrite(samples.singular_annotation1, "dot", expected);
 }
 

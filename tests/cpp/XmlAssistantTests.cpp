@@ -16,7 +16,7 @@ class SemsimXmlAssistantTests : public ::testing::Test {
 
 TEST_F(SemsimXmlAssistantTests, TestValidElements) {
     MetaID metaId("OmexMetaId", 0, 4);
-    std::string model_string = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+    std::string model_string = SBMLFactory::getSBML(SBML_ANNOTATED);
     std::cout << model_string << std::endl;
     OmexMetaXmlAssistant SemsimXmlAssistant(model_string, "ID", 4);
     const std::vector<std::string> &actual = SemsimXmlAssistant.getValidElements();
@@ -27,7 +27,7 @@ TEST_F(SemsimXmlAssistantTests, TestValidElements) {
 
 TEST_F(SemsimXmlAssistantTests, TestValidElementsSBML) {
     MetaID metaId("OmexMetaId", 0, 4);
-    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     SBMLAssistant assistant(sbml, "ID", 4);
     const std::vector<std::string> &actual = assistant.getValidElements();
     std::vector<std::string> expected = {
@@ -44,7 +44,7 @@ TEST_F(SemsimXmlAssistantTests, TestValidElementsSBML) {
 
 //TEST_F(SemsimXmlAssistantTests, TestCellMlValidElements) {
 //    MetaID metaId("OmexMetaId", 0, 4);
-//    std::string model_string = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+//    std::string model_string = SBMLFactory::getSBML(SBML_ANNOTATED);
 //    std::cout << model_string << std::endl;
 //    CellMLAssistant assistant(model_string, "ID", 4);
 //    const std::vector<std::string> &actual = assistant.getValidElements();
@@ -55,7 +55,7 @@ TEST_F(SemsimXmlAssistantTests, TestValidElementsSBML) {
 //}
 
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsAll) {
-    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     OmexMetaXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4, true);
     auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
@@ -120,7 +120,7 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsAll) {
 
 
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsSBML) {
-    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     MetaID metaId("OmexMetaId", 0, 4);
     SBMLAssistant assistant(sbml, "OmexMetaId", 4, true);
     auto sbml_with_metaids = assistant.addMetaIds();
@@ -185,7 +185,7 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsSBML) {
 }
 
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseSBML) {
-    std::string sbml = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBML(SBML_ANNOTATED);
     OmexMetaXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4, false);
     auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
@@ -228,7 +228,7 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseSBML) {
 }
 
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaid) {
-    std::string sbml = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBML(SBML_ANNOTATED);
     OmexMetaXmlAssistant SemsimXmlAssistant(sbml, "OmexMetaId", 4, false);
     auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
     std::vector<std::string> metaids = sbml_and_meta_ids.second;
@@ -241,7 +241,7 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaid) {
 
 
 TEST_F(SemsimXmlAssistantTests, TestXmlAssistantFactory) {
-    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     auto x = SemsimXmlAssistantFactory::generate(sbml, OMEXMETA_TYPE_SBML);
 
 }

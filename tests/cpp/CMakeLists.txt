@@ -30,8 +30,7 @@ set(TEST_SOURCES
         CAPITests.cpp
         PersonalInformationTests.cpp
         DocTests.cpp
-        SBMLSemanticExtractionTests.cpp
-        MarkupIdentifierTests.cpp)
+        MarkupIdentifierTests.cpp sbml_semantic_extraction/ElementExtractorTests.cpp sbml_semantic_extraction/SBMLSemanticExtractionTests.cpp)
 
 # docs-build test executable
 add_executable(OmexMetaTests ${TEST_SOURCES})

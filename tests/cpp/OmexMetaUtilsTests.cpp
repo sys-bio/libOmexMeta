@@ -144,4 +144,13 @@ TEST_F(OmexMetaUtilsTests, TestStartsWithFail) {
     ASSERT_FALSE(OmexMetaUtils::startsWith(s1, s2));
 }
 
+TEST_F(OmexMetaUtilsTests, TestStringInVector) {
+    std::vector<std::string> vec = {
+            "A", "B", "C"
+    };
+    ASSERT_TRUE(OmexMetaUtils::stringInVector(vec, "A"));
+    ASSERT_TRUE(OmexMetaUtils::stringInVector(vec, "B"));
+    ASSERT_FALSE(OmexMetaUtils::stringInVector(vec, "D"));
+}
+
 

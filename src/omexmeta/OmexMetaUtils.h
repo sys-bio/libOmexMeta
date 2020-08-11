@@ -19,6 +19,7 @@
 #include <sstream>
 #include <filesystem>
 #include <assert.h>
+#include "libxml/tree.h"
 
 using namespace redland;
 
@@ -104,6 +105,13 @@ namespace omexmeta {
         static std::string stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
 
         static bool startsWith(const std::string &full_string, const std::string &start);
+
+        static bool stringInVector(std::vector<std::string> vec, const std::string &string);
+
+        static xmlDoc *parseXmlDocument(const std::string& xml_string);
+
+        static std::string getXmlNodeProperty(xmlNode* node, const std::string& property);
+
     };
 }
 

@@ -17,32 +17,11 @@ namespace omexmeta {
         xmlFreeDoc(doc_);
     }
 
-
-    /*
-     * @brief utility to check whether a string is in the elements_names_ vector
-     * @param element_name the string to check for existence in element_names_
-     */
-    bool MarkupIdentifier::checkStringInElementVec(const std::string &element_name) {
-        bool in_vec = false;
-        if (std::find(element_names_.begin(), element_names_.end(), element_name) != element_names_.end()) {
-            // Element in vector.
-            in_vec = true;
-        }
-        return in_vec;
-    }
-
     /*
      * @brief read an xml document using libxml2.
      */
     xmlDoc *MarkupIdentifier::parseML() {
-        /*
-         * The document being in memory, it have no base per RFC 2396,
-         * and the "noname.xml" argument will serve as its base.
-         */
-        doc_ = xmlReadMemory(markup_.c_str(), (int) markup_.length() + 1, "noname.xml", NULL, 0);
-        if (doc_ == nullptr) {
-            throw NullPointerException("Could not read xml into document. nullptr");
-        }
+        doc_ = OmexMetaUtils::parseXmlDocument(markup_);
 
         // also populate elements vector
         xmlNode *root_element = xmlDocGetRootElement(doc_);
@@ -60,7 +39,7 @@ namespace omexmeta {
             if (cur_node->type == XML_ELEMENT_NODE) {
                 // we only add to the list of elements if we haven't seen it before
                 const char *element_name = (const char *) cur_node->name;
-                if (!checkStringInElementVec(element_name)) {
+                if (!OmexMetaUtils::stringInVector(getElementNames(), element_name)) {
                     element_names_.emplace_back(element_name);
                 }
             }
@@ -79,11 +58,8 @@ namespace omexmeta {
         };
         bool is_sbml = true;
         // if all sbml_hallmarks in element_names_ we have sbml.
-        for (auto &it: getElementNames()){
-            std::cout<< it << std::endl;
-        }
         for (auto &hallmark: sbml_hallmarks) {
-            if (!checkStringInElementVec(hallmark)){
+            if (!OmexMetaUtils::stringInVector(getElementNames(), hallmark)){
                 is_sbml = false;
             }
         }
@@ -98,7 +74,7 @@ namespace omexmeta {
         bool is_cellml = true;
         // if all cellml_hallmarks in element_names_ we have sbml.
         for (auto &hallmark: cellml_hallmarks) {
-            if (!checkStringInElementVec(hallmark)){
+            if (!OmexMetaUtils::stringInVector(getElementNames(), hallmark)){
                 is_cellml = false;
             }
         }

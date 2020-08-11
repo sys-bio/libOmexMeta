@@ -294,4 +294,37 @@ namespace omexmeta {
         return str;
     }
 
+    /*
+     * @brief return true if @param string is in @param vec
+     */
+    bool OmexMetaUtils::stringInVector(std::vector<std::string> vec, const std::string &string) {
+        return std::find(vec.begin(), vec.end(), string) != vec.end();
+    }
+
+    /*
+     * @brief read an xml document using libxml2.
+     * @return xmlDoc*. Caller is responsible for calling xmlFreeDoc(doc).
+     */
+    xmlDoc *OmexMetaUtils::parseXmlDocument(const std::string& xml_string) {
+        xmlDoc* doc_ = xmlReadMemory(xml_string.c_str(), (int) xml_string.length() + 1, "noname.xml", nullptr, 0);
+        if (doc_ == nullptr) {
+            throw NullPointerException("Could not read xml into document. nullptr");
+        }
+        return doc_;
+    }
+
+    std::string OmexMetaUtils::getXmlNodeProperty(xmlNode* node, const std::string& property) {
+        char* s = (char*) xmlGetProp(node, (const xmlChar*)property.c_str());
+        if (s == nullptr){
+            std::ostringstream os;
+            os << "xmlNode* with element tag \"" << node->name << "\" doe not have a property" ;
+            os << "by the name of \"" << property << "\"";
+            throw std::logic_error(os.str());
+        }
+        std::string value(s);
+        free(s);
+        return value;
+    }
+
+
 }

@@ -13,6 +13,7 @@
 #include "libxml/parser.h"
 
 #include "omexmeta/Error.h"
+#include "omexmeta/OmexMetaUtils.h"
 
 namespace omexmeta {
     /*
@@ -23,16 +24,10 @@ namespace omexmeta {
         xmlDocPtr doc_; /* the resulting document tree */
 
         std::string markup_; /* store the input string */
-    public:
-        const std::vector<std::string> &getElementNames() const;
 
-    private:
         std::vector<std::string> element_names_;
 
-        bool checkStringInElementVec(const std::string& element_name);
-
         xmlDoc * parseML();
-
 
         void collectElementNames(xmlNode *a_node);
 
@@ -45,6 +40,7 @@ namespace omexmeta {
 
         bool isCellML();
 
+        [[nodiscard]] const std::vector<std::string> &getElementNames() const;
     };
 }
 
