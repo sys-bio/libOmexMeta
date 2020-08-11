@@ -8,7 +8,7 @@
 
 using namespace omexmeta;
 
-class SBMLSemanticExtractionTests : public ::testing::TestCase {
+class SBMLSemanticExtractionTests : public ::testing::Test {
 public:
     std::string sbml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                        "<!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. -->\n"
@@ -95,7 +95,7 @@ public:
 
     SBMLSemanticExtractionTests() = default;
 
-}
+};
 
 
 TEST_F(SBMLSemanticExtractionTests, CompartmentExtractionTest1){

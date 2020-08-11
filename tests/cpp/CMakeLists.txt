@@ -31,7 +31,7 @@ set(TEST_SOURCES
         PersonalInformationTests.cpp
         DocTests.cpp
         SBMLSemanticExtractionTests.cpp
-        )
+        MarkupIdentifierTests.cpp)
 
 # docs-build test executable
 add_executable(OmexMetaTests ${TEST_SOURCES})

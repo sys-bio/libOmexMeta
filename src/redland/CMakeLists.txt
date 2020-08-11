@@ -404,17 +404,6 @@ add_library(redland-combined-static STATIC
 # ensure PIC is on for linux builds. Ignored on windows
 set_target_properties(redland-combined-static PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-# set runtime to MultiThreaded for static .lib docs-build on windows. Ignored on other systems.
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#    set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
-#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#    set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-#endif()
-
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#    message(FATAL_ERROR "debug builds are not supported")
-#endif()
-
 # includes
 target_include_directories(redland-combined-static PUBLIC
         ${INCLUDE_DIRECTORIES}

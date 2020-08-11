@@ -11,7 +11,13 @@ set(VERSION_MINOR 1)
 set(VERSION_MICRO 5)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
-project(libOmexMeta VERSION "${LIBOMEXMETA_VERSION}")
+project(libOmexMeta
+        VERSION "${LIBOMEXMETA_VERSION}"
+        DESCRIPTION "Annotation library for models in mathematical biology"
+        )
+
+# for linux shared libraries
+set(SOVERSION ${VERSION_MAJOR})
 
 # configure VERSION.txt for Python to read
 configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt" @ONLY)
@@ -41,6 +47,11 @@ include(ConfigurationSummary)
 
 # include some code for coverage configuration
 #include(CodeCoverage)
+
+# for verification of include files
+include(CheckIncludeFiles)
+include(CheckIncludeFile)
+
 
 ######################################################
 #   Set some variables
@@ -123,20 +134,6 @@ if (${WITH_BDB})
     add_definitions(-DWITH_BDB)
 endif ()
 
-#if (NOT PLATFORM STREQUAL "windows-msvc")
-#    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#        #  remove optimizations for Debug builds.
-#        #  and add -g -> instructs compiler to generate and retain
-#        #  source level debug information.
-#        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
-#        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
-#
-#    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#        # set optimizations to highest level for Release builds
-#        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
-#        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
-#    endif ()
-#endif (NOT PLATFORM STREQUAL "windows-msvc")
 # run the tests and generate coverage output
 option(WITH_COVERAGE OFF)
 
@@ -157,19 +154,15 @@ if (${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 endif ()
 
 # set gtest libraries which are different between debug and release.
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
-#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#    set(GTEST_LIBS gtest gtest_main)
+
+# This should be taken care of by CMAKE_POSITION_INDEPENENCT_CODE
+#if (PLATFORM STREQUAL "linux")
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 #endif ()
 
-if (PLATFORM STREQUAL "linux")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
-endif ()
-
 set(PYTHON_EXECUTABLE "/home/ciaran/miniconda3/bin/python" CACHE FILEPATH "Full path to python executable")
-
 
 
 ############################################################3
@@ -352,6 +345,8 @@ set(INCLUDE_DIRECTORIES
         ${PCRE_INCLUDE_DIR}
         ${ICONV_INCLUDE_DIR}
         )
+
+
 
 #############################################
 # Build libOmexMeta targets and tests

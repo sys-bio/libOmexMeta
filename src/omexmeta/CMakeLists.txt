@@ -24,7 +24,10 @@ set(OMEXMETA_HEADERS
         "AnnotationType.h"
         "Editor.h"
         "OmexMetaCApi.h"
-        PersonalInformation.cpp PersonalInformation.h OmexMeta.h)
+        "PersonalInformation.h"
+        "OmexMeta.h"
+        "MarkupIdentifier.h"
+        )
 
 set(OMEXMETA_SOURCES
         "OmexMetaUtils.cpp"
@@ -47,7 +50,9 @@ set(OMEXMETA_SOURCES
         "PhysicalProcess.cpp"
         "PhysicalForce.cpp"
         "OmexMetaCApi.cpp"
-        PersonalInformation.cpp PersonalInformation.h)
+        "PersonalInformation.cpp"
+        "MarkupIdentifier.cpp"
+        )
 
 
 #####################################################################3
