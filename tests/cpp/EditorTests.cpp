@@ -1590,7 +1590,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
     std::cout << rdf.toString() << std::endl;
 
     ASSERT_EQ(0, rdf.size());
-    triples2.freeTriples();
+//    triples2.freeTriples();
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1) {
@@ -1875,8 +1875,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     ASSERT_EQ(4, rdf.size());
     editor.removePhysicalEntity(physicalEntity);
     ASSERT_EQ(0, rdf.size());
-
-
 }
 
 
@@ -1902,7 +1900,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(3, rdf.size());
 
-    triples.freeTriples();
+//    triples.freeTriples();
     triple.freeTriple();
 }
 
@@ -1925,25 +1923,25 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
     editor.removeSingleAnnotation(triple4);
     int s = rdf.size();
     ASSERT_EQ(3, rdf.size());
-    triple4.freeTriple();
+//    triple4.freeTriple();
 
     Triple triple3 = triples.pop_front();
     std::cout << triple3.str("ntriples", "base") << std::endl;
     editor.removeSingleAnnotation(triple3);
     ASSERT_EQ(2, rdf.size());
-    triple3.freeTriple();
+//    triple3.freeTriple();
 
     Triple triple2 = triples.pop_front();
     std::cout << triple2.str("ntriples", "base") << std::endl;
     editor.removeSingleAnnotation(triple2);
     ASSERT_EQ(1, rdf.size());
-    triple2.freeTriple();
+//    triple2.freeTriple();
 
     Triple triple1 = triples.pop_front();
     std::cout << triple1.str("ntriples", "base") << std::endl;
     editor.removeSingleAnnotation(triple1);
     ASSERT_EQ(0, rdf.size());
-    triple1.freeTriple();
+//    triple1.freeTriple();
 
 }
 
