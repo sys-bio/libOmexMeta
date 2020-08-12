@@ -13,6 +13,7 @@
 enum ModelType {
     SBML_ANNOTATED,
     SBML_NOT_ANNOTATED,
+    SBML_NOT_ANNOTATED2,
     SBML_Semantic_Extraction_Model
 };
 
@@ -132,6 +133,79 @@ public:
     }
 };
 
+class SBMLNotAnnotated2 : SBMLModel {
+public:
+    SBMLNotAnnotated2() = default;
+
+    std::string str() override {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+               "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
+               "  <model id=\"TestModelNotAnnotated\">\n"
+               "    <listOfUnitDefinitions>\n"
+               "      <unitDefinition id=\"molar\">\n"
+               "        <listOfUnits>\n"
+               "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\"/>\n"
+               "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\"/>\n"
+               "        </listOfUnits>\n"
+               "      </unitDefinition>\n"
+               "    </listOfUnitDefinitions>\n"
+               "    <listOfCompartments>\n"
+               "      <compartment metaid=\"#cytosol\" id=\"cytosol\" size=\"1\" constant=\"true\"/>\n"
+               "    </listOfCompartments>\n"
+               "    <listOfSpecies>\n"
+               "      <species metaid=\"#Meta00001\" id=\"X\" compartment=\"cytosol\" initialConcentration=\"10\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "      <species id=\"Z\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "    </listOfSpecies>\n"
+               "    <listOfReactions>\n"
+               "      <reaction id=\"X2Y\" reversible=\"false\">\n"
+               "        <listOfReactants>\n"
+               "          <speciesReference species=\"X\" constant=\"false\"/>\n"
+               "        </listOfReactants>\n"
+               "        <listOfProducts>\n"
+               "          <speciesReference species=\"Y\" constant=\"false\"/>\n"
+               "        </listOfProducts>\n"
+               "        <kineticLaw>\n"
+               "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "            <apply>\n"
+               "              <times/>\n"
+               "              <ci> X </ci>\n"
+               "              <ci> kx2y </ci>\n"
+               "            </apply>\n"
+               "          </math>\n"
+               "          <listOfLocalParameters>\n"
+               "            <localParameter id=\"kx2y\" value=\"1\"/>\n"
+               "            <localParameter id=\"ky2z\" value=\"1\"/>\n"
+               "          </listOfLocalParameters>\n"
+               "        </kineticLaw>\n"
+               "      </reaction>\n"
+               "      <reaction id=\"y2z\" reversible=\"false\">\n"
+               "        <listOfReactants>\n"
+               "          <speciesReference species=\"Y\" constant=\"false\"/>\n"
+               "        </listOfReactants>\n"
+               "        <listOfProducts>\n"
+               "          <speciesReference species=\"Z\" constant=\"false\"/>\n"
+               "        </listOfProducts>\n"
+               "        <listOfModifiers>\n"
+               "          <speciesReference species=\"X\" constant=\"false\"/>\n"
+               "        </listOfModifiers>\n"
+               "        <kineticLaw>\n"
+               "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "            <apply>\n"
+               "              <times/>\n"
+               "              <ci> X </ci>\n"
+               "              <ci> Y </ci>\n"
+               "              <ci> ky2z </ci>\n"
+               "            </apply>\n"
+               "          </math>\n"
+               "        </kineticLaw>\n"
+               "      </reaction>\n"
+               "    </listOfReactions>\n"
+               "  </model>\n"
+               "</sbml>\n";
+    }
+};
+
 class SBMLSemanticExtractionModel : SBMLModel {
 public:
     SBMLSemanticExtractionModel() = default;
@@ -228,6 +302,8 @@ public:
             return SBMLAnnotated().str();
         else if (modelType == SBML_NOT_ANNOTATED)
             return SBMLNotAnnotated().str();
+        else if (modelType == SBML_NOT_ANNOTATED2)
+            return SBMLNotAnnotated2().str();
         else if (modelType == SBML_Semantic_Extraction_Model)
             return SBMLSemanticExtractionModel().str();
         else {

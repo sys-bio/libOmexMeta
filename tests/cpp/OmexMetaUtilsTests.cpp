@@ -4,6 +4,8 @@
 #include "gtest/gtest.h"
 #include "iostream"
 #include "AnnotationSamples.h"
+#include "SBMLFactory.h"
+#include "omexmeta/RDF.h"
 
 using namespace omexmeta;
 
@@ -151,6 +153,34 @@ TEST_F(OmexMetaUtilsTests, TestStringInVector) {
     ASSERT_TRUE(OmexMetaUtils::stringInVector(vec, "A"));
     ASSERT_TRUE(OmexMetaUtils::stringInVector(vec, "B"));
     ASSERT_FALSE(OmexMetaUtils::stringInVector(vec, "D"));
+}
+
+TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), OMEXMETA_TYPE_SBML, true);
+
+    std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
+            rdf.getModel(),
+            "#OmexMetaId"
+            );
+    std::cout << metaid1 << std::endl;
+    // add annotation to the modelw ith the generated metaid
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation.setAbout(metaid1)
+        .setPredicate("bqbiol", "is")
+        .setResourceLiteral("FirstAnnotation");
+    editor.addSingleAnnotation(singularAnnotation);
+
+    // now try to generate a new metaid. It should not be the same as the first
+    std::string metaid2 = OmexMetaUtils::generateUniqueMetaid(
+            rdf.getModel(),
+            "metaid"
+            );
+    std::cout << metaid2 << std::endl;
+
+
+
+
 }
 
 

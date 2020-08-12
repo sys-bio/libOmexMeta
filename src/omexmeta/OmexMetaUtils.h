@@ -47,7 +47,8 @@ namespace omexmeta {
          */
         static std::string generateUniqueMetaid(
                 librdf_model *model, const std::string &metaid_base,
-                const std::vector<std::string> &exclusions = std::vector<std::string>()
+                const std::vector<std::string> &exclusions = std::vector<std::string>(),
+                const std::string& local_uri = std::string()
         );
 
         /*
@@ -102,17 +103,18 @@ namespace omexmeta {
 
         static std::string addLocalPrefixToMetaid(std::string metaid, std::string local);
 
-        static std::string stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
+        static std::string
+        stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
 
         static bool startsWith(const std::string &full_string, const std::string &start);
 
         static bool stringInVector(std::vector<std::string> vec, const std::string &string);
 
-        static xmlDoc *parseXmlDocument(const std::string& xml_string);
+        static xmlDoc *parseXmlDocument(const std::string &xml_string);
 
-        static std::string getXmlNodeProperty(xmlNode* node, const std::string& property);
+        static std::string getXmlNodeProperty(xmlNode *node, const std::string &property);
 
-        static xmlNode* getChildElementCalled(xmlNode* node, const std::string& name);
+        static xmlNode *getChildElementCalled(xmlNode *node, const std::string &name);
 
         static std::vector<xmlNode *> getAllChildElements(xmlNode *node);
     };

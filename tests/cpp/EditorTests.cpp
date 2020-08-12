@@ -346,7 +346,6 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
 
 }
 
-
 TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -368,7 +367,6 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     ASSERT_EQ(expected, actual);
 
 }
-
 
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     RDF rdf;
@@ -496,7 +494,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
-
 
 TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     RDF rdf;
@@ -651,7 +648,6 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-
 TEST_F(EditorTests, TestPhysicalEntityBuilder) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -670,7 +666,6 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
-
 
 TEST_F(EditorTests, TestPhysicalForceBuilder) {
     RDF rdf;
@@ -791,7 +786,6 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
     ASSERT_EQ(0, actual);
 }
 
-
 TEST_F(EditorTests, TestRemovePhysicalProcess) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -844,6 +838,34 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestAddTwoDifferentPhysicalEntities){
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED2),
+            OMEXMETA_TYPE_SBML, true);
+
+    std::cout << editor.getXml() << std::endl;
+    std::string r1_metaid = "#OmexMetaId0005";
+    std::string r2_metaid = "#OmexMetaId0009";
+
+    PhysicalProcess r1 = editor.newPhysicalProcess();
+    r1.setPhysicalProperty(r1_metaid, "OPB:OPB1234")
+        .addSource(1.0, "#Meta00001")
+        .addSink(1.0, "#OmexMetaId0003");
+    editor.addPhysicalProcess(r1);
+
+    PhysicalProcess r2 = editor.newPhysicalProcess();
+    r2.setPhysicalProperty(r2_metaid, "OPB:OPB1234")
+        .addSource(1.0, "#OmexMetaId0003")
+        .addSink(1.0, "#OmexMetaId0004")
+        .addMediator("#Meta00001");
+    editor.addPhysicalProcess(r2);
+
+    std::cout << rdf.toString("turtle") << std::endl;
+
+
 }
 
 /*****************************************************************

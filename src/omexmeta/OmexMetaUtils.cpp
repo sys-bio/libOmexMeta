@@ -51,7 +51,8 @@ namespace omexmeta {
 
     std::string OmexMetaUtils::generateUniqueMetaid(
             librdf_model *model, const std::string &metaid_base,
-            const std::vector<std::string> &exclusions) {
+            const std::vector<std::string> &exclusions,
+            const std::string &local_uri) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
@@ -63,16 +64,32 @@ namespace omexmeta {
         for (auto &i : exclusions) {
             subjects.push_back(i);
         }
+
+        // Because we added the "local_uri" stuff ad hock,
+        // we introduced a bug with generation of metaids.
+        // namely that comparison is done before adding the
+        // local uri. Therefore here, we do post processing
+        // on subject elements to remove the local uri portion
+        for (int i = 0; i < subjects.size(); i++) {
+            std::string sub = subjects[i];
+            if (OmexMetaUtils::startsWith(sub, "http")){
+                auto v = OmexMetaUtils::splitStringBy(sub, '#');
+                assert(v.size() == 2);
+                subjects[i] = "#" + v[1];
+            }
+        }
+
         int count = 0;
         std::string metaid;
         while (true) {
             MetaID metaId(metaid_base, count, 4);
             metaid = metaId.generate();
-            if (std::find(subjects.begin(), subjects.end(), metaId.generate()) == subjects.end()) {
-                break;
+            if (std::find(subjects.begin(), subjects.end(), metaid) == subjects.end()) {
+                break; // not found existing metaid
             }
             count++;
         }
+
         return metaid;
     }
 
@@ -343,7 +360,7 @@ namespace omexmeta {
         std::vector<xmlNode *> v;
         unsigned long count = xmlChildElementCount(node);
         xmlNode *child = xmlFirstElementChild(node);
-        if (child == nullptr){
+        if (child == nullptr) {
             return v;
         }
         v.push_back(child);
