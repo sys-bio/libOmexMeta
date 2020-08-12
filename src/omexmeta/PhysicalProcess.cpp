@@ -78,7 +78,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addMediator(double multiplier, std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addMediator(std::string physical_entity_reference) {
         mediators_.push_back(
                 std::move(MediatorParticipant(
                         model_,

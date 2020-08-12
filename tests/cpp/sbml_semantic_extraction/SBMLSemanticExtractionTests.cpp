@@ -46,7 +46,6 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
                            "</rdf:RDF>\n";
     std::string actual = rdf.toString();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-
 }
 
 TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
@@ -63,7 +62,44 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-
+TEST_F(SBMLSemanticExtractionTests, test){
+    /*
+     * myOMEX:Toymodel.sbml#react1
+     *      semsim:hasSourceParticipant local:source0 ;
+     *      semsim:hasSinkParticipant local:sink0 .
+     *
+     * local:source0 semsim:hasMultiplier 1.0 ;
+     * semsim:hasPhyscialEntityReference myOMEX:ToyModel.sbml#sp_2 .
+     *
+     * local:sink0 semsim:hasMultiplier 2.0 ; semsim:hasPhyscialEntityReference
+     * myOMEX:ToyModel.sbml#sp_1 .
+     *
+     *
+     * myOMEX:Toymodel.sbml#react2
+     *      semsim:hasSourceParticipant local:source1 ;
+     *      semsim:hasSourceParticipant local:source2 ;
+     *      semsim:hasSinkParticipant local:sink1 ;
+     *      semsim:hasMediatorParticipant local:mediator1 .
+     *
+     * local:source1 semsim:hasMultiplier 1.0 ;
+     * semsim:hasPhyscialEntityReference myOMEX:ToyModel.sbml#sp_3 .
+     *
+     * local:source2 semsim:hasMultiplier 1.0 ;
+     * semsim:hasPhyscialEntityReference myOMEX:ToyModel.sbml#sp_1 .
+     *
+     * local:sink1 semsim:hasMultiplier 1.0 ; semsim:hasPhyscialEntityReference
+     * myOMEX:ToyModel.sbml#sp_4 .
+     *
+     * local:mediator1 semsim:hasPhysicalEntityReference
+     * myOMEX:Toymodel.sbml#sp_5 .
+     *
+     */
+    std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+    RDF rdf;
+    SBMLSemanticExtraction extraction(rdf, model_string);
+    extraction.extractProcessesFromReactions();
+    std::cout <<rdf.toString("turtle") << std::endl;
+}
 
 
 

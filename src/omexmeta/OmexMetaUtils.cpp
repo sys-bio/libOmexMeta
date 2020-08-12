@@ -204,11 +204,11 @@ namespace omexmeta {
     OmexMetaUtils::configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name) {
         std::vector<std::string> vec;
         // create the default namespaces.
-        if (!OmexMetaUtils::endsWith(repository_name, "/")){
+        if (!OmexMetaUtils::endsWith(repository_name, "/")) {
             repository_name += "/";
         }
 
-        if (!OmexMetaUtils::endsWith(omex_name, ".omex")){
+        if (!OmexMetaUtils::endsWith(omex_name, ".omex")) {
             omex_name += ".omex";
         }
 
@@ -305,25 +305,55 @@ namespace omexmeta {
      * @brief read an xml document using libxml2.
      * @return xmlDoc*. Caller is responsible for calling xmlFreeDoc(doc).
      */
-    xmlDoc *OmexMetaUtils::parseXmlDocument(const std::string& xml_string) {
-        xmlDoc* doc_ = xmlReadMemory(xml_string.c_str(), (int) xml_string.length() + 1, "noname.xml", nullptr, 0);
+    xmlDoc *OmexMetaUtils::parseXmlDocument(const std::string &xml_string) {
+        xmlDoc *doc_ = xmlReadMemory(xml_string.c_str(), (int) xml_string.length() + 1, "noname.xml", nullptr, 0);
         if (doc_ == nullptr) {
             throw NullPointerException("Could not read xml into document. nullptr");
         }
         return doc_;
     }
 
-    std::string OmexMetaUtils::getXmlNodeProperty(xmlNode* node, const std::string& property) {
-        char* s = (char*) xmlGetProp(node, (const xmlChar*)property.c_str());
-        if (s == nullptr){
+    std::string OmexMetaUtils::getXmlNodeProperty(xmlNode *node, const std::string &property) {
+
+        char *s = (char *) xmlGetProp(node, (const xmlChar *) property.c_str());
+        if (s == nullptr) {
             std::ostringstream os;
-            os << "xmlNode* with element tag \"" << node->name << "\" doe not have a property" ;
+            os << "xmlNode* with element tag \"" << (const char *) node->name << "\" does not have a property";
             os << "by the name of \"" << property << "\"";
             throw std::logic_error(os.str());
         }
         std::string value(s);
         free(s);
         return value;
+    }
+
+    xmlNode *OmexMetaUtils::getChildElementCalled(xmlNode *node, const std::string &name) {
+        unsigned long count = xmlChildElementCount(node);
+        xmlNode *child = xmlFirstElementChild(node);
+        for (int i = 0; i < count - 1; i++) {
+            if (strcmp((const char *) child->name, name.c_str()) == 0) {
+                return child;
+            }
+            child = xmlNextElementSibling(child);
+        }
+        return nullptr;
+    }
+
+    std::vector<xmlNode *> OmexMetaUtils::getAllChildElements(xmlNode *node) {
+        std::vector<xmlNode *> v;
+        unsigned long count = xmlChildElementCount(node);
+        xmlNode *child = xmlFirstElementChild(node);
+        if (child == nullptr){
+            return v;
+        }
+        v.push_back(child);
+        for (int i = 0; i < count - 1; i++) {
+            child = xmlNextElementSibling(child);
+            if (child == nullptr)
+                break;
+            v.push_back(child);
+        }
+        return v;
     }
 
 

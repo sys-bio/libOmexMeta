@@ -609,7 +609,7 @@ TEST_F(CAPITests, TestPhysicalProcess) {
     physical_process_ptr = PhysicalProcess_addSource(
             physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, 1.0, "Entity8");
+            physical_process_ptr, "Entity8");
 
     char *actual = PhysicalProcess_str(physical_process_ptr, "rdfxml-abbrev", "./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -711,7 +711,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     physical_process_ptr = PhysicalProcess_addSource(
             physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, 1.0, "Entity8");
+            physical_process_ptr, "Entity8");
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "#OmexMetaId0007", "opb/opb_465");

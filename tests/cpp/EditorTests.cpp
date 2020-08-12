@@ -701,7 +701,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
             .setPhysicalProperty("#OmexMetaId0000", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2")
-            .addMediator(1.0, "PhysicalEntity3");
+            .addMediator( "PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
 
@@ -802,7 +802,7 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
     physicalProcess
             .setPhysicalProperty("#OmexMetaId0004", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
-            .addMediator(1.0, "PhysicalEntity1")
+            .addMediator( "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
     editor.addPhysicalProcess(physicalProcess);
     ASSERT_EQ(10, rdf.size());

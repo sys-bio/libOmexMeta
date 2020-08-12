@@ -241,8 +241,7 @@ namespace omexmeta {
             const char *physical_entity_reference);
 
     SEMSIM_API PhysicalProcess *PhysicalProcess_addMediator(
-            PhysicalProcess *physical_process, double multiplier,
-            const char *physical_entity_reference);
+            PhysicalProcess *physical_process, const char *physical_entity_reference);
 
     SEMSIM_API char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);

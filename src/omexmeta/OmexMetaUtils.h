@@ -112,6 +112,9 @@ namespace omexmeta {
 
         static std::string getXmlNodeProperty(xmlNode* node, const std::string& property);
 
+        static xmlNode* getChildElementCalled(xmlNode* node, const std::string& name);
+
+        static std::vector<xmlNode *> getAllChildElements(xmlNode *node);
     };
 }
 

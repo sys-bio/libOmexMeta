@@ -270,7 +270,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
             .addSink(1.0, "species_metaid2")
-            .addMediator(1.0, "species_metaid2");
+            .addMediator("species_metaid2");
 
     Triples triples = process.toTriples();
 
@@ -320,7 +320,7 @@ TEST_F(PhysicalProcessTests, TestEquality) {
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
             .addSink(1.0, "species_metaid2")
-            .addMediator(1.0, "species_metaid2");
+            .addMediator( "species_metaid2");
 
     PhysicalProcess process2(model.get());
     process2.setLocalUri(local_uri);
@@ -328,7 +328,7 @@ TEST_F(PhysicalProcessTests, TestEquality) {
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
             .addSink(1.0, "species_metaid2")
-            .addMediator(1.0, "species_metaid2");
+            .addMediator( "species_metaid2");
     ASSERT_EQ(process1, process2);
     process1.free();
     process2.free();
@@ -341,7 +341,7 @@ TEST_F(PhysicalProcessTests, TestInequality) {
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
             .addSink(1.0, "species_metaid2")
-            .addMediator(1.0, "species_metaid2");
+            .addMediator( "species_metaid2");
 
     PhysicalProcess process2(model.get());
     process2.setLocalUri(local_uri);
@@ -349,7 +349,7 @@ TEST_F(PhysicalProcessTests, TestInequality) {
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
             .addSink(1.0, "species_metaid2")
-            .addMediator(1.0, "species_metaid2");
+            .addMediator( "species_metaid2");
     ASSERT_NE(process1, process2);
 
     process1.free();

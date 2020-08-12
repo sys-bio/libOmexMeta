@@ -526,9 +526,9 @@ namespace omexmeta {
     }
 
     PhysicalProcess *
-    PhysicalProcess_addMediator(PhysicalProcess *physical_process, double multiplier,
+    PhysicalProcess_addMediator(PhysicalProcess *physical_process,
                                 const char *physical_entity_reference) {
-        physical_process->addMediator(multiplier, physical_entity_reference);
+        physical_process->addMediator(physical_entity_reference);
         return physical_process;
 
     }
