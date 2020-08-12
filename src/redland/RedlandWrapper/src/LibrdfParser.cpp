@@ -165,6 +165,14 @@ namespace redland {
         );
     }
 
+    void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model, const std::string &local_uri) const {
+        LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
+        LibrdfUri base_uri(local_uri);
+        librdf_parser_parse_into_model(
+                parser_, filename_uri_.get(), base_uri.get(), model.get()
+        );
+    }
+
     void LibrdfParser::validateParserName() const {
         std::vector<std::string> v = {"rdfxml",
                                       "ntriples",

@@ -68,11 +68,11 @@ namespace omexmeta {
      * @example
      * RDF* rdf_ptr = RDF_fromString(string_annotations, "rdfxml", "string_annotations_base_uri");
      */
-    SEMSIM_API RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
+    SEMSIM_API RDF *RDF_fromString(const char *str, const char *format,
                                    const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                    const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    SEMSIM_API void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri = "./Annotations.rdf");
+    SEMSIM_API void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
 
     SEMSIM_API RDF *RDF_fromUri(const char *uri_string, const char *format,
                                 const char *storage_type = "memory", const char *storage_name = "semsim_store",

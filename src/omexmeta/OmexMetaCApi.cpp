@@ -70,17 +70,16 @@ namespace omexmeta {
         delete rdf_ptr;
     }
 
-    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri, const char *storage_type,
+    RDF *RDF_fromString(const char *str, const char *format, const char *storage_type,
                         const char *storage_name,
                         const char *storage_options, const char *model_options) {
         RDF *rdf = RDF_new();
-        rdf->addFromString(str, format, baseuri);
+        rdf->addFromString(str, format);
         return rdf;
     }
 
-
-    void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri) {
-        rdf_ptr->addFromString(str, format, base_uri);
+    void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format) {
+        rdf_ptr->addFromString(str, format);
     }
 
     RDF *RDF_fromUri(const char *uri_string, const char *format, const char *storage_type, const char *storage_name,

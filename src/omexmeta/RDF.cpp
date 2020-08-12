@@ -54,10 +54,10 @@ namespace omexmeta {
         return size() == 0;
     }
 
-    RDF RDF::fromString(const std::string &str, const std::string &format, const std::string &base_uri) {
+    RDF RDF::fromString(const std::string &str, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
-        LibrdfUri u = LibrdfUri::fromFilename(base_uri);
+        LibrdfUri u = LibrdfUri::fromFilename(rdf.getLocalUri());
         parser.parseString(str, rdf.model_, u);
         u.freeUri();
 
@@ -88,12 +88,11 @@ namespace omexmeta {
     }
 
     void RDF::addFromString(const std::string &str,
-                            const std::string &format, const std::string &base_uri) {
-        std::string base_uri_used;
+                            const std::string &format) {
 
         LibrdfParser parser(format);
 
-        LibrdfUri u = LibrdfUri::fromFilename(base_uri_used);
+        LibrdfUri u = LibrdfUri::fromFilename(getLocalUri());
         parser.parseString(str, model_, u);
         u.freeUri();
 
@@ -135,13 +134,13 @@ namespace omexmeta {
     RDF RDF::fromFile(const std::string &filename, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
-        parser.parseFile(filename, rdf.model_);
+        parser.parseFile(filename, rdf.model_, rdf.getLocalUri());
         return rdf;
     }
 
     void RDF::addFromFile(const std::string &filename, const std::string &format) {
         LibrdfParser parser(format);
-        parser.parseFile(filename, model_);
+        parser.parseFile(filename, model_, getLocalUri());
     }
 
     /*

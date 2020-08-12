@@ -72,23 +72,16 @@ namespace omexmeta {
          * annotations from a string. This is a static method.
          * @param str a reference to the string containing annotations
          * @param format which format str is in. Default="guess" : try to guess.
-         * @param base_uri the uri that all subject uri's are relative to. Defaults to ./Annotations.rdf.
-         *
-         * @details The base_uri argument is required when parsing from a string
-         * because there is nothing to find one automatically (like there is
-         * when parsing from filename or uri).
          */
         static RDF fromString(const std::string &str,
-                              const std::string &format = "guess",
-                              const std::string &base_uri = "Annotations.rdf");
+                              const std::string &format = "guess");
 
         /*
          * @brief non-static variant of RDF::fromString(). Reads rdf into
          * an RDF instance. See RDF::fromString() for argument requirements.
          */
         void addFromString(const std::string &str,
-                           const std::string &format = "guess",
-                           const std::string &base_uri = "Annotations.rdf");
+                           const std::string &format = "guess");
 
         /*
          * @brief parse RDF directly from a uri
@@ -150,9 +143,6 @@ namespace omexmeta {
         std::unordered_map<std::string, std::string>
         propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces);
 
-//        std::string toString(const std::string &format = "rdfxml-abbrev", std::string base_uri = std::string(),
-//                             const char *mime_type = nullptr, const char *type_uri = nullptr);
-
         std::string toString(const std::string &format = "rdfxml-abbrev",
                              std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
@@ -180,6 +170,7 @@ namespace omexmeta {
         static std::ostringstream listOptions();
 
         std::string query(const std::string &query_str, const std::string &results_format) const;
+
     };
 }
 

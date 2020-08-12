@@ -88,7 +88,7 @@ TEST_F(CAPITests, RDF_toFile) {
 
 TEST_F(CAPITests, RDF_addFromString) {
     RDF *rdf_ptr = RDF_new();
-    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     int expected = 1;
     int actual = RDF_size(rdf_ptr);
     ASSERT_EQ(expected, actual);
@@ -97,7 +97,7 @@ TEST_F(CAPITests, RDF_addFromString) {
 
 TEST_F(CAPITests, RDF_addFromStringOutput) {
     RDF *rdf_ptr = RDF_new();
-    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     char *actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
