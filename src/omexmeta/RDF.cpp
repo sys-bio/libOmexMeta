@@ -57,7 +57,7 @@ namespace omexmeta {
     RDF RDF::fromString(const std::string &str, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
-        LibrdfUri u = LibrdfUri::fromFilename(rdf.getLocalUri());
+        LibrdfUri u(rdf.getLocalUri());
         parser.parseString(str, rdf.model_, u);
         u.freeUri();
 

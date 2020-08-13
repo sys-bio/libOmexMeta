@@ -146,16 +146,12 @@ namespace omexmeta {
         /*
          * Is this a bug because the local prefix has been added to the metaid?
          */
-        std::cout << "Generating PhysicalProcess ID: " <<std::endl;
-        std::cout << "before: " << physical_property_id_ << std::endl;
         if (physical_property_id_.empty()) {
             physical_property_id_ = OmexMetaUtils::generateUniqueMetaid(
                     model_, "PhysicalProcess",
                     std::vector<std::string>(),
                             getLocalUri());
         }
-        std::cout << "after: " << physical_property_id_ << std::endl;
-        std::cout << std::endl;
 
         // now we add the local uri on to the metaid - If it already
         // properly formatted it will be left alone

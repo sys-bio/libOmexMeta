@@ -50,12 +50,34 @@ namespace omexmeta {
 
 
     public:
+        /*
+         * @brief getter for xmlType attribue.
+         * @details when the rdf graph is sbml, it
+         * will return OMEXMETA_TYPE_SBML. When cellML
+         * it will return OMEXMETA_TYPE_CELLML. Otherwise
+         * it is OMEXMETA_TYPE_UNKNOWN.
+         */
         OmexMetaXmlType getXmlType() const;
 
+        /*
+         * @brief set the xml type for the current graph.
+         * @details If you have been reading from an SBML you cannot
+         * then read from another format (such as cellml).
+         */
         void setXmlType(OmexMetaXmlType xmlType);
 
+
+        /*
+         * @brief getter for repository uri which defaults
+         * to "http://omex-library.org/"
+         */
         const std::string &getRepositoryUri() const;
 
+        /*
+         * @brief setter for the repository uri which
+         * defaults to "http://omex-library.org/".
+         * @param repositoryName the repository uri.
+         */
         void setRepositoryUri(std::string repositoryName);
 
         const std::string &getArchiveUri() const;

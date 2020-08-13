@@ -63,42 +63,55 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
 }
 
 TEST_F(SBMLSemanticExtractionTests, test){
-    /*
-     * myOMEX:Toymodel.sbml#react1
-     *      semsim:hasSourceParticipant local:source0 ;
-     *      semsim:hasSinkParticipant local:sink0 .
-     *
-     * local:source0 semsim:hasMultiplier 1.0 ;
-     * semsim:hasPhyscialEntityReference myOMEX:ToyModel.sbml#sp_2 .
-     *
-     * local:sink0 semsim:hasMultiplier 2.0 ; semsim:hasPhyscialEntityReference
-     * myOMEX:ToyModel.sbml#sp_1 .
-     *
-     *
-     * myOMEX:Toymodel.sbml#react2
-     *      semsim:hasSourceParticipant local:source1 ;
-     *      semsim:hasSourceParticipant local:source2 ;
-     *      semsim:hasSinkParticipant local:sink1 ;
-     *      semsim:hasMediatorParticipant local:mediator1 .
-     *
-     * local:source1 semsim:hasMultiplier 1.0 ;
-     * semsim:hasPhyscialEntityReference myOMEX:ToyModel.sbml#sp_3 .
-     *
-     * local:source2 semsim:hasMultiplier 1.0 ;
-     * semsim:hasPhyscialEntityReference myOMEX:ToyModel.sbml#sp_1 .
-     *
-     * local:sink1 semsim:hasMultiplier 1.0 ; semsim:hasPhyscialEntityReference
-     * myOMEX:ToyModel.sbml#sp_4 .
-     *
-     * local:mediator1 semsim:hasPhysicalEntityReference
-     * myOMEX:Toymodel.sbml#sp_5 .
-     *
-     */
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
     SBMLSemanticExtraction extraction(&rdf, model_string);
     extraction.extractProcessesFromReactions();
-    std::cout <<rdf.toString("turtle") << std::endl;
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference local:Enzyme .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:PhysicalProcess0001\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasPhysicalEntityReference local:A .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasPhysicalEntityReference local:PlasmaCa .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasPhysicalEntityReference local:B .\n"
+                           "\n"
+                           "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasPhysicalEntityReference local:A, local:Ca .\n"
+                           "\n"
+                           "local:react1\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/:opb_1234> .\n"
+                           "\n"
+                           "local:react2\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/:opb_1234> .\n"
+                           "";
+    std::string actual = rdf.toString("turtle");
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

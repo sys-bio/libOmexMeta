@@ -93,7 +93,11 @@ namespace omexmeta {
             // end method (addSource here) it'll take some thinking.
             for (auto &reactant_node: reactants_species_references){
                 // collect some information from the participant node attributes
-                std::string reactant_node_stoic = OmexMetaUtils::getXmlNodeProperty(reactant_node, "stoichiometry");
+
+                // stoichiometry only exists in some models. So default to 1.0.
+                std::string reactant_node_stoic = "1.0";
+                if (xmlHasProp(reactant_node, (const xmlChar*)"stoichiometry"))
+                    reactant_node_stoic = OmexMetaUtils::getXmlNodeProperty(reactant_node, "stoichiometry");
                 std::string reactant_node_species_ref = OmexMetaUtils::getXmlNodeProperty(reactant_node, "species");
 
 
@@ -112,7 +116,11 @@ namespace omexmeta {
             // Similarly for products.
             for (auto &product_node: products_species_references){
                 // collect some information from the participant node attributes
-                std::string product_node_stoic = OmexMetaUtils::getXmlNodeProperty(product_node, "stoichiometry");
+
+                // stoichiometry only exists in some models. So default to 1.0.
+                std::string product_node_stoic = "1.0";
+                if (xmlHasProp(products_node, (const xmlChar*)"stoichiometry"))
+                    product_node_stoic = OmexMetaUtils::getXmlNodeProperty(product_node, "stoichiometry");
                 std::string product_node_species_ref = OmexMetaUtils::getXmlNodeProperty(product_node, "species");
 
                 // and begin looking for the species that has the reactant_node_species_ref

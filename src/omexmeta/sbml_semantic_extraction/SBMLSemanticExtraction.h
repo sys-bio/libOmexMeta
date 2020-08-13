@@ -24,8 +24,6 @@ namespace omexmeta {
     public:
         SBMLSemanticExtraction(RDF* rdf, const std::string & sbml_string);
 
-        SBMLSemanticExtraction(RDF rdf, const std::string & sbml_string);
-
         void extractSpeciesCompartmentSemantics();
 
         void extractProcessesFromReactions();
