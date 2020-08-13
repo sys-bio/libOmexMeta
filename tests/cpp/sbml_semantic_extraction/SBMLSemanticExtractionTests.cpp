@@ -20,7 +20,7 @@ public:
 TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
-    SBMLSemanticExtraction extraction(rdf, model_string);
+    SBMLSemanticExtraction extraction(&rdf, model_string);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
@@ -51,7 +51,7 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
 TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
     std::string model_string = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     RDF rdf;
-    SBMLSemanticExtraction extraction(rdf, model_string);
+    SBMLSemanticExtraction extraction(&rdf, model_string);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
@@ -96,7 +96,7 @@ TEST_F(SBMLSemanticExtractionTests, test){
      */
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
-    SBMLSemanticExtraction extraction(rdf, model_string);
+    SBMLSemanticExtraction extraction(&rdf, model_string);
     extraction.extractProcessesFromReactions();
     std::cout <<rdf.toString("turtle") << std::endl;
 }

@@ -8,9 +8,9 @@
 
 namespace omexmeta {
 
-    SBMLSemanticExtraction::SBMLSemanticExtraction(RDF &rdf, std::string sbml_string)
-            : rdf_(rdf), sbml_string_(std::move(sbml_string)),
-              editor_(rdf_.toEditor(sbml_string, OMEXMETA_TYPE_SBML)) {}
+    SBMLSemanticExtraction::SBMLSemanticExtraction(RDF *rdf, const std::string& sbml_string)
+            : rdf_(rdf), sbml_string_(sbml_string),
+              editor_(rdf->toEditor(sbml_string, OMEXMETA_TYPE_SBML)) {}
 
     void SBMLSemanticExtraction::extractSpeciesCompartmentSemantics() {
         ElementExtractor compartment_extraction(sbml_string_, "compartment");
@@ -145,6 +145,7 @@ namespace omexmeta {
             editor_.addPhysicalProcess(process);
         }
     }
+
 }
 
 

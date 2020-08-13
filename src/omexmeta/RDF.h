@@ -5,10 +5,15 @@
 #ifndef LIBOMEXMETA_RDF_H
 #define LIBOMEXMETA_RDF_H
 
+#include <fstream>
+#include <streambuf>
 #include <unordered_map>
 #include "RedlandWrapper.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "Editor.h"
+#include "sbml_semantic_extraction/SBMLSemanticExtraction.h"
+#include "MarkupIdentifier.h"
+#include "OmexMetaXmlType.h"
 
 using namespace redland;
 
@@ -18,13 +23,37 @@ namespace omexmeta {
         LibrdfStorage storage_;
         LibrdfModel model_;
 
+        OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
+
         typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
         std::string repository_uri_ = "http://omex-library.org/";
         std::string archive_uri_ = repository_uri_ + "NewOmex.omex";
         std::string model_uri_ = archive_uri_ + "/NewModel.xml#";
         std::string local_uri_ = archive_uri_ + "/NewModel.rdf#";
+
+        /*
+         * @brief autoset the xmlType variable based on xml content.
+         */
+        void classifyXmlType(const std::string& xml, const std::string& input_format);
+
+        /*
+         * @brief reads xml from file before calling classifyXmlType
+         */
+        void classifyXmlTypeFromFile(const std::string &xml_file);
+
+        /*
+         * @brief pull semantic information out of the sbml
+         *  int the RDF graph
+         */
+        void extractSemanticInformationFromSBML(const std::string& sbml);
+
+
     public:
+        OmexMetaXmlType getXmlType() const;
+
+        void setXmlType(OmexMetaXmlType xmlType);
+
         const std::string &getRepositoryUri() const;
 
         void setRepositoryUri(std::string repositoryName);

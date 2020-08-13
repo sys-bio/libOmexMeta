@@ -813,7 +813,7 @@
     <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fb" kind="enum"><name>OmexMetaXmlType</name></member>
     <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba3262bd1f62095e6bb270ecd33a5e3a6a" kind="enumvalue"><name>OMEXMETA_TYPE_SBML</name></member>
     <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba230cbeb9caea8d8070c9a18b61dec5e1" kind="enumvalue"><name>OMEXMETA_TYPE_CELLML</name></member>
-    <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba54912b6c7ef981926cd424808c9a8dfb" kind="enumvalue"><name>OMEXMETA_TYPE_OTHER</name></member>
+    <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba54912b6c7ef981926cd424808c9a8dfb" kind="enumvalue"><name>OMEXMETA_TYPE_UNKNOWN</name></member>
     <member refid="Editor_8h_1ad9c3f36d18cb218950d2780f2d4dc0a0" kind="typedef"><name>NamespaceMap</name></member>
     <member refid="OmexMetaXmlAssistant_8h_1a602c5d1094d065496b79af07e9a3b28a" kind="typedef"><name>XmlAssistantPtr</name></member>
     <member refid="Participant_8h_1a90b8619f565d06ee3a8fa4d1cfda893c" kind="typedef"><name>ParticipantPtr</name></member>

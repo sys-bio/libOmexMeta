@@ -325,7 +325,7 @@ namespace omexmeta {
     xmlDoc *OmexMetaUtils::parseXmlDocument(const std::string &xml_string) {
         xmlDoc *doc_ = xmlReadMemory(xml_string.c_str(), (int) xml_string.length() + 1, "noname.xml", nullptr, 0);
         if (doc_ == nullptr) {
-            throw NullPointerException("Could not read xml into document. nullptr");
+            throw NullPointerException("NullPointerException: OmexMetaUtils::parseXmlDocument: Could not read xml into document. nullptr");
         }
         return doc_;
     }

@@ -31,7 +31,7 @@ Program Listing for File OmexMetaXmlAssistant.h
        enum OmexMetaXmlType {
            OMEXMETA_TYPE_SBML,
            OMEXMETA_TYPE_CELLML,
-           OMEXMETA_TYPE_OTHER,
+           OMEXMETA_TYPE_UNKNOWN,
        };
    
        class OmexMetaXmlAssistant {

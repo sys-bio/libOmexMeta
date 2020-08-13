@@ -68,6 +68,14 @@ namespace omexmeta {
         // This allows us to only use the ones that are needed
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
 
+        // when reading xml types, we try to classify the string
+        // other formats ignored.
+        // this will set the xmlType variable if sbml or cellml
+        rdf.classifyXmlType(str, format);
+        // Here we use the semantic extraction tool to collect
+        // information if were using sbml
+        rdf.extractSemanticInformationFromSBML(str);
+
         return rdf;
     }
 
@@ -85,6 +93,10 @@ namespace omexmeta {
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
         rdf->namespaces_ = rdf->propagateNamespacesFromParser(rdf->seen_namespaces_);
+
+        // this will set the xmlType variable if sbml or cellml
+        rdf->classifyXmlType(str, std::string());
+        rdf->extractSemanticInformationFromSBML(str);
     }
 
     void RDF::addFromString(const std::string &str,
@@ -102,6 +114,13 @@ namespace omexmeta {
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
+
+        // this will set the xmlType variable if sbml or cellml
+        classifyXmlType(str, std::string());
+
+        extractSemanticInformationFromSBML(str);
+
+
     }
 
     /*
@@ -135,12 +154,19 @@ namespace omexmeta {
         RDF rdf;
         LibrdfParser parser(format);
         parser.parseFile(filename, rdf.model_, rdf.getLocalUri());
+        rdf.classifyXmlTypeFromFile(filename);
+
+        // Here we use the semantic extraction tool to collect
+        // information if were using sbml
+        rdf.extractSemanticInformationFromSBML(filename);
         return rdf;
     }
 
     void RDF::addFromFile(const std::string &filename, const std::string &format) {
         LibrdfParser parser(format);
         parser.parseFile(filename, model_, getLocalUri());
+        classifyXmlTypeFromFile(filename);
+        extractSemanticInformationFromSBML(filename);
     }
 
     /*
@@ -378,5 +404,67 @@ namespace omexmeta {
 
     const std::string &RDF::getLocalUri() const {
         return local_uri_;
+    }
+
+    OmexMetaXmlType RDF::getXmlType() const {
+        return xmlType;
+    }
+
+    void RDF::setXmlType(OmexMetaXmlType xmlType) {
+        RDF::xmlType = xmlType;
+    }
+
+    void RDF::classifyXmlType(const std::string &xml, const std::string& input_format) {
+        // when reading xml types, we try to classify the string
+        if (input_format == "rdfxml" || input_format == "rdfxml-abbrev" || input_format == "rdfxml-xmp") {
+            MarkupIdentifier identifier(xml);
+            if (getXmlType() == OMEXMETA_TYPE_NOTSET){
+                if (identifier.isSBML())
+                    setXmlType(OMEXMETA_TYPE_SBML);
+                else if (identifier.isCellML())
+                    setXmlType(OMEXMETA_TYPE_CELLML);
+                else if (identifier.isCellML() && identifier.isCellML())
+                    setXmlType(OMEXMETA_TYPE_UNKNOWN);
+            } else {
+                // prevent crossing annotation types.
+                if (getXmlType() == OMEXMETA_TYPE_SBML && ! identifier.isSBML() ){
+                    throw std::logic_error("Previously you read from sbml but input xml is not sbml");
+                } else if (getXmlType() == OMEXMETA_TYPE_CELLML && ! identifier.isCellML())
+                    throw std::logic_error("Previously you read from sbml but input xml is not sbml");
+            }
+        } else {
+            setXmlType(OMEXMETA_TYPE_UNKNOWN);
+        }
+
+    }
+    void RDF::classifyXmlTypeFromFile(const std::string& xml_file) {
+        if (!OmexMetaUtils::exists(xml_file)){
+            std::ostringstream os;
+            os << "File called \"" + xml_file + "\" does not exist.";
+            throw std::logic_error(os.str());
+        }
+        std::ifstream t(xml_file);
+        std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+        classifyXmlType(str, std::string());
+    }
+
+    void RDF::extractSemanticInformationFromSBML(const std::string& sbml){
+        std::string str;
+        // if sbml is a filename on disk read it into a string
+        if (OmexMetaUtils::exists(sbml)){
+            std::ifstream t(sbml);
+            std::string x((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+            str = x;
+        } else {
+            str = sbml;
+        }
+
+        if (getXmlType() == OMEXMETA_TYPE_SBML){
+            SBMLSemanticExtraction extraction(this, str);
+            // these operations automaticall add the the rdf model
+            extraction.extractSpeciesCompartmentSemantics();
+            extraction.extractProcessesFromReactions();
+        }
+
     }
 }

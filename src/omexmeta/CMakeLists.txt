@@ -27,7 +27,7 @@ set(OMEXMETA_HEADERS
         "PersonalInformation.h"
         "OmexMeta.h"
         "MarkupIdentifier.h"
-        sbml_semantic_extraction/ElementExtractor.cpp sbml_semantic_extraction/ElementExtractor.h sbml_semantic_extraction/SBMLSemanticExtraction.cpp sbml_semantic_extraction/SBMLSemanticExtraction.h)
+        sbml_semantic_extraction/ElementExtractor.cpp sbml_semantic_extraction/ElementExtractor.h sbml_semantic_extraction/SBMLSemanticExtraction.cpp sbml_semantic_extraction/SBMLSemanticExtraction.h OmexMetaXmlType.h)
 
 set(OMEXMETA_SOURCES
         "OmexMetaUtils.cpp"

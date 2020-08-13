@@ -6,21 +6,25 @@
 #define LIBOMEXMETA_SBMLSEMANTICEXTRACTION_H
 
 #include "iostream"
-
-#include "../RDF.h"
-#include "../Editor.h"
+#include "omexmeta/Editor.h"
+#include "omexmeta/RDF.h"
 #include "omexmeta/sbml_semantic_extraction/ElementExtractor.h"
 
 namespace omexmeta {
+
+    class RDF; // forward declaration
+
     class SBMLSemanticExtraction {
 
-        RDF &rdf_;
+        RDF *rdf_;
 
         Editor editor_;
 
         std::string sbml_string_;
     public:
-        SBMLSemanticExtraction(RDF& rdf, std::string  sbml_string);
+        SBMLSemanticExtraction(RDF* rdf, const std::string & sbml_string);
+
+        SBMLSemanticExtraction(RDF rdf, const std::string & sbml_string);
 
         void extractSpeciesCompartmentSemantics();
 

@@ -14,13 +14,9 @@
 #include "MetaID.h"
 #include <utility>
 #include "OmexMetaUtils.h"
+#include "OmexMetaXmlType.h"
 
 namespace omexmeta {
-    enum OmexMetaXmlType {
-        OMEXMETA_TYPE_SBML,
-        OMEXMETA_TYPE_CELLML,
-        OMEXMETA_TYPE_OTHER,
-    };
 
     class OmexMetaXmlAssistant {
         std::string xml_;

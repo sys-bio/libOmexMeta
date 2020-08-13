@@ -576,7 +576,7 @@ namespace omexmeta {
 
 	enum OmexMetaXmlType {
 		OMEXMETA_TYPE_CELLML
-		OMEXMETA_TYPE_OTHER
+		OMEXMETA_TYPE_UNKNOWN
 		OMEXMETA_TYPE_SBML
 	}
 

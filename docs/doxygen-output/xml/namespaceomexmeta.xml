@@ -102,7 +102,7 @@
           </detaileddescription>
         </enumvalue>
         <enumvalue id="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba54912b6c7ef981926cd424808c9a8dfb" prot="public">
-          <name>OMEXMETA_TYPE_OTHER</name>
+          <name>OMEXMETA_TYPE_UNKNOWN</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>

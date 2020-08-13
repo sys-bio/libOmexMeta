@@ -154,7 +154,7 @@ namespace omexmeta {
                 CellMLAssistant cellMlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<CellMLAssistant>(cellMlAssistant);
             }
-            case OMEXMETA_TYPE_OTHER: {
+            case OMEXMETA_TYPE_UNKNOWN: {
                 OmexMetaXmlAssistant xmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 return std::make_unique<OmexMetaXmlAssistant>(xmlAssistant);
             }
