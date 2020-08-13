@@ -341,33 +341,33 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="130">
-        <label>omexmeta::PhysicalPhenomenon</label>
-        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-      </node>
-      <node id="129">
-        <label>omexmeta::PhysicalForce</label>
-        <link refid="classomexmeta_1_1PhysicalForce"/>
-        <childnode refid="130" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="133">
-        <label>omexmeta::PhysicalProperty</label>
-        <link refid="classomexmeta_1_1PhysicalProperty"/>
-      </node>
       <node id="132">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-        <childnode refid="133" relation="usage">
-          <edgelabel>physical_property_</edgelabel>
-        </childnode>
       </node>
       <node id="131">
         <label>omexmeta::PhysicalForce</label>
         <link refid="classomexmeta_1_1PhysicalForce"/>
         <childnode refid="132" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="135">
+        <label>omexmeta::PhysicalProperty</label>
+        <link refid="classomexmeta_1_1PhysicalProperty"/>
+      </node>
+      <node id="134">
+        <label>omexmeta::PhysicalPhenomenon</label>
+        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
+        <childnode refid="135" relation="usage">
+          <edgelabel>physical_property_</edgelabel>
+        </childnode>
+      </node>
+      <node id="133">
+        <label>omexmeta::PhysicalForce</label>
+        <link refid="classomexmeta_1_1PhysicalForce"/>
+        <childnode refid="134" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

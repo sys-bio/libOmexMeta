@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="57" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="110" bodyend="121"/>
+        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="53" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="110" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SBMLAssistant_1ad3c3ab0ac3004961e5c2951568528d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="61" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="123" bodyend="125"/>
+        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="57" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="123" bodyend="125"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,18 +38,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="175">
-        <label>omexmeta::OmexMetaXmlAssistant</label>
-        <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
-      </node>
-      <node id="174">
-        <label>omexmeta::SBMLAssistant</label>
-        <link refid="classomexmeta_1_1SBMLAssistant"/>
-        <childnode refid="175" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="177">
         <label>omexmeta::OmexMetaXmlAssistant</label>
         <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
@@ -60,8 +48,20 @@
         <childnode refid="177" relation="public-inheritance">
         </childnode>
       </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="179">
+        <label>omexmeta::OmexMetaXmlAssistant</label>
+        <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
+      </node>
+      <node id="178">
+        <label>omexmeta::SBMLAssistant</label>
+        <link refid="classomexmeta_1_1SBMLAssistant"/>
+        <childnode refid="179" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="54" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.h" bodystart="54" bodyend="63"/>
+    <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="50" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.h" bodystart="50" bodyend="59"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aeef7e70a554aaf70fb694297e37e7cc8" prot="public" virt="non-virtual"><scope>omexmeta::SBMLAssistant</scope><name>addMetaIds</name></member>
       <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a9ff89057f4fe7e8cb2e25f5431bf2bb5" prot="public" virt="non-virtual"><scope>omexmeta::SBMLAssistant</scope><name>generateNewMetaids</name></member>

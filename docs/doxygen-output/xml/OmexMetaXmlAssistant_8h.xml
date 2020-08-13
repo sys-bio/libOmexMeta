@@ -10,412 +10,421 @@
     <includes refid="MetaID_8h" local="yes">MetaID.h</includes>
     <includes local="no">utility</includes>
     <includes refid="OmexMetaUtils_8h" local="yes">OmexMetaUtils.h</includes>
+    <includes refid="OmexMetaXmlType_8h" local="yes">OmexMetaXmlType.h</includes>
     <includedby refid="Editor_8h" local="yes">src/omexmeta/Editor.h</includedby>
     <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/OmexMetaCApi.h</includedby>
     <includedby refid="OmexMetaXmlAssistant_8cpp" local="yes">src/omexmeta/OmexMetaXmlAssistant.cpp</includedby>
     <incdepgraph>
-      <node id="631">
+      <node id="741">
         <label>sys/stat.h</label>
       </node>
-      <node id="625">
+      <node id="735">
         <label>OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="626" relation="include">
+        <childnode refid="736" relation="include">
         </childnode>
-        <childnode refid="628" relation="include">
+        <childnode refid="738" relation="include">
         </childnode>
-        <childnode refid="601" relation="include">
+        <childnode refid="711" relation="include">
         </childnode>
-        <childnode refid="618" relation="include">
+        <childnode refid="728" relation="include">
         </childnode>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="602" relation="include">
+        <childnode refid="712" relation="include">
         </childnode>
-        <childnode refid="596" relation="include">
+        <childnode refid="706" relation="include">
         </childnode>
-        <childnode refid="631" relation="include">
+        <childnode refid="741" relation="include">
         </childnode>
-        <childnode refid="630" relation="include">
+        <childnode refid="740" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="721" relation="include">
         </childnode>
-        <childnode refid="632" relation="include">
+        <childnode refid="742" relation="include">
         </childnode>
-        <childnode refid="633" relation="include">
+        <childnode refid="743" relation="include">
+        </childnode>
+        <childnode refid="709" relation="include">
         </childnode>
       </node>
-      <node id="620">
+      <node id="730">
         <label>LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="607" relation="include">
+        <childnode refid="717" relation="include">
         </childnode>
-        <childnode refid="616" relation="include">
+        <childnode refid="726" relation="include">
         </childnode>
-        <childnode refid="621" relation="include">
+        <childnode refid="731" relation="include">
         </childnode>
-        <childnode refid="614" relation="include">
+        <childnode refid="724" relation="include">
         </childnode>
-        <childnode refid="623" relation="include">
+        <childnode refid="733" relation="include">
         </childnode>
       </node>
-      <node id="632">
+      <node id="742">
         <label>filesystem</label>
       </node>
-      <node id="633">
+      <node id="743">
         <label>assert.h</label>
       </node>
-      <node id="623">
+      <node id="733">
         <label>stdlib.h</label>
       </node>
-      <node id="628">
+      <node id="738">
         <label>omexmeta/CurlGet.h</label>
         <link refid="CurlGet_8h_source"/>
-        <childnode refid="602" relation="include">
+        <childnode refid="712" relation="include">
         </childnode>
-        <childnode refid="629" relation="include">
+        <childnode refid="739" relation="include">
         </childnode>
-        <childnode refid="630" relation="include">
+        <childnode refid="740" relation="include">
         </childnode>
       </node>
-      <node id="626">
+      <node id="736">
         <label>omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
-        <childnode refid="603" relation="include">
+        <childnode refid="713" relation="include">
         </childnode>
-        <childnode refid="627" relation="include">
+        <childnode refid="737" relation="include">
         </childnode>
-        <childnode refid="625" relation="include">
+        <childnode refid="735" relation="include">
         </childnode>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="613" relation="include">
+        <childnode refid="723" relation="include">
         </childnode>
-        <childnode refid="596" relation="include">
+        <childnode refid="706" relation="include">
         </childnode>
-        <childnode refid="602" relation="include">
+        <childnode refid="712" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="721" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
-        <childnode refid="622" relation="include">
+        <childnode refid="732" relation="include">
         </childnode>
       </node>
-      <node id="630">
+      <node id="740">
         <label>stdexcept</label>
       </node>
-      <node id="598">
+      <node id="708">
         <label>libxml/parser.h</label>
       </node>
-      <node id="616">
+      <node id="726">
         <label>LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="602" relation="include">
+        <childnode refid="712" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
-        <childnode refid="612" relation="include">
+        <childnode refid="722" relation="include">
         </childnode>
-        <childnode refid="617" relation="include">
+        <childnode refid="727" relation="include">
         </childnode>
-        <childnode refid="618" relation="include">
+        <childnode refid="728" relation="include">
         </childnode>
-        <childnode refid="610" relation="include">
+        <childnode refid="720" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="619" relation="include">
+        <childnode refid="729" relation="include">
         </childnode>
       </node>
-      <node id="602">
+      <node id="712">
         <label>string</label>
       </node>
-      <node id="606">
+      <node id="744">
+        <label>OmexMetaXmlType.h</label>
+        <link refid="OmexMetaXmlType_8h_source"/>
+      </node>
+      <node id="716">
         <label>regex</label>
       </node>
-      <node id="609">
+      <node id="719">
         <label>exception</label>
       </node>
-      <node id="624">
+      <node id="734">
         <label>LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="614" relation="include">
+        <childnode refid="724" relation="include">
         </childnode>
-        <childnode refid="607" relation="include">
+        <childnode refid="717" relation="include">
         </childnode>
-        <childnode refid="616" relation="include">
+        <childnode refid="726" relation="include">
         </childnode>
       </node>
-      <node id="621">
+      <node id="731">
         <label>RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="622" relation="include">
+        <childnode refid="732" relation="include">
         </childnode>
-        <childnode refid="608" relation="include">
+        <childnode refid="718" relation="include">
         </childnode>
       </node>
-      <node id="618">
+      <node id="728">
         <label>LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
       </node>
-      <node id="629">
+      <node id="739">
         <label>curl/curl.h</label>
       </node>
-      <node id="614">
+      <node id="724">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="615" relation="include">
+        <childnode refid="725" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="721" relation="include">
         </childnode>
-        <childnode refid="607" relation="include">
+        <childnode refid="717" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="608" relation="include">
+        <childnode refid="718" relation="include">
         </childnode>
       </node>
-      <node id="604">
+      <node id="714">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="606" relation="include">
+        <childnode refid="716" relation="include">
         </childnode>
       </node>
-      <node id="603">
+      <node id="713">
         <label>RedlandWrapper.h</label>
         <link refid="RedlandWrapper_8h_source"/>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="607" relation="include">
+        <childnode refid="717" relation="include">
         </childnode>
-        <childnode refid="610" relation="include">
+        <childnode refid="720" relation="include">
         </childnode>
-        <childnode refid="616" relation="include">
+        <childnode refid="726" relation="include">
         </childnode>
-        <childnode refid="614" relation="include">
+        <childnode refid="724" relation="include">
         </childnode>
-        <childnode refid="618" relation="include">
+        <childnode refid="728" relation="include">
         </childnode>
-        <childnode refid="617" relation="include">
+        <childnode refid="727" relation="include">
         </childnode>
-        <childnode refid="620" relation="include">
+        <childnode refid="730" relation="include">
         </childnode>
-        <childnode refid="624" relation="include">
+        <childnode refid="734" relation="include">
         </childnode>
-        <childnode refid="619" relation="include">
+        <childnode refid="729" relation="include">
         </childnode>
-        <childnode refid="621" relation="include">
+        <childnode refid="731" relation="include">
         </childnode>
       </node>
-      <node id="595">
+      <node id="705">
         <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
         <link refid="OmexMetaXmlAssistant_8h"/>
-        <childnode refid="596" relation="include">
+        <childnode refid="706" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
-        <childnode refid="598" relation="include">
+        <childnode refid="708" relation="include">
         </childnode>
-        <childnode refid="599" relation="include">
+        <childnode refid="709" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="601" relation="include">
+        <childnode refid="711" relation="include">
         </childnode>
-        <childnode refid="622" relation="include">
+        <childnode refid="732" relation="include">
         </childnode>
-        <childnode refid="625" relation="include">
+        <childnode refid="735" relation="include">
+        </childnode>
+        <childnode refid="744" relation="include">
         </childnode>
       </node>
-      <node id="608">
+      <node id="718">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="609" relation="include">
+        <childnode refid="719" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
       </node>
-      <node id="596">
+      <node id="706">
         <label>vector</label>
       </node>
-      <node id="607">
+      <node id="717">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="608" relation="include">
+        <childnode refid="718" relation="include">
         </childnode>
       </node>
-      <node id="617">
+      <node id="727">
         <label>LibrdfQueryResults.h</label>
         <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
       </node>
-      <node id="622">
+      <node id="732">
         <label>utility</label>
       </node>
-      <node id="601">
+      <node id="711">
         <label>MetaID.h</label>
         <link refid="MetaID_8h_source"/>
-        <childnode refid="602" relation="include">
+        <childnode refid="712" relation="include">
         </childnode>
-        <childnode refid="603" relation="include">
+        <childnode refid="713" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="721" relation="include">
         </childnode>
-        <childnode refid="622" relation="include">
+        <childnode refid="732" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
       </node>
-      <node id="611">
+      <node id="721">
         <label>sstream</label>
       </node>
-      <node id="627">
+      <node id="737">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="609" relation="include">
+        <childnode refid="719" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
       </node>
-      <node id="597">
+      <node id="707">
         <label>iostream</label>
       </node>
-      <node id="615">
+      <node id="725">
         <label>raptor2.h</label>
       </node>
-      <node id="613">
+      <node id="723">
         <label>unordered_map</label>
       </node>
-      <node id="612">
+      <node id="722">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="597" relation="include">
+        <childnode refid="707" relation="include">
         </childnode>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="613" relation="include">
+        <childnode refid="723" relation="include">
         </childnode>
-        <childnode refid="614" relation="include">
+        <childnode refid="724" relation="include">
         </childnode>
       </node>
-      <node id="599">
+      <node id="709">
         <label>libxml/tree.h</label>
       </node>
-      <node id="610">
+      <node id="720">
         <label>LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="602" relation="include">
+        <childnode refid="712" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="721" relation="include">
         </childnode>
-        <childnode refid="612" relation="include">
+        <childnode refid="722" relation="include">
         </childnode>
       </node>
-      <node id="605">
+      <node id="715">
         <label>librdf.h</label>
       </node>
-      <node id="619">
+      <node id="729">
         <label>LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="605" relation="include">
+        <childnode refid="715" relation="include">
         </childnode>
-        <childnode refid="600" relation="include">
+        <childnode refid="710" relation="include">
         </childnode>
-        <childnode refid="604" relation="include">
+        <childnode refid="714" relation="include">
         </childnode>
       </node>
-      <node id="600">
+      <node id="710">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="638">
+      <node id="749">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="636" relation="include">
+        <childnode refid="747" relation="include">
         </childnode>
-        <childnode refid="637" relation="include">
+        <childnode refid="748" relation="include">
         </childnode>
       </node>
-      <node id="635">
+      <node id="746">
         <label>src/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
-        <childnode refid="636" relation="include">
+        <childnode refid="747" relation="include">
         </childnode>
-        <childnode refid="637" relation="include">
+        <childnode refid="748" relation="include">
         </childnode>
-        <childnode refid="638" relation="include">
+        <childnode refid="749" relation="include">
         </childnode>
       </node>
-      <node id="637">
+      <node id="748">
         <label>src/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
-      <node id="634">
+      <node id="745">
         <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
         <link refid="OmexMetaXmlAssistant_8h"/>
-        <childnode refid="635" relation="include">
+        <childnode refid="746" relation="include">
         </childnode>
-        <childnode refid="637" relation="include">
+        <childnode refid="748" relation="include">
         </childnode>
       </node>
-      <node id="636">
+      <node id="747">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
       </node>
@@ -446,74 +455,70 @@
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;MetaID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;OmexMetaUtils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>OmexMetaXmlType<sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OMEXMETA_TYPE_SBML,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OMEXMETA_TYPE_CELLML,</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OMEXMETA_TYPE_UNKNOWN,</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="classomexmeta_1_1OmexMetaXmlAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>xml_;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid_base_;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits_;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids_;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addMetaIdsRecursion(xmlNode<sp/>*a_node,<sp/>std::vector&lt;std::string&gt;<sp/>&amp;seen_metaids);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;OmexMetaXmlType.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classomexmeta_1_1OmexMetaXmlAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>xml_;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid_base_;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits_;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids_;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addMetaIdsRecursion(xmlNode<sp/>*a_node,<sp/>std::vector&lt;std::string&gt;<sp/>&amp;seen_metaids);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>generateMetaId(</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>&amp;seen_metaids,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>count,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1MetaID" kindref="compound">MetaID</ref><sp/>&amp;metaid_gen,<sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>generateMetaId(</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>&amp;seen_metaids,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>count,</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1MetaID" kindref="compound">MetaID</ref><sp/>&amp;metaid_gen,<sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;getMetaidBase()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;getMetaidBase()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getMetaidNumDigits()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generateNewMetaids()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getMetaidNumDigits()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref>(std::string<sp/>xml,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;MetaID&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generateNewMetaids()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pair&lt;std::string,<sp/>std::vector&lt;std::string&gt;&gt;<sp/>addMetaIds();</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref>(std::string<sp/>xml,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;MetaID&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pair&lt;std::string,<sp/>std::vector&lt;std::string&gt;&gt;<sp/>addMetaIds();</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classomexmeta_1_1SBMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SBMLAssistant" kindref="compound">SBMLAssistant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50" refid="classomexmeta_1_1SBMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SBMLAssistant" kindref="compound">SBMLAssistant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXmlAssistant::OmexMetaXmlAssistant;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXmlAssistant::OmexMetaXmlAssistant;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classomexmeta_1_1CellMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1CellMLAssistant" kindref="compound">CellMLAssistant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXmlAssistant::OmexMetaXmlAssistant;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classomexmeta_1_1CellMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1CellMLAssistant" kindref="compound">CellMLAssistant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXmlAssistant::OmexMetaXmlAssistant;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;OmexMetaXmlAssistant&gt;<sp/>XmlAssistantPtr;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;OmexMetaXmlAssistant&gt;<sp/>XmlAssistantPtr;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78" refid="classomexmeta_1_1SemsimXmlAssistantFactory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SemsimXmlAssistantFactory" kindref="compound">SemsimXmlAssistantFactory</ref><sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>XmlAssistantPtr<sp/>generate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml,<sp/>OmexMetaXmlType<sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;OmexMetaId&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</highlight></codeline>
+<codeline lineno="74" refid="classomexmeta_1_1SemsimXmlAssistantFactory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SemsimXmlAssistantFactory" kindref="compound">SemsimXmlAssistantFactory</ref><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>XmlAssistantPtr<sp/>generate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml,<sp/>OmexMetaXmlType<sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;OmexMetaId&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/OmexMetaXmlAssistant.h"/>
   </compounddef>

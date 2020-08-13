@@ -18,8 +18,8 @@ static void {\bfseries download} (const std\+::string \&url, std\+::string filen
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}\label{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}} 
 static std\+::vector$<$ std\+::string $>$ {\bfseries split\+String\+By} (const std\+::string \&str, char delimiter)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_af525c7529d2674365f8c43639f11dff9}\label{classomexmeta_1_1OmexMetaUtils_af525c7529d2674365f8c43639f11dff9}} 
-static std\+::string {\bfseries generate\+Unique\+Metaid} (librdf\+\_\+model $\ast$model, const std\+::string \&metaid\+\_\+base, const std\+::vector$<$ std\+::string $>$ \&exclusions=std\+::vector$<$ std\+::string $>$())
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_acfb264163cf86ef1171d3c2b826eefb9}\label{classomexmeta_1_1OmexMetaUtils_acfb264163cf86ef1171d3c2b826eefb9}} 
+static std\+::string {\bfseries generate\+Unique\+Metaid} (librdf\+\_\+model $\ast$model, const std\+::string \&metaid\+\_\+base, const std\+::vector$<$ std\+::string $>$ \&exclusions=std\+::vector$<$ std\+::string $>$(), const std\+::string \&local\+\_\+uri=std\+::string())
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}\label{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}} 
 static std\+::string {\bfseries prepare\+Base\+Uri} (std\+::string str, bool absolute\+\_\+path=false)
@@ -50,6 +50,21 @@ static std\+::string {\bfseries string\+Replace} (std\+::string str, const std\+
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}\label{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}} 
 static bool {\bfseries starts\+With} (const std\+::string \&full\+\_\+string, const std\+::string \&start)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}\label{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}} 
+static bool {\bfseries string\+In\+Vector} (std\+::vector$<$ std\+::string $>$ vec, const std\+::string \&string)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}\label{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}} 
+static xml\+Doc $\ast$ {\bfseries parse\+Xml\+Document} (const std\+::string \&xml\+\_\+string)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a29cc8222c809162eadbc424a0687cbf3}\label{classomexmeta_1_1OmexMetaUtils_a29cc8222c809162eadbc424a0687cbf3}} 
+static std\+::string {\bfseries get\+Xml\+Node\+Property} (xml\+Node $\ast$node, const std\+::string \&property)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a1dbcd874b2b72531e7f4f9e82524d8e8}\label{classomexmeta_1_1OmexMetaUtils_a1dbcd874b2b72531e7f4f9e82524d8e8}} 
+static xml\+Node $\ast$ {\bfseries get\+Child\+Element\+Called} (xml\+Node $\ast$node, const std\+::string \&name)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a4d6f7d2140c42435be9339edf975b949}\label{classomexmeta_1_1OmexMetaUtils_a4d6f7d2140c42435be9339edf975b949}} 
+static std\+::vector$<$ xml\+Node $\ast$ $>$ {\bfseries get\+All\+Child\+Elements} (xml\+Node $\ast$node)
 \end{DoxyCompactItemize}
 
 

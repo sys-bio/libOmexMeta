@@ -8,15 +8,6 @@
 #include "filesystem"
 
 namespace omexmeta {
-//    Editor::Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
-//                   const LibrdfModel &model, NamespaceMap &nsmap)
-//            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {
-//        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
-//        std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
-//        xml_ = xml_and_metaids.first;
-//        //todo create a structure mapping metaids to more useful information for the user.
-//        metaids_ = xml_and_metaids.second;
-//    }
 
     Editor::Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
                    const LibrdfModel &model, NamespaceMap &nsmap, bool generate_new_metaids,
@@ -405,6 +396,22 @@ namespace omexmeta {
         singularAnnotation.setLocalUri(getModelUri());
         singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalUri()));
         return singularAnnotation;
+    }
+
+    const std::string &Editor::getMetaidBase() const {
+        return metaid_base_;
+    }
+
+    void Editor::setMetaidBase(const std::string &metaidBase) {
+        metaid_base_ = metaidBase;
+    }
+
+    OmexMetaXmlType Editor::getType() const {
+        return type_;
+    }
+
+    void Editor::setType(OmexMetaXmlType type) {
+        type_ = type;
     }
 
 

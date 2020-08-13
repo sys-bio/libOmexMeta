@@ -401,26 +401,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="117">
+      <node id="119">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="120">
+      <node id="122">
         <label>omexmeta::SourceParticipant</label>
         <link refid="classomexmeta_1_1SourceParticipant"/>
-        <childnode refid="117" relation="public-inheritance">
+        <childnode refid="119" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="119">
+      <node id="121">
         <label>omexmeta::SinkParticipant</label>
         <link refid="classomexmeta_1_1SinkParticipant"/>
-        <childnode refid="117" relation="public-inheritance">
+        <childnode refid="119" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="118">
+      <node id="120">
         <label>omexmeta::MediatorParticipant</label>
         <link refid="classomexmeta_1_1MediatorParticipant"/>
-        <childnode refid="117" relation="public-inheritance">
+        <childnode refid="119" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

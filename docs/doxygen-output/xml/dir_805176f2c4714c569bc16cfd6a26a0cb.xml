@@ -10,6 +10,8 @@
     <innerfile refid="Error_8h">Error.h</innerfile>
     <innerfile refid="Export_8h">Export.h</innerfile>
     <innerfile refid="HERE_8h">HERE.h</innerfile>
+    <innerfile refid="MarkupIdentifier_8cpp">MarkupIdentifier.cpp</innerfile>
+    <innerfile refid="MarkupIdentifier_8h">MarkupIdentifier.h</innerfile>
     <innerfile refid="MetaID_8cpp">MetaID.cpp</innerfile>
     <innerfile refid="MetaID_8h">MetaID.h</innerfile>
     <innerfile refid="OmexMeta_8h">OmexMeta.h</innerfile>
@@ -19,6 +21,7 @@
     <innerfile refid="OmexMetaUtils_8h">OmexMetaUtils.h</innerfile>
     <innerfile refid="OmexMetaXmlAssistant_8cpp">OmexMetaXmlAssistant.cpp</innerfile>
     <innerfile refid="OmexMetaXmlAssistant_8h">OmexMetaXmlAssistant.h</innerfile>
+    <innerfile refid="OmexMetaXmlType_8h">OmexMetaXmlType.h</innerfile>
     <innerfile refid="Participant_8cpp">Participant.cpp</innerfile>
     <innerfile refid="Participant_8h">Participant.h</innerfile>
     <innerfile refid="PersonalInformation_8cpp">PersonalInformation.cpp</innerfile>

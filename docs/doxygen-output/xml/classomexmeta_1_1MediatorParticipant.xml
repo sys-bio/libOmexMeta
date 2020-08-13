@@ -51,18 +51,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="94">
-        <label>omexmeta::Participant</label>
-        <link refid="classomexmeta_1_1Participant"/>
-      </node>
-      <node id="93">
-        <label>omexmeta::MediatorParticipant</label>
-        <link refid="classomexmeta_1_1MediatorParticipant"/>
-        <childnode refid="94" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="96">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
@@ -71,6 +59,18 @@
         <label>omexmeta::MediatorParticipant</label>
         <link refid="classomexmeta_1_1MediatorParticipant"/>
         <childnode refid="96" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="98">
+        <label>omexmeta::Participant</label>
+        <link refid="classomexmeta_1_1Participant"/>
+      </node>
+      <node id="97">
+        <label>omexmeta::MediatorParticipant</label>
+        <link refid="classomexmeta_1_1MediatorParticipant"/>
+        <childnode refid="98" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

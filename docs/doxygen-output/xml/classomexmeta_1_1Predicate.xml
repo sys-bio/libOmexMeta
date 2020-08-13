@@ -386,37 +386,37 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="150">
+      <node id="152">
         <label>omexmeta::DCTerm</label>
         <link refid="classomexmeta_1_1DCTerm"/>
-        <childnode refid="147" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="149">
-        <label>omexmeta::BiomodelsModelQualifier</label>
-        <link refid="classomexmeta_1_1BiomodelsModelQualifier"/>
-        <childnode refid="147" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="148">
-        <label>omexmeta::BiomodelsBiologyQualifier</label>
-        <link refid="classomexmeta_1_1BiomodelsBiologyQualifier"/>
-        <childnode refid="147" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="152">
-        <label>omexmeta::SemSim</label>
-        <link refid="classomexmeta_1_1SemSim"/>
-        <childnode refid="147" relation="public-inheritance">
+        <childnode refid="149" relation="public-inheritance">
         </childnode>
       </node>
       <node id="151">
-        <label>omexmeta::Foaf</label>
-        <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="147" relation="public-inheritance">
+        <label>omexmeta::BiomodelsModelQualifier</label>
+        <link refid="classomexmeta_1_1BiomodelsModelQualifier"/>
+        <childnode refid="149" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="147">
+      <node id="150">
+        <label>omexmeta::BiomodelsBiologyQualifier</label>
+        <link refid="classomexmeta_1_1BiomodelsBiologyQualifier"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>omexmeta::SemSim</label>
+        <link refid="classomexmeta_1_1SemSim"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>omexmeta::Foaf</label>
+        <link refid="classomexmeta_1_1Foaf"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="149">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>

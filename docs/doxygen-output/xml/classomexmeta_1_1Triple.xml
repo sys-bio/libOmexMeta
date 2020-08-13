@@ -385,18 +385,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="195">
-        <label>redland::LibrdfStatement</label>
-        <link refid="classredland_1_1LibrdfStatement"/>
-      </node>
-      <node id="194">
-        <label>omexmeta::Triple</label>
-        <link refid="classomexmeta_1_1Triple"/>
-        <childnode refid="195" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="197">
         <label>redland::LibrdfStatement</label>
         <link refid="classredland_1_1LibrdfStatement"/>
@@ -405,6 +393,18 @@
         <label>omexmeta::Triple</label>
         <link refid="classomexmeta_1_1Triple"/>
         <childnode refid="197" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="199">
+        <label>redland::LibrdfStatement</label>
+        <link refid="classredland_1_1LibrdfStatement"/>
+      </node>
+      <node id="198">
+        <label>omexmeta::Triple</label>
+        <link refid="classomexmeta_1_1Triple"/>
+        <childnode refid="199" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

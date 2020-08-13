@@ -75,18 +75,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="178">
-        <label>omexmeta::SemSim</label>
-        <link refid="classomexmeta_1_1SemSim"/>
-        <childnode refid="179" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="179">
-        <label>omexmeta::Predicate</label>
-        <link refid="classomexmeta_1_1Predicate"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="180">
         <label>omexmeta::SemSim</label>
         <link refid="classomexmeta_1_1SemSim"/>
@@ -94,6 +82,18 @@
         </childnode>
       </node>
       <node id="181">
+        <label>omexmeta::Predicate</label>
+        <link refid="classomexmeta_1_1Predicate"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="182">
+        <label>omexmeta::SemSim</label>
+        <link refid="classomexmeta_1_1SemSim"/>
+        <childnode refid="183" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="183">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>

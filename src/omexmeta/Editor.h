@@ -68,7 +68,18 @@ namespace omexmeta {
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
         bool generate_new_metaids_;
+        std::string metaid_base_ = "OmexMetaId";
+        OmexMetaXmlType type_;
+    public:
+        const std::string &getMetaidBase() const;
 
+        void setMetaidBase(const std::string &metaidBase);
+
+        OmexMetaXmlType getType() const;
+
+        void setType(OmexMetaXmlType type);
+
+    private:
         const std::string& repository_uri_ ;
         const std::string& archive_uri_ ;
         const std::string& model_uri_ ;

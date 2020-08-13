@@ -214,6 +214,7 @@
     <member refid="classredland_1_1LibrdfParser_1aed92021f88bccfa26bf78c29797b4208" kind="function"><name>getNamespacesSeenUri</name></member>
     <member refid="classredland_1_1LibrdfParser_1a86739506ba32a9a6da8b69711f1026db" kind="function"><name>parseString</name></member>
     <member refid="classredland_1_1LibrdfParser_1a2a7ac5ac97b4bc5876db02f0b9c7b987" kind="function"><name>parseString</name></member>
+    <member refid="classredland_1_1LibrdfParser_1a14c24e47699166e3b5bd4141ebd946ff" kind="function"><name>parseFile</name></member>
     <member refid="classredland_1_1LibrdfParser_1a15ffb21bf48e486708eab820719827a6" kind="function"><name>parseFile</name></member>
     <member refid="classredland_1_1LibrdfParser_1a733bf5d33a2d71bd6d7c201e1c952b04" kind="function"><name>parseUri</name></member>
     <member refid="classredland_1_1LibrdfParser_1a89d1335343c9999db8207866de8202c1" kind="function"><name>getNamespacesSeenPrefix</name></member>
@@ -340,6 +341,18 @@
     <member refid="classredland_1_1LibrdfUri_1ad7245bf32a2538d220ec7d3a0afc0802" kind="function"><name>fromFilename</name></member>
     <member refid="classredland_1_1LibrdfUri_1a58ab2ce202cc9b563d1dc60a20a545b2" kind="function"><name>concatonate</name></member>
   </compound>
+  <compound refid="classomexmeta_1_1MarkupIdentifier" kind="class"><name>omexmeta::MarkupIdentifier</name>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1aee48438435455b27c7e709e5b4ecf57e" kind="variable"><name>doc_</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1a26b50e531faca03c318f4b44da1b9e4a" kind="variable"><name>markup_</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1ac054a63ecc73555135bd82979ba46b59" kind="variable"><name>element_names_</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1a094ee06deb08f70c4f481e6bcb52f172" kind="function"><name>parseML</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1ada1ee4ccb99e393415f63e5dcafa68a6" kind="function"><name>collectElementNames</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1a0bb73ce6d5c94efcd97471059a378058" kind="function"><name>MarkupIdentifier</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1a155b2867eddc685ae4eb0eebc0fd0e27" kind="function"><name>~MarkupIdentifier</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1a541ffd197ce109e20112923d7fc0641b" kind="function"><name>isSBML</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1a2fd631a49a8a3d06e668cdbf130d5cb3" kind="function"><name>isCellML</name></member>
+    <member refid="classomexmeta_1_1MarkupIdentifier_1ab1736abf0d275bcb6eefcb7f08dcbd4f" kind="function"><name>getElementNames</name></member>
+  </compound>
   <compound refid="classomexmeta_1_1MediatorParticipant" kind="class"><name>omexmeta::MediatorParticipant</name>
     <member refid="classomexmeta_1_1MediatorParticipant_1aa0ee2b1a660455271ef16adcbf81fe58" kind="variable"><name>multiplier_</name></member>
     <member refid="classomexmeta_1_1MediatorParticipant_1a67b259098e2205112e32d78a2099371b" kind="function"><name>MediatorParticipant</name></member>
@@ -367,7 +380,7 @@
     <member refid="classomexmeta_1_1OmexMetaUtils_1a8e629136cb2685ed839ea3a0e88094e6" kind="function"><name>removeIfExists</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a046b603d6308242b70b55de6cb72325c" kind="function"><name>download</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1aac769ce6e901f32820cd7dc3fef989fa" kind="function"><name>splitStringBy</name></member>
-    <member refid="classomexmeta_1_1OmexMetaUtils_1af525c7529d2674365f8c43639f11dff9" kind="function"><name>generateUniqueMetaid</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1acfb264163cf86ef1171d3c2b826eefb9" kind="function"><name>generateUniqueMetaid</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a6694715cf3f5dccd33d416ecc84ff375" kind="function"><name>prepareBaseUri</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a0956bde073b212596d8e4b2ffc983e47" kind="function"><name>getNamespaceFromUri</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1af663724f2efb0324a64c6a57e8491c13" kind="function"><name>isFormattedUri</name></member>
@@ -378,6 +391,11 @@
     <member refid="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" kind="function"><name>addLocalPrefixToMetaid</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1aca2230ca99338b9dc0fc7d296b0c553b" kind="function"><name>stringReplace</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a66d58e0ebcbee1857b23ead70c87de7f" kind="function"><name>startsWith</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1a6f8e406b8798bd2f1f0ae0d1bd07ed2b" kind="function"><name>stringInVector</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1a718710d8ba7fc7598bd73a5456b3d903" kind="function"><name>parseXmlDocument</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1a29cc8222c809162eadbc424a0687cbf3" kind="function"><name>getXmlNodeProperty</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1a1dbcd874b2b72531e7f4f9e82524d8e8" kind="function"><name>getChildElementCalled</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1a4d6f7d2140c42435be9339edf975b949" kind="function"><name>getAllChildElements</name></member>
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaXmlAssistant" kind="class"><name>omexmeta::OmexMetaXmlAssistant</name>
     <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aa746a5f71818ee691b7000f796a9c800" kind="variable"><name>xml_</name></member>
@@ -552,7 +570,7 @@
     <member refid="classomexmeta_1_1PhysicalProcess_1ac49bf4a1c21c6590a9d2af7ae93e13a7" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1ab42b6e17886e244f1f3c4611a5c4caef" kind="function"><name>addSource</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a0c41d7e4c7c750b8ab9705608ab69e74" kind="function"><name>addSink</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1a4ff546d673900730f12974917a2755b7" kind="function"><name>addMediator</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1" kind="function"><name>addMediator</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a56459d9f0087a3f92b0aca5d148b65f5" kind="function"><name>getNumSources</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1ac8b79af15d4d19042ee34abca25f679f" kind="function"><name>getNumSinks</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26" kind="function"><name>getNumMediators</name></member>
@@ -640,6 +658,7 @@
     <member refid="classomexmeta_1_1RDF_1ad31e5bb632eeaa00a3ac0e69c5e4f89c" kind="typedef"><name>NamespaceMap</name></member>
     <member refid="classomexmeta_1_1RDF_1a345bcba83c6928f750ba732b6e6c748b" kind="variable"><name>storage_</name></member>
     <member refid="classomexmeta_1_1RDF_1a88a09d66eb9d6881fd77e9ef6133b4e6" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1RDF_1ac7eaa8a5c0fdf7b563ba56550fede82a" kind="variable"><name>xmlType</name></member>
     <member refid="classomexmeta_1_1RDF_1ad770e9fa1ee14c75bc628c36c82ccd9d" kind="variable"><name>repository_uri_</name></member>
     <member refid="classomexmeta_1_1RDF_1a15c959c8b8644866131acb76747b0b29" kind="variable"><name>archive_uri_</name></member>
     <member refid="classomexmeta_1_1RDF_1a5b29aa14e3516ef3622750a620431289" kind="variable"><name>model_uri_</name></member>
@@ -648,6 +667,11 @@
     <member refid="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da" kind="variable"><name>seen_namespaces_</name></member>
     <member refid="classomexmeta_1_1RDF_1aae58e1da72231c07cf0742f3321cebcc" kind="variable"><name>myomexlib_</name></member>
     <member refid="classomexmeta_1_1RDF_1a5b1184955f2401c30116c7473be1ca1d" kind="variable"><name>default_namespaces_</name></member>
+    <member refid="classomexmeta_1_1RDF_1a91574f34be1fe3054f4f7ce6830098b4" kind="function"><name>classifyXmlType</name></member>
+    <member refid="classomexmeta_1_1RDF_1a1452431864490f55a0689eec236e2d20" kind="function"><name>classifyXmlTypeFromFile</name></member>
+    <member refid="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a" kind="function"><name>extractSemanticInformationFromSBML</name></member>
+    <member refid="classomexmeta_1_1RDF_1a6979e6ca2688cf5cae1e9e1cf3a7309a" kind="function"><name>getXmlType</name></member>
+    <member refid="classomexmeta_1_1RDF_1a8fc7b226619580fac47afce0a7ec2628" kind="function"><name>setXmlType</name></member>
     <member refid="classomexmeta_1_1RDF_1a60b4a0a8c0c4f30a9cc71f9899bffabc" kind="function"><name>getRepositoryUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a9e8669ac5cf5dbcaf235f535f7482a7a" kind="function"><name>setRepositoryUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a1b3bd1292e77c1d87720f854ec5a04bd" kind="function"><name>getArchiveUri</name></member>
@@ -664,7 +688,7 @@
     <member refid="classomexmeta_1_1RDF_1ae3739bda3be0986547c31559381f3df4" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1RDF_1a63247bb3a05957abf7320c060543c3ca" kind="function"><name>size</name></member>
     <member refid="classomexmeta_1_1RDF_1ab6525e8db606ffd48425b05ad2a204d8" kind="function"><name>empty</name></member>
-    <member refid="classomexmeta_1_1RDF_1a4294d4ef2f2c7bafa9c90def27b6abf7" kind="function"><name>addFromString</name></member>
+    <member refid="classomexmeta_1_1RDF_1a9a29912bc44d47d371a2357b75194fc3" kind="function"><name>addFromString</name></member>
     <member refid="classomexmeta_1_1RDF_1af99201be3782319d32e963ca7bed5b2b" kind="function"><name>addFromUri</name></member>
     <member refid="classomexmeta_1_1RDF_1ac88eeb1a0f6911a2c1e4c43cef1b9047" kind="function"><name>addFromFile</name></member>
     <member refid="classomexmeta_1_1RDF_1af5f598560ab2a4ebe661f9bdb8665755" kind="function"><name>propagateNamespacesFromParser</name></member>
@@ -680,7 +704,7 @@
     <member refid="classomexmeta_1_1RDF_1a278b78d5b1b88397c2eb4143f23dab8b" kind="function"><name>startTransactionWithHandle</name></member>
     <member refid="classomexmeta_1_1RDF_1af5c7c6104496c09762518d56e94e6048" kind="function"><name>getTransactionRollback</name></member>
     <member refid="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6" kind="function"><name>query</name></member>
-    <member refid="classomexmeta_1_1RDF_1ac446d196004562580ed211552f12f161" kind="function"><name>fromString</name></member>
+    <member refid="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2" kind="function"><name>fromString</name></member>
     <member refid="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" kind="function"><name>fromUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f" kind="function"><name>fromFile</name></member>
     <member refid="classomexmeta_1_1RDF_1ab2dadc7ff1cf25edbb401b2c879a21b0" kind="function"><name>fromString</name></member>
@@ -810,10 +834,11 @@
     <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a6bde31f12751f0681a92d77283ff6bb1" kind="enumvalue"><name>PHYSICAL_FORCE</name></member>
     <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7aed56225d3530aa68f5f9000d5a25712b" kind="enumvalue"><name>SINGULAR</name></member>
     <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a986abc31d579b2dbb50e64fe50dfc49e" kind="enumvalue"><name>UNKNOWN</name></member>
-    <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fb" kind="enum"><name>OmexMetaXmlType</name></member>
-    <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba3262bd1f62095e6bb270ecd33a5e3a6a" kind="enumvalue"><name>OMEXMETA_TYPE_SBML</name></member>
-    <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba230cbeb9caea8d8070c9a18b61dec5e1" kind="enumvalue"><name>OMEXMETA_TYPE_CELLML</name></member>
-    <member refid="OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fba54912b6c7ef981926cd424808c9a8dfb" kind="enumvalue"><name>OMEXMETA_TYPE_UNKNOWN</name></member>
+    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fb" kind="enum"><name>OmexMetaXmlType</name></member>
+    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba3262bd1f62095e6bb270ecd33a5e3a6a" kind="enumvalue"><name>OMEXMETA_TYPE_SBML</name></member>
+    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba230cbeb9caea8d8070c9a18b61dec5e1" kind="enumvalue"><name>OMEXMETA_TYPE_CELLML</name></member>
+    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba96b5aed9b5170f80d6e57867a8f84671" kind="enumvalue"><name>OMEXMETA_TYPE_UNKNOWN</name></member>
+    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba1dd3c4fcdae0a5b5ba6f8c155e95ad13" kind="enumvalue"><name>OMEXMETA_TYPE_NOTSET</name></member>
     <member refid="Editor_8h_1ad9c3f36d18cb218950d2780f2d4dc0a0" kind="typedef"><name>NamespaceMap</name></member>
     <member refid="OmexMetaXmlAssistant_8h_1a602c5d1094d065496b79af07e9a3b28a" kind="typedef"><name>XmlAssistantPtr</name></member>
     <member refid="Participant_8h_1a90b8619f565d06ee3a8fa4d1cfda893c" kind="typedef"><name>ParticipantPtr</name></member>
@@ -836,8 +861,8 @@
     <member refid="OmexMetaCApi_8cpp_1a04ffcebeb8b1f9d16f39497d8a2445c1" kind="function"><name>free_world</name></member>
     <member refid="OmexMetaCApi_8cpp_1afb4d2a4f73d23bf0cf7c6a02942bb6a0" kind="function"><name>RDF_new</name></member>
     <member refid="OmexMetaCApi_8cpp_1a3bc3d3a6a47687dcdd6a5612dac6c8d0" kind="function"><name>RDF_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a70f8f372cd867ac7ef5a8aa9023defaa" kind="function"><name>RDF_fromString</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a231f93f0b6285fefd14a2b9c2291c252" kind="function"><name>RDF_addFromString</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a52e13fe1819746a89fd03eea1f3fc400" kind="function"><name>RDF_fromString</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a26fa96e91198c9b6005b7b21078ef061" kind="function"><name>RDF_addFromString</name></member>
     <member refid="OmexMetaCApi_8cpp_1a40d1956db8a7fccdeac3fcc66f96c7e7" kind="function"><name>RDF_fromUri</name></member>
     <member refid="OmexMetaCApi_8cpp_1ac6084a3267ee31fd19e534bd91092a0f" kind="function"><name>RDF_addFromUri</name></member>
     <member refid="OmexMetaCApi_8cpp_1a03d2c98713d318b2b61629150fce1f3e" kind="function"><name>RDF_fromFile</name></member>
@@ -912,7 +937,7 @@
     <member refid="OmexMetaCApi_8cpp_1a1237f9ce6afb4113d6312157610faa42" kind="function"><name>PhysicalProcess_setPhysicalProperty</name></member>
     <member refid="OmexMetaCApi_8cpp_1ae9a9768a11e5a1a53a36ccd0d564cdfe" kind="function"><name>PhysicalProcess_addSource</name></member>
     <member refid="OmexMetaCApi_8cpp_1a867464e1e00afe9b1c850c7db4f1656c" kind="function"><name>PhysicalProcess_addSink</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac54a96562427fe3f3b9946796969afd3" kind="function"><name>PhysicalProcess_addMediator</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a69e706ad676ae4d27be62db3639bcbf3" kind="function"><name>PhysicalProcess_addMediator</name></member>
     <member refid="OmexMetaCApi_8cpp_1a63fc073ae29ceada6377ee9eb3696846" kind="function"><name>PhysicalProcess_str</name></member>
     <member refid="OmexMetaCApi_8cpp_1a738e9d39898919fb01bd9a7ed5af3687" kind="function"><name>PhysicalProcess_getAbout</name></member>
     <member refid="OmexMetaCApi_8cpp_1aa7371fdf91f4c6c120e4559b23ad3585" kind="function"><name>PhysicalProcess_getNumSources</name></member>
@@ -959,7 +984,7 @@
   <compound refid="AnnotationType_8h" kind="file"><name>AnnotationType.h</name>
   </compound>
   <compound refid="CMakeLists_8txt" kind="file"><name>CMakeLists.txt</name>
-    <member refid="CMakeLists_8txt_1a14d18223e356c003060adae951fff395" kind="function"><name>set</name></member>
+    <member refid="CMakeLists_8txt_1a868b008a8a40bbb0dd1fc6af9bfbe899" kind="function"><name>set</name></member>
   </compound>
   <compound refid="CurlGet_8cpp" kind="file"><name>CurlGet.cpp</name>
   </compound>
@@ -978,6 +1003,10 @@
   <compound refid="HERE_8h" kind="file"><name>HERE.h</name>
     <member refid="HERE_8h_1a114e866679b13eadadd097635f4fb10d" kind="define"><name>HERE</name></member>
   </compound>
+  <compound refid="MarkupIdentifier_8cpp" kind="file"><name>MarkupIdentifier.cpp</name>
+  </compound>
+  <compound refid="MarkupIdentifier_8h" kind="file"><name>MarkupIdentifier.h</name>
+  </compound>
   <compound refid="MetaID_8cpp" kind="file"><name>MetaID.cpp</name>
   </compound>
   <compound refid="MetaID_8h" kind="file"><name>MetaID.h</name>
@@ -995,6 +1024,8 @@
   <compound refid="OmexMetaXmlAssistant_8cpp" kind="file"><name>OmexMetaXmlAssistant.cpp</name>
   </compound>
   <compound refid="OmexMetaXmlAssistant_8h" kind="file"><name>OmexMetaXmlAssistant.h</name>
+  </compound>
+  <compound refid="OmexMetaXmlType_8h" kind="file"><name>OmexMetaXmlType.h</name>
   </compound>
   <compound refid="Participant_8cpp" kind="file"><name>Participant.cpp</name>
   </compound>

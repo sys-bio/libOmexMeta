@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.3</span>
+   &#160;<span id="projectnumber">1.1.5</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -89,9 +89,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>download</b> (
 <tr class="memitem:aac769ce6e901f32820cd7dc3fef989fa"><td class="memItemLeft" align="right" valign="top"><a id="aac769ce6e901f32820cd7dc3fef989fa"></a>
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>splitStringBy</b> (const std::string &amp;str, char delimiter)</td></tr>
 <tr class="separator:aac769ce6e901f32820cd7dc3fef989fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af525c7529d2674365f8c43639f11dff9"><td class="memItemLeft" align="right" valign="top"><a id="af525c7529d2674365f8c43639f11dff9"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generateUniqueMetaid</b> (librdf_model *model, const std::string &amp;metaid_base, const std::vector&lt; std::string &gt; &amp;exclusions=std::vector&lt; std::string &gt;())</td></tr>
-<tr class="separator:af525c7529d2674365f8c43639f11dff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb264163cf86ef1171d3c2b826eefb9"><td class="memItemLeft" align="right" valign="top"><a id="acfb264163cf86ef1171d3c2b826eefb9"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generateUniqueMetaid</b> (librdf_model *model, const std::string &amp;metaid_base, const std::vector&lt; std::string &gt; &amp;exclusions=std::vector&lt; std::string &gt;(), const std::string &amp;local_uri=std::string())</td></tr>
+<tr class="separator:acfb264163cf86ef1171d3c2b826eefb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6694715cf3f5dccd33d416ecc84ff375"><td class="memItemLeft" align="right" valign="top"><a id="a6694715cf3f5dccd33d416ecc84ff375"></a>
 static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>prepareBaseUri</b> (std::string str, bool absolute_path=false)</td></tr>
 <tr class="separator:a6694715cf3f5dccd33d416ecc84ff375"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,6 +122,21 @@ static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>stringR
 <tr class="memitem:a66d58e0ebcbee1857b23ead70c87de7f"><td class="memItemLeft" align="right" valign="top"><a id="a66d58e0ebcbee1857b23ead70c87de7f"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>startsWith</b> (const std::string &amp;full_string, const std::string &amp;start)</td></tr>
 <tr class="separator:a66d58e0ebcbee1857b23ead70c87de7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8e406b8798bd2f1f0ae0d1bd07ed2b"><td class="memItemLeft" align="right" valign="top"><a id="a6f8e406b8798bd2f1f0ae0d1bd07ed2b"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>stringInVector</b> (std::vector&lt; std::string &gt; vec, const std::string &amp;string)</td></tr>
+<tr class="separator:a6f8e406b8798bd2f1f0ae0d1bd07ed2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718710d8ba7fc7598bd73a5456b3d903"><td class="memItemLeft" align="right" valign="top"><a id="a718710d8ba7fc7598bd73a5456b3d903"></a>
+static xmlDoc *&#160;</td><td class="memItemRight" valign="bottom"><b>parseXmlDocument</b> (const std::string &amp;xml_string)</td></tr>
+<tr class="separator:a718710d8ba7fc7598bd73a5456b3d903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29cc8222c809162eadbc424a0687cbf3"><td class="memItemLeft" align="right" valign="top"><a id="a29cc8222c809162eadbc424a0687cbf3"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getXmlNodeProperty</b> (xmlNode *node, const std::string &amp;property)</td></tr>
+<tr class="separator:a29cc8222c809162eadbc424a0687cbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dbcd874b2b72531e7f4f9e82524d8e8"><td class="memItemLeft" align="right" valign="top"><a id="a1dbcd874b2b72531e7f4f9e82524d8e8"></a>
+static xmlNode *&#160;</td><td class="memItemRight" valign="bottom"><b>getChildElementCalled</b> (xmlNode *node, const std::string &amp;name)</td></tr>
+<tr class="separator:a1dbcd874b2b72531e7f4f9e82524d8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d6f7d2140c42435be9339edf975b949"><td class="memItemLeft" align="right" valign="top"><a id="a4d6f7d2140c42435be9339edf975b949"></a>
+static std::vector&lt; xmlNode * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllChildElements</b> (xmlNode *node)</td></tr>
+<tr class="separator:a4d6f7d2140c42435be9339edf975b949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="OmexMetaUtils_8h_source.html">OmexMetaUtils.h</a></li>

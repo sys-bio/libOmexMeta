@@ -48,8 +48,18 @@ namespace omexmeta {
          */
         void extractSemanticInformationFromSBML(const std::string& sbml);
 
+        /*
+         * @brief release memory consumed by RDF.
+         * @details Memory consumed by RDF is destructed using RAII
+         * so users normally do not need this function.
+         */
+        void freeRDF();
 
     public:
+        NamespaceMap namespaces_;
+        std::vector<std::string> seen_namespaces_;
+        const std::string myomexlib_ = "http://myOmexLibrary.org/";
+
         /*
          * @brief getter for xmlType attribue.
          * @details when the rdf graph is sbml, it
@@ -66,7 +76,6 @@ namespace omexmeta {
          */
         void setXmlType(OmexMetaXmlType xmlType);
 
-
         /*
          * @brief getter for repository uri which defaults
          * to "http://omex-library.org/"
@@ -80,42 +89,98 @@ namespace omexmeta {
          */
         void setRepositoryUri(std::string repositoryName);
 
+        /*
+         * @brief getter for archiveUri attribute.
+         * @details default to http://omex-library.org/NewOmex.omex
+         */
         const std::string &getArchiveUri() const;
 
+        /*
+         * @brief setter for archiveUri attribute.
+         * @param archiveName the new name for archive uri attribute
+         * @details default to http://omex-library.org/NewOmex.omex
+         */
         void setArchiveUri(std::string archiveName);
 
+        /*
+         * @brief getter for model uri.
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml#
+         */
         const std::string &getModelUri() const;
 
+        /*
+         * @brief setter for model uri.
+         * @param modelName string for new model uri.
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml#
+         */
         void setModelUri(std::string modelName);
 
+        /*
+         * @brief getter for local uri attribute.
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.rdf#
+         */
         const std::string &getLocalUri() const;
-
-        NamespaceMap namespaces_;
-        std::vector<std::string> seen_namespaces_;
-        const std::string myomexlib_ = "http://myOmexLibrary.org/";
 
         // todo remove this field and replace with the one
         //  in Predicate. Should be a simple swap.
         NamespaceMap default_namespaces_ = Predicate::namespaceMap();
 
+        /*
+         * @brief constructor for RDF class
+         * @param storage_type. Defaults to memory. Other options include:
+         * "hashes", "file", "mysql", "postgresql", "sqlite", "uri",
+         * @param storage_name name used for storage. When storage is not internally
+         * held in memory, this becomes the name of the file or database.
+         * @param storage_options options that get passed on to storage. Please
+         * study http://librdf.org/docs/api/redland-storage-modules.html for
+         * more information.
+         * @model_options options that get passed to the model. Please see
+         * http://librdf.org/docs/api/index.html for more details.
+         */
         explicit RDF(const std::string &storage_type = "memory",
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
-        void freeRDF();
-
+        /*
+         * @brief destructor for RDF
+         */
         ~RDF();
 
+        /*
+         * @brief copy constructor for RDF class
+         * @details RDF instances are not copyable
+         * due to restrictions within the redland libraries.
+         * You must instead move RDF objects.
+         */
         RDF(const RDF &rdf) = delete;
 
+        /*
+         * @brief move constructor for RDF class
+         */
         RDF(RDF &&rdf) noexcept;
 
+        /*
+         * @brief copy assignment constructor for RDF ojects
+         * @details Copy assignment functionality is prohibited for RDF
+         * objects. Use move semantics insead.
+         */
         RDF &operator=(const RDF &rdf) = delete;
 
+        /*
+         * @brief move assignment operator for RDF
+         */
         RDF &operator=(RDF &&rdf) noexcept;
 
+        /*
+         * @brief returns the number of triples currently present
+         * in the RDF graph.
+         */
         int size() const;
 
+        /*
+         * @brief indicator for whether the RDF graph is empty
+         * @returns true if RDF graph has no triples, false otherwise.
+         */
         bool empty() const;
 
         /*

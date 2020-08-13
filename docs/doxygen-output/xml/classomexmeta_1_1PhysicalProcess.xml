@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="103" column="1" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="130" bodyend="176"/>
+        <location file="src/omexmeta/PhysicalProcess.h" line="103" column="1" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="130" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
@@ -292,15 +292,11 @@
         </inbodydescription>
         <location file="src/omexmeta/PhysicalProcess.h" line="130" column="1" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="69" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a4ff546d673900730f12974917a2755b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::addMediator</definition>
-        <argsstring>(double multiplier, std::string physical_entity_reference)</argsstring>
+        <argsstring>(std::string physical_entity_reference)</argsstring>
         <name>addMediator</name>
-        <param>
-          <type>double</type>
-          <declname>multiplier</declname>
-        </param>
         <param>
           <type>std::string</type>
           <declname>physical_entity_reference</declname>
@@ -392,22 +388,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="140">
-        <label>omexmeta::PhysicalProcess</label>
-        <link refid="classomexmeta_1_1PhysicalProcess"/>
-        <childnode refid="141" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="141">
-        <label>omexmeta::PhysicalPhenomenon</label>
-        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="144">
-        <label>omexmeta::PhysicalProperty</label>
-        <link refid="classomexmeta_1_1PhysicalProperty"/>
-      </node>
       <node id="142">
         <label>omexmeta::PhysicalProcess</label>
         <link refid="classomexmeta_1_1PhysicalProcess"/>
@@ -417,14 +397,30 @@
       <node id="143">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-        <childnode refid="144" relation="usage">
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="146">
+        <label>omexmeta::PhysicalProperty</label>
+        <link refid="classomexmeta_1_1PhysicalProperty"/>
+      </node>
+      <node id="144">
+        <label>omexmeta::PhysicalProcess</label>
+        <link refid="classomexmeta_1_1PhysicalProcess"/>
+        <childnode refid="145" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="145">
+        <label>omexmeta::PhysicalPhenomenon</label>
+        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
+        <childnode refid="146" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
     <location file="src/omexmeta/PhysicalProcess.h" line="20" column="1" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="20" bodyend="159"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a4ff546d673900730f12974917a2755b7" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addMediator</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addMediator</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a0c41d7e4c7c750b8ab9705608ab69e74" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addSink</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ab42b6e17886e244f1f3c4611a5c4caef" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addSource</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a8dfcffe80f264ad24e70de9d7b71c73b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>free</name></member>

@@ -4,62 +4,62 @@
     <compoundname>RaptorIOStream.cpp</compoundname>
     <includes refid="RaptorIOStream_8h" local="yes">RaptorIOStream.h</includes>
     <incdepgraph>
-      <node id="2521">
+      <node id="2685">
         <label>regex</label>
       </node>
-      <node id="2524">
+      <node id="2688">
         <label>exception</label>
       </node>
-      <node id="2516">
+      <node id="2680">
         <label>RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="2517" relation="include">
+        <childnode refid="2681" relation="include">
         </childnode>
-        <childnode refid="2518" relation="include">
+        <childnode refid="2682" relation="include">
         </childnode>
-        <childnode refid="2519" relation="include">
+        <childnode refid="2683" relation="include">
         </childnode>
-        <childnode refid="2522" relation="include">
+        <childnode refid="2686" relation="include">
         </childnode>
-        <childnode refid="2523" relation="include">
+        <childnode refid="2687" relation="include">
         </childnode>
       </node>
-      <node id="2519">
+      <node id="2683">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2518" relation="include">
+        <childnode refid="2682" relation="include">
         </childnode>
-        <childnode refid="2520" relation="include">
+        <childnode refid="2684" relation="include">
         </childnode>
-        <childnode refid="2517" relation="include">
+        <childnode refid="2681" relation="include">
         </childnode>
-        <childnode refid="2521" relation="include">
+        <childnode refid="2685" relation="include">
         </childnode>
       </node>
-      <node id="2515">
+      <node id="2679">
         <label>src/redland/RedlandWrapper/src/RaptorIOStream.cpp</label>
         <link refid="RaptorIOStream_8cpp"/>
-        <childnode refid="2516" relation="include">
+        <childnode refid="2680" relation="include">
         </childnode>
       </node>
-      <node id="2523">
+      <node id="2687">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2524" relation="include">
+        <childnode refid="2688" relation="include">
         </childnode>
-        <childnode refid="2520" relation="include">
+        <childnode refid="2684" relation="include">
         </childnode>
       </node>
-      <node id="2522">
+      <node id="2686">
         <label>utility</label>
       </node>
-      <node id="2520">
+      <node id="2684">
         <label>iostream</label>
       </node>
-      <node id="2518">
+      <node id="2682">
         <label>librdf.h</label>
       </node>
-      <node id="2517">
+      <node id="2681">
         <label>memory</label>
       </node>
     </incdepgraph>

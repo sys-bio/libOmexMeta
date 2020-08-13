@@ -10,293 +10,301 @@
     <includedby refid="LibrdfQuery_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfQuery.cpp</includedby>
     <includedby refid="RedlandWrapper_8h" local="yes">src/redland/RedlandWrapper/src/RedlandWrapper.h</includedby>
     <incdepgraph>
-      <node id="2198">
+      <node id="2355">
         <label>regex</label>
       </node>
-      <node id="2193">
+      <node id="2350">
         <label>src/redland/RedlandWrapper/src/LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h"/>
-        <childnode refid="2194" relation="include">
+        <childnode refid="2351" relation="include">
         </childnode>
-        <childnode refid="2195" relation="include">
+        <childnode refid="2352" relation="include">
         </childnode>
-        <childnode refid="2196" relation="include">
+        <childnode refid="2353" relation="include">
         </childnode>
       </node>
-      <node id="2196">
+      <node id="2353">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2194" relation="include">
+        <childnode refid="2351" relation="include">
         </childnode>
-        <childnode refid="2197" relation="include">
+        <childnode refid="2354" relation="include">
         </childnode>
-        <childnode refid="2195" relation="include">
+        <childnode refid="2352" relation="include">
         </childnode>
-        <childnode refid="2198" relation="include">
+        <childnode refid="2355" relation="include">
         </childnode>
       </node>
-      <node id="2197">
+      <node id="2354">
         <label>iostream</label>
       </node>
-      <node id="2194">
+      <node id="2351">
         <label>librdf.h</label>
       </node>
-      <node id="2195">
+      <node id="2352">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2212">
+      <node id="2370">
         <label>src/omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2211" relation="include">
+        <childnode refid="2369" relation="include">
         </childnode>
-        <childnode refid="2213" relation="include">
+        <childnode refid="2371" relation="include">
         </childnode>
-        <childnode refid="2214" relation="include">
+        <childnode refid="2372" relation="include">
         </childnode>
-        <childnode refid="2215" relation="include">
+        <childnode refid="2373" relation="include">
         </childnode>
       </node>
-      <node id="2210">
+      <node id="2368">
         <label>src/omexmeta/Triple.h</label>
         <link refid="Triple_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2211" relation="include">
+        <childnode refid="2369" relation="include">
         </childnode>
-        <childnode refid="2210" relation="include">
+        <childnode refid="2368" relation="include">
         </childnode>
-        <childnode refid="2212" relation="include">
+        <childnode refid="2370" relation="include">
         </childnode>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2214" relation="include">
+        <childnode refid="2372" relation="include">
         </childnode>
-        <childnode refid="2215" relation="include">
+        <childnode refid="2373" relation="include">
         </childnode>
       </node>
-      <node id="2200">
+      <node id="2357">
         <label>src/omexmeta/OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2362" relation="include">
         </childnode>
-        <childnode refid="2205" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2363" relation="include">
         </childnode>
-        <childnode refid="2207" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2208" relation="include">
+        <childnode refid="2365" relation="include">
         </childnode>
-        <childnode refid="2209" relation="include">
+        <childnode refid="2366" relation="include">
         </childnode>
-        <childnode refid="2216" relation="include">
+        <childnode refid="2367" relation="include">
         </childnode>
-        <childnode refid="2204" relation="include">
+        <childnode refid="2374" relation="include">
+        </childnode>
+        <childnode refid="2361" relation="include">
         </childnode>
       </node>
-      <node id="2221">
+      <node id="2379">
         <label>src/redland/RedlandWrapper/src/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="2219" relation="include">
+        <childnode refid="2377" relation="include">
         </childnode>
       </node>
-      <node id="2211">
+      <node id="2369">
         <label>src/omexmeta/Participant.h</label>
         <link refid="Participant_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2207" relation="include">
+        <childnode refid="2365" relation="include">
         </childnode>
-        <childnode refid="2208" relation="include">
+        <childnode refid="2366" relation="include">
         </childnode>
       </node>
-      <node id="2204">
+      <node id="2361">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
       </node>
-      <node id="2207">
+      <node id="2365">
         <label>src/omexmeta/PhysicalForce.h</label>
         <link refid="PhysicalForce_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
       </node>
-      <node id="2201">
+      <node id="2358">
         <label>src/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
-        <childnode refid="2204" relation="include">
+        <childnode refid="2361" relation="include">
         </childnode>
       </node>
-      <node id="2216">
+      <node id="2374">
         <label>src/omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
-        <childnode refid="2200" relation="include">
+        <childnode refid="2357" relation="include">
         </childnode>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2214" relation="include">
+        <childnode refid="2372" relation="include">
         </childnode>
       </node>
-      <node id="2215">
+      <node id="2373">
         <label>src/omexmeta/PhysicalProperty.h</label>
         <link refid="PhysicalProperty_8h_source"/>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2214" relation="include">
+        <childnode refid="2372" relation="include">
         </childnode>
-        <childnode refid="2207" relation="include">
+        <childnode refid="2365" relation="include">
         </childnode>
-        <childnode refid="2208" relation="include">
+        <childnode refid="2366" relation="include">
         </childnode>
       </node>
-      <node id="2217">
+      <node id="2375">
         <label>src/redland/RedlandWrapper/src/LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="2218" relation="include">
+        <childnode refid="2376" relation="include">
         </childnode>
-        <childnode refid="2221" relation="include">
+        <childnode refid="2379" relation="include">
         </childnode>
-        <childnode refid="2219" relation="include">
+        <childnode refid="2377" relation="include">
         </childnode>
       </node>
-      <node id="2218">
+      <node id="2376">
         <label>src/redland/RedlandWrapper/src/LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="2219" relation="include">
+        <childnode refid="2377" relation="include">
         </childnode>
       </node>
-      <node id="2199">
+      <node id="2356">
         <label>src/redland/RedlandWrapper/src/LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h"/>
-        <childnode refid="2200" relation="include">
+        <childnode refid="2357" relation="include">
         </childnode>
-        <childnode refid="2217" relation="include">
+        <childnode refid="2375" relation="include">
         </childnode>
-        <childnode refid="2219" relation="include">
+        <childnode refid="2377" relation="include">
         </childnode>
       </node>
-      <node id="2203">
+      <node id="2360">
         <label>src/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
-      <node id="2219">
+      <node id="2377">
         <label>src/redland/RedlandWrapper/src/RedlandWrapper.h</label>
         <link refid="RedlandWrapper_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2220" relation="include">
+        <childnode refid="2378" relation="include">
         </childnode>
-        <childnode refid="2212" relation="include">
+        <childnode refid="2370" relation="include">
         </childnode>
-        <childnode refid="2211" relation="include">
+        <childnode refid="2369" relation="include">
         </childnode>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2214" relation="include">
+        <childnode refid="2372" relation="include">
         </childnode>
-        <childnode refid="2207" relation="include">
+        <childnode refid="2365" relation="include">
         </childnode>
-        <childnode refid="2215" relation="include">
+        <childnode refid="2373" relation="include">
         </childnode>
-        <childnode refid="2208" relation="include">
+        <childnode refid="2366" relation="include">
         </childnode>
-        <childnode refid="2216" relation="include">
+        <childnode refid="2374" relation="include">
         </childnode>
-        <childnode refid="2204" relation="include">
+        <childnode refid="2361" relation="include">
         </childnode>
       </node>
-      <node id="2205">
+      <node id="2363">
         <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
         <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
       </node>
-      <node id="2214">
+      <node id="2372">
         <label>src/omexmeta/PhysicalPhenomenon.h</label>
         <link refid="PhysicalPhenomenon_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2207" relation="include">
+        <childnode refid="2365" relation="include">
         </childnode>
-        <childnode refid="2208" relation="include">
+        <childnode refid="2366" relation="include">
         </childnode>
       </node>
-      <node id="2220">
+      <node id="2378">
         <label>src/omexmeta/MetaID.h</label>
         <link refid="MetaID_8h_source"/>
-        <childnode refid="2200" relation="include">
+        <childnode refid="2357" relation="include">
         </childnode>
-        <childnode refid="2205" relation="include">
+        <childnode refid="2363" relation="include">
         </childnode>
-        <childnode refid="2206" relation="include">
+        <childnode refid="2364" relation="include">
         </childnode>
-        <childnode refid="2214" relation="include">
+        <childnode refid="2372" relation="include">
         </childnode>
       </node>
-      <node id="2206">
+      <node id="2364">
         <label>src/omexmeta/PhysicalEntity.h</label>
         <link refid="PhysicalEntity_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
       </node>
-      <node id="2208">
+      <node id="2366">
         <label>src/omexmeta/PhysicalProcess.h</label>
         <link refid="PhysicalProcess_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
-        <childnode refid="2203" relation="include">
+        <childnode refid="2360" relation="include">
         </childnode>
       </node>
-      <node id="2213">
+      <node id="2371">
         <label>src/omexmeta/PersonalInformation.h</label>
         <link refid="PersonalInformation_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2202" relation="include">
+        <childnode refid="2359" relation="include">
         </childnode>
       </node>
-      <node id="2209">
+      <node id="2367">
         <label>src/omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
-        <childnode refid="2201" relation="include">
+        <childnode refid="2358" relation="include">
         </childnode>
-        <childnode refid="2210" relation="include">
+        <childnode refid="2368" relation="include">
         </childnode>
-        <childnode refid="2212" relation="include">
+        <childnode refid="2370" relation="include">
         </childnode>
       </node>
-      <node id="2202">
+      <node id="2359">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
+      </node>
+      <node id="2362">
+        <label>src/omexmeta/MarkupIdentifier.h</label>
+        <link refid="MarkupIdentifier_8h_source"/>
+        <childnode refid="2361" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classredland_1_1LibrdfQuery" prot="public">redland::LibrdfQuery</innerclass>

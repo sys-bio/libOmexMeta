@@ -4,115 +4,115 @@
     <compoundname>LibrdfStorage.cpp</compoundname>
     <includes refid="LibrdfStorage_8h" local="yes">LibrdfStorage.h</includes>
     <incdepgraph>
-      <node id="2382">
+      <node id="2543">
         <label>string</label>
       </node>
-      <node id="2386">
+      <node id="2547">
         <label>regex</label>
       </node>
-      <node id="2394">
+      <node id="2555">
         <label>exception</label>
       </node>
-      <node id="2390">
+      <node id="2551">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="2381" relation="include">
+        <childnode refid="2542" relation="include">
         </childnode>
-        <childnode refid="2391" relation="include">
+        <childnode refid="2552" relation="include">
         </childnode>
-        <childnode refid="2383" relation="include">
+        <childnode refid="2544" relation="include">
         </childnode>
-        <childnode refid="2387" relation="include">
+        <childnode refid="2548" relation="include">
         </childnode>
-        <childnode refid="2392" relation="include">
+        <childnode refid="2553" relation="include">
         </childnode>
-        <childnode refid="2384" relation="include">
+        <childnode refid="2545" relation="include">
         </childnode>
-        <childnode refid="2393" relation="include">
+        <childnode refid="2554" relation="include">
         </childnode>
       </node>
-      <node id="2384">
+      <node id="2545">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2381" relation="include">
+        <childnode refid="2542" relation="include">
         </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="2546" relation="include">
         </childnode>
-        <childnode refid="2383" relation="include">
+        <childnode refid="2544" relation="include">
         </childnode>
-        <childnode refid="2386" relation="include">
+        <childnode refid="2547" relation="include">
         </childnode>
       </node>
-      <node id="2393">
+      <node id="2554">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2394" relation="include">
+        <childnode refid="2555" relation="include">
         </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="2546" relation="include">
         </childnode>
       </node>
-      <node id="2392">
+      <node id="2553">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="2383" relation="include">
+        <childnode refid="2544" relation="include">
         </childnode>
-        <childnode refid="2381" relation="include">
+        <childnode refid="2542" relation="include">
         </childnode>
-        <childnode refid="2393" relation="include">
+        <childnode refid="2554" relation="include">
         </childnode>
       </node>
-      <node id="2387">
+      <node id="2548">
         <label>sstream</label>
       </node>
-      <node id="2385">
+      <node id="2546">
         <label>iostream</label>
       </node>
-      <node id="2391">
+      <node id="2552">
         <label>raptor2.h</label>
       </node>
-      <node id="2389">
+      <node id="2550">
         <label>unordered_map</label>
       </node>
-      <node id="2379">
+      <node id="2540">
         <label>src/redland/RedlandWrapper/src/LibrdfStorage.cpp</label>
         <link refid="LibrdfStorage_8cpp"/>
-        <childnode refid="2380" relation="include">
+        <childnode refid="2541" relation="include">
         </childnode>
       </node>
-      <node id="2388">
+      <node id="2549">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="2383" relation="include">
+        <childnode refid="2544" relation="include">
         </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="2546" relation="include">
         </childnode>
-        <childnode refid="2381" relation="include">
+        <childnode refid="2542" relation="include">
         </childnode>
-        <childnode refid="2389" relation="include">
+        <childnode refid="2550" relation="include">
         </childnode>
-        <childnode refid="2390" relation="include">
+        <childnode refid="2551" relation="include">
         </childnode>
       </node>
-      <node id="2380">
+      <node id="2541">
         <label>LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="2381" relation="include">
+        <childnode refid="2542" relation="include">
         </childnode>
-        <childnode refid="2382" relation="include">
+        <childnode refid="2543" relation="include">
         </childnode>
-        <childnode refid="2383" relation="include">
+        <childnode refid="2544" relation="include">
         </childnode>
-        <childnode refid="2384" relation="include">
+        <childnode refid="2545" relation="include">
         </childnode>
-        <childnode refid="2387" relation="include">
+        <childnode refid="2548" relation="include">
         </childnode>
-        <childnode refid="2388" relation="include">
+        <childnode refid="2549" relation="include">
         </childnode>
       </node>
-      <node id="2381">
+      <node id="2542">
         <label>librdf.h</label>
       </node>
-      <node id="2383">
+      <node id="2544">
         <label>memory</label>
       </node>
     </incdepgraph>

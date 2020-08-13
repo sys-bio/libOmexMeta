@@ -4,44 +4,44 @@
     <compoundname>LibrdfQuery.cpp</compoundname>
     <includes refid="LibrdfQuery_8h" local="yes">LibrdfQuery.h</includes>
     <incdepgraph>
-      <node id="2185">
+      <node id="2342">
         <label>src/redland/RedlandWrapper/src/LibrdfQuery.cpp</label>
         <link refid="LibrdfQuery_8cpp"/>
-        <childnode refid="2186" relation="include">
+        <childnode refid="2343" relation="include">
         </childnode>
       </node>
-      <node id="2191">
+      <node id="2348">
         <label>regex</label>
       </node>
-      <node id="2186">
+      <node id="2343">
         <label>LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h_source"/>
-        <childnode refid="2187" relation="include">
+        <childnode refid="2344" relation="include">
         </childnode>
-        <childnode refid="2188" relation="include">
+        <childnode refid="2345" relation="include">
         </childnode>
-        <childnode refid="2189" relation="include">
+        <childnode refid="2346" relation="include">
         </childnode>
       </node>
-      <node id="2189">
+      <node id="2346">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2187" relation="include">
+        <childnode refid="2344" relation="include">
         </childnode>
-        <childnode refid="2190" relation="include">
+        <childnode refid="2347" relation="include">
         </childnode>
-        <childnode refid="2188" relation="include">
+        <childnode refid="2345" relation="include">
         </childnode>
-        <childnode refid="2191" relation="include">
+        <childnode refid="2348" relation="include">
         </childnode>
       </node>
-      <node id="2190">
+      <node id="2347">
         <label>iostream</label>
       </node>
-      <node id="2187">
+      <node id="2344">
         <label>librdf.h</label>
       </node>
-      <node id="2188">
+      <node id="2345">
         <label>memory</label>
       </node>
     </incdepgraph>

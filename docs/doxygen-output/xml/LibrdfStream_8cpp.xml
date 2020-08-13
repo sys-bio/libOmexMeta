@@ -4,44 +4,44 @@
     <compoundname>LibrdfStream.cpp</compoundname>
     <includes refid="LibrdfStream_8h" local="yes">LibrdfStream.h</includes>
     <incdepgraph>
-      <node id="2440">
+      <node id="2602">
         <label>regex</label>
       </node>
-      <node id="2438">
+      <node id="2600">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2436" relation="include">
+        <childnode refid="2598" relation="include">
         </childnode>
-        <childnode refid="2439" relation="include">
+        <childnode refid="2601" relation="include">
         </childnode>
-        <childnode refid="2437" relation="include">
+        <childnode refid="2599" relation="include">
         </childnode>
-        <childnode refid="2440" relation="include">
+        <childnode refid="2602" relation="include">
         </childnode>
       </node>
-      <node id="2439">
+      <node id="2601">
         <label>iostream</label>
       </node>
-      <node id="2434">
+      <node id="2596">
         <label>src/redland/RedlandWrapper/src/LibrdfStream.cpp</label>
         <link refid="LibrdfStream_8cpp"/>
-        <childnode refid="2435" relation="include">
+        <childnode refid="2597" relation="include">
         </childnode>
       </node>
-      <node id="2436">
+      <node id="2598">
         <label>librdf.h</label>
       </node>
-      <node id="2435">
+      <node id="2597">
         <label>LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="2436" relation="include">
+        <childnode refid="2598" relation="include">
         </childnode>
-        <childnode refid="2437" relation="include">
+        <childnode refid="2599" relation="include">
         </childnode>
-        <childnode refid="2438" relation="include">
+        <childnode refid="2600" relation="include">
         </childnode>
       </node>
-      <node id="2437">
+      <node id="2599">
         <label>memory</label>
       </node>
     </incdepgraph>
