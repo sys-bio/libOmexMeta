@@ -259,15 +259,21 @@ namespace omexmeta {
         std::unordered_map<std::string, std::string>
         propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces);
 
+        /*
+         * @brief serialize RDF graph to string
+         * @param format the expected output format. Options include:
+         * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
+         * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
+         */
         std::string toString(const std::string &format = "rdfxml-abbrev",
                              std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
         void toFile(const std::string& format, const std::string& filename, const char* mime_type = nullptr, const char* type_uri = nullptr);
 
-        Editor toEditor(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false);
+        Editor toEditor(const std::string &xml, bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET);
 
-        Editor *toEditorPtr(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false);
+        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET);
 
         librdf_model *getModel() const;
 

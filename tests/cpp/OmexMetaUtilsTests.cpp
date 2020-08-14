@@ -157,7 +157,7 @@ TEST_F(OmexMetaUtilsTests, TestStringInVector) {
 
 TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
     RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), OMEXMETA_TYPE_SBML, true);
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, OMEXMETA_TYPE_SBML);
 
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),

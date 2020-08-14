@@ -109,7 +109,7 @@ TEST_F(SBMLSemanticExtractionTests, test){
                            "local:react2\n"
                            "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/:opb_1234> .\n"
-                           "";
+                           "\n";
     std::string actual = rdf.toString("turtle");
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

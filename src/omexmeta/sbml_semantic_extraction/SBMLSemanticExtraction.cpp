@@ -10,7 +10,7 @@ namespace omexmeta {
 
     SBMLSemanticExtraction::SBMLSemanticExtraction(RDF *rdf, const std::string& sbml_string)
             : rdf_(rdf), sbml_string_(sbml_string),
-              editor_(rdf->toEditor(sbml_string, OMEXMETA_TYPE_SBML)) {}
+              editor_(rdf->toEditor(sbml_string, false, OMEXMETA_TYPE_SBML)) {}
 
     void SBMLSemanticExtraction::extractSpeciesCompartmentSemantics() {
         ElementExtractor compartment_extraction(sbml_string_, "compartment");
