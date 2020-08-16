@@ -90,7 +90,7 @@ Program Listing for File OmexMetaXmlAssistant.h
        class SemsimXmlAssistantFactory {
        public:
    
-           static XmlAssistantPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "OmexMetaId", int metaid_num_digits = 4);
+           static XmlAssistantPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "#OmexMetaId", int metaid_num_digits = 4);
        };
    }
    #endif //LIBOMEXMETA_OMEXMETAXMLASSISTANT_H

@@ -234,7 +234,7 @@ we focus on singular annotations here, this generalizes to the other
 of annotations supported by libOmexMeta.
 
 In this example, we have forced the generation of new metaids, which defaults
-to `#OmexMetaId` followed by a 4 digit number. Hence the metaid `#OmexMetaId0002`
+to `##OmexMetaId` followed by a 4 digit number. Hence the metaid `#OmexMetaId0002`
 exists and is the metaid for the `Species` element with the name `"A"`
 (see xml above).
 

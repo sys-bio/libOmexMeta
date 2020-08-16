@@ -161,7 +161,7 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
 
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),
-            "#OmexMetaId"
+            "##OmexMetaId"
             );
     std::cout << metaid1 << std::endl;
     // add annotation to the modelw ith the generated metaid

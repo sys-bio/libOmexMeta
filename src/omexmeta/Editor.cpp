@@ -32,7 +32,7 @@ namespace omexmeta {
                                    " be either SBML or CellML. " );
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET); // this should never happen
-        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "OmexMetaId", 4);
+        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "#OmexMetaId", 4);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;

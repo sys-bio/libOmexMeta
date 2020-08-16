@@ -42,7 +42,7 @@ Program Listing for File Editor.cpp
                  model_uri_(model_uri),
                  local_uri_(local_uri) {
            // hard code the metaid base and number of needed digits for now,
-           XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "OmexMetaId", 4);
+           XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "#OmexMetaId", 4);
            std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
            xml_ = xml_and_metaids.first;
            metaids_ = xml_and_metaids.second;

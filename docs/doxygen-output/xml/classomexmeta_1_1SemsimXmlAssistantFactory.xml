@@ -6,7 +6,7 @@
       <memberdef kind="function" id="classomexmeta_1_1SemsimXmlAssistantFactory_1a179ac91d78753a91e1f962a7ca974246" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>XmlAssistantPtr</type>
         <definition>XmlAssistantPtr omexmeta::SemsimXmlAssistantFactory::generate</definition>
-        <argsstring>(const std::string &amp;xml, OmexMetaXmlType type, bool generate_new_metaids=false, std::string metaid_base=&quot;OmexMetaId&quot;, int metaid_num_digits=4)</argsstring>
+        <argsstring>(const std::string &amp;xml, OmexMetaXmlType type, bool generate_new_metaids=false, std::string metaid_base=&quot;#OmexMetaId&quot;, int metaid_num_digits=4)</argsstring>
         <name>generate</name>
         <param>
           <type>const std::string &amp;</type>
@@ -24,7 +24,7 @@
         <param>
           <type>std::string</type>
           <declname>metaid_base</declname>
-          <defval>&quot;OmexMetaId&quot;</defval>
+          <defval>&quot;#OmexMetaId&quot;</defval>
         </param>
         <param>
           <type>int</type>

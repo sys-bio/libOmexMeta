@@ -12,7 +12,7 @@ namespace omexmeta {
 
     Participant::Participant(librdf_model *model, std::string base_metaid,
                              std::string local_uri, std::string semsim_predicate_term,
-                             double multiplier,
+                             int multiplier,
                              std::string physicalEntityReference)
 
             : model_(model),
@@ -75,7 +75,7 @@ namespace omexmeta {
         }
         triples.emplace_back(sub2, pred2, res2);
 
-        if (multiplier_ != 0.0) {
+        if (multiplier_ != 0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
 
@@ -91,7 +91,7 @@ namespace omexmeta {
 
             librdf_node *res3 = LibrdfNode::fromLiteral(
                     multiplier_os.str(),
-                    "http://www.w3.org/2001/XMLSchema#double").get();
+                    "http://www.w3.org/2001/XMLSchema#integer").get();
             if (res3 == nullptr) {
                 throw NullPointerException("NullPointerException: Participant::toTriples: res3");
             }
@@ -113,7 +113,7 @@ namespace omexmeta {
         return metaid_template_str_;
     }
 
-    double Participant::getMultiplier() const {
+    int Participant::getMultiplier() const {
         return multiplier_;
     }
 
@@ -141,7 +141,7 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    void Participant::setMultiplier(double multiplier) {
+    void Participant::setMultiplier(int multiplier) {
         multiplier_ = multiplier;
     }
 
@@ -165,12 +165,12 @@ namespace omexmeta {
         local_uri_ = localUri;
     }
 
-    SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,
+    SourceParticipant::SourceParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference,
                                          std::string local_uri)
             : Participant(model, "SourceParticipant", std::move(local_uri), "hasSourceParticipant",
                           multiplier, std::move(physicalEntityReference)) {}
 
-    SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
+    SinkParticipant::SinkParticipant(librdf_model *model, int multiplier,
                                      std::string physicalEntityReference, std::string local_uri)
             : Participant(model, "SinkParticipant", std::move(local_uri),
                           "hasSinkParticipant",

@@ -27,7 +27,7 @@ namespace omexmeta {
     }
 
     void OmexMetaXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
-        //todo make OmexMetaId sting
+        //todo make #OmexMetaId sting
         MetaID metaId(getMetaidBase(), 0, getMetaidNumDigits());
         xmlNode *cur_node;
         cur_node = a_node;
