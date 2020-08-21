@@ -75,7 +75,7 @@ namespace omexmeta {
 
             // begin the annotation
             PhysicalProcess process = editor_.newPhysicalProcess();
-            process.setPhysicalProperty(reaction_metaid, "opb::opb_1234");
+            process.setPhysicalProperty(reaction_metaid, "opb:OPB_00592");
 
             // and pull out the listOf* elements for the reaction
             xmlNode* reactants_node = OmexMetaUtils::getChildElementCalled(reaction_node, "listOfReactants");
