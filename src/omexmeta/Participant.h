@@ -62,7 +62,7 @@ namespace omexmeta {
          * code duplication in the subclasses.
          *
          */
-        Participant(librdf_model *model, std::string base_metaid, std::string local_uri,
+        Participant(librdf_model *model, std::string base_metaid, const std::string& local_uri,
                 std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference);
 

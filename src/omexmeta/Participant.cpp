@@ -11,16 +11,15 @@ namespace omexmeta {
 
 
     Participant::Participant(librdf_model *model, std::string base_metaid,
-                             std::string local_uri, std::string semsim_predicate_term,
+                             const std::string& local_uri, std::string semsim_predicate_term,
                              double multiplier,
                              std::string physicalEntityReference)
-
             : model_(model),
               // add the local uri prefix to the metaid here. This will also
               // work for Participant subclasses.
 //              metaid_template_str_(OmexMetaUtils::addLocalPrefixToMetaid(std::move(base_metaid), local_uri)),
               metaid_template_str_(std::move(base_metaid)),
-              local_uri_(std::move(local_uri)),
+              local_uri_(local_uri),
               semsim_predicate_term_(std::move(semsim_predicate_term)),
               multiplier_(multiplier),
               physicalEntityReference_(std::move(physicalEntityReference)) {}
