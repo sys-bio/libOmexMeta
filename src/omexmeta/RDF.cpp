@@ -461,7 +461,7 @@ namespace omexmeta {
 
         if (getXmlType() == OMEXMETA_TYPE_SBML){
             SBMLSemanticExtraction extraction(this, str);
-            // these operations automaticall add the the rdf model
+            // these operations automatically add to the rdf model
             extraction.extractSpeciesCompartmentSemantics();
             extraction.extractProcessesFromReactions();
         }
