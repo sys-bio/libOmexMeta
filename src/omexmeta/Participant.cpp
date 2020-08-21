@@ -17,7 +17,7 @@ namespace omexmeta {
             : model_(model),
               // add the local uri prefix to the metaid here. This will also
               // work for Participant subclasses.
-//              metaid_template_str_(OmexMetaUtils::addLocalPrefixToMetaid(std::move(base_metaid), local_uri)),
+//              metaid_template_str_(OmexMetaUtils::concatMetaIdAndUri(std::move(base_metaid), local_uri)),
               metaid_template_str_(std::move(base_metaid)),
               local_uri_(local_uri),
               semsim_predicate_term_(std::move(semsim_predicate_term)),
@@ -32,8 +32,8 @@ namespace omexmeta {
         if (unique_participant_metaid_.empty()) {
             unique_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(model_, metaid_template_str_);
         }
-        process_metaid = OmexMetaUtils::addLocalPrefixToMetaid(process_metaid, local_uri_);
-        unique_participant_metaid_ = OmexMetaUtils::addLocalPrefixToMetaid(unique_participant_metaid_, local_uri_);
+        process_metaid = OmexMetaUtils::concatMetaIdAndUri(process_metaid, local_uri_);
+        unique_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(unique_participant_metaid_, local_uri_);
 
         // todo preallocate num triples needed
         Triples triples;
@@ -67,7 +67,7 @@ namespace omexmeta {
         }
 
         librdf_node *res2 = LibrdfNode::fromUriString(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalEntityReference_, getLocalUri())
+                OmexMetaUtils::concatMetaIdAndUri(physicalEntityReference_, getLocalUri())
         ).get();
         if (res2 == nullptr) {
             throw NullPointerException("NullPointerException: Participant::toTriples: res2");

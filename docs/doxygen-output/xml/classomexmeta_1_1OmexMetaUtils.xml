@@ -288,9 +288,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string omexmeta::OmexMetaUtils::addLocalPrefixToMetaid</definition>
+        <definition>std::string omexmeta::OmexMetaUtils::concatMetaIdAndUri</definition>
         <argsstring>(std::string metaid, std::string local)</argsstring>
-        <name>addLocalPrefixToMetaid</name>
+        <name>concatMetaIdAndUri</name>
         <param>
           <type>std::string</type>
           <declname>metaid</declname>
@@ -457,7 +457,7 @@
     </detaileddescription>
     <location file="src/omexmeta/OmexMetaUtils.h" line="28" column="1" bodyfile="src/omexmeta/OmexMetaUtils.h" bodystart="28" bodyend="120"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>addLocalPrefixToMetaid</name></member>
+      <member refid="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>concatMetaIdAndUri</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertMatchByNewLine</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertRegexMatchSplitByNewLine</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a0b5fd1b4237e1534f2339349efa1dd7a" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>configureSelfStrings</name></member>

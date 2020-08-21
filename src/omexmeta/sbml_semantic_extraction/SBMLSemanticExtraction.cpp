@@ -73,6 +73,8 @@ namespace omexmeta {
             std::string reaction_id = OmexMetaUtils::getXmlNodeProperty(reaction_node, "id");
             std::string reaction_metaid = OmexMetaUtils::getXmlNodeProperty(reaction_node, "metaid");
 
+            LOG_DEBUG("reaction id: %s, reaction metaid: %s", reaction_id.c_str(), reaction_metaid.c_str());
+
             // begin the annotation
             PhysicalProcess process = editor_.newPhysicalProcess();
             process.setPhysicalProperty(reaction_metaid, "opb:OPB_00592");

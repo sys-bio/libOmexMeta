@@ -68,7 +68,7 @@ namespace omexmeta {
         // This allows us to only use the ones that are needed
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
 
-        // when reading xml types, we try to classify the string
+        // when reading xml types, we try to classify the string as sbml or cellml.
         // other formats ignored.
         // this will set the xmlType variable if sbml or cellml
         rdf.classifyXmlType(str, format);

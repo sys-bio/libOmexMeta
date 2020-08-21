@@ -178,7 +178,7 @@
             <span class="o">:</span> <span class="n">model_</span><span class="p">(</span><span class="n">model</span><span class="p">),</span>
               <span class="c1">// add the local uri prefix to the metaid here. This will also</span>
               <span class="c1">// work for Participant subclasses.</span>
-<span class="c1">//              metaid_template_str_(OmexMetaUtils::addLocalPrefixToMetaid(std::move(base_metaid), local_uri)),</span>
+<span class="c1">//              metaid_template_str_(OmexMetaUtils::concatMetaIdAndUri(std::move(base_metaid), local_uri)),</span>
               <span class="n">metaid_template_str_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">base_metaid</span><span class="p">)),</span>
               <span class="n">local_uri_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">local_uri</span><span class="p">)),</span>
               <span class="n">semsim_predicate_term_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">semsim_predicate_term</span><span class="p">)),</span>
@@ -193,8 +193,8 @@
         <span class="k">if</span> <span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="n">unique_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="n">metaid_template_str_</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="n">process_metaid</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">addLocalPrefixToMetaid</span><span class="p">(</span><span class="n">process_metaid</span><span class="p">,</span> <span class="n">local_uri_</span><span class="p">);</span>
-        <span class="n">unique_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">addLocalPrefixToMetaid</span><span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">,</span> <span class="n">local_uri_</span><span class="p">);</span>
+        <span class="n">process_metaid</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">process_metaid</span><span class="p">,</span> <span class="n">local_uri_</span><span class="p">);</span>
+        <span class="n">unique_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">,</span> <span class="n">local_uri_</span><span class="p">);</span>
 
         <span class="c1">// todo preallocate num triples needed</span>
         <span class="n">Triples</span> <span class="n">triples</span><span class="p">;</span>
@@ -228,7 +228,7 @@
         <span class="p">}</span>
 
         <span class="n">librdf_node</span> <span class="o">*</span><span class="n">res2</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span>
-                <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">addLocalPrefixToMetaid</span><span class="p">(</span><span class="n">physicalEntityReference_</span><span class="p">,</span> <span class="n">getLocalUri</span><span class="p">())</span>
+                <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">physicalEntityReference_</span><span class="p">,</span> <span class="n">getLocalUri</span><span class="p">())</span>
         <span class="p">).</span><span class="n">get</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">res2</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span><span class="s">&quot;NullPointerException: Participant::toTriples: res2&quot;</span><span class="p">);</span>

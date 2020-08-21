@@ -416,7 +416,7 @@ Program Listing for File Editor.cpp
        SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
            SingularAnnotation singularAnnotation;
            singularAnnotation.setLocalUri(getModelUri());
-           singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalUri()));
+           singularAnnotation.setAbout(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getLocalUri()));
            return singularAnnotation;
        }
    

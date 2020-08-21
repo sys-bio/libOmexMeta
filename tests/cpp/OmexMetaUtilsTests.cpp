@@ -117,19 +117,23 @@ TEST_F(OmexMetaUtilsTests, configureSelfStrings2) {
 }
 
 TEST_F(OmexMetaUtilsTests, TestAddLocalPrefixToMetaid) {
-    std::string actual = OmexMetaUtils::addLocalPrefixToMetaid("Metaid00001", "http://omex-library.org/NewOmex.omex/NewModel.rdf#");
+    std::string actual = OmexMetaUtils::concatMetaIdAndUri("Metaid00001",
+                                                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#");
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(OmexMetaUtilsTests, TestAddLocalPrefixToMetaid2) {
-    std::string actual = OmexMetaUtils::addLocalPrefixToMetaid("http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001", "http://omex-library.org/NewOmex.omex/NewModel.rdf#");
+    std::string actual = OmexMetaUtils::concatMetaIdAndUri(
+            "http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001",
+            "http://omex-library.org/NewOmex.omex/NewModel.rdf#");
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(OmexMetaUtilsTests, TestAddLocalPrefixToMetaid3) {
-    std::string actual = OmexMetaUtils::addLocalPrefixToMetaid("#Metaid00001", "http://omex-library.org/NewOmex.omex/NewModel.rdf#");
+    std::string actual = OmexMetaUtils::concatMetaIdAndUri("#Metaid00001",
+                                                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#");
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

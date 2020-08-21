@@ -103,7 +103,7 @@ namespace omexmeta {
         static std::vector<std::string>
         configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name);
 
-        static std::string addLocalPrefixToMetaid(std::string metaid, std::string local);
+        static std::string concatMetaIdAndUri(std::string metaid, std::string uri);
 
         static std::string
         stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);

@@ -388,7 +388,7 @@
     <member refid="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" kind="function"><name>assertRegexMatchSplitByNewLine</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" kind="function"><name>assertMatchByNewLine</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a0b5fd1b4237e1534f2339349efa1dd7a" kind="function"><name>configureSelfStrings</name></member>
-    <member refid="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" kind="function"><name>addLocalPrefixToMetaid</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" kind="function"><name>concatMetaIdAndUri</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1aca2230ca99338b9dc0fc7d296b0c553b" kind="function"><name>stringReplace</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a66d58e0ebcbee1857b23ead70c87de7f" kind="function"><name>startsWith</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a6f8e406b8798bd2f1f0ae0d1bd07ed2b" kind="function"><name>stringInVector</name></member>

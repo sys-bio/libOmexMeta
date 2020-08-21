@@ -69,7 +69,7 @@ Program Listing for File PhysicalProperty.cpp
        }
    
        void PhysicalProperty::setSubject(const std::string &subject) {
-           subject_ = OmexMetaUtils::addLocalPrefixToMetaid(subject, getLocalUri());
+           subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getLocalUri());
        }
    
        const std::string &PhysicalProperty::getResourceStr() const {

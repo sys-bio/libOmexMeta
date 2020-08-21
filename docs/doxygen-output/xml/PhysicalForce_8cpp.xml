@@ -627,7 +627,7 @@
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>now<sp/>we<sp/>add<sp/>the<sp/>local<sp/>uri<sp/>on<sp/>to<sp/>the<sp/>metaid<sp/>-<sp/>If<sp/>it<sp/>already</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>properly<sp/>formatted<sp/>it<sp/>will<sp/>be<sp/>left<sp/>alone</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_id_<sp/>=<sp/>OmexMetaUtils::addLocalPrefixToMetaid(physical_property_id_,<sp/>getLocalUri());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_id_<sp/>=<sp/>OmexMetaUtils::concatMetaIdAndUri(physical_property_id_,<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;source<sp/>:<sp/>sources_)<sp/>{</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;triple<sp/>:<sp/>source.toTriples(physical_property_id_))<sp/>{</highlight></codeline>
@@ -653,7 +653,7 @@
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::setPhysicalProperty(std::string<sp/>subject_metaid,<sp/>std::string<sp/>physical_property)<sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subject_metaid<sp/>=<sp/>OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid,<sp/>getLocalUri());</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subject_metaid<sp/>=<sp/>OmexMetaUtils::concatMetaIdAndUri(subject_metaid,<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_<sp/>=<sp/>PhysicalProperty(std::move(subject_metaid),<sp/>std::move(physical_property),<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

@@ -96,7 +96,7 @@ Program Listing for File PhysicalForce.cpp
        }
    
        PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
-           subject_metaid = OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+           subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getLocalUri());
            physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getLocalUri());
            return *this;
        }

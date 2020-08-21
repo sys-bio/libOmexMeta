@@ -39,7 +39,7 @@ namespace omexmeta {
 
     PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getLocalUri());
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
         return *this;
     }
@@ -120,7 +120,7 @@ namespace omexmeta {
 
         // now we add the local uri on to the metaid - If it already
         // properly formatted it will be left alone
-        physical_property_id_ = OmexMetaUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
+        physical_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_property_id_, getLocalUri());
 
         // preallocate for efficiency
         Triples triples(getLocationResources().size() + 3);

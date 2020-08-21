@@ -53,7 +53,7 @@ namespace omexmeta {
 
     std::string PersonalInformation::generateMetaId() const {
         std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
-        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, getModelUri());
+        return OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri());
     }
 
     PersonalInformation &

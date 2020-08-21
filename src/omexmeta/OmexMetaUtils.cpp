@@ -60,7 +60,7 @@ namespace omexmeta {
         ResultsMap results_map = query.resultsAsMap();
         query.freeQuery();
         std::vector<std::string> subjects = results_map["subject"];
-        // add other exclusions to the subjects like
+        // add other exclusions to subjects
         for (auto &i : exclusions) {
             subjects.push_back(i);
         }
@@ -73,6 +73,7 @@ namespace omexmeta {
         for (int i = 0; i < subjects.size(); i++) {
             std::string sub = subjects[i];
             if (OmexMetaUtils::startsWith(sub, "http")){
+//                LOG_DEBUG("subject string that starts with http: %s %s %s", sub.c_str(), results_map["predicate"][i].c_str(), results_map["object"][i].c_str());
                 auto v = OmexMetaUtils::splitStringBy(sub, '#');
                 assert(v.size() == 2);
                 subjects[i] = "#" + v[1];
@@ -279,25 +280,21 @@ namespace omexmeta {
 
     }
 
-    std::string OmexMetaUtils::addLocalPrefixToMetaid(std::string metaid, std::string local) {
-        // if metaid already has local in the string, we just return
-        if (metaid.find(local) != std::string::npos) {
+    std::string OmexMetaUtils::concatMetaIdAndUri(std::string metaid, std::string uri) {
+        // if metaid already has uri in the string, we just return
+        if (metaid.find(uri) != std::string::npos) {
             return metaid;
         }
         // Otherwise we concatonate:
-        // first we check if local has the # at the end. It should do.
-        if (!OmexMetaUtils::endsWith(local, "#")) {
-            local = local + "#";
-//            throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
-//                                        "Was expecting a local prefix to end with a '#' "
-//                                        "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
-//                                        "Recieved: " + local);
+        // first we check if uri has the # at the end. It should do.
+        if (!OmexMetaUtils::endsWith(uri, "#")) {
+            uri = uri + "#";
         }
         // if metaid also begins with '#' character, remove it.
         if (metaid.rfind('#', 0) == 0) {
             metaid = metaid.substr(1, metaid.size());
         }
-        return local + metaid;
+        return uri + metaid;
     }
 
     std::string

@@ -80,7 +80,7 @@ Program Listing for File Participant.cpp
            }
    
            librdf_node *res2 = LibrdfNode::fromUriString(
-                   OmexMetaUtils::addLocalPrefixToMetaid(physicalEntityReference_, getLocalUri())
+                   OmexMetaUtils::concatMetaIdAndUri(physicalEntityReference_, getLocalUri())
            ).get();
            if (res2 == nullptr) {
                throw NullPointerException("NullPointerException: Participant::toTriples: res2");

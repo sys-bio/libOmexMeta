@@ -874,7 +874,7 @@
 <codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>if<sp/>not<sp/>already<sp/>formatted<sp/>properly.</highlight></codeline>
 <codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physicalEntity.setAbout(</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(),<sp/>getLocalUri())</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaUtils::concatMetaIdAndUri(physicalEntity.getAbout(),<sp/>getLocalUri())</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checkValidMetaid(physicalEntity.getAbout());</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addCompositeAnnotation((PhysicalPhenomenon<sp/>*)<sp/>&amp;physicalEntity);</highlight></codeline>
@@ -892,7 +892,7 @@
 <codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>if<sp/>not<sp/>already<sp/>formatted<sp/>properly.</highlight></codeline>
 <codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physicalProcess.setAbout(</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(),<sp/>getLocalUri())</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaUtils::concatMetaIdAndUri(physicalProcess.getAbout(),<sp/>getLocalUri())</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addCompositeAnnotation((PhysicalPhenomenon<sp/>*)<sp/>&amp;physicalProcess);</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"></highlight></codeline>
@@ -910,7 +910,7 @@
 <codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>if<sp/>not<sp/>already<sp/>formatted<sp/>properly.</highlight></codeline>
 <codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physicalForce.setAbout(</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaUtils::addLocalPrefixToMetaid(physicalForce.getAbout(),<sp/>getLocalUri())</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaUtils::concatMetaIdAndUri(physicalForce.getAbout(),<sp/>getLocalUri())</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addCompositeAnnotation((PhysicalPhenomenon<sp/>*)<sp/>&amp;physicalForce);</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1093,7 +1093,7 @@
 <codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation<sp/>Editor::newSingularAnnotation(std::string<sp/>metaid)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SingularAnnotation<sp/>singularAnnotation;</highlight></codeline>
 <codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>singularAnnotation.setLocalUri(getModelUri());</highlight></codeline>
-<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid),<sp/>getLocalUri()));</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>singularAnnotation.setAbout(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid),<sp/>getLocalUri()));</highlight></codeline>
 <codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>singularAnnotation;</highlight></codeline>
 <codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="409"><highlight class="normal"></highlight></codeline>

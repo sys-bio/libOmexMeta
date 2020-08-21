@@ -213,7 +213,7 @@
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">generateMetaId</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="s">&quot;PersonalInfo&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">addLocalPrefixToMetaid</span><span class="p">(</span><span class="n">metaid</span><span class="p">,</span> <span class="n">getModelUri</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">metaid</span><span class="p">,</span> <span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
