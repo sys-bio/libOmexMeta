@@ -48,7 +48,6 @@ namespace omexmeta {
         }
 
         Triples triples = physical_property_.toTriples(getAbout());
-
         std::string force_id = generateMetaId("PhysicalForce");
         force_id = OmexMetaUtils::concatMetaIdAndUri(force_id, getLocalUri());
 
@@ -79,7 +78,7 @@ namespace omexmeta {
     PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_, multiplier, physical_entity_reference, getModelUri()
+                        model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri()
                 ))
         );
         return (*this);
@@ -87,7 +86,7 @@ namespace omexmeta {
 
     PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
         sinks_.push_back(
-                SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri())
+                SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri())
         );
 
         return (*this);

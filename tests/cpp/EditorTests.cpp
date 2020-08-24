@@ -383,20 +383,20 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                     {SourceParticipant(model.get(),
                                        1.0,
                                        "#PhysicalEntityReference1",
-                                       editor.getModelUri()
+                                       editor.getModelUri(), editor.getLocalUri()
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(model.get(),
                                      1.0,
                                      "#PhysicalEntityReference2",
-                                     editor.getModelUri()
+                                     editor.getModelUri(), editor.getLocalUri()
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(model.get(),
                                          "#PhysicalEntityReference3",
-                                         editor.getModelUri()
+                                         editor.getModelUri(), editor.getLocalUri()
                     )}
             )
     );
@@ -447,14 +447,14 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             std::vector<SourceParticipant>(
                     {SourceParticipant(model.get(),
                                        1.0,
-                                       "#PhysicalEntityReference1", editor.getModelUri()
+                                       "#PhysicalEntityReference1", editor.getModelUri(), editor.getLocalUri()
 
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(model.get(),
                                      1.0,
-                                     "#PhysicalEntityReference2", editor.getModelUri()
+                                     "#PhysicalEntityReference2", editor.getModelUri(), editor.getLocalUri()
                     )}
             )
     );

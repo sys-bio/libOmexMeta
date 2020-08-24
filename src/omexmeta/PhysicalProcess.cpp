@@ -56,7 +56,7 @@ namespace omexmeta {
                 std::move(SourceParticipant(model_,
                                             multiplier,
                                             std::move(physical_entity_reference),
-                                            getModelUri()
+                                            getModelUri(), getLocalUri()
                           )
                 )
         );
@@ -68,7 +68,7 @@ namespace omexmeta {
                 std::move(SinkParticipant(
                         model_,
                         multiplier, std::move(physical_entity_reference),
-                        getModelUri()
+                        getModelUri(), getLocalUri()
                 ))
         );
 
@@ -80,7 +80,7 @@ namespace omexmeta {
                 std::move(MediatorParticipant(
                         model_,
                         std::move(physical_entity_reference),
-                        getModelUri()
+                        getModelUri(), getLocalUri()
                 ))
         );
 

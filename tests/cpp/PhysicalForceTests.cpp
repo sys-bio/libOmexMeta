@@ -43,20 +43,20 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
                     model.get(),
                     1.0,
                     "#PhysicalEntityReference1",
-                    model_uri
+                    model_uri, local_uri
             )}
     );
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", model_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
     std::vector<MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "PhysicalEntityReference3", model_uri
+                    "PhysicalEntityReference3", model_uri, local_uri
             )}
     );
 
@@ -85,13 +85,13 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty1) {
     std::vector<SourceParticipant> source_participants({SourceParticipant(
             model.get(),
             1.0,
-            "#PhysicalEntityReference1", model_uri
+            "#PhysicalEntityReference1", model_uri, local_uri
     )});
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", model_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
 
@@ -116,13 +116,13 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty2) {
     std::vector<SourceParticipant> source_participants({SourceParticipant(
             model.get(),
             1.0,
-            "#PhysicalEntityReference1", model_uri
+            "#PhysicalEntityReference1", model_uri, local_uri
     )});
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", model_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
 
@@ -152,14 +152,14 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", model_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", model_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             )
     );
@@ -182,14 +182,14 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", model_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", model_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             )
     );
@@ -211,14 +211,14 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", model_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", model_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             )
     );
@@ -228,24 +228,27 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "myOMEX:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:PhysicalEntityReference2 .\n"
+                           "local:PhysicalForce0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
-                           "myOMEX:SourceParticipant0000\n"
+                           "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:PhysicalEntityReference1 .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference2> .\n"
                            "\n"
-                           "myOMEX:metaid\n"
-                           "    bqbiol:isPropertyOf myOMEX:metaid ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> ;\n"
-                           "    semsim:hasSinkParticipant myOMEX:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant myOMEX:SourceParticipant0000 .\n"
-                           "\n";
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();

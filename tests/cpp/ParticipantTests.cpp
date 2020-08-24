@@ -16,6 +16,7 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
     std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     ParticipantTests() {
         model = LibrdfModel(storage.get());
@@ -32,7 +33,7 @@ public:
  */
 TEST_F(ParticipantTests, TestCreateParticipant) {
     Participant participant(
-            model.get(), "MetaId0014", model_uri, "hasSourceParticipant",
+            model.get(), "MetaId0014",model_uri,  local_uri, "hasSourceParticipant",
             1.0, "MetaId0015"
     );
     SemSim ss(participant.getPredicate());
@@ -45,7 +46,7 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipant1) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     // SemSim predicate is made on the fly now.
     SemSim ss(sink.getPredicate());
     std::string actual = ss.str();
@@ -57,7 +58,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::string actual = sink.createMetaid("SinkParticipant");
     std::cout << actual << std::endl;
     std::string expected = "#SinkParticipant0000";
@@ -66,7 +67,7 @@ TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::string actual = sink.getLocalUri();
     std::cout << actual << std::endl;
     std::string expected = model_uri;
@@ -76,7 +77,7 @@ TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
 
 
 TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triple triple(
             LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
             SemSim(sink.getPredicate()).getNode(),
@@ -101,7 +102,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
 
 
 TEST_F(ParticipantTests, TestCreateTripleVector) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triple triple(
             LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
             SemSim(sink.getPredicate()).getNode(),
@@ -127,7 +128,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
 }
 
 TEST_F(ParticipantTests, TestToTriples1) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
     Triples triples = sink.toTriples("metaid");
     std::string actual = triples.str();
@@ -151,7 +152,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
 }
 
 TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
-    SinkParticipant sink(model.get(), 0.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 0.0, "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
     Triples triples = sink.toTriples("metaid");
     std::string actual = triples.str();
@@ -175,7 +176,7 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
 }
 
 TEST_F(ParticipantTests, TestToTriplesMediator) {
-    MediatorParticipant mediator(model.get(), "MetaId0015", model_uri);
+    MediatorParticipant mediator(model.get(), "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
     Triples triples = mediator.toTriples("metaid");
     std::string actual = triples.str();
@@ -203,10 +204,10 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    std::string model_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    std::string model_uri = "http://omex-library/myomex.omex/mymodel.xml#";
+    std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
     ParticipantTestsToTriplesTwice() {
         model = LibrdfModel(storage.get());
-
     }
 
     ~ParticipantTestsToTriplesTwice() {
@@ -219,7 +220,7 @@ public:
  * First check the numbers of references in a single triple
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triples triples1 = sink.toTriples("Process1");
 
     // Sinks have 3 triples
@@ -252,7 +253,7 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
  * Now throw another triple in the mix
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triples triples1 = sink.toTriples("Process1");
     Triples triples2 = sink.toTriples("Process1");
 
@@ -307,7 +308,7 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
 }
 
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triples triples1 = sink.toTriples("Process1");
     Triples triples2 = sink.toTriples("Process1");
 
@@ -334,11 +335,11 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
 
 
 TEST_F(ParticipantTests, TestParticipantVecToTriples) {
-    MediatorParticipant mediator(model.get(), "MetaId0015", model_uri);
+    MediatorParticipant mediator(model.get(), "MetaId0015", model_uri, local_uri);
 
-    SourceParticipant source(model.get(), 1.0, "MetaId0015", model_uri);
+    SourceParticipant source(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
 
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
 
     std::vector<Participant *> participants = {
             &source,

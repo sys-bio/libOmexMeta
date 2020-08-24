@@ -43,20 +43,20 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "#PhysicalEntityReference1", model_uri
+                    "#PhysicalEntityReference1", model_uri, local_uri
             )}
     );
     std::vector <SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", model_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
     std::vector <MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "PhysicalEntityReference3", model_uri
+                    "PhysicalEntityReference3", model_uri, local_uri
             )}
     );
 
@@ -88,20 +88,20 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "#PhysicalEntityReference1", model_uri
+                    "#PhysicalEntityReference1", model_uri, local_uri
             )}
     );
     std::vector <SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", model_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
     std::vector <MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "PhysicalEntityReference3", model_uri
+                    "PhysicalEntityReference3", model_uri, local_uri
             )}
     );
 
@@ -137,7 +137,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", model_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -145,14 +145,14 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
 
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", model_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(
 
                             model.get(),
-                            "PhysicalEntityReference3", model_uri
+                            "PhysicalEntityReference3", model_uri, local_uri
                     )}
             )
     );
@@ -177,21 +177,21 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", model_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", model_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(
 
                             model.get(),
-                            "PhysicalEntityReference3", model_uri
+                            "PhysicalEntityReference3", model_uri, local_uri
                     )}
             )
     );
@@ -214,20 +214,20 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", model_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", model_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(
                             model.get(),
-                            "PhysicalEntityReference3", model_uri
+                            "PhysicalEntityReference3", model_uri, local_uri
                     )}
             )
     );

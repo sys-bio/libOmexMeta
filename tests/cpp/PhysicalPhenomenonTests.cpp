@@ -45,7 +45,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid004";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();

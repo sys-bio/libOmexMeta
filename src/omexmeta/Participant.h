@@ -31,6 +31,8 @@ namespace omexmeta {
         // set of triples returned.
         std::string unique_participant_metaid_;
         std::string model_uri_;
+        std::string local_uri_;
+
     public:
         void setMultiplier(double multiplier);
 
@@ -62,7 +64,7 @@ namespace omexmeta {
          * code duplication in the subclasses.
          *
          */
-        Participant(librdf_model *model, std::string base_metaid, const std::string& model_uri,
+        Participant(librdf_model *model, std::string base_metaid, const std::string& model_uri, const std::string& local_uri,
                 std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference);
 
@@ -132,7 +134,7 @@ namespace omexmeta {
         /*
          * @brief A class representing process/force energetic source.
          */
-        SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, std::string model_uri);
+        SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, const std::string& model_uri, const std::string& local_uri);
     };
 
     /*
@@ -146,7 +148,7 @@ namespace omexmeta {
         /*
          * @brief A class representing process/force energetic sinks.
          */
-        SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, std::string model_uri);
+        SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, const std::string& model_uri, const std::string& local_uri);
 
     };
 
@@ -161,7 +163,7 @@ namespace omexmeta {
         /*
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, std::string model_uri);
+        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, const std::string& model_uri, std::string local_uri);
 
     };
 

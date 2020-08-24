@@ -103,21 +103,19 @@ TEST_F(RDFTests, TestFromStringTurtleBag) {
 
 TEST_F(RDFTests, TestToString) {
     RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
-    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
-                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://www.w3.org/TR/rdf-syntax-grammar\">\n"
-                           "    <ns1:editor xmlns:ns1=\"http://example.org/stuff/1.0/\">\n"
-                           "      <rdf:Description>\n"
-                           "        <ns1:fullName>Dave Beckett</ns1:fullName>\n"
-                           "        <ns1:homePage rdf:resource=\"http://purl.org/net/dajobe/\"/>\n"
-                           "      </rdf:Description>\n"
-                           "    </ns1:editor>\n"
-                           "    <ns2:title xmlns:ns2=\"http://purl.org/dc/elements/1.1/\">RDF1.1 XML Syntax</ns2:title>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://www.w3.org/TR/rdf-syntax-grammar>\n"
+                           "    <http://example.org/stuff/1.0/editor> [\n"
+                           "        <http://example.org/stuff/1.0/fullName> \"Dave Beckett\" ;\n"
+                           "        <http://example.org/stuff/1.0/homePage> <http://purl.org/net/dajobe/>\n"
+                           "    ] ;\n"
+                           "    <http://purl.org/dc/elements/1.1/title> \"RDF1.1 XML Syntax\" .\n"
+                           "\n"
+                           "";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
