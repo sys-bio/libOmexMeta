@@ -9,10 +9,10 @@
 
 namespace omexmeta {
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string local_uri,
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri,
                                            PhysicalProperty propertyResource, AnnotationType type)
             : model_(model), physical_property_(std::move(propertyResource)), type_(type),
-            local_uri_(local_uri){}
+              model_uri_(model_uri), local_uri_(local_uri){}
 
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
@@ -20,8 +20,8 @@ namespace omexmeta {
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model)
             : model_(model) {}
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string local_uri)
-        : model_(model), local_uri_(local_uri) {}
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri)
+        : model_(model), model_uri_(model_uri), local_uri_(local_uri) {}
 
     const std::string & PhysicalPhenomenon::getSubjectStr() const {
         return physical_property_.getSubjectStr();
@@ -60,7 +60,7 @@ namespace omexmeta {
         phenomenon.model_ = nullptr; // not sure if this is right.
         physical_property_ = std::move(phenomenon.physical_property_);
         type_ = phenomenon.type_;
-        local_uri_ = phenomenon.local_uri_;
+        model_uri_ = phenomenon.model_uri_;
     }
 
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
@@ -69,7 +69,7 @@ namespace omexmeta {
             phenomenon.model_ = nullptr; // not sure if this is right.
             physical_property_ = std::move(phenomenon.physical_property_);
             type_ = phenomenon.type_;
-        local_uri_ = phenomenon.local_uri_;
+            model_uri_ = phenomenon.model_uri_;
         }
         return *this;
     }
@@ -98,6 +98,19 @@ namespace omexmeta {
         physical_property_id_ = physicalPropertyId;
     }
 
+    const std::string &PhysicalPhenomenon::getModelUri() const {
+        if (model_uri_.empty()){
+            throw std::invalid_argument("std::invalid_argument: model_uri_ is empty. "
+                                        "Please use setModelUri or pass to the constructor a "
+                                        "model uri. ");
+        }
+        return model_uri_;
+    }
+
+    void PhysicalPhenomenon::setModelUri(const std::string &modelUri) {
+        model_uri_ = modelUri;
+    }
+
     const std::string &PhysicalPhenomenon::getLocalUri() const {
         if (local_uri_.empty()){
             throw std::invalid_argument("std::invalid_argument: local_uri_ is empty. "
@@ -113,20 +126,6 @@ namespace omexmeta {
 
 
 }
-
-
-
-
-/*
- * todo
- *  How would we parse rdf back into a composite annotation
- *  structure? It might be possible if composite annotations
- *  themselves had an flag attribute which tells software which type of
- *  annotation were dealing with. This would simplify the ascertaining of all
- *  (say) physical process triples and enable us think about
- *  reassembling them again
- */
-
 
 
 

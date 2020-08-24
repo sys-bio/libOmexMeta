@@ -40,7 +40,7 @@ Program Listing for File Editor.cpp
                  repository_uri_(repository_uri),
                  archive_uri_(archive_uri),
                  model_uri_(model_uri),
-                 local_uri_(local_uri) {
+                 model_uri_(local_uri) {
            // hard code the metaid base and number of needed digits for now,
            XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "OmexMetaId", 4);
            std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
@@ -382,7 +382,7 @@ Program Listing for File Editor.cpp
        }
    
        std::string Editor::getLocalUri() const {
-           return local_uri_;
+           return model_uri_;
        }
    
        std::string Editor::getModelUri() const {
@@ -398,8 +398,8 @@ Program Listing for File Editor.cpp
        }
    
        LibrdfNode Editor::createNodeWithLocalUri(const std::string &string) const {
-           if (getLocalUri().empty()) {
-               throw std::logic_error("std::logic_error: Editor::createNodeWithLocalUri: "
+           if (getModelUri().empty()) {
+               throw std::logic_error("std::logic_error: Editor::createNodeWithModelUri: "
                                       "Trying to create a node with a uri relative to "
                                       "the local namespace without previously setting the local "
                                       "namespace. Please use the setLocalUri() method. ");
@@ -409,14 +409,14 @@ Program Listing for File Editor.cpp
    
        SingularAnnotation Editor::newSingularAnnotation() const {
            SingularAnnotation singularAnnotation;
-           singularAnnotation.setLocalUri(getModelUri());
+           singularAnnotation.setModelUri(getModelUri());
            return singularAnnotation;
        }
    
        SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
            SingularAnnotation singularAnnotation;
-           singularAnnotation.setLocalUri(getModelUri());
-           singularAnnotation.setAbout(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getLocalUri()));
+           singularAnnotation.setModelUri(getModelUri());
+           singularAnnotation.setAbout(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
            return singularAnnotation;
        }
    

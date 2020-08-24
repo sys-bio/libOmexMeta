@@ -102,17 +102,14 @@ TEST_F(OmexMetaUtilsTests, TestHasEndingFalse) {
     ASSERT_FALSE(OmexMetaUtils::endsWith(s, ".omex"));
 }
 
-TEST_F(OmexMetaUtilsTests, configureSelfStrings) {
-    std::vector<std::string> vec = OmexMetaUtils::configureSelfStrings("http://omex-library.org/", "OmexLibrary.omex", "model.sbml");
-    ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex", vec[0].c_str());
-    ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex/model.sbml#", vec[1].c_str());
-    ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex/model.rdf#", vec[2].c_str());
-}
-
-TEST_F(OmexMetaUtilsTests, configureSelfStrings2) {
-    std::vector<std::string> vec = OmexMetaUtils::configureSelfStrings("http://omex-library.org", "OmexLibrary", "model.sbml#");
-    ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex", vec[0].c_str());
-    ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex/model.sbml#", vec[1].c_str());
+TEST_F(OmexMetaUtilsTests, TestConfigurePrefixStrings) {
+    std::vector<std::string> vec = OmexMetaUtils::configurePrefixStrings(
+            "http://omex-library.org/",
+            "OmexLibrary.omex/",
+            "model.sbml"
+    );
+    ASSERT_STREQ("http://omex-library.org/", vec[0].c_str());
+    ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex/", vec[1].c_str());
     ASSERT_STREQ("http://omex-library.org/OmexLibrary.omex/model.rdf#", vec[2].c_str());
 }
 
@@ -166,25 +163,21 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),
             "#OmexMetaId"
-            );
-    std::cout << metaid1 << std::endl;
+    );
     // add annotation to the modelw ith the generated metaid
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation.setAbout(metaid1)
-        .setPredicate("bqbiol", "is")
-        .setResourceLiteral("FirstAnnotation");
+            .setPredicate("bqbiol", "is")
+            .setResourceLiteral("FirstAnnotation");
     editor.addSingleAnnotation(singularAnnotation);
 
     // now try to generate a new metaid. It should not be the same as the first
     std::string metaid2 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),
             "metaid"
-            );
-    std::cout << metaid2 << std::endl;
-
-
-
-
+    );
+    ASSERT_STREQ("#OmexMetaId0000", metaid1.c_str());
+    ASSERT_STREQ("#metaid0000", metaid2.c_str());
 }
 
 

@@ -232,7 +232,7 @@
         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">repository_uri_</span> <span class="p">;</span>
         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">archive_uri_</span> <span class="p">;</span>
         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">model_uri_</span> <span class="p">;</span>
-        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">local_uri_</span> <span class="p">;</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">model_uri_</span> <span class="p">;</span>
 
         <span class="kt">void</span> <span class="nf">extractNamespacesFromTriplesVector</span><span class="p">(</span><span class="n">PhysicalPhenomenon</span> <span class="o">*</span><span class="n">pp</span><span class="p">);</span>
 
@@ -426,10 +426,10 @@
         <span class="kt">void</span> <span class="nf">removePhysicalPhenomenon</span><span class="p">(</span><span class="n">PhysicalPhenomenon</span> <span class="o">*</span><span class="n">physicalPhenomenon</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief Set the url for repository (myOmexlib).</span>
-<span class="cm">         * @param repository_name the name. Default is &quot;https://myOmexLibrary.org/&quot;.</span>
+<span class="cm">         * @brief Set the url for repository (OMEXlib).</span>
+<span class="cm">         * @param repository_name the name. Default is &quot;https://OMEXlibrary.org/&quot;.</span>
 <span class="cm">         *</span>
-<span class="cm">         * This is the namespace attached to the `myOMEXlib`</span>
+<span class="cm">         * This is the namespace attached to the `OMEXlib`</span>
 <span class="cm">         * prefix.</span>
 <span class="cm">         */</span>
 <span class="c1">//        void setOmexRepository(std::string repository_name);</span>
@@ -442,8 +442,8 @@
 <span class="cm">         * properly formatted and used without modification. If</span>
 <span class="cm">         * @param archive_name does not begin with one of these</span>
 <span class="cm">         * three prefixes, the current repository_uri_ (which</span>
-<span class="cm">         * defaults to `https://myOmexLibrary.org/`) is used as the namespace. For example</span>
-<span class="cm">         * setting archive_uri_ to &quot;myOmex&quot; becomes &quot;https://myOmexLibrary.org/NewOmex.omex&quot;.</span>
+<span class="cm">         * defaults to `https://OMEXlibrary.org/`) is used as the namespace. For example</span>
+<span class="cm">         * setting archive_uri_ to &quot;myOmex&quot; becomes &quot;https://OMEXlibrary.org/NewOmex.omex&quot;.</span>
 <span class="cm">         */</span>
 <span class="c1">//        void setArchiveUri(std::string archive_name);</span>
 
@@ -460,9 +460,9 @@
 <span class="c1">//        void setModelUri(std::string model_name);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief get the current value of local_uri_</span>
+<span class="cm">         * @brief get the current value of model_uri_</span>
 <span class="cm">         */</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="cm">/*</span>
 <span class="cm">         * @brief get the current value of model_uri_</span>
@@ -481,15 +481,15 @@
 <span class="cm">         *</span>
 <span class="cm">         * The local_name string should contain the omex</span>
 <span class="cm">         * repository and the model name. For example:</span>
-<span class="cm">         * &quot;http://myOmexLibrary.org/NewOmex.omex/myModel.rdf&quot;.</span>
+<span class="cm">         * &quot;http://OMEXlibrary.org/NewOmex.omex/myModel.rdf&quot;.</span>
 <span class="cm">         * Note that the corresponsing model should be:</span>
-<span class="cm">         * &quot;http://myOmexLibrary.org/NewOmex.omex/myModel.sbml&quot; or</span>
-<span class="cm">         * &quot;http://myOmexLibrary.org/NewOmex.omex/myModel.xml&quot; or</span>
-<span class="cm">         * &quot;http://myOmexLibrary.org/NewOmex.omex/myModel.cellml&quot;.</span>
+<span class="cm">         * &quot;http://OMEXlibrary.org/NewOmex.omex/myModel.sbml&quot; or</span>
+<span class="cm">         * &quot;http://OMEXlibrary.org/NewOmex.omex/myModel.xml&quot; or</span>
+<span class="cm">         * &quot;http://OMEXlibrary.org/NewOmex.omex/myModel.cellml&quot;.</span>
 <span class="cm">         */</span>
-<span class="c1">//        void setLocalUri(std::string local_name);</span>
+<span class="c1">//        void setModelUri(std::string local_name);</span>
 
-        <span class="n">LibrdfNode</span> <span class="nf">createNodeWithLocalUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">string</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">LibrdfNode</span> <span class="nf">createNodeWithModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">string</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="kt">void</span> <span class="nf">addModelLevelAnnotation</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="k">const</span> <span class="n">LibrdfNode</span> <span class="o">*</span><span class="n">node</span><span class="p">);</span>
 

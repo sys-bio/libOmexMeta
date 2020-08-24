@@ -48,7 +48,7 @@ Program Listing for File PhysicalProperty.h
    
            std::string subject_;
            std::string resource_;
-           std::string local_uri_;
+           std::string model_uri_;
            void validate();
    
        public:
@@ -68,9 +68,9 @@ Program Listing for File PhysicalProperty.h
    
            const std::string &getResource() const;
    
-           const std::string &getLocalUri() const;
+           const std::string &getModelUri() const;
    
-           void setLocalUri(const std::string &localUri);
+           void setModelUri(const std::string &localUri);
    
            [[nodiscard]] const std::string &getSubjectStr() const;
    

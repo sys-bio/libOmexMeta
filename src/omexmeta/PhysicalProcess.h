@@ -26,11 +26,11 @@ namespace omexmeta {
             public:
 
         /*
-         * @breif default constructor for PhysicalProcess
+         * @brief default constructor for PhysicalProcess
          * @details deliberately deleted. If you try using the
          * builder interface (chaining setter methods) from a default
          * instantiated PhysicalProcess you will get an error, because there
-         * will be no model assicated with PhysicalProcess. Instead, always
+         * will be no model associated with PhysicalProcess. Instead, always
          * instantiate a PhysicalProcess from the Editor::addPhysicalProcess() method.
          */
         PhysicalProcess() = delete;
@@ -47,7 +47,7 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model, std::string local_uri, const PhysicalProperty &physicalProperty,
+        PhysicalProcess(librdf_model *model, std::string model_uri,std::string local_uri, const PhysicalProperty &physicalProperty,
                         Sources sources, Sinks sinks, Mediators mediators);
 
         /*
@@ -70,9 +70,9 @@ namespace omexmeta {
         /*
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
-         * @param local_uri the local uri in current use.
+         * @param model_uri the local uri in current use.
          */
-        explicit PhysicalProcess(librdf_model *model, std::string local_uri);
+        explicit PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri);
 
         /*
          * @brief getter for sources

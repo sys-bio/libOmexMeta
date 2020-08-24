@@ -104,9 +104,9 @@ TEST_F(RDFTests, TestFromStringTurtleBag) {
 TEST_F(RDFTests, TestToString) {
     RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://www.w3.org/TR/rdf-syntax-grammar\">\n"
                            "    <ns1:editor xmlns:ns1=\"http://example.org/stuff/1.0/\">\n"
@@ -128,7 +128,7 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
                               "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                               "   xmlns:local=\"http://omex-library.org/NewModel.rdf#\"\n"
                               "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex\"\n"
-                              "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
+                              "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                               "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                               "   xml:base=\"/mnt/d/libOmexMeta/cmake-docs-build-debug-wsl-ubuntu1804-gcc101/bin/\">\n"
                               "  <rdf:Description rdf:about=\"http://omex-library.org/NewModel.omex#OmexMetaId0000\">\n"
@@ -176,7 +176,6 @@ TEST_F(RDFTests, TestParseFromUri) {
     ASSERT_EQ(expected, actual);
 }
 
-
 TEST_F(RDFTests, TestParseFromUriNonStatic) {
     RDF rdf;
     rdf.addFromUri(samples.sbml_url1, "rdfxml");
@@ -206,54 +205,6 @@ TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
         //
     }
 }
-
-
-/*
- * Will take some effort to learn how to use
- * postgresql.
- */
-//TEST_F(RDFTests, TestPostgresStorageWithUriParse) {
-//    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
-//    RDF rdf("postgresql", "postgresdb",
-//            "new='yes',host='localhost',database='ATestDB',user='ciaran',password=''");
-//    rdf.addFromUri(samples.sbml_url1, "rdfxml");
-//    int expected = 277;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-//    ASSERT_TRUE(std::filesystem::exists(fname));
-//    // clean up after ourselves
-//    std::filesystem::remove(fname);
-//}
-
-/*
- * This test takes too long. No use. Must use a different database.
- */
-//TEST_F(RDFTests, TestSqliteStorageLarseFile) {
-//    const char* xmlf = "/mnt/d/libOmexMeta/tests/cpp/brenda_parameters_1.xml";
-//    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
-//    RDF rdf("sqlite", fname, "new='yes'");
-//    rdf.addFromFile(xmlf, "rdfxml");
-//    int expected = 277;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-//    ASSERT_TRUE(std::filesystem::exists(fname));
-//    // clean up after ourselves
-////    std::filesystem::remove(fname);
-//}
-
-//TEST_F(RDFTests, TestBDBStorageLarseFile) {
-//    const char* xmlf = "/mnt/d/libOmexMeta/tests/cpp/brenda_parameters_1.xml";
-//    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
-//    RDF rdf("hashes", "BdbLargeFileTest.db",
-//                             "new='yes',hash-type='bdb',dir='/mnt/d/libOmexMeta/tests/cpp'");
-//    rdf.addFromFile(xmlf, "rdfxml");
-//    int expected = 277;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-//    ASSERT_TRUE(std::filesystem::exists(fname));
-//    // clean up after ourselves
-////    std::filesystem::remove(fname);
-//}
 
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
@@ -298,8 +249,8 @@ TEST_F(RDFTests, TestParseFromFileCollectedFromBiomodels) {
     RDF rdf = RDF::fromFile(fname, "rdfxml");
     std::string expected = rdf.toString("turtle");
     std::string actual = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                         "@prefix myOMEXlib: <http://omex-library.org/> .\n"
-                         "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                         "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                         "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                          "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                          "\n"
                          "local:metaid_0000002\n"
@@ -545,7 +496,6 @@ TEST_F(RDFTests, TestWriteToFile) {
     std::remove(fname.c_str());
 }
 
-
 TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
     std::string sbml = SBMLFactory::getSBML(SBML_BIOMD204);
     // first create a file containing annotations
@@ -557,7 +507,26 @@ TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
 
 }
 
+TEST_F(RDFTests, TestRepositoryPrefix){
+    RDF rdf = RDF::fromString(samples.singular_annotation1);
+    std::string turtle_string = rdf.toString("turtle");
+    std::string arg = "@prefix OMEXlib: <http://omex-library.org/> .";
+    ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
+}
 
+TEST_F(RDFTests, TestOmexPrefix){
+    RDF rdf = RDF::fromString(samples.singular_annotation1);
+    std::string turtle_string = rdf.toString("turtle");
+    std::string arg = "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .";
+    ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
+}
+
+TEST_F(RDFTests, TestLocalPrefix){
+    RDF rdf = RDF::fromString(samples.singular_annotation1);
+    std::string turtle_string = rdf.toString("turtle");
+    std::string arg = "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .";
+    ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
+}
 
 
 

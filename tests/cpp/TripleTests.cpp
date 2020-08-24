@@ -156,7 +156,7 @@ TEST(TripleTestsNoFixture, TestAbout) {
 
 TEST(TripleTestsNoFixture, TestAboutAgain) {
     Triple triple;
-    triple.setLocalUri("http://omex-library.org/omex.omex/model.xml");
+    triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
     triple.setAbout("metaid2");
     std::string expected = "http://omex-library.org/omex.omex/model.xml#metaid2";
     std::string actual = triple.getAbout();
@@ -167,7 +167,7 @@ TEST(TripleTestsNoFixture, TestAboutAgain) {
 TEST(TripleTestsNoFixture, TestAboutAgain2) {
     Triple triple;
 
-    triple.setLocalUri("http://omex-library.org/omex.omex/model.xml");
+    triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
     triple.setAbout("#metaid3");
     std::string expected = "http://omex-library.org/omex.omex/model.xml#metaid3";
     std::string actual = triple.getAbout();
@@ -228,7 +228,8 @@ TEST_F(TripleTests, TestStatementSubject) {
 
 TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple;
-    triple.setLocalUri("http://omex-library.org/NewOmex.omex/NewModel.xml");
+//    triple.setLocalUri("http://omex-library.org/NewOmex.omex/NewModel.rdf");
+    triple.setModelUri("http://omex-library.org/NewOmex.omex/NewModel.xml");
     triple.setAbout("#metaid1")
             .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
@@ -236,10 +237,10 @@ TEST_F(TripleTests, TestBuilderPattern1) {
     std::string actual = triple.str();
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
@@ -257,7 +258,7 @@ TEST_F(TripleTests, TestBuilderPattern1) {
 
 TEST_F(TripleTests, TestBuilderPattern2) {
     Triple triple;
-    triple.setLocalUri("http://omex-library.org/omex.omex/model.rdf");
+    triple.setModelUri("http://omex-library.org/omex.omex/model.xml#");
     triple.setAbout("#metaid00001")
             .setPredicate("bqbiol", "is")
             .setResourceBlank("Blank");
@@ -265,12 +266,12 @@ TEST_F(TripleTests, TestBuilderPattern2) {
     std::string actual = triple.str();
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/omex.omex/model.rdf#metaid00001\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/omex.omex/model.xml#metaid00001\">\n"
                            "    <bqbiol:is rdf:nodeID=\"Blank\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -285,16 +286,16 @@ TEST_F(TripleTests, TestBuilderPattern2) {
 
 TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     Triple triple;
-    triple.setLocalUri("http://omex-library.org/omex.omex/model.xml");
+    triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
     triple.setAbout("metaid1")
             .setPredicate("semsim", "hasSourceParticipant")
             .setResourceUri("uniprot/PD4034");
 
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/omex.omex/model.xml#metaid1\">\n"

@@ -43,7 +43,7 @@ namespace omexmeta {
         ~PhysicalForce() = default;
 
 
-        PhysicalForce(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
+        PhysicalForce(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
 
         /*
@@ -74,14 +74,14 @@ namespace omexmeta {
         /*
          * @brief constructor for instantiating a PhysicalForce type composite annotation
          * @param model. A librdf_model pass down by Editor.
-         * @param local_uri. String passed down by Editor. The local uri to use for metaids
+         * @param model_uri. String passed down by Editor. The local uri to use for metaids
          *
          * Users do not need to instantiate PhysicalForce manually, since it is done
          * by Editor. This constructor instantiates an empty PhysicalForce
          * object which is filled by
          *
          */
-        explicit PhysicalForce(librdf_model *model, const std::string& local_uri);
+        explicit PhysicalForce(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
 
         /*
          * @brief create a metaid for the physical force annotation
@@ -109,18 +109,6 @@ namespace omexmeta {
          * the caller to the returned Triples object.
          */
         [[nodiscard]] Triples toTriples() override;
-
-        /*
-         * @brief sets the about field of the PhysicalForce
-         * @param metaid id for the physical force. Result is relative to base_uri.
-         * @return a reference to this PhysicalForce to enable the builder interface.
-         *
-         * A Resource object with a URI node is instantiated using the
-         * the @param metaid.
-         *
-         * See Resource for more information about input format for @param metaid
-         */
-//        PhysicalForce &setAbout(std::string metaid);
 
         /*
          * @brief sets the physical property of the PhysicalForce
@@ -166,10 +154,6 @@ namespace omexmeta {
          * See SinkParticipant documentation for more details on arguments.
          */
         PhysicalForce & addSink(double multiplier, const std::string& physical_entity_reference);
-
-//        bool operator==(const PhysicalForce &rhs) const;
-//
-//        bool operator!=(const PhysicalForce &rhs) const;
 
         /*
          * @brief returns the number of sources associated with the

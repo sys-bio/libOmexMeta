@@ -15,7 +15,7 @@ namespace omexmeta {
     /*
      * @brief Use libcurl to download from url
      */
-    class CurlGet {
+     class CurlGet {
 
     private:
         /*

@@ -324,7 +324,7 @@
     <span class="p">}</span>
 
     <span class="kt">char</span> <span class="o">*</span><span class="n">RDF_getLocalUri</span><span class="p">(</span><span class="n">RDF</span> <span class="o">*</span><span class="n">rdf_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span> <span class="o">=</span> <span class="n">rdf_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">();</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span> <span class="o">=</span> <span class="n">rdf_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">();</span>
         <span class="kt">char</span> <span class="o">*</span><span class="n">cstr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">((</span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">));</span>
         <span class="n">strcpy</span><span class="p">(</span><span class="n">cstr</span><span class="p">,</span> <span class="n">str</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">cstr</span><span class="p">;</span>
@@ -423,7 +423,7 @@
     <span class="p">}</span>
 
     <span class="kt">char</span> <span class="o">*</span><span class="n">Editor_getLocalUri</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">();</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">();</span>
         <span class="kt">char</span> <span class="o">*</span><span class="n">cstr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">((</span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">));</span>
         <span class="n">strcpy</span><span class="p">(</span><span class="n">cstr</span><span class="p">,</span> <span class="n">str</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">cstr</span><span class="p">;</span>
@@ -477,7 +477,7 @@
 <span class="cm"> */</span>
     <span class="n">SingularAnnotation</span> <span class="o">*</span><span class="n">SingularAnnotation_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">auto</span> <span class="o">*</span><span class="n">singularAnnotation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingularAnnotation</span><span class="p">();</span>
-        <span class="n">singularAnnotation</span><span class="o">-&gt;</span><span class="n">setLocalUri</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">());</span>
+        <span class="n">singularAnnotation</span><span class="o">-&gt;</span><span class="n">setModelUri</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">singularAnnotation</span><span class="p">;</span>
     <span class="p">}</span>
 
@@ -572,7 +572,7 @@
 <span class="cm"> * PhysicalEntity class methods</span>
 <span class="cm"> */</span>
     <span class="n">PhysicalEntity</span> <span class="o">*</span><span class="nf">PhysicalEntity_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalEntity</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">());</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalEntity</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="nf">PhysicalEntity_delete</span><span class="p">(</span><span class="n">PhysicalEntity</span> <span class="o">*</span><span class="n">physical_entity_ptr</span><span class="p">)</span> <span class="p">{</span>
@@ -650,7 +650,7 @@
 <span class="cm"> * PhysicalProcess class methods</span>
 <span class="cm"> */</span>
     <span class="n">PhysicalProcess</span> <span class="o">*</span><span class="nf">PhysicalProcess_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalProcess</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">());</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalProcess</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="nf">PhysicalProcess_delete</span><span class="p">(</span><span class="n">PhysicalProcess</span> <span class="o">*</span><span class="n">physicalProcess</span><span class="p">)</span> <span class="p">{</span>
@@ -728,7 +728,7 @@
 <span class="cm"> * PhysicalForce class methods</span>
 <span class="cm"> */</span>
     <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalForce</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">());</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalForce</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="nf">PhysicalForce_delete</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
@@ -791,7 +791,7 @@
 <span class="cm"> * PersonalInformation class methods</span>
 <span class="cm"> */</span>
     <span class="n">PersonalInformation</span> <span class="o">*</span><span class="nf">PersonalInformation_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">PersonalInformation</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">PersonalInformation</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="nf">PersonalInformation_delete</span><span class="p">(</span><span class="n">PersonalInformation</span><span class="o">*</span> <span class="n">information</span><span class="p">)</span> <span class="p">{</span>
@@ -799,14 +799,14 @@
     <span class="p">}</span>
 
     <span class="kt">char</span> <span class="o">*</span><span class="nf">PersonalInformation_getLocalUri</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">information</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">about</span> <span class="o">=</span> <span class="n">information</span><span class="o">-&gt;</span><span class="n">getLocalUri</span><span class="p">();</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">about</span> <span class="o">=</span> <span class="n">information</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">();</span>
         <span class="kt">char</span> <span class="o">*</span><span class="n">cstr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">((</span><span class="n">about</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
         <span class="n">strcpy</span><span class="p">(</span><span class="n">cstr</span><span class="p">,</span> <span class="n">about</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">cstr</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="nf">PersonalInformation_setLocalUri</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">information</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">localUri</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">information</span><span class="o">-&gt;</span><span class="n">setLocalUri</span><span class="p">(</span><span class="n">localUri</span><span class="p">);</span>
+        <span class="n">information</span><span class="o">-&gt;</span><span class="n">setModelUri</span><span class="p">(</span><span class="n">localUri</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="n">PersonalInformation</span> <span class="o">*</span><span class="nf">PersonalInformation_addCreator</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">information</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>

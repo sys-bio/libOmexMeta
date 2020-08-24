@@ -43,8 +43,10 @@ static inline char *timenow();
 
 #define PRINTFUNCTION(format, ...)      fprintf(stderr, format, __VA_ARGS__)
 
-#define LOG_FMT             "%s | %-7s | %-15s | %s:%d | "
-#define LOG_ARGS(LOG_TAG)   timenow(), LOG_TAG, _FILE, __FUNCTION__, __LINE__
+#define LOG_FMT             "%s | %-7s %s:%d | %s | "
+#define LOG_ARGS(LOG_TAG)   timenow(), LOG_TAG, __FILE__, __LINE__ , __FUNCTION__
+#define LOG_ARGS2(LOG_TAG) timenow(), LOG_TAG, __FILE__ + ":" + __LINE__ + __FUNCTION__
+//#define LOG_ARGS(LOG_TAG)   timenow(), LOG_TAG, __LINE__ +":" + __LINE__+":" + __FUNCTION__
 
 #define NEWLINE     "\n"
 

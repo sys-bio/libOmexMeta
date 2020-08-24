@@ -54,7 +54,7 @@ namespace omexmeta {
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * Resource objects. It can be as long as needed.
          */
-        PhysicalEntity(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
+        PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
                        Resource is, Resources is_part_of);
 
         ~PhysicalEntity() = default;
@@ -85,15 +85,15 @@ namespace omexmeta {
          * @brief constructor for PhysicalEntity object.
          * @param model the librdf_model object in use. Passed down from Editor class during
          * instantiation.
-         * @param local_uri the current localName argument. Passed down from Editor
+         * @param model_uri the current localName argument. Passed down from Editor
          *
          * This alternative constructor is used when users use the builder interface
          * (which should actually be most of the time). The PhysicalEntity is instantiated
          * with only the model to allow for a better way of collecting necessary information
-         * from the user. The PhysicalEntity also needs access to the local_uri, which we pass
+         * from the user. The PhysicalEntity also needs access to the model_uri, which we pass
          * here.
          */
-        explicit PhysicalEntity(librdf_model *model, const std::string& local_uri);
+        explicit PhysicalEntity(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
 
 
 
@@ -123,20 +123,6 @@ namespace omexmeta {
          * @return vector of Resource objects representing anatomical location of physical entity
          */
         [[nodiscard]] const Resources &getLocationResources() const;
-
-        /*
-         * @brief sets the about portion of the PhysicalEntity.
-         * @param metaid the metaid for the PhysicalEntity.
-         * @return a reference to this Physical entity. Allows chaining together builder commands.
-         *
-         * A Subject with a URI node is automatically created with the metaid,
-         * which is the id of the model element representing the PhysicalEntity. The
-         * metaid is relative to the base_uri of the rdf document.
-         *
-         * This method is a part of the PhysicalEntity builder interface
-         *
-         */
-//        PhysicalEntity &setAbout(std::string metaid);
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance.

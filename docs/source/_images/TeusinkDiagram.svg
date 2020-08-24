@@ -529,5 +529,5 @@ digraph {
 	"L2008-09-16T14:00:06Z" [ label="2008-09-16T14:00:06Z", shape = record ];
 	"L2012-07-19T18:26:07Z" [ label="2012-07-19T18:26:07Z", shape = record ];
 
-	label="\n\nModel:\nfile://annotation-drawing.rdf\n\nNamespaces:\nmyOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
+	label="\n\nModel:\nfile://annotation-drawing.rdf\n\nNamespaces:\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
 }

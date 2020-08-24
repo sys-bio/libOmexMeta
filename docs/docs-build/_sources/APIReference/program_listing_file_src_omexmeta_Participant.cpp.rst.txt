@@ -32,7 +32,7 @@ Program Listing for File Participant.cpp
                  // work for Participant subclasses.
    //              metaid_template_str_(OmexMetaUtils::addLocalPrefixToMetaid(std::move(base_metaid), local_uri)),
                  metaid_template_str_(std::move(base_metaid)),
-                 local_uri_(std::move(local_uri)),
+                 model_uri_(std::move(local_uri)),
                  semsim_predicate_term_(std::move(semsim_predicate_term)),
                  multiplier_(multiplier),
                  physicalEntityReference_(std::move(physicalEntityReference)) {}
@@ -45,8 +45,8 @@ Program Listing for File Participant.cpp
            if (unique_participant_metaid_.empty()) {
                unique_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(model_, metaid_template_str_);
            }
-           process_metaid = OmexMetaUtils::addLocalPrefixToMetaid(process_metaid, local_uri_);
-           unique_participant_metaid_ = OmexMetaUtils::addLocalPrefixToMetaid(unique_participant_metaid_, local_uri_);
+           process_metaid = OmexMetaUtils::addLocalPrefixToMetaid(process_metaid, model_uri_);
+           unique_participant_metaid_ = OmexMetaUtils::addLocalPrefixToMetaid(unique_participant_metaid_, model_uri_);
    
            // todo preallocate num triples needed
            Triples triples;
@@ -80,7 +80,7 @@ Program Listing for File Participant.cpp
            }
    
            librdf_node *res2 = LibrdfNode::fromUriString(
-                   OmexMetaUtils::concatMetaIdAndUri(physicalEntityReference_, getLocalUri())
+                   OmexMetaUtils::concatMetaIdAndUri(physicalEntityReference_, getModelUri())
            ).get();
            if (res2 == nullptr) {
                throw NullPointerException("NullPointerException: Participant::toTriples: res2");
@@ -169,12 +169,12 @@ Program Listing for File Participant.cpp
            unique_participant_metaid_ = uniqueParticipantMetaid;
        }
    
-       const std::string &Participant::getLocalUri() const {
-           return local_uri_;
+       const std::string &Participant::getModelUri() const {
+           return model_uri_;
        }
    
-       void Participant::setLocalUri(const std::string &localUri) {
-           local_uri_ = localUri;
+       void Participant::setModelUri(const std::string &localUri) {
+           model_uri_ = localUri;
        }
    
        SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,

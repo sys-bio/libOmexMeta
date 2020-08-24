@@ -79,6 +79,9 @@ namespace omexmeta {
             PhysicalProcess process = editor_.newPhysicalProcess();
             process.setPhysicalProperty(reaction_metaid, "opb:OPB_00592");
 
+            LOG_DEBUG("physical property subject string: %s", process.getPhysicalProperty().getSubject().c_str());
+            LOG_DEBUG("physical property getAbout: %s", process.getAbout().c_str());
+
             // and pull out the listOf* elements for the reaction
             xmlNode* reactants_node = OmexMetaUtils::getChildElementCalled(reaction_node, "listOfReactants");
             xmlNode* products_node = OmexMetaUtils::getChildElementCalled(reaction_node, "listOfProducts");
@@ -101,7 +104,6 @@ namespace omexmeta {
                 if (xmlHasProp(reactant_node, (const xmlChar*)"stoichiometry"))
                     reactant_node_stoic = OmexMetaUtils::getXmlNodeProperty(reactant_node, "stoichiometry");
                 std::string reactant_node_species_ref = OmexMetaUtils::getXmlNodeProperty(reactant_node, "species");
-
 
                 // and begin looking for the species that has the reactant_node_species_ref
                 for (auto &species_node : species_elements){

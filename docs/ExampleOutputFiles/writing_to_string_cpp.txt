@@ -4,7 +4,7 @@ Serializing to ntriples:
 
 Serializing to turtle:
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -17,7 +17,7 @@ Serializing to rdfxml-xmp:
 <x:xmpmeta xmlns:x='adobe:ns:meta/'>
 <rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
 </x:xmpmeta>
 <?xpacket end='r'?>
@@ -28,14 +28,14 @@ Serializing to rdfxml-abbrev:
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
 
 
 
 Serializing to rdfxml:
 <?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex" xmlns:myOMEXlib="http://omex-library.org/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex" xmlns:OMEXlib="http://omex-library.org/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 </rdf:RDF>
 
 
@@ -52,7 +52,7 @@ digraph {
 
 	// Literals
 
-	label="\n\nModel:\nfile://\n\nNamespaces:\nmyOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
+	label="\n\nModel:\nfile://\n\nNamespaces:\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
 }
 
 

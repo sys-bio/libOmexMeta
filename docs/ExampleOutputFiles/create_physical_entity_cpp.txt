@@ -2,7 +2,7 @@
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001">
     <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000"/>

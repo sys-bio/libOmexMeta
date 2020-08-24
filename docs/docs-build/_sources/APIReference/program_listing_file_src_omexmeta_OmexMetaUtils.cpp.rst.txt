@@ -213,7 +213,7 @@ Program Listing for File OmexMetaUtils.cpp
        }
    
        std::vector<std::string>
-       OmexMetaUtils::configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name) {
+       OmexMetaUtils::configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name) {
            std::vector<std::string> vec;
            // create the default namespaces.
            if (!OmexMetaUtils::endsWith(repository_name, "/")){
@@ -224,13 +224,13 @@ Program Listing for File OmexMetaUtils.cpp
                omex_name += ".omex";
            }
    
-           std::string myomexlib_string = repository_name + omex_name;
-           vec.push_back(myomexlib_string);
+           std::string OMEXlib_string = repository_name + omex_name;
+           vec.push_back(OMEXlib_string);
    
            if (!OmexMetaUtils::endsWith(model_name, "#")) {
                model_name += "#";
            }
-           // we make myomex_string relative to myomexlib_string
+           // we make myomex_string relative to OMEXlib_string
            // logic for adding appropriate extension if not exist
            std::vector<std::string> suffixes = {".xml#", ".cellml#", ".sbml#"};
            bool has_appropriate_extension = false;
@@ -243,9 +243,9 @@ Program Listing for File OmexMetaUtils.cpp
    
            std::string myomex_string;
            if (has_appropriate_extension) {
-               myomex_string = myomexlib_string + +"/" + model_name;
+               myomex_string = OMEXlib_string + +"/" + model_name;
            } else {
-               myomex_string = myomexlib_string + "/" + model_name + ".xml#";
+               myomex_string = OMEXlib_string + "/" + model_name + ".xml#";
            }
            vec.push_back(myomex_string);
            assert(!myomex_string.empty());
@@ -267,7 +267,7 @@ Program Listing for File OmexMetaUtils.cpp
            }
    
            // Now we can docs-build up the local string
-           std::string local_string = myomexlib_string + "/" + os.str() + "rdf#";
+           std::string local_string = OMEXlib_string + "/" + os.str() + "rdf#";
            vec.push_back(local_string);
            assert(vec.size() == 3);
            return vec;
@@ -285,7 +285,7 @@ Program Listing for File OmexMetaUtils.cpp
                local = local + "#";
    //            throw std::invalid_argument("std::invalid_argument: concatMetaIdAndUri: "
    //                                        "Was expecting a local prefix to end with a '#' "
-   //                                        "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
+   //                                        "character, like http://OMEXlibrary.org/myomexarchive.omex/mymodel.rdf#. "
    //                                        "Recieved: " + local);
            }
            // if metaid also begins with '#' character, remove it.

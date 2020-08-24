@@ -172,7 +172,7 @@
     <span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">PhysicalPhenomenon</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span>
                                            <span class="n">PhysicalProperty</span> <span class="n">propertyResource</span><span class="p">,</span> <span class="n">AnnotationType</span> <span class="n">type</span><span class="p">)</span>
             <span class="o">:</span> <span class="n">model_</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">physical_property_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">propertyResource</span><span class="p">)),</span> <span class="n">type_</span><span class="p">(</span><span class="n">type</span><span class="p">),</span>
-            <span class="n">local_uri_</span><span class="p">(</span><span class="n">local_uri</span><span class="p">){}</span>
+            <span class="n">model_uri_</span><span class="p">(</span><span class="n">local_uri</span><span class="p">){}</span>
 
     <span class="n">PhysicalPhenomenon</span><span class="o">::~</span><span class="n">PhysicalPhenomenon</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
 
@@ -181,7 +181,7 @@
             <span class="o">:</span> <span class="n">model_</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="p">{}</span>
 
     <span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">PhysicalPhenomenon</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">)</span>
-        <span class="o">:</span> <span class="n">model_</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">local_uri_</span><span class="p">(</span><span class="n">local_uri</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="o">:</span> <span class="n">model_</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">model_uri_</span><span class="p">(</span><span class="n">local_uri</span><span class="p">)</span> <span class="p">{}</span>
 
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">getSubjectStr</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">physical_property_</span><span class="p">.</span><span class="n">getSubjectStr</span><span class="p">();</span>
@@ -220,7 +220,7 @@
         <span class="n">phenomenon</span><span class="p">.</span><span class="n">model_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">// not sure if this is right.</span>
         <span class="n">physical_property_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">phenomenon</span><span class="p">.</span><span class="n">physical_property_</span><span class="p">);</span>
         <span class="n">type_</span> <span class="o">=</span> <span class="n">phenomenon</span><span class="p">.</span><span class="n">type_</span><span class="p">;</span>
-        <span class="n">local_uri_</span> <span class="o">=</span> <span class="n">phenomenon</span><span class="p">.</span><span class="n">local_uri_</span><span class="p">;</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">phenomenon</span><span class="p">.</span><span class="n">model_uri_</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="n">PhysicalPhenomenon</span> <span class="o">&amp;</span><span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">PhysicalPhenomenon</span> <span class="o">&amp;&amp;</span><span class="n">phenomenon</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
@@ -229,7 +229,7 @@
             <span class="n">phenomenon</span><span class="p">.</span><span class="n">model_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">// not sure if this is right.</span>
             <span class="n">physical_property_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">phenomenon</span><span class="p">.</span><span class="n">physical_property_</span><span class="p">);</span>
             <span class="n">type_</span> <span class="o">=</span> <span class="n">phenomenon</span><span class="p">.</span><span class="n">type_</span><span class="p">;</span>
-        <span class="n">local_uri_</span> <span class="o">=</span> <span class="n">phenomenon</span><span class="p">.</span><span class="n">local_uri_</span><span class="p">;</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">phenomenon</span><span class="p">.</span><span class="n">model_uri_</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
@@ -258,17 +258,17 @@
         <span class="n">physical_property_id_</span> <span class="o">=</span> <span class="n">physicalPropertyId</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">local_uri_</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
-            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: local_uri_ is empty. &quot;</span>
-                                        <span class="s">&quot;Please use setLocalUri or pass to the constructor a &quot;</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">model_uri_</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: model_uri_ is empty. &quot;</span>
+                                        <span class="s">&quot;Please use setModelUri or pass to the constructor a &quot;</span>
                                         <span class="s">&quot;local uri. &quot;</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="n">local_uri_</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">model_uri_</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">setLocalUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">local_uri_</span> <span class="o">=</span> <span class="n">localUri</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">PhysicalPhenomenon</span><span class="o">::</span><span class="n">setModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">localUri</span><span class="p">;</span>
     <span class="p">}</span>
 
 

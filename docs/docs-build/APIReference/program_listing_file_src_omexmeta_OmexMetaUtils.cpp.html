@@ -361,7 +361,7 @@
     <span class="p">}</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span>
-    <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">configureSelfStrings</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">configurePrefixStrings</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_name</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
         <span class="c1">// create the default namespaces.</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">repository_name</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">)){</span>
@@ -372,13 +372,13 @@
             <span class="n">omex_name</span> <span class="o">+=</span> <span class="s">&quot;.omex&quot;</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myomexlib_string</span> <span class="o">=</span> <span class="n">repository_name</span> <span class="o">+</span> <span class="n">omex_name</span><span class="p">;</span>
-        <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">myomexlib_string</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OMEXlib_string</span> <span class="o">=</span> <span class="n">repository_name</span> <span class="o">+</span> <span class="n">omex_name</span><span class="p">;</span>
+        <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">OMEXlib_string</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">model_name</span> <span class="o">+=</span> <span class="s">&quot;#&quot;</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="c1">// we make myomex_string relative to myomexlib_string</span>
+        <span class="c1">// we make myomex_string relative to OMEXlib_string</span>
         <span class="c1">// logic for adding appropriate extension if not exist</span>
         <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">suffixes</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;.xml#&quot;</span><span class="p">,</span> <span class="s">&quot;.cellml#&quot;</span><span class="p">,</span> <span class="s">&quot;.sbml#&quot;</span><span class="p">};</span>
         <span class="kt">bool</span> <span class="n">has_appropriate_extension</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
@@ -391,9 +391,9 @@
 
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myomex_string</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">has_appropriate_extension</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">myomex_string</span> <span class="o">=</span> <span class="n">myomexlib_string</span> <span class="o">+</span> <span class="o">+</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">model_name</span><span class="p">;</span>
+            <span class="n">myomex_string</span> <span class="o">=</span> <span class="n">OMEXlib_string</span> <span class="o">+</span> <span class="o">+</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">model_name</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">myomex_string</span> <span class="o">=</span> <span class="n">myomexlib_string</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s">&quot;.xml#&quot;</span><span class="p">;</span>
+            <span class="n">myomex_string</span> <span class="o">=</span> <span class="n">OMEXlib_string</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s">&quot;.xml#&quot;</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">myomex_string</span><span class="p">);</span>
         <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">myomex_string</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span>
@@ -415,7 +415,7 @@
         <span class="p">}</span>
 
         <span class="c1">// Now we can docs-build up the local string</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_string</span> <span class="o">=</span> <span class="n">myomexlib_string</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;rdf#&quot;</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_string</span> <span class="o">=</span> <span class="n">OMEXlib_string</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;rdf#&quot;</span><span class="p">;</span>
         <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">local_string</span><span class="p">);</span>
         <span class="n">assert</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">vec</span><span class="p">;</span>
@@ -433,7 +433,7 @@
             <span class="n">local</span> <span class="o">=</span> <span class="n">local</span> <span class="o">+</span> <span class="s">&quot;#&quot;</span><span class="p">;</span>
 <span class="c1">//            throw std::invalid_argument(&quot;std::invalid_argument: concatMetaIdAndUri: &quot;</span>
 <span class="c1">//                                        &quot;Was expecting a local prefix to end with a &#39;#&#39; &quot;</span>
-<span class="c1">//                                        &quot;character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. &quot;</span>
+<span class="c1">//                                        &quot;character, like http://OMEXlibrary.org/myomexarchive.omex/mymodel.rdf#. &quot;</span>
 <span class="c1">//                                        &quot;Recieved: &quot; + local);</span>
         <span class="p">}</span>
         <span class="c1">// if metaid also begins with &#39;#&#39; character, remove it.</span>

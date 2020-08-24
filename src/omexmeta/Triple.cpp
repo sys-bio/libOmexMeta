@@ -55,20 +55,21 @@ namespace omexmeta {
         // deal with namespaces
         Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
-        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings("http://omex-library.org/", omex_name,
-                                                                             model_name);
+        std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings(
+                "http://omex-library.org/", omex_name, model_name);
 
+        LOG_DEBUG("Here needs attention. Don't forget. ");
         // make uri's for the namespaces
-        librdf_uri *myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
+        librdf_uri *OMEXlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
         librdf_uri *myomex = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[1].c_str());
         librdf_uri *local = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[2].c_str());
 
-        librdf_serializer_set_namespace(serializer, myomexlib, "myOMEXlib");
+        librdf_serializer_set_namespace(serializer, OMEXlib, "OMEXlib");
         librdf_serializer_set_namespace(serializer, myomex, "myOMEX");
         librdf_serializer_set_namespace(serializer, local, "local");
 
         // free the uri's now that we're done with them.
-        librdf_free_uri(myomexlib);
+        librdf_free_uri(OMEXlib);
         librdf_free_uri(myomex);
         librdf_free_uri(local);
 
@@ -120,32 +121,24 @@ namespace omexmeta {
         }
         // if not start with http, assume local_uri not included and add it on
         if (!OmexMetaUtils::startsWith(metaid, "http")) {
-            if (getLocalUri().empty()) {
+            if (getModelUri().empty()) {
                 throw std::logic_error("std::logic_error: Triple::setAbout: Trying to "
                                        "setAbout(), i.e. the subject portion of a singular annotation. Either "
-                                       "give a full uri (i.e. starts with http) or set the local_uri attribute"
-                                       "using setLocalUri() before calling setAbout().");
+                                       "give a full uri (i.e. starts with http) or set the model_uri attribute "
+                                       "using setModelUri() before calling setAbout().");
             }
-            metaid = getLocalUri() + metaid;
+            std::string model_uri = getModelUri();
+            if (OmexMetaUtils::endsWith(model_uri, "#")){
+                // has to be -1 from the end, otherwise we remove the string terminator
+                model_uri.erase(model_uri.end() - 1);
+            }
+            metaid = model_uri + "#" + metaid;
         }
-
 
         setSubject(LibrdfNode::fromUriString(metaid).get());
 
         return *this;
     }
-
-//    Triple &Triple::setAbout(const std::string &metaid) {
-//        if (metaid.rfind("http", 0) != 0){
-//            throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
-//                                        "begin with \"http\" which suggests that it is not properly"
-//                                        "formatted. Metaid's should look like: "
-//                                        "\"http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\"");
-//        }
-//        setSubject(LibrdfNode::fromUriString(metaid).get());
-//
-//        return *this;
-//    }
 
     Triple &
     Triple::setPredicate(const std::string &namespace_, const std::string &term) {
@@ -167,7 +160,6 @@ namespace omexmeta {
         librdf_statement_set_predicate(statement_, node.get());
         return *this;
     }
-
 
     Triple &Triple::setResourceLiteral(const std::string &literal) {
         // if getResource() node alredy exists, free before resetting
@@ -215,10 +207,20 @@ namespace omexmeta {
         return local_uri_;
     }
 
+    const std::string &Triple::getModelUri() const {
+        return model_uri_;
+    }
+
     void Triple::setLocalUri(std::string localUri) {
         if (!OmexMetaUtils::endsWith(localUri, "#"))
             localUri += "#";
         local_uri_ = localUri;
+    }
+
+    void Triple::setModelUri(const std::string& model_uri) {
+        if (!OmexMetaUtils::endsWith(model_uri, "#"))
+            model_uri_ += "#";
+        model_uri_ = model_uri;
     }
 
 }

@@ -129,7 +129,7 @@ class TestRDF(unittest.TestCase):
     def test_from_string_for_docs(self):
         rdf_str = """
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
@@ -257,7 +257,7 @@ class EditorTests(unittest.TestCase):
                     .set_resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -279,7 +279,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -320,7 +320,7 @@ local:SourceParticipant0000
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -359,7 +359,7 @@ local:SourceParticipant0000
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -532,7 +532,7 @@ class AnnotateAModelTest(unittest.TestCase):
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -826,7 +826,7 @@ end"""
 
 
 
-        # print(rdf.to_string("seria", "file://myOMEXLib.com"))
+        # print(rdf.to_string("seria", "file://OMEXlib.com"))
         # q = """SELECT *
         # WHERE { ?x ?y ?z }"""
         # rdf.query(q, "res")

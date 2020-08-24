@@ -310,9 +310,9 @@ TEST(TriplesTestsNoFixture, TestStr) {
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://subject1.com/subject1\">\n"
                            "    <ns1:predicate1 xmlns:ns1=\"http://predicate1.com/\"\n"

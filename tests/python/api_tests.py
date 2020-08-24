@@ -182,7 +182,7 @@ class TestAPI(unittest.TestCase):
    xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="file://./NewModel.xml#modelmeta1">
     <bqmodel:isDescribedBy rdf:resource="https://identifiers.org/pubmed/12991237"/>
@@ -296,7 +296,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         expected = r"""<?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:ns_="https://namespace.com"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
@@ -485,7 +485,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         )
         print(actual)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -503,7 +503,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "base".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -521,7 +521,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "base".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -539,7 +539,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "base".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -557,7 +557,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "base".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -575,7 +575,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "base".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -593,7 +593,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "base".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -685,7 +685,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex/NewModel.xml#"
-   xmlns:myOMEXlib="http://omex-library.org/NewOmex.omex"
+   xmlns:OMEXlib="http://omex-library.org/NewOmex.omex"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
@@ -708,7 +708,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         print(actual)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -824,7 +824,7 @@ local:cytosol
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000">
     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P456"/>
@@ -952,7 +952,7 @@ local:cytosol
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:semsim="http://www.bhi.washington.edu/semsim#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000">
@@ -999,7 +999,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1042,7 +1042,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
-@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .
+@prefix OMEXlib: <http://omex-library.org/NewOmex.omex> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1095,7 +1095,7 @@ local:cytosol
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1121,7 +1121,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1148,7 +1148,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1175,7 +1175,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1205,7 +1205,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1232,7 +1232,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1259,7 +1259,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -1286,7 +1286,7 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 

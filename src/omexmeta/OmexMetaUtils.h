@@ -94,15 +94,22 @@ namespace omexmeta {
         static bool assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string);
 
         /*
-         * @brief configures the "myOMEXlib", "myOMEX" and "local"
+         * @brief configures the "OMEXlib", "myOMEX" and "local"
          * prefixes
          * @ param omex_name the name of the omex container your model is in
          * @param model_name the name of the model your are annotating. Extension should
          * be included or it will be given the ".xml" suffix.
          */
         static std::vector<std::string>
-        configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name);
+        configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name);
 
+        /*
+         * @brief concatonate metaid and uri strings
+         * @param metaid string. Like "#metaid" or "metaid"
+         * @param uri string. Like "https://omex-library/jeff2019.omex/mymodel.xml" or "https://omex-library/jeff2019.omex/mymodel.rdf"
+         * @details Sometimes a uri has a trailing "#" and somtimes a metaid has a leading
+         * "#". This method concatonates whilst accounting for permutations of "#"
+         */
         static std::string concatMetaIdAndUri(std::string metaid, std::string uri);
 
         static std::string
@@ -119,6 +126,8 @@ namespace omexmeta {
         static xmlNode *getChildElementCalled(xmlNode *node, const std::string &name);
 
         static std::vector<xmlNode *> getAllChildElements(xmlNode *node);
+
+        static bool isSubString(const std::string &full_string, const std::string &substring);
     };
 }
 

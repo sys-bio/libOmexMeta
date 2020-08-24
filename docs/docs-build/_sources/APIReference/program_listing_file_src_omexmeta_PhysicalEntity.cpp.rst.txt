@@ -52,7 +52,7 @@ Program Listing for File PhysicalEntity.cpp
        PhysicalEntity &
        PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
            subject_metaid = OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
-           physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
+           physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
            return *this;
        }
    
@@ -132,7 +132,7 @@ Program Listing for File PhysicalEntity.cpp
    
            // now we add the local uri on to the metaid - If it already
            // properly formatted it will be left alone
-           physical_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_property_id_, getLocalUri());
+           physical_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_property_id_, getModelUri());
    
            // preallocate for efficiency
            Triples triples(getLocationResources().size() + 3);

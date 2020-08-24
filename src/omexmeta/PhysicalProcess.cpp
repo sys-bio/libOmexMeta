@@ -11,17 +11,17 @@
 
 namespace omexmeta {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string local_uri,
+    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri,std::string local_uri,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators)
-            : PhysicalPhenomenon(model, local_uri, physicalProperty, PHYSICAL_PROCESS),
-              sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
+            : PhysicalPhenomenon(model, model_uri, local_uri, physicalProperty, PHYSICAL_PROCESS),
+              sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
     }
 
     PhysicalProcess::PhysicalProcess(librdf_model *model) : PhysicalPhenomenon(model) {}
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string local_uri)
-        : PhysicalPhenomenon(model, local_uri) {}
+    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri)
+        : PhysicalPhenomenon(model, model_uri, local_uri) {}
 
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {
         return sources_;
@@ -35,11 +35,6 @@ namespace omexmeta {
         return mediators_;
     }
 
-//    PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
-//        physical_property_.setSubject(metaid);
-//        return (*this);
-//    }
-
     PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
         return (*this);
@@ -49,8 +44,10 @@ namespace omexmeta {
 //  and we automatically pick out the correct OPB identifier
     PhysicalProcess &
     PhysicalProcess::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getLocalUri());
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
+        LOG_DEBUG("subject_metaid: %s, getModelUri(): %s", subject_metaid.c_str(), getModelUri().c_str());
+        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
+        LOG_DEBUG("subject_metaid2: %s", subject_metaid.c_str());
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
         return (*this);
     }
 
@@ -59,7 +56,7 @@ namespace omexmeta {
                 std::move(SourceParticipant(model_,
                                             multiplier,
                                             std::move(physical_entity_reference),
-                                            getLocalUri()
+                                            getModelUri()
                           )
                 )
         );
@@ -71,7 +68,7 @@ namespace omexmeta {
                 std::move(SinkParticipant(
                         model_,
                         multiplier, std::move(physical_entity_reference),
-                        getLocalUri()
+                        getModelUri()
                 ))
         );
 
@@ -83,7 +80,7 @@ namespace omexmeta {
                 std::move(MediatorParticipant(
                         model_,
                         std::move(physical_entity_reference),
-                        getLocalUri()
+                        getModelUri()
                 ))
         );
 
@@ -142,37 +139,26 @@ namespace omexmeta {
                     "Use the setPhysicalProperty() method."
             );
         }
+        std::string process_id = generateMetaId("PhysicalProcess");
+        process_id = OmexMetaUtils::concatMetaIdAndUri(process_id, getLocalUri());
 
-        /*
-         * Is this a bug because the local prefix has been added to the metaid?
-         */
-//        if (physical_property_id_.empty()) {
-//            physical_property_id_ = OmexMetaUtils::generateUniqueMetaid(
-//                    model_, "PhysicalProcess",
-//                    std::vector<std::string>(),
-//                            getLocalUri());
-//        }
-//
-//        // now we add the local uri on to the metaid - If it already
-//        // properly formatted it will be left alone
-        physical_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_property_id_, getLocalUri());
+        LOG_DEBUG("getAbout: %s", getAbout().c_str());
 
         Triples triples = physical_property_.toTriples(getAbout());
 
-        std::cout << "getAbout" << getAbout() << std::endl;
 
         for (auto &source: sources_) {
-            for (auto &triple: source.toTriples(getAbout())) {
+            for (auto &triple: source.toTriples(process_id)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink: sinks_) {
-            for (auto &triple: sink.toTriples(getAbout())) {
+            for (auto &triple: sink.toTriples(process_id)) {
                 triples.move_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
-            for (auto &triple: mediator.toTriples(getAbout())) {
+            for (auto &triple: mediator.toTriples(process_id)) {
                 triples.move_back(triple);
             }
         }

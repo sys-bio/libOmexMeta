@@ -141,19 +141,20 @@ namespace omexmeta {
         write_base_uri_uri.freeUri();
         write_base_uri_node.freeNode();
 
-        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings("http://omex-library.org/", std::move(omex_name),
-                                                                             std::move(model_name));
+        std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings("http://omex-library.org/",
+                                                                               std::move(omex_name),
+                                                                               std::move(model_name));
 
         // make uri's for the namespaces
-        librdf_uri *myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
+        librdf_uri *OMEXlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
         librdf_uri *myomex = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[1].c_str());
         librdf_uri *local = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[2].c_str());
-        librdf_serializer_set_namespace(serializer, myomexlib, "myOMEXlib");
+        librdf_serializer_set_namespace(serializer, OMEXlib, "OMEXlib");
         librdf_serializer_set_namespace(serializer, myomex, "myOMEX");
         librdf_serializer_set_namespace(serializer, local, "local");
 
         // free the uri's now that we're done with them.
-        librdf_free_uri(myomexlib);
+        librdf_free_uri(OMEXlib);
         librdf_free_uri(myomex);
         librdf_free_uri(local);
 

@@ -35,7 +35,7 @@ Program Listing for File RDF.h
            std::string repository_uri_ = "http://omex-library.org/";
            std::string archive_uri_ = repository_uri_ + "NewOmex.omex";
            std::string model_uri_ = archive_uri_ + "/NewModel.xml#";
-           std::string local_uri_ = archive_uri_ + "/NewModel.rdf#";
+           std::string model_uri_ = archive_uri_ + "/NewModel.rdf#";
        public:
            const std::string &getRepositoryUri() const;
    
@@ -49,12 +49,12 @@ Program Listing for File RDF.h
    
            void setModelUri(std::string modelName);
    
-           const std::string &getLocalUri() const;
+           const std::string &getModelUri() const;
    
    
            NamespaceMap namespaces_;
            std::vector<std::string> seen_namespaces_;
-           const std::string myomexlib_ = "http://myOmexLibrary.org/";
+           const std::string OMEXlib_ = "http://OMEXlibrary.org/";
    
            // todo remove this field and replace with the one
            //  in Predicate. Should be a simple swap.

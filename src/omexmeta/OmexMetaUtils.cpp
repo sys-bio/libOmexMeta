@@ -49,6 +49,13 @@ namespace omexmeta {
         return tokens;
     }
 
+    bool OmexMetaUtils::isSubString(const std::string &full_string, const std::string &substring) {
+        if (full_string.find(substring) != std::string::npos) {
+            return true;
+        }
+        return false;
+    }
+
     std::string OmexMetaUtils::generateUniqueMetaid(
             librdf_model *model, const std::string &metaid_base,
             const std::vector<std::string> &exclusions,
@@ -72,7 +79,7 @@ namespace omexmeta {
         // on subject elements to remove the local uri portion
         for (int i = 0; i < subjects.size(); i++) {
             std::string sub = subjects[i];
-            if (OmexMetaUtils::startsWith(sub, "http")){
+            if (OmexMetaUtils::startsWith(sub, "http")) {
 //                LOG_DEBUG("subject string that starts with http: %s %s %s", sub.c_str(), results_map["predicate"][i].c_str(), results_map["object"][i].c_str());
                 auto v = OmexMetaUtils::splitStringBy(sub, '#');
                 assert(v.size() == 2);
@@ -219,40 +226,24 @@ namespace omexmeta {
     }
 
     std::vector<std::string>
-    OmexMetaUtils::configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name) {
+    OmexMetaUtils::configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name) {
         std::vector<std::string> vec;
-        // create the default namespaces.
         if (!OmexMetaUtils::endsWith(repository_name, "/")) {
             repository_name += "/";
         }
 
-        if (!OmexMetaUtils::endsWith(omex_name, ".omex")) {
-            omex_name += ".omex";
+        if (!OmexMetaUtils::endsWith(omex_name, ".omex/")) {
+            throw std::invalid_argument("Input to omex_name argument must end in \".omex/\"");
         }
 
-        std::string myomexlib_string = repository_name + omex_name;
-        vec.push_back(myomexlib_string);
+        std::string OMEXlib_string = repository_name;
+        vec.push_back(OMEXlib_string);
 
         if (!OmexMetaUtils::endsWith(model_name, "#")) {
             model_name += "#";
         }
-        // we make myomex_string relative to myomexlib_string
-        // logic for adding appropriate extension if not exist
-        std::vector<std::string> suffixes = {".xml#", ".cellml#", ".sbml#"};
-        bool has_appropriate_extension = false;
-        for (auto &it : suffixes) {
-            if (OmexMetaUtils::endsWith(model_name, it)) {
-                has_appropriate_extension = true;
-                break;
-            }
-        }
 
-        std::string myomex_string;
-        if (has_appropriate_extension) {
-            myomex_string = myomexlib_string + +"/" + model_name;
-        } else {
-            myomex_string = myomexlib_string + "/" + model_name + ".xml#";
-        }
+        std::string myomex_string = OMEXlib_string + omex_name;
         vec.push_back(myomex_string);
         assert(!myomex_string.empty());
         // now we know we have a string that definitely contains a suffux like .xml
@@ -272,8 +263,8 @@ namespace omexmeta {
             os << it << ".";
         }
 
-        // Now we can docs-build up the local string
-        std::string local_string = myomexlib_string + "/" + os.str() + "rdf#";
+        // Now we can build up the local string
+        std::string local_string = myomex_string + os.str() + "rdf#";
         vec.push_back(local_string);
         assert(vec.size() == 3);
         return vec;
@@ -285,6 +276,15 @@ namespace omexmeta {
         if (metaid.find(uri) != std::string::npos) {
             return metaid;
         }
+        // if metaid is already a uri, we throw an error as doing this is
+        // probably not what you want
+        if (OmexMetaUtils::startsWith(metaid, "http")) {
+            std::ostringstream err;
+            err << "Cannot concatonate metaid \"" << metaid << "\"and uri \"" << uri << "\" because ";
+            err << "metaid is already a uri" << std::endl;
+            throw std::logic_error("std::logic_error: OmexMetaUtils::startsWith() " + err.str());
+        }
+
         // Otherwise we concatonate:
         // first we check if uri has the # at the end. It should do.
         if (!OmexMetaUtils::endsWith(uri, "#")) {
@@ -322,7 +322,8 @@ namespace omexmeta {
     xmlDoc *OmexMetaUtils::parseXmlDocument(const std::string &xml_string) {
         xmlDoc *doc_ = xmlReadMemory(xml_string.c_str(), (int) xml_string.length() + 1, "noname.xml", nullptr, 0);
         if (doc_ == nullptr) {
-            throw NullPointerException("NullPointerException: OmexMetaUtils::parseXmlDocument: Could not read xml into document. nullptr");
+            throw NullPointerException(
+                    "NullPointerException: OmexMetaUtils::parseXmlDocument: Could not read xml into document. nullptr");
         }
         return doc_;
     }

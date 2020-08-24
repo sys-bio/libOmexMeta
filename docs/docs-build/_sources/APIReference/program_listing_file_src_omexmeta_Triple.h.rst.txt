@@ -45,7 +45,7 @@ Program Listing for File Triple.h
        class Triple : public LibrdfStatement {
    
            Triple(librdf_statement *statement);
-           std::string local_uri_; // like http:/omex-library.org/omex-archive.omex/model.xml
+           std::string model_uri_; // like http:/omex-library.org/omex-archive.omex/model.xml
    
        public:
    
@@ -60,9 +60,9 @@ Program Listing for File Triple.h
    
            static Triple fromRawStatementPtr(librdf_statement *statement);
    
-           const std::string &getLocalUri() const;
+           const std::string &getModelUri() const;
    
-           void setLocalUri(std::string localUri);
+           void setModelUri(std::string localUri);
            /*
             * @brief serialize the triple using a @format serializer.
             *

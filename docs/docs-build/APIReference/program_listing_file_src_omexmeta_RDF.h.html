@@ -183,7 +183,7 @@
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_uri_</span> <span class="o">=</span> <span class="s">&quot;http://omex-library.org/&quot;</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">archive_uri_</span> <span class="o">=</span> <span class="n">repository_uri_</span> <span class="o">+</span> <span class="s">&quot;NewOmex.omex&quot;</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">archive_uri_</span> <span class="o">+</span> <span class="s">&quot;/NewModel.xml#&quot;</span><span class="p">;</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri_</span> <span class="o">=</span> <span class="n">archive_uri_</span> <span class="o">+</span> <span class="s">&quot;/NewModel.rdf#&quot;</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">archive_uri_</span> <span class="o">+</span> <span class="s">&quot;/NewModel.rdf#&quot;</span><span class="p">;</span>
     <span class="k">public</span><span class="o">:</span>
         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getRepositoryUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
@@ -197,12 +197,12 @@
 
         <span class="kt">void</span> <span class="nf">setModelUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">modelName</span><span class="p">);</span>
 
-        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
 
         <span class="n">NamespaceMap</span> <span class="n">namespaces_</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">seen_namespaces_</span><span class="p">;</span>
-        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myomexlib_</span> <span class="o">=</span> <span class="s">&quot;http://myOmexLibrary.org/&quot;</span><span class="p">;</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OMEXlib_</span> <span class="o">=</span> <span class="s">&quot;http://OMEXlibrary.org/&quot;</span><span class="p">;</span>
 
         <span class="c1">// todo remove this field and replace with the one</span>
         <span class="c1">//  in Predicate. Should be a simple swap.</span>

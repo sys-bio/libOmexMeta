@@ -9,10 +9,12 @@
 
 namespace omexmeta {
 
-    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri)
-            : subject_(std::move(OmexMetaUtils::concatMetaIdAndUri(subject_str, local_uri))),
+    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri)
+            : subject_(std::move(OmexMetaUtils::concatMetaIdAndUri(subject_str, model_uri))),
               resource_(std::move(resource_str)),
-              local_uri_(local_uri){
+              model_uri_(model_uri){
+        LOG_INFO("model_uri: %s", model_uri.c_str() );
+        LOG_INFO("subject_str: %s", subject_str.c_str() );
         validate();
     }
 
@@ -35,12 +37,17 @@ namespace omexmeta {
 
 
     Triples PhysicalProperty::toTriples(std::string property_metaid) const {
-        property_metaid = OmexMetaUtils::concatMetaIdAndUri(property_metaid, getLocalUri());
+        if (!OmexMetaUtils::startsWith(property_metaid, "http")){
+            throw std::invalid_argument("std::invalid_argument: PhysicalProperty::toTriples: "
+                                        "Expected a full uri (i.e. begins with http) for property_metaid "
+                                        "argument but instead recieved \""+property_metaid+"\"");
+        }
         Triple is_version_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isVersionOf").getNode(),
                 Resource(LibrdfNode::fromUriString(resource_)).getNode()
         );
+
         Triple is_property_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
@@ -57,7 +64,14 @@ namespace omexmeta {
     }
 
     void PhysicalProperty::setSubject(const std::string &subject) {
-        subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getLocalUri());
+        LOG_DEBUG("subject before: %s", subject_.c_str());
+        LOG_DEBUG("subject: %s, getModelUri: %s", subject_.c_str(), getModelUri().c_str());
+        if (OmexMetaUtils::startsWith(subject, "http")){
+            subject_ = subject;
+        } else {
+            subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
+        }
+        LOG_DEBUG("subject after: %s", subject_.c_str());
     }
 
     const std::string &PhysicalProperty::getResourceStr() const {
@@ -85,12 +99,12 @@ namespace omexmeta {
         return resource_;
     }
 
-    const std::string &PhysicalProperty::getLocalUri() const {
-        return local_uri_;
+    const std::string &PhysicalProperty::getModelUri() const {
+        return model_uri_;
     }
 
-    void PhysicalProperty::setLocalUri(const std::string &localUri) {
-        local_uri_ = localUri;
+    void PhysicalProperty::setModelUri(const std::string &model_uri) {
+        model_uri_ = model_uri;
     }
 
 

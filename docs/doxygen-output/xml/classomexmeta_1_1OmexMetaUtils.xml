@@ -263,9 +263,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a0b5fd1b4237e1534f2339349efa1dd7a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt; std::string &gt; omexmeta::OmexMetaUtils::configureSelfStrings</definition>
+        <definition>std::vector&lt; std::string &gt; omexmeta::OmexMetaUtils::configurePrefixStrings</definition>
         <argsstring>(std::string repository_name, std::string omex_name, std::string model_name)</argsstring>
-        <name>configureSelfStrings</name>
+        <name>configurePrefixStrings</name>
         <param>
           <type>std::string</type>
           <declname>repository_name</declname>
@@ -460,7 +460,7 @@
       <member refid="classomexmeta_1_1OmexMetaUtils_1ade5e8d004b8f61618815a854d905a506" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>concatMetaIdAndUri</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertMatchByNewLine</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertRegexMatchSplitByNewLine</name></member>
-      <member refid="classomexmeta_1_1OmexMetaUtils_1a0b5fd1b4237e1534f2339349efa1dd7a" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>configureSelfStrings</name></member>
+      <member refid="classomexmeta_1_1OmexMetaUtils_1a0b5fd1b4237e1534f2339349efa1dd7a" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>configurePrefixStrings</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a046b603d6308242b70b55de6cb72325c" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>download</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a9c2b712b85f74fff9740477660f7b371" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>endsWith</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1ab72b362607e6bbdd0025eefa574cd073" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>exists</name></member>

@@ -32,12 +32,25 @@ namespace omexmeta {
         void collectElementNames(xmlNode *a_node);
 
     public:
+
+        /*
+         * @brief constructor for MarkupIdentifier
+         * @param markup a string of your xml.
+         */
         explicit MarkupIdentifier(std::string markup);
 
         ~MarkupIdentifier();
 
+        /*
+         * @brief test to see whether the xml passed to constructor is SBML
+         * @return true if xml passed to constructor is SBML
+         */
         bool isSBML();
 
+        /*
+         * @brief test to see whether the xml passed to constructor is CellML
+         * @return true if xml passed to constructor is CellML
+         */
         bool isCellML();
 
         [[nodiscard]] const std::vector<std::string> &getElementNames() const;

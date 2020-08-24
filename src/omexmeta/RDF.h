@@ -28,9 +28,9 @@ namespace omexmeta {
         typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
         std::string repository_uri_ = "http://omex-library.org/";
-        std::string archive_uri_ = repository_uri_ + "NewOmex.omex";
-        std::string model_uri_ = archive_uri_ + "/NewModel.xml#";
-        std::string local_uri_ = archive_uri_ + "/NewModel.rdf#";
+        std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
+        std::string model_uri_ = archive_uri_ + "NewModel.xml#";
+        std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
 
         /*
          * @brief autoset the xmlType variable based on xml content.
@@ -58,7 +58,7 @@ namespace omexmeta {
     public:
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
-        const std::string myomexlib_ = "http://myOmexLibrary.org/";
+        const std::string OMEXlib_ = "http://OMEXlibrary.org/";
 
         /*
          * @brief getter for xmlType attribue.
@@ -91,14 +91,14 @@ namespace omexmeta {
 
         /*
          * @brief getter for archiveUri attribute.
-         * @details default to http://omex-library.org/NewOmex.omex
+         * @details default to http://omex-library.org/NewOmex.omex/
          */
         const std::string &getArchiveUri() const;
 
         /*
          * @brief setter for archiveUri attribute.
          * @param archiveName the new name for archive uri attribute
-         * @details default to http://omex-library.org/NewOmex.omex
+         * @details default to http://omex-library.org/NewOmex.omex/
          */
         void setArchiveUri(std::string archiveName);
 
@@ -269,8 +269,25 @@ namespace omexmeta {
                              std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
+        /*
+         * @brief Write annotations to file
+         * @param format the expected output format. Options include:
+         * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
+         * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
+         * @param filename full path of file to write
+         * @param mime_type optional valid mime
+         * @param type_uri optional type uri
+         *
+         */
         void toFile(const std::string& format, const std::string& filename, const char* mime_type = nullptr, const char* type_uri = nullptr);
 
+        /*
+         * @brief instantiate an Editor object.
+         * @param xml the xml you want to open for editing. This can be any type of xml document, but SBML and CellML are most common.
+         * @param generate_new_metaids When true, will add metaids onto a copy of the xml source code for annotation. Default = false.
+         * @param OmexMetaXmlType an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is "OMEXMETA_TYPE_NOTSET"
+         * @details
+         */
         Editor toEditor(const std::string &xml, bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET);
 
         Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET);

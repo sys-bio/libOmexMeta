@@ -6,7 +6,7 @@ using namespace omexmeta;
 int main() {
     std::string turtle_string = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                                 "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                                "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                                "@prefix OMEXlib: <http://omex-library.org/> .\n"
                                 "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                                 "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                                 "\n"

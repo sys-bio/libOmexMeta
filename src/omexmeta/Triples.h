@@ -85,7 +85,7 @@ namespace omexmeta {
         std::string str(
                 const std::string &format = "rdfxml-abbrev",
                 std::string base = (std::filesystem::current_path() /= "annotations.rdf").string(),
-                std::string omex_name = "NewOmex.omex", std::string model_name = "NewModel.xml#"
+                std::string omex_name = "NewOmex.omex/", std::string model_name = "NewModel.xml#"
                 );
 
         void freeTriples();

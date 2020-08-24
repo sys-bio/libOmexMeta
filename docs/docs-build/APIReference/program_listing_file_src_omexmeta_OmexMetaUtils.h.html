@@ -250,14 +250,14 @@
         <span class="k">static</span> <span class="kt">bool</span> <span class="nf">assertMatchByNewLine</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">expected_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">actual_string</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief configures the &quot;myOMEXlib&quot;, &quot;myOMEX&quot; and &quot;local&quot;</span>
+<span class="cm">         * @brief configures the &quot;OMEXlib&quot;, &quot;myOMEX&quot; and &quot;local&quot;</span>
 <span class="cm">         * prefixes</span>
 <span class="cm">         * @ param omex_name the name of the omex container your model is in</span>
 <span class="cm">         * @param model_name the name of the model your are annotating. Extension should</span>
 <span class="cm">         * be included or it will be given the &quot;.xml&quot; suffix.</span>
 <span class="cm">         */</span>
         <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span>
-        <span class="n">configureSelfStrings</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_name</span><span class="p">);</span>
+        <span class="n">configurePrefixStrings</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_name</span><span class="p">);</span>
 
         <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local</span><span class="p">);</span>
 

@@ -25,8 +25,8 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
+                           "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1\">\n"
                            "    <bqbiol:isPartOf rdf:resource=\"cytosol\"/>\n"
@@ -55,8 +55,8 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
+                           "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"/>\n";
     std::string actual = rdf.toString();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -65,12 +65,14 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
 TEST_F(SBMLSemanticExtractionTests, test){
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
+    rdf.setArchiveUri("AnAwesomeOmex.omex");
+    rdf.setModelUri("Model1.xml");
     SBMLSemanticExtraction extraction(&rdf, model_string);
     extraction.extractProcessesFromReactions();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
@@ -111,6 +113,7 @@ TEST_F(SBMLSemanticExtractionTests, test){
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/:opb_1234> .\n"
                            "\n";
     std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
