@@ -265,7 +265,7 @@ namespace omexmeta {
          * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
          * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
          */
-        std::string toString(const std::string &format = "rdfxml-abbrev",
+        std::string toString(const std::string &format = "turtle",
                              std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
@@ -279,7 +279,8 @@ namespace omexmeta {
          * @param type_uri optional type uri
          *
          */
-        void toFile(const std::string& format, const std::string& filename, const char* mime_type = nullptr, const char* type_uri = nullptr);
+        void toFile(const std::string &filename, const std::string &format = "turtle", const char *mime_type = nullptr,
+                    const char *type_uri = nullptr);
 
         /*
          * @brief instantiate an Editor object.

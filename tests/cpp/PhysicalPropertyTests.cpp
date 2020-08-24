@@ -56,8 +56,8 @@ TEST_F(PhysicalPropertyTests, TestToTriples) {
     PhysicalProperty resource = PhysicalProperty("sub", "OPB/OPB_1234", model_uri);
     Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
-    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.rdf#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.rdf#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_1234> .\n";
+    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_1234> .\n";
     std::string actual = triples.str("ntriples", "PhysicalPropertyTests_TestToTriples");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expeted.c_str(), actual.c_str());
@@ -65,11 +65,11 @@ TEST_F(PhysicalPropertyTests, TestToTriples) {
 }
 
 TEST_F(PhysicalPropertyTests, TestToTriplesLowerCaseOPB) {
-    PhysicalProperty resource = PhysicalProperty("sub", "opb/opb_1234", local_uri);
-    Triples triples = resource.toTriples("prop");
+    PhysicalProperty resource = PhysicalProperty("sub", "opb/opb_1234", model_uri);
+    Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
-    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.rdf#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#prop> .\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.rdf#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
+    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
     std::string actual = triples.str("ntriples", "PhysicalPropertyTests_TestToTriplesLowerCaseOPB");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expeted.c_str(), actual.c_str());
@@ -77,11 +77,11 @@ TEST_F(PhysicalPropertyTests, TestToTriplesLowerCaseOPB) {
 }
 
 TEST_F(PhysicalPropertyTests, TestToTriplesUsingColonNotSlash) {
-    PhysicalProperty resource = PhysicalProperty("sub", "opb:opb_1234", local_uri);
-    Triples triples = resource.toTriples("prop");
+    PhysicalProperty resource = PhysicalProperty("sub", "opb:opb_1234", model_uri);
+    Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
-    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.rdf#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#prop> .\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.rdf#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
+    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
     std::string actual = triples.str("ntriples", "PhysicalPropertyTests_TestToTriplesUsingColonNotSlash");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expeted.c_str(), actual.c_str());

@@ -488,7 +488,7 @@ TEST_F(RDFTests, TestWriteToFile) {
     int expected = 1;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
-    rdf.toFile("turtle", fname);
+    rdf.toFile(fname, "turtle");
 
     std::filesystem::exists(fname);
 

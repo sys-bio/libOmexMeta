@@ -113,7 +113,7 @@ namespace omexmeta {
     }
 
     void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename) {
-        rdf_ptr->toFile(format, filename);
+        rdf_ptr->toFile(filename, format);
     }
 
     char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format) {

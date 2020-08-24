@@ -13,8 +13,6 @@ namespace omexmeta {
             : subject_(std::move(OmexMetaUtils::concatMetaIdAndUri(subject_str, model_uri))),
               resource_(std::move(resource_str)),
               model_uri_(model_uri){
-        LOG_INFO("model_uri: %s", model_uri.c_str() );
-        LOG_INFO("subject_str: %s", subject_str.c_str() );
         validate();
     }
 
@@ -37,25 +35,32 @@ namespace omexmeta {
 
 
     Triples PhysicalProperty::toTriples(std::string property_metaid) const {
+        LOG_DEBUG("Here");
         if (!OmexMetaUtils::startsWith(property_metaid, "http")){
             throw std::invalid_argument("std::invalid_argument: PhysicalProperty::toTriples: "
                                         "Expected a full uri (i.e. begins with http) for property_metaid "
                                         "argument but instead recieved \""+property_metaid+"\"");
         }
+        LOG_DEBUG("Here");
         Triple is_version_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isVersionOf").getNode(),
                 Resource(LibrdfNode::fromUriString(resource_)).getNode()
         );
+        LOG_DEBUG("Here");
 
         Triple is_property_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
                 LibrdfNode::fromUriString(property_metaid).get()
         );
+        LOG_DEBUG("Here");
         Triples triples;
+        LOG_DEBUG("Here");
         triples.move_back(is_property_of_triple);
+        LOG_DEBUG("Here");
         triples.move_back(is_version_of_triple);
+        LOG_DEBUG("Here");
         return triples;
     }
 

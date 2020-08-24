@@ -211,7 +211,7 @@ namespace omexmeta {
     }
 
     void
-    RDF::toFile(const std::string &format, const std::string &filename, const char *mime_type, const char *type_uri) {
+    RDF::toFile(const std::string &filename, const std::string &format, const char *mime_type, const char *type_uri) {
         std::string syntax = toString(format, filename, mime_type, type_uri);
         std::ofstream f(filename);
         if (f.is_open()) {

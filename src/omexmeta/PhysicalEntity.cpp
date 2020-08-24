@@ -110,10 +110,12 @@ namespace omexmeta {
         std::string entity_id = generateMetaId("PhysicalEntity");
         LOG_DEBUG("%s", entity_id.c_str());
         entity_id = OmexMetaUtils::concatMetaIdAndUri(entity_id, getLocalUri());
-
+        LOG_DEBUG("HERE");
         // preallocate for efficiency
         Triples triples((int)getLocationResources().size() + 3);
+        LOG_DEBUG("HERE");
         Triples physical_property_triples = physical_property_.toTriples(entity_id);
+        LOG_DEBUG("HERE");
         for (auto &it : physical_property_triples) {
             triples.move_back(it); // moves the statement
         }
