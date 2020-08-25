@@ -8,7 +8,6 @@
 #include "omexmeta/Query.h"
 #include "omexmeta/CurlGet.h"
 #include "omexmeta/MetaID.h"
-#include "omexmeta/logger.h"
 
 #include "LibrdfQuery.h"
 

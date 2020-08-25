@@ -120,7 +120,6 @@ namespace omexmeta {
             // to the model.
             entity_id_ = generateMetaId("PhysicalEntity");
         }
-        LOG_DEBUG("PhysicalEntity ID 1: %s", entity_id_.c_str());
         entity_id_ = OmexMetaUtils::concatMetaIdAndUri(entity_id_, getLocalUri());
         // preallocate for efficiency
         Triples triples((int)getLocationResources().size() + 3);

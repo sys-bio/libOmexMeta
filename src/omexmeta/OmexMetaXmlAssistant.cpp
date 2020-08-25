@@ -3,7 +3,7 @@
 //
 
 #include "OmexMetaXmlAssistant.h"
-#include "HERE.h"
+
 
 namespace omexmeta {
     OmexMetaXmlAssistant::OmexMetaXmlAssistant(std::string xml, std::string metaid_base, int metaid_num_digits,

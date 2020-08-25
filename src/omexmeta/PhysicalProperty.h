@@ -13,7 +13,6 @@
 #include "Triple.h"
 #include "Triples.h"
 #include <regex>
-#include "omexmeta/HERE.h"
 
 using namespace redland;
 

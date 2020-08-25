@@ -13,7 +13,7 @@ namespace omexmeta {
     Participant::Participant(librdf_model *model, std::string base_metaid,
                              const std::string &model_uri, const std::string &local_uri,
                              std::string semsim_predicate_term,
-                             double multiplier,
+                             int multiplier,
                              std::string physicalEntityReference)
             : model_(model),
               metaid_template_str_(std::move(base_metaid)),
@@ -187,12 +187,12 @@ namespace omexmeta {
         model_uri_ = model_uri;
     }
 
-    SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,
+    SourceParticipant::SourceParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference,
                                          const std::string &model_uri, const std::string &local_uri)
             : Participant(model, "SourceParticipant", model_uri, local_uri, "hasSourceParticipant",
                           multiplier, std::move(physicalEntityReference)) {}
 
-    SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
+    SinkParticipant::SinkParticipant(librdf_model *model, int multiplier,
                                      std::string physicalEntityReference, const std::string &model_uri,
                                      const std::string &local_uri)
             : Participant(model, "SinkParticipant", model_uri, local_uri,
@@ -205,7 +205,7 @@ namespace omexmeta {
             const std::string &local_uri)
             : Participant(model, "MediatorParticipant", model_uri, local_uri,
                           "hasMediatorParticipant",
-                          0.0, std::move(physicalEntityReference)) {}
+                          0, std::move(physicalEntityReference)) {}
 
 
 }

@@ -328,7 +328,6 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
 
 
 TEST_F(PhysicalEntityTests, TestTriples) {
-    LOG_DEBUG("here");
     PhysicalEntity physicalEntity(
             model.get(),
             model_uri,
@@ -340,9 +339,7 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                      Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
-    LOG_DEBUG("here");
     Triples triples = physicalEntity.toTriples();
-    LOG_DEBUG("here");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -357,11 +354,8 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
                            "\n";
-    LOG_DEBUG("here");
     std::string s = triples.str("turtle");
-    LOG_DEBUG("here");
     std::cout << s << std::endl;
-    LOG_DEBUG("here");
     ASSERT_STREQ(s.c_str(), expected.c_str());
     triples.freeTriples();
 

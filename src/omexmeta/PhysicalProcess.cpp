@@ -44,9 +44,7 @@ namespace omexmeta {
 //  and we automatically pick out the correct OPB identifier
     PhysicalProcess &
     PhysicalProcess::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        LOG_DEBUG("subject_metaid: %s, getModelUri(): %s", subject_metaid.c_str(), getModelUri().c_str());
         subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
-        LOG_DEBUG("subject_metaid2: %s", subject_metaid.c_str());
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
         return (*this);
     }

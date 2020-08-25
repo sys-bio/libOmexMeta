@@ -12,7 +12,6 @@
 
 #include "iostream"
 #include <vector>
-#include "omexmeta/HERE.h"
 
 using namespace redland;
 

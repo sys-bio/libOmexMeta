@@ -6,7 +6,6 @@
 #include "SBMLFactory.h"
 #include "omexmeta/OmexMetaXmlAssistant.h"
 #include <thread>
-#include "omexmeta/HERE.h"
 
 using namespace omexmeta;
 

@@ -198,9 +198,6 @@ namespace omexmeta {
             serializer.setNamespace(it.first, it.second);
         }
         //todo play around with myOMEX
-        LOG_DEBUG("%s", getRepositoryUri().c_str());
-        LOG_DEBUG("%s", getArchiveUri().c_str());
-        LOG_DEBUG("%s", getLocalUri().c_str());
         serializer.setNamespace(getRepositoryUri(), "OMEXlib");
         serializer.setNamespace(getArchiveUri(), "myOMEX");
         serializer.setNamespace(getLocalUri(), "local");

@@ -74,14 +74,11 @@ namespace omexmeta {
     }
 
     void PhysicalProperty::setSubject(const std::string &subject) {
-        LOG_DEBUG("subject before: %s", subject_.c_str());
-        LOG_DEBUG("subject: %s, getModelUri: %s", subject_.c_str(), getModelUri().c_str());
         if (OmexMetaUtils::startsWith(subject, "http")){
             subject_ = subject;
         } else {
             subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
         }
-        LOG_DEBUG("subject after: %s", subject_.c_str());
     }
 
     const std::string &PhysicalProperty::getResourceStr() const {

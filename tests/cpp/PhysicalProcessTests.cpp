@@ -204,7 +204,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
-    LOG_INFO("model uri: %s", model_uri.c_str());
     PhysicalProcess process(
             model.get(),
             model_uri,

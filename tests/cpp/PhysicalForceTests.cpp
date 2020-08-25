@@ -255,29 +255,19 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
 
 
 TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
-    LOG_DEBUG("here");
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
-    LOG_DEBUG("here");
     std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
-    LOG_DEBUG("here");
     RDF rdf;
-    LOG_DEBUG("here");
     PhysicalForce force(rdf.getModel());
-    LOG_DEBUG("here");
     force.setModelUri(model_uri);
-    LOG_DEBUG("here");
     force.setLocalUri(local_uri);
-    LOG_DEBUG("here");
     //todo considering implementing the builder as a composite builder
     force.setPhysicalProperty("Force5", "OPB:OPB_00340")
             .addSource(1, "#PhysicalEntityReference1")
             .addSink(2, "PhysicalEntityReference2")
             .addSink(1, "PhysicalEntityReference3");
-    LOG_DEBUG("here");
     Triples triples = force.toTriples();
-    LOG_DEBUG("here");
     std::string actual = triples.str("turtle");
-    LOG_DEBUG("here");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"

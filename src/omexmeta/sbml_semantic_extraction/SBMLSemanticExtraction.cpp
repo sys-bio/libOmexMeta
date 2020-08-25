@@ -34,7 +34,6 @@ namespace omexmeta {
             for (auto & compartment_node: compartments){
                 // if the compartment matches the species_compartment_metaid
                 std::string compartment_id = OmexMetaUtils::getXmlNodeProperty(compartment_node, "id");
-                LOG_DEBUG("compartment_id: %s", compartment_id.c_str());
                 if (compartment_id_that_species_node_belongs_to == compartment_id){
                     // collect the compartments metaid
                     std::string compartment_metaid_that_species_node_belongs_to = OmexMetaUtils::getXmlNodeProperty(compartment_node, "metaid");
@@ -73,14 +72,9 @@ namespace omexmeta {
             std::string reaction_id = OmexMetaUtils::getXmlNodeProperty(reaction_node, "id");
             std::string reaction_metaid = OmexMetaUtils::getXmlNodeProperty(reaction_node, "metaid");
 
-            LOG_DEBUG("reaction id: %s, reaction metaid: %s", reaction_id.c_str(), reaction_metaid.c_str());
-
             // begin the annotation
             PhysicalProcess process = editor_.newPhysicalProcess();
             process.setPhysicalProperty(reaction_metaid, "opb:OPB_00592");
-
-            LOG_DEBUG("physical property subject string: %s", process.getPhysicalProperty().getSubject().c_str());
-            LOG_DEBUG("physical property getAbout: %s", process.getAbout().c_str());
 
             // and pull out the listOf* elements for the reaction
             xmlNode* reactants_node = OmexMetaUtils::getChildElementCalled(reaction_node, "listOfReactants");

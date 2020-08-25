@@ -648,24 +648,24 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
 }
 
 TEST_F(EditorTests, TestPhysicalEntityBuilder) {
-    LOG_INFO("HERE");
+    
     RDF rdf;
-    LOG_INFO("HERE");
+    
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true,
             OMEXMETA_TYPE_SBML);
-    LOG_INFO("HERE");
+    
 
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    LOG_INFO("HERE");
+    
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
-    LOG_INFO("HERE");
+    
 
     editor.addPhysicalEntity(physicalEntity);
-    LOG_INFO("HERE");
+    
 
     int expected = 4;
     int actual = rdf.size();
@@ -768,7 +768,6 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
             .setPhysicalProperty("#OmexMetaId0002", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
-    LOG_DEBUG("%s", physicalForce.toTriples().str().c_str());
     editor.addPhysicalForce(physicalForce);
     ASSERT_EQ(8, rdf.size());
     editor.removePhysicalForce(physicalForce);
@@ -1613,17 +1612,13 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
         editor.addSingleAnnotationNoValidation(it);
         editor.addNamespaceFromAnnotation(it.getPredicateStr());
     }
-    LOG_DEBUG("rdf.toString(): %s", rdf.toString().c_str());
     ASSERT_EQ(4, rdf.size());
     triples.freeTriples();
 
     Triples triples2 = physicalEntity.toTriples();
     for (auto &it: triples2) {
-        LOG_DEBUG("it.str(): %s", it.str().c_str());
         editor.removeSingleAnnotation(it);
     }
-    LOG_DEBUG("%s", rdf.toString().c_str());
-
     ASSERT_EQ(0, rdf.size());
 //    triples2.freeTriples();
 }
@@ -1672,8 +1667,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
-    LOG_DEBUG("triple1: %s", triple1.str().c_str());
-    LOG_DEBUG("rdf: %s", rdf.toString().c_str());
     editor.removeSingleAnnotation(triple1);
     ASSERT_EQ(3, rdf.size());
     triple1.freeTriple();
@@ -1781,12 +1774,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
 
-    LOG_DEBUG("rdf: %s", rdf.toString().c_str() );
-    LOG_DEBUG("triple 1: %s", triple1.str().c_str());
-    LOG_DEBUG("triple 2: %s", triple2.str().c_str());
-    LOG_DEBUG("triple 3: %s", triple3.str().c_str());
-    LOG_DEBUG("triple 4: %s", triple4.str().c_str());
-
     editor.removeSingleAnnotation(triple3);
     ASSERT_EQ(3, rdf.size());
 
@@ -1840,9 +1827,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
-    LOG_DEBUG("rdf: %s", rdf.toString().c_str() );
-    LOG_DEBUG("triple 4: %s", triple4.str().c_str());
-
     editor.removeSingleAnnotation(triple4);
     ASSERT_EQ(3, rdf.size());
 
@@ -1896,11 +1880,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
-
-    LOG_DEBUG("rdf: %s", rdf.toString().c_str());
-    LOG_DEBUG("triple1: %s", triple1.str().c_str());
-    LOG_DEBUG("triple2: %s", triple2.str().c_str());
-
 
     editor.removeSingleAnnotation(triple1);
     editor.removeSingleAnnotation(triple2);

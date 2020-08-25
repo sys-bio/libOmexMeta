@@ -257,7 +257,6 @@ namespace omexmeta {
         Triples triples = physicalPhenomenon->toTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
-            LOG_DEBUG("%s", triple.str().c_str());
             model_.removeStatement(triple.getStatement());
         }
     }
