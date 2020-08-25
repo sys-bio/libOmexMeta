@@ -75,9 +75,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1a2573a54059bee6839059fc70db5b353e" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::Participant::unique_participant_metaid_</definition>
+        <definition>std::string omexmeta::Participant::local_participant_metaid_</definition>
         <argsstring></argsstring>
-        <name>unique_participant_metaid_</name>
+        <name>local_participant_metaid_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -449,7 +449,7 @@
       <member refid="classomexmeta_1_1Participant_1a1188d6a2036514eb6b649ce1e08eca4d" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>setPredicate</name></member>
       <member refid="classomexmeta_1_1Participant_1a5e8f680950f55230587c0f85498c5047" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>setUniqueParticipantMetaid</name></member>
       <member refid="classomexmeta_1_1Participant_1aefb917ccc60d8652046f5e8abfd44854" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>toTriples</name></member>
-      <member refid="classomexmeta_1_1Participant_1a2573a54059bee6839059fc70db5b353e" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>unique_participant_metaid_</name></member>
+      <member refid="classomexmeta_1_1Participant_1a2573a54059bee6839059fc70db5b353e" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>local_participant_metaid_</name></member>
       <member refid="classomexmeta_1_1Participant_1a78529cee5b9d5b30d76f937af652d4f0" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>~Participant</name></member>
     </listofallmembers>
   </compounddef>

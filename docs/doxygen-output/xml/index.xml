@@ -418,7 +418,7 @@
     <member refid="classomexmeta_1_1Participant_1acc6eb18feca176230dfd107f94a7b0db" kind="variable"><name>semsim_predicate_term_</name></member>
     <member refid="classomexmeta_1_1Participant_1aba352cbcc6db3a2df58c08d544c8e3bd" kind="variable"><name>multiplier_</name></member>
     <member refid="classomexmeta_1_1Participant_1ae0d944207f96c78ccfc0002a7084d861" kind="variable"><name>physicalEntityReference_</name></member>
-    <member refid="classomexmeta_1_1Participant_1a2573a54059bee6839059fc70db5b353e" kind="variable"><name>unique_participant_metaid_</name></member>
+    <member refid="classomexmeta_1_1Participant_1a2573a54059bee6839059fc70db5b353e" kind="variable"><name>local_participant_metaid_</name></member>
     <member refid="classomexmeta_1_1Participant_1a3c5e24de1d42e00ebf0b9d05fda0bdab" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1Participant_1aee7846dcbb910dd394a0683841ab723a" kind="function"><name>setMultiplier</name></member>
     <member refid="classomexmeta_1_1Participant_1a415c1205762dff6943426d830d74edcd" kind="function"><name>setPhysicalEntityReference</name></member>

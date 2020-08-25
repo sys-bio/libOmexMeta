@@ -22,7 +22,7 @@ public:
         model = LibrdfModel(storage.get());
     };
 
-    ~ParticipantTests() {
+    ~ParticipantTests() override {
         storage.freeStorage();
         model.freeModel();
     };
@@ -70,7 +70,7 @@ TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::string actual = sink.getLocalUri();
     std::cout << actual << std::endl;
-    std::string expected = model_uri;
+    std::string expected = local_uri;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
 }
@@ -81,7 +81,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     Triple triple(
             LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
             SemSim(sink.getPredicate()).getNode(),
-            LibrdfNode::fromUriString(sink.getLocalUri() + sink.getPhysicalEntityReference()).get()
+            LibrdfNode::fromUriString(sink.getModelUri() + sink.getPhysicalEntityReference()).get()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -90,7 +90,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#SinkParticipant>\n"
+                           "local:SinkParticipant\n"
                            "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
                            "\n"
                            "";
@@ -105,7 +105,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     Triple triple(
             LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
             SemSim(sink.getPredicate()).getNode(),
-            LibrdfNode::fromUriString(sink.getLocalUri() + sink.getPhysicalEntityReference()).get()
+            LibrdfNode::fromUriString(sink.getModelUri() + sink.getPhysicalEntityReference()).get()
     );
     Triples triples;
     triples.move_back(triple);
@@ -116,7 +116,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#SinkParticipant>\n"
+                           "local:SinkParticipant\n"
                            "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
                            "\n"
                            "";
@@ -139,7 +139,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
                            "\n"
                            "<https://metaid>\n"

@@ -190,11 +190,11 @@
     <span class="p">}</span>
 
     <span class="n">Triples</span> <span class="n">Participant</span><span class="o">::</span><span class="n">toTriples</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">process_metaid</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
-            <span class="n">unique_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="n">metaid_template_str_</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">local_participant_metaid_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">local_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="n">metaid_template_str_</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="n">process_metaid</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">process_metaid</span><span class="p">,</span> <span class="n">model_uri_</span><span class="p">);</span>
-        <span class="n">unique_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">,</span> <span class="n">model_uri_</span><span class="p">);</span>
+        <span class="n">local_participant_metaid_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">local_participant_metaid_</span><span class="p">,</span> <span class="n">model_uri_</span><span class="p">);</span>
 
         <span class="c1">// todo preallocate num triples needed</span>
         <span class="n">Triples</span> <span class="n">triples</span><span class="p">;</span>
@@ -210,13 +210,13 @@
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span><span class="s">&quot;NullPointerException: Participant::toTriples: pred1&quot;</span><span class="p">);</span>
         <span class="p">}</span>
 
-        <span class="n">librdf_node</span> <span class="o">*</span><span class="n">res1</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
+        <span class="n">librdf_node</span> <span class="o">*</span><span class="n">res1</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">local_participant_metaid_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">res1</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span><span class="s">&quot;NullPointerException: Participant::toTriples: res1&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="n">triples</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">sub1</span><span class="p">,</span> <span class="n">pred1</span><span class="p">,</span> <span class="n">res1</span><span class="p">);</span>
 
-        <span class="n">librdf_node</span> <span class="o">*</span><span class="n">sub2</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
+        <span class="n">librdf_node</span> <span class="o">*</span><span class="n">sub2</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">local_participant_metaid_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">sub2</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span><span class="s">&quot;NullPointerException: Participant::toTriples: sub2&quot;</span><span class="p">);</span>
@@ -239,7 +239,7 @@
             <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">multiplier_os</span><span class="p">;</span>
             <span class="n">multiplier_os</span> <span class="o">&lt;&lt;</span> <span class="n">multiplier_</span><span class="p">;</span>
 
-            <span class="n">librdf_node</span> <span class="o">*</span><span class="n">sub3</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">unique_participant_metaid_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
+            <span class="n">librdf_node</span> <span class="o">*</span><span class="n">sub3</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">local_participant_metaid_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">sub3</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span><span class="s">&quot;NullPointerException: Participant::toTriples: sub3&quot;</span><span class="p">);</span>
             <span class="p">}</span>
@@ -294,7 +294,7 @@
                <span class="n">semsim_predicate_term_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">semsim_predicate_term_</span> <span class="o">&amp;&amp;</span>
                <span class="n">multiplier_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">multiplier_</span> <span class="o">&amp;&amp;</span>
                <span class="n">physicalEntityReference_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">physicalEntityReference_</span> <span class="o">&amp;&amp;</span>
-               <span class="n">unique_participant_metaid_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">unique_participant_metaid_</span><span class="p">;</span>
+               <span class="n">local_participant_metaid_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">local_participant_metaid_</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="kt">bool</span> <span class="n">Participant</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">Participant</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
@@ -310,11 +310,11 @@
     <span class="p">}</span>
 
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">Participant</span><span class="o">::</span><span class="n">getUniqueParticipantMetaid</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">unique_participant_metaid_</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">local_participant_metaid_</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">Participant</span><span class="o">::</span><span class="n">setUniqueParticipantMetaid</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uniqueParticipantMetaid</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">unique_participant_metaid_</span> <span class="o">=</span> <span class="n">uniqueParticipantMetaid</span><span class="p">;</span>
+        <span class="n">local_participant_metaid_</span> <span class="o">=</span> <span class="n">uniqueParticipantMetaid</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">Participant</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>

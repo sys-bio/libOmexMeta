@@ -24,6 +24,13 @@ namespace omexmeta {
     typedef std::vector<std::shared_ptr<Triple>> SharedTripleVector;
     typedef std::vector<Triple> TripleVector;
 
+    /*
+     * @brief A Triples object is a collection of Triple objects.
+     * @details the implementation of Triples is hampered by the
+     * inability to clone Triple objects. Instead triples must use
+     * move semantics to get Triples in or out of a Triples object.
+     * Under the hood, the Triples object is just a std::vector<Triple>.
+     */
     class Triples {
     private:
 
@@ -48,38 +55,117 @@ namespace omexmeta {
          */
         explicit Triples(Triple &triple);
 
+        /*
+         * @brief construct a Triples object directly from a
+         * std::vector<Triple>
+         */
         explicit Triples(std::vector<Triple> triples);
 
         bool operator==(const Triples &rhs) const;
 
         bool operator!=(const Triples &rhs) const;
 
+        /*
+         * @brief move a Triple to the back of
+         * the Triples object. Analogous to push
+         * back but with move semantics.
+         */
         void move_back(Triple &triple);
 
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource);
 
+
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(Subject subject, const Predicate &predicate, const Resource &resource);
 
+
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource);
 
+
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource &resource);
 
+
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(Subject subject, DCTerm predicate, const Resource &resource);
 
+
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(Subject subject, SemSim predicate, const Resource &resource);
 
+        /*
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
         void emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
+        /*
+         * @brief get all subjects as strings
+         * @details we do not return the subject itself because subjects
+         * cannot be copied, which complicates matters.
+         * @returns All subject uri's as strings in a std::vector
+         */
         std::vector<std::string> getSubjectsStr();
 
+        /*
+         * @brief get all predicates as strings
+         * @details we do not return the predicate itself because Predicate objects
+         * cannot be copied.
+         * @returns All predicate uri's as strings in a std::vector
+         */
         std::vector<std::string> getPredicates();
 
+        /*
+         * @brief get all resources as strings
+         * @details we do not return the Resource itself because Resource objects
+         * cannot be copied.
+         * @returns All resource uri's as strings in a std::vector
+         */
         std::vector<std::string> getResources();
 
+        /*
+         * @brief get the number of triples in the Triples object
+         * @returns the integer number of triples in the Triples object
+         */
         int size() const;
 
+        /*
+         * @brief the begin iterator for a Triples object
+         * @details this method is simply forwarded on to std::vector::begin()
+         */
         TripleVector::iterator begin();
 
+        /*
+         * @brief the end iterator for a Triples object
+         * @details this method is simply forwarded on to std::vector::end()
+         */
         TripleVector::iterator end();
 
         std::string str(
