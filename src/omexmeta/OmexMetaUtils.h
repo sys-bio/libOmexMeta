@@ -142,6 +142,9 @@ namespace omexmeta {
          */
         static bool startsWith(const std::string &full_string, const std::string &start);
 
+        /*
+         * @brief returns true when @param string is in @param vec
+         */
         static bool stringInVector(std::vector<std::string> vec, const std::string &string);
 
         static xmlDoc *parseXmlDocument(const std::string &xml_string);

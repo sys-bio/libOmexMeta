@@ -11,7 +11,8 @@
 
 namespace omexmeta {
 
-    PhysicalForce::PhysicalForce(librdf_model *model, std::string model_uri,std::string local_uri, PhysicalProperty physicalProperty,
+    PhysicalForce::PhysicalForce(librdf_model *model, std::string model_uri, std::string local_uri,
+                                 PhysicalProperty physicalProperty,
                                  Sources sources,
                                  Sinks sinks)
             : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
@@ -47,34 +48,20 @@ namespace omexmeta {
             );
         }
 
-        LOG_DEBUG("here");
-
         std::string force_id = generateMetaId("PhysicalForce");
-        LOG_DEBUG("here");
         force_id = OmexMetaUtils::concatMetaIdAndUri(force_id, getLocalUri());
 
-        LOG_DEBUG("here");
         Triples triples = physical_property_.toTriples(force_id);
-        LOG_DEBUG("here");
-
         for (auto &source : sources_) {
-        LOG_DEBUG("here");
             for (auto &triple : source.toTriples(force_id, new_metaid_exclusion_list_)) {
-        LOG_DEBUG("here");
                 triples.move_back(triple);
-        LOG_DEBUG("here");
             }
         }
-        LOG_DEBUG("here");
         for (auto &sink : sinks_) {
-        LOG_DEBUG("here");
             for (auto &triple : sink.toTriples(force_id, new_metaid_exclusion_list_)) {
-        LOG_DEBUG("here");
                 triples.move_back(triple);
-        LOG_DEBUG("here");
             }
         }
-        LOG_DEBUG("here");
         return triples;
     }
 
@@ -84,7 +71,7 @@ namespace omexmeta {
     }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
-        if (!OmexMetaUtils::startsWith(subject_metaid, "http")){
+        if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
             subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
         }
         physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getModelUri());
@@ -110,7 +97,7 @@ namespace omexmeta {
     PhysicalForce::PhysicalForce(librdf_model *model)
             : PhysicalPhenomenon(model) {}
 
-    PhysicalForce::PhysicalForce(librdf_model *model, const std::string& model_uri, const std::string& local_uri)
+    PhysicalForce::PhysicalForce(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
             : PhysicalPhenomenon(model, model_uri, local_uri) {}
 
     int PhysicalForce::getNumSources() {

@@ -68,7 +68,7 @@ public:
     std::string singular_annotation1 = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                                        "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                                        "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
-                                       "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex\"\n"
+                                       "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex/\"\n"
                                        "   xmlns:local=\"http://omex-library.org/NewModel.rdf\"\n"
                                        "   xml:base=\"file://./NewModel.rdf\">\n"
                                        "    <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_1\">\n"

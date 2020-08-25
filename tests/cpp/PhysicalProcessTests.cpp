@@ -238,27 +238,29 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "myOMEX:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:PhysicalEntityReference3 .\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference3> .\n"
                            "\n"
-                           "myOMEX:SinkParticipant0000\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:PhysicalEntityReference2 .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference2> .\n"
                            "\n"
-                           "myOMEX:SourceParticipant0000\n"
+                           "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:PhysicalEntityReference1 .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
                            "\n"
-                           "myOMEX:metaid\n"
-                           "    bqbiol:isPropertyOf myOMEX:metaid ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> ;\n"
-                           "    semsim:hasMediatorParticipant myOMEX:MediatorParticipant0000 ;\n"
-                           "    semsim:hasSinkParticipant myOMEX:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant myOMEX:SourceParticipant0000 .\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
@@ -281,28 +283,35 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "myOMEX:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:species_metaid2 .\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid2> .\n"
                            "\n"
-                           "myOMEX:SinkParticipant0000\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:species_metaid2 .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid2> .\n"
                            "\n"
-                           "myOMEX:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double, \"2\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
-                           "    semsim:hasPhysicalEntityReference myOMEX:species_metaid0, myOMEX:species_metaid1 .\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid0> .\n"
                            "\n"
-                           "myOMEX:property_metaid_0\n"
-                           "    bqbiol:isPropertyOf myOMEX:property_metaid_0 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> ;\n"
-                           "    semsim:hasMediatorParticipant myOMEX:MediatorParticipant0000 ;\n"
-                           "    semsim:hasSinkParticipant myOMEX:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant myOMEX:SourceParticipant0000 .\n"
-                           "\n";
+                           "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"2\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // remember to free the unused physical property from test fixture
@@ -321,6 +330,7 @@ TEST_F(PhysicalProcessTests, TestEquality) {
 
     PhysicalProcess process2(model.get());
     process2.setModelUri(model_uri);
+    process2.setLocalUri(local_uri);
     process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -343,6 +353,7 @@ TEST_F(PhysicalProcessTests, TestInequality) {
 
     PhysicalProcess process2(model.get());
     process2.setModelUri(model_uri);
+    process2.setLocalUri(local_uri);
     process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")

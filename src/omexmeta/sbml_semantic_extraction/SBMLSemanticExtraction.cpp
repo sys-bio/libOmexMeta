@@ -34,7 +34,7 @@ namespace omexmeta {
             for (auto & compartment_node: compartments){
                 // if the compartment matches the species_compartment_metaid
                 std::string compartment_id = OmexMetaUtils::getXmlNodeProperty(compartment_node, "id");
-
+                LOG_DEBUG("compartment_id: %s", compartment_id.c_str());
                 if (compartment_id_that_species_node_belongs_to == compartment_id){
                     // collect the compartments metaid
                     std::string compartment_metaid_that_species_node_belongs_to = OmexMetaUtils::getXmlNodeProperty(compartment_node, "metaid");

@@ -723,8 +723,8 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>\n"
@@ -1512,7 +1512,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", local_uri);
+    PhysicalProperty property("https://#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", local_uri);
     Triples triples = property.toTriples("Entity1234");
     std::cout << triples.str() << std::endl;
     for (auto &it: triples) {
