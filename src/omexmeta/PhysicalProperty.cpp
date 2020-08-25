@@ -10,7 +10,7 @@
 namespace omexmeta {
 
     PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri)
-            : subject_(std::move(OmexMetaUtils::concatMetaIdAndUri(subject_str, model_uri))),
+            : subject_(subject_str),
               resource_(std::move(resource_str)),
               model_uri_(model_uri){
         validate();

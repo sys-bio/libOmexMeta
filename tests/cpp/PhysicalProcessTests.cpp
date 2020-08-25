@@ -267,6 +267,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     PhysicalProcess process(model.get());
     process.setModelUri(model_uri);
+    process.setLocalUri(local_uri);
     process.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -311,6 +312,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
 TEST_F(PhysicalProcessTests, TestEquality) {
     PhysicalProcess process1(model.get());
     process1.setModelUri(model_uri);
+    process1.setLocalUri(local_uri);
     process1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -332,6 +334,7 @@ TEST_F(PhysicalProcessTests, TestEquality) {
 TEST_F(PhysicalProcessTests, TestInequality) {
     PhysicalProcess process1(model.get());
     process1.setModelUri(model_uri);
+    process1.setLocalUri(local_uri);
     process1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")

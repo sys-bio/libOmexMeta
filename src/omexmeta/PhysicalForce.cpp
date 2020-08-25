@@ -47,10 +47,12 @@ namespace omexmeta {
             );
         }
 
-        Triples triples = physical_property_.toTriples(getAbout());
         std::string force_id = generateMetaId("PhysicalForce");
+        LOG_DEBUG("force_id: %s", force_id.c_str());
         force_id = OmexMetaUtils::concatMetaIdAndUri(force_id, getLocalUri());
+        LOG_DEBUG("force_id: %s", force_id.c_str());
 
+        Triples triples = physical_property_.toTriples(force_id);
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_id)) {
                 triples.move_back(triple);
@@ -70,24 +72,38 @@ namespace omexmeta {
     }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
-        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
+        LOG_DEBUG("here");
+        if (!OmexMetaUtils::startsWith(subject_metaid, "http")){
+        LOG_DEBUG("here");
+            subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getLocalUri());
+        LOG_DEBUG("here");
+//            throw std::invalid_argument("std::invalid_argument: PhysicalForce::setPhysicalProperty(): "
+//                                        "subject_metaid argument should be a fully formated uri (i.e. starts with http) "
+//                                        "but received \""+subject_metaid+"\"");
+        }
+        LOG_DEBUG("here");
         physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getModelUri());
+        LOG_DEBUG("here");
         return *this;
     }
 
     PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
+        LOG_DEBUG("here");
         sources_.push_back(
                 std::move(SourceParticipant(
                         model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri()
                 ))
         );
+        LOG_DEBUG("here");
         return (*this);
     }
 
     PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
+        LOG_DEBUG("here");
         sinks_.push_back(
                 SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri())
         );
+        LOG_DEBUG("here");
 
         return (*this);
     }

@@ -43,7 +43,7 @@ TEST_F(QueryTests, TestStr) {
     std::string actual = query.resultsAsStr("csv");
     std::cout << actual << std::endl;
     std::string expected = "x,y,z\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
+                           "http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     query.freeQuery();
 }
@@ -54,7 +54,7 @@ TEST_F(QueryTests, TestRunQueryTwice) {
     std::string actual = query.resultsAsStr("csv");
     std::cout << actual << std::endl;
     std::string expected = "x,y,z\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
+                           "http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     query.freeQuery();
 }

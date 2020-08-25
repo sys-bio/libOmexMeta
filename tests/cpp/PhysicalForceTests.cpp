@@ -222,9 +222,11 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                     )}
             )
     );
-
+    LOG_DEBUG("HERE");
     Triples triples = force.toTriples();
+    LOG_DEBUG("HERE");
     std::string actual = triples.str("turtle");
+    LOG_DEBUG("HERE");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
@@ -245,7 +247,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isPropertyOf local:PhysicalForce0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
                            "\n"
                            "";
@@ -256,17 +258,29 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
 
 
 TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
-    std::string model_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    LOG_DEBUG("here");
+    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+    LOG_DEBUG("here");
+    std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+    LOG_DEBUG("here");
     RDF rdf;
+    LOG_DEBUG("here");
     PhysicalForce force(rdf.getModel());
+    LOG_DEBUG("here");
     force.setModelUri(model_uri);
+    LOG_DEBUG("here");
+    force.setLocalUri(local_uri);
+    LOG_DEBUG("here");
     //todo considering implementing the builder as a composite builder
+    LOG_DEBUG("here");
     force.setPhysicalProperty("Force5", "OPB:OPB_00340")
             .addSource(1, "#PhysicalEntityReference1")
             .addSink(2, "PhysicalEntityReference2")
             .addSink(1, "PhysicalEntityReference3");
+    LOG_DEBUG("here");
 
     Triples triples = force.toTriples();
+    LOG_DEBUG("here");
     std::string actual = triples.str("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -275,20 +289,22 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "myOMEX:http://omex-library/myomex.omex/mymodel.rdf#Force5>\n"
-                           "    bqbiol:isPropertyOf <http://omex-library/myomex.omex/mymodel.rdf#Force5> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> ;\n"
-                           "    semsim:hasSinkParticipant <http://omex-library/myomex.omex/mymodel.rdf#SinkParticipant0000> ;\n"
-                           "    semsim:hasSourceParticipant <http://omex-library/myomex.omex/mymodel.rdf#SourceParticipant0000> .\n"
-                           "\n"
-                           "<http://omex-library/myomex.omex/mymodel.rdf#SinkParticipant0000>\n"
+                           "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double>, \"2\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library/myomex.omex/mymodel.rdf#PhysicalEntityReference2>, <http://omex-library/myomex.omex/mymodel.rdf#PhysicalEntityReference3> .\n"
+                           "    semsim:hasPhysicalEntityReference local:PhysicalEntityReference2, local:PhysicalEntityReference3 .\n"
                            "\n"
-                           "<http://omex-library/myomex.omex/mymodel.rdf#SourceParticipant0000>\n"
+                           "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library/myomex.omex/mymodel.rdf#PhysicalEntityReference1> .\n"
-                           "";
+                           "    semsim:hasPhysicalEntityReference local:PhysicalEntityReference1 .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#Force5>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalForce0000> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "\n"
+                           "local:PhysicalForce0000\n"
+                           "    semsim:hasSinkParticipant <#SinkParticipant0000> ;\n"
+                           "    semsim:hasSourceParticipant <#SourceParticipant0000> .\n"
+                           "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
@@ -296,10 +312,12 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
 
 
 TEST(PhysicalForceTestsNoFixture, TestGenerateTheSamePhysicalForceTwice) {
-    std::string model_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    std::string model_uri = "http://omex-library.org/myomex.omex/mymodel.xml#";
+    std::string local_uri = "http://omex-library.org/myomex.omex/mymodel.rdf#";
     RDF rdf;
     PhysicalForce force(rdf.getModel());
     force.setModelUri(model_uri);
+    force.setLocalUri(local_uri);
     //todo considering implementing the builder as a composite builder
     force.setPhysicalProperty("Force5", "OPB:OPB_00340")
             .addSource(1, "#PhysicalEntityReference1")
@@ -327,7 +345,8 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
-    std::string model_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    std::string model_uri = "http://omex-library.org/myomex.omex/mymodel.xml#";
+    std::string local_uri = "http://omex-library.org/myomex.omex/mymodel.rdf#";
 
 
     PhysicalForceEqualityTests() {
@@ -344,6 +363,7 @@ public:
 TEST_F(PhysicalForceEqualityTests, TestEquality) {
     PhysicalForce force1(model.get());
     force1.setModelUri(model_uri);
+    force1.setLocalUri(local_uri);
     force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -351,6 +371,7 @@ TEST_F(PhysicalForceEqualityTests, TestEquality) {
 
     PhysicalForce force2(model.get());
     force2.setModelUri(model_uri);
+    force2.setLocalUri(local_uri);
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -363,12 +384,14 @@ TEST_F(PhysicalForceEqualityTests, TestEquality) {
 TEST_F(PhysicalForceEqualityTests, TestInequality1) {
     PhysicalForce force1(model.get());
     force1.setModelUri(model_uri);
+    force1.setLocalUri(local_uri);
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
             .addSink(1.0, "species_metaid2");
 
     PhysicalForce force2(model.get());
+    force2.setLocalUri(local_uri);
     force2.setModelUri(model_uri);
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
@@ -383,6 +406,7 @@ TEST_F(PhysicalForceEqualityTests, TestInequality1) {
 TEST_F(PhysicalForceEqualityTests, TestInequality2) {
     PhysicalForce force1(model.get());
     force1.setModelUri(model_uri);
+    force1.setLocalUri(local_uri);
     force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00593")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -390,6 +414,7 @@ TEST_F(PhysicalForceEqualityTests, TestInequality2) {
 
     PhysicalForce force2(model.get());
     force2.setModelUri(model_uri);
+    force2.setLocalUri(local_uri);
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00597")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -403,6 +428,7 @@ TEST_F(PhysicalForceEqualityTests, TestInequality2) {
 
 TEST_F(PhysicalForceEqualityTests, TestInequality3) {
     PhysicalForce force1(model.get());
+    force1.setLocalUri(local_uri);
     force1.setModelUri(model_uri);
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
@@ -411,6 +437,7 @@ TEST_F(PhysicalForceEqualityTests, TestInequality3) {
 
     PhysicalForce force2(model.get());
     force2.setModelUri(model_uri);
+    force2.setLocalUri(local_uri);
     force2.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid2")
@@ -424,6 +451,7 @@ TEST_F(PhysicalForceEqualityTests, TestInequality3) {
 TEST_F(PhysicalForceEqualityTests, TestInequality4) {
     PhysicalForce force1(model.get());
     force1.setModelUri(model_uri);
+    force1.setLocalUri(local_uri);
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")
@@ -431,6 +459,7 @@ TEST_F(PhysicalForceEqualityTests, TestInequality4) {
 
     PhysicalForce force2(model.get());
     force2.setModelUri(model_uri);
+    force2.setLocalUri(local_uri);
     force2.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(2.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")

@@ -4,6 +4,8 @@
 
 #include "Triple.h"
 
+#include <utility>
+
 
 namespace omexmeta {
 
@@ -56,7 +58,7 @@ namespace omexmeta {
         Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
         std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings(
-                "http://omex-library.org/", omex_name, model_name);
+                "http://omex-library.org/", std::move(omex_name), std::move(model_name));
 
         LOG_DEBUG("Here needs attention. Don't forget. ");
         // make uri's for the namespaces

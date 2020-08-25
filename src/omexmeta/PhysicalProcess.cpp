@@ -142,9 +142,8 @@ namespace omexmeta {
         std::string process_id = generateMetaId("PhysicalProcess");
         process_id = OmexMetaUtils::concatMetaIdAndUri(process_id, getLocalUri());
 
-        LOG_DEBUG("getAbout: %s", getAbout().c_str());
 
-        Triples triples = physical_property_.toTriples(getAbout());
+        Triples triples = physical_property_.toTriples(process_id);
 
 
         for (auto &source: sources_) {

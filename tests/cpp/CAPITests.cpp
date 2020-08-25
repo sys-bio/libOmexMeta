@@ -58,10 +58,10 @@ TEST_F(CAPITests, RDFToString) {
 
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
-                           "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
@@ -196,10 +196,10 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
     char *results = RDF_query(rdf_ptr, query, "csv");
     std::cout << results << std::endl;
     std::string expected = "x,y,z\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#VLV,http://biomodels.net/biology-qualifiers/isPropertyOf,http://omex-library.org/NewOmex.omex/NewModel.rdf#entity_0\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/is,http://identifiers.org/fma/FMA:9670\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/isPartOf,http://identifiers.org/fma/FMA:18228\n";
+                           "http://omex-library.org/NewOmex.omex/NewModel.xml#VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154\n"
+                           "http://omex-library.org/NewOmex.omex/NewModel.xml#VLV,http://biomodels.net/biology-qualifiers/isPropertyOf,http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0\n"
+                           "http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0,http://biomodels.net/biology-qualifiers/is,http://identifiers.org/fma/FMA:9670\n"
+                           "http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0,http://biomodels.net/biology-qualifiers/isPartOf,http://identifiers.org/fma/FMA:18228\n";
     ASSERT_STREQ(expected.c_str(), results);
     RDF_delete(rdf_ptr);
     free_c_char_star(results);

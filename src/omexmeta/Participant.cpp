@@ -37,7 +37,10 @@ namespace omexmeta {
                                         "Expected a full uri (i.e. starts with http) for process_metaid argument "
                                         "but received \""+process_metaid+"\" instead");
         }
-        unique_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(unique_participant_metaid_, local_uri_);
+        LOG_DEBUG("process_metaid: %s", process_metaid.c_str());
+        LOG_DEBUG("unique_participant_metaid_: %s", unique_participant_metaid_.c_str());
+        unique_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(unique_participant_metaid_, getLocalUri());
+        LOG_DEBUG("unique_participant_metaid_: %s", unique_participant_metaid_.c_str());
 
         Triples triples;
 

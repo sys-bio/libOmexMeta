@@ -319,7 +319,7 @@ namespace omexmeta {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(
-                LibrdfNode::fromUriString(getArchiveUri()).get(),
+                LibrdfNode::fromUriString(getLocalUri()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
@@ -400,7 +400,15 @@ namespace omexmeta {
                                    "the model prefix without previously setting the model prefix "
                                    "namespace. Please use the setModelUri() method. ");
         }
-        return LibrdfNode::fromUriString(getModelUri() + string);
+        std::string model_uri = getModelUri();
+        if (OmexMetaUtils::endsWith(model_uri, "#")){
+            model_uri.erase(model_uri.end()-1);
+        }
+        if (OmexMetaUtils::startsWith(string, "#")){
+            return LibrdfNode::fromUriString(model_uri + string);
+        } else {
+            return LibrdfNode::fromUriString(model_uri + "#" + string);
+        }
     }
 
     SingularAnnotation Editor::newSingularAnnotation() const {
