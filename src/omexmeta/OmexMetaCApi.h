@@ -105,7 +105,7 @@ namespace omexmeta {
     SEMSIM_API char *RDF_getLocalUri(RDF *rdf_ptr);
 
     SEMSIM_API Editor *
-    RDF_toEditor(RDF *rdf_ptr, const char *xml, OmexMetaXmlType type, bool generate_new_metaids = false);
+    RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, OmexMetaXmlType type);
 
 //RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
 

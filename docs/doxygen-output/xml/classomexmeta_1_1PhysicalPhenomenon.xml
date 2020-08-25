@@ -62,9 +62,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalPhenomenon::local_uri_</definition>
+        <definition>std::string omexmeta::PhysicalPhenomenon::model_uri_</definition>
         <argsstring></argsstring>
-        <name>local_uri_</name>
+        <name>model_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -291,9 +291,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a2d59ebbc920a40348d102af31ed6661a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::PhysicalPhenomenon::getLocalUri</definition>
+        <definition>const std::string &amp; omexmeta::PhysicalPhenomenon::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocalUri</name>
+        <name>getModelUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -304,9 +304,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::PhysicalPhenomenon::setLocalUri</definition>
+        <definition>void omexmeta::PhysicalPhenomenon::setModelUri</definition>
         <argsstring>(const std::string &amp;localUri)</argsstring>
-        <name>setLocalUri</name>
+        <name>setModelUri</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>localUri</declname>
@@ -514,12 +514,12 @@
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa77b6063825e8bc3b83516e923c5ad37" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>generateMetaId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a2d59ebbc920a40348d102af31ed6661a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a2d59ebbc920a40348d102af31ed6661a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a8d89c1a5b1d4cdf16ab9f423562322db" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getPhysicalPropertyId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getSubjectStr</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getType</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a2c726263714e31c7c19d6e73c2c593f8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aac3920bfe9bf16e071ebdd8ed4fabe2f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>operator=</name></member>
@@ -534,7 +534,7 @@
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afc6f1152ae34116dd402a6d8d36fb0b4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1ad6499f3ca9878f5236afd41ed6839229" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setLocalUri</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a715b76003eba8e5808fe44a768199fab" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setPhysicalPropertyId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setType</name></member>

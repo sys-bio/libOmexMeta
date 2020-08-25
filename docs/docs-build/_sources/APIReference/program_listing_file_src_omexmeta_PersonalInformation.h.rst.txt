@@ -41,7 +41,7 @@ Program Listing for File PersonalInformation.h
    
            librdf_model *model_;
            Triples triples_;
-           std::string local_uri_;
+           std::string model_uri_;
            std::string metaid_;
            std::string model_uri_;
    
@@ -77,9 +77,9 @@ Program Listing for File PersonalInformation.h
             */
            PersonalInformation &operator=(PersonalInformation &&information) noexcept;
    
-           [[nodiscard]] const std::string &getLocalUri() const;
+           [[nodiscard]] const std::string &getModelUri() const;
    
-           void setLocalUri(const std::string &localUri);
+           void setModelUri(const std::string &localUri);
    
            bool operator==(const PersonalInformation &rhs) const;
    

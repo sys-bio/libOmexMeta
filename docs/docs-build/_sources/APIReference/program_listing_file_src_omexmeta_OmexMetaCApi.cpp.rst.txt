@@ -329,7 +329,7 @@ Program Listing for File OmexMetaCApi.cpp
     */
        SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr) {
            auto *singularAnnotation = new SingularAnnotation();
-           singularAnnotation->setLocalUri(editor_ptr->getLocalUri());
+           singularAnnotation->setModelUri(editor_ptr->getLocalUri());
            return singularAnnotation;
        }
    
@@ -643,7 +643,7 @@ Program Listing for File OmexMetaCApi.cpp
     * PersonalInformation class methods
     */
        PersonalInformation *PersonalInformation_new(Editor *editor_ptr) {
-           return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalUri(), editor_ptr->getModelUri());
+           return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getModelUri());
        }
    
        void PersonalInformation_delete(PersonalInformation* information) {
@@ -651,14 +651,14 @@ Program Listing for File OmexMetaCApi.cpp
        }
    
        char *PersonalInformation_getLocalUri(PersonalInformation *information) {
-           std::string about = information->getLocalUri();
+           std::string about = information->getModelUri();
            char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
            strcpy(cstr, about.c_str());
            return cstr;
        }
    
        void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri) {
-           information->setLocalUri(localUri);
+           information->setModelUri(localUri);
        }
    
        PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value) {

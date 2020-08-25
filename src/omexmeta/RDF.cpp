@@ -68,7 +68,7 @@ namespace omexmeta {
         // This allows us to only use the ones that are needed
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
 
-        // when reading xml types, we try to classify the string
+        // when reading xml types, we try to classify the string as sbml or cellml.
         // other formats ignored.
         // this will set the xmlType variable if sbml or cellml
         rdf.classifyXmlType(str, format);
@@ -197,7 +197,11 @@ namespace omexmeta {
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
-        serializer.setNamespace(getRepositoryUri(), "myOMEXlib");
+        //todo play around with myOMEX
+        LOG_DEBUG("%s", getRepositoryUri().c_str());
+        LOG_DEBUG("%s", getArchiveUri().c_str());
+        LOG_DEBUG("%s", getLocalUri().c_str());
+        serializer.setNamespace(getRepositoryUri(), "OMEXlib");
         serializer.setNamespace(getArchiveUri(), "myOMEX");
         serializer.setNamespace(getLocalUri(), "local");
         return serializer.toString(base_uri, model_);
@@ -211,7 +215,7 @@ namespace omexmeta {
     }
 
     void
-    RDF::toFile(const std::string &format, const std::string &filename, const char *mime_type, const char *type_uri) {
+    RDF::toFile(const std::string &filename, const std::string &format, const char *mime_type, const char *type_uri) {
         std::string syntax = toString(format, filename, mime_type, type_uri);
         std::ofstream f(filename);
         if (f.is_open()) {
@@ -461,7 +465,7 @@ namespace omexmeta {
 
         if (getXmlType() == OMEXMETA_TYPE_SBML){
             SBMLSemanticExtraction extraction(this, str);
-            // these operations automaticall add the the rdf model
+            // these operations automatically add to the rdf model
             extraction.extractSpeciesCompartmentSemantics();
             extraction.extractProcessesFromReactions();
         }

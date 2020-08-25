@@ -189,7 +189,7 @@
 
         <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model_</span><span class="p">;</span>
         <span class="n">Triples</span> <span class="n">triples_</span><span class="p">;</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid_</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span><span class="p">;</span>
 
@@ -225,9 +225,9 @@
 <span class="cm">         */</span>
         <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">&amp;&amp;</span><span class="n">information</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
 
-        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-        <span class="kt">void</span> <span class="nf">setLocalUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">setModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">);</span>
 
         <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 

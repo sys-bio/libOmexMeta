@@ -31,9 +31,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PersonalInformation::local_uri_</definition>
+        <definition>std::string omexmeta::PersonalInformation::model_uri_</definition>
         <argsstring></argsstring>
-        <name>local_uri_</name>
+        <name>model_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -219,9 +219,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1aef8b8cfd83f8247b487d58f887c93e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::PersonalInformation::getLocalUri</definition>
+        <definition>const std::string &amp; omexmeta::PersonalInformation::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocalUri</name>
+        <name>getModelUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -232,9 +232,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1ab7d25a7a99ae29ef8cbb004343b9b540" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::PersonalInformation::setLocalUri</definition>
+        <definition>void omexmeta::PersonalInformation::setModelUri</definition>
         <argsstring>(const std::string &amp;localUri)</argsstring>
-        <name>setLocalUri</name>
+        <name>setModelUri</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>localUri</declname>
@@ -660,11 +660,11 @@
       <member refid="classomexmeta_1_1PersonalInformation_1a9c705b23c9935cbf827e2c11a8bd266b" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>createSubject</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aea3a34c765f176a3d6f6b88a6b8c8369" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>freeTriples</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1ad8ac47e95eff79132873a743d4884034" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>generateMetaId</name></member>
-      <member refid="classomexmeta_1_1PersonalInformation_1aef8b8cfd83f8247b487d58f887c93e54" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1PersonalInformation_1aef8b8cfd83f8247b487d58f887c93e54" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1ae00bfe55d51745ac11f37986443feb28" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getMetaid</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a6b2ce3a6c724b67afe3d0c2df00bb484" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aecc5783753b41ed88a49c5b3bce82ba4" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getTriples</name></member>
-      <member refid="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>metaid_</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aa7926298a95c2e0418e360afaa9036d7" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aa4dcccf20c51c9e4e3f120e95de76963" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>model_uri_</name></member>
@@ -676,7 +676,7 @@
       <member refid="classomexmeta_1_1PersonalInformation_1aaba6661088be1ee005d367d438fcd275" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>PersonalInformation</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a75cedb2a97efb996852b4e7cd39d6440" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>PersonalInformation</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a6653d6c5751154f5f33562d9879d6727" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>PersonalInformation</name></member>
-      <member refid="classomexmeta_1_1PersonalInformation_1ab7d25a7a99ae29ef8cbb004343b9b540" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>setLocalUri</name></member>
+      <member refid="classomexmeta_1_1PersonalInformation_1ab7d25a7a99ae29ef8cbb004343b9b540" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a2bf7f31511c545eb0158643645115b00" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>setMetaid</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1afc5f378fc98d02112a9a569f4388552e" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a25a1e9ba56dda2459cb1bbbe61cc4346" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>setTriples</name></member>

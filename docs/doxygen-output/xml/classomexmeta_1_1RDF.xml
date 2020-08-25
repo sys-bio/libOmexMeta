@@ -102,9 +102,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1RDF_1af9b15ca5c5f9aea688e7f5fc2b03897d" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::RDF::local_uri_</definition>
+        <definition>std::string omexmeta::RDF::model_uri_</definition>
         <argsstring></argsstring>
-        <name>local_uri_</name>
+        <name>model_uri_</name>
         <initializer>= archive_uri_ + &quot;/NewModel.rdf#&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -144,10 +144,10 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1RDF_1aae58e1da72231c07cf0742f3321cebcc" prot="public" static="no" mutable="no">
         <type>const std::string</type>
-        <definition>const std::string omexmeta::RDF::myomexlib_</definition>
+        <definition>const std::string omexmeta::RDF::OMEXlib_</definition>
         <argsstring></argsstring>
-        <name>myomexlib_</name>
-        <initializer>= &quot;http://myOmexLibrary.org/&quot;</initializer>
+        <name>OMEXlib_</name>
+        <initializer>= &quot;http://OMEXlibrary.org/&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -351,9 +351,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a58b64a5972f74564994028504d8d227c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::RDF::getLocalUri</definition>
+        <definition>const std::string &amp; omexmeta::RDF::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocalUri</name>
+        <name>getModelUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -962,7 +962,7 @@
       <member refid="classomexmeta_1_1RDF_1ab2dadc7ff1cf25edbb401b2c879a21b0" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>fromString</name></member>
       <member refid="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>fromUri</name></member>
       <member refid="classomexmeta_1_1RDF_1a1b3bd1292e77c1d87720f854ec5a04bd" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getArchiveUri</name></member>
-      <member refid="classomexmeta_1_1RDF_1a58b64a5972f74564994028504d8d227c" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1RDF_1a58b64a5972f74564994028504d8d227c" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1RDF_1a8007b0ce5729c7dd3f8cab86d42216f5" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getModel</name></member>
       <member refid="classomexmeta_1_1RDF_1ac579ac8b79eb7d374a9077114837d2ef" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1RDF_1a60b4a0a8c0c4f30a9cc71f9899bffabc" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getRepositoryUri</name></member>
@@ -971,10 +971,10 @@
       <member refid="classomexmeta_1_1RDF_1af5c7c6104496c09762518d56e94e6048" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getTransactionRollback</name></member>
       <member refid="classomexmeta_1_1RDF_1a6979e6ca2688cf5cae1e9e1cf3a7309a" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>getXmlType</name></member>
       <member refid="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>listOptions</name></member>
-      <member refid="classomexmeta_1_1RDF_1af9b15ca5c5f9aea688e7f5fc2b03897d" prot="private" virt="non-virtual"><scope>omexmeta::RDF</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1RDF_1af9b15ca5c5f9aea688e7f5fc2b03897d" prot="private" virt="non-virtual"><scope>omexmeta::RDF</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1RDF_1a88a09d66eb9d6881fd77e9ef6133b4e6" prot="private" virt="non-virtual"><scope>omexmeta::RDF</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1RDF_1a5b29aa14e3516ef3622750a620431289" prot="private" virt="non-virtual"><scope>omexmeta::RDF</scope><name>model_uri_</name></member>
-      <member refid="classomexmeta_1_1RDF_1aae58e1da72231c07cf0742f3321cebcc" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>myomexlib_</name></member>
+      <member refid="classomexmeta_1_1RDF_1aae58e1da72231c07cf0742f3321cebcc" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>OMEXlib_</name></member>
       <member refid="classomexmeta_1_1RDF_1ad31e5bb632eeaa00a3ac0e69c5e4f89c" prot="private" virt="non-virtual"><scope>omexmeta::RDF</scope><name>NamespaceMap</name></member>
       <member refid="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>namespaces_</name></member>
       <member refid="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>operator=</name></member>

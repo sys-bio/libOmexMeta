@@ -20,7 +20,7 @@ Program Listing for File PersonalInformation.cpp
    namespace omexmeta {
    
        PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri)
-               : model_(model), local_uri_(local_uri), model_uri_(model_uri) {
+               : model_(model), model_uri_(local_uri), model_uri_(model_uri) {
            metaid_ = generateMetaId();
            createSubject();
        }
@@ -35,7 +35,7 @@ Program Listing for File PersonalInformation.cpp
        PersonalInformation::PersonalInformation(PersonalInformation &&information) noexcept {
            model_ = information.model_;
            information.model_ = nullptr;
-           local_uri_ = information.local_uri_;
+           model_uri_ = information.model_uri_;
            triples_ = std::move(information.triples_);
            model_uri_ = information.model_uri_;
        }
@@ -47,7 +47,7 @@ Program Listing for File PersonalInformation.cpp
            if (this != &information) {
                model_ = information.model_;
                information.model_ = nullptr;
-               local_uri_ = information.local_uri_;
+               model_uri_ = information.model_uri_;
                triples_ = std::move(information.triples_);
                model_uri_ = information.model_uri_;
            }
@@ -65,7 +65,7 @@ Program Listing for File PersonalInformation.cpp
    
        std::string PersonalInformation::generateMetaId() const {
            std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
-           return OmexMetaUtils::addLocalPrefixToMetaid(metaid, getModelUri());
+           return OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri());
        }
    
        PersonalInformation &
@@ -165,12 +165,12 @@ Program Listing for File PersonalInformation.cpp
            return *this;
        }
    
-       const std::string &PersonalInformation::getLocalUri() const {
-           return local_uri_;
+       const std::string &PersonalInformation::getModelUri() const {
+           return model_uri_;
        }
    
-       void PersonalInformation::setLocalUri(const std::string &localUri) {
-           local_uri_ = localUri;
+       void PersonalInformation::setModelUri(const std::string &localUri) {
+           model_uri_ = localUri;
        }
    
        void PersonalInformation::createSubject() {

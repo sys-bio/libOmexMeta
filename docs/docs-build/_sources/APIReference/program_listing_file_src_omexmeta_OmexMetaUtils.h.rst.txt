@@ -102,16 +102,16 @@ Program Listing for File OmexMetaUtils.h
            static bool assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string);
    
            /*
-            * @brief configures the "myOMEXlib", "myOMEX" and "local"
+            * @brief configures the "OMEXlib", "myOMEX" and "local"
             * prefixes
             * @ param omex_name the name of the omex container your model is in
             * @param model_name the name of the model your are annotating. Extension should
             * be included or it will be given the ".xml" suffix.
             */
            static std::vector<std::string>
-           configureSelfStrings(std::string repository_name, std::string omex_name, std::string model_name);
+           configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name);
    
-           static std::string addLocalPrefixToMetaid(std::string metaid, std::string local);
+           static std::string concatMetaIdAndUri(std::string metaid, std::string local);
    
            static std::string stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
    

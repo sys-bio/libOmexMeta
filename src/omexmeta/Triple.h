@@ -33,7 +33,8 @@ namespace omexmeta {
     class Triple : public LibrdfStatement {
 
         Triple(librdf_statement *statement);
-        std::string local_uri_; // like http:/omex-library.org/omex-archive.omex/model.xml
+        std::string local_uri_; // like http:/omex-library.org/omex-archive.omex/model.rdf
+        std::string model_uri_;
 
     public:
 
@@ -50,7 +51,16 @@ namespace omexmeta {
 
         const std::string &getLocalUri() const;
 
+        /*
+         * @brief set the local_uri_ attribute for this triple
+         */
         void setLocalUri(std::string localUri);
+
+        /*
+         * @brief set the model_uri_ attribute for this triple
+         */
+        void setModelUri(const std::string& model_uri);
+
         /*
          * @brief serialize the triple using a @format serializer.
          *
@@ -58,10 +68,10 @@ namespace omexmeta {
          * to the users annotations. This method is for visualizing
          * a triple only.
          */
-        std::string str(const std::string &format = "rdfxml-abbrev",
+        std::string str(const std::string &format = "turtle",
                 const std::string &base = (std::filesystem::current_path() /=  "annotations.rdf").string(),
-                std::string omex_name = "NewOmex.omex",
-                std::string model_name = "NewModel.xml") const;
+                std::string omex_name = "NewOmex.omex/",
+                std::string model_name = "NewModel.xml#") const;
 
         void freeTriple();
 
@@ -89,6 +99,7 @@ namespace omexmeta {
 
 //        Triple &setAbout(const std::string &metaid);
 
+        const std::string &getModelUri() const;
     };
 
     typedef Triple SingularAnnotation;

@@ -193,7 +193,7 @@
     <span class="k">class</span> <span class="nc">Triple</span> <span class="o">:</span> <span class="k">public</span> <span class="n">LibrdfStatement</span> <span class="p">{</span>
 
         <span class="n">Triple</span><span class="p">(</span><span class="n">librdf_statement</span> <span class="o">*</span><span class="n">statement</span><span class="p">);</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri_</span><span class="p">;</span> <span class="c1">// like http:/omex-library.org/omex-archive.omex/model.xml</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span><span class="p">;</span> <span class="c1">// like http:/omex-library.org/omex-archive.omex/model.xml</span>
 
     <span class="k">public</span><span class="o">:</span>
 
@@ -208,9 +208,9 @@
 
         <span class="k">static</span> <span class="n">Triple</span> <span class="nf">fromRawStatementPtr</span><span class="p">(</span><span class="n">librdf_statement</span> <span class="o">*</span><span class="n">statement</span><span class="p">);</span>
 
-        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-        <span class="kt">void</span> <span class="nf">setLocalUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">localUri</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">setModelUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">localUri</span><span class="p">);</span>
         <span class="cm">/*</span>
 <span class="cm">         * @brief serialize the triple using a @format serializer.</span>
 <span class="cm">         *</span>

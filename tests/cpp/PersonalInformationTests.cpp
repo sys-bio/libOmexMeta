@@ -27,7 +27,7 @@ public:
 };
 
 TEST_F(PersonalInformationTests, TestAddFoaf){
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     LibrdfNode value = LibrdfNode::fromLiteral("Ciaran Welsh");
     information.addFoaf("name", value);
     Triples triples = information.getTriples();
@@ -36,8 +36,8 @@ TEST_F(PersonalInformationTests, TestAddFoaf){
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -50,7 +50,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf){
 }
 
 TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addFoafLiteral("name", "Ciaran Welsh");
     Triples triples = information.getTriples();
     std::string actual = triples.str("turtle");
@@ -58,8 +58,8 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -74,7 +74,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
 
 
 TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addFoafUri("accountName", "https://orcid.org/0000-0001-8254-4957");
     Triples triples = information.getTriples();
     std::string actual = triples.str("turtle");
@@ -82,8 +82,8 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -97,7 +97,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
 }
 
 TEST_F(PersonalInformationTests, TestAddName) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addName("Ciaran Welsh");
     Triples triples = information.getTriples();
     std::string actual = triples.str("turtle");
@@ -105,8 +105,8 @@ TEST_F(PersonalInformationTests, TestAddName) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -120,7 +120,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
 }
 
 TEST_F(PersonalInformationTests, TestMBox) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addMbox("annotations@uw.edu");
     Triples triples = information.getTriples();
     std::string actual = triples.str("turtle");
@@ -128,8 +128,8 @@ TEST_F(PersonalInformationTests, TestMBox) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -143,7 +143,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
 }
 
 TEST_F(PersonalInformationTests, TestAccountName) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addAccountName("0000-0001-9876-3928");
     Triples triples = information.getTriples();
     std::string actual = triples.str("turtle");
@@ -151,8 +151,8 @@ TEST_F(PersonalInformationTests, TestAccountName) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -166,7 +166,7 @@ TEST_F(PersonalInformationTests, TestAccountName) {
 }
 
 TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta");
     Triples triples = information.getTriples();
     std::string actual = triples.str("turtle");
@@ -174,8 +174,8 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"
@@ -189,7 +189,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
 }
 
 TEST_F(PersonalInformationTests, TestMultipleEntries) {
-    PersonalInformation information(model.get(), local_uri, "TestModel.sbml");
+    PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addName("Ciaran Welsh")
         .addAccountName("0000-1111-2222-3333")
         .addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta")
@@ -201,8 +201,8 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix myOMEXlib: <http://omex-library.org/NewOmex.omex> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<TestModel.sbml>\n"

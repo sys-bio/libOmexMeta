@@ -43,7 +43,7 @@ namespace omexmeta {
 
         ~PersonalInformation();
 
-        PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri);
+        PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri);
 
         /*
          * @brief Copy constructor for PersonalInformation

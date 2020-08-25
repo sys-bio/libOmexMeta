@@ -113,7 +113,7 @@ namespace omexmeta {
     }
 
     void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename) {
-        rdf_ptr->toFile(format, filename);
+        rdf_ptr->toFile(filename, format);
     }
 
     char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format) {
@@ -167,7 +167,7 @@ namespace omexmeta {
         return cstr;
     }
 
-    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, OmexMetaXmlType type, bool generate_new_metaids) {
+    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, OmexMetaXmlType type) {
         return rdf_ptr->toEditorPtr(xml, generate_new_metaids, type);
     }
 
@@ -409,7 +409,7 @@ namespace omexmeta {
  * PhysicalEntity class methods
  */
     PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr) {
-        return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getLocalUri());
+        return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
     }
 
     void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr) {
@@ -447,19 +447,11 @@ namespace omexmeta {
         return cstr;
     }
 
-//    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr) {
-//        std::string physical_property = physical_entity_ptr->getPhysicalProperty().str();
-//        char *cstr = (char *) malloc((physical_property.size() + 1) * sizeof(char));
-//        strcpy(cstr, physical_property.c_str());
-//        return cstr;
-//    }
-
     char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr) {
         std::string identity = physical_entity_ptr->getIdentityResource().str();
         char *cstr = (char *) malloc((identity.size() + 1) * sizeof(char));
         strcpy(cstr, identity.c_str());
         return cstr;
-
     }
 
     int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity) {
@@ -487,7 +479,7 @@ namespace omexmeta {
  * PhysicalProcess class methods
  */
     PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr) {
-        return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getLocalUri());
+        return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
     }
 
     void PhysicalProcess_delete(PhysicalProcess *physicalProcess) {
@@ -498,7 +490,6 @@ namespace omexmeta {
         physicalProcess->free();
         delete physicalProcess;
     }
-
 
     PhysicalProcess *
     PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid,
@@ -565,7 +556,7 @@ namespace omexmeta {
  * PhysicalForce class methods
  */
     PhysicalForce *PhysicalForce_new(Editor *editor_ptr) {
-        return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getLocalUri());
+        return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
     }
 
     void PhysicalForce_delete(PhysicalForce *physicalForce) {
@@ -628,7 +619,7 @@ namespace omexmeta {
  * PersonalInformation class methods
  */
     PersonalInformation *PersonalInformation_new(Editor *editor_ptr) {
-        return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalUri(), editor_ptr->getModelUri());
+        return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
     }
 
     void PersonalInformation_delete(PersonalInformation* information) {
@@ -636,7 +627,7 @@ namespace omexmeta {
     }
 
     char *PersonalInformation_getLocalUri(PersonalInformation *information) {
-        std::string about = information->getLocalUri();
+        const std::string& about = information->getLocalUri();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
@@ -650,11 +641,6 @@ namespace omexmeta {
         information->addCreator(value);
         return information;
     }
-
-//    PersonalInformation *PersonalInformation_addCurator(PersonalInformation *information, const char *value) {
-//        information->addCurator(value);
-//        return information;
-//    }
 
     PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value) {
         information->addName(value);

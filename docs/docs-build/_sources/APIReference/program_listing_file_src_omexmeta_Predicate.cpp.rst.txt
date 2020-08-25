@@ -128,7 +128,7 @@ Program Listing for File Predicate.cpp
                    {"http://identifiers.org/opb/",                                   "opb"},
                    {"http://identifiers.org/fma/",                                   "fma"},
                    {"http://purl.org/dc/terms/",                                     "dcterms"},
-                   {"http://myOmexLibrary.org/",                                     "myOMEXlib"},
+                   {"http://OMEXlibrary.org/",                                     "OMEXlib"},
    
            };
        }

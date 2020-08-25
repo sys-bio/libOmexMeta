@@ -27,30 +27,6 @@
 
 using namespace redland;
 
-/*
- * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
- *
- * Using libSBML, we first look up the substance base units for the model and also whether the species's "hasOnlySubstanceUnits" attribute is true...
- *
- * if the substance base unit is mole
- *      if hasOnlySubstanceUnits for species is TRUE, then use OPB:Chemical_molar_amount (OPB_00425)
- *      else use OPB:Chemical_concentration (OPB_00340)
- *
- * else if the substance base unit is item
- *      if hasOnlySubstanceUnits for species is TRUE, then use OPB:Particle_count (OPB_01001)
- *      else use OPB:Particle_concentration (OPB_01000)
- *
- * else if the base unit is kilogram or gram
- *      if hasOnlySubstanceUnits is TRUE, then use OPB:Mass_of_solid_entity (OPB_01226)
- *      else
- *           if the spatial dimensions of the compartment containing the species = 1, use OPB:Mass_lineal_density (OPB_00190)
- *           else, if the spatial dimensions of the compartment containing the species = 2, use OPB:Mass_areal_density (OPB_00258)
- *           else, if the spatial dimensions of the compartment containing the species = 3, use OPB:Mass_volumetric_density (OPB_00101)
- *
- * Hope that's helpful for determining which OPB property to use in composite annotations for SBML <species>.
- *
- * Any questions, just lemme know.
- */
 
 namespace omexmeta {
 
@@ -70,16 +46,6 @@ namespace omexmeta {
         bool generate_new_metaids_;
         std::string metaid_base_ = "#OmexMetaId";
         OmexMetaXmlType type_;
-    public:
-        const std::string &getMetaidBase() const;
-
-        void setMetaidBase(const std::string &metaidBase);
-
-        OmexMetaXmlType getType() const;
-
-        void setType(OmexMetaXmlType type);
-
-    private:
         const std::string& repository_uri_ ;
         const std::string& archive_uri_ ;
         const std::string& model_uri_ ;
@@ -206,8 +172,6 @@ namespace omexmeta {
          */
         void removePhysicalEntity(PhysicalEntity &physicalEntity) const;
 
-
-
         /*
          * @brief remove triples associated with a PersonalInformation object from the rdf graph
          * @param information the PersonalInformation object to remove.
@@ -244,7 +208,6 @@ namespace omexmeta {
          */
         void removePhysicalForce(PhysicalForce &physicalForce) const;
 
-
         /*
          * @brief check that a metaid is valid by comparing
          * with the output from Editor::getMetaIds()
@@ -257,14 +220,72 @@ namespace omexmeta {
          */
         void addNamespaceFromAnnotation(const std::string &predicate_string);
 
+        /*
+         * @brief get the string that is being used for the metaid base (default is OmexMetaID)
+         * @details this base will only be used when the generate_metaids boolean is set to true in the constructor.
+         * @returns std::string of metaid base
+         */
+        const std::string &getMetaidBase() const;
+
+        /*
+         * @brief set the base metaid string (default is OmexMetaId)
+         * @param metaidBase the string you want to use for metaid base
+         * @returns void
+         * @details using editor.setMetaidBase("MyNewMetaid") will make metaids
+         * added by libomexmeta look like MyNewMetaid0001, MyNewMetaid0002, etc.
+         * It is assumed that it will not be necessary to have more than 9999 new metaids.
+         */
+        void setMetaidBase(const std::string &metaidBase);
+
+        /*
+         * @brief getter for the current xml type identification variable.
+         * @return OmexMetaType
+         * @details This should be set automatically in the Editor constructor
+         */
+        [[nodiscard]] OmexMetaXmlType getType() const;
+
+        /*
+         * @brief setter for the current xml type identification variable.
+         * @return void
+         * @details This should be set automatically in the Editor constructor
+         */
+        void setType(OmexMetaXmlType type);
+
+        /*
+         * @brief create a new PhysicalEntity object.
+         * @details PhysicalEntity objects should only be instantiated
+         * via the Editor because this enables the passing of necessary information
+         * behind the scenes, rather than needing to be provided by the user.
+         */
         PhysicalEntity newPhysicalEntity();
 
+        /*
+         * @brief create a new PhysicalForce object.
+         * @details PhysicalForce objects should only be instantiated
+         * via the Editor because this enables the passing of necessary information
+         * behind the scenes, rather than needing to be provided by the user.
+         */
         PhysicalForce newPhysicalForce();
 
-        PhysicalProcess newPhysicalProcess();
+        /*
+         * @brief create a new PhysicalProcess object.
+         * @details PhysicalProcess objects should only be instantiated
+         * via the Editor because this enables the passing of necessary information
+         * behind the scenes, rather than needing to be provided by the user.
+         */
+         PhysicalProcess newPhysicalProcess();
 
+        /*
+         * @brief create a new PersonalInformation object.
+         * @details PersonalInformation objects should only be instantiated
+         * via the Editor because this enables the passing of necessary information
+         * behind the scenes, rather than needing to be provided by the user.
+         */
         PersonalInformation newPersonalInformation();
 
+        /*
+         * @brief like addSingleAnnotation
+         */
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
         void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
@@ -274,38 +295,9 @@ namespace omexmeta {
         void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
 
         /*
-         * @brief Set the url for repository (myOmexlib).
-         * @param repository_name the name. Default is "https://myOmexLibrary.org/".
-         *
-         * This is the namespace attached to the `myOMEXlib`
-         * prefix.
-         */
-//        void setOmexRepository(std::string repository_name);
-
-        /*
-         * @brief setter for the archive_uri_ attribute.
-         *
-         * If @param archive_name already begins with "http",
-         * "https://: or "file://", the archive_name is assumed
-         * properly formatted and used without modification. If
-         * @param archive_name does not begin with one of these
-         * three prefixes, the current repository_uri_ (which
-         * defaults to `https://myOmexLibrary.org/`) is used as the namespace. For example
-         * setting archive_uri_ to "myOmex" becomes "https://myOmexLibrary.org/NewOmex.omex".
-         */
-//        void setArchiveUri(std::string archive_name);
-
-        /*
          * @brief get the current value of archive_uri_
          */
         [[nodiscard]] std::string getArchiveUri() const;
-
-        /*
-         * @brief Set the models name (myOMEX)
-         * @param The value of model_name. This is
-         * by definition relative to the repository_name attribute.
-         */
-//        void setModelUri(std::string model_name);
 
         /*
          * @brief get the current value of local_uri_
@@ -317,48 +309,77 @@ namespace omexmeta {
          */
         [[nodiscard]] std::string getModelUri() const;
 
-
         /*
          * @brief get the current value of archive_uri_
          */
         [[nodiscard]] std::string getRepositoryUri() const;
 
         /*
-         * @brief set the name local to the current rdf document.
-         * @param local_name the string to use for local
+         * @brief instantiate a LibrdfNode that is prefixed with the current local_uri
          *
-         * The local_name string should contain the omex
-         * repository and the model name. For example:
-         * "http://myOmexLibrary.org/NewOmex.omex/myModel.rdf".
-         * Note that the corresponsing model should be:
-         * "http://myOmexLibrary.org/NewOmex.omex/myModel.sbml" or
-         * "http://myOmexLibrary.org/NewOmex.omex/myModel.xml" or
-         * "http://myOmexLibrary.org/NewOmex.omex/myModel.cellml".
          */
-//        void setLocalUri(std::string local_name);
+        [[nodiscard]] LibrdfNode createNodeWithModelUri(const std::string& string) const;
 
-        LibrdfNode createNodeWithLocalUri(const std::string& string) const;
-
-        void addModelLevelAnnotation(std::string, const LibrdfNode *node);
-
+        /*
+         * @brief add the "creator" model level annotation
+         * @param an orchid_id as string
+         */
         void addCreator(std::string orcid_id);
 
+        /*
+         * @brief add the "curator" model level annotation
+         * @param an orchid_id as string
+         */
         void addCurator(std::string orcid_id);
 
+        /*
+         * @brief add the "taxon id" model level annotation
+         * @param an taxon_id as string
+         */
         void addTaxon(const std::string &taxon_id);
 
+        /*
+         * @brief add the "pubmed id" model level annotation
+         * @param a pubmed id as string
+         */
         void addPubmed(const std::string &pubmedid);
 
+        /*
+         * @brief add the "description" model level annotation
+         * @param a description of the model as string
+         */
         void addDescription(const std::string &date);
 
+        /*
+         * @brief add the "date created" model level annotation
+         * @param The date that the model was created
+         */
         void addDateCreated(const std::string &date);
 
+        /*
+         * @brief create a new singular annotation object with metaid
+         * @param metaid the string to use in the "rdf:about" field or subject
+         * @return a new SingularAnnotation object
+         */
         SingularAnnotation newSingularAnnotation(std::string metaid) const;
 
+        /*
+         * @brief add the "parent model" model level annotation
+         * @param The biomodels id for the model in which this model was derived from
+         */
         void addParentModel(const std::string &biomod_id);
 
+        /*
+         * @brief Add a PersonalInformation object to the current RDF graph
+         * @param personalInformation the PersonalInformation object to add
+         */
         void addPersonalInformation(PersonalInformation *personalInformation) const;
 
+        /*
+         * @brief create a new SingularAnnotation object
+         * @return A SingularAnnotation object
+         * @details a SingularAnnotation is a typedefed Triple object.
+         */
         SingularAnnotation newSingularAnnotation() const;
     };
 

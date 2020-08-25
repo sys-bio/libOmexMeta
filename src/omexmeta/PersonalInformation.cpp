@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri)
+    PersonalInformation::PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri)
             : model_(model), local_uri_(local_uri), model_uri_(model_uri) {
         metaid_ = generateMetaId();
         createSubject();
@@ -52,8 +52,9 @@ namespace omexmeta {
     }
 
     std::string PersonalInformation::generateMetaId() const {
-        std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
-        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, getModelUri());
+        std::vector<std::string> exclusions; // not really needed in this context, but signature requires the argument
+        std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo", exclusions);
+        return OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri());
     }
 
     PersonalInformation &

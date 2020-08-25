@@ -185,9 +185,11 @@ namespace omexmeta {
          * about section, we need to inject it here,
          * if not already formatted properly.
          */
-        physicalEntity.setAbout(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalUri())
-        );
+        if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")){
+            physicalEntity.setAbout(
+                    OmexMetaUtils::concatMetaIdAndUri(physicalEntity.getAbout(), getModelUri())
+            );
+        }
         checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
     }
@@ -199,13 +201,15 @@ namespace omexmeta {
         }
         checkValidMetaid(physicalProcess.getAbout());
         /*
-         * Because we now want to use @prefix local for the
+         * Because we now want to use @prefix Omex for the
          * about section, we need to inject it here,
          * if not already formatted properly.
          */
-        physicalProcess.setAbout(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalUri())
-        );
+        if (!OmexMetaUtils::startsWith(physicalProcess.getAbout(), "http")){
+            physicalProcess.setAbout(
+                    OmexMetaUtils::concatMetaIdAndUri(physicalProcess.getAbout(), getModelUri())
+            );
+        }
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
 
     }
@@ -221,9 +225,11 @@ namespace omexmeta {
          * about section, we need to inject it here,
          * if not already formatted properly.
          */
-        physicalForce.setAbout(
-                OmexMetaUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalUri())
-        );
+        if (!OmexMetaUtils::startsWith(physicalForce.getAbout(), "http")){
+            physicalForce.setAbout(
+                    OmexMetaUtils::concatMetaIdAndUri(physicalForce.getAbout(), getModelUri())
+            );
+        }
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
 
@@ -251,6 +257,7 @@ namespace omexmeta {
         Triples triples = physicalPhenomenon->toTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
+            LOG_DEBUG("%s", triple.str().c_str());
             model_.removeStatement(triple.getStatement());
         }
     }
@@ -277,19 +284,20 @@ namespace omexmeta {
     }
 
     PhysicalEntity Editor::newPhysicalEntity() {
-        return PhysicalEntity(model_.get(), getLocalUri());
+        return PhysicalEntity(model_.get(), getModelUri(), getLocalUri());
     }
 
     PhysicalForce Editor::newPhysicalForce() {
-        return PhysicalForce(model_.get(), getLocalUri());
+        return PhysicalForce(model_.get(), getModelUri(), getLocalUri());
     }
 
     PhysicalProcess Editor::newPhysicalProcess() {
-        return PhysicalProcess(model_.get(), getLocalUri());
+        return PhysicalProcess(model_.get(), getModelUri(), getLocalUri());
     }
 
     PersonalInformation Editor::newPersonalInformation() {
-        return PersonalInformation(model_.get(), getLocalUri(), getModelUri());
+        //todo consider whether local_uri argument is needed
+        return PersonalInformation(model_.get(), getModelUri(), getLocalUri());
     }
 
     void Editor::addCreator(std::string orcid_id) {
@@ -312,7 +320,7 @@ namespace omexmeta {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(
-                LibrdfNode::fromUriString(getArchiveUri()).get(),
+                LibrdfNode::fromUriString(getLocalUri()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
@@ -386,26 +394,34 @@ namespace omexmeta {
         return repository_uri_;
     }
 
-    LibrdfNode Editor::createNodeWithLocalUri(const std::string &string) const {
-        if (getLocalUri().empty()) {
-            throw std::logic_error("std::logic_error: Editor::createNodeWithLocalUri: "
+    LibrdfNode Editor::createNodeWithModelUri(const std::string &string) const {
+        if (getModelUri().empty()) {
+            throw std::logic_error("std::logic_error: Editor::createNodeWithModelUri: "
                                    "Trying to create a node with a uri relative to "
-                                   "the local namespace without previously setting the local "
-                                   "namespace. Please use the setLocalUri() method. ");
+                                   "the model prefix without previously setting the model prefix "
+                                   "namespace. Please use the setModelUri() method. ");
         }
-        return LibrdfNode::fromUriString(getLocalUri() + string);
+        std::string model_uri = getModelUri();
+        if (OmexMetaUtils::endsWith(model_uri, "#")){
+            model_uri.erase(model_uri.end()-1);
+        }
+        if (OmexMetaUtils::startsWith(string, "#")){
+            return LibrdfNode::fromUriString(model_uri + string);
+        } else {
+            return LibrdfNode::fromUriString(model_uri + "#" + string);
+        }
     }
 
     SingularAnnotation Editor::newSingularAnnotation() const {
         SingularAnnotation singularAnnotation;
-        singularAnnotation.setLocalUri(getModelUri());
+        singularAnnotation.setModelUri(getModelUri());
         return singularAnnotation;
     }
 
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
         SingularAnnotation singularAnnotation;
-        singularAnnotation.setLocalUri(getModelUri());
-        singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalUri()));
+        singularAnnotation.setModelUri(getModelUri());
+        singularAnnotation.setAbout(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
         return singularAnnotation;
     }
 

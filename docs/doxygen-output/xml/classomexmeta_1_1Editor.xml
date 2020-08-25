@@ -123,9 +123,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
-        <definition>const std::string&amp; omexmeta::Editor::local_uri_</definition>
+        <definition>const std::string&amp; omexmeta::Editor::model_uri_</definition>
         <argsstring></argsstring>
-        <name>local_uri_</name>
+        <name>model_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -710,9 +710,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string omexmeta::Editor::getLocalUri</definition>
+        <definition>std::string omexmeta::Editor::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocalUri</name>
+        <name>getModelUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -749,9 +749,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a978e773a7c9c4f602bd3ce0d0672fda8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref></type>
-        <definition>LibrdfNode omexmeta::Editor::createNodeWithLocalUri</definition>
+        <definition>LibrdfNode omexmeta::Editor::createNodeWithModelUri</definition>
         <argsstring>(const std::string &amp;string) const</argsstring>
-        <name>createNodeWithLocalUri</name>
+        <name>createNodeWithModelUri</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>string</declname>
@@ -981,19 +981,19 @@
       <member refid="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>archive_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>checkValidMetaid</name></member>
       <member refid="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>create_ids_</name></member>
-      <member refid="classomexmeta_1_1Editor_1a978e773a7c9c4f602bd3ce0d0672fda8" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>createNodeWithLocalUri</name></member>
+      <member refid="classomexmeta_1_1Editor_1a978e773a7c9c4f602bd3ce0d0672fda8" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>createNodeWithModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a8cbc42e461bf7a1495c7de82882de826" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>Editor</name></member>
       <member refid="classomexmeta_1_1Editor_1ad0bb5d79378fa2b18305780e93858959" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>extractNamespacesFromTriplesVector</name></member>
       <member refid="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>generate_new_metaids_</name></member>
       <member refid="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getArchiveUri</name></member>
-      <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getMetaids</name></member>
       <member refid="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModel</name></member>
       <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getNamespaces</name></member>
       <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getRepositoryUri</name></member>
       <member refid="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getXml</name></member>
-      <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>metaids_</name></member>
       <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>

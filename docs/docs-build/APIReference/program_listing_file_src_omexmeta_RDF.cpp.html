@@ -332,9 +332,9 @@
         <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span><span class="p">:</span> <span class="n">namespaces_</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">it</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="s">&quot;myOMEXlib&quot;</span><span class="p">);</span>
+        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="s">&quot;OMEXlib&quot;</span><span class="p">);</span>
         <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getArchiveUri</span><span class="p">(),</span> <span class="s">&quot;myOMEX&quot;</span><span class="p">);</span>
-        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getLocalUri</span><span class="p">(),</span> <span class="s">&quot;local&quot;</span><span class="p">);</span>
+        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getModelUri</span><span class="p">(),</span> <span class="s">&quot;local&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">serializer</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="n">base_uri</span><span class="p">,</span> <span class="n">model_</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -357,12 +357,12 @@
 
     <span class="n">Editor</span> <span class="n">RDF</span><span class="o">::</span><span class="n">toEditor</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">xml</span><span class="p">,</span> <span class="n">OmexMetaXmlType</span> <span class="n">type</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">generate_new_metaids</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">Editor</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">model_</span><span class="p">,</span> <span class="n">namespaces_</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="p">,</span>
-                      <span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="n">getArchiveUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">(),</span> <span class="n">getLocalUri</span><span class="p">());</span>
+                      <span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="n">getArchiveUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="n">Editor</span> <span class="o">*</span><span class="n">RDF</span><span class="o">::</span><span class="n">toEditorPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">xml</span><span class="p">,</span> <span class="n">OmexMetaXmlType</span> <span class="n">type</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">generate_new_metaids</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">auto</span> <span class="o">*</span><span class="n">editor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Editor</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">model_</span><span class="p">,</span> <span class="n">namespaces_</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="p">,</span>
-                                  <span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="n">getArchiveUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">(),</span> <span class="n">getLocalUri</span><span class="p">());</span>
+                                  <span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="n">getArchiveUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">editor</span><span class="p">;</span>
     <span class="p">}</span>
 
@@ -526,12 +526,12 @@
             <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="c1">// Now we can docs-build up the local string</span>
-        <span class="n">local_uri_</span> <span class="o">=</span> <span class="n">getArchiveUri</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;rdf#&quot;</span><span class="p">;</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">getArchiveUri</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;rdf#&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
 
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">local_uri_</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_uri_</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

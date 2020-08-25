@@ -31,9 +31,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalProperty::local_uri_</definition>
+        <definition>std::string omexmeta::PhysicalProperty::model_uri_</definition>
         <argsstring></argsstring>
-        <name>local_uri_</name>
+        <name>model_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -159,9 +159,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1ab498df5bb21e010614ae43c0c8e70bb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::PhysicalProperty::getLocalUri</definition>
+        <definition>const std::string &amp; omexmeta::PhysicalProperty::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocalUri</name>
+        <name>getModelUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -172,9 +172,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1af4684dd78ff1b0ebf71f2f7ca94a78d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::PhysicalProperty::setLocalUri</definition>
+        <definition>void omexmeta::PhysicalProperty::setModelUri</definition>
         <argsstring>(const std::string &amp;localUri)</argsstring>
-        <name>setLocalUri</name>
+        <name>setModelUri</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>localUri</declname>
@@ -271,18 +271,18 @@
     </detaileddescription>
     <location file="src/omexmeta/PhysicalProperty.h" line="35" column="1" bodyfile="src/omexmeta/PhysicalProperty.h" bodystart="35" bodyend="100"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1PhysicalProperty_1ab498df5bb21e010614ae43c0c8e70bb7" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1ab498df5bb21e010614ae43c0c8e70bb7" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a2d60b90270a6ba73646707b8c475fbb1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getResource</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a9177d21e829cbd872217ba6f9619d427" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getResourceStr</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1acf399e14fd579efc6384ebc677341ead" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getSubject</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a4b9ad0a7fe22a3476d7e2f08834bbd74" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getSubjectStr</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator==</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a81e8fc030e12fc1a9491a7e251312038" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a85c53684ca7176b68bf8342cc20de639" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>resource_</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1af4684dd78ff1b0ebf71f2f7ca94a78d9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setLocalUri</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1af4684dd78ff1b0ebf71f2f7ca94a78d9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a420dab52a424d1be5a8610e19407980c" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setResource</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a8bb7c912a21e0e318a9e16d2af1801e5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setSubject</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>subject_</name></member>

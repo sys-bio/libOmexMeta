@@ -84,7 +84,7 @@ Program Listing for File Editor.h
            const std::string& repository_uri_ ;
            const std::string& archive_uri_ ;
            const std::string& model_uri_ ;
-           const std::string& local_uri_ ;
+           const std::string& model_uri_ ;
    
            void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
    
@@ -278,10 +278,10 @@ Program Listing for File Editor.h
            void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
    
            /*
-            * @brief Set the url for repository (myOmexlib).
-            * @param repository_name the name. Default is "https://myOmexLibrary.org/".
+            * @brief Set the url for repository (OMEXlib).
+            * @param repository_name the name. Default is "https://OMEXlibrary.org/".
             *
-            * This is the namespace attached to the `myOMEXlib`
+            * This is the namespace attached to the `OMEXlib`
             * prefix.
             */
    //        void setOmexRepository(std::string repository_name);
@@ -294,8 +294,8 @@ Program Listing for File Editor.h
             * properly formatted and used without modification. If
             * @param archive_name does not begin with one of these
             * three prefixes, the current repository_uri_ (which
-            * defaults to `https://myOmexLibrary.org/`) is used as the namespace. For example
-            * setting archive_uri_ to "myOmex" becomes "https://myOmexLibrary.org/NewOmex.omex".
+            * defaults to `https://OMEXlibrary.org/`) is used as the namespace. For example
+            * setting archive_uri_ to "myOmex" becomes "https://OMEXlibrary.org/NewOmex.omex".
             */
    //        void setArchiveUri(std::string archive_name);
    
@@ -312,9 +312,9 @@ Program Listing for File Editor.h
    //        void setModelUri(std::string model_name);
    
            /*
-            * @brief get the current value of local_uri_
+            * @brief get the current value of model_uri_
             */
-           std::string getLocalUri() const;
+           std::string getModelUri() const;
    
            /*
             * @brief get the current value of model_uri_
@@ -333,15 +333,15 @@ Program Listing for File Editor.h
             *
             * The local_name string should contain the omex
             * repository and the model name. For example:
-            * "http://myOmexLibrary.org/NewOmex.omex/myModel.rdf".
+            * "http://OMEXlibrary.org/NewOmex.omex/myModel.rdf".
             * Note that the corresponsing model should be:
-            * "http://myOmexLibrary.org/NewOmex.omex/myModel.sbml" or
-            * "http://myOmexLibrary.org/NewOmex.omex/myModel.xml" or
-            * "http://myOmexLibrary.org/NewOmex.omex/myModel.cellml".
+            * "http://OMEXlibrary.org/NewOmex.omex/myModel.sbml" or
+            * "http://OMEXlibrary.org/NewOmex.omex/myModel.xml" or
+            * "http://OMEXlibrary.org/NewOmex.omex/myModel.cellml".
             */
-   //        void setLocalUri(std::string local_name);
+   //        void setModelUri(std::string local_name);
    
-           LibrdfNode createNodeWithLocalUri(const std::string& string) const;
+           LibrdfNode createNodeWithModelUri(const std::string& string) const;
    
            void addModelLevelAnnotation(std::string, const LibrdfNode *node);
    

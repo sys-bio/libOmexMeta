@@ -15,13 +15,15 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
+    std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+    std::vector<std::string> exclusions;
 
     ParticipantTests() {
         model = LibrdfModel(storage.get());
     };
 
-    ~ParticipantTests() {
+    ~ParticipantTests() override {
         storage.freeStorage();
         model.freeModel();
     };
@@ -32,7 +34,7 @@ public:
  */
 TEST_F(ParticipantTests, TestCreateParticipant) {
     Participant participant(
-            model.get(), "MetaId0014", local_uri, "hasSourceParticipant",
+            model.get(), "MetaId0014",model_uri,  local_uri, "hasSourceParticipant",
             1.0, "MetaId0015"
     );
     SemSim ss(participant.getPredicate());
@@ -45,7 +47,7 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipant1) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     // SemSim predicate is made on the fly now.
     SemSim ss(sink.getPredicate());
     std::string actual = ss.str();
@@ -57,8 +59,8 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
-    std::string actual = sink.createMetaid("SinkParticipant");
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
+    std::string actual = sink.createMetaid("SinkParticipant", exclusions);
     std::cout << actual << std::endl;
     std::string expected = "#SinkParticipant0000";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -66,7 +68,7 @@ TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::string actual = sink.getLocalUri();
     std::cout << actual << std::endl;
     std::string expected = local_uri;
@@ -76,50 +78,49 @@ TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
 
 
 TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triple triple(
             LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
             SemSim(sink.getPredicate()).getNode(),
-            LibrdfNode::fromUriString(sink.getLocalUri() + sink.getPhysicalEntityReference()).get()
+            LibrdfNode::fromUriString(sink.getModelUri() + sink.getPhysicalEntityReference()).get()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:SinkParticipant\n"
+                           "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
+                           "\n"
+                           "";
     std::string actual = triple.str();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
 }
 
-
 TEST_F(ParticipantTests, TestCreateTripleVector) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     Triple triple(
             LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
             SemSim(sink.getPredicate()).getNode(),
-            LibrdfNode::fromUriString(sink.getLocalUri() + sink.getPhysicalEntityReference()).get()
+            LibrdfNode::fromUriString(sink.getModelUri() + sink.getPhysicalEntityReference()).get()
     );
     Triples triples;
     triples.move_back(triple);
     // triple assumes responsibility for freeing subject, resource and preicate
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:SinkParticipant\n"
+                           "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
+                           "\n"
+                           "";
     std::string actual = triples[0].str();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -127,72 +128,70 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
 }
 
 TEST_F(ParticipantTests, TestToTriples1) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
-    Triples triples = sink.toTriples("metaid");
+    Triples triples = sink.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
+                           "\n"
+                           "<https://metaid>\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
+                           "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
 
 TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
-    SinkParticipant sink(model.get(), 0.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 0.0, "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
-    Triples triples = sink.toTriples("metaid");
+    Triples triples = sink.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
+                           "\n"
+                           "<https://metaid>\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
+                           "\n"
                            "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
 
 TEST_F(ParticipantTests, TestToTriplesMediator) {
-    MediatorParticipant mediator(model.get(), "MetaId0015", local_uri);
+    MediatorParticipant mediator(model.get(), "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
-    Triples triples = mediator.toTriples("metaid");
+    Triples triples = mediator.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MetaId0015\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
+                           "\n"
+                           "<https://metaid>\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 .\n"
+                           "\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
@@ -203,10 +202,11 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
+    std::string model_uri = "http://omex-library/myomex.omex/mymodel.xml#";
     std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    std::vector<std::string> exclusions;
     ParticipantTestsToTriplesTwice() {
         model = LibrdfModel(storage.get());
-
     }
 
     ~ParticipantTestsToTriplesTwice() {
@@ -219,8 +219,8 @@ public:
  * First check the numbers of references in a single triple
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
-    Triples triples1 = sink.toTriples("Process1");
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
+    Triples triples1 = sink.toTriples("https://Process1", exclusions);
 
     // Sinks have 3 triples
     ASSERT_EQ(3, triples1.size());
@@ -252,9 +252,9 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
  * Now throw another triple in the mix
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
-    Triples triples1 = sink.toTriples("Process1");
-    Triples triples2 = sink.toTriples("Process1");
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
+    Triples triples1 = sink.toTriples("https://Process1", exclusions);
+    Triples triples2 = sink.toTriples("https://Process1", exclusions);
 
     // Sinks have 3 triples
     ASSERT_EQ(3, triples1.size());
@@ -307,9 +307,9 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
 }
 
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
-    Triples triples1 = sink.toTriples("Process1");
-    Triples triples2 = sink.toTriples("Process1");
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
+    Triples triples1 = sink.toTriples("https://Process1", exclusions);
+    Triples triples2 = sink.toTriples("https://Process1", exclusions);
 
     std::cout << triples1.str("ntriples", "triples1") << std::endl;
     std::cout << triples2.str("ntriples", "triples2") << std::endl;
@@ -334,11 +334,11 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
 
 
 TEST_F(ParticipantTests, TestParticipantVecToTriples) {
-    MediatorParticipant mediator(model.get(), "MetaId0015", local_uri);
+    MediatorParticipant mediator(model.get(), "MetaId0015", model_uri, local_uri);
 
-    SourceParticipant source(model.get(), 1.0, "MetaId0015", local_uri);
+    SourceParticipant source(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
 
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
 
     std::vector<Participant *> participants = {
             &source,
@@ -348,7 +348,7 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
 
     Triples triples;
     for (auto &i: participants) {
-        for (auto &j: i->toTriples("metaid")) {
+        for (auto &j: i->toTriples("http://metaid", exclusions)) {
             triples.move_back(j);
         }
     }

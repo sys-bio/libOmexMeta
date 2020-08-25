@@ -116,7 +116,7 @@ namespace omexmeta {
                 {"http://identifiers.org/opb/",                                   "opb"},
                 {"http://identifiers.org/fma/",                                   "fma"},
                 {"http://purl.org/dc/terms/",                                     "dcterms"},
-                {"http://myOmexLibrary.org/",                                     "myOMEXlib"},
+                {"http://OMEXlibrary.org/",                                     "OMEXlib"},
 
         };
     }
@@ -288,7 +288,7 @@ namespace omexmeta {
         }
         // ensure we only compare in lowercase
         std::for_each(namespace_.begin(), namespace_.end(), [](char &c) {
-            c = std::tolower(c);
+            c = (char)std::tolower(c);
         });
 
         PredicatePtr predicatePtr;

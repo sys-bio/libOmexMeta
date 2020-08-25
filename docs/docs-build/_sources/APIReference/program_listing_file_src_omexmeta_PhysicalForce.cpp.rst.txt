@@ -96,7 +96,7 @@ Program Listing for File PhysicalForce.cpp
        }
    
        PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
-           subject_metaid = OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+           subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getLocalUri());
            physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getLocalUri());
            return *this;
        }
@@ -104,7 +104,7 @@ Program Listing for File PhysicalForce.cpp
        PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
            sources_.push_back(
                    std::move(SourceParticipant(
-                           model_, multiplier, physical_entity_reference, getLocalUri()
+                           model_, multiplier, physical_entity_reference, getModelUri()
                    ))
            );
            return (*this);
@@ -112,7 +112,7 @@ Program Listing for File PhysicalForce.cpp
    
        PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
            sinks_.push_back(
-                   SinkParticipant(model_, multiplier, physical_entity_reference, getLocalUri())
+                   SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri())
            );
    
            return (*this);

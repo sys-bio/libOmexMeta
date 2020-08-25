@@ -24,7 +24,7 @@ Program Listing for File PhysicalPhenomenon.cpp
        PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string local_uri,
                                               PhysicalProperty propertyResource, AnnotationType type)
                : model_(model), physical_property_(std::move(propertyResource)), type_(type),
-               local_uri_(local_uri){}
+               model_uri_(local_uri){}
    
        PhysicalPhenomenon::~PhysicalPhenomenon() = default;
    
@@ -33,7 +33,7 @@ Program Listing for File PhysicalPhenomenon.cpp
                : model_(model) {}
    
        PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string local_uri)
-           : model_(model), local_uri_(local_uri) {}
+           : model_(model), model_uri_(local_uri) {}
    
        const std::string & PhysicalPhenomenon::getSubjectStr() const {
            return physical_property_.getSubjectStr();
@@ -72,7 +72,7 @@ Program Listing for File PhysicalPhenomenon.cpp
            phenomenon.model_ = nullptr; // not sure if this is right.
            physical_property_ = std::move(phenomenon.physical_property_);
            type_ = phenomenon.type_;
-           local_uri_ = phenomenon.local_uri_;
+           model_uri_ = phenomenon.model_uri_;
        }
    
        PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
@@ -81,7 +81,7 @@ Program Listing for File PhysicalPhenomenon.cpp
                phenomenon.model_ = nullptr; // not sure if this is right.
                physical_property_ = std::move(phenomenon.physical_property_);
                type_ = phenomenon.type_;
-           local_uri_ = phenomenon.local_uri_;
+           model_uri_ = phenomenon.model_uri_;
            }
            return *this;
        }
@@ -110,17 +110,17 @@ Program Listing for File PhysicalPhenomenon.cpp
            physical_property_id_ = physicalPropertyId;
        }
    
-       const std::string &PhysicalPhenomenon::getLocalUri() const {
-           if (local_uri_.empty()){
-               throw std::invalid_argument("std::invalid_argument: local_uri_ is empty. "
-                                           "Please use setLocalUri or pass to the constructor a "
+       const std::string &PhysicalPhenomenon::getModelUri() const {
+           if (model_uri_.empty()){
+               throw std::invalid_argument("std::invalid_argument: model_uri_ is empty. "
+                                           "Please use setModelUri or pass to the constructor a "
                                            "local uri. ");
            }
-           return local_uri_;
+           return model_uri_;
        }
    
-       void PhysicalPhenomenon::setLocalUri(const std::string &localUri) {
-           local_uri_ = localUri;
+       void PhysicalPhenomenon::setModelUri(const std::string &localUri) {
+           model_uri_ = localUri;
        }
    
    

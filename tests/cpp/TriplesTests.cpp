@@ -309,20 +309,18 @@ TEST(TriplesTestsNoFixture, TestStr) {
             LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://subject1.com/subject1\">\n"
-                           "    <ns1:predicate1 xmlns:ns1=\"http://predicate1.com/\"\n"
-                           "       rdf:resource=\"http://resource1.com/resource1\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://subject2.com/subject2\">\n"
-                           "    <ns2:predicate2 xmlns:ns2=\"http://predicate2.com/\"\n"
-                           "       rdf:resource=\"http://resource2.com/resource2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://subject1.com/subject1>\n"
+                           "    <http://predicate1.com/predicate1> <http://resource1.com/resource1> .\n"
+                           "\n"
+                           "<http://subject2.com/subject2>\n"
+                           "    <http://predicate2.com/predicate2> <http://resource2.com/resource2> .\n"
+                           "\n"
+                           "";
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());

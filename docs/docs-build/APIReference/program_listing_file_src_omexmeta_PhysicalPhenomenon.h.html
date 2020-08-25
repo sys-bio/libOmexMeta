@@ -186,7 +186,7 @@
         <span class="n">PhysicalProperty</span> <span class="n">physical_property_</span><span class="p">;</span>
         <span class="n">AnnotationType</span> <span class="n">type_</span> <span class="o">=</span> <span class="n">AnnotationType</span><span class="o">::</span><span class="n">UNKNOWN</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physical_property_id_</span><span class="p">;</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span><span class="p">;</span>
 
         <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">generateMetaId</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">id_base</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
@@ -243,9 +243,9 @@
         <span class="n">PhysicalPhenomenon</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span>
                            <span class="n">PhysicalProperty</span> <span class="n">propertyResource</span><span class="p">,</span> <span class="n">AnnotationType</span> <span class="n">type</span><span class="p">);</span>
 
-        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getLocalUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-        <span class="kt">void</span> <span class="nf">setLocalUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">setModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">);</span>
 
         <span class="cm">/*</span>
 <span class="cm">         * @brief get the subject portion of the PhysicalPhenomenon</span>

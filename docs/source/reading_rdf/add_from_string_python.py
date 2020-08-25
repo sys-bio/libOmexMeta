@@ -1,7 +1,7 @@
 from pyomexmeta import RDF
 
 rdf_str1 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-              @prefix myOMEXlib: <http://omex-library.org/> .
+              @prefix OMEXlib: <http://omex-library.org/> .
               @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
               @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
  
@@ -11,7 +11,7 @@ rdf_str1 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 rdf_str2 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
               @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-              @prefix myOMEXlib: <http://omex-library.org/> .
+              @prefix OMEXlib: <http://omex-library.org/> .
               @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
               @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
               

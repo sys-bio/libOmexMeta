@@ -25,10 +25,22 @@ namespace omexmeta {
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
-        std::string physical_property_id_;
+        std::string model_uri_;
         std::string local_uri_;
+        std::vector<std::string> new_metaid_exclusion_list_;
 
-        [[nodiscard]] std::string generateMetaId(const std::string& id_base) const;
+        /*
+         * @brief getter for a vector of strings that keeps track of used metaids.
+         * @details this mechanism is necessary in order to ensure unique metaids in
+         * the case of adding multiple instances of a type to the PhysicalPhenomenon
+         * before commiting to the model. For instance, you can have arbitrary
+         * sink participants, which would all be given the SinkParticipant0000 metaid
+         * if not for this mechanism.
+         */
+        [[nodiscard]] std::vector<std::string> getNewMetaidExclusionList();
+
+    protected:
+        [[nodiscard]] std::string generateMetaId(const std::string& id_base);
 
     public:
         PhysicalPhenomenon() = default;
@@ -38,6 +50,10 @@ namespace omexmeta {
         bool operator!=(const PhysicalPhenomenon &rhs) const;
 
         ~PhysicalPhenomenon();
+
+        const std::string &getLocalUri() const;
+
+        void setLocalUri(const std::string &localUri);
 
         /*
          * @brief Copy constructor for PhysicalPhenomenon
@@ -71,7 +87,7 @@ namespace omexmeta {
          *
          * Shouldn't be needed by users directly.
          */
-        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model, std::string local_uri);
+        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri);
 
         /*
          * @brief constructor for PhysicalPhenomenon object.
@@ -80,12 +96,12 @@ namespace omexmeta {
          * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PhysicalPhenomenon(librdf_model *model, std::string local_uri,
+        PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri,
                            PhysicalProperty propertyResource, AnnotationType type);
 
-        [[nodiscard]] const std::string &getLocalUri() const;
+        [[nodiscard]] const std::string &getModelUri() const;
 
-        void setLocalUri(const std::string &localUri);
+        void setModelUri(const std::string &modelUri);
 
         /*
          * @brief get the subject portion of the PhysicalPhenomenon

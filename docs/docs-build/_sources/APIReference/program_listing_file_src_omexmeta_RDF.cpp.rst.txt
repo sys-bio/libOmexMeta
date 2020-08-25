@@ -184,7 +184,7 @@ Program Listing for File RDF.cpp
            for (auto &it: namespaces_) {
                serializer.setNamespace(it.first, it.second);
            }
-           serializer.setNamespace(getRepositoryUri(), "myOMEXlib");
+           serializer.setNamespace(getRepositoryUri(), "OMEXlib");
            serializer.setNamespace(getArchiveUri(), "myOMEX");
            serializer.setNamespace(getLocalUri(), "local");
            return serializer.toString(base_uri, model_);
@@ -214,7 +214,7 @@ Program Listing for File RDF.cpp
    
        Editor *RDF::toEditorPtr(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids) {
            auto *editor = new Editor(xml, type, false, model_, namespaces_, generate_new_metaids,
-                                     getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
+                                     getRepositoryUri(), getArchiveUri(), getModelUri(), getModelUri());
            return editor;
        }
    
@@ -378,11 +378,11 @@ Program Listing for File RDF.cpp
                os << it << ".";
            }
            // Now we can docs-build up the local string
-           local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
+           model_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
        }
    
    
-       const std::string &RDF::getLocalUri() const {
-           return local_uri_;
+       const std::string &RDF::getModelUri() const {
+           return model_uri_;
        }
    }

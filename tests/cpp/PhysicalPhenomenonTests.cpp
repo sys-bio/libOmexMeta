@@ -22,6 +22,7 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
+    std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     PhysicalPhenomenonTests() {
@@ -33,25 +34,21 @@ public:
     };
 };
 
-/*
- * todo note that Now the subjec tmetaid is embedded in
- *  the resource, it is probably a good idea to modify the argumetns to physical phenomenon.
- *  and subclasses
- */
+
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", local_uri);
+    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", model_uri);
     PhysicalPhenomenon phenomenon(
             model.get(),
+            model_uri,
             local_uri,
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid004";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
-//    resource.free();
 }
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
@@ -59,6 +56,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", local_uri);
     PhysicalPhenomenon phenomenon(
             model.get(),
+            model_uri,
             local_uri,
             resource,
             PHYSICAL_ENTITY
@@ -67,7 +65,6 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
-//    resource.free();
 }
 
 TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
@@ -78,6 +75,7 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
     PhysicalProperty resource = PhysicalProperty("metaid", "OPB:OPB_12345", local_uri);
     PhysicalPhenomenon phenomenon(
             model.get(),
+            model_uri,
             local_uri,
             resource,
             PHYSICAL_ENTITY
@@ -86,7 +84,6 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
     std::string actual = phenomenon.getPhysicalProperty().getResourceStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
-//    resource.free();
 }
 
 

@@ -13,7 +13,7 @@ Serializing to ntriples:
 Serializing to turtle:
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix myOMEXlib: <http://omex-library.org/> .
+@prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
@@ -36,7 +36,7 @@ Serializing to rdfxml-xmp:
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="">
     <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000"/>
@@ -58,7 +58,7 @@ Serializing to rdfxml-abbrev:
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:myOMEXlib="http://omex-library.org/"
+   xmlns:OMEXlib="http://omex-library.org/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001">
     <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000"/>
@@ -78,7 +78,7 @@ Serializing to rdfxml-abbrev:
 
 Serializing to rdfxml:
 <?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex" xmlns:myOMEXlib="http://omex-library.org/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex" xmlns:OMEXlib="http://omex-library.org/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001">
     <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000"/>
   </rdf:Description>
@@ -110,17 +110,17 @@ digraph {
 	rankdir = LR;
 	charset="utf-8";
 
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001" -> "RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" [ label="bqbiol:isPropertyOf" ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001" -> "Rhttps://identifiers.org/OPB/OPB_00340" [ label="bqbiol:isVersionOf" ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/uniprot/P84022" [ label="bqbiol:is" ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:24178" [ label="bqbiol:isPartOf" ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:63877" [ label="bqbiol:isPartOf" ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:70737" [ label="bqbiol:isPartOf" ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:7163" [ label="bqbiol:isPartOf" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001" -> "ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" [ label="bqbiol:isPropertyOf" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001" -> "Rhttps://identifiers.org/OPB/OPB_00340" [ label="bqbiol:isVersionOf" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/uniprot/P84022" [ label="bqbiol:is" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:24178" [ label="bqbiol:isPartOf" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:63877" [ label="bqbiol:isPartOf" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:70737" [ label="bqbiol:isPartOf" ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" -> "Rhttps://identifiers.org/fma/FMA:7163" [ label="bqbiol:isPartOf" ];
 
 	// Resources
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001" [ label="myOMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001", shape = ellipse, color = blue ];
-	"RmyOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" [ label="myOMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000", shape = ellipse, color = blue ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001" [ label="OMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001", shape = ellipse, color = blue ];
+	"ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000" [ label="OMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000", shape = ellipse, color = blue ];
 	"Rhttps://identifiers.org/OPB/OPB_00340" [ label="https://identifiers.org/OPB/OPB_00340", shape = ellipse, color = blue ];
 	"Rhttps://identifiers.org/uniprot/P84022" [ label="https://identifiers.org/uniprot/P84022", shape = ellipse, color = blue ];
 	"Rhttps://identifiers.org/fma/FMA:24178" [ label="https://identifiers.org/fma/FMA:24178", shape = ellipse, color = blue ];
@@ -132,7 +132,7 @@ digraph {
 
 	// Literals
 
-	label="\n\nModel:\nfile://Annotations.rdf\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nmyOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
+	label="\n\nModel:\nfile://Annotations.rdf\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
 }
 
 

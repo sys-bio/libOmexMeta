@@ -142,7 +142,7 @@ TEST_F(ResourceTests, TestIsLiterralWithDatatype) {
     Resource resource = Resource::fromRawPtr(
             LibrdfNode::fromLiteral(
                     "1.0",
-                    "http://www.w3.org/2001/XMLSchema#double"
+                    "double"
             ).get()
     );
     ASSERT_TRUE(resource.isSet());
@@ -154,7 +154,7 @@ TEST_F(ResourceTests, TestThatIcanPutAResourceInAVector) {
     Resource resource = Resource::fromRawPtr(
             LibrdfNode::fromLiteral(
                     "1.0",
-                    "http://www.w3.org/2001/XMLSchema#double"
+                    "double"
             ).get()
     );
     std::vector<Resource> res = {resource};
@@ -168,13 +168,13 @@ TEST(ResourceTestsNoFixture, TestEquality) {
     Resource resource1 = Resource(
             LibrdfNode::fromLiteral(
                     "1.0",
-                    "http://www.w3.org/2001/XMLSchema#double"
+                    "double"
             )
     );
     Resource resource2 = Resource(
             LibrdfNode::fromLiteral(
                     "1.0",
-                    "http://www.w3.org/2001/XMLSchema#double"
+                    "double"
             )
     );
     ASSERT_EQ(resource1, resource2);
@@ -186,13 +186,13 @@ TEST(ResourceTestsNoFixture, TestInequality) {
     Resource resource1 = Resource(
             LibrdfNode::fromLiteral(
                     "2.0",
-                    "http://www.w3.org/2001/XMLSchema#double"
+                    "double"
             )
     );
     Resource resource2 = Resource(
             LibrdfNode::fromLiteral(
                     "1.0",
-                    "http://www.w3.org/2001/XMLSchema#double"
+                    "double"
             )
     );
     ASSERT_NE(resource1, resource2);

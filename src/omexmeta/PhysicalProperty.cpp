@@ -9,10 +9,10 @@
 
 namespace omexmeta {
 
-    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri)
-            : subject_(std::move(OmexMetaUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
+    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri)
+            : subject_(subject_str),
               resource_(std::move(resource_str)),
-              local_uri_(local_uri){
+              model_uri_(model_uri){
         validate();
     }
 
@@ -31,11 +31,28 @@ namespace omexmeta {
                           "must be OPB resources.";
             throw omexmeta::InappropriateResourceException(err.str());
         }
+
+        // ensure subject_uri_ has the model_uri associated with it
+        if (OmexMetaUtils::startsWith(subject_, "http")){
+            if (!OmexMetaUtils::startsWith(subject_, getModelUri())){
+                throw std::invalid_argument("std::invalid_argument: PhysicalProperty::validate() "
+                                            "The subject argument to PhysicalProperty is already a URI"
+                                            "but is it not the uri associated with the model you are annotating "
+                                            "("+getModelUri()+") but instead \""+subject_+"\"");
+            }
+        } else {
+            subject_ = OmexMetaUtils::concatMetaIdAndUri(subject_, getModelUri());
+        }
     }
 
 
-    Triples PhysicalProperty::toTriples(std::string property_metaid) const {
-        property_metaid = OmexMetaUtils::addLocalPrefixToMetaid(property_metaid, getLocalUri());
+    Triples PhysicalProperty::toTriples(const std::string& property_metaid) const {
+
+        if (!OmexMetaUtils::startsWith(property_metaid, "http")){
+            throw std::invalid_argument("std::invalid_argument: PhysicalProperty::toTriples: "
+                                        "Expected a full uri (i.e. begins with http) for property_metaid "
+                                        "argument but instead recieved \""+property_metaid+"\"");
+        }
         Triple is_version_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isVersionOf").getNode(),
@@ -57,7 +74,14 @@ namespace omexmeta {
     }
 
     void PhysicalProperty::setSubject(const std::string &subject) {
-        subject_ = OmexMetaUtils::addLocalPrefixToMetaid(subject, getLocalUri());
+        LOG_DEBUG("subject before: %s", subject_.c_str());
+        LOG_DEBUG("subject: %s, getModelUri: %s", subject_.c_str(), getModelUri().c_str());
+        if (OmexMetaUtils::startsWith(subject, "http")){
+            subject_ = subject;
+        } else {
+            subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
+        }
+        LOG_DEBUG("subject after: %s", subject_.c_str());
     }
 
     const std::string &PhysicalProperty::getResourceStr() const {
@@ -85,12 +109,12 @@ namespace omexmeta {
         return resource_;
     }
 
-    const std::string &PhysicalProperty::getLocalUri() const {
-        return local_uri_;
+    const std::string &PhysicalProperty::getModelUri() const {
+        return model_uri_;
     }
 
-    void PhysicalProperty::setLocalUri(const std::string &localUri) {
-        local_uri_ = localUri;
+    void PhysicalProperty::setModelUri(const std::string &model_uri) {
+        model_uri_ = model_uri;
     }
 
 

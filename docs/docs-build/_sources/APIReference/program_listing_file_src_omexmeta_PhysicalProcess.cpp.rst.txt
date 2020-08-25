@@ -95,7 +95,7 @@ Program Listing for File PhysicalProcess.cpp
                    std::move(MediatorParticipant(
                            model_,
                            std::move(physical_entity_reference),
-                           getLocalUri()
+                           getModelUri()
                    ))
            );
    
@@ -165,7 +165,7 @@ Program Listing for File PhysicalProcess.cpp
    
            // now we add the local uri on to the metaid - If it already
            // properly formatted it will be left alone
-           physical_property_id_ = OmexMetaUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
+           physical_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_property_id_, getModelUri());
    
            Triples triples = physical_property_.toTriples(physical_property_id_);
    

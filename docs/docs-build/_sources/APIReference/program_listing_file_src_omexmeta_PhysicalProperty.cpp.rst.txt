@@ -24,7 +24,7 @@ Program Listing for File PhysicalProperty.cpp
        PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri)
                : subject_(std::move(OmexMetaUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
                  resource_(std::move(resource_str)),
-                 local_uri_(local_uri){
+                 model_uri_(local_uri){
            validate();
        }
    
@@ -69,7 +69,7 @@ Program Listing for File PhysicalProperty.cpp
        }
    
        void PhysicalProperty::setSubject(const std::string &subject) {
-           subject_ = OmexMetaUtils::addLocalPrefixToMetaid(subject, getLocalUri());
+           subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
        }
    
        const std::string &PhysicalProperty::getResourceStr() const {
@@ -97,12 +97,12 @@ Program Listing for File PhysicalProperty.cpp
            return resource_;
        }
    
-       const std::string &PhysicalProperty::getLocalUri() const {
-           return local_uri_;
+       const std::string &PhysicalProperty::getModelUri() const {
+           return model_uri_;
        }
    
-       void PhysicalProperty::setLocalUri(const std::string &localUri) {
-           local_uri_ = localUri;
+       void PhysicalProperty::setModelUri(const std::string &localUri) {
+           model_uri_ = localUri;
        }
    
    

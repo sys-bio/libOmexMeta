@@ -6,9 +6,9 @@
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1Triple_1ac73ca3aad0e993e1ff26bea1b5f531a1" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::Triple::local_uri_</definition>
+        <definition>std::string omexmeta::Triple::model_uri_</definition>
         <argsstring></argsstring>
-        <name>local_uri_</name>
+        <name>model_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -103,9 +103,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::Triple::getLocalUri</definition>
+        <definition>const std::string &amp; omexmeta::Triple::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocalUri</name>
+        <name>getModelUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -116,9 +116,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::Triple::setLocalUri</definition>
+        <definition>void omexmeta::Triple::setModelUri</definition>
         <argsstring>(std::string localUri)</argsstring>
-        <name>setLocalUri</name>
+        <name>setModelUri</name>
         <param>
           <type>std::string</type>
           <declname>localUri</declname>
@@ -419,7 +419,7 @@
       <member refid="classomexmeta_1_1Triple_1af03c0ce3392c0ff30f13772209ac873c" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>fromRawStatementPtr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>get</name></member>
       <member refid="classomexmeta_1_1Triple_1a69df88d19e2f9077fccfa9543dadd15f" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getAbout</name></member>
-      <member refid="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getModelUri</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getPredicate</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getPredicateStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getResource</name></member>
@@ -436,7 +436,7 @@
       <member refid="classredland_1_1LibrdfStatement_1ae7f7e27b7a502070195103268407243a" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>LibrdfStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a344ec4a937a1d67589ebc7247b3f08c6" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>LibrdfStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1aea171565ffb3ecc8d9c1db5439314306" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>LibrdfStatement</name></member>
-      <member refid="classomexmeta_1_1Triple_1ac73ca3aad0e993e1ff26bea1b5f531a1" prot="private" virt="non-virtual"><scope>omexmeta::Triple</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1Triple_1ac73ca3aad0e993e1ff26bea1b5f531a1" prot="private" virt="non-virtual"><scope>omexmeta::Triple</scope><name>model_uri_</name></member>
       <member refid="classredland_1_1LibrdfStatement_1ad3d6c126b90c0d93413a08353c496f8f" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>operator!=</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a7aeb5ac71f5583b5a56b4aad7d904381" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>operator=</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6cebbcea1400ba2983b25096f3db3b3c" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>operator=</name></member>
@@ -445,7 +445,7 @@
       <member refid="classredland_1_1LibrdfStatement_1afd63d6425b2130dbe4e76fdee4d7218b" prot="protected" virt="non-virtual"><scope>omexmeta::Triple</scope><name>refreshStatement</name></member>
       <member refid="classomexmeta_1_1Triple_1a2b673a8166a19fb4feae0fc42d31c105" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1Triple_1a6329b09efb05005d248790e8a3d507f3" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setLocalUri</name></member>
+      <member refid="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1Triple_1a57b4521321178af38415e76cd483207e" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setPredicate</name></member>
       <member refid="classomexmeta_1_1Triple_1a1a99a566a9d1883c6329a023f4dbc056" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setPredicate</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a3306876fb080f3d19fca806142f93f87" prot="public" virt="non-virtual" ambiguityscope="redland::LibrdfStatement::"><scope>omexmeta::Triple</scope><name>setPredicate</name></member>

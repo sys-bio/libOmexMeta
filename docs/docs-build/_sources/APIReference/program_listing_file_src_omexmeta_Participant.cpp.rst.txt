@@ -32,7 +32,7 @@ Program Listing for File Participant.cpp
                  // work for Participant subclasses.
    //              metaid_template_str_(OmexMetaUtils::addLocalPrefixToMetaid(std::move(base_metaid), local_uri)),
                  metaid_template_str_(std::move(base_metaid)),
-                 local_uri_(std::move(local_uri)),
+                 model_uri_(std::move(local_uri)),
                  semsim_predicate_term_(std::move(semsim_predicate_term)),
                  multiplier_(multiplier),
                  physicalEntityReference_(std::move(physicalEntityReference)) {}
@@ -42,11 +42,11 @@ Program Listing for File Participant.cpp
        }
    
        Triples Participant::toTriples(std::string process_metaid) {
-           if (unique_participant_metaid_.empty()) {
-               unique_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(model_, metaid_template_str_);
+           if (local_participant_metaid_.empty()) {
+               local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(model_, metaid_template_str_);
            }
-           process_metaid = OmexMetaUtils::addLocalPrefixToMetaid(process_metaid, local_uri_);
-           unique_participant_metaid_ = OmexMetaUtils::addLocalPrefixToMetaid(unique_participant_metaid_, local_uri_);
+           process_metaid = OmexMetaUtils::addLocalPrefixToMetaid(process_metaid, model_uri_);
+           local_participant_metaid_ = OmexMetaUtils::addLocalPrefixToMetaid(local_participant_metaid_, model_uri_);
    
            // todo preallocate num triples needed
            Triples triples;
@@ -62,13 +62,13 @@ Program Listing for File Participant.cpp
                throw NullPointerException("NullPointerException: Participant::toTriples: pred1");
            }
    
-           librdf_node *res1 = LibrdfNode::fromUriString(unique_participant_metaid_).get();
+           librdf_node *res1 = LibrdfNode::fromUriString(local_participant_metaid_).get();
            if (res1 == nullptr) {
                throw NullPointerException("NullPointerException: Participant::toTriples: res1");
            }
            triples.emplace_back(sub1, pred1, res1);
    
-           librdf_node *sub2 = LibrdfNode::fromUriString(unique_participant_metaid_).get();
+           librdf_node *sub2 = LibrdfNode::fromUriString(local_participant_metaid_).get();
    
            if (sub2 == nullptr) {
                throw NullPointerException("NullPointerException: Participant::toTriples: sub2");
@@ -80,7 +80,7 @@ Program Listing for File Participant.cpp
            }
    
            librdf_node *res2 = LibrdfNode::fromUriString(
-                   OmexMetaUtils::addLocalPrefixToMetaid(physicalEntityReference_, getLocalUri())
+                   OmexMetaUtils::concatMetaIdAndUri(physicalEntityReference_, getModelUri())
            ).get();
            if (res2 == nullptr) {
                throw NullPointerException("NullPointerException: Participant::toTriples: res2");
@@ -91,7 +91,7 @@ Program Listing for File Participant.cpp
                std::ostringstream multiplier_os;
                multiplier_os << multiplier_;
    
-               librdf_node *sub3 = LibrdfNode::fromUriString(unique_participant_metaid_).get();
+               librdf_node *sub3 = LibrdfNode::fromUriString(local_participant_metaid_).get();
                if (sub3 == nullptr) {
                    throw NullPointerException("NullPointerException: Participant::toTriples: sub3");
                }
@@ -146,7 +146,7 @@ Program Listing for File Participant.cpp
                   semsim_predicate_term_ == rhs.semsim_predicate_term_ &&
                   multiplier_ == rhs.multiplier_ &&
                   physicalEntityReference_ == rhs.physicalEntityReference_ &&
-                  unique_participant_metaid_ == rhs.unique_participant_metaid_;
+                  local_participant_metaid_ == rhs.local_participant_metaid_;
        }
    
        bool Participant::operator!=(const Participant &rhs) const {
@@ -161,20 +161,20 @@ Program Listing for File Participant.cpp
            physicalEntityReference_ = physicalEntityReference;
        }
    
-       const std::string &Participant::getUniqueParticipantMetaid() const {
-           return unique_participant_metaid_;
+       const std::string &Participant::getLocalParticipantMetaid() const {
+           return local_participant_metaid_;
        }
    
        void Participant::setUniqueParticipantMetaid(const std::string &uniqueParticipantMetaid) {
-           unique_participant_metaid_ = uniqueParticipantMetaid;
+           local_participant_metaid_ = uniqueParticipantMetaid;
        }
    
-       const std::string &Participant::getLocalUri() const {
-           return local_uri_;
+       const std::string &Participant::getModelUri() const {
+           return model_uri_;
        }
    
-       void Participant::setLocalUri(const std::string &localUri) {
-           local_uri_ = localUri;
+       void Participant::setModelUri(const std::string &localUri) {
+           model_uri_ = localUri;
        }
    
        SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,

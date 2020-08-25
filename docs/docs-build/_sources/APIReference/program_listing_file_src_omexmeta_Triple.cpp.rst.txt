@@ -67,20 +67,20 @@ Program Listing for File Triple.cpp
            // deal with namespaces
            Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
    
-           std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings("http://omex-library.org/", omex_name,
+           std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings("http://omex-library.org/", omex_name,
                                                                                 model_name);
    
            // make uri's for the namespaces
-           librdf_uri *myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
+           librdf_uri *OMEXlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
            librdf_uri *myomex = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[1].c_str());
            librdf_uri *local = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[2].c_str());
    
-           librdf_serializer_set_namespace(serializer, myomexlib, "myOMEXlib");
+           librdf_serializer_set_namespace(serializer, OMEXlib, "OMEXlib");
            librdf_serializer_set_namespace(serializer, myomex, "myOMEX");
            librdf_serializer_set_namespace(serializer, local, "local");
    
            // free the uri's now that we're done with them.
-           librdf_free_uri(myomexlib);
+           librdf_free_uri(OMEXlib);
            librdf_free_uri(myomex);
            librdf_free_uri(local);
    
@@ -136,9 +136,9 @@ Program Listing for File Triple.cpp
                    throw std::logic_error("std::logic_error: Triple::setAbout: Trying to "
                                           "setAbout(), i.e. the subject portion of a singular annotation. Either "
                                           "give a full uri (i.e. starts with http) or set the local_uri attribute"
-                                          "using setLocalUri() before calling setAbout().");
+                                          "using setModelUri() before calling setAbout().");
                }
-               metaid = getLocalUri() + metaid;
+               metaid = getModelUri() + metaid;
            }
    
    
@@ -223,14 +223,14 @@ Program Listing for File Triple.cpp
            freeStatementAndUris();
        }
    
-       const std::string &Triple::getLocalUri() const {
-           return local_uri_;
+       const std::string &Triple::getModelUri() const {
+           return model_uri_;
        }
    
-       void Triple::setLocalUri(std::string localUri) {
+       void Triple::setModelUri(std::string localUri) {
            if (!OmexMetaUtils::endsWith(localUri, "#"))
                localUri += "#";
-           local_uri_ = localUri;
+           model_uri_ = localUri;
        }
    
    }

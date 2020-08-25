@@ -221,8 +221,8 @@ formats are:</p>
 11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
 
 <span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
-<span class="s2">             @prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span>
-<span class="s2">             @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span>
+<span class="s2">             @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">             @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
 <span class="s2">             @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 
 <span class="s2">             &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span>
@@ -268,7 +268,7 @@ formats are:</p>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -318,8 +318,8 @@ formats are:</p>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -393,8 +393,8 @@ formats are:</p>
 25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
 
 <span class="n">rdf_str1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
-<span class="s2">              @prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span>
-<span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span>
+<span class="s2">              @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
 <span class="s2">              @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 <span class="s2"> </span>
 <span class="s2">              &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span>
@@ -403,8 +403,8 @@ formats are:</p>
 
 <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
 <span class="s2">              @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
-<span class="s2">              @prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span>
-<span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span>
+<span class="s2">              @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
 <span class="s2">              @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 <span class="s2">              </span>
 <span class="s2">              local:OmexMetaId0000</span>
@@ -467,8 +467,8 @@ formats are:</p>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str1</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -477,8 +477,8 @@ formats are:</p>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;local:OmexMetaId0000</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -545,8 +545,8 @@ formats are:</p>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str1</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -555,8 +555,8 @@ formats are:</p>
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;local:OmexMetaId0000</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -780,7 +780,7 @@ formats are:</p>
 
 <span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
 <span class="s2">             @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
-<span class="s2">             @prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">             @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
 <span class="s2">             @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span>
 <span class="s2">             @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 <span class="s2">             </span>
@@ -846,7 +846,7 @@ formats are:</p>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -915,7 +915,7 @@ formats are:</p>
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -1117,7 +1117,7 @@ formats are:</p>
 
 <span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
 <span class="s2">              @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
-<span class="s2">              @prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">              @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
 <span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span>
 <span class="s2">              @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 <span class="s2">              </span>
@@ -1180,7 +1180,7 @@ formats are:</p>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -1245,7 +1245,7 @@ formats are:</p>
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;@prefix myOMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>

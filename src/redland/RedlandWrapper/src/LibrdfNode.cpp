@@ -52,11 +52,18 @@ namespace redland {
     std::string LibrdfNode::validateLiteralDatatype(const std::string &literal_datatype_uri) {
         std::string literal_datatype_prefix_ = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
         std::string literal_datatype_;
-        if (literal_datatype_uri.rfind(literal_datatype_prefix_, 0) != 0) {
-            literal_datatype_ = literal_datatype_prefix_ + literal_datatype_uri;
-        } else {
-            literal_datatype_ = literal_datatype_uri;
+
+        if (literal_datatype_uri.rfind("http", 0) == 0){
+            throw std::invalid_argument("std::invalid_argument: LibrdfNode::validateLiteralDatatype() "
+                                        "literal_datatype argument should not begin with http. Instead "
+                                        "just provide the type portion of the uri.");
         }
+        literal_datatype_ = literal_datatype_prefix_ + literal_datatype_uri;
+
+//        if (literal_datatype_uri.rfind(literal_datatype_prefix_, 0) != 0) {
+//        } else {
+//            literal_datatype_ = literal_datatype_uri;
+//        }
         return literal_datatype_;
     }
 

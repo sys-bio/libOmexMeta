@@ -20,6 +20,7 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
+    std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 
     PhysicalProperty physical_property;
@@ -27,7 +28,7 @@ public:
     PhysicalProcessTests() {
         model = LibrdfModel(storage.get());
 
-        physical_property = PhysicalProperty("metaid", "OPB:OPB_00340", local_uri);
+        physical_property = PhysicalProperty("metaid", "OPB:OPB_00340", model_uri);
     };
 
     ~PhysicalProcessTests() override {
@@ -42,25 +43,26 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "#PhysicalEntityReference1", local_uri
+                    "#PhysicalEntityReference1", model_uri, local_uri
             )}
     );
     std::vector <SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", local_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
     std::vector <MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "PhysicalEntityReference3", local_uri
+                    "PhysicalEntityReference3", model_uri, local_uri
             )}
     );
 
     PhysicalProcess process(
             model.get(),
+            model_uri,
             local_uri,
             physical_property,
             source_participants,
@@ -69,7 +71,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     );
 
     std::string actual = process.getSubjectStr();
-    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid";
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
@@ -86,25 +88,26 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "#PhysicalEntityReference1", local_uri
+                    "#PhysicalEntityReference1", model_uri, local_uri
             )}
     );
     std::vector <SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference2", local_uri
+                    "PhysicalEntityReference2", model_uri, local_uri
             )}
     );
     std::vector <MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "PhysicalEntityReference3", local_uri
+                    "PhysicalEntityReference3", model_uri, local_uri
             )}
     );
 
     PhysicalProcess process(
             model.get(),
+            model_uri,
             local_uri,
             physical_property,
             source_participants,
@@ -127,13 +130,14 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     PhysicalProcess process(
             model.get(),
+            model_uri,
             local_uri,
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", local_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -141,14 +145,14 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
 
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", local_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(
 
                             model.get(),
-                            "PhysicalEntityReference3", local_uri
+                            "PhysicalEntityReference3", model_uri, local_uri
                     )}
             )
     );
@@ -166,27 +170,28 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     PhysicalProcess process(
             model.get(),
+            model_uri,
             local_uri,
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", local_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", local_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(
 
                             model.get(),
-                            "PhysicalEntityReference3", local_uri
+                            "PhysicalEntityReference3", model_uri, local_uri
                     )}
             )
     );
@@ -199,72 +204,71 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
+    LOG_INFO("model uri: %s", model_uri.c_str());
     PhysicalProcess process(
             model.get(),
+            model_uri,
             local_uri,
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
-
                             model.get(),
                             1.0,
-                            "#PhysicalEntityReference1", local_uri
+                            "#PhysicalEntityReference1", model_uri, local_uri
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
-
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference2", local_uri
+                            "PhysicalEntityReference2", model_uri, local_uri
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(
-
                             model.get(),
-                            "PhysicalEntityReference3", local_uri
+                            "PhysicalEntityReference3", model_uri, local_uri
                     )}
             )
     );
     Triples triples = process.toTriples();
 
-    std::string actual = triples.str();
+    std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntityReference3\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntityReference2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntityReference1\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference3> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     PhysicalProcess process(model.get());
+    process.setModelUri(model_uri);
     process.setLocalUri(local_uri);
     process.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
@@ -274,47 +278,49 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
 
     Triples triples = process.toTriples();
 
-    std::string actual = triples.str();
+    std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
-                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/NewModel.xml#\"\n"
-                           "   xmlns:myOMEXlib=\"http://omex-library.org/NewOmex.omex\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid0\"/>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid1\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#property_metaid_0\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid2> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid0> .\n"
+                           "\n"
+                           "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"2\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // remember to free the unused physical property from test fixture
-    //physical_property.free();
     triples.freeTriples();
 }
 
 TEST_F(PhysicalProcessTests, TestEquality) {
     PhysicalProcess process1(model.get());
+    process1.setModelUri(model_uri);
     process1.setLocalUri(local_uri);
     process1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
@@ -323,6 +329,7 @@ TEST_F(PhysicalProcessTests, TestEquality) {
             .addMediator( "species_metaid2");
 
     PhysicalProcess process2(model.get());
+    process2.setModelUri(model_uri);
     process2.setLocalUri(local_uri);
     process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
@@ -336,6 +343,7 @@ TEST_F(PhysicalProcessTests, TestEquality) {
 
 TEST_F(PhysicalProcessTests, TestInequality) {
     PhysicalProcess process1(model.get());
+    process1.setModelUri(model_uri);
     process1.setLocalUri(local_uri);
     process1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")
@@ -344,6 +352,7 @@ TEST_F(PhysicalProcessTests, TestInequality) {
             .addMediator( "species_metaid2");
 
     PhysicalProcess process2(model.get());
+    process2.setModelUri(model_uri);
     process2.setLocalUri(local_uri);
     process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource(1.0, "species_metaid0")

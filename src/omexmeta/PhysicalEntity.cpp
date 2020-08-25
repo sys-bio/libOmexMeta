@@ -8,9 +8,9 @@
 
 namespace omexmeta {
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
+    PhysicalEntity::PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
                                    Resource is, Resources is_part_of)
-            : PhysicalPhenomenon(model, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
+            : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
               identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
     void PhysicalEntity::free() {
@@ -29,8 +29,8 @@ namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model) : PhysicalPhenomenon(model) {}
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string& local_uri)
-        : PhysicalPhenomenon(model, local_uri) {}
+    PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string& model_uri, const std::string& local_uri)
+        : PhysicalPhenomenon(model, model_uri, local_uri) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -39,8 +39,8 @@ namespace omexmeta {
 
     PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
+        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
         return *this;
     }
 
@@ -106,25 +106,25 @@ namespace omexmeta {
                 );
             }
         }
-
         // when physical_property_id_ is empty it means we have not
         // called the toTriples() method before and an ID needs to be generated.
         // When it is not empty - we have called toTriples before and we can skip ID generation
-        if (physical_property_id_.empty()) {
+        //
+        // To further clarify, the entity_id_ needs to be a class level attribute
+        // and initialized as an empty string. When its empty we need to generate a
+        // new id but if its filled then we can generate Triples an arbitrary number
+        // of times from the same PhysicalEntity instance and still get the same
+        // Triples object. Note, this is important for deleting composites from the rdf model.
+        if (entity_id_.empty()) {
             // no exclusions needed here - we only generate 1 process metaid before comiting the triples
             // to the model.
-            physical_property_id_ = OmexMetaUtils::generateUniqueMetaid(
-                    model_, "PhysicalEntity",
-                    std::vector<std::string>());
+            entity_id_ = generateMetaId("PhysicalEntity");
         }
-
-        // now we add the local uri on to the metaid - If it already
-        // properly formatted it will be left alone
-        physical_property_id_ = OmexMetaUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
-
+        LOG_DEBUG("PhysicalEntity ID 1: %s", entity_id_.c_str());
+        entity_id_ = OmexMetaUtils::concatMetaIdAndUri(entity_id_, getLocalUri());
         // preallocate for efficiency
-        Triples triples(getLocationResources().size() + 3);
-        Triples physical_property_triples = physical_property_.toTriples(physical_property_id_);
+        Triples triples((int)getLocationResources().size() + 3);
+        Triples physical_property_triples = physical_property_.toTriples(entity_id_);
         for (auto &it : physical_property_triples) {
             triples.move_back(it); // moves the statement
         }
@@ -133,7 +133,7 @@ namespace omexmeta {
 
         // the "what" part of physical entity triple
         triples.emplace_back(
-                LibrdfNode::fromUriString(physical_property_id_).get(),
+                LibrdfNode::fromUriString(entity_id_).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
                 identity_resource_.getNode()
         );
@@ -141,7 +141,7 @@ namespace omexmeta {
         // the "where" part of the physical entity
         for (auto &locationResource : location_resources_) {
             triples.emplace_back(
-                    LibrdfNode::fromUriString(physical_property_id_).get(),
+                    LibrdfNode::fromUriString(entity_id_).get(),
                     BiomodelsBiologyQualifier("isPartOf").getNode(),
                     locationResource.getNode()
             );

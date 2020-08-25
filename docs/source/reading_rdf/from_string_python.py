@@ -1,7 +1,7 @@
 from pyomexmeta import RDF
 
 rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-             @prefix myOMEXlib: <http://omex-library.org/> .
+             @prefix OMEXlib: <http://omex-library.org/> .
              @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
              @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 

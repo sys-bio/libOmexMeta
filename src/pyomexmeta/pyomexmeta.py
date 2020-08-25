@@ -176,8 +176,10 @@ class RDF:
 
     def to_editor(self, xml: str, xmltype: str, generate_new_metaids: bool = False) -> Editor:
         return Editor(PyOmexMetaAPI.rdf_to_editor(self._obj, xml.encode(),
+                                                  generate_new_metaids,
                                                   _xml_type_factory(xml_type=xmltype),
-                                                  generate_new_metaids))
+                                                  )
+                      )
 
     def draw(self, filename: str):
         """
