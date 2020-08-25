@@ -87,7 +87,7 @@ namespace omexmeta {
          * @brief create a metaid for the physical force annotation
          * @brief a new metaid for PhysicalForce
          */
-        [[maybe_unused]] [[nodiscard]] std::string createMetaId() const;
+        [[maybe_unused]] [[nodiscard]] std::string createMetaId();
 
         /*
          * @brief return vector of Source objects assocated with PhysicalForce

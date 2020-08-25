@@ -38,10 +38,10 @@ namespace omexmeta {
          * sink participants, which would all be given the SinkParticipant0000 metaid
          * if not for this mechanism.
          */
-        [[nodiscard]] const std::vector<std::string> &getNewMetaidExclusionList() const;
+        [[nodiscard]] std::vector<std::string> getNewMetaidExclusionList();
 
     protected:
-        [[nodiscard]] std::string generateMetaId(const std::string& id_base) const;
+        [[nodiscard]] std::string generateMetaId(const std::string& id_base);
 
     public:
         PhysicalPhenomenon() = default;

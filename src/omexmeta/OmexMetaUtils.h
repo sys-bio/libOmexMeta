@@ -68,7 +68,7 @@ namespace omexmeta {
          */
         static std::string generateUniqueMetaid(
                 librdf_model *model, const std::string &metaid_base,
-                const std::vector<std::string> &exclusions = std::vector<std::string>()
+                std::vector<std::string> &exclusions
         );
 
         /*

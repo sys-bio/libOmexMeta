@@ -147,17 +147,17 @@ namespace omexmeta {
 
 
         for (auto &source: sources_) {
-            for (auto &triple: source.toTriples(process_id)) {
+            for (auto &triple: source.toTriples(process_id, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink: sinks_) {
-            for (auto &triple: sink.toTriples(process_id)) {
+            for (auto &triple: sink.toTriples(process_id, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
-            for (auto &triple: mediator.toTriples(process_id)) {
+            for (auto &triple: mediator.toTriples(process_id, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }

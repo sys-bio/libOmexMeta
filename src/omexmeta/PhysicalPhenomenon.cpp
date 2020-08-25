@@ -31,7 +31,7 @@ namespace omexmeta {
         return type_;
     }
 
-    std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) const {
+    std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) {
         return OmexMetaUtils::generateUniqueMetaid(model_, id_base, new_metaid_exclusion_list_);
     }
 
@@ -124,7 +124,7 @@ namespace omexmeta {
         local_uri_ = localUri;
     }
 
-    const std::vector<std::string> &PhysicalPhenomenon::getNewMetaidExclusionList() const {
+    std::vector<std::string> PhysicalPhenomenon::getNewMetaidExclusionList() {
         return new_metaid_exclusion_list_;
     }
 

@@ -30,12 +30,10 @@ namespace omexmeta {
         // so that you can call toTriples more than once and have the same
         // set of triples returned.
         std::string local_participant_metaid_;
+
         std::string model_uri_;
         std::string local_uri_;
 
-        // we make static to ensure one exclusion list is shared between
-        // all participants of a particular type.
-        static std::vector<std::string> new_metaid_exclusion_list_;
 
     public:
 
@@ -104,8 +102,9 @@ namespace omexmeta {
          * code duplication in the subclasses.
          *
          */
-        Participant(librdf_model *model, std::string base_metaid, const std::string& model_uri, const std::string& local_uri,
-                std::string semsim_predicate_term, double multiplier,
+        Participant(librdf_model *model, std::string base_metaid, const std::string &model_uri,
+                    const std::string &local_uri,
+                    std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference);
 
         ~Participant() = default;
@@ -121,12 +120,14 @@ namespace omexmeta {
          *
          * The same toTriples method is used for all participants.
          */
-        [[nodiscard]] Triples toTriples(const std::string& subject_metaid);
+        [[nodiscard]] Triples toTriples(const std::string &subject_metaid,
+                                        std::vector<std::string> &metaid_exclusions);
 
         /*
          * @brief create a new metaid use base @param base
          */
-        [[nodiscard]] std::string createMetaid(const std::string &base) const;
+        [[nodiscard]] std::string createMetaid(const std::string &base,
+                                               std::vector<std::string> &metaid_exclusions) const;
 
 
         /*
@@ -185,7 +186,8 @@ namespace omexmeta {
         /*
          * @brief A class representing process/force energetic source.
          */
-        SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, const std::string& model_uri, const std::string& local_uri);
+        SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,
+                          const std::string &model_uri, const std::string &local_uri);
     };
 
     /*
@@ -199,7 +201,8 @@ namespace omexmeta {
         /*
          * @brief A class representing process/force energetic sinks.
          */
-        SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, const std::string& model_uri, const std::string& local_uri);
+        SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,
+                        const std::string &model_uri, const std::string &local_uri);
 
     };
 
@@ -214,7 +217,8 @@ namespace omexmeta {
         /*
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, const std::string& model_uri, const std::string& local_uri);
+        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, const std::string &model_uri,
+                            const std::string &local_uri);
 
     };
 

@@ -27,7 +27,7 @@ namespace omexmeta {
         return sinks_;
     }
 
-    std::string PhysicalForce::createMetaId() const {
+    std::string PhysicalForce::createMetaId() {
         return generateMetaId("PhysicalForce");
     }
 
@@ -47,22 +47,34 @@ namespace omexmeta {
             );
         }
 
+        LOG_DEBUG("here");
+
         std::string force_id = generateMetaId("PhysicalForce");
-        new_metaid_exclusion_list_.push_back(force_id); // probably not needed because only 1 PhysicalForce metaid is generated per physical force
+        LOG_DEBUG("here");
         force_id = OmexMetaUtils::concatMetaIdAndUri(force_id, getLocalUri());
 
+        LOG_DEBUG("here");
         Triples triples = physical_property_.toTriples(force_id);
+        LOG_DEBUG("here");
 
         for (auto &source : sources_) {
-            for (auto &triple : source.toTriples(force_id)) {
+        LOG_DEBUG("here");
+            for (auto &triple : source.toTriples(force_id, new_metaid_exclusion_list_)) {
+        LOG_DEBUG("here");
                 triples.move_back(triple);
+        LOG_DEBUG("here");
             }
         }
+        LOG_DEBUG("here");
         for (auto &sink : sinks_) {
-            for (auto &triple : sink.toTriples(force_id)) {
+        LOG_DEBUG("here");
+            for (auto &triple : sink.toTriples(force_id, new_metaid_exclusion_list_)) {
+        LOG_DEBUG("here");
                 triples.move_back(triple);
+        LOG_DEBUG("here");
             }
         }
+        LOG_DEBUG("here");
         return triples;
     }
 

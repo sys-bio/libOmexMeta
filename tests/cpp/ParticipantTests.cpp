@@ -17,6 +17,7 @@ public:
     LibrdfModel model;
     std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+    std::vector<std::string> exclusions;
 
     ParticipantTests() {
         model = LibrdfModel(storage.get());
@@ -59,7 +60,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 
 TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
-    std::string actual = sink.createMetaid("SinkParticipant");
+    std::string actual = sink.createMetaid("SinkParticipant", exclusions);
     std::cout << actual << std::endl;
     std::string expected = "#SinkParticipant0000";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -129,7 +130,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
 TEST_F(ParticipantTests, TestToTriples1) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
-    Triples triples = sink.toTriples("https://metaid");
+    Triples triples = sink.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -152,7 +153,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
 TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
     SinkParticipant sink(model.get(), 0.0, "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
-    Triples triples = sink.toTriples("https://metaid");
+    Triples triples = sink.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -175,7 +176,7 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
 TEST_F(ParticipantTests, TestToTriplesMediator) {
     MediatorParticipant mediator(model.get(), "MetaId0015", model_uri, local_uri);
     std::ostringstream os;
-    Triples triples = mediator.toTriples("https://metaid");
+    Triples triples = mediator.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -203,6 +204,7 @@ public:
 
     std::string model_uri = "http://omex-library/myomex.omex/mymodel.xml#";
     std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    std::vector<std::string> exclusions;
     ParticipantTestsToTriplesTwice() {
         model = LibrdfModel(storage.get());
     }
@@ -218,7 +220,7 @@ public:
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
-    Triples triples1 = sink.toTriples("https://Process1");
+    Triples triples1 = sink.toTriples("https://Process1", exclusions);
 
     // Sinks have 3 triples
     ASSERT_EQ(3, triples1.size());
@@ -251,8 +253,8 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
-    Triples triples1 = sink.toTriples("https://Process1");
-    Triples triples2 = sink.toTriples("https://Process1");
+    Triples triples1 = sink.toTriples("https://Process1", exclusions);
+    Triples triples2 = sink.toTriples("https://Process1", exclusions);
 
     // Sinks have 3 triples
     ASSERT_EQ(3, triples1.size());
@@ -306,8 +308,8 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
 
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", model_uri, local_uri);
-    Triples triples1 = sink.toTriples("https://Process1");
-    Triples triples2 = sink.toTriples("https://Process1");
+    Triples triples1 = sink.toTriples("https://Process1", exclusions);
+    Triples triples2 = sink.toTriples("https://Process1", exclusions);
 
     std::cout << triples1.str("ntriples", "triples1") << std::endl;
     std::cout << triples2.str("ntriples", "triples2") << std::endl;
@@ -346,7 +348,7 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
 
     Triples triples;
     for (auto &i: participants) {
-        for (auto &j: i->toTriples("http://metaid")) {
+        for (auto &j: i->toTriples("http://metaid", exclusions)) {
             triples.move_back(j);
         }
     }

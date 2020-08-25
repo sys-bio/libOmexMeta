@@ -52,7 +52,8 @@ namespace omexmeta {
     }
 
     std::string PersonalInformation::generateMetaId() const {
-        std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
+        std::vector<std::string> exclusions; // not really needed in this context, but signature requires the argument
+        std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo", exclusions);
         return OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri());
     }
 

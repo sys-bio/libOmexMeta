@@ -57,13 +57,12 @@ namespace omexmeta {
     }
 
     std::string OmexMetaUtils::generateUniqueMetaid(librdf_model *model, const std::string &metaid_base,
-                                                    const std::vector<std::string> &exclusions) {
+                                                    std::vector<std::string> &exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
         Query query(model, q);
         ResultsMap results_map = query.resultsAsMap();
-
 
         query.freeQuery();
         std::vector<std::string> subjects = results_map["subject"];

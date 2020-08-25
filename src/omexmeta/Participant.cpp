@@ -21,24 +21,23 @@ namespace omexmeta {
               local_uri_(local_uri),
               semsim_predicate_term_(std::move(semsim_predicate_term)),
               multiplier_(multiplier),
-              physicalEntityReference_(std::move(physicalEntityReference)) {
-    }
+              physicalEntityReference_(std::move(physicalEntityReference)){}
 
     void Participant::free() {}; // this was needed but no longer, because Triple objects do the cleaning
 
-    std::string Participant::createMetaid(const std::string &base) const {
-        return OmexMetaUtils::generateUniqueMetaid(model_, base, Participant::new_metaid_exclusion_list_);
+    std::string Participant::createMetaid(const std::string &base, std::vector<std::string>& metaid_exclusions) const {
+        return OmexMetaUtils::generateUniqueMetaid(model_, base, metaid_exclusions);
     }
 
-    Triples Participant::toTriples(const std::string &subject_metaid) {
+    Triples Participant::toTriples(const std::string &subject_metaid, std::vector<std::string>& metaid_exclusions) {
 
-        for (auto &it: Participant::new_metaid_exclusion_list_){
+        for (auto &it: metaid_exclusions) {
             LOG_DEBUG("new_metaid_exclusion_list_ i : %s", it.c_str());
         }
 
         if (local_participant_metaid_.empty()) {
             local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(
-                    model_, metaid_template_str_, Participant::new_metaid_exclusion_list_);
+                    model_, metaid_template_str_, metaid_exclusions);
         }
         if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
             throw std::invalid_argument("std::invalid_argument: Participant::toTriples(): "
@@ -56,10 +55,13 @@ namespace omexmeta {
          * For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way
          * local_uri's were added after the original design was in place. Future developers might want to look at this.
          */
-        Participant::new_metaid_exclusion_list_.push_back(local_participant_metaid_);
-        for (auto &it: Participant::new_metaid_exclusion_list_){
+
+        metaid_exclusions.push_back(local_participant_metaid_);
+        LOG_DEBUG("here");
+        for (auto &it: metaid_exclusions) {
             LOG_DEBUG("    new_metaid_exclusion_list_2 i : %s", it.c_str());
         }
+        LOG_DEBUG("here");
 
 
         local_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(local_participant_metaid_, getLocalUri());
@@ -205,6 +207,5 @@ namespace omexmeta {
                           "hasMediatorParticipant",
                           0.0, std::move(physicalEntityReference)) {}
 
-    std::vector<std::string> Participant::new_metaid_exclusion_list_;
 
 }
