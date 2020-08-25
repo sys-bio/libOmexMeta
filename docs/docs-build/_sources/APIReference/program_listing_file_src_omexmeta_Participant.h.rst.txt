@@ -48,7 +48,7 @@ Program Listing for File Participant.h
    
            void setPhysicalEntityReference(const std::string &physicalEntityReference);
    
-           [[nodiscard]] const std::string &getUniqueParticipantMetaid() const;
+           [[nodiscard]] const std::string &getLocalParticipantMetaid() const;
    
            void setUniqueParticipantMetaid(const std::string &uniqueParticipantMetaid);
    

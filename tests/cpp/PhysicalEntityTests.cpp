@@ -27,7 +27,7 @@ public:
         physical_property = PhysicalProperty("metaid", "OPB:OPB_00340", model_uri);
     };
 
-    ~PhysicalEntityTests() {
+    ~PhysicalEntityTests() override {
         model.freeModel();
         storage.freeStorage();
     }

@@ -33,22 +33,62 @@ namespace omexmeta {
         std::string model_uri_;
         std::string local_uri_;
 
+        // we make static to ensure one exclusion list is shared between
+        // all participants of a particular type.
+        static std::vector<std::string> new_metaid_exclusion_list_;
+
     public:
+
+        /*
+         * @brief return the vector of strings that keeps track of
+         * newly generated metaids. This mechanism ensures unique metaids
+         * in the situation where the user has added >1 participant of a
+         * certain type i.e. sink.
+         */
+//        [[nodiscard]] const std::vector<std::string> &getMetaidExclusionList() ;
+
+        /*
+         * @brief setter for the multiplier field of Participant types
+         */
         void setMultiplier(double multiplier);
 
+        /*
+         * @brief setter for physical entity reference field of Participant types
+         * @details A physical entity reference must exist and point to a physical entity in the xml.
+         */
         void setPhysicalEntityReference(const std::string &physicalEntityReference);
 
-        [[nodiscard]] const std::string &getUniqueParticipantMetaid() const;
+        /*
+         * @brief return the local participant metaid.
+         * @details When Participant types are created they are
+         * done so with a metaid that is local to the annotation document
+         * not to the model.
+         */
+        [[nodiscard]] const std::string &getLocalParticipantMetaid() const;
 
+        /*
+         * @brief set the local participant metaid.
+         * @details When Participant types are created they are
+         * done so with a metaid that is local to the annotation document
+         * not to the model.
+         */
         void setUniqueParticipantMetaid(const std::string &uniqueParticipantMetaid);
 
+        /*
+         * @brief getter for local uri attribute
+         */
         [[nodiscard]] const std::string &getLocalUri() const;
 
+        /*
+         * @brief setter for local uri attribute
+         */
         void setLocalUri(const std::string &localUri);
 
-    public:
-
-        void free();
+        /*
+         * @biref currently more of a placeholder so as to not break the tests.
+         * todo remove this method, Triple objects deal with memory for Participants.
+         */
+        [[maybe_unused]] void free();
 
         /*
          * @brief Superclass of participant types
@@ -83,7 +123,9 @@ namespace omexmeta {
          */
         [[nodiscard]] Triples toTriples(const std::string& subject_metaid);
 
-
+        /*
+         * @brief create a new metaid use base @param base
+         */
         [[nodiscard]] std::string createMetaid(const std::string &base) const;
 
 
@@ -120,8 +162,14 @@ namespace omexmeta {
          */
         [[nodiscard]] const std::string &getPhysicalEntityReference() const;
 
-        const std::string &getModelUri() const;
+        /*
+         * @brief getter for model_uri_ attribute
+         */
+        [[nodiscard]] const std::string &getModelUri() const;
 
+        /*
+         * @brief setter for model_uri_ attribute
+         */
         void setModelUri(const std::string &model_uri);
     };
 
@@ -173,6 +221,7 @@ namespace omexmeta {
     typedef std::vector<SourceParticipant> Sources;
     typedef std::vector<MediatorParticipant> Mediators;
     typedef std::vector<SinkParticipant> Sinks;
+
 
 }
 

@@ -12,7 +12,7 @@ namespace omexmeta {
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri,
                                            PhysicalProperty propertyResource, AnnotationType type)
             : model_(model), physical_property_(std::move(propertyResource)), type_(type),
-              model_uri_(model_uri), local_uri_(local_uri){}
+              model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)){}
 
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
@@ -21,7 +21,7 @@ namespace omexmeta {
             : model_(model) {}
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri)
-        : model_(model), model_uri_(model_uri), local_uri_(local_uri) {}
+        : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
 
     const std::string & PhysicalPhenomenon::getSubjectStr() const {
         return physical_property_.getSubjectStr();
@@ -32,7 +32,7 @@ namespace omexmeta {
     }
 
     std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) const {
-        return OmexMetaUtils::generateUniqueMetaid(model_, id_base);
+        return OmexMetaUtils::generateUniqueMetaid(model_, id_base, new_metaid_exclusion_list_);
     }
 
     PhysicalProperty PhysicalPhenomenon::getPhysicalProperty() const {
@@ -122,6 +122,10 @@ namespace omexmeta {
 
     void PhysicalPhenomenon::setLocalUri(const std::string &localUri) {
         local_uri_ = localUri;
+    }
+
+    const std::vector<std::string> &PhysicalPhenomenon::getNewMetaidExclusionList() const {
+        return new_metaid_exclusion_list_;
     }
 
 

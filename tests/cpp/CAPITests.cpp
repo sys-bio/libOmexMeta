@@ -626,11 +626,11 @@ TEST_F(CAPITests, TestPhysicalProcess) {
                            "    semsim:hasSourceParticipant myOMEX:SourceParticipant0000 .\n"
                            "\n"
                            "myOMEX:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference myOMEX:Entity8 .\n"
                            "\n"
                            "myOMEX:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference myOMEX:Entity8 .\n"
                            "\n";
     std::cout << actual << std::endl;

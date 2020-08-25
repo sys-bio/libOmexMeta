@@ -28,7 +28,19 @@ namespace omexmeta {
         std::string physical_property_id_;
         std::string model_uri_;
         std::string local_uri_;
+        std::vector<std::string> new_metaid_exclusion_list_;
 
+        /*
+         * @brief getter for a vector of strings that keeps track of used metaids.
+         * @details this mechanism is necessary in order to ensure unique metaids in
+         * the case of adding multiple instances of a type to the PhysicalPhenomenon
+         * before commiting to the model. For instance, you can have arbitrary
+         * sink participants, which would all be given the SinkParticipant0000 metaid
+         * if not for this mechanism.
+         */
+        [[nodiscard]] const std::vector<std::string> &getNewMetaidExclusionList() const;
+
+    protected:
         [[nodiscard]] std::string generateMetaId(const std::string& id_base) const;
 
     public:

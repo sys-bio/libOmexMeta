@@ -161,7 +161,7 @@ Program Listing for File Participant.cpp
            physicalEntityReference_ = physicalEntityReference;
        }
    
-       const std::string &Participant::getUniqueParticipantMetaid() const {
+       const std::string &Participant::getLocalParticipantMetaid() const {
            return local_participant_metaid_;
        }
    

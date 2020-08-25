@@ -137,9 +137,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a3caabd03e7cf25d6591419e1ef7ee945" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::Participant::getUniqueParticipantMetaid</definition>
+        <definition>const std::string &amp; omexmeta::Participant::getLocalParticipantMetaid</definition>
         <argsstring>() const</argsstring>
-        <name>getUniqueParticipantMetaid</name>
+        <name>getLocalParticipantMetaid</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -433,7 +433,7 @@
       <member refid="classomexmeta_1_1Participant_1a40a5858db6aaae7ec7095b320de838d1" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getPhysicalEntityReference</name></member>
       <member refid="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getPredicate</name></member>
       <member refid="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getSubject</name></member>
-      <member refid="classomexmeta_1_1Participant_1a3caabd03e7cf25d6591419e1ef7ee945" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getUniqueParticipantMetaid</name></member>
+      <member refid="classomexmeta_1_1Participant_1a3caabd03e7cf25d6591419e1ef7ee945" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getLocalParticipantMetaid</name></member>
       <member refid="classomexmeta_1_1Participant_1a3c5e24de1d42e00ebf0b9d05fda0bdab" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Participant_1aa947afd3fb5d53a7bd2029261f5be45e" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>metaid_template_str_</name></member>
       <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>model_</name></member>

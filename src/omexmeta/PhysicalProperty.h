@@ -72,7 +72,7 @@ namespace omexmeta {
          * @brief creates a Triples object using the information in the PhysicalProperty
          * @return a Triples object containing the set of Triple object used to represent this PhysicalProperty
          */
-        [[nodiscard]] Triples toTriples(std::string property_metaid) const;
+        [[nodiscard]] Triples toTriples(const std::string& property_metaid) const;
 
     };
 }

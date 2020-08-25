@@ -56,20 +56,24 @@ namespace omexmeta {
         return false;
     }
 
-    std::string OmexMetaUtils::generateUniqueMetaid(
-            librdf_model *model, const std::string &metaid_base,
-            const std::vector<std::string> &exclusions,
-            const std::string &local_uri) {
+    std::string OmexMetaUtils::generateUniqueMetaid(librdf_model *model, const std::string &metaid_base,
+                                                    const std::vector<std::string> &exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
         Query query(model, q);
         ResultsMap results_map = query.resultsAsMap();
+
+
         query.freeQuery();
         std::vector<std::string> subjects = results_map["subject"];
         // add other exclusions to subjects
         for (auto &i : exclusions) {
             subjects.push_back(i);
+        }
+        LOG_DEBUG("Adding exclusions to subjects vector");
+        for (auto &it: subjects){
+            LOG_DEBUG("subject1 : %s", it.c_str());
         }
 
         // Because we added the "local_uri" stuff ad hock,
@@ -87,6 +91,10 @@ namespace omexmeta {
             }
         }
 
+        for (auto &it: subjects){
+            LOG_DEBUG("subject2 : %s", it.c_str());
+        }
+
         int count = 0;
         std::string metaid;
         while (true) {
@@ -97,6 +105,8 @@ namespace omexmeta {
             }
             count++;
         }
+
+        LOG_DEBUG("generated metaid: %s", metaid.c_str());
 
         return metaid;
     }

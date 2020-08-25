@@ -46,15 +46,12 @@ namespace omexmeta {
                     "Use the setPhysicalProperty() method."
             );
         }
-        Triples triples = physical_property_.toTriples(getAbout());
 
         std::string force_id = generateMetaId("PhysicalForce");
-        LOG_DEBUG("local uri: %s", getLocalUri().c_str());
-        LOG_DEBUG("model uri: %s", getModelUri().c_str());
-        LOG_DEBUG("force_id: %s", force_id.c_str());
-        LOG_DEBUG("getAbout: %s", getAbout().c_str());
+        new_metaid_exclusion_list_.push_back(force_id); // probably not needed because only 1 PhysicalForce metaid is generated per physical force
         force_id = OmexMetaUtils::concatMetaIdAndUri(force_id, getLocalUri());
-        LOG_DEBUG("force_id: %s", force_id.c_str());
+
+        Triples triples = physical_property_.toTriples(force_id);
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_id)) {

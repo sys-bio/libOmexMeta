@@ -31,10 +31,23 @@ namespace omexmeta {
                           "must be OPB resources.";
             throw omexmeta::InappropriateResourceException(err.str());
         }
+
+        // ensure subject_uri_ has the model_uri associated with it
+        if (OmexMetaUtils::startsWith(subject_, "http")){
+            if (!OmexMetaUtils::startsWith(subject_, getModelUri())){
+                throw std::invalid_argument("std::invalid_argument: PhysicalProperty::validate() "
+                                            "The subject argument to PhysicalProperty is already a URI"
+                                            "but is it not the uri associated with the model you are annotating "
+                                            "("+getModelUri()+") but instead \""+subject_+"\"");
+            }
+        } else {
+            subject_ = OmexMetaUtils::concatMetaIdAndUri(subject_, getModelUri());
+        }
     }
 
 
-    Triples PhysicalProperty::toTriples(std::string property_metaid) const {
+    Triples PhysicalProperty::toTriples(const std::string& property_metaid) const {
+
         if (!OmexMetaUtils::startsWith(property_metaid, "http")){
             throw std::invalid_argument("std::invalid_argument: PhysicalProperty::toTriples: "
                                         "Expected a full uri (i.e. begins with http) for property_metaid "

@@ -31,14 +31,33 @@ namespace omexmeta {
     public:
         OmexMetaUtils() = default;
 
+        /*
+         * @brief return true when filename is a file that exists on system
+         * @param filename
+         */
         static bool exists(const std::string &filename);
 
+        /*
+         * @brief remove file called @param filename
+         * @param filename to remove
+         * @return int 0 when successful.
+         */
         static int removeFile(const std::string &filename);
 
+        /*
+         * @brief remove a file, checking for its existance first
+         * @param filename to remove
+         */
         static void removeIfExists(const std::string &filename);
 
+        /*
+         * @brief download a file from @param url to @param filename
+         */
         static void download(const std::string &url, std::string filename);
 
+        /*
+         * @brief split a string into a vector of strings by @param delimiter
+         */
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
         /*
@@ -49,8 +68,7 @@ namespace omexmeta {
          */
         static std::string generateUniqueMetaid(
                 librdf_model *model, const std::string &metaid_base,
-                const std::vector<std::string> &exclusions = std::vector<std::string>(),
-                const std::string& local_uri = std::string()
+                const std::vector<std::string> &exclusions = std::vector<std::string>()
         );
 
         /*
@@ -112,9 +130,16 @@ namespace omexmeta {
          */
         static std::string concatMetaIdAndUri(std::string metaid, std::string uri);
 
+        /*
+         * @brief replace a part of a string @string_to_replace from a main @param string
+         * with a replacement string @param replacement
+         */
         static std::string
         stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
 
+        /*
+         * @brief returns true when @param full_string starts with the substring @param start
+         */
         static bool startsWith(const std::string &full_string, const std::string &start);
 
         static bool stringInVector(std::vector<std::string> vec, const std::string &string);

@@ -162,8 +162,7 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
 
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),
-            "#OmexMetaId"
-    );
+            "#OmexMetaId");
     // add annotation to the modelw ith the generated metaid
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation.setAbout(metaid1)
@@ -174,10 +173,29 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
     // now try to generate a new metaid. It should not be the same as the first
     std::string metaid2 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),
-            "metaid"
+            "#OmexMetaId");
+    ASSERT_STREQ("#OmexMetaId0000", metaid1.c_str());
+    ASSERT_STREQ("#OmexMetaId0001", metaid2.c_str());
+}
+
+TEST_F(OmexMetaUtilsTests, TestGenerateMetaidsUsingExclusionList) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, OMEXMETA_TYPE_SBML);
+    std::vector<std::string> exclusion_list;
+
+    std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
+            rdf.getModel(),
+            "#OmexMetaId", exclusion_list
+    );
+    exclusion_list.push_back(metaid1);
+
+    std::string metaid2 = OmexMetaUtils::generateUniqueMetaid(
+            rdf.getModel(),
+            "#OmexMetaId", exclusion_list
     );
     ASSERT_STREQ("#OmexMetaId0000", metaid1.c_str());
-    ASSERT_STREQ("#metaid0000", metaid2.c_str());
+    ASSERT_STREQ("#OmexMetaId0001", metaid2.c_str());
+
 }
 
 

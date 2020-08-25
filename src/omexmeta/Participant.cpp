@@ -22,18 +22,23 @@ namespace omexmeta {
               semsim_predicate_term_(std::move(semsim_predicate_term)),
               multiplier_(multiplier),
               physicalEntityReference_(std::move(physicalEntityReference)) {
-        LOG_DEBUG("model_uri: %s", model_uri.c_str());
     }
 
     void Participant::free() {}; // this was needed but no longer, because Triple objects do the cleaning
 
     std::string Participant::createMetaid(const std::string &base) const {
-        return OmexMetaUtils::generateUniqueMetaid(model_, base);
+        return OmexMetaUtils::generateUniqueMetaid(model_, base, Participant::new_metaid_exclusion_list_);
     }
 
     Triples Participant::toTriples(const std::string &subject_metaid) {
+
+        for (auto &it: Participant::new_metaid_exclusion_list_){
+            LOG_DEBUG("new_metaid_exclusion_list_ i : %s", it.c_str());
+        }
+
         if (local_participant_metaid_.empty()) {
-            local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(model_, metaid_template_str_);
+            local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(
+                    model_, metaid_template_str_, Participant::new_metaid_exclusion_list_);
         }
         if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
             throw std::invalid_argument("std::invalid_argument: Participant::toTriples(): "
@@ -44,6 +49,19 @@ namespace omexmeta {
         LOG_DEBUG("local_participant_metaid_: %s", local_participant_metaid_.c_str());
         LOG_DEBUG("getLocalUri: %s", getLocalUri().c_str());
 //        LOG_DEBUG("getModelUri: %s", getModelUri().c_str());
+
+        /*
+         * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
+         * have been used in order to ensure unique metaid's when we have more than one Sink/Source/Mediate Participant.
+         * For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way
+         * local_uri's were added after the original design was in place. Future developers might want to look at this.
+         */
+        Participant::new_metaid_exclusion_list_.push_back(local_participant_metaid_);
+        for (auto &it: Participant::new_metaid_exclusion_list_){
+            LOG_DEBUG("    new_metaid_exclusion_list_2 i : %s", it.c_str());
+        }
+
+
         local_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(local_participant_metaid_, getLocalUri());
         LOG_DEBUG("local_participant_metaid_: %s", local_participant_metaid_.c_str());
 
@@ -143,7 +161,7 @@ namespace omexmeta {
         physicalEntityReference_ = physicalEntityReference;
     }
 
-    const std::string &Participant::getUniqueParticipantMetaid() const {
+    const std::string &Participant::getLocalParticipantMetaid() const {
         return local_participant_metaid_;
     }
 
@@ -186,5 +204,7 @@ namespace omexmeta {
             : Participant(model, "MediatorParticipant", model_uri, local_uri,
                           "hasMediatorParticipant",
                           0.0, std::move(physicalEntityReference)) {}
+
+    std::vector<std::string> Participant::new_metaid_exclusion_list_;
 
 }
