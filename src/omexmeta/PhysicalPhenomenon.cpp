@@ -90,14 +90,6 @@ namespace omexmeta {
         type_ = type;
     }
 
-    const std::string &PhysicalPhenomenon::getPhysicalPropertyId() const {
-        return physical_property_id_;
-    }
-
-    void PhysicalPhenomenon::setPhysicalPropertyId(const std::string &physicalPropertyId) {
-        physical_property_id_ = physicalPropertyId;
-    }
-
     const std::string &PhysicalPhenomenon::getModelUri() const {
         if (model_uri_.empty()){
             throw std::invalid_argument("std::invalid_argument: model_uri_ is empty. "

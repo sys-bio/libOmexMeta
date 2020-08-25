@@ -768,6 +768,7 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
             .setPhysicalProperty("#OmexMetaId0002", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
+    LOG_DEBUG("%s", physicalForce.toTriples().str().c_str());
     editor.addPhysicalForce(physicalForce);
     ASSERT_EQ(8, rdf.size());
     editor.removePhysicalForce(physicalForce);
@@ -1512,8 +1513,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("https://#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", local_uri);
-    Triples triples = property.toTriples("Entity1234");
+    PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", local_uri);
+    Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1234");
     std::cout << triples.str() << std::endl;
     for (auto &it: triples) {
         editor.addSingleAnnotation(it);
@@ -1533,8 +1534,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("https://#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", editor.getModelUri());
-    Triples triples = property.toTriples("Entity1234");
+    PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", editor.getModelUri());
+    Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1234");
     std::cout << rdf.toString() << std::endl;
     for (auto &it: triples) {
         editor.addSingleAnnotation(it);
@@ -1543,7 +1544,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
     ASSERT_EQ(2, rdf.size());
     triples.freeTriples();
 
-    Triples triples2 = property.toTriples("Entity1234");
+    Triples triples2 = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1234");
     std::cout << triples2.size() << std::endl;
 
     for (auto &it: triples2) {
@@ -1564,7 +1565,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
  */
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1584,7 +1585,7 @@ TEST_F(EditorTestsDeletePhysicalEntity,
        TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithNamespaceHandling) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1604,7 +1605,7 @@ TEST_F(EditorTestsDeletePhysicalEntity,
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1612,15 +1613,16 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
         editor.addSingleAnnotationNoValidation(it);
         editor.addNamespaceFromAnnotation(it.getPredicateStr());
     }
+    LOG_DEBUG("rdf.toString(): %s", rdf.toString().c_str());
     ASSERT_EQ(4, rdf.size());
     triples.freeTriples();
 
-    std::cout << rdf.toString() << std::endl;
     Triples triples2 = physicalEntity.toTriples();
     for (auto &it: triples2) {
+        LOG_DEBUG("it.str(): %s", it.str().c_str());
         editor.removeSingleAnnotation(it);
     }
-    std::cout << rdf.toString() << std::endl;
+    LOG_DEBUG("%s", rdf.toString().c_str());
 
     ASSERT_EQ(0, rdf.size());
 //    triples2.freeTriples();
@@ -1629,7 +1631,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1642,14 +1644,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 
     Triple triple1(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
@@ -1660,7 +1662,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             )
     );
     Triple triple4(
@@ -1670,10 +1672,10 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
-
+    LOG_DEBUG("triple1: %s", triple1.str().c_str());
+    LOG_DEBUG("rdf: %s", rdf.toString().c_str());
     editor.removeSingleAnnotation(triple1);
     ASSERT_EQ(3, rdf.size());
-
     triple1.freeTriple();
     triple2.freeTriple();
     triple3.freeTriple();
@@ -1683,7 +1685,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1696,14 +1698,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 
     Triple triple1(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
@@ -1714,12 +1716,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             )
     );
     Triple triple4(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("https://#OmexMetaId0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#OmexMetaId0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
@@ -1750,14 +1752,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 
     Triple triple1(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
@@ -1768,7 +1770,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             )
     );
     Triple triple4(
@@ -1778,6 +1780,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
+
+    LOG_DEBUG("rdf: %s", rdf.toString().c_str() );
+    LOG_DEBUG("triple 1: %s", triple1.str().c_str());
+    LOG_DEBUG("triple 2: %s", triple2.str().c_str());
+    LOG_DEBUG("triple 3: %s", triple3.str().c_str());
+    LOG_DEBUG("triple 4: %s", triple4.str().c_str());
 
     editor.removeSingleAnnotation(triple3);
     ASSERT_EQ(3, rdf.size());
@@ -1804,14 +1812,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 
     Triple triple1(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
@@ -1822,16 +1830,18 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             )
     );
     Triple triple4(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("https://#OmexMetaId0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#OmexMetaId0000", physicalEntity.getModelUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
+    LOG_DEBUG("rdf: %s", rdf.toString().c_str() );
+    LOG_DEBUG("triple 4: %s", triple4.str().c_str());
 
     editor.removeSingleAnnotation(triple4);
     ASSERT_EQ(3, rdf.size());
@@ -1858,14 +1868,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 
     Triple triple1(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
@@ -1876,16 +1886,21 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#PhysicalEntity0000", physicalEntity.getLocalUri())
             )
     );
     Triple triple4(
             LibrdfNode::fromUriString(
-                    OmexMetaUtils::concatMetaIdAndUri("https://#OmexMetaId0000", physicalEntity.getModelUri())
+                    OmexMetaUtils::concatMetaIdAndUri("#OmexMetaId0000", physicalEntity.getModelUri())
             ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
+
+    LOG_DEBUG("rdf: %s", rdf.toString().c_str());
+    LOG_DEBUG("triple1: %s", triple1.str().c_str());
+    LOG_DEBUG("triple2: %s", triple2.str().c_str());
+
 
     editor.removeSingleAnnotation(triple1);
     editor.removeSingleAnnotation(triple2);
@@ -1901,7 +1916,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);
@@ -1914,7 +1929,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
 TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("https://#OmexMetaId0000", "opb:opb_1234")
+            .setPhysicalProperty("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);

@@ -25,7 +25,6 @@ namespace omexmeta {
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
-        std::string physical_property_id_;
         std::string model_uri_;
         std::string local_uri_;
         std::vector<std::string> new_metaid_exclusion_list_;

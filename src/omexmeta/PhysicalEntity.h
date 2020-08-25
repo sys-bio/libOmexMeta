@@ -28,6 +28,7 @@ namespace omexmeta {
     private:
         Resource identity_resource_;
         Resources location_resources_;
+        std::string entity_id_;
 
     public:
 

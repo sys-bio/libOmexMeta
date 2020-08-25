@@ -47,18 +47,19 @@ namespace omexmeta {
                     "Use the setPhysicalProperty() method."
             );
         }
+        if (physical_force_id_.empty()){
+            physical_force_id_ = generateMetaId("PhysicalForce");
+        }
+        physical_force_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_force_id_, getLocalUri());
 
-        std::string force_id = generateMetaId("PhysicalForce");
-        force_id = OmexMetaUtils::concatMetaIdAndUri(force_id, getLocalUri());
-
-        Triples triples = physical_property_.toTriples(force_id);
+        Triples triples = physical_property_.toTriples(physical_force_id_);
         for (auto &source : sources_) {
-            for (auto &triple : source.toTriples(force_id, new_metaid_exclusion_list_)) {
+            for (auto &triple : source.toTriples(physical_force_id_, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink : sinks_) {
-            for (auto &triple : sink.toTriples(force_id, new_metaid_exclusion_list_)) {
+            for (auto &triple : sink.toTriples(physical_force_id_, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }

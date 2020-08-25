@@ -60,7 +60,6 @@ namespace omexmeta {
         std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings(
                 "http://omex-library.org/", std::move(omex_name), std::move(model_name));
 
-        LOG_DEBUG("Here needs attention. Don't forget. ");
         // make uri's for the namespaces
         librdf_uri *OMEXlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
         librdf_uri *myomex = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[1].c_str());

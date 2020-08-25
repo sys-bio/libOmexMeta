@@ -139,25 +139,27 @@ namespace omexmeta {
                     "Use the setPhysicalProperty() method."
             );
         }
-        std::string process_id = generateMetaId("PhysicalProcess");
-        process_id = OmexMetaUtils::concatMetaIdAndUri(process_id, getLocalUri());
+        if (physical_process_id_.empty()){
+            physical_process_id_ = generateMetaId("PhysicalProcess");
+        }
+        physical_process_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_process_id_, getLocalUri());
 
 
-        Triples triples = physical_property_.toTriples(process_id);
+        Triples triples = physical_property_.toTriples(physical_process_id_);
 
 
         for (auto &source: sources_) {
-            for (auto &triple: source.toTriples(process_id, new_metaid_exclusion_list_)) {
+            for (auto &triple: source.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink: sinks_) {
-            for (auto &triple: sink.toTriples(process_id, new_metaid_exclusion_list_)) {
+            for (auto &triple: sink.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
-            for (auto &triple: mediator.toTriples(process_id, new_metaid_exclusion_list_)) {
+            for (auto &triple: mediator.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }

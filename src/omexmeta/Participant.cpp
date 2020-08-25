@@ -32,7 +32,7 @@ namespace omexmeta {
     Triples Participant::toTriples(const std::string &subject_metaid, std::vector<std::string>& metaid_exclusions) {
 
         for (auto &it: metaid_exclusions) {
-            LOG_DEBUG("new_metaid_exclusion_list_ i : %s", it.c_str());
+            
         }
 
         if (local_participant_metaid_.empty()) {
@@ -44,10 +44,10 @@ namespace omexmeta {
                                         "Expected a full uri (i.e. starts with http) for subject_metaid argument "
                                         "but received \"" + subject_metaid + "\" instead");
         }
-        LOG_DEBUG("subject_metaid: %s", subject_metaid.c_str());
-        LOG_DEBUG("local_participant_metaid_: %s", local_participant_metaid_.c_str());
-        LOG_DEBUG("getLocalUri: %s", getLocalUri().c_str());
-//        LOG_DEBUG("getModelUri: %s", getModelUri().c_str());
+        
+        
+        
+//        
 
         /*
          * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
@@ -57,15 +57,15 @@ namespace omexmeta {
          */
 
         metaid_exclusions.push_back(local_participant_metaid_);
-        LOG_DEBUG("here");
+        
         for (auto &it: metaid_exclusions) {
-            LOG_DEBUG("    new_metaid_exclusion_list_2 i : %s", it.c_str());
+            
         }
-        LOG_DEBUG("here");
+        
 
 
         local_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(local_participant_metaid_, getLocalUri());
-        LOG_DEBUG("local_participant_metaid_: %s", local_participant_metaid_.c_str());
+        
 
         Triples triples;
         // have source participant triple

@@ -70,10 +70,6 @@ namespace omexmeta {
         for (auto &i : exclusions) {
             subjects.push_back(i);
         }
-        LOG_DEBUG("Adding exclusions to subjects vector");
-        for (auto &it: subjects){
-            LOG_DEBUG("subject1 : %s", it.c_str());
-        }
 
         // Because we added the "local_uri" stuff ad hock,
         // we introduced a bug with generation of metaids.
@@ -83,15 +79,10 @@ namespace omexmeta {
         for (int i = 0; i < subjects.size(); i++) {
             std::string sub = subjects[i];
             if (OmexMetaUtils::startsWith(sub, "http")) {
-//                LOG_DEBUG("subject string that starts with http: %s %s %s", sub.c_str(), results_map["predicate"][i].c_str(), results_map["object"][i].c_str());
                 auto v = OmexMetaUtils::splitStringBy(sub, '#');
                 assert(v.size() == 2);
                 subjects[i] = "#" + v[1];
             }
-        }
-
-        for (auto &it: subjects){
-            LOG_DEBUG("subject2 : %s", it.c_str());
         }
 
         int count = 0;
@@ -104,8 +95,6 @@ namespace omexmeta {
             }
             count++;
         }
-
-        LOG_DEBUG("generated metaid: %s", metaid.c_str());
 
         return metaid;
     }

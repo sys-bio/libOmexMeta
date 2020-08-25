@@ -22,8 +22,8 @@ namespace omexmeta {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
+        std::string physical_process_id_;
     public:
-            public:
 
         /*
          * @brief default constructor for PhysicalProcess

@@ -27,6 +27,7 @@ namespace omexmeta {
 
         Sources sources_;
         Sinks sinks_;
+        std::string physical_force_id_;
 
     public:
 
