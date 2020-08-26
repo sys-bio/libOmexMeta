@@ -1,64 +1,69 @@
 ##########################################################################
 #   Set libOmexMeta sources
 #
+
+SET(OMEXMETA_PUBLIC_HEADERS
+    "RDF.h"
+    "Editor.h"
+    "Triple.h"
+    "Triples.h"
+    "PhysicalForce.h"
+    "PhysicalEntity.h"
+    "PhysicalProcess.h"
+    "PersonalInformation.h"
+    "OmexMeta.h"
+    )
 set(OMEXMETA_HEADERS
-        "OmexMetaUtils.h"
-        "CurlGet.h"
-        "RDF.h"
-        "OmexMetaXmlAssistant.h"
+    ${OMEXMETA_PUBLIC_HEADERS}
+    "OmexMetaUtils.h"
+    "CurlGet.h"
+    "OmexMetaXmlAssistant.h"
 
-        "Subject.h"
-        "Resource.h"
-        "Query.h"
-        "Predicate.h"
-        "Triple.h"
-        "Triples.h"
-        "MetaID.h"
-        "PhysicalProperty.h"
-        "Participant.h"
+    "Subject.h"
+    "Resource.h"
+    "Query.h"
+    "Predicate.h"
+    "MetaID.h"
+    "PhysicalProperty.h"
+    "Participant.h"
 
-        "PhysicalPhenomenon.h"
-        "PhysicalEntity.h"
-        "PhysicalProcess.h"
-        "PhysicalForce.h"
-        "AnnotationType.h"
-        "Editor.h"
-        "OmexMetaCApi.h"
-        "PersonalInformation.h"
-        "OmexMeta.h"
-        "MarkupIdentifier.h"
-        sbml_semantic_extraction/ElementExtractor.cpp
-        sbml_semantic_extraction/ElementExtractor.h
-        sbml_semantic_extraction/SBMLSemanticExtraction.cpp
-        sbml_semantic_extraction/SBMLSemanticExtraction.h
-        OmexMetaXmlType.h
-        dbg.h
-        )
+    "PhysicalPhenomenon.h"
+    "AnnotationType.h"
+    "OmexMetaCApi.h"
+    "OmexMeta.h"
+    "MarkupIdentifier.h"
+    sbml_semantic_extraction/ElementExtractor.cpp
+    sbml_semantic_extraction/ElementExtractor.h
+    sbml_semantic_extraction/SBMLSemanticExtraction.cpp
+    sbml_semantic_extraction/SBMLSemanticExtraction.h
+    OmexMetaXmlType.h
+    dbg.h
+    )
 
 set(OMEXMETA_SOURCES
-        "OmexMetaUtils.cpp"
-        "RDF.cpp"
-        "Query.cpp"
-        "CurlGet.cpp"
-        "OmexMetaXmlAssistant.cpp"
-        "Subject.cpp"
-        "Resource.cpp"
-        "Predicate.cpp"
-        "Triple.cpp"
-        "Triples.cpp"
-        "PhysicalProperty.cpp"
-        "MetaID.cpp"
-        "Participant.cpp"
+    "OmexMetaUtils.cpp"
+    "RDF.cpp"
+    "Query.cpp"
+    "CurlGet.cpp"
+    "OmexMetaXmlAssistant.cpp"
+    "Subject.cpp"
+    "Resource.cpp"
+    "Predicate.cpp"
+    "Triple.cpp"
+    "Triples.cpp"
+    "PhysicalProperty.cpp"
+    "MetaID.cpp"
+    "Participant.cpp"
 
-        "PhysicalEntity.cpp"
-        "PhysicalPhenomenon.cpp"
-        "Editor.cpp"
-        "PhysicalProcess.cpp"
-        "PhysicalForce.cpp"
-        "OmexMetaCApi.cpp"
-        "PersonalInformation.cpp"
-        "MarkupIdentifier.cpp"
-        sbml_semantic_extraction/ElementExtractor.cpp sbml_semantic_extraction/ElementExtractor.h sbml_semantic_extraction/SBMLSemanticExtraction.cpp sbml_semantic_extraction/SBMLSemanticExtraction.h)
+    "PhysicalEntity.cpp"
+    "PhysicalPhenomenon.cpp"
+    "Editor.cpp"
+    "PhysicalProcess.cpp"
+    "PhysicalForce.cpp"
+    "OmexMetaCApi.cpp"
+    "PersonalInformation.cpp"
+    "MarkupIdentifier.cpp"
+    sbml_semantic_extraction/ElementExtractor.cpp sbml_semantic_extraction/ElementExtractor.h sbml_semantic_extraction/SBMLSemanticExtraction.cpp sbml_semantic_extraction/SBMLSemanticExtraction.h)
 
 
 #####################################################################3
@@ -68,72 +73,58 @@ set(OMEXMETA_SOURCES
 # static library
 add_library(OmexMeta-static STATIC ${OMEXMETA_HEADERS} ${OMEXMETA_SOURCES})
 
-# set runtime static for windows (ignored on other systems)
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#    set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
-#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#    set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-#endif()
-
-
 # add redland-combined as dependency
 add_dependencies(OmexMeta-static redland-combined-static)
 
 #includes
-target_include_directories(OmexMeta-static PRIVATE
+target_include_directories(
+        OmexMeta-static PRIVATE
         ${INCLUDE_DIRECTORIES}
-        )
+)
 
 # links
-target_link_libraries(OmexMeta-static PRIVATE
-        $<TARGET_FILE:redland-combined-static>
+target_link_libraries(
+        OmexMeta-static PRIVATE
+        redland-combined-static
         ${LINK_LIBRARIES}
-        )
+)
+set_target_properties(OmexMeta-static PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
 
 # install
-install(TARGETS OmexMeta-static
+install(
+        TARGETS OmexMeta-static
         EXPORT OmexMeta-static
-        LIBRARY
-        DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/omexmeta
-        )
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
+)
+
+# install the export info
+install(
+        EXPORT OmexMeta-static
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+)
+
+# and build the CAPI if needed
+if (${BUILD_C_API})
+    add_subdirectory(C)
+endif ()
 
 
 if (${BUILD_SHARED_LIBS})
 
-    # FIXME some redundancy here.
-    # RPATH: on linux determines where shared libraries look for other shared library dependencies.
-    #    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
-    #    set(CMAKE_INSTALL_RPATH "")
-    #    set(CMAKE_INSTALL_RPATH ".")
-    #    set(CMAKE_BUILD_RPATH "$ORIGIN:1")
-    #    set(CMAKE_INSTALL_RPATH "$ORIGIN:2")
-
-
-    #     set_target_properties(${target} PROPERTIES SOVERSION ${ROADRUNNER_VERSION})
     # shared library
     add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
 
-    # configure RPATH
-    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
-    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH ${RPATH})
-    #    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH_USE_ORIGIN TRUE)
-    GET_TARGET_PROPERTY(V OmexMeta INSTALL_RPATH)
-    MESSAGE(V ${V})
-
-    # set runtime shared for windows (ignored on other systems)
-    if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        set_property(TARGET OmexMeta PROPERTY
-                MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
-    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set_property(TARGET OmexMeta PROPERTY
-                MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
-    endif ()
+    set_target_properties(OmexMeta PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
 
     # includes
-    target_include_directories(OmexMeta PUBLIC
+    target_include_directories(
+            OmexMeta PUBLIC
             ${INCLUDE_DIRECTORIES}
-            )
+    )
+
 
     # msvc, linux, macos values
     # On msvc this is the lib file counterpart to the redland-combined dll
@@ -143,30 +134,39 @@ if (${BUILD_SHARED_LIBS})
 
     # links
     target_link_libraries(OmexMeta PUBLIC
-            ${REDLAND_LINK_LIBRARY}
-            ${LINK_LIBRARIES}
-            )
+                          ${REDLAND_LINK_LIBRARY}
+                          ${LINK_LIBRARIES}
+                          )
 
     # Technically linux version depends on static version and windows depends on the dynamic library
     add_dependencies(OmexMeta redland-combined redland-combined-static)
 
-    # install target
+    set_target_properties(OmexMeta PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
+
     install(TARGETS OmexMeta
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib
-            RUNTIME DESTINATION bin
-            PUBLIC_HEADER DESTINATION include/OmexMeta
+            EXPORT OmexMeta
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
             )
+
+    # install the export info
+    install(
+            EXPORT OmexMeta
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+    )
+
 
     # for automatically installing to folder containing python api
     install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
+    install(FILES $<TARGET_FILE:OmexMetaCAPI> DESTINATION ${PYOMEXMETA_DIR})
 
 
     # install the shared library dependencies
     if (PLATFORM STREQUAL "linux")
 
         # On linux we only need a few dynamic libraries due to static linking the rest.
-        install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
         install(FILES ${LIBXML2_LIBRARY}
                 ${LIBXSLT_LIBRARY}
                 ${SQLITE3_LIBRARY}
@@ -231,8 +231,6 @@ if (${BUILD_SHARED_LIBS})
 
 
 endif ()
-
-
 
 
 

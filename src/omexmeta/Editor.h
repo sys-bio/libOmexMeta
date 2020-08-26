@@ -73,7 +73,7 @@ namespace omexmeta {
          * are used. If the type is unknown, then all elements are given metaids.
          */
         explicit Editor(const std::string &xml, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
-                        bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET,
+                        bool generate_new_metaids = false,
                         const std::string &repository_uri = std::string(),
                         const std::string &archive_uri = std::string(), const std::string &model_uri = std::string(),
                         const std::string &local_uri = std::string());

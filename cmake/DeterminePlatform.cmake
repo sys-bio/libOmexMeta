@@ -5,13 +5,6 @@
 # and again when HAVE_DEPENDENCIES=OFF
 function(DeterminePlatform)
 
-    message(STATUS "MINGW ${MINGW}")
-    message(STATUS "CYGWIN ${CYGWIN}")
-    message(STATUS "MSYS ${MSYS}")
-    message(STATUS "UNIX ${UNIX}")
-    message(STATUS "WIN32 ${WIN32}")
-    message(STATUS "APPLE ${APPLE}")
-
     IF (UNIX)
         set(PLATFORM_ linux)
     elseif (WIN32)

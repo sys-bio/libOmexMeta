@@ -193,7 +193,7 @@ TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype) {
 }
 
 TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype2) {
-    std::string actual = LibrdfNode::validateLiteralDatatype("http://www.w3.org/1999/02/22-rdf-syntax-ns#int");
+    std::string actual = LibrdfNode::validateLiteralDatatype("int");
     std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
     ASSERT_STREQ(actual.c_str(), expected.c_str());
 }

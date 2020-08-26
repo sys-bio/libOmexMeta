@@ -10,29 +10,24 @@
 namespace omexmeta {
 
     Editor::Editor(const std::string &xml, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
-                   bool generate_new_metaids, OmexMetaXmlType type, const std::string &repository_uri,
+                   bool generate_new_metaids, const std::string &repository_uri,
                    const std::string &archive_uri, const std::string &model_uri, const std::string &local_uri)
             : model_(model), create_ids_(create_ids), namespaces_(ns_map), generate_new_metaids_(generate_new_metaids),
-              type_(type), repository_uri_(repository_uri),
+              repository_uri_(repository_uri),
               archive_uri_(archive_uri),
               model_uri_(model_uri),
               local_uri_(local_uri) {
-        if (type == OMEXMETA_TYPE_NOTSET){
-            MarkupIdentifier identifier(xml);
-            if (identifier.isSBML()){
-                setType(OMEXMETA_TYPE_SBML);
-            } else if (identifier.isCellML()){
-                setType(OMEXMETA_TYPE_CELLML);
-            } else {
-                setType(OMEXMETA_TYPE_UNKNOWN);
-            }
-        }
-        if (getType() == OMEXMETA_TYPE_UNKNOWN){
+        MarkupIdentifier identifier(xml);
+        if (identifier.isSBML()){
+            setType(OMEXMETA_TYPE_SBML);
+        } else if (identifier.isCellML()){
+            setType(OMEXMETA_TYPE_CELLML);
+        } else {
             throw std::logic_error("Editor(): the string given as xml to editor was not recognized to"
                                    " be either SBML or CellML. " );
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET); // this should never happen
-        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "#OmexMetaId", 4);
+        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, getType(), generate_new_metaids, "#OmexMetaId", 4);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;

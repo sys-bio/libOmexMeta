@@ -52,6 +52,13 @@ include(ConfigurationSummary)
 include(CheckIncludeFiles)
 include(CheckIncludeFile)
 
+# standard install locations
+include(GNUInstallDirs)
+
+# GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
+# but the default is defined by a call to project, which can vary throughout the
+# cmake hierachy. Therefore its best to set now.
+set(CMAKE_INSTALL_DOCDIR ${CMAKE_CURRENT_SOURCE_DIR}/doc)
 
 ######################################################
 #   Set some variables
@@ -60,9 +67,8 @@ include(CheckIncludeFile)
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CXX_STANDARD_REQUIRED ON)
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+set(CXX_STANDARD_REQUIRED ON)
 
 # pic - needed on linux ignored on other platofrms
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -85,12 +91,34 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 # export all on windows. Ignored on other.
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
+# In non-windows builds and only when libOmexMeta is being built
+#   as a top level project, we set the default CMAKE_INSTALL_PREFIX
+#   to /opt/libOmexMeta. This is cached variable and will only
+#   be effective if user has not set CMAKE_INSTALL_PREFIX
+if (NOT WIN32 AND CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    set(CMAKE_INSTALL_PREFIX "/opt/${PROJECT_NAME}" CACHE PATH "Where to install libomexmeta")
+endif ()
+
+# setup some paths that will be used for the INSTALL_RPATH paths on systems that
+# support it. Adapt the "ORIGIN" to the APPLE use case
+if (APPLE)
+    set(base @loader_path)
+else ()
+    set(base $ORIGIN)
+endif ()
+file(RELATIVE_PATH INSTALL_RPATH_DIRECTORIES
+     ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}
+     ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}
+     )
+# make all shared libraries have the same directory, the bin and the lib dirs in RPATH
+set(CMAKE_INSTALL_RPATH ${base} ${base}/${INSTALL_RPATH_DIRECTORIES})
+
+
 
 ####################################################################
 # User options
 #
 
-# this is a CMake variable, so defining an option not needed
 if (BUILD_SHARED_LIBS)
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
@@ -99,6 +127,7 @@ option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if 
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
+option(BUILD_C_API "Build the OmexMeta C API" OFF)
 
 # docs-build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
@@ -120,14 +149,6 @@ if (WITH_SANITIZER)
     endif ()
 endif ()
 
-#set(CMAKE_CXX_FLAGS "-O0")
-#set(CMAKE_C_FLAGS "-O0")
-#set(CMAKE_CXX_FLAGS_RELEASE "-O0")
-#set(CMAKE_C_FLAGS_RELEASE "-O0")
-#set(CMAKE_CXX_FLAGS_DEBUG "-O0")
-#set(CMAKE_C_FLAGS_DEBUG "-O0")
-#set(CMAKE_CXX_FLAGS "-O0")
-#set(CMAKE_C_FLAGS "-O0")
 
 option(WITH_BDB "build user suport for berkely database" ON)
 if (${WITH_BDB})
@@ -156,12 +177,6 @@ endif ()
 # set gtest libraries which are different between debug and release.
 set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
 
-# This should be taken care of by CMAKE_POSITION_INDEPENENCT_CODE
-#if (PLATFORM STREQUAL "linux")
-#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
-#endif ()
-
 set(PYTHON_EXECUTABLE "/home/ciaran/miniconda3/bin/python" CACHE FILEPATH "Full path to python executable")
 
 
@@ -188,10 +203,10 @@ set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_ARCH}")
 
 # location of installed static packages in vcpkg
 SetCrossPlatform(VCPKG_X64_STATIC_INSTALLED_PACKAGES
-        "${VCPKG_ROOT}/installed/x64-windows-static"
-        "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
-        "${VCPKG_ROOT}/installed/x64-osx"
-        )
+                 "${VCPKG_ROOT}/installed/x64-windows-static"
+                 "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
+                 "${VCPKG_ROOT}/installed/x64-osx"
+                 )
 
 # Path to static libraries
 set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
@@ -199,20 +214,20 @@ set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
 set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
 # Path to binaries
 SetCrossPlatform(VCPKG_X64_BIN_DIR
-        "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
-        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
-        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
-        )
+                 "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
+                 "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
+                 "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
+                 )
 # include directories (should be the same for static and dynamic)
 set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
 
 
 set(_VCPKG_DIRECTORIES
-        ${VCPKG_X64_STATIC_LIB_DIR}
-        ${VCPKG_X64_LIB_DIR}
-        ${VCPKG_X64_BIN_DIR}
-        ${VCPKG_X64_INCLUDE_DIR}
-        )
+    ${VCPKG_X64_STATIC_LIB_DIR}
+    ${VCPKG_X64_LIB_DIR}
+    ${VCPKG_X64_BIN_DIR}
+    ${VCPKG_X64_INCLUDE_DIR}
+    )
 
 # ensure the directories we've located exist
 foreach (d ${_VCPKG_DIRECTORIES})
@@ -244,22 +259,22 @@ if (PLATFORM STREQUAL "windows-msvc")
     # fixme
     #Note these "static" libraries are not actually static.
     set(LINK_LIBRARIES
-            "${LIBXML2_STATIC_LIBRARY}"
-            "${LIBXSLT_STATIC_LIBRARY}"
-            "${CURL_STATIC_LIBRARY}"
-            "${LIBCHARSET_STATIC_LIBRARY}"
-            "${SSL_STATIC_LIBRARY}"
-            "${CRYPTO_STATIC_LIBRARY}"
-            "${YAJL_STATIC_LIBRARY}"
-            "${LZMA_STATIC_LIBRARY}"
-            "${ZLIB_STATIC_LIBRARY}"
-            "${ICONV_STATIC_LIBRARY}"
-            "${PCRE_STATIC_LIBRARY}"
-            "${SQLITE3_STATIC_LIBRARY}"
-            "${BERKELY_STATIC_LIBRARY}"
-            "${POSTGRESQL_STATIC_LIBRARY}"
-            ws2_32 # needed on windows to statically link libxml2
-            )
+        "${LIBXML2_STATIC_LIBRARY}"
+        "${LIBXSLT_STATIC_LIBRARY}"
+        "${CURL_STATIC_LIBRARY}"
+        "${LIBCHARSET_STATIC_LIBRARY}"
+        "${SSL_STATIC_LIBRARY}"
+        "${CRYPTO_STATIC_LIBRARY}"
+        "${YAJL_STATIC_LIBRARY}"
+        "${LZMA_STATIC_LIBRARY}"
+        "${ZLIB_STATIC_LIBRARY}"
+        "${ICONV_STATIC_LIBRARY}"
+        "${PCRE_STATIC_LIBRARY}"
+        "${SQLITE3_STATIC_LIBRARY}"
+        "${BERKELY_STATIC_LIBRARY}"
+        "${POSTGRESQL_STATIC_LIBRARY}"
+        ws2_32 # needed on windows to statically link libxml2
+        )
     # on windows it was much easier to just
     # set up to link to dynamic versions of libraries.
     # I tried to pull all into a single static library
@@ -280,30 +295,30 @@ elseif (PLATFORM STREQUAL "linux")
     # for strange and unusual reasons which only the programming gods
     # can explain.
     set(LINK_LIBRARIES
-            ${LIBXML2_LIBRARY} # dynamic
-            ${LIBXSLT_LIBRARY} # dynamic
-            ${SQLITE3_LIBRARY}
-            ${BERKELY_LIBRARY}
-            ${POSTGRESQL_LIBRARY}
-            # flag for including whole archive, not just the function used.
-            -Wl,--whole-archive
-            ${ZLIB_STATIC_LIBRARY}
-            ${LZMA_STATIC_LIBRARY}
-            -Wl,--no-whole-archive
-            ${ICONV_LIBRARY} # We use dynamic for now.
-            ltdl
-            -Wl,--whole-archive
-            ${CURL_STATIC_LIBRARY}
-            ${SSL_STATIC_LIBRARY}
-            ${CRYPTO_STATIC_LIBRARY}
-            ${YAJL_STATIC_LIBRARY}
-            ${PCRE_STATIC_LIBRARY}
-            -Wl,--no-whole-archive
-            m
-            dl
-            ldap
-            lber
-            )
+        ${LIBXML2_LIBRARY} # dynamic
+        ${LIBXSLT_LIBRARY} # dynamic
+        ${SQLITE3_LIBRARY}
+        ${BERKELY_LIBRARY}
+        ${POSTGRESQL_LIBRARY}
+        # flag for including whole archive, not just the function used.
+        -Wl,--whole-archive
+        ${ZLIB_STATIC_LIBRARY}
+        ${LZMA_STATIC_LIBRARY}
+        -Wl,--no-whole-archive
+        ${ICONV_LIBRARY} # We use dynamic for now.
+        ltdl
+        -Wl,--whole-archive
+        ${CURL_STATIC_LIBRARY}
+        ${SSL_STATIC_LIBRARY}
+        ${CRYPTO_STATIC_LIBRARY}
+        ${YAJL_STATIC_LIBRARY}
+        ${PCRE_STATIC_LIBRARY}
+        -Wl,--no-whole-archive
+        m
+        dl
+        ldap
+        lber
+        )
 
 elseif (PLATFORM STREQUAL "macos")
     message(FATAL_ERROR "Stupid mac.")
@@ -311,41 +326,40 @@ endif ()
 
 
 set(INCLUDE_DIRECTORIES
-        # raptor includes
-        ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
-        ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils
-        ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa
+    # raptor includes
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa>
 
-        # rasqal includes
-        ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/src
-        ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist
-        ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv
-        ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils
+    # rasqal includes
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/src>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils>
 
-        # librdf includes
-        ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/src
-        ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils
-        ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
+    # librdf includes
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/src>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl>
 
-        # wrapper includes
-        ${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src
+    # wrapper includes
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src>
 
-        # libomexmeta includes
-        ${CMAKE_SOURCE_DIR}/src
+    # libomexmeta includes
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
 
-        # dependency includes
-        ${LIBXML2_INCLUDE_DIR}
-        ${LIBXSLT_INCLUDE_DIR}
-        ${CURL_INCLUDE_DIR}
-        ${SSL_INCLUDE_DIR}
-        ${SSL_INCLUDE_DIR}
-        ${YAJL_INCLUDE_DIR}
-        ${LZMA_INCLUDE_DIR}
-        ${ZLIB_INCLUDE_DIR}
-        ${PCRE_INCLUDE_DIR}
-        ${ICONV_INCLUDE_DIR}
-        )
-
+    # dependency includes
+    $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${LIBXSLT_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${CURL_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${YAJL_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${LZMA_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
+    $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
+    )
 
 
 #############################################
@@ -356,12 +370,8 @@ add_subdirectory(src)
 
 # test directories
 if (BUILD_TESTS)
-    # allows collecting tests using add_test
-    enable_testing()
 
-    # collected tests can be run conveniently together using the command `ctest` from terminal
-    # but we create a custom target which does the same.
-    add_custom_target(ctest COMMAND ${CMAKE_CTEST_COMMAND})
+    enable_testing()
 
     # include googletest as source
     add_subdirectory(${GOOGLETEST_SOURCE})
@@ -369,10 +379,11 @@ if (BUILD_TESTS)
     # add the tests
     add_subdirectory(tests/cpp)
 
+    if (${BUILD_C_API})
+        add_subdirectory(tests/C)
+    endif ()
+
     if (WITH_COVERAGE)
-#        if (NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#            message(FATAL_ERROR "\"WITH_COVERAGE=ON\" must only be used in debug mode because compiler optimizations in release mode will bias coverage results")
-#        endif ()
 
         set(GCOVR_PATH "/home/ciaran/miniconda3/bin/gcovr" CACHE FILEPATH "Full path to gcovr")
         if (NOT GCOVR_PATH)
@@ -390,14 +401,14 @@ if (BUILD_TESTS)
 
             # optional excludes - None needed here
             set(COVERAGE_EXCLUDES
-                    ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
-                    ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
-                    ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
-                    ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
-                    ${CMAKE_SOURCE_DIR}/tests
-                    ${CMAKE_SOURCE_DIR}/test
-                    ${CMAKE_SOURCE_DIR}/third_party
-                    )
+                ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
+                ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
+                ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
+                ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
+                ${CMAKE_SOURCE_DIR}/tests
+                ${CMAKE_SOURCE_DIR}/test
+                ${CMAKE_SOURCE_DIR}/third_party
+                )
 
             # importantly, set the path to the gcovr executable that you downladed
             #  https://github.com/bilke/cmake-modules/issues/8

@@ -289,9 +289,9 @@ namespace omexmeta {
          * @param OmexMetaXmlType an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is "OMEXMETA_TYPE_NOTSET"
          * @details
          */
-        Editor toEditor(const std::string &xml, bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET);
+        Editor toEditor(const std::string &xml, bool generate_new_metaids = false);
 
-        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, OmexMetaXmlType type = OMEXMETA_TYPE_NOTSET);
+        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false);
 
         librdf_model *getModel() const;
 

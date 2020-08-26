@@ -158,7 +158,7 @@ TEST_F(OmexMetaUtilsTests, TestStringInVector) {
 
 TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
     RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, OMEXMETA_TYPE_SBML);
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true);
     std::vector<std::string> exclusions;
 
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
@@ -181,7 +181,7 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
 
 TEST_F(OmexMetaUtilsTests, TestGenerateMetaidsUsingExclusionList) {
     RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, OMEXMETA_TYPE_SBML);
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true);
     std::vector<std::string> exclusion_list;
 
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
