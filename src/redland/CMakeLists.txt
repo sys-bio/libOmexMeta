@@ -433,6 +433,8 @@ install(
 install(
         EXPORT redland-combined-static
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE RedlandCombinedStatic.cmake
 )
 
 if (PLATFORM STREQUAL "windows-msvc")
@@ -497,6 +499,8 @@ if (BUILD_SHARED_LIBS)
     install(
             EXPORT redland-combined
             DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+            NAMESPACE OmexMeta::
+            FILE RedlandCombined.cmake
     )
 
 endif ()

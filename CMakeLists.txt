@@ -60,6 +60,11 @@ include(GNUInstallDirs)
 # cmake hierachy. Therefore its best to set now.
 set(CMAKE_INSTALL_DOCDIR ${CMAKE_CURRENT_SOURCE_DIR}/doc)
 
+# The InstallRequiredSystemLibraries module is intended to provide projects with the details of
+#relevant run time libraries for the major compilers
+set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT MyProj_Runtime)
+include(InstallRequiredSystemLibraries)
+
 ######################################################
 #   Set some variables
 #
@@ -128,6 +133,7 @@ option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
 option(BUILD_C_API "Build the OmexMeta C API" OFF)
+option(BUILD_PACKAGING "Package libOmexMeta with CPack" OFF)
 
 # docs-build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
@@ -434,6 +440,12 @@ if (BUILD_DOCS)
     add_subdirectory(docs)
 endif ()
 
+# Best included near the end of the top leve cmakelists.
+if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+    message("here")
+    add_subdirectory(packaging)
+    message("here2")
+endif()
 
 # print out config summary
 ConfigurationSummary()

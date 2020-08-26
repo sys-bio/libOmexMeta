@@ -40,4 +40,9 @@ install(TARGETS ${target}
 install(
         EXPORT ${target}
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE OmexMetaCAPI.cmake
 )
+if (WIN32)
+    install(FILES $<TARGET_FILE:${target}> DESTINATION ${PYOMEXMETA_DIR})
+endif()

@@ -47,28 +47,37 @@ Operating System :: Unix
 """
 # Operating System :: MacOS // macos not yet supported
 
+
 binaries = [
+    os.path.join(PYOMEXMETA_DIR, "concrt140.dll"),
+    os.path.join(PYOMEXMETA_DIR, "api-ms-win-core-wow64-l1-1-0.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcharset.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcrypto-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcurl.dll"),
-    os.path.join(PYOMEXMETA_DIR, "libdb-5.3.so"),
     os.path.join(PYOMEXMETA_DIR, "libdb48.dll"),
+    os.path.join(PYOMEXMETA_DIR, "libdb-5.3.so"),
     os.path.join(PYOMEXMETA_DIR, "libiconv.dll"),
     os.path.join(PYOMEXMETA_DIR, "libpq.dll"),
     os.path.join(PYOMEXMETA_DIR, "libssl-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libxml2.dll"),
     os.path.join(PYOMEXMETA_DIR, "libxslt.dll"),
     os.path.join(PYOMEXMETA_DIR, "lzma.dll"),
+    os.path.join(PYOMEXMETA_DIR, "msvcp140.dll"),
+    os.path.join(PYOMEXMETA_DIR, "msvcp140_1.dll"),
+    os.path.join(PYOMEXMETA_DIR, "msvcp140_2.dll"),
+    os.path.join(PYOMEXMETA_DIR, "msvcp140_codecvt_ids.dll"),
     os.path.join(PYOMEXMETA_DIR, "OmexMeta.dll"),
     os.path.join(PYOMEXMETA_DIR, "pcre.dll"),
     os.path.join(PYOMEXMETA_DIR, "redland-combined.dll"),
     os.path.join(PYOMEXMETA_DIR, "sqlite3.dll"),
+    os.path.join(PYOMEXMETA_DIR, "vcruntime140.dll"),
     os.path.join(PYOMEXMETA_DIR, "yajl.dll"),
     os.path.join(PYOMEXMETA_DIR, "zlib1.dll"),
-    os.path.join(PYOMEXMETA_DIR, "api-ms-win-core-wow64-l1-1-0.dll"),
+    os.path.join(PYOMEXMETA_DIR, "vcruntime140.dll"),
     os.path.join(PYOMEXMETA_DIR, "vcruntime140_1.dll"),
     # linux dependencies
     os.path.join(PYOMEXMETA_DIR, "libOmexMeta.so"),
+    os.path.join(PYOMEXMETA_DIR, "libOmexMetaCAPI.so"),
     # os.path.join(PYOMEXMETA_DIR, "libsqlite3.so"),
     # os.path.join(PYOMEXMETA_DIR, "libxml2.so"),
     # Problem with distributing linux dependencies:
@@ -76,16 +85,9 @@ binaries = [
     #   get packaged into a pip wheel. On linux, its therefore easier to
     #   get users to install dependencies manually.  One solution is
     #   to copy over the actual so files (i.e. with version number) in cmake
-    #   instead of the symlink. Another way is to use .so from vcpkg - though this
-    #   isn't yet possible since vcpkg doesn't support shared libraries for most packages.
+    #   instead of the symlink.
 ]
-# this doesn't work - you have to docs-build on differet platforms for this to work
-# if sys.platform == "win32":
-#     binaries = [j for j in binaries if j.endswith(".dll")]
-# elif sys.platform == 'linux':
-#     binaries = [j for j in binaries if j.endswith(".so")]
-# else:
-#     raise ValueError("whoops")
+
 
 for i in binaries:
     print(i)

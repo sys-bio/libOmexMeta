@@ -104,6 +104,8 @@ install(
 install(
         EXPORT OmexMeta-static
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE OmexMetaStatic.cmake
 )
 
 # and build the CAPI if needed
@@ -155,6 +157,8 @@ if (${BUILD_SHARED_LIBS})
     install(
             EXPORT OmexMeta
             DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+            NAMESPACE OmexMeta::
+            FILE OmexMeta.cmake
     )
 
 
@@ -206,23 +210,26 @@ if (${BUILD_SHARED_LIBS})
         install(FILES ${LIBRARIES} DESTINATION ${PYOMEXMETA_DIR})
         install(FILES $<TARGET_FILE:redland-combined> DESTINATION ${PYOMEXMETA_DIR})
 
-        # Find the vcruntime.dll for redistribution via pip
-        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-            find_file(VCRUNTIME_LIBRARY NAMES vcruntime140_1d.dll PATHS C:/Windows/System32)
-        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-            find_file(VCRUNTIME_LIBRARY NAMES vcruntime140_1.dll PATHS C:/Windows/System32)
-        else ()
-            message(FATAL_ERROR "Only Release and Debug builds supported")
+        # Note: I deleted the code that copies windows redistributables because
+        #  the package "InstallRequiredSystemLibraries" does this for me
+        #  just by including it. (Very nice).
+
+        set(REDISTRIB
+            ${CMAKE_INSTALL_PREFIX}/bin/concrt140.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_1.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_2.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_codecvt_ids.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140_1.dll
+            )
+        if (NOT EXISTS "${CMAKE_INSTALL_PREFIX}")
+            message(FATAL_ERROR "libOmexMeta needs to be installed before you
+can copy windows redistributables into python directory")
         endif ()
 
-        # Find the api-ms-win-core-wow64-l1-1-0.dll for redistribution via pip
-        find_file(API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY NAMES api-ms-win-core-wow64-l1-1-0.dll PATHS C:/Windows/System32/downlevel)
+        install(FILES ${REDISTRIB} DESTINATION ${PYOMEXMETA_DIR})
 
-        install(PROGRAMS
-                ${VCRUNTIME_LIBRARY}
-                ${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}
-                DESTINATION ${PYOMEXMETA_DIR}
-                )
 
 
     elseif (PLATFORM STREQUAL "macos")
