@@ -27,7 +27,6 @@ set(TEST_SOURCES
         QueryTests.cpp
         EditorTests.cpp
         RDFReadAndWriteTests.cpp
-        CAPITests.cpp
         PersonalInformationTests.cpp
         DocTests.cpp
         MarkupIdentifierTests.cpp sbml_semantic_extraction/ElementExtractorTests.cpp sbml_semantic_extraction/SBMLSemanticExtractionTests.cpp)
@@ -42,13 +41,6 @@ add_test(
 )
 set_tests_properties(OmexMetaTests PROPERTIES DEPENDS OmexMeta)
 add_dependencies(OmexMetaTests OmexMeta-static gtest gtest_main)
-
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#    set_target_properties(OmexMetaTests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
-#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#    set_target_properties(OmexMetaTests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-#endif()
-
 
 # links
 target_link_libraries(OmexMetaTests PUBLIC

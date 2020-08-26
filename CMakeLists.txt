@@ -122,6 +122,11 @@ file(RELATIVE_PATH INSTALL_RPATH_DIRECTORIES
 set(CMAKE_INSTALL_RPATH ${base} ${base}/${INSTALL_RPATH_DIRECTORIES})
 
 
+# set default visibility to hidden on all platforms (GCC and Clang default is to show
+# while visual studio, the default is hidden)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
+
 ####################################################################
 # User options
 #
@@ -192,6 +197,9 @@ if (${BUILD_PYTHON})
     find_package(PythonInterp)
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
 endif ()
+
+
+
 ############################################################3
 # configure some paths relative to vcpkg root
 set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its \"D:\\vcpkg\" on windows and \"/home/ciaran/vcpkg\" on WSL (Ubuntu)")
@@ -359,6 +367,7 @@ set(INCLUDE_DIRECTORIES
 
     # libomexmeta includes
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/C>
 
     # dependency includes
     $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>

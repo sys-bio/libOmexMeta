@@ -88,6 +88,7 @@ target_link_libraries(
 )
 set_target_properties(OmexMeta-static PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
 
+
 # install
 install(
         TARGETS OmexMeta-static
@@ -142,6 +143,10 @@ if (${BUILD_SHARED_LIBS})
     add_dependencies(OmexMeta redland-combined redland-combined-static)
 
     set_target_properties(OmexMeta PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
+
+    # Write mytools_export.h to the current binary directory
+    include(GenerateExportHeader)
+    generate_export_header(OmexMeta)
 
     install(TARGETS OmexMeta
             EXPORT OmexMeta
