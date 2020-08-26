@@ -1,18 +1,19 @@
 # C API binary
 
 set(target "OmexMetaCAPI")
-set(CAPI_SOURCES ../OmexMetaCApi.h ../OmexMetaCApi.cpp)
+set(CAPI_SOURCES OmexMetaCApi.h OmexMetaCApi.cpp)
 
 
 add_library(${target} SHARED ${CAPI_SOURCES})
 set_target_properties(${target} PROPERTIES
-                      PUBLIC_HEADER ../OmexMetaCApi.h
+                      PUBLIC_HEADER OmexMetaCApi.h
                       SOVERSION ${LIBOMEXMETA_VERSION}
                       )
 
 #includes
 target_include_directories(${target} PRIVATE
                            ${INCLUDE_DIRECTORIES}
+                           ${CMAKE_CURRENT_SOURCE_DIR}
                            )
 
 # links

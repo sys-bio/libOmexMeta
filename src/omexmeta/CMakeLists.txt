@@ -29,7 +29,6 @@ set(OMEXMETA_HEADERS
 
     "PhysicalPhenomenon.h"
     "AnnotationType.h"
-    "OmexMetaCApi.h"
     "OmexMeta.h"
     "MarkupIdentifier.h"
     sbml_semantic_extraction/ElementExtractor.cpp
@@ -60,7 +59,6 @@ set(OMEXMETA_SOURCES
     "Editor.cpp"
     "PhysicalProcess.cpp"
     "PhysicalForce.cpp"
-    "OmexMetaCApi.cpp"
     "PersonalInformation.cpp"
     "MarkupIdentifier.cpp"
     sbml_semantic_extraction/ElementExtractor.cpp sbml_semantic_extraction/ElementExtractor.h sbml_semantic_extraction/SBMLSemanticExtraction.cpp sbml_semantic_extraction/SBMLSemanticExtraction.h)

@@ -282,7 +282,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True)
         PyOmexMetaAPI.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        singular_annotation = PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
+        singular_annotation = PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "http://cytosol".encode())
         singular_annotation = PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(singular_annotation,
                                                                                   "https://predicate.com/from/uri".encode())
         singular_annotation = PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation,
@@ -294,12 +294,12 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         print(actual)
 
         expected = r"""<?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:OMEXlib="http://omex-library.org/"
+<rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
+   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
+   xmlns:myOMEX="http://omex-library.org/NewOmex.omex/"
    xmlns:ns_="https://namespace.com"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
+  <rdf:Description rdf:about="http://cytosol">
     <ns1:uri xmlns:ns1="https://predicate.com/from/"
        rdf:resource="http://uri.com"/>
   </rdf:Description>
@@ -817,7 +817,7 @@ local:cytosol
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
         PyOmexMetaAPI.editor_add_physical_entity(editor_ptr, physical_entity)
-        ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "PhysicalEntity.rdf".encode())
+        ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "PhysicalEntity.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
         expected = """<?xml version="1.1" encoding="utf-8"?>
