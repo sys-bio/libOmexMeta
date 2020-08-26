@@ -213,6 +213,7 @@ if (${BUILD_SHARED_LIBS})
         # Note: I deleted the code that copies windows redistributables because
         #  the package "InstallRequiredSystemLibraries" does this for me
         #  just by including it. (Very nice).
+        find_file(API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY NAMES api-ms-win-core-wow64-l1-1-0.dll PATHS C:/Windows/System32/downlevel)
 
         set(REDISTRIB
             ${CMAKE_INSTALL_PREFIX}/bin/concrt140.dll
@@ -222,6 +223,7 @@ if (${BUILD_SHARED_LIBS})
             ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_codecvt_ids.dll
             ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140.dll
             ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140_1.dll
+            ${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}
             )
         if (NOT EXISTS "${CMAKE_INSTALL_PREFIX}")
             message(FATAL_ERROR "libOmexMeta needs to be installed before you
@@ -229,8 +231,6 @@ can copy windows redistributables into python directory")
         endif ()
 
         install(FILES ${REDISTRIB} DESTINATION ${PYOMEXMETA_DIR})
-
-
 
     elseif (PLATFORM STREQUAL "macos")
         message(STATUS "macos == sad face =[")

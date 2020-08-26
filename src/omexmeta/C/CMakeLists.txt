@@ -5,7 +5,10 @@ set(CAPI_SOURCES ../OmexMetaCApi.h ../OmexMetaCApi.cpp)
 
 
 add_library(${target} SHARED ${CAPI_SOURCES})
-set_target_properties(${target} PROPERTIES PUBLIC_HEADER ../OmexMetaCApi.h)
+set_target_properties(${target} PROPERTIES
+                      PUBLIC_HEADER ../OmexMetaCApi.h
+                      SOVERSION ${LIBOMEXMETA_VERSION}
+                      )
 
 #includes
 target_include_directories(${target} PRIVATE

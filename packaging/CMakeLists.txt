@@ -50,17 +50,10 @@ endif ()
 
 
 add_custom_target(
-    libOmexMetaInstall
-    COMMAND "${CMAKE_COMMAND}" --build . --target install
-#    COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_LIST_DIR}/InstallWindowsRedistrib.cmake"
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-)
-add_custom_target(
-        PackageOmexMetaPython
-        COMMENT "create a pip wheel"
-        COMMAND ${PYTHON_EXECUTABLE} setup.py sdist bdist_wheel
-        DEPENDS libOmexMetaInstall
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        libOmexMetaInstall
+        COMMAND "${CMAKE_COMMAND}" --build . --target install
+        #    COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_LIST_DIR}/InstallWindowsRedistrib.cmake"
+        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
 set(all_targets
     OmexMeta-static
@@ -75,4 +68,18 @@ set(all_targets
 
 # add all targets as dependencies to ensure packaging is done last in all scenarios
 add_dependencies(PackageOmexMeta ${all_targets})
-add_dependencies(PackageOmexMetaPython ${all_targets})
+if (BUILD_PYTHON)
+    # in order to build the python package you must
+    # build the PackageOmexMetaPython target sucessfully
+    # on both windows and linux. The first will fail
+    # due to not having the binaries it needs inthe python
+    # source but then the other will fill in these gaps.
+    add_custom_target(
+            PackageOmexMetaPython
+            COMMENT "create a pip wheel"
+            COMMAND ${PYTHON_EXECUTABLE} ${PYTHON_SETUP_FILE} sdist bdist_wheel
+            DEPENDS libOmexMetaInstall
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    )
+    add_dependencies(PackageOmexMetaPython ${all_targets})
+endif ()

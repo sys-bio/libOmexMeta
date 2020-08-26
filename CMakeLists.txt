@@ -65,6 +65,9 @@ set(CMAKE_INSTALL_DOCDIR ${CMAKE_CURRENT_SOURCE_DIR}/doc)
 set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT MyProj_Runtime)
 include(InstallRequiredSystemLibraries)
 
+# utility for debugging cmake
+include(QueryCMakeVariables)
+
 ######################################################
 #   Set some variables
 #
@@ -119,7 +122,6 @@ file(RELATIVE_PATH INSTALL_RPATH_DIRECTORIES
 set(CMAKE_INSTALL_RPATH ${base} ${base}/${INSTALL_RPATH_DIRECTORIES})
 
 
-
 ####################################################################
 # User options
 #
@@ -134,6 +136,7 @@ option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
 option(BUILD_C_API "Build the OmexMeta C API" OFF)
 option(BUILD_PACKAGING "Package libOmexMeta with CPack" OFF)
+option(BUILD_PYTHON "Build the Python pip package" OFF)
 
 # docs-build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
@@ -183,9 +186,12 @@ endif ()
 # set gtest libraries which are different between debug and release.
 set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
 
-set(PYTHON_EXECUTABLE "/home/ciaran/miniconda3/bin/python" CACHE FILEPATH "Full path to python executable")
-
-
+SET(PYTHON_SETUP_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
+SET(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
+if (${BUILD_PYTHON})
+    find_package(PythonInterp)
+    configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
+endif ()
 ############################################################3
 # configure some paths relative to vcpkg root
 set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its \"D:\\vcpkg\" on windows and \"/home/ciaran/vcpkg\" on WSL (Ubuntu)")
@@ -442,10 +448,8 @@ endif ()
 
 # Best included near the end of the top leve cmakelists.
 if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
-    message("here")
     add_subdirectory(packaging)
-    message("here2")
-endif()
+endif ()
 
 # print out config summary
 ConfigurationSummary()
