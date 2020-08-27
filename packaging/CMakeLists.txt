@@ -28,6 +28,8 @@ set(CPACK_PACKAGE_DESCRIPTION_FILE ../README.md)
 set(CPACK_RESOURCE_FILE_WELCOME ../banner.txt)
 set(CPACK_RESOURCE_FILE_LICENSE ../LICENCE.txt)
 set(CPACK_RESOURCE_FILE_README ../README.md)
+set(CPACK_CMAKE_GENERATOR Ninja)
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libxml2;libxml2-dev;libxslt1-dev;libpq-dev")
 
 # debian specific variables
 set(CPACK_DEBIAN_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
@@ -35,13 +37,6 @@ set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
 set(CPACK_PACKAGE_CONTACT "cwelsh2@uw.edi")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Ciaran Welsh")
 
-# ensure the WIX generator doesn't think we want components
-set(CPACK_MONOLITHIC_INSTALL TRUE)
-set(CPACK_WIX_PRODUCT_GUID "B70BA590-2913-4A45-89BB-B1ADBED699C1")
-set(CPACK_WIX_UPGRADE_GUID "B70BA590-2913-4A45-89BB-B1ADBED699C1")
-
-# ensures WIX installer works
-set(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION OFF)
 include(CPack)
 
 
@@ -51,7 +46,6 @@ include(CPack)
 add_custom_target(
         libOmexMetaInstall
         COMMAND "${CMAKE_COMMAND}" --build . --target install
-        #    COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_LIST_DIR}/InstallWindowsRedistrib.cmake"
         WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
 
@@ -70,15 +64,8 @@ if (WIN32)
             WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
             VERBATIM
     )
-    add_custom_target(
-            packaging-wix
-            COMMENT "Create a wix binary distribution, i.e. a msi"
-            COMMAND ${CMAKE_CPACK_COMMAND} -G WIX ${CMAKE_BINARY_DIR}/CPackConfig.cmake
-            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-            VERBATIM
-    )
     add_dependencies(
-            packaging packaging-zip packaging-wix
+            packaging packaging-zip
     )
 
 else ()
@@ -103,19 +90,57 @@ else ()
 endif ()
 
 
-
-if (BUILD_PYTHON)
+if (${BUILD_PYTHON})
     # in order to build the python package you must
     # build the PackageOmexMetaPython target sucessfully
-    # on both windows and linux. The first will fail
-    # due to not having the binaries it needs inthe python
-    # source but then the other will fill in these gaps.
-    add_custom_target(
-            PackageOmexMetaPython
-            COMMENT "create a pip wheel"
-            COMMAND ${PYTHON_EXECUTABLE} ${PYTHON_SETUP_FILE} sdist bdist_wheel
-            DEPENDS libOmexMetaInstall
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    )
-    add_dependencies(packaging PackageOmexMetaPython)
+    # on both windows and linux.
+    #
+    # We only present this target to used on windows if libOmexMeta.so
+    # is found in ${PYOMEXMETA_DIR} or on linux if OmexMeta.dll is found
+    # at the same place.
+    if (WIN32)
+        find_program(
+                LINUX_LIBRARIES_FOUND
+                NAMES ${PYOMEXMETA_DIR}/libOmexMeta.so.${LIBOMEXMETA_VERSION}
+                NO_DEFAULT_PATH
+        )
+
+        if (LINUX_LIBRARIES_FOUND)
+            add_custom_target(
+                    PackageOmexMetaPython
+                    COMMENT "create a pip wheel"
+                    COMMAND ${PYTHON_EXECUTABLE} ${PYTHON_SETUP_FILE}  sdist bdist_wheel
+                    DEPENDS libOmexMetaInstall
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            )
+            add_dependencies(packaging PackageOmexMetaPython)
+        else()
+            message(WARNING "You are packaging libOmexMeta but will not be able \
+to build the Python package because you have not yet built and installed the \
+linux version. Both linux and windows are required to build a pip Wheel.")
+        endif ()
+    elseif (UNIX)
+        find_program(
+                WINDOWS_LIBRARIES_FOUND
+                NAMES ${PYOMEXMETA_DIR}/OmexMeta.dll
+                NO_DEFAULT_PATH
+        )
+
+        if (WINDOWS_LIBRARIES_FOUND)
+            add_custom_target(
+                    PackageOmexMetaPython
+                    COMMENT "create a pip wheel"
+                    COMMAND ${PYTHON_EXECUTABLE} ${PYTHON_SETUP_FILE}  sdist bdist_wheel
+                    DEPENDS libOmexMetaInstall
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            )
+            add_dependencies(packaging PackageOmexMetaPython)
+        else()
+            message(WARNING "You are packaging libOmexMeta but will not be able \
+to build the Python package because you have not yet built and installed the \
+windows version. Both linux and windows are required to build a pip Wheel.")
+        endif ()
+
+    endif ()
+
 endif ()

@@ -21,7 +21,7 @@ class Util:
     @staticmethod
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
-            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.5")
+            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.7")
             try:
                 lib = ct.CDLL(lib_path)
             except OSError as e:
@@ -48,7 +48,7 @@ class Util:
 
         elif sys.platform == "win32":
             # windows has to be difficult
-            lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMeta.dll")
+            lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMetaCAPI.dll")
             dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
             lib = ct.WinDLL(lib_path, handle=dll_handle)
         else:

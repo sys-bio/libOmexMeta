@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 6)
+set(VERSION_MICRO 7)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 project(libOmexMeta
@@ -198,11 +198,27 @@ endif ()
 # set gtest libraries which are different between debug and release.
 set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
 
-SET(PYTHON_SETUP_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
-SET(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
+# needed for configuration of pythons setup.py configuration
+set(README_FILE ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
+
 if (${BUILD_PYTHON})
     find_package(PythonInterp)
+    # configure the python setup.py
+    set(PYTHON_SETUP_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
+    set(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
+
+    # configure the python __init.py
+    set(PYTHON_INIT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/__init__.py.in")
+    set(PYTHON_INIT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/__init__.py")
+    configure_file(${PYTHON_INIT_CONFIG_FILE} ${PYTHON_INIT_FILE} @ONLY)
+
+    # configure the python pyomexmeta_api.py.in
+    set(PYTHON_API_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py.in")
+    set(PYTHON_API_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py")
+    configure_file(${PYTHON_API_CONFIG_FILE} ${PYTHON_API_FILE} @ONLY)
+
+
 endif ()
 
 

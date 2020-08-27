@@ -66,6 +66,4 @@ install(
         NAMESPACE OmexMeta::
         FILE OmexMetaCAPI.cmake
 )
-if (WIN32)
-    install(FILES $<TARGET_FILE:${target}> DESTINATION ${PYOMEXMETA_DIR})
-endif()
+install(FILES $<TARGET_FILE:${target}> DESTINATION ${PYOMEXMETA_DIR})
