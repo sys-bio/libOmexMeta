@@ -1,25 +1,31 @@
 # C API binary
 
 set(target "OmexMetaCAPI")
-set(CAPI_SOURCES OmexMetaCApi.h OmexMetaCApi.cpp)
+set(CAPI_SOURCES OmexMetaCApi.h OmexMetaCApi.cpp
+        "${CMAKE_CURRENT_BINARY_DIR}/omexmetacapi_export.h"
+)
 
 
 add_library(${target} SHARED ${CAPI_SOURCES})
+generate_export_header(OmexMetaCAPI BASE_NAME OmexMetaCAPI)
 set_target_properties(${target} PROPERTIES
-                      PUBLIC_HEADER OmexMetaCApi.h
+                      PUBLIC_HEADER "OmexMetaCApi.h;${CMAKE_CURRENT_BINARY_DIR}/omexmetacapi_export.h"
                       SOVERSION ${LIBOMEXMETA_VERSION}
                       )
 
 #includes
+get_filename_component(PARENT_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
 target_include_directories(${target} PRIVATE
                            ${INCLUDE_DIRECTORIES}
                            ${CMAKE_CURRENT_SOURCE_DIR}
+                           ${CMAKE_CURRENT_BINARY_DIR} # CAPI export header
+                           ${PARENT_DIR} # C++ api export header
                            )
 
 # links
 target_link_libraries(${target} PRIVATE
-                      OmexMeta-static
-                      redland-combined-static
+                      OmexMeta
+                      redland-combined
                       ${LINK_LIBRARIES}
                       )
 add_dependencies(${target} OmexMeta-static)
@@ -29,6 +35,7 @@ add_test(
         NAME OmexMetaCAPI
         COMMAND $<TARGET_FILE:OmexMetaCAPI>
 )
+
 
 # install
 install(TARGETS ${target}

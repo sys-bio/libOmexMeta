@@ -13,11 +13,12 @@
 #include "PhysicalProperty.h"
 #include "PhysicalPhenomenon.h"
 #include "OmexMetaUtils.h"
+#include "omexmeta_export.h"
 
 using namespace redland;
 
 namespace omexmeta {
-    class PhysicalProcess : public PhysicalPhenomenon {
+    class OMEXMETA_EXPORT PhysicalProcess : public PhysicalPhenomenon {
     private:
         Sources sources_;
         Sinks sinks_;

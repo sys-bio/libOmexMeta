@@ -17,6 +17,7 @@
 #include "omexmeta/OmexMetaUtils.h"
 #include "memory"
 #include <cassert>     /* assert */
+#include "omexmeta_export.h"
 
 using namespace redland;
 

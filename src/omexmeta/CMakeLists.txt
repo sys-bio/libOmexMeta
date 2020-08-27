@@ -2,6 +2,8 @@
 #   Set libOmexMeta sources
 #
 
+set(target OmexMeta)
+
 SET(OMEXMETA_PUBLIC_HEADERS
     "RDF.h"
     "Editor.h"
@@ -12,6 +14,7 @@ SET(OMEXMETA_PUBLIC_HEADERS
     "PhysicalProcess.h"
     "PersonalInformation.h"
     "OmexMeta.h"
+    "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
     )
 set(OMEXMETA_HEADERS
     ${OMEXMETA_PUBLIC_HEADERS}
@@ -69,30 +72,39 @@ set(OMEXMETA_SOURCES
 #
 
 # static library
-add_library(OmexMeta-static STATIC ${OMEXMETA_HEADERS} ${OMEXMETA_SOURCES})
+add_library(${target}-static STATIC ${OMEXMETA_HEADERS} ${OMEXMETA_SOURCES})
 
 # add redland-combined as dependency
-add_dependencies(OmexMeta-static redland-combined-static)
+add_dependencies(${target}-static redland-combined-static)
 
 #includes
 target_include_directories(
-        OmexMeta-static PRIVATE
+        ${target}-static PRIVATE
         ${INCLUDE_DIRECTORIES}
+        ${CMAKE_CURRENT_BINARY_DIR} # for export header
+)
+
+target_compile_definitions(
+        ${target}-static PRIVATE
+            RAPTOR_STATIC
+            RASQAL_STATIC
+            LIBRDF_STATIC
+            OMEXMETA_STATIC_DEFINE
 )
 
 # links
 target_link_libraries(
-        OmexMeta-static PRIVATE
+        ${target}-static PRIVATE
         redland-combined-static
         ${LINK_LIBRARIES}
 )
-set_target_properties(OmexMeta-static PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
+set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
 
 
 # install
 install(
-        TARGETS OmexMeta-static
-        EXPORT OmexMeta-static
+        TARGETS ${target}-static
+        EXPORT ${target}-static
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -101,7 +113,7 @@ install(
 
 # install the export info
 install(
-        EXPORT OmexMeta-static
+        EXPORT ${target}-static
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
         NAMESPACE OmexMeta::
         FILE OmexMetaStatic.cmake
@@ -116,14 +128,15 @@ endif ()
 if (${BUILD_SHARED_LIBS})
 
     # shared library
-    add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
+    add_library(${target} SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}")
 
-    set_target_properties(OmexMeta PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
+    set_target_properties(${target} PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
 
     # includes
     target_include_directories(
-            OmexMeta PUBLIC
+            ${target} PRIVATE
             ${INCLUDE_DIRECTORIES}
+            ${CMAKE_CURRENT_BINARY_DIR}
     )
 
 
@@ -134,22 +147,29 @@ if (${BUILD_SHARED_LIBS})
     SetCrossPlatform(REDLAND_LINK_LIBRARY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/redland-combined.lib $<TARGET_FILE:redland-combined-static> $<TARGET_FILE:redland-combined-static>)
 
     # links
-    target_link_libraries(OmexMeta PUBLIC
+    target_link_libraries(${target} PUBLIC
                           ${REDLAND_LINK_LIBRARY}
                           ${LINK_LIBRARIES}
                           )
 
     # Technically linux version depends on static version and windows depends on the dynamic library
-    add_dependencies(OmexMeta redland-combined redland-combined-static)
+    add_dependencies(${target} redland-combined redland-combined-static)
 
-    set_target_properties(OmexMeta PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
+    set_target_properties(${target} PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
 
     # Write mytools_export.h to the current binary directory
-    include(GenerateExportHeader)
-    generate_export_header(OmexMeta)
+    generate_export_header(${target} BASE_NAME OMEXMETA)
 
-    install(TARGETS OmexMeta
-            EXPORT OmexMeta
+    # Static target needs special preprocessor define
+    # to prevent symbol import/export keywords being added
+    target_compile_definitions(
+            ${target} PRIVATE
+            OMEXMETA_STATIC_DEFINE
+    )
+
+
+    install(TARGETS ${target}
+            EXPORT ${target}
             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -158,15 +178,15 @@ if (${BUILD_SHARED_LIBS})
 
     # install the export info
     install(
-            EXPORT OmexMeta
+            EXPORT ${target}
             DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
             NAMESPACE OmexMeta::
-            FILE OmexMeta.cmake
+            FILE ${target}.cmake
     )
 
 
     # for automatically installing to folder containing python api
-    install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
+    install(FILES $<TARGET_FILE:${target}> DESTINATION ${PYOMEXMETA_DIR})
     install(FILES $<TARGET_FILE:OmexMetaCAPI> DESTINATION ${PYOMEXMETA_DIR})
 
 

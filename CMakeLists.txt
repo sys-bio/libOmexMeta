@@ -68,6 +68,9 @@ include(InstallRequiredSystemLibraries)
 # utility for debugging cmake
 include(QueryCMakeVariables)
 
+# generate automatic export headers
+include(GenerateExportHeader)
+
 ######################################################
 #   Set some variables
 #
@@ -75,7 +78,9 @@ include(QueryCMakeVariables)
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+if (NOT WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+endif ()
 set(CXX_STANDARD_REQUIRED ON)
 
 # pic - needed on linux ignored on other platofrms
@@ -197,7 +202,6 @@ if (${BUILD_PYTHON})
     find_package(PythonInterp)
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
 endif ()
-
 
 
 ############################################################3
@@ -380,6 +384,11 @@ set(INCLUDE_DIRECTORIES
     $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}>
     $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
     $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
+
+    ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta
+    ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C
+
+
     )
 
 

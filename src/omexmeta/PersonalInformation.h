@@ -7,6 +7,7 @@
 
 #include "Triples.h"
 #include <memory>
+#include "omexmeta_export.h"
 
 
 namespace omexmeta {
@@ -25,7 +26,7 @@ namespace omexmeta {
      * as they like. Once finished they can use the getTriples() method
      * to get a unique ptr to the triples.
      */
-    class PersonalInformation {
+    class OMEXMETA_EXPORT PersonalInformation {
 
         librdf_model *model_;
         Triples triples_;

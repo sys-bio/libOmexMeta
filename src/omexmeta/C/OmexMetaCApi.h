@@ -12,7 +12,7 @@
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/PhysicalForce.h"
 #include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/Preproc.h"
+#include "omexmetacapi_export.h"
 #include <cstring>
 
 namespace omexmeta {
@@ -21,13 +21,13 @@ namespace omexmeta {
     extern "C" {
 #endif
 
-    SEMSIM_API void free_c_char_star(char *c);
+    OMEXMETACAPI_EXPORT void free_c_char_star(char *c);
 
-    SEMSIM_API void free_c_char_star_star(char **c, int size);
+    OMEXMETACAPI_EXPORT void free_c_char_star_star(char **c, int size);
 
-    SEMSIM_API char *_func_that_returns_dynamic_alloc_str();
+    OMEXMETACAPI_EXPORT char *_func_that_returns_dynamic_alloc_str();
 
-    SEMSIM_API char **_func_that_returns_dynamic_alloc_char_star_star();
+    OMEXMETACAPI_EXPORT char **_func_that_returns_dynamic_alloc_char_star_star();
 
 /***************************************************
  * librdf_world methods
@@ -37,24 +37,24 @@ namespace omexmeta {
  *
  */
 
-    SEMSIM_API [[maybe_unused]] void free_world(librdf_world *world);
+    OMEXMETACAPI_EXPORT [[maybe_unused]] void free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
  */
 
-    SEMSIM_API RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
+    OMEXMETACAPI_EXPORT RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
                             const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    SEMSIM_API void RDF_delete(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT void RDF_delete(RDF *rdf_ptr);
 
-    SEMSIM_API char *RDF_getBaseUri(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT char *RDF_getBaseUri(RDF *rdf_ptr);
 
-    SEMSIM_API void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
+    OMEXMETACAPI_EXPORT void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
 
-    SEMSIM_API char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri = "BaseUri");
+    OMEXMETACAPI_EXPORT char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri = "BaseUri");
 
-    SEMSIM_API void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
+    OMEXMETACAPI_EXPORT void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
 
     /*
      * @brief read RDF formatted annotations a string.
@@ -68,43 +68,43 @@ namespace omexmeta {
      * @example
      * RDF* rdf_ptr = RDF_fromString(string_annotations, "rdfxml", "string_annotations_base_uri");
      */
-    SEMSIM_API RDF *RDF_fromString(const char *str, const char *format,
+    OMEXMETACAPI_EXPORT RDF *RDF_fromString(const char *str, const char *format,
                                    const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                    const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    SEMSIM_API void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
+    OMEXMETACAPI_EXPORT void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
 
-    SEMSIM_API RDF *RDF_fromUri(const char *uri_string, const char *format,
+    OMEXMETACAPI_EXPORT RDF *RDF_fromUri(const char *uri_string, const char *format,
                                 const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                 const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    SEMSIM_API void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
+    OMEXMETACAPI_EXPORT void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    SEMSIM_API RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
+    OMEXMETACAPI_EXPORT RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
                                  const char *storage_name = "semsim_store",
                                  const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    SEMSIM_API void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
+    OMEXMETACAPI_EXPORT void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    SEMSIM_API char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    OMEXMETACAPI_EXPORT char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
 
-    SEMSIM_API int RDF_size(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT int RDF_size(RDF *rdf_ptr);
 
-    SEMSIM_API void RDF_setRepositoryUri(RDF *rdf_ptr, const char *repository_uri);
+    OMEXMETACAPI_EXPORT void RDF_setRepositoryUri(RDF *rdf_ptr, const char *repository_uri);
 
-    SEMSIM_API void RDF_setArchiveUri(RDF *rdf_ptr, const char *archive_uri);
+    OMEXMETACAPI_EXPORT void RDF_setArchiveUri(RDF *rdf_ptr, const char *archive_uri);
 
-    SEMSIM_API void RDF_setModelUri(RDF *rdf_ptr, const char *model_uri);
+    OMEXMETACAPI_EXPORT void RDF_setModelUri(RDF *rdf_ptr, const char *model_uri);
 
-    SEMSIM_API char *RDF_getRepositoryUri(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT char *RDF_getRepositoryUri(RDF *rdf_ptr);
 
-    SEMSIM_API char *RDF_getArchiveUri(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT char *RDF_getArchiveUri(RDF *rdf_ptr);
 
-    SEMSIM_API char *RDF_getModelUri(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT char *RDF_getModelUri(RDF *rdf_ptr);
 
-    SEMSIM_API char *RDF_getLocalUri(RDF *rdf_ptr);
+    OMEXMETACAPI_EXPORT char *RDF_getLocalUri(RDF *rdf_ptr);
 
-    SEMSIM_API Editor *
+    OMEXMETACAPI_EXPORT Editor *
     RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids);
 
 //RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
@@ -113,223 +113,223 @@ namespace omexmeta {
  *  Editor class methods
  */
 
-    SEMSIM_API void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
+    OMEXMETACAPI_EXPORT void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
 
-    SEMSIM_API void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+    OMEXMETACAPI_EXPORT void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
-    SEMSIM_API void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
+    OMEXMETACAPI_EXPORT void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
-    SEMSIM_API void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
-    SEMSIM_API void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
-    SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
+    OMEXMETACAPI_EXPORT void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
 
-    SEMSIM_API void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+    OMEXMETACAPI_EXPORT void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
-    SEMSIM_API void Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
+    OMEXMETACAPI_EXPORT void Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
-    SEMSIM_API void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
-    SEMSIM_API void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
-    SEMSIM_API void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
+    OMEXMETACAPI_EXPORT void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
 
-    SEMSIM_API void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
+    OMEXMETACAPI_EXPORT void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
 
-    SEMSIM_API char *Editor_getMetaId(Editor *editor_ptr, int index);
+    OMEXMETACAPI_EXPORT char *Editor_getMetaId(Editor *editor_ptr, int index);
 
-    SEMSIM_API char *Editor_getXml(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT char *Editor_getXml(Editor *editor_ptr);
 
-    SEMSIM_API int Editor_getNumMetaIds(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT int Editor_getNumMetaIds(Editor *editor_ptr);
 
-    SEMSIM_API void Editor_delete(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT void Editor_delete(Editor *editor_ptr);
 
-    SEMSIM_API char *Editor_getArchiveUri(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getLocalUri(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getModelUri(Editor *editor_ptr);
-    SEMSIM_API char *Editor_getRepositoryUri(Editor *editor_ptr);
-    SEMSIM_API void Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
-    SEMSIM_API void Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
-    SEMSIM_API void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
-    SEMSIM_API void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
-    SEMSIM_API void Editor_addDescription(Editor *editor_ptr, const char *date);
-    SEMSIM_API void Editor_addDateCreated(Editor *editor_ptr, const char *date);
-    SEMSIM_API void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
+    OMEXMETACAPI_EXPORT char *Editor_getArchiveUri(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT char *Editor_getLocalUri(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT char *Editor_getModelUri(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT char *Editor_getRepositoryUri(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT void Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETACAPI_EXPORT void Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETACAPI_EXPORT void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    OMEXMETACAPI_EXPORT void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    OMEXMETACAPI_EXPORT void Editor_addDescription(Editor *editor_ptr, const char *date);
+    OMEXMETACAPI_EXPORT void Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    OMEXMETACAPI_EXPORT void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SEMSIM_API SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
 
-    SEMSIM_API void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
+    OMEXMETACAPI_EXPORT void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
-    SEMSIM_API SingularAnnotation *
+    OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
-    SEMSIM_API SingularAnnotation *
+    OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
 
-    SEMSIM_API SingularAnnotation *SingularAnnotation_setPredicateFromUri(
+    OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);
 
-    SEMSIM_API SingularAnnotation *SingularAnnotation_setResourceLiteral(
+    OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_setResourceLiteral(
             SingularAnnotation *singular_annotation, const char *literal);
 
-    SEMSIM_API SingularAnnotation *
+    OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
 
-    SEMSIM_API SingularAnnotation *
+    OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
 
-    SEMSIM_API char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
+    OMEXMETACAPI_EXPORT char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
-    SEMSIM_API char *
+    OMEXMETACAPI_EXPORT char *
     SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
 
-    SEMSIM_API char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
+    OMEXMETACAPI_EXPORT char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
-    SEMSIM_API char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
+    OMEXMETACAPI_EXPORT char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
 /*********************************************************************
  * PhysicalEntity class methods
  */
-    SEMSIM_API PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
 
-    SEMSIM_API void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
+    OMEXMETACAPI_EXPORT void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
-    SEMSIM_API void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
+    OMEXMETACAPI_EXPORT void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
-    SEMSIM_API PhysicalEntity *PhysicalEntity_setPhysicalProperty(
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(
             PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
 
-    SEMSIM_API PhysicalEntity *PhysicalEntity_setIdentity(
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
 
-    SEMSIM_API PhysicalEntity *PhysicalEntity_addLocation(
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(
             PhysicalEntity *physical_entity_ptr, const char *location_resource);
 
 
-    SEMSIM_API char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
+    OMEXMETACAPI_EXPORT char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
 
-    SEMSIM_API char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
+    OMEXMETACAPI_EXPORT char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
 
-    SEMSIM_API int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
+    OMEXMETACAPI_EXPORT int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
 
-    SEMSIM_API char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
+    OMEXMETACAPI_EXPORT char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
 
-    SEMSIM_API char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
+    OMEXMETACAPI_EXPORT char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
 /*********************************************************************
  * PhysicalProcess class methods
  */
-    SEMSIM_API PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
 
-    SEMSIM_API void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
-    SEMSIM_API void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
 
-    SEMSIM_API PhysicalProcess *PhysicalProcess_setPhysicalProperty(
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_setPhysicalProperty(
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
-    SEMSIM_API PhysicalProcess *PhysicalProcess_addSource(
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_addSource(
             PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
-    SEMSIM_API PhysicalProcess *PhysicalProcess_addSink(
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_addSink(
             PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
-    SEMSIM_API PhysicalProcess *PhysicalProcess_addMediator(
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_addMediator(
             PhysicalProcess *physical_process, const char *physical_entity_reference);
 
-    SEMSIM_API char *
+    OMEXMETACAPI_EXPORT char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
 
 /*********************************************************************
  * PhysicalForce class methods
  */
-    SEMSIM_API PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
 
 
     /*
      * @brief deletes physical force excluding all
      * nodes associated with it.
      */
-    SEMSIM_API void PhysicalForce_delete(PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT void PhysicalForce_delete(PhysicalForce *physicalForce);
 
     /*
      * @brief deletes physical force including all
      * nodes associated with it.
      */
-    SEMSIM_API void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
+    OMEXMETACAPI_EXPORT void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
 
-    SEMSIM_API PhysicalForce *PhysicalForce_addSource(
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_addSource(
             PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference);
 
-    SEMSIM_API PhysicalForce *PhysicalForce_addSink(
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_addSink(
             PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference);
 
-    SEMSIM_API PhysicalForce *PhysicalForce_setPhysicalProperty(
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_setPhysicalProperty(
             PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
 
-    SEMSIM_API int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
 
-    SEMSIM_API int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
 
-    SEMSIM_API char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
+    OMEXMETACAPI_EXPORT char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
 
-    SEMSIM_API char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+    OMEXMETACAPI_EXPORT char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
 /*********************************************************************
  * PersonalInformation class methods
  */
 
-    SEMSIM_API PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
 
-    SEMSIM_API void PersonalInformation_delete(PersonalInformation *information);
+    OMEXMETACAPI_EXPORT void PersonalInformation_delete(PersonalInformation *information);
 
-    SEMSIM_API char *PersonalInformation_getLocalUri(PersonalInformation *information);
+    OMEXMETACAPI_EXPORT char *PersonalInformation_getLocalUri(PersonalInformation *information);
 
-    SEMSIM_API void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
+    OMEXMETACAPI_EXPORT void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
 
-    SEMSIM_API PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
+    OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
 
-//    SEMSIM_API PersonalInformation *PersonalInformation_addCurator(PersonalInformation *information, const char*value);
+//    OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addCurator(PersonalInformation *information, const char*value);
 
-    SEMSIM_API PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
+    OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
 
-    SEMSIM_API PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char *value);
+    OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char *value);
 
-    SEMSIM_API PersonalInformation *
+    OMEXMETACAPI_EXPORT PersonalInformation *
     PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
 
-    SEMSIM_API PersonalInformation *
+    OMEXMETACAPI_EXPORT PersonalInformation *
     PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
 
-    SEMSIM_API PersonalInformation *
+    OMEXMETACAPI_EXPORT PersonalInformation *
     PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
 
-    SEMSIM_API PersonalInformation *
+    OMEXMETACAPI_EXPORT PersonalInformation *
     PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
 
-    SEMSIM_API PersonalInformation *
+    OMEXMETACAPI_EXPORT PersonalInformation *
     PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,
                                        const char *literal_value);
 
-    SEMSIM_API PersonalInformation *
+    OMEXMETACAPI_EXPORT PersonalInformation *
     PersonalInformation_addFoaf(PersonalInformation *information, const char *predicate, const LibrdfNode &value_node);
 
-    SEMSIM_API char *PersonalInformation_getMetaid(PersonalInformation *information);
+    OMEXMETACAPI_EXPORT char *PersonalInformation_getMetaid(PersonalInformation *information);
 
-    SEMSIM_API void PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
+    OMEXMETACAPI_EXPORT void PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
 
-    SEMSIM_API char *PersonalInformation_getModelUri(PersonalInformation *information);
+    OMEXMETACAPI_EXPORT char *PersonalInformation_getModelUri(PersonalInformation *information);
 
-    SEMSIM_API void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
+    OMEXMETACAPI_EXPORT void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
 
 
 #ifdef __cplusplus

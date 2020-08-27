@@ -2,6 +2,8 @@
 #   Sources for tests
 #
 
+set(target OmexMetaTests)
+
 set(TEST_SOURCES
         SBMLFactory.h
         OmexMetaUtilsTests.cpp
@@ -32,18 +34,24 @@ set(TEST_SOURCES
         MarkupIdentifierTests.cpp sbml_semantic_extraction/ElementExtractorTests.cpp sbml_semantic_extraction/SBMLSemanticExtractionTests.cpp)
 
 # docs-build test executable
-add_executable(OmexMetaTests ${TEST_SOURCES})
+add_executable(${target} ${TEST_SOURCES})
+
+# indicate that on windows we are using the static library,
+# not the static
+target_compile_definitions(
+        ${target} PRIVATE OMEXMETA_STATIC_DEFINE
+)
 
 # add test so it can be run with $ctest or $make test
 add_test(
-        NAME OmexMetaTests
-        COMMAND $<TARGET_FILE:OmexMetaTests>
+        NAME ${target}
+        COMMAND $<TARGET_FILE:${target}>
 )
-set_tests_properties(OmexMetaTests PROPERTIES DEPENDS OmexMeta)
-add_dependencies(OmexMetaTests OmexMeta-static gtest gtest_main)
+set_tests_properties(${target} PROPERTIES DEPENDS OmexMeta)
+add_dependencies(${target} OmexMeta-static gtest gtest_main)
 
 # links
-target_link_libraries(OmexMetaTests PUBLIC
+target_link_libraries(${target} PUBLIC
         # Order matters!
         $<TARGET_FILE:OmexMeta-static>
         $<TARGET_FILE:redland-combined-static>
@@ -53,17 +61,17 @@ target_link_libraries(OmexMetaTests PUBLIC
         )
 
 #includes
-target_include_directories(OmexMetaTests PRIVATE
+target_include_directories(${target} PRIVATE
         ${GOOGLETEST_SOURCE}/googletest/include
         ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
-add_dependencies(OmexMetaTests OmexMeta-static gtest gtest_main)
+add_dependencies(${target} OmexMeta-static gtest gtest_main)
 
 install(
-        TARGETS OmexMetaTests
-        EXPORT OmexMetaTests
+        TARGETS ${target}
+        EXPORT ${target}
         RUNTIME DESTINATION bin
 )
 

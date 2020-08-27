@@ -14,12 +14,13 @@
 #include "sbml_semantic_extraction/SBMLSemanticExtraction.h"
 #include "MarkupIdentifier.h"
 #include "OmexMetaXmlType.h"
+#include "omexmeta_export.h"
 
 using namespace redland;
 
 namespace omexmeta {
 
-    class RDF {
+    class OMEXMETA_EXPORT RDF {
         LibrdfStorage storage_;
         LibrdfModel model_;
 

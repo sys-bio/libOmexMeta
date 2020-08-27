@@ -24,6 +24,7 @@
 
 #include <utility>
 #include "MarkupIdentifier.h"
+#include "omexmeta_export.h"
 
 using namespace redland;
 
@@ -36,7 +37,7 @@ namespace omexmeta {
      * @brief Add or change annotations in xml.
      *
      */
-    class Editor {
+    class OMEXMETA_EXPORT Editor {
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
