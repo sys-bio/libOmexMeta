@@ -26,6 +26,7 @@
 #ifndef RASQAL_H
 #define RASQAL_H
 
+#include "redland_export.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -70,42 +71,6 @@ extern "C" {
 #define RASQAL_VERSION_RELEASE 33
 
 
-/**
- * RASQAL_API:
- *
- * Macro for wrapping API function call declarations.
- *
- */
-#ifndef RASQAL_API
-#  ifdef WIN32
-#    ifdef __GNUC__
-#      undef _declspec
-#      define _declspec(x) __declspec(x)
-#    endif
-#    ifdef RASQAL_STATIC
-#      define RASQAL_API
-#    else
-#      ifdef RASQAL_INTERNAL
-#        define RASQAL_API _declspec(dllexport)
-#      else
-#        define RASQAL_API _declspec(dllimport)
-#      endif
-#    endif
-#  else
-#    define RASQAL_API
-#  endif
-#endif
-
-/* Use gcc 3.1+ feature to allow marking of deprecated API calls.
- * This gives a warning during compiling.
- */
-#if (__GNUC__ == 3 && __GNUC_MINOR__ > 0) || __GNUC__ > 3
-#define RASQAL_DEPRECATED __attribute__((deprecated))
-#else
-#define RASQAL_DEPRECATED
-#endif
-
-
 #ifndef LIBRDF_OBJC_FRAMEWORK
 #include <raptor2.h>
 
@@ -126,7 +91,7 @@ extern "C" {
  *
  * Short copyright string (one line).
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const char *const rasqal_short_copyright_string;
 
 /**
@@ -134,7 +99,7 @@ extern const char *const rasqal_short_copyright_string;
  *
  * Copyright string (multiple lines).
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const char *const rasqal_copyright_string;
 
 /**
@@ -142,7 +107,7 @@ extern const char *const rasqal_copyright_string;
  *
  * Rasqal version as a string.
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const char *const rasqal_version_string;
 
 /**
@@ -150,7 +115,7 @@ extern const char *const rasqal_version_string;
  *
  * Rasqal major version number.
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const unsigned int rasqal_version_major;
 
 /**
@@ -158,7 +123,7 @@ extern const unsigned int rasqal_version_major;
  *
  * Rasqal minor version number.
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const unsigned int rasqal_version_minor;
 
 /**
@@ -166,7 +131,7 @@ extern const unsigned int rasqal_version_minor;
  *
  * Rasqal release version number.
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const unsigned int rasqal_version_release;
 
 /**
@@ -176,7 +141,7 @@ extern const unsigned int rasqal_version_release;
  *
  * Format: major * 10000 + minor * 100 + release
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const unsigned int rasqal_version_decimal;
 
 /**
@@ -184,7 +149,7 @@ extern const unsigned int rasqal_version_decimal;
  *
  * Rasqal license string.
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const char *const rasqal_license_string;
 
 /**
@@ -192,7 +157,7 @@ extern const char *const rasqal_license_string;
  *
  * Rasqal home page URL.
  */
-RASQAL_API
+REDLAND_EXPORT
 extern const char *const rasqal_home_url_string;
 
 
@@ -1146,333 +1111,333 @@ typedef int (*rasqal_graph_pattern_visit_fn)(rasqal_query *query, rasqal_graph_p
 
 /* Public functions */
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_world *rasqal_new_world(void);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_world_open(rasqal_world *world);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_world(rasqal_world *world);
 
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_world_set_raptor(rasqal_world *world, raptor_world *raptor_world_ptr);
-RASQAL_API
+REDLAND_EXPORT
 raptor_world *rasqal_world_get_raptor(rasqal_world *world);
 
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_world_set_log_handler(rasqal_world *world, void *user_data, raptor_log_handler handler);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_world_set_default_generate_bnodeid_parameters(rasqal_world *world, char *prefix, int base);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_world_set_generate_bnodeid_handler(rasqal_world *world, void *user_data,
                                               rasqal_generate_bnodeid_handler handler);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_world_set_warning_level(rasqal_world *world, unsigned int warning_level);
 
-RASQAL_API
+REDLAND_EXPORT
 const raptor_syntax_description *
 rasqal_world_get_query_results_format_description(rasqal_world *world, unsigned int counter);
 
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_world_guess_query_results_format_name(rasqal_world *world, raptor_uri *uri, const char *mime_type,
                                                          const unsigned char *buffer, size_t len,
                                                          const unsigned char *identifier);
 
 /* Features */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_features_enumerate(rasqal_world *world, const rasqal_feature feature, const char **name, raptor_uri **uri,
                               const char **label);
-RASQAL_API
+REDLAND_EXPORT
 unsigned int rasqal_get_feature_count(void);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_feature rasqal_feature_from_uri(rasqal_world *world, raptor_uri *uri);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_feature_value_type(const rasqal_feature feature);
 
 
-RASQAL_API
+REDLAND_EXPORT
 const raptor_syntax_description *rasqal_world_get_query_language_description(rasqal_world *world, unsigned int counter);
 
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int rasqal_languages_enumerate(rasqal_world *world, unsigned int counter, const char **name, const char **label,
                                const unsigned char **uri_string);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_language_name_check(rasqal_world *world, const char *name);
 
 
 /* Query class */
 
 /* Create */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query *rasqal_new_query(rasqal_world *world, const char *name, const unsigned char *uri);
 
 /* Destroy */
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_query(rasqal_query *query);
 
 /* Methods */
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_query_get_name(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_query_get_label(rasqal_query *query);
 
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_set_feature(rasqal_query *query, rasqal_feature feature, int value);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_set_feature_string(rasqal_query *query, rasqal_feature feature, const unsigned char *value);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_get_feature(rasqal_query *query, rasqal_feature feature);
-RASQAL_API
+REDLAND_EXPORT
 const unsigned char *rasqal_query_get_feature_string(rasqal_query *query, rasqal_feature feature);
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_verb rasqal_query_get_verb(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_get_wildcard(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_query_set_wildcard(rasqal_query *query, int wildcard);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_get_distinct(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_query_set_distinct(rasqal_query *query, int distinct_mode);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_get_explain(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_query_set_explain(rasqal_query *query, int is_explain);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_get_limit(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_query_set_limit(rasqal_query *query, int limit);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_get_offset(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_query_set_offset(rasqal_query *query, int offset);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_add_data_graph(rasqal_query *query, rasqal_data_graph *data_graph);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_add_data_graphs(rasqal_query *query, raptor_sequence *data_graphs);
 
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_data_graph_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_data_graph *rasqal_query_get_data_graph(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_dataset_contains_named_graph(rasqal_query *query, raptor_uri *graph_uri);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_add_variable(rasqal_query *query, rasqal_variable *var);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_bound_variable_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_describe_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_anonymous_variable_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_all_variable_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *rasqal_query_get_variable(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_has_variable2(rasqal_query *query, rasqal_variable_type type, const unsigned char *name);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int rasqal_query_has_variable(rasqal_query *query, const unsigned char *name);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_set_variable2(rasqal_query *query, rasqal_variable_type type, const unsigned char *name,
                                rasqal_literal *value);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int rasqal_query_set_variable(rasqal_query *query, const unsigned char *name, rasqal_literal *value);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_triple_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_triple *rasqal_query_get_triple(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_add_prefix(rasqal_query *query, rasqal_prefix *prefix);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_prefix_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_prefix *rasqal_query_get_prefix(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_order_conditions_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_query_get_order_condition(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_group_conditions_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_query_get_group_condition(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_having_conditions_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_query_get_having_condition(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_construct_triples_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_triple *rasqal_query_get_construct_triple(rasqal_query *query, int idx);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 void rasqal_query_graph_pattern_visit(rasqal_query *query, rasqal_graph_pattern_visit_fn visit_fn, void *data);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_graph_pattern_visit2(rasqal_query *query, rasqal_graph_pattern_visit_fn visit_fn, void *data);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_write(raptor_iostream *iostr, rasqal_query *query, raptor_uri *format_uri, raptor_uri *base_uri);
 
 /* update */
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_update_operations_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_update_operation *rasqal_query_get_update_operation(rasqal_query *query, int idx);
 
 /* results */
 int rasqal_query_set_store_results(rasqal_query *query, int store_results);
 
 /* graph patterns */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_graph_pattern *rasqal_query_get_query_graph_pattern(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_graph_pattern_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_graph_pattern *rasqal_query_get_graph_pattern(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_graph_pattern_add_sub_graph_pattern(rasqal_graph_pattern *graph_pattern,
                                                rasqal_graph_pattern *sub_graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_triple *rasqal_graph_pattern_get_triple(rasqal_graph_pattern *graph_pattern, int idx);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_graph_pattern_get_sub_graph_pattern_sequence(rasqal_graph_pattern *graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_graph_pattern *rasqal_graph_pattern_get_sub_graph_pattern(rasqal_graph_pattern *graph_pattern, int idx);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_graph_pattern_operator rasqal_graph_pattern_get_operator(rasqal_graph_pattern *graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_graph_pattern_operator_as_string(rasqal_graph_pattern_operator op);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_graph_pattern_print(rasqal_graph_pattern *gp, FILE *fh);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_graph_pattern_set_filter_expression(rasqal_graph_pattern *gp, rasqal_expression *expr);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_graph_pattern_get_filter_expression(rasqal_graph_pattern *gp);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_graph_pattern_visit(rasqal_query *query, rasqal_graph_pattern *gp, rasqal_graph_pattern_visit_fn fn,
                                void *user_data);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_graph_pattern_get_index(rasqal_graph_pattern *gp);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_graph_pattern_variable_bound_in(rasqal_graph_pattern *gp, rasqal_variable *v);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_graph_pattern_get_origin(rasqal_graph_pattern *graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *rasqal_graph_pattern_get_variable(rasqal_graph_pattern *graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_graph_pattern_get_service(rasqal_graph_pattern *graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_graph_pattern_get_flattened_triples(rasqal_query *query, rasqal_graph_pattern *graph_pattern);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_graph_pattern_get_triples(rasqal_query *query, rasqal_graph_pattern *graph_pattern);
 
 
 /* Utility methods */
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_query_verb_as_string(rasqal_query_verb verb);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_print(rasqal_query *query, FILE *fh);
 
 /* Query */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_prepare(rasqal_query *query, const unsigned char *query_string, raptor_uri *base_uri);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results *rasqal_query_execute(rasqal_query *query);
 
-RASQAL_API
+REDLAND_EXPORT
 void *rasqal_query_get_user_data(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_query_set_user_data(rasqal_query *query, void *user_data);
 
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_bindings_variables_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *rasqal_query_get_bindings_variable(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 raptor_sequence *rasqal_query_get_bindings_rows_sequence(rasqal_query *query);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_row *rasqal_query_get_bindings_row(rasqal_query *query, int idx);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results_type rasqal_query_get_result_type(rasqal_query *query);
 
 /* query results */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results *
 rasqal_new_query_results2(rasqal_world *world, rasqal_query *query, rasqal_query_results_type type);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 rasqal_query_results *rasqal_new_query_results(rasqal_world *world, rasqal_query *query, rasqal_query_results_type type,
                                                rasqal_variables_table *vars_table);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results *
 rasqal_new_query_results_from_string(rasqal_world *world, rasqal_query_results_type type, raptor_uri *base_uri,
                                      const char *string, size_t string_len);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_query_results(rasqal_query_results *query_results);
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query *rasqal_query_results_get_query(rasqal_query_results *query_results);
 
 /* Bindings result format */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results_type rasqal_query_results_get_type(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_query_results_type_label(rasqal_query_results_type type);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_is_bindings(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_get_count(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_next(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_finished(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_get_bindings(rasqal_query_results *query_results, const unsigned char ***names,
                                       rasqal_literal ***values);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_query_results_get_binding_value(rasqal_query_results *query_results, int offset);
-RASQAL_API
+REDLAND_EXPORT
 const unsigned char *rasqal_query_results_get_binding_name(rasqal_query_results *query_results, int offset);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *
 rasqal_query_results_get_binding_value_by_name(rasqal_query_results *query_results, const unsigned char *name);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_get_bindings_count(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_add_row(rasqal_query_results *query_results, rasqal_row *row);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_row *rasqal_query_results_get_row_by_offset(rasqal_query_results *query_results, int result_offset);
 
 /* Boolean result format */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_is_boolean(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_get_boolean(rasqal_query_results *query_results);
 
 /* Graph result format */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_is_graph(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 raptor_statement *rasqal_query_results_get_triple(rasqal_query_results *query_results);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_next_triple(rasqal_query_results *query_results);
 
 /* Syntax result format */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_is_syntax(rasqal_query_results *query_results);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_write(raptor_iostream *iostr, rasqal_query_results *results, const char *name,
                                const char *mime_type, raptor_uri *format_uri, raptor_uri *base_uri);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_read(raptor_iostream *iostr, rasqal_query_results *results, const char *name,
                               const char *mime_type, raptor_uri *format_uri, raptor_uri *base_uri);
 
 /* One more time */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_rewind(rasqal_query_results *query_results);
 
 
@@ -1489,54 +1454,54 @@ typedef enum {
 } rasqal_query_results_format_flags;
 
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_formats_check2(rasqal_world *world, const char *name, raptor_uri *uri, const char *mime_type,
                                         int flags);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int rasqal_query_results_formats_check(rasqal_world *world, const char *name, raptor_uri *uri, const char *mime_type,
                                        int flags);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results_formatter *
 rasqal_new_query_results_formatter(rasqal_world *world, const char *name, const char *mime_type,
                                    raptor_uri *format_uri);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results_formatter *
 rasqal_new_query_results_formatter_for_content(rasqal_world *world, raptor_uri *uri, const char *mime_type,
                                                const unsigned char *buffer, size_t len,
                                                const unsigned char *identifier);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_query_results_formatter(rasqal_query_results_formatter *formatter);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_formatter_write(raptor_iostream *iostr, rasqal_query_results_formatter *formatter,
                                          rasqal_query_results *results, raptor_uri *base_uri);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_results_formatter_read(rasqal_world *world, raptor_iostream *iostr,
                                         rasqal_query_results_formatter *formatter, rasqal_query_results *results,
                                         raptor_uri *base_uri);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_query_iostream_write_escaped_counted_string(rasqal_query *query, raptor_iostream *iostr,
                                                        const unsigned char *string, size_t len);
-RASQAL_API
+REDLAND_EXPORT
 unsigned char *
 rasqal_query_escape_counted_string(rasqal_query *query, const unsigned char *string, size_t len, size_t *output_len_p);
 
 
 /* Data graph class */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_data_graph *
 rasqal_new_data_graph_from_uri(rasqal_world *world, raptor_uri *uri, raptor_uri *name_uri, unsigned int flags,
                                const char *format_type, const char *format_name, raptor_uri *format_uri);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_data_graph *
 rasqal_new_data_graph_from_iostream(rasqal_world *world, raptor_iostream *iostr, raptor_uri *base_uri,
                                     raptor_uri *name_uri, unsigned int flags, const char *format_type,
                                     const char *format_name, raptor_uri *format_uri);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_data_graph *rasqal_new_data_graph_from_data_graph(rasqal_data_graph *dg);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_data_graph(rasqal_data_graph *dg);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_data_graph_print(rasqal_data_graph *dg, FILE *fh);
 
 
@@ -1591,61 +1556,61 @@ typedef struct {
 
 
 /* Expression class */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_0op_expression(rasqal_world *world, rasqal_op op);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_1op_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *
 rasqal_new_2op_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg1, rasqal_expression *arg2);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *
 rasqal_new_3op_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg1, rasqal_expression *arg2,
                           rasqal_expression *arg3);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *
 rasqal_new_4op_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg1, rasqal_expression *arg2,
                           rasqal_expression *arg3, rasqal_expression *arg4);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *
 rasqal_new_string_op_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg1, rasqal_literal *literal);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_literal_expression(rasqal_world *world, rasqal_literal *literal);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *
 rasqal_new_function_expression(rasqal_world *world, raptor_uri *name, raptor_sequence *args, raptor_sequence *params,
                                unsigned int flags);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_aggregate_function_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg1,
                                                             raptor_sequence *params, unsigned int flags);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_cast_expression(rasqal_world *world, raptor_uri *name, rasqal_expression *value);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_expr_seq_expression(rasqal_world *world, rasqal_op op, raptor_sequence *args);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *
 rasqal_new_set_expression(rasqal_world *world, rasqal_op op, rasqal_expression *arg1, raptor_sequence *args);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_group_concat_expression(rasqal_world *world, unsigned int flags, raptor_sequence *args,
                                                       rasqal_literal *separator);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_expression *rasqal_new_expression_from_expression(rasqal_expression *e);
 
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_expression(rasqal_expression *e);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_expression_print_op(rasqal_expression *e, FILE *fh);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_expression_print(rasqal_expression *e, FILE *fh);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 rasqal_literal *
 rasqal_expression_evaluate(rasqal_world *world, raptor_locator *locator, rasqal_expression *e, int flags);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *
 rasqal_expression_evaluate2(rasqal_expression *e, rasqal_evaluation_context *eval_context, int *error_p);
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_expression_op_label(rasqal_op op);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_expression_compare(rasqal_expression *e1, rasqal_expression *e2, int flags, int *error_p);
 
 /**
@@ -1659,270 +1624,270 @@ int rasqal_expression_compare(rasqal_expression *e1, rasqal_expression *e2, int 
  * Return value: non-0 to truncate the visit
  */
 typedef int (*rasqal_expression_visit_fn)(void *user_data, rasqal_expression *e);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_expression_visit(rasqal_expression *e, rasqal_expression_visit_fn fn, void *user_data);
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_evaluation_context *rasqal_new_evaluation_context(rasqal_world *world, raptor_locator *locator, int flags);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_evaluation_context(rasqal_evaluation_context *eval_context);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_evaluation_context_set_base_uri(rasqal_evaluation_context *eval_context, raptor_uri *base_uri);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_evaluation_context_set_rand_seed(rasqal_evaluation_context *eval_context, unsigned int seed);
 
 
 /* Literal class */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_integer_literal(rasqal_world *world, rasqal_literal_type type, int integer);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_numeric_literal_from_long(rasqal_world *world, rasqal_literal_type type, long value);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_typed_literal(rasqal_world *world, rasqal_literal_type type, const unsigned char *string);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_double_literal(rasqal_world *world, double d);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_floating_literal(rasqal_world *world, rasqal_literal_type type, double d);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 rasqal_literal *rasqal_new_float_literal(rasqal_world *world, float f);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_uri_literal(rasqal_world *world, raptor_uri *uri);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_pattern_literal(rasqal_world *world, const unsigned char *pattern, const char *flags);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *
 rasqal_new_string_literal(rasqal_world *world, const unsigned char *string, const char *language, raptor_uri *datatype,
                           const unsigned char *datatype_qname);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_simple_literal(rasqal_world *world, rasqal_literal_type type, const unsigned char *string);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_boolean_literal(rasqal_world *world, int value);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_variable_literal(rasqal_world *world, rasqal_variable *variable);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_decimal_literal(rasqal_world *world, const unsigned char *string);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *
 rasqal_new_decimal_literal_from_decimal(rasqal_world *world, const unsigned char *string, rasqal_xsd_decimal *decimal);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_datetime_literal_from_datetime(rasqal_world *world, rasqal_xsd_datetime *dt);
 
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_new_literal_from_literal(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_literal(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_literal_print(rasqal_literal *l, FILE *fh);
-RASQAL_API
+REDLAND_EXPORT
 const char *rasqal_literal_type_label(rasqal_literal_type type);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_literal_print_type(rasqal_literal *l, FILE *fh);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *rasqal_literal_as_variable(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 const unsigned char *rasqal_literal_as_counted_string(rasqal_literal *l, size_t *len_p, int flags, int *error_p);
-RASQAL_API
+REDLAND_EXPORT
 const unsigned char *rasqal_literal_as_string(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 const unsigned char *rasqal_literal_as_string_flags(rasqal_literal *l, int flags, int *error_p);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_literal_as_node(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 raptor_uri *rasqal_literal_datatype(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_literal_value(rasqal_literal *l);
 
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_literal_compare(rasqal_literal *l1, rasqal_literal *l2, int flags, int *error_p);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_literal_equals(rasqal_literal *l1, rasqal_literal *l2);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_literal_same_term(rasqal_literal *l1, rasqal_literal *l2);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal_type rasqal_literal_get_rdf_term_type(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal_type rasqal_literal_get_type(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_literal_get_language(rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_literal_is_rdf_literal(rasqal_literal *l);
 
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_prefix *rasqal_new_prefix(rasqal_world *world, const unsigned char *prefix, raptor_uri *uri);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_prefix(rasqal_prefix *p);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_prefix_print(rasqal_prefix *p, FILE *fh);
 
 
 /* Row class */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_row *rasqal_new_row_for_size(rasqal_world *world, int size);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_row(rasqal_row *row);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_row_set_value_at(rasqal_row *row, int offset, rasqal_literal *value);
 
 
 /* _Triple class */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_triple *rasqal_new_triple(rasqal_literal *subject, rasqal_literal *predicate, rasqal_literal *object);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_triple *rasqal_new_triple_from_triple(rasqal_triple *t);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_triple(rasqal_triple *t);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_triple_print(rasqal_triple *t, FILE *fh);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_triple_set_origin(rasqal_triple *t, rasqal_literal *l);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_literal *rasqal_triple_get_origin(rasqal_triple *t);
 
 /* Variable class */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *rasqal_new_variable_from_variable(rasqal_variable *v);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_variable(rasqal_variable *v);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_variable_print(rasqal_variable *v, FILE *fh);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_variable_set_value(rasqal_variable *v, rasqal_literal *l);
 
 
 /* Variables Table */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variables_table *rasqal_new_variables_table(rasqal_world *world);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_variables_table(rasqal_variables_table *vt);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 rasqal_variable *
 rasqal_variables_table_add(rasqal_variables_table *vt, rasqal_variable_type type, const unsigned char *name,
                            rasqal_literal *value);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *
 rasqal_variables_table_add2(rasqal_variables_table *vt, rasqal_variable_type type, const unsigned char *name,
                             size_t name_len, rasqal_literal *value);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_variables_table_add_variable(rasqal_variables_table *vt, rasqal_variable *variable);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_variable *
 rasqal_variables_table_get_by_name(rasqal_variables_table *vt, rasqal_variable_type type, const unsigned char *name);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_variables_table_contains(rasqal_variables_table *vt, rasqal_variable_type type, const unsigned char *name);
 
 /* memory functions */
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_memory(void *ptr);
-RASQAL_API
+REDLAND_EXPORT
 void *rasqal_alloc_memory(size_t size);
-RASQAL_API
+REDLAND_EXPORT
 void *rasqal_calloc_memory(size_t nmemb, size_t size);
 
 
 /* decimal functions */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_decimal *rasqal_new_xsd_decimal(rasqal_world *world);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_xsd_decimal(rasqal_xsd_decimal *dec);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_set_string(rasqal_xsd_decimal *dec, const char *string);
-RASQAL_API
+REDLAND_EXPORT
 double rasqal_xsd_decimal_get_double(rasqal_xsd_decimal *dec);
-RASQAL_API
+REDLAND_EXPORT
 long rasqal_xsd_decimal_get_long(rasqal_xsd_decimal *dec, int *error_p);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_decimal_as_string(rasqal_xsd_decimal *dec);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_decimal_as_counted_string(rasqal_xsd_decimal *dec, size_t *len_p);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_set_long(rasqal_xsd_decimal *dec, long l);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_set_double(rasqal_xsd_decimal *dec, double d);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_print(rasqal_xsd_decimal *dec, FILE *stream);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_add(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a, rasqal_xsd_decimal *b);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_subtract(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a, rasqal_xsd_decimal *b);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_multiply(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a, rasqal_xsd_decimal *b);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_divide(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a, rasqal_xsd_decimal *b);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_negate(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_compare(rasqal_xsd_decimal *a, rasqal_xsd_decimal *b);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_equals(rasqal_xsd_decimal *a, rasqal_xsd_decimal *b);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_is_zero(rasqal_xsd_decimal *d);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_abs(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_round(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_ceil(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_decimal_floor(rasqal_xsd_decimal *result, rasqal_xsd_decimal *a);
 
 
 /* date functions */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_date *rasqal_new_xsd_date(rasqal_world *world, const char *date_string);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_xsd_date(rasqal_xsd_date *d);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_date_to_counted_string(const rasqal_xsd_date *date, size_t *len_p);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_date_to_string(const rasqal_xsd_date *d);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_date_equals(const rasqal_xsd_date *d1, const rasqal_xsd_date *d2, int *incomparible_p);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_date_compare(const rasqal_xsd_date *d1, const rasqal_xsd_date *d2, int *incomparible_p);
 
 /* datetime functions */
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_datetime *rasqal_new_xsd_datetime(rasqal_world *world, const char *datetime_string);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_datetime *rasqal_new_xsd_datetime_from_unixtime(rasqal_world *world, time_t secs);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_datetime *rasqal_new_xsd_datetime_from_timeval(rasqal_world *world, struct timeval *tv);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_datetime *rasqal_new_xsd_datetime_from_xsd_date(rasqal_world *world, rasqal_xsd_date *date);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_xsd_datetime(rasqal_xsd_datetime *dt);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_datetime_to_counted_string(const rasqal_xsd_datetime *dt, size_t *len_p);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_datetime_to_string(const rasqal_xsd_datetime *dt);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_datetime_equals2(const rasqal_xsd_datetime *dt1, const rasqal_xsd_datetime *dt2, int *incomparible_p);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int rasqal_xsd_datetime_equals(const rasqal_xsd_datetime *dt1, const rasqal_xsd_datetime *dt2);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_datetime_compare2(const rasqal_xsd_datetime *dt1, const rasqal_xsd_datetime *dt2, int *incomparible_p);
-RASQAL_API RASQAL_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int rasqal_xsd_datetime_compare(const rasqal_xsd_datetime *dt1, const rasqal_xsd_datetime *dt2);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_xsd_decimal *rasqal_xsd_datetime_get_seconds_as_decimal(rasqal_world *world, rasqal_xsd_datetime *dt);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_datetime_set_from_timeval(rasqal_xsd_datetime *dt, struct timeval *tv);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_xsd_datetime_set_from_unixtime(rasqal_xsd_datetime *dt, time_t clock);
-RASQAL_API
+REDLAND_EXPORT
 time_t rasqal_xsd_datetime_get_as_unixtime(rasqal_xsd_datetime *dt);
-RASQAL_API
+REDLAND_EXPORT
 struct timeval *rasqal_xsd_datetime_get_as_timeval(rasqal_xsd_datetime *dt);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_datetime_get_timezone_as_counted_string(rasqal_xsd_datetime *dt, size_t *len_p);
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_xsd_datetime_get_tz_as_counted_string(rasqal_xsd_datetime *dt, size_t *len_p);
 
 
 /* regex utilities */
-RASQAL_API
+REDLAND_EXPORT
 char *rasqal_regex_replace(rasqal_world *world, raptor_locator *locator, const char *pattern, const char *regex_flags,
                            const char *subject, size_t subject_len, const char *replace, size_t replace_len,
                            size_t *result_len_p);
@@ -1935,16 +1900,16 @@ char *rasqal_regex_replace(rasqal_world *world, raptor_locator *locator, const c
  */
 typedef struct rasqal_service_s rasqal_service;
 
-RASQAL_API
+REDLAND_EXPORT
 rasqal_service *rasqal_new_service(rasqal_world *world, raptor_uri *service_uri, const unsigned char *query_string,
                                    raptor_sequence *data_graphs);
-RASQAL_API
+REDLAND_EXPORT
 void rasqal_free_service(rasqal_service *svc);
-RASQAL_API
+REDLAND_EXPORT
 rasqal_query_results *rasqal_service_execute(rasqal_service *svc);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_service_set_www(rasqal_service *svc, raptor_www *www);
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_service_set_format(rasqal_service *svc, const char *format);
 
 
@@ -2180,7 +2145,7 @@ typedef int (*rasqal_triples_source_factory_register_fn)(rasqal_triples_source_f
 
 
 /* set the triples_source_factory */
-RASQAL_API
+REDLAND_EXPORT
 int rasqal_set_triples_source_factory(rasqal_world *world, rasqal_triples_source_factory_register_fn register_fn,
                                       void *user_data);
 

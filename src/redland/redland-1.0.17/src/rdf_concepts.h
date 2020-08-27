@@ -95,15 +95,15 @@ typedef enum {
  */
 
 /* Get Redland uri object for RDF Syntax/Schema namespaces */
-REDLAND_API
+REDLAND_EXPORT
 librdf_uri *librdf_get_concept_ms_namespace(librdf_world *world);
-REDLAND_API
+REDLAND_EXPORT
 librdf_uri *librdf_get_concept_schema_namespace(librdf_world *world);
 
 /* Get Redland node/uri object for RDF concepts */
-REDLAND_API
+REDLAND_EXPORT
 librdf_node *librdf_get_concept_resource_by_index(librdf_world *world, librdf_concepts_index idx);
-REDLAND_API
+REDLAND_EXPORT
 librdf_uri *librdf_get_concept_uri_by_index(librdf_world *world, librdf_concepts_index idx);
 
 

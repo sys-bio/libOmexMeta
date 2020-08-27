@@ -35,59 +35,59 @@ extern "C" {
 #endif
 
 /* public constructors */
-REDLAND_API
+REDLAND_EXPORT
 librdf_hash *librdf_new_hash(librdf_world *world, const char *name);
-REDLAND_API
+REDLAND_EXPORT
 librdf_hash *librdf_new_hash_from_string(librdf_world *world, const char *name, const char *string);
-REDLAND_API
+REDLAND_EXPORT
 librdf_hash *librdf_new_hash_from_array_of_strings(librdf_world *world, const char *name, const char **array);
 
 /* public copy constructor */
-REDLAND_API
+REDLAND_EXPORT
 librdf_hash *librdf_new_hash_from_hash(librdf_hash *old_hash);
 
 /* public destructor */
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_hash(librdf_hash *hash);
 
 /* public methods */
 
 /* retrieve one value for a given hash key */
-REDLAND_API
+REDLAND_EXPORT
 char *librdf_hash_get(librdf_hash *hash, const char *key);
 
 /* lookup a hash key and decode value as a boolean */
-REDLAND_API
+REDLAND_EXPORT
 int librdf_hash_get_as_boolean(librdf_hash *hash, const char *key);
 
 /* lookup a hash key and decode value as a long */
-REDLAND_API
+REDLAND_EXPORT
 long librdf_hash_get_as_long(librdf_hash *hash, const char *key);
 
 /* retrieve one value for key and delete from hash all other values */
-REDLAND_API
+REDLAND_EXPORT
 char *librdf_hash_get_del(librdf_hash *hash, const char *key);
 
 /* insert a key/value pair */
-REDLAND_API
+REDLAND_EXPORT
 int librdf_hash_put_strings(librdf_hash *hash, const char *key, const char *value);
 
 /* make a hash from a string */
-REDLAND_API
+REDLAND_EXPORT
 int librdf_hash_from_string(librdf_hash *hash, const char *string);
 
 /* make a string from a hash */
-REDLAND_API
+REDLAND_EXPORT
 char *librdf_hash_to_string(librdf_hash *hash, const char *filter[]);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_hash_print(librdf_hash *hash, FILE *fh);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_hash_print_keys(librdf_hash *hash, FILE *fh);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_hash_print_values(librdf_hash *hash, const char *key_string, FILE *fh);
 
-REDLAND_API
+REDLAND_EXPORT
 unsigned char *librdf_hash_interpret_template(const unsigned char *template_string, librdf_hash *dictionary,
                                               const unsigned char *prefix, const unsigned char *suffix);
 

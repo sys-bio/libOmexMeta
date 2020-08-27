@@ -75,42 +75,42 @@ typedef enum {
 
 /* constructor */
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_stream *
 librdf_new_stream(librdf_world *world, void *context, int (*is_end_method)(void *), int (*next_method)(void *),
                   void *(*get_method)(void *, int), void (*finished_method)(void *));
-REDLAND_API
+REDLAND_EXPORT
 librdf_stream *librdf_new_stream_from_node_iterator(librdf_iterator *iterator, librdf_statement *statement,
                                                     librdf_statement_part field);
 
 /* destructor */
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_stream(librdf_stream *stream);
 
 /* methods */
-REDLAND_API
+REDLAND_EXPORT
 int librdf_stream_end(librdf_stream *stream);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_stream_next(librdf_stream *stream);
-REDLAND_API
+REDLAND_EXPORT
 librdf_statement *librdf_stream_get_object(librdf_stream *stream);
-REDLAND_API
+REDLAND_EXPORT
 librdf_node *librdf_stream_get_context2(librdf_stream *stream);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 void *librdf_stream_get_context(librdf_stream *stream);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_stream_add_map(librdf_stream *stream, librdf_stream_map_handler map_function,
                           librdf_stream_map_free_context_handler free_context, void *map_context);
 
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 void librdf_stream_print(librdf_stream *stream, FILE *fh);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_stream_write(librdf_stream *stream, raptor_iostream *iostr);
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_stream *librdf_new_empty_stream(librdf_world *world);
 
 #ifdef __cplusplus

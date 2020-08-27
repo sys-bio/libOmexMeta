@@ -35,130 +35,130 @@ extern "C" {
 #endif
 
 /* class methods */
-REDLAND_API
+REDLAND_EXPORT
 void librdf_query_register_factory(librdf_world *world, const char *name, const unsigned char *uri_string,
                                    void (*factory)(librdf_query_factory *));
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int librdf_query_languages_enumerate(librdf_world *world, const unsigned int counter, const char **name,
                                      const unsigned char **uri_string);
-REDLAND_API
+REDLAND_EXPORT
 const raptor_syntax_description *librdf_query_language_get_description(librdf_world *world, unsigned int counter);
 
 /* constructor */
-REDLAND_API
+REDLAND_EXPORT
 librdf_query *
 librdf_new_query(librdf_world *world, const char *name, librdf_uri *uri, const unsigned char *query_string,
                  librdf_uri *base_uri);
-REDLAND_API
+REDLAND_EXPORT
 librdf_query *librdf_new_query_from_query(librdf_query *old_query);
-REDLAND_API
+REDLAND_EXPORT
 librdf_query *
 librdf_new_query_from_factory(librdf_world *world, librdf_query_factory *factory, const char *name, librdf_uri *uri,
                               const unsigned char *query_string, librdf_uri *base_uri);
 
 /* destructor */
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_query(librdf_query *query);
 
 
 /* methods */
-REDLAND_API
+REDLAND_EXPORT
 librdf_query_results *librdf_query_execute(librdf_query *query, librdf_model *model);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_get_limit(librdf_query *query);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_set_limit(librdf_query *query, int limit);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_get_offset(librdf_query *query);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_set_offset(librdf_query *query, int offset);
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_stream *librdf_query_results_as_stream(librdf_query_results *query_results);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_get_count(librdf_query_results *query_results);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_next(librdf_query_results *query_results);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_finished(librdf_query_results *query_results);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_get_bindings(librdf_query_results *query_results, const char ***names, librdf_node **values);
-REDLAND_API
+REDLAND_EXPORT
 librdf_node *librdf_query_results_get_binding_value(librdf_query_results *query_results, int offset);
-REDLAND_API
+REDLAND_EXPORT
 const char *librdf_query_results_get_binding_name(librdf_query_results *query_results, int offset);
-REDLAND_API
+REDLAND_EXPORT
 librdf_node *librdf_query_results_get_binding_value_by_name(librdf_query_results *query_results, const char *name);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_get_bindings_count(librdf_query_results *query_results);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 unsigned char *librdf_query_results_to_counted_string(librdf_query_results *query_results, librdf_uri *format_uri,
                                                       librdf_uri *base_uri, size_t *length_p);
-REDLAND_API
+REDLAND_EXPORT
 unsigned char *
 librdf_query_results_to_counted_string2(librdf_query_results *query_results, const char *name, const char *mime_type,
                                         librdf_uri *format_uri, librdf_uri *base_uri, size_t *length_p);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 unsigned char *
 librdf_query_results_to_string(librdf_query_results *query_results, librdf_uri *format_uri, librdf_uri *base_uri);
-REDLAND_API
+REDLAND_EXPORT
 unsigned char *
 librdf_query_results_to_string2(librdf_query_results *query_results, const char *name, const char *mime_type,
                                 librdf_uri *format_uri, librdf_uri *base_uri);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int librdf_query_results_to_file_handle(librdf_query_results *query_results, FILE *handle, librdf_uri *format_uri,
                                         librdf_uri *base_uri);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_to_file_handle2(librdf_query_results *query_results, FILE *handle, const char *name,
                                          const char *mime_type, librdf_uri *format_uri, librdf_uri *base_uri);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int librdf_query_results_to_file(librdf_query_results *query_results, const char *name, librdf_uri *format_uri,
                                  librdf_uri *base_uri);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_to_file2(librdf_query_results *query_results, const char *name, const char *mime_type,
                                   librdf_uri *format_uri, librdf_uri *base_uri);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_query_results(librdf_query_results *query_results);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_is_bindings(librdf_query_results *query_results);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_is_boolean(librdf_query_results *query_results);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_is_graph(librdf_query_results *query_results);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_is_syntax(librdf_query_results *query_results);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_get_boolean(librdf_query_results *query_results);
 
 /* query results formatter class */
-REDLAND_API
+REDLAND_EXPORT
 librdf_query_results_formatter *
 librdf_new_query_results_formatter2(librdf_query_results *query_results, const char *name, const char *mime_type,
                                     librdf_uri *uri);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 librdf_query_results_formatter *
 librdf_new_query_results_formatter(librdf_query_results *query_results, const char *name, librdf_uri *uri);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 librdf_query_results_formatter *
 librdf_new_query_results_formatter_by_mime_type(librdf_query_results *query_results, const char *mime_type);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_query_results_formatter(librdf_query_results_formatter *formatter);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_formatter_write(raptor_iostream *iostr, librdf_query_results_formatter *formatter,
                                          librdf_query_results *query_results, librdf_uri *base_uri);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_query_results_formats_check(librdf_world *world, const char *name, librdf_uri *uri, const char *mime_type);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int librdf_query_results_formats_enumerate(librdf_world *world, const unsigned int counter, const char **name,
                                            const char **label, const unsigned char **uri_string,
                                            const char **mime_type);
-REDLAND_API
+REDLAND_EXPORT
 const raptor_syntax_description *
 librdf_query_results_formats_get_description(librdf_world *world, unsigned int counter);
 

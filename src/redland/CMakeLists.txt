@@ -401,6 +401,7 @@ add_library(${target}-static STATIC
             ${RASQAL_SOURCES}
             ${LIBRDF_SOURCES}
             ${WRAPPER_SOURCES}
+            ${CMAKE_CURRENT_BINARY_DIR}/redland_export.h
             )
 
 # add the public headers so install works correctly
@@ -408,9 +409,11 @@ set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
                       "${RASQAL_DIR}/src/rasqal.h;${RAPTOR_DIR}/src/raptor2.h;${LIBRDF_DIR}/src/librdf.h"
                       )
 
+
 # includes
 target_include_directories(${target}-static PRIVATE
                            ${INCLUDE_DIRECTORIES}
+                           ${CMAKE_CURRENT_BINARY_DIR}
                            )
 
 # link libraries
@@ -422,13 +425,10 @@ target_link_libraries(${target}-static PUBLIC
 
 target_compile_definitions(
         ${target}-static PRIVATE
-            RAPTOR_STATIC
-            RASQAL_STATIC
-            LIBRDF_STATIC
+        REDLAND_STATIC_DEFINE
 )
 
 # install redland static target
-message(STATUS "CMAKE_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR}")
 install(
         TARGETS ${target}-static
         EXPORT ${target}-static
@@ -467,53 +467,55 @@ endif ()
 # to docs-build a dynamic library and link that. Its not used
 # on linux, (but certainly could be)
 
-if (BUILD_SHARED_LIBS)
-
-    # add the shared library
-    add_library(${target} SHARED
-                ${RAPTOR_SOURCES}
-                ${RASQAL_SOURCES}
-                ${LIBRDF_SOURCES}
-                ${WRAPPER_SOURCES}
-                )
-
-    # ensure pic is on for linux builds
-    set_target_properties(${target} PROPERTIES POSITION_INDEPENDENT_CODE ON)
-
-    # Add public headers to the target
-    set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
-                          "${RAPTOR_DIR}/src/raptor2.h;${RASQAL_DIR}/src/rasqal.h;${LIBRDF_DIR}/src/librdf.h"
-                          )
-    # includes
-    target_include_directories(${target} PRIVATE
-                               ${INCLUDE_DIRECTORIES}
-                               )
-
-
-    # links
-    target_link_libraries(${target} PUBLIC
-                          ${LINK_LIBRARIES}
-                          # ${RUNTIME} # I'm not sure why is isn't needed, but I've been building without it.
-                          )
-    include(GenerateExportHeader)
-    generate_export_header(${target} BASE_NAME REDLAND)
-
-    # install shared library into standard locations.
-    install(TARGETS ${target}
-            EXPORT ${target}
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/redland
+# add the shared library
+add_library(${target} SHARED
+            ${RAPTOR_SOURCES}
+            ${RASQAL_SOURCES}
+            ${LIBRDF_SOURCES}
+            ${WRAPPER_SOURCES}
+            ${CMAKE_CURRENT_BINARY_DIR}/redland_export.h
             )
-    # install the export info
-    install(
-            EXPORT ${target}
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
-            NAMESPACE OmexMeta::
-            FILE RedlandCombined.cmake
-    )
+
+# ensure pic is on for linux builds
+set_target_properties(${target} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+# Add public headers to the target
+set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
+                      "${RAPTOR_DIR}/src/raptor2.h;${RASQAL_DIR}/src/rasqal.h;${LIBRDF_DIR}/src/librdf.h"
+                      )
+
+# includes
+target_include_directories(
+        ${target} PRIVATE
+        ${INCLUDE_DIRECTORIES}
+        ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+
+# links
+target_link_libraries(
+        ${target} PUBLIC
+        ${LINK_LIBRARIES}
+)
+
+include(GenerateExportHeader)
+generate_export_header(${target} BASE_NAME REDLAND)
+
+# install shared library into standard locations.
+install(TARGETS ${target}
+        EXPORT ${target}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/redland
+        )
+# install the export info
+install(
+        EXPORT ${target}
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE RedlandCombined.cmake
+)
 
 
 
-endif ()

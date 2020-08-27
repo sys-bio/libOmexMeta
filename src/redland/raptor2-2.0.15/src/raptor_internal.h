@@ -46,7 +46,7 @@ extern "C" {
 
 /* Some internal functions are needed by the test programs */
 #ifndef RAPTOR_INTERNAL_API
-#define RAPTOR_INTERNAL_API RAPTOR_API
+#define RAPTOR_INTERNAL_API REDLAND_EXPORT
 #endif
 
 /* Can be over-ridden or undefined in a config.h file or -Ddefine */

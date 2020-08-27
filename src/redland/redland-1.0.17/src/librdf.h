@@ -43,23 +43,23 @@ extern "C" {
 
 #include <stdio.h>
 
-#ifndef REDLAND_API
+#ifndef REDLAND_EXPORT
 #  ifdef WIN32
 #    ifdef __GNUC__
 #      undef _declspec
 #      define _declspec(x) __declspec(x)
 #    endif
 #    ifdef REDLAND_STATIC
-#      define REDLAND_API
+#      define REDLAND_EXPORT
 #    else
 #      ifdef LIBRDF_INTERNAL
-#        define REDLAND_API _declspec(dllexport)
+#        define REDLAND_EXPORT _declspec(dllexport)
 #      else
-#        define REDLAND_API _declspec(dllimport)
+#        define REDLAND_EXPORT _declspec(dllimport)
 #      endif
 #    endif
 #  else
-#    define REDLAND_API
+#    define REDLAND_EXPORT
 #  endif
 #endif
 
@@ -78,7 +78,6 @@ extern "C" {
 #define REDLAND_DEPRECATED __attribute__((deprecated))
 #define REDLAND_NORETURN __attribute__((__noreturn__))
 #else
-#define REDLAND_DEPRECATED
 #define REDLAND_NORETURN
 #endif
 
@@ -303,7 +302,7 @@ typedef struct librdf_serializer_factory_s librdf_serializer_factory;
  *
  * Short copyright string (one line).
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const char *const librdf_short_copyright_string;
 
 /**
@@ -311,7 +310,7 @@ extern const char *const librdf_short_copyright_string;
  *
  * Copyright string (multiple lines).
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const char *const librdf_copyright_string;
 
 /**
@@ -319,7 +318,7 @@ extern const char *const librdf_copyright_string;
  *
  * Redland librdf version as a string.
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const char *const librdf_version_string;
 
 /**
@@ -327,7 +326,7 @@ extern const char *const librdf_version_string;
  *
  * Redland librdf major version number.
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const unsigned int librdf_version_major;
 
 /**
@@ -335,7 +334,7 @@ extern const unsigned int librdf_version_major;
  *
  * Redland librdf minor version number.
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const unsigned int librdf_version_minor;
 
 /**
@@ -343,7 +342,7 @@ extern const unsigned int librdf_version_minor;
  *
  * Redland librdf release version number.
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const unsigned int librdf_version_release;
 
 /**
@@ -353,7 +352,7 @@ extern const unsigned int librdf_version_release;
  *
  * Format: major * 10000 + minor * 100 + release
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const unsigned int librdf_version_decimal;
 
 /**
@@ -361,7 +360,7 @@ extern const unsigned int librdf_version_decimal;
  *
  * Redland librdf license string.
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const char *const librdf_license_string;
 
 /**
@@ -369,7 +368,7 @@ extern const char *const librdf_license_string;
  *
  * Redland librdf home page URL.
  */
-REDLAND_API
+REDLAND_EXPORT
 extern const char *const librdf_home_url_string;
 
 /* Required for va_list in error handler function registrations

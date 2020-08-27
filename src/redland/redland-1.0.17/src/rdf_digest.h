@@ -36,31 +36,31 @@ extern "C" {
 #endif
 
 /* public constructor */
-REDLAND_API
+REDLAND_EXPORT
 librdf_digest *librdf_new_digest(librdf_world *world, const char *name);
 
 /* destructor */
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_digest(librdf_digest *digest);
 
 
 /* methods */
-REDLAND_API
+REDLAND_EXPORT
 void librdf_digest_init(librdf_digest *digest);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_digest_update(librdf_digest *digest, const unsigned char *buf, size_t length);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_digest_update_string(librdf_digest *digest, const unsigned char *string);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_digest_final(librdf_digest *digest);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_digest_get_digest(librdf_digest *digest);
-REDLAND_API
+REDLAND_EXPORT
 size_t librdf_digest_get_digest_length(librdf_digest *digest);
 
-REDLAND_API
+REDLAND_EXPORT
 char *librdf_digest_to_string(librdf_digest *digest);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_digest_print(librdf_digest *digest, FILE *fh);
 
 #ifdef __cplusplus

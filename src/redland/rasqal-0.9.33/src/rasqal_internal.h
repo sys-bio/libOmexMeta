@@ -191,11 +191,11 @@ void rasqal_system_free(void *ptr);
 #define RASQAL_FATAL3(msg, arg1, arg2) do {fprintf(stderr, "%s:%d:%s: fatal error: " msg, __FILE__, __LINE__ , __FUNCTION__, arg1, arg2); abort();} while(0)
 
 #ifndef NO_STATIC_DATA
-#define RASQAL_DEPRECATED_MESSAGE(msg) do {static int warning_given=0; if(!warning_given++) fprintf(stderr, "Function %s is deprecated - " msg,  __FUNCTION__); } while(0)
-#define RASQAL_DEPRECATED_WARNING(rq, msg) do {static int warning_given=0; if(!warning_given++) rasqal_query_warning(rq, msg); } while(0)
+#define REDLAND_DEPRECATED_MESSAGE(msg) do {static int warning_given=0; if(!warning_given++) fprintf(stderr, "Function %s is deprecated - " msg,  __FUNCTION__); } while(0)
+#define REDLAND_DEPRECATED_WARNING(rq, msg) do {static int warning_given=0; if(!warning_given++) rasqal_query_warning(rq, msg); } while(0)
 #else
-#define RASQAL_DEPRECATED_MESSAGE(msg) do { fprintf(stderr, "Function %s is deprecated - " msg,  __FUNCTION__); } while(0)
-#define RASQAL_DEPRECATED_WARNING(rq, msg) do { rasqal_query_warning(rq, msg); } while(0)
+#define REDLAND_DEPRECATED_MESSAGE(msg) do { fprintf(stderr, "Function %s is deprecated - " msg,  __FUNCTION__); } while(0)
+#define REDLAND_DEPRECATED_WARNING(rq, msg) do { rasqal_query_warning(rq, msg); } while(0)
 #endif
 
 

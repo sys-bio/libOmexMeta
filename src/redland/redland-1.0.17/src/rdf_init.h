@@ -48,42 +48,42 @@ typedef void (*librdf_rasqal_init_handler)(void *user_data, rasqal_world *rasqal
 extern "C" {
 #endif
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_world *librdf_new_world(void);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_world(librdf_world *world);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_open(librdf_world *world);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_init_mutex(librdf_world *world);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_rasqal(librdf_world *world, rasqal_world *rasqal_world_ptr);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_raptor_init_handler(librdf_world *world, void *user_data, librdf_raptor_init_handler handler);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_rasqal_init_handler(librdf_world *world, void *user_data, librdf_rasqal_init_handler handler);
 
-REDLAND_API
+REDLAND_EXPORT
 rasqal_world *librdf_world_get_rasqal(librdf_world *world);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_error(librdf_world *world, void *user_data, librdf_log_level_func error_handler);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_warning(librdf_world *world, void *user_data, librdf_log_level_func warning_handler);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_logger(librdf_world *world, void *user_data, librdf_log_func log_handler);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_world_set_digest(librdf_world *world, const char *name);
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_memory(void *ptr);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_alloc_memory(size_t size);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_calloc_memory(size_t nmemb, size_t size);
 
 /**
@@ -104,15 +104,15 @@ void *librdf_calloc_memory(size_t nmemb, size_t size);
  */
 #define LIBRDF_WORLD_FEATURE_GENID_COUNTER "http://feature.librdf.org/genid-counter"
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_node *librdf_world_get_feature(librdf_world *world, librdf_uri *feature);
-REDLAND_API
+REDLAND_EXPORT
 int librdf_world_set_feature(librdf_world *world, librdf_uri *feature, librdf_node *value);
 
 /* OLD INTERFACES */
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 void librdf_init_world(char *digest_factory_name, void *not_used2);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 void librdf_destroy_world(void);
 
 #ifdef LIBRDF_INTERNAL

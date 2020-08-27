@@ -151,23 +151,23 @@ typedef int (REDLAND_CALLBACK_STDCALL *librdf_log_func)(void *user_data, librdf_
 
 
 /* log message accessors */
-REDLAND_API
+REDLAND_EXPORT
 int librdf_log_message_code(librdf_log_message *message);
-REDLAND_API
+REDLAND_EXPORT
 librdf_log_level librdf_log_message_level(librdf_log_message *message);
-REDLAND_API
+REDLAND_EXPORT
 librdf_log_facility librdf_log_message_facility(librdf_log_message *message);
-REDLAND_API
+REDLAND_EXPORT
 const char *librdf_log_message_message(librdf_log_message *message);
-REDLAND_API
+REDLAND_EXPORT
 raptor_locator *librdf_log_message_locator(librdf_log_message *message);
 
 /* logging functions */
-REDLAND_API
+REDLAND_EXPORT
 void
 librdf_log_simple(librdf_world *world, int code, librdf_log_level level, librdf_log_facility facility, void *locator,
                   const char *message);
-REDLAND_API
+REDLAND_EXPORT
 void librdf_log(librdf_world *world, int code, librdf_log_level level, librdf_log_facility facility, void *locator,
                 const char *message, ...) REDLAND_PRINTF_FORMAT(6, 7);
 

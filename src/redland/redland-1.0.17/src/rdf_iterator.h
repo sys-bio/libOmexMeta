@@ -79,35 +79,35 @@ typedef enum {
 } librdf_iterator_get_method_flags;
 
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_iterator *
 librdf_new_iterator(librdf_world *world, void *context, int (*is_end_method)(void *), int (*next_method)(void *),
                     void *(*get_method)(void *, int), void (*finished_method)(void *));
 
-REDLAND_API
+REDLAND_EXPORT
 void librdf_free_iterator(librdf_iterator *iterator);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_iterator_end(librdf_iterator *iterator);
-REDLAND_API REDLAND_DEPRECATED
+REDLAND_EXPORT REDLAND_DEPRECATED
 int librdf_iterator_have_elements(librdf_iterator *iterator);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_iterator_next(librdf_iterator *iterator);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_iterator_get_object(librdf_iterator *iterator);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_iterator_get_context(librdf_iterator *iterator);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_iterator_get_key(librdf_iterator *iterator);
-REDLAND_API
+REDLAND_EXPORT
 void *librdf_iterator_get_value(librdf_iterator *iterator);
 
-REDLAND_API
+REDLAND_EXPORT
 int librdf_iterator_add_map(librdf_iterator *iterator, librdf_iterator_map_handler map_function,
                             librdf_iterator_map_free_context_handler free_context, void *map_context);
 
-REDLAND_API
+REDLAND_EXPORT
 librdf_iterator *librdf_new_empty_iterator(librdf_world *world);
 
 #ifdef __cplusplus
