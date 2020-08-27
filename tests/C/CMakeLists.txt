@@ -16,7 +16,9 @@ target_include_directories(
 )
 
 target_compile_definitions(
-        ${target} PRIVATE OMEXMETA_STATIC_DEFINE
+        ${target} PRIVATE
+        OMEXMETA_STATIC_DEFINE
+        REDLAND_STATIC_DEFINE
 )
 
 
@@ -25,8 +27,6 @@ target_link_libraries(
         ${target} PRIVATE
         OmexMetaCAPI
         OmexMeta-static
-#        redland-combined-static
-#        ${LINK_LIBRARIES}
         ${RUNTIME}# best here so no clash with dynamic
         gtest gtest_main
 )

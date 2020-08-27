@@ -22,13 +22,25 @@ target_include_directories(${target} PRIVATE
                            ${PARENT_DIR} # C++ api export header
                            )
 
+
+# These need defining to indicate that we're linking the static
+# version of omexmeta and redland as well as exporting
+# symbols from the omexmeta c api
+target_compile_definitions(${target} PRIVATE
+                           OmexMetaCAPI_EXPORTS
+                           OMEXMETA_STATIC_DEFINE
+                           REDLAND_STATIC_DEFINE
+                           )
+
 # links
 target_link_libraries(${target} PRIVATE
-                      OmexMeta
-                      redland-combined
+                      -Wl,--whole-archive
+                      OmexMeta-static
+                      redland-combined-static
+                      -Wl,--no-whole-archive
                       ${LINK_LIBRARIES}
                       )
-add_dependencies(${target} OmexMeta-static)
+add_dependencies(${target} OmexMeta-static redland-combined-static)
 
 # add to ctest target
 add_test(

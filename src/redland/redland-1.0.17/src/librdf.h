@@ -75,7 +75,6 @@ extern "C" {
  * This gives a warning during compiling.
  */
 #if (__GNUC__ == 3 && __GNUC_MINOR__ > 0) || __GNUC__ > 3
-#define REDLAND_DEPRECATED __attribute__((deprecated))
 #define REDLAND_NORETURN __attribute__((__noreturn__))
 #else
 #define REDLAND_NORETURN

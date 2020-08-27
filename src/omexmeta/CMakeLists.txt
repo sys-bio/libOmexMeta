@@ -90,8 +90,8 @@ target_compile_definitions(
         RAPTOR_STATIC
         RASQAL_STATIC
         LIBRDF_STATIC
-        OMEXMETA_STATIC_DEFINE
-        REDLAND_STATIC_DEFINE
+        OMEXMETA_STATIC_DEFINE #indicate use of omex static library
+        REDLAND_STATIC_DEFINE # indivate use of redland static library
 )
 
 # links
@@ -164,7 +164,8 @@ generate_export_header(${target} BASE_NAME OMEXMETA)
 # to prevent symbol import/export keywords being added
 target_compile_definitions(
         ${target} PRIVATE
-        OMEXMETA_STATIC_DEFINE
+        OmexMeta_EXPORTS # indicate that we are building this library to get correct export symbols
+
 )
 
 

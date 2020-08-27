@@ -130,6 +130,7 @@ set(CMAKE_INSTALL_RPATH ${base} ${base}/${INSTALL_RPATH_DIRECTORIES})
 # set default visibility to hidden on all platforms (GCC and Clang default is to show
 # while visual studio, the default is hidden)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 
 ####################################################################
