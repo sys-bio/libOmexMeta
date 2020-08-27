@@ -185,7 +185,7 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
     OMEXMETACAPI_EXPORT char *
-    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
+    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);
 
     OMEXMETACAPI_EXPORT char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 

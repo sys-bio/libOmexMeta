@@ -14,7 +14,8 @@ proj_dir = os.path.dirname(test_dir)
 src_dir = os.path.join(proj_dir, "src")
 pysemsem_dir = os.path.join(src_dir, "pyomexmeta")
 
-site.addsitedir(src_dir)
+import sys
+sys.path.append(src_dir)
 
 # module not found by IDE, but it does exist and and tests do run
 from pyomexmeta import *
@@ -192,7 +193,7 @@ class TestRDF(unittest.TestCase):
     def test_get_archive_uri(self):
         rdf = RDF()
         actual = rdf.get_archive_uri()
-        expected = "http://omex-library.org/NewOmex.omex"
+        expected = "http://omex-library.org/NewOmex.omex/"
         self.assertEqual(expected, actual)
 
     def test_get_model_uri(self):
@@ -258,7 +259,7 @@ class EditorTests(unittest.TestCase):
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:cytosol

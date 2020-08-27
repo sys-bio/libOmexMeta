@@ -125,8 +125,8 @@ namespace omexmeta {
             if (getModelUri().empty()) {
                 throw std::logic_error("std::logic_error: Triple::setAbout: Trying to "
                                        "setAbout(), i.e. the subject portion of a singular annotation. Either "
-                                       "give a full uri (i.e. starts with http) or set the model_uri attribute "
-                                       "using setModelUri() before calling setAbout().");
+                                       "give a full uri (i.e. starts with http) or set the local_uri_ attribute "
+                                       "using setLocalUri() before calling setAbout().");
             }
             std::string model_uri = getModelUri();
             if (OmexMetaUtils::endsWith(model_uri, "#")){

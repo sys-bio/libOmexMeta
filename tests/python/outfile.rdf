@@ -1,6 +1,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix myOMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000503.2?filename=BIOMD0000000503_url.xml#meta_ACE>

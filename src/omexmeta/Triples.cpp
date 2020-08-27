@@ -197,18 +197,6 @@ namespace omexmeta {
         }
     }
 
-    void Triples::freeTriples2() {
-        for (auto &it: triples_) {
-            it.freeTriple();
-        }
-    }
-
-    void Triples::freeTriplesAndUris() {
-        for (auto &it: triples_) {
-            it.freeTripleAndUris();
-        }
-    }
-
     bool Triples::isEmpty() {
         return triples_.empty();
     }

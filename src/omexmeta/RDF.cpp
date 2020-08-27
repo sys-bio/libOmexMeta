@@ -229,7 +229,7 @@ namespace omexmeta {
     }
 
     Editor RDF::toEditor(const std::string &xml, bool generate_new_metaids) {
-        return Editor(xml, false, model_, namespaces_, generate_new_metaids, 
+        return Editor(xml, false, model_, namespaces_, generate_new_metaids,
                       getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
     }
 
@@ -399,7 +399,11 @@ namespace omexmeta {
             os << it << ".";
         }
         // Now we can docs-build up the local string
-        local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
+        if (OmexMetaUtils::endsWith(getArchiveUri(), "/")){
+          local_uri_ = getArchiveUri() + os.str() + "rdf#";
+        } else {
+          local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
+        }
     }
 
 

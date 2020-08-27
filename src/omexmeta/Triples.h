@@ -216,13 +216,19 @@ namespace omexmeta {
          */
         bool isEmpty();
 
+        /*
+         * @brief move the from Triple object out of the Triples object
+         * @return a Triple from position 0 in Triples
+         * @details caller is responsible for Triple resources
+         */
         Triple pop_front();
 
+        /*
+         * @brief forwarded on to std::vector::capacity
+         * @return int the size of Triples currently allowed
+         */
         int capacity();
 
-        void freeTriplesAndUris();
-
-        void freeTriples2();
     };
 
 }

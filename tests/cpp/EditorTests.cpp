@@ -292,6 +292,35 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
 }
 
+TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation
+            .setAbout("OmexMetaId0001")
+            .setPredicate("bqbiol", "isVersionOf")
+            .setResourceUri("uniprot:PD02635");
+
+    editor.addSingleAnnotation(singularAnnotation);
+
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
+                           "\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    singularAnnotation.freeStatement();
+
+}
+
 TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
     RDF rdf;
     Editor editor = rdf.toEditor(

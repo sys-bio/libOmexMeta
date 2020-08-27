@@ -317,9 +317,9 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true);
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
-    SingularAnnotation_setAbout(singularAnnotation, "https://metaid6");
+    SingularAnnotation_setAbout(singularAnnotation, "metaid6");
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
-    const char *expected = "https://metaid6";
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid6";
     ASSERT_STREQ(expected, actual);
 
     Editor_delete(editor_ptr);
@@ -358,6 +358,34 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
     const char *expected = "http://predicate.com/from/uri";
+    ASSERT_STREQ(expected, actual);
+
+    Editor_delete(editor_ptr);
+    SingularAnnotation_delete(singularAnnotation);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, TestSingularAnnotationFull) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true);
+
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation_setAbout(singularAnnotation, "cytosol");
+    SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
+    SingularAnnotation_setResourceLiteral(singularAnnotation, "Cheese");
+    char *actual = SingularAnnotation_str(singularAnnotation, "turtle");
+    printf("%s", actual);
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+        "@prefix OMEXlib: <http://omex-library.org/> .\n"
+        "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+        "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+        "\n"
+        "<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>\n"
+        "    <http://predicate.com/from/uri> \"Cheese\"^^rdf:string .\n"
+        "\n";
     ASSERT_STREQ(expected, actual);
 
     Editor_delete(editor_ptr);
@@ -912,19 +940,49 @@ TEST_F(CAPITests, EditorsetArchiveUri) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, EditorsetModelUri) {
+TEST_F(CAPITests, RDFsetModelUri) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_setModelUri(rdf_ptr, "newModelName");
+    const char *expected = "http://omex-library.org/NewOmex.omex/newModelName.xml#";
+    char *actual = RDF_getModelUri(rdf_ptr);
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDFgetModelUriDefault) {
+    RDF *rdf_ptr = RDF_new();
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+    char *actual = RDF_getModelUri(rdf_ptr);
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDFsetLocalUri) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_setModelUri(rdf_ptr, "newModelName");
+    const char *expected = "http://omex-library.org/NewOmex.omex/newModelName.rdf#";
+    char *actual = RDF_getLocalUri(rdf_ptr);
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, EditorGetLocalUri) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true);
-    RDF_setModelUri(rdf_ptr, "newModelName");
-    const char *expected = "http://omex-library.org/NewOmex.omex/newModelName.xml#";
-    char *actual = Editor_getModelUri(editor_ptr);
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+    char *actual = Editor_getLocalUri(editor_ptr);
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
-
 }
 
 

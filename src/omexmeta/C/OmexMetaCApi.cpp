@@ -315,6 +315,7 @@ namespace omexmeta {
     SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr) {
         auto *singularAnnotation = new SingularAnnotation();
         singularAnnotation->setLocalUri(editor_ptr->getLocalUri());
+        singularAnnotation->setModelUri(editor_ptr->getModelUri());
         return singularAnnotation;
     }
 
@@ -323,16 +324,6 @@ namespace omexmeta {
             singularAnnotation->freeStatement();
             delete singularAnnotation;
         }
-    }
-
-    void SingularAnnotation_freeAll(SingularAnnotation *singularAnnotation) {
-        // note: we do not need a freeAll type function
-        //  for singular annotation as it is a typedef Triple,
-        //  which owns the nodes.
-
-        if (!singularAnnotation)
-            return;
-        delete singularAnnotation;
     }
 
     void free_singular_annotation(SingularAnnotation *singularAnnotationPtr) {
@@ -396,10 +387,8 @@ namespace omexmeta {
         return cstr;
     }
 
-    char *SingularAnnotation_str(
-            SingularAnnotation *singular_annotation,
-            const char *format, const char *base_uri) {
-        std::string str = singular_annotation->str(format, base_uri);
+    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format) {
+        std::string str = singular_annotation->str(format);
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;

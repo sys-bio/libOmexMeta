@@ -145,7 +145,7 @@ TEST_F(TripleTests, TestStatementResource) {
 }
 
 
-TEST(TripleTestsNoFixture, TestAbout) {
+TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
     Triple triple;
     triple.setAbout("http://omex-library/myomex.omex", "mymodel.xml", "metaid2");
     std::string expected = "http://omex-library/myomex.omex/mymodel.xml#metaid2";
@@ -154,7 +154,7 @@ TEST(TripleTestsNoFixture, TestAbout) {
     triple.freeStatement();
 }
 
-TEST(TripleTestsNoFixture, TestAboutAgain) {
+TEST(TripleTestsNoFixture, TestAboutOneArgumentWithSetLocal) {
     Triple triple;
     triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
     triple.setAbout("metaid2");

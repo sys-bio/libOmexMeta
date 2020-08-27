@@ -314,9 +314,8 @@ class PyOmexMetaAPI:
     # char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
     singular_annotation_get_about = Util.load_func("SingularAnnotation_getAbout", [ct.c_int64], ct.c_int64)
 
-    # char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
-    singular_annotation_str = Util.load_func("SingularAnnotation_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                             ct.c_int64)
+    # char * SingularAnnotation_str(SingularAnnotation * singular_annotation, const char * format)
+    singular_annotation_str = Util.load_func("SingularAnnotation_str", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
     singular_annotation_get_predicate = Util.load_func("SingularAnnotation_getPredicate", [ct.c_int64], ct.c_int64)

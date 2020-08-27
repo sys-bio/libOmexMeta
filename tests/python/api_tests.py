@@ -74,9 +74,8 @@ class TestStrings:
     singular_annotation2 = """<?xml version=\"1.0\" encoding=\"UTF-8\"?>
    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
             xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"
-            xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"
-            xml:base=\"file://./NewModel.rdf\">
-   <rdf:Description rdf:about=\"./NewModel.xml#modelmeta1\">
+            xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">
+   <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1\">
        <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\" />
    </rdf:Description>
 </rdf:RDF>"""
@@ -174,20 +173,19 @@ class TestAPI(unittest.TestCase):
     def test_rdf_to_string(self):
         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
                                           "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
-        string_ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "basey.rdf".encode())
+        string_ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "basey.rdf".encode())
         actual2 = PyOmexMetaAPI.get_and_free_c_str(string_ptr)
         print(actual2)
-        expected = """<?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
-   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:OMEXlib="http://omex-library.org/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="file://./NewModel.xml#modelmeta1">
-    <bqmodel:isDescribedBy rdf:resource="https://identifiers.org/pubmed/12991237"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1>
+    bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .
+
 """
         self.assertEqual(expected, actual2)
 
@@ -217,7 +215,7 @@ class TestAPI(unittest.TestCase):
             PyOmexMetaAPI.rdf_query_results_as_str(self.rdf, query.encode(), "csv".encode())
         )
         expected = """x,y,z
-file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237
+http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237
 """
         self.assertEqual(expected, actual)
 
@@ -232,7 +230,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         actual = PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.rdf_get_archive_uri(self.rdf)
         )
-        expected = "http://omex-library.org/NewOmex.omex"
+        expected = "http://omex-library.org/NewOmex.omex/"
         self.assertEqual(expected, actual)
 
     def test_rdf_get_model_uri(self):
@@ -446,7 +444,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         actual = PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.editor_get_archive_uri(editor_ptr)
         )
-        expected = "http://omex-library.org/NewOmex.omex"
+        expected = "http://omex-library.org/NewOmex.omex/"
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
@@ -678,19 +676,18 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
         PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         ptr = PyOmexMetaAPI.singular_annotation_str(
-            singular_annotation, "rdfxml-abbrev".encode(), "singular_annotation.rdf".encode())
+            singular_annotation, "turtle".encode(), "singular_annotation.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
-        expected = """<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex/NewModel.xml#"
-   xmlns:OMEXlib="http://omex-library.org/NewOmex.omex"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+    bqbiol:is <https://identifiers.org/uniprot/PD12345> .
+
 """
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
@@ -699,7 +696,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
     def test_editor_add_single_annotation(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
+        PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "https://cytosol".encode())
         PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         PyOmexMetaAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
@@ -712,7 +709,7 @@ file://./NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescrib
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:cytosol
+<https://cytosol>
     bqbiol:is <https://identifiers.org/uniprot/PD12345> .
 
 """
@@ -763,46 +760,23 @@ local:cytosol
         PyOmexMetaAPI.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
         PyOmexMetaAPI.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
-        ptr = PyOmexMetaAPI.physical_entity_str(physical_entity, "json".encode(), "jsonified_physical_entity".encode())
+        ptr = PyOmexMetaAPI.physical_entity_str(physical_entity, "turtle".encode(), "jsonified_physical_entity".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
-        expected = """
-{
-  "http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000" : {
-    "http://biomodels.net/biology-qualifiers/is" : [ {
-        "value" : "https://identifiers.org/uniprot/P456",
-        "type" : "uri"
-        }
-      
-      ],
-    "http://biomodels.net/biology-qualifiers/isPartOf" : [ {
-        "value" : "https://identifiers.org/fma/fma:3456",
-        "type" : "uri"
-        }
-      ,
-      {
-        "value" : "https://identifiers.org/fma/fma:3457",
-        "type" : "uri"
-        }
-      
-      ]
-    }
-  ,
-  "http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol" : {
-    "http://biomodels.net/biology-qualifiers/isPropertyOf" : [ {
-        "value" : "http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000",
-        "type" : "uri"
-        }
-      
-      ],
-    "http://biomodels.net/biology-qualifiers/isVersionOf" : [ {
-        "value" : "https://identifiers.org/opb/opb12345",
-        "type" : "uri"
-        }
-      
-      ]
-    }
-  }
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:PhysicalEntity0000
+    bqbiol:is <https://identifiers.org/uniprot/P456> ;
+    bqbiol:isPartOf <https://identifiers.org/fma/fma:3456>, <https://identifiers.org/fma/fma:3457> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
+
 """
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
@@ -820,22 +794,20 @@ local:cytosol
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "PhysicalEntity.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
-        expected = """<?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:OMEXlib="http://omex-library.org/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P456"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/fma:3456"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/fma:3457"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
-    <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb12345"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:PhysicalEntity0000
+    bqbiol:is <https://identifiers.org/uniprot/P456> ;
+    bqbiol:isPartOf <https://identifiers.org/fma/fma:3456>, <https://identifiers.org/fma/fma:3457> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
+
 """
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
@@ -854,77 +826,36 @@ local:cytosol
 
         PyOmexMetaAPI.physical_process_add_mediator(
             physical_process, 1.0, "Entity3".encode())
-        ptr = PyOmexMetaAPI.physical_process_str(physical_process, "html".encode(),
+        ptr = PyOmexMetaAPI.physical_process_str(physical_process, "turtle".encode(),
                                                  "html_physical_process_ann.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
-        expected = """<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title>Raptor Graph Serialisation</title>
-</head>
-<body>
-  <table id="triples" border="1">
-    <tr>
-      <th>Subject</th>
-      <th>Predicate</th>
-      <th>Object</th>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol</a></span></td>
-      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isPropertyOf">http://biomodels.net/biology-qualifiers/isPropertyOf</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol</a></span></td>
-      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
-      <td><span class="uri"><a href="https://identifiers.org/opb/opb12345">https://identifiers.org/opb/opb12345</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasSourceParticipant">http://www.bhi.washington.edu/semsim#hasSourceParticipant</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference">http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity1">http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity1</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMultiplier">http://www.bhi.washington.edu/semsim#hasMultiplier</a></span></td>
-      <td><span class="literal"><span class="value">1</span>^^&lt;<span class="datatype">http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double</span>&gt;</span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasSinkParticipant">http://www.bhi.washington.edu/semsim#hasSinkParticipant</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference">http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity2">http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity2</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMultiplier">http://www.bhi.washington.edu/semsim#hasMultiplier</a></span></td>
-      <td><span class="literal"><span class="value">1</span>^^&lt;<span class="datatype">http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double</span>&gt;</span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMediatorParticipant">http://www.bhi.washington.edu/semsim#hasMediatorParticipant</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000</a></span></td>
-    </tr>
-    <tr class="triple">
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000">http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference">http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference</a></span></td>
-      <td><span class="uri"><a href="http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity3">http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity3</a></span></td>
-    </tr>
-  </table>
-  <p>Total number of triples: <span class="count">10</span>.</p>
-</body>
-</html>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity3> .
+
+local:PhysicalProcess0000
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
+
 """
         print(actual)
         self.assertEqual(expected, actual)
@@ -945,37 +876,36 @@ local:cytosol
         PyOmexMetaAPI.physical_process_add_mediator(
             physical_process, 1.0, "Entity3".encode())
         PyOmexMetaAPI.editor_add_physical_process(editor_ptr, physical_process)
-        ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "PhysicalProcess.rdf".encode())
+        ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "PhysicalProcess.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         print(actual)
-        expected = """<?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex"
-   xmlns:OMEXlib="http://omex-library.org/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#">
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000">
-    <semsim:hasPhysicalEntityReference rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity3"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000">
-    <semsim:hasMediatorParticipant rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000"/>
-    <semsim:hasSinkParticipant rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#Entity1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol">
-    <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalProcess0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb12345"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity3> .
+
+local:PhysicalProcess0000
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
+
 """
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
@@ -1008,14 +938,14 @@ local:PhysicalForce0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    semsim:hasPhysicalEntityReference local:Entity2 .
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    semsim:hasPhysicalEntityReference local:Entity1 .
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
-local:cytosol
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
     bqbiol:isPropertyOf local:PhysicalForce0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
@@ -1042,8 +972,8 @@ local:cytosol
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
-@prefix OMEXlib: <http://omex-library.org/NewOmex.omex> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/NewModel.xml#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:PhysicalForce0000
@@ -1051,14 +981,14 @@ local:PhysicalForce0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    semsim:hasPhysicalEntityReference local:Entity2 .
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    semsim:hasPhysicalEntityReference local:Entity1 .
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
-local:cytosol
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
     bqbiol:isPropertyOf local:PhysicalForce0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
