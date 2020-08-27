@@ -230,13 +230,6 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washin
         rdf = RDF("sqlite", fname, "new='yes'")
         rdf.add_from_uri(self.sbml_uri, "rdfxml")
         self.assertTrue(os.path.isfile(fname))
-        # while os.path.isfile(fname):
-        #     try:
-        #         os.remove(fname)
-        #     except PermissionError:
-        #         print("failed to remove " + fname)
-        #         import time
-        #         time.sleep(1)
 
 
 class EditorTests(unittest.TestCase):
@@ -262,7 +255,7 @@ class EditorTests(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:cytosol
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
     bqbiol:is <https://identifiers.org/uniprot/PD88776> .
 
 """

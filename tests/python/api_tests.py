@@ -608,7 +608,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_about(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
-        expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#cytosol"
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol"
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
