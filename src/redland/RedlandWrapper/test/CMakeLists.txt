@@ -16,6 +16,9 @@ set(REDLAND_WRAPPER_TEST_SOURCES
 # add test executable
 add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
 
+# indicate were using static version of redland
+target_compile_definitions(redland-wrapper-tests PRIVATE REDLAND_STATIC_DEFINE)
+
 # tell cmake about the test so we can run with $ctest or $ make test
 add_test(
         NAME redland-wrapper-tests
@@ -27,15 +30,6 @@ set_tests_properties(redland-wrapper-tests PROPERTIES DEPENDS redland-wrapper-te
 # set the RPATH for both install and docs-build builds
 set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})
 set_target_properties(redland-wrapper-tests PROPERTIES BUILD_RPATH ${RPATH})
-
-#ignored on other platforms
-# set runtime static for windows (ignored on other systems)
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#    set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
-#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#    set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-#endif()
-
 
 # setup dependencies
 add_dependencies(redland-wrapper-tests redland-combined-static gtest gtest_main)

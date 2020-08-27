@@ -147,6 +147,7 @@ option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS 
 option(BUILD_C_API "Build the OmexMeta C API" OFF)
 option(BUILD_PACKAGING "Package libOmexMeta with CPack" OFF)
 option(BUILD_PYTHON "Build the Python pip package" OFF)
+option(GENERATE_DEPENDENCY_GRAPH "Get CMake to generate the dependency graph" ON)
 
 # docs-build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
@@ -387,6 +388,7 @@ set(INCLUDE_DIRECTORIES
 
     ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta
     ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C
+    ${CMAKE_CURRENT_BINARY_DIR}/src/redland
 
 
     )
@@ -467,6 +469,21 @@ endif ()
 # Best included near the end of the top leve cmakelists.
 if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
     add_subdirectory(packaging)
+endif ()
+
+# only enable this option if building as top level package
+if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+#    mkdir graphviz && cd graphviz
+#    cmake --graphviz=graph ..
+#    dot graph -Tsvg -o graph.svg
+    add_custom_target(
+            DependencyGraph
+            COMMENT "Use CMake to generate dependency graph"
+            COMMAND ${CMAKE_COMMAND} --graphviz=graph .
+            COMMAND dot graph -Tsvg -o "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graph.svg"
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                      )
+
 endif ()
 
 # print out config summary

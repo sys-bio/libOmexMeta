@@ -16,6 +16,7 @@ SET(OMEXMETA_PUBLIC_HEADERS
     "OmexMeta.h"
     "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
     )
+
 set(OMEXMETA_HEADERS
     ${OMEXMETA_PUBLIC_HEADERS}
     "OmexMetaUtils.h"
@@ -90,6 +91,7 @@ target_compile_definitions(
         RASQAL_STATIC
         LIBRDF_STATIC
         OMEXMETA_STATIC_DEFINE
+        REDLAND_STATIC_DEFINE
 )
 
 # links

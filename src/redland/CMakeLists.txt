@@ -406,14 +406,13 @@ add_library(${target}-static STATIC
 
 # add the public headers so install works correctly
 set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
-                      "${RASQAL_DIR}/src/rasqal.h;${RAPTOR_DIR}/src/raptor2.h;${LIBRDF_DIR}/src/librdf.h"
+                      "${RASQAL_DIR}/src/rasqal.h;${RAPTOR_DIR}/src/raptor2.h;${LIBRDF_DIR}/src/librdf.h;${CMAKE_CURRENT_BINARY_DIR}/redland_export.h"
                       )
 
 
 # includes
 target_include_directories(${target}-static PRIVATE
                            ${INCLUDE_DIRECTORIES}
-                           ${CMAKE_CURRENT_BINARY_DIR}
                            )
 
 # link libraries
@@ -481,14 +480,13 @@ set_target_properties(${target} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Add public headers to the target
 set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
-                      "${RAPTOR_DIR}/src/raptor2.h;${RASQAL_DIR}/src/rasqal.h;${LIBRDF_DIR}/src/librdf.h"
+                      "${RAPTOR_DIR}/src/raptor2.h;${RASQAL_DIR}/src/rasqal.h;${LIBRDF_DIR}/src/librdf.h;${CMAKE_CURRENT_BINARY_DIR}/redland_export.h"
                       )
 
 # includes
 target_include_directories(
         ${target} PRIVATE
         ${INCLUDE_DIRECTORIES}
-        ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 

@@ -39,7 +39,7 @@ add_executable(${target} ${TEST_SOURCES})
 # indicate that on windows we are using the static library,
 # not the static
 target_compile_definitions(
-        ${target} PRIVATE OMEXMETA_STATIC_DEFINE
+        ${target} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
 )
 
 # add test so it can be run with $ctest or $make test
@@ -47,6 +47,7 @@ add_test(
         NAME ${target}
         COMMAND $<TARGET_FILE:${target}>
 )
+
 set_tests_properties(${target} PROPERTIES DEPENDS OmexMeta)
 add_dependencies(${target} OmexMeta-static gtest gtest_main)
 
