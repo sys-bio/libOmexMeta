@@ -401,6 +401,8 @@ set(INCLUDE_DIRECTORIES
 # source directories
 add_subdirectory(src)
 
+
+
 # test directories
 if (BUILD_TESTS)
 
@@ -467,6 +469,7 @@ if (BUILD_DOCS)
     add_subdirectory(docs)
 endif ()
 
+
 # Best included near the end of the top leve cmakelists.
 if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
     add_subdirectory(packaging)
@@ -486,6 +489,7 @@ if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAK
                       )
 
 endif ()
+
 
 # print out config summary
 ConfigurationSummary()
