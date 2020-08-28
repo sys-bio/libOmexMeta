@@ -419,15 +419,6 @@ file(MAKE_DIRECTORY "${REDLAND_INCLUDE_DIR}/redland")
 # Collect header files for include
 set(ALL_REDLAND_HEADER_FILES)
 
-foreach (f ${ALL_REDLAND_SOURCES})
-    get_filename_component(match ${f} EXT)
-    if (${match} STREQUAL ".h")
-        set(ALL_REDLAND_HEADER_FILES ${ALL_REDLAND_HEADER_FILES} ${f})
-        file(COPY ${f} DESTINATION "${REDLAND_INCLUDE_DIR}/redland")
-    endif ()
-    unset(match)
-endforeach ()
-
 
 #######################################################
 #   Build the library static
@@ -522,6 +513,17 @@ target_link_libraries(
 
 include(GenerateExportHeader)
 generate_export_header(${target} BASE_NAME REDLAND)
+
+# note we can only copy after the export header is generated.
+foreach (f ${ALL_REDLAND_SOURCES})
+    get_filename_component(match ${f} EXT)
+    if (${match} STREQUAL ".h")
+        set(ALL_REDLAND_HEADER_FILES ${ALL_REDLAND_HEADER_FILES} ${f})
+        file(COPY ${f} DESTINATION "${REDLAND_INCLUDE_DIR}/redland")
+    endif ()
+    unset(match)
+endforeach ()
+
 
 # install shared library into standard locations.
 install(TARGETS ${target}
