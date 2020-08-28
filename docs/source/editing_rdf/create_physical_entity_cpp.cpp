@@ -105,10 +105,10 @@ int main(){
 
     RDF rdf;
 
-    Editor editor = rdf.toEditor(sbml, OMEXMETA_TYPE_SBML);
+    Editor editor = rdf.toEditor(sbml, true);
 
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity.setPhysicalProperty("#OmexMetaId0001", "OPB:OPB_00340")
+    physicalEntity.setPhysicalProperty( "#OmexMetaId0000", "OPB:OPB_00340")
         .setIdentity("uniprot/P84022")
         .addLocation("fma/FMA:63877")
         .addLocation("fma:FMA:70737")

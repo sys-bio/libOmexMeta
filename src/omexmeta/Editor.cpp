@@ -34,6 +34,8 @@ namespace omexmeta {
                 xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
+
+//        SBMLSemanticExtraction extraction;
     }
 
     int Editor::size() const { return model_.size(); }

@@ -507,8 +507,7 @@ target_include_directories(
 
 # links
 target_link_libraries(
-        ${target} PUBLIC
-        ${LINK_LIBRARIES}
+        ${target} PUBLIC ${LINK_LIBRARIES}
 )
 
 include(GenerateExportHeader)

@@ -20,6 +20,7 @@
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/PersonalInformation.h"
 #include "omexmeta/MarkupIdentifier.h"
+#include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta_export.h"
 
 #include "redland/librdf.h"

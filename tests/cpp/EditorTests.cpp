@@ -522,6 +522,26 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     singularAnnotation.freeStatement();
 }
 
+TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+
+
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation
+            .setAbout("#OmexMetaId0001")
+            .setPredicate("bqbiol", "is")
+            .setResourceLiteral("resource");
+
+    editor.addSingleAnnotation(singularAnnotation);
+
+    int expected = 1;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+    singularAnnotation.freeStatement();
+}
+
 TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
     RDF rdf;
     Editor editor = rdf.toEditor(
