@@ -819,13 +819,13 @@ local:PhysicalEntity0000
         PyOmexMetaAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(),
                                                              "opb:opb12345".encode())
         PyOmexMetaAPI.physical_process_add_source(
-            physical_process, 1.0, "Entity1".encode())
+            physical_process, 1, "Entity1".encode())
 
         PyOmexMetaAPI.physical_process_add_sink(
-            physical_process, 1.0, "Entity2".encode())
+            physical_process, 1, "Entity2".encode())
 
         PyOmexMetaAPI.physical_process_add_mediator(
-            physical_process, 1.0, "Entity3".encode())
+            physical_process, "Entity3".encode())
         ptr = PyOmexMetaAPI.physical_process_str(physical_process, "turtle".encode(),
                                                  "html_physical_process_ann.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
@@ -845,11 +845,11 @@ local:PhysicalProcess0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
@@ -895,11 +895,11 @@ local:PhysicalProcess0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
@@ -916,10 +916,10 @@ local:SourceParticipant0000
         physical_force = PyOmexMetaAPI.editor_new_physical_force(editor_ptr)
         PyOmexMetaAPI.physical_force_set_physical_property(physical_force, "cytosol".encode(), "opb:opb12345".encode())
         PyOmexMetaAPI.physical_force_add_source(
-            physical_force, 1.0, "Entity1".encode())
+            physical_force, 1, "Entity1".encode())
 
         PyOmexMetaAPI.physical_force_add_sink(
-            physical_force, 1.0, "Entity2".encode())
+            physical_force, 1, "Entity2".encode())
 
         PyOmexMetaAPI.editor_add_physical_force(editor_ptr, physical_force)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(),
@@ -938,11 +938,11 @@ local:PhysicalForce0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
@@ -960,10 +960,10 @@ local:SourceParticipant0000
         physical_force = PyOmexMetaAPI.editor_new_physical_force(editor_ptr)
         PyOmexMetaAPI.physical_force_set_physical_property(physical_force, "cytosol".encode(), "opb:opb12345".encode())
         PyOmexMetaAPI.physical_force_add_source(
-            physical_force, 1.0, "Entity1".encode())
+            physical_force, 1, "Entity1".encode())
 
         PyOmexMetaAPI.physical_force_add_sink(
-            physical_force, 1.0, "Entity2".encode())
+            physical_force, 1, "Entity2".encode())
 
         ptr = PyOmexMetaAPI.physical_force_str(physical_force, "turtle".encode(),
                                                "html_physical_process_ann.rdf".encode())
@@ -981,11 +981,11 @@ local:PhysicalForce0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>

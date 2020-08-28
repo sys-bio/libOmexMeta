@@ -111,7 +111,7 @@ namespace omexmeta {
             }
             librdf_node *res3 = LibrdfNode::fromLiteral(
                     multiplier_os.str(),
-                    "double").get();
+                    "int").get();
             if (res3 == nullptr) {
                 throw NullPointerException("NullPointerException: Participant::toTriples: res3");
             }
