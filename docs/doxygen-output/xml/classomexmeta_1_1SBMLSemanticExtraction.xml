@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classomexmeta_1_1SBMLSemanticExtraction" kind="class" language="C++" prot="public">
+    <compoundname>omexmeta::SBMLSemanticExtraction</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classomexmeta_1_1SBMLSemanticExtraction_1a95a3f45713d1a59c59ade9a212ba060a" prot="private" static="no" mutable="no">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF* omexmeta::SBMLSemanticExtraction::rdf_</definition>
+        <argsstring></argsstring>
+        <name>rdf_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/SBMLSemanticExtraction.h" line="46" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1SBMLSemanticExtraction_1ad5a1c08ebec9e4cb329f1233ba3bb895" prot="private" static="no" mutable="no">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref></type>
+        <definition>Editor omexmeta::SBMLSemanticExtraction::editor_</definition>
+        <argsstring></argsstring>
+        <name>editor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/SBMLSemanticExtraction.h" line="48" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1SBMLSemanticExtraction_1ae526056397a4adf40ba39589911eced1" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string omexmeta::SBMLSemanticExtraction::sbml_string_</definition>
+        <argsstring></argsstring>
+        <name>sbml_string_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/SBMLSemanticExtraction.h" line="50" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a05d5e823362473907b93c2e360d068fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::SBMLSemanticExtraction::SBMLSemanticExtraction</definition>
+        <argsstring>(RDF *rdf, const std::string &amp;sbml_string)</argsstring>
+        <name>SBMLSemanticExtraction</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>sbml_string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/SBMLSemanticExtraction.h" line="52" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::SBMLSemanticExtraction::extractSpeciesCompartmentSemantics</definition>
+        <argsstring>()</argsstring>
+        <name>extractSpeciesCompartmentSemantics</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/SBMLSemanticExtraction.h" line="54" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::SBMLSemanticExtraction::extractProcessesFromReactions</definition>
+        <argsstring>()</argsstring>
+        <name>extractProcessesFromReactions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/SBMLSemanticExtraction.h" line="56" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="54" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/SBMLSemanticExtraction.h" line="44" column="1" bodyfile="src/omexmeta/SBMLSemanticExtraction.h" bodystart="44" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1ad5a1c08ebec9e4cb329f1233ba3bb895" prot="private" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>editor_</name></member>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" prot="public" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>extractProcessesFromReactions</name></member>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522" prot="public" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>extractSpeciesCompartmentSemantics</name></member>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a95a3f45713d1a59c59ade9a212ba060a" prot="private" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>rdf_</name></member>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1ae526056397a4adf40ba39589911eced1" prot="private" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>sbml_string_</name></member>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a05d5e823362473907b93c2e360d068fb" prot="public" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>SBMLSemanticExtraction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
