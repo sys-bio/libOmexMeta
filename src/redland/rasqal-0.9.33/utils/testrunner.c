@@ -51,10 +51,10 @@
 #endif
 
 /* Rasqal includes */
-#include <rasqal.h>
+#include "rasqal.h"
 #include <rasqal_internal.h>
 
-#include <raptor2.h>
+#include "raptor2.h"
 
 #include "manifest.h"
 

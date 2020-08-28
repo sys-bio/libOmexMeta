@@ -5,13 +5,15 @@
 #ifndef LIBOMEXMETA_OMEXMETAUTILS_H
 #define LIBOMEXMETA_OMEXMETAUTILS_H
 
+#include "redland/librdf.h"
+#include "redland/LibrdfQuery.h"
+
 #include "omexmeta/Query.h"
 #include "omexmeta/CurlGet.h"
 #include "omexmeta/MetaID.h"
 
-#include "LibrdfQuery.h"
+#include "libxml/tree.h"
 
-#include <librdf.h>
 #include <string>
 #include <vector>
 #include <sys/stat.h>
@@ -19,8 +21,6 @@
 #include <sstream>
 #include <filesystem>
 #include <assert.h>
-#include "libxml/tree.h"
-
 
 using namespace redland;
 

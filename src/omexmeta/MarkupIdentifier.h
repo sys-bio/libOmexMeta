@@ -5,15 +5,17 @@
 #ifndef LIBOMEXMETA_MARKUPIDENTIFIER_H
 #define LIBOMEXMETA_MARKUPIDENTIFIER_H
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
 
 #include "libxml/tree.h"
 #include "libxml/parser.h"
 
 #include "omexmeta/Error.h"
 #include "omexmeta/OmexMetaUtils.h"
+
+#include <utility>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 namespace omexmeta {
     /*

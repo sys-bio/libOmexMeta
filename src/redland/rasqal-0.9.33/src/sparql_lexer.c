@@ -1348,7 +1348,7 @@ static yyconst flex_int16_t yy_chk[2717] =
 #include <setjmp.h>
 #endif
 
-#include <rasqal.h>
+#include "rasqal.h"
 #include <rasqal_internal.h>
 
 #include <sparql_parser.h>

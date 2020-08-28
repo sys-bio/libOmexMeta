@@ -42,7 +42,7 @@
 #endif
 
 
-#include <rasqal.h>
+#include "rasqal.h"
 
 #include "rasqalcmdline.h"
 

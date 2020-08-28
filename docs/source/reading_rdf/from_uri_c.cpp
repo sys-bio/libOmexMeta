@@ -11,11 +11,17 @@ int main(){
     // download the model, scan document for annotations and docs-build a graph
     RDF *rdf_ptr = RDF_fromUri(model_uri, "rdfxml");
 
-    int number_of_annotations = RDF_size(rdf_ptr);
-    printf("Number of annotations in graph: %d\n", number_of_annotations);
+    // Serialize the graph
+    char* turtle_tyson_string = RDF_toString(rdf_ptr, "turtle");
 
-    // remember to free the dynamically allocated RDF object
+    // write to console
+    printf("The tyon2003 model annotations in turtle syntax is:\n\n%s", turtle_tyson_string);
+
+    // free string
+    free(turtle_tyson_string);
+
     RDF_delete(rdf_ptr);
+
     return 0;
 
 }

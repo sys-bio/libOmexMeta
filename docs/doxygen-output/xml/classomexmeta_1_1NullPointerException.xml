@@ -8,36 +8,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="107">
+      <node id="127">
         <label>omexmeta::NullPointerException</label>
         <link refid="classomexmeta_1_1NullPointerException"/>
-        <childnode refid="108" relation="public-inheritance">
+        <childnode refid="128" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="109">
+      <node id="129">
         <label>exception</label>
       </node>
-      <node id="108">
+      <node id="128">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="109" relation="public-inheritance">
+        <childnode refid="129" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="110">
+      <node id="130">
         <label>omexmeta::NullPointerException</label>
         <link refid="classomexmeta_1_1NullPointerException"/>
-        <childnode refid="111" relation="public-inheritance">
+        <childnode refid="131" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="112">
+      <node id="132">
         <label>exception</label>
       </node>
-      <node id="111">
+      <node id="131">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="112" relation="public-inheritance">
+        <childnode refid="132" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

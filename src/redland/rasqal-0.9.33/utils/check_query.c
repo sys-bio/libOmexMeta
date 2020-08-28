@@ -53,7 +53,7 @@
 #endif
 
 /* Rasqal includes */
-#include <rasqal.h>
+#include "rasqal.h"
 
 /* FIXME
  * This code uses internal structs

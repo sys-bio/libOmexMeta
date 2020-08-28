@@ -5,15 +5,18 @@
 #ifndef LIBOMEXMETA_TRIPLES_H
 #define LIBOMEXMETA_TRIPLES_H
 
+#include "redland/RedlandAPI.h"
+
 #include "omexmeta/Triple.h"
 #include "omexmeta/Predicate.h"
 #include "omexmeta/Subject.h"
 #include "omexmeta/Resource.h"
-#include "RedlandWrapper.h"
 #include "omexmeta/Error.h"
+
 #include <vector>
 
 #include "filesystem"
+#include <utility>
 
 using namespace redland;
 

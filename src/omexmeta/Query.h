@@ -5,13 +5,11 @@
 #ifndef LIBOMEXMETA_QUERY_H
 #define LIBOMEXMETA_QUERY_H
 
-#include "RedlandWrapper.h"
+#include "redland/RedlandAPI.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/OmexMetaUtils.h"
-//#include "omexmeta/Triple.h"
-//#include "omexmeta/Triples.h"
 
-#include "librdf.h"
+#include "redland/librdf.h"
 
 #include <unordered_map>
 #include <vector>

@@ -5,14 +5,17 @@
 #ifndef LIBOMEXMETA_PHYSICALPROPERTY_H
 #define LIBOMEXMETA_PHYSICALPROPERTY_H
 
+#include "redland/RedlandAPI.h"
+
 #include "omexmeta/Resource.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
-#include "RedlandWrapper.h"
-#include "Triple.h"
-#include "Triples.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Triples.h"
+
 #include <regex>
+#include <utility>
 
 using namespace redland;
 

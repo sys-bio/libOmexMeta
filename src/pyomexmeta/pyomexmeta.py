@@ -174,12 +174,13 @@ class RDF:
         results_lf = PyOmexMetaAPI.crlf_to_lr(results_crlf)
         return results_lf
 
-    def to_editor(self, xml: str, xmltype: str, generate_new_metaids: bool = False) -> Editor:
-        return Editor(PyOmexMetaAPI.rdf_to_editor(self._obj, xml.encode(),
-                                                  generate_new_metaids,
-                                                  _xml_type_factory(xml_type=xmltype),
-                                                  )
-                      )
+    def to_editor(self, xml: str, generate_new_metaids: bool = False) -> Editor:
+        return Editor(
+            PyOmexMetaAPI.rdf_to_editor(
+                self._obj, xml.encode(),
+                generate_new_metaids,
+            )
+        )
 
     def draw(self, filename: str):
         """

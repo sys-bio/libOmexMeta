@@ -4,8 +4,8 @@
 
 #include "gtest/gtest.h"
 
-#include "omexmeta/sbml_semantic_extraction/SBMLSemanticExtraction.h"
-#include "../SBMLFactory.h"
+#include "omexmeta/SBMLSemanticExtraction.h"
+#include "SBMLFactory.h"
 
 using namespace omexmeta;
 

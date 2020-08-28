@@ -5,16 +5,19 @@
 #ifndef LIBOMEXMETA_RDF_H
 #define LIBOMEXMETA_RDF_H
 
-#include <fstream>
+#include "redland/RedlandAPI.h"
+
+#include "omexmeta/Editor.h"
+#include "omexmeta/MarkupIdentifier.h"
+#include "omexmeta/OmexMetaXmlType.h"
+#include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/SBMLSemanticExtraction.h"
+#include "omexmeta_export.h"
+
 #include <streambuf>
 #include <unordered_map>
-#include "RedlandWrapper.h"
-#include "omexmeta/OmexMetaUtils.h"
-#include "Editor.h"
-#include "sbml_semantic_extraction/SBMLSemanticExtraction.h"
-#include "MarkupIdentifier.h"
-#include "OmexMetaXmlType.h"
-#include "omexmeta_export.h"
+#include <utility>
+#include <fstream>
 
 using namespace redland;
 

@@ -1,7 +1,0 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-
-RDF graph saved to "/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TeusinkDiagram.pdf"

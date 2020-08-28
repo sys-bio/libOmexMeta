@@ -21,7 +21,7 @@ Program Listing for File PhysicalProperty.h
    #include "omexmeta/Error.h"
    #include "omexmeta/Triple.h"
    #include "omexmeta/Triples.h"
-   #include "RedlandWrapper.h"
+   #include "redland/RedlandAPI.h"
    #include "Triple.h"
    #include "Triples.h"
    #include <regex>

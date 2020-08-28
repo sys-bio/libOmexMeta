@@ -6,15 +6,17 @@
 #define LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
 
 
-#include <vector>
-#include "iostream"
 #include <libxml/parser.h>
 #include <libxml/tree.h>
+
+#include "omexmeta/MetaID.h"
+#include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/OmexMetaXmlType.h"
+
+#include <vector>
+#include <iostream>
 #include <memory>
-#include "MetaID.h"
 #include <utility>
-#include "OmexMetaUtils.h"
-#include "OmexMetaXmlType.h"
 
 namespace omexmeta {
 

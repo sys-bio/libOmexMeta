@@ -247,7 +247,7 @@ that are supported by libOmexMeta, including:</p>
 <span class="n">turtle_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
 <span class="s2">@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
 <span class="s2">@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
-<span class="s2">@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span>
+<span class="s2">@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
 <span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 
 <span class="s2">local:OmexMetaId0001</span>
@@ -676,7 +676,7 @@ Serializing to turtle:
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
 @prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:OmexMetaId0001
@@ -695,10 +695,10 @@ Serializing to rdfxml-xmp:
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;?xpacket begin=&#39;﻿&#39; id=&#39;W5M0MpCehiHzreSzNTczkc9d&#39;?&gt;
 &lt;x:xmpmeta xmlns:x=&#39;adobe:ns:meta/&#39;&gt;
-&lt;rdf:RDF xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex&quot;
-   xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;&quot;&gt;
     &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
@@ -717,10 +717,10 @@ Serializing to rdfxml-xmp:
 
 Serializing to rdfxml-abbrev:
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;rdf:RDF xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex&quot;
-   xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
@@ -740,7 +740,7 @@ Serializing to rdfxml-abbrev:
 
 Serializing to rdfxml:
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;rdf:RDF xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex&quot; xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
   &lt;/rdf:Description&gt;
@@ -794,7 +794,7 @@ digraph {
 
 	// Literals
 
-	label=&quot;\n\nModel:\nfile://Annotations.rdf\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
+	label=&quot;\n\nModel:\nfile://Annotations.rdf\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
 }
 
 
@@ -1092,14 +1092,14 @@ Serializing to html:
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">turtle_string</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;local:OmexMetaId0001</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;local:PhysicalEntity0000</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -1402,14 +1402,14 @@ Serializing to html:
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">turtle_string</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/Welsh2020.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix local: &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;local:OmexMetaId0001</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;local:PhysicalEntity0000</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 

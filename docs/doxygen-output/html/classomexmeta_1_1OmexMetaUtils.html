@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.5</span>
+   &#160;<span id="projectnumber">1.1.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -89,9 +89,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>download</b> (
 <tr class="memitem:aac769ce6e901f32820cd7dc3fef989fa"><td class="memItemLeft" align="right" valign="top"><a id="aac769ce6e901f32820cd7dc3fef989fa"></a>
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>splitStringBy</b> (const std::string &amp;str, char delimiter)</td></tr>
 <tr class="separator:aac769ce6e901f32820cd7dc3fef989fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfb264163cf86ef1171d3c2b826eefb9"><td class="memItemLeft" align="right" valign="top"><a id="acfb264163cf86ef1171d3c2b826eefb9"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generateUniqueMetaid</b> (librdf_model *model, const std::string &amp;metaid_base, const std::vector&lt; std::string &gt; &amp;exclusions=std::vector&lt; std::string &gt;(), const std::string &amp;local_uri=std::string())</td></tr>
-<tr class="separator:acfb264163cf86ef1171d3c2b826eefb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4700231d455a5f65f7cc290d98d2b0ec"><td class="memItemLeft" align="right" valign="top"><a id="a4700231d455a5f65f7cc290d98d2b0ec"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generateUniqueMetaid</b> (librdf_model *model, const std::string &amp;metaid_base, std::vector&lt; std::string &gt; &amp;exclusions)</td></tr>
+<tr class="separator:a4700231d455a5f65f7cc290d98d2b0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6694715cf3f5dccd33d416ecc84ff375"><td class="memItemLeft" align="right" valign="top"><a id="a6694715cf3f5dccd33d416ecc84ff375"></a>
 static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>prepareBaseUri</b> (std::string str, bool absolute_path=false)</td></tr>
 <tr class="separator:a6694715cf3f5dccd33d416ecc84ff375"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,12 +110,12 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>assertRegexMat
 <tr class="memitem:a6ddc16d56f238ef7ff3c8ab355163ef7"><td class="memItemLeft" align="right" valign="top"><a id="a6ddc16d56f238ef7ff3c8ab355163ef7"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>assertMatchByNewLine</b> (const std::string &amp;expected_string, const std::string &amp;actual_string)</td></tr>
 <tr class="separator:a6ddc16d56f238ef7ff3c8ab355163ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b5fd1b4237e1534f2339349efa1dd7a"><td class="memItemLeft" align="right" valign="top"><a id="a0b5fd1b4237e1534f2339349efa1dd7a"></a>
+<tr class="memitem:a744a0575136f1cc60b76a6560a5595e9"><td class="memItemLeft" align="right" valign="top"><a id="a744a0575136f1cc60b76a6560a5595e9"></a>
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>configurePrefixStrings</b> (std::string repository_name, std::string omex_name, std::string model_name)</td></tr>
-<tr class="separator:a0b5fd1b4237e1534f2339349efa1dd7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade5e8d004b8f61618815a854d905a506"><td class="memItemLeft" align="right" valign="top"><a id="ade5e8d004b8f61618815a854d905a506"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>concatMetaIdAndUri</b> (std::string metaid, std::string local)</td></tr>
-<tr class="separator:ade5e8d004b8f61618815a854d905a506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a744a0575136f1cc60b76a6560a5595e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae645af49ce57dac8bd0e0eba9e39a6c0"><td class="memItemLeft" align="right" valign="top"><a id="ae645af49ce57dac8bd0e0eba9e39a6c0"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>concatMetaIdAndUri</b> (std::string metaid, std::string uri)</td></tr>
+<tr class="separator:ae645af49ce57dac8bd0e0eba9e39a6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca2230ca99338b9dc0fc7d296b0c553b"><td class="memItemLeft" align="right" valign="top"><a id="aca2230ca99338b9dc0fc7d296b0c553b"></a>
 static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>stringReplace</b> (std::string str, const std::string &amp;string_to_replace, const std::string &amp;replacement)</td></tr>
 <tr class="separator:aca2230ca99338b9dc0fc7d296b0c553b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +137,9 @@ static xmlNode *&#160;</td><td class="memItemRight" valign="bottom"><b>getChildE
 <tr class="memitem:a4d6f7d2140c42435be9339edf975b949"><td class="memItemLeft" align="right" valign="top"><a id="a4d6f7d2140c42435be9339edf975b949"></a>
 static std::vector&lt; xmlNode * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllChildElements</b> (xmlNode *node)</td></tr>
 <tr class="separator:a4d6f7d2140c42435be9339edf975b949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e93667c8799b9569cb30fc102b129b"><td class="memItemLeft" align="right" valign="top"><a id="a96e93667c8799b9569cb30fc102b129b"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSubString</b> (const std::string &amp;full_string, const std::string &amp;substring)</td></tr>
+<tr class="separator:a96e93667c8799b9569cb30fc102b129b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="OmexMetaUtils_8h_source.html">OmexMetaUtils.h</a></li>

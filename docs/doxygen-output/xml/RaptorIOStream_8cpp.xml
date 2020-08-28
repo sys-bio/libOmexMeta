@@ -4,62 +4,62 @@
     <compoundname>RaptorIOStream.cpp</compoundname>
     <includes refid="RaptorIOStream_8h" local="yes">RaptorIOStream.h</includes>
     <incdepgraph>
-      <node id="2685">
+      <node id="2019">
         <label>regex</label>
       </node>
-      <node id="2688">
+      <node id="2022">
         <label>exception</label>
       </node>
-      <node id="2680">
+      <node id="2014">
         <label>RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="2681" relation="include">
+        <childnode refid="2015" relation="include">
         </childnode>
-        <childnode refid="2682" relation="include">
+        <childnode refid="2016" relation="include">
         </childnode>
-        <childnode refid="2683" relation="include">
+        <childnode refid="2017" relation="include">
         </childnode>
-        <childnode refid="2686" relation="include">
+        <childnode refid="2020" relation="include">
         </childnode>
-        <childnode refid="2687" relation="include">
+        <childnode refid="2021" relation="include">
         </childnode>
       </node>
-      <node id="2683">
+      <node id="2017">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2682" relation="include">
+        <childnode refid="2016" relation="include">
         </childnode>
-        <childnode refid="2684" relation="include">
+        <childnode refid="2018" relation="include">
         </childnode>
-        <childnode refid="2681" relation="include">
+        <childnode refid="2015" relation="include">
         </childnode>
-        <childnode refid="2685" relation="include">
+        <childnode refid="2019" relation="include">
         </childnode>
       </node>
-      <node id="2679">
+      <node id="2013">
         <label>src/redland/RedlandWrapper/src/RaptorIOStream.cpp</label>
         <link refid="RaptorIOStream_8cpp"/>
-        <childnode refid="2680" relation="include">
+        <childnode refid="2014" relation="include">
         </childnode>
       </node>
-      <node id="2687">
+      <node id="2021">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2688" relation="include">
+        <childnode refid="2022" relation="include">
         </childnode>
-        <childnode refid="2684" relation="include">
+        <childnode refid="2018" relation="include">
         </childnode>
       </node>
-      <node id="2686">
+      <node id="2020">
         <label>utility</label>
       </node>
-      <node id="2684">
+      <node id="2018">
         <label>iostream</label>
       </node>
-      <node id="2682">
+      <node id="2016">
         <label>librdf.h</label>
       </node>
-      <node id="2681">
+      <node id="2015">
         <label>memory</label>
       </node>
     </incdepgraph>

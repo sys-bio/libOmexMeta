@@ -6,10 +6,11 @@
 #define LIBOMEXMETA_METAID_H
 
 #include <string>
-#include "RedlandWrapper.h"
 #include <sstream>
 #include <utility>
 #include <iostream>
+
+#include "redland/RedlandAPI.h"
 
 namespace omexmeta {
     /*

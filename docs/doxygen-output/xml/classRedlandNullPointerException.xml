@@ -8,36 +8,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="168">
+      <node id="196">
         <label>RedlandNullPointerException</label>
         <link refid="classRedlandNullPointerException"/>
-        <childnode refid="169" relation="public-inheritance">
+        <childnode refid="197" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="169">
+      <node id="197">
         <label>Exception</label>
         <link refid="classException"/>
-        <childnode refid="170" relation="public-inheritance">
+        <childnode refid="198" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="170">
+      <node id="198">
         <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="171">
+      <node id="199">
         <label>RedlandNullPointerException</label>
         <link refid="classRedlandNullPointerException"/>
-        <childnode refid="172" relation="public-inheritance">
+        <childnode refid="200" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="172">
+      <node id="200">
         <label>Exception</label>
         <link refid="classException"/>
-        <childnode refid="173" relation="public-inheritance">
+        <childnode refid="201" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="173">
+      <node id="201">
         <label>std::exception</label>
       </node>
     </collaborationgraph>

@@ -31,7 +31,7 @@
 #include <string.h>
 
 /* Raptor includes */
-#include <raptor2.h>
+#include "raptor2.h"
 
 /* for access() and R_OK */
 #ifdef HAVE_STDLIB_H

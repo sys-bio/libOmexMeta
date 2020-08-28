@@ -8,7 +8,7 @@
 
 #include <memory>
 #include <iostream>
-#include <librdf.h>
+#include "librdf.h"
 #include <unordered_map>
 #include "LibrdfNode.h"
 

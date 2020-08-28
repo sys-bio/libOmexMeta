@@ -6,8 +6,6 @@
 
 #include "omexmeta/Predicate.h"
 
-#include <utility>
-
 namespace omexmeta {
 
     Predicate::Predicate(const std::string &namespace_,

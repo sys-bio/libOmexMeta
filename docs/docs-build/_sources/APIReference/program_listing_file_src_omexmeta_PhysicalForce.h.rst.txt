@@ -25,7 +25,7 @@ Program Listing for File PhysicalForce.h
    
    #include "PhysicalPhenomenon.h"
    #include "Participant.h"
-   #include "RedlandWrapper.h"
+   #include "redland/RedlandAPI.h"
    #include <vector>
    #include "Participant.h"
    #include "PhysicalProperty.h"

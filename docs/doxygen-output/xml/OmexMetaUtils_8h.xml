@@ -2,11 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="OmexMetaUtils_8h" kind="file" language="C++">
     <compoundname>OmexMetaUtils.h</compoundname>
+    <includes local="yes">redland/librdf.h</includes>
+    <includes local="yes">redland/LibrdfQuery.h</includes>
     <includes refid="Query_8h" local="yes">omexmeta/Query.h</includes>
     <includes refid="CurlGet_8h" local="yes">omexmeta/CurlGet.h</includes>
     <includes refid="MetaID_8h" local="yes">omexmeta/MetaID.h</includes>
-    <includes refid="LibrdfQuery_8h" local="yes">LibrdfQuery.h</includes>
-    <includes local="no">librdf.h</includes>
+    <includes local="yes">libxml/tree.h</includes>
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
     <includes local="no">sys/stat.h</includes>
@@ -14,10 +15,9 @@
     <includes local="no">sstream</includes>
     <includes local="no">filesystem</includes>
     <includes local="no">assert.h</includes>
-    <includes local="yes">libxml/tree.h</includes>
     <includedby refid="Editor_8h" local="yes">src/omexmeta/Editor.h</includedby>
+    <includedby refid="ElementExtractor_8h" local="yes">src/omexmeta/ElementExtractor.h</includedby>
     <includedby refid="MarkupIdentifier_8h" local="yes">src/omexmeta/MarkupIdentifier.h</includedby>
-    <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/OmexMetaCApi.h</includedby>
     <includedby refid="OmexMetaUtils_8cpp" local="yes">src/omexmeta/OmexMetaUtils.cpp</includedby>
     <includedby refid="OmexMetaXmlAssistant_8h" local="yes">src/omexmeta/OmexMetaXmlAssistant.h</includedby>
     <includedby refid="PhysicalEntity_8h" local="yes">src/omexmeta/PhysicalEntity.h</includedby>
@@ -27,544 +27,332 @@
     <includedby refid="Query_8h" local="yes">src/omexmeta/Query.h</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
     <incdepgraph>
-      <node id="640">
+      <node id="430">
         <label>sys/stat.h</label>
       </node>
-      <node id="607">
+      <node id="412">
         <label>src/omexmeta/OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h"/>
-        <childnode refid="608" relation="include">
+        <childnode refid="413" relation="include">
         </childnode>
-        <childnode refid="636" relation="include">
+        <childnode refid="414" relation="include">
         </childnode>
-        <childnode refid="639" relation="include">
+        <childnode refid="415" relation="include">
         </childnode>
-        <childnode refid="627" relation="include">
+        <childnode refid="425" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="428" relation="include">
         </childnode>
-        <childnode refid="619" relation="include">
+        <childnode refid="429" relation="include">
         </childnode>
-        <childnode refid="635" relation="include">
+        <childnode refid="422" relation="include">
         </childnode>
-        <childnode refid="640" relation="include">
+        <childnode refid="421" relation="include">
         </childnode>
-        <childnode refid="638" relation="include">
+        <childnode refid="430" relation="include">
         </childnode>
-        <childnode refid="620" relation="include">
+        <childnode refid="427" relation="include">
         </childnode>
-        <childnode refid="641" relation="include">
+        <childnode refid="423" relation="include">
         </childnode>
-        <childnode refid="642" relation="include">
+        <childnode refid="431" relation="include">
         </childnode>
-        <childnode refid="643" relation="include">
-        </childnode>
-      </node>
-      <node id="629">
-        <label>LibrdfSerializer.h</label>
-        <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="615" relation="include">
-        </childnode>
-        <childnode refid="625" relation="include">
-        </childnode>
-        <childnode refid="630" relation="include">
-        </childnode>
-        <childnode refid="623" relation="include">
-        </childnode>
-        <childnode refid="632" relation="include">
+        <childnode refid="432" relation="include">
         </childnode>
       </node>
-      <node id="641">
+      <node id="431">
         <label>filesystem</label>
       </node>
-      <node id="642">
+      <node id="432">
         <label>assert.h</label>
       </node>
-      <node id="632">
-        <label>stdlib.h</label>
-      </node>
-      <node id="636">
+      <node id="425">
         <label>omexmeta/CurlGet.h</label>
         <link refid="CurlGet_8h_source"/>
-        <childnode refid="619" relation="include">
+        <childnode refid="422" relation="include">
         </childnode>
-        <childnode refid="637" relation="include">
+        <childnode refid="426" relation="include">
         </childnode>
-        <childnode refid="638" relation="include">
+        <childnode refid="427" relation="include">
         </childnode>
       </node>
-      <node id="608">
+      <node id="415">
         <label>omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
-        <childnode refid="609" relation="include">
+        <childnode refid="416" relation="include">
         </childnode>
-        <childnode refid="634" relation="include">
+        <childnode refid="417" relation="include">
         </childnode>
-        <childnode refid="607" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
-        <childnode refid="611" relation="include">
+        <childnode refid="413" relation="include">
         </childnode>
-        <childnode refid="622" relation="include">
+        <childnode refid="420" relation="include">
         </childnode>
-        <childnode refid="635" relation="include">
+        <childnode refid="421" relation="include">
         </childnode>
-        <childnode refid="619" relation="include">
+        <childnode refid="422" relation="include">
         </childnode>
-        <childnode refid="620" relation="include">
+        <childnode refid="423" relation="include">
         </childnode>
-        <childnode refid="612" relation="include">
+        <childnode refid="419" relation="include">
         </childnode>
-        <childnode refid="631" relation="include">
+        <childnode refid="424" relation="include">
         </childnode>
       </node>
-      <node id="638">
+      <node id="427">
         <label>stdexcept</label>
       </node>
-      <node id="625">
-        <label>LibrdfModel.h</label>
-        <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="619" relation="include">
-        </childnode>
-        <childnode refid="612" relation="include">
-        </childnode>
-        <childnode refid="621" relation="include">
-        </childnode>
-        <childnode refid="626" relation="include">
-        </childnode>
-        <childnode refid="627" relation="include">
-        </childnode>
-        <childnode refid="618" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="628" relation="include">
-        </childnode>
-      </node>
-      <node id="619">
+      <node id="422">
         <label>string</label>
       </node>
-      <node id="614">
-        <label>regex</label>
+      <node id="414">
+        <label>redland/LibrdfQuery.h</label>
       </node>
-      <node id="617">
+      <node id="418">
         <label>exception</label>
       </node>
-      <node id="633">
-        <label>LibrdfParser.h</label>
-        <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="623" relation="include">
-        </childnode>
-        <childnode refid="615" relation="include">
-        </childnode>
-        <childnode refid="625" relation="include">
-        </childnode>
+      <node id="416">
+        <label>redland/RedlandAPI.h</label>
       </node>
-      <node id="630">
-        <label>RaptorIOStream.h</label>
-        <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="631" relation="include">
-        </childnode>
-        <childnode refid="616" relation="include">
-        </childnode>
-      </node>
-      <node id="627">
-        <label>LibrdfQuery.h</label>
-        <link refid="LibrdfQuery_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-      </node>
-      <node id="637">
+      <node id="426">
         <label>curl/curl.h</label>
       </node>
-      <node id="623">
-        <label>LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="624" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="620" relation="include">
-        </childnode>
-        <childnode refid="615" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="616" relation="include">
-        </childnode>
-      </node>
-      <node id="610">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="612" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="614" relation="include">
-        </childnode>
-      </node>
-      <node id="609">
-        <label>RedlandWrapper.h</label>
-        <link refid="RedlandWrapper_8h_source"/>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="615" relation="include">
-        </childnode>
-        <childnode refid="618" relation="include">
-        </childnode>
-        <childnode refid="625" relation="include">
-        </childnode>
-        <childnode refid="623" relation="include">
-        </childnode>
-        <childnode refid="627" relation="include">
-        </childnode>
-        <childnode refid="626" relation="include">
-        </childnode>
-        <childnode refid="629" relation="include">
-        </childnode>
-        <childnode refid="633" relation="include">
-        </childnode>
-        <childnode refid="628" relation="include">
-        </childnode>
-        <childnode refid="630" relation="include">
-        </childnode>
-      </node>
-      <node id="616">
-        <label>LibrdfException.h</label>
-        <link refid="LibrdfException_8h_source"/>
-        <childnode refid="617" relation="include">
-        </childnode>
-        <childnode refid="612" relation="include">
-        </childnode>
-      </node>
-      <node id="635">
+      <node id="421">
         <label>vector</label>
       </node>
-      <node id="615">
-        <label>LibrdfUri.h</label>
-        <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="616" relation="include">
-        </childnode>
+      <node id="413">
+        <label>redland/librdf.h</label>
       </node>
-      <node id="626">
-        <label>LibrdfQueryResults.h</label>
-        <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-      </node>
-      <node id="631">
+      <node id="424">
         <label>utility</label>
       </node>
-      <node id="639">
+      <node id="428">
         <label>omexmeta/MetaID.h</label>
         <link refid="MetaID_8h_source"/>
-        <childnode refid="619" relation="include">
+        <childnode refid="422" relation="include">
         </childnode>
-        <childnode refid="609" relation="include">
+        <childnode refid="423" relation="include">
         </childnode>
-        <childnode refid="620" relation="include">
+        <childnode refid="424" relation="include">
         </childnode>
-        <childnode refid="631" relation="include">
+        <childnode refid="419" relation="include">
         </childnode>
-        <childnode refid="612" relation="include">
+        <childnode refid="416" relation="include">
         </childnode>
       </node>
-      <node id="620">
+      <node id="423">
         <label>sstream</label>
       </node>
-      <node id="634">
+      <node id="417">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="617" relation="include">
+        <childnode refid="418" relation="include">
         </childnode>
-        <childnode refid="612" relation="include">
+        <childnode refid="419" relation="include">
         </childnode>
       </node>
-      <node id="612">
+      <node id="419">
         <label>iostream</label>
       </node>
-      <node id="624">
-        <label>raptor2.h</label>
-      </node>
-      <node id="622">
+      <node id="420">
         <label>unordered_map</label>
       </node>
-      <node id="621">
-        <label>LibrdfStatement.h</label>
-        <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="612" relation="include">
-        </childnode>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="622" relation="include">
-        </childnode>
-        <childnode refid="623" relation="include">
-        </childnode>
-      </node>
-      <node id="643">
+      <node id="429">
         <label>libxml/tree.h</label>
-      </node>
-      <node id="618">
-        <label>LibrdfStorage.h</label>
-        <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="619" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-        <childnode refid="620" relation="include">
-        </childnode>
-        <childnode refid="621" relation="include">
-        </childnode>
-      </node>
-      <node id="611">
-        <label>librdf.h</label>
-      </node>
-      <node id="628">
-        <label>LibrdfStream.h</label>
-        <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="611" relation="include">
-        </childnode>
-        <childnode refid="613" relation="include">
-        </childnode>
-        <childnode refid="610" relation="include">
-        </childnode>
-      </node>
-      <node id="613">
-        <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="657">
+      <node id="449">
         <label>src/omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
-        <childnode refid="646" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
-        <childnode refid="656" relation="include">
+        <childnode refid="446" relation="include">
         </childnode>
-        <childnode refid="658" relation="include">
+        <childnode refid="450" relation="include">
         </childnode>
-        <childnode refid="659" relation="include">
+        <childnode refid="447" relation="include">
         </childnode>
-        <childnode refid="660" relation="include">
+        <childnode refid="448" relation="include">
         </childnode>
       </node>
-      <node id="655">
+      <node id="445">
         <label>src/omexmeta/Triple.h</label>
         <link refid="Triple_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="646" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
-        <childnode refid="656" relation="include">
+        <childnode refid="446" relation="include">
         </childnode>
-        <childnode refid="655" relation="include">
+        <childnode refid="441" relation="include">
         </childnode>
-        <childnode refid="657" relation="include">
+        <childnode refid="447" relation="include">
         </childnode>
-        <childnode refid="651" relation="include">
+        <childnode refid="448" relation="include">
         </childnode>
-        <childnode refid="659" relation="include">
+        <childnode refid="445" relation="include">
         </childnode>
-        <childnode refid="660" relation="include">
+        <childnode refid="449" relation="include">
         </childnode>
       </node>
-      <node id="644">
+      <node id="433">
         <label>src/omexmeta/OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="649" relation="include">
+        <childnode refid="438" relation="include">
         </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="439" relation="include">
         </childnode>
-        <childnode refid="650" relation="include">
+        <childnode refid="440" relation="include">
         </childnode>
-        <childnode refid="651" relation="include">
+        <childnode refid="441" relation="include">
         </childnode>
-        <childnode refid="652" relation="include">
+        <childnode refid="442" relation="include">
         </childnode>
-        <childnode refid="653" relation="include">
+        <childnode refid="443" relation="include">
         </childnode>
-        <childnode refid="654" relation="include">
+        <childnode refid="444" relation="include">
         </childnode>
-        <childnode refid="661" relation="include">
+        <childnode refid="451" relation="include">
         </childnode>
-        <childnode refid="648" relation="include">
+        <childnode refid="436" relation="include">
         </childnode>
       </node>
-      <node id="656">
+      <node id="446">
         <label>src/omexmeta/Participant.h</label>
         <link refid="Participant_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="652" relation="include">
+        <childnode refid="442" relation="include">
         </childnode>
-        <childnode refid="653" relation="include">
+        <childnode refid="443" relation="include">
         </childnode>
       </node>
-      <node id="648">
+      <node id="436">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="646" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="437" relation="include">
         </childnode>
       </node>
-      <node id="652">
+      <node id="442">
         <label>src/omexmeta/PhysicalForce.h</label>
         <link refid="PhysicalForce_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="646" relation="include">
-        </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
       </node>
-      <node id="645">
+      <node id="434">
         <label>src/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
-        <childnode refid="646" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="436" relation="include">
         </childnode>
-        <childnode refid="648" relation="include">
+        <childnode refid="437" relation="include">
         </childnode>
       </node>
-      <node id="661">
+      <node id="451">
         <label>src/omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
-        <childnode refid="644" relation="include">
+        <childnode refid="433" relation="include">
         </childnode>
-        <childnode refid="651" relation="include">
+        <childnode refid="441" relation="include">
         </childnode>
-        <childnode refid="659" relation="include">
+        <childnode refid="447" relation="include">
         </childnode>
       </node>
-      <node id="660">
+      <node id="448">
         <label>src/omexmeta/PhysicalProperty.h</label>
         <link refid="PhysicalProperty_8h_source"/>
-        <childnode refid="651" relation="include">
+        <childnode refid="441" relation="include">
         </childnode>
-        <childnode refid="659" relation="include">
+        <childnode refid="442" relation="include">
         </childnode>
-        <childnode refid="652" relation="include">
+        <childnode refid="447" relation="include">
         </childnode>
-        <childnode refid="653" relation="include">
+        <childnode refid="443" relation="include">
         </childnode>
       </node>
-      <node id="647">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
-      </node>
-      <node id="650">
+      <node id="440">
         <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
         <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="645" relation="include">
-        </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
       </node>
-      <node id="659">
+      <node id="447">
         <label>src/omexmeta/PhysicalPhenomenon.h</label>
         <link refid="PhysicalPhenomenon_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="651" relation="include">
+        <childnode refid="441" relation="include">
         </childnode>
-        <childnode refid="652" relation="include">
+        <childnode refid="442" relation="include">
         </childnode>
-        <childnode refid="653" relation="include">
+        <childnode refid="443" relation="include">
         </childnode>
       </node>
-      <node id="651">
+      <node id="441">
         <label>src/omexmeta/PhysicalEntity.h</label>
         <link refid="PhysicalEntity_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="646" relation="include">
-        </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
       </node>
-      <node id="653">
+      <node id="443">
         <label>src/omexmeta/PhysicalProcess.h</label>
         <link refid="PhysicalProcess_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="646" relation="include">
-        </childnode>
-        <childnode refid="647" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
       </node>
-      <node id="658">
+      <node id="437">
+        <label>src/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="436" relation="include">
+        </childnode>
+      </node>
+      <node id="438">
+        <label>src/omexmeta/ElementExtractor.h</label>
+        <link refid="ElementExtractor_8h_source"/>
+        <childnode refid="437" relation="include">
+        </childnode>
+      </node>
+      <node id="450">
         <label>src/omexmeta/PersonalInformation.h</label>
         <link refid="PersonalInformation_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="646" relation="include">
+        <childnode refid="435" relation="include">
         </childnode>
       </node>
-      <node id="654">
+      <node id="444">
         <label>src/omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
-        <childnode refid="645" relation="include">
+        <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="655" relation="include">
+        <childnode refid="445" relation="include">
         </childnode>
-        <childnode refid="657" relation="include">
+        <childnode refid="449" relation="include">
         </childnode>
       </node>
-      <node id="646">
+      <node id="435">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
       </node>
-      <node id="649">
+      <node id="439">
         <label>src/omexmeta/MarkupIdentifier.h</label>
         <link refid="MarkupIdentifier_8h_source"/>
-        <childnode refid="648" relation="include">
+        <childnode refid="434" relation="include">
+        </childnode>
+        <childnode refid="436" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -582,122 +370,160 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_OMEXMETAUTILS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_OMEXMETAUTILS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Query.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/CurlGet.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/MetaID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;LibrdfQuery.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;librdf.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;libxml/tree.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceredland" kindref="compound">redland</ref>;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="classomexmeta_1_1OmexMetaUtils" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaUtils" kindref="compound">OmexMetaUtils</ref><sp/>{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1OmexMetaUtils" kindref="compound">OmexMetaUtils</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>removeFile(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removeIfExists(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename);</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>download(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;url,<sp/>std::string<sp/>filename);</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>splitStringBy(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;str,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delimiter);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>utility<sp/>for<sp/>generating<sp/>unique<sp/>metaids<sp/>given<sp/>an<sp/>xml<sp/>document</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>model<sp/>a<sp/>librdf_model*<sp/>pointer</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>a<sp/>string<sp/>that<sp/>will<sp/>be<sp/>used<sp/>for<sp/>the<sp/>ID.<sp/>There<sp/>will<sp/>be<sp/>4<sp/>digits,<sp/>though<sp/>this<sp/>can<sp/>be<sp/>changed.</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>exclusions.<sp/>Mostly<sp/>needed<sp/>internally<sp/>for<sp/>dealing<sp/>with<sp/>metaids<sp/>that<sp/>already<sp/>exist.</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>generateUniqueMetaid(</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid_base,</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;exclusions<sp/>=<sp/>std::vector&lt;std::string&gt;(),</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>local_uri<sp/>=<sp/>std::string()</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>process<sp/>a<sp/>string<sp/>intended<sp/>to<sp/>be<sp/>a<sp/>base<sp/>uri.</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>str<sp/>The<sp/>string<sp/>that<sp/>will<sp/>become<sp/>a<sp/>base<sp/>uri</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>absolute_path<sp/>automatically<sp/>make<sp/>str<sp/>an<sp/>absolute<sp/>path<sp/>to<sp/>the<sp/>current</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>working<sp/>directory.</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Base<sp/>uri&apos;s<sp/>are<sp/>important<sp/>in<sp/>redland<sp/>libraries.<sp/>If<sp/>they<sp/>do<sp/>not<sp/>begin<sp/>with<sp/>`file://`</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>`http`<sp/>or<sp/>`https`,<sp/>sparql<sp/>querying<sp/>will<sp/>break<sp/>down.<sp/>This<sp/>is<sp/>a<sp/>helper<sp/>function</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>ensure<sp/>the<sp/>base<sp/>uri<sp/>is<sp/>properly<sp/>formatted.</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>prepareBaseUri(std::string<sp/>str,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>absolute_path<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>takes<sp/>a<sp/>uri<sp/>as<sp/>std::string<sp/>and<sp/>returns<sp/>the<sp/>string</highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>with<sp/>the<sp/>last<sp/>section<sp/>removed;</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Example:<sp/>www.uri.com/identifer/PD12345<sp/>will</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>turn<sp/>into<sp/>www.uri.com/identifier/</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>getNamespaceFromUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>helper<sp/>function<sp/>that<sp/>returns<sp/>true<sp/>when</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>uri<sp/>starts<sp/>with<sp/>either<sp/>`https://`<sp/>`http://`<sp/>or<sp/>`file://`</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>uri<sp/>the<sp/>uri<sp/>to<sp/>test.</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isFormattedUri(std::string<sp/>uri);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>test<sp/>to<sp/>see<sp/>whether<sp/>a<sp/>string<sp/>ends<sp/>with<sp/>another<sp/>string</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>fullString<sp/>the<sp/>string<sp/>to<sp/>test</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>ending<sp/>the<sp/>ending<sp/>to<sp/>test<sp/>for</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>endsWith(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;full_string,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;ending);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assertRegexMatchSplitByNewLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;expected_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;actual_string);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>assertMatchByNewLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;expected_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;actual_string);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfQuery.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Query.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/CurlGet.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/MetaID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;libxml/tree.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceredland" kindref="compound">redland</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classomexmeta_1_1OmexMetaUtils" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaUtils" kindref="compound">OmexMetaUtils</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1OmexMetaUtils" kindref="compound">OmexMetaUtils</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>return<sp/>true<sp/>when<sp/>filename<sp/>is<sp/>a<sp/>file<sp/>that<sp/>exists<sp/>on<sp/>system</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>filename</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>remove<sp/>file<sp/>called<sp/>@param<sp/>filename</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>filename<sp/>to<sp/>remove</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>int<sp/>0<sp/>when<sp/>successful.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>removeFile(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>remove<sp/>a<sp/>file,<sp/>checking<sp/>for<sp/>its<sp/>existance<sp/>first</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>filename<sp/>to<sp/>remove</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removeIfExists(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>download<sp/>a<sp/>file<sp/>from<sp/>@param<sp/>url<sp/>to<sp/>@param<sp/>filename</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>download(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;url,<sp/>std::string<sp/>filename);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>split<sp/>a<sp/>string<sp/>into<sp/>a<sp/>vector<sp/>of<sp/>strings<sp/>by<sp/>@param<sp/>delimiter</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>splitStringBy(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;str,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delimiter);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>utility<sp/>for<sp/>generating<sp/>unique<sp/>metaids<sp/>given<sp/>an<sp/>xml<sp/>document</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>model<sp/>a<sp/>librdf_model*<sp/>pointer</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>a<sp/>string<sp/>that<sp/>will<sp/>be<sp/>used<sp/>for<sp/>the<sp/>ID.<sp/>There<sp/>will<sp/>be<sp/>4<sp/>digits,<sp/>though<sp/>this<sp/>can<sp/>be<sp/>changed.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>exclusions.<sp/>Mostly<sp/>needed<sp/>internally<sp/>for<sp/>dealing<sp/>with<sp/>metaids<sp/>that<sp/>already<sp/>exist.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>generateUniqueMetaid(</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid_base,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>&amp;exclusions</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>process<sp/>a<sp/>string<sp/>intended<sp/>to<sp/>be<sp/>a<sp/>base<sp/>uri.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>str<sp/>The<sp/>string<sp/>that<sp/>will<sp/>become<sp/>a<sp/>base<sp/>uri</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>absolute_path<sp/>automatically<sp/>make<sp/>str<sp/>an<sp/>absolute<sp/>path<sp/>to<sp/>the<sp/>current</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>working<sp/>directory.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Base<sp/>uri&apos;s<sp/>are<sp/>important<sp/>in<sp/>redland<sp/>libraries.<sp/>If<sp/>they<sp/>do<sp/>not<sp/>begin<sp/>with<sp/>`file://`</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>`http`<sp/>or<sp/>`https`,<sp/>sparql<sp/>querying<sp/>will<sp/>break<sp/>down.<sp/>This<sp/>is<sp/>a<sp/>helper<sp/>function</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>ensure<sp/>the<sp/>base<sp/>uri<sp/>is<sp/>properly<sp/>formatted.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>prepareBaseUri(std::string<sp/>str,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>absolute_path<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>takes<sp/>a<sp/>uri<sp/>as<sp/>std::string<sp/>and<sp/>returns<sp/>the<sp/>string</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>with<sp/>the<sp/>last<sp/>section<sp/>removed;</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Example:<sp/>www.uri.com/identifer/PD12345<sp/>will</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>turn<sp/>into<sp/>www.uri.com/identifier/</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>getNamespaceFromUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>configures<sp/>the<sp/>&quot;OMEXlib&quot;,<sp/>&quot;myOMEX&quot;<sp/>and<sp/>&quot;local&quot;</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>prefixes</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@<sp/>param<sp/>omex_name<sp/>the<sp/>name<sp/>of<sp/>the<sp/>omex<sp/>container<sp/>your<sp/>model<sp/>is<sp/>in</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>model_name<sp/>the<sp/>name<sp/>of<sp/>the<sp/>model<sp/>your<sp/>are<sp/>annotating.<sp/>Extension<sp/>should</highlight></codeline>
-<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>be<sp/>included<sp/>or<sp/>it<sp/>will<sp/>be<sp/>given<sp/>the<sp/>&quot;.xml&quot;<sp/>suffix.</highlight></codeline>
-<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>configurePrefixStrings(std::string<sp/>repository_name,<sp/>std::string<sp/>omex_name,<sp/>std::string<sp/>model_name);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>concatMetaIdAndUri(std::string<sp/>metaid,<sp/>std::string<sp/>local);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stringReplace(std::string<sp/>str,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;string_to_replace,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;replacement);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>startsWith(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;full_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;start);</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>helper<sp/>function<sp/>that<sp/>returns<sp/>true<sp/>when</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>uri<sp/>starts<sp/>with<sp/>either<sp/>`https://`<sp/>`http://`<sp/>or<sp/>`file://`</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>uri<sp/>the<sp/>uri<sp/>to<sp/>test.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isFormattedUri(std::string<sp/>uri);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>test<sp/>to<sp/>see<sp/>whether<sp/>a<sp/>string<sp/>ends<sp/>with<sp/>another<sp/>string</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>fullString<sp/>the<sp/>string<sp/>to<sp/>test</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>ending<sp/>the<sp/>ending<sp/>to<sp/>test<sp/>for</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>endsWith(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;full_string,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;ending);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assertRegexMatchSplitByNewLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;expected_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;actual_string);</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>stringInVector(std::vector&lt;std::string&gt;<sp/>vec,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>assertMatchByNewLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;expected_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;actual_string);</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>xmlDoc<sp/>*parseXmlDocument(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml_string);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>getXmlNodeProperty(xmlNode<sp/>*node,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>xmlNode<sp/>*getChildElementCalled(xmlNode<sp/>*node,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>getAllChildElements(xmlNode<sp/>*node);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>configures<sp/>the<sp/>&quot;OMEXlib&quot;,<sp/>&quot;myOMEX&quot;<sp/>and<sp/>&quot;local&quot;</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>prefixes</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@<sp/>param<sp/>omex_name<sp/>the<sp/>name<sp/>of<sp/>the<sp/>omex<sp/>container<sp/>your<sp/>model<sp/>is<sp/>in</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>model_name<sp/>the<sp/>name<sp/>of<sp/>the<sp/>model<sp/>your<sp/>are<sp/>annotating.<sp/>Extension<sp/>should</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>be<sp/>included<sp/>or<sp/>it<sp/>will<sp/>be<sp/>given<sp/>the<sp/>&quot;.xml&quot;<sp/>suffix.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>configurePrefixStrings(std::string<sp/>repository_name,<sp/>std::string<sp/>omex_name,<sp/>std::string<sp/>model_name);</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_OMEXMETAUTILS_H</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>concatonate<sp/>metaid<sp/>and<sp/>uri<sp/>strings</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>metaid<sp/>string.<sp/>Like<sp/>&quot;#metaid&quot;<sp/>or<sp/>&quot;metaid&quot;</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>uri<sp/>string.<sp/>Like<sp/>&quot;https://omex-library/jeff2019.omex/mymodel.xml&quot;<sp/>or<sp/>&quot;https://omex-library/jeff2019.omex/mymodel.rdf&quot;</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Sometimes<sp/>a<sp/>uri<sp/>has<sp/>a<sp/>trailing<sp/>&quot;#&quot;<sp/>and<sp/>somtimes<sp/>a<sp/>metaid<sp/>has<sp/>a<sp/>leading</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>&quot;#&quot;.<sp/>This<sp/>method<sp/>concatonates<sp/>whilst<sp/>accounting<sp/>for<sp/>permutations<sp/>of<sp/>&quot;#&quot;</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>concatMetaIdAndUri(std::string<sp/>metaid,<sp/>std::string<sp/>uri);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>replace<sp/>a<sp/>part<sp/>of<sp/>a<sp/>string<sp/>@string_to_replace<sp/>from<sp/>a<sp/>main<sp/>@param<sp/>string</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>with<sp/>a<sp/>replacement<sp/>string<sp/>@param<sp/>replacement</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stringReplace(std::string<sp/>str,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;string_to_replace,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;replacement);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>returns<sp/>true<sp/>when<sp/>@param<sp/>full_string<sp/>starts<sp/>with<sp/>the<sp/>substring<sp/>@param<sp/>start</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>startsWith(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;full_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;start);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>returns<sp/>true<sp/>when<sp/>@param<sp/>string<sp/>is<sp/>in<sp/>@param<sp/>vec</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>stringInVector(std::vector&lt;std::string&gt;<sp/>vec,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>xmlDoc<sp/>*parseXmlDocument(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml_string);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>getXmlNodeProperty(xmlNode<sp/>*node,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>xmlNode<sp/>*getChildElementCalled(xmlNode<sp/>*node,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>getAllChildElements(xmlNode<sp/>*node);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isSubString(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;full_string,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;substring);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_OMEXMETAUTILS_H</highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/OmexMetaUtils.h"/>
   </compounddef>

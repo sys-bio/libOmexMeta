@@ -1,7 +1,7 @@
 //
 // Created by Ciaran on 4/13/2020.
 //
-#include "OmexMetaUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 
 namespace omexmeta {
 

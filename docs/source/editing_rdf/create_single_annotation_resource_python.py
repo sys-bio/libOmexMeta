@@ -40,7 +40,7 @@ sbml = """<?xml version="1.0" encoding="UTF-8"?>
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
     with editor.new_singular_annotation() as literal:
         literal \
             .set_about('ToyModel') \

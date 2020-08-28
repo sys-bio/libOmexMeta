@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.5</span>
+   &#160;<span id="projectnumber">1.1.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -101,14 +101,11 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (std::string modelName)</td></tr>
 <tr class="separator:ad5310903d0e1a7a7ee890478f18b6181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58b64a5972f74564994028504d8d227c"><td class="memItemLeft" align="right" valign="top"><a id="a58b64a5972f74564994028504d8d227c"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
 <tr class="separator:a58b64a5972f74564994028504d8d227c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecb90e51830082f78ff055c045f4b439"><td class="memItemLeft" align="right" valign="top"><a id="aecb90e51830082f78ff055c045f4b439"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>RDF</b> (const std::string &amp;storage_type=&quot;memory&quot;, const std::string &amp;storage_name=&quot;SemsimStore&quot;, const char *storage_options=nullptr, const char *model_options=nullptr)</td></tr>
 <tr class="separator:aecb90e51830082f78ff055c045f4b439"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add8f3d957f24a26785f29b85d50f4399"><td class="memItemLeft" align="right" valign="top"><a id="add8f3d957f24a26785f29b85d50f4399"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>freeRDF</b> ()</td></tr>
-<tr class="separator:add8f3d957f24a26785f29b85d50f4399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad95c4a8588988efe399c7f984e304990"><td class="memItemLeft" align="right" valign="top"><a id="ad95c4a8588988efe399c7f984e304990"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>RDF</b> (const <a class="el" href="classomexmeta_1_1RDF.html">RDF</a> &amp;rdf)=delete</td></tr>
 <tr class="separator:ad95c4a8588988efe399c7f984e304990"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,18 +136,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addFromFile</b> (cons
 <tr class="memitem:af5f598560ab2a4ebe661f9bdb8665755"><td class="memItemLeft" align="right" valign="top"><a id="af5f598560ab2a4ebe661f9bdb8665755"></a>
 std::unordered_map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>propagateNamespacesFromParser</b> (const std::vector&lt; std::string &gt; &amp;seen_namespaces)</td></tr>
 <tr class="separator:af5f598560ab2a4ebe661f9bdb8665755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca5e83398eb1739c02c7ab4852e09784"><td class="memItemLeft" align="right" valign="top"><a id="aca5e83398eb1739c02c7ab4852e09784"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const std::string &amp;format=&quot;rdfxml-abbrev&quot;, std::string base_uri=std::string(), const char *mime_type=nullptr, const char *type_uri=nullptr)</td></tr>
-<tr class="separator:aca5e83398eb1739c02c7ab4852e09784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2348d3e28641a2b1079fddcacfd50dd"><td class="memItemLeft" align="right" valign="top"><a id="aa2348d3e28641a2b1079fddcacfd50dd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>toFile</b> (const std::string &amp;format, const std::string &amp;filename, const char *mime_type=nullptr, const char *type_uri=nullptr)</td></tr>
-<tr class="separator:aa2348d3e28641a2b1079fddcacfd50dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1766b940e69990ce28b60309615c12ce"><td class="memItemLeft" align="right" valign="top"><a id="a1766b940e69990ce28b60309615c12ce"></a>
-<a class="el" href="classomexmeta_1_1Editor.html">Editor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toEditor</b> (const std::string &amp;xml, OmexMetaXmlType type, bool generate_new_metaids=false)</td></tr>
-<tr class="separator:a1766b940e69990ce28b60309615c12ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabdb57f01b0e83a4ac93e9548387cda9"><td class="memItemLeft" align="right" valign="top"><a id="aabdb57f01b0e83a4ac93e9548387cda9"></a>
-<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>toEditorPtr</b> (const std::string &amp;xml, OmexMetaXmlType type, bool generate_new_metaids=false)</td></tr>
-<tr class="separator:aabdb57f01b0e83a4ac93e9548387cda9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b82471e4af4cc4a222b0fd6b6d6f1b"><td class="memItemLeft" align="right" valign="top"><a id="a51b82471e4af4cc4a222b0fd6b6d6f1b"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const std::string &amp;format=&quot;turtle&quot;, std::string base_uri=std::string(), const char *mime_type=nullptr, const char *type_uri=nullptr)</td></tr>
+<tr class="separator:a51b82471e4af4cc4a222b0fd6b6d6f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42a7be2a6261f03dc275b24a152dcaae"><td class="memItemLeft" align="right" valign="top"><a id="a42a7be2a6261f03dc275b24a152dcaae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>toFile</b> (const std::string &amp;filename, const std::string &amp;format=&quot;turtle&quot;, const char *mime_type=nullptr, const char *type_uri=nullptr)</td></tr>
+<tr class="separator:a42a7be2a6261f03dc275b24a152dcaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a433245557d941f8d7ec05272e1821b9f"><td class="memItemLeft" align="right" valign="top"><a id="a433245557d941f8d7ec05272e1821b9f"></a>
+<a class="el" href="classomexmeta_1_1Editor.html">Editor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toEditor</b> (const std::string &amp;xml, bool generate_new_metaids=false)</td></tr>
+<tr class="separator:a433245557d941f8d7ec05272e1821b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65d6531b0c9fee1258ea2d1c7fd7c5f"><td class="memItemLeft" align="right" valign="top"><a id="ae65d6531b0c9fee1258ea2d1c7fd7c5f"></a>
+<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>toEditorPtr</b> (const std::string &amp;xml, bool generate_new_metaids=false)</td></tr>
+<tr class="separator:ae65d6531b0c9fee1258ea2d1c7fd7c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8007b0ce5729c7dd3f8cab86d42216f5"><td class="memItemLeft" align="right" valign="top"><a id="a8007b0ce5729c7dd3f8cab86d42216f5"></a>
 librdf_model *&#160;</td><td class="memItemRight" valign="bottom"><b>getModel</b> () const</td></tr>
 <tr class="separator:a8007b0ce5729c7dd3f8cab86d42216f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,9 +199,9 @@ NamespaceMap&#160;</td><td class="memItemRight" valign="bottom"><b>namespaces_</
 <tr class="memitem:a82bc53feb93e1243970400fd104174da"><td class="memItemLeft" align="right" valign="top"><a id="a82bc53feb93e1243970400fd104174da"></a>
 std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>seen_namespaces_</b></td></tr>
 <tr class="separator:a82bc53feb93e1243970400fd104174da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae58e1da72231c07cf0742f3321cebcc"><td class="memItemLeft" align="right" valign="top"><a id="aae58e1da72231c07cf0742f3321cebcc"></a>
+<tr class="memitem:a59014bbb45a43dbfa760480f1713c473"><td class="memItemLeft" align="right" valign="top"><a id="a59014bbb45a43dbfa760480f1713c473"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_</b> = &quot;http://OMEXlibrary.org/&quot;</td></tr>
-<tr class="separator:aae58e1da72231c07cf0742f3321cebcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a59014bbb45a43dbfa760480f1713c473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b1184955f2401c30116c7473be1ca1d"><td class="memItemLeft" align="right" valign="top"><a id="a5b1184955f2401c30116c7473be1ca1d"></a>
 NamespaceMap&#160;</td><td class="memItemRight" valign="bottom"><b>default_namespaces_</b> = Predicate::namespaceMap()</td></tr>
 <tr class="separator:a5b1184955f2401c30116c7473be1ca1d"><td class="memSeparator" colspan="2">&#160;</td></tr>

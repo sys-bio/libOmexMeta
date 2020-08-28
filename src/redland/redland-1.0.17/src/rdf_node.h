@@ -29,7 +29,7 @@
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
 
-#include <rdf_uri.h>
+#include "rdf_uri.h"
 
 #else
 #include <Redland/rdf_uri.h>

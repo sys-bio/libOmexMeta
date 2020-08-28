@@ -72,10 +72,10 @@ extern "C" {
 
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
-#include <raptor2.h>
+#include "raptor2.h"
 
 #else
-#include <Redland/raptor.h>
+#include "Redland/raptor.h"
 #endif
 
 #if defined(__linux__)

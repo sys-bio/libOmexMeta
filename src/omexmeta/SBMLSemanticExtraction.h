@@ -5,10 +5,11 @@
 #ifndef LIBOMEXMETA_SBMLSEMANTICEXTRACTION_H
 #define LIBOMEXMETA_SBMLSEMANTICEXTRACTION_H
 
-#include "iostream"
 #include "omexmeta/Editor.h"
 #include "omexmeta/RDF.h"
-#include "omexmeta/sbml_semantic_extraction/ElementExtractor.h"
+#include "omexmeta/ElementExtractor.h"
+
+#include <iostream>
 
 /*
  * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:

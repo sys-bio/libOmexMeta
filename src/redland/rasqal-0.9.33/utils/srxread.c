@@ -41,10 +41,10 @@
 #endif
 
 
-#include <raptor2.h>
+#include "raptor2.h"
 
 /* Rasqal includes */
-#include <rasqal.h>
+#include "rasqal.h"
 
 #ifdef RAPTOR_V2_AVAILABLE
 #else

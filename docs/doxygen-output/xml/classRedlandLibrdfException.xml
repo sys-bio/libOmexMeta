@@ -8,36 +8,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="162">
+      <node id="190">
         <label>RedlandLibrdfException</label>
         <link refid="classRedlandLibrdfException"/>
-        <childnode refid="163" relation="public-inheritance">
+        <childnode refid="191" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="163">
+      <node id="191">
         <label>Exception</label>
         <link refid="classException"/>
-        <childnode refid="164" relation="public-inheritance">
+        <childnode refid="192" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="164">
+      <node id="192">
         <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="165">
+      <node id="193">
         <label>RedlandLibrdfException</label>
         <link refid="classRedlandLibrdfException"/>
-        <childnode refid="166" relation="public-inheritance">
+        <childnode refid="194" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="166">
+      <node id="194">
         <label>Exception</label>
         <link refid="classException"/>
-        <childnode refid="167" relation="public-inheritance">
+        <childnode refid="195" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="167">
+      <node id="195">
         <label>std::exception</label>
       </node>
     </collaborationgraph>

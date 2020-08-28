@@ -5,45 +5,45 @@
     <includedby refid="OmexMetaXmlAssistant_8h" local="yes">src/omexmeta/OmexMetaXmlAssistant.h</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
     <invincdepgraph>
-      <node id="756">
+      <node id="514">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="754" relation="include">
+        <childnode refid="513" relation="include">
         </childnode>
-        <childnode refid="755" relation="include">
+        <childnode refid="515" relation="include">
         </childnode>
       </node>
-      <node id="753">
+      <node id="512">
         <label>src/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
-        <childnode refid="754" relation="include">
+        <childnode refid="513" relation="include">
         </childnode>
-        <childnode refid="755" relation="include">
+        <childnode refid="514" relation="include">
         </childnode>
-        <childnode refid="756" relation="include">
+        <childnode refid="515" relation="include">
         </childnode>
       </node>
-      <node id="751">
+      <node id="510">
         <label>src/omexmeta/OmexMetaXmlType.h</label>
         <link refid="OmexMetaXmlType_8h"/>
-        <childnode refid="752" relation="include">
+        <childnode refid="511" relation="include">
         </childnode>
-        <childnode refid="756" relation="include">
+        <childnode refid="514" relation="include">
         </childnode>
       </node>
-      <node id="755">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
-      </node>
-      <node id="752">
+      <node id="511">
         <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
         <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="753" relation="include">
-        </childnode>
-        <childnode refid="755" relation="include">
+        <childnode refid="512" relation="include">
         </childnode>
       </node>
-      <node id="754">
+      <node id="515">
+        <label>src/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="514" relation="include">
+        </childnode>
+      </node>
+      <node id="513">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
       </node>

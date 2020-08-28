@@ -4,8 +4,8 @@
 
 #include "gtest/gtest.h"
 
-#include "omexmeta/sbml_semantic_extraction/ElementExtractor.h"
-#include "../SBMLFactory.h"
+#include "omexmeta/ElementExtractor.h"
+#include "SBMLFactory.h"
 #include "iostream"
 
 using namespace omexmeta;

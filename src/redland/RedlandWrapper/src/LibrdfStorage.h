@@ -5,7 +5,7 @@
 #ifndef LIBOMEXMETA_LIBRDFSTORAGE_H
 #define LIBOMEXMETA_LIBRDFSTORAGE_H
 
-#include <librdf.h>
+#include "librdf.h"
 #include <string>
 #include <memory>
 #include "World.h"

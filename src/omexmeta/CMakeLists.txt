@@ -4,6 +4,7 @@
 
 set(target OmexMeta)
 
+# Note: this doesn't work as intended when using the install tree.
 SET(OMEXMETA_PUBLIC_HEADERS
     "RDF.h"
     "Editor.h"
@@ -35,15 +36,16 @@ set(OMEXMETA_HEADERS
     "AnnotationType.h"
     "OmexMeta.h"
     "MarkupIdentifier.h"
-    sbml_semantic_extraction/ElementExtractor.cpp
-    sbml_semantic_extraction/ElementExtractor.h
-    sbml_semantic_extraction/SBMLSemanticExtraction.cpp
-    sbml_semantic_extraction/SBMLSemanticExtraction.h
-    OmexMetaXmlType.h
-    dbg.h
+    "ElementExtractor.h"
+    "SBMLSemanticExtraction.h"
+    "OmexMetaXmlType.h"
+    "Error.h"
+    #    dbg.h
     )
 
 set(OMEXMETA_SOURCES
+    "ElementExtractor.cpp"
+    "SBMLSemanticExtraction.cpp"
     "OmexMetaUtils.cpp"
     "RDF.cpp"
     "Query.cpp"
@@ -65,7 +67,7 @@ set(OMEXMETA_SOURCES
     "PhysicalForce.cpp"
     "PersonalInformation.cpp"
     "MarkupIdentifier.cpp"
-    sbml_semantic_extraction/ElementExtractor.cpp sbml_semantic_extraction/ElementExtractor.h sbml_semantic_extraction/SBMLSemanticExtraction.cpp sbml_semantic_extraction/SBMLSemanticExtraction.h)
+    )
 
 
 #####################################################################3
@@ -100,7 +102,7 @@ target_link_libraries(
         redland-combined-static
         ${LINK_LIBRARIES}
 )
-set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
+set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER "${OMEXMETA_HEADERS}")
 
 
 # install
@@ -155,7 +157,7 @@ target_link_libraries(${target} PUBLIC
 # Technically linux version depends on static version and windows depends on the dynamic library
 add_dependencies(${target} redland-combined redland-combined-static)
 
-set_target_properties(${target} PROPERTIES PUBLIC_HEADER "${OMEXMETA_PUBLIC_HEADERS}")
+set_target_properties(${target} PROPERTIES PUBLIC_HEADER "${OMEXMETA_HEADERS}")
 
 # Write mytools_export.h to the current binary directory
 generate_export_header(${target} BASE_NAME OMEXMETA)
@@ -249,23 +251,49 @@ elseif (PLATFORM STREQUAL "windows-msvc")
         ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140_1.dll
         ${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}
         )
-    if (NOT EXISTS "${CMAKE_INSTALL_PREFIX}")
-        message(FATAL_ERROR "libOmexMeta needs to be installed before you
-can copy windows redistributables into python directory")
+    if (EXISTS "${CMAKE_INSTALL_PREFIX}")
+        install(FILES ${REDISTRIB} DESTINATION ${PYOMEXMETA_DIR})
+        #        message(FATAL_ERROR "libOmexMeta needs to be installed before you \
+        #can copy windows redistributables into python directory. Please -DBUILD_PACKAGING=OFF until \
+        #you have built the windows install tree.")
     endif ()
 
-    install(FILES ${REDISTRIB} DESTINATION ${PYOMEXMETA_DIR})
 
 elseif (PLATFORM STREQUAL "macos")
     message(STATUS "macos == sad face =[")
 endif ()
 
 
-
-
-
-
-
+# note to self.
+# If I'm using the install tree then it is up to the user to provide
+# curl and libxml2 include dirs.
+#
+## Curl headers
+##   collect and install the curl headers since you've used curl as a dependency.
+##   Its probably worth removing this dependency as the OmexMetaUtils::download
+##   utility isn't essential.
+#if (NOT EXISTS ${CURL_INCLUDE_DIR})
+#    message(FATAL_ERROR "No curl include directory found")
+#endif ()
+#
+#file(GLOB CURL_HEADERS "${CURL_INCLUDE_DIR}/curl/*.h")
+#message(STATUS "CURL ${CURL_INCLUDE_DIR}/curl/*.h ${CURL_HEADERS}")
+#install(FILES ${CURL_HEADERS} DESTINATION "include/curl")
+#
+## libxml headers
+##   Again, for the install tree to be functional we need
+##   libxml headers available. Simple solution is to copy them
+##   accross. May be another better solution
+#if (NOT EXISTS ${LIBXML2_INCLUDE_DIR})
+#    message(FATAL_ERROR "No libxml2 include directory found")
+#endif ()
+#
+#file(GLOB LIBXML_HEADERS "${LIBXML2_INCLUDE_DIR}/curl/*.h")
+#message(STATUS "CURL ${LIBXML2_INCLUDE_DIR}/libxml/*.h ${LIBXML_HEADERS}")
+#install(FILES ${LIBXML_HEADERS} DESTINATION "include/libxml")
+#
+#
+#
 
 
 

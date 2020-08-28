@@ -269,6 +269,7 @@ set(RASQAL_SOURCES
     ${RASQAL_SOURCE_DIR}/rasqal_sort.c
     ${RASQAL_SOURCE_DIR}/rasqal_digest_md5.c
     ${RASQAL_SOURCE_DIR}/rasqal_digest_sha1.c
+    ${RASQAL_SOURCE_DIR}/rasqal.h
     )
 
 set(LIBRDF_SOURCES
@@ -278,6 +279,8 @@ set(LIBRDF_SOURCES
     ${LIBRDF_SOURCE_DIR}/rdf_concepts.h
     ${LIBRDF_SOURCE_DIR}/rdf_concepts_internal.h
     ${LIBRDF_SOURCE_DIR}/rdf_config.h
+    ${LIBRDF_SOURCE_DIR}/rdf_config_linux.h
+    ${LIBRDF_SOURCE_DIR}/win32_rdf_config.h
     ${LIBRDF_SOURCE_DIR}/rdf_digest.c
     ${LIBRDF_SOURCE_DIR}/rdf_digest.h
     ${LIBRDF_SOURCE_DIR}/rdf_digest_internal.h
@@ -386,40 +389,70 @@ set(WRAPPER_SOURCES
     ${WRAPPER_SOURCE_DIR}/LibrdfUri.h
     ${WRAPPER_SOURCE_DIR}/RaptorIOStream.cpp
     ${WRAPPER_SOURCE_DIR}/RaptorIOStream.h
-    ${WRAPPER_SOURCE_DIR}/RedlandWrapper.h
+    ${WRAPPER_SOURCE_DIR}/RedlandAPI.h
     ${WRAPPER_SOURCE_DIR}/World.cpp
     ${WRAPPER_SOURCE_DIR}/World.h
     ${WRAPPER_SOURCE_DIR}/LibrdfException.h
     )
 
 
+set(ALL_REDLAND_SOURCES
+    ${RAPTOR_SOURCES}
+    ${RASQAL_SOURCES}
+    ${LIBRDF_SOURCES}
+    ${WRAPPER_SOURCES}
+    ${CMAKE_CURRENT_BINARY_DIR}/redland_export.h
+    )
+
+# In order to use libOmexMeta from the install tree we need
+# to inclue from something like include/redland, but this
+# isn't how I've been building the package. Instead
+# I'll mimic this directory structure inside "redland/include/redland"
+
+# make a directory at redland/include/redland and put headers in it
+# for the build tree.
+set(REDLAND_INCLUDE_DIR ${CMAKE_CURRENT_BINARY_DIR}/include)
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${REDLAND_INCLUDE_DIR}" PARENT_SCOPE)
+
+file(MAKE_DIRECTORY "${REDLAND_INCLUDE_DIR}/redland")
+
+# Collect header files for include
+set(ALL_REDLAND_HEADER_FILES)
+
+foreach (f ${ALL_REDLAND_SOURCES})
+    get_filename_component(match ${f} EXT)
+    if (${match} STREQUAL ".h")
+        set(ALL_REDLAND_HEADER_FILES ${ALL_REDLAND_HEADER_FILES} ${f})
+        file(COPY ${f} DESTINATION "${REDLAND_INCLUDE_DIR}/redland")
+    endif ()
+    unset(match)
+endforeach ()
+
+
 #######################################################
 #   Build the library static
 #
-add_library(${target}-static STATIC
-            ${RAPTOR_SOURCES}
-            ${RASQAL_SOURCES}
-            ${LIBRDF_SOURCES}
-            ${WRAPPER_SOURCES}
-            ${CMAKE_CURRENT_BINARY_DIR}/redland_export.h
-            )
+add_library(${target}-static STATIC ${ALL_REDLAND_SOURCES})
 
 # add the public headers so install works correctly
-set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
-                      "${RASQAL_DIR}/src/rasqal.h;${RAPTOR_DIR}/src/raptor2.h;${LIBRDF_DIR}/src/librdf.h;${CMAKE_CURRENT_BINARY_DIR}/redland_export.h"
-                      )
+set_target_properties(
+        ${target}-static PROPERTIES PUBLIC_HEADER
+        "${ALL_REDLAND_HEADER_FILES}"
+)
 
 
 # includes
-target_include_directories(${target}-static PRIVATE
-                           ${INCLUDE_DIRECTORIES}
-                           )
+target_include_directories(
+        ${target}-static PRIVATE
+        ${INCLUDE_DIRECTORIES}
+)
 
 # link libraries
-target_link_libraries(${target}-static PUBLIC
-                      ${LINK_LIBRARIES}
-                      ${RUNTIME}# best here so no clash with dynamic
-                      )
+target_link_libraries(
+        ${target}-static PUBLIC
+        ${LINK_LIBRARIES}
+        ${RUNTIME}# best here so no clash with dynamic
+)
 
 
 target_compile_definitions(
@@ -466,23 +499,14 @@ endif ()
 # to docs-build a dynamic library and link that. Its not used
 # on linux, (but certainly could be)
 
+
 # add the shared library
-add_library(${target} SHARED
-            ${RAPTOR_SOURCES}
-            ${RASQAL_SOURCES}
-            ${LIBRDF_SOURCES}
-            ${WRAPPER_SOURCES}
-            ${CMAKE_CURRENT_BINARY_DIR}/redland_export.h
-            )
+add_library(${target} SHARED ${ALL_REDLAND_SOURCES})
 
-# ensure pic is on for linux builds
-set_target_properties(${target} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
+message(STATUS "ALL_REDLAND_HEADER_FILES ${ALL_REDLAND_HEADER_FILES}")
 # Add public headers to the target
-set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER
-                      "${RAPTOR_DIR}/src/raptor2.h;${RASQAL_DIR}/src/rasqal.h;${LIBRDF_DIR}/src/librdf.h;${CMAKE_CURRENT_BINARY_DIR}/redland_export.h"
-                      )
-
+set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER "${ALL_REDLAND_HEADER_FILES}")
 # includes
 target_include_directories(
         ${target} PRIVATE

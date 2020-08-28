@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 7)
+set(VERSION_MICRO 8)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 project(libOmexMeta
@@ -404,10 +404,9 @@ set(INCLUDE_DIRECTORIES
     $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
 
     ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta
-    ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
     ${CMAKE_CURRENT_BINARY_DIR}/src/redland
-
-
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
     )
 
 

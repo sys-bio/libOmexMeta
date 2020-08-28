@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="65" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="65" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="44" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="66" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="66" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="45" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" static="no" mutable="no">
         <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="67" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="67" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="46" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="68" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="68" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="47" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, std::string &gt; &amp;</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="69" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="69" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="48" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -80,7 +80,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="70" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="70" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="49" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1Editor_1a3c4514ca9177b9bc157e9e52af23bc82" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string omexmeta::Editor::metaid_base_</definition>
+        <argsstring></argsstring>
+        <name>metaid_base_</name>
+        <initializer>= &quot;#OmexMetaId&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="50" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1Editor_1a2676967741d009a5e9115d031b018318" prot="private" static="no" mutable="no">
+        <type>OmexMetaXmlType</type>
+        <definition>OmexMetaXmlType omexmeta::Editor::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="51" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -93,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="72" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="72" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="52" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -106,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="73" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="73" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="53" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -119,20 +146,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="74" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="74" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="54" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
-        <definition>const std::string&amp; omexmeta::Editor::model_uri_</definition>
+        <definition>const std::string&amp; omexmeta::Editor::local_uri_</definition>
         <argsstring></argsstring>
-        <name>model_uri_</name>
+        <name>local_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="75" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="75" bodyend="-1"/>
+        <location file="src/omexmeta/Editor.h" line="55" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -151,22 +178,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="77" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="86" bodyend="98"/>
+        <location file="src/omexmeta/Editor.h" line="57" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="80" bodyend="92"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1a8cbc42e461bf7a1495c7de82882de826" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1ab87064ac1e0963f9e9d3a178ed35f119" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::Editor::Editor</definition>
-        <argsstring>(const std::string &amp;xml, OmexMetaXmlType type, bool create_ids, const LibrdfModel &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</argsstring>
+        <argsstring>(const std::string &amp;xml, bool create_ids, const LibrdfModel &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</argsstring>
         <name>Editor</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>xml</declname>
-        </param>
-        <param>
-          <type>OmexMetaXmlType</type>
-          <declname>type</declname>
         </param>
         <param>
           <type>bool</type>
@@ -211,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="100" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="21" bodyend="37"/>
+        <location file="src/omexmeta/Editor.h" line="78" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="11" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -224,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="113" column="1"/>
+        <location file="src/omexmeta/Editor.h" line="90" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -237,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="115" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="39" bodyend="41"/>
+        <location file="src/omexmeta/Editor.h" line="92" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const NamespaceMap &amp;</type>
@@ -250,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="122" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="51" bodyend="53"/>
+        <location file="src/omexmeta/Editor.h" line="99" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_model *</type>
@@ -263,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="128" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="59" bodyend="61"/>
+        <location file="src/omexmeta/Editor.h" line="105" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a83836e19bb1de9c7df69d36e8b61b2b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -280,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="133" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="55" bodyend="57"/>
+        <location file="src/omexmeta/Editor.h" line="110" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -293,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="139" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="43" bodyend="45"/>
+        <location file="src/omexmeta/Editor.h" line="116" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -306,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="146" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="47" bodyend="49"/>
+        <location file="src/omexmeta/Editor.h" line="123" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a052a725cee8b8e577c55e977eee81ace" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -327,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="153" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="100" bodyend="102"/>
+        <location file="src/omexmeta/Editor.h" line="130" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -352,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="161" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="104" bodyend="117"/>
+        <location file="src/omexmeta/Editor.h" line="138" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="98" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ae46835f3f35425d8087b80d08666aaa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -369,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="167" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="119" bodyend="123"/>
+        <location file="src/omexmeta/Editor.h" line="144" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="114" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -386,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="173" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="243" bodyend="246"/>
+        <location file="src/omexmeta/Editor.h" line="150" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="245" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a146ae84fb44991d9c6135e98f03fa972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -403,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="187" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="138" bodyend="156"/>
+        <location file="src/omexmeta/Editor.h" line="164" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="134" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -420,7 +443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="193" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="176" bodyend="191"/>
+        <location file="src/omexmeta/Editor.h" line="170" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="172" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -437,7 +460,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="199" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="256" bodyend="258"/>
+        <location file="src/omexmeta/Editor.h" line="176" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="260" bodyend="262"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -454,7 +477,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="207" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="260" bodyend="267"/>
+        <location file="src/omexmeta/Editor.h" line="182" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="264" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -471,7 +494,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="213" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="193" bodyend="209"/>
+        <location file="src/omexmeta/Editor.h" line="188" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="191" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -488,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="219" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="273" bodyend="275"/>
+        <location file="src/omexmeta/Editor.h" line="194" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="277" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -505,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="225" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="211" bodyend="226"/>
+        <location file="src/omexmeta/Editor.h" line="200" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="210" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -522,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="231" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="228" bodyend="241"/>
+        <location file="src/omexmeta/Editor.h" line="206" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="229" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -539,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="237" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="269" bodyend="271"/>
+        <location file="src/omexmeta/Editor.h" line="212" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="273" bodyend="275"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -556,7 +579,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="244" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="63" bodyend="84"/>
+        <location file="src/omexmeta/Editor.h" line="218" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="57" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -573,7 +596,67 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="250" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="130" bodyend="136"/>
+        <location file="src/omexmeta/Editor.h" line="224" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="126" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1af987e450e4bf9d75391ad3f5ac6233f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; omexmeta::Editor::getMetaidBase</definition>
+        <argsstring>() const</argsstring>
+        <name>getMetaidBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="231" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="404" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a206feee18473abbeda5e4e55906e73eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::Editor::setMetaidBase</definition>
+        <argsstring>(const std::string &amp;metaidBase)</argsstring>
+        <name>setMetaidBase</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>metaidBase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="241" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="406" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a68ade6a293061a98243a3b2853e55a4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>OmexMetaXmlType</type>
+        <definition>OmexMetaXmlType omexmeta::Editor::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="248" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="410" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a3e2c493ed5034a15e6915b7b649b58a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::Editor::setType</definition>
+        <argsstring>(OmexMetaXmlType type)</argsstring>
+        <name>setType</name>
+        <param>
+          <type>OmexMetaXmlType</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/Editor.h" line="255" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="412" bodyend="412"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a245b2105c175892d1fddaf693fa9d636" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref></type>
@@ -586,7 +669,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="252" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="277" bodyend="279"/>
+        <location file="src/omexmeta/Editor.h" line="263" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="281" bodyend="283"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref></type>
@@ -599,7 +682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="254" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="281" bodyend="283"/>
+        <location file="src/omexmeta/Editor.h" line="271" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="285" bodyend="287"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref></type>
@@ -612,7 +695,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="256" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="285" bodyend="287"/>
+        <location file="src/omexmeta/Editor.h" line="279" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="289" bodyend="291"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a1943079ddbc4a4c6d896f51f360a11df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref></type>
@@ -625,7 +708,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="258" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="289" bodyend="291"/>
+        <location file="src/omexmeta/Editor.h" line="287" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="293" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8fb3a19e8f64aeff2ac9b78c483843de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -642,7 +725,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="260" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="125" bodyend="128"/>
+        <location file="src/omexmeta/Editor.h" line="292" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="120" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad05d04a31263f9c7cb8105e29fd9d158" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -659,7 +742,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="262" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="158" bodyend="166"/>
+        <location file="src/omexmeta/Editor.h" line="294" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="154" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ace8ee873498fa72b63c0747775b729f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -676,7 +759,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="264" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="168" bodyend="174"/>
+        <location file="src/omexmeta/Editor.h" line="296" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="164" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1af00f00108238acbf2b2974cedc07b454" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -693,7 +776,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="266" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="248" bodyend="254"/>
+        <location file="src/omexmeta/Editor.h" line="298" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="251" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -706,20 +789,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="293" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="379" bodyend="381"/>
+        <location file="src/omexmeta/Editor.h" line="303" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="366" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string omexmeta::Editor::getModelUri</definition>
+        <definition>std::string omexmeta::Editor::getLocalUri</definition>
         <argsstring>() const</argsstring>
-        <name>getModelUri</name>
+        <name>getLocalUri</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="305" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="371" bodyend="373"/>
+        <location file="src/omexmeta/Editor.h" line="308" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="362" bodyend="362"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -732,7 +815,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="310" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="375" bodyend="377"/>
+        <location file="src/omexmeta/Editor.h" line="313" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="364" bodyend="364"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -745,9 +828,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="316" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="383" bodyend="385"/>
+        <location file="src/omexmeta/Editor.h" line="318" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="368" bodyend="368"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1a978e773a7c9c4f602bd3ce0d0672fda8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref></type>
         <definition>LibrdfNode omexmeta::Editor::createNodeWithModelUri</definition>
         <argsstring>(const std::string &amp;string) const</argsstring>
@@ -762,27 +845,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="332" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="387" bodyend="395"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1afc125a3de8d0795c4220681f04d0a657" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::Editor::addModelLevelAnnotation</definition>
-        <argsstring>(std::string, const LibrdfNode *node)</argsstring>
-        <name>addModelLevelAnnotation</name>
-        <param>
-          <type>std::string</type>
-        </param>
-        <param>
-          <type>const <ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref> *</type>
-          <declname>node</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="334" column="1"/>
+        <location file="src/omexmeta/Editor.h" line="324" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="370" bodyend="387"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a9c8b060005146f3cf5a231ea6789e7d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -799,7 +862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="336" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="293" bodyend="305"/>
+        <location file="src/omexmeta/Editor.h" line="330" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="298" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8b83488faf68546733114acf54595b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -816,7 +879,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="338" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="307" bodyend="319"/>
+        <location file="src/omexmeta/Editor.h" line="336" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="310" bodyend="320"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1af64f0cac6b7e27b121df94ab5b1fa217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -833,7 +896,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="340" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="361" bodyend="369"/>
+        <location file="src/omexmeta/Editor.h" line="342" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="354" bodyend="360"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a533f93c8ae0c3081dfe2fc8e8ebee8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -850,7 +913,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="342" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="341" bodyend="349"/>
+        <location file="src/omexmeta/Editor.h" line="348" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="338" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8526a87544b1265695f1749100da5fa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -867,7 +930,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="344" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="331" bodyend="339"/>
+        <location file="src/omexmeta/Editor.h" line="354" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="330" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ae1b146f142ec10237f8edbecf0368f8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -884,7 +947,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="346" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="321" bodyend="329"/>
+        <location file="src/omexmeta/Editor.h" line="360" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="322" bodyend="328"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref></type>
@@ -901,7 +964,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="348" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="403" bodyend="408"/>
+        <location file="src/omexmeta/Editor.h" line="367" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="396" bodyend="402"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad7240613a1f3e215af6e4a05d121508c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -918,7 +981,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="350" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="351" bodyend="359"/>
+        <location file="src/omexmeta/Editor.h" line="373" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="346" bodyend="352"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -935,7 +998,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="352" column="1"/>
+        <location file="src/omexmeta/Editor.h" line="379" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref></type>
@@ -948,14 +1011,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="354" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="397" bodyend="401"/>
+        <location file="src/omexmeta/Editor.h" line="386" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="389" bodyend="394"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/Editor.h" line="63" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="63" bodyend="355"/>
+    <location file="src/omexmeta/Editor.h" line="42" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="42" bodyend="387"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Editor_1a146ae84fb44991d9c6135e98f03fa972" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1ad05d04a31263f9c7cb8105e29fd9d158" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation2</name></member>
@@ -963,7 +1026,6 @@
       <member refid="classomexmeta_1_1Editor_1a8b83488faf68546733114acf54595b02" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCurator</name></member>
       <member refid="classomexmeta_1_1Editor_1ae1b146f142ec10237f8edbecf0368f8e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addDateCreated</name></member>
       <member refid="classomexmeta_1_1Editor_1a8526a87544b1265695f1749100da5fa2" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addDescription</name></member>
-      <member refid="classomexmeta_1_1Editor_1afc125a3de8d0795c4220681f04d0a657" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addModelLevelAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a052a725cee8b8e577c55e977eee81ace" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addNamespace</name></member>
       <member refid="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addNamespaceFromAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1ad7240613a1f3e215af6e4a05d121508c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addParentModel</name></member>
@@ -981,19 +1043,22 @@
       <member refid="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>archive_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>checkValidMetaid</name></member>
       <member refid="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>create_ids_</name></member>
-      <member refid="classomexmeta_1_1Editor_1a978e773a7c9c4f602bd3ce0d0672fda8" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>createNodeWithModelUri</name></member>
-      <member refid="classomexmeta_1_1Editor_1a8cbc42e461bf7a1495c7de82882de826" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>Editor</name></member>
+      <member refid="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>createNodeWithModelUri</name></member>
+      <member refid="classomexmeta_1_1Editor_1ab87064ac1e0963f9e9d3a178ed35f119" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>Editor</name></member>
       <member refid="classomexmeta_1_1Editor_1ad0bb5d79378fa2b18305780e93858959" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>extractNamespacesFromTriplesVector</name></member>
       <member refid="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>generate_new_metaids_</name></member>
       <member refid="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getArchiveUri</name></member>
-      <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModelUri</name></member>
+      <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1Editor_1af987e450e4bf9d75391ad3f5ac6233f6" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getMetaidBase</name></member>
       <member refid="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getMetaids</name></member>
       <member refid="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModel</name></member>
       <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getNamespaces</name></member>
       <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getRepositoryUri</name></member>
+      <member refid="classomexmeta_1_1Editor_1a68ade6a293061a98243a3b2853e55a4b" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getType</name></member>
       <member refid="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getXml</name></member>
-      <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>
+      <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1Editor_1a3c4514ca9177b9bc157e9e52af23bc82" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>metaid_base_</name></member>
       <member refid="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>metaids_</name></member>
       <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>
@@ -1011,8 +1076,11 @@
       <member refid="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalProcess</name></member>
       <member refid="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeSingleAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>repository_uri_</name></member>
+      <member refid="classomexmeta_1_1Editor_1a206feee18473abbeda5e4e55906e73eb" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>setMetaidBase</name></member>
       <member refid="classomexmeta_1_1Editor_1a83836e19bb1de9c7df69d36e8b61b2b2" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>setNamespaces</name></member>
+      <member refid="classomexmeta_1_1Editor_1a3e2c493ed5034a15e6915b7b649b58a3" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>setType</name></member>
       <member refid="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>size</name></member>
+      <member refid="classomexmeta_1_1Editor_1a2676967741d009a5e9115d031b018318" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>type_</name></member>
       <member refid="classomexmeta_1_1Editor_1a36eecb635c6384ad186f0e750602b58e" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>xml_</name></member>
       <member refid="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>~Editor</name></member>
     </listofallmembers>

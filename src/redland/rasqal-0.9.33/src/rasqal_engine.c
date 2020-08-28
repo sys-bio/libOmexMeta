@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <raptor2.h>
+#include "raptor2.h"
 
 #include "rasqal.h"
 #include "rasqal_internal.h"

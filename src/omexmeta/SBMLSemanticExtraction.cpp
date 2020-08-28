@@ -2,9 +2,7 @@
 // Created by Ciaran on 11/08/2020.
 //
 
-#include "SBMLSemanticExtraction.h"
-
-#include <utility>
+#include "omexmeta/SBMLSemanticExtraction.h"
 
 namespace omexmeta {
 

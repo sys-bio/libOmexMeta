@@ -11,738 +11,594 @@
     <includes refid="PhysicalProcess_8h" local="yes">omexmeta/PhysicalProcess.h</includes>
     <includes refid="PersonalInformation_8h" local="yes">omexmeta/PersonalInformation.h</includes>
     <incdepgraph>
-      <node id="404">
+      <node id="355">
         <label>sys/stat.h</label>
       </node>
-      <node id="421">
-        <label>Triples.h</label>
+      <node id="372">
+        <label>omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
-        <childnode refid="415" relation="include">
+        <childnode refid="334" relation="include">
         </childnode>
-        <childnode refid="412" relation="include">
+        <childnode refid="365" relation="include">
         </childnode>
-        <childnode refid="416" relation="include">
+        <childnode refid="360" relation="include">
         </childnode>
-        <childnode refid="414" relation="include">
+        <childnode refid="368" relation="include">
         </childnode>
-        <childnode refid="372" relation="include">
+        <childnode refid="363" relation="include">
         </childnode>
-        <childnode refid="398" relation="include">
+        <childnode refid="348" relation="include">
         </childnode>
-        <childnode refid="399" relation="include">
+        <childnode refid="351" relation="include">
         </childnode>
-        <childnode refid="405" relation="include">
+        <childnode refid="356" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
         </childnode>
       </node>
-      <node id="415">
+      <node id="365">
         <label>omexmeta/Triple.h</label>
         <link refid="Triple_8h_source"/>
-        <childnode refid="385" relation="include">
+        <childnode refid="345" relation="include">
         </childnode>
-        <childnode refid="384" relation="include">
+        <childnode refid="366" relation="include">
         </childnode>
-        <childnode refid="412" relation="include">
+        <childnode refid="364" relation="include">
         </childnode>
-        <childnode refid="416" relation="include">
+        <childnode refid="367" relation="include">
         </childnode>
-        <childnode refid="414" relation="include">
+        <childnode refid="360" relation="include">
         </childnode>
-        <childnode refid="415" relation="include">
+        <childnode refid="368" relation="include">
         </childnode>
-        <childnode refid="374" relation="include">
+        <childnode refid="363" relation="include">
         </childnode>
-        <childnode refid="386" relation="include">
+        <childnode refid="365" relation="include">
         </childnode>
-        <childnode refid="418" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-        <childnode refid="413" relation="include">
-        </childnode>
-        <childnode refid="419" relation="include">
-        </childnode>
-        <childnode refid="406" relation="include">
-        </childnode>
-      </node>
-      <node id="396">
-        <label>omexmeta/OmexMetaUtils.h</label>
-        <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="400" relation="include">
-        </childnode>
-        <childnode refid="403" relation="include">
-        </childnode>
-        <childnode refid="389" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="382" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="404" relation="include">
-        </childnode>
-        <childnode refid="402" relation="include">
-        </childnode>
-        <childnode refid="383" relation="include">
-        </childnode>
-        <childnode refid="405" relation="include">
-        </childnode>
-        <childnode refid="406" relation="include">
-        </childnode>
-        <childnode refid="407" relation="include">
-        </childnode>
-      </node>
-      <node id="391">
-        <label>LibrdfSerializer.h</label>
-        <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="378" relation="include">
-        </childnode>
-        <childnode refid="387" relation="include">
-        </childnode>
-        <childnode refid="392" relation="include">
-        </childnode>
-        <childnode refid="385" relation="include">
-        </childnode>
-        <childnode refid="394" relation="include">
-        </childnode>
-      </node>
-      <node id="405">
-        <label>filesystem</label>
-      </node>
-      <node id="406">
-        <label>assert.h</label>
-      </node>
-      <node id="420">
-        <label>omexmeta/Participant.h</label>
-        <link refid="Participant_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="382" relation="include">
-        </childnode>
-        <childnode refid="414" relation="include">
-        </childnode>
-        <childnode refid="416" relation="include">
-        </childnode>
-        <childnode refid="415" relation="include">
-        </childnode>
-        <childnode refid="421" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-      </node>
-      <node id="417">
-        <label>omexmeta/HERE.h</label>
-        <link refid="HERE_8h_source"/>
-      </node>
-      <node id="368">
-        <label>omexmeta/RDF.h</label>
-        <link refid="RDF_8h_source"/>
         <childnode refid="369" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+        <childnode refid="362" relation="include">
         </childnode>
         <childnode refid="370" relation="include">
         </childnode>
-        <childnode refid="371" relation="include">
+        <childnode refid="357" relation="include">
+        </childnode>
+      </node>
+      <node id="344">
+        <label>omexmeta/OmexMetaUtils.h</label>
+        <link refid="OmexMetaUtils_8h_source"/>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="346" relation="include">
+        </childnode>
+        <childnode refid="347" relation="include">
+        </childnode>
+        <childnode refid="352" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="340" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="355" relation="include">
+        </childnode>
+        <childnode refid="354" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="356" relation="include">
+        </childnode>
+        <childnode refid="357" relation="include">
+        </childnode>
+      </node>
+      <node id="366">
+        <label>redland/raptor2.h</label>
+      </node>
+      <node id="356">
+        <label>filesystem</label>
+      </node>
+      <node id="357">
+        <label>assert.h</label>
+      </node>
+      <node id="371">
+        <label>omexmeta/Participant.h</label>
+        <link refid="Participant_8h_source"/>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="363" relation="include">
+        </childnode>
+        <childnode refid="368" relation="include">
+        </childnode>
+        <childnode refid="365" relation="include">
         </childnode>
         <childnode refid="372" relation="include">
         </childnode>
-        <childnode refid="396" relation="include">
+        <childnode refid="340" relation="include">
         </childnode>
-        <childnode refid="408" relation="include">
-        </childnode>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-        <childnode refid="411" relation="include">
+        <childnode refid="342" relation="include">
         </childnode>
       </node>
-      <node id="428">
-        <label>omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
-        <childnode refid="422" relation="include">
+      <node id="333">
+        <label>omexmeta/RDF.h</label>
+        <link refid="RDF_8h_source"/>
+        <childnode refid="334" relation="include">
         </childnode>
-        <childnode refid="420" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="423" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-      </node>
-      <node id="394">
-        <label>stdlib.h</label>
-      </node>
-      <node id="408">
-        <label>Editor.h</label>
-        <link refid="Editor_8h_source"/>
-        <childnode refid="409" relation="include">
-        </childnode>
-        <childnode refid="412" relation="include">
-        </childnode>
-        <childnode refid="414" relation="include">
-        </childnode>
-        <childnode refid="415" relation="include">
-        </childnode>
-        <childnode refid="420" relation="include">
-        </childnode>
-        <childnode refid="422" relation="include">
-        </childnode>
-        <childnode refid="425" relation="include">
-        </childnode>
-        <childnode refid="427" relation="include">
-        </childnode>
-        <childnode refid="428" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-        <childnode refid="429" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-      </node>
-      <node id="400">
-        <label>omexmeta/CurlGet.h</label>
-        <link refid="CurlGet_8h_source"/>
-        <childnode refid="382" relation="include">
-        </childnode>
-        <childnode refid="401" relation="include">
-        </childnode>
-        <childnode refid="402" relation="include">
-        </childnode>
-      </node>
-      <node id="397">
-        <label>omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="371" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="382" relation="include">
+        <childnode refid="335" relation="include">
         </childnode>
         <childnode refid="383" relation="include">
         </childnode>
-        <childnode refid="375" relation="include">
+        <childnode refid="358" relation="include">
         </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-      </node>
-      <node id="423">
-        <label>omexmeta/PhysicalProperty.h</label>
-        <link refid="PhysicalProperty_8h_source"/>
-        <childnode refid="414" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="415" relation="include">
-        </childnode>
-        <childnode refid="421" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="377" relation="include">
-        </childnode>
-        <childnode refid="417" relation="include">
-        </childnode>
-      </node>
-      <node id="426">
-        <label>cassert</label>
-      </node>
-      <node id="402">
-        <label>stdexcept</label>
-      </node>
-      <node id="410">
-        <label>libxml/parser.h</label>
-      </node>
-      <node id="387">
-        <label>LibrdfModel.h</label>
-        <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="382" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
+        <childnode refid="344" relation="include">
         </childnode>
         <childnode refid="384" relation="include">
         </childnode>
-        <childnode refid="388" relation="include">
-        </childnode>
-        <childnode refid="389" relation="include">
-        </childnode>
-        <childnode refid="381" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="390" relation="include">
-        </childnode>
-      </node>
-      <node id="382">
-        <label>string</label>
-      </node>
-      <node id="411">
-        <label>OmexMetaXmlType.h</label>
-        <link refid="OmexMetaXmlType_8h_source"/>
-      </node>
-      <node id="377">
-        <label>regex</label>
-      </node>
-      <node id="424">
-        <label>omexmeta/AnnotationType.h</label>
-        <link refid="AnnotationType_8h_source"/>
-      </node>
-      <node id="380">
-        <label>exception</label>
-      </node>
-      <node id="395">
-        <label>LibrdfParser.h</label>
-        <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="385" relation="include">
-        </childnode>
         <childnode refid="378" relation="include">
-        </childnode>
-        <childnode refid="387" relation="include">
-        </childnode>
-      </node>
-      <node id="369">
-        <label>fstream</label>
-      </node>
-      <node id="418">
-        <label>ostream</label>
-      </node>
-      <node id="392">
-        <label>RaptorIOStream.h</label>
-        <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-        <childnode refid="379" relation="include">
-        </childnode>
-      </node>
-      <node id="389">
-        <label>LibrdfQuery.h</label>
-        <link refid="LibrdfQuery_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-      </node>
-      <node id="401">
-        <label>curl/curl.h</label>
-      </node>
-      <node id="385">
-        <label>LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="374" relation="include">
         </childnode>
         <childnode refid="386" relation="include">
         </childnode>
-        <childnode refid="376" relation="include">
+        <childnode refid="350" relation="include">
         </childnode>
-        <childnode refid="383" relation="include">
-        </childnode>
-        <childnode refid="378" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="379" relation="include">
-        </childnode>
-      </node>
-      <node id="373">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="377" relation="include">
-        </childnode>
-      </node>
-      <node id="372">
-        <label>RedlandWrapper.h</label>
-        <link refid="RedlandWrapper_8h_source"/>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="378" relation="include">
-        </childnode>
-        <childnode refid="381" relation="include">
+        <childnode refid="342" relation="include">
         </childnode>
         <childnode refid="387" relation="include">
         </childnode>
-        <childnode refid="385" relation="include">
-        </childnode>
-        <childnode refid="389" relation="include">
-        </childnode>
-        <childnode refid="388" relation="include">
-        </childnode>
-        <childnode refid="391" relation="include">
-        </childnode>
-        <childnode refid="395" relation="include">
-        </childnode>
-        <childnode refid="390" relation="include">
-        </childnode>
-        <childnode refid="392" relation="include">
-        </childnode>
-      </node>
-      <node id="409">
-        <label>omexmeta/OmexMetaXmlAssistant.h</label>
-        <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-        <childnode refid="410" relation="include">
-        </childnode>
-        <childnode refid="407" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="403" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-        <childnode refid="411" relation="include">
-        </childnode>
-      </node>
-      <node id="430">
-        <label>sbml_semantic_extraction/SBMLSemanticExtraction.h</label>
-      </node>
-      <node id="422">
-        <label>omexmeta/PhysicalPhenomenon.h</label>
-        <link refid="PhysicalPhenomenon_8h_source"/>
-        <childnode refid="416" relation="include">
-        </childnode>
-        <childnode refid="423" relation="include">
-        </childnode>
-        <childnode refid="424" relation="include">
-        </childnode>
-        <childnode refid="415" relation="include">
-        </childnode>
-        <childnode refid="421" relation="include">
-        </childnode>
-        <childnode refid="403" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="417" relation="include">
-        </childnode>
-      </node>
-      <node id="379">
-        <label>LibrdfException.h</label>
-        <link refid="LibrdfException_8h_source"/>
-        <childnode refid="380" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-      </node>
-      <node id="399">
-        <label>vector</label>
-      </node>
-      <node id="370">
-        <label>streambuf</label>
-      </node>
-      <node id="378">
-        <label>LibrdfUri.h</label>
-        <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="379" relation="include">
-        </childnode>
-      </node>
-      <node id="388">
-        <label>LibrdfQueryResults.h</label>
-        <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="373" relation="include">
-        </childnode>
-      </node>
-      <node id="393">
-        <label>utility</label>
-      </node>
-      <node id="403">
-        <label>omexmeta/MetaID.h</label>
-        <link refid="MetaID_8h_source"/>
-        <childnode refid="382" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="383" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-      </node>
-      <node id="383">
-        <label>sstream</label>
-      </node>
-      <node id="398">
-        <label>omexmeta/Error.h</label>
-        <link refid="Error_8h_source"/>
-        <childnode refid="380" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-      </node>
-      <node id="414">
-        <label>omexmeta/Resource.h</label>
-        <link refid="Resource_8h_source"/>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="385" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-        <childnode refid="383" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-      </node>
-      <node id="425">
-        <label>omexmeta/PhysicalEntity.h</label>
-        <link refid="PhysicalEntity_8h_source"/>
-        <childnode refid="423" relation="include">
-        </childnode>
-        <childnode refid="414" relation="include">
-        </childnode>
-        <childnode refid="416" relation="include">
-        </childnode>
-        <childnode refid="422" relation="include">
-        </childnode>
-        <childnode refid="403" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="393" relation="include">
-        </childnode>
-        <childnode refid="415" relation="include">
-        </childnode>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="426" relation="include">
-        </childnode>
-      </node>
-      <node id="427">
-        <label>omexmeta/PhysicalProcess.h</label>
-        <link refid="PhysicalProcess_8h_source"/>
-        <childnode refid="422" relation="include">
-        </childnode>
-        <childnode refid="420" relation="include">
-        </childnode>
-        <childnode refid="372" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="423" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-      </node>
-      <node id="375">
-        <label>iostream</label>
-      </node>
-      <node id="386">
-        <label>raptor2.h</label>
-      </node>
-      <node id="371">
-        <label>unordered_map</label>
-      </node>
-      <node id="384">
-        <label>LibrdfStatement.h</label>
-        <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="376" relation="include">
-        </childnode>
-        <childnode refid="375" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="371" relation="include">
-        </childnode>
-        <childnode refid="385" relation="include">
-        </childnode>
-      </node>
-      <node id="407">
-        <label>libxml/tree.h</label>
-      </node>
-      <node id="429">
-        <label>omexmeta/PersonalInformation.h</label>
-        <link refid="PersonalInformation_8h_source"/>
-        <childnode refid="421" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
-        </childnode>
       </node>
       <node id="381">
-        <label>LibrdfStorage.h</label>
-        <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="374" relation="include">
+        <label>omexmeta/PhysicalForce.h</label>
+        <link refid="PhysicalForce_8h_source"/>
+        <childnode refid="345" relation="include">
         </childnode>
-        <childnode refid="382" relation="include">
-        </childnode>
-        <childnode refid="376" relation="include">
+        <childnode refid="334" relation="include">
         </childnode>
         <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="383" relation="include">
-        </childnode>
-        <childnode refid="384" relation="include">
-        </childnode>
-      </node>
-      <node id="412">
-        <label>omexmeta/Predicate.h</label>
-        <link refid="Predicate_8h_source"/>
-        <childnode refid="373" relation="include">
-        </childnode>
-        <childnode refid="396" relation="include">
-        </childnode>
-        <childnode refid="374" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="413" relation="include">
-        </childnode>
-        <childnode refid="383" relation="include">
         </childnode>
         <childnode refid="371" relation="include">
         </childnode>
-        <childnode refid="375" relation="include">
+        <childnode refid="374" relation="include">
         </childnode>
-        <childnode refid="393" relation="include">
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+      </node>
+      <node id="335">
+        <label>omexmeta/Editor.h</label>
+        <link refid="Editor_8h_source"/>
+        <childnode refid="336" relation="include">
+        </childnode>
+        <childnode refid="360" relation="include">
+        </childnode>
+        <childnode refid="363" relation="include">
+        </childnode>
+        <childnode refid="365" relation="include">
+        </childnode>
+        <childnode refid="371" relation="include">
+        </childnode>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="377" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+        <childnode refid="381" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="382" relation="include">
+        </childnode>
+        <childnode refid="383" relation="include">
+        </childnode>
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+        <childnode refid="356" relation="include">
+        </childnode>
+      </node>
+      <node id="352">
+        <label>omexmeta/CurlGet.h</label>
+        <link refid="CurlGet_8h_source"/>
+        <childnode refid="340" relation="include">
+        </childnode>
+        <childnode refid="353" relation="include">
+        </childnode>
+        <childnode refid="354" relation="include">
+        </childnode>
+      </node>
+      <node id="347">
+        <label>omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="350" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="340" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
         </childnode>
       </node>
       <node id="374">
-        <label>librdf.h</label>
-      </node>
-      <node id="413">
-        <label>algorithm</label>
-      </node>
-      <node id="416">
-        <label>omexmeta/Subject.h</label>
-        <link refid="Subject_8h_source"/>
-        <childnode refid="373" relation="include">
+        <label>omexmeta/PhysicalProperty.h</label>
+        <link refid="PhysicalProperty_8h_source"/>
+        <childnode refid="334" relation="include">
         </childnode>
-        <childnode refid="385" relation="include">
+        <childnode refid="363" relation="include">
         </childnode>
-        <childnode refid="398" relation="include">
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="365" relation="include">
+        </childnode>
+        <childnode refid="372" relation="include">
         </childnode>
         <childnode refid="375" relation="include">
         </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="417" relation="include">
+        <childnode refid="342" relation="include">
         </childnode>
       </node>
-      <node id="390">
-        <label>LibrdfStream.h</label>
-        <link refid="LibrdfStream_8h_source"/>
+      <node id="379">
+        <label>cassert</label>
+      </node>
+      <node id="354">
+        <label>stdexcept</label>
+      </node>
+      <node id="337">
+        <label>libxml/parser.h</label>
+      </node>
+      <node id="340">
+        <label>string</label>
+      </node>
+      <node id="346">
+        <label>redland/LibrdfQuery.h</label>
+      </node>
+      <node id="358">
+        <label>omexmeta/OmexMetaXmlType.h</label>
+        <link refid="OmexMetaXmlType_8h_source"/>
+      </node>
+      <node id="375">
+        <label>regex</label>
+      </node>
+      <node id="376">
+        <label>omexmeta/AnnotationType.h</label>
+        <link refid="AnnotationType_8h_source"/>
+      </node>
+      <node id="349">
+        <label>exception</label>
+      </node>
+      <node id="387">
+        <label>fstream</label>
+      </node>
+      <node id="369">
+        <label>ostream</label>
+      </node>
+      <node id="334">
+        <label>redland/RedlandAPI.h</label>
+      </node>
+      <node id="353">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="336">
+        <label>omexmeta/OmexMetaXmlAssistant.h</label>
+        <link refid="OmexMetaXmlAssistant_8h_source"/>
+        <childnode refid="337" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="358" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="359" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+      </node>
+      <node id="378">
+        <label>omexmeta_export.h</label>
+      </node>
+      <node id="367">
+        <label>redland/LibrdfStatement.h</label>
+      </node>
+      <node id="373">
+        <label>omexmeta/PhysicalPhenomenon.h</label>
+        <link refid="PhysicalPhenomenon_8h_source"/>
+        <childnode refid="368" relation="include">
+        </childnode>
         <childnode refid="374" relation="include">
         </childnode>
         <childnode refid="376" relation="include">
         </childnode>
-        <childnode refid="373" relation="include">
+        <childnode refid="365" relation="include">
+        </childnode>
+        <childnode refid="372" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="347" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
         </childnode>
       </node>
-      <node id="367">
-        <label>src/omexmeta/OmexMeta.h</label>
-        <link refid="OmexMeta_8h"/>
+      <node id="361">
+        <label>redland/World.h</label>
+      </node>
+      <node id="351">
+        <label>vector</label>
+      </node>
+      <node id="386">
+        <label>streambuf</label>
+      </node>
+      <node id="345">
+        <label>redland/librdf.h</label>
+      </node>
+      <node id="342">
+        <label>utility</label>
+      </node>
+      <node id="339">
+        <label>omexmeta/MetaID.h</label>
+        <link refid="MetaID_8h_source"/>
+        <childnode refid="340" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+      </node>
+      <node id="341">
+        <label>sstream</label>
+      </node>
+      <node id="348">
+        <label>omexmeta/Error.h</label>
+        <link refid="Error_8h_source"/>
+        <childnode refid="349" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+      </node>
+      <node id="363">
+        <label>omexmeta/Resource.h</label>
+        <link refid="Resource_8h_source"/>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="364" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+      </node>
+      <node id="377">
+        <label>omexmeta/PhysicalEntity.h</label>
+        <link refid="PhysicalEntity_8h_source"/>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="363" relation="include">
+        </childnode>
         <childnode refid="368" relation="include">
         </childnode>
-        <childnode refid="408" relation="include">
+        <childnode refid="373" relation="include">
         </childnode>
-        <childnode refid="415" relation="include">
+        <childnode refid="339" relation="include">
         </childnode>
-        <childnode refid="421" relation="include">
+        <childnode refid="334" relation="include">
         </childnode>
-        <childnode refid="428" relation="include">
+        <childnode refid="365" relation="include">
         </childnode>
-        <childnode refid="425" relation="include">
+        <childnode refid="347" relation="include">
         </childnode>
-        <childnode refid="427" relation="include">
+        <childnode refid="344" relation="include">
         </childnode>
-        <childnode refid="429" relation="include">
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="359" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
         </childnode>
       </node>
-      <node id="419">
+      <node id="380">
+        <label>omexmeta/PhysicalProcess.h</label>
+        <link refid="PhysicalProcess_8h_source"/>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="371" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+      </node>
+      <node id="384">
+        <label>omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="335" relation="include">
+        </childnode>
+        <childnode refid="333" relation="include">
+        </childnode>
+        <childnode refid="385" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+      </node>
+      <node id="385">
+        <label>omexmeta/ElementExtractor.h</label>
+        <link refid="ElementExtractor_8h_source"/>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="337" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="362" relation="include">
+        </childnode>
+      </node>
+      <node id="343">
+        <label>iostream</label>
+      </node>
+      <node id="350">
+        <label>unordered_map</label>
+      </node>
+      <node id="338">
+        <label>libxml/tree.h</label>
+      </node>
+      <node id="382">
+        <label>omexmeta/PersonalInformation.h</label>
+        <link refid="PersonalInformation_8h_source"/>
+        <childnode refid="372" relation="include">
+        </childnode>
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="359" relation="include">
+        </childnode>
+      </node>
+      <node id="360">
+        <label>omexmeta/Predicate.h</label>
+        <link refid="Predicate_8h_source"/>
+        <childnode refid="361" relation="include">
+        </childnode>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="362" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="350" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+      </node>
+      <node id="362">
+        <label>algorithm</label>
+      </node>
+      <node id="368">
+        <label>omexmeta/Subject.h</label>
+        <link refid="Subject_8h_source"/>
+        <childnode refid="361" relation="include">
+        </childnode>
+        <childnode refid="364" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+      </node>
+      <node id="332">
+        <label>src/omexmeta/OmexMeta.h</label>
+        <link refid="OmexMeta_8h"/>
+        <childnode refid="333" relation="include">
+        </childnode>
+        <childnode refid="335" relation="include">
+        </childnode>
+        <childnode refid="365" relation="include">
+        </childnode>
+        <childnode refid="372" relation="include">
+        </childnode>
+        <childnode refid="381" relation="include">
+        </childnode>
+        <childnode refid="377" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+        <childnode refid="382" relation="include">
+        </childnode>
+      </node>
+      <node id="370">
         <label>cstring</label>
       </node>
-      <node id="376">
+      <node id="359">
         <label>memory</label>
       </node>
-      <node id="431">
-        <label>MarkupIdentifier.h</label>
+      <node id="364">
+        <label>redland/LibrdfNode.h</label>
+      </node>
+      <node id="383">
+        <label>omexmeta/MarkupIdentifier.h</label>
         <link refid="MarkupIdentifier_8h_source"/>
-        <childnode refid="375" relation="include">
+        <childnode refid="338" relation="include">
         </childnode>
-        <childnode refid="399" relation="include">
+        <childnode refid="337" relation="include">
         </childnode>
-        <childnode refid="413" relation="include">
+        <childnode refid="348" relation="include">
         </childnode>
-        <childnode refid="407" relation="include">
+        <childnode refid="344" relation="include">
         </childnode>
-        <childnode refid="410" relation="include">
+        <childnode refid="342" relation="include">
         </childnode>
-        <childnode refid="398" relation="include">
+        <childnode refid="343" relation="include">
         </childnode>
-        <childnode refid="396" relation="include">
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="362" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -758,16 +614,21 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_OMEXMETA_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_OMEXMETA_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/RDF.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Editor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triples.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalForce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalEntity.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalProcess.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PersonalInformation.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_OMEXMETA_H</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>a<sp/>public<sp/>header<sp/>that<sp/>includes<sp/>the</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>other<sp/>headers<sp/>that<sp/>are<sp/>needed<sp/>to<sp/>use<sp/>libOmexMeta.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/RDF.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Editor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triples.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalForce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalEntity.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalProcess.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PersonalInformation.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_OMEXMETA_H</highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/OmexMeta.h"/>
   </compounddef>

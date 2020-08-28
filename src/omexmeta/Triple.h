@@ -5,21 +5,23 @@
 #ifndef LIBOMEXMETA_Triple22_H
 #define LIBOMEXMETA_Triple22_H
 
-#include "LibrdfNode.h"
-#include "LibrdfStatement.h"
+#include "redland/librdf.h"
+#include "redland/raptor2.h"
+
+#include "redland/LibrdfNode.h"
+#include "redland/LibrdfStatement.h"
+
 #include "omexmeta/Predicate.h"
 #include "omexmeta/Subject.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Triple.h"
-//#include "omexmeta/Triple2Writer.h"
-#include "librdf.h"
-#include "raptor2.h"
 
 #include <ostream>
 #include <utility>
 #include <algorithm>
 #include <cstring>
 #include <assert.h>
+#include <utility>
 
 
 using namespace redland;

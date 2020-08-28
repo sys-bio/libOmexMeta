@@ -255,7 +255,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
 
             rdf = RDF()
 
-            with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+            with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
                 with editor.new_singular_annotation() as singular_annotation:
                     singular_annotation.set_about('#OmexMetaId0002')
 
@@ -276,7 +276,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
             RDF *rdf_ptr = RDF_new();
 
             // create editor object
-            Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, OMEXMETA_TYPE_SBML, true);
+            Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, true);
 
             // create out annotation
             SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
@@ -297,7 +297,7 @@ because the metaid `#OmexMetaId0002` was not found in your model.
 
             rdf = RDF()
 
-            with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+            with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
                 with editor.new_singular_annotation() as singular_annotation:
                     singular_annotation.set_about('#OmexMetaId0002')
 
@@ -377,7 +377,7 @@ terms for the prefix you are using.
 
             rdf = RDF()
 
-            with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+            with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
 
                 # build an annotation with bqbiol predicate
                 with editor.new_singular_annotation() as bqbiol_singular_annotation:

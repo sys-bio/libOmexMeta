@@ -5,7 +5,7 @@
 #ifndef LIBOMEXMETA_LIBRDFMODEL_H
 #define LIBOMEXMETA_LIBRDFMODEL_H
 
-#include <librdf.h>
+#include "librdf.h"
 #include <memory>
 #include <string>
 #include <iostream>

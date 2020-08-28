@@ -58,7 +58,7 @@
 #endif
 
 /* Rasqal includes */
-#include <rasqal.h>
+#include "rasqal.h"
 
 #ifdef RASQAL_INTERNAL
 #include <rasqal_internal.h>

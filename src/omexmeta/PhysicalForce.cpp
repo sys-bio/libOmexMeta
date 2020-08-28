@@ -4,10 +4,6 @@
 
 #include "omexmeta/PhysicalForce.h"
 
-#include <utility>
-
-#include <utility>
-
 
 namespace omexmeta {
 

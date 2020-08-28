@@ -5,15 +5,15 @@
 #ifndef LIBOMEXMETA_ELEMENTEXTRACTOR_H
 #define LIBOMEXMETA_ELEMENTEXTRACTOR_H
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include "omexmeta/Error.h"
+#include "omexmeta/OmexMetaUtils.h"
 
 #include "libxml/tree.h"
 #include "libxml/parser.h"
 
-#include "omexmeta/Error.h"
-#include "omexmeta/OmexMetaUtils.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 namespace omexmeta {
     /*

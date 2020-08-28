@@ -2,7 +2,7 @@
 // Created by Ciaran on 11/08/2020.
 //
 
-#include "ElementExtractor.h"
+#include "omexmeta/ElementExtractor.h"
 
 namespace omexmeta {
 

@@ -33,18 +33,19 @@ if (BUILD_DOCS_EXAMPLES)
     # sphinx's job to pickup both code and output and include them in
     # the documentation.
 
+    add_executable(AddFromFileC source/reading_rdf/add_from_file_c.cpp)
+    add_executable(AddFromFileCpp source/reading_rdf/add_from_file_cpp.cpp)
+    add_executable(AddFromStringC source/reading_rdf/add_from_string_c.cpp)
+    add_executable(AddFromStringCpp source/reading_rdf/add_from_string_cpp.cpp)
+    add_executable(AddFromUriC source/reading_rdf/add_from_uri_c.cpp)
+    add_executable(AddFromUriCpp source/reading_rdf/add_from_uri_cpp.cpp)
+
     add_executable(FromStringC source/reading_rdf/from_string_c.cpp)
     add_executable(FromStringCpp source/reading_rdf/from_string_cpp.cpp)
     add_executable(FromUriC source/reading_rdf/from_uri_c.cpp)
     add_executable(FromUriCpp source/reading_rdf/from_uri_cpp.cpp)
     add_executable(FromFileC source/reading_rdf/from_file_c.cpp)
     add_executable(FromFileCpp source/reading_rdf/from_file_cpp.cpp)
-    add_executable(AddFromStringC source/reading_rdf/add_from_string_c.cpp)
-    add_executable(AddFromStringCpp source/reading_rdf/add_from_string_cpp.cpp)
-    add_executable(AddFromFileC source/reading_rdf/add_from_uri_c.cpp)
-    add_executable(AddFromFileCpp source/reading_rdf/add_from_file_cpp.cpp)
-    add_executable(AddFromUriC source/reading_rdf/add_from_uri_cpp.cpp)
-    add_executable(AddFromUriCpp source/reading_rdf/add_from_uri_cpp.cpp)
 
     add_executable(CreateSingleAnnotationC source/editing_rdf/create_single_annotation_c.cpp)
     add_executable(CreateSingleAnnotationCpp source/editing_rdf/create_single_annotation_cpp.cpp)
@@ -110,33 +111,31 @@ if (BUILD_DOCS_EXAMPLES)
             )
 
     set_target_properties(${EXAMPLE_EXECUTABLES_TARGETS} PROPERTIES
-            INCLUDE_DIRECTORIES "${INCLUDE_DIRECTORIES}"
-            LINK_LIBRARIES "$<TARGET_FILE:OmexMeta-static>;$<TARGET_FILE:redland-combined-static>;${LINK_LIBRARIES};pthread"
+            INCLUDE_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/include;${CURL_INCLUDE_DIR};${LIBXML2_INCLUDE_DIR}"
+            LINK_LIBRARIES "OmexMeta-static;OmexMetaCAPI;redland-combined-static;${LINK_LIBRARIES};pthread"
             LINKER_LANGUAGE "CXX"
-            CXX_STANDARD 17
+            CXX_STANDARD "17"
             )
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
             )
 
-    add_dependencies(AllDocExamples OmexMeta OmexMeta-static)
+    add_dependencies(AllDocExamples OmexMeta OmexMeta-static OmexMetaCAPI)
 
     # We now create a target that runs the Python script which runs the
     # executables.
     set(DOC_EXAMPLE_RUNNER "${CMAKE_CURRENT_SOURCE_DIR}/build_doc_examples.py")
     if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
-        message(FATAL_ERROR "No Python script found where \"build_doc_examples.pu\" should be")
+        message(FATAL_ERROR "No Python script found where \"build_doc_examples.pY\" should be")
     endif ()
 
-    message(STATUS "PYTHON_EXECUTABLE ${PYTHON_EXECUTABLE}")
+
     # later we'll set the build docs target to depend on this
     add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE}
+            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${CMAKE_CURRENT_BINARY_DIR}
             DEPENDS AllDocExamples
             )
-
-
 endif ()
 
 
@@ -177,19 +176,6 @@ add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 #   Sphinx
 #
 
-#Look for an executable called sphinx-docs-build
-#find_program(SPHINX_EXECUTABLE
-#        NAMES sphinx-build
-#        PATHS
-#        /home/ciaran/miniconda3/bin
-#        /home/ciaran/miniconda3/envs/py37/bin/
-#        D:/miniconda3/bin
-#        C:/miniconda3/bin
-#        /mnt/d/miniconda3/bin
-#        /mnt/c/miniconda3/bin
-#        /root/miniconda3/bin
-#        DOC "Path to sphinx-build executable bin directory"
-#        )
 set(SPHINX_EXECUTABLE "/home/ciaran/miniconda3/bin/sphinx-build" CACHE FILEPATH
         "absolute path to the sphinx-build executable. If you do not have sphinx-build
 you will need to install it. In your conda environment do: $conda activate <env>;

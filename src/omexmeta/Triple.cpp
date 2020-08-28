@@ -2,10 +2,7 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include "Triple.h"
-
-#include <utility>
-
+#include "omexmeta/Triple.h"
 
 namespace omexmeta {
 

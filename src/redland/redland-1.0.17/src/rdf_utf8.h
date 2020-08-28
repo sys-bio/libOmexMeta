@@ -31,7 +31,7 @@
 extern "C" {
 #endif
 
-#include <raptor2.h>
+#include "raptor2.h"
 
 /**
  * librdf_unichar:

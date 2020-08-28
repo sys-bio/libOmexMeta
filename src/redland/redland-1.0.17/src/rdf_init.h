@@ -38,7 +38,7 @@ typedef void (*librdf_rasqal_init_handler)(void *user_data, rasqal_world *rasqal
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
 
-#include <rasqal.h>
+#include "rasqal.h"
 
 #else
 #include <Redland/rasqal.h>

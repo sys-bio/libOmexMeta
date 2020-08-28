@@ -6,7 +6,7 @@
 #define LIBOMEXMETA_LIBRDFSERIALIZER_H
 
 
-#include <librdf.h>
+#include "librdf.h"
 #include <memory>
 
 #include "World.h"

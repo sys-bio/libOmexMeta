@@ -41,10 +41,10 @@
 
 #endif
 
-#include <raptor2.h>
+#include "raptor2.h"
 
 /* Rasqal includes */
-#include <rasqal.h>
+#include "rasqal.h"
 #include <rasqal_internal.h>
 
 #include "ssort.h"

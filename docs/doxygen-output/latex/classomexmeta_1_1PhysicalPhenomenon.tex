@@ -15,6 +15,12 @@ bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1PhysicalPhenomeno
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a2c726263714e31c7c19d6e73c2c593f8}\label{classomexmeta_1_1PhysicalPhenomenon_a2c726263714e31c7c19d6e73c2c593f8}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon} \&rhs) const
 \item 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a2d59ebbc920a40348d102af31ed6661a}\label{classomexmeta_1_1PhysicalPhenomenon_a2d59ebbc920a40348d102af31ed6661a}} 
+const std\+::string \& {\bfseries get\+Local\+Uri} () const
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a84cae9aa96ca00df45b0f81dd8d3ffd4}\label{classomexmeta_1_1PhysicalPhenomenon_a84cae9aa96ca00df45b0f81dd8d3ffd4}} 
+void {\bfseries set\+Local\+Uri} (const std\+::string \&local\+Uri)
+\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_ad823dad75504adb78975c810e5f1ff94}\label{classomexmeta_1_1PhysicalPhenomenon_ad823dad75504adb78975c810e5f1ff94}} 
 {\bfseries Physical\+Phenomenon} (const \hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon} \&phenomenon)=delete
 \item 
@@ -30,17 +36,17 @@ bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1PhysicalPhenomeno
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_aa140516da97b03960175f9bc04ecf865}\label{classomexmeta_1_1PhysicalPhenomenon_aa140516da97b03960175f9bc04ecf865}} 
 {\bfseries Physical\+Phenomenon} (librdf\+\_\+model $\ast$model)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_afc6f1152ae34116dd402a6d8d36fb0b4}\label{classomexmeta_1_1PhysicalPhenomenon_afc6f1152ae34116dd402a6d8d36fb0b4}} 
-{\bfseries Physical\+Phenomenon} (librdf\+\_\+model $\ast$model, std\+::string local\+\_\+uri)
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a5c831ca76c36121b0fbc7b122b5539ac}\label{classomexmeta_1_1PhysicalPhenomenon_a5c831ca76c36121b0fbc7b122b5539ac}} 
+{\bfseries Physical\+Phenomenon} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_ad6499f3ca9878f5236afd41ed6839229}\label{classomexmeta_1_1PhysicalPhenomenon_ad6499f3ca9878f5236afd41ed6839229}} 
-{\bfseries Physical\+Phenomenon} (librdf\+\_\+model $\ast$model, std\+::string local\+\_\+uri, \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} property\+Resource, Annotation\+Type type)
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a93bf263f7fdb65bd3e8de97983a7186b}\label{classomexmeta_1_1PhysicalPhenomenon_a93bf263f7fdb65bd3e8de97983a7186b}} 
+{\bfseries Physical\+Phenomenon} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri, \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} property\+Resource, Annotation\+Type type)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a2d59ebbc920a40348d102af31ed6661a}\label{classomexmeta_1_1PhysicalPhenomenon_a2d59ebbc920a40348d102af31ed6661a}} 
-const std\+::string \& {\bfseries get\+Local\+Uri} () const
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a5528b12e5dbc702c0c270328662e7031}\label{classomexmeta_1_1PhysicalPhenomenon_a5528b12e5dbc702c0c270328662e7031}} 
+const std\+::string \& {\bfseries get\+Model\+Uri} () const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a84cae9aa96ca00df45b0f81dd8d3ffd4}\label{classomexmeta_1_1PhysicalPhenomenon_a84cae9aa96ca00df45b0f81dd8d3ffd4}} 
-void {\bfseries set\+Local\+Uri} (const std\+::string \&local\+Uri)
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_aa1fd9929fb2e07fa20081b1a4c00c9d2}\label{classomexmeta_1_1PhysicalPhenomenon_aa1fd9929fb2e07fa20081b1a4c00c9d2}} 
+void {\bfseries set\+Model\+Uri} (const std\+::string \&model\+Uri)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a8be912d1256d6b913c4965f96f1b730b}\label{classomexmeta_1_1PhysicalPhenomenon_a8be912d1256d6b913c4965f96f1b730b}} 
 const std\+::string \& {\bfseries get\+About} () const
@@ -66,7 +72,7 @@ void {\bfseries set\+Physical\+Property} (const \hyperlink{classomexmeta_1_1Phys
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a4c27a0b0e430df95b3cffaf268973eec}\label{classomexmeta_1_1PhysicalPhenomenon_a4c27a0b0e430df95b3cffaf268973eec}} 
 void {\bfseries set\+Type} (Annotation\+Type type)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a8d89c1a5b1d4cdf16ab9f423562322db}\label{classomexmeta_1_1PhysicalPhenomenon_a8d89c1a5b1d4cdf16ab9f423562322db}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_aca53e0f8ce8139a919f48372b254a5d0}\label{classomexmeta_1_1PhysicalPhenomenon_aca53e0f8ce8139a919f48372b254a5d0}} 
 const std\+::string \& {\bfseries get\+Physical\+Property\+Id} () const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a715b76003eba8e5808fe44a768199fab}\label{classomexmeta_1_1PhysicalPhenomenon_a715b76003eba8e5808fe44a768199fab}} 
@@ -75,8 +81,11 @@ void {\bfseries set\+Physical\+Property\+Id} (const std\+::string \&physical\+Pr
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_aa77b6063825e8bc3b83516e923c5ad37}\label{classomexmeta_1_1PhysicalPhenomenon_aa77b6063825e8bc3b83516e923c5ad37}} 
-std\+::string {\bfseries generate\+Meta\+Id} (const std\+::string \&id\+\_\+base) const
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a54d90cf6db78e98bd091f478dc5bd74a}\label{classomexmeta_1_1PhysicalPhenomenon_a54d90cf6db78e98bd091f478dc5bd74a}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries get\+New\+Metaid\+Exclusion\+List} ()
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_afe71a5c6399b992922eb6eeda6de49bd}\label{classomexmeta_1_1PhysicalPhenomenon_afe71a5c6399b992922eb6eeda6de49bd}} 
+std\+::string {\bfseries generate\+Meta\+Id} (const std\+::string \&id\+\_\+base)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -90,11 +99,14 @@ librdf\+\_\+model $\ast$ {\bfseries model\+\_\+} = nullptr
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a74e88adb2099099e411b55cb9aa460a0}\label{classomexmeta_1_1PhysicalPhenomenon_a74e88adb2099099e411b55cb9aa460a0}} 
 Annotation\+Type {\bfseries type\+\_\+} = Annotation\+Type\+::\+U\+N\+K\+N\+O\+WN
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a41e8364977eea6d963a82f0f8088cb9a}\label{classomexmeta_1_1PhysicalPhenomenon_a41e8364977eea6d963a82f0f8088cb9a}} 
-std\+::string {\bfseries physical\+\_\+property\+\_\+id\+\_\+}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a696cbc4f6490dd55d6bd41c7711cd0ec}\label{classomexmeta_1_1PhysicalPhenomenon_a696cbc4f6490dd55d6bd41c7711cd0ec}} 
+std\+::string {\bfseries model\+\_\+uri\+\_\+}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a114864dfae1f79ce4e3f430b7711516c}\label{classomexmeta_1_1PhysicalPhenomenon_a114864dfae1f79ce4e3f430b7711516c}} 
 std\+::string {\bfseries local\+\_\+uri\+\_\+}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a710756d611350395539dfa9f7fbf764e}\label{classomexmeta_1_1PhysicalPhenomenon_a710756d611350395539dfa9f7fbf764e}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries new\+\_\+metaid\+\_\+exclusion\+\_\+list\+\_\+}
 \end{DoxyCompactItemize}
 
 

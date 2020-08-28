@@ -2,11 +2,7 @@
 // Created by Ciaran on 5/31/2020.
 //
 
-#include "RDF.h"
-
-#include <utility>
-#include <fstream>
-
+#include "omexmeta/RDF.h"
 
 namespace omexmeta {
 

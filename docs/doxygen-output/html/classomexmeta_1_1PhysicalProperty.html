@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.5</span>
+   &#160;<span id="projectnumber">1.1.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -80,21 +80,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a1a85ba2c50f5b79e49e8a01b96756f0a"><td class="memItemLeft" align="right" valign="top"><a id="a1a85ba2c50f5b79e49e8a01b96756f0a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;rhs) const</td></tr>
 <tr class="separator:a1a85ba2c50f5b79e49e8a01b96756f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81e8fc030e12fc1a9491a7e251312038"><td class="memItemLeft" align="right" valign="top"><a id="a81e8fc030e12fc1a9491a7e251312038"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProperty</b> (std::string subject_str, std::string resource_str, std::string local_uri)</td></tr>
-<tr class="separator:a81e8fc030e12fc1a9491a7e251312038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memItemLeft" align="right" valign="top"><a id="a76d1ffd15ea6aad76c322bdd8991a111"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProperty</b> (std::string subject_str, std::string resource_str, std::string model_uri)</td></tr>
+<tr class="separator:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf399e14fd579efc6384ebc677341ead"><td class="memItemLeft" align="right" valign="top"><a id="acf399e14fd579efc6384ebc677341ead"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getSubject</b> () const</td></tr>
 <tr class="separator:acf399e14fd579efc6384ebc677341ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d60b90270a6ba73646707b8c475fbb1"><td class="memItemLeft" align="right" valign="top"><a id="a2d60b90270a6ba73646707b8c475fbb1"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getResource</b> () const</td></tr>
 <tr class="separator:a2d60b90270a6ba73646707b8c475fbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab498df5bb21e010614ae43c0c8e70bb7"><td class="memItemLeft" align="right" valign="top"><a id="ab498df5bb21e010614ae43c0c8e70bb7"></a>
+<tr class="memitem:a0f27071bfef5a9de4eb89fb21461ba76"><td class="memItemLeft" align="right" valign="top"><a id="a0f27071bfef5a9de4eb89fb21461ba76"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
-<tr class="separator:ab498df5bb21e010614ae43c0c8e70bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4684dd78ff1b0ebf71f2f7ca94a78d9"><td class="memItemLeft" align="right" valign="top"><a id="af4684dd78ff1b0ebf71f2f7ca94a78d9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;localUri)</td></tr>
-<tr class="separator:af4684dd78ff1b0ebf71f2f7ca94a78d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a0f27071bfef5a9de4eb89fb21461ba76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd367b237fc93654c59c3b0c203b4640"><td class="memItemLeft" align="right" valign="top"><a id="afd367b237fc93654c59c3b0c203b4640"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;model_uri)</td></tr>
+<tr class="separator:afd367b237fc93654c59c3b0c203b4640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b9ad0a7fe22a3476d7e2f08834bbd74"><td class="memItemLeft" align="right" valign="top"><a id="a4b9ad0a7fe22a3476d7e2f08834bbd74"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getSubjectStr</b> () const</td></tr>
 <tr class="separator:a4b9ad0a7fe22a3476d7e2f08834bbd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,9 +107,9 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:a420dab52a424d1be5a8610e19407980c"><td class="memItemLeft" align="right" valign="top"><a id="a420dab52a424d1be5a8610e19407980c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setResource</b> (const std::string &amp;resource)</td></tr>
 <tr class="separator:a420dab52a424d1be5a8610e19407980c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0ef232bbf498c888af52b27f0edced4"><td class="memItemLeft" align="right" valign="top"><a id="aa0ef232bbf498c888af52b27f0edced4"></a>
-<a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toTriples</b> (std::string property_metaid) const</td></tr>
-<tr class="separator:aa0ef232bbf498c888af52b27f0edced4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03056210a70ea8446b44de250646eeb5"><td class="memItemLeft" align="right" valign="top"><a id="a03056210a70ea8446b44de250646eeb5"></a>
+<a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toTriples</b> (const std::string &amp;property_metaid) const</td></tr>
+<tr class="separator:a03056210a70ea8446b44de250646eeb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="PhysicalProperty_8h_source.html">PhysicalProperty.h</a></li>

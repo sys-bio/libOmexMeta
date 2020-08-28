@@ -33,9 +33,6 @@ const std\+::string \& {\bfseries get\+Local\+Uri} () const
 \mbox{\Hypertarget{classomexmeta_1_1RDF_aecb90e51830082f78ff055c045f4b439}\label{classomexmeta_1_1RDF_aecb90e51830082f78ff055c045f4b439}} 
 {\bfseries R\+DF} (const std\+::string \&storage\+\_\+type=\char`\"{}memory\char`\"{}, const std\+::string \&storage\+\_\+name=\char`\"{}Semsim\+Store\char`\"{}, const char $\ast$storage\+\_\+options=nullptr, const char $\ast$model\+\_\+options=nullptr)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_add8f3d957f24a26785f29b85d50f4399}\label{classomexmeta_1_1RDF_add8f3d957f24a26785f29b85d50f4399}} 
-void {\bfseries free\+R\+DF} ()
-\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ad95c4a8588988efe399c7f984e304990}\label{classomexmeta_1_1RDF_ad95c4a8588988efe399c7f984e304990}} 
 {\bfseries R\+DF} (const \hyperlink{classomexmeta_1_1RDF}{R\+DF} \&rdf)=delete
 \item 
@@ -66,17 +63,17 @@ void {\bfseries add\+From\+File} (const std\+::string \&filename, const std\+::s
 \mbox{\Hypertarget{classomexmeta_1_1RDF_af5f598560ab2a4ebe661f9bdb8665755}\label{classomexmeta_1_1RDF_af5f598560ab2a4ebe661f9bdb8665755}} 
 std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries propagate\+Namespaces\+From\+Parser} (const std\+::vector$<$ std\+::string $>$ \&seen\+\_\+namespaces)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_aca5e83398eb1739c02c7ab4852e09784}\label{classomexmeta_1_1RDF_aca5e83398eb1739c02c7ab4852e09784}} 
-std\+::string {\bfseries to\+String} (const std\+::string \&format=\char`\"{}rdfxml-\/abbrev\char`\"{}, std\+::string base\+\_\+uri=std\+::string(), const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a51b82471e4af4cc4a222b0fd6b6d6f1b}\label{classomexmeta_1_1RDF_a51b82471e4af4cc4a222b0fd6b6d6f1b}} 
+std\+::string {\bfseries to\+String} (const std\+::string \&format=\char`\"{}turtle\char`\"{}, std\+::string base\+\_\+uri=std\+::string(), const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_aa2348d3e28641a2b1079fddcacfd50dd}\label{classomexmeta_1_1RDF_aa2348d3e28641a2b1079fddcacfd50dd}} 
-void {\bfseries to\+File} (const std\+::string \&format, const std\+::string \&filename, const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a42a7be2a6261f03dc275b24a152dcaae}\label{classomexmeta_1_1RDF_a42a7be2a6261f03dc275b24a152dcaae}} 
+void {\bfseries to\+File} (const std\+::string \&filename, const std\+::string \&format=\char`\"{}turtle\char`\"{}, const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a1766b940e69990ce28b60309615c12ce}\label{classomexmeta_1_1RDF_a1766b940e69990ce28b60309615c12ce}} 
-\hyperlink{classomexmeta_1_1Editor}{Editor} {\bfseries to\+Editor} (const std\+::string \&xml, Omex\+Meta\+Xml\+Type type, bool generate\+\_\+new\+\_\+metaids=false)
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a433245557d941f8d7ec05272e1821b9f}\label{classomexmeta_1_1RDF_a433245557d941f8d7ec05272e1821b9f}} 
+\hyperlink{classomexmeta_1_1Editor}{Editor} {\bfseries to\+Editor} (const std\+::string \&xml, bool generate\+\_\+new\+\_\+metaids=false)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_aabdb57f01b0e83a4ac93e9548387cda9}\label{classomexmeta_1_1RDF_aabdb57f01b0e83a4ac93e9548387cda9}} 
-\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$ {\bfseries to\+Editor\+Ptr} (const std\+::string \&xml, Omex\+Meta\+Xml\+Type type, bool generate\+\_\+new\+\_\+metaids=false)
+\mbox{\Hypertarget{classomexmeta_1_1RDF_ae65d6531b0c9fee1258ea2d1c7fd7c5f}\label{classomexmeta_1_1RDF_ae65d6531b0c9fee1258ea2d1c7fd7c5f}} 
+\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$ {\bfseries to\+Editor\+Ptr} (const std\+::string \&xml, bool generate\+\_\+new\+\_\+metaids=false)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a8007b0ce5729c7dd3f8cab86d42216f5}\label{classomexmeta_1_1RDF_a8007b0ce5729c7dd3f8cab86d42216f5}} 
 librdf\+\_\+model $\ast$ {\bfseries get\+Model} () const
@@ -129,8 +126,8 @@ Namespace\+Map {\bfseries namespaces\+\_\+}
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}\label{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}} 
 std\+::vector$<$ std\+::string $>$ {\bfseries seen\+\_\+namespaces\+\_\+}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_aae58e1da72231c07cf0742f3321cebcc}\label{classomexmeta_1_1RDF_aae58e1da72231c07cf0742f3321cebcc}} 
-const std\+::string {\bfseries OMEXlib\+\_\+} = \char`\"{}http\+://my\+Omex\+Library.\+org/\char`\"{}
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}\label{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}} 
+const std\+::string {\bfseries O\+M\+E\+Xlib\+\_\+} = \char`\"{}http\+://O\+M\+E\+Xlibrary.\+org/\char`\"{}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a5b1184955f2401c30116c7473be1ca1d}\label{classomexmeta_1_1RDF_a5b1184955f2401c30116c7473be1ca1d}} 
 Namespace\+Map {\bfseries default\+\_\+namespaces\+\_\+} = Predicate\+::namespace\+Map()

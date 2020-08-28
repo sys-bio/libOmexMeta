@@ -4,111 +4,48 @@
     <compoundname>Subject.cpp</compoundname>
     <includes refid="Subject_8h" local="yes">omexmeta/Subject.h</includes>
     <incdepgraph>
-      <node id="1887">
-        <label>omexmeta/HERE.h</label>
-        <link refid="HERE_8h_source"/>
-      </node>
-      <node id="1878">
-        <label>regex</label>
-      </node>
-      <node id="1884">
+      <node id="1494">
         <label>exception</label>
       </node>
-      <node id="1872">
+      <node id="1489">
         <label>src/omexmeta/Subject.cpp</label>
         <link refid="Subject_8cpp"/>
-        <childnode refid="1873" relation="include">
+        <childnode refid="1490" relation="include">
         </childnode>
       </node>
-      <node id="1879">
-        <label>LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="1875" relation="include">
-        </childnode>
-        <childnode refid="1880" relation="include">
-        </childnode>
-        <childnode refid="1877" relation="include">
-        </childnode>
-        <childnode refid="1881" relation="include">
-        </childnode>
-        <childnode refid="1882" relation="include">
-        </childnode>
-        <childnode refid="1874" relation="include">
-        </childnode>
-        <childnode refid="1883" relation="include">
-        </childnode>
+      <node id="1491">
+        <label>redland/World.h</label>
       </node>
-      <node id="1874">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="1875" relation="include">
-        </childnode>
-        <childnode refid="1876" relation="include">
-        </childnode>
-        <childnode refid="1877" relation="include">
-        </childnode>
-        <childnode refid="1878" relation="include">
-        </childnode>
-      </node>
-      <node id="1883">
-        <label>LibrdfException.h</label>
-        <link refid="LibrdfException_8h_source"/>
-        <childnode refid="1884" relation="include">
-        </childnode>
-        <childnode refid="1876" relation="include">
-        </childnode>
-      </node>
-      <node id="1886">
+      <node id="1496">
         <label>vector</label>
       </node>
-      <node id="1882">
-        <label>LibrdfUri.h</label>
-        <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="1877" relation="include">
-        </childnode>
-        <childnode refid="1875" relation="include">
-        </childnode>
-        <childnode refid="1883" relation="include">
-        </childnode>
-      </node>
-      <node id="1881">
-        <label>sstream</label>
-      </node>
-      <node id="1885">
+      <node id="1493">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="1884" relation="include">
+        <childnode refid="1494" relation="include">
         </childnode>
-        <childnode refid="1876" relation="include">
+        <childnode refid="1495" relation="include">
         </childnode>
       </node>
-      <node id="1876">
+      <node id="1495">
         <label>iostream</label>
       </node>
-      <node id="1880">
-        <label>raptor2.h</label>
-      </node>
-      <node id="1875">
-        <label>librdf.h</label>
-      </node>
-      <node id="1873">
+      <node id="1490">
         <label>omexmeta/Subject.h</label>
         <link refid="Subject_8h_source"/>
-        <childnode refid="1874" relation="include">
+        <childnode refid="1491" relation="include">
         </childnode>
-        <childnode refid="1879" relation="include">
+        <childnode refid="1492" relation="include">
         </childnode>
-        <childnode refid="1885" relation="include">
+        <childnode refid="1493" relation="include">
         </childnode>
-        <childnode refid="1876" relation="include">
+        <childnode refid="1495" relation="include">
         </childnode>
-        <childnode refid="1886" relation="include">
-        </childnode>
-        <childnode refid="1887" relation="include">
+        <childnode refid="1496" relation="include">
         </childnode>
       </node>
-      <node id="1877">
-        <label>memory</label>
+      <node id="1492">
+        <label>redland/LibrdfNode.h</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>

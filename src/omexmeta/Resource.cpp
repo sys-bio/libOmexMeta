@@ -2,8 +2,7 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include "Resource.h"
-#include "Error.h"
+#include "omexmeta/Resource.h"
 
 namespace omexmeta {
 

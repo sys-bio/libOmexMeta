@@ -5,8 +5,10 @@
 #ifndef LIBOMEXMETA_RESOURCE_H
 #define LIBOMEXMETA_RESOURCE_H
 
-#include "librdf.h"
-#include "LibrdfNode.h"
+#include "redland/librdf.h"
+#include "redland/LibrdfNode.h"
+
+#include "omexmeta/Error.h"
 
 #include <iostream>
 #include "sstream"

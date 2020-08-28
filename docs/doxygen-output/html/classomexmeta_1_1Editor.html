@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.5</span>
+   &#160;<span id="projectnumber">1.1.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -74,9 +74,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8cbc42e461bf7a1495c7de82882de826"><td class="memItemLeft" align="right" valign="top"><a id="a8cbc42e461bf7a1495c7de82882de826"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Editor</b> (const std::string &amp;xml, OmexMetaXmlType type, bool create_ids, const <a class="el" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</td></tr>
-<tr class="separator:a8cbc42e461bf7a1495c7de82882de826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87064ac1e0963f9e9d3a178ed35f119"><td class="memItemLeft" align="right" valign="top"><a id="ab87064ac1e0963f9e9d3a178ed35f119"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Editor</b> (const std::string &amp;xml, bool create_ids, const <a class="el" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</td></tr>
+<tr class="separator:ab87064ac1e0963f9e9d3a178ed35f119"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b39f1f137312ce77575e73a86dfb05"><td class="memItemLeft" align="right" valign="top"><a id="ab5b39f1f137312ce77575e73a86dfb05"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const</td></tr>
 <tr class="separator:ab5b39f1f137312ce77575e73a86dfb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +140,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>checkValidMetaid</b> 
 <tr class="memitem:a3fef7f1c38949b50239a9a07cc327d67"><td class="memItemLeft" align="right" valign="top"><a id="a3fef7f1c38949b50239a9a07cc327d67"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addNamespaceFromAnnotation</b> (const std::string &amp;predicate_string)</td></tr>
 <tr class="separator:a3fef7f1c38949b50239a9a07cc327d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af987e450e4bf9d75391ad3f5ac6233f6"><td class="memItemLeft" align="right" valign="top"><a id="af987e450e4bf9d75391ad3f5ac6233f6"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getMetaidBase</b> () const</td></tr>
+<tr class="separator:af987e450e4bf9d75391ad3f5ac6233f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a206feee18473abbeda5e4e55906e73eb"><td class="memItemLeft" align="right" valign="top"><a id="a206feee18473abbeda5e4e55906e73eb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMetaidBase</b> (const std::string &amp;metaidBase)</td></tr>
+<tr class="separator:a206feee18473abbeda5e4e55906e73eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ade6a293061a98243a3b2853e55a4b"><td class="memItemLeft" align="right" valign="top"><a id="a68ade6a293061a98243a3b2853e55a4b"></a>
+OmexMetaXmlType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> () const</td></tr>
+<tr class="separator:a68ade6a293061a98243a3b2853e55a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2c493ed5034a15e6915b7b649b58a3"><td class="memItemLeft" align="right" valign="top"><a id="a3e2c493ed5034a15e6915b7b649b58a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setType</b> (OmexMetaXmlType type)</td></tr>
+<tr class="separator:a3e2c493ed5034a15e6915b7b649b58a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a245b2105c175892d1fddaf693fa9d636"><td class="memItemLeft" align="right" valign="top"><a id="a245b2105c175892d1fddaf693fa9d636"></a>
 <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>newPhysicalEntity</b> ()</td></tr>
 <tr class="separator:a245b2105c175892d1fddaf693fa9d636"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,7 +180,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>removePhysicalPhenome
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getArchiveUri</b> () const</td></tr>
 <tr class="separator:a736e49794c5a358f06d13d41c3657fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8494826923de713c19f971fd9c7908c0"><td class="memItemLeft" align="right" valign="top"><a id="a8494826923de713c19f971fd9c7908c0"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
 <tr class="separator:a8494826923de713c19f971fd9c7908c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0020d3b9c3e91fb37c134ba8b211c13e"><td class="memItemLeft" align="right" valign="top"><a id="a0020d3b9c3e91fb37c134ba8b211c13e"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
@@ -176,12 +188,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b
 <tr class="memitem:a2264cbd2efae17d1d72c3f402d8721bf"><td class="memItemLeft" align="right" valign="top"><a id="a2264cbd2efae17d1d72c3f402d8721bf"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getRepositoryUri</b> () const</td></tr>
 <tr class="separator:a2264cbd2efae17d1d72c3f402d8721bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a978e773a7c9c4f602bd3ce0d0672fda8"><td class="memItemLeft" align="right" valign="top"><a id="a978e773a7c9c4f602bd3ce0d0672fda8"></a>
+<tr class="memitem:a5143e1f8db82393faed322810acf5e92"><td class="memItemLeft" align="right" valign="top"><a id="a5143e1f8db82393faed322810acf5e92"></a>
 <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>createNodeWithModelUri</b> (const std::string &amp;string) const</td></tr>
-<tr class="separator:a978e773a7c9c4f602bd3ce0d0672fda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc125a3de8d0795c4220681f04d0a657"><td class="memItemLeft" align="right" valign="top"><a id="afc125a3de8d0795c4220681f04d0a657"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addModelLevelAnnotation</b> (std::string, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> *node)</td></tr>
-<tr class="separator:afc125a3de8d0795c4220681f04d0a657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a5143e1f8db82393faed322810acf5e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c8b060005146f3cf5a231ea6789e7d7"><td class="memItemLeft" align="right" valign="top"><a id="a9c8b060005146f3cf5a231ea6789e7d7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addCreator</b> (std::string orcid_id)</td></tr>
 <tr class="separator:a9c8b060005146f3cf5a231ea6789e7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -6,20 +6,21 @@
 #define LIBOMEXMETA_PHYSICALFORCE_H
 
 
-#include "PhysicalPhenomenon.h"
-#include "Participant.h"
-#include "librdf.h"
+#include "redland/librdf.h"
+#include "redland/RedlandAPI.h"
 
-
-#include "PhysicalPhenomenon.h"
-#include "Participant.h"
-#include "RedlandWrapper.h"
-#include <vector>
-#include "Participant.h"
-#include "PhysicalProperty.h"
-#include "PhysicalPhenomenon.h"
-#include "OmexMetaUtils.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/Participant.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/Participant.h"
+#include "omexmeta/Participant.h"
+#include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta_export.h"
+
+#include <vector>
+#include <utility>
 
 using namespace redland;
 

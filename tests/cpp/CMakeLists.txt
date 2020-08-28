@@ -4,7 +4,8 @@
 
 set(target OmexMetaTests)
 
-set(TEST_SOURCES
+set(
+        TEST_SOURCES
         SBMLFactory.h
         OmexMetaUtilsTests.cpp
         SubjectTests.cpp
@@ -31,7 +32,10 @@ set(TEST_SOURCES
         RDFReadAndWriteTests.cpp
         PersonalInformationTests.cpp
         DocTests.cpp
-        MarkupIdentifierTests.cpp sbml_semantic_extraction/ElementExtractorTests.cpp sbml_semantic_extraction/SBMLSemanticExtractionTests.cpp)
+        MarkupIdentifierTests.cpp
+        ElementExtractorTests.cpp
+        SBMLSemanticExtractionTests.cpp
+)
 
 # docs-build test executable
 add_executable(${target} ${TEST_SOURCES})
@@ -53,20 +57,21 @@ add_dependencies(${target} OmexMeta-static gtest gtest_main)
 
 # links
 target_link_libraries(${target} PUBLIC
-        # Order matters!
-        $<TARGET_FILE:OmexMeta-static>
-        $<TARGET_FILE:redland-combined-static>
-        ${LINK_LIBRARIES}
-        ${RUNTIME}# best here so no clash with dynamic
-        gtest gtest_main
-        )
+                      # Order matters!
+                      $<TARGET_FILE:OmexMeta-static>
+                      $<TARGET_FILE:redland-combined-static>
+                      ${LINK_LIBRARIES}
+                      ${RUNTIME}# best here so no clash with dynamic
+                      gtest gtest_main
+                      )
 
 #includes
+message(${INCLUDE_DIRECTORIES})
 target_include_directories(${target} PRIVATE
-        ${GOOGLETEST_SOURCE}/googletest/include
-        ${INCLUDE_DIRECTORIES}
-        ${WRAPPER_SOURCE_DIR}
-        )
+                           ${GOOGLETEST_SOURCE}/googletest/include
+                           ${INCLUDE_DIRECTORIES}
+                           ${WRAPPER_SOURCE_DIR}
+                           )
 
 add_dependencies(${target} OmexMeta-static gtest gtest_main)
 

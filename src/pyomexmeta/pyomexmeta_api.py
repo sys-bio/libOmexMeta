@@ -21,7 +21,7 @@ class Util:
     @staticmethod
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
-            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.7")
+            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.8")
             try:
                 lib = ct.CDLL(lib_path)
             except OSError as e:

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.5</span>
+   &#160;<span id="projectnumber">1.1.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -93,6 +93,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a2c726263714e31c7c19d6e73c2c593f8"><td class="memItemLeft" align="right" valign="top"><a id="a2c726263714e31c7c19d6e73c2c593f8"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html">PhysicalPhenomenon</a> &amp;rhs) const</td></tr>
 <tr class="separator:a2c726263714e31c7c19d6e73c2c593f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d59ebbc920a40348d102af31ed6661a"><td class="memItemLeft" align="right" valign="top"><a id="a2d59ebbc920a40348d102af31ed6661a"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
+<tr class="separator:a2d59ebbc920a40348d102af31ed6661a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84cae9aa96ca00df45b0f81dd8d3ffd4"><td class="memItemLeft" align="right" valign="top"><a id="a84cae9aa96ca00df45b0f81dd8d3ffd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setLocalUri</b> (const std::string &amp;localUri)</td></tr>
+<tr class="separator:a84cae9aa96ca00df45b0f81dd8d3ffd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad823dad75504adb78975c810e5f1ff94"><td class="memItemLeft" align="right" valign="top"><a id="ad823dad75504adb78975c810e5f1ff94"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPhenomenon</b> (const <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html">PhysicalPhenomenon</a> &amp;phenomenon)=delete</td></tr>
 <tr class="separator:ad823dad75504adb78975c810e5f1ff94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,18 +114,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <tr class="memitem:aa140516da97b03960175f9bc04ecf865"><td class="memItemLeft" align="right" valign="top"><a id="aa140516da97b03960175f9bc04ecf865"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPhenomenon</b> (librdf_model *model)</td></tr>
 <tr class="separator:aa140516da97b03960175f9bc04ecf865"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc6f1152ae34116dd402a6d8d36fb0b4"><td class="memItemLeft" align="right" valign="top"><a id="afc6f1152ae34116dd402a6d8d36fb0b4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPhenomenon</b> (librdf_model *model, std::string local_uri)</td></tr>
-<tr class="separator:afc6f1152ae34116dd402a6d8d36fb0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6499f3ca9878f5236afd41ed6839229"><td class="memItemLeft" align="right" valign="top"><a id="ad6499f3ca9878f5236afd41ed6839229"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPhenomenon</b> (librdf_model *model, std::string local_uri, <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> propertyResource, AnnotationType type)</td></tr>
-<tr class="separator:ad6499f3ca9878f5236afd41ed6839229"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d59ebbc920a40348d102af31ed6661a"><td class="memItemLeft" align="right" valign="top"><a id="a2d59ebbc920a40348d102af31ed6661a"></a>
+<tr class="memitem:a5c831ca76c36121b0fbc7b122b5539ac"><td class="memItemLeft" align="right" valign="top"><a id="a5c831ca76c36121b0fbc7b122b5539ac"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPhenomenon</b> (librdf_model *model, std::string model_uri, std::string local_uri)</td></tr>
+<tr class="separator:a5c831ca76c36121b0fbc7b122b5539ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93bf263f7fdb65bd3e8de97983a7186b"><td class="memItemLeft" align="right" valign="top"><a id="a93bf263f7fdb65bd3e8de97983a7186b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPhenomenon</b> (librdf_model *model, std::string model_uri, std::string local_uri, <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> propertyResource, AnnotationType type)</td></tr>
+<tr class="separator:a93bf263f7fdb65bd3e8de97983a7186b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5528b12e5dbc702c0c270328662e7031"><td class="memItemLeft" align="right" valign="top"><a id="a5528b12e5dbc702c0c270328662e7031"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
-<tr class="separator:a2d59ebbc920a40348d102af31ed6661a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84cae9aa96ca00df45b0f81dd8d3ffd4"><td class="memItemLeft" align="right" valign="top"><a id="a84cae9aa96ca00df45b0f81dd8d3ffd4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;localUri)</td></tr>
-<tr class="separator:a84cae9aa96ca00df45b0f81dd8d3ffd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a5528b12e5dbc702c0c270328662e7031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1fd9929fb2e07fa20081b1a4c00c9d2"><td class="memItemLeft" align="right" valign="top"><a id="aa1fd9929fb2e07fa20081b1a4c00c9d2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;modelUri)</td></tr>
+<tr class="separator:aa1fd9929fb2e07fa20081b1a4c00c9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8be912d1256d6b913c4965f96f1b730b"><td class="memItemLeft" align="right" valign="top"><a id="a8be912d1256d6b913c4965f96f1b730b"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAbout</b> () const</td></tr>
 <tr class="separator:a8be912d1256d6b913c4965f96f1b730b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,18 +150,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setPhysicalProperty</
 <tr class="memitem:a4c27a0b0e430df95b3cffaf268973eec"><td class="memItemLeft" align="right" valign="top"><a id="a4c27a0b0e430df95b3cffaf268973eec"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setType</b> (AnnotationType type)</td></tr>
 <tr class="separator:a4c27a0b0e430df95b3cffaf268973eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d89c1a5b1d4cdf16ab9f423562322db"><td class="memItemLeft" align="right" valign="top"><a id="a8d89c1a5b1d4cdf16ab9f423562322db"></a>
+<tr class="memitem:aca53e0f8ce8139a919f48372b254a5d0"><td class="memItemLeft" align="right" valign="top"><a id="aca53e0f8ce8139a919f48372b254a5d0"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPhysicalPropertyId</b> () const</td></tr>
-<tr class="separator:a8d89c1a5b1d4cdf16ab9f423562322db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aca53e0f8ce8139a919f48372b254a5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a715b76003eba8e5808fe44a768199fab"><td class="memItemLeft" align="right" valign="top"><a id="a715b76003eba8e5808fe44a768199fab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setPhysicalPropertyId</b> (const std::string &amp;physicalPropertyId)</td></tr>
 <tr class="separator:a715b76003eba8e5808fe44a768199fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa77b6063825e8bc3b83516e923c5ad37"><td class="memItemLeft" align="right" valign="top"><a id="aa77b6063825e8bc3b83516e923c5ad37"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generateMetaId</b> (const std::string &amp;id_base) const</td></tr>
-<tr class="separator:aa77b6063825e8bc3b83516e923c5ad37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d90cf6db78e98bd091f478dc5bd74a"><td class="memItemLeft" align="right" valign="top"><a id="a54d90cf6db78e98bd091f478dc5bd74a"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getNewMetaidExclusionList</b> ()</td></tr>
+<tr class="separator:a54d90cf6db78e98bd091f478dc5bd74a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe71a5c6399b992922eb6eeda6de49bd"><td class="memItemLeft" align="right" valign="top"><a id="afe71a5c6399b992922eb6eeda6de49bd"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generateMetaId</b> (const std::string &amp;id_base)</td></tr>
+<tr class="separator:afe71a5c6399b992922eb6eeda6de49bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -168,12 +177,15 @@ librdf_model *&#160;</td><td class="memItemRight" valign="bottom"><b>model_</b> 
 <tr class="memitem:a74e88adb2099099e411b55cb9aa460a0"><td class="memItemLeft" align="right" valign="top"><a id="a74e88adb2099099e411b55cb9aa460a0"></a>
 AnnotationType&#160;</td><td class="memItemRight" valign="bottom"><b>type_</b> = AnnotationType::UNKNOWN</td></tr>
 <tr class="separator:a74e88adb2099099e411b55cb9aa460a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41e8364977eea6d963a82f0f8088cb9a"><td class="memItemLeft" align="right" valign="top"><a id="a41e8364977eea6d963a82f0f8088cb9a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>physical_property_id_</b></td></tr>
-<tr class="separator:a41e8364977eea6d963a82f0f8088cb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a114864dfae1f79ce4e3f430b7711516c"><td class="memItemLeft" align="right" valign="top"><a id="a114864dfae1f79ce4e3f430b7711516c"></a>
+<tr class="memitem:a696cbc4f6490dd55d6bd41c7711cd0ec"><td class="memItemLeft" align="right" valign="top"><a id="a696cbc4f6490dd55d6bd41c7711cd0ec"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>model_uri_</b></td></tr>
+<tr class="separator:a696cbc4f6490dd55d6bd41c7711cd0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a114864dfae1f79ce4e3f430b7711516c"><td class="memItemLeft" align="right" valign="top"><a id="a114864dfae1f79ce4e3f430b7711516c"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>local_uri_</b></td></tr>
 <tr class="separator:a114864dfae1f79ce4e3f430b7711516c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a710756d611350395539dfa9f7fbf764e"><td class="memItemLeft" align="right" valign="top"><a id="a710756d611350395539dfa9f7fbf764e"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>new_metaid_exclusion_list_</b></td></tr>
+<tr class="separator:a710756d611350395539dfa9f7fbf764e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="PhysicalPhenomenon_8h_source.html">PhysicalPhenomenon.h</a></li>

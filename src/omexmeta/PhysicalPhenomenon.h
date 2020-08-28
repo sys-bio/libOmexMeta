@@ -13,8 +13,9 @@
 #include "omexmeta/MetaID.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/Query.h"
-#include "RedlandWrapper.h"
+#include "redland/RedlandAPI.h"
 
+#include <utility>
 
 using namespace redland;
 

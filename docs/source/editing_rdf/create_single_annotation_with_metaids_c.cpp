@@ -44,7 +44,7 @@ int main(){
     RDF *rdf_ptr = RDF_new();
 
     // create editor object
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, OMEXMETA_TYPE_SBML, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, true);
 
     // Print out metaids to console
     const char* xml_with_metaids = Editor_getXml(editor_ptr);

@@ -10,14 +10,15 @@
 #include "omexmeta/Subject.h"
 #include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/MetaID.h"
-#include "RedlandWrapper.h"
-#include <utility>
+#include "redland/RedlandAPI.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Query.h"
 #include "omexmeta/OmexMetaUtils.h"
-#include "memory"
-#include <cassert>     /* assert */
 #include "omexmeta_export.h"
+
+#include <memory>
+#include <cassert>     /* assert */
+#include <utility>
 
 using namespace redland;
 

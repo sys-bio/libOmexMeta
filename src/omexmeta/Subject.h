@@ -5,10 +5,10 @@
 #ifndef LIBOMEXMETA_SUBJECT_H
 #define LIBOMEXMETA_SUBJECT_H
 
-#include "World.h"
-#include "LibrdfNode.h"
-#include "omexmeta/Error.h"
+#include "redland/World.h"
+#include "redland/LibrdfNode.h"
 
+#include "omexmeta/Error.h"
 
 #include "iostream"
 #include <vector>

@@ -5,13 +5,15 @@
 #ifndef LIBOMEXMETA_PARTICIPANT_H
 #define LIBOMEXMETA_PARTICIPANT_H
 
-#include "librdf.h"
-#include <string>
+#include "redland/librdf.h"
+#include "redland/RedlandAPI.h"
+
 #include "omexmeta/Resource.h"
-#include "Subject.h"
-#include "Triple.h"
-#include "Triples.h"
-#include "RedlandWrapper.h"
+#include "omexmeta/Subject.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Triples.h"
+
+#include <string>
 #include <utility>
 
 using namespace redland;

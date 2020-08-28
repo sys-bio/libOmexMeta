@@ -5,10 +5,10 @@
 #ifndef LIBOMEXMETA_PERSONALINFORMATION_H
 #define LIBOMEXMETA_PERSONALINFORMATION_H
 
-#include "Triples.h"
-#include <memory>
+#include "omexmeta/Triples.h"
 #include "omexmeta_export.h"
 
+#include <memory>
 
 namespace omexmeta {
     /*

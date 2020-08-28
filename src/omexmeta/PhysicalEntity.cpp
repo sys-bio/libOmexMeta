@@ -4,8 +4,6 @@
 
 #include "omexmeta/PhysicalEntity.h"
 
-#include <utility>
-
 namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,

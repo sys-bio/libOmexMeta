@@ -15,16 +15,18 @@
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/PhysicalForce.h"
-#include "RedlandWrapper.h"
+#include "redland/RedlandAPI.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/PersonalInformation.h"
+#include "omexmeta/MarkupIdentifier.h"
+#include "omexmeta_export.h"
 
-#include "librdf.h"
+#include "redland/librdf.h"
 
 #include <utility>
-#include "MarkupIdentifier.h"
-#include "omexmeta_export.h"
+#include <filesystem>
+#include <utility>
 
 using namespace redland;
 

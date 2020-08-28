@@ -4,368 +4,141 @@
     <compoundname>LibrdfStatement.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">iostream</includes>
-    <includes local="no">librdf.h</includes>
+    <includes local="yes">librdf.h</includes>
     <includes local="no">unordered_map</includes>
     <includes refid="LibrdfNode_8h" local="yes">LibrdfNode.h</includes>
-    <includedby refid="Triple_8h" local="yes">src/omexmeta/Triple.h</includedby>
     <includedby refid="LibrdfModel_8h" local="yes">src/redland/RedlandWrapper/src/LibrdfModel.h</includedby>
     <includedby refid="LibrdfStorage_8h" local="yes">src/redland/RedlandWrapper/src/LibrdfStorage.h</includedby>
     <includedby refid="LibrdfStatement_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfStatement.cpp</includedby>
     <incdepgraph>
-      <node id="2514">
+      <node id="1926">
         <label>regex</label>
       </node>
-      <node id="2512">
+      <node id="1924">
         <label>exception</label>
       </node>
-      <node id="2507">
+      <node id="1919">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="2505" relation="include">
+        <childnode refid="1917" relation="include">
         </childnode>
-        <childnode refid="2508" relation="include">
+        <childnode refid="1920" relation="include">
         </childnode>
-        <childnode refid="2503" relation="include">
+        <childnode refid="1915" relation="include">
         </childnode>
-        <childnode refid="2509" relation="include">
+        <childnode refid="1921" relation="include">
         </childnode>
-        <childnode refid="2510" relation="include">
+        <childnode refid="1922" relation="include">
         </childnode>
-        <childnode refid="2513" relation="include">
+        <childnode refid="1925" relation="include">
         </childnode>
-        <childnode refid="2511" relation="include">
+        <childnode refid="1923" relation="include">
         </childnode>
       </node>
-      <node id="2513">
+      <node id="1925">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2505" relation="include">
+        <childnode refid="1917" relation="include">
         </childnode>
-        <childnode refid="2504" relation="include">
+        <childnode refid="1916" relation="include">
         </childnode>
-        <childnode refid="2503" relation="include">
+        <childnode refid="1915" relation="include">
         </childnode>
-        <childnode refid="2514" relation="include">
+        <childnode refid="1926" relation="include">
         </childnode>
       </node>
-      <node id="2511">
+      <node id="1923">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2512" relation="include">
+        <childnode refid="1924" relation="include">
         </childnode>
-        <childnode refid="2504" relation="include">
+        <childnode refid="1916" relation="include">
         </childnode>
       </node>
-      <node id="2510">
+      <node id="1922">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="2503" relation="include">
+        <childnode refid="1915" relation="include">
         </childnode>
-        <childnode refid="2505" relation="include">
+        <childnode refid="1917" relation="include">
         </childnode>
-        <childnode refid="2511" relation="include">
+        <childnode refid="1923" relation="include">
         </childnode>
       </node>
-      <node id="2509">
+      <node id="1921">
         <label>sstream</label>
       </node>
-      <node id="2504">
+      <node id="1916">
         <label>iostream</label>
       </node>
-      <node id="2508">
+      <node id="1920">
         <label>raptor2.h</label>
       </node>
-      <node id="2506">
+      <node id="1918">
         <label>unordered_map</label>
       </node>
-      <node id="2502">
+      <node id="1914">
         <label>src/redland/RedlandWrapper/src/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h"/>
-        <childnode refid="2503" relation="include">
+        <childnode refid="1915" relation="include">
         </childnode>
-        <childnode refid="2504" relation="include">
+        <childnode refid="1916" relation="include">
         </childnode>
-        <childnode refid="2505" relation="include">
+        <childnode refid="1917" relation="include">
         </childnode>
-        <childnode refid="2506" relation="include">
+        <childnode refid="1918" relation="include">
         </childnode>
-        <childnode refid="2507" relation="include">
+        <childnode refid="1919" relation="include">
         </childnode>
       </node>
-      <node id="2505">
+      <node id="1917">
         <label>librdf.h</label>
       </node>
-      <node id="2503">
+      <node id="1915">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2524">
-        <label>src/omexmeta/Triples.h</label>
-        <link refid="Triples_8h_source"/>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2521" relation="include">
-        </childnode>
-        <childnode refid="2525" relation="include">
-        </childnode>
-        <childnode refid="2526" relation="include">
-        </childnode>
-        <childnode refid="2528" relation="include">
-        </childnode>
-      </node>
-      <node id="2516">
-        <label>src/omexmeta/Triple.h</label>
-        <link refid="Triple_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2521" relation="include">
-        </childnode>
-        <childnode refid="2516" relation="include">
-        </childnode>
-        <childnode refid="2524" relation="include">
-        </childnode>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2526" relation="include">
-        </childnode>
-        <childnode refid="2528" relation="include">
-        </childnode>
-      </node>
-      <node id="2533">
-        <label>src/omexmeta/OmexMetaUtils.h</label>
-        <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2534" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-        <childnode refid="2535" relation="include">
-        </childnode>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2522" relation="include">
-        </childnode>
-        <childnode refid="2523" relation="include">
-        </childnode>
-        <childnode refid="2536" relation="include">
-        </childnode>
-        <childnode refid="2537" relation="include">
-        </childnode>
-        <childnode refid="2520" relation="include">
-        </childnode>
-      </node>
-      <node id="2538">
+      <node id="1931">
         <label>src/redland/RedlandWrapper/src/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="2531" relation="include">
+        <childnode refid="1930" relation="include">
         </childnode>
       </node>
-      <node id="2521">
-        <label>src/omexmeta/Participant.h</label>
-        <link refid="Participant_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2522" relation="include">
-        </childnode>
-        <childnode refid="2523" relation="include">
-        </childnode>
-      </node>
-      <node id="2520">
-        <label>src/omexmeta/RDF.h</label>
-        <link refid="RDF_8h_source"/>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-      </node>
-      <node id="2522">
-        <label>src/omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-      </node>
-      <node id="2517">
-        <label>src/omexmeta/Editor.h</label>
-        <link refid="Editor_8h_source"/>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-        <childnode refid="2520" relation="include">
-        </childnode>
-      </node>
-      <node id="2537">
-        <label>src/omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="2533" relation="include">
-        </childnode>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2526" relation="include">
-        </childnode>
-      </node>
-      <node id="2528">
-        <label>src/omexmeta/PhysicalProperty.h</label>
-        <link refid="PhysicalProperty_8h_source"/>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2526" relation="include">
-        </childnode>
-        <childnode refid="2522" relation="include">
-        </childnode>
-        <childnode refid="2523" relation="include">
-        </childnode>
-      </node>
-      <node id="2529">
+      <node id="1928">
         <label>src/redland/RedlandWrapper/src/LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="2530" relation="include">
+        <childnode refid="1929" relation="include">
         </childnode>
-        <childnode refid="2538" relation="include">
+        <childnode refid="1931" relation="include">
         </childnode>
-        <childnode refid="2531" relation="include">
+        <childnode refid="1930" relation="include">
         </childnode>
       </node>
-      <node id="2530">
+      <node id="1929">
         <label>src/redland/RedlandWrapper/src/LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="2531" relation="include">
+        <childnode refid="1930" relation="include">
         </childnode>
       </node>
-      <node id="2519">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
+      <node id="1930">
+        <label>src/redland/RedlandWrapper/src/RedlandAPI.h</label>
+        <link refid="RedlandAPI_8h_source"/>
       </node>
-      <node id="2531">
-        <label>src/redland/RedlandWrapper/src/RedlandWrapper.h</label>
-        <link refid="RedlandWrapper_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2532" relation="include">
-        </childnode>
-        <childnode refid="2524" relation="include">
-        </childnode>
-        <childnode refid="2521" relation="include">
-        </childnode>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2526" relation="include">
-        </childnode>
-        <childnode refid="2522" relation="include">
-        </childnode>
-        <childnode refid="2528" relation="include">
-        </childnode>
-        <childnode refid="2523" relation="include">
-        </childnode>
-        <childnode refid="2537" relation="include">
-        </childnode>
-        <childnode refid="2520" relation="include">
-        </childnode>
-      </node>
-      <node id="2535">
-        <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
-        <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-      </node>
-      <node id="2526">
-        <label>src/omexmeta/PhysicalPhenomenon.h</label>
-        <link refid="PhysicalPhenomenon_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2522" relation="include">
-        </childnode>
-        <childnode refid="2523" relation="include">
-        </childnode>
-      </node>
-      <node id="2532">
-        <label>src/omexmeta/MetaID.h</label>
-        <link refid="MetaID_8h_source"/>
-        <childnode refid="2533" relation="include">
-        </childnode>
-        <childnode refid="2535" relation="include">
-        </childnode>
-        <childnode refid="2527" relation="include">
-        </childnode>
-        <childnode refid="2526" relation="include">
-        </childnode>
-      </node>
-      <node id="2527">
-        <label>src/omexmeta/PhysicalEntity.h</label>
-        <link refid="PhysicalEntity_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-      </node>
-      <node id="2523">
-        <label>src/omexmeta/PhysicalProcess.h</label>
-        <link refid="PhysicalProcess_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2518" relation="include">
-        </childnode>
-        <childnode refid="2519" relation="include">
-        </childnode>
-      </node>
-      <node id="2515">
+      <node id="1927">
         <label>src/redland/RedlandWrapper/src/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h"/>
-        <childnode refid="2516" relation="include">
+        <childnode refid="1928" relation="include">
         </childnode>
-        <childnode refid="2529" relation="include">
-        </childnode>
-        <childnode refid="2539" relation="include">
+        <childnode refid="1932" relation="include">
         </childnode>
       </node>
-      <node id="2525">
-        <label>src/omexmeta/PersonalInformation.h</label>
-        <link refid="PersonalInformation_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2518" relation="include">
-        </childnode>
-      </node>
-      <node id="2539">
+      <node id="1932">
         <label>src/redland/RedlandWrapper/src/LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="2529" relation="include">
+        <childnode refid="1928" relation="include">
         </childnode>
-        <childnode refid="2531" relation="include">
-        </childnode>
-      </node>
-      <node id="2536">
-        <label>src/omexmeta/Predicate.h</label>
-        <link refid="Predicate_8h_source"/>
-        <childnode refid="2517" relation="include">
-        </childnode>
-        <childnode refid="2516" relation="include">
-        </childnode>
-        <childnode refid="2524" relation="include">
-        </childnode>
-      </node>
-      <node id="2518">
-        <label>src/omexmeta/OmexMeta.h</label>
-        <link refid="OmexMeta_8h_source"/>
-      </node>
-      <node id="2534">
-        <label>src/omexmeta/MarkupIdentifier.h</label>
-        <link refid="MarkupIdentifier_8h_source"/>
-        <childnode refid="2520" relation="include">
+        <childnode refid="1930" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -386,7 +159,7 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;librdf.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;LibrdfNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>

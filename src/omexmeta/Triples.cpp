@@ -1,9 +1,8 @@
 //
 // Created by Ciaran on 4/29/2020.
 //
-#include "Triples.h"
+#include "omexmeta/Triples.h"
 
-#include <utility>
 
 namespace omexmeta {
 

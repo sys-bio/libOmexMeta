@@ -28,9 +28,9 @@
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
 /* raptor */
-#include <raptor2.h>
+#include "raptor2.h"
 /* rasqal: uses raptor */
-#include <rasqal.h>
+#include "rasqal.h"
 /* librdf: uses rasqal and raptor */
 #else
 #include <Redland/raptor2.h>
@@ -395,7 +395,7 @@ extern const char *const librdf_home_url_string;
 #include <rdf_hash.h>
 #include <rdf_init.h>
 #include <rdf_iterator.h>
-#include <rdf_uri.h>
+#include "rdf_uri.h"
 #include <rdf_node.h>
 #include <rdf_concepts.h>
 #include <rdf_statement.h>

@@ -3,8 +3,8 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a8cbc42e461bf7a1495c7de82882de826}\label{classomexmeta_1_1Editor_a8cbc42e461bf7a1495c7de82882de826}} 
-{\bfseries Editor} (const std\+::string \&xml, Omex\+Meta\+Xml\+Type type, bool create\+\_\+ids, const \hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model} \&model, Namespace\+Map \&ns\+\_\+map, bool generate\+\_\+new\+\_\+metaids=false, const std\+::string \&repository\+\_\+uri=std\+::string(), const std\+::string \&archive\+\_\+uri=std\+::string(), const std\+::string \&model\+\_\+uri=std\+::string(), const std\+::string \&local\+\_\+uri=std\+::string())
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ab87064ac1e0963f9e9d3a178ed35f119}\label{classomexmeta_1_1Editor_ab87064ac1e0963f9e9d3a178ed35f119}} 
+{\bfseries Editor} (const std\+::string \&xml, bool create\+\_\+ids, const \hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model} \&model, Namespace\+Map \&ns\+\_\+map, bool generate\+\_\+new\+\_\+metaids=false, const std\+::string \&repository\+\_\+uri=std\+::string(), const std\+::string \&archive\+\_\+uri=std\+::string(), const std\+::string \&model\+\_\+uri=std\+::string(), const std\+::string \&local\+\_\+uri=std\+::string())
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ab5b39f1f137312ce77575e73a86dfb05}\label{classomexmeta_1_1Editor_ab5b39f1f137312ce77575e73a86dfb05}} 
 int {\bfseries size} () const
@@ -69,6 +69,18 @@ void {\bfseries check\+Valid\+Metaid} (const std\+::string \&metaid)
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a3fef7f1c38949b50239a9a07cc327d67}\label{classomexmeta_1_1Editor_a3fef7f1c38949b50239a9a07cc327d67}} 
 void {\bfseries add\+Namespace\+From\+Annotation} (const std\+::string \&predicate\+\_\+string)
 \item 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}\label{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}} 
+const std\+::string \& {\bfseries get\+Metaid\+Base} () const
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}\label{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}} 
+void {\bfseries set\+Metaid\+Base} (const std\+::string \&metaid\+Base)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}\label{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}} 
+Omex\+Meta\+Xml\+Type {\bfseries get\+Type} () const
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}\label{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}} 
+void {\bfseries set\+Type} (Omex\+Meta\+Xml\+Type type)
+\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}\label{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}} 
 \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} {\bfseries new\+Physical\+Entity} ()
 \item 
@@ -105,11 +117,8 @@ std\+::string {\bfseries get\+Model\+Uri} () const
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f402d8721bf}\label{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f402d8721bf}} 
 std\+::string {\bfseries get\+Repository\+Uri} () const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a978e773a7c9c4f602bd3ce0d0672fda8}\label{classomexmeta_1_1Editor_a978e773a7c9c4f602bd3ce0d0672fda8}} 
-\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} {\bfseries create\+Node\+With\+Local\+Uri} (const std\+::string \&string) const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_afc125a3de8d0795c4220681f04d0a657}\label{classomexmeta_1_1Editor_afc125a3de8d0795c4220681f04d0a657}} 
-void {\bfseries add\+Model\+Level\+Annotation} (std\+::string, const \hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} $\ast$node)
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}\label{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}} 
+\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} {\bfseries create\+Node\+With\+Model\+Uri} (const std\+::string \&string) const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}\label{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}} 
 void {\bfseries add\+Creator} (std\+::string orcid\+\_\+id)

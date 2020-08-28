@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="31" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="31" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1ab626a5fd9fa8f302767d4ca544a9eff2" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="31" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="31" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1a5dfbbc85f7bdc5a3e4da72913f6ce306" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="31" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="31" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1a4fe359b93a9dea9b60f7bc28c1aa913b" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="33" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1ad0548a6d31dbc6f32734032b1540e58f" prot="protected" static="no" mutable="no">
         <type>librdf_node *</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="33" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="33" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="34" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1a14ae7768fbd3aaf444bcde8650910c0b" prot="protected" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="34" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="34" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="35" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="36" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="25" bodyend="71"/>
+        <location file="src/omexmeta/Predicate.h" line="37" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="23" bodyend="69"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="39" column="1"/>
+        <location file="src/omexmeta/Predicate.h" line="40" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1ad5a91eb29204202d2f18816d09677622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="66" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="13" bodyend="23"/>
+        <location file="src/omexmeta/Predicate.h" line="67" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="11" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a5db1e6150f8cfd7605e82996e2aebb50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="69" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="200" bodyend="202"/>
+        <location file="src/omexmeta/Predicate.h" line="70" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="198" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a7bf4b8769eb9801eb26cc976723b56f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -179,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="71" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="204" bodyend="206"/>
+        <location file="src/omexmeta/Predicate.h" line="72" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="202" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="77" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="124" bodyend="126"/>
+        <location file="src/omexmeta/Predicate.h" line="78" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_node *</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="103" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="149" bodyend="151"/>
+        <location file="src/omexmeta/Predicate.h" line="104" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="147" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1aee19b8fc8b21f8e5ffd5b64691e1e530" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="111" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="128" bodyend="130"/>
+        <location file="src/omexmeta/Predicate.h" line="112" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1add4ab1cd86f83de3512279bbfdad947c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -231,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="118" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="73" bodyend="75"/>
+        <location file="src/omexmeta/Predicate.h" line="119" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a54a15176bd697d37d00573bf86954630" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="124" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="77" bodyend="79"/>
+        <location file="src/omexmeta/Predicate.h" line="125" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a0147e977f71604db05763815ae6b553f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="130" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="81" bodyend="83"/>
+        <location file="src/omexmeta/Predicate.h" line="131" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="137" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="85" bodyend="87"/>
+        <location file="src/omexmeta/Predicate.h" line="138" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -283,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="151" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="157" bodyend="159"/>
+        <location file="src/omexmeta/Predicate.h" line="152" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="155" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a0bf6030510247a6999d81cada92c1e51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="167" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="153" bodyend="155"/>
+        <location file="src/omexmeta/Predicate.h" line="168" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="151" bodyend="153"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="45" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="100" bodyend="122"/>
+        <location file="src/omexmeta/Predicate.h" line="46" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="98" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a1e7e59b8a48c9f89eeec73f3bbaea19c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -336,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="87" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="132" bodyend="147"/>
+        <location file="src/omexmeta/Predicate.h" line="88" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="130" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a8381c8b0c7bbaa27de29608cbff08bf5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="96" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="89" bodyend="98"/>
+        <location file="src/omexmeta/Predicate.h" line="97" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="87" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="160" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="161" bodyend="198"/>
+        <location file="src/omexmeta/Predicate.h" line="161" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="159" bodyend="196"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -386,42 +386,42 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="152">
+      <node id="172">
         <label>omexmeta::DCTerm</label>
         <link refid="classomexmeta_1_1DCTerm"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="169" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="151">
+      <node id="171">
         <label>omexmeta::BiomodelsModelQualifier</label>
         <link refid="classomexmeta_1_1BiomodelsModelQualifier"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="169" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="150">
+      <node id="170">
         <label>omexmeta::BiomodelsBiologyQualifier</label>
         <link refid="classomexmeta_1_1BiomodelsBiologyQualifier"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="169" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="154">
+      <node id="174">
         <label>omexmeta::SemSim</label>
         <link refid="classomexmeta_1_1SemSim"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="169" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="153">
+      <node id="173">
         <label>omexmeta::Foaf</label>
         <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="169" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="149">
+      <node id="169">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </inheritancegraph>
-    <location file="src/omexmeta/Predicate.h" line="28" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="28" bodyend="175"/>
+    <location file="src/omexmeta/Predicate.h" line="29" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="29" bodyend="176"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>freeNode</name></member>

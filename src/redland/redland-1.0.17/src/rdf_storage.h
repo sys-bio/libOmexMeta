@@ -27,7 +27,7 @@
 #define LIBRDF_STORAGE_H
 
 #include "rdf_config.h"
-#include <rdf_storage_module.h>
+#include "rdf_storage_module.h"
 
 /*
  * Commented out by ciaran welsh on 17/06/2020

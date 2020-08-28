@@ -3,7 +3,7 @@
   <compounddef id="classomexmeta_1_1SemsimXmlAssistantFactory" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::SemsimXmlAssistantFactory</compoundname>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classomexmeta_1_1SemsimXmlAssistantFactory_1a179ac91d78753a91e1f962a7ca974246" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1SemsimXmlAssistantFactory_1acd1e70258ce2a70ff459f9ff905c2371" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>XmlAssistantPtr</type>
         <definition>XmlAssistantPtr omexmeta::SemsimXmlAssistantFactory::generate</definition>
         <argsstring>(const std::string &amp;xml, OmexMetaXmlType type, bool generate_new_metaids=false, std::string metaid_base=&quot;#OmexMetaId&quot;, int metaid_num_digits=4)</argsstring>
@@ -37,16 +37,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="77" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="146" bodyend="164"/>
+        <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="79" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="145" bodyend="163"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="74" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.h" bodystart="74" bodyend="78"/>
+    <location file="src/omexmeta/OmexMetaXmlAssistant.h" line="76" column="1" bodyfile="src/omexmeta/OmexMetaXmlAssistant.h" bodystart="76" bodyend="80"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1SemsimXmlAssistantFactory_1a179ac91d78753a91e1f962a7ca974246" prot="public" virt="non-virtual"><scope>omexmeta::SemsimXmlAssistantFactory</scope><name>generate</name></member>
+      <member refid="classomexmeta_1_1SemsimXmlAssistantFactory_1acd1e70258ce2a70ff459f9ff905c2371" prot="public" virt="non-virtual"><scope>omexmeta::SemsimXmlAssistantFactory</scope><name>generate</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

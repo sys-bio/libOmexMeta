@@ -4,9 +4,6 @@
 
 #include "PhysicalProperty.h"
 
-#include <utility>
-
-
 namespace omexmeta {
 
     PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri)

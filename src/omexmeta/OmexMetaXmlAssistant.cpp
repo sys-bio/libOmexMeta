@@ -2,8 +2,7 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#include "OmexMetaXmlAssistant.h"
-
+#include "omexmeta/OmexMetaXmlAssistant.h"
 
 namespace omexmeta {
     OmexMetaXmlAssistant::OmexMetaXmlAssistant(std::string xml, std::string metaid_base, int metaid_num_digits,

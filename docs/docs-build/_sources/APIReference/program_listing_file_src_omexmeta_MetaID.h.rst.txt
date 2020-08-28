@@ -18,7 +18,7 @@ Program Listing for File MetaID.h
    #define LIBOMEXMETA_METAID_H
    
    #include <string>
-   #include "RedlandWrapper.h"
+   #include "redland/RedlandAPI.h"
    #include <sstream>
    #include <utility>
    #include <iostream>

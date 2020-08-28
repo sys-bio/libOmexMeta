@@ -2,9 +2,8 @@
 // Created by Ciaran on 4/20/2020.
 //
 
-#include "Participant.h"
+#include "omexmeta/Participant.h"
 
-#include <utility>
 
 
 namespace omexmeta {

@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="308" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="308" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="309" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="309" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="316" column="1"/>
+        <location file="src/omexmeta/Predicate.h" line="317" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SemSim_1a957a762d9f721bfc74f0db91552068a4" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="318" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="242" bodyend="245"/>
+        <location file="src/omexmeta/Predicate.h" line="319" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="240" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SemSim_1a40dcb1f6945bba21cc6927cf78a53e80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="320" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="247" bodyend="249"/>
+        <location file="src/omexmeta/Predicate.h" line="321" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="245" bodyend="247"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,30 +75,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="180">
+      <node id="210">
         <label>omexmeta::SemSim</label>
         <link refid="classomexmeta_1_1SemSim"/>
-        <childnode refid="181" relation="public-inheritance">
+        <childnode refid="211" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="181">
+      <node id="211">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="182">
+      <node id="212">
         <label>omexmeta::SemSim</label>
         <link refid="classomexmeta_1_1SemSim"/>
-        <childnode refid="183" relation="public-inheritance">
+        <childnode refid="213" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="183">
+      <node id="213">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/Predicate.h" line="306" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="306" bodyend="322"/>
+    <location file="src/omexmeta/Predicate.h" line="307" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="307" bodyend="323"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::SemSim</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" virt="non-virtual"><scope>omexmeta::SemSim</scope><name>freeNode</name></member>

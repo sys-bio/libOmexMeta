@@ -34,7 +34,7 @@ sbml = te.antimonyToSBML(antimony_string)
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, "sbml", generate_new_metaids=True) as editor:
+with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
     sbml_with_metaids = editor.get_xml()
     print(sbml_with_metaids)
 

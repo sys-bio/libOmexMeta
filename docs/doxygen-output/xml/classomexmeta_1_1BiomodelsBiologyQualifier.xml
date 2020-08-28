@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="194" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="194" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="195" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="195" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="210" column="1"/>
+        <location file="src/omexmeta/Predicate.h" line="211" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1BiomodelsBiologyQualifier_1a4dfa8fd975ceba60da6d3ccabdfb4514" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="212" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="209" bodyend="218"/>
+        <location file="src/omexmeta/Predicate.h" line="213" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="207" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1BiomodelsBiologyQualifier_1ade9766c18afa895e7c745aa4679ccfce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="214" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="220" bodyend="222"/>
+        <location file="src/omexmeta/Predicate.h" line="215" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="218" bodyend="220"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -106,7 +106,7 @@
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/Predicate.h" line="192" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="192" bodyend="218"/>
+    <location file="src/omexmeta/Predicate.h" line="193" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="193" bodyend="219"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1BiomodelsBiologyQualifier_1ad513cec40a5c2fc9ef23ce7e73e56007" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>BiomodelsBiologyQualifier</name></member>

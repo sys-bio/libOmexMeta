@@ -25,7 +25,7 @@
     <innerfile refid="LibrdfUri_8h">LibrdfUri.h</innerfile>
     <innerfile refid="RaptorIOStream_8cpp">RaptorIOStream.cpp</innerfile>
     <innerfile refid="RaptorIOStream_8h">RaptorIOStream.h</innerfile>
-    <innerfile refid="RedlandWrapper_8h">RedlandWrapper.h</innerfile>
+    <innerfile refid="RedlandAPI_8h">RedlandAPI.h</innerfile>
     <innerfile refid="World_8cpp">World.cpp</innerfile>
     <innerfile refid="World_8h">World.h</innerfile>
     <briefdescription>

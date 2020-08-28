@@ -45,7 +45,7 @@ int main(){
     RDF rdf = RDF();
 
     // create editor object
-    Editor editor = rdf.toEditor(sbml, OMEXMETA_TYPE_SBML, true);
+    Editor editor = rdf.toEditor(sbml, true);
 
     // create out annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();

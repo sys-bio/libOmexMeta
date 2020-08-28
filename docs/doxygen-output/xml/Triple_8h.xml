@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="Triple_8h" kind="file" language="C++">
     <compoundname>Triple.h</compoundname>
-    <includes refid="LibrdfNode_8h" local="yes">LibrdfNode.h</includes>
-    <includes refid="LibrdfStatement_8h" local="yes">LibrdfStatement.h</includes>
+    <includes local="yes">redland/librdf.h</includes>
+    <includes local="yes">redland/raptor2.h</includes>
+    <includes local="yes">redland/LibrdfNode.h</includes>
+    <includes local="yes">redland/LibrdfStatement.h</includes>
     <includes refid="Predicate_8h" local="yes">omexmeta/Predicate.h</includes>
     <includes refid="Subject_8h" local="yes">omexmeta/Subject.h</includes>
     <includes refid="Resource_8h" local="yes">omexmeta/Resource.h</includes>
     <includes refid="Triple_8h" local="yes">omexmeta/Triple.h</includes>
-    <includes local="yes">librdf.h</includes>
-    <includes local="yes">raptor2.h</includes>
     <includes local="no">ostream</includes>
     <includes local="no">utility</includes>
     <includes local="no">algorithm</includes>
@@ -18,587 +18,377 @@
     <includedby refid="Editor_8h" local="yes">src/omexmeta/Editor.h</includedby>
     <includedby refid="OmexMeta_8h" local="yes">src/omexmeta/OmexMeta.h</includedby>
     <includedby refid="Participant_8h" local="yes">src/omexmeta/Participant.h</includedby>
-    <includedby refid="Triple_8h" local="yes">src/omexmeta/Triple.h</includedby>
-    <includedby refid="Triples_8h" local="yes">src/omexmeta/Triples.h</includedby>
     <includedby refid="PhysicalEntity_8h" local="yes">src/omexmeta/PhysicalEntity.h</includedby>
     <includedby refid="PhysicalPhenomenon_8h" local="yes">src/omexmeta/PhysicalPhenomenon.h</includedby>
     <includedby refid="PhysicalProperty_8h" local="yes">src/omexmeta/PhysicalProperty.h</includedby>
     <includedby refid="Triple_8cpp" local="yes">src/omexmeta/Triple.cpp</includedby>
+    <includedby refid="Triple_8h" local="yes">src/omexmeta/Triple.h</includedby>
+    <includedby refid="Triples_8h" local="yes">src/omexmeta/Triples.h</includedby>
     <incdepgraph>
-      <node id="2000">
+      <node id="1577">
         <label>sys/stat.h</label>
       </node>
-      <node id="1965">
+      <node id="1553">
         <label>src/omexmeta/Triple.h</label>
         <link refid="Triple_8h"/>
-        <childnode refid="1966" relation="include">
+        <childnode refid="1554" relation="include">
         </childnode>
-        <childnode refid="1977" relation="include">
+        <childnode refid="1555" relation="include">
         </childnode>
-        <childnode refid="1979" relation="include">
+        <childnode refid="1556" relation="include">
         </childnode>
-        <childnode refid="2005" relation="include">
+        <childnode refid="1557" relation="include">
         </childnode>
-        <childnode refid="2007" relation="include">
+        <childnode refid="1558" relation="include">
         </childnode>
-        <childnode refid="1965" relation="include">
+        <childnode refid="1581" relation="include">
         </childnode>
-        <childnode refid="1967" relation="include">
+        <childnode refid="1582" relation="include">
         </childnode>
-        <childnode refid="1968" relation="include">
+        <childnode refid="1553" relation="include">
         </childnode>
-        <childnode refid="2008" relation="include">
+        <childnode refid="1583" relation="include">
         </childnode>
-        <childnode refid="1991" relation="include">
+        <childnode refid="1571" relation="include">
         </childnode>
-        <childnode refid="2004" relation="include">
+        <childnode refid="1580" relation="include">
         </childnode>
-        <childnode refid="2009" relation="include">
+        <childnode refid="1584" relation="include">
         </childnode>
-        <childnode refid="2002" relation="include">
+        <childnode refid="1579" relation="include">
         </childnode>
       </node>
-      <node id="1980">
+      <node id="1560">
         <label>omexmeta/OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="1981" relation="include">
+        <childnode refid="1554" relation="include">
         </childnode>
-        <childnode refid="1996" relation="include">
+        <childnode refid="1561" relation="include">
         </childnode>
-        <childnode refid="1999" relation="include">
+        <childnode refid="1562" relation="include">
         </childnode>
-        <childnode refid="1987" relation="include">
+        <childnode refid="1572" relation="include">
         </childnode>
-        <childnode refid="1967" relation="include">
+        <childnode refid="1575" relation="include">
         </childnode>
-        <childnode refid="1984" relation="include">
+        <childnode refid="1576" relation="include">
         </childnode>
-        <childnode refid="1995" relation="include">
+        <childnode refid="1569" relation="include">
         </childnode>
-        <childnode refid="2000" relation="include">
+        <childnode refid="1568" relation="include">
         </childnode>
-        <childnode refid="1998" relation="include">
+        <childnode refid="1577" relation="include">
         </childnode>
-        <childnode refid="1970" relation="include">
+        <childnode refid="1574" relation="include">
         </childnode>
-        <childnode refid="2001" relation="include">
+        <childnode refid="1570" relation="include">
         </childnode>
-        <childnode refid="2002" relation="include">
+        <childnode refid="1578" relation="include">
         </childnode>
-        <childnode refid="2003" relation="include">
-        </childnode>
-      </node>
-      <node id="1989">
-        <label>LibrdfSerializer.h</label>
-        <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1971" relation="include">
-        </childnode>
-        <childnode refid="1985" relation="include">
-        </childnode>
-        <childnode refid="1990" relation="include">
-        </childnode>
-        <childnode refid="1966" relation="include">
-        </childnode>
-        <childnode refid="1992" relation="include">
+        <childnode refid="1579" relation="include">
         </childnode>
       </node>
-      <node id="2001">
+      <node id="1555">
+        <label>redland/raptor2.h</label>
+      </node>
+      <node id="1578">
         <label>filesystem</label>
       </node>
-      <node id="2002">
+      <node id="1579">
         <label>assert.h</label>
       </node>
-      <node id="2006">
-        <label>omexmeta/HERE.h</label>
-        <link refid="HERE_8h_source"/>
-      </node>
-      <node id="1992">
-        <label>stdlib.h</label>
-      </node>
-      <node id="1996">
+      <node id="1572">
         <label>omexmeta/CurlGet.h</label>
         <link refid="CurlGet_8h_source"/>
-        <childnode refid="1984" relation="include">
+        <childnode refid="1569" relation="include">
         </childnode>
-        <childnode refid="1997" relation="include">
+        <childnode refid="1573" relation="include">
         </childnode>
-        <childnode refid="1998" relation="include">
+        <childnode refid="1574" relation="include">
         </childnode>
       </node>
-      <node id="1981">
+      <node id="1562">
         <label>omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
-        <childnode refid="1982" relation="include">
+        <childnode refid="1563" relation="include">
         </childnode>
-        <childnode refid="1994" relation="include">
+        <childnode refid="1564" relation="include">
         </childnode>
-        <childnode refid="1980" relation="include">
+        <childnode refid="1560" relation="include">
         </childnode>
-        <childnode refid="1967" relation="include">
+        <childnode refid="1554" relation="include">
         </childnode>
-        <childnode refid="1978" relation="include">
+        <childnode refid="1567" relation="include">
         </childnode>
-        <childnode refid="1995" relation="include">
+        <childnode refid="1568" relation="include">
         </childnode>
-        <childnode refid="1984" relation="include">
+        <childnode refid="1569" relation="include">
         </childnode>
-        <childnode refid="1970" relation="include">
+        <childnode refid="1570" relation="include">
         </childnode>
-        <childnode refid="1974" relation="include">
+        <childnode refid="1566" relation="include">
         </childnode>
-        <childnode refid="1991" relation="include">
+        <childnode refid="1571" relation="include">
         </childnode>
       </node>
-      <node id="1998">
+      <node id="1574">
         <label>stdexcept</label>
       </node>
-      <node id="1985">
-        <label>LibrdfModel.h</label>
-        <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1984" relation="include">
-        </childnode>
-        <childnode refid="1974" relation="include">
-        </childnode>
-        <childnode refid="1977" relation="include">
-        </childnode>
-        <childnode refid="1986" relation="include">
-        </childnode>
-        <childnode refid="1987" relation="include">
-        </childnode>
-        <childnode refid="1983" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1988" relation="include">
-        </childnode>
-      </node>
-      <node id="1984">
+      <node id="1569">
         <label>string</label>
       </node>
-      <node id="1976">
-        <label>regex</label>
+      <node id="1561">
+        <label>redland/LibrdfQuery.h</label>
       </node>
-      <node id="1973">
+      <node id="1565">
         <label>exception</label>
       </node>
-      <node id="1993">
-        <label>LibrdfParser.h</label>
-        <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1966" relation="include">
-        </childnode>
-        <childnode refid="1971" relation="include">
-        </childnode>
-        <childnode refid="1985" relation="include">
-        </childnode>
-      </node>
-      <node id="2008">
+      <node id="1583">
         <label>ostream</label>
       </node>
-      <node id="1990">
-        <label>RaptorIOStream.h</label>
-        <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1991" relation="include">
-        </childnode>
-        <childnode refid="1972" relation="include">
-        </childnode>
+      <node id="1563">
+        <label>redland/RedlandAPI.h</label>
       </node>
-      <node id="1987">
-        <label>LibrdfQuery.h</label>
-        <link refid="LibrdfQuery_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-      </node>
-      <node id="1997">
+      <node id="1573">
         <label>curl/curl.h</label>
       </node>
-      <node id="1966">
-        <label>LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1968" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1970" relation="include">
-        </childnode>
-        <childnode refid="1971" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1972" relation="include">
-        </childnode>
+      <node id="1557">
+        <label>redland/LibrdfStatement.h</label>
       </node>
-      <node id="1975">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1974" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1976" relation="include">
-        </childnode>
+      <node id="1559">
+        <label>redland/World.h</label>
       </node>
-      <node id="1982">
-        <label>RedlandWrapper.h</label>
-        <link refid="RedlandWrapper_8h_source"/>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1971" relation="include">
-        </childnode>
-        <childnode refid="1983" relation="include">
-        </childnode>
-        <childnode refid="1985" relation="include">
-        </childnode>
-        <childnode refid="1966" relation="include">
-        </childnode>
-        <childnode refid="1987" relation="include">
-        </childnode>
-        <childnode refid="1986" relation="include">
-        </childnode>
-        <childnode refid="1989" relation="include">
-        </childnode>
-        <childnode refid="1993" relation="include">
-        </childnode>
-        <childnode refid="1988" relation="include">
-        </childnode>
-        <childnode refid="1990" relation="include">
-        </childnode>
-      </node>
-      <node id="1972">
-        <label>LibrdfException.h</label>
-        <link refid="LibrdfException_8h_source"/>
-        <childnode refid="1973" relation="include">
-        </childnode>
-        <childnode refid="1974" relation="include">
-        </childnode>
-      </node>
-      <node id="1995">
+      <node id="1568">
         <label>vector</label>
       </node>
-      <node id="1971">
-        <label>LibrdfUri.h</label>
-        <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1972" relation="include">
-        </childnode>
+      <node id="1554">
+        <label>redland/librdf.h</label>
       </node>
-      <node id="1986">
-        <label>LibrdfQueryResults.h</label>
-        <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-      </node>
-      <node id="1991">
+      <node id="1571">
         <label>utility</label>
       </node>
-      <node id="1999">
+      <node id="1575">
         <label>omexmeta/MetaID.h</label>
         <link refid="MetaID_8h_source"/>
-        <childnode refid="1984" relation="include">
+        <childnode refid="1569" relation="include">
         </childnode>
-        <childnode refid="1982" relation="include">
+        <childnode refid="1570" relation="include">
         </childnode>
-        <childnode refid="1970" relation="include">
+        <childnode refid="1571" relation="include">
         </childnode>
-        <childnode refid="1991" relation="include">
+        <childnode refid="1566" relation="include">
         </childnode>
-        <childnode refid="1974" relation="include">
+        <childnode refid="1563" relation="include">
         </childnode>
       </node>
-      <node id="1970">
+      <node id="1570">
         <label>sstream</label>
       </node>
-      <node id="1994">
+      <node id="1564">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="1973" relation="include">
+        <childnode refid="1565" relation="include">
         </childnode>
-        <childnode refid="1974" relation="include">
+        <childnode refid="1566" relation="include">
         </childnode>
       </node>
-      <node id="2007">
+      <node id="1582">
         <label>omexmeta/Resource.h</label>
         <link refid="Resource_8h_source"/>
-        <childnode refid="1967" relation="include">
+        <childnode refid="1554" relation="include">
         </childnode>
-        <childnode refid="1966" relation="include">
+        <childnode refid="1556" relation="include">
         </childnode>
-        <childnode refid="1974" relation="include">
+        <childnode refid="1564" relation="include">
         </childnode>
-        <childnode refid="1970" relation="include">
+        <childnode refid="1566" relation="include">
         </childnode>
-        <childnode refid="1995" relation="include">
+        <childnode refid="1570" relation="include">
+        </childnode>
+        <childnode refid="1568" relation="include">
         </childnode>
       </node>
-      <node id="1974">
+      <node id="1566">
         <label>iostream</label>
       </node>
-      <node id="1968">
-        <label>raptor2.h</label>
-      </node>
-      <node id="1978">
+      <node id="1567">
         <label>unordered_map</label>
       </node>
-      <node id="1977">
-        <label>LibrdfStatement.h</label>
-        <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1974" relation="include">
-        </childnode>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1978" relation="include">
-        </childnode>
-        <childnode refid="1966" relation="include">
-        </childnode>
-      </node>
-      <node id="2003">
+      <node id="1576">
         <label>libxml/tree.h</label>
       </node>
-      <node id="1983">
-        <label>LibrdfStorage.h</label>
-        <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1984" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-        <childnode refid="1970" relation="include">
-        </childnode>
-        <childnode refid="1977" relation="include">
-        </childnode>
-      </node>
-      <node id="1979">
+      <node id="1558">
         <label>omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
-        <childnode refid="1975" relation="include">
+        <childnode refid="1559" relation="include">
         </childnode>
-        <childnode refid="1980" relation="include">
+        <childnode refid="1554" relation="include">
         </childnode>
-        <childnode refid="1967" relation="include">
+        <childnode refid="1560" relation="include">
         </childnode>
-        <childnode refid="1995" relation="include">
+        <childnode refid="1568" relation="include">
         </childnode>
-        <childnode refid="2004" relation="include">
+        <childnode refid="1580" relation="include">
         </childnode>
-        <childnode refid="1970" relation="include">
+        <childnode refid="1570" relation="include">
         </childnode>
-        <childnode refid="1978" relation="include">
+        <childnode refid="1567" relation="include">
         </childnode>
-        <childnode refid="1974" relation="include">
+        <childnode refid="1566" relation="include">
         </childnode>
-        <childnode refid="1991" relation="include">
+        <childnode refid="1571" relation="include">
         </childnode>
       </node>
-      <node id="1967">
-        <label>librdf.h</label>
-      </node>
-      <node id="2004">
+      <node id="1580">
         <label>algorithm</label>
       </node>
-      <node id="2005">
+      <node id="1581">
         <label>omexmeta/Subject.h</label>
         <link refid="Subject_8h_source"/>
-        <childnode refid="1975" relation="include">
+        <childnode refid="1559" relation="include">
         </childnode>
-        <childnode refid="1966" relation="include">
+        <childnode refid="1556" relation="include">
         </childnode>
-        <childnode refid="1994" relation="include">
+        <childnode refid="1564" relation="include">
         </childnode>
-        <childnode refid="1974" relation="include">
+        <childnode refid="1566" relation="include">
         </childnode>
-        <childnode refid="1995" relation="include">
-        </childnode>
-        <childnode refid="2006" relation="include">
+        <childnode refid="1568" relation="include">
         </childnode>
       </node>
-      <node id="1988">
-        <label>LibrdfStream.h</label>
-        <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="1967" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1975" relation="include">
-        </childnode>
-      </node>
-      <node id="2009">
+      <node id="1584">
         <label>cstring</label>
       </node>
-      <node id="1969">
-        <label>memory</label>
+      <node id="1556">
+        <label>redland/LibrdfNode.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2018">
+      <node id="1596">
         <label>src/omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
-        <childnode refid="2012" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
-        <childnode refid="2015" relation="include">
+        <childnode refid="1590" relation="include">
         </childnode>
-        <childnode refid="2019" relation="include">
+        <childnode refid="1597" relation="include">
         </childnode>
-        <childnode refid="2020" relation="include">
+        <childnode refid="1594" relation="include">
         </childnode>
-        <childnode refid="2022" relation="include">
+        <childnode refid="1595" relation="include">
         </childnode>
       </node>
-      <node id="2010">
+      <node id="1585">
         <label>src/omexmeta/Triple.h</label>
         <link refid="Triple_8h"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2012" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
-        <childnode refid="2015" relation="include">
+        <childnode refid="1590" relation="include">
         </childnode>
-        <childnode refid="2010" relation="include">
+        <childnode refid="1593" relation="include">
         </childnode>
-        <childnode refid="2018" relation="include">
+        <childnode refid="1594" relation="include">
         </childnode>
-        <childnode refid="2021" relation="include">
+        <childnode refid="1595" relation="include">
         </childnode>
-        <childnode refid="2020" relation="include">
+        <childnode refid="1585" relation="include">
         </childnode>
-        <childnode refid="2022" relation="include">
+        <childnode refid="1596" relation="include">
         </childnode>
       </node>
-      <node id="2015">
+      <node id="1590">
         <label>src/omexmeta/Participant.h</label>
         <link refid="Participant_8h_source"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2016" relation="include">
+        <childnode refid="1591" relation="include">
         </childnode>
-        <childnode refid="2017" relation="include">
+        <childnode refid="1592" relation="include">
         </childnode>
       </node>
-      <node id="2014">
+      <node id="1588">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="2012" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
-        <childnode refid="2013" relation="include">
+        <childnode refid="1589" relation="include">
         </childnode>
       </node>
-      <node id="2016">
+      <node id="1591">
         <label>src/omexmeta/PhysicalForce.h</label>
         <link refid="PhysicalForce_8h_source"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2012" relation="include">
-        </childnode>
-        <childnode refid="2013" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
       </node>
-      <node id="2011">
+      <node id="1586">
         <label>src/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
-        <childnode refid="2012" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
-        <childnode refid="2013" relation="include">
+        <childnode refid="1588" relation="include">
         </childnode>
-        <childnode refid="2014" relation="include">
+        <childnode refid="1589" relation="include">
         </childnode>
       </node>
-      <node id="2022">
+      <node id="1595">
         <label>src/omexmeta/PhysicalProperty.h</label>
         <link refid="PhysicalProperty_8h_source"/>
-        <childnode refid="2021" relation="include">
+        <childnode refid="1593" relation="include">
         </childnode>
-        <childnode refid="2020" relation="include">
+        <childnode refid="1591" relation="include">
         </childnode>
-        <childnode refid="2016" relation="include">
+        <childnode refid="1594" relation="include">
         </childnode>
-        <childnode refid="2017" relation="include">
+        <childnode refid="1592" relation="include">
         </childnode>
       </node>
-      <node id="2013">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
-      </node>
-      <node id="2020">
+      <node id="1594">
         <label>src/omexmeta/PhysicalPhenomenon.h</label>
         <link refid="PhysicalPhenomenon_8h_source"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2021" relation="include">
+        <childnode refid="1593" relation="include">
         </childnode>
-        <childnode refid="2016" relation="include">
+        <childnode refid="1591" relation="include">
         </childnode>
-        <childnode refid="2017" relation="include">
+        <childnode refid="1592" relation="include">
         </childnode>
       </node>
-      <node id="2021">
+      <node id="1593">
         <label>src/omexmeta/PhysicalEntity.h</label>
         <link refid="PhysicalEntity_8h_source"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2012" relation="include">
-        </childnode>
-        <childnode refid="2013" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
       </node>
-      <node id="2017">
+      <node id="1592">
         <label>src/omexmeta/PhysicalProcess.h</label>
         <link refid="PhysicalProcess_8h_source"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2012" relation="include">
-        </childnode>
-        <childnode refid="2013" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
       </node>
-      <node id="2019">
+      <node id="1589">
+        <label>src/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="1588" relation="include">
+        </childnode>
+      </node>
+      <node id="1597">
         <label>src/omexmeta/PersonalInformation.h</label>
         <link refid="PersonalInformation_8h_source"/>
-        <childnode refid="2011" relation="include">
+        <childnode refid="1586" relation="include">
         </childnode>
-        <childnode refid="2012" relation="include">
+        <childnode refid="1587" relation="include">
         </childnode>
       </node>
-      <node id="2012">
+      <node id="1587">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
       </node>
@@ -617,96 +407,109 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_Triple22_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_Triple22_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;LibrdfNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;LibrdfStatement.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Predicate.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Subject.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Resource.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;omexmeta/Triple2Writer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;raptor2.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceredland" kindref="compound">redland</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/raptor2.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfStatement.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Predicate.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Subject.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Resource.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>should<sp/>inherit<sp/>from<sp/>librdf_statement?</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceredland" kindref="compound">redland</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>should<sp/>inherit<sp/>from<sp/>librdf_statement?</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="classomexmeta_1_1Triple" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>(librdf_statement<sp/>*statement);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>model_uri_;<sp/></highlight><highlight class="comment">//<sp/>like<sp/>http:/omex-library.org/omex-archive.omex/model.xml</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LibrdfStatement::LibrdfStatement;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LibrdfStatement::operator=;</highlight></codeline>
+<codeline lineno="35" refid="classomexmeta_1_1Triple" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>(librdf_statement<sp/>*statement);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>local_uri_;<sp/></highlight><highlight class="comment">//<sp/>like<sp/>http:/omex-library.org/omex-archive.omex/model.rdf</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>model_uri_;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref><sp/>&amp;subject,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PredicatePtr<sp/>&amp;predicate_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref><sp/>&amp;resource);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>(librdf_node<sp/>*subject,<sp/>librdf_node<sp/>*predicate,<sp/>librdf_node<sp/>*resource);</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>fromRawStatementPtr(librdf_statement<sp/>*statement);</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;getModelUri()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setModelUri(std::string<sp/>localUri);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>serialize<sp/>the<sp/>triple<sp/>using<sp/>a<sp/>@format<sp/>serializer.</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Creates<sp/>an<sp/>isolated<sp/>serializer<sp/>that<sp/>does<sp/>not<sp/>get<sp/>added</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>the<sp/>users<sp/>annotations.<sp/>This<sp/>method<sp/>is<sp/>for<sp/>visualizing</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>a<sp/>triple<sp/>only.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>str(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;format<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;rdfxml-abbrev&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;base<sp/>=<sp/>(std::filesystem::current_path()<sp/>/=<sp/><sp/></highlight><highlight class="stringliteral">&quot;annotations.rdf&quot;</highlight><highlight class="normal">).</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">(),</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>omex_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NewOmex.omex&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>model_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NewModel.xml&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LibrdfStatement::LibrdfStatement;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LibrdfStatement::operator=;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref><sp/>&amp;subject,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PredicatePtr<sp/>&amp;predicate_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref><sp/>&amp;resource);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>(librdf_node<sp/>*subject,<sp/>librdf_node<sp/>*predicate,<sp/>librdf_node<sp/>*resource);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>fromRawStatementPtr(librdf_statement<sp/>*statement);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;getLocalUri()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>set<sp/>the<sp/>local_uri_<sp/>attribute<sp/>for<sp/>this<sp/>triple</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setLocalUri(std::string<sp/>localUri);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>set<sp/>the<sp/>model_uri_<sp/>attribute<sp/>for<sp/>this<sp/>triple</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setModelUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>model_uri);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>freeTriple();</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setAbout(std::string<sp/>omex_name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>model_name,<sp/>std::string<sp/>metaid);</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setAbout(std::string<sp/>metaid);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>getAbout()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>librdf_statement<sp/>*getStatement()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setPredicate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;namespace_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;term);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>serialize<sp/>the<sp/>triple<sp/>using<sp/>a<sp/>@format<sp/>serializer.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Creates<sp/>an<sp/>isolated<sp/>serializer<sp/>that<sp/>does<sp/>not<sp/>get<sp/>added</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>to<sp/>the<sp/>users<sp/>annotations.<sp/>This<sp/>method<sp/>is<sp/>for<sp/>visualizing</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>a<sp/>triple<sp/>only.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>str(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;format<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;turtle&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;base<sp/>=<sp/>(std::filesystem::current_path()<sp/>/=<sp/><sp/></highlight><highlight class="stringliteral">&quot;annotations.rdf&quot;</highlight><highlight class="normal">).</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">(),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>omex_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NewOmex.omex/&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>model_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NewModel.xml#&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setResourceLiteral(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;literal);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>freeTriple();</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setResourceUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;identifiers_uri);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setAbout(std::string<sp/>omex_name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>model_name,<sp/>std::string<sp/>metaid);</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setResourceBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank_id);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setAbout(std::string<sp/>metaid);</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isEmpty();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>getAbout()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setPredicate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>librdf_statement<sp/>*getStatement()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>freeTripleAndUris();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setPredicate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;namespace_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;term);</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>&amp;setAbout(const<sp/>std::string<sp/>&amp;metaid);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setResourceLiteral(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;literal);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setResourceUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;identifiers_uri);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref>;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_Triple22_H</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setResourceBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank_id);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isEmpty();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>&amp;setPredicate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>freeTripleAndUris();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>&amp;setAbout(const<sp/>std::string<sp/>&amp;metaid);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;getModelUri()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_Triple22_H</highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/Triple.h"/>
   </compounddef>

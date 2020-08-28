@@ -4,12 +4,12 @@
     <compoundname>AnnotationType.h</compoundname>
     <includedby refid="PhysicalPhenomenon_8h" local="yes">src/omexmeta/PhysicalPhenomenon.h</includedby>
     <invincdepgraph>
-      <node id="8">
+      <node id="7">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -18,8 +18,6 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -37,10 +35,6 @@
         <link refid="AnnotationType_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
-      </node>
-      <node id="7">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
       </node>
       <node id="4">
         <label>src/omexmeta/PhysicalPhenomenon.h</label>
@@ -61,8 +55,6 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
       <node id="11">
         <label>src/omexmeta/PhysicalProcess.h</label>
@@ -71,6 +63,10 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+      </node>
+      <node id="8">
+        <label>src/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>

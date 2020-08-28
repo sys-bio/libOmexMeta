@@ -16,5 +16,6 @@ Developers Documentation
     redland_combined.rst
     world_singleton.rst
     incrementing_version.rst
+    compile_definitions.rsts
 
 

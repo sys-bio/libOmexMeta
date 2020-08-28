@@ -28,9 +28,9 @@
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
 /* raptor */
-#include <raptor2.h>
+#include "raptor2.h"
 /* rasqal: uses raptor */
-#include <rasqal.h>
+#include "rasqal.h"
 /* librdf: uses rasqal and raptor */
 #else
 #include <Redland/raptor2.h>
@@ -388,41 +388,41 @@ extern const char *const librdf_home_url_string;
  */
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
-#include <rdf_log.h>
-#include <rdf_digest.h>
-#include <rdf_hash.h>
-#include <rdf_init.h>
-#include <rdf_iterator.h>
-#include <rdf_uri.h>
-#include <rdf_node.h>
-#include <rdf_concepts.h>
-#include <rdf_statement.h>
-#include <rdf_model.h>
-#include <rdf_storage.h>
-#include <rdf_parser.h>
-#include <rdf_raptor.h>
-#include <rdf_serializer.h>
-#include <rdf_stream.h>
-#include <rdf_query.h>
-#include <rdf_utf8.h>
+#include "rdf_log.h"
+#include "rdf_digest.h"
+#include "rdf_hash.h"
+#include "rdf_init.h"
+#include "rdf_iterator.h"
+#include "rdf_uri.h"
+#include "rdf_node.h"
+#include "rdf_concepts.h"
+#include "rdf_statement.h"
+#include "rdf_model.h"
+#include "rdf_storage.h"
+#include "rdf_parser.h"
+#include "rdf_raptor.h"
+#include "rdf_serializer.h"
+#include "rdf_stream.h"
+#include "rdf_query.h"
+#include "rdf_utf8.h"
 #else
-#include <Redland/rdf_log.h>
-#include <Redland/rdf_digest.h>
-#include <Redland/rdf_hash.h>
-#include <Redland/rdf_init.h>
-#include <Redland/rdf_iterator.h>
-#include <Redland/rdf_uri.h>
-#include <Redland/rdf_node.h>
-#include <Redland/rdf_concepts.h>
-#include <Redland/rdf_statement.h>
-#include <Redland/rdf_model.h>
-#include <Redland/rdf_storage.h>
-#include <Redland/rdf_parser.h>
-#include <Redland/rdf_raptor.h>
-#include <Redland/rdf_serializer.h>
-#include <Redland/rdf_stream.h>
-#include <Redland/rdf_query.h>
-#include <Redland/rdf_utf8.h>
+#include "Redland/rdf_log.h"
+#include "Redland/rdf_digest.h"
+#include "Redland/rdf_hash.h"
+#include "Redland/rdf_init.h"
+#include "Redland/rdf_iterator.h"
+#include "Redland/rdf_uri.h"
+#include "Redland/rdf_node.h"
+#include "Redland/rdf_concepts.h"
+#include "Redland/rdf_statement.h"
+#include "Redland/rdf_model.h"
+#include "Redland/rdf_storage.h"
+#include "Redland/rdf_parser.h"
+#include "Redland/rdf_raptor.h"
+#include "Redland/rdf_serializer.h"
+#include "Redland/rdf_stream.h"
+#include "Redland/rdf_query.h"
+#include "Redland/rdf_utf8.h"
 #endif
 
 #ifdef __cplusplus

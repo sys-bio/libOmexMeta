@@ -41,7 +41,7 @@
 #include <unistd.h>
 #endif
 
-#include <raptor2.h>
+#include "raptor2.h"
 
 
 int main(int argc, char *argv[]);

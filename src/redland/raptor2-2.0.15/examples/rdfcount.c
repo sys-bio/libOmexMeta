@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <raptor2.h>
+#include "raptor2.h"
 
 /* rdfcount.c: parse any number of RDF/XML files and count the triples */
 

@@ -7,7 +7,7 @@
 
 
 #include <memory>
-#include <librdf.h>
+#include "librdf.h"
 #include "LibrdfException.h"
 
 

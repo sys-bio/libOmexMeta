@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <raptor2.h>
+#include "raptor2.h"
 
 /* rdfprint.c: print triples from parsing RDF/XML */
 

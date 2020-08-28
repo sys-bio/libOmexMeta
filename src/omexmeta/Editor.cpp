@@ -4,8 +4,7 @@
 
 #include "omexmeta/Editor.h"
 
-#include "filesystem"
-#include <utility>
+
 
 namespace omexmeta {
 

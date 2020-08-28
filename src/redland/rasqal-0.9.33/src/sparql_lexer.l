@@ -107,7 +107,7 @@
 #include <setjmp.h>
 #endif
 
-#include <rasqal.h>
+#include "rasqal.h"
 #include <rasqal_internal.h>
 
 #include <sparql_parser.h>

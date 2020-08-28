@@ -6,8 +6,8 @@
 #define LIBOMEXMETA_LIBRDFNODE_H
 
 //
-#include <librdf.h>
-#include <raptor2.h>
+#include "librdf.h"
+#include "raptor2.h"
 #include <memory>
 #include <sstream>
 #include "LibrdfUri.h"
