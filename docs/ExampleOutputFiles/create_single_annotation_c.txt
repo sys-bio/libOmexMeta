@@ -1,9 +1,0 @@
-ToyModel@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-local:ToyModel
-    dcterms:description "This is a toy model for demonstration purposes"^^rdf:string .
-

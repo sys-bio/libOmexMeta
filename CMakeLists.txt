@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 8)
+set(VERSION_MICRO 9)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 project(libOmexMeta

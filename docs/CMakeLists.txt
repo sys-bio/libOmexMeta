@@ -12,7 +12,9 @@
 # You will need to:
 #   pip install sphinx breathe sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme
 # you will also need to ensure doxygen is installed and findable.
-
+#
+# Note that I have deliberately used the "install tree" for the examples in the docs.
+#
 
 ############################################################
 # Build the documentation examples
