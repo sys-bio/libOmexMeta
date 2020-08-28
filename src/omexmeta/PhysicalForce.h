@@ -144,7 +144,7 @@ namespace omexmeta {
          *
          * See SourceParticipant documentation for more details on arguments.
          */
-        PhysicalForce &addSource(double multiplier, const std::string& physical_entity_reference);
+        PhysicalForce &addSource(int multiplier, const std::string& physical_entity_reference);
 
         /*
          * @brief add a SinkParticipant to the PhysicalForce.
@@ -156,7 +156,7 @@ namespace omexmeta {
          *
          * See SinkParticipant documentation for more details on arguments.
          */
-        PhysicalForce & addSink(double multiplier, const std::string& physical_entity_reference);
+        PhysicalForce & addSink(int multiplier, const std::string& physical_entity_reference);
 
         /*
          * @brief returns the number of sources associated with the

@@ -489,7 +489,7 @@ namespace omexmeta {
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSource(PhysicalProcess *physical_process, double multiplier,
+    PhysicalProcess_addSource(PhysicalProcess *physical_process, int multiplier,
                               const char *physical_entity_reference) {
         physical_process->addSource(multiplier, physical_entity_reference);
         return physical_process;
@@ -497,7 +497,7 @@ namespace omexmeta {
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSink(PhysicalProcess *physical_process, double multiplier,
+    PhysicalProcess_addSink(PhysicalProcess *physical_process, int multiplier,
                             const char *physical_entity_reference) {
         physical_process->addSink(multiplier, physical_entity_reference);
         return physical_process;
@@ -559,14 +559,14 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, double multiplier,
+    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, int multiplier,
                                            const char *physical_entity_reference) {
         physical_force_ptr->addSource(multiplier, physical_entity_reference);
         return physical_force_ptr;
 
     }
 
-    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, double multiplier,
+    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, int multiplier,
                                          const char *physical_entity_reference) {
         physical_force_ptr->addSink(multiplier, physical_entity_reference);
         return physical_force_ptr;

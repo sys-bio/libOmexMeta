@@ -615,9 +615,9 @@ TEST_F(CAPITests, TestPhysicalProcess) {
 
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "Metaid0937", "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
-            physical_process_ptr, 1.0, "Entity8");
+            physical_process_ptr, 1, "Entity8");
     physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, 1.0, "Entity8");
+            physical_process_ptr, 1, "Entity8");
     physical_process_ptr = PhysicalProcess_addMediator(
             physical_process_ptr, "Entity8");
 
@@ -667,9 +667,9 @@ TEST_F(CAPITests, TestPhysicalForce) {
 
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "Metaid0937", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
-            physical_force_ptr, 1.0, "Entity8");
+            physical_force_ptr, 1, "Entity8");
     physical_force_ptr = PhysicalForce_addSource(
-            physical_force_ptr, 1.0, "Entity9");
+            physical_force_ptr, 1, "Entity9");
 
     char *actual = PhysicalForce_str(physical_force_ptr, "turtle", "./Annot.rdf");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -717,7 +717,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     physical_process_ptr = PhysicalProcess_addSink(
             physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, 1.0, "Entity8");
+            physical_process_ptr, 1, "Entity8");
     physical_process_ptr = PhysicalProcess_addMediator(
             physical_process_ptr, "Entity8");
 
@@ -732,9 +732,9 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "#OmexMetaId0008", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
-            physical_force_ptr, 1.0, "Entity8");
+            physical_force_ptr, 1, "Entity8");
     physical_force_ptr = PhysicalForce_addSource(
-            physical_force_ptr, 1.0, "Entity9");
+            physical_force_ptr, 1, "Entity9");
 
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr

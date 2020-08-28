@@ -233,11 +233,11 @@ namespace omexmeta {
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_addSource(
-            PhysicalProcess *physical_process, double multiplier,
+            PhysicalProcess *physical_process, int multiplier,
             const char *physical_entity_reference);
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_addSink(
-            PhysicalProcess *physical_process, double multiplier,
+            PhysicalProcess *physical_process, int multiplier,
             const char *physical_entity_reference);
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_addMediator(
@@ -266,11 +266,11 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
 
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_addSource(
-            PhysicalForce *physical_force_ptr, double multiplier,
+            PhysicalForce *physical_force_ptr, int multiplier,
             const char *physical_entity_reference);
 
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_addSink(
-            PhysicalForce *physical_force_ptr, double multiplier,
+            PhysicalForce *physical_force_ptr, int multiplier,
             const char *physical_entity_reference);
 
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_setPhysicalProperty(

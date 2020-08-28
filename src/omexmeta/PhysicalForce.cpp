@@ -75,7 +75,7 @@ namespace omexmeta {
         return *this;
     }
 
-    PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
+    PhysicalForce &PhysicalForce::addSource(int multiplier, const std::string &physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(
                         model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri()
@@ -84,7 +84,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
+    PhysicalForce &PhysicalForce::addSink(int multiplier, const std::string &physical_entity_reference) {
         sinks_.push_back(
                 SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri())
         );

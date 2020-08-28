@@ -868,13 +868,13 @@ local:SourceParticipant0000
         PyOmexMetaAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(),
                                                              "opb:opb12345".encode())
         PyOmexMetaAPI.physical_process_add_source(
-            physical_process, 1.0, "Entity1".encode())
+            physical_process, 1, "Entity1".encode())
 
         PyOmexMetaAPI.physical_process_add_sink(
-            physical_process, 1.0, "Entity2".encode())
+            physical_process, 1, "Entity2".encode())
 
         PyOmexMetaAPI.physical_process_add_mediator(
-            physical_process, 1.0, "Entity3".encode())
+            physical_process, "Entity3".encode())
         PyOmexMetaAPI.editor_add_physical_process(editor_ptr, physical_process)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "PhysicalProcess.rdf".encode())
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)

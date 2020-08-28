@@ -1,0 +1,100 @@
+Sparql results format: xml
+<?xml version="1.0" encoding="utf-8"?>
+<sparql xmlns="http://www.w3.org/2005/sparql-results#">
+  <head>
+  </head>
+  <results>
+  </results>
+</sparql>
+
+
+
+
+Sparql results format: json
+{
+  "head": {
+    "vars": [  ]
+  },
+  "results": {
+    "ordered" : false,
+    "distinct" : false,
+    "bindings" : [
+
+    ]
+  }
+}
+
+
+
+
+Sparql results format: table
+-
+|
+=
+
+
+
+
+Sparql results format: csv
+
+
+
+
+
+Sparql results format: mkr
+result is relation with format = csv;
+begin relation result;
+;
+end relation result;
+
+
+
+
+Sparql results format: tsv
+
+
+
+
+
+Sparql results format: html
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>SPARQL Query Results</title>
+</head>
+<body>
+  <table id="results" border="1">
+    <tr>
+    </tr>
+  </table>
+  <p>Total number of rows: <span class="count">0</span>.</p>
+</body>
+</html>
+
+
+
+
+Sparql results format: turtle
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rs:      <http://www.w3.org/2001/sw/DataAccess/tests/result-set#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+[]    rdf:type      rs:ResultSet ;
+ .
+
+
+
+
+Sparql results format: rdfxml
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rs="http://www.w3.org/2001/sw/DataAccess/tests/result-set#"
+   xml:base="file://query_results">
+  <rs:ResultSet/>
+</rdf:RDF>
+
+
+
+

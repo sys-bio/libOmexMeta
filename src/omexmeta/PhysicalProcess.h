@@ -125,13 +125,13 @@ namespace omexmeta {
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSource(double multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSource(int multiplier, std::string physical_entity_reference);
 
         /*
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSink(double multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSink(int multiplier, std::string physical_entity_reference);
 
         /*
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess

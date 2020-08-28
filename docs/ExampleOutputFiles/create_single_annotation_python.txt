@@ -1,0 +1,11 @@
+['ToyModel', '#OmexMetaId0000', '#OmexMetaId0001', '#OmexMetaId0002', '#OmexMetaId0003', '#OmexMetaId0004']
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#ToyModel>
+    dcterms:description "This is a toy model for demonstration purposes"^^rdf:string .
+
+

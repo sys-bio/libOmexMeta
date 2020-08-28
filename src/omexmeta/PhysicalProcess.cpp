@@ -44,7 +44,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSource(double multiplier, std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addSource(int multiplier, std::string physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
                                             multiplier,
@@ -56,7 +56,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSink(double multiplier, std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addSink(int multiplier, std::string physical_entity_reference) {
         sinks_.push_back(
                 std::move(SinkParticipant(
                         model_,
