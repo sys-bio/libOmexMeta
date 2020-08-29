@@ -6,9 +6,9 @@
 
 namespace omexmeta {
 
-    SBMLSemanticExtraction::SBMLSemanticExtraction(RDF *rdf, const std::string& sbml_string)
-            : rdf_(rdf), sbml_string_(sbml_string),
-              editor_(rdf->toEditor(sbml_string, false)) {}
+    SBMLSemanticExtraction::SBMLSemanticExtraction(Editor *editor)
+            : editor_(editor), sbml_string_(editor->getXml()){
+    }
 
     void SBMLSemanticExtraction::extractSpeciesCompartmentSemantics() {
         ElementExtractor compartment_extraction(sbml_string_, "compartment");
@@ -37,12 +37,12 @@ namespace omexmeta {
                     std::string compartment_metaid_that_species_node_belongs_to = OmexMetaUtils::getXmlNodeProperty(compartment_node, "metaid");
 
                     // and use the information to construct a singular annotation and add it to the model
-                    SingularAnnotation singularAnnotation = editor_.newSingularAnnotation();
+                    SingularAnnotation singularAnnotation = editor_->newSingularAnnotation();
                     singularAnnotation
                         .setAbout(species_metaid)
                         .setPredicate("bqbiol", "isPartOf")
-                        .setResourceUri(compartment_id_that_species_node_belongs_to);
-                    editor_.addSingleAnnotation(singularAnnotation);
+                        .setResourceWithModelUri(compartment_id_that_species_node_belongs_to);
+                    editor_->addSingleAnnotation(singularAnnotation);
                     singularAnnotation.freeTriple();
                 }
             }
@@ -71,7 +71,7 @@ namespace omexmeta {
             std::string reaction_metaid = OmexMetaUtils::getXmlNodeProperty(reaction_node, "metaid");
 
             // begin the annotation
-            PhysicalProcess process = editor_.newPhysicalProcess();
+            PhysicalProcess process = editor_->newPhysicalProcess();
             process.setPhysicalProperty(reaction_metaid, "opb:OPB_00592");
 
             // and pull out the listOf* elements for the reaction
@@ -104,7 +104,7 @@ namespace omexmeta {
                     if (reactant_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addSource(std::stod(reactant_node_stoic), reactant_node_species_ref);
+                        process.addSource(std::stoi(reactant_node_stoic), species_node_metaid);
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace omexmeta {
                     if (product_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addSink(std::stod(product_node_stoic), product_node_species_ref);
+                        process.addSink(std::stoi(product_node_stoic), species_node_metaid);
                     }
                 }
             }
@@ -142,11 +142,11 @@ namespace omexmeta {
                     if (modifier_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addMediator(modifier_node_species_ref);
+                        process.addMediator(species_node_metaid);
                     }
                 }
             }
-            editor_.addPhysicalProcess(process);
+            editor_->addPhysicalProcess(process);
         }
     }
 

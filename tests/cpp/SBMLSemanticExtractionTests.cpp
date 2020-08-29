@@ -20,28 +20,70 @@ public:
 TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
-    SBMLSemanticExtraction extraction(&rdf, model_string);
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:PhysicalProcess0001\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2> .\n"
+                           "\n"
+                           "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3> .\n"
+                           "\n"
+                           "local:SourceParticipant0002\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#react1>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#react2>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1>\n"
-                           "    bqbiol:isPartOf <cytosol> .\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2>\n"
-                           "    bqbiol:isPartOf <cytosol> .\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3>\n"
-                           "    bqbiol:isPartOf <cytosol> .\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4>\n"
-                           "    bqbiol:isPartOf <extraCell> .\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#extraCell> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5>\n"
-                           "    bqbiol:isPartOf <cytosol> .\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
@@ -54,24 +96,47 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
      */
     std::string model_string = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     RDF rdf;
-    SBMLSemanticExtraction extraction(&rdf, model_string);
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(SBMLSemanticExtractionTests, test){
+TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
     rdf.setArchiveUri("AnAwesomeOmex.omex");
     rdf.setModelUri("Model1.xml");
-    SBMLSemanticExtraction extraction(&rdf, model_string);
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
     extraction.extractProcessesFromReactions();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
@@ -81,7 +146,10 @@ TEST_F(SBMLSemanticExtractionTests, test){
                            "@prefix local: <http://omex-library.org/AnAwesomeOmex.omex/Model1.rdf#> .\n"
                            "\n"
                            "local:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#Enzyme> .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
+                           "\n"
+                           "local:MediatorParticipant0001\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
                            "\n"
                            "local:PhysicalProcess0000\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
@@ -92,37 +160,83 @@ TEST_F(SBMLSemanticExtractionTests, test){
                            "    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002 .\n"
                            "\n"
+                           "local:PhysicalProcess0002\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0002 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0003 .\n"
+                           "\n"
+                           "local:PhysicalProcess0003\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0003 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0004, local:SourceParticipant0005 .\n"
+                           "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#A> .\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
                            "\n"
                            "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#PlasmaCa> .\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4> .\n"
+                           "\n"
+                           "local:SinkParticipant0002\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
+                           "\n"
+                           "local:SinkParticipant0003\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#B> .\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2> .\n"
                            "\n"
                            "local:SourceParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#Ca> .\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3> .\n"
                            "\n"
                            "local:SourceParticipant0002\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#A> .\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
+                           "\n"
+                           "local:SourceParticipant0003\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2> .\n"
+                           "\n"
+                           "local:SourceParticipant0004\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3> .\n"
+                           "\n"
+                           "local:SourceParticipant0005\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
                            "\n"
                            "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000, local:PhysicalProcess0002 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n";
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001, local:PhysicalProcess0003 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#extraCell> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
+
 
 
 

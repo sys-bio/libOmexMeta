@@ -224,13 +224,13 @@ namespace omexmeta {
         return model_.get();
     }
 
-    Editor RDF::toEditor(const std::string &xml, bool generate_new_metaids) {
-        return Editor(xml, false, model_, namespaces_, generate_new_metaids,
+    Editor RDF::toEditor(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
+        return Editor(xml, false, model_, namespaces_, generate_new_metaids, sbml_semantic_extraction,
                       getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
     }
 
-    Editor *RDF::toEditorPtr(const std::string &xml, bool generate_new_metaids) {
-        auto *editor = new Editor(xml, false, model_, namespaces_, generate_new_metaids, 
+    Editor *RDF::toEditorPtr(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
+        auto *editor = new Editor(xml, false, model_, namespaces_, generate_new_metaids, sbml_semantic_extraction,
                                   getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
         return editor;
     }
@@ -461,11 +461,10 @@ namespace omexmeta {
         }
 
         if (getXmlType() == OMEXMETA_TYPE_SBML){
-            SBMLSemanticExtraction extraction(this, str);
-            // these operations automatically add to the rdf model
-            extraction.extractSpeciesCompartmentSemantics();
-            extraction.extractProcessesFromReactions();
+            // Opening an SBML model in the editor automatically uses
+            // the SBMLSemanticExtraction class to get the information we want.
+            // see constructor for Editor.
+            Editor editor = toEditor(str, true);
         }
-
     }
 }

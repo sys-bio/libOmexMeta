@@ -19,9 +19,6 @@ project(libOmexMeta
 # for linux shared libraries
 set(SOVERSION ${VERSION_MAJOR})
 
-# configure VERSION.txt for Python to read
-configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt" @ONLY)
-
 ######################################################
 # Load stuff
 # set the module path
@@ -141,6 +138,8 @@ if (BUILD_SHARED_LIBS)
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
 
+include(CMakeDependentOption)
+
 option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
@@ -151,7 +150,12 @@ option(BUILD_PYTHON "Build the Python pip package" OFF)
 option(GENERATE_DEPENDENCY_GRAPH "Get CMake to generate the dependency graph" ON)
 
 # docs-build tests?
-SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
+option(BUILD_TESTS "build the tests" OFF)
+# only presents BUILD_INTEGRATION_TESTS option when BUILD_TESTS is ON.
+cmake_dependent_option(
+        BUILD_INTEGRATION_TESTS "build integrations tests" ON
+        "BUILD_TESTS" ON
+)
 
 # verbose
 set(CMAKE_VERBOSE_MAKEFILE ON)
