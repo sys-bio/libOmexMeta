@@ -48,6 +48,7 @@ namespace omexmeta {
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
         bool generate_new_metaids_;
+        bool sbml_semantic_extraction_;
         std::string metaid_base_ = "#OmexMetaId";
         OmexMetaXmlType type_;
         const std::string& repository_uri_ ;
@@ -62,8 +63,9 @@ namespace omexmeta {
         /*
          * @brief constructor for Editor.
          * @param xml The valid xml content for annotation
-         * @param create_ids. Autogenerate metaids for xml element that do not already have them
-         * @param OmexMetaXmlType indicated which type of xml is being annotated. OMEXMETA_TYPE_SBML, OMEXMETA_TYPE_CELLML or SEMSIM_TYPE_UNKNOWN.
+         * @param generate_new_metaids. Autogenerate metaids for xml element that do not already have them
+         * @param sbml_semantic_extraction. When @param xml is determined to be sbml, automatically extract some information regarding species and reactions. This
+         * option is ignored when @param xml is not sbml. Default is true.
          * @param model a reference to the current model (owned by RDF).
          * @param nm_map a set of namespaces for current xml
          *
@@ -77,7 +79,7 @@ namespace omexmeta {
          * are used. If the type is unknown, then all elements are given metaids.
          */
         explicit Editor(const std::string &xml, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
-                        bool generate_new_metaids = false,
+                        bool generate_new_metaids = false, bool sbml_semantic_extraction = true,
                         const std::string &repository_uri = std::string(),
                         const std::string &archive_uri = std::string(), const std::string &model_uri = std::string(),
                         const std::string &local_uri = std::string());

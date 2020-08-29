@@ -33,7 +33,7 @@ public:
 TEST_F(EditorTests, TestMetaIds) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     const auto &metaids = editor.getMetaids();
     std::vector<std::string> expected = {"#OmexMetaId0000", "#OmexMetaId0001", "#OmexMetaId0002",
                                          "#cytosol", "#Meta00001", "#OmexMetaId0003", "#OmexMetaId0004",
@@ -45,7 +45,7 @@ TEST_F(EditorTests, TestMetaIds) {
 TEST_F(EditorTests, TestRepositoryName1) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     std::string expected = "http://omex-library.org/";
     std::string actual = editor.getRepositoryUri();
@@ -55,7 +55,7 @@ TEST_F(EditorTests, TestRepositoryName1) {
 TEST_F(EditorTests, TestepositoryName2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     std::string expected = "http://myCustomOmexLibrary.org/";
     rdf.setRepositoryUri(expected);
@@ -66,7 +66,7 @@ TEST_F(EditorTests, TestepositoryName2) {
 TEST_F(EditorTests, TestArchiveName) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     std::string expected = "http://omex-library.org/myomex.omex";
     rdf.setArchiveUri("myomex");
@@ -77,7 +77,7 @@ TEST_F(EditorTests, TestArchiveName) {
 TEST_F(EditorTests, TestArchiveName2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     std::string expected = "http://omex-library.org/newOmex.omex";
     rdf.setArchiveUri("newOmex.omex");
@@ -88,7 +88,7 @@ TEST_F(EditorTests, TestArchiveName2) {
 TEST_F(EditorTests, TestArchiveName3) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     std::string expected = "http://omex-library.org/momex.omex";
     rdf.setArchiveUri("momex.omex");
@@ -100,7 +100,7 @@ TEST_F(EditorTests, TestArchiveName3) {
 TEST_F(EditorTests, TestSetModelName) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     rdf.setArchiveUri("MyOmexArchive");
     rdf.setModelUri("smad.sbml");
@@ -112,7 +112,7 @@ TEST_F(EditorTests, TestSetModelName) {
 TEST_F(EditorTests, TestSetLocalName) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     rdf.setArchiveUri("MyOmexArchive");
     rdf.setModelUri("smad.sbml");
@@ -124,7 +124,7 @@ TEST_F(EditorTests, TestSetLocalName) {
 TEST_F(EditorTests, TestSetLocalNam) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     rdf.setArchiveUri("MyOmexArchive");
     rdf.setModelUri("smad.sbml");
@@ -137,7 +137,7 @@ TEST_F(EditorTests, TestSetLocalNam) {
 TEST_F(EditorTests, TestAddAnnotation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
@@ -145,19 +145,19 @@ TEST_F(EditorTests, TestAddAnnotation) {
             predicatePtr,
             Resource(LibrdfNode::fromUriString("uniprot:P0DP23"))
     );
-    ASSERT_EQ(11, editor.size());
+    ASSERT_EQ(1, editor.size());
 //    triples.freeTriples();
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     Triple triple(LibrdfNode::fromUriString("#OmexMetaId0009").get(),
                   BiomodelsBiologyQualifier("is").getNode(),
                   Resource(LibrdfNode::fromUriString("uniprot:P0DP23")).getNode());
     editor.addSingleAnnotation(triple);
-    int expected = 11;
+    int expected = 1;
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
     triple.freeStatement();
@@ -166,7 +166,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
 TEST_F(EditorTests, TestEditorCreateUriRelativeToLocalUri) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     rdf.setArchiveUri("MyOmexArchive");
     rdf.setModelUri("mymodel.sbml");
     LibrdfNode node = editor.createNodeWithModelUri("#OmexMetaId0009");
@@ -179,7 +179,10 @@ TEST_F(EditorTests, TestEditorCreateUriRelativeToLocalUri) {
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED),
+            true,
+            false
+            );
     Subject subject = Subject(editor.createNodeWithModelUri("#OmexMetaId0009"));
     BiomodelsBiologyQualifier predicate("is");
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
@@ -189,33 +192,13 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalProcess0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
-                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
-                           "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
@@ -224,7 +207,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
             Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
@@ -233,7 +216,6 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -241,25 +223,6 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
-                           "\n"
-                           "local:PhysicalProcess0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -269,7 +232,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
             Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
@@ -278,35 +241,13 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
 
     std::string actual = rdf.toString();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalProcess0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
-                           "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
-                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
-                           "\n"
-                           "";
+                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -314,7 +255,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
 TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
             Subject(editor.createNodeWithModelUri("OmexMetaId0008")),
             std::make_unique<Predicate>(DCTerm("description")),
@@ -322,13 +263,15 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     );
 
     std::string actual = rdf.toString("turtle");
-    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008\">\n"
-                           "    <dcterms:description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "    dcterms:description \"Cardiomyocyte cytosolic ATP concentration\"^^rdf:string .\n"
+                           "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -336,7 +279,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation
@@ -347,12 +290,15 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001\">\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
+                           "\n"
                            "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     singularAnnotation.freeStatement();
@@ -362,7 +308,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
@@ -375,33 +321,13 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalProcess0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
-                           "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
-                           "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -412,7 +338,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
 TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
@@ -451,7 +377,7 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
 TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), false);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), false, false);
 
     PhysicalProperty ppr("metaid", "OPB:OPB_00154", editor.getModelUri());
     Resource r(LibrdfNode::fromUriString("fma:FMA:9670")); // is smad3
@@ -471,7 +397,7 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalProcess process = PhysicalProcess(
             model.get(),
@@ -537,7 +463,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce force = PhysicalForce(
             model.get(),
@@ -594,7 +520,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
 TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
@@ -613,7 +539,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
 TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     editor.addCreator("0000-1111-2222-3333");
 
@@ -634,7 +560,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
 TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     editor.addCurator("0000-1111-2222-3333");
 
@@ -655,7 +581,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
 TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     editor.addDateCreated("14/01/1991");
 
@@ -675,7 +601,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
 TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     editor.addDescription("Predictive model of chip butty consumer's risk of "
                           "heart failure.");
@@ -696,7 +622,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
 TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     editor.addPubmed("27887851");
 
@@ -717,7 +643,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
 TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     editor.addParentModel("BIOMD0000011");
 
@@ -740,7 +666,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
     RDF rdf;
     
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     
 
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
@@ -762,7 +688,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
 TEST_F(EditorTests, TestPhysicalForceBuilder) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
@@ -779,7 +705,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
 TEST_F(EditorTests, TestPhysicalProcessBuilder) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
@@ -798,7 +724,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0000");
     singularAnnotation
@@ -822,7 +748,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
 TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
     singularAnnotation
@@ -843,7 +769,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 TEST_F(EditorTests, TestRemovePhysicalForce) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
@@ -861,7 +787,7 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
 TEST_F(EditorTests, TestRemovePersonalInformation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PersonalInformation information = editor.newPersonalInformation();
     information.addMbox("annot@uw.edu");
@@ -875,7 +801,7 @@ TEST_F(EditorTests, TestRemovePersonalInformation) {
 TEST_F(EditorTests, TestRemovePhysicalProcess) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
@@ -894,7 +820,7 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
 TEST_F(EditorTests, TestAddPersonalInformation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PersonalInformation information = editor.newPersonalInformation();
     information.addAccountName("1234-1234-1234-1234")
@@ -986,7 +912,7 @@ public:
 
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
 
     EditorTestsPhysicalEntityMemory() {
@@ -1081,7 +1007,7 @@ class EditorTestsDeletePhysicalEntity : public ::testing::Test {
 public:
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
 

@@ -10,11 +10,13 @@ namespace omexmeta {
 
     Editor::Editor(const std::string &xml, bool create_ids,
                    const LibrdfModel &model, NamespaceMap &ns_map,
-                   bool generate_new_metaids, const std::string &repository_uri,
+                   bool generate_new_metaids, bool sbml_semantic_extraction,
+                   const std::string &repository_uri,
                    const std::string &archive_uri, const std::string &model_uri,
                    const std::string &local_uri)
         : model_(model), create_ids_(create_ids), namespaces_(ns_map),
           generate_new_metaids_(generate_new_metaids),
+          sbml_semantic_extraction_(sbml_semantic_extraction),
           repository_uri_(repository_uri), archive_uri_(archive_uri),
           model_uri_(model_uri), local_uri_(local_uri) {
         MarkupIdentifier identifier(xml);
@@ -35,7 +37,7 @@ namespace omexmeta {
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
 
-        if (getType() == OMEXMETA_TYPE_SBML){
+        if (getType() == OMEXMETA_TYPE_SBML && sbml_semantic_extraction){
             // with sbml models we extract some information directly from the sbml
             SBMLSemanticExtraction extraction(this);
             extraction.extractSpeciesCompartmentSemantics();
