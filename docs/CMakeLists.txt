@@ -13,12 +13,53 @@
 #   pip install sphinx breathe sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme
 # you will also need to ensure doxygen is installed and findable.
 #
-# Note that I have deliberately used the "install tree" for the examples in the docs.
 #
 
 ############################################################
 # Build the documentation examples
 #
+
+set(EXAMPLE_EXECUTABLES_TARGETS)
+
+macro(add_doc_example BINARY_NAME)
+
+    # binary for testing Editor's ability to extract information from sbml
+    add_executable(${BINARY_NAME} ${ARGN})
+    set(EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS} "${BINARY_NAME}")
+
+    target_compile_definitions(
+            ${BINARY_NAME} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
+    )
+    # add test so it can be run with $ctest or $make test
+    add_test(
+            NAME ${BINARY_NAME}
+            COMMAND $<TARGET_FILE:${BINARY_NAME}>
+    )
+
+    set_tests_properties(${BINARY_NAME} PROPERTIES DEPENDS OmexMeta)
+    add_dependencies(${BINARY_NAME} OmexMeta-static)
+
+    # links
+    target_link_libraries(${BINARY_NAME} PRIVATE
+                          # Order matters!
+                          $<TARGET_FILE:OmexMeta-static>
+                          $<TARGET_FILE:redland-combined-static>
+                          ${LINK_LIBRARIES}
+                          ${RUNTIME}# best here so no clash with dynamic
+                          )
+
+    target_include_directories(${BINARY_NAME} PRIVATE
+                               ${GOOGLETEST_SOURCE}/googletest/include
+
+                               ${INCLUDE_DIRECTORIES}
+                               ${WRAPPER_SOURCE_DIR}
+                               )
+
+
+endmacro()
+
+
+
 
 if (BUILD_DOCS_EXAMPLES)
 
@@ -35,89 +76,38 @@ if (BUILD_DOCS_EXAMPLES)
     # sphinx's job to pickup both code and output and include them in
     # the documentation.
 
-    add_executable(AddFromFileC source/reading_rdf/add_from_file_c.cpp)
-    add_executable(AddFromFileCpp source/reading_rdf/add_from_file_cpp.cpp)
-    add_executable(AddFromStringC source/reading_rdf/add_from_string_c.cpp)
-    add_executable(AddFromStringCpp source/reading_rdf/add_from_string_cpp.cpp)
-    add_executable(AddFromUriC source/reading_rdf/add_from_uri_c.cpp)
-    add_executable(AddFromUriCpp source/reading_rdf/add_from_uri_cpp.cpp)
-
-    add_executable(FromStringC source/reading_rdf/from_string_c.cpp)
-    add_executable(FromStringCpp source/reading_rdf/from_string_cpp.cpp)
-    add_executable(FromUriC source/reading_rdf/from_uri_c.cpp)
-    add_executable(FromUriCpp source/reading_rdf/from_uri_cpp.cpp)
-    add_executable(FromFileC source/reading_rdf/from_file_c.cpp)
-    add_executable(FromFileCpp source/reading_rdf/from_file_cpp.cpp)
-
-    add_executable(CreateSingleAnnotationC source/editing_rdf/create_single_annotation_c.cpp)
-    add_executable(CreateSingleAnnotationCpp source/editing_rdf/create_single_annotation_cpp.cpp)
-    add_executable(CreateSingleAnnotationNoCommitC source/editing_rdf/create_single_annotation_no_commit_c.cpp)
-    add_executable(CreateSingleAnnotationNoCommitCpp source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
-    add_executable(CreateSingleAnnotationPredicateFromUriC source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
-    add_executable(CreateSingleAnnotationPredicateFromUriCpp source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
-    add_executable(CreateSingleAnnotationResourceC source/editing_rdf/create_single_annotation_resource_c.cpp)
-    add_executable(CreateSingleAnnotationResourceCpp source/editing_rdf/create_single_annotation_resource_cpp.cpp)
-    add_executable(CreateSingleAnnotationWithMetaidsC source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
-    add_executable(CreateSingleAnnotationWithMetaidsCpp source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
-
-    add_executable(CreatePhysicalEntityC source/editing_rdf/create_physical_entity_c.cpp)
-    add_executable(CreatePhysicalEntityCpp source/editing_rdf/create_physical_entity_cpp.cpp)
-    add_executable(CreatePhysicalProcessC source/editing_rdf/create_physical_process_c.cpp)
-    add_executable(CreatePhysicalProcessCpp source/editing_rdf/create_physical_process_cpp.cpp)
-    add_executable(CreatePhysicalForceC source/editing_rdf/create_physical_force_c.cpp)
-    add_executable(CreatePhysicalForceCpp source/editing_rdf/create_physical_force_cpp.cpp)
-
-    add_executable(WritingToStringC source/writing_rdf/writing_to_string_c.cpp)
-    add_executable(WritingToStringCpp source/writing_rdf/writing_to_string_cpp.cpp)
-
-    add_executable(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
-    add_executable(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
-
-    set(EXAMPLE_EXECUTABLES_TARGETS
-            "FromStringC"
-            "FromStringCpp"
-            "FromUriC"
-            "FromUriCpp"
-            "FromFileC"
-            "FromFileCpp"
-            "AddFromStringC"
-            "AddFromStringCpp"
-            "AddFromFileC"
-            "AddFromFileCpp"
-            "AddFromUriC"
-            "AddFromUriCpp"
-
-            "WritingToStringC"
-            "WritingToStringCpp"
-
-            "CreateSingleAnnotationC"
-            "CreateSingleAnnotationCpp"
-            "CreateSingleAnnotationNoCommitC"
-            "CreateSingleAnnotationNoCommitCpp"
-            "CreateSingleAnnotationPredicateFromUriC"
-            "CreateSingleAnnotationPredicateFromUriCpp"
-            "CreateSingleAnnotationResourceC"
-            "CreateSingleAnnotationResourceCpp"
-            "CreateSingleAnnotationWithMetaidsC"
-            "CreateSingleAnnotationWithMetaidsCpp"
-
-            "CreatePhysicalEntityC"
-            "CreatePhysicalEntityCpp"
-            "CreatePhysicalProcessC"
-            "CreatePhysicalProcessCpp"
-            "CreatePhysicalForceC"
-            "CreatePhysicalForceCpp"
-
-            "QueryingRdfGraphC"
-            "QueryingRdfGraphCpp"
-            )
-
-    set_target_properties(${EXAMPLE_EXECUTABLES_TARGETS} PROPERTIES
-            INCLUDE_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/include;${CURL_INCLUDE_DIR};${LIBXML2_INCLUDE_DIR}"
-            LINK_LIBRARIES "OmexMeta-static;OmexMetaCAPI;redland-combined-static;${LINK_LIBRARIES};pthread"
-            LINKER_LANGUAGE "CXX"
-            CXX_STANDARD "17"
-            )
+    add_doc_example(AddFromFileC                                  source/reading_rdf/add_from_file_c.cpp)
+    add_doc_example(AddFromFileCpp                                source/reading_rdf/add_from_file_cpp.cpp)
+    add_doc_example(AddFromStringC                                source/reading_rdf/add_from_string_c.cpp)
+    add_doc_example(AddFromStringCpp                              source/reading_rdf/add_from_string_cpp.cpp)
+    add_doc_example(AddFromUriC                                   source/reading_rdf/add_from_uri_c.cpp)
+    add_doc_example(AddFromUriCpp                                 source/reading_rdf/add_from_uri_cpp.cpp)
+    add_doc_example(FromStringC                                   source/reading_rdf/from_string_c.cpp)
+    add_doc_example(FromStringCpp                                 source/reading_rdf/from_string_cpp.cpp)
+    add_doc_example(FromUriC                                      source/reading_rdf/from_uri_c.cpp)
+    add_doc_example(FromUriCpp                                    source/reading_rdf/from_uri_cpp.cpp)
+    add_doc_example(FromFileC                                     source/reading_rdf/from_file_c.cpp)
+    add_doc_example(FromFileCpp                                   source/reading_rdf/from_file_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationC                       source/editing_rdf/create_single_annotation_c.cpp)
+    add_doc_example(CreateSingleAnnotationCpp                     source/editing_rdf/create_single_annotation_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationNoCommitC               source/editing_rdf/create_single_annotation_no_commit_c.cpp)
+    add_doc_example(CreateSingleAnnotationNoCommitCpp             source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationPredicateFromUriC       source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
+    add_doc_example(CreateSingleAnnotationPredicateFromUriCpp     source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationResourceC               source/editing_rdf/create_single_annotation_resource_c.cpp)
+    add_doc_example(CreateSingleAnnotationResourceCpp             source/editing_rdf/create_single_annotation_resource_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationWithMetaidsC            source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
+    add_doc_example(CreateSingleAnnotationWithMetaidsCpp          source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
+    add_doc_example(CreatePhysicalEntityC                         source/editing_rdf/create_physical_entity_c.cpp)
+    add_doc_example(CreatePhysicalEntityCpp                       source/editing_rdf/create_physical_entity_cpp.cpp)
+    add_doc_example(CreatePhysicalProcessC                        source/editing_rdf/create_physical_process_c.cpp)
+    add_doc_example(CreatePhysicalProcessCpp                      source/editing_rdf/create_physical_process_cpp.cpp)
+    add_doc_example(CreatePhysicalForceC                          source/editing_rdf/create_physical_force_c.cpp)
+    add_doc_example(CreatePhysicalForceCpp                        source/editing_rdf/create_physical_force_cpp.cpp)
+    add_doc_example(WritingToStringC                              source/writing_rdf/writing_to_string_c.cpp)
+    add_doc_example(WritingToStringCpp                            source/writing_rdf/writing_to_string_cpp.cpp)
+    add_doc_example(QueryingRdfGraphC                             source/querying_rdf/querying_rdf_c.cpp)
+    add_doc_example(QueryingRdfGraphCpp                           source/querying_rdf/querying_rdf_cpp.cpp)
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
