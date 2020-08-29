@@ -461,11 +461,10 @@ namespace omexmeta {
         }
 
         if (getXmlType() == OMEXMETA_TYPE_SBML){
-            SBMLSemanticExtraction extraction(this, str);
-            // these operations automatically add to the rdf model
-            extraction.extractSpeciesCompartmentSemantics();
-            extraction.extractProcessesFromReactions();
+            // Opening an SBML model in the editor automatically uses
+            // the SBMLSemanticExtraction class to get the information we want.
+            // see constructor for Editor.
+            Editor editor = toEditor(str, true);
         }
-
     }
 }

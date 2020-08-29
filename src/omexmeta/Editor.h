@@ -21,6 +21,7 @@
 #include "omexmeta/PersonalInformation.h"
 #include "omexmeta/MarkupIdentifier.h"
 #include "omexmeta_export.h"
+#include "omexmeta/SBMLSemanticExtraction.h"
 
 #include "redland/librdf.h"
 

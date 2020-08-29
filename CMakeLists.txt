@@ -19,9 +19,6 @@ project(libOmexMeta
 # for linux shared libraries
 set(SOVERSION ${VERSION_MAJOR})
 
-# configure VERSION.txt for Python to read
-configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt" @ONLY)
-
 ######################################################
 # Load stuff
 # set the module path

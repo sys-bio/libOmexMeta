@@ -6,9 +6,9 @@
 
 namespace omexmeta {
 
-    SBMLSemanticExtraction::SBMLSemanticExtraction(RDF *rdf, const std::string& sbml_string)
-            : rdf_(rdf), sbml_string_(sbml_string),
-              editor_(rdf->toEditor(sbml_string, false)) {}
+    SBMLSemanticExtraction::SBMLSemanticExtraction(Editor *editor)
+            : editor_(editor), sbml_string_(editor->getXml()){
+    }
 
     void SBMLSemanticExtraction::extractSpeciesCompartmentSemantics() {
         ElementExtractor compartment_extraction(sbml_string_, "compartment");
@@ -37,12 +37,12 @@ namespace omexmeta {
                     std::string compartment_metaid_that_species_node_belongs_to = OmexMetaUtils::getXmlNodeProperty(compartment_node, "metaid");
 
                     // and use the information to construct a singular annotation and add it to the model
-                    SingularAnnotation singularAnnotation = editor_.newSingularAnnotation();
+                    SingularAnnotation singularAnnotation = editor_->newSingularAnnotation();
                     singularAnnotation
                         .setAbout(species_metaid)
                         .setPredicate("bqbiol", "isPartOf")
                         .setResourceUri(compartment_id_that_species_node_belongs_to);
-                    editor_.addSingleAnnotation(singularAnnotation);
+                    editor_->addSingleAnnotation(singularAnnotation);
                     singularAnnotation.freeTriple();
                 }
             }
@@ -71,7 +71,7 @@ namespace omexmeta {
             std::string reaction_metaid = OmexMetaUtils::getXmlNodeProperty(reaction_node, "metaid");
 
             // begin the annotation
-            PhysicalProcess process = editor_.newPhysicalProcess();
+            PhysicalProcess process = editor_->newPhysicalProcess();
             process.setPhysicalProperty(reaction_metaid, "opb:OPB_00592");
 
             // and pull out the listOf* elements for the reaction
@@ -146,7 +146,7 @@ namespace omexmeta {
                     }
                 }
             }
-            editor_.addPhysicalProcess(process);
+            editor_->addPhysicalProcess(process);
         }
     }
 

@@ -39,17 +39,15 @@
 
 namespace omexmeta {
 
-    class RDF; // forward declaration
+    class Editor;
 
     class SBMLSemanticExtraction {
 
-        RDF *rdf_;
-
-        Editor editor_;
+        Editor* editor_ = nullptr;
 
         std::string sbml_string_;
     public:
-        SBMLSemanticExtraction(RDF* rdf, const std::string & sbml_string);
+        explicit SBMLSemanticExtraction(Editor *editor);
 
         void extractSpeciesCompartmentSemantics();
 

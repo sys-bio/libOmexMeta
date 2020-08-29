@@ -20,7 +20,8 @@ public:
 TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
-    SBMLSemanticExtraction extraction(&rdf, model_string);
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -54,7 +55,8 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
      */
     std::string model_string = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     RDF rdf;
-    SBMLSemanticExtraction extraction(&rdf, model_string);
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -66,12 +68,13 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(SBMLSemanticExtractionTests, test){
+TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
     std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     RDF rdf;
     rdf.setArchiveUri("AnAwesomeOmex.omex");
     rdf.setModelUri("Model1.xml");
-    SBMLSemanticExtraction extraction(&rdf, model_string);
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
     extraction.extractProcessesFromReactions();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
@@ -93,23 +96,23 @@ TEST_F(SBMLSemanticExtractionTests, test){
                            "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#A> .\n"
                            "\n"
                            "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#PlasmaCa> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#B> .\n"
                            "\n"
                            "local:SourceParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#Ca> .\n"
                            "\n"
                            "local:SourceParticipant0002\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#A> .\n"
                            "\n"
                            "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1>\n"
@@ -123,6 +126,7 @@ TEST_F(SBMLSemanticExtractionTests, test){
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
+
 
 
 

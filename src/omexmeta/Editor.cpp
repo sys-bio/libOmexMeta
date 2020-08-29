@@ -34,6 +34,13 @@ namespace omexmeta {
                 xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
+
+        if (getType() == OMEXMETA_TYPE_SBML){
+            // with sbml models we extract some information directly from the sbml
+            SBMLSemanticExtraction extraction(this);
+            extraction.extractSpeciesCompartmentSemantics();
+            extraction.extractProcessesFromReactions();
+        }
     }
 
     int Editor::size() const { return model_.size(); }
