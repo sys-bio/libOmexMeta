@@ -102,6 +102,7 @@ namespace omexmeta {
 //        Triple &setAbout(const std::string &metaid);
 
         const std::string &getModelUri() const;
+        Triple &setResourceWithModelUri(const std::string &metaid);
     };
 
     typedef Triple SingularAnnotation;

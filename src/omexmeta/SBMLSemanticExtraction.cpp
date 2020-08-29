@@ -41,7 +41,7 @@ namespace omexmeta {
                     singularAnnotation
                         .setAbout(species_metaid)
                         .setPredicate("bqbiol", "isPartOf")
-                        .setResourceUri(compartment_id_that_species_node_belongs_to);
+                        .setResourceWithModelUri(compartment_id_that_species_node_belongs_to);
                     editor_->addSingleAnnotation(singularAnnotation);
                     singularAnnotation.freeTriple();
                 }
@@ -104,7 +104,7 @@ namespace omexmeta {
                     if (reactant_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addSource(std::stod(reactant_node_stoic), reactant_node_species_ref);
+                        process.addSource(std::stoi(reactant_node_stoic), species_node_metaid);
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace omexmeta {
                     if (product_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addSink(std::stod(product_node_stoic), product_node_species_ref);
+                        process.addSink(std::stoi(product_node_stoic), species_node_metaid);
                     }
                 }
             }
@@ -142,7 +142,7 @@ namespace omexmeta {
                     if (modifier_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addMediator(modifier_node_species_ref);
+                        process.addMediator(species_node_metaid);
                     }
                 }
             }

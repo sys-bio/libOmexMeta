@@ -174,6 +174,13 @@ namespace omexmeta {
         return *this;
     }
 
+    Triple &Triple::setResourceWithModelUri(const std::string &metaid) {
+        if (getResource() != nullptr)
+            LibrdfNode::freeNode(getResource());
+        setResource(LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri())).get());
+        return *this;
+    }
+
     Triple &Triple::setResourceBlank(const std::string &blank_id) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());

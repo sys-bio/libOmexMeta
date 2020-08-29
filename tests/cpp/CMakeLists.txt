@@ -66,14 +66,12 @@ target_link_libraries(${target} PUBLIC
                       )
 
 #includes
-message(${INCLUDE_DIRECTORIES})
 target_include_directories(${target} PRIVATE
                            ${GOOGLETEST_SOURCE}/googletest/include
                            ${INCLUDE_DIRECTORIES}
                            ${WRAPPER_SOURCE_DIR}
                            )
 
-add_dependencies(${target} OmexMeta-static gtest gtest_main)
 
 install(
         TARGETS ${target}
@@ -81,6 +79,10 @@ install(
         RUNTIME DESTINATION bin
 )
 
+
+if (${BUILD_INTEGRATION_TESTS})
+    add_subdirectory(Integration)
+endif ()
 
 
 

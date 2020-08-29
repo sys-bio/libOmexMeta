@@ -145,7 +145,7 @@ TEST_F(EditorTests, TestAddAnnotation) {
             predicatePtr,
             Resource(LibrdfNode::fromUriString("uniprot:P0DP23"))
     );
-    ASSERT_EQ(1, editor.size());
+    ASSERT_EQ(11, editor.size());
 //    triples.freeTriples();
 }
 
@@ -157,7 +157,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
                   BiomodelsBiologyQualifier("is").getNode(),
                   Resource(LibrdfNode::fromUriString("uniprot:P0DP23")).getNode());
     editor.addSingleAnnotation(triple);
-    int expected = 1;
+    int expected = 11;
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
     triple.freeStatement();
@@ -186,14 +186,37 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     editor.addSingleAnnotation(triple);
 
-    std::string actual = rdf.toString("rdfxml");
+    std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009\">\n"
-                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
 }
@@ -203,21 +226,42 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("#OmexMetaId0008")),
+            Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<#OmexMetaId0008>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
-                           "\n";
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -232,13 +276,36 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
 
-    std::string actual = rdf.toString("rdfxml");
-    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008\">\n"
-                           "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
+    std::string actual = rdf.toString();
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -249,12 +316,12 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
+            Subject(editor.createNodeWithModelUri("OmexMetaId0008")),
             std::make_unique<Predicate>(DCTerm("description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
 
-    std::string actual = rdf.toString("rdfxml");
+    std::string actual = rdf.toString("turtle");
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008\">\n"
@@ -278,7 +345,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
     editor.addSingleAnnotation(singularAnnotation);
 
-    std::string actual = rdf.toString("rdfxml");
+    std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
@@ -308,14 +375,35 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Y> .\n"
+                           "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
-                           "\n";
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     singularAnnotation.freeStatement();
 
@@ -431,11 +519,11 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference2> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId004>\n"
@@ -488,11 +576,11 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference2> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"

@@ -23,6 +23,8 @@ using namespace redland;
 
 namespace omexmeta {
 
+    class Editor;
+
     class OMEXMETA_EXPORT RDF {
         LibrdfStorage storage_;
         LibrdfModel model_;
