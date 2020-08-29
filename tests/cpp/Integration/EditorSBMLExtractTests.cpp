@@ -9,7 +9,7 @@
 using namespace omexmeta;
 
 
-class EditorSBMLExtractTests : public ::testing::Test {
+class EditorSBMLExtractTests1 : public ::testing::Test {
 public:
     /*
      * ant = """
@@ -141,13 +141,13 @@ public:
                               "  </model>\n"
                               "</sbml>\n";
 
-    EditorSBMLExtractTests(){
+    EditorSBMLExtractTests1(){
     }
 
-    ~ EditorSBMLExtractTests() = default;
+    ~ EditorSBMLExtractTests1() = default;
 };
 
-TEST_F(EditorSBMLExtractTests, test){
+TEST_F(EditorSBMLExtractTests1, test){
     RDF rdf;
     Editor editor = rdf.toEditor(sbml_string);
     std::string turtle_string = rdf.toString();
@@ -162,7 +162,7 @@ TEST_F(EditorSBMLExtractTests, test){
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#B> .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .\n"
                            "\n"
                            "local:PhysicalProcess0000\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
@@ -242,4 +242,93 @@ TEST_F(EditorSBMLExtractTests, test){
                            "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n";
 
+    ASSERT_STREQ(expected.c_str(), turtle_string.c_str());
 }
+
+class EditorSBMLExtractTests2 : public ::testing::Test {
+public:
+    /*
+     * ant = """
+      model SBMLExtractionTestModel
+          r1:  -> A ; k1;
+          k1 = 0.1;
+          A = 0;
+          compartment nucleus = 1;
+          A in nucleus;
+      end
+      """
+     *
+     * m = te.loada(ant)
+     * sbml = m.getSBML()
+     *
+     * The sbml was then printed out and metaids were added manually to bits that need them
+     *
+     */
+
+    std::string sbml_string = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                              "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+                              "  <model metaid=\"SBMLExtractionTestModel\" id=\"SBMLExtractionTestModel\">\n"
+                              "    <listOfCompartments>\n"
+                              "      <compartment id=\"nucleus\" metaid=\"CompartmentNucleus\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+                              "    </listOfCompartments>\n"
+                              "    <listOfSpecies>\n"
+                              "      <species id=\"A\" compartment=\"nucleus\" metaid=\"SpeciesA\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                              "    </listOfSpecies>\n"
+                              "    <listOfParameters>\n"
+                              "      <parameter id=\"k1\" metaid=\"Parameter_k1\" value=\"0.1\" constant=\"true\"/>\n"
+                              "    </listOfParameters>\n"
+                              "    <listOfReactions>\n"
+                              "      <reaction id=\"r1\" metaid=\"Reaction_r1\" reversible=\"true\" fast=\"false\">\n"
+                              "        <listOfProducts>\n"
+                              "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                              "        </listOfProducts>\n"
+                              "        <kineticLaw>\n"
+                              "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                              "            <ci> k1 </ci>\n"
+                              "          </math>\n"
+                              "        </kineticLaw>\n"
+                              "      </reaction>\n"
+                              "    </listOfReactions>\n"
+                              "  </model>\n"
+                              "</sbml>";
+
+    EditorSBMLExtractTests2(){
+    }
+
+    ~ EditorSBMLExtractTests2() = default;
+};
+
+TEST_F(EditorSBMLExtractTests2, test){
+    RDF rdf;
+    Editor editor = rdf.toEditor(sbml_string);
+    std::string turtle_string = rdf.toString();
+
+    std::cout << turtle_string << std::endl;
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#Reaction_r1>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n";
+
+    ASSERT_STREQ(expected.c_str(), turtle_string.c_str());
+
+}
+
+
+
+
+
