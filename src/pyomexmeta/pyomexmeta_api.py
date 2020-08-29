@@ -177,8 +177,8 @@ class PyOmexMetaAPI:
     # char* RDF_getLocalUri(RDF *rdf_ptr);
     rdf_get_local_uri = Util.load_func("RDF_getLocalUri", [ct.c_int64], ct.c_int64)
 
-    # Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids) {
-    rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool], ct.c_int64)
+    # Editor RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
+    rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
     #################################################################
     # Editor methods
     #

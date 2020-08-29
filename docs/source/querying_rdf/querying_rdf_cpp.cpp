@@ -4,7 +4,7 @@ using namespace omexmeta;
 
 int main() {
     //get the link to teusink2000
-    std::string teusink_biomod_link = "http://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064";
+    std::string teusink_biomod_link = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
 
     // download model xml, scan for rdf, create rdf graph and store in sqlite database
     RDF rdf = RDF::fromUri(teusink_biomod_link, "rdfxml");

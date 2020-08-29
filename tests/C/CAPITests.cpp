@@ -7,7 +7,7 @@
 #include "../cpp/AnnotationSamples.h"
 #include "../cpp/SBMLFactory.h"
 
-#include "omexmeta/C/OmexMetaCApi.h"
+#include "omexmeta/OmexMetaCApi.h"
 #include <filesystem>
 #include <fstream>
 

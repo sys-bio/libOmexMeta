@@ -174,11 +174,12 @@ class RDF:
         results_lf = PyOmexMetaAPI.crlf_to_lr(results_crlf)
         return results_lf
 
-    def to_editor(self, xml: str, generate_new_metaids: bool = False) -> Editor:
+    def to_editor(self, xml: str, generate_new_metaids: bool = False, sbml_semantic_extraction: bool = True) -> Editor:
         return Editor(
             PyOmexMetaAPI.rdf_to_editor(
                 self._obj, xml.encode(),
                 generate_new_metaids,
+                sbml_semantic_extraction,
             )
         )
 

@@ -105,9 +105,7 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT char *RDF_getLocalUri(RDF *rdf_ptr);
 
     OMEXMETACAPI_EXPORT Editor *
-    RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids);
-
-//RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
+    RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
 
 /*********************************************
  *  Editor class methods

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from pyomexmeta import RDF
 
 # get the link to teusink2000
-teusink_biomod_link = r"http://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064"
+teusink_biomod_link = r"https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 
 # download model xml, scan for rdf, create rdf graph and store in sqlite database
 rdf = RDF.from_uri(teusink_biomod_link, format="rdfxml",

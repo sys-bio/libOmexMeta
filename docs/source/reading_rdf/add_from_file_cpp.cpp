@@ -4,9 +4,9 @@
 
 using namespace omexmeta;
 
-int writeToFile(std::string fname);
+int writeToFile(const std::string& fname);
 
-int writeToFile(std::string fname){
+int writeToFile(const std::string& fname){
     std::string rdf_str = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                           "@prefix OMEXlib: <http://omex-library.org/> .\n"

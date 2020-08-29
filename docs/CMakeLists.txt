@@ -42,10 +42,12 @@ macro(add_doc_example BINARY_NAME)
     # links
     target_link_libraries(${BINARY_NAME} PRIVATE
                           # Order matters!
-                          $<TARGET_FILE:OmexMeta-static>
+                          $<TARGET_FILE:OmexMetaCAPI> # for C examples
+                          $<TARGET_FILE:OmexMeta-static> # for c++ examples
                           $<TARGET_FILE:redland-combined-static>
                           ${LINK_LIBRARIES}
                           ${RUNTIME}# best here so no clash with dynamic
+                          pthread
                           )
 
     target_include_directories(${BINARY_NAME} PRIVATE
