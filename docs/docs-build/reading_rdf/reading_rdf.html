@@ -244,7 +244,31 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -504,7 +528,39 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -796,7 +852,7 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">annotations</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span> <span class="mi">86</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1582,7 +1638,7 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id20">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">annotations</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span> <span class="mi">87</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -2761,7 +2817,8 @@ formats are:</p>
 29
 30
 31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
@@ -2779,6 +2836,7 @@ formats are:</p>
 <span class="c1"># we write the annotations to file, so we can read it in from file</span>
 <span class="c1">#   filename is in same directory as your python script</span>
 <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;annotations.rdf&quot;</span><span class="p">)</span>
+
 <span class="c1">#   write turtle syntax to file</span>
 <span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">)</span>
@@ -2798,7 +2856,27 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id32">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id32" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
 </pre></div>
 </td></tr></table></div>
 </div>

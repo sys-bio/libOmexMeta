@@ -3,9 +3,9 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [----------] Global test environment set-up.
 [----------] 72 tests from CAPITests
 [ RUN      ] CAPITests.RDFSize
-[       OK ] CAPITests.RDFSize (96 ms)
+[       OK ] CAPITests.RDFSize (100 ms)
 [ RUN      ] CAPITests.FreeCharStar
-[       OK ] CAPITests.FreeCharStar (0 ms)
+[       OK ] CAPITests.FreeCharStar (1 ms)
 [ RUN      ] CAPITests.RDFToString
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -20,9 +20,9 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 
 [       OK ] CAPITests.RDFToString (28 ms)
 [ RUN      ] CAPITests.RDF_fromString
-[       OK ] CAPITests.RDF_fromString (0 ms)
+[       OK ] CAPITests.RDF_fromString (1 ms)
 [ RUN      ] CAPITests.RDF_toFile
-[       OK ] CAPITests.RDF_toFile (4 ms)
+[       OK ] CAPITests.RDF_toFile (9 ms)
 [ RUN      ] CAPITests.RDF_addFromString
 [       OK ] CAPITests.RDF_addFromString (0 ms)
 [ RUN      ] CAPITests.RDF_addFromStringOutput
@@ -38,17 +38,17 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 
 [       OK ] CAPITests.RDF_addFromStringOutput (1 ms)
 [ RUN      ] CAPITests.RDF_fromUri
-[       OK ] CAPITests.RDF_fromUri (380 ms)
+[       OK ] CAPITests.RDF_fromUri (354 ms)
 [ RUN      ] CAPITests.RDF_addFromUri
-[       OK ] CAPITests.RDF_addFromUri (334 ms)
+[       OK ] CAPITests.RDF_addFromUri (304 ms)
 [ RUN      ] CAPITests.RDF_addFromUriSqliteStorage
-[       OK ] CAPITests.RDF_addFromUriSqliteStorage (3055 ms)
+[       OK ] CAPITests.RDF_addFromUriSqliteStorage (7753 ms)
 [ RUN      ] CAPITests.RDF_fromFile
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
-[       OK ] CAPITests.RDF_fromFile (7 ms)
+[       OK ] CAPITests.RDF_fromFile (15 ms)
 [ RUN      ] CAPITests.RDF_addFromFile
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
-[       OK ] CAPITests.RDF_addFromFile (7 ms)
+[       OK ] CAPITests.RDF_addFromFile (9 ms)
 [ RUN      ] CAPITests.RDFqueryResultsAsStr
 x,y,z
 http://omex-library.org/NewOmex.omex/NewModel.xml#VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154

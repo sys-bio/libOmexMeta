@@ -91,8 +91,8 @@ local:SourceParticipant0003
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
 
 
-[       OK ] EditorSBMLExtractTests1.test (96 ms)
-[----------] 1 test from EditorSBMLExtractTests1 (96 ms total)
+[       OK ] EditorSBMLExtractTests1.test (103 ms)
+[----------] 1 test from EditorSBMLExtractTests1 (103 ms total)
 
 [----------] 1 test from EditorSBMLExtractTests2
 [ RUN      ] EditorSBMLExtractTests2.test
@@ -115,9 +115,9 @@ local:SinkParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 
-[       OK ] EditorSBMLExtractTests2.test (1 ms)
-[----------] 1 test from EditorSBMLExtractTests2 (1 ms total)
+[       OK ] EditorSBMLExtractTests2.test (2 ms)
+[----------] 1 test from EditorSBMLExtractTests2 (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 2 test suites ran. (102 ms total)
+[==========] 2 tests from 2 test suites ran. (110 ms total)
 [  PASSED  ] 2 tests.
