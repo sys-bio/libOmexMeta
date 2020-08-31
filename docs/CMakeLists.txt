@@ -125,9 +125,11 @@ if (BUILD_DOCS_EXAMPLES)
     endif ()
 
 
+    # we do not want to use CMAKE_BINARY_DIR so we just take parent of current binary dir
+    get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
     add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${CMAKE_CURRENT_BINARY_DIR}
+            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${PARENT_CURRENT_BINARY_DIR} --pyomexmeta-source-dir ${PYOMEXMETA_DIR}
             DEPENDS AllDocExamples
             )
 endif ()

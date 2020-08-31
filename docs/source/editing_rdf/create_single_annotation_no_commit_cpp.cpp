@@ -1,4 +1,4 @@
-#include "omexmeta/omexmeta.h"
+#include "omexmeta/OmexMeta.h"
 
 using namespace omexmeta;
 

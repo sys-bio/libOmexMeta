@@ -59,7 +59,7 @@ int main(){
     Editor_addSingleAnnotation(editor_ptr, singular_annotation);
 
     // generate the string
-    const char* single_annotation_string = RDF_toString(rdf_ptr, "turtle", "base_uri");
+    const char* single_annotation_string = RDF_toString(rdf_ptr, "turtle");
     printf("%s", single_annotation_string);
 
     free((void *) single_annotation_string);

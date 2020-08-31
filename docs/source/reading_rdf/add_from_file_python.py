@@ -16,6 +16,7 @@ rdf = RDF()
 # we write the annotations to file, so we can read it in from file
 #   filename is in same directory as your python script
 fname = os.path.join(os.path.dirname(__file__), "annotations.rdf")
+
 #   write turtle syntax to file
 with open (fname, "w") as f:
     f.write(rdf_str)

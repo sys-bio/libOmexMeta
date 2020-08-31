@@ -54,22 +54,22 @@ with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
             .set_resource_blank("BankIdentifier")
 
     # The `uniprot/PD1234` gets resolved to https://identifier.org/uniprot/PD12345
-    with editor.new_singular_annotation() as uri1:
-        uri1 \
+    with editor.new_singular_annotation() as uri:
+        uri \
             .set_about('#OmexMetaId0002') \
             .set_predicate("bqbiol", "is") \
             .set_resource_uri("uniprot/PD1234")
 
     # In fact, this can be string with a format string1/string2
-    with editor.new_singular_annotation() as uri2:
-        uri2 \
+    with editor.new_singular_annotation() as uri:
+        uri \
             .set_about('#OmexMetaId0003') \
             .set_predicate("bqbiol", "is") \
             .set_resource_uri("string1/string2")
 
     # Colons work too
-    with editor.new_singular_annotation() as uri2:
-        uri2 \
+    with editor.new_singular_annotation() as uri:
+        uri \
             .set_about('#OmexMetaId0004') \
             .set_predicate("bqbiol", "is") \
             .set_resource_uri("FMA:75132")

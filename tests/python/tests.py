@@ -1035,6 +1035,7 @@ class DrawTests(unittest.TestCase):
         os.remove(fname)
 
 
+
 """
 The test below takes too long to run. It works. 
 """

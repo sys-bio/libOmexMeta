@@ -1,4 +1,4 @@
-#include "omexmeta/omexmeta.h"
+#include "omexmeta/OmexMeta.h"
 
 using namespace omexmeta;
 
@@ -45,7 +45,7 @@ int main(){
     RDF rdf = RDF();
 
     // create editor object
-    Editor editor = rdf.toEditor(sbml, OMEXMETA_TYPE_SBML);
+    Editor editor = rdf.toEditor(sbml, true, false);
 
     SingularAnnotation literal = editor.newSingularAnnotation();
     literal
@@ -74,13 +74,6 @@ int main(){
         .setPredicate("bqbiol", "is")
         .setResourceUri("string1/string2");
     editor.addSingleAnnotation(uri2);
-
-    // Colons work too
-    SingularAnnotation uri3 = editor.newSingularAnnotation();
-    uri1.setAbout("#OmexMetaId0004")
-        .setPredicate("bqbiol", "is")
-        .setResourceUri("FMA:75132");
-    editor.addSingleAnnotation(uri3);
 
     std::cout << rdf.size() << std::endl;
 
