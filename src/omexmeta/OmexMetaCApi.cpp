@@ -104,9 +104,9 @@ namespace omexmeta {
         rdf_ptr->addFromFile(uri_string, format);
     }
 
-    char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri) {
+    char *RDF_toString(RDF *rdf_ptr, const char *format) {
         // do not return a temporary object:
-        std::string s = rdf_ptr->toString(format, base_uri);
+        std::string s = rdf_ptr->toString(format);
         char *cstr = (char *) malloc((s.size() + 1) * sizeof(char *));
         strcpy(cstr, s.c_str());
         return cstr;

@@ -21,7 +21,7 @@ with open (fname, "w") as f:
     f.write(rdf_str)
 
 #   Add to our RDF graph by reading the second string
-rdf.add_from_file(fname, "rdfxml")
+rdf.add_from_file(fname, "turtle")
 
 # print out annotations in turtle syntax
 rdfxml_abbrev_string = rdf.to_string("rdfxml-abbrev")

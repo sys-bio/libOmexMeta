@@ -272,7 +272,6 @@ namespace omexmeta {
          * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
          */
         std::string toString(const std::string &format = "turtle",
-                             std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
         /*

@@ -129,8 +129,8 @@ class RDF:
     def query(self, query_string: str, results_format: str):
         return PyOmexMetaAPI.rdf_query(self._obj, query_string.encode(), results_format.encode())
 
-    def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
-        str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
+    def to_string(self, format: str = "turtle") -> str:
+        str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode())
         thestring = PyOmexMetaAPI.get_and_free_c_str(str_ptr)
         return thestring
 
@@ -201,7 +201,7 @@ class RDF:
             raise ImportError('"graphviz" not found. Install '
                               'with "sudo apt install graphviz" and then '
                               '"pip install graphviz"')
-        dot = self.to_string("dot", "annotation-drawing.rdf")
+        dot = self.to_string("dot")
         src = graphviz.Source(dot)
         src.render(filename)
         print('RDF graph saved to "{}"'.format(filename))
@@ -430,9 +430,8 @@ class PhysicalProcess:
         self._obj = PyOmexMetaAPI.physical_process_add_sink(self._obj, multiplier, physical_entity_reference.encode())
         return self
 
-    def add_mediator(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_mediator(self._obj, multiplier,
-                                                                physical_entity_reference.encode())
+    def add_mediator(self, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_process_add_mediator(self._obj, physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf"):

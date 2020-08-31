@@ -200,7 +200,7 @@ add_custom_command(
         COMMENT "Generating documentation with Sphinx")
 
 
-add_custom_target(libomexmeta-docs-sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
+add_custom_target(libomexmeta-docs-sphinx DEPENDS ${SPHINX_INDEX_FILE})
 
 # when were building the docs examples, we add the dependency so the
 # examples get built when we run build the libomexmeta-dpcs-sphinx target

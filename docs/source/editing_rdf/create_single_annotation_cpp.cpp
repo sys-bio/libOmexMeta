@@ -45,12 +45,12 @@ int main(){
     RDF rdf = RDF();
 
     // create editor object
-    Editor editor = rdf.toEditor(sbml, OMEXMETA_TYPE_SBML);
+    Editor editor = rdf.toEditor(sbml, true, true);
 
     // Print out metaids to console
     std::vector<std::string> metaids = editor.getMetaids();
     for (auto &id: metaids){
-    std::cout << id << ", ";
+        std::cout << id << ", ";
     }
     std::cout << std::endl;
 

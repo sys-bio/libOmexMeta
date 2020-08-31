@@ -37,7 +37,7 @@ set(CPACK_DEBIAN_PACKAGE_DEPENDS "libxml2;libxml2-dev;libxslt1-dev;libpq-dev")
 # debian specific variables
 set(CPACK_DEBIAN_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
 set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
-set(CPACK_PACKAGE_CONTACT "cwelsh2@uw.edi")
+set(CPACK_PACKAGE_CONTACT "cwelsh2@uw.edu")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Ciaran Welsh")
 
 include(CPack)
@@ -116,7 +116,7 @@ if (${BUILD_PYTHON})
                     DEPENDS libOmexMetaInstall
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             )
-            add_dependencies(packaging PackageOmexMetaPython)
+#            add_dependencies(packaging PackageOmexMetaPython)
         else ()
             message(WARNING "You are packaging libOmexMeta but will not be able \
 to build the Python package because you have not yet built and installed the \
@@ -137,7 +137,7 @@ linux version. Both linux and windows are required to build a pip Wheel.")
                     DEPENDS libOmexMetaInstall
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             )
-            add_dependencies(packaging PackageOmexMetaPython)
+#            add_dependencies(packaging PackageOmexMetaPython)
         else ()
             message(WARNING "You are packaging libOmexMeta but will not be able \
 to build the Python package because you have not yet built and installed the \

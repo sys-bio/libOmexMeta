@@ -16,6 +16,8 @@
     <innerfile refid="MetaID_8cpp">MetaID.cpp</innerfile>
     <innerfile refid="MetaID_8h">MetaID.h</innerfile>
     <innerfile refid="OmexMeta_8h">OmexMeta.h</innerfile>
+    <innerfile refid="OmexMetaCApi_8cpp">OmexMetaCApi.cpp</innerfile>
+    <innerfile refid="OmexMetaCApi_8h">OmexMetaCApi.h</innerfile>
     <innerfile refid="OmexMetaUtils_8cpp">OmexMetaUtils.cpp</innerfile>
     <innerfile refid="OmexMetaUtils_8h">OmexMetaUtils.h</innerfile>
     <innerfile refid="OmexMetaXmlAssistant_8cpp">OmexMetaXmlAssistant.cpp</innerfile>

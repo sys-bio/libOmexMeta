@@ -1120,7 +1120,7 @@ formats are:</p>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">)</span>
 
 <span class="c1"># Add to our RDF graph by reading the second string</span>
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;rdfxml&quot;</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
 
 <span class="c1"># remove the file we wrote</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
@@ -1430,7 +1430,7 @@ formats are:</p>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">)</span>
 
 <span class="c1">#   Add to our RDF graph by reading the second string</span>
-<span class="n">rdf</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;rdfxml&quot;</span><span class="p">)</span>
+<span class="n">rdf</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
 
 <span class="c1"># print out annotations in turtle syntax</span>
 <span class="n">rdfxml_abbrev_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;rdfxml-abbrev&quot;</span><span class="p">)</span>
@@ -1444,16 +1444,26 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id22">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
    xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
-   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;/&gt;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
 
 </pre></div>
 </td></tr></table></div>
@@ -1518,9 +1528,9 @@ formats are:</p>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
 
-<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fname</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">fname</span><span class="p">);</span>
 
-<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fname</span><span class="p">){</span>
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">fname</span><span class="p">){</span>
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>

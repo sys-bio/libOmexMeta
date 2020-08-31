@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 10)
+set(VERSION_MICRO 11)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 project(libOmexMeta
@@ -55,7 +55,7 @@ include(GNUInstallDirs)
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
 # cmake hierachy. Therefore its best to set now.
-set(CMAKE_INSTALL_DOCDIR ${CMAKE_CURRENT_SOURCE_DIR}/doc)
+set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_PREFIX}/docs)
 
 # The InstallRequiredSystemLibraries module is intended to provide projects with the details of
 #relevant run time libraries for the major compilers

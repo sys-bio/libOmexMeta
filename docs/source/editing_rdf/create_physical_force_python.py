@@ -34,31 +34,16 @@ sbml = te.antimonyToSBML(antimony_string)
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
+with rdf.to_editor(sbml, generate_new_metaids=True, sbml_semantic_extraction=False) as editor:
     sbml_with_metaids = editor.get_xml()
     print(sbml_with_metaids)
 
-    # Physical Entity 1
-    # volume of blood in heart
-    with editor.new_physical_entity() as lhs:
-        lhs.set_physical_property("#OmexMetaId0001", "OPB:OPB_00340") \
-            .set_about("OmexMetaId0001") \
-            .set_identity("FMA:9670") \
-            .set_location("FMA:7088")
-#
-#     # Physical Entity 2
-#     # volume of blood in lung
-#     with editor.new_physical_entity() as rhs:
-#         rhs.set_physical_property("#OmexMetaId0002", "OPB:OPB_01551") \
-#             .set_identity("FMA:9670") \
-#             .set_location("FMA:7195")
-#
 #     # Property: Osmotic Pressure
-#     with editor.new_physical_force() as physical_force:
-#         physical_force \
-#             .set_physical_property("#OmexMetaId0005", "PB:OPB_01012") \
-#             .add_source(multiplier=1, physical_entity_reference="#OmexMetaId0001") \
-#             .add_sink(multiplier=1, physical_entity_reference="#OmexMetaId0002") \
-#
-# print(rdf)
+    with editor.new_physical_force() as physical_force:
+        physical_force \
+            .set_physical_property("#OmexMetaId0005", "OPB:OPB_01012") \
+            .add_source(multiplier=1, physical_entity_reference="#OmexMetaId0001") \
+            .add_sink(multiplier=1, physical_entity_reference="#OmexMetaId0002") \
+
+print(rdf)
 

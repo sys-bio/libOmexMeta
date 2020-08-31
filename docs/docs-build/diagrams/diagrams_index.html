@@ -213,7 +213,7 @@ of the Teusink annotations.</p>
 <span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
 
 <span class="c1"># get the link to teusink2000</span>
-<span class="n">teusink_biomod_link</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;http://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064&quot;</span>
+<span class="n">teusink_biomod_link</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml&quot;</span>
 
 <span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
 <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="n">teusink_biomod_link</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;rdfxml&quot;</span><span class="p">,</span>
@@ -231,13 +231,456 @@ of the Teusink annotations.</p>
 </td></tr></table></div>
 </div>
 <p>Output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
-<span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
+@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000002&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasTaxon&gt; [
+        rdf:_1 &lt;http://identifiers.org/taxonomy/4932&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.pathway/sce00010&gt; ;
+        rdf:_2 &lt;http://identifiers.org/obo.go/GO:0006096&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_723&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/MODEL6623915522&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/BIOMD0000000064&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/isDescribedBy&gt; [
+        rdf:_1 &lt;http://identifiers.org/pubmed/10951190&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/elements/1.1/creator&gt; [
+        rdf:_1 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;jls@sun.ac.za&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Snoep&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Jacky L&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;Stellenbosh University&quot;
+            ]
+        ] ;
+        rdf:_2 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;lukas@ebi.ac.uk&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Endler&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Lukas&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;EMBL-EBI&quot;
+            ]
+        ] ;
+        rdf:_3 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;hdharuri@cds.caltech.edu&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Dharuri&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Harish&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;California Institute of Technology&quot;
+            ]
+        ] ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/terms/created&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2008-09-16T14:00:06Z&quot;
+    ] ;
+    &lt;http://purl.org/dc/terms/modified&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2012-07-19T18:26:07Z&quot;
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000003&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.go/GO:0005576&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:17234&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00293&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000005&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:17665&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00668&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000006&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:15946&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C05345&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000007&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16905&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00354&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000008&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasPart&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16108&gt; ;
+        rdf:_2 &lt;http://identifiers.org/obo.chebi/CHEBI:29052&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00118&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00111&gt; ;
+        rdf:_3 &lt;http://identifiers.org/chebi/CHEBI:29052&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000009&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16001&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00236&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000010&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:17794&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00197&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000011&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:17835&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00631&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000012&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00074&gt; ;
+        rdf:_2 &lt;http://identifiers.org/chebi/CHEBI:18021&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:18021&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000013&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:15361&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00022&gt; ;
+        rdf:_2 &lt;http://identifiers.org/chebi/CHEBI:32816&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000014&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:15343&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00084&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000016&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:15846&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00003&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000017&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16908&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00004&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000018&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:28087&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00182&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000019&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:27082&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C01083&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000020&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16526&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00011&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000021&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:30031&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:17234&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00293&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000023&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16236&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00469&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000024&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:17754&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00116&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000025&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/2.7.1.2&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00299&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1318&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000026&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/5.3.1.9&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00771&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_116&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000027&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1736&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.go/GO:0005978&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000028&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.go/GO:0005992&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000029&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/2.7.1.11&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00756&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_736&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000030&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/4.1.2.13&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R01070&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1602&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000031&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/1.2.1.12&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R01061&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1847&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000032&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/2.7.2.3&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R01512&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1771&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000033&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/5.4.2.1&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R01518&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_576&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000034&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/4.2.1.11&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00658&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1400&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000035&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/2.7.1.40&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00200&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_1911&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000036&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/4.1.1.1&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00224&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000037&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.go/GO:0006105&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000038&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_2092&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.go/GO:0046323&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000039&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isHomologTo&gt; [
+        rdf:_1 &lt;http://identifiers.org/reactome/REACT_799&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/1.1.1.2&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.reaction/R00746&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000040&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/1.1.1.8&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000041&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/ec-code/3.6.1.3&gt; ;
+        rdf:_2 &lt;http://identifiers.org/obo.go/GO:0016887&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000042&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasPart&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00008&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00002&gt; ;
+        rdf:_3 &lt;http://identifiers.org/chebi/CHEBI:16761&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16761&gt; ;
+        rdf:_2 &lt;http://identifiers.org/obo.chebi/CHEBI:15422&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000061&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:28602&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00665&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000075&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.go/GO:0005829&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000076&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:15422&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00002&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000077&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16761&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00008&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000078&gt;
+    &lt;http://biomodels.net/biology-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:16027&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00020&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000079&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasPart&gt; [
+        rdf:_1 &lt;http://identifiers.org/obo.chebi/CHEBI:15422&gt; ;
+        rdf:_2 &lt;http://identifiers.org/obo.chebi/CHEBI:16761&gt; ;
+        rdf:_3 &lt;http://identifiers.org/obo.chebi/CHEBI:16027&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00002&gt; ;
+        rdf:_2 &lt;http://identifiers.org/kegg.compound/C00008&gt; ;
+        rdf:_3 &lt;http://identifiers.org/kegg.compound/C00020&gt; ;
+        rdf:_4 &lt;http://identifiers.org/chebi/CHEBI:15422&gt; ;
+        a rdf:Bag
+    ] .
 
 
-<span class="n">RDF</span> <span class="n">graph</span> <span class="n">saved</span> <span class="n">to</span> <span class="s2">&quot;/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TeusinkDiagram.pdf&quot;</span>
+RDF graph saved to &quot;/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TeusinkDiagram.pdf&quot;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/TeusinkDiagram.svg"><img alt="../_images/TeusinkDiagram.svg" src="../_images/TeusinkDiagram.svg" width="400" /></a>

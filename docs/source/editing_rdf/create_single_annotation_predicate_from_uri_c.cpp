@@ -44,7 +44,7 @@ int main(){
     RDF *rdf_ptr = RDF_new();
 
     // create editor object
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, sbml, true, true);
 
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);

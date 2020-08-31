@@ -185,9 +185,8 @@ namespace omexmeta {
     }
 
     std::string RDF::toString(const std::string &format,
-                              std::string base_uri, const char *mime_type,
+                              const char *mime_type,
                               const char *type_uri) {
-        base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
         for (auto &it: namespaces_) {
@@ -197,7 +196,7 @@ namespace omexmeta {
         serializer.setNamespace(getRepositoryUri(), "OMEXlib");
         serializer.setNamespace(getArchiveUri(), "myOMEX");
         serializer.setNamespace(getLocalUri(), "local");
-        return serializer.toString(base_uri, model_);
+        return serializer.toString("base", model_);
     }
 
     std::string RDF::query(const std::string &query_str, const std::string &results_format) const {
@@ -209,7 +208,7 @@ namespace omexmeta {
 
     void
     RDF::toFile(const std::string &filename, const std::string &format, const char *mime_type, const char *type_uri) {
-        std::string syntax = toString(format, filename, mime_type, type_uri);
+        std::string syntax = toString(format, mime_type, type_uri);
         std::ofstream f(filename);
         if (f.is_open()) {
             f << syntax << std::endl;

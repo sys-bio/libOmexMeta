@@ -52,7 +52,7 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
 
-    OMEXMETACAPI_EXPORT char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri = "BaseUri");
+    OMEXMETACAPI_EXPORT char *RDF_toString(RDF *rdf_ptr, const char *format);
 
     OMEXMETACAPI_EXPORT void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
 

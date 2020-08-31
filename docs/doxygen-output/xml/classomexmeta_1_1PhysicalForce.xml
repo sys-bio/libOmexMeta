@@ -254,13 +254,13 @@
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="135" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="70" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1adfb620f6e28476dce6aa5b0d7d5b9546" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1ace7d3703d7e4bdb9a256208f456f2c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
         <definition>PhysicalForce &amp; omexmeta::PhysicalForce::addSource</definition>
-        <argsstring>(double multiplier, const std::string &amp;physical_entity_reference)</argsstring>
+        <argsstring>(int multiplier, const std::string &amp;physical_entity_reference)</argsstring>
         <name>addSource</name>
         <param>
-          <type>double</type>
+          <type>int</type>
           <declname>multiplier</declname>
         </param>
         <param>
@@ -275,13 +275,13 @@
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="147" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="78" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a7dca33926e787589d5a58de50fc1be1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a8ec5e262b82526ac914d8c7f10b6c2f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
         <definition>PhysicalForce &amp; omexmeta::PhysicalForce::addSink</definition>
-        <argsstring>(double multiplier, const std::string &amp;physical_entity_reference)</argsstring>
+        <argsstring>(int multiplier, const std::string &amp;physical_entity_reference)</argsstring>
         <name>addSink</name>
         <param>
-          <type>double</type>
+          <type>int</type>
           <declname>multiplier</declname>
         </param>
         <param>
@@ -394,8 +394,8 @@
     </collaborationgraph>
     <location file="src/omexmeta/PhysicalForce.h" line="28" column="1" bodyfile="src/omexmeta/PhysicalForce.h" bodystart="28" bodyend="178"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1PhysicalForce_1a7dca33926e787589d5a58de50fc1be1d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>addSink</name></member>
-      <member refid="classomexmeta_1_1PhysicalForce_1adfb620f6e28476dce6aa5b0d7d5b9546" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>addSource</name></member>
+      <member refid="classomexmeta_1_1PhysicalForce_1a8ec5e262b82526ac914d8c7f10b6c2f1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>addSink</name></member>
+      <member refid="classomexmeta_1_1PhysicalForce_1ace7d3703d7e4bdb9a256208f456f2c4f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>addSource</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1ae0a9ec4689b4765d985ab8f7a8878f38" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>createMetaId</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a41cd6c9904f3287bb8cbbab2b9d2ada3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>free</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afe71a5c6399b992922eb6eeda6de49bd" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>generateMetaId</name></member>

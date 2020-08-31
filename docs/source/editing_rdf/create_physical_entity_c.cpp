@@ -103,7 +103,7 @@ int main(){
 
     RDF* rdf = RDF_new();
 
-    Editor* editor = RDF_toEditor(rdf, sbml, OMEXMETA_TYPE_SBML);
+    Editor* editor = RDF_toEditor(rdf, sbml, true, false);
 
     PhysicalEntity* physicalEntity = PhysicalEntity_new(editor);
     PhysicalEntity_setPhysicalProperty(physicalEntity,"#OmexMetaId0001", "OPB:OPB_00340");

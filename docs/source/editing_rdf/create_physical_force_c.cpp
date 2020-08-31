@@ -104,7 +104,7 @@ int main(){
 
     RDF* rdf = RDF_new();
 
-    Editor* editor = RDF_toEditor(rdf, sbml, true);
+    Editor* editor = RDF_toEditor(rdf, sbml, true, false);
 
     PhysicalForce* physicalForce = PhysicalForce_new(editor);
     PhysicalForce_setPhysicalProperty(physicalForce,"#OmexMetaId0001", "OPB:OPB_00340");
