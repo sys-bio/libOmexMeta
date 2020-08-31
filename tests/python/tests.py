@@ -218,7 +218,7 @@ class EditorTests(unittest.TestCase):
         with self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=True) as editor:
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation \
-                    .set_about("cytosol") \
+                    .set_about("OmexMetaId0000") \
                     .set_predicate("bqbiol", "is") \
                     .set_resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -228,11 +228,45 @@ class EditorTests(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:MediatorParticipant0001
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
 local:PhysicalProcess0000
-    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:PhysicalProcess0001
-    semsim:hasSinkParticipant local:SinkParticipant0002, local:SinkParticipant0003 .
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
+local:PhysicalProcess0002
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 .
+
+local:PhysicalProcess0003
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 .
+
+local:PhysicalProcess0004
+    semsim:hasSinkParticipant local:SinkParticipant0004 ;
+    semsim:hasSourceParticipant local:SourceParticipant0004 .
+
+local:PhysicalProcess0005
+    semsim:hasSinkParticipant local:SinkParticipant0005 ;
+    semsim:hasSourceParticipant local:SourceParticipant0005 .
+
+local:PhysicalProcess0006
+    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;
+    semsim:hasSinkParticipant local:SinkParticipant0006 ;
+    semsim:hasSourceParticipant local:SourceParticipant0006 .
+
+local:PhysicalProcess0007
+    semsim:hasSinkParticipant local:SinkParticipant0007 ;
+    semsim:hasSourceParticipant local:SourceParticipant0007 .
 
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:int ;
@@ -240,38 +274,106 @@ local:SinkParticipant0000
 
 local:SinkParticipant0001
     semsim:hasMultiplier "1"^^rdf:int ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SinkParticipant0002
     semsim:hasMultiplier "1"^^rdf:int ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 local:SinkParticipant0003
     semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SinkParticipant0004
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:SinkParticipant0005
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SinkParticipant0006
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+
+local:SinkParticipant0007
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
-    bqbiol:isPropertyOf local:PhysicalProcess0000, local:PhysicalProcess0001 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>
-    bqbiol:isPropertyOf local:PhysicalProcess0001, local:PhysicalProcess0002 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+local:SourceParticipant0004
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+local:SourceParticipant0005
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:SourceParticipant0006
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
+
+local:SourceParticipant0007
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
     bqbiol:is <https://identifiers.org/uniprot/PD88776> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0006>
+    bqbiol:isPropertyOf local:PhysicalProcess0000, local:PhysicalProcess0004 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>
+    bqbiol:isPropertyOf local:PhysicalProcess0001, local:PhysicalProcess0005 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0010>
+    bqbiol:isPropertyOf local:PhysicalProcess0002, local:PhysicalProcess0006 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0012>
+    bqbiol:isPropertyOf local:PhysicalProcess0003, local:PhysicalProcess0007 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 """
         actual = str(self.rdf)
         self.assertEqual(expected, actual)
 
     def test_context_manager_single_annotation_without_sbml_extraction(self):
-        with self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=False) as editor:
-            with editor.new_singular_annotation() as singular_annotation:
-                singular_annotation \
-                    .set_about("cytosol") \
-                    .set_predicate("bqbiol", "is") \
-                    .set_resource_uri("uniprot:PD88776")
+        editor = self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=False)
+        with editor.new_singular_annotation() as singular_annotation:
+            singular_annotation \
+                .set_about("#OmexMetaId0000") \
+                .set_predicate("bqbiol", "is") \
+                .set_resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -279,8 +381,88 @@ local:SinkParticipant0003
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:PhysicalProcess0000
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:PhysicalProcess0001
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
+local:PhysicalProcess0002
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 .
+
+local:PhysicalProcess0003
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
     bqbiol:is <https://identifiers.org/uniprot/PD88776> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0006>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>
+    bqbiol:isPropertyOf local:PhysicalProcess0001 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0010>
+    bqbiol:isPropertyOf local:PhysicalProcess0002 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0012>
+    bqbiol:isPropertyOf local:PhysicalProcess0003 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 """
         actual = self.rdf.to_string()

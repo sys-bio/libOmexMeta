@@ -21,9 +21,9 @@ namespace omexmeta {
     extern "C" {
 #endif
 
-    OMEXMETACAPI_EXPORT void free_c_char_star(char *c);
+    OMEXMETACAPI_EXPORT int free_c_char_star(char *c);
 
-    OMEXMETACAPI_EXPORT void free_c_char_star_star(char **c, int size);
+    OMEXMETACAPI_EXPORT int free_c_char_star_star(char **c, int size);
 
     OMEXMETACAPI_EXPORT char *_func_that_returns_dynamic_alloc_str();
 
@@ -37,7 +37,7 @@ namespace omexmeta {
  *
  */
 
-    OMEXMETACAPI_EXPORT [[maybe_unused]] void free_world(librdf_world *world);
+    OMEXMETACAPI_EXPORT [[maybe_unused]] int free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
@@ -50,11 +50,11 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT char *RDF_getBaseUri(RDF *rdf_ptr);
 
-    OMEXMETACAPI_EXPORT void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
+    OMEXMETACAPI_EXPORT int RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
 
     OMEXMETACAPI_EXPORT char *RDF_toString(RDF *rdf_ptr, const char *format);
 
-    OMEXMETACAPI_EXPORT void RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
+    OMEXMETACAPI_EXPORT int RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
 
     /*
      * @brief read RDF formatted annotations a string.
@@ -72,29 +72,29 @@ namespace omexmeta {
                                    const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                    const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    OMEXMETACAPI_EXPORT void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
+    OMEXMETACAPI_EXPORT int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
 
     OMEXMETACAPI_EXPORT RDF *RDF_fromUri(const char *uri_string, const char *format,
                                 const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                 const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    OMEXMETACAPI_EXPORT void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
+    OMEXMETACAPI_EXPORT int RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
 
     OMEXMETACAPI_EXPORT RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
                                  const char *storage_name = "semsim_store",
                                  const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    OMEXMETACAPI_EXPORT void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
+    OMEXMETACAPI_EXPORT int RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
     OMEXMETACAPI_EXPORT char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
 
     OMEXMETACAPI_EXPORT int RDF_size(RDF *rdf_ptr);
 
-    OMEXMETACAPI_EXPORT void RDF_setRepositoryUri(RDF *rdf_ptr, const char *repository_uri);
+    OMEXMETACAPI_EXPORT int RDF_setRepositoryUri(RDF *rdf_ptr, const char *repository_uri);
 
-    OMEXMETACAPI_EXPORT void RDF_setArchiveUri(RDF *rdf_ptr, const char *archive_uri);
+    OMEXMETACAPI_EXPORT int RDF_setArchiveUri(RDF *rdf_ptr, const char *archive_uri);
 
-    OMEXMETACAPI_EXPORT void RDF_setModelUri(RDF *rdf_ptr, const char *model_uri);
+    OMEXMETACAPI_EXPORT int RDF_setModelUri(RDF *rdf_ptr, const char *model_uri);
 
     OMEXMETACAPI_EXPORT char *RDF_getRepositoryUri(RDF *rdf_ptr);
 
@@ -111,29 +111,29 @@ namespace omexmeta {
  *  Editor class methods
  */
 
-    OMEXMETACAPI_EXPORT void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
+    OMEXMETACAPI_EXPORT int Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
 
-    OMEXMETACAPI_EXPORT void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+    OMEXMETACAPI_EXPORT int Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
-    OMEXMETACAPI_EXPORT void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
+    OMEXMETACAPI_EXPORT int Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
-    OMEXMETACAPI_EXPORT void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT int Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
-    OMEXMETACAPI_EXPORT void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT int Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
-    OMEXMETACAPI_EXPORT void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
+    OMEXMETACAPI_EXPORT int Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
 
-    OMEXMETACAPI_EXPORT void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+    OMEXMETACAPI_EXPORT int Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
-    OMEXMETACAPI_EXPORT void Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
+    OMEXMETACAPI_EXPORT int Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
-    OMEXMETACAPI_EXPORT void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT int Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
-    OMEXMETACAPI_EXPORT void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT int Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
-    OMEXMETACAPI_EXPORT void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
+    OMEXMETACAPI_EXPORT int Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
 
-    OMEXMETACAPI_EXPORT void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
+    OMEXMETACAPI_EXPORT int Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
 
     OMEXMETACAPI_EXPORT char *Editor_getMetaId(Editor *editor_ptr, int index);
 
@@ -141,26 +141,26 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT int Editor_getNumMetaIds(Editor *editor_ptr);
 
-    OMEXMETACAPI_EXPORT void Editor_delete(Editor *editor_ptr);
+    OMEXMETACAPI_EXPORT int Editor_delete(Editor *editor_ptr);
 
     OMEXMETACAPI_EXPORT char *Editor_getArchiveUri(Editor *editor_ptr);
     OMEXMETACAPI_EXPORT char *Editor_getLocalUri(Editor *editor_ptr);
     OMEXMETACAPI_EXPORT char *Editor_getModelUri(Editor *editor_ptr);
     OMEXMETACAPI_EXPORT char *Editor_getRepositoryUri(Editor *editor_ptr);
-    OMEXMETACAPI_EXPORT void Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
-    OMEXMETACAPI_EXPORT void Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
-    OMEXMETACAPI_EXPORT void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
-    OMEXMETACAPI_EXPORT void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
-    OMEXMETACAPI_EXPORT void Editor_addDescription(Editor *editor_ptr, const char *date);
-    OMEXMETACAPI_EXPORT void Editor_addDateCreated(Editor *editor_ptr, const char *date);
-    OMEXMETACAPI_EXPORT void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
+    OMEXMETACAPI_EXPORT int Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETACAPI_EXPORT int Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETACAPI_EXPORT int Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    OMEXMETACAPI_EXPORT int Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    OMEXMETACAPI_EXPORT int Editor_addDescription(Editor *editor_ptr, const char *date);
+    OMEXMETACAPI_EXPORT int Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    OMEXMETACAPI_EXPORT int Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
 /*********************************************************************
  * SingularAnnotation class methods
  */
     OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
 
-    OMEXMETACAPI_EXPORT void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
+    OMEXMETACAPI_EXPORT int SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
     OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
@@ -194,9 +194,9 @@ namespace omexmeta {
  */
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
 
-    OMEXMETACAPI_EXPORT void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
+    OMEXMETACAPI_EXPORT int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
-    OMEXMETACAPI_EXPORT void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
+    OMEXMETACAPI_EXPORT int PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(
             PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
@@ -223,9 +223,9 @@ namespace omexmeta {
  */
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
 
-    OMEXMETACAPI_EXPORT void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT int PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
-    OMEXMETACAPI_EXPORT void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
+    OMEXMETACAPI_EXPORT int PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_setPhysicalProperty(
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
@@ -255,13 +255,13 @@ namespace omexmeta {
      * @brief deletes physical force excluding all
      * nodes associated with it.
      */
-    OMEXMETACAPI_EXPORT void PhysicalForce_delete(PhysicalForce *physicalForce);
+    OMEXMETACAPI_EXPORT int PhysicalForce_delete(PhysicalForce *physicalForce);
 
     /*
      * @brief deletes physical force including all
      * nodes associated with it.
      */
-    OMEXMETACAPI_EXPORT void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
+    OMEXMETACAPI_EXPORT int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
 
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_addSource(
             PhysicalForce *physical_force_ptr, int multiplier,
@@ -288,11 +288,11 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
 
-    OMEXMETACAPI_EXPORT void PersonalInformation_delete(PersonalInformation *information);
+    OMEXMETACAPI_EXPORT int PersonalInformation_delete(PersonalInformation *information);
 
     OMEXMETACAPI_EXPORT char *PersonalInformation_getLocalUri(PersonalInformation *information);
 
-    OMEXMETACAPI_EXPORT void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
+    OMEXMETACAPI_EXPORT int PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
 
     OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
 
@@ -323,11 +323,11 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT char *PersonalInformation_getMetaid(PersonalInformation *information);
 
-    OMEXMETACAPI_EXPORT void PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
+    OMEXMETACAPI_EXPORT int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
 
     OMEXMETACAPI_EXPORT char *PersonalInformation_getModelUri(PersonalInformation *information);
 
-    OMEXMETACAPI_EXPORT void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
+    OMEXMETACAPI_EXPORT int PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
 
 
 #ifdef __cplusplus

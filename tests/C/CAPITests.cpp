@@ -394,6 +394,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
     RDF_delete(rdf_ptr);
 }
 
+
 TEST_F(CAPITests, TestEditorPtrMem) {
 // verified with valgrind, not sure how to gtest
     RDF *rdf_ptr = RDF_new();
