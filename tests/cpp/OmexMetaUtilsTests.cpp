@@ -18,22 +18,10 @@ public:
 
 };
 
-TEST_F(OmexMetaUtilsTests, TestFileExists) {
-    // we first download
-    CurlGet::download(samples.sbml_url1, samples.sbml_filename1);
-    ASSERT_TRUE(OmexMetaUtils::exists(samples.sbml_filename1));
-}
-
 TEST_F(OmexMetaUtilsTests, TestFileDoesNotExists) {
     ASSERT_FALSE(OmexMetaUtils::exists("./CheeseBiscuits.cheddar"));
 }
 
-TEST_F(OmexMetaUtilsTests, TestDeleteFile) {
-    CurlGet::download(samples.sbml_url1, samples.sbml_filename1);
-    assert(OmexMetaUtils::exists(samples.sbml_filename1));
-    OmexMetaUtils::removeFile(samples.sbml_filename1);
-    ASSERT_FALSE(OmexMetaUtils::exists(samples.sbml_filename1));
-}
 
 TEST_F(OmexMetaUtilsTests, TestRemoveIfExists) {
     CurlGet::download(samples.sbml_url1, samples.sbml_filename1);

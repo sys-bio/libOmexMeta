@@ -207,7 +207,7 @@ TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
 //    raptor_option_uri_prefix;
-    std::string fname = std::filesystem::current_path().string() += "TestParseFromFile.rdf";
+    std::string fname = (std::filesystem::current_path()/+ "TestParseFromFile.rdf").string();
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {
