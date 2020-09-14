@@ -1,69 +1,26 @@
 language: cpp
 compiler:
   - gcc
-sudo: false
+sudo: required
+services:
+  - docker
 dist: bionic
-cache:
-  directories:
-    - ${HOME}/vcpkg
-#git:
-#  clone: false
-branches:
-  only:
-  - master
-  - develop
 before_install:
-  - echo "TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR ${TRAVIS_BUILD_DIR}"
-  - echo ${TRAVIS_BUILD_DIR}
-  - echo $TRAVIS_BUILD_DIR
-  - sudo apt-get update
-  - cd ${HOME}
-  - DEBIAN_FRONTEND=noninteractive
-  - sudo apt-get install -y wget lsb-release binutils software-properties-common
-  - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz
-    && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
-  - if [ ! -d "${HOME}/vcpkg" ]; then git clone https://github.com/microsoft/vcpkg.git
-    && bash ${HOME}/vcpkg/bootstrap-vcpkg.sh
-    && ${HOME}/vcpkg/vcpkg integrate install
-    && ${HOME}/vcpkg/vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
-    ; fi
-  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  - sudo apt-get update
-  - mkdir ~/.conda
-  - bash Miniconda3-latest-Linux-x86_64.sh -b
-  - ls
-  - PATH=~/miniconda3/bin:$PATH
-  - sudo apt-get install -y yajl-tools flex bison sqlite3 libsqlite3-dev libxml2 libxml2-dev libxslt1-dev postgresql postgresql-contrib libdb-dev libdb-dev gcc-10 g++-10 gcc-9 g++-9 flex bison doxygen python3-sphinx libldap-dev libpthread-stubs0-dev libltdl-dev git slapd ldap-utils graphviz libssl-dev
-  - sudo apt-get install -y curl unzip tar
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-10 100
-  - sudo update-alternatives --install /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-10 100
-  - sudo update-alternatives --install /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-10 100
-  - conda init bash
-    && . ~/.bashrc
-    && conda create -y --name pyomexmeta-test python=3.7
-    && conda activate pyomexmeta-test
-    && pip install cpp-coveralls gcovr ipython codecov nose graphviz coverage sphinx breathe python-libcombine tellurium
-#    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
-#  - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
-  - g++ --version
-  - GCOVR_COMMAND=$(which gcovr)
-  - echo "$GCOVR_COMMAND"
-  - pwd
-  - ls
+  - docker pull ciaranwelsh/libomexmeta-build-env:latest
+  - docker run -ti ciaranwelsh/libomexmeta-build-env:latest
 install:
-  - cd ${TRAVIS_BUILD_DIR} && mkdir docs-build && cd docs-build
-  - ${HOME}/cmake-3.15.7-Linux-x86_64/bin/cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DWITH_COVERAGE=ON -DCMAKE_BUILD_TYPE=Release -DGCOVR_PATH=$GCOVR_COMMAND ..
-  - make -j 8
+  - install_prefix="/libOmexMeta/install-docker"
+  - git clone https://github.com/sys-bio/libOmexMeta.git
+  - cd libOmexMeta && mkdir build
+  - cd build
+  - cmake -DCMAKE_INSTALL_PREFIX="$install_prefix" -DVCPKG_ROOT="/vcpkg" ..
+  - make -j 8 \
   - make install
 script:
-#  - conda activate pyomexmeta-test
-#  - cd ${HOME}/libOmexmeta/docs-build
-#  - ctest
   - make ctest
-  - ${HOME}/install/bin/OmexMetaTests
-  - ${HOME}/install/bin/redland-wrapper-tests
+#  - ${HOME}/install/bin/OmexMetaTests
+#  - ${HOME}/install/bin/redland-wrapper-tests
+  - conda activate omex
 after_success:
 #  - nosetests ${HOME}/libOmexMeta/tests/python
   - make TestCoverageHtml

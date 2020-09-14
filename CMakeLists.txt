@@ -134,11 +134,13 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 # User options
 #
 
-if (BUILD_SHARED_LIBS)
-    add_definitions("-DBUILD_SHARED_LIBS=ON")
-endif ()
 
 include(CMakeDependentOption)
+
+option(BUILD_SHARED_LIBS "build share libraries" ON)
+if (${BUILD_SHARED_LIBS})
+    add_definitions("-DBUILD_SHARED_LIBS=ON")
+endif ()
 
 option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
 
@@ -424,6 +426,7 @@ add_subdirectory(src)
 
 # test directories
 if (BUILD_TESTS)
+    include(GoogleTest)
 
     enable_testing()
 

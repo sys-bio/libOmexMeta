@@ -14,13 +14,6 @@ macro(add_test_executable BINARY)
             ${BINARY} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
     )
 
-    # add test so it can be run with $ctest or $make test
-    add_test(
-            NAME ${BINARY}
-            COMMAND $<TARGET_FILE:${BINARY}>
-    )
-
-    set_tests_properties(${BINARY} PROPERTIES DEPENDS OmexMeta)
     add_dependencies(${BINARY} OmexMeta-static redland-combined-static gtest gtest_main)
 
     # links
@@ -39,7 +32,8 @@ macro(add_test_executable BINARY)
             ${INCLUDE_DIRECTORIES}
             ${WRAPPER_SOURCE_DIR}
             )
-
+    # add test so it can be run with $ctest or $make test
+    gtest_discover_tests(${BINARY})
     set(TEST_EXECUTABLES ${TEST_EXECUTABLES} ${BINARY})
 endmacro()
 

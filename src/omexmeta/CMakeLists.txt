@@ -332,36 +332,6 @@ elseif (PLATFORM STREQUAL "macos")
 endif ()
 
 
-# note to self.
-# If I'm using the install tree then it is up to the user to provide
-# curl and libxml2 include dirs.
-#
-## Curl headers
-##   collect and install the curl headers since you've used curl as a dependency.
-##   Its probably worth removing this dependency as the OmexMetaUtils::download
-##   utility isn't essential.
-#if (NOT EXISTS ${CURL_INCLUDE_DIR})
-#    message(FATAL_ERROR "No curl include directory found")
-#endif ()
-#
-#file(GLOB CURL_HEADERS "${CURL_INCLUDE_DIR}/curl/*.h")
-#message(STATUS "CURL ${CURL_INCLUDE_DIR}/curl/*.h ${CURL_HEADERS}")
-#install(FILES ${CURL_HEADERS} DESTINATION "include/curl")
-#
-## libxml headers
-##   Again, for the install tree to be functional we need
-##   libxml headers available. Simple solution is to copy them
-##   accross. May be another better solution
-#if (NOT EXISTS ${LIBXML2_INCLUDE_DIR})
-#    message(FATAL_ERROR "No libxml2 include directory found")
-#endif ()
-#
-#file(GLOB LIBXML_HEADERS "${LIBXML2_INCLUDE_DIR}/curl/*.h")
-#message(STATUS "CURL ${LIBXML2_INCLUDE_DIR}/libxml/*.h ${LIBXML_HEADERS}")
-#install(FILES ${LIBXML_HEADERS} DESTINATION "include/libxml")
-#
-#
-#
 
 
 
