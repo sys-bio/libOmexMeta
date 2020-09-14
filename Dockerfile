@@ -9,7 +9,7 @@ RUN git clone https://github.com/sys-bio/libOmexMeta.git \
     && cd libOmexMeta \
     && mkdir build \
     && cd build \
-    && cmake -DCMAKE_INSTALL_PREFIX="$install_prefix" -DVCPKG_ROOT="/vcpkg" .. \
+    && cmake -DCMAKE_INSTALL_PREFIX="$install_prefix" -DVCPKG_ROOT="/vcpkg" -DBUILD_TESTS=ON .. \
     && make -j 8 \
     && make install
 

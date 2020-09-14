@@ -68,6 +68,9 @@ include(QueryCMakeVariables)
 # generate automatic export headers
 include(GenerateExportHeader)
 
+include(GoogleTest)
+
+
 ######################################################
 #   Set some variables
 #

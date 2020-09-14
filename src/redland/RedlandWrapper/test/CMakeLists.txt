@@ -58,6 +58,8 @@ install(
         RUNTIME DESTINATION bin
 )
 
+gtest_discover_tests(redland-wrapper-tests)
+
 
 # copies dependencies into docs-build directory. Commented out for now, delete in future if definately not needed.
 #foreach (lib ${LIBRARIES})

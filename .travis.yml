@@ -9,7 +9,8 @@ before_install:
   - docker pull ciaranwelsh/libomexmeta-build-env:latest
   - docker run -ti ciaranwelsh/libomexmeta-build-env:latest
 install:
-  - install_prefix="/libOmexMeta/install-docker"
+  - cd ${TRAVIS_BUILD_DIR}
+  - install_prefix="${TRAVIS_BUILD_DIR}/libOmexMeta/install-docker"
   - git clone https://github.com/sys-bio/libOmexMeta.git
   - cd libOmexMeta && mkdir build
   - cd build

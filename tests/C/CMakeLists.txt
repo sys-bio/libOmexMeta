@@ -21,6 +21,8 @@ target_compile_definitions(
         REDLAND_STATIC_DEFINE
 )
 
+gtest_discover_tests(${target})
+
 
 # links
 target_link_libraries(
