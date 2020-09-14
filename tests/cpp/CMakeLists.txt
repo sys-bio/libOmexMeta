@@ -2,7 +2,47 @@
 #   Sources for tests
 #
 
-set(target OmexMetaTests)
+
+set(TEST_EXECUTABLES)
+
+macro(add_test_executable BINARY)
+    add_executable(${BINARY} ${ARGN})
+
+    # indicate that on windows we are using the static library,
+    # not the static
+    target_compile_definitions(
+            ${BINARY} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
+    )
+
+    # add test so it can be run with $ctest or $make test
+    add_test(
+            NAME ${BINARY}
+            COMMAND $<TARGET_FILE:${BINARY}>
+    )
+
+    set_tests_properties(${BINARY} PROPERTIES DEPENDS OmexMeta)
+    add_dependencies(${BINARY} OmexMeta-static gtest gtest_main)
+
+    # links
+    target_link_libraries(${BINARY} PUBLIC
+            # Order matters!
+            $<TARGET_FILE:OmexMeta-static>
+            $<TARGET_FILE:redland-combined-static>
+            ${LINK_LIBRARIES}
+            ${RUNTIME}# best here so no clash with dynamic
+            gtest gtest_main
+            )
+
+    #includes
+    target_include_directories(${BINARY} PRIVATE
+            ${GOOGLETEST_SOURCE}/googletest/include
+            ${INCLUDE_DIRECTORIES}
+            ${WRAPPER_SOURCE_DIR}
+            )
+
+    set(TEST_EXECUTABLES ${TEST_EXECUTABLES} ${BINARY})
+endmacro()
+
 
 set(
         TEST_SOURCES
@@ -37,58 +77,40 @@ set(
         SBMLSemanticExtractionTests.cpp
 )
 
-# docs-build test executable
-add_executable(${target} ${TEST_SOURCES})
 
-# indicate that on windows we are using the static library,
-# not the static
-target_compile_definitions(
-        ${target} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
-)
+##############################################################################
+#   Add test executables
+#
 
-# add test so it can be run with $ctest or $make test
-add_test(
-        NAME ${target}
-        COMMAND $<TARGET_FILE:${target}>
-)
+# main test executable. These should really further be divided into modules.
+add_test_executable(OmexMetaTests ${TEST_SOURCES})
 
-set_tests_properties(${target} PROPERTIES DEPENDS OmexMeta)
-add_dependencies(${target} OmexMeta-static gtest gtest_main)
+add_test_executable(EditorSBMLExtractionTest EditorSBMLExtractTests.cpp)
 
-# links
-target_link_libraries(${target} PUBLIC
-                      # Order matters!
-                      $<TARGET_FILE:OmexMeta-static>
-                      $<TARGET_FILE:redland-combined-static>
-                      ${LINK_LIBRARIES}
-                      ${RUNTIME}# best here so no clash with dynamic
-                      gtest gtest_main
-                      )
+add_test_executable(JohnsTest JohnsTest.cpp)
 
-#includes
-target_include_directories(${target} PRIVATE
-                           ${GOOGLETEST_SOURCE}/googletest/include
-                           ${INCLUDE_DIRECTORIES}
-                           ${WRAPPER_SOURCE_DIR}
-                           )
+
+
+
+
+
 
 
 install(
-        TARGETS ${target}
-        EXPORT ${target}
+        TARGETS ${TEST_EXECUTABLES}
+        EXPORT tests
         RUNTIME DESTINATION bin
 )
 
-
-if (${BUILD_INTEGRATION_TESTS})
-    add_subdirectory(Integration)
-endif ()
-
-
-
-
-
-
+#
+#if (${BUILD_INTEGRATION_TESTS})
+#endif ()
+#
+#
+#
+#
+#
+#
 
 
 
