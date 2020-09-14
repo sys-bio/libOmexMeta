@@ -28,7 +28,7 @@ macro(add_doc_example BINARY_NAME)
     set(EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS} "${BINARY_NAME}")
 
     target_compile_definitions(
-            ${BINARY_NAME} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
+            ${BINARY_NAME} PRIVATE RR_STATIC
     )
     # add test so it can be run with $ctest or $make test
     add_test(
@@ -36,28 +36,14 @@ macro(add_doc_example BINARY_NAME)
             COMMAND $<TARGET_FILE:${BINARY_NAME}>
     )
 
-    set_tests_properties(${BINARY_NAME} PROPERTIES DEPENDS OmexMeta)
-    add_dependencies(${BINARY_NAME} OmexMeta-static)
+    set_tests_properties(${BINARY_NAME} PROPERTIES DEPENDS roadrunner-static)
+    add_dependencies(${BINARY_NAME} roadrunner-static roadrunner_c_api)
 
     # links
     target_link_libraries(${BINARY_NAME} PRIVATE
-                          # Order matters!
-                          $<TARGET_FILE:OmexMetaCAPI> # for C examples
-                          $<TARGET_FILE:OmexMeta-static> # for c++ examples
-                          $<TARGET_FILE:redland-combined-static>
-                          ${LINK_LIBRARIES}
-                          ${RUNTIME}# best here so no clash with dynamic
-                          pthread
+                          $<TARGET_FILE:roadrunner-static> # for C examples
+                          $<TARGET_FILE:roadrunner_c_api> # for c++ examples
                           )
-
-    target_include_directories(${BINARY_NAME} PRIVATE
-                               ${GOOGLETEST_SOURCE}/googletest/include
-
-                               ${INCLUDE_DIRECTORIES}
-                               ${WRAPPER_SOURCE_DIR}
-                               )
-
-
 endmacro()
 
 
@@ -66,56 +52,24 @@ endmacro()
 if (BUILD_DOCS_EXAMPLES)
 
     # I've automated this as much as possible. The idea is that
-    # I write the examples and compile the programs. Then I capture the
-    # output and save those to file as well. Then, we can easily include
+    # we write examples and compile them as self contained programs. Then we capture
+    # the output and save those to file as well (in ../ExampleOutputFiles). Then, we can easily include
     # both code and output into sphinx using the `.. literalinclude` directive.
-    # This can be done using pure cmake, and I asked how here:
-    #   https://stackoverflow.com/questions/62978989/running-multiple-executables-with-a-single-command-in-cmake-and-collecting-the-r
-    # But instead I opted to write a python script that will run the examples.
+    # The python script called build_doc_examples.py does all of this.
     #
-    # So, its cmakes job to build these examples. And its Pythons job to
+    # Its cmakes job to build these examples. And its Pythons job to
     # run the examples and write output to a known location. Then its
     # sphinx's job to pickup both code and output and include them in
     # the documentation.
 
+    # todo populate with examples here:
     add_doc_example(AddFromFileC                                  source/reading_rdf/add_from_file_c.cpp)
-    add_doc_example(AddFromFileCpp                                source/reading_rdf/add_from_file_cpp.cpp)
-    add_doc_example(AddFromStringC                                source/reading_rdf/add_from_string_c.cpp)
-    add_doc_example(AddFromStringCpp                              source/reading_rdf/add_from_string_cpp.cpp)
-    add_doc_example(AddFromUriC                                   source/reading_rdf/add_from_uri_c.cpp)
-    add_doc_example(AddFromUriCpp                                 source/reading_rdf/add_from_uri_cpp.cpp)
-    add_doc_example(FromStringC                                   source/reading_rdf/from_string_c.cpp)
-    add_doc_example(FromStringCpp                                 source/reading_rdf/from_string_cpp.cpp)
-    add_doc_example(FromUriC                                      source/reading_rdf/from_uri_c.cpp)
-    add_doc_example(FromUriCpp                                    source/reading_rdf/from_uri_cpp.cpp)
-    add_doc_example(FromFileC                                     source/reading_rdf/from_file_c.cpp)
-    add_doc_example(FromFileCpp                                   source/reading_rdf/from_file_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationC                       source/editing_rdf/create_single_annotation_c.cpp)
-    add_doc_example(CreateSingleAnnotationCpp                     source/editing_rdf/create_single_annotation_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationNoCommitC               source/editing_rdf/create_single_annotation_no_commit_c.cpp)
-    add_doc_example(CreateSingleAnnotationNoCommitCpp             source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationPredicateFromUriC       source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
-    add_doc_example(CreateSingleAnnotationPredicateFromUriCpp     source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationResourceC               source/editing_rdf/create_single_annotation_resource_c.cpp)
-    add_doc_example(CreateSingleAnnotationResourceCpp             source/editing_rdf/create_single_annotation_resource_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationWithMetaidsC            source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
-    add_doc_example(CreateSingleAnnotationWithMetaidsCpp          source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
-    add_doc_example(CreatePhysicalEntityC                         source/editing_rdf/create_physical_entity_c.cpp)
-    add_doc_example(CreatePhysicalEntityCpp                       source/editing_rdf/create_physical_entity_cpp.cpp)
-    add_doc_example(CreatePhysicalProcessC                        source/editing_rdf/create_physical_process_c.cpp)
-    add_doc_example(CreatePhysicalProcessCpp                      source/editing_rdf/create_physical_process_cpp.cpp)
-    add_doc_example(CreatePhysicalForceC                          source/editing_rdf/create_physical_force_c.cpp)
-    add_doc_example(CreatePhysicalForceCpp                        source/editing_rdf/create_physical_force_cpp.cpp)
-    add_doc_example(WritingToStringC                              source/writing_rdf/writing_to_string_c.cpp)
-    add_doc_example(WritingToStringCpp                            source/writing_rdf/writing_to_string_cpp.cpp)
-    add_doc_example(QueryingRdfGraphC                             source/querying_rdf/querying_rdf_c.cpp)
-    add_doc_example(QueryingRdfGraphCpp                           source/querying_rdf/querying_rdf_cpp.cpp)
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
             )
 
-    add_dependencies(AllDocExamples OmexMeta OmexMeta-static OmexMetaCAPI)
+    add_dependencies(AllDocExamples roadrunner-static roadrunner_c_api)
 
     # We now create a target that runs the Python script which runs the
     # executables.
@@ -125,7 +79,8 @@ if (BUILD_DOCS_EXAMPLES)
     endif ()
 
 
-    # we do not want to use CMAKE_BINARY_DIR so we just take parent of current binary dir
+    # we do not want to use the "CMAKE_BINARY_DIR" variable as invalid in embedded projects
+    # so we just take parent of current binary dir
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
     add_custom_target(RunDocExamplesAndGenerateOutput

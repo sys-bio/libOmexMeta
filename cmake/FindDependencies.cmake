@@ -76,8 +76,9 @@ macro(FindDependencies)
             NO_DEFAULT_PATH
             )
 
+    message(STATUS "VCPKG_X64_BIN_DIR ${VCPKG_X64_BIN_DIR}")
     find_file(CURL_LIBRARY
-            NAMES libcurl.dll libcurl.so.4.5.0 curl.dll libcurl.so
+            NAMES libcurl${CMAKE_SHARED_LIBRARY_SUFFIX} libcurl${CMAKE_SHARED_LIBRARY_SUFFIX}.4.5.0
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH

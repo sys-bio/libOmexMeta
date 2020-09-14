@@ -1,3 +1,0 @@
-Freeing Resources
-===================
-

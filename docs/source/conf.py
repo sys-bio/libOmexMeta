@@ -17,13 +17,13 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'libomexmeta'
-copyright = '2020, Ciaran Welsh'
-author = 'Ciaran Welsh'
+project = 'roadrunner'
+copyright = '2020, Sauro Lab'
+author = 'Herbert Sauro'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
-
+release = '2.0.1'
+# todo ensure version gets updated with a configure_file
 
 # -- General configuration ---------------------------------------------------
 
@@ -32,13 +32,14 @@ release = '0.0.1'
 # ones.
 extensions = [
     "breathe",
-    # "exhale",
-    # 'sphinx.ext.pngmath',
     'sphinx.ext.todo',
     "sphinxcontrib.bibtex",
     "sphinx_tabs.tabs",
     "sphinx.ext.doctest"
 ]
+
+
+# todo more configuration required here
 
 doctest_global_setup = '''
 try:
@@ -51,42 +52,17 @@ try:
     docs_dir = os.path.abspath(os.path.dirname(__file__))
     proj_dir = os.path.dirname(docs_dir)
     src_dir = os.path.join(proj_dir, "src")
-    pyomexmeta_dir = os.path.join(src_dir, "pyomexmeta")
     
-    site.addsitedir(src_dir)
-    
-    from pyomexmeta import PyOmexMetaAPI
-except ImportError as e:
-    print("could not import pyomexmeta, is it installed? ")
-    raise e
+    #todo more configuration required here
+
 '''
 # Breathe Configuration
-breathe_default_project = "libomexmeta"
-# "D:\libOmexMeta\docs\source\conf.py"
+breathe_default_project = "roadrunner"
+
 breathe_projects = {
-    "libomexmeta": "../doxygen-output/xml/"
+    "roadrunner": "../doxygen-output/xml/"
 }
 
-# # Setup the exhale extension
-# exhale_args = {
-#     # These arguments are required
-#     "containmentFolder":     "./APIReference",
-#     "rootFileName":          "api_reference_index.rst",
-#     "rootFileTitle":         "libOmexMeta API Reference",
-#     "doxygenStripFromPath":  "..",
-#     # Suggested optional arguments
-#     "createTreeView":        True,
-#     # TIP: if using the sphinx-bootstrap-theme, you need
-#     # "treeViewIsBootstrap": True,
-#     "exhaleExecutesDoxygen": False,
-#     "exhaleDoxygenStdin":    "INPUT = ../../src/omexmeta"
-# }
-#
-# # Tell sphinx what the primary language being documented is.
-# primary_domain = 'cpp'
-#
-# # Tell sphinx what the pygments highlight language should be.
-# highlight_language = 'cpp'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

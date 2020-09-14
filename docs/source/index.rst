@@ -1,207 +1,118 @@
-##########################
-libOmexMeta documentation!
-##########################
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+
+	<meta charset="UTF-8">
+	<title>libroadrunner | Landing page for libroadrunner project</title>
+
+
+	<!--[if lt IE 9]>
+	<script src="http://libroadrunner.org/wp-content/themes/twentythirteen/js/html5.js"></script>
+	<![endif]-->
+
+
+<link rel="stylesheet" href="css/default.css" type="text/css" />
+<link rel="stylesheet" href="css/pygments.css" type="text/css" />
+
+<link rel='stylesheet' id='wp-quicklatex-format-css'  href='css/quicklatex-format.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widgets-css'  href='css/widgets.css' type='text/css' media='all' />
+<!--
+<link rel='stylesheet' id='twentythirteen-fonts-css'  href='//fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400%2C700%2C300italic%2C400italic%2C700italic%7CBitter%3A400%2C700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+-->
+<link rel='stylesheet' id='genericons-css'  href='css/genericons.css' type='text/css' media='all' />
+<link rel='stylesheet' id='twentythirteen-style-css'  href='css/style.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentythirteen-ie-css'  href='css/ie.css' type='text/css' media='all' />
+<![endif]-->
+
+	</head>
+
+<body class="home page page-id-5 page-template-default single-author">
+					<div class="entry-content">
+						<h1>libRoadrunner</h1>
+<p>A high performance and portable simulation engine for systems and synthetic biology.</p>
+<div class="body">
+<p>To get started try the Python script below. These commands will load an example SBML model, run a time course simulation, and plot the results.</p>
+<div class="highlight-python">
+<div class="highlight">
+<pre>
+<span class="kn">import</span> <span class="nn">roadrunner</span>
+<span class="kn">import</span> <span class="nn">roadrunner.testing</span>
+<span class="n">rr</span> <span class="o">=</span> <span class="n">roadrunner</span><span class="o">.</span><span class="n">RoadRunner</span><span class="p">()</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">roadrunner.testing.getData('feedback.xml')</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">rr</span><span class="o">.</span><span class="n">simulate</span><span class="p">()</span>
+<span class="n">roadrunner</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+</div> <!-- #body -->
+
+libRoadRunner has three extensive APIs designed specially for modelers.
+The links below point to local documentation on your system. For up to date documentation please visit: <a href="http://libroadrunner.org">http://libroadrunner.org</a>
+<ol>
+<li><a href="cpp_api_docs/index.html">C++ API</a></li>
+<li><a href="c_api_docs/html/index.html">C API</a></li>
+<li><a href="python_docs/index.html">Python bindings</a></li>
+</ol>
+
+<p><a title="Documentation" href="http://libroadrunner.org/documentation-2/">libRoadRunner 1.0</a> supports the following features:</p>
+<ul>
+<li>Time Dependent Simulation (with optional conservation law reduction) using CVODE from the <a href="http://computation.llnl.gov/casc/sundials/main.html" target="_blank">sundials suite</a>.</li>
+<li>Steady State evaluation using <a href="http://www.zib.de/en/numerik/software/ant/nleq2.html" target="_blank">NLEQ2</a></li>
+<li>Supports SBML Level 2 to 3 but currently excludes algebraic rules and delay differential equations</li>
+<li>Uses latest libSBML distribution</li>
+<li>Defaults to LLVM code generation on the backend, resulting is very fast simulation times</li>
+<li>Optional generation of model C code and linking at run-time</li>
+<li><span style="line-height: 1.5;">Supports Metabolic Control Analysis</span></li>
+<li>Supports Frequency Domain Analysis</li>
+<li>APIs support fast access to model quantities</li>
+<li>Access to other items such as:</li>
+</ul>
+<ol style="list-style-type: lower-alpha;">
+<ol>
+<li>Eigenvalues and Eigenvectors</li>
+<li>Jacobian, full and reduced</li>
+<li>Structural Matrices of the stoichiometry matrix</li>
+</ol>
+</ol>
+<h2>Availability</h2>
+<p>libRoadRunner is <a title="Apache 2.0 License" href="http://www.apache.org/licenses/LICENSE-2.0">licensed for free</a> as an <a title="GitHub" href="https://github.com/AndySomogyi/roadrunner">open source</a> (Apache License, Version 2.0) programmatic <strong>library</strong> for use in other applications without restriction and as a <strong>standalone</strong> command line driven application.</p>
+<p>On Windows, OS X, and Linux binary files can be downloaded from <a title="SourceForge" href="http://sourceforge.net/projects/libroadrunner/files">http://sourceforge.net/projects/libroadrunner/files</a> and <strong><a title="Install libRoadrunner" href="http://libroadrunner.org/install-roadrunner/">installed </a></strong>ready for use.</p>
+<h3>Acknowledgements</h3>
+<p>This work is funded by the generous support of the NIH/NIGMS grant: GM081070</p>
+<p><a href="http://libroadrunner.org/wp-content/uploads/2013/11/nigms_logo_Small.png"><img class="alignnone size-thumbnail wp-image-206" alt="nigms_logo_Small" src="http://libroadrunner.org/wp-content/uploads/2013/11/nigms_logo_Small-120x150.png" width="120" height="150" /></a></p>
+<h2><a name="license"></a></h2>
+<h3>Licence</h3>
+<p>Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p>In plain English this means:</p>
+<p>You CAN freely download and use this software, in whole or in part, for personal or commercial purposes without restriction.</p>
+<p>You CAN use the software in packages or distributions that you create.</p>
+<p>You SHOULD include a copy of the license in any redistribution you may make;</p>
+<p>You are NOT required include the source of software, or any modifications you may have made to it, in any redistribution you assemble.</p>
+<p><strong>YOU CANNOT:</strong> redistribute any piece of this software without proper attribution</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #333333;">libroadrunner logo</span></p>
+<p style="padding-left: 30px;"><span style="color: #333333; font-size: 14px;">The libroadrunner logo is an adaptation of the image originally posted to <a title="en:Flickr" href="http://en.wikipedia.org/wiki/Flickr"><span style="color: #333333;">Flickr</span></a> by El Brujo+ at <a href="http://flickr.com/photos/11039104@N08/2954808342" rel="nofollow"><span style="color: #333333;">http://flickr.com/photos/11039104@N08/2954808342</span></a>. It was reviewed on <time datetime="2009-08-09">9 August 2009</time> by the <a title="User:FlickreviewR" href="http://commons.wikimedia.org/wiki/User:FlickreviewR"><span style="color: #333333;">FlickreviewR</span></a> robot and was confirmed to be licensed under the terms of the cc-by-sa-2.0.</span></p>
+											</div><!-- .entry-content -->
+
+					<footer class="entry-meta">
+											</footer><!-- .entry-meta -->
+				</article><!-- #post -->
+
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+</body>
+</html>
 
-LibOMEXmeta is a library aimed at providing developer-level support for
-reading, writing, editing and managing semantic annotations for biosimulation
-models.  The `COMBINE modeling community <http://co.mbine.org/>`_  has developed
-consensus around how best to annotate models and how to package these models
-into archives (OMEX files) that include the modeling source code, the annotations,
-files that describe parameters and settings needed for simulations (in a SEDML file),
-and potentially the data used for these modeling efforts. This consensus was initially
-described in the  publication `"Harmonizing semantic annotations for computational
-models in biology" (Briefings in Bioinformatics, 2018) <https://academic.oup.com/bib/article/20/2/540/5164345)>`_.
-
-The goal of semantic annotations are to make explicit the biology that underlies the
-semantics of biosimulation models. By using standard knowledge resources about biology
-and biological processes (such as CheBI, Uniprot, and ontologies of anatomy), we can
-make the models more understandable, reusable and reproducible. More information can
-be found at the `OMEX Metadata Specification web page <http://co.mbine.org/standards/omex-metadata>`_.
-
-Libsemsim is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). Libsemsim uses `RDF <https://www.w3.org/RDF/>`_
-as a framework for representing these annotations. At the core of libOmexMeta are the `Redland libraries <http://librdf.org/>`_:
-
-    * `raptor2 <http://librdf.org/raptor/>`_ for parsing RDF syntax into RDF graphs and serializing the output
-    * `rasqal <http://librdf.org/rasqal/>`_ for querying RDF graphs
-    * `librdf <http://librdf.org/>`_ as a front end to raptor2 and rasqal and for triple stores.
-
-Features
-========
-
-`Parsers <http://librdf.org/raptor/api-1.4/raptor-parsers.html>`_
-------------------------------------------------------------------
-
-  * rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess
-
-`Serializers <http://librdf.org/raptor/api-1.4/raptor-serializers.html>`_
--------------------------------------------------------------------------
-
-   * ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, rss-1.0, atom, dot, json-triples, json, nquads, html
-
-`Querying <http://librdf.org/rasqal/docs/api/>`_
-------------------------------------------------
-
-  * Languages
-    * `SPARQL <https://www.w3.org/TR/sparql11-query/>`_, `LAQRS <https://www.dajobe.org/2007/04/laqrs/>`_
-  * Query result formats:
-    * xml, json, table, csv, mkr, tsv, html, turtle, rdfxml,
-
-`Storages modules <http://librdf.org/docs/api/redland-storage-modules.html>`_
---------------------------------------------------------------------------------
-
-  * hashes, memory, file, mysql, sqlite, uri, tstore (may be supported on request), postgresql (supported but not tested), virtuoso (may be supported on request)
-
-
-Platform
-========
-
-  * Windows
-  * Linux Ubuntu 18.04, untested on other flavours.
-
-libOmexMeta has not been tested on a Mac.
-
-.. note::
-
-    documentation is in the process of being written. If you have any questions on how to do something,
-    post a github issue and I will write you a new example.
-
-Installation
-============
-
-Python
-------
-
-On linux, grab some dependencies:
-
-.. code-block:: bash
-
-    $ sudo apt install libxml2 libxml2-dev libxslt1-dev libpq-dev
-
-Windows is self-contained.
-
-Now use pip.
-
-.. code-block:: bash
-
-    $ pip install pyomexmeta
-    # verify its worked
-    $ ipython -c "import pyomexmeta"
-
-Python 3 only - if you're not using Python 3, I recommend you upgrade.
-
-Docker
--------
-
-You can get a docker image using
-
-.. code-block:: bash
-
-    $ docker pull ciaranwelsh/libomexmeta:v1.1.0
-
-This is an Ubuntu 18.04 based container that has libOmexMeta prebuilt and installed
-under `/libOmexMeta/install-docker`. See `dockerfile <https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile>`_ for full set of commands to build libOmexMeta on ubuntu.
-Conda is preconfigured and pyomexmeta is installed.
-
-
-Downloading Binaries
-====================
-
-You can download binaries from the `releases tab <https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10>`_
-
-Building from source
-=====================
-
-See above for docker image which does this for you already on linux builds. The build process is similar on both windows and linux, but linux has some additional dependencies installed via `apt-get`.
-
-On Linux only
--------------
-
-Install some dependencies using apt.
-
-.. note::
-
-    The build process is not yet fully optimized for linux and will be improved
-
-.. code-block:: bash
-
-   $ sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
-                      libxslt1-dev postgresql postgresql-contrib  libdb-dev \
-                      libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
-                      libpthread-stubs0-dev libltdl-dev git
-
-
-Switch default gcc to version 10.1:
-
-.. code-block:: bash
-
-   $ update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
-
-
-On both Linux and Windows
--------------------------
-
-Get `vcpkg`
-
-.. code-block:: bash
-
-   $ git clone https://github.com/microsoft/vcpkg.git
-   $ cd vcpkg
-
-
-Configure vcpkg and install dependencies on Linux
---------------------------------------------------
-
-.. code-block:: bash
-
-   $ ./bootstrap-vcpkg.sh
-   $ vcpkg integrate install
-   $ vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
-
-.. note::
-
-    This is where the linux build is not optimized.
-
-Configure vcpkg and install dependencies on Windows
-----------------------------------------------------
-
-.. code-block:: console
-
-   bootstrap-vcpkg.bat
-   vcpkg integrate install
-   vcpkg install libxml2:x64-windows curl:x64-windows libiconv:x64-windows pcre:x64-windows openssl:x64-windows yajl:x64-windows libpq:x64-windows sqlite3:x64-windows
-
-Build libOmexMeta
-------------------
-
-Use `CMake > 15.7 <https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz>`_
-
-.. code-block:: bash
-
-   git clone https://github.com/sys-bio/libOmexMeta.git
-   cd libOmexMeta
-   mkdir build && cd build
-   cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=../install-linux -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release ..
-   make -j 8
-   make install # or sudo if installing to default location (i.e. omit the `-DCMAKE_INSTALL_PREFIX`)
-
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   background.rst
-   reading_rdf/reading_rdf.rst
-   writing_rdf/writing_rdf.rst
-   editing_rdf/editing_rdf.rst
-   diagrams/diagrams_index.rst
-   APIReference/api_reference_index.rst
-   Developers/developers_index.rst
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
