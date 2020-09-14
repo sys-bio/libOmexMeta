@@ -22,6 +22,7 @@ script:
 #  - ${HOME}/install/bin/OmexMetaTests
 #  - ${HOME}/install/bin/redland-wrapper-tests
   - conda activate omex
+  -
 after_success:
 #  - nosetests ${HOME}/libOmexMeta/tests/python
   - make TestCoverageHtml
