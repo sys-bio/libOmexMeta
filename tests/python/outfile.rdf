@@ -961,11 +961,11 @@
         ] ;
         a rdf:Bag
     ] ;
-    <http://purl.org/dc/terms/created> [
-        <http://purl.org/dc/terms/W3CDTF> "2008-11-09T00:00:00Z"
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> [
+        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> "2008-11-09T00:00:00Z"
     ] ;
-    <http://purl.org/dc/terms/modified> [
-        <http://purl.org/dc/terms/W3CDTF> "2016-04-08T17:38:15Z"
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/modified> [
+        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> "2016-04-08T17:38:15Z"
     ] .
 
 

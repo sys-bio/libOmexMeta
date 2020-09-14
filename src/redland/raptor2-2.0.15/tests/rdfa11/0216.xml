@@ -4,7 +4,7 @@
 air: http://www.daml.org/2001/10/html/airport-ont#
 bio: http://vocab.org/bio/0.1/
 contact: http://www.w3.org/2000/10/swap/pim/contact#
-dc: http://purl.org/dc/terms/
+dc: https://dublincore.org/specifications/dublin-core/dcmi-terms/
 foaf: http://xmlns.com/foaf/0.1/
 ical: http://www.w3.org/2002/12/cal/icaltzd#
 owl: http://www.w3.org/2002/07/owl#

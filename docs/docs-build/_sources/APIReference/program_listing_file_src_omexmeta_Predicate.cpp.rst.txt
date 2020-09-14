@@ -127,7 +127,7 @@ Program Listing for File Predicate.cpp
                    {"http://www.bhi.washington.edu/semsim#",                         "semsim"},
                    {"http://identifiers.org/opb/",                                   "opb"},
                    {"http://identifiers.org/fma/",                                   "fma"},
-                   {"http://purl.org/dc/terms/",                                     "dcterms"},
+                   {"https://dublincore.org/specifications/dublin-core/dcmi-terms/",                                     "dcterms"},
                    {"http://OMEXlibrary.org/",                                     "OMEXlib"},
    
            };
@@ -243,7 +243,7 @@ Program Listing for File Predicate.cpp
        }
    
        DCTerm::DCTerm(const std::string &term) :
-               Predicate("http://purl.org/dc/terms/", term, "dcterms") {
+               Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dcterms") {
            verify();
        }
    

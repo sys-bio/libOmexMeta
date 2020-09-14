@@ -488,7 +488,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .
 
 """
         self.assertEqual(expected, actual)
@@ -506,7 +506,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#>
-    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .
 
 """
         self.assertEqual(expected, actual)
@@ -560,7 +560,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    <http://purl.org/dc/terms/description> "An awesome model"^^rdf:string .
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "An awesome model"^^rdf:string .
 
 """
         self.assertEqual(expected, actual)
@@ -578,7 +578,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    <http://purl.org/dc/terms/created> "14/01/1001"^^rdf:string .
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> "14/01/1001"^^rdf:string .
 
 """
         self.assertEqual(expected, actual)
@@ -1047,7 +1047,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -1072,7 +1072,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1099,7 +1099,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1126,7 +1126,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1156,7 +1156,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1183,7 +1183,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1210,7 +1210,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1237,7 +1237,7 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .

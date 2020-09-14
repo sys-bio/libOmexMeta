@@ -4,7 +4,7 @@
            name="Yan2012 - Rb-E2F pathway dynamics with miR449">
         <annotation>
             <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
-                     xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
+                     xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                      xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                      xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
                 <rdf:Description rdf:about="#COPASI0">
@@ -82,7 +82,7 @@
                 <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
                          xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                          xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
-                         xmlns:dcterms="http://purl.org/dc/terms/"
+                         xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                          xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
                     <rdf:Description rdf:about="#COPASI0">
@@ -135,7 +135,7 @@
             <functionDefinition id="Constant_flux__irreversible" metaid="COPASI36" name="Constant flux (irreversible)">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI36">
                                 <dcterms:created>
@@ -160,7 +160,7 @@
                                 name="self promoting michaelis menten">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI37">
                                 <dcterms:created>
@@ -217,7 +217,7 @@
             <functionDefinition id="function" metaid="COPASI38" name="function">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI38">
                                 <dcterms:created>
@@ -259,7 +259,7 @@
             <functionDefinition id="function_1" metaid="COPASI39" name="function_1">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI39">
                                 <dcterms:created>
@@ -324,7 +324,7 @@
             <compartment constant="true" id="compartment" metaid="COPASI1" name="cell" size="1" spatialDimensions="3">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -340,7 +340,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI1">
                                 <dcterms:created>
@@ -360,7 +360,7 @@
                      initialConcentration="1.2" metaid="COPASI2" name="E2F">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -376,7 +376,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI2">
                                 <dcterms:created>
@@ -394,7 +394,7 @@
                      initialConcentration="0" metaid="COPASI3" name="Myc">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -410,7 +410,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI3">
                                 <dcterms:created>
@@ -428,7 +428,7 @@
                      initialConcentration="0" metaid="COPASI4" name="CycD">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -465,7 +465,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI4">
                                 <dcterms:created>
@@ -487,7 +487,7 @@
                      initialConcentration="0" metaid="COPASI5" name="RE">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -509,7 +509,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI5">
                                 <dcterms:created>
@@ -528,7 +528,7 @@
                      initialConcentration="0" metaid="COPASI6" name="CycE">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -550,7 +550,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI6">
                                 <dcterms:created>
@@ -569,7 +569,7 @@
                      initialConcentration="0.55" metaid="COPASI7" name="RB">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -585,7 +585,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI7">
                                 <dcterms:created>
@@ -603,7 +603,7 @@
                      initialConcentration="0" metaid="COPASI8" name="miR449">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -619,7 +619,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI8">
                                 <dcterms:created>
@@ -637,7 +637,7 @@
                      metaid="COPASI9" name="S">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -653,7 +653,7 @@
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI9">
                                 <bqbiol:hasProperty rdf:resource="urn:miriam:ncit:C20424"/>
@@ -671,7 +671,7 @@
                      initialConcentration="0" metaid="COPASI10" name="PRB">
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                              xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -694,7 +694,7 @@
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
                                  xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-                                 xmlns:dcterms="http://purl.org/dc/terms/"
+                                 xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI10">
                                 <bqbiol:hasProperty rdf:resource="urn:miriam:ncit:C1897"/>
@@ -745,7 +745,7 @@
             <reaction id="reaction" metaid="COPASI11" name="reaction" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI11">
                                 <dcterms:created>
@@ -783,7 +783,7 @@
             <reaction id="reaction_1" metaid="COPASI12" name="reaction_1" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI12">
                                 <dcterms:created>
@@ -819,7 +819,7 @@
             <reaction id="reaction_2" metaid="COPASI13" name="reaction_2" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI13">
                                 <dcterms:created>
@@ -860,7 +860,7 @@
             <reaction id="reaction_3" metaid="COPASI14" name="reaction_3" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI14">
                                 <dcterms:created>
@@ -901,7 +901,7 @@
             <reaction id="reaction_4" metaid="COPASI15" name="reaction_4" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI15">
                                 <dcterms:created>
@@ -930,7 +930,7 @@
             <reaction id="reaction_5" metaid="COPASI16" name="reaction_5" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI16">
                                 <dcterms:created>
@@ -964,7 +964,7 @@
             <reaction id="reaction_6" metaid="COPASI17" name="reaction_6" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI17">
                                 <dcterms:created>
@@ -1000,7 +1000,7 @@
             <reaction id="reaction_7" metaid="COPASI18" name="reaction_7" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI18">
                                 <dcterms:created>
@@ -1029,7 +1029,7 @@
             <reaction id="reaction_8" metaid="COPASI19" name="reaction_8" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI19">
                                 <dcterms:created>
@@ -1067,7 +1067,7 @@
             <reaction id="reaction_9" metaid="COPASI20" name="reaction_9" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI20">
                                 <dcterms:created>
@@ -1105,7 +1105,7 @@
             <reaction id="reaction_10" metaid="COPASI21" name="reaction_10" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI21">
                                 <dcterms:created>
@@ -1143,7 +1143,7 @@
             <reaction id="reaction_11" metaid="COPASI22" name="reaction_11" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI22">
                                 <dcterms:created>
@@ -1179,7 +1179,7 @@
             <reaction id="reaction_12" metaid="COPASI23" name="reaction_12" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI23">
                                 <dcterms:created>
@@ -1208,7 +1208,7 @@
             <reaction id="reaction_13" metaid="COPASI24" name="reaction_13" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI24">
                                 <dcterms:created>
@@ -1244,7 +1244,7 @@
             <reaction id="reaction_14" metaid="COPASI25" name="reaction_14" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI25">
                                 <dcterms:created>
@@ -1280,7 +1280,7 @@
             <reaction id="reaction_15" metaid="COPASI26" name="reaction_15" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI26">
                                 <dcterms:created>
@@ -1312,7 +1312,7 @@
             <reaction id="reaction_16" metaid="COPASI27" name="reaction_16" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI27">
                                 <dcterms:created>
@@ -1348,7 +1348,7 @@
             <reaction id="reaction_17" metaid="COPASI28" name="reaction_17" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI28">
                                 <dcterms:created>
@@ -1377,7 +1377,7 @@
             <reaction id="reaction_18" metaid="COPASI29" name="reaction_18" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI29">
                                 <dcterms:created>
@@ -1408,7 +1408,7 @@
             <reaction id="reaction_19" metaid="COPASI30" name="reaction_19" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI30">
                                 <dcterms:created>
@@ -1447,7 +1447,7 @@
             <reaction id="reaction_20" metaid="COPASI31" name="reaction_20" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI31">
                                 <dcterms:created>
@@ -1476,7 +1476,7 @@
             <reaction id="reaction_21" metaid="COPASI32" name="reaction_21" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI32">
                                 <dcterms:created>
@@ -1516,7 +1516,7 @@
             <reaction id="reaction_22" metaid="COPASI33" name="reaction_22" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI33">
                                 <dcterms:created>
@@ -1556,7 +1556,7 @@
             <reaction id="reaction_23" metaid="COPASI34" name="reaction_23" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI34">
                                 <dcterms:created>
@@ -1585,7 +1585,7 @@
             <reaction id="reaction_24" metaid="COPASI35" name="reaction_24" reversible="false">
                 <annotation>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
-                        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+                        <rdf:RDF xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI35">
                                 <dcterms:created>

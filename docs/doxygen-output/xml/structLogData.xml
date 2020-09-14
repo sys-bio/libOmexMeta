@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structLogData" kind="struct" language="C++" prot="public">
+    <compoundname>LogData</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>List</declname>
+        <defname>List</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structLogData_1added55423a3b24a6ef757e8f749795ea" prot="public" static="no" mutable="no">
+        <type>List</type>
+        <definition>List LogData&lt; List &gt;::list</definition>
+        <argsstring></argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="20" column="1" bodyfile="src/omexmeta/logger.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/logger.h" line="19" column="1" bodyfile="src/omexmeta/logger.h" bodystart="19" bodyend="21"/>
+    <listofallmembers>
+      <member refid="structLogData_1added55423a3b24a6ef757e8f749795ea" prot="public" virt="non-virtual"><scope>LogData</scope><name>list</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

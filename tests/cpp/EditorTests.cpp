@@ -264,7 +264,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -539,7 +539,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
 TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true);
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
@@ -569,7 +569,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
                            "\n"
                            "";
     std::string actual = rdf.toString("turtle");
@@ -590,7 +590,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
                            "\n"
                            "";
     std::string actual = rdf.toString("turtle");
@@ -611,7 +611,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> \"14/01/1991\"^^rdf:string .\n"
                            "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
@@ -632,7 +632,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n"
                            "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
@@ -851,7 +851,7 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"

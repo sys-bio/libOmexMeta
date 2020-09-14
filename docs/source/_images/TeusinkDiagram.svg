@@ -25,10 +25,10 @@ digraph {
 	"B_:r1595206685r4106r8" -> "B_:r1595206685r4106r10" [ label="http://www.w3.org/2001/vcard-rdf/3.0#ORG" ];
 	"B_:r1595206685r4106r1" -> "B_:r1595206685r4106r8" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3" ];
 	"Rhttp://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064#metaid_0000002" -> "B_:r1595206685r4106r1" [ label="http://purl.org/dc/elements/1.1/creator" ];
-	"B_:r1595206685r4106r11" -> "L2008-09-16T14:00:06Z" [ label="http://purl.org/dc/terms/W3CDTF" ];
-	"Rhttp://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064#metaid_0000002" -> "B_:r1595206685r4106r11" [ label="http://purl.org/dc/terms/created" ];
-	"B_:r1595206685r4106r12" -> "L2012-07-19T18:26:07Z" [ label="http://purl.org/dc/terms/W3CDTF" ];
-	"Rhttp://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064#metaid_0000002" -> "B_:r1595206685r4106r12" [ label="http://purl.org/dc/terms/modified" ];
+	"B_:r1595206685r4106r11" -> "L2008-09-16T14:00:06Z" [ label="https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF" ];
+	"Rhttp://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064#metaid_0000002" -> "B_:r1595206685r4106r11" [ label="https://dublincore.org/specifications/dublin-core/dcmi-terms/created" ];
+	"B_:r1595206685r4106r12" -> "L2012-07-19T18:26:07Z" [ label="https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF" ];
+	"Rhttp://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064#metaid_0000002" -> "B_:r1595206685r4106r12" [ label="https://dublincore.org/specifications/dublin-core/dcmi-terms/modified" ];
 	"B_:r1595206685r4106r13" -> "Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Bag" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
 	"B_:r1595206685r4106r13" -> "Rhttp://identifiers.org/biomodels.db/MODEL6623915522" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1" ];
 	"Rhttp://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064#metaid_0000002" -> "B_:r1595206685r4106r13" [ label="http://biomodels.net/model-qualifiers/is" ];

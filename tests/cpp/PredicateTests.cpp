@@ -89,7 +89,7 @@ TEST_F(PredicateTests, TestDCTermPrefix) {
 
 TEST_F(PredicateTests, TestDCTermUri) {
     DCTerm predicate("description");
-    std::string expected = "http://purl.org/dc/terms/description";
+    std::string expected = "https://dublincore.org/specifications/dublin-core/dcmi-terms/description";
     std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicate.freeNode();
@@ -98,7 +98,7 @@ TEST_F(PredicateTests, TestDCTermUri) {
 
 TEST_F(PredicateTests, TestDCTermGetNamespace) {
     DCTerm predicate("description");
-    std::string expected = "http://purl.org/dc/terms/";
+    std::string expected = "https://dublincore.org/specifications/dublin-core/dcmi-terms/";
     std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicate.freeNode();
@@ -269,9 +269,8 @@ TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
 //}
 
 TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsKnown) {
-    std::string ns = "http://purl.org/dc/terms/";
-    ASSERT_TRUE(Predicate::namespaceKnown(ns)
-    );
+    std::string ns = "https://dublincore.org/specifications/dublin-core/dcmi-terms/";
+    ASSERT_TRUE(Predicate::namespaceKnown(ns));
 }
 
 
@@ -296,7 +295,7 @@ TEST_F(PredicateTests, TestPredicateFactory) {
 TEST_F(PredicateTests, TestPredicateFactory2) {
     PredicatePtr predicatePtr = PredicateFactory("dc", "description");
     std::string actual = predicatePtr->str();
-    std::string expected = "http://purl.org/dc/terms/description";
+    std::string expected = "https://dublincore.org/specifications/dublin-core/dcmi-terms/description";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicatePtr->freeNode();
 }

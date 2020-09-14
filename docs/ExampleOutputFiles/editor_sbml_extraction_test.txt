@@ -3,6 +3,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [----------] Global test environment set-up.
 [----------] 1 test from EditorSBMLExtractTests1
 [ RUN      ] EditorSBMLExtractTests1.test
+/mnt/d/libOmexMeta/src/omexmeta/MarkupIdentifier.cpp:12:Insize markup ID
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -91,11 +92,12 @@ local:SourceParticipant0003
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
 
 
-[       OK ] EditorSBMLExtractTests1.test (103 ms)
-[----------] 1 test from EditorSBMLExtractTests1 (103 ms total)
+[       OK ] EditorSBMLExtractTests1.test (106 ms)
+[----------] 1 test from EditorSBMLExtractTests1 (106 ms total)
 
 [----------] 1 test from EditorSBMLExtractTests2
 [ RUN      ] EditorSBMLExtractTests2.test
+/mnt/d/libOmexMeta/src/omexmeta/MarkupIdentifier.cpp:12:Insize markup ID
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -119,5 +121,5 @@ local:SinkParticipant0000
 [----------] 1 test from EditorSBMLExtractTests2 (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 2 test suites ran. (110 ms total)
+[==========] 2 tests from 2 test suites ran. (113 ms total)
 [  PASSED  ] 2 tests.

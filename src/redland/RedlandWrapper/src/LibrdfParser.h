@@ -103,7 +103,7 @@ namespace redland {
 
         static void setOptions(librdf_parser *parser);
 
-        [[nodiscard]] std::vector<std::string> getSeenNamespaces() const;
+        [[nodiscard]] std::vector<std::string> getSeenNamespaces(std::vector<std::string> namespaces) const;
 
 
     };

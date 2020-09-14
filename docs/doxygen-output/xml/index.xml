@@ -47,6 +47,9 @@
     <member refid="classdbg_1_1DebugOutput_1a2bcceba90497630c8a5944d8d8e50c5f" kind="function"><name>print_impl</name></member>
     <member refid="classdbg_1_1DebugOutput_1a34a7f003d727fa30f9a523fde7058ba2" kind="function"><name>ansi</name></member>
   </compound>
+  <compound refid="structredland_1_1LibrdfQuery_1_1deleter" kind="struct"><name>redland::LibrdfQuery::deleter</name>
+    <member refid="structredland_1_1LibrdfQuery_1_1deleter_1a5ada7fd745a89b425a5f693faeaa6a31" kind="function"><name>operator()</name></member>
+  </compound>
   <compound refid="structredland_1_1LibrdfQueryResults_1_1deleter" kind="struct"><name>redland::LibrdfQueryResults::deleter</name>
     <member refid="structredland_1_1LibrdfQueryResults_1_1deleter_1af2a63855ecfbf3f7725bbe97a14be8f9" kind="function"><name>operator()</name></member>
   </compound>
@@ -64,9 +67,6 @@
   </compound>
   <compound refid="structredland_1_1World_1_1deleter" kind="struct"><name>redland::World::deleter</name>
     <member refid="structredland_1_1World_1_1deleter_1a65ccd95d5ad0420bde2a5ed2abca0043" kind="function"><name>operator()</name></member>
-  </compound>
-  <compound refid="structredland_1_1LibrdfQuery_1_1deleter" kind="struct"><name>redland::LibrdfQuery::deleter</name>
-    <member refid="structredland_1_1LibrdfQuery_1_1deleter_1a5ada7fd745a89b425a5f693faeaa6a31" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structdbg_1_1detail__detector_1_1detector" kind="struct"><name>dbg::detail_detector::detector</name>
     <member refid="structdbg_1_1detail__detector_1_1detector_1af1b6da4282d723669e926c52f446a989" kind="typedef"><name>value_t</name></member>
@@ -279,7 +279,7 @@
     <member refid="classredland_1_1LibrdfParser_1a81d772e0be266b00bf840fd9dbeab8d1" kind="function"><name>setTypeUri</name></member>
     <member refid="classredland_1_1LibrdfParser_1a76ecf31cd9fb96ba4e10a35f383e47fc" kind="function"><name>setTypeUri</name></member>
     <member refid="classredland_1_1LibrdfParser_1a8055c22ada8b852112f4f011d9fa5abe" kind="function"><name>makeParser</name></member>
-    <member refid="classredland_1_1LibrdfParser_1a2c600b9ae3b59e4ae7e48b20e3513cb4" kind="function"><name>getSeenNamespaces</name></member>
+    <member refid="classredland_1_1LibrdfParser_1abca88f90c6d20573961b10800f9b9047" kind="function"><name>getSeenNamespaces</name></member>
     <member refid="classredland_1_1LibrdfParser_1a9fa0b6b0d21fbc8c6dd0027b66a26eb5" kind="function"><name>setFeature</name></member>
     <member refid="classredland_1_1LibrdfParser_1aafc4a6e2748ee1175471ed0815d77eff" kind="function"><name>setOption</name></member>
     <member refid="classredland_1_1LibrdfParser_1a79fcda1e0c2cccfa8a070a1aea196ebd" kind="function"><name>setOptions</name></member>
@@ -394,6 +394,9 @@
     <member refid="classredland_1_1LibrdfUri_1ad7245bf32a2538d220ec7d3a0afc0802" kind="function"><name>fromFilename</name></member>
     <member refid="classredland_1_1LibrdfUri_1a58ab2ce202cc9b563d1dc60a20a545b2" kind="function"><name>concatonate</name></member>
   </compound>
+  <compound refid="structLogData" kind="struct"><name>LogData</name>
+    <member refid="structLogData_1added55423a3b24a6ef757e8f749795ea" kind="variable"><name>list</name></member>
+  </compound>
   <compound refid="classomexmeta_1_1MarkupIdentifier" kind="class"><name>omexmeta::MarkupIdentifier</name>
     <member refid="classomexmeta_1_1MarkupIdentifier_1aee48438435455b27c7e709e5b4ecf57e" kind="variable"><name>doc_</name></member>
     <member refid="classomexmeta_1_1MarkupIdentifier_1a26b50e531faca03c318f4b44da1b9e4a" kind="variable"><name>markup_</name></member>
@@ -421,6 +424,8 @@
     <member refid="classomexmeta_1_1MetaID_1a9a3c9b479d522e7630275d85582edd26" kind="function"><name>generate</name></member>
     <member refid="classomexmeta_1_1MetaID_1a343f4b48c9673f8943e03057370f01e4" kind="function"><name>maxNumber</name></member>
     <member refid="classomexmeta_1_1MetaID_1ae4fe83a3512f64065e8e2997bc710be6" kind="function"><name>countDigits</name></member>
+  </compound>
+  <compound refid="structNone" kind="struct"><name>None</name>
   </compound>
   <compound refid="structdbg_1_1detail__detector_1_1nonesuch" kind="struct"><name>dbg::detail_detector::nonesuch</name>
     <member refid="structdbg_1_1detail__detector_1_1nonesuch_1af18fc7da3a412a23ac293cba85bf322b" kind="function"><name>nonesuch</name></member>
@@ -471,6 +476,10 @@
     <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aeef7e70a554aaf70fb694297e37e7cc8" kind="function"><name>addMetaIds</name></member>
     <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a3a6631e92df490f87f469abca81e1ba1" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1adbfc8d96f2adffa35ee01726a97dbcce" kind="function"><name>metaIdTagName</name></member>
+  </compound>
+  <compound refid="structPair" kind="struct"><name>Pair</name>
+    <member refid="structPair_1acccddd6bdff96957a1e0714e539ef256" kind="variable"><name>first</name></member>
+    <member refid="structPair_1a86b9ae89026109ed31635f6c938b5b57" kind="variable"><name>second</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Participant" kind="class"><name>omexmeta::Participant</name>
     <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" kind="variable"><name>model_</name></member>
@@ -753,7 +762,7 @@
     <member refid="classomexmeta_1_1RDF_1a59014bbb45a43dbfa760480f1713c473" kind="variable"><name>OMEXlib_</name></member>
     <member refid="classomexmeta_1_1RDF_1a5b1184955f2401c30116c7473be1ca1d" kind="variable"><name>default_namespaces_</name></member>
     <member refid="classomexmeta_1_1RDF_1a91574f34be1fe3054f4f7ce6830098b4" kind="function"><name>classifyXmlType</name></member>
-    <member refid="classomexmeta_1_1RDF_1a1452431864490f55a0689eec236e2d20" kind="function"><name>classifyXmlTypeFromFile</name></member>
+    <member refid="classomexmeta_1_1RDF_1a71b3dd4837a918a273f8d15aaa5c6c7b" kind="function"><name>classifyXmlTypeFromFile</name></member>
     <member refid="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a" kind="function"><name>extractSemanticInformationFromSBML</name></member>
     <member refid="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399" kind="function"><name>freeRDF</name></member>
     <member refid="classomexmeta_1_1RDF_1a6979e6ca2688cf5cae1e9e1cf3a7309a" kind="function"><name>getXmlType</name></member>
@@ -1139,7 +1148,7 @@
   </compound>
   <compound refid="CMakeLists_8txt" kind="file"><name>CMakeLists.txt</name>
     <member refid="CMakeLists_8txt_1aadcc2fde269516fe2487340bb7f71f1d" kind="function"><name>set</name></member>
-    <member refid="CMakeLists_8txt_1afe78502a55d84f7c02903f9a43a6b9f1" kind="function"><name>set</name></member>
+    <member refid="CMakeLists_8txt_1a688ed48c80cbd7d8bec0a4287468ddca" kind="function"><name>set</name></member>
   </compound>
   <compound refid="CurlGet_8cpp" kind="file"><name>CurlGet.cpp</name>
   </compound>
@@ -1190,6 +1199,14 @@
   <compound refid="ElementExtractor_8h" kind="file"><name>ElementExtractor.h</name>
   </compound>
   <compound refid="Error_8h" kind="file"><name>Error.h</name>
+  </compound>
+  <compound refid="logger_8h" kind="file"><name>logger.h</name>
+    <member refid="logger_8h_1af855c94dc540e943632089ce7496faac" kind="define"><name>LOG</name></member>
+    <member refid="logger_8h_1ae781be7f7da37f2d200d3795b203dab1" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="logger_8h_1a2cf87bd0339ae36c35d95e4ec708f36d" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="logger_8h_1a78941df6fd543ee5d88f96625f0047a4" kind="function"><name>printList</name></member>
+    <member refid="logger_8h_1aa99f584b7df937bea8439a998575b096" kind="function"><name>printList</name></member>
+    <member refid="logger_8h_1a5c40ab41439724fa2e51529f78fae5b1" kind="function"><name>log</name></member>
   </compound>
   <compound refid="MarkupIdentifier_8cpp" kind="file"><name>MarkupIdentifier.cpp</name>
   </compound>

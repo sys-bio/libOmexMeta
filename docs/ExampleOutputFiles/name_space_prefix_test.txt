@@ -1,0 +1,17 @@
+/mnt/d/libOmexMeta/src/omexmeta/RDF.cpp:422:classifying xml type
+/mnt/d/libOmexMeta/src/omexmeta/RDF.cpp:423:input format is : turtle
+RDF::extractSemanticInformationFromSBML
+/mnt/d/libOmexMeta/src/omexmeta/RDF.cpp:471:xml tpe: 2
+/mnt/d/libOmexMeta/src/omexmeta/RDF.cpp:193:setting namespace: 
+/mnt/d/libOmexMeta/src/omexmeta/RDF.cpp:195:first: http://biomodels.net/biology-qualifiers/, second: bqbiol
+<?xml version="1.1" encoding="utf-8"?>
+<rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
+   xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
+   xmlns:myOMEX="http://omex-library.org/NewOmex.omex/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
+  </rdf:Description>
+</rdf:RDF>
+

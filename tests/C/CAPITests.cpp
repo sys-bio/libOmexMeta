@@ -998,7 +998,7 @@ TEST_F(CAPITests, EditoraddCreator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1021,7 +1021,7 @@ TEST_F(CAPITests, EditoraddCurator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1089,7 +1089,7 @@ TEST_F(CAPITests, EditoraddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/description> \"A model\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"A model\"^^rdf:string .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1112,7 +1112,7 @@ TEST_F(CAPITests, EditoraddDateCreated) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> \"14/01/1991\"^^rdf:string .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1210,7 +1210,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1259,7 +1259,7 @@ TEST_F(CAPITests, PersonalInformationaddName) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1289,7 +1289,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1320,7 +1320,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1350,7 +1350,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1381,7 +1381,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1411,7 +1411,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"

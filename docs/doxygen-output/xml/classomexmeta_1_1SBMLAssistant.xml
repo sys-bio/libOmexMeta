@@ -38,26 +38,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="205">
+      <node id="211">
         <label>omexmeta::OmexMetaXmlAssistant</label>
         <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
       </node>
-      <node id="204">
+      <node id="210">
         <label>omexmeta::SBMLAssistant</label>
         <link refid="classomexmeta_1_1SBMLAssistant"/>
-        <childnode refid="205" relation="public-inheritance">
+        <childnode refid="211" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="207">
+      <node id="213">
         <label>omexmeta::OmexMetaXmlAssistant</label>
         <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
       </node>
-      <node id="206">
+      <node id="212">
         <label>omexmeta::SBMLAssistant</label>
         <link refid="classomexmeta_1_1SBMLAssistant"/>
-        <childnode refid="207" relation="public-inheritance">
+        <childnode refid="213" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

@@ -1,35 +1,37 @@
 The tyon2003 model annotations in turtle syntax is
 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235>
-    <http://biomodels.net/biology-qualifiers/hasPart> [
+    bqbiol:hasPart [
         rdf:_1 <http://identifiers.org/go/GO:0007243> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/biology-qualifiers/hasProperty> [
+    bqbiol:hasProperty [
         rdf:_1 <http://identifiers.org/mamo/MAMO_0000046> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/biology-qualifiers/hasTaxon> [
+    bqbiol:hasTaxon [
         rdf:_1 <http://identifiers.org/taxonomy/131567> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0051098> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/model-qualifiers/is> [
+    bqmodel:is [
         rdf:_1 <http://identifiers.org/biomodels.db/MODEL1102100004> ;
         a rdf:Bag
     ], [
         rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000308> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/model-qualifiers/isDescribedBy> [
+    bqmodel:isDescribedBy [
         rdf:_1 <http://identifiers.org/pubmed/12648679> ;
         a rdf:Bag
     ] ;
@@ -64,85 +66,85 @@ The tyon2003 model annotations in turtle syntax is
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0005623> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238>
-    <http://biomodels.net/biology-qualifiers/hasVersion> [
+    bqbiol:hasVersion [
         rdf:_1 <http://identifiers.org/psimod/MOD:00696> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/kegg.compound/C00562> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/chebi/CHEBI:36080> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242>
-    <http://biomodels.net/biology-qualifiers/hasProperty> [
+    bqbiol:hasProperty [
         rdf:_1 <http://identifiers.org/go/GO:0016301> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/biology-qualifiers/hasVersion> [
+    bqbiol:hasVersion [
         rdf:_1 <http://identifiers.org/psimod/MOD:00696> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/kegg.compound/C00562> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/chebi/CHEBI:36080> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/chebi/CHEBI:36080> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0009058> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0009056> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0006468> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0006470> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0006468> ;
         a rdf:Bag
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257>
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0006470> ;
         a rdf:Bag
     ] .

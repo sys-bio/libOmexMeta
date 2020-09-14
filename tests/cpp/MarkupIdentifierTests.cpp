@@ -47,7 +47,7 @@ public:
 
     std::string sbml2 = "";
 
-    std::string cellml1 = "<model xmlns=\"http://www.cellml.org/cellml/1.0#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:cellml=\"http://www.cellml.org/cellml/1.0#\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" cmeta:id=\"Calzone_Thieffry_Tyson_Novak_2007_version01\" name=\"Calzone_Thieffry_Tyson_Novak_2007_version01\">\n"
+    std::string cellml1 = "<model xmlns=\"http://www.cellml.org/cellml/1.0#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:cellml=\"http://www.cellml.org/cellml/1.0#\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" cmeta:id=\"Calzone_Thieffry_Tyson_Novak_2007_version01\" name=\"Calzone_Thieffry_Tyson_Novak_2007_version01\">\n"
                           "<documentation xmlns=\"http://cellml.org/tmp-documentation\">\n"
                           "<article>\n"
                           "<articleinfo>\n"

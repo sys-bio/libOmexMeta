@@ -11,6 +11,7 @@
     <innerfile refid="ElementExtractor_8cpp">ElementExtractor.cpp</innerfile>
     <innerfile refid="ElementExtractor_8h">ElementExtractor.h</innerfile>
     <innerfile refid="Error_8h">Error.h</innerfile>
+    <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="MarkupIdentifier_8cpp">MarkupIdentifier.cpp</innerfile>
     <innerfile refid="MarkupIdentifier_8h">MarkupIdentifier.h</innerfile>
     <innerfile refid="MetaID_8cpp">MetaID.cpp</innerfile>

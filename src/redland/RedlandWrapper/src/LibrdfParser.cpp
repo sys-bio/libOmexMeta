@@ -207,12 +207,11 @@ namespace redland {
         }
     }
 
-    std::vector<std::string> LibrdfParser::getSeenNamespaces() const {
-        int number_of_prefixes_seen = numNamespacesSeen();
-        std::vector<std::string> namespaces;
-        for (int i = 0; i < number_of_prefixes_seen; i++) {
+    std::vector<std::string> LibrdfParser::getSeenNamespaces(std::vector<std::string> namespaces) const {
+        for (int i = 0; i < numNamespacesSeen(); i++) {
             std::string nsref = getNamespacesSeenUri(i);
-            namespaces.push_back(nsref);
+            if (std::find(namespaces.begin(), namespaces.end(), nsref) == namespaces.end())
+                namespaces.push_back(nsref);
         }
         return namespaces;
     }

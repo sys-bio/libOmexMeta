@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="36" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="220" bodyend="240"/>
+        <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="36" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="219" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfParser_1aeee1312383f2e3f72e49076390a2a27b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfParser" kindref="compound">LibrdfParser</ref> &amp;</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="40" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="242" bodyend="264"/>
+        <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="40" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="241" bodyend="263"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfParser_1ac1373b22444c108a2a67dbf24fa4ca92" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -511,18 +511,22 @@
         </inbodydescription>
         <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="98" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="18" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfParser_1a2c600b9ae3b59e4ae7e48b20e3513cb4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classredland_1_1LibrdfParser_1abca88f90c6d20573961b10800f9b9047" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; redland::LibrdfParser::getSeenNamespaces</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>(std::vector&lt; std::string &gt; namespaces) const</argsstring>
         <name>getSeenNamespaces</name>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>namespaces</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="106" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="210" bodyend="218"/>
+        <location file="src/redland/RedlandWrapper/src/LibrdfParser.h" line="106" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfParser.cpp" bodystart="210" bodyend="217"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -606,7 +610,7 @@
       <member refid="classredland_1_1LibrdfParser_1aaa813cd98f57703e2168e81cf1c8b356" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>getName</name></member>
       <member refid="classredland_1_1LibrdfParser_1a89d1335343c9999db8207866de8202c1" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>getNamespacesSeenPrefix</name></member>
       <member refid="classredland_1_1LibrdfParser_1aed92021f88bccfa26bf78c29797b4208" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>getNamespacesSeenUri</name></member>
-      <member refid="classredland_1_1LibrdfParser_1a2c600b9ae3b59e4ae7e48b20e3513cb4" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>getSeenNamespaces</name></member>
+      <member refid="classredland_1_1LibrdfParser_1abca88f90c6d20573961b10800f9b9047" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>getSeenNamespaces</name></member>
       <member refid="classredland_1_1LibrdfParser_1ae6f233d632e3a515afe7afceabf4e5ef" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>getTypeUri</name></member>
       <member refid="classredland_1_1LibrdfParser_1a985f1db485f1a2970a19e7b7a979382f" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>LibrdfParser</name></member>
       <member refid="classredland_1_1LibrdfParser_1a884b4e7cb05942390fba7765cfb3aec8" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>LibrdfParser</name></member>

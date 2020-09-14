@@ -199,7 +199,7 @@ void rdfa_processor_triples(
 
       /* generate the description */
       triple = rdfa_create_triple(
-         subject, "http://purl.org/dc/terms/description", msg,
+         subject, "https://dublincore.org/specifications/dublin-core/dcmi-terms/description", msg,
          RDF_TYPE_PLAIN_LITERAL, NULL, "en");
       context->processor_graph_triple_callback(triple, context->callback_data);
 

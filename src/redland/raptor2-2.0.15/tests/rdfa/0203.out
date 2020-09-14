@@ -1,1 +1,1 @@
-<http://example.com/> <http://purl.org/dc/terms/description> "A yellow rectangle with sharp corners." .
+<http://example.com/> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "A yellow rectangle with sharp corners." .

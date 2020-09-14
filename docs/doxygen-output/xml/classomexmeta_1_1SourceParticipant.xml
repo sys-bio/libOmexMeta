@@ -43,26 +43,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="221">
+      <node id="227">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="220">
+      <node id="226">
         <label>omexmeta::SourceParticipant</label>
         <link refid="classomexmeta_1_1SourceParticipant"/>
-        <childnode refid="221" relation="public-inheritance">
+        <childnode refid="227" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="223">
+      <node id="229">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="222">
+      <node id="228">
         <label>omexmeta::SourceParticipant</label>
         <link refid="classomexmeta_1_1SourceParticipant"/>
-        <childnode refid="223" relation="public-inheritance">
+        <childnode refid="229" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

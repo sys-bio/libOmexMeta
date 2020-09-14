@@ -1,6 +1,7 @@
 The tyon2003 model annotations in turtle syntax is:
 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -26,14 +27,14 @@ The tyon2003 model annotations in turtle syntax is:
         rdf:_1 <http://identifiers.org/go/GO:0051098> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/model-qualifiers/is> [
+    bqmodel:is [
         rdf:_1 <http://identifiers.org/biomodels.db/MODEL1102100004> ;
         a rdf:Bag
     ], [
         rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000308> ;
         a rdf:Bag
     ] ;
-    <http://biomodels.net/model-qualifiers/isDescribedBy> [
+    bqmodel:isDescribedBy [
         rdf:_1 <http://identifiers.org/pubmed/12648679> ;
         a rdf:Bag
     ] ;

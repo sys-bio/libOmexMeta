@@ -107,7 +107,7 @@ class TestRDF(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-<http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .
+<https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .
 """
         rdf = RDF.from_string(rdf_str, format="turtle")
         self.assertEqual(1, len(rdf))
@@ -557,7 +557,7 @@ local:SourceParticipant0000
                     .add_name("Ciaran Welsh")
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .

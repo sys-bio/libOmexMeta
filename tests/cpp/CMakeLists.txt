@@ -88,7 +88,6 @@ add_test_executable(OmexMetaTests ${TEST_SOURCES})
 add_test_executable(EditorSBMLExtractionTest EditorSBMLExtractTests.cpp)
 
 add_test_executable(JohnsTest JohnsTest.cpp)
-add_test_executable(NameSpacePrefixTest NameSpacePrefixTest.cpp)
 
 
 

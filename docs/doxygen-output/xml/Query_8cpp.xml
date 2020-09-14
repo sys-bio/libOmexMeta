@@ -4,144 +4,144 @@
     <compoundname>Query.cpp</compoundname>
     <includes refid="Query_8h" local="yes">omexmeta/Query.h</includes>
     <incdepgraph>
-      <node id="1328">
+      <node id="1342">
         <label>sys/stat.h</label>
       </node>
-      <node id="1316">
+      <node id="1330">
         <label>omexmeta/OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="1317" relation="include">
+        <childnode refid="1331" relation="include">
         </childnode>
-        <childnode refid="1318" relation="include">
+        <childnode refid="1332" relation="include">
         </childnode>
-        <childnode refid="1311" relation="include">
+        <childnode refid="1325" relation="include">
         </childnode>
-        <childnode refid="1319" relation="include">
+        <childnode refid="1333" relation="include">
         </childnode>
-        <childnode refid="1323" relation="include">
+        <childnode refid="1337" relation="include">
         </childnode>
+        <childnode refid="1340" relation="include">
+        </childnode>
+        <childnode refid="1334" relation="include">
+        </childnode>
+        <childnode refid="1341" relation="include">
+        </childnode>
+        <childnode refid="1342" relation="include">
+        </childnode>
+        <childnode refid="1336" relation="include">
+        </childnode>
+        <childnode refid="1338" relation="include">
+        </childnode>
+        <childnode refid="1343" relation="include">
+        </childnode>
+        <childnode refid="1344" relation="include">
+        </childnode>
+      </node>
+      <node id="1343">
+        <label>filesystem</label>
+      </node>
+      <node id="1344">
+        <label>assert.h</label>
+      </node>
+      <node id="1333">
+        <label>omexmeta/CurlGet.h</label>
+        <link refid="CurlGet_8h_source"/>
+        <childnode refid="1334" relation="include">
+        </childnode>
+        <childnode refid="1335" relation="include">
+        </childnode>
+        <childnode refid="1336" relation="include">
+        </childnode>
+      </node>
+      <node id="1325">
+        <label>omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
         <childnode refid="1326" relation="include">
         </childnode>
-        <childnode refid="1320" relation="include">
-        </childnode>
         <childnode refid="1327" relation="include">
-        </childnode>
-        <childnode refid="1328" relation="include">
-        </childnode>
-        <childnode refid="1322" relation="include">
-        </childnode>
-        <childnode refid="1324" relation="include">
-        </childnode>
-        <childnode refid="1329" relation="include">
         </childnode>
         <childnode refid="1330" relation="include">
         </childnode>
-      </node>
-      <node id="1329">
-        <label>filesystem</label>
-      </node>
-      <node id="1330">
-        <label>assert.h</label>
-      </node>
-      <node id="1319">
-        <label>omexmeta/CurlGet.h</label>
-        <link refid="CurlGet_8h_source"/>
-        <childnode refid="1320" relation="include">
-        </childnode>
-        <childnode refid="1321" relation="include">
-        </childnode>
-        <childnode refid="1322" relation="include">
-        </childnode>
-      </node>
-      <node id="1311">
-        <label>omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="1312" relation="include">
-        </childnode>
-        <childnode refid="1313" relation="include">
-        </childnode>
-        <childnode refid="1316" relation="include">
-        </childnode>
-        <childnode refid="1317" relation="include">
-        </childnode>
         <childnode refid="1331" relation="include">
         </childnode>
-        <childnode refid="1327" relation="include">
+        <childnode refid="1345" relation="include">
         </childnode>
-        <childnode refid="1320" relation="include">
+        <childnode refid="1341" relation="include">
         </childnode>
-        <childnode refid="1324" relation="include">
+        <childnode refid="1334" relation="include">
         </childnode>
-        <childnode refid="1315" relation="include">
+        <childnode refid="1338" relation="include">
         </childnode>
-        <childnode refid="1325" relation="include">
+        <childnode refid="1329" relation="include">
+        </childnode>
+        <childnode refid="1339" relation="include">
         </childnode>
       </node>
-      <node id="1322">
+      <node id="1336">
         <label>stdexcept</label>
       </node>
-      <node id="1320">
+      <node id="1334">
         <label>string</label>
       </node>
-      <node id="1318">
+      <node id="1332">
         <label>redland/LibrdfQuery.h</label>
       </node>
-      <node id="1314">
+      <node id="1328">
         <label>exception</label>
       </node>
-      <node id="1312">
+      <node id="1326">
         <label>redland/RedlandAPI.h</label>
       </node>
-      <node id="1321">
+      <node id="1335">
         <label>curl/curl.h</label>
       </node>
-      <node id="1327">
+      <node id="1341">
         <label>vector</label>
       </node>
-      <node id="1317">
+      <node id="1331">
         <label>redland/librdf.h</label>
       </node>
-      <node id="1325">
+      <node id="1339">
         <label>utility</label>
       </node>
-      <node id="1323">
+      <node id="1337">
         <label>omexmeta/MetaID.h</label>
         <link refid="MetaID_8h_source"/>
-        <childnode refid="1320" relation="include">
+        <childnode refid="1334" relation="include">
         </childnode>
-        <childnode refid="1324" relation="include">
+        <childnode refid="1338" relation="include">
         </childnode>
-        <childnode refid="1325" relation="include">
+        <childnode refid="1339" relation="include">
         </childnode>
-        <childnode refid="1315" relation="include">
+        <childnode refid="1329" relation="include">
         </childnode>
-        <childnode refid="1312" relation="include">
+        <childnode refid="1326" relation="include">
+        </childnode>
+      </node>
+      <node id="1338">
+        <label>sstream</label>
+      </node>
+      <node id="1327">
+        <label>omexmeta/Error.h</label>
+        <link refid="Error_8h_source"/>
+        <childnode refid="1328" relation="include">
+        </childnode>
+        <childnode refid="1329" relation="include">
         </childnode>
       </node>
       <node id="1324">
-        <label>sstream</label>
-      </node>
-      <node id="1313">
-        <label>omexmeta/Error.h</label>
-        <link refid="Error_8h_source"/>
-        <childnode refid="1314" relation="include">
-        </childnode>
-        <childnode refid="1315" relation="include">
-        </childnode>
-      </node>
-      <node id="1310">
         <label>src/omexmeta/Query.cpp</label>
         <link refid="Query_8cpp"/>
-        <childnode refid="1311" relation="include">
+        <childnode refid="1325" relation="include">
         </childnode>
       </node>
-      <node id="1315">
+      <node id="1329">
         <label>iostream</label>
       </node>
-      <node id="1331">
+      <node id="1345">
         <label>unordered_map</label>
       </node>
-      <node id="1326">
+      <node id="1340">
         <label>libxml/tree.h</label>
       </node>
     </incdepgraph>

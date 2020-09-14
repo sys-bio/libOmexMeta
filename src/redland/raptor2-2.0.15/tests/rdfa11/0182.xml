@@ -6,7 +6,7 @@
         <base href="http://example.org/"/>
     </head>
     <body>
-        <div prefix="foaf: http://example.org/wrong/foaf/uri/ dc: http://purl.org/dc/terms/">
+        <div prefix="foaf: http://example.org/wrong/foaf/uri/ dc: https://dublincore.org/specifications/dublin-core/dcmi-terms/">
             <div about="#this" typeof="dc:Agent" prefix="foaf: http://xmlns.com/foaf/0.1/">
                 <p property="foaf:name">A particular agent</p>
             </div>

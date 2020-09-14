@@ -123,17 +123,9 @@
         <link refid="RDF_8h_source"/>
         <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="110" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
         <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
         </childnode>
         <childnode refid="113" relation="include">
         </childnode>
@@ -142,6 +134,16 @@
         <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
         </childnode>
       </node>
       <node id="108">
@@ -164,6 +166,12 @@
         <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>omexmeta/logger.h</label>
+        <link refid="logger_8h_source"/>
+        <childnode refid="69" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -466,12 +474,12 @@
         </childnode>
         <childnode refid="112" relation="include">
         </childnode>
-        <childnode refid="115" relation="include">
+        <childnode refid="116" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
       </node>
-      <node id="115">
+      <node id="116">
         <label>omexmeta/ElementExtractor.h</label>
         <link refid="ElementExtractor_8h_source"/>
         <childnode refid="75" relation="include">

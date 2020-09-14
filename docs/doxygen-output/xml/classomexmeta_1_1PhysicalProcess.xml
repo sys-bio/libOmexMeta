@@ -409,32 +409,32 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="162">
+      <node id="168">
         <label>omexmeta::PhysicalProcess</label>
         <link refid="classomexmeta_1_1PhysicalProcess"/>
-        <childnode refid="163" relation="public-inheritance">
+        <childnode refid="169" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="163">
+      <node id="169">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="166">
+      <node id="172">
         <label>omexmeta::PhysicalProperty</label>
         <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
-      <node id="164">
+      <node id="170">
         <label>omexmeta::PhysicalProcess</label>
         <link refid="classomexmeta_1_1PhysicalProcess"/>
-        <childnode refid="165" relation="public-inheritance">
+        <childnode refid="171" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="165">
+      <node id="171">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-        <childnode refid="166" relation="usage">
+        <childnode refid="172" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
       </node>

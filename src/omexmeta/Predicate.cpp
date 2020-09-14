@@ -107,14 +107,13 @@ namespace omexmeta {
                 {"http://biomodels.net/biology-qualifiers/",                      "bqbiol"},
                 {"https:identifiers.org/pubmed/",                                 "pubmed"},
                 {"http://identifiers.org/taxonomy/",                              "NCBI_Taxon"},
-                {"<http://identifiers.org/biomodels.db/>",                        "biomod"},
+                {"http://identifiers.org/biomodels.db/"  ,                        "biomod"},
                 {"http://identifiers.org/CHEBI",                                  "chebi"},
                 {"http://identifiers.org/uniprot/",                               "uniprot"},
                 {"http://www.bhi.washington.edu/semsim#",                         "semsim"},
                 {"http://identifiers.org/opb/",                                   "opb"},
                 {"http://identifiers.org/fma/",                                   "fma"},
-                {"http://purl.org/dc/terms/",                                     "dcterms"},
-                {"http://OMEXlibrary.org/",                                     "OMEXlib"},
+                {"http://OMEXlibrary.org/",                                       "OMEXlib"},
 
         };
     }
@@ -229,7 +228,7 @@ namespace omexmeta {
     }
 
     DCTerm::DCTerm(const std::string &term) :
-            Predicate("http://purl.org/dc/terms/", term, "dcterms") {
+            Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dcterms") {
         verify();
     }
 

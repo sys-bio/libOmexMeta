@@ -9,7 +9,6 @@ namespace omexmeta {
 
     MarkupIdentifier::MarkupIdentifier(std::string markup) : markup_(std::move(markup)) {
         doc_ = parseML();
-        LOG("Insize markup ID");
     }
 
     MarkupIdentifier::~MarkupIdentifier() {

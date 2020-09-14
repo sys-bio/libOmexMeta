@@ -8,36 +8,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="121">
+      <node id="125">
         <label>omexmeta::NotImplementedException</label>
         <link refid="classomexmeta_1_1NotImplementedException"/>
-        <childnode refid="122" relation="public-inheritance">
+        <childnode refid="126" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="123">
+      <node id="127">
         <label>exception</label>
       </node>
-      <node id="122">
+      <node id="126">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="123" relation="public-inheritance">
+        <childnode refid="127" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="124">
+      <node id="128">
         <label>omexmeta::NotImplementedException</label>
         <link refid="classomexmeta_1_1NotImplementedException"/>
-        <childnode refid="125" relation="public-inheritance">
+        <childnode refid="129" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="126">
+      <node id="130">
         <label>exception</label>
       </node>
-      <node id="125">
+      <node id="129">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="126" relation="public-inheritance">
+        <childnode refid="130" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

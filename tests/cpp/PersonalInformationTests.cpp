@@ -34,7 +34,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf){
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -56,7 +56,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -80,7 +80,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -103,7 +103,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -126,7 +126,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -149,7 +149,7 @@ TEST_F(PersonalInformationTests, TestAccountName) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -172,7 +172,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -199,7 +199,7 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
     std::string actual = triples.str("turtle");
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"

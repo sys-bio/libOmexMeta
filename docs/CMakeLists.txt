@@ -37,7 +37,7 @@ macro(add_doc_example BINARY_NAME)
     )
 
     set_tests_properties(${BINARY_NAME} PROPERTIES DEPENDS OmexMeta)
-    add_dependencies(${BINARY_NAME} OmexMeta-static)
+    add_dependencies(${BINARY_NAME} OmexMeta-static OmexMetaCAPI OmexMeta)
 
     # links
     target_link_libraries(${BINARY_NAME} PRIVATE
@@ -108,6 +108,8 @@ if (BUILD_DOCS_EXAMPLES)
     add_doc_example(CreatePhysicalForceCpp                        source/editing_rdf/create_physical_force_cpp.cpp)
     add_doc_example(WritingToStringC                              source/writing_rdf/writing_to_string_c.cpp)
     add_doc_example(WritingToStringCpp                            source/writing_rdf/writing_to_string_cpp.cpp)
+    add_doc_example(WritingToFileC                                source/writing_rdf/writing_to_file_c.cpp)
+    add_doc_example(WritingToFileCpp                              source/writing_rdf/writing_to_file_cpp.cpp)
     add_doc_example(QueryingRdfGraphC                             source/querying_rdf/querying_rdf_c.cpp)
     add_doc_example(QueryingRdfGraphCpp                           source/querying_rdf/querying_rdf_cpp.cpp)
 
@@ -129,7 +131,7 @@ if (BUILD_DOCS_EXAMPLES)
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
     add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${PARENT_CURRENT_BINARY_DIR} --pyomexmeta-source-dir ${PYOMEXMETA_DIR}
+            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${PARENT_CURRENT_BINARY_DIR}
             DEPENDS AllDocExamples
             )
 endif ()

@@ -208,9 +208,9 @@ void rdfa_setup_initial_context(rdfacontext *context) {
         DECLARE_URI_MAPPING(context,
                             "ctag", "http://commontag.org/ns#");
         DECLARE_URI_MAPPING(context,
-                            "dc", "http://purl.org/dc/terms/");
+                            "dc", "https://dublincore.org/specifications/dublin-core/dcmi-terms/");
         DECLARE_URI_MAPPING(context,
-                            "dcterms", "http://purl.org/dc/terms/");
+                            "dcterms", "https://dublincore.org/specifications/dublin-core/dcmi-terms/");
         DECLARE_URI_MAPPING(context,
                             "foaf", "http://xmlns.com/foaf/0.1/");
         DECLARE_URI_MAPPING(context,

@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cal="http://www.w3.org/2002/12/cal/icaltzd#"
       xmlns:cc="http://creativecommons.org/ns#"
-      xmlns:dc="http://purl.org/dc/terms/"
-      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:dc="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
+      xmlns:dct="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
       xmlns:earl="http://www.w3.org/ns/earl#"
       xmlns:example="http://example.org/"
       xmlns:ex="http://example.org/"
@@ -608,7 +608,7 @@
         <div about="#me" prefix="foaf: http://xmlns.com/foaf/0.1/">
             <p property="foaf:name">Ivan Herman</p>
         </div>
-        <div about="#this" prefix="foaf: http://xmlns.com/foaf/0.1/ dc: http://purl.org/dc/terms/" typeof="dc:Agent">
+        <div about="#this" prefix="foaf: http://xmlns.com/foaf/0.1/ dc: https://dublincore.org/specifications/dublin-core/dcmi-terms/" typeof="dc:Agent">
             <p property="foaf:name">A particular agent</p>
         </div>
         <!-- prefix has a higher priority than xmlns -->
@@ -623,12 +623,12 @@
                 Herman
             </p>
         </div>
-        <div prefix="foaf: http://example.org/wrong/foaf/uri/ dc: http://purl.org/dc/terms/">
+        <div prefix="foaf: http://example.org/wrong/foaf/uri/ dc: https://dublincore.org/specifications/dublin-core/dcmi-terms/">
             <div about="#this" typeof="dc:Agent" prefix="foaf: http://xmlns.com/foaf/0.1/">
                 <p property="foaf:name">A particular agent</p>
             </div>
         </div>
-        <div prefix="foaf: http://example.org/wrong/foaf/uri/ dc: http://purl.org/dc/terms/">
+        <div prefix="foaf: http://example.org/wrong/foaf/uri/ dc: https://dublincore.org/specifications/dublin-core/dcmi-terms/">
             <div about="#this" typeof="dc:Agent" xmlns:foaf="http://xmlns.com/foaf/0.1/">
                 <p property="foaf:name">A particular agent</p>
             </div>

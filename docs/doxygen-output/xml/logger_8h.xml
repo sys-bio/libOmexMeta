@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="logger_8h" kind="file" language="C++">
+    <compoundname>logger.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includedby refid="MarkupIdentifier_8cpp" local="yes">src/omexmeta/MarkupIdentifier.cpp</includedby>
+    <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
+    <incdepgraph>
+      <node id="261">
+        <label>src/omexmeta/logger.h</label>
+        <link refid="logger_8h"/>
+        <childnode refid="262" relation="include">
+        </childnode>
+      </node>
+      <node id="262">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="264">
+        <label>src/omexmeta/RDF.h</label>
+        <link refid="RDF_8h_source"/>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+      </node>
+      <node id="263">
+        <label>src/omexmeta/logger.h</label>
+        <link refid="logger_8h"/>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>src/omexmeta/Editor.h</label>
+        <link refid="Editor_8h_source"/>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+      </node>
+      <node id="266">
+        <label>src/omexmeta/OmexMetaCApi.h</label>
+        <link refid="OmexMetaCApi_8h_source"/>
+      </node>
+      <node id="267">
+        <label>src/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="268" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="265">
+        <label>src/omexmeta/OmexMeta.h</label>
+        <link refid="OmexMeta_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structNone" prot="public">None</innerclass>
+    <innerclass refid="structPair" prot="public">Pair</innerclass>
+    <innerclass refid="structLogData" prot="public">LogData</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="logger_8h_1af855c94dc540e943632089ce7496faac" prot="public" static="no">
+        <name>LOG</name>
+        <param><defname>x</defname></param>
+        <initializer>(log(__FILE__,__LINE__,<ref refid="structLogData" kindref="compound">LogData</ref>&lt;<ref refid="structNone" kindref="compound">None</ref>&gt;() &lt;&lt; x))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="57" column="9" bodyfile="src/omexmeta/logger.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="logger_8h_1ae781be7f7da37f2d200d3795b203dab1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Begin</type>
+          </param>
+          <param>
+            <type>typename Value</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; <ref refid="structPair" kindref="compound">Pair</ref>&lt; Begin, const Value &amp; &gt; &gt;</type>
+        <definition>LogData&lt;Pair&lt;Begin,const Value &amp;&gt; &gt; operator&lt;&lt;</definition>
+        <argsstring>(LogData&lt; Begin &gt; begin, const Value &amp;value)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; Begin &gt;</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>const Value &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="44" column="1" bodyfile="src/omexmeta/logger.h" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="logger_8h_1a2cf87bd0339ae36c35d95e4ec708f36d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Begin</type>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>n</declname>
+            <defname>n</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; <ref refid="structPair" kindref="compound">Pair</ref>&lt; Begin, const char * &gt; &gt;</type>
+        <definition>LogData&lt;Pair&lt;Begin,const char *&gt; &gt; operator&lt;&lt;</definition>
+        <argsstring>(LogData&lt; Begin &gt; begin, const char(&amp;value)[n])</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; Begin &gt;</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>const char(&amp;)</type>
+          <declname>value</declname>
+          <array>[n]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="44" column="1" bodyfile="src/omexmeta/logger.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="logger_8h_1a78941df6fd543ee5d88f96625f0047a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void printList</definition>
+        <argsstring>(std::ostream &amp;os, None)</argsstring>
+        <name>printList</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="structNone" kindref="compound">None</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="37" column="1" bodyfile="src/omexmeta/logger.h" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="logger_8h_1aa99f584b7df937bea8439a998575b096" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Begin</type>
+          </param>
+          <param>
+            <type>typename Last</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void printList</definition>
+        <argsstring>(std::ostream &amp;os, const Pair&lt; Begin, Last &gt; &amp;data)</argsstring>
+        <name>printList</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structPair" kindref="compound">Pair</ref>&lt; Begin, Last &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="43" column="1" bodyfile="src/omexmeta/logger.h" bodystart="43" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="logger_8h_1a5c40ab41439724fa2e51529f78fae5b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename List</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void log</definition>
+        <argsstring>(const char *file, int line, const LogData&lt; List &gt; &amp;data)</argsstring>
+        <name>log</name>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structLogData" kindref="compound">LogData</ref>&lt; List &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="50" column="1" bodyfile="src/omexmeta/logger.h" bodystart="50" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>12/09/2020.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EVOGYM_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EVOGYM_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structNone" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNone" kindref="compound">None</ref><sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>First,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Second&gt;</highlight></codeline>
+<codeline lineno="13" refid="structPair" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPair" kindref="compound">Pair</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>First<sp/>first;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>Second<sp/>second;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>List&gt;</highlight></codeline>
+<codeline lineno="19" refid="structLogData" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>List<sp/>list;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Value&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData&lt;Pair&lt;Begin,const Value &amp;&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(LogData&lt;Begin&gt;<sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Value<sp/>&amp;value)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{{begin.list,value}};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData&lt;Pair&lt;Begin,const char *&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(LogData&lt;Begin&gt;<sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>char<sp/>(&amp;value)[n])</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{{begin.list,value}};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>printList(std::ostream<sp/>&amp;os,<ref refid="structNone" kindref="compound">None</ref>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Last&gt;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>printList(std::ostream<sp/>&amp;os,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPair" kindref="compound">Pair&lt;Begin,Last&gt;</ref><sp/>&amp;data)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>printList(os,data.first);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/>data.second;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>List&gt;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>log(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structLogData" kindref="compound">LogData&lt;List&gt;</ref><sp/>&amp;data)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>line<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>printList(std::cout,data.list);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG(x)<sp/>(log(__FILE__,__LINE__,LogData&lt;None&gt;()<sp/>&lt;&lt;<sp/>x))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif//EVOGYM_LOGGER_H</highlight></codeline>
+    </programlisting>
+    <location file="src/omexmeta/logger.h"/>
+  </compounddef>
+</doxygen>

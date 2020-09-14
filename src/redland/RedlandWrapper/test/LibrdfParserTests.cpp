@@ -238,7 +238,7 @@ TEST_F(LibrdfParserTests, TestFeatures) {
     ASSERT_EQ("1", scanForRDFNode.str());
     ASSERT_EQ("0", allowNonNsAttributesNode.str());
     ASSERT_EQ("1", allowOtherParsetypesNode.str());
-    ASSERT_EQ("1", allowBagIDNode.str());
+    ASSERT_EQ("0", allowBagIDNode.str());
     ASSERT_EQ("1", allowRDFtypeRDFlistNode.str());
     ASSERT_EQ("1", normalizeLanguageNode.str());
     ASSERT_EQ("0", nonNFCfatalNode.str());

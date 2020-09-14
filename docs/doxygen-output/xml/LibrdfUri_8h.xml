@@ -11,102 +11,102 @@
     <includedby refid="LibrdfUri_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.cpp</includedby>
     <includedby refid="RedlandAPI_8h" local="yes">src/redland/RedlandWrapper/src/RedlandAPI.h</includedby>
     <incdepgraph>
-      <node id="2158">
+      <node id="2176">
         <label>exception</label>
       </node>
-      <node id="2157">
+      <node id="2175">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2158" relation="include">
+        <childnode refid="2176" relation="include">
         </childnode>
-        <childnode refid="2159" relation="include">
+        <childnode refid="2177" relation="include">
         </childnode>
       </node>
-      <node id="2154">
+      <node id="2172">
         <label>src/redland/RedlandWrapper/src/LibrdfUri.h</label>
         <link refid="LibrdfUri_8h"/>
-        <childnode refid="2155" relation="include">
+        <childnode refid="2173" relation="include">
         </childnode>
-        <childnode refid="2156" relation="include">
+        <childnode refid="2174" relation="include">
         </childnode>
-        <childnode refid="2157" relation="include">
+        <childnode refid="2175" relation="include">
         </childnode>
       </node>
-      <node id="2159">
+      <node id="2177">
         <label>iostream</label>
       </node>
-      <node id="2156">
+      <node id="2174">
         <label>librdf.h</label>
       </node>
-      <node id="2155">
+      <node id="2173">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2166">
+      <node id="2184">
         <label>src/redland/RedlandWrapper/src/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="2165" relation="include">
+        <childnode refid="2183" relation="include">
         </childnode>
       </node>
-      <node id="2163">
+      <node id="2181">
         <label>src/redland/RedlandWrapper/src/LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="2164" relation="include">
+        <childnode refid="2182" relation="include">
         </childnode>
-        <childnode refid="2166" relation="include">
+        <childnode refid="2184" relation="include">
         </childnode>
-        <childnode refid="2165" relation="include">
+        <childnode refid="2183" relation="include">
         </childnode>
       </node>
-      <node id="2164">
+      <node id="2182">
         <label>src/redland/RedlandWrapper/src/LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="2165" relation="include">
+        <childnode refid="2183" relation="include">
         </childnode>
       </node>
-      <node id="2165">
+      <node id="2183">
         <label>src/redland/RedlandWrapper/src/RedlandAPI.h</label>
         <link refid="RedlandAPI_8h_source"/>
       </node>
-      <node id="2161">
+      <node id="2179">
         <label>src/redland/RedlandWrapper/src/LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="2162" relation="include">
+        <childnode refid="2180" relation="include">
         </childnode>
-        <childnode refid="2164" relation="include">
+        <childnode refid="2182" relation="include">
         </childnode>
-        <childnode refid="2166" relation="include">
+        <childnode refid="2184" relation="include">
         </childnode>
-        <childnode refid="2165" relation="include">
+        <childnode refid="2183" relation="include">
         </childnode>
       </node>
-      <node id="2160">
+      <node id="2178">
         <label>src/redland/RedlandWrapper/src/LibrdfUri.h</label>
         <link refid="LibrdfUri_8h"/>
-        <childnode refid="2161" relation="include">
+        <childnode refid="2179" relation="include">
         </childnode>
-        <childnode refid="2164" relation="include">
+        <childnode refid="2182" relation="include">
         </childnode>
-        <childnode refid="2166" relation="include">
+        <childnode refid="2184" relation="include">
         </childnode>
-        <childnode refid="2165" relation="include">
+        <childnode refid="2183" relation="include">
         </childnode>
       </node>
-      <node id="2162">
+      <node id="2180">
         <label>src/redland/RedlandWrapper/src/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="2163" relation="include">
+        <childnode refid="2181" relation="include">
         </childnode>
-        <childnode refid="2167" relation="include">
+        <childnode refid="2185" relation="include">
         </childnode>
       </node>
-      <node id="2167">
+      <node id="2185">
         <label>src/redland/RedlandWrapper/src/LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="2163" relation="include">
+        <childnode refid="2181" relation="include">
         </childnode>
-        <childnode refid="2165" relation="include">
+        <childnode refid="2183" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

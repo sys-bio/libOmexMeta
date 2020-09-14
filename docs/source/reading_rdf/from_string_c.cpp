@@ -10,7 +10,7 @@ int main(){
                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                           "\n"
                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                          "    <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n\n";
+                          "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n\n";
     // uses dynamic memory
     RDF *rdf_ptr = RDF_fromString(rdf_str, "turtle");
 

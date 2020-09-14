@@ -6,7 +6,7 @@ rdf_str1 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
               @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
  
               <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-                  <http://purl.org/dc/terms/creator> <https://orchid.org/1234-1234-1234-1234> ."""
+                  <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> ."""
 
 
 rdf_str2 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .

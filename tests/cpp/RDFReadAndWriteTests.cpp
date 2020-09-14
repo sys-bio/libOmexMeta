@@ -505,14 +505,14 @@ TEST_F(ReadAndWriteTests, singularannotation3nquads) {
 
 
 TEST_F(ReadAndWriteTests, singularannotation4ntriples) {
-    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <http://purl.org/dc/terms/description> \"Cardiomyocyte cytosolic ATP concentration\" .\n";
+    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Cardiomyocyte cytosolic ATP concentration\" .\n";
     assertReadAndWrite(samples.singular_annotation4, "ntriples", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation4turtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
+                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -529,7 +529,7 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
+                           "   xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
@@ -543,7 +543,7 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, singularannotation4rdfxml) {
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
@@ -566,7 +566,7 @@ TEST_F(ReadAndWriteTests, singularannotation4dot) {
                            "\t// Literals\n"
                            "\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: http://purl.org/dc/terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
                            "}\n"
                            "";
     assertReadAndWrite(samples.singular_annotation4, "dot", expected);
@@ -581,7 +581,7 @@ TEST_F(ReadAndWriteTests, singularannotation4jsontriples) {
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"predicate\" : {\n"
-                           "        \"value\" : \"http://purl.org/dc/terms/description\",\n"
+                           "        \"value\" : \"https://dublincore.org/specifications/dublin-core/dcmi-terms/description\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"object\" : {\n"
@@ -599,7 +599,7 @@ TEST_F(ReadAndWriteTests, singularannotation4json) {
     std::string expected = "\n"
                            "{\n"
                            "  \"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\" : {\n"
-                           "    \"http://purl.org/dc/terms/description\" : [ {\n"
+                           "    \"https://dublincore.org/specifications/dublin-core/dcmi-terms/description\" : [ {\n"
                            "        \"value\" : \"Cardiomyocyte cytosolic ATP concentration\",\n"
                            "        \"type\" : \"literal\"\n"
                            "        }\n"
@@ -628,7 +628,7 @@ TEST_F(ReadAndWriteTests, singularannotation4html) {
                            "    </tr>\n"
                            "    <tr class=\"triple\">\n"
                            "      <td><span class=\"uri\"><a href=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">http://omex-library.org/NewOmex.omex/NewModel.xml#meta2</a></span></td>\n"
-                           "      <td><span class=\"uri\"><a href=\"http://purl.org/dc/terms/description\">http://purl.org/dc/terms/description</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/description\">https://dublincore.org/specifications/dublin-core/dcmi-terms/description</a></span></td>\n"
                            "      <td><span class=\"literal\"><span class=\"value\">Cardiomyocyte cytosolic ATP concentration</span></span></td>\n"
                            "    </tr>\n"
                            "  </table>\n"
@@ -639,7 +639,7 @@ TEST_F(ReadAndWriteTests, singularannotation4html) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation4nquads) {
-    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <http://purl.org/dc/terms/description> \"Cardiomyocyte cytosolic ATP concentration\" .\n";
+    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Cardiomyocyte cytosolic ATP concentration\" .\n";
     assertReadAndWrite(samples.singular_annotation4, "nquads", expected);
 }
 

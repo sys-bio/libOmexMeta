@@ -104,7 +104,7 @@ public:
 
     std::string singular_annotation4 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                                        "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
-                                       "             xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
+                                       "             xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
                                        "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                                        "             xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                                        "             xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"

@@ -11,75 +11,75 @@
     <includedby refid="RaptorIOStream_8cpp" local="yes">src/redland/RedlandWrapper/src/RaptorIOStream.cpp</includedby>
     <includedby refid="RedlandAPI_8h" local="yes">src/redland/RedlandWrapper/src/RedlandAPI.h</includedby>
     <incdepgraph>
-      <node id="2184">
+      <node id="2202">
         <label>regex</label>
       </node>
-      <node id="2187">
+      <node id="2205">
         <label>exception</label>
       </node>
-      <node id="2179">
+      <node id="2197">
         <label>src/redland/RedlandWrapper/src/RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h"/>
-        <childnode refid="2180" relation="include">
+        <childnode refid="2198" relation="include">
         </childnode>
-        <childnode refid="2181" relation="include">
+        <childnode refid="2199" relation="include">
         </childnode>
-        <childnode refid="2182" relation="include">
+        <childnode refid="2200" relation="include">
         </childnode>
-        <childnode refid="2185" relation="include">
+        <childnode refid="2203" relation="include">
         </childnode>
-        <childnode refid="2186" relation="include">
+        <childnode refid="2204" relation="include">
         </childnode>
       </node>
-      <node id="2182">
+      <node id="2200">
         <label>World.h</label>
         <link refid="World_8h_source"/>
-        <childnode refid="2181" relation="include">
+        <childnode refid="2199" relation="include">
         </childnode>
-        <childnode refid="2183" relation="include">
+        <childnode refid="2201" relation="include">
         </childnode>
-        <childnode refid="2180" relation="include">
+        <childnode refid="2198" relation="include">
         </childnode>
-        <childnode refid="2184" relation="include">
+        <childnode refid="2202" relation="include">
         </childnode>
       </node>
-      <node id="2186">
+      <node id="2204">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2187" relation="include">
+        <childnode refid="2205" relation="include">
         </childnode>
-        <childnode refid="2183" relation="include">
+        <childnode refid="2201" relation="include">
         </childnode>
       </node>
-      <node id="2185">
+      <node id="2203">
         <label>utility</label>
       </node>
-      <node id="2183">
+      <node id="2201">
         <label>iostream</label>
       </node>
-      <node id="2181">
+      <node id="2199">
         <label>librdf.h</label>
       </node>
-      <node id="2180">
+      <node id="2198">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2189">
+      <node id="2207">
         <label>src/redland/RedlandWrapper/src/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="2190" relation="include">
+        <childnode refid="2208" relation="include">
         </childnode>
       </node>
-      <node id="2188">
+      <node id="2206">
         <label>src/redland/RedlandWrapper/src/RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h"/>
-        <childnode refid="2189" relation="include">
+        <childnode refid="2207" relation="include">
         </childnode>
-        <childnode refid="2190" relation="include">
+        <childnode refid="2208" relation="include">
         </childnode>
       </node>
-      <node id="2190">
+      <node id="2208">
         <label>src/redland/RedlandWrapper/src/RedlandAPI.h</label>
         <link refid="RedlandAPI_8h_source"/>
       </node>

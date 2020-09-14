@@ -59,7 +59,7 @@ namespace omexmeta {
         u.freeUri();
 
         // update the list of "seen" namespaces
-        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+        rdf.seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -85,7 +85,7 @@ namespace omexmeta {
         parser.parseString(str, rdf->model_, LibrdfUri(base_uri));
 
         // update the list of "seen" namespaces
-        rdf->seen_namespaces_ = parser.getSeenNamespaces();
+        rdf->seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -106,7 +106,7 @@ namespace omexmeta {
         u.freeUri();
 
         // update the list of "seen" namespaces
-        seen_namespaces_ = parser.getSeenNamespaces();
+        seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -135,7 +135,7 @@ namespace omexmeta {
         parser.parseUri(uri_string, rdf.model_);
 
         // update the list of "seen" namespaces
-        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+        rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -155,7 +155,7 @@ namespace omexmeta {
         parser.parseUri(uri_string, model_);
 
         // update the list of "seen" namespaces
-        seen_namespaces_ = parser.getSeenNamespaces();
+        seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -171,7 +171,7 @@ namespace omexmeta {
         rdf.classifyXmlTypeFromFile(filename, format);
 
        // update the list of "seen" namespaces
-        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+        rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -188,7 +188,7 @@ namespace omexmeta {
         parser.parseFile(filename, model_, getLocalUri());
         classifyXmlTypeFromFile(filename, format);
         // update the list of "seen" namespaces
-        seen_namespaces_ = parser.getSeenNamespaces();
+        seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
@@ -482,7 +482,6 @@ namespace omexmeta {
     }
 
     void RDF::extractSemanticInformationFromSBML(const std::string &sbml) {
-        std::cout << "RDF::extractSemanticInformationFromSBML" << std::endl;
         std::string str;
         // if sbml is a filename on disk read it into a string
         if (OmexMetaUtils::exists(sbml)) {

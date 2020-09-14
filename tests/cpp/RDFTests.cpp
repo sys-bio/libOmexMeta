@@ -315,11 +315,11 @@ TEST_F(RDFTests, TestParseFromFileCollectedFromBiomodels) {
                          "        ] ;\n"
                          "        a rdf:Bag\n"
                          "    ] ;\n"
-                         "    <http://purl.org/dc/terms/created> [\n"
-                         "        <http://purl.org/dc/terms/W3CDTF> \"2008-11-26T13:10:43Z\"\n"
+                         "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> [\n"
+                         "        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> \"2008-11-26T13:10:43Z\"\n"
                          "    ] ;\n"
-                         "    <http://purl.org/dc/terms/modified> [\n"
-                         "        <http://purl.org/dc/terms/W3CDTF> \"2013-06-05T16:57:58Z\"\n"
+                         "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/modified> [\n"
+                         "        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> \"2013-06-05T16:57:58Z\"\n"
                          "    ] .\n"
                          "\n"
                          "local:metaid_0000035\n"
@@ -448,8 +448,9 @@ TEST_F(RDFTests, TestParseFromFileCollectedFromBiomodels) {
                          "        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n"
                          "        a rdf:Bag\n"
                          "    ] .\n"
-                         "\n";
+                         "";
 
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     // clear up file we wrote
     std::remove(fname.c_str());

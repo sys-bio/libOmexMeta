@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structPair" kind="struct" language="C++" prot="public">
+    <compoundname>Pair</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>First</declname>
+        <defname>First</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>Second</declname>
+        <defname>Second</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPair_1acccddd6bdff96957a1e0714e539ef256" prot="public" static="no" mutable="no">
+        <type>First</type>
+        <definition>First Pair&lt; First, Second &gt;::first</definition>
+        <argsstring></argsstring>
+        <name>first</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="14" column="1" bodyfile="src/omexmeta/logger.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPair_1a86b9ae89026109ed31635f6c938b5b57" prot="public" static="no" mutable="no">
+        <type>Second</type>
+        <definition>Second Pair&lt; First, Second &gt;::second</definition>
+        <argsstring></argsstring>
+        <name>second</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/logger.h" line="15" column="1" bodyfile="src/omexmeta/logger.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/logger.h" line="13" column="1" bodyfile="src/omexmeta/logger.h" bodystart="13" bodyend="16"/>
+    <listofallmembers>
+      <member refid="structPair_1acccddd6bdff96957a1e0714e539ef256" prot="public" virt="non-virtual"><scope>Pair</scope><name>first</name></member>
+      <member refid="structPair_1a86b9ae89026109ed31635f6c938b5b57" prot="public" virt="non-virtual"><scope>Pair</scope><name>second</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
