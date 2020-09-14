@@ -23,13 +23,6 @@ TEST_F(OmexMetaUtilsTests, TestFileDoesNotExists) {
 }
 
 
-TEST_F(OmexMetaUtilsTests, TestRemoveIfExists) {
-    CurlGet::download(samples.sbml_url1, samples.sbml_filename1);
-    assert(OmexMetaUtils::exists(samples.sbml_filename1));
-    OmexMetaUtils::removeIfExists(samples.sbml_filename1);
-    ASSERT_FALSE(OmexMetaUtils::exists(samples.sbml_filename1));
-}
-
 TEST_F(OmexMetaUtilsTests, TestRemoveIfExists2) {
     std::string fname = "./cheese_biscuits.blue";
     OmexMetaUtils::removeIfExists(fname); // should not error

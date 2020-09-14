@@ -1,4 +1,9 @@
-add_test (NAME pyomexmeta-tests
-  COMMAND ${PYTHON_EXECUTABLE} -m pytest ${CMAKE_CURRENT_SOURCE_DIR}
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+add_test(
+        NAME pyomexmeta-tests
+        COMMAND ${PYTHON_EXECUTABLE} -m pytest # Or just COMMAND pytest
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)
+set_tests_properties(
+        pyomexmeta-tests
+        PROPERTIES ENVIRONMENT "PYTHONPATH=${PYOMEXMETA_DIR}:$ENV{PYTHONPATH}"
 )

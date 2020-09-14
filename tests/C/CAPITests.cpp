@@ -167,7 +167,7 @@ TEST_F(CAPITests, RDF_fromFile) {
 
 TEST_F(CAPITests, RDF_addFromFile) {
     // we can cheat and use C++ to write the file we need - who's counting
-    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::string fname = (std::filesystem::current_path() /+ "/TestParseFromFile.rdf").string();
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {

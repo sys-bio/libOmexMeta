@@ -5,6 +5,7 @@ FROM ciaranwelsh/libomexmeta-build-env
 # checkout libomexmeta
 # this is the build environment only
 ENV install_prefix "/libOmexMeta/install-docker"
+RUN pip install pytest
 RUN git clone https://github.com/sys-bio/libOmexMeta.git \
     && cd libOmexMeta \
     && mkdir build \
