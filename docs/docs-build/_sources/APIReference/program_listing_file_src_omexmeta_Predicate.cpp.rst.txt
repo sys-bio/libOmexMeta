@@ -127,7 +127,7 @@ Program Listing for File Predicate.cpp
                    {"http://www.bhi.washington.edu/semsim#",                         "semsim"},
                    {"http://identifiers.org/opb/",                                   "opb"},
                    {"http://identifiers.org/fma/",                                   "fma"},
-                   {"https://dublincore.org/specifications/dublin-core/dcmi-terms/",                                     "dcterms"},
+                   {"https://dublincore.org/specifications/dublin-core/dcmi-terms/",                                     "dc"},
                    {"http://OMEXlibrary.org/",                                     "OMEXlib"},
    
            };
@@ -243,7 +243,7 @@ Program Listing for File Predicate.cpp
        }
    
        DCTerm::DCTerm(const std::string &term) :
-               Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dcterms") {
+               Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dc") {
            verify();
        }
    
@@ -312,7 +312,7 @@ Program Listing for File Predicate.cpp
                predicatePtr = std::make_unique<BiomodelsModelQualifier>(
                        BiomodelsModelQualifier(term)
                );
-           } else if (namespace_ == "dc" || namespace_ == "dcterms") {
+           } else if (namespace_ == "dc" || namespace_ == "dc") {
                predicatePtr = std::make_unique<DCTerm>(
                        DCTerm(term)
                );

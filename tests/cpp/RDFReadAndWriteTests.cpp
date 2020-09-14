@@ -125,26 +125,6 @@ TEST_F(ReadAndWriteTests, singularannotation1rdfxml) {
     assertReadAndWrite(samples.singular_annotation1, "rdfxml", expected);
 }
 
-TEST_F(ReadAndWriteTests, singularannotation1dot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" \[ label=\"bqbiol:is\" \];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1\" \[ label=\"OMEXlib:NewOmex.omex/NewModel.xml#metaid_1\", shape = ellipse, color = blue \];\n"
-                           "\t\"Rhttps://identifiers.org/uniprot/P0DP23\" \[ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue \];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n";
-    assertReadAndWrite(samples.singular_annotation1, "dot", expected);
-}
-
 TEST_F(ReadAndWriteTests, singularannotation1jsontriples) {
     std::string expected = "{\n"
                            "  \"triples\" : [\n"
@@ -266,26 +246,6 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxml) {
     assertReadAndWrite(samples.singular_annotation2, "rdfxml", expected);
 }
 
-TEST_F(ReadAndWriteTests, singularannotation2dot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
-    assertReadAndWrite(samples.singular_annotation2, "dot", expected);
-}
 
 TEST_F(ReadAndWriteTests, singularannotation2jsontriples) {
     std::string expected = "{\n"
@@ -408,26 +368,6 @@ TEST_F(ReadAndWriteTests, singularannotation3rdfxml) {
     assertReadAndWrite(samples.singular_annotation3, "rdfxml", expected);
 }
 
-TEST_F(ReadAndWriteTests, singularannotation3dot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta1\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"https://identifiers.org/chebi/CHEBI:15422\", shape = ellipse, color = blue ];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
-    assertReadAndWrite(samples.singular_annotation3, "dot", expected);
-}
 
 TEST_F(ReadAndWriteTests, singularannotation3jsontriples) {
     std::string expected = "{\n"
@@ -512,13 +452,13 @@ TEST_F(ReadAndWriteTests, singularannotation4ntriples) {
 TEST_F(ReadAndWriteTests, singularannotation4turtle) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>\n"
-                           "    dcterms:description \"Cardiomyocyte cytosolic ATP concentration\" .\n"
+                           "    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n"
                            "\n"
                            "";
     assertReadAndWrite(samples.singular_annotation4, "turtle", expected);
@@ -529,12 +469,12 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
+                           "   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
                            "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
                            "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n"
-                           "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
+                           "    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -543,33 +483,12 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, singularannotation4rdfxml) {
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n"
-                           "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
+                           "    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     assertReadAndWrite(samples.singular_annotation4, "rdfxml", expected);
-}
-
-TEST_F(ReadAndWriteTests, singularannotation4dot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta2\", shape = ellipse, color = blue ];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
-    assertReadAndWrite(samples.singular_annotation4, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation4jsontriples) {
@@ -699,32 +618,6 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlabbrev) {
 }
 
 
-TEST_F(ReadAndWriteTests, compositeannotationpedot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#VLV\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#entity_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
-    assertReadAndWrite(samples.composite_annotation_pe, "dot", expected);
-}
 
 TEST_F(ReadAndWriteTests, compositeannotationpejsontriples) {
     std::string expected = "{\n"
@@ -1004,44 +897,6 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxml) {
     assertReadAndWrite(samples.composite_annotation_pp, "rdfxml", expected);
 }
 
-TEST_F(ReadAndWriteTests, compositeannotationppdot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#source_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#sink_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#mediator_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\", shape = ellipse, color = blue ];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\t\"L1.0\" [ label=\"1.0\", shape = record ];\n"
-                           "\t\"L2.0\" [ label=\"2.0\", shape = record ];\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
-    assertReadAndWrite(samples.composite_annotation_pp, "dot", expected);
-}
 
 TEST_F(ReadAndWriteTests, compositeannotationppjsontriples) {
     std::string expected = "{\n"
@@ -1756,32 +1611,6 @@ TEST_F(ReadAndWriteTests, tabulardatardfxml) {
     assertReadAndWrite(samples.tabular_data1, "rdfxml", expected);
 }
 
-TEST_F(ReadAndWriteTests, tabulardatadot) {
-    std::string expected = "digraph {\n"
-                           "\trankdir = LR;\n"
-                           "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
-                           "\n"
-                           "\t// Resources\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-                           "\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#entity_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
-                           "\n"
-                           "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n"
-                           "}\n"
-                           "";
-    assertReadAndWrite(samples.tabular_data1, "dot", expected);
-}
 
 TEST_F(ReadAndWriteTests, tabulardatajsontriples) {
     std::string expected = "{\n"

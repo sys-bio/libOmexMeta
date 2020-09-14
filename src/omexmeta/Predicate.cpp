@@ -228,7 +228,7 @@ namespace omexmeta {
     }
 
     DCTerm::DCTerm(const std::string &term) :
-            Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dcterms") {
+            Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dc") {
         verify();
     }
 
@@ -297,7 +297,7 @@ namespace omexmeta {
             predicatePtr = std::make_unique<BiomodelsModelQualifier>(
                     BiomodelsModelQualifier(term)
             );
-        } else if (namespace_ == "dc" || namespace_ == "dcterms") {
+        } else if (namespace_ == "dc" || namespace_ == "dcterms" ) {
             predicatePtr = std::make_unique<DCTerm>(
                     DCTerm(term)
             );

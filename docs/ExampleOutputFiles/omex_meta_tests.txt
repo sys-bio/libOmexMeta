@@ -2283,13 +2283,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 [       OK ] EditorTests.TestAddSingleAnnotationToRDF3 (0 ms)
 [ RUN      ] EditorTests.TestToRDFSingularAnnotationWithLiteral
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>
-    dcterms:description "Cardiomyocyte cytosolic ATP concentration"^^rdf:string .
+    dc:description "Cardiomyocyte cytosolic ATP concentration"^^rdf:string .
 
 
 [       OK ] EditorTests.TestToRDFSingularAnnotationWithLiteral (1 ms)
@@ -2504,21 +2504,21 @@ local:SourceParticipant0000
 /mnt/d/libOmexMeta/tests/cpp/EditorTests.cpp:870: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
 With diff:
 @@ -1,5 +1,5 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix OMEXlib: <http://omex-library.org/> .
  @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @@ -7,5 +7,5 @@
  
  <http://omex-library.org/NewOmex.omex/NewModel.xml#>
--    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+-    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 +    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
  
  <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -3419,21 +3419,21 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
 Expected equality of these values:
   expected_output.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>\n    dcterms:description \"Cardiomyocyte cytosolic ATP concentration\" .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>\n    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>\n    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n\n"
 With diff:
 @@ -1,5 +1,5 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
  @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix OMEXlib: <http://omex-library.org/> .
  @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @@ -7,4 +7,4 @@
  
  <http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>
--    dcterms:description \"Cardiomyocyte cytosolic ATP concentration\" .
+-    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .
 +    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .
  \n
 
@@ -3454,21 +3454,21 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
 Expected equality of these values:
   expected_output.c_str()
-    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n   xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n  </rdf:Description>\n</rdf:RDF>\n"
+    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
   actual.c_str()
     Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
 With diff:
 @@ -2,5 +2,5 @@
  <rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"
     xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"
--   xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"
+-   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"
 +   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"
     xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"
     xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"
 @@ -7,5 +7,5 @@
     xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
    <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">
--    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>
+-    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
 +    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
    </rdf:Description>
  </rdf:RDF>\n
@@ -3485,16 +3485,16 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
 Expected equality of these values:
   expected_output.c_str()
-    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n  </rdf:Description>\n</rdf:RDF>\n"
+    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
   actual.c_str()
     Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
 With diff:
 @@ -1,6 +1,6 @@
  <?xml version=\"1.1\" encoding=\"utf-8\"?>
--<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
+-<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
 +<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
    <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">
--    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>
+-    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
 +    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
    </rdf:Description>
  </rdf:RDF>\n
@@ -3521,21 +3521,21 @@ digraph {
 /mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
 Expected equality of these values:
   expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
+    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
   actual.c_str()
     Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
 With diff:
 @@ -3,5 +3,5 @@
  \tcharset=\"utf-8\";
  
--\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];
+-\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];
 +\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];
  
  \t// Resources
 @@ -13,4 +13,4 @@
  \t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];
  
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
+-\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
 +\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
  }\n
 
@@ -4776,20 +4776,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:48: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -4813,20 +4813,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:71: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -4850,20 +4850,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:95: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-8254-4957> .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-8254-4957> .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-8254-4957> .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -4887,20 +4887,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:118: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -4924,20 +4924,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:141: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -4961,20 +4961,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:164: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-9876-3928> .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-9876-3928> .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-9876-3928> .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -4998,20 +4998,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:187: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>
@@ -5038,20 +5038,20 @@ With diff:
 /mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:217: Failure
 Expected equality of these values:
   expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dcterms:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-1111-2222-3333> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations.uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
+    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-1111-2222-3333> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations.uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
   actual.c_str()
     Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-1111-2222-3333> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations.uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
 With diff:
 @@ -1,4 +1,4 @@
  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 +@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix OMEXlib: <http://omex-library.org/> .
 @@ -7,5 +7,5 @@
  
  <TestModel.sbml>
--    dcterms:creator <TestModel.sbml#PersonalInfo0000> .
+-    dc:creator <TestModel.sbml#PersonalInfo0000> .
 +    dc:creator <TestModel.sbml#PersonalInfo0000> .
  
  <TestModel.sbml#PersonalInfo0000>

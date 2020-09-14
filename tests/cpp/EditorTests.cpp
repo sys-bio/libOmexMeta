@@ -264,13 +264,13 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
-                           "    dcterms:description \"Cardiomyocyte cytosolic ATP concentration\"^^rdf:string .\n"
+                           "    dc:description \"Cardiomyocyte cytosolic ATP concentration\"^^rdf:string .\n"
                            "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -851,13 +851,13 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n"
@@ -1948,52 +1948,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(3, rdf.size());
 
-//    triples.freeTriples();
     triple.freeTriple();
 }
-
-TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
-    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity
-            .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
-            .setIdentity("uniprot:PD12345")
-            .addLocation("fma:fma:1234");
-    editor.addPhysicalEntity(physicalEntity);
-
-    Triples triples = physicalEntity.toTriples();
-
-    ASSERT_EQ(4, rdf.size());
-    std::cout << "trip: " << triples.str("rdfxml-abbrev", "base") << std::endl;
-    std::cout << "rdf" << rdf.toString("rdfxml-abbrev", "base") << std::endl;
-
-    Triple triple4 = triples.pop_front();
-    std::cout << triple4.str("ntriples", "base") << std::endl;
-    editor.removeSingleAnnotation(triple4);
-    int s = rdf.size();
-    ASSERT_EQ(3, rdf.size());
-//    triple4.freeTriple();
-
-    Triple triple3 = triples.pop_front();
-    std::cout << triple3.str("ntriples", "base") << std::endl;
-    editor.removeSingleAnnotation(triple3);
-    ASSERT_EQ(2, rdf.size());
-//    triple3.freeTriple();
-
-    Triple triple2 = triples.pop_front();
-    std::cout << triple2.str("ntriples", "base") << std::endl;
-    editor.removeSingleAnnotation(triple2);
-    ASSERT_EQ(1, rdf.size());
-//    triple2.freeTriple();
-
-    Triple triple1 = triples.pop_front();
-    std::cout << triple1.str("ntriples", "base") << std::endl;
-    editor.removeSingleAnnotation(triple1);
-    ASSERT_EQ(0, rdf.size());
-//    triple1.freeTriple();
-
-}
-
-
 
 
 
