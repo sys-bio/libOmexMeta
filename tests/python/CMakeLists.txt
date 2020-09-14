@@ -1,3 +1,4 @@
+find_package(PythonInterp)
 add_test(
         NAME pyomexmeta-tests
         COMMAND ${PYTHON_EXECUTABLE} -m pytest # Or just COMMAND pytest
