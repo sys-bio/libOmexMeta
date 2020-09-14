@@ -437,8 +437,8 @@ if (BUILD_TESTS)
 
     # add the tests
     add_subdirectory(tests/cpp)
-    add_subdirectory(tests/python)
     add_subdirectory(tests/C)
+    add_subdirectory(tests/python)
 
 
     if (WITH_COVERAGE)

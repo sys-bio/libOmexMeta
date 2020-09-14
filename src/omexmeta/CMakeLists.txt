@@ -6,69 +6,69 @@ set(target OmexMeta)
 
 # Note: this doesn't work as intended when using the install tree.
 SET(OMEXMETA_PUBLIC_HEADERS
-    "RDF.h"
-    "Editor.h"
-    "Triple.h"
-    "Triples.h"
-    "PhysicalForce.h"
-    "PhysicalEntity.h"
-    "PhysicalProcess.h"
-    "PersonalInformation.h"
-    "OmexMeta.h"
-    "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
-    )
+        "RDF.h"
+        "Editor.h"
+        "Triple.h"
+        "Triples.h"
+        "PhysicalForce.h"
+        "PhysicalEntity.h"
+        "PhysicalProcess.h"
+        "PersonalInformation.h"
+        "OmexMeta.h"
+        "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
+        )
 
 set(OMEXMETA_HEADERS
-    ${OMEXMETA_PUBLIC_HEADERS}
-    "logger.h"
-    "OmexMetaUtils.h"
-    "CurlGet.h"
-    "OmexMetaXmlAssistant.h"
+        ${OMEXMETA_PUBLIC_HEADERS}
+        "logger.h"
+        "OmexMetaUtils.h"
+        "CurlGet.h"
+        "OmexMetaXmlAssistant.h"
 
-    "Subject.h"
-    "Resource.h"
-    "Query.h"
-    "Predicate.h"
-    "MetaID.h"
-    "PhysicalProperty.h"
-    "Participant.h"
+        "Subject.h"
+        "Resource.h"
+        "Query.h"
+        "Predicate.h"
+        "MetaID.h"
+        "PhysicalProperty.h"
+        "Participant.h"
 
-    "PhysicalPhenomenon.h"
-    "AnnotationType.h"
-    "OmexMeta.h"
-    "MarkupIdentifier.h"
-    "ElementExtractor.h"
-    "SBMLSemanticExtraction.h"
-    "OmexMetaXmlType.h"
-    "Error.h"
-    #    dbg.h
-    )
+        "PhysicalPhenomenon.h"
+        "AnnotationType.h"
+        "OmexMeta.h"
+        "MarkupIdentifier.h"
+        "ElementExtractor.h"
+        "SBMLSemanticExtraction.h"
+        "OmexMetaXmlType.h"
+        "Error.h"
+        #    dbg.h
+        )
 
 set(OMEXMETA_SOURCES
-    "ElementExtractor.cpp"
-    "SBMLSemanticExtraction.cpp"
-    "OmexMetaUtils.cpp"
-    "RDF.cpp"
-    "Query.cpp"
-    "CurlGet.cpp"
-    "OmexMetaXmlAssistant.cpp"
-    "Subject.cpp"
-    "Resource.cpp"
-    "Predicate.cpp"
-    "Triple.cpp"
-    "Triples.cpp"
-    "PhysicalProperty.cpp"
-    "MetaID.cpp"
-    "Participant.cpp"
+        "ElementExtractor.cpp"
+        "SBMLSemanticExtraction.cpp"
+        "OmexMetaUtils.cpp"
+        "RDF.cpp"
+        "Query.cpp"
+        "CurlGet.cpp"
+        "OmexMetaXmlAssistant.cpp"
+        "Subject.cpp"
+        "Resource.cpp"
+        "Predicate.cpp"
+        "Triple.cpp"
+        "Triples.cpp"
+        "PhysicalProperty.cpp"
+        "MetaID.cpp"
+        "Participant.cpp"
 
-    "PhysicalEntity.cpp"
-    "PhysicalPhenomenon.cpp"
-    "Editor.cpp"
-    "PhysicalProcess.cpp"
-    "PhysicalForce.cpp"
-    "PersonalInformation.cpp"
-    "MarkupIdentifier.cpp"
-    )
+        "PhysicalEntity.cpp"
+        "PhysicalPhenomenon.cpp"
+        "Editor.cpp"
+        "PhysicalProcess.cpp"
+        "PhysicalForce.cpp"
+        "PersonalInformation.cpp"
+        "MarkupIdentifier.cpp"
+        )
 
 
 #####################################################################3
@@ -125,76 +125,74 @@ install(
 )
 
 # and build the CAPI if needed
-if (${BUILD_C_API})
-    # C API binary
+# C API binary
 
-    set(CAPI_SOURCES OmexMetaCApi.h OmexMetaCApi.cpp
+set(CAPI_SOURCES OmexMetaCApi.h OmexMetaCApi.cpp
         "${CMAKE_CURRENT_BINARY_DIR}/omexmetacapi_export.h"
         )
 
 
-    add_library(OmexMetaCAPI SHARED ${CAPI_SOURCES})
-    generate_export_header(OmexMetaCAPI BASE_NAME OmexMetaCAPI)
-    set_target_properties(OmexMetaCAPI PROPERTIES
-                          PUBLIC_HEADER "OmexMetaCApi.h;${CMAKE_CURRENT_BINARY_DIR}/omexmetacapi_export.h"
-                          SOVERSION ${LIBOMEXMETA_VERSION}
-                          )
+add_library(OmexMetaCAPI SHARED ${CAPI_SOURCES})
+generate_export_header(OmexMetaCAPI BASE_NAME OmexMetaCAPI)
+set_target_properties(OmexMetaCAPI PROPERTIES
+        PUBLIC_HEADER "OmexMetaCApi.h;${CMAKE_CURRENT_BINARY_DIR}/omexmetacapi_export.h"
+        SOVERSION ${LIBOMEXMETA_VERSION}
+        )
 
-    #includes
-    get_filename_component(PARENT_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
-    target_include_directories(OmexMetaCAPI PRIVATE
-                               ${INCLUDE_DIRECTORIES}
-                               ${CMAKE_CURRENT_SOURCE_DIR}
-                               ${CMAKE_CURRENT_BINARY_DIR} # CAPI export header
-                               ${PARENT_DIR} # C++ api export header
-                               )
-
-
-    # These need defining to indicate that we're linking the static
-    # version of omexmeta and redland as well as exporting
-    # symbols from the omexmeta c api
-    target_compile_definitions(OmexMetaCAPI PRIVATE
-                               OmexMetaCAPI_EXPORTS
-                               OMEXMETA_STATIC_DEFINE
-                               REDLAND_STATIC_DEFINE
-                               )
-
-    # links
-    target_link_libraries(OmexMetaCAPI PRIVATE
-                          -Wl,--whole-archive
-                          OmexMeta-static
-                          redland-combined-static
-                          -Wl,--no-whole-archive
-                          ${LINK_LIBRARIES}
-                          )
-    add_dependencies(OmexMetaCAPI OmexMeta-static redland-combined-static)
-
-    # add to ctest target
-    add_test(
-            NAME OmexMetaCAPI
-            COMMAND $<TARGET_FILE:OmexMetaCAPI>
-    )
+#includes
+get_filename_component(PARENT_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
+target_include_directories(OmexMetaCAPI PRIVATE
+        ${INCLUDE_DIRECTORIES}
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_BINARY_DIR} # CAPI export header
+        ${PARENT_DIR} # C++ api export header
+        )
 
 
-    # install
-    install(TARGETS OmexMetaCAPI
-            EXPORT OmexMetaCAPI
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
-            )
+# These need defining to indicate that we're linking the static
+# version of omexmeta and redland as well as exporting
+# symbols from the omexmeta c api
+target_compile_definitions(OmexMetaCAPI PRIVATE
+        OmexMetaCAPI_EXPORTS
+        OMEXMETA_STATIC_DEFINE
+        REDLAND_STATIC_DEFINE
+        )
+
+# links
+target_link_libraries(OmexMetaCAPI PRIVATE
+        -Wl,--whole-archive
+        OmexMeta-static
+        redland-combined-static
+        -Wl,--no-whole-archive
+        ${LINK_LIBRARIES}
+        )
+add_dependencies(OmexMetaCAPI OmexMeta-static redland-combined-static)
+
+# add to ctest target
+add_test(
+        NAME OmexMetaCAPI
+        COMMAND $<TARGET_FILE:OmexMetaCAPI>
+)
 
 
-    # install the export info
-    install(
-            EXPORT OmexMetaCAPI
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
-            NAMESPACE OmexMeta::
-            FILE OmexMetaCAPI.cmake
-    )
-    install(FILES $<TARGET_FILE:OmexMetaCAPI> DESTINATION ${PYOMEXMETA_DIR})
-endif ()
+# install
+install(TARGETS OmexMetaCAPI
+        EXPORT OmexMetaCAPI
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
+        )
+
+
+# install the export info
+install(
+        EXPORT OmexMetaCAPI
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE OmexMetaCAPI.cmake
+)
+install(FILES $<TARGET_FILE:OmexMetaCAPI> DESTINATION ${PYOMEXMETA_DIR})
 
 
 # shared library
@@ -218,9 +216,9 @@ SetCrossPlatform(REDLAND_LINK_LIBRARY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/redland-
 
 # links
 target_link_libraries(${target} PUBLIC
-                      ${REDLAND_LINK_LIBRARY}
-                      ${LINK_LIBRARIES}
-                      )
+        ${REDLAND_LINK_LIBRARY}
+        ${LINK_LIBRARIES}
+        )
 
 # Technically linux version depends on static version and windows depends on the dynamic library
 add_dependencies(${target} redland-combined redland-combined-static)
@@ -310,15 +308,15 @@ elseif (PLATFORM STREQUAL "windows-msvc")
     find_file(API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY NAMES api-ms-win-core-wow64-l1-1-0.dll PATHS C:/Windows/System32/downlevel)
 
     set(REDISTRIB
-        ${CMAKE_INSTALL_PREFIX}/bin/concrt140.dll
-        ${CMAKE_INSTALL_PREFIX}/bin/msvcp140.dll
-        ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_1.dll
-        ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_2.dll
-        ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_codecvt_ids.dll
-        ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140.dll
-        ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140_1.dll
-        ${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}
-        )
+            ${CMAKE_INSTALL_PREFIX}/bin/concrt140.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_1.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_2.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/msvcp140_codecvt_ids.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140.dll
+            ${CMAKE_INSTALL_PREFIX}/bin/vcruntime140_1.dll
+            ${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}
+            )
     if (EXISTS "${CMAKE_INSTALL_PREFIX}")
         install(FILES ${REDISTRIB} DESTINATION ${PYOMEXMETA_DIR})
         #        message(FATAL_ERROR "libOmexMeta needs to be installed before you \
