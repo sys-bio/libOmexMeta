@@ -7,23 +7,33 @@
 
 #include "redland/RedlandAPI.h"
 
-#include "omexmeta/Editor.h"
-#include "omexmeta/MarkupIdentifier.h"
-#include "omexmeta/OmexMetaXmlType.h"
-#include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/SBMLSemanticExtraction.h"
+
 #include "omexmeta_export.h"
+#include "omexmeta/OmexMetaXmlType.h"
 
 #include <streambuf>
 #include <unordered_map>
 #include <utility>
 #include <fstream>
 
+#include "omexmeta/Editor.h"
+#include "omexmeta/MarkupIdentifier.h"
+#include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/SBMLSemanticExtraction.h"
+#include "omexmeta/logger.h"
+
+
 using namespace redland;
 
 namespace omexmeta {
 
+    // forward declarations
     class Editor;
+    class MarkupIdentifier;
+    class OmexMetaUtils;
+    class SBMLSemanticExtraction;
+    class Predicate;
+
 
     class OMEXMETA_EXPORT RDF {
         LibrdfStorage storage_;
@@ -46,7 +56,7 @@ namespace omexmeta {
         /*
          * @brief reads xml from file before calling classifyXmlType
          */
-        void classifyXmlTypeFromFile(const std::string &xml_file);
+        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format);
 
         /*
          * @brief pull semantic information out of the sbml

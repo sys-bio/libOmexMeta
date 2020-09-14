@@ -113,7 +113,7 @@ namespace redland {
         setOption(parser, "scanForRDF", "1");
         setOption(parser, "allowNonNsAttributes", "0");
         setOption(parser, "allowOtherParsetypes", "1");
-        setOption(parser, "allowBagID", "1");
+        setOption(parser, "allowBagID", "0");
         setOption(parser, "allowRDFtypeRDFlist", "1");
         setOption(parser, "normalizeLanguage", "1");
         setOption(parser, "nonNFCfatal", "0");

@@ -21,7 +21,7 @@ macro(add_test_executable BINARY)
     )
 
     set_tests_properties(${BINARY} PROPERTIES DEPENDS OmexMeta)
-    add_dependencies(${BINARY} OmexMeta-static gtest gtest_main)
+    add_dependencies(${BINARY} OmexMeta-static redland-combined-static gtest gtest_main)
 
     # links
     target_link_libraries(${BINARY} PUBLIC

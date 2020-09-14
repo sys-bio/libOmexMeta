@@ -15,7 +15,7 @@ enum ModelType {
     SBML_NOT_ANNOTATED,
     SBML_NOT_ANNOTATED2,
     SBML_Semantic_Extraction_Model,
-    SBML_BIOMD204
+    SBML_BIOMD204,
     SBML_BIOMD366
 };
 

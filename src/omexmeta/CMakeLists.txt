@@ -20,6 +20,7 @@ SET(OMEXMETA_PUBLIC_HEADERS
 
 set(OMEXMETA_HEADERS
     ${OMEXMETA_PUBLIC_HEADERS}
+    "logger.h"
     "OmexMetaUtils.h"
     "CurlGet.h"
     "OmexMetaXmlAssistant.h"
