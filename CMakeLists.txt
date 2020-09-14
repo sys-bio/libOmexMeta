@@ -144,7 +144,7 @@ option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if 
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
-option(BUILD_C_API "Build the OmexMeta C API" OFF)
+option(BUILD_C_API "Build the OmexMeta C API" ON)
 option(BUILD_PACKAGING "Package libOmexMeta with CPack" OFF)
 option(BUILD_PYTHON "Build the Python pip package" OFF)
 option(GENERATE_DEPENDENCY_GRAPH "Get CMake to generate the dependency graph" ON)
