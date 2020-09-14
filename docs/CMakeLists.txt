@@ -25,6 +25,7 @@ macro(add_doc_example BINARY_NAME)
 
     # binary for testing Editor's ability to extract information from sbml
     add_executable(${BINARY_NAME} ${ARGN})
+    gtest_discover_test(${BINARY_NAME})
     set(EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS} "${BINARY_NAME}")
 
     target_compile_definitions(
