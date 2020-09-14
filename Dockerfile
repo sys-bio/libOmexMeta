@@ -1,20 +1,4 @@
-FROM ubuntu:18.04
-# update apt and collect a few essential tools
-# then add the gcc repository before updating apt again.
-# now we can install gcc 10 compiler.
-# we also download miniconda.
-RUN apt-get update \
-	&& apt-get install -y wget lsb-release binutils software-properties-common \
-	&& wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-	&& add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-	&& apt-get update
-
-# install miniconda
-ENV PATH="/root/miniconda3/bin:$PATH"
-ENV DEBIAN_FRONTEND noninteractive
-ENV site_packages /root/miniconda3/envs/pyomexmeta-test/lib/python3.7/site-packages
-ENV pyomexmeta_dir ${site_packages}/pyomexmeta
-RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
+FROM ciaranwelsh/ubuntu-base
 
 # install the dependency shared libraries for pyomexmeta
 # we also install the gcc 10.1 compilers, and documentation libraries
@@ -39,16 +23,6 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7
     && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
 
 
-# get vcpkg and install some dependencies
-ENV vcpkg /vcpkg/vcpkg
-ENV install_dir /libOmexMeta/install-docker
-RUN git clone https://github.com/microsoft/vcpkg.git \
-    && cd vcpkg \
-    && ./bootstrap-vcpkg.sh \
-#    && /vcpkg/vcpkg integrate install \
-    && /vcpkg/vcpkg install libxml2
-RUN /vcpkg/vcpkg install libiconv pcre yajl libpq sqlite3
-RUN /vcpkg/vcpkg install openssl curl
 
 
 # get the libOmexMeta source and docs-build
