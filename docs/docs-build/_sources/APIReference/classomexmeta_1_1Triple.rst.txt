@@ -1,0 +1,25 @@
+.. _exhale_class_classomexmeta_1_1Triple:
+
+Class Triple
+============
+
+- Defined in :ref:`file_src_omexmeta_Triple.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public redland::LibrdfStatement`` (:ref:`exhale_class_classredland_1_1LibrdfStatement`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::Triple
+   :members:
+   :protected-members:
+   :undoc-members:

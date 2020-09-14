@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File RDF.cpp &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File RDF.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_RDF.cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-rdf-cpp">
+<span id="program-listing-file-src-omexmeta-rdf-cpp"></span><h1>Program Listing for File RDF.cpp<a class="headerlink" href="#program-listing-for-file-rdf-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_RDF.cpp.html#file-src-omexmeta-rdf-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/RDF.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 5/31/2020.</span>
+<span class="c1">//</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;RDF.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+
+    <span class="n">RDF</span><span class="o">::</span><span class="n">RDF</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">storage_type</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">storage_name</span><span class="p">,</span>
+             <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">storage_options</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">model_options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">storage_</span> <span class="o">=</span> <span class="n">LibrdfStorage</span><span class="p">(</span><span class="n">storage_type</span><span class="p">,</span> <span class="n">storage_name</span><span class="p">,</span> <span class="n">storage_options</span><span class="p">);</span>
+        <span class="c1">// model_ now owns storage_</span>
+        <span class="n">model_</span> <span class="o">=</span> <span class="n">LibrdfModel</span><span class="p">(</span><span class="n">storage_</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">model_options</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">freeRDF</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">model_</span><span class="p">.</span><span class="n">freeModel</span><span class="p">();</span>
+        <span class="n">storage_</span><span class="p">.</span><span class="n">freeStorage</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">RDF</span><span class="o">::~</span><span class="n">RDF</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">freeRDF</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">RDF</span><span class="o">::</span><span class="n">RDF</span><span class="p">(</span><span class="n">RDF</span> <span class="o">&amp;&amp;</span><span class="n">rdf</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="n">namespaces_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">namespaces_</span><span class="p">);</span>
+        <span class="n">seen_namespaces_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">seen_namespaces_</span><span class="p">);</span>
+        <span class="n">default_namespaces_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">default_namespaces_</span><span class="p">);</span>
+        <span class="n">storage_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">storage_</span><span class="p">);</span>
+        <span class="n">model_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">model_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">RDF</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">RDF</span> <span class="o">&amp;&amp;</span><span class="n">rdf</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">rdf</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">namespaces_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">namespaces_</span><span class="p">);</span>
+            <span class="n">seen_namespaces_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">seen_namespaces_</span><span class="p">);</span>
+            <span class="n">default_namespaces_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">default_namespaces_</span><span class="p">);</span>
+            <span class="n">storage_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">storage_</span><span class="p">);</span>
+            <span class="n">model_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">model_</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">RDF</span><span class="o">::</span><span class="n">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">RDF</span><span class="o">::</span><span class="n">empty</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">RDF</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">base_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">RDF</span> <span class="n">rdf</span><span class="p">;</span>
+        <span class="n">LibrdfParser</span> <span class="nf">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+        <span class="n">LibrdfUri</span> <span class="n">u</span> <span class="o">=</span> <span class="n">LibrdfUri</span><span class="o">::</span><span class="n">fromFilename</span><span class="p">(</span><span class="n">base_uri</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">rdf</span><span class="p">.</span><span class="n">model_</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span>
+        <span class="n">u</span><span class="p">.</span><span class="n">freeUri</span><span class="p">();</span>
+
+        <span class="c1">// update the list of &quot;seen&quot; namespaces</span>
+        <span class="n">rdf</span><span class="p">.</span><span class="n">seen_namespaces_</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">getSeenNamespaces</span><span class="p">();</span>
+
+        <span class="c1">// Compare against predefined set of namespaces: bqbiol etc.</span>
+        <span class="c1">// This allows us to only use the ones that are needed</span>
+        <span class="n">rdf</span><span class="p">.</span><span class="n">namespaces_</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">propagateNamespacesFromParser</span><span class="p">(</span><span class="n">rdf</span><span class="p">.</span><span class="n">seen_namespaces_</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">rdf</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="kt">void</span>
+    <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">RDF</span> <span class="o">*</span><span class="n">rdf</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">base_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// if the base_uri is a web uri we leave it alone</span>
+        <span class="n">base_uri</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">prepareBaseUri</span><span class="p">(</span><span class="n">base_uri</span><span class="p">);</span>
+
+        <span class="n">LibrdfParser</span> <span class="nf">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">rdf</span><span class="o">-&gt;</span><span class="n">model_</span><span class="p">,</span> <span class="n">LibrdfUri</span><span class="p">(</span><span class="n">base_uri</span><span class="p">));</span>
+
+        <span class="c1">// update the list of &quot;seen&quot; namespaces</span>
+        <span class="n">rdf</span><span class="o">-&gt;</span><span class="n">seen_namespaces_</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">getSeenNamespaces</span><span class="p">();</span>
+
+        <span class="c1">// Compare against predefined set of namespaces: bqbiol etc.</span>
+        <span class="c1">// This allows us to only use the ones that are needed</span>
+        <span class="n">rdf</span><span class="o">-&gt;</span><span class="n">namespaces_</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">-&gt;</span><span class="n">propagateNamespacesFromParser</span><span class="p">(</span><span class="n">rdf</span><span class="o">-&gt;</span><span class="n">seen_namespaces_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">addFromString</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">base_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">base_uri_used</span><span class="p">;</span>
+
+        <span class="n">LibrdfParser</span> <span class="nf">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+
+        <span class="n">LibrdfUri</span> <span class="n">u</span> <span class="o">=</span> <span class="n">LibrdfUri</span><span class="o">::</span><span class="n">fromFilename</span><span class="p">(</span><span class="n">base_uri_used</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">model_</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span>
+        <span class="n">u</span><span class="p">.</span><span class="n">freeUri</span><span class="p">();</span>
+
+        <span class="c1">// update the list of &quot;seen&quot; namespaces</span>
+        <span class="n">seen_namespaces_</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">getSeenNamespaces</span><span class="p">();</span>
+
+        <span class="c1">// Compare against predefined set of namespaces: bqbiol etc.</span>
+        <span class="c1">// This allows us to only use the ones that are needed</span>
+        <span class="n">namespaces_</span> <span class="o">=</span> <span class="n">propagateNamespacesFromParser</span><span class="p">(</span><span class="n">seen_namespaces_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief parse RDF directly from a uri</span>
+<span class="cm">     * @param uri_string the uri to download containing RDF</span>
+<span class="cm">     * @param format the format that the RDF is in</span>
+<span class="cm">     * @return RDF an instantiated RDF object.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @details downloads uri from the internet and creates an RDF graph.</span>
+<span class="cm">     * See Librdf::parseUri() for more details.</span>
+<span class="cm">     */</span>
+    <span class="n">RDF</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uri_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">RDF</span> <span class="n">rdf</span><span class="p">;</span>
+        <span class="n">LibrdfParser</span> <span class="nf">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseUri</span><span class="p">(</span><span class="n">uri_string</span><span class="p">,</span> <span class="n">rdf</span><span class="p">.</span><span class="n">model_</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">rdf</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief non-static counterpart of RDF::fromUri. Downloads and</span>
+<span class="cm">     * parses rdf from a URI.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @details See RDF::fromUri for details.</span>
+<span class="cm">     */</span>
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">addFromUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uri_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LibrdfParser</span> <span class="n">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseUri</span><span class="p">(</span><span class="n">uri_string</span><span class="p">,</span> <span class="n">model_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">RDF</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">RDF</span> <span class="n">rdf</span><span class="p">;</span>
+        <span class="n">LibrdfParser</span> <span class="nf">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">rdf</span><span class="p">.</span><span class="n">model_</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">rdf</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">addFromFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LibrdfParser</span> <span class="n">parser</span><span class="p">(</span><span class="n">format</span><span class="p">);</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">parseFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">model_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief compared namespaces seen with namespaces</span>
+<span class="cm">     * known and ensures models that use a known namespace</span>
+<span class="cm">     * use that namespace.</span>
+<span class="cm">     * @param seen_namespaces a vector of strings of namespaces the parser has seen before.</span>
+<span class="cm">     *</span>
+<span class="cm">     */</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span>
+    <span class="n">RDF</span><span class="o">::</span><span class="n">propagateNamespacesFromParser</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">seen_namespaces</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">keep_map</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">seen_namespace</span> <span class="p">:</span> <span class="n">seen_namespaces</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">auto</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">default_namespaces_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">seen_namespace</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">default_namespaces_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">keep_map</span><span class="p">[</span><span class="n">seen_namespace</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_namespaces_</span><span class="p">[</span><span class="n">seen_namespace</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">keep_map</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">RDF</span><span class="o">::</span><span class="n">toString</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span>
+                              <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">base_uri</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">mime_type</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">type_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">base_uri</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">prepareBaseUri</span><span class="p">(</span><span class="n">base_uri</span><span class="p">);</span>
+        <span class="n">LibrdfSerializer</span> <span class="nf">serializer</span><span class="p">(</span><span class="n">format</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">mime_type</span><span class="p">,</span> <span class="n">type_uri</span><span class="p">);</span>
+        <span class="c1">// remember to add namespaces taken from parser</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span><span class="p">:</span> <span class="n">namespaces_</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">it</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="s">&quot;OMEXlib&quot;</span><span class="p">);</span>
+        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getArchiveUri</span><span class="p">(),</span> <span class="s">&quot;myOMEX&quot;</span><span class="p">);</span>
+        <span class="n">serializer</span><span class="p">.</span><span class="n">setNamespace</span><span class="p">(</span><span class="n">getModelUri</span><span class="p">(),</span> <span class="s">&quot;local&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">serializer</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="n">base_uri</span><span class="p">,</span> <span class="n">model_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span>
+    <span class="n">RDF</span><span class="o">::</span><span class="n">toFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">mime_type</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">type_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">syntax</span> <span class="o">=</span> <span class="n">toString</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mime_type</span><span class="p">,</span> <span class="n">type_uri</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="n">f</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">f</span> <span class="o">&lt;&lt;</span> <span class="n">syntax</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="n">f</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span>
+            <span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;std::logic_error: RDF::toFile: Could not open file for writing. &quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">librdf_model</span> <span class="o">*</span><span class="n">RDF</span><span class="o">::</span><span class="n">getModel</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">Editor</span> <span class="n">RDF</span><span class="o">::</span><span class="n">toEditor</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">xml</span><span class="p">,</span> <span class="n">OmexMetaXmlType</span> <span class="n">type</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">generate_new_metaids</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Editor</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">model_</span><span class="p">,</span> <span class="n">namespaces_</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="p">,</span>
+                      <span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="n">getArchiveUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">Editor</span> <span class="o">*</span><span class="n">RDF</span><span class="o">::</span><span class="n">toEditorPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">xml</span><span class="p">,</span> <span class="n">OmexMetaXmlType</span> <span class="n">type</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">generate_new_metaids</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="o">*</span><span class="n">editor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Editor</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">model_</span><span class="p">,</span> <span class="n">namespaces_</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="p">,</span>
+                                  <span class="n">getRepositoryUri</span><span class="p">(),</span> <span class="n">getArchiveUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">editor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">librdf_storage</span> <span class="o">*</span><span class="n">RDF</span><span class="o">::</span><span class="n">getStorage</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">storage_</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">RDF</span><span class="o">::</span><span class="n">commitTransaction</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_model_transaction_commit</span><span class="p">(</span><span class="n">getModel</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">RDF</span><span class="o">::</span><span class="n">startTransaction</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_model_transaction_start</span><span class="p">(</span><span class="n">getModel</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="o">*</span><span class="n">RDF</span><span class="o">::</span><span class="n">getTransactionHandle</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_model_transaction_get_handle</span><span class="p">(</span><span class="n">getModel</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">RDF</span><span class="o">::</span><span class="n">startTransactionWithHandle</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">handle</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_model_transaction_start_with_handle</span><span class="p">(</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">handle</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">RDF</span><span class="o">::</span><span class="n">getTransactionRollback</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_model_transaction_rollback</span><span class="p">(</span><span class="n">getModel</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">RDF</span><span class="o">::</span><span class="n">listOptions</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">raptor_world</span> <span class="o">*</span><span class="n">raptor_world_ptr</span> <span class="o">=</span> <span class="n">World</span><span class="o">::</span><span class="n">getRaptor</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">num_raptor_options</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">raptor_option_get_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;option, name, label, domain, value type, uri&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">num_raptor_options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">raptor_option_description</span> <span class="o">*</span><span class="n">parser_opt</span> <span class="o">=</span> <span class="n">raptor_world_get_option_description</span><span class="p">(</span>
+                    <span class="n">raptor_world_ptr</span><span class="p">,</span>
+                    <span class="n">RAPTOR_DOMAIN_PARSER</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">raptor_option</span><span class="p">)</span> <span class="n">i</span>
+            <span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">parser_opt</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">uri_string1</span> <span class="o">=</span> <span class="n">raptor_uri_to_string</span><span class="p">(</span><span class="n">parser_opt</span><span class="o">-&gt;</span><span class="n">uri</span><span class="p">);</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">parser_opt</span><span class="o">-&gt;</span><span class="n">option</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">parser_opt</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">parser_opt</span><span class="o">-&gt;</span><span class="n">label</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span>
+                   <span class="o">&lt;&lt;</span> <span class="n">parser_opt</span><span class="o">-&gt;</span><span class="n">domain</span>
+                   <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">parser_opt</span><span class="o">-&gt;</span><span class="n">value_type</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">uri_string1</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                <span class="n">raptor_free_option_description</span><span class="p">(</span><span class="n">parser_opt</span><span class="p">);</span>
+                <span class="n">free</span><span class="p">(</span><span class="n">uri_string1</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">raptor_option_description</span> <span class="o">*</span><span class="n">serializer_opt</span> <span class="o">=</span> <span class="n">raptor_world_get_option_description</span><span class="p">(</span>
+                        <span class="n">raptor_world_ptr</span><span class="p">,</span>
+                        <span class="n">RAPTOR_DOMAIN_SERIALIZER</span><span class="p">,</span>
+                        <span class="p">(</span><span class="n">raptor_option</span><span class="p">)</span> <span class="n">i</span>
+                <span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">serializer_opt</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">uri_string2</span> <span class="o">=</span> <span class="n">raptor_uri_to_string</span><span class="p">(</span><span class="n">serializer_opt</span><span class="o">-&gt;</span><span class="n">uri</span><span class="p">);</span>
+                    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">serializer_opt</span><span class="o">-&gt;</span><span class="n">option</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">serializer_opt</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">serializer_opt</span><span class="o">-&gt;</span><span class="n">label</span>
+                       <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span>
+                       <span class="o">&lt;&lt;</span> <span class="n">serializer_opt</span><span class="o">-&gt;</span><span class="n">domain</span>
+                       <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">serializer_opt</span><span class="o">-&gt;</span><span class="n">value_type</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">uri_string2</span>
+                       <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                    <span class="n">raptor_free_option_description</span><span class="p">(</span><span class="n">serializer_opt</span><span class="p">);</span>
+                    <span class="n">free</span><span class="p">(</span><span class="n">uri_string2</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="n">getRepositoryUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">repository_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">setRepositoryUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repositoryName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="n">repositoryName</span><span class="p">,</span> <span class="s">&quot;http&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: RDF::setRepositoryUri: &quot;</span>
+                                        <span class="s">&quot;Specified </span><span class="se">\&quot;</span><span class="s">repositoryName</span><span class="se">\&quot;</span><span class="s"> argument </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">repositoryName</span>
+                                        <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> does not begin with </span><span class="se">\&quot;</span><span class="s">http</span><span class="se">\&quot;</span><span class="s">. Example: </span><span class="se">\&quot;</span><span class="s">http://MyOmexRepository.org</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">repositoryName</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">repositoryName</span> <span class="o">+=</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">repository_uri_</span> <span class="o">=</span> <span class="n">repositoryName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="n">getArchiveUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">archive_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">setArchiveUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">archiveName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="n">archiveName</span><span class="p">,</span> <span class="s">&quot;http&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: RDF::setArchiveUri: &quot;</span>
+                                        <span class="s">&quot;Specified </span><span class="se">\&quot;</span><span class="s">archiveName</span><span class="se">\&quot;</span><span class="s"> argument </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">archiveName</span>
+                                        <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> begins with </span><span class="se">\&quot;</span><span class="s">http</span><span class="se">\&quot;</span><span class="s">. Since the archive url is built &quot;</span>
+                                          <span class="s">&quot;using the repositoryName argument, please only specify &quot;</span>
+                                          <span class="s">&quot;the name of the omex archive. Like </span><span class="se">\&quot;</span><span class="s">myOmexFile.omex</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">archiveName</span><span class="p">,</span> <span class="s">&quot;.omex&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">archiveName</span> <span class="o">=</span> <span class="n">archiveName</span> <span class="o">+</span> <span class="s">&quot;.omex&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">archive_uri_</span> <span class="o">=</span> <span class="n">getRepositoryUri</span><span class="p">()</span> <span class="o">+</span> <span class="n">archiveName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">RDF</span><span class="o">::</span><span class="n">setModelUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">modelName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="n">modelName</span><span class="p">,</span> <span class="s">&quot;http&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: RDF::setModelUri: &quot;</span>
+                                        <span class="s">&quot;Specified </span><span class="se">\&quot;</span><span class="s">modelName</span><span class="se">\&quot;</span><span class="s"> argument </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">modelName</span>
+                                        <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> begins with </span><span class="se">\&quot;</span><span class="s">http</span><span class="se">\&quot;</span><span class="s">. Since the model url is built &quot;</span>
+                                          <span class="s">&quot;using the repositoryName argument, please only specify &quot;</span>
+                                          <span class="s">&quot;the name of the model. Like </span><span class="se">\&quot;</span><span class="s">NewModel.sbml</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// first we make sure the suffix ends with a &quot;#&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">modelName</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">modelName</span> <span class="o">+=</span> <span class="s">&quot;#&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Now we check for file extension</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">suffexes</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;.xml#&quot;</span><span class="p">,</span> <span class="s">&quot;.sbml#&quot;</span><span class="p">,</span> <span class="s">&quot;.cellml#&quot;</span><span class="p">};</span>
+        <span class="kt">bool</span> <span class="n">good</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span> <span class="p">:</span> <span class="n">suffexes</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">modelName</span><span class="p">,</span> <span class="n">it</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">good</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// automaticall add .xml if one of the above suffixes was not detected</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">good</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// remember to remove the trailing &quot;#&quot;</span>
+            <span class="n">modelName</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+            <span class="n">modelName</span> <span class="o">+=</span> <span class="s">&quot;.xml#&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// concatonate archive and model, being sensitive to ending &quot;/&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">endsWith</span><span class="p">(</span><span class="n">getArchiveUri</span><span class="p">(),</span> <span class="s">&quot;/&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">getArchiveUri</span><span class="p">()</span> <span class="o">+</span> <span class="n">modelName</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">getArchiveUri</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">modelName</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Since the model name is also used for the local name we</span>
+        <span class="c1">// figure that out here. We know modelName definitely contains</span>
+        <span class="c1">// a suffux like .xml.</span>
+        <span class="c1">// we need to remove it so we can add .rdf.</span>
+        <span class="c1">// We do this in a way that enables multiple &quot;.&quot; in a model_name</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">split</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">modelName</span><span class="p">,</span> <span class="sc">&#39;.&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">split</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;std::logic_error: RDF::setModelUri: You should never get a &quot;</span>
+                                   <span class="s">&quot;a value less than 2 here because you are splitting a string. &quot;</span>
+                                   <span class="s">&quot;If you are seeing this message this is a bug. Please report &quot;</span>
+                                   <span class="s">&quot;it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// remove the last element which should contain the extension.</span>
+        <span class="n">split</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+
+        <span class="c1">// docs-build up the string again with any dots that appeared before the final</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span> <span class="p">:</span> <span class="n">split</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Now we can docs-build up the local string</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">getArchiveUri</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;rdf#&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">RDF</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

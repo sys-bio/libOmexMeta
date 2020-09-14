@@ -1,0 +1,51 @@
+
+.. _file_src_omexmeta_AnnotationType.h:
+
+File AnnotationType.h
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/AnnotationType.h``)
+----------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_AnnotationType.h.rst
+
+
+
+
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_PhysicalPhenomenon.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7`
+

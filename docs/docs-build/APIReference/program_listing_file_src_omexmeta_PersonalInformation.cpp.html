@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File PersonalInformation.cpp &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File PersonalInformation.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_PersonalInformation.cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-personalinformation-cpp">
+<span id="program-listing-file-src-omexmeta-personalinformation-cpp"></span><h1>Program Listing for File PersonalInformation.cpp<a class="headerlink" href="#program-listing-for-file-personalinformation-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_PersonalInformation.cpp.html#file-src-omexmeta-personalinformation-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/PersonalInformation.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 10/07/2020.</span>
+<span class="c1">//</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;PersonalInformation.h&quot;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">PersonalInformation</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">model_</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">model_uri_</span><span class="p">(</span><span class="n">local_uri</span><span class="p">),</span> <span class="n">model_uri_</span><span class="p">(</span><span class="n">model_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">metaid_</span> <span class="o">=</span> <span class="n">generateMetaId</span><span class="p">();</span>
+        <span class="n">createSubject</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span><span class="o">::~</span><span class="n">PersonalInformation</span><span class="p">(){</span>
+        <span class="n">freeTriples</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief move constructor</span>
+<span class="cm">     */</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">PersonalInformation</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">&amp;&amp;</span><span class="n">information</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="n">model_</span> <span class="o">=</span> <span class="n">information</span><span class="p">.</span><span class="n">model_</span><span class="p">;</span>
+        <span class="n">information</span><span class="p">.</span><span class="n">model_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">information</span><span class="p">.</span><span class="n">model_uri_</span><span class="p">;</span>
+        <span class="n">triples_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">information</span><span class="p">.</span><span class="n">triples_</span><span class="p">);</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">information</span><span class="p">.</span><span class="n">model_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief move assignment constructor</span>
+<span class="cm">     */</span>
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">&amp;&amp;</span><span class="n">information</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">information</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">model_</span> <span class="o">=</span> <span class="n">information</span><span class="p">.</span><span class="n">model_</span><span class="p">;</span>
+            <span class="n">information</span><span class="p">.</span><span class="n">model_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+            <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">information</span><span class="p">.</span><span class="n">model_uri_</span><span class="p">;</span>
+            <span class="n">triples_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">information</span><span class="p">.</span><span class="n">triples_</span><span class="p">);</span>
+            <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">information</span><span class="p">.</span><span class="n">model_uri_</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">model_</span> <span class="o">&amp;&amp;</span>
+               <span class="n">triples_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">triples_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">rhs</span> <span class="o">==</span> <span class="o">*</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">generateMetaId</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="s">&quot;PersonalInfo&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">metaid</span><span class="p">,</span> <span class="n">getModelUri</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addFoaf</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">LibrdfNode</span><span class="o">&amp;</span> <span class="n">value_node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LibrdfNode</span> <span class="n">subject</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">metaid_</span><span class="p">);</span>
+        <span class="n">Foaf</span> <span class="nf">foaf</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="n">Triple</span> <span class="nf">triple</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">foaf</span><span class="p">.</span><span class="n">getNode</span><span class="p">(),</span> <span class="n">value_node</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">triples_</span><span class="p">.</span><span class="n">move_back</span><span class="p">(</span><span class="n">triple</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addDC</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">LibrdfNode</span><span class="o">&amp;</span> <span class="n">value_node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LibrdfNode</span> <span class="n">subject</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">metaid_</span><span class="p">);</span>
+        <span class="n">DCTerm</span> <span class="nf">dc</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="n">Triple</span> <span class="nf">triple</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">dc</span><span class="p">.</span><span class="n">getNode</span><span class="p">(),</span> <span class="n">value_node</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">triples_</span><span class="p">.</span><span class="n">move_back</span><span class="p">(</span><span class="n">triple</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addFoafBlank</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">blank_value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LibrdfNode</span> <span class="n">blank_node</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromBlank</span><span class="p">(</span><span class="n">blank_value</span><span class="p">);</span>
+        <span class="n">addFoaf</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">blank_node</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addFoafUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uri_value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Foaf</span> <span class="n">foaf</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="n">LibrdfNode</span> <span class="n">uri_node</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">uri_value</span><span class="p">);</span>
+        <span class="n">addFoaf</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">uri_node</span><span class="p">);</span>
+        <span class="n">foaf</span><span class="p">.</span><span class="n">freeNode</span><span class="p">();</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addFoafLiteral</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">literal_value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Foaf</span> <span class="n">foaf</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="n">LibrdfNode</span> <span class="n">literal_node</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromLiteral</span><span class="p">(</span><span class="n">literal_value</span><span class="p">);</span>
+        <span class="n">addFoaf</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">literal_node</span><span class="p">);</span>
+        <span class="n">foaf</span><span class="p">.</span><span class="n">freeNode</span><span class="p">();</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addDCBlank</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">blank_value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LibrdfNode</span> <span class="n">blank_node</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromBlank</span><span class="p">(</span><span class="n">blank_value</span><span class="p">);</span>
+        <span class="n">addDC</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">blank_node</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addDCUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uri_value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">DCTerm</span> <span class="n">dcTerm</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="n">LibrdfNode</span> <span class="n">uri_node</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">uri_value</span><span class="p">);</span>
+        <span class="n">addDC</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">uri_node</span><span class="p">);</span>
+        <span class="n">dcTerm</span><span class="p">.</span><span class="n">freeNode</span><span class="p">();</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span>
+    <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addDCLiteral</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">predicate</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">literal_value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">DCTerm</span> <span class="n">dcTerm</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="n">LibrdfNode</span> <span class="n">literal_node</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromLiteral</span><span class="p">(</span><span class="n">literal_value</span><span class="p">);</span>
+        <span class="n">addDC</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">literal_node</span><span class="p">);</span>
+        <span class="n">dcTerm</span><span class="p">.</span><span class="n">freeNode</span><span class="p">();</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addName</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">addFoafLiteral</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addMbox</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">addFoafLiteral</span><span class="p">(</span><span class="s">&quot;mbox&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addAccountName</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">addFoafUri</span><span class="p">(</span><span class="s">&quot;accountName&quot;</span><span class="p">,</span> <span class="s">&quot;https://orcid.org/&quot;</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span> <span class="c1">// orchid id</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">setTriples</span><span class="p">(</span><span class="n">Triples</span> <span class="n">triples</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">triples_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">triples</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addAccountServiceHomepage</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">addFoafUri</span><span class="p">(</span><span class="s">&quot;accountServiceHomepage&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PersonalInformation</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">addCreator</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">addDCUri</span><span class="p">(</span><span class="s">&quot;creator&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">setModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">localUri</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">createSubject</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">model_uri_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument: PersonalInformation::createSubject:&quot;</span>
+                                        <span class="s">&quot;Trying to create a PersonalInformation composite annotation triples without&quot;</span>
+                                        <span class="s">&quot;a `model_uri`. Please use setModelUri() and try again.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">LibrdfNode</span> <span class="n">n</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">model_uri_</span><span class="p">);</span>
+        <span class="n">DCTerm</span> <span class="nf">creator</span><span class="p">(</span><span class="s">&quot;creator&quot;</span><span class="p">);</span>
+        <span class="n">LibrdfNode</span> <span class="n">r</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">metaid_</span><span class="p">);</span>
+        <span class="n">Triple</span> <span class="nf">triple</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">creator</span><span class="p">.</span><span class="n">getNode</span><span class="p">(),</span> <span class="n">r</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">triples_</span><span class="p">.</span><span class="n">move_back</span><span class="p">(</span><span class="n">triple</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">getMetaid</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">metaid_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">Triples</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">getTriples</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">triples_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">setMetaid</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">metaid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">metaid_</span> <span class="o">=</span> <span class="n">metaid</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">PersonalInformation</span><span class="o">::</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">model_uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">setModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">modelUri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">model_uri_</span> <span class="o">=</span> <span class="n">modelUri</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">PersonalInformation</span><span class="o">::</span><span class="n">freeTriples</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">triples_</span><span class="p">.</span><span class="n">freeTriples</span><span class="p">();</span>
+    <span class="p">}</span>
+
+
+
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

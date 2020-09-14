@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ae56d63835ab34d9fff46174f042a0fc3:
+
+Function omexmeta::PersonalInformation_setLocalUri
+==================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PersonalInformation_setLocalUri(PersonalInformation *, const char *)

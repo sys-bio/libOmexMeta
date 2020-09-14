@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File Participant.h &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File Participant.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_Participant.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-participant-h">
+<span id="program-listing-file-src-omexmeta-participant-h"></span><h1>Program Listing for File Participant.h<a class="headerlink" href="#program-listing-for-file-participant-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_Participant.h.html#file-src-omexmeta-participant-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/Participant.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 4/20/2020.</span>
+<span class="c1">//</span>
+
+<span class="cp">#ifndef LIBOMEXMETA_PARTICIPANT_H</span>
+<span class="cp">#define LIBOMEXMETA_PARTICIPANT_H</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;librdf.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/Resource.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;Subject.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;Triple.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;Triples.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;RedlandWrapper.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">redland</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+
+    <span class="k">class</span> <span class="nc">Participant</span> <span class="p">{</span>
+
+        <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid_template_str_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">semsim_predicate_term_</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">multiplier_</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physicalEntityReference_</span><span class="p">;</span>
+        <span class="c1">// autogenerated id. This allows Participants to have memory,</span>
+        <span class="c1">// so that you can call toTriples more than once and have the same</span>
+        <span class="c1">// set of triples returned.</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_participant_metaid_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri_</span><span class="p">;</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="kt">void</span> <span class="n">setMultiplier</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">setPhysicalEntityReference</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">physicalEntityReference</span><span class="p">);</span>
+
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getLocalParticipantMetaid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span> <span class="nf">setUniqueParticipantMetaid</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uniqueParticipantMetaid</span><span class="p">);</span>
+
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getModelUri</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span> <span class="nf">setModelUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">localUri</span><span class="p">);</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+        <span class="kt">void</span> <span class="n">free</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief Superclass of participant types</span>
+<span class="cm">         * @param model pointer to the librdf_model* in use. Passed down from RDF.</span>
+<span class="cm">         * @param base_metaid the content of the participant base_metaid. A valid metaid.</span>
+<span class="cm">         * @param semsim_predicate_term a string from the SemSim vocabulary.</span>
+<span class="cm">         * @param multiplier Specifies the stoiciometry for the Participant in the process</span>
+<span class="cm">         * @param physicalEntityReference the ID of the physicalEntity assicated with the Participant</span>
+<span class="cm">         *</span>
+<span class="cm">         * This class should not be used directly - the subclasses should be preferred.</span>
+<span class="cm">         *</span>
+<span class="cm">         * For developers - This superclass is implemented in order to substantially reduce</span>
+<span class="cm">         * code duplication in the subclasses.</span>
+<span class="cm">         *</span>
+<span class="cm">         */</span>
+        <span class="n">Participant</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">base_metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">semsim_predicate_term</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
+                    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physicalEntityReference</span><span class="p">);</span>
+
+        <span class="o">~</span><span class="n">Participant</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+        <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">Participant</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">Participant</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief create a Triples object from the Participant.</span>
+<span class="cm">         * @param process_metaid the metaid for a process</span>
+<span class="cm">         * @return A Triples container for the Triples associated with this Participant</span>
+<span class="cm">         *</span>
+<span class="cm">         * The same toTriples method is used for all participants.</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">Triples</span> <span class="n">toTriples</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">process_metaid</span><span class="p">);</span>
+
+
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">createMetaid</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief get the predicate currently in use by the participant</span>
+<span class="cm">         * @return a SemSim predicate</span>
+<span class="cm">         */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">basic_string</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">getPredicate</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief set the predicate used in the participant</span>
+<span class="cm">         * @param semsim_predicate_string The predicate portion of the SemSim predicate you want to use.</span>
+<span class="cm">         *</span>
+<span class="cm">         * i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/semsim#hasSourceParticipant&quot;</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span> <span class="nf">setPredicate</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">semsim_predicate_string</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief get the subject portion of the Participant, which is the</span>
+<span class="cm">         * @return the string of the subject value</span>
+<span class="cm">         * metaid of the Participant</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getSubject</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief get the multiplier representing the stoiciometry of the process being described</span>
+<span class="cm">         * @return the multiplier</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">double</span> <span class="n">getMultiplier</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief get the physicalEntityReference</span>
+<span class="cm">         * @return the physicalEntityReference string</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">getPhysicalEntityReference</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="p">};</span>
+
+
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Participant</span><span class="o">&gt;</span> <span class="n">ParticipantPtr</span><span class="p">;</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * Subclass of Participant. See Participants for arguments.</span>
+<span class="cm">     */</span>
+    <span class="k">class</span> <span class="nc">SourceParticipant</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Participant</span> <span class="p">{</span>
+
+    <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/*</span>
+<span class="cm">         * @brief A class representing process/force energetic source.</span>
+<span class="cm">         */</span>
+        <span class="n">SourceParticipant</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physicalEntityReference</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * Subclass of Participant. See Participants for arguments.</span>
+<span class="cm">     */</span>
+    <span class="k">class</span> <span class="nc">SinkParticipant</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Participant</span> <span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief A class representing process/force energetic sinks.</span>
+<span class="cm">         */</span>
+        <span class="n">SinkParticipant</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physicalEntityReference</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">);</span>
+
+    <span class="p">};</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * Subclass of Participant. See Participants for arguments.</span>
+<span class="cm">     */</span>
+    <span class="k">class</span> <span class="nc">MediatorParticipant</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Participant</span> <span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span>
+        <span class="kt">double</span> <span class="n">multiplier_</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="k">public</span><span class="o">:</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief A class representing process mediators (such as a catalyst).</span>
+<span class="cm">         */</span>
+        <span class="n">MediatorParticipant</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physicalEntityReference</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">);</span>
+
+    <span class="p">};</span>
+
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SourceParticipant</span><span class="o">&gt;</span> <span class="n">Sources</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">MediatorParticipant</span><span class="o">&gt;</span> <span class="n">Mediators</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SinkParticipant</span><span class="o">&gt;</span> <span class="n">Sinks</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="cp">#endif </span><span class="c1">//LIBOMEXMETA_PARTICIPANT_H</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

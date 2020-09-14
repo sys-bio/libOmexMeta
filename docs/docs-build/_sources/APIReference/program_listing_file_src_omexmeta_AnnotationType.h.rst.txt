@@ -1,0 +1,38 @@
+
+.. _program_listing_file_src_omexmeta_AnnotationType.h:
+
+Program Listing for File AnnotationType.h
+=========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_omexmeta_AnnotationType.h>` (``src/omexmeta/AnnotationType.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   //
+   // Created by Ciaran on 4/22/2020.
+   //
+   
+   #ifndef LIBOMEXMETA_ANNOTATIONTYPE_H
+   #define LIBOMEXMETA_ANNOTATIONTYPE_H
+   
+   /*
+    * AnnotationType enum for indicating the type of annotation.
+    * For developers: Possibly not needed.
+    */
+   namespace omexmeta {
+       /*
+        * Denotes the type of composite annotation in use.
+        */
+       enum AnnotationType {
+           PHYSICAL_ENTITY,
+           PHYSICAL_PROCESS,
+           PHYSICAL_FORCE,
+           SINGULAR,
+           UNKNOWN
+       };
+   }
+   
+   
+   #endif //LIBOMEXMETA_ANNOTATIONTYPE_H

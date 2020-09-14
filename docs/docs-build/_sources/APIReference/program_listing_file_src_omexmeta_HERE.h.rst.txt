@@ -1,0 +1,25 @@
+
+.. _program_listing_file_src_omexmeta_HERE.h:
+
+Program Listing for File HERE.h
+===============================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_omexmeta_HERE.h>` (``src/omexmeta/HERE.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   //
+   // Created by Ciaran on 5/20/2020.
+   //
+   
+   #ifndef LIBOMEXMETA_HERE_H
+   #define LIBOMEXMETA_HERE_H
+   // macro helpful for debugging
+   #define HERE()                              \
+   do {                                        \
+     std::cout << __FILE__ << ":" << __LINE__ << std::endl; \
+   } while (0)
+   
+   #endif //LIBOMEXMETA_HERE_H

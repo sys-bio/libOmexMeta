@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ae8449eb64b4cb3efac28fea27f94923d:
+
+Function omexmeta::SingularAnnotation_getResource
+=================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::SingularAnnotation_getResource(SingularAnnotation *)

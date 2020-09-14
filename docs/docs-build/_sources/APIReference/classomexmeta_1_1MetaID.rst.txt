@@ -1,0 +1,16 @@
+.. _exhale_class_classomexmeta_1_1MetaID:
+
+Class MetaID
+============
+
+- Defined in :ref:`file_src_omexmeta_MetaID.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::MetaID
+   :members:
+   :protected-members:
+   :undoc-members:

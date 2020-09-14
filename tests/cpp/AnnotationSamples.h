@@ -254,6 +254,15 @@ public:
                                                   "\n"
                                                   "</rdf:RDF>";
 
+    std::string simple_input_turtle_string = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                             "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                                             "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                                             "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                                             "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                             "\n"
+                                             "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>\n"
+                                             "     bqbiol:is <https://identifiers.org/uniprot/PD12345> .\n";
+
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
             omexmeta::OmexMetaUtils::removeIfExists(file);

@@ -1,0 +1,16 @@
+.. _exhale_class_classomexmeta_1_1PhysicalProperty:
+
+Class PhysicalProperty
+======================
+
+- Defined in :ref:`file_src_omexmeta_PhysicalProperty.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::PhysicalProperty
+   :members:
+   :protected-members:
+   :undoc-members:

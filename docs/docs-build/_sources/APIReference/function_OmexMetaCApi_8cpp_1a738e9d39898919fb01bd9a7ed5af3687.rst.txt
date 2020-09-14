@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a738e9d39898919fb01bd9a7ed5af3687:
+
+Function omexmeta::PhysicalProcess_getAbout
+===========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalProcess_getAbout(PhysicalProcess *)

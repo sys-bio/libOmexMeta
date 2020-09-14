@@ -1,0 +1,22 @@
+.. _exhale_struct_structredland_1_1LibrdfStorage_1_1deleter:
+
+Struct LibrdfStorage::deleter
+=============================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfStorage.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classredland_1_1LibrdfStorage`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: redland::LibrdfStorage::deleter
+   :members:
+   :protected-members:
+   :undoc-members:

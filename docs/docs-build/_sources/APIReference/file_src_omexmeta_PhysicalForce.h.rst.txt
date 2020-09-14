@@ -1,0 +1,75 @@
+
+.. _file_src_omexmeta_PhysicalForce.h:
+
+File PhysicalForce.h
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/PhysicalForce.h``)
+---------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_PhysicalForce.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``OmexMetaUtils.h`` (:ref:`file_src_omexmeta_OmexMetaUtils.h`)
+
+- ``Participant.h`` (:ref:`file_src_omexmeta_Participant.h`)
+
+- ``PhysicalPhenomenon.h`` (:ref:`file_src_omexmeta_PhysicalPhenomenon.h`)
+
+- ``PhysicalProperty.h`` (:ref:`file_src_omexmeta_PhysicalProperty.h`)
+
+- ``RedlandWrapper.h`` (:ref:`file_src_redland_RedlandWrapper_src_RedlandWrapper.h`)
+
+- ``librdf.h``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_Editor.h`
+
+- :ref:`file_src_omexmeta_OmexMeta.h`
+
+- :ref:`file_src_omexmeta_OmexMetaCApi.h`
+
+- :ref:`file_src_omexmeta_PhysicalForce.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classomexmeta_1_1PhysicalForce`
+

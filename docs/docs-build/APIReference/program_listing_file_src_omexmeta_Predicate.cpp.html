@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File Predicate.cpp &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File Predicate.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_Predicate.cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-predicate-cpp">
+<span id="program-listing-file-src-omexmeta-predicate-cpp"></span><h1>Program Listing for File Predicate.cpp<a class="headerlink" href="#program-listing-for-file-predicate-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_Predicate.cpp.html#file-src-omexmeta-predicate-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/Predicate.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 4/17/2020.</span>
+<span class="c1">//</span>
+
+
+
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/Predicate.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+    <span class="n">Predicate</span><span class="o">::</span><span class="n">Predicate</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">namespace_</span><span class="p">,</span>
+                         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">term</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">prefix</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">namespace_</span><span class="p">(</span><span class="n">namespace_</span><span class="p">),</span> <span class="n">term_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">term</span><span class="p">)),</span>
+              <span class="n">prefix_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span> <span class="o">||</span> <span class="n">namespace_</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;#&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">uri_</span> <span class="o">=</span> <span class="n">namespace_</span> <span class="o">+</span> <span class="n">term_</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">uri_</span> <span class="o">=</span> <span class="n">namespace_</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">term_</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">node_</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">uri_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">Predicate</span><span class="o">::</span><span class="n">Predicate</span><span class="p">(</span><span class="n">librdf_node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">node_</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
+                    <span class="s">&quot;RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null&quot;</span><span class="p">);</span>
+        <span class="c1">// some logic for processing the uri in a node to automatically produce the fields we want.</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">val</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">str</span><span class="p">(</span><span class="n">node_</span><span class="p">);</span>
+
+        <span class="c1">// split the uri by &#39;/&#39;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="c1">// add protocol portion which should always be the first bit</span>
+        <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;//&quot;</span><span class="p">;</span>
+
+        <span class="c1">// add the middle portion to the stream.</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;/&quot;</span><span class="p">;</span> <span class="c1">// other parts of the url - up until the last bit</span>
+        <span class="p">}</span>
+        <span class="c1">// When predicate ends in &#39;#&#39; we need different logic to when the predicate ends in &#39;/&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">find</span><span class="p">(</span><span class="sc">&#39;#&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// split last portion by &#39;#&#39; such as .../omexmeta#hasSourceParticipant</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">last_bit</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">splitStringBy</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="sc">&#39;#&#39;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">last_bit</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;Predicate::Predicate(): For developers. Should never have more than two &quot;</span>
+                                       <span class="s">&quot;strings in this vector of strings&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// into omexmeta# and hasSourceParticipant</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">last_bit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;#&quot;</span><span class="p">;</span>
+            <span class="n">term_</span> <span class="o">=</span> <span class="n">last_bit</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">term_</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="n">namespace_</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+
+        <span class="n">prefix_</span> <span class="o">=</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">namespaceMap</span><span class="p">()[</span><span class="n">namespace_</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">prefix_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">prefix_</span> <span class="o">=</span> <span class="s">&quot;NotSet&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">uri_</span> <span class="o">=</span> <span class="n">namespace_</span> <span class="o">+</span> <span class="n">term_</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">uri_</span> <span class="o">=</span> <span class="n">namespace_</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">term_</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">node_</span> <span class="o">=</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">uri_</span><span class="p">).</span><span class="n">get</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">Predicate</span><span class="o">::</span><span class="n">getNamespace</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">namespace_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">Predicate</span><span class="o">::</span><span class="n">getTerm</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">term_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">Predicate</span><span class="o">::</span><span class="n">getPrefix</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">prefix_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">Predicate</span><span class="o">::</span><span class="n">getUri</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">namespaceKnown</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">ns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">known</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span> <span class="p">:</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">namespaceMap</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ns</span> <span class="o">==</span> <span class="n">it</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">known</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">known</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">namespaceMap</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// todo I can&#39;t remember exactly why I chose to have prefix second and namespace first</span>
+        <span class="c1">//  but it no longer seems like it makes sense. Swap these around and change the bits of</span>
+        <span class="c1">//  code that use the namespaceMap so that first is second and second is first.</span>
+        <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">{</span>
+                <span class="p">{</span><span class="s">&quot;http://xmlns.com/foaf/0.1/&quot;</span><span class="p">,</span>                                    <span class="s">&quot;foaf&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;</span><span class="p">,</span> <span class="s">&quot;dc&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;https://orcid.org/&quot;</span><span class="p">,</span>                                            <span class="s">&quot;orcid&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://biomodels.net/model-qualifiers/&quot;</span><span class="p">,</span>                        <span class="s">&quot;bqmodel&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://biomodels.net/biology-qualifiers/&quot;</span><span class="p">,</span>                      <span class="s">&quot;bqbiol&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;https:identifiers.org/pubmed/&quot;</span><span class="p">,</span>                                 <span class="s">&quot;pubmed&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://identifiers.org/taxonomy/&quot;</span><span class="p">,</span>                              <span class="s">&quot;NCBI_Taxon&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;&lt;http://identifiers.org/biomodels.db/&gt;&quot;</span><span class="p">,</span>                        <span class="s">&quot;biomod&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://identifiers.org/CHEBI&quot;</span><span class="p">,</span>                                  <span class="s">&quot;chebi&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://identifiers.org/uniprot/&quot;</span><span class="p">,</span>                               <span class="s">&quot;uniprot&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://www.bhi.washington.edu/semsim#&quot;</span><span class="p">,</span>                         <span class="s">&quot;semsim&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://identifiers.org/opb/&quot;</span><span class="p">,</span>                                   <span class="s">&quot;opb&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://identifiers.org/fma/&quot;</span><span class="p">,</span>                                   <span class="s">&quot;fma&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span><span class="p">,</span>                                     <span class="s">&quot;dcterms&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">&quot;http://OMEXlibrary.org/&quot;</span><span class="p">,</span>                                     <span class="s">&quot;OMEXlib&quot;</span><span class="p">},</span>
+
+        <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">str</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">uri_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">Predicate</span><span class="o">::</span><span class="n">getValidTerms</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">valid_terms_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">verify</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">valid_terms</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// when valled from the base Predicate class, accept anything</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">valid_terms</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">valid_terms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;All&quot;</span><span class="p">)</span>
+                <span class="k">return</span><span class="p">;</span>
+        <span class="c1">// when called from any other class (which should have overridden valid_terms), we do validatation</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">valid_terms</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">valid_terms</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">term</span><span class="p">)</span> <span class="o">!=</span> <span class="n">valid_terms</span><span class="p">.</span><span class="n">end</span><span class="p">()))</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">__FILE__</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">__LINE__</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;: Invalid term </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">term</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">given. Terms available for &quot;</span>
+               <span class="o">&lt;&lt;</span> <span class="s">&quot; include: &quot;</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">valid_terms</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">librdf_node</span> <span class="o">*</span><span class="n">Predicate</span><span class="o">::</span><span class="n">getNode</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">node_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">setNode</span><span class="p">(</span><span class="n">librdf_node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">node_</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">freeNode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">freeNode</span><span class="p">(</span><span class="n">node_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">addSeenNamespaceToSerializer</span><span class="p">(</span><span class="n">librdf_world</span> <span class="o">*</span><span class="n">world</span><span class="p">,</span>
+                                                 <span class="n">librdf_serializer</span> <span class="o">*</span><span class="n">serializer</span><span class="p">,</span> <span class="n">librdf_node</span> <span class="o">*</span><span class="n">predicate</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// null checks</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">world</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
+                    <span class="s">&quot;RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: world is null&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">serializer</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
+                    <span class="s">&quot;RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: serializer is null&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">predicate</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
+                    <span class="s">&quot;RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: predicate is null&quot;</span><span class="p">);</span>
+
+        <span class="c1">// grab the uri inside predicate node</span>
+        <span class="n">librdf_uri</span> <span class="o">*</span><span class="n">pred_uri</span> <span class="o">=</span> <span class="n">librdf_node_get_uri</span><span class="p">(</span><span class="n">predicate</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pred_uri</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
+                    <span class="s">&quot;RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: uri is null. Maybe your predicate node isn&#39;t really a predicate node&quot;</span><span class="p">);</span>
+
+        <span class="c1">// retrieve the namespace that we want to check</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">librdf_uri_as_string</span><span class="p">(</span><span class="n">pred_uri</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">pred_string</span><span class="p">((</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">s</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">pred_namespace</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">getNamespaceFromUri</span><span class="p">(</span><span class="n">pred_string</span><span class="p">);</span>
+
+        <span class="c1">// get the namespacs to check against</span>
+        <span class="n">NamespaceMap</span> <span class="n">ns_map</span> <span class="o">=</span> <span class="n">Predicate</span><span class="o">::</span><span class="n">namespaceMap</span><span class="p">();</span>
+
+        <span class="c1">// if their namespace matches one we know, add it to the model</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">ns_map</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">ns</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pred_namespace</span> <span class="o">==</span> <span class="n">ns</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">librdf_uri</span> <span class="o">*</span><span class="n">u</span> <span class="o">=</span> <span class="n">librdf_new_uri</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">ns</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+                <span class="n">librdf_serializer_set_namespace</span><span class="p">(</span><span class="n">serializer</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">prefix</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+                <span class="n">librdf_free_uri</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">Predicate</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">Predicate</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_node_equals</span><span class="p">(</span><span class="n">node_</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">node_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">Predicate</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">Predicate</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">rhs</span> <span class="o">==</span> <span class="o">*</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="n">BiomodelsBiologyQualifier</span><span class="o">::</span><span class="n">BiomodelsBiologyQualifier</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="o">:</span>
+            <span class="n">Predicate</span><span class="p">(</span><span class="s">&quot;http://biomodels.net/biology-qualifiers/&quot;</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="s">&quot;bqbiol&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*</span>
+<span class="cm">         * note: verify cannot be a virtual function</span>
+<span class="cm">         * because I want to use it in the constructor.</span>
+<span class="cm">         * Therefore, I made Predicate::verify static</span>
+<span class="cm">         * to reduce code duplication.</span>
+<span class="cm">         */</span>
+        <span class="n">verify</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">BiomodelsBiologyQualifier</span><span class="o">::</span><span class="n">verify</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Predicate</span><span class="o">::</span><span class="n">verify</span><span class="p">(</span><span class="n">valid_terms_</span><span class="p">,</span> <span class="n">term_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">BiomodelsModelQualifier</span><span class="o">::</span><span class="n">BiomodelsModelQualifier</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="o">:</span>
+            <span class="n">Predicate</span><span class="p">(</span><span class="s">&quot;http://biomodels.net/model-qualifiers/&quot;</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="s">&quot;bqmodel&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">verify</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">BiomodelsModelQualifier</span><span class="o">::</span><span class="n">verify</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Predicate</span><span class="o">::</span><span class="n">verify</span><span class="p">(</span><span class="n">valid_terms_</span><span class="p">,</span> <span class="n">term_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">DCTerm</span><span class="o">::</span><span class="n">DCTerm</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="o">:</span>
+            <span class="n">Predicate</span><span class="p">(</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="s">&quot;dcterms&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">verify</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">DCTerm</span><span class="o">::</span><span class="n">verify</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Predicate</span><span class="o">::</span><span class="n">verify</span><span class="p">(</span><span class="n">valid_terms_</span><span class="p">,</span> <span class="n">term_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">SemSim</span><span class="o">::</span><span class="n">SemSim</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="o">:</span>
+            <span class="n">Predicate</span><span class="p">(</span><span class="s">&quot;http://www.bhi.washington.edu/semsim#&quot;</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="s">&quot;semsim&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">verify</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">SemSim</span><span class="o">::</span><span class="n">verify</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Predicate</span><span class="o">::</span><span class="n">verify</span><span class="p">(</span><span class="n">valid_terms_</span><span class="p">,</span> <span class="n">term_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">Foaf</span><span class="o">::</span><span class="n">Foaf</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="o">:</span>
+            <span class="n">Predicate</span><span class="p">(</span><span class="s">&quot;http://xmlns.com/foaf/0.1/&quot;</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="s">&quot;foaf&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">verify</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Foaf</span><span class="o">::</span><span class="n">verify</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Predicate</span><span class="o">::</span><span class="n">verify</span><span class="p">(</span><span class="n">valid_terms_</span><span class="p">,</span> <span class="n">term_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * A factory function for creating PredicatePtr objects.</span>
+<span class="cm">     */</span>
+    <span class="n">PredicatePtr</span> <span class="n">PredicateFactory</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">namespace_</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">term</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">valid_namespace_strings</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">&quot;bqbiol&quot;</span><span class="p">,</span>
+                <span class="s">&quot;bqmodel&quot;</span><span class="p">,</span>
+                <span class="s">&quot;dc&quot;</span><span class="p">,</span>
+                <span class="s">&quot;semsim&quot;</span><span class="p">,</span>
+                <span class="s">&quot;foaf&quot;</span><span class="p">,</span>
+                <span class="s">&quot;BiomodelsBiologyQualifier&quot;</span><span class="p">,</span>
+                <span class="s">&quot;BiomodelsModelQualifier&quot;</span><span class="p">,</span>
+                <span class="s">&quot;DCTerm&quot;</span>
+        <span class="p">};</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">valid_namespace_strings</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">valid_namespace_strings</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">namespace_</span><span class="p">)</span> <span class="o">==</span>
+            <span class="n">valid_namespace_strings</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Namespace </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">namespace_</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> is not valid. These are &quot;</span><span class="p">;</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; valid namespaces: &quot;</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">valid_namespace_strings</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;. Note, they are not case sensitive. See also </span><span class="se">\&quot;</span><span class="s">setPredicateFromUri</span><span class="se">\&quot;</span><span class="s"> &quot;</span><span class="p">;</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;for using a predicate URI not built in.&quot;</span><span class="p">;</span>
+            <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="c1">// ensure we only compare in lowercase</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">namespace_</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">namespace_</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="kt">char</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">tolower</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="n">PredicatePtr</span> <span class="n">predicatePtr</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;bqbiol&quot;</span> <span class="o">||</span> <span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;biomodelsbiologyqualifier&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">predicatePtr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">BiomodelsBiologyQualifier</span><span class="o">&gt;</span><span class="p">(</span>
+                    <span class="n">BiomodelsBiologyQualifier</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;bqmodel&quot;</span> <span class="o">||</span> <span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;biomodelsmodelqualifier&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">predicatePtr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">BiomodelsModelQualifier</span><span class="o">&gt;</span><span class="p">(</span>
+                    <span class="n">BiomodelsModelQualifier</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;dc&quot;</span> <span class="o">||</span> <span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;dcterms&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">predicatePtr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">DCTerm</span><span class="o">&gt;</span><span class="p">(</span>
+                    <span class="n">DCTerm</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;semsim&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">predicatePtr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">SemSim</span><span class="o">&gt;</span><span class="p">(</span>
+                    <span class="n">SemSim</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">namespace_</span> <span class="o">==</span> <span class="s">&quot;foaf&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">predicatePtr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Foaf</span><span class="o">&gt;</span><span class="p">(</span>
+                    <span class="n">Foaf</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;Invalid term argument: PredicateFactory(): </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">term</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">predicatePtr</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

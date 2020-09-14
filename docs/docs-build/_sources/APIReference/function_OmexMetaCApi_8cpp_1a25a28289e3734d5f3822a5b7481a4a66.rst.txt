@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a25a28289e3734d5f3822a5b7481a4a66:
+
+Function omexmeta::Editor_addPubmed
+===================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_addPubmed(Editor *, const char *)

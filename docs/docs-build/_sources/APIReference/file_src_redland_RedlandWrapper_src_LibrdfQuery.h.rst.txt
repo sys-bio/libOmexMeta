@@ -1,0 +1,69 @@
+
+.. _file_src_redland_RedlandWrapper_src_LibrdfQuery.h:
+
+File LibrdfQuery.h
+==================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_redland_RedlandWrapper_src>` (``src/redland/RedlandWrapper/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/redland/RedlandWrapper/src/LibrdfQuery.h``)
+-------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_redland_RedlandWrapper_src_LibrdfQuery.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``World.h`` (:ref:`file_src_redland_RedlandWrapper_src_World.h`)
+
+- ``librdf.h``
+
+- ``memory``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_OmexMetaUtils.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfModel.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfQuery.cpp`
+
+- :ref:`file_src_redland_RedlandWrapper_src_RedlandWrapper.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_redland`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structredland_1_1LibrdfQuery_1_1deleter`
+
+- :ref:`exhale_class_classredland_1_1LibrdfQuery`
+

@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1ac6084a3267ee31fd19e534bd91092a0f:
+
+Function omexmeta::RDF_addFromUri
+=================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::RDF_addFromUri(RDF *, const char *, const char *)

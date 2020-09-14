@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a2f4a5c35fefa709d6ef73587c915610c:
+
+Function omexmeta::SingularAnnotation_setPredicate
+==================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::SingularAnnotation_setPredicate(SingularAnnotation *, const char *, const char *)

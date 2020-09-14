@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a910605f0483d652c7c0cde1f1707e627:
+
+Function omexmeta::PersonalInformation_getMetaid
+================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PersonalInformation_getMetaid(PersonalInformation *)

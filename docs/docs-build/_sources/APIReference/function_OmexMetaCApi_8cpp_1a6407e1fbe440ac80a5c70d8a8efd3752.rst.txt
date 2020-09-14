@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a6407e1fbe440ac80a5c70d8a8efd3752:
+
+Function omexmeta::SingularAnnotation_str
+=========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::SingularAnnotation_str(SingularAnnotation *, const char *, const char *)

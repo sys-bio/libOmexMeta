@@ -1,0 +1,83 @@
+
+.. _file_src_redland_RedlandWrapper_src_LibrdfNode.h:
+
+File LibrdfNode.h
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_redland_RedlandWrapper_src>` (``src/redland/RedlandWrapper/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/redland/RedlandWrapper/src/LibrdfNode.h``)
+------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_redland_RedlandWrapper_src_LibrdfNode.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``LibrdfException.h`` (:ref:`file_src_redland_RedlandWrapper_src_LibrdfException.h`)
+
+- ``LibrdfUri.h`` (:ref:`file_src_redland_RedlandWrapper_src_LibrdfUri.h`)
+
+- ``World.h`` (:ref:`file_src_redland_RedlandWrapper_src_World.h`)
+
+- ``librdf.h``
+
+- ``memory``
+
+- ``raptor2.h``
+
+- ``sstream``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_Subject.h`
+
+- :ref:`file_src_omexmeta_Triple.h`
+
+- :ref:`file_src_omexmeta_Resource.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfStatement.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfNode.cpp`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfParser.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfSerializer.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_RedlandWrapper.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_redland`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classredland_1_1LibrdfNode`
+

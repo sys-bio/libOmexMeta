@@ -1,0 +1,67 @@
+
+.. _file_src_omexmeta_RDF.h:
+
+File RDF.h
+==========
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/RDF.h``)
+-----------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_RDF.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``Editor.h`` (:ref:`file_src_omexmeta_Editor.h`)
+
+- ``RedlandWrapper.h`` (:ref:`file_src_redland_RedlandWrapper_src_RedlandWrapper.h`)
+
+- ``omexmeta/OmexMetaUtils.h`` (:ref:`file_src_omexmeta_OmexMetaUtils.h`)
+
+- ``unordered_map``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_OmexMeta.h`
+
+- :ref:`file_src_omexmeta_OmexMetaCApi.h`
+
+- :ref:`file_src_omexmeta_RDF.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classomexmeta_1_1RDF`
+

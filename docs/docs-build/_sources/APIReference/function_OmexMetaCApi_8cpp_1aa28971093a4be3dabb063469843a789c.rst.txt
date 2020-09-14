@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1aa28971093a4be3dabb063469843a789c:
+
+Function omexmeta::PhysicalProcess_delete
+=========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalProcess_delete(PhysicalProcess *)

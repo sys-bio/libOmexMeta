@@ -1,0 +1,25 @@
+.. _exhale_class_classomexmeta_1_1BiomodelsModelQualifier:
+
+Class BiomodelsModelQualifier
+=============================
+
+- Defined in :ref:`file_src_omexmeta_Predicate.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public omexmeta::Predicate`` (:ref:`exhale_class_classomexmeta_1_1Predicate`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::BiomodelsModelQualifier
+   :members:
+   :protected-members:
+   :undoc-members:

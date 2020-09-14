@@ -1,0 +1,16 @@
+.. _exhale_class_classredland_1_1LibrdfParser:
+
+Class LibrdfParser
+==================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfParser.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: redland::LibrdfParser
+   :members:
+   :protected-members:
+   :undoc-members:

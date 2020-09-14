@@ -1,0 +1,46 @@
+
+.. _file_src_omexmeta_Resource.cpp:
+
+File Resource.cpp
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/Resource.cpp``)
+------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_Resource.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``Error.h`` (:ref:`file_src_omexmeta_Error.h`)
+
+- ``Resource.h`` (:ref:`file_src_omexmeta_Resource.h`)
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_omexmeta`
+

@@ -1,0 +1,29 @@
+.. _exhale_class_classomexmeta_1_1Predicate:
+
+Class Predicate
+===============
+
+- Defined in :ref:`file_src_omexmeta_Predicate.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public omexmeta::BiomodelsBiologyQualifier`` (:ref:`exhale_class_classomexmeta_1_1BiomodelsBiologyQualifier`)
+- ``public omexmeta::BiomodelsModelQualifier`` (:ref:`exhale_class_classomexmeta_1_1BiomodelsModelQualifier`)
+- ``public omexmeta::DCTerm`` (:ref:`exhale_class_classomexmeta_1_1DCTerm`)
+- ``public omexmeta::Foaf`` (:ref:`exhale_class_classomexmeta_1_1Foaf`)
+- ``public omexmeta::SemSim`` (:ref:`exhale_class_classomexmeta_1_1SemSim`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::Predicate
+   :members:
+   :protected-members:
+   :undoc-members:

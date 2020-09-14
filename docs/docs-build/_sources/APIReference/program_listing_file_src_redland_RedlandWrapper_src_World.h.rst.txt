@@ -1,0 +1,98 @@
+
+.. _program_listing_file_src_redland_RedlandWrapper_src_World.h:
+
+Program Listing for File World.h
+================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_redland_RedlandWrapper_src_World.h>` (``src/redland/RedlandWrapper/src/World.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   //
+   // Created by Ciaran on 5/17/2020.
+   //
+   
+   #ifndef LIBOMEXMETA_WORLD_H
+   #define LIBOMEXMETA_WORLD_H
+   
+   #include "librdf.h"
+   
+   #include <iostream>
+   #include <memory>
+   #include <regex>
+   
+   //#include "LibrdfStorage.h"
+   //#include "RaptorWorld.h"
+   //#include "LibrdfModel.h"
+   //#include "LibrdfNode.h"
+   //#include "LibrdfUri.h"
+   //#include "LibrdfSerializer.h"
+   //#include "LibrdfParser.h"
+   //#include "LibrdfQuery.h"
+   
+   
+   //#include "redland/OmexMetaUtils.h"
+   //#include "redland/Subject.h"
+   //#include "redland/Predicate.h"
+   
+   namespace redland {
+   
+   
+       /*
+        * @brief C++ wrapper around librdf_world.
+        *
+        * World is a singleton
+        * class. Other classes can use the World
+        * by call to World::getWorld(). To implement
+        * the singleton, librdf_world* is allocated statically
+        * and therefore does not need to be destructed in the
+        * way that the other wrapper classes need to be
+        * (i.e. stack not heap)
+        */
+       class World {
+   
+           static librdf_world *world_;
+   
+           /*
+            * Private constructor prevents instancing
+            */
+           World();
+   
+           struct deleter {
+               void operator()(librdf_world *world);
+           };
+   
+       public:
+   
+           static librdf_world *getWorld();
+   
+           static raptor_world *getRaptor();
+   
+           static void free(librdf_world *world);
+   
+       };
+   
+   
+   }
+   
+   #endif //LIBOMEXMETA_WORLD_H
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

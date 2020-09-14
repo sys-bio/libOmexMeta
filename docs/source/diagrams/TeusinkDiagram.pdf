@@ -1,0 +1,13 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+
+	// Resources
+
+	// Anonymous nodes
+
+	// Literals
+
+	label="\n\nModel:\nfile://annotation-drawing.rdf\n\nNamespaces:\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
+}

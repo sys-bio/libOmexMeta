@@ -1,0 +1,381 @@
+
+.. _namespace_omexmeta:
+
+Namespace omexmeta
+==================
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classomexmeta_1_1AnnotationBuilderException`
+
+- :ref:`exhale_class_classomexmeta_1_1BiomodelsBiologyQualifier`
+
+- :ref:`exhale_class_classomexmeta_1_1BiomodelsModelQualifier`
+
+- :ref:`exhale_class_classomexmeta_1_1CellMLAssistant`
+
+- :ref:`exhale_class_classomexmeta_1_1CurlGet`
+
+- :ref:`exhale_class_classomexmeta_1_1DCTerm`
+
+- :ref:`exhale_class_classomexmeta_1_1Editor`
+
+- :ref:`exhale_class_classomexmeta_1_1Exception`
+
+- :ref:`exhale_class_classomexmeta_1_1Foaf`
+
+- :ref:`exhale_class_classomexmeta_1_1InappropriateResourceException`
+
+- :ref:`exhale_class_classomexmeta_1_1LibRDFException`
+
+- :ref:`exhale_class_classomexmeta_1_1MediatorParticipant`
+
+- :ref:`exhale_class_classomexmeta_1_1MetaID`
+
+- :ref:`exhale_class_classomexmeta_1_1NotImplementedException`
+
+- :ref:`exhale_class_classomexmeta_1_1NullPointerException`
+
+- :ref:`exhale_class_classomexmeta_1_1OmexMetaUtils`
+
+- :ref:`exhale_class_classomexmeta_1_1OmexMetaXmlAssistant`
+
+- :ref:`exhale_class_classomexmeta_1_1Participant`
+
+- :ref:`exhale_class_classomexmeta_1_1PersonalInformation`
+
+- :ref:`exhale_class_classomexmeta_1_1PhysicalEntity`
+
+- :ref:`exhale_class_classomexmeta_1_1PhysicalForce`
+
+- :ref:`exhale_class_classomexmeta_1_1PhysicalPhenomenon`
+
+- :ref:`exhale_class_classomexmeta_1_1PhysicalProcess`
+
+- :ref:`exhale_class_classomexmeta_1_1PhysicalProperty`
+
+- :ref:`exhale_class_classomexmeta_1_1Predicate`
+
+- :ref:`exhale_class_classomexmeta_1_1Query`
+
+- :ref:`exhale_class_classomexmeta_1_1RDF`
+
+- :ref:`exhale_class_classomexmeta_1_1Resource`
+
+- :ref:`exhale_class_classomexmeta_1_1SBMLAssistant`
+
+- :ref:`exhale_class_classomexmeta_1_1SemSim`
+
+- :ref:`exhale_class_classomexmeta_1_1SemsimXmlAssistantFactory`
+
+- :ref:`exhale_class_classomexmeta_1_1SinkParticipant`
+
+- :ref:`exhale_class_classomexmeta_1_1SourceParticipant`
+
+- :ref:`exhale_class_classomexmeta_1_1Subject`
+
+- :ref:`exhale_class_classomexmeta_1_1Triple`
+
+- :ref:`exhale_class_classomexmeta_1_1Triples`
+
+- :ref:`exhale_class_classomexmeta_1_1ValueException`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7`
+
+- :ref:`exhale_enum_OmexMetaXmlAssistant_8h_1a6d848ffddcd75e64efafb46013b0e6fb`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ade76bf79372ee7c6ff5765a2b962c1af`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ae58d7b3e2d602063529868a45b57e873`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a49c458a672568d4a575932d28380e7fb`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a0f8295727c3340929820fb5898978d88`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1af940d16829df457f097fe806101ebcad`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a20d9511ad10cbbd15f169080bde90cf5`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a6a3dc728ba1b214d3028678805d6bb27`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a2074a13370c95f2eb95b9e184731c0af`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a7add17a58eac3dc9183b326ba923f3ba`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac7b30a9883084e480eae169c0a6f8202`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a2cc0f1b7d7e993dfd66baa8ad26084d4`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ad6f18874d15427e7d5f55b9b3592deb9`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a25a28289e3734d5f3822a5b7481a4a66`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a1747f74d2f87299dc4a3a02326198c03`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a6253e1a5b5d7f3162cd5373ae153bae1`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a257d15d5158f9dca2e37fc5306529259`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a1d39a41e1a084de49920a4d3ec43aa32`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a935b4c8611d6585a6082814d1983c0d6`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a1c7fb825834051d5a5ab201532ae306b`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1addb9c62254a5a27354715a51f21acb2c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a0afd0ae753655a6e3b0617e551327e71`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a9aa282fd475c7fe5c2ce12845f4f7355`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a4755a9c8c4333238d6bfa41dac21b134`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a66f88e1f67ed3e11b2ca438e0fc784ee`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a7ce631c18bf1f80bfaccfe8ce88646ce`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1afb602ca86c9c9f4cd5467f841022beb0`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a76c434105975615e46486e7f27f44b27`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a36c5866f590f4a73458cbd69627f24da`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a4d8094aa4f47e9e32442a3fda84ee48c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a2594067cfd1f6a61df3017a394e17c01`
+
+- :ref:`exhale_function_OmexMetaCApi_8h_1a9d7674ac63ed370deb2df2436131b51d`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ab5a1995c636cc4d4f637025809423844`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a04ffcebeb8b1f9d16f39497d8a2445c1`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a88cad1055c285bcc4089589886bfccb6`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a3c213fe7f922c034e6da7aa92faa9e9d`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a366741b34344cd9dc4b7b170baad5c71`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1afd29c234242182fddd7227b4ef3f7f65`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ad723a7d556dde73f19706f0216fd230b`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a255bfeb09377d6199d96825cec0cbc35`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a9a4d5d0e57526ceaa25b42916cab151a`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1af8d335f371bb0bb326611f4b271ed808`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a7c01442ec1322110c4315e9c24680c5d`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1afed64a746f2c47651f89bb52a27be281`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a5cae44b7b51098596d41da6889a054da`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a910605f0483d652c7c0cde1f1707e627`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac2058a58789fe883478d389e3bd8f718`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ae7d2d0358cace729cb9e1943216553bf`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ae56d63835ab34d9fff46174f042a0fc3`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ad34abd30e16eb81b72522cb2b8324362`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a8fc11310522b23ba7e917dd297921a37`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a090d56e50a0b22d6926a4a1e0e9b5567`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ad419e458404391d614e606b07d11570a`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a9abd78f05905e6d184a81fd9624dbcfe`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a171a251bc4807e1e26ecd6b76d67835e`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a7edde7fda6d457c680fcb162ac22bfc4`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1afa8e33003201af57ace74aab4552b0f2`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a4569640ad8ce59edcef201f5f3824ff9`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a40251d2c4684f2a326713d313d65dd40`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac68c13f41d5ddcf1e4b8ec6c44122be8`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a9d84f6beeb0da40ef3fd39d1062190aa`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a42ba58aad14feb5396e9bbf2ffe6ac8a`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a8f6bb001fdb6907eb05c7a1450d89c4b`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1adc302977513e541f932bb2463d49267f`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a3fd476d941945107a6a0291101b20147`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a93a5d378fedef3c456502f730a081727`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a20c0b5c8fab0074bde9aa5e5ef31483c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a35b3bdd39e0d88fad9bab022640c6140`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1abe9d81f3530dd5b03a84def47b1b0513`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a4437d98a077fa1c39bcbf2afa930a0ff`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a999737c8802b6fc71f1bec24947aae02`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac6a34c85b864ba93bde80678383e0553`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac54a96562427fe3f3b9946796969afd3`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a867464e1e00afe9b1c850c7db4f1656c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ae9a9768a11e5a1a53a36ccd0d564cdfe`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aa28971093a4be3dabb063469843a789c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a2e307011315fde17073c502c3bf2253a`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a738e9d39898919fb01bd9a7ed5af3687`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a7ad65f0ec2f5c8433ebc126c75779520`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aaf4162aa78c2c7f73449705a3e0fc951`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aa7371fdf91f4c6c120e4559b23ad3585`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a8183b5144690cf3f873ba709dfc5341c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a1237f9ce6afb4113d6312157610faa42`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a63fc073ae29ceada6377ee9eb3696846`
+
+- :ref:`exhale_function_Predicate_8cpp_1a0a8d50daa10e421d0722520cdef0ab9a`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a2d15671ea03bc2c34fc3eca19dc4a34e`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a231f93f0b6285fefd14a2b9c2291c252`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac6084a3267ee31fd19e534bd91092a0f`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a3bc3d3a6a47687dcdd6a5612dac6c8d0`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a03d2c98713d318b2b61629150fce1f3e`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a70f8f372cd867ac7ef5a8aa9023defaa`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a40d1956db8a7fccdeac3fcc66f96c7e7`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a065138ba375bc77e286ea0f173f18c8b`
+
+- :ref:`exhale_function_OmexMetaCApi_8h_1a81b105f3d16bcb1ecb1b2815448aea73`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a24df88b09c50ad4fd9e35a8a19a82f79`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ac45eae0f8360d270084ed1bf078a6b49`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ab2043fd45ba0667c93b53f0361b5666d`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1afb4d2a4f73d23bf0cf7c6a02942bb6a0`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a75e60f25b525efa9212373f9fbf089e8`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aa2bb2328d661d00b8558216735e7095c`
+
+- :ref:`exhale_function_OmexMetaCApi_8h_1a000c176f0b27b90001ec0323df724fe5`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a86f1f1e176b008fbf6a59991bf5999db`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a6fd770f13dbdfef4f9b81c883a5a6801`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1afa3fd3cac3fdfdcfa40547c122031847`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aad2ca7a020aedde17f7debdf17e253c3`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1acc8a0babd9991de85fc50304afb82a08`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a0abc772a6421e19aa40cd66a90f148fe`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aecfd32e784e0e396d4211e8c58b23255`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1aa5b0f742c3488015d06d0b68c5b43d0b`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a09aaf0fb965a3c54768903b3f95eba16`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1af52606bea9afc7c6b7487b587d532ad1`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ae8449eb64b4cb3efac28fea27f94923d`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ace3bf03d4b3d31f10853a89136dd8796`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a59a3672e23a88817e3fbb3c364231700`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a2f4a5c35fefa709d6ef73587c915610c`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a9e79d39c7dacc21a99c8a1ee1368e942`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a7dd259cd6b27a3e42da22db937ce9ffe`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1ad043979e6492ebba70def6087165010d`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a9ef043f7cb353d827f8edcfa32b20153`
+
+- :ref:`exhale_function_OmexMetaCApi_8cpp_1a6407e1fbe440ac80a5c70d8a8efd3752`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_Participant_8h_1ac2d6392fea1506f1d5d13ebb155db3df`
+
+- :ref:`exhale_typedef_Editor_8h_1ad9c3f36d18cb218950d2780f2d4dc0a0`
+
+- :ref:`exhale_typedef_Participant_8h_1a90b8619f565d06ee3a8fa4d1cfda893c`
+
+- :ref:`exhale_typedef_PhysicalPhenomenon_8h_1aeb3054fca8bdfaeeae91c2f3e1bd8c27`
+
+- :ref:`exhale_typedef_Predicate_8h_1a2edd0078a7f3b226df6fb3382d76471a`
+
+- :ref:`exhale_typedef_Predicate_8h_1a84ba746aac1e9ee5c7256a2f2f393a41`
+
+- :ref:`exhale_typedef_Predicate_8h_1af916f97aa87900541cf46ca66139fc14`
+
+- :ref:`exhale_typedef_Resource_8h_1a211f941200e84d6258b6980a1101a978`
+
+- :ref:`exhale_typedef_Query_8h_1a08a1cea39a93f919e8c481f1307e9d64`
+
+- :ref:`exhale_typedef_Triples_8h_1a866d550d1c1d6bdadd778a73fef571bb`
+
+- :ref:`exhale_typedef_Triple_8h_1a7fc6fa4ba32424705fe4953ee297a795`
+
+- :ref:`exhale_typedef_Participant_8h_1a57d60796797e34581e3c1780985f0b59`
+
+- :ref:`exhale_typedef_Participant_8h_1a1c258e53336c37fdc17cf08a394f5198`
+
+- :ref:`exhale_typedef_Subject_8h_1a55c310aac91280285453df83fafa7d69`
+
+- :ref:`exhale_typedef_Triples_8h_1a0591b044477ac1101740fd7db67088bc`
+
+- :ref:`exhale_typedef_OmexMetaXmlAssistant_8h_1a602c5d1094d065496b79af07e9a3b28a`

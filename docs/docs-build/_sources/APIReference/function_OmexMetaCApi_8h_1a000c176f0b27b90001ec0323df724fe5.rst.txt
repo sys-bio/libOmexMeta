@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8h_1a000c176f0b27b90001ec0323df724fe5:
+
+Function omexmeta::RDF_setBaseUri
+=================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::RDF_setBaseUri(RDF *, const char *)

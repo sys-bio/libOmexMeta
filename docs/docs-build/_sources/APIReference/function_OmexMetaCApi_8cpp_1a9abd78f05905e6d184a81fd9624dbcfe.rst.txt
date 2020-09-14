@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a9abd78f05905e6d184a81fd9624dbcfe:
+
+Function omexmeta::PhysicalEntity_freeAll
+=========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalEntity_freeAll(PhysicalEntity *)

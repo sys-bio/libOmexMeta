@@ -1,0 +1,22 @@
+.. _exhale_struct_structredland_1_1LibrdfQueryResults_1_1deleter:
+
+Struct LibrdfQueryResults::deleter
+==================================
+
+- Defined in :ref:`file_src_redland_RedlandWrapper_src_LibrdfQueryResults.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classredland_1_1LibrdfQueryResults`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: redland::LibrdfQueryResults::deleter
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,16 @@
+.. _exhale_class_classomexmeta_1_1Query:
+
+Class Query
+===========
+
+- Defined in :ref:`file_src_omexmeta_Query.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::Query
+   :members:
+   :protected-members:
+   :undoc-members:

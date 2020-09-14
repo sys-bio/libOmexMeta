@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File OmexMetaUtils.h &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File OmexMetaUtils.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_OmexMetaUtils.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-omexmetautils-h">
+<span id="program-listing-file-src-omexmeta-omexmetautils-h"></span><h1>Program Listing for File OmexMetaUtils.h<a class="headerlink" href="#program-listing-for-file-omexmetautils-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_OmexMetaUtils.h.html#file-src-omexmeta-omexmetautils-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/OmexMetaUtils.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 4/13/2020.</span>
+<span class="c1">//</span>
+
+<span class="cp">#ifndef LIBOMEXMETA_OMEXMETAUTILS_H</span>
+<span class="cp">#define LIBOMEXMETA_OMEXMETAUTILS_H</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/Query.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/CurlGet.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/MetaID.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;LibrdfQuery.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;librdf.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/stat.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;filesystem&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">redland</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+    <span class="k">class</span> <span class="nc">OmexMetaUtils</span> <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="n">OmexMetaUtils</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="kt">bool</span> <span class="nf">exists</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">removeFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">void</span> <span class="nf">removeIfExists</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">void</span> <span class="nf">download</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">url</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">filename</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">splitStringBy</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span> <span class="kt">char</span> <span class="n">delimiter</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief utility for generating unique metaids given an xml document</span>
+<span class="cm">         * @brief model a librdf_model* pointer</span>
+<span class="cm">         * @brief a string that will be used for the ID. There will be 4 digits, though this can be changed.</span>
+<span class="cm">         * @brief exclusions. Mostly needed internally for dealing with metaids that already exist.</span>
+<span class="cm">         */</span>
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">generateUniqueMetaid</span><span class="p">(</span>
+                <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">metaid_base</span><span class="p">,</span>
+                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">exclusions</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief process a string intended to be a base uri.</span>
+<span class="cm">         * @param str The string that will become a base uri</span>
+<span class="cm">         * @param absolute_path automatically make str an absolute path to the current</span>
+<span class="cm">         * working directory.</span>
+<span class="cm">         *</span>
+<span class="cm">         * Base uri&#39;s are important in redland libraries. If they do not begin with `file://`</span>
+<span class="cm">         * `http` or `https`, sparql querying will break down. This is a helper function</span>
+<span class="cm">         * to ensure the base uri is properly formatted.</span>
+<span class="cm">         */</span>
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">prepareBaseUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">absolute_path</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief takes a uri as std::string and returns the string</span>
+<span class="cm">         * with the last section removed;</span>
+<span class="cm">         *</span>
+<span class="cm">         * Example: www.uri.com/identifer/PD12345 will</span>
+<span class="cm">         * turn into www.uri.com/identifier/</span>
+<span class="cm">         */</span>
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getNamespaceFromUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">uri</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief helper function that returns true when</span>
+<span class="cm">         * uri starts with either `https://` `http://` or `file://`</span>
+<span class="cm">         * @param uri the uri to test.</span>
+<span class="cm">         */</span>
+        <span class="k">static</span> <span class="kt">bool</span> <span class="nf">isFormattedUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">uri</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief test to see whether a string ends with another string</span>
+<span class="cm">         * @param fullString the string to test</span>
+<span class="cm">         * @param ending the ending to test for</span>
+<span class="cm">         */</span>
+        <span class="k">static</span> <span class="kt">bool</span> <span class="nf">endsWith</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">full_string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">ending</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">bool</span>
+        <span class="nf">assertRegexMatchSplitByNewLine</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">expected_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">actual_string</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">bool</span> <span class="nf">assertMatchByNewLine</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">expected_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">actual_string</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief configures the &quot;OMEXlib&quot;, &quot;myOMEX&quot; and &quot;local&quot;</span>
+<span class="cm">         * prefixes</span>
+<span class="cm">         * @ param omex_name the name of the omex container your model is in</span>
+<span class="cm">         * @param model_name the name of the model your are annotating. Extension should</span>
+<span class="cm">         * be included or it will be given the &quot;.xml&quot; suffix.</span>
+<span class="cm">         */</span>
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span>
+        <span class="n">configurePrefixStrings</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">repository_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_name</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">stringReplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">string_to_replace</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">replacement</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">bool</span> <span class="nf">startsWith</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">full_string</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">start</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#endif </span><span class="c1">//LIBOMEXMETA_OMEXMETAUTILS_H</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

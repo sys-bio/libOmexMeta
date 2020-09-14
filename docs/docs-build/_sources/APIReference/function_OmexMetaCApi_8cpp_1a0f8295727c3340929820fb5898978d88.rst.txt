@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a0f8295727c3340929820fb5898978d88:
+
+Function omexmeta::Editor_addCurator
+====================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_addCurator(Editor *, const char *)

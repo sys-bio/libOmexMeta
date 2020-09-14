@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a1747f74d2f87299dc4a3a02326198c03:
+
+Function omexmeta::Editor_addSingleAnnotation
+=============================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_addSingleAnnotation(Editor *, SingularAnnotation *)

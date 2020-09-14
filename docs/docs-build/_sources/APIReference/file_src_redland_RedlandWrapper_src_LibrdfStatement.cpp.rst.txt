@@ -1,0 +1,46 @@
+
+.. _file_src_redland_RedlandWrapper_src_LibrdfStatement.cpp:
+
+File LibrdfStatement.cpp
+========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_redland_RedlandWrapper_src>` (``src/redland/RedlandWrapper/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/redland/RedlandWrapper/src/LibrdfStatement.cpp``)
+-------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_redland_RedlandWrapper_src_LibrdfStatement.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``LibrdfStatement.h`` (:ref:`file_src_redland_RedlandWrapper_src_LibrdfStatement.h`)
+
+- ``World.h`` (:ref:`file_src_redland_RedlandWrapper_src_World.h`)
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_redland`
+

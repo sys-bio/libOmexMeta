@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a66f88e1f67ed3e11b2ca438e0fc784ee:
+
+Function omexmeta::Editor_getXml
+================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_getXml(Editor *)

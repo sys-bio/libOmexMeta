@@ -133,6 +133,14 @@ namespace omexmeta {
         RDF rdf;
         LibrdfParser parser(format);
         parser.parseUri(uri_string, rdf.model_);
+
+        // update the list of "seen" namespaces
+        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
+        rdf.extractSemanticInformationFromSBML(uri_string);
         return rdf;
     }
 
@@ -145,6 +153,15 @@ namespace omexmeta {
     void RDF::addFromUri(const std::string &uri_string, const std::string &format) {
         LibrdfParser parser(format);
         parser.parseUri(uri_string, model_);
+
+        // update the list of "seen" namespaces
+        seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
+        extractSemanticInformationFromSBML(uri_string);
+
     }
 
     RDF RDF::fromFile(const std::string &filename, const std::string &format) {
@@ -152,6 +169,13 @@ namespace omexmeta {
         LibrdfParser parser(format);
         parser.parseFile(filename, rdf.model_, rdf.getLocalUri());
         rdf.classifyXmlTypeFromFile(filename, format);
+
+       // update the list of "seen" namespaces
+        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
 
         // Here we use the semantic extraction tool to collect
         // information if were using sbml
@@ -163,6 +187,13 @@ namespace omexmeta {
         LibrdfParser parser(format);
         parser.parseFile(filename, model_, getLocalUri());
         classifyXmlTypeFromFile(filename, format);
+        // update the list of "seen" namespaces
+        seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
+
         extractSemanticInformationFromSBML(filename);
     }
 
@@ -417,11 +448,8 @@ namespace omexmeta {
 
     void RDF::classifyXmlType(const std::string &xml, const std::string &input_format) {
         // when reading xml types, we try to classify the string
-        LOG("classifying xml type");
-            LOG("input format is : " << input_format);
         if (input_format == "rdfxml" || input_format == "rdfxml-abbrev" || input_format == "rdfxml-xmp") {
             MarkupIdentifier identifier(xml);
-            LOG("current omexmeta type: " << getXmlType());
             if (getXmlType() == OMEXMETA_TYPE_NOTSET) {
                 if (identifier.isSBML())
                     setXmlType(OMEXMETA_TYPE_SBML);
@@ -443,7 +471,6 @@ namespace omexmeta {
     }
 
     void RDF::classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format) {
-        LOG("classifying xml type");
         if (!OmexMetaUtils::exists(xml_file)) {
             std::ostringstream os;
             os << "File called \"" + xml_file + "\" does not exist.";
@@ -459,16 +486,13 @@ namespace omexmeta {
         std::string str;
         // if sbml is a filename on disk read it into a string
         if (OmexMetaUtils::exists(sbml)) {
-            LOG("extracting from file name");
             std::ifstream t(sbml);
             std::string x((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
             str = x;
         } else {
             str = sbml;
         }
-        LOG("xml tpe: " << getXmlType());
         if (getXmlType() == OMEXMETA_TYPE_SBML) {
-            LOG("type is sbml");
             // Opening an SBML model in the editor automatically uses
             // the SBMLSemanticExtraction class to get the information we want.
             // see constructor for Editor.

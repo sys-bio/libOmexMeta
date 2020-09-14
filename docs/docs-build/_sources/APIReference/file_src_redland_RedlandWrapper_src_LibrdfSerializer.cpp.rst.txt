@@ -1,0 +1,51 @@
+
+.. _file_src_redland_RedlandWrapper_src_LibrdfSerializer.cpp:
+
+File LibrdfSerializer.cpp
+=========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_redland_RedlandWrapper_src>` (``src/redland/RedlandWrapper/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/redland/RedlandWrapper/src/LibrdfSerializer.cpp``)
+--------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_redland_RedlandWrapper_src_LibrdfSerializer.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``LibrdfSerializer.h`` (:ref:`file_src_redland_RedlandWrapper_src_LibrdfSerializer.h`)
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_redland`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5`
+

@@ -1,0 +1,50 @@
+
+.. _file_src_omexmeta_Preproc.h:
+
+File Preproc.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/omexmeta/Preproc.h``)
+---------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_omexmeta_Preproc.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``ostream``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_OmexMetaCApi.h`
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_Preproc_8h_1ae6ac12a4cfb0d961a60cd539301ec592`
+

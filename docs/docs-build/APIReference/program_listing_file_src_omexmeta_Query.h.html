@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File Query.h &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File Query.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_Query.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-query-h">
+<span id="program-listing-file-src-omexmeta-query-h"></span><h1>Program Listing for File Query.h<a class="headerlink" href="#program-listing-for-file-query-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_Query.h.html#file-src-omexmeta-query-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/Query.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by Ciaran on 4/24/2020.</span>
+<span class="c1">//</span>
+
+<span class="cp">#ifndef LIBOMEXMETA_QUERY_H</span>
+<span class="cp">#define LIBOMEXMETA_QUERY_H</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;RedlandWrapper.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/Error.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaUtils.h&quot;</span><span class="cp"></span>
+<span class="c1">//#include &quot;omexmeta/Triple.h&quot;</span>
+<span class="c1">//#include &quot;omexmeta/Triples.h&quot;</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;librdf.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">redland</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
+
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">ResultsMap</span><span class="p">;</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * @brief interface for querying an rdf graph</span>
+<span class="cm">     * @class This class is basically a wrapper around both librdf_query and</span>
+<span class="cm">     * librdf_query_results. Query is not used by users directly but</span>
+<span class="cm">     * accessed indurectly without the users knowledge via the RDF::query method.</span>
+<span class="cm">     * Query results can be returned in 1 of 9 formats:</span>
+<span class="cm">     *  - xml</span>
+<span class="cm">     *  - json</span>
+<span class="cm">     *  - table</span>
+<span class="cm">     *  - csv</span>
+<span class="cm">     *  - mrk</span>
+<span class="cm">     *  - tsv</span>
+<span class="cm">     *  - html</span>
+<span class="cm">     *  - turtle</span>
+<span class="cm">     *  - rdfxml</span>
+<span class="cm">     */</span>
+    <span class="k">class</span> <span class="nc">Query</span> <span class="p">{</span>
+
+        <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">// will be cleaned up by RDF class</span>
+        <span class="n">librdf_query_results</span> <span class="o">*</span><span class="n">query_results_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="n">librdf_query</span> <span class="o">*</span><span class="n">q_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">query_</span><span class="p">;</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">valid_output_formats_</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">&quot;xml&quot;</span><span class="p">,</span>
+                <span class="s">&quot;json&quot;</span><span class="p">,</span>
+                <span class="s">&quot;table&quot;</span><span class="p">,</span>
+                <span class="s">&quot;csv&quot;</span><span class="p">,</span>
+                <span class="s">&quot;mkr&quot;</span><span class="p">,</span>
+                <span class="s">&quot;tsv&quot;</span><span class="p">,</span>
+                <span class="s">&quot;html&quot;</span><span class="p">,</span>
+                <span class="s">&quot;turtle&quot;</span><span class="p">,</span>
+                <span class="s">&quot;rdfxml&quot;</span><span class="p">,</span>
+        <span class="p">};</span>
+
+        <span class="kt">int</span> <span class="nf">next</span><span class="p">();</span>
+
+
+        <span class="kt">bool</span> <span class="nf">isBindings</span><span class="p">();</span>
+
+        <span class="kt">bool</span> <span class="nf">isBoolean</span><span class="p">();</span>
+
+        <span class="kt">int</span> <span class="nf">getBoolean</span><span class="p">();</span>
+
+        <span class="kt">int</span> <span class="nf">getCount</span><span class="p">();</span>
+
+
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getBindingsName</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">);</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getBindingValueByName</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="nf">getBindingsCount</span><span class="p">();</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief constructor for Query object</span>
+<span class="cm">         */</span>
+        <span class="n">Query</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">query</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         *</span>
+<span class="cm">         * @brief copy constructor for Query object</span>
+<span class="cm">         * @details deleted</span>
+<span class="cm">         *</span>
+<span class="cm">         * @class copy constructor is deleted because it makes using</span>
+<span class="cm">         * the underlying librdf_query and librdf_query_results pointers</span>
+<span class="cm">         * safer from a memory management perspective.</span>
+<span class="cm">         */</span>
+        <span class="n">Query</span><span class="p">(</span><span class="k">const</span> <span class="n">Query</span> <span class="o">&amp;</span><span class="n">query</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief move constructor for Query object</span>
+<span class="cm">         */</span>
+        <span class="n">Query</span><span class="p">(</span><span class="n">Query</span> <span class="o">&amp;&amp;</span><span class="n">query</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">         *</span>
+<span class="cm">         * @brief copy assignment constructor for Query object</span>
+<span class="cm">         * @details deleted</span>
+<span class="cm">         *</span>
+<span class="cm">         * @class copy assignment constructor is deleted because it makes using</span>
+<span class="cm">         * the underlying librdf_query and librdf_query_results pointers</span>
+<span class="cm">         * safer from a memory management perspective.</span>
+<span class="cm">         */</span>
+        <span class="n">Query</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Query</span> <span class="o">&amp;</span><span class="n">query</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">         *</span>
+<span class="cm">         * @brief move assignment constructor for Query object</span>
+<span class="cm">         *</span>
+<span class="cm">         */</span>
+        <span class="n">Query</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Query</span> <span class="o">&amp;&amp;</span><span class="n">query</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief free resources associated with a query object.</span>
+<span class="cm">         * @details it is the callers responsibility to ensure</span>
+<span class="cm">         * resources used by Query are released after use.</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span> <span class="nf">freeQuery</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @breif returns the results as a librdf_stream* object</span>
+<span class="cm">         *</span>
+<span class="cm">         * developers. Consider removing.</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span><span class="n">librdf_stream</span> <span class="o">*</span><span class="n">resultsAsLibRdfStream</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief returns query results in a map where keys are</span>
+<span class="cm">         * the variable names used in query and values are vectors</span>
+<span class="cm">         * of values for results.</span>
+<span class="cm">         *</span>
+<span class="cm">         * @details This is the only supported mechanism for ascertaining</span>
+<span class="cm">         * query results programatically, without needing to read/write to/from</span>
+<span class="cm">         * file. This method uses an iterator from librdf. When it gets to the end</span>
+<span class="cm">         * of the iterator, the iterator is &quot;used up&quot;. Therefore at the end of</span>
+<span class="cm">         * collecting the results as a map, the original query is re-run, so that</span>
+<span class="cm">         * the presently instantiated Query object is not rendered useless.</span>
+<span class="cm">         *</span>
+<span class="cm">         * If the query looks like this:</span>
+<span class="cm">         * @code</span>
+<span class="cm">         * std::string query_string =   &quot;SELECT ?x ?y ?z</span>
+<span class="cm">         *                              &quot;WHERE {&quot;</span>
+<span class="cm">         *                              &quot;   ?x ?y ?z&quot;</span>
+<span class="cm">         *                              &quot;}&quot;;</span>
+<span class="cm">         * Query query(query_string);</span>
+<span class="cm">         * @endcode</span>
+<span class="cm">         * The column names will be x, y and z and the results</span>
+<span class="cm">         * will be string representations of all subjects (?x),</span>
+<span class="cm">         * predicates (?y) and resources (?z) in a vector of size `n`,</span>
+<span class="cm">         * where n is the number of query results.</span>
+<span class="cm">         */</span>
+        <span class="n">ResultsMap</span> <span class="nf">resultsAsMap</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief collect the result of the query as a string</span>
+<span class="cm">         * @param output_format one of 9 strings used to choose how you</span>
+<span class="cm">         * want the results to be presented.</span>
+<span class="cm">         * Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml.</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">resultsAsStr</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">output_format</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">baseuri</span> <span class="o">=</span> <span class="s">&quot;query_results&quot;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * @brief Run a query.</span>
+<span class="cm">         * @details Users do not need to manually execute a query using this method.</span>
+<span class="cm">         * It is used automatically in the constructor for Query and again in Query::resultsAsMap.</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span> <span class="nf">runQuery</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * todo test implementing these commented out functions.</span>
+<span class="cm">         *  They were commented out before for circular dependency issues</span>
+<span class="cm">         *  but might be able do the same thing but inside the RDF object?</span>
+<span class="cm">         */</span>
+        <span class="c1">//        Triples resultsAsTriples();</span>
+        <span class="c1">//        RDF resultsAsRDF();</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#endif </span><span class="c1">//LIBOMEXMETA_QUERY_H</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a4569640ad8ce59edcef201f5f3824ff9:
+
+Function omexmeta::PhysicalEntity_getNumLocations
+=================================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalEntity_getNumLocations(PhysicalEntity *)

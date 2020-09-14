@@ -1,0 +1,95 @@
+
+.. _file_src_redland_RedlandWrapper_src_World.h:
+
+File World.h
+============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_redland_RedlandWrapper_src>` (``src/redland/RedlandWrapper/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/redland/RedlandWrapper/src/World.h``)
+-------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_redland_RedlandWrapper_src_World.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``iostream``
+
+- ``librdf.h``
+
+- ``memory``
+
+- ``regex``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_omexmeta_Subject.h`
+
+- :ref:`file_src_omexmeta_Predicate.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfNode.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfQueryResults.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfQuery.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfStorage.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfModel.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfStream.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfNode.cpp`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfParser.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfSerializer.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_RaptorIOStream.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfStatement.cpp`
+
+- :ref:`file_src_redland_RedlandWrapper_src_LibrdfUri.cpp`
+
+- :ref:`file_src_redland_RedlandWrapper_src_RedlandWrapper.h`
+
+- :ref:`file_src_redland_RedlandWrapper_src_World.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_redland`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structredland_1_1World_1_1deleter`
+
+- :ref:`exhale_class_classredland_1_1World`
+

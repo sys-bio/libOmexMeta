@@ -527,7 +527,46 @@ TEST_F(RDFTests, TestLocalPrefix){
 }
 
 
+class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {
+public:
+    std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD12345\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    AnnotationSamples samples;
+    const std::string& input_string = samples.simple_input_turtle_string;
 
+
+    ParserReadTesReadFromFileHasPrefixesTests() = default;
+
+};
+
+TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes){
+    RDF rdf = RDF::fromString(input_string, "turtle");
+    std::string output = rdf.toString("rdfxml-abbrev");
+    ASSERT_STREQ(expected.c_str(), output.c_str());
+}
+
+TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
+    std::filesystem::path fname = std::filesystem::current_path() /+ "annotation_file.rdf";
+    std::ofstream annot_file;
+
+    annot_file.open(fname);
+    annot_file << samples.simple_input_turtle_string;
+    annot_file.close();
+    RDF rdf = RDF::fromFile(fname, "turtle");
+    std::string output = rdf.toString("rdfxml-abbrev");
+
+    ASSERT_STREQ(expected.c_str(), output.c_str());
+    remove(fname.string().c_str());
+
+}
 
 
 

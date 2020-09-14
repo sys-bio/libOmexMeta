@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a231f93f0b6285fefd14a2b9c2291c252:
+
+Function omexmeta::RDF_addFromString
+====================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::RDF_addFromString(RDF *, const char *, const char *, const char *)

@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File LibrdfStorage.cpp &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File LibrdfStorage.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/program_listing_file_src_redland_RedlandWrapper_src_LibrdfStorage.cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-librdfstorage-cpp">
+<span id="program-listing-file-src-redland-redlandwrapper-src-librdfstorage-cpp"></span><h1>Program Listing for File LibrdfStorage.cpp<a class="headerlink" href="#program-listing-for-file-librdfstorage-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_redland_RedlandWrapper_src_LibrdfStorage.cpp.html#file-src-redland-redlandwrapper-src-librdfstorage-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/redland/RedlandWrapper/src/LibrdfStorage.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;LibrdfStorage.h&quot;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">redland</span> <span class="p">{</span>
+
+    <span class="kt">void</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">deleter</span><span class="o">::</span><span class="k">operator</span><span class="p">()(</span><span class="n">librdf_storage</span> <span class="o">*</span><span class="n">storage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">storage</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
+            <span class="n">librdf_free_storage</span><span class="p">(</span><span class="n">storage</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">LibrdfStorage</span><span class="p">(</span><span class="n">librdf_storage</span> <span class="o">*</span><span class="n">storage</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">storage_</span><span class="p">(</span><span class="n">storage</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">LibrdfStorage</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">storage_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">valid_stores_</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">valid_stores_</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">storage_name</span><span class="p">)</span> <span class="o">==</span> <span class="n">valid_stores_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">err</span><span class="p">;</span>
+            <span class="n">err</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">storage_name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> is not a valid storage name. These are your options &quot;</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">it</span> <span class="p">:</span> <span class="n">valid_stores_</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">err</span> <span class="o">&lt;&lt;</span> <span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">err</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="n">storage_</span> <span class="o">=</span> <span class="n">librdf_new_storage</span><span class="p">(</span>
+                <span class="n">World</span><span class="o">::</span><span class="n">getWorld</span><span class="p">(),</span> <span class="n">storage_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span>
+                <span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">options</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">storage_</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
+                    <span class="s">&quot;RedlandNullPointerException: LibrdfStorage::LibrdfStorage(): librdf_storage* &quot;</span>
+                    <span class="s">&quot;type:</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">storage_name</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> was not created. Nullptr.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">LibrdfStorage</span><span class="p">(</span><span class="n">LibrdfStorage</span> <span class="o">&amp;&amp;</span><span class="n">storage</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">storage</span><span class="p">.</span><span class="n">storage_</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">storage_</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
+                <span class="n">freeStorage</span><span class="p">();</span>
+            <span class="n">storage_</span> <span class="o">=</span> <span class="n">storage</span><span class="p">.</span><span class="n">storage_</span><span class="p">;</span>
+            <span class="n">storage</span><span class="p">.</span><span class="n">storage_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="n">LibrdfStorage</span> <span class="o">&amp;</span><span class="n">LibrdfStorage</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">LibrdfStorage</span> <span class="o">&amp;&amp;</span><span class="n">storage</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">storage</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">storage</span><span class="p">.</span><span class="n">storage_</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">storage_</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
+                    <span class="n">freeStorage</span><span class="p">();</span>
+                <span class="n">storage_</span> <span class="o">=</span> <span class="n">storage</span><span class="p">.</span><span class="n">storage_</span><span class="p">;</span>
+                <span class="n">storage</span><span class="p">.</span><span class="n">storage_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">librdf_storage</span> <span class="o">*</span><span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">storage_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">freeStorage</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">storage_</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">librdf_free_storage</span><span class="p">(</span><span class="n">storage_</span><span class="p">);</span>
+            <span class="n">storage_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">addStatement</span><span class="p">(</span><span class="n">librdf_statement</span> <span class="o">*</span><span class="n">statement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_storage_add_statement</span><span class="p">(</span><span class="n">storage_</span><span class="p">,</span> <span class="n">statement</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">addStatement</span><span class="p">(</span><span class="k">const</span> <span class="n">LibrdfStatement</span> <span class="o">&amp;</span><span class="n">statement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_storage_add_statement</span><span class="p">(</span><span class="n">storage_</span><span class="p">,</span> <span class="n">statement</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">size</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_storage_size</span><span class="p">(</span><span class="n">storage_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">commit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">librdf_storage_transaction_commit</span><span class="p">(</span><span class="n">storage_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">LibrdfStorage</span><span class="o">::</span><span class="n">printAvailableStorages</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">print_available_storages</span><span class="p">(</span><span class="n">World</span><span class="o">::</span><span class="n">getWorld</span><span class="p">());</span>
+    <span class="p">}</span>
+
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

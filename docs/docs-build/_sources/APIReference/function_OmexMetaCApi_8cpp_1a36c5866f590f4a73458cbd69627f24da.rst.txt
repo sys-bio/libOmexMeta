@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a36c5866f590f4a73458cbd69627f24da:
+
+Function omexmeta::Editor_removePhysicalProcess
+===============================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_removePhysicalProcess(Editor *, PhysicalProcess *)

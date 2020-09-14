@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a63fc073ae29ceada6377ee9eb3696846:
+
+Function omexmeta::PhysicalProcess_str
+======================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalProcess_str(PhysicalProcess *, const char *, const char *)

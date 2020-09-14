@@ -1,0 +1,3224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reading RDF &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Serializing RDF Graphs" href="../writing_rdf/writing_rdf.html" />
+    <link rel="prev" title="Background to Semantic Annotations" href="../background.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reading RDF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-string">Reading from a string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-from-a-string">Adding from a string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-uri">Reading from a URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-from-a-uri">Adding from a URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-file">Reading from a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-from-a-file">Adding from a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Reading RDF</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reading_rdf/reading_rdf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reading-rdf">
+<h1>Reading RDF<a class="headerlink" href="#reading-rdf" title="Permalink to this headline">¶</a></h1>
+<p>Reading RDF graphs revolves around the <cite>from*</cite> and <cite>add_from*</cite> methods,
+where the wildcard <cite>*</cite> is one of <cite>string</cite>, <cite>url</cite> or <cite>filename</cite>. The <cite>from*</cite>
+methods are static methods and create a new <cite>RDF</cite> graph while the <cite>add_from*</cite> methods add to the
+existing <cite>RDF</cite> graph.</p>
+<p>When reading RDF, you must pass the name of which parser you would like to use.
+The default is the “guess” parser, which will try to figure out which syntax
+you’ve given it. However, the guess parser is imperfect, so if you know which
+syntax you are reading, you can specify this as an argument. The accepted
+formats are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess, ,</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="reading-from-a-string">
+<h2>Reading from a string<a class="headerlink" href="#reading-from-a-string" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Read from a string in Python</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+
+<span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="s2">             @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">             @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="s2">             @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+
+<span class="s2">             &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span>
+<span class="s2">                 &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
+
+<span class="c1"># read the annotations into RDF graph</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+
+<span class="c1"># serialize the string to rdfxml-abbrev</span>
+<span class="n">xml_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;rdfxml-abbrev&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RDF graph serialized to rdfxml abbreviated is:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">xml_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Read from a string in C++</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;     // std::cout, std::endl</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;    &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// read the turtle string into RDF graph</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// serialize to rdfxml abbreviated</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdfxml_abbrev_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;RDF graph serialized to rdfxml abbreviated is:</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">rdfxml_abbrev_string</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Read from a string in C</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;    &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="c1">// uses dynamic memory</span>
+    <span class="n">RDF</span> <span class="o">*</span><span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// serialize the string to rdfxml</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">xml_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;RDF graph serialized to rdfxml abbreviated is:</span><span class="se">\n\n</span><span class="s">%s&quot;</span><span class="p">,</span> <span class="n">xml_string</span><span class="p">);</span>
+
+    <span class="c1">// clean up</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">xml_string</span><span class="p">);</span>
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-from-a-string">
+<h2>Adding from a string<a class="headerlink" href="#adding-from-a-string" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Read from a string and add to existing graph in Python</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+
+<span class="n">rdf_str1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="s2">              @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="s2">              @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+<span class="s2"> </span>
+<span class="s2">              &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span>
+<span class="s2">                  &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
+
+
+<span class="n">rdf_str2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="s2">              @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
+<span class="s2">              @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">              @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="s2">              @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+<span class="s2">              </span>
+<span class="s2">              &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&gt;</span>
+<span class="s2">                  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
+
+<span class="c1"># read the first string into our RDF graph</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str1</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="c1"># Add to our RDF graph by reading the second string</span>
+<span class="n">rdf</span><span class="o">.</span><span class="n">add_from_string</span><span class="p">(</span><span class="n">rdf_str2</span><span class="p">)</span>
+
+<span class="c1"># serialize the string to rdfxml-abbrev</span>
+<span class="n">xml_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;rdfxml-abbrev&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RDF graph serialized to rdfxml abbreviated is:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">xml_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Read from a string and add to existing graph in C++</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;     // std::cout, std::endl</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str1</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;      &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// read the first string into our RDF graph</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">rdf_str1</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+    <span class="c1">// Add to our RDF graph by reading the second string</span>
+    <span class="n">rdf</span><span class="p">.</span><span class="n">addFromString</span><span class="p">(</span><span class="n">rdf_str2</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// serialize to rdfxml abbreviated</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdfxml_abbrev_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;RDF graph serialized to rdfxml abbreviated is:</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">rdfxml_abbrev_string</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Read from a string and add to existing graph in C</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt; // printf</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str1</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;      &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                           <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// read the first string into our RDF graph</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">rdf_str1</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Add to our RDF graph by reading the second string</span>
+    <span class="n">RDF_addFromString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="n">rdf_str2</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// serialize the string to rdfxml</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">xml_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;RDF graph serialized to rdfxml abbreviated is:</span><span class="se">\n\n</span><span class="s">%s&quot;</span><span class="p">,</span> <span class="n">xml_string</span><span class="p">);</span>
+
+    <span class="c1">// clean up</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">xml_string</span><span class="p">);</span>
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;http://purl.org/dc/terms/&quot;
+       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-from-a-uri">
+<h2>Reading from a URI<a class="headerlink" href="#reading-from-a-uri" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Read from a URI in Python</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+
+<span class="c1"># collect the link from &quot;https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files&quot;</span>
+<span class="n">tyson2003</span> <span class="o">=</span> <span class="s2">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml&quot;</span>
+
+<span class="c1"># download the model, scan document for annotations and docs-build a graph</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="n">tyson2003</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;rdfxml&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of annotations in graph: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">annotations</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span> <span class="mi">86</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Read from a URI in C++</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;     // std::cout, std::endl</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="c1">// collect the link from &quot;https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files&quot;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_uri</span> <span class="o">=</span> <span class="s">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml&quot;</span><span class="p">;</span>
+
+    <span class="c1">// download the model, scan document for annotations and docs-build a graph</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromUri</span><span class="p">(</span><span class="n">model_uri</span><span class="p">,</span> <span class="s">&quot;rdfxml&quot;</span><span class="p">);</span>
+
+    <span class="c1">// serialize to turtle and output to console</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">tyson2003_turtle</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The tyon2003 model annotations in turtle syntax is</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">tyson2003_turtle</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</pre></div></td><td class="code"><div class="highlight"><pre><span></span>The tyon2003 model annotations in turtle syntax is
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
+@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasPart&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0007243&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/hasProperty&gt; [
+        rdf:_1 &lt;http://identifiers.org/mamo/MAMO_0000046&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/hasTaxon&gt; [
+        rdf:_1 &lt;http://identifiers.org/taxonomy/131567&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0051098&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/MODEL1102100004&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/BIOMD0000000308&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/isDescribedBy&gt; [
+        rdf:_1 &lt;http://identifiers.org/pubmed/12648679&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/elements/1.1/creator&gt; [
+        rdf:_1 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;lukas@ebi.ac.uk&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Endler&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Lukas&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;EMBL-EBI&quot;
+            ]
+        ] ;
+        rdf:_2 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;tyson@vt.edu&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Tyson&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;John J&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;Department of Biology, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA&quot;
+            ]
+        ] ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/terms/created&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2011-02-10T03:49:32Z&quot;
+    ] ;
+    &lt;http://purl.org/dc/terms/modified&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2014-04-06T20:03:14Z&quot;
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0005623&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasVersion&gt; [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasProperty&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0016301&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/hasVersion&gt; [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009058&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009056&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Read from a URI in C</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt; // printf</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="c1">// collect the link from &quot;https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files&quot;</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">model_uri</span> <span class="o">=</span> <span class="s">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml&quot;</span><span class="p">;</span>
+
+    <span class="c1">// download the model, scan document for annotations and docs-build a graph</span>
+    <span class="n">RDF</span> <span class="o">*</span><span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_fromUri</span><span class="p">(</span><span class="n">model_uri</span><span class="p">,</span> <span class="s">&quot;rdfxml&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Serialize the graph</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">turtle_tyson_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// write to console</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;The tyon2003 model annotations in turtle syntax is:</span><span class="se">\n\n</span><span class="s">%s&quot;</span><span class="p">,</span> <span class="n">turtle_tyson_string</span><span class="p">);</span>
+
+    <span class="c1">// free string</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">turtle_tyson_string</span><span class="p">);</span>
+
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149</pre></div></td><td class="code"><div class="highlight"><pre><span></span>The tyon2003 model annotations in turtle syntax is:
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
+@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasPart&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0007243&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/hasProperty&gt; [
+        rdf:_1 &lt;http://identifiers.org/mamo/MAMO_0000046&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/hasTaxon&gt; [
+        rdf:_1 &lt;http://identifiers.org/taxonomy/131567&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0051098&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/MODEL1102100004&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/BIOMD0000000308&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/isDescribedBy&gt; [
+        rdf:_1 &lt;http://identifiers.org/pubmed/12648679&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/elements/1.1/creator&gt; [
+        rdf:_1 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;lukas@ebi.ac.uk&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Endler&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Lukas&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;EMBL-EBI&quot;
+            ]
+        ] ;
+        rdf:_2 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;tyson@vt.edu&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Tyson&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;John J&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;Department of Biology, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA&quot;
+            ]
+        ] ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/terms/created&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2011-02-10T03:49:32Z&quot;
+    ] ;
+    &lt;http://purl.org/dc/terms/modified&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2014-04-06T20:03:14Z&quot;
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0005623&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasVersion&gt; [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242&gt;
+    &lt;http://biomodels.net/biology-qualifiers/hasProperty&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0016301&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/hasVersion&gt; [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009058&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009056&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257&gt;
+    &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-from-a-uri">
+<h2>Adding from a URI<a class="headerlink" href="#adding-from-a-uri" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Read from a uri and add to existing graph in Python</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+
+<span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="s2">             @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
+<span class="s2">             @prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">             @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="s2">             @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+<span class="s2">             </span>
+<span class="s2">             local:OmexMetaId0000</span>
+<span class="s2">                 bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
+
+<span class="c1"># collect the link from &quot;https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files&quot;</span>
+<span class="n">tyson2003</span> <span class="o">=</span> <span class="s2">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml&quot;</span>
+
+<span class="c1"># first create a RDF graph, by any means available - here we choose from_string</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+
+<span class="c1"># And now add to it from a uri</span>
+<span class="n">rdf</span><span class="o">.</span><span class="n">add_from_uri</span><span class="p">(</span><span class="n">tyson2003</span><span class="p">,</span> <span class="s2">&quot;rdfxml&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of annotations in graph: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">annotations</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span> <span class="mi">87</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">Read from a uri and add to existing graph in C++</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;     // std::cout, std::endl</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;   bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// first create a RDF graph, by any means available - here we choose from_string</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// collect the link from &quot;https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files&quot;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">tyson2003</span> <span class="o">=</span> <span class="s">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml&quot;</span><span class="p">;</span>
+
+    <span class="c1">// And now add to it from a uri</span>
+    <span class="n">rdf</span><span class="p">.</span><span class="n">addFromUri</span><span class="p">(</span><span class="n">tyson2003</span><span class="p">,</span> <span class="s">&quot;rdfxml&quot;</span><span class="p">);</span>
+
+    <span class="c1">// serialize to turtle and output to console</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">tyson2003_turtle</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The tyon2003 model annotations in turtle syntax is</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">tyson2003_turtle</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154</pre></div></td><td class="code"><div class="highlight"><pre><span></span>The tyon2003 model annotations in turtle syntax is
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
+@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
+@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+
+&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;
+    bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235&gt;
+    bqbiol:hasPart [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0007243&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasProperty [
+        rdf:_1 &lt;http://identifiers.org/mamo/MAMO_0000046&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasTaxon [
+        rdf:_1 &lt;http://identifiers.org/taxonomy/131567&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0051098&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/MODEL1102100004&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/BIOMD0000000308&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/isDescribedBy&gt; [
+        rdf:_1 &lt;http://identifiers.org/pubmed/12648679&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/elements/1.1/creator&gt; [
+        rdf:_1 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;lukas@ebi.ac.uk&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Endler&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Lukas&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;EMBL-EBI&quot;
+            ]
+        ] ;
+        rdf:_2 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;tyson@vt.edu&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Tyson&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;John J&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;Department of Biology, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA&quot;
+            ]
+        ] ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/terms/created&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2011-02-10T03:49:32Z&quot;
+    ] ;
+    &lt;http://purl.org/dc/terms/modified&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2014-04-06T20:03:14Z&quot;
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0005623&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238&gt;
+    bqbiol:hasVersion [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242&gt;
+    bqbiol:hasProperty [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0016301&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasVersion [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009058&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009056&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Read from a uri and add to existing graph in C</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;     // printf</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/Welsh2020.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;   bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// first create a RDF graph, by any means available - here we choose from_string</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// collect the link from &quot;https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files&quot;</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">tyson2003</span> <span class="o">=</span> <span class="s">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml&quot;</span><span class="p">;</span>
+
+    <span class="c1">// And now add to it from a uri</span>
+    <span class="n">RDF_addFromUri</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="n">tyson2003</span><span class="p">,</span> <span class="s">&quot;rdfxml&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Serialize the graph</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">turtle_tyson_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// write to console</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;The tyon2003 model annotations in turtle syntax is:</span><span class="se">\n\n</span><span class="s">%s&quot;</span><span class="p">,</span> <span class="n">turtle_tyson_string</span><span class="p">);</span>
+
+    <span class="c1">// free string</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">turtle_tyson_string</span><span class="p">);</span>
+
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</pre></div></td><td class="code"><div class="highlight"><pre><span></span>The tyon2003 model annotations in turtle syntax is:
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
+@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
+@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0000&gt;
+    bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235&gt;
+    bqbiol:hasPart [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0007243&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasProperty [
+        rdf:_1 &lt;http://identifiers.org/mamo/MAMO_0000046&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasTaxon [
+        rdf:_1 &lt;http://identifiers.org/taxonomy/131567&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0051098&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/is&gt; [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/MODEL1102100004&gt; ;
+        a rdf:Bag
+    ], [
+        rdf:_1 &lt;http://identifiers.org/biomodels.db/BIOMD0000000308&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://biomodels.net/model-qualifiers/isDescribedBy&gt; [
+        rdf:_1 &lt;http://identifiers.org/pubmed/12648679&gt; ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/elements/1.1/creator&gt; [
+        rdf:_1 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;lukas@ebi.ac.uk&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Endler&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;Lukas&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;EMBL-EBI&quot;
+            ]
+        ] ;
+        rdf:_2 [
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#EMAIL&gt; &quot;tyson@vt.edu&quot; ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#N&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Family&gt; &quot;Tyson&quot; ;
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Given&gt; &quot;John J&quot;
+            ] ;
+            &lt;http://www.w3.org/2001/vcard-rdf/3.0#ORG&gt; [
+                &lt;http://www.w3.org/2001/vcard-rdf/3.0#Orgname&gt; &quot;Department of Biology, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA&quot;
+            ]
+        ] ;
+        a rdf:Bag
+    ] ;
+    &lt;http://purl.org/dc/terms/created&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2011-02-10T03:49:32Z&quot;
+    ] ;
+    &lt;http://purl.org/dc/terms/modified&gt; [
+        &lt;http://purl.org/dc/terms/W3CDTF&gt; &quot;2014-04-06T20:03:14Z&quot;
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0005623&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238&gt;
+    bqbiol:hasVersion [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242&gt;
+    bqbiol:hasProperty [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0016301&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasVersion [
+        rdf:_1 &lt;http://identifiers.org/psimod/MOD:00696&gt; ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/kegg.compound/C00562&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/chebi/CHEBI:36080&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009058&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0009056&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006468&gt; ;
+        a rdf:Bag
+    ] .
+
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257&gt;
+    bqbiol:isVersionOf [
+        rdf:_1 &lt;http://identifiers.org/go/GO:0006470&gt; ;
+        a rdf:Bag
+    ] .
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-from-a-file">
+<h2>Reading from a file<a class="headerlink" href="#reading-from-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4-0 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-4-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-4-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">Read from a file in Python</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="s2">@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
+<span class="s2">@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+
+<span class="s2">&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span>
+<span class="s2">  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
+
+<span class="c1"># we write the annotations to file, so we can read it in from file</span>
+<span class="c1">#   filename is in same directory as your python script</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;annotations.rdf&quot;</span><span class="p">)</span>
+<span class="c1">#   write turtle syntax to file</span>
+<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">)</span>
+
+<span class="c1"># Add to our RDF graph by reading the second string</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+
+<span class="c1"># remove the file we wrote</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">Read from a file in C++</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/RDF.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;     // std::cout, std::endl</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fname</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fname</span><span class="p">){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;     bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="n">annot_file</span><span class="p">;</span>
+    <span class="n">annot_file</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+    <span class="n">annot_file</span> <span class="o">&lt;&lt;</span> <span class="n">rdf_str</span><span class="p">;</span>
+    <span class="n">annot_file</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="c1">// note: you need C++17 standard minimum to use std::filesystem</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/+</span> <span class="s">&quot;annotation_file.rdf&quot;</span><span class="p">;</span>
+
+    <span class="c1">// write to file</span>
+    <span class="n">writeToFile</span><span class="p">(</span><span class="n">fname</span><span class="p">.</span><span class="n">string</span><span class="p">());</span>
+
+    <span class="c1">// create an RDF graph</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromFile</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// assume the content of annotation_file is turtle</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">xml_abbrev_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Write rdf graph to rdfxml and print to console</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">xml_abbrev_string</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">// RDF clears up after itself via RAII</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">Read from a file in C</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fname</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;     bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="cm">/* open the file for writing*/</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">rdf_str</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* close the file*/</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fname</span> <span class="o">=</span> <span class="s">&quot;/mnt/d/libOmexMeta/docs/turtle_string.rdf&quot;</span><span class="p">;</span> <span class="c1">// change for your own system</span>
+    <span class="n">writeToFile</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+
+    <span class="c1">// read the string into our RDF graph</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_fromFile</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="c1">// generate some output</span>
+    <span class="kt">char</span><span class="o">*</span><span class="n">rdfxml_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+
+    <span class="c1">// print to console</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">rdfxml_string</span><span class="p">);</span>
+
+    <span class="c1">// free dynamically generated output string</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">rdfxml_string</span><span class="p">);</span>
+
+    <span class="c1">// clear up the file we wrote</span>
+    <span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+
+    <span class="c1">// clear up rdf</span>
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-from-a-file">
+<h2>Adding from a file<a class="headerlink" href="#adding-from-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5-0 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-5-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-5-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text">Read from a file and add to existing graph in Python</span><a class="headerlink" href="#id31" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="s2">@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
+<span class="s2">@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="s2">@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+
+<span class="s2">&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span>
+<span class="s2">  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
+
+<span class="c1"># create an empty RDF graph</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
+
+<span class="c1"># we write the annotations to file, so we can read it in from file</span>
+<span class="c1">#   filename is in same directory as your python script</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;annotations.rdf&quot;</span><span class="p">)</span>
+
+<span class="c1">#   write turtle syntax to file</span>
+<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">)</span>
+
+<span class="c1">#   Add to our RDF graph by reading the second string</span>
+<span class="n">rdf</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+
+<span class="c1"># print out annotations in turtle syntax</span>
+<span class="n">rdfxml_abbrev_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;rdfxml-abbrev&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rdfxml_abbrev_string</span><span class="p">)</span>
+
+<span class="c1"># remove the file we wrote</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id32" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-text">Read from a file and add to existing graph in C++</span><a class="headerlink" href="#id33" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot; // omexmeta::RDF</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;     // std::cout, std::endl</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;filesystem&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">fname</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">fname</span><span class="p">){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;     bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="n">annot_file</span><span class="p">;</span>
+    <span class="n">annot_file</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+    <span class="n">annot_file</span> <span class="o">&lt;&lt;</span> <span class="n">rdf_str</span><span class="p">;</span>
+    <span class="n">annot_file</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="c1">// create an empty rdf graph</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">();</span>
+
+    <span class="c1">// note: you need C++17 standard minimum to use std::filesystem</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/+</span> <span class="s">&quot;annotation_file.rdf&quot;</span><span class="p">;</span>
+
+    <span class="c1">// write some annotations to a file so we can read it in with add from file</span>
+    <span class="n">writeToFile</span><span class="p">(</span><span class="n">fname</span><span class="p">.</span><span class="n">string</span><span class="p">());</span>
+
+    <span class="c1">// Add to our RDF graph</span>
+    <span class="n">rdf</span><span class="p">.</span><span class="n">addFromFile</span><span class="p">(</span><span class="n">fname</span><span class="p">.</span><span class="n">string</span><span class="p">(),</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// assume the content of annotation_file is turtle</span>
+
+    <span class="c1">// clear up file we wrote</span>
+    <span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">.</span><span class="n">string</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">xml_abbrev_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Write rdf graph to rdfxml and print to console</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">xml_abbrev_string</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">// RDF clears up after itself via RAII</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id34" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-text">Read from a file and add to existing graph in C</span><a class="headerlink" href="#id35" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fname</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">rdf_str</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                          <span class="s">&quot;     bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="cm">/* open the file for writing*/</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">rdf_str</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* close the file*/</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fname</span> <span class="o">=</span> <span class="s">&quot;/mnt/d/libOmexMeta/docs/turtle_string.rdf&quot;</span><span class="p">;</span> <span class="c1">// change for your own system</span>
+    <span class="n">writeToFile</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+
+    <span class="c1">// create an RDF graph so we have something to add to</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_new</span><span class="p">();</span>
+
+    <span class="c1">// Add to our RDF graph</span>
+    <span class="n">RDF_addFromFile</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span><span class="c1">// assume the content of annotation_file is turtle</span>
+
+    <span class="c1">// generate some output</span>
+    <span class="kt">char</span><span class="o">*</span><span class="n">rdfxml_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">,</span> <span class="s">&quot;rdfxml-abbrev&quot;</span><span class="p">);</span>
+
+    <span class="c1">// print to console</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">rdfxml_string</span><span class="p">);</span>
+
+    <span class="c1">// free dynamically generated output string</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">rdfxml_string</span><span class="p">);</span>
+
+    <span class="c1">// clear up the file we wrote</span>
+    <span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+
+    <span class="c1">// clear up rdf</span>
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf_ptr</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id36">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id36" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;ns1:is xmlns:ns1=&quot;http://biomodels.net/biology-qualifiers/&quot;
+       rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../writing_rdf/writing_rdf.html" class="btn btn-neutral float-right" title="Serializing RDF Graphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../background.html" class="btn btn-neutral float-left" title="Background to Semantic Annotations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

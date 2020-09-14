@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a257d15d5158f9dca2e37fc5306529259:
+
+Function omexmeta::Editor_checkValidMetaid
+==========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::Editor_checkValidMetaid(Editor *, const char *)

@@ -1,0 +1,13 @@
+.. _exhale_function_OmexMetaCApi_8cpp_1a867464e1e00afe9b1c850c7db4f1656c:
+
+Function omexmeta::PhysicalProcess_addSink
+==========================================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: omexmeta::PhysicalProcess_addSink(PhysicalProcess *, double, const char *)

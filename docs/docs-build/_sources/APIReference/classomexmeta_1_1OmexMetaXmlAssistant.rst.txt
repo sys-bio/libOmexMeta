@@ -1,0 +1,26 @@
+.. _exhale_class_classomexmeta_1_1OmexMetaXmlAssistant:
+
+Class OmexMetaXmlAssistant
+==========================
+
+- Defined in :ref:`file_src_omexmeta_OmexMetaXmlAssistant.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public omexmeta::CellMLAssistant`` (:ref:`exhale_class_classomexmeta_1_1CellMLAssistant`)
+- ``public omexmeta::SBMLAssistant`` (:ref:`exhale_class_classomexmeta_1_1SBMLAssistant`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: omexmeta::OmexMetaXmlAssistant
+   :members:
+   :protected-members:
+   :undoc-members:

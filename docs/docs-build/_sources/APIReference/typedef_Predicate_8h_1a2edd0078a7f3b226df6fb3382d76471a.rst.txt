@@ -1,0 +1,13 @@
+.. _exhale_typedef_Predicate_8h_1a2edd0078a7f3b226df6fb3382d76471a:
+
+Typedef omexmeta::PredicatePtr
+==============================
+
+- Defined in :ref:`file_src_omexmeta_Predicate.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: omexmeta::PredicatePtr
