@@ -10,13 +10,6 @@
 using namespace omexmeta;
 
 
-//class JohnsTest : public ::testing::Test {
-//public:
-//    JohnsTest() = default;
-//
-//
-//};
-
 int main() {
 
 //    std::string sbml = SBMLFactory::getSBML(SBML_BIOMD366);
@@ -24,7 +17,7 @@ int main() {
     RDF rdf = RDF::fromFile(R"(D:\libOmexMeta\tests\cpp\Yan2012.xml)", "rdfxml");
 
 //    rdf.toFile(R"(D:\libOmexMeta\tests\cpp\WithRDFBagSetToOFF.rdf)", "turtle");
-    std::cout << rdf.toString("turtle") << std::endl;
+//    std::string = rdf.toString("turtle");
 
 
 };

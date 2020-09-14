@@ -41,12 +41,10 @@ macro(add_doc_example BINARY_NAME)
 
     # links
     target_link_libraries(${BINARY_NAME} PRIVATE
-                          $<TARGET_FILE:roadrunner-static> # for C examples
-                          $<TARGET_FILE:roadrunner_c_api> # for c++ examples
-                          )
+            $<TARGET_FILE:roadrunner-static> # for C examples
+            $<TARGET_FILE:roadrunner_c_api> # for c++ examples
+            )
 endmacro()
-
-
 
 
 if (BUILD_DOCS_EXAMPLES)
@@ -63,7 +61,7 @@ if (BUILD_DOCS_EXAMPLES)
     # the documentation.
 
     # todo populate with examples here:
-    add_doc_example(AddFromFileC                                  source/reading_rdf/add_from_file_c.cpp)
+    add_doc_example(AddFromFileC source/reading_rdf/add_from_file_c.cpp)
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}

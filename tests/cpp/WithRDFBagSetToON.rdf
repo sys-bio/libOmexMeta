@@ -1,0 +1,267 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_12> .
+
+local:MediatorParticipant0001
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_7> .
+
+local:MediatorParticipant0002
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_5> .
+
+local:MediatorParticipant0003
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_2> .
+
+local:PhysicalProcess0000
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:PhysicalProcess0001
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
+local:PhysicalProcess0002
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002, local:SourceParticipant0003, local:SourceParticipant0004 .
+
+local:PhysicalProcess0003
+    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0005 .
+
+local:PhysicalProcess0004
+    semsim:hasMediatorParticipant local:MediatorParticipant0002 ;
+    semsim:hasSinkParticipant local:SinkParticipant0004 ;
+    semsim:hasSourceParticipant local:SourceParticipant0006 .
+
+local:PhysicalProcess0005
+    semsim:hasMediatorParticipant local:MediatorParticipant0003 ;
+    semsim:hasSinkParticipant local:SinkParticipant0005 ;
+    semsim:hasSourceParticipant local:SourceParticipant0007 .
+
+local:PhysicalProcess0006
+    semsim:hasSinkParticipant local:SinkParticipant0006 ;
+    semsim:hasSourceParticipant local:SourceParticipant0008 .
+
+local:PhysicalProcess0007
+    semsim:hasSinkParticipant local:SinkParticipant0007 ;
+    semsim:hasSourceParticipant local:SourceParticipant0009 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_2> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_3> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_5> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_6> .
+
+local:SinkParticipant0004
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_7> .
+
+local:SinkParticipant0005
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_7> .
+
+local:SinkParticipant0006
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_10> .
+
+local:SinkParticipant0007
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_11> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_1> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_2> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_6> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_2> .
+
+local:SourceParticipant0004
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_4> .
+
+local:SourceParticipant0005
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_8> .
+
+local:SourceParticipant0006
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_9> .
+
+local:SourceParticipant0007
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_9> .
+
+local:SourceParticipant0008
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_7> .
+
+local:SourceParticipant0009
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_7> .
+
+local:_0
+    bqbiol:hasProperty [
+        rdf:_1 <http://identifiers.org/doid/DOID:1287> ;
+        a rdf:Bag
+    ] ;
+    bqbiol:hasTaxon [
+        rdf:_1 <http://identifiers.org/taxonomy/2759> ;
+        a rdf:Bag
+    ] ;
+    bqbiol:isVersionOf [
+        rdf:_1 <http://identifiers.org/go/GO:0007596> ;
+        a rdf:Bag
+    ] ;
+    bqmodel:is [
+        rdf:_1 <http://identifiers.org/biomodels.db/MODEL1108260000> ;
+        a rdf:Bag
+    ], [
+        rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000366> ;
+        a rdf:Bag
+    ] ;
+    bqmodel:isDerivedFrom [
+        rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000358> ;
+        a rdf:Bag
+    ] ;
+    bqmodel:isDescribedBy [
+        rdf:_1 <http://identifiers.org/doi/10.1016/j.jmaa.2008.05.060> ;
+        a rdf:Bag
+    ] ;
+    <http://purl.org/dc/elements/1.1/creator> [
+        rdf:_1 [
+            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> "schubert@ebi.ac.uk" ;
+            <http://www.w3.org/2001/vcard-rdf/3.0#N> [
+                <http://www.w3.org/2001/vcard-rdf/3.0#Family> "Schubert" ;
+                <http://www.w3.org/2001/vcard-rdf/3.0#Given> "Michael"
+            ] ;
+            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [
+                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> "EBI"
+            ]
+        ] ;
+        a rdf:Bag
+    ] ;
+    dcterms:created [
+        dcterms:W3CDTF "2011-08-26T16:38:20Z"
+    ] ;
+    dcterms:modified [
+        dcterms:W3CDTF "2014-10-09T17:21:48Z"
+    ] .
+
+local:_1
+    bqbiol:is [
+        rdf:_1 <http://identifiers.org/uniprot/P00742> ;
+        a rdf:Bag
+    ] .
+
+local:_10
+    bqbiol:hasPart [
+        rdf:_1 <http://identifiers.org/uniprot/P00734> ;
+        rdf:_2 <http://identifiers.org/uniprot/P01023> ;
+        a rdf:Bag
+    ] .
+
+local:_11
+    bqbiol:hasPart [
+        rdf:_1 <http://identifiers.org/uniprot/P00734> ;
+        rdf:_2 <http://identifiers.org/uniprot/P01008> ;
+        a rdf:Bag
+    ] .
+
+local:_2
+    bqbiol:is [
+        rdf:_1 <http://identifiers.org/uniprot/P00742> ;
+        a rdf:Bag
+    ] .
+
+local:_3
+    bqbiol:hasPart [
+        rdf:_1 <http://identifiers.org/uniprot/P00742> ;
+        rdf:_2 <http://identifiers.org/uniprot/P01008> ;
+        a rdf:Bag
+    ] .
+
+local:_6
+    bqbiol:is [
+        rdf:_1 <http://identifiers.org/uniprot/P12259> ;
+        a rdf:Bag
+    ] .
+
+local:_7
+    bqbiol:is [
+        rdf:_1 <http://identifiers.org/uniprot/P00734> ;
+        a rdf:Bag
+    ] .
+
+local:_8
+    bqbiol:is [
+        rdf:_1 <http://identifiers.org/uniprot/P12259> ;
+        a rdf:Bag
+    ] .
+
+local:_9
+    bqbiol:is [
+        rdf:_1 <http://identifiers.org/uniprot/P00734> ;
+        a rdf:Bag
+    ] .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_13>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_14>
+    bqbiol:isPropertyOf local:PhysicalProcess0001 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_15>
+    bqbiol:isPropertyOf local:PhysicalProcess0002 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_16>
+    bqbiol:isPropertyOf local:PhysicalProcess0003 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_17>
+    bqbiol:isPropertyOf local:PhysicalProcess0004 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_18>
+    bqbiol:isPropertyOf local:PhysicalProcess0005 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_19>
+    bqbiol:isPropertyOf local:PhysicalProcess0006 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#_20>
+    bqbiol:isPropertyOf local:PhysicalProcess0007 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+
