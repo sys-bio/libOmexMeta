@@ -82,7 +82,7 @@ TEST_F(PredicateTests, TestGetNodebqqPrefix) {
 
 TEST_F(PredicateTests, TestDCTermPrefix) {
     DCTerm predicate("description");
-    std::string expected = "dcterms";
+    std::string expected = "dc";
     ASSERT_STREQ(expected.c_str(), predicate.getPrefix().c_str());
     predicate.freeNode();
 }
@@ -106,7 +106,7 @@ TEST_F(PredicateTests, TestDCTermGetNamespace) {
 
 TEST_F(PredicateTests, TestDCTermGetPrefix) {
     DCTerm predicate("description");
-    std::string expected = "dcterms";
+    std::string expected = "dc";
     std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicate.freeNode();

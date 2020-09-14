@@ -1,5 +1,4 @@
 # C API binary
-
 set(target "OmexMetaCAPITests")
 set(CAPI_TEST_SOURCES CAPITests.cpp)
 

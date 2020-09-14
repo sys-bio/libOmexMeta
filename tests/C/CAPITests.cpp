@@ -8,8 +8,11 @@
 #include "../cpp/SBMLFactory.h"
 
 #include "omexmeta/OmexMetaCApi.h"
+#include "omexmeta/logger.h"
+
 #include <filesystem>
 #include <fstream>
+
 
 using namespace omexmeta;
 
@@ -40,7 +43,6 @@ TEST_F(CAPITests, RDFSize) {
     int expected = 1;
     ASSERT_EQ(expected, actual);
     RDF_delete(rdf_ptr);
-
 }
 
 TEST_F(CAPITests, FreeCharStar) {
@@ -1210,16 +1212,16 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
-                           "    dcterms:creator <2134-1234-1234-1234> .\n"
+                           "    dc:creator <2134-1234-1234-1234> .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -1259,13 +1261,13 @@ TEST_F(CAPITests, PersonalInformationaddName) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
@@ -1289,13 +1291,13 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:mbox \"cwelsh2@ue.edu\"^^rdf:string .\n"
@@ -1320,13 +1322,13 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountName <https://orcid.org/2134-1234-1234-1234> .\n"
@@ -1350,13 +1352,13 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n"
@@ -1381,13 +1383,13 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountServiceHomepage \"https://github.com/sys-bio/libOmexMeta\"^^rdf:string .\n"
@@ -1411,13 +1413,13 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                           "    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
+                           "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"

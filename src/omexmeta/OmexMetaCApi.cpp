@@ -31,11 +31,6 @@ namespace omexmeta {
 
 
     /*************************************************************
-     *  librdf_world methods
-     */
-
-
-    /*************************************************************
  *  RDF methods
  */
 
@@ -415,6 +410,7 @@ namespace omexmeta {
             if (!editor_ptr)
                 return -1;
             delete editor_ptr;
+            return 0;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             return -1;
