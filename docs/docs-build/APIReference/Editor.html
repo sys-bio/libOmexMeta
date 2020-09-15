@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Editor &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PhysicalEntity" href="PhysicalEntity.html" />
+    <link rel="prev" title="RDF" href="RDF.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>Editor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/Editor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="editor">
+<h1>Editor<a class="headerlink" href="#editor" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta6EditorE">
+<span id="_CPPv3N8omexmeta6EditorE"></span><span id="_CPPv2N8omexmeta6EditorE"></span><span id="omexmeta::Editor"></span><span class="target" id="classomexmeta_1_1Editor"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Editor</code><a class="headerlink" href="#_CPPv4N8omexmeta6EditorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add or change annotations in xml. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::Editor::Editor__ssCR.b.LibrdfModelCR.NamespaceMapR.b.b.ssCR.ssCR.ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a6ac976c1a3762f77a577b5735cd509f4"></span><code class="sig-name descname">Editor</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>create_ids</em>, <em class="property">const</em> LibrdfModel &amp;<em>model</em>, NamespaceMap &amp;<em>ns_map</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true, <em class="property">const</em> std::string &amp;<em>repository_uri</em> = std::string(), <em class="property">const</em> std::string &amp;<em>archive_uri</em> = std::string(), <em class="property">const</em> std::string &amp;<em>model_uri</em> = std::string(), <em class="property">const</em> std::string &amp;<em>local_uri</em> = std::string()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. </p>
+<p><p>The </p>
+<a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> is usually instantiated from the RDF::to_editor class which automatically takes care of the <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: The valid xml content for annotation </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate_new_metaids.</span></code>: Autogenerate metaids for xml element that do not already have them </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sbml_semantic_extraction.</span></code>: When </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: is determined to be sbml, automatically extract some information regarding species and reactions. This option is ignored when </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: is not sbml. Default is true. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: a reference to the current model (owned by <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a>). </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nm_map</span></code>: a set of namespaces for current xml</p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: and </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ns_map</span></code>: arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by SBMLAssistant::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by CellMLAssistant::getValidElements() are used. If the type is unknown, then all elements are given metaids. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6EditorD0Ev">
+<span id="_CPPv3N8omexmeta6EditorD0Ev"></span><span id="_CPPv2N8omexmeta6EditorD0Ev"></span><span id="omexmeta::Editor::~Editor"></span><span class="target" id="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240"></span><code class="sig-name descname">~Editor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta6EditorD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor4sizeEv">
+<span id="_CPPv3NK8omexmeta6Editor4sizeEv"></span><span id="_CPPv2NK8omexmeta6Editor4sizeEv"></span><span id="omexmeta::Editor::sizeC"></span><span class="target" id="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05"></span>int <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor13getNamespacesEv">
+<span id="_CPPv3NK8omexmeta6Editor13getNamespacesEv"></span><span id="_CPPv2NK8omexmeta6Editor13getNamespacesEv"></span><span id="omexmeta::Editor::getNamespacesC"></span><span class="target" id="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618"></span><em class="property">const</em> NamespaceMap &amp;<code class="sig-name descname">getNamespaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor13getNamespacesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor8getModelEv">
+<span id="_CPPv3NK8omexmeta6Editor8getModelEv"></span><span id="_CPPv2NK8omexmeta6Editor8getModelEv"></span><span id="omexmeta::Editor::getModelC"></span><span class="target" id="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0"></span>librdf_model *<code class="sig-name descname">getModel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor8getModelEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor13setNamespacesERK12NamespaceMap">
+<span id="_CPPv3N8omexmeta6Editor13setNamespacesERK12NamespaceMap"></span><span id="_CPPv2N8omexmeta6Editor13setNamespacesERK12NamespaceMap"></span><span id="omexmeta::Editor::setNamespaces__NamespaceMapCR"></span><span class="target" id="classomexmeta_1_1Editor_1a83836e19bb1de9c7df69d36e8b61b2b2"></span>void <code class="sig-name descname">setNamespaces</code><span class="sig-paren">(</span><em class="property">const</em> NamespaceMap &amp;<em>namespaces</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor13setNamespacesERK12NamespaceMap" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor6getXmlEv">
+<span id="_CPPv3NK8omexmeta6Editor6getXmlEv"></span><span id="_CPPv2NK8omexmeta6Editor6getXmlEv"></span><span id="omexmeta::Editor::getXmlC"></span><span class="target" id="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getXml</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor6getXmlEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor10getMetaidsEv">
+<span id="_CPPv3NK8omexmeta6Editor10getMetaidsEv"></span><span id="_CPPv2NK8omexmeta6Editor10getMetaidsEv"></span><span id="omexmeta::Editor::getMetaidsC"></span><span class="target" id="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de"></span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<code class="sig-name descname">getMetaids</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor10getMetaidsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor12addNamespaceERKNSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor12addNamespaceERKNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor12addNamespaceERKNSt6stringENSt6stringE"></span><span id="omexmeta::Editor::addNamespace__ssCR.ss"></span><span class="target" id="classomexmeta_1_1Editor_1a052a725cee8b8e577c55e977eee81ace"></span>void <code class="sig-name descname">addNamespace</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>ns</em>, std::string <em>prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor12addNamespaceERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor19addSingleAnnotationE7SubjectRK12PredicatePtrRK8Resource">
+<span id="_CPPv3N8omexmeta6Editor19addSingleAnnotationE7SubjectRK12PredicatePtrRK8Resource"></span><span id="_CPPv2N8omexmeta6Editor19addSingleAnnotationE7SubjectRK12PredicatePtrRK8Resource"></span><span id="omexmeta::Editor::addSingleAnnotation__Subject.PredicatePtrCR.ResourceCR"></span><span class="target" id="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f"></span>void <code class="sig-name descname">addSingleAnnotation</code><span class="sig-paren">(</span>Subject <em>subject</em>, <em class="property">const</em> PredicatePtr &amp;<em>predicate_ptr</em>, <em class="property">const</em> <a class="reference internal" href="Resource.html#_CPPv4N8omexmeta8ResourceE" title="omexmeta::Resource">Resource</a> &amp;<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor19addSingleAnnotationE7SubjectRK12PredicatePtrRK8Resource" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor19addSingleAnnotationER18SingularAnnotation">
+<span id="_CPPv3N8omexmeta6Editor19addSingleAnnotationER18SingularAnnotation"></span><span id="_CPPv2N8omexmeta6Editor19addSingleAnnotationER18SingularAnnotation"></span><span id="omexmeta::Editor::addSingleAnnotation__SingularAnnotationR"></span><span class="target" id="classomexmeta_1_1Editor_1ae46835f3f35425d8087b80d08666aaa4"></span>void <code class="sig-name descname">addSingleAnnotation</code><span class="sig-paren">(</span>SingularAnnotation &amp;<em>singularAnnotation</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor19addSingleAnnotationER18SingularAnnotation" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor22removeSingleAnnotationERK18SingularAnnotation">
+<span id="_CPPv3NK8omexmeta6Editor22removeSingleAnnotationERK18SingularAnnotation"></span><span id="_CPPv2NK8omexmeta6Editor22removeSingleAnnotationERK18SingularAnnotation"></span><span id="omexmeta::Editor::removeSingleAnnotation__SingularAnnotationCRC"></span><span class="target" id="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54"></span>void <code class="sig-name descname">removeSingleAnnotation</code><span class="sig-paren">(</span><em class="property">const</em> SingularAnnotation &amp;<em>singularAnnotation</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor22removeSingleAnnotationERK18SingularAnnotation" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor22addCompositeAnnotationEP18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta6Editor22addCompositeAnnotationEP18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta6Editor22addCompositeAnnotationEP18PhysicalPhenomenon"></span><span id="omexmeta::Editor::addCompositeAnnotation__PhysicalPhenomenonP"></span><span class="target" id="classomexmeta_1_1Editor_1a146ae84fb44991d9c6135e98f03fa972"></span>void <code class="sig-name descname">addCompositeAnnotation</code><span class="sig-paren">(</span>PhysicalPhenomenon *<em>phenomenonPtr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor22addCompositeAnnotationEP18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor17addPhysicalEntityER14PhysicalEntity">
+<span id="_CPPv3N8omexmeta6Editor17addPhysicalEntityER14PhysicalEntity"></span><span id="_CPPv2N8omexmeta6Editor17addPhysicalEntityER14PhysicalEntity"></span><span id="omexmeta::Editor::addPhysicalEntity__PhysicalEntityR"></span><span class="target" id="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e"></span>void <code class="sig-name descname">addPhysicalEntity</code><span class="sig-paren">(</span><a class="reference internal" href="PhysicalEntity.html#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<em>physicalEntity</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor17addPhysicalEntityER14PhysicalEntity" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor20removePhysicalEntityER14PhysicalEntity">
+<span id="_CPPv3NK8omexmeta6Editor20removePhysicalEntityER14PhysicalEntity"></span><span id="_CPPv2NK8omexmeta6Editor20removePhysicalEntityER14PhysicalEntity"></span><span id="omexmeta::Editor::removePhysicalEntity__PhysicalEntityRC"></span><span class="target" id="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f"></span>void <code class="sig-name descname">removePhysicalEntity</code><span class="sig-paren">(</span><a class="reference internal" href="PhysicalEntity.html#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<em>physicalEntity</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor20removePhysicalEntityER14PhysicalEntity" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor25removePersonalInformationEP19PersonalInformation">
+<span id="_CPPv3NK8omexmeta6Editor25removePersonalInformationEP19PersonalInformation"></span><span id="_CPPv2NK8omexmeta6Editor25removePersonalInformationEP19PersonalInformation"></span><span id="omexmeta::Editor::removePersonalInformation__PersonalInformationPC"></span><span class="target" id="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc"></span>void <code class="sig-name descname">removePersonalInformation</code><span class="sig-paren">(</span>PersonalInformation *<em>information</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor25removePersonalInformationEP19PersonalInformation" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor18addPhysicalProcessER15PhysicalProcess">
+<span id="_CPPv3N8omexmeta6Editor18addPhysicalProcessER15PhysicalProcess"></span><span id="_CPPv2N8omexmeta6Editor18addPhysicalProcessER15PhysicalProcess"></span><span id="omexmeta::Editor::addPhysicalProcess__PhysicalProcessR"></span><span class="target" id="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1"></span>void <code class="sig-name descname">addPhysicalProcess</code><span class="sig-paren">(</span><a class="reference internal" href="PhysicalProcess.html#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<em>physicalProcess</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor18addPhysicalProcessER15PhysicalProcess" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor21removePhysicalProcessER15PhysicalProcess">
+<span id="_CPPv3NK8omexmeta6Editor21removePhysicalProcessER15PhysicalProcess"></span><span id="_CPPv2NK8omexmeta6Editor21removePhysicalProcessER15PhysicalProcess"></span><span id="omexmeta::Editor::removePhysicalProcess__PhysicalProcessRC"></span><span class="target" id="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78"></span>void <code class="sig-name descname">removePhysicalProcess</code><span class="sig-paren">(</span><a class="reference internal" href="PhysicalProcess.html#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<em>physicalProcess</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor21removePhysicalProcessER15PhysicalProcess" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor16addPhysicalForceER13PhysicalForce">
+<span id="_CPPv3N8omexmeta6Editor16addPhysicalForceER13PhysicalForce"></span><span id="_CPPv2N8omexmeta6Editor16addPhysicalForceER13PhysicalForce"></span><span id="omexmeta::Editor::addPhysicalForce__PhysicalForceR"></span><span class="target" id="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c"></span>void <code class="sig-name descname">addPhysicalForce</code><span class="sig-paren">(</span><a class="reference internal" href="PhysicalForce.html#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<em>physicalForce</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor16addPhysicalForceER13PhysicalForce" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor22addPersonalInformationEP19PersonalInformation">
+<span id="_CPPv3N8omexmeta6Editor22addPersonalInformationEP19PersonalInformation"></span><span id="_CPPv2N8omexmeta6Editor22addPersonalInformationEP19PersonalInformation"></span><span id="omexmeta::Editor::addPersonalInformation__PersonalInformationP"></span><span class="target" id="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8"></span>void <code class="sig-name descname">addPersonalInformation</code><span class="sig-paren">(</span>PersonalInformation *<em>personalInformation</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor22addPersonalInformationEP19PersonalInformation" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor19removePhysicalForceER13PhysicalForce">
+<span id="_CPPv3NK8omexmeta6Editor19removePhysicalForceER13PhysicalForce"></span><span id="_CPPv2NK8omexmeta6Editor19removePhysicalForceER13PhysicalForce"></span><span id="omexmeta::Editor::removePhysicalForce__PhysicalForceRC"></span><span class="target" id="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5"></span>void <code class="sig-name descname">removePhysicalForce</code><span class="sig-paren">(</span><a class="reference internal" href="PhysicalForce.html#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<em>physicalForce</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor19removePhysicalForceER13PhysicalForce" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor16checkValidMetaidERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor16checkValidMetaidERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor16checkValidMetaidERKNSt6stringE"></span><span id="omexmeta::Editor::checkValidMetaid__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a"></span>void <code class="sig-name descname">checkValidMetaid</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>metaid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor16checkValidMetaidERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE"></span><span id="omexmeta::Editor::addNamespaceFromAnnotation__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67"></span>void <code class="sig-name descname">addNamespaceFromAnnotation</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>predicate_string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor13getMetaidBaseEv">
+<span id="_CPPv3NK8omexmeta6Editor13getMetaidBaseEv"></span><span id="_CPPv2NK8omexmeta6Editor13getMetaidBaseEv"></span><span id="omexmeta::Editor::getMetaidBaseC"></span><span class="target" id="classomexmeta_1_1Editor_1af987e450e4bf9d75391ad3f5ac6233f6"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getMetaidBase</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor13getMetaidBaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor13setMetaidBaseERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor13setMetaidBaseERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor13setMetaidBaseERKNSt6stringE"></span><span id="omexmeta::Editor::setMetaidBase__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a206feee18473abbeda5e4e55906e73eb"></span>void <code class="sig-name descname">setMetaidBase</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>metaidBase</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor13setMetaidBaseERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor7getTypeEv">
+<span id="_CPPv3NK8omexmeta6Editor7getTypeEv"></span><span id="_CPPv2NK8omexmeta6Editor7getTypeEv"></span><span id="omexmeta::Editor::getTypeC"></span><span class="target" id="classomexmeta_1_1Editor_1a68ade6a293061a98243a3b2853e55a4b"></span>OmexMetaXmlType <code class="sig-name descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor7getTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor7setTypeE15OmexMetaXmlType">
+<span id="_CPPv3N8omexmeta6Editor7setTypeE15OmexMetaXmlType"></span><span id="_CPPv2N8omexmeta6Editor7setTypeE15OmexMetaXmlType"></span><span id="omexmeta::Editor::setType__OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1Editor_1a3e2c493ed5034a15e6915b7b649b58a3"></span>void <code class="sig-name descname">setType</code><span class="sig-paren">(</span>OmexMetaXmlType <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor7setTypeE15OmexMetaXmlType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor17newPhysicalEntityEv">
+<span id="_CPPv3N8omexmeta6Editor17newPhysicalEntityEv"></span><span id="_CPPv2N8omexmeta6Editor17newPhysicalEntityEv"></span><span id="omexmeta::Editor::newPhysicalEntity"></span><span class="target" id="classomexmeta_1_1Editor_1a245b2105c175892d1fddaf693fa9d636"></span><a class="reference internal" href="PhysicalEntity.html#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> <code class="sig-name descname">newPhysicalEntity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor17newPhysicalEntityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor16newPhysicalForceEv">
+<span id="_CPPv3N8omexmeta6Editor16newPhysicalForceEv"></span><span id="_CPPv2N8omexmeta6Editor16newPhysicalForceEv"></span><span id="omexmeta::Editor::newPhysicalForce"></span><span class="target" id="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695"></span><a class="reference internal" href="PhysicalForce.html#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> <code class="sig-name descname">newPhysicalForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor16newPhysicalForceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor18newPhysicalProcessEv">
+<span id="_CPPv3N8omexmeta6Editor18newPhysicalProcessEv"></span><span id="_CPPv2N8omexmeta6Editor18newPhysicalProcessEv"></span><span id="omexmeta::Editor::newPhysicalProcess"></span><span class="target" id="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf"></span><a class="reference internal" href="PhysicalProcess.html#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> <code class="sig-name descname">newPhysicalProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor18newPhysicalProcessEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor22newPersonalInformationEv">
+<span id="_CPPv3N8omexmeta6Editor22newPersonalInformationEv"></span><span id="_CPPv2N8omexmeta6Editor22newPersonalInformationEv"></span><span id="omexmeta::Editor::newPersonalInformation"></span><span class="target" id="classomexmeta_1_1Editor_1a1943079ddbc4a4c6d896f51f360a11df"></span>PersonalInformation <code class="sig-name descname">newPersonalInformation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor22newPersonalInformationEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor31addSingleAnnotationNoValidationER18SingularAnnotation">
+<span id="_CPPv3N8omexmeta6Editor31addSingleAnnotationNoValidationER18SingularAnnotation"></span><span id="_CPPv2N8omexmeta6Editor31addSingleAnnotationNoValidationER18SingularAnnotation"></span><span id="omexmeta::Editor::addSingleAnnotationNoValidation__SingularAnnotationR"></span><span class="target" id="classomexmeta_1_1Editor_1a8fb3a19e8f64aeff2ac9b78c483843de"></span>void <code class="sig-name descname">addSingleAnnotationNoValidation</code><span class="sig-paren">(</span>SingularAnnotation &amp;<em>singularAnnotation</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor31addSingleAnnotationNoValidationER18SingularAnnotation" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor23addCompositeAnnotation2EP18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta6Editor23addCompositeAnnotation2EP18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta6Editor23addCompositeAnnotation2EP18PhysicalPhenomenon"></span><span id="omexmeta::Editor::addCompositeAnnotation2__PhysicalPhenomenonP"></span><span class="target" id="classomexmeta_1_1Editor_1ad05d04a31263f9c7cb8105e29fd9d158"></span>void <code class="sig-name descname">addCompositeAnnotation2</code><span class="sig-paren">(</span>PhysicalPhenomenon *<em>phenomenonPtr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor23addCompositeAnnotation2EP18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor10addTriplesER7Triples">
+<span id="_CPPv3N8omexmeta6Editor10addTriplesER7Triples"></span><span id="_CPPv2N8omexmeta6Editor10addTriplesER7Triples"></span><span id="omexmeta::Editor::addTriples__TriplesR"></span><span class="target" id="classomexmeta_1_1Editor_1ace8ee873498fa72b63c0747775b729f5"></span>void <code class="sig-name descname">addTriples</code><span class="sig-paren">(</span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> &amp;<em>triples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor10addTriplesER7Triples" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor24removePhysicalPhenomenonEP18PhysicalPhenomenon">
+<span id="_CPPv3NK8omexmeta6Editor24removePhysicalPhenomenonEP18PhysicalPhenomenon"></span><span id="_CPPv2NK8omexmeta6Editor24removePhysicalPhenomenonEP18PhysicalPhenomenon"></span><span id="omexmeta::Editor::removePhysicalPhenomenon__PhysicalPhenomenonPC"></span><span class="target" id="classomexmeta_1_1Editor_1af00f00108238acbf2b2974cedc07b454"></span>void <code class="sig-name descname">removePhysicalPhenomenon</code><span class="sig-paren">(</span>PhysicalPhenomenon *<em>physicalPhenomenon</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor24removePhysicalPhenomenonEP18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor13getArchiveUriEv">
+<span id="_CPPv3NK8omexmeta6Editor13getArchiveUriEv"></span><span id="_CPPv2NK8omexmeta6Editor13getArchiveUriEv"></span><span id="omexmeta::Editor::getArchiveUriC"></span><span class="target" id="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2"></span>std::string <code class="sig-name descname">getArchiveUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor13getArchiveUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor11getLocalUriEv">
+<span id="_CPPv3NK8omexmeta6Editor11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta6Editor11getLocalUriEv"></span><span id="omexmeta::Editor::getLocalUriC"></span><span class="target" id="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0"></span>std::string <code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor11getLocalUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor11getModelUriEv">
+<span id="_CPPv3NK8omexmeta6Editor11getModelUriEv"></span><span id="_CPPv2NK8omexmeta6Editor11getModelUriEv"></span><span id="omexmeta::Editor::getModelUriC"></span><span class="target" id="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e"></span>std::string <code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor11getModelUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor16getRepositoryUriEv">
+<span id="_CPPv3NK8omexmeta6Editor16getRepositoryUriEv"></span><span id="_CPPv2NK8omexmeta6Editor16getRepositoryUriEv"></span><span id="omexmeta::Editor::getRepositoryUriC"></span><span class="target" id="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf"></span>std::string <code class="sig-name descname">getRepositoryUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor16getRepositoryUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor22createNodeWithModelUriERKNSt6stringE">
+<span id="_CPPv3NK8omexmeta6Editor22createNodeWithModelUriERKNSt6stringE"></span><span id="_CPPv2NK8omexmeta6Editor22createNodeWithModelUriERKNSt6stringE"></span><span id="omexmeta::Editor::createNodeWithModelUri__ssCRC"></span><span class="target" id="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92"></span>LibrdfNode <code class="sig-name descname">createNodeWithModelUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>string</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor22createNodeWithModelUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor10addCreatorENSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor10addCreatorENSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor10addCreatorENSt6stringE"></span><span id="omexmeta::Editor::addCreator__ss"></span><span class="target" id="classomexmeta_1_1Editor_1a9c8b060005146f3cf5a231ea6789e7d7"></span>void <code class="sig-name descname">addCreator</code><span class="sig-paren">(</span>std::string <em>orcid_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor10addCreatorENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor10addCuratorENSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor10addCuratorENSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor10addCuratorENSt6stringE"></span><span id="omexmeta::Editor::addCurator__ss"></span><span class="target" id="classomexmeta_1_1Editor_1a8b83488faf68546733114acf54595b02"></span>void <code class="sig-name descname">addCurator</code><span class="sig-paren">(</span>std::string <em>orcid_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor10addCuratorENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor8addTaxonERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor8addTaxonERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor8addTaxonERKNSt6stringE"></span><span id="omexmeta::Editor::addTaxon__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1af64f0cac6b7e27b121df94ab5b1fa217"></span>void <code class="sig-name descname">addTaxon</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>taxon_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor8addTaxonERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor9addPubmedERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor9addPubmedERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor9addPubmedERKNSt6stringE"></span><span id="omexmeta::Editor::addPubmed__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a533f93c8ae0c3081dfe2fc8e8ebee8ea"></span>void <code class="sig-name descname">addPubmed</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>pubmedid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor9addPubmedERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor14addDescriptionERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor14addDescriptionERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor14addDescriptionERKNSt6stringE"></span><span id="omexmeta::Editor::addDescription__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a8526a87544b1265695f1749100da5fa2"></span>void <code class="sig-name descname">addDescription</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>date</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor14addDescriptionERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor14addDateCreatedERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor14addDateCreatedERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor14addDateCreatedERKNSt6stringE"></span><span id="omexmeta::Editor::addDateCreated__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1ae1b146f142ec10237f8edbecf0368f8e"></span>void <code class="sig-name descname">addDateCreated</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>date</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor14addDateCreatedERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor21newSingularAnnotationENSt6stringE">
+<span id="_CPPv3NK8omexmeta6Editor21newSingularAnnotationENSt6stringE"></span><span id="_CPPv2NK8omexmeta6Editor21newSingularAnnotationENSt6stringE"></span><span id="omexmeta::Editor::newSingularAnnotation__ssC"></span><span class="target" id="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c"></span>SingularAnnotation <code class="sig-name descname">newSingularAnnotation</code><span class="sig-paren">(</span>std::string <em>metaid</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor21newSingularAnnotationENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor14addParentModelERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor14addParentModelERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor14addParentModelERKNSt6stringE"></span><span id="omexmeta::Editor::addParentModel__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1ad7240613a1f3e215af6e4a05d121508c"></span>void <code class="sig-name descname">addParentModel</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>biomod_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor14addParentModelERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor22addPersonalInformationEP19PersonalInformation">
+<span id="_CPPv3NK8omexmeta6Editor22addPersonalInformationEP19PersonalInformation"></span><span id="_CPPv2NK8omexmeta6Editor22addPersonalInformationEP19PersonalInformation"></span><span id="omexmeta::Editor::addPersonalInformation__PersonalInformationPC"></span><span class="target" id="classomexmeta_1_1Editor_1ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f"></span>void <code class="sig-name descname">addPersonalInformation</code><span class="sig-paren">(</span>PersonalInformation *<em>personalInformation</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor22addPersonalInformationEP19PersonalInformation" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Editor21newSingularAnnotationEv">
+<span id="_CPPv3NK8omexmeta6Editor21newSingularAnnotationEv"></span><span id="_CPPv2NK8omexmeta6Editor21newSingularAnnotationEv"></span><span id="omexmeta::Editor::newSingularAnnotationC"></span><span class="target" id="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64"></span>SingularAnnotation <code class="sig-name descname">newSingularAnnotation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor21newSingularAnnotationEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor34extractNamespacesFromTriplesVectorEP18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta6Editor34extractNamespacesFromTriplesVectorEP18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta6Editor34extractNamespacesFromTriplesVectorEP18PhysicalPhenomenon"></span><span id="omexmeta::Editor::extractNamespacesFromTriplesVector__PhysicalPhenomenonP"></span><span class="target" id="classomexmeta_1_1Editor_1ad0bb5d79378fa2b18305780e93858959"></span>void <code class="sig-name descname">extractNamespacesFromTriplesVector</code><span class="sig-paren">(</span>PhysicalPhenomenon *<em>pp</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor34extractNamespacesFromTriplesVectorEP18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor4xml_E">
+<span id="_CPPv3N8omexmeta6Editor4xml_E"></span><span id="_CPPv2N8omexmeta6Editor4xml_E"></span><span id="omexmeta::Editor::xml___ss"></span><span class="target" id="classomexmeta_1_1Editor_1a36eecb635c6384ad186f0e750602b58e"></span>std::string <code class="sig-name descname">xml_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor4xml_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor8metaids_E">
+<span id="_CPPv3N8omexmeta6Editor8metaids_E"></span><span id="_CPPv2N8omexmeta6Editor8metaids_E"></span><span id="omexmeta::Editor::metaids___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">metaids_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor8metaids_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor6model_E">
+<span id="_CPPv3N8omexmeta6Editor6model_E"></span><span id="_CPPv2N8omexmeta6Editor6model_E"></span><span id="omexmeta::Editor::model___LibrdfModelCR"></span><span class="target" id="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33"></span><em class="property">const</em> LibrdfModel &amp;<code class="sig-name descname">model_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor6model_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor11create_ids_E">
+<span id="_CPPv3N8omexmeta6Editor11create_ids_E"></span><span id="_CPPv2N8omexmeta6Editor11create_ids_E"></span><span id="omexmeta::Editor::create_ids___b"></span><span class="target" id="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61"></span>bool <code class="sig-name descname">create_ids_</code> = false<a class="headerlink" href="#_CPPv4N8omexmeta6Editor11create_ids_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor11namespaces_E">
+<span id="_CPPv3N8omexmeta6Editor11namespaces_E"></span><span id="_CPPv2N8omexmeta6Editor11namespaces_E"></span><span id="omexmeta::Editor::namespaces___std::unordered_map:ss.ss:R"></span><span class="target" id="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e"></span>std::unordered_map&lt;std::string, std::string&gt; &amp;<code class="sig-name descname">namespaces_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor11namespaces_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor21generate_new_metaids_E">
+<span id="_CPPv3N8omexmeta6Editor21generate_new_metaids_E"></span><span id="_CPPv2N8omexmeta6Editor21generate_new_metaids_E"></span><span id="omexmeta::Editor::generate_new_metaids___b"></span><span class="target" id="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3"></span>bool <code class="sig-name descname">generate_new_metaids_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor21generate_new_metaids_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor25sbml_semantic_extraction_E">
+<span id="_CPPv3N8omexmeta6Editor25sbml_semantic_extraction_E"></span><span id="_CPPv2N8omexmeta6Editor25sbml_semantic_extraction_E"></span><span id="omexmeta::Editor::sbml_semantic_extraction___b"></span><span class="target" id="classomexmeta_1_1Editor_1ac4bbccf4ad683eaa744a5b9e81e688f8"></span>bool <code class="sig-name descname">sbml_semantic_extraction_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor25sbml_semantic_extraction_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor12metaid_base_E">
+<span id="_CPPv3N8omexmeta6Editor12metaid_base_E"></span><span id="_CPPv2N8omexmeta6Editor12metaid_base_E"></span><span id="omexmeta::Editor::metaid_base___ss"></span><span class="target" id="classomexmeta_1_1Editor_1a3c4514ca9177b9bc157e9e52af23bc82"></span>std::string <code class="sig-name descname">metaid_base_</code> = &quot;#OmexMetaId&quot;<a class="headerlink" href="#_CPPv4N8omexmeta6Editor12metaid_base_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor5type_E">
+<span id="_CPPv3N8omexmeta6Editor5type_E"></span><span id="_CPPv2N8omexmeta6Editor5type_E"></span><span id="omexmeta::Editor::type___OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1Editor_1a2676967741d009a5e9115d031b018318"></span>OmexMetaXmlType <code class="sig-name descname">type_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor5type_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor15repository_uri_E">
+<span id="_CPPv3N8omexmeta6Editor15repository_uri_E"></span><span id="_CPPv2N8omexmeta6Editor15repository_uri_E"></span><span id="omexmeta::Editor::repository_uri___ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">repository_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor15repository_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor12archive_uri_E">
+<span id="_CPPv3N8omexmeta6Editor12archive_uri_E"></span><span id="_CPPv2N8omexmeta6Editor12archive_uri_E"></span><span id="omexmeta::Editor::archive_uri___ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">archive_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor12archive_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor10model_uri_E">
+<span id="_CPPv3N8omexmeta6Editor10model_uri_E"></span><span id="_CPPv2N8omexmeta6Editor10model_uri_E"></span><span id="omexmeta::Editor::model_uri___ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">model_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor10model_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor10local_uri_E">
+<span id="_CPPv3N8omexmeta6Editor10local_uri_E"></span><span id="_CPPv2N8omexmeta6Editor10local_uri_E"></span><span id="omexmeta::Editor::local_uri___ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">local_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor10local_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PhysicalEntity.html" class="btn btn-neutral float-right" title="PhysicalEntity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="RDF.html" class="btn btn-neutral float-left" title="RDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

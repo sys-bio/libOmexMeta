@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PhysicalForce &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PhysicalProcess" href="PhysicalProcess.html" />
+    <link rel="prev" title="PhysicalEntity" href="PhysicalEntity.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>PhysicalForce</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/PhysicalForce.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="physicalforce">
+<h1>PhysicalForce<a class="headerlink" href="#physicalforce" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta13PhysicalForceE">
+<span id="_CPPv3N8omexmeta13PhysicalForceE"></span><span id="_CPPv2N8omexmeta13PhysicalForceE"></span><span id="omexmeta::PhysicalForce"></span><span class="target" id="classomexmeta_1_1PhysicalForce"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalForce</code> : <em class="property">public</em> omexmeta::PhysicalPhenomenon<a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEv">
+<span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEv"></span><span id="omexmeta::PhysicalForce::PhysicalForce"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ad5b43ea5489891c45f5ebc4c9b62e44e"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForceD0Ev">
+<span id="_CPPv3N8omexmeta13PhysicalForceD0Ev"></span><span id="_CPPv2N8omexmeta13PhysicalForceD0Ev"></span><span id="omexmeta::PhysicalForce::~PhysicalForce"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ad549162ec04a7aeb5b2c35f996f044a9"></span><code class="sig-name descname">~PhysicalForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForceD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty7Sources5Sinks">
+<span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty7Sources5Sinks"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty7Sources5Sinks"></span><span id="omexmeta::PhysicalForce::PhysicalForce__librdf_modelP.ss.ss.PhysicalProperty.Sources.Sinks"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a8761d703a67c6dc81b4a71b90391b20f"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em>, PhysicalProperty <em>physicalProperty</em>, Sources <em>sources</em>, Sinks <em>sinks</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty7Sources5Sinks" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce4freeEv">
+<span id="_CPPv3N8omexmeta13PhysicalForce4freeEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce4freeEv"></span><span id="omexmeta::PhysicalForce::free"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a41cd6c9904f3287bb8cbbab2b9d2ada3"></span>void <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce4freeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model">
+<span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model"></span><span id="omexmeta::PhysicalForce::PhysicalForce__librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a673e6810fe969bcd087ab88c62e5e041"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span>librdf_model *<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE"></span><span id="omexmeta::PhysicalForce::PhysicalForce__librdf_modelP.ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a2ff9aecd73a5356be701d8ba7e9bf71c"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, <em class="property">const</em> std::string &amp;<em>model_uri</em>, <em class="property">const</em> std::string &amp;<em>local_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce12createMetaIdEv">
+<span id="_CPPv3N8omexmeta13PhysicalForce12createMetaIdEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce12createMetaIdEv"></span><span id="omexmeta::PhysicalForce::createMetaId"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ae0a9ec4689b4765d985ab8f7a8878f38"></span>std::string <code class="sig-name descname">createMetaId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce12createMetaIdEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta13PhysicalForce10getSourcesEv">
+<span id="_CPPv3NK8omexmeta13PhysicalForce10getSourcesEv"></span><span id="_CPPv2NK8omexmeta13PhysicalForce10getSourcesEv"></span><span id="omexmeta::PhysicalForce::getSourcesC"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1aa42b8e04573d2ae88f952c76b146d5ac"></span><em class="property">const</em> Sources &amp;<code class="sig-name descname">getSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta13PhysicalForce10getSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta13PhysicalForce8getSinksEv">
+<span id="_CPPv3NK8omexmeta13PhysicalForce8getSinksEv"></span><span id="_CPPv2NK8omexmeta13PhysicalForce8getSinksEv"></span><span id="omexmeta::PhysicalForce::getSinksC"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ab37bbe3a0f762066fdb43e5c2ce608eb"></span><em class="property">const</em> Sinks &amp;<code class="sig-name descname">getSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta13PhysicalForce8getSinksEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce9toTriplesEv">
+<span id="_CPPv3N8omexmeta13PhysicalForce9toTriplesEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce9toTriplesEv"></span><span id="omexmeta::PhysicalForce::toTriples"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty">
+<span id="_CPPv3N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty"></span><span id="_CPPv2N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty"></span><span id="omexmeta::PhysicalForce::setPhysicalProperty__PhysicalProperty"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a081aecc43d16b2fc8826c4050eb2055d"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>PhysicalProperty <em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE"></span><span id="omexmeta::PhysicalForce::setPhysicalProperty__ss.ss"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a3f979432322d40efc8a15cf5ee883100"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>std::string <em>subject_metaid</em>, std::string <em>physical_property</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE">
+<span id="_CPPv3N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE"></span><span id="omexmeta::PhysicalForce::addSource__i.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ace7d3703d7e4bdb9a256208f456f2c4f"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">addSource</code><span class="sig-paren">(</span>int <em>multiplier</em>, <em class="property">const</em> std::string &amp;<em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE">
+<span id="_CPPv3N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE"></span><span id="omexmeta::PhysicalForce::addSink__i.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a8ec5e262b82526ac914d8c7f10b6c2f1"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">addSink</code><span class="sig-paren">(</span>int <em>multiplier</em>, <em class="property">const</em> std::string &amp;<em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce13getNumSourcesEv">
+<span id="_CPPv3N8omexmeta13PhysicalForce13getNumSourcesEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce13getNumSourcesEv"></span><span id="omexmeta::PhysicalForce::getNumSources"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a9910c8edac57daf70faa1f1e2e0208d1"></span>int <code class="sig-name descname">getNumSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13getNumSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13PhysicalForce11getNumSinksEv">
+<span id="_CPPv3N8omexmeta13PhysicalForce11getNumSinksEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce11getNumSinksEv"></span><span id="omexmeta::PhysicalForce::getNumSinks"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a1135c75705b59afa7037bab313009534"></span>int <code class="sig-name descname">getNumSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce11getNumSinksEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta13PhysicalForceeqERK13PhysicalForce">
+<span id="_CPPv3NK8omexmeta13PhysicalForceeqERK13PhysicalForce"></span><span id="_CPPv2NK8omexmeta13PhysicalForceeqERK13PhysicalForce"></span><span id="omexmeta::PhysicalForce::eq-operator__PhysicalForceCRC"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1affa0a1f3cdce0a3336d56658a92c65f3"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta13PhysicalForceeqERK13PhysicalForce" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta13PhysicalForceneERK13PhysicalForce">
+<span id="_CPPv3NK8omexmeta13PhysicalForceneERK13PhysicalForce"></span><span id="_CPPv2NK8omexmeta13PhysicalForceneERK13PhysicalForce"></span><span id="omexmeta::PhysicalForce::neq-operator__PhysicalForceCRC"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1aeb7adb235c0caac04c7aa599f98f258a"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta13PhysicalForceneERK13PhysicalForce" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta13PhysicalForce8sources_E">
+<span id="_CPPv3N8omexmeta13PhysicalForce8sources_E"></span><span id="_CPPv2N8omexmeta13PhysicalForce8sources_E"></span><span id="omexmeta::PhysicalForce::sources___Sources"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a79c5d2ad46b427dea58ab7058c8cd78b"></span>Sources <code class="sig-name descname">sources_</code><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce8sources_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta13PhysicalForce6sinks_E">
+<span id="_CPPv3N8omexmeta13PhysicalForce6sinks_E"></span><span id="_CPPv2N8omexmeta13PhysicalForce6sinks_E"></span><span id="omexmeta::PhysicalForce::sinks___Sinks"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a42c0ae3fe54ba4b69a709feefb01cee3"></span>Sinks <code class="sig-name descname">sinks_</code><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce6sinks_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta13PhysicalForce18physical_force_id_E">
+<span id="_CPPv3N8omexmeta13PhysicalForce18physical_force_id_E"></span><span id="_CPPv2N8omexmeta13PhysicalForce18physical_force_id_E"></span><span id="omexmeta::PhysicalForce::physical_force_id___ss"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a4ffbcd8ede36ce82b5b76910f533cb85"></span>std::string <code class="sig-name descname">physical_force_id_</code><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce18physical_force_id_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PhysicalProcess.html" class="btn btn-neutral float-right" title="PhysicalProcess" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PhysicalEntity.html" class="btn btn-neutral float-left" title="PhysicalEntity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

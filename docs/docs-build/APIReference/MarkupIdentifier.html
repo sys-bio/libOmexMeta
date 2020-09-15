@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MarkupIdentifier &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MetaID" href="MetaID.html" />
+    <link rel="prev" title="ElementExtractor" href="ElementExtractor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>MarkupIdentifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/MarkupIdentifier.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="markupidentifier">
+<h1>MarkupIdentifier<a class="headerlink" href="#markupidentifier" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifierE">
+<span id="_CPPv3N8omexmeta16MarkupIdentifierE"></span><span id="_CPPv2N8omexmeta16MarkupIdentifierE"></span><span id="omexmeta::MarkupIdentifier"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">MarkupIdentifier</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifierE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>determines whether input language is sbml, cellml or unknown </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE"></span><span id="omexmeta::MarkupIdentifier::MarkupIdentifier__ss"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a0bb73ce6d5c94efcd97471059a378058"></span><code class="sig-name descname">MarkupIdentifier</code><span class="sig-paren">(</span>std::string <em>markup</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1MarkupIdentifier"><span class="std std-ref">MarkupIdentifier</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">markup</span></code>: a string of your xml. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifierD0Ev">
+<span id="_CPPv3N8omexmeta16MarkupIdentifierD0Ev"></span><span id="_CPPv2N8omexmeta16MarkupIdentifierD0Ev"></span><span id="omexmeta::MarkupIdentifier::~MarkupIdentifier"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a155b2867eddc685ae4eb0eebc0fd0e27"></span><code class="sig-name descname">~MarkupIdentifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifierD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier6isSBMLEv">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier6isSBMLEv"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier6isSBMLEv"></span><span id="omexmeta::MarkupIdentifier::isSBML"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a541ffd197ce109e20112923d7fc0641b"></span>bool <code class="sig-name descname">isSBML</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier6isSBMLEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>test to see whether the xml passed to constructor is SBML </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if xml passed to constructor is SBML </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier8isCellMLEv">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier8isCellMLEv"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier8isCellMLEv"></span><span id="omexmeta::MarkupIdentifier::isCellML"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a2fd631a49a8a3d06e668cdbf130d5cb3"></span>bool <code class="sig-name descname">isCellML</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier8isCellMLEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>test to see whether the xml passed to constructor is CellML </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if xml passed to constructor is CellML </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta16MarkupIdentifier15getElementNamesEv">
+<span id="_CPPv3NK8omexmeta16MarkupIdentifier15getElementNamesEv"></span><span id="_CPPv2NK8omexmeta16MarkupIdentifier15getElementNamesEv"></span><span id="omexmeta::MarkupIdentifier::getElementNamesC"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1ab1736abf0d275bcb6eefcb7f08dcbd4f"></span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<code class="sig-name descname">getElementNames</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta16MarkupIdentifier15getElementNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier7parseMLEv">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier7parseMLEv"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier7parseMLEv"></span><span id="omexmeta::MarkupIdentifier::parseML"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a094ee06deb08f70c4f481e6bcb52f172"></span>xmlDoc *<code class="sig-name descname">parseML</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier7parseMLEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>read an xml document using libxml2. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode"></span><span id="omexmeta::MarkupIdentifier::collectElementNames__xmlNodeP"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1ada1ee4ccb99e393415f63e5dcafa68a6"></span>void <code class="sig-name descname">collectElementNames</code><span class="sig-paren">(</span>xmlNode *<em>a_node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>collect the name of the element pointed to by a_node </p>
+<p>*a_node pointer to an xmlNode </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier4doc_E">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier4doc_E"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier4doc_E"></span><span id="omexmeta::MarkupIdentifier::doc___xmlDocPtr"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1aee48438435455b27c7e709e5b4ecf57e"></span>xmlDocPtr <code class="sig-name descname">doc_</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier4doc_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier7markup_E">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier7markup_E"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier7markup_E"></span><span id="omexmeta::MarkupIdentifier::markup___ss"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a26b50e531faca03c318f4b44da1b9e4a"></span>std::string <code class="sig-name descname">markup_</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier7markup_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta16MarkupIdentifier14element_names_E">
+<span id="_CPPv3N8omexmeta16MarkupIdentifier14element_names_E"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier14element_names_E"></span><span id="omexmeta::MarkupIdentifier::element_names___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1ac054a63ecc73555135bd82979ba46b59"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">element_names_</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier14element_names_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="MetaID.html" class="btn btn-neutral float-right" title="MetaID" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ElementExtractor.html" class="btn btn-neutral float-left" title="ElementExtractor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

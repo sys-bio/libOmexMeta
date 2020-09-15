@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Resource &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SBMLSemanticExtraction" href="SBMLSemanticExtraction.html" />
+    <link rel="prev" title="Predicate" href="Predicate.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>Resource</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/Resource.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="resource">
+<h1>Resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta8ResourceE">
+<span id="_CPPv3N8omexmeta8ResourceE"></span><span id="_CPPv2N8omexmeta8ResourceE"></span><span id="omexmeta::Resource"></span><span class="target" id="classomexmeta_1_1Resource"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Resource</code><a class="headerlink" href="#_CPPv4N8omexmeta8ResourceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta8ResourceeqERK8Resource">
+<span id="_CPPv3NK8omexmeta8ResourceeqERK8Resource"></span><span id="_CPPv2NK8omexmeta8ResourceeqERK8Resource"></span><span id="omexmeta::Resource::eq-operator__ResourceCRC"></span><span class="target" id="classomexmeta_1_1Resource_1ade5147df30b7e4f42386534a4a27b12f"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta8ResourceE" title="omexmeta::Resource">Resource</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta8ResourceeqERK8Resource" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta8ResourceneERK8Resource">
+<span id="_CPPv3NK8omexmeta8ResourceneERK8Resource"></span><span id="_CPPv2NK8omexmeta8ResourceneERK8Resource"></span><span id="omexmeta::Resource::neq-operator__ResourceCRC"></span><span class="target" id="classomexmeta_1_1Resource_1a99336c4dd6ef49588cd7144e50cf639b"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta8ResourceE" title="omexmeta::Resource">Resource</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta8ResourceneERK8Resource" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta8Resource8ResourceE10LibrdfNode">
+<span id="_CPPv3N8omexmeta8Resource8ResourceE10LibrdfNode"></span><span id="_CPPv2N8omexmeta8Resource8ResourceE10LibrdfNode"></span><span id="omexmeta::Resource::Resource__LibrdfNode"></span><span class="target" id="classomexmeta_1_1Resource_1a6b70255d34f54c4adfa893a8ba54b0a2"></span><code class="sig-name descname">Resource</code><span class="sig-paren">(</span>LibrdfNode <em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta8Resource8ResourceE10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta8Resource8ResourceEv">
+<span id="_CPPv3N8omexmeta8Resource8ResourceEv"></span><span id="_CPPv2N8omexmeta8Resource8ResourceEv"></span><span id="omexmeta::Resource::Resource"></span><span class="target" id="classomexmeta_1_1Resource_1a5c0035886f90fe34028ce3f6448c7610"></span><code class="sig-name descname">Resource</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta8Resource8ResourceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta8Resource7setNodeEP11librdf_node">
+<span id="_CPPv3N8omexmeta8Resource7setNodeEP11librdf_node"></span><span id="_CPPv2N8omexmeta8Resource7setNodeEP11librdf_node"></span><span id="omexmeta::Resource::setNode__librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Resource_1a25be1a34d6a27565612a9c7b597befd8"></span>void <code class="sig-name descname">setNode</code><span class="sig-paren">(</span>librdf_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta8Resource7setNodeEP11librdf_node" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta8Resource7getNodeEv">
+<span id="_CPPv3NK8omexmeta8Resource7getNodeEv"></span><span id="_CPPv2NK8omexmeta8Resource7getNodeEv"></span><span id="omexmeta::Resource::getNodeC"></span><span class="target" id="classomexmeta_1_1Resource_1a7866b5bd47b319e39dec70eae8969d4f"></span>librdf_node *<code class="sig-name descname">getNode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta8Resource7getNodeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta8Resource3strEv">
+<span id="_CPPv3NK8omexmeta8Resource3strEv"></span><span id="_CPPv2NK8omexmeta8Resource3strEv"></span><span id="omexmeta::Resource::strC"></span><span class="target" id="classomexmeta_1_1Resource_1aae0948ff89d537133fd5e99bb88aa96a"></span>std::string <code class="sig-name descname">str</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta8Resource3strEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta8Resource5isSetEv">
+<span id="_CPPv3NK8omexmeta8Resource5isSetEv"></span><span id="_CPPv2NK8omexmeta8Resource5isSetEv"></span><span id="omexmeta::Resource::isSetC"></span><span class="target" id="classomexmeta_1_1Resource_1ad6a1a5009a2b8fdacf0f53899986735a"></span>bool <code class="sig-name descname">isSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta8Resource5isSetEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta8Resource4freeEv">
+<span id="_CPPv3N8omexmeta8Resource4freeEv"></span><span id="_CPPv2N8omexmeta8Resource4freeEv"></span><span id="omexmeta::Resource::free"></span><span class="target" id="classomexmeta_1_1Resource_1a87a7540d96d762dbd3f0b5160e575803"></span>void <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta8Resource4freeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta8Resource10fromRawPtrEP11librdf_node">
+<span id="_CPPv3N8omexmeta8Resource10fromRawPtrEP11librdf_node"></span><span id="_CPPv2N8omexmeta8Resource10fromRawPtrEP11librdf_node"></span><span id="omexmeta::Resource::fromRawPtr__librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Resource_1a4b8f2429e43312eab63b5135fd508986"></span><a class="reference internal" href="#_CPPv4N8omexmeta8ResourceE" title="omexmeta::Resource">Resource</a> <code class="sig-name descname">fromRawPtr</code><span class="sig-paren">(</span>librdf_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta8Resource10fromRawPtrEP11librdf_node" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta8Resource5node_E">
+<span id="_CPPv3N8omexmeta8Resource5node_E"></span><span id="_CPPv2N8omexmeta8Resource5node_E"></span><span id="omexmeta::Resource::node___librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Resource_1a9695da843dd795e090f8b89886d432b9"></span>librdf_node *<code class="sig-name descname">node_</code> = nullptr<a class="headerlink" href="#_CPPv4N8omexmeta8Resource5node_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta8Resource8ResourceEP11librdf_node">
+<span id="_CPPv3N8omexmeta8Resource8ResourceEP11librdf_node"></span><span id="_CPPv2N8omexmeta8Resource8ResourceEP11librdf_node"></span><span id="omexmeta::Resource::Resource__librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Resource_1a21639dad566369d3a9c0e7a9968b46c3"></span><code class="sig-name descname">Resource</code><span class="sig-paren">(</span>librdf_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta8Resource8ResourceEP11librdf_node" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SBMLSemanticExtraction.html" class="btn btn-neutral float-right" title="SBMLSemanticExtraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Predicate.html" class="btn btn-neutral float-left" title="Predicate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

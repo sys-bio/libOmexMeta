@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RDF &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Editor" href="Editor.html" />
+    <link rel="prev" title="libOmexMeta API Reference" href="api_reference_index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>RDF</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/RDF.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rdf">
+<h1>RDF<a class="headerlink" href="#rdf" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta3RDFE">
+<span id="_CPPv3N8omexmeta3RDFE"></span><span id="_CPPv2N8omexmeta3RDFE"></span><span id="omexmeta::RDF"></span><span class="target" id="classomexmeta_1_1RDF"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">RDF</code><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF10getXmlTypeEv">
+<span id="_CPPv3NK8omexmeta3RDF10getXmlTypeEv"></span><span id="_CPPv2NK8omexmeta3RDF10getXmlTypeEv"></span><span id="omexmeta::RDF::getXmlTypeC"></span><span class="target" id="classomexmeta_1_1RDF_1a6979e6ca2688cf5cae1e9e1cf3a7309a"></span>OmexMetaXmlType <code class="sig-name descname">getXmlType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>getter for xmlType attribue. </p>
+<p>when the rdf graph is sbml, it will return OMEXMETA_TYPE_SBML. When cellML it will return OMEXMETA_TYPE_CELLML. Otherwise it is OMEXMETA_TYPE_UNKNOWN. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType">
+<span id="_CPPv3N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType"></span><span id="_CPPv2N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType"></span><span id="omexmeta::RDF::setXmlType__OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1RDF_1a8fc7b226619580fac47afce0a7ec2628"></span>void <code class="sig-name descname">setXmlType</code><span class="sig-paren">(</span>OmexMetaXmlType <em>xmlType</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>set the xml type for the current graph. </p>
+<p>If you have been reading from an SBML you cannot then read from another format (such as cellml). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF16getRepositoryUriEv">
+<span id="_CPPv3NK8omexmeta3RDF16getRepositoryUriEv"></span><span id="_CPPv2NK8omexmeta3RDF16getRepositoryUriEv"></span><span id="omexmeta::RDF::getRepositoryUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a60b4a0a8c0c4f30a9cc71f9899bffabc"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getRepositoryUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>getter for repository uri which defaults to “http://omex-library.org/” </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF16setRepositoryUriENSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF16setRepositoryUriENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF16setRepositoryUriENSt6stringE"></span><span id="omexmeta::RDF::setRepositoryUri__ss"></span><span class="target" id="classomexmeta_1_1RDF_1a9e8669ac5cf5dbcaf235f535f7482a7a"></span>void <code class="sig-name descname">setRepositoryUri</code><span class="sig-paren">(</span>std::string <em>repositoryName</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>setter for the repository uri which defaults to “http://omex-library.org/”. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">repositoryName</span></code>: the repository uri. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF13getArchiveUriEv">
+<span id="_CPPv3NK8omexmeta3RDF13getArchiveUriEv"></span><span id="_CPPv2NK8omexmeta3RDF13getArchiveUriEv"></span><span id="omexmeta::RDF::getArchiveUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a1b3bd1292e77c1d87720f854ec5a04bd"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getArchiveUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>getter for archiveUri attribute. </p>
+<p>default to <a class="reference external" href="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF13setArchiveUriENSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF13setArchiveUriENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF13setArchiveUriENSt6stringE"></span><span id="omexmeta::RDF::setArchiveUri__ss"></span><span class="target" id="classomexmeta_1_1RDF_1a77ba0cbdb6070ac78f14044197d79cd8"></span>void <code class="sig-name descname">setArchiveUri</code><span class="sig-paren">(</span>std::string <em>archiveName</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>setter for archiveUri attribute. </p>
+<p><p>default to </p>
+<a class="reference external" href="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</a> <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">archiveName</span></code>: the new name for archive uri attribute</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF11getModelUriEv">
+<span id="_CPPv3NK8omexmeta3RDF11getModelUriEv"></span><span id="_CPPv2NK8omexmeta3RDF11getModelUriEv"></span><span id="omexmeta::RDF::getModelUriC"></span><span class="target" id="classomexmeta_1_1RDF_1ac579ac8b79eb7d374a9077114837d2ef"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>getter for model uri. </p>
+<p>defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.xml#">http://omex-library.org/NewOmex.omex/NewModel.xml#</a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF11setModelUriENSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF11setModelUriENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF11setModelUriENSt6stringE"></span><span id="omexmeta::RDF::setModelUri__ss"></span><span class="target" id="classomexmeta_1_1RDF_1ad5310903d0e1a7a7ee890478f18b6181"></span>void <code class="sig-name descname">setModelUri</code><span class="sig-paren">(</span>std::string <em>modelName</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>setter for model uri. </p>
+<p><p>defaults to </p>
+<a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.xml#">http://omex-library.org/NewOmex.omex/NewModel.xml#</a> <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modelName</span></code>: string for new model uri.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF11getLocalUriEv">
+<span id="_CPPv3NK8omexmeta3RDF11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta3RDF11getLocalUriEv"></span><span id="omexmeta::RDF::getLocalUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a58b64a5972f74564994028504d8d227c"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>getter for local uri attribute. </p>
+<p>defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.rdf#">http://omex-library.org/NewOmex.omex/NewModel.rdf#</a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc">
+<span id="_CPPv3N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::RDF__ssCR.ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1aecb90e51830082f78ff055c045f4b439"></span><code class="sig-name descname">RDF</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>storage_type</em> = &quot;memory&quot;, <em class="property">const</em> std::string &amp;<em>storage_name</em> = &quot;SemsimStore&quot;, <em class="property">const</em> char *<em>storage_options</em> = nullptr, <em class="property">const</em> char *<em>model_options</em> = nullptr<span class="sig-paren">)</span><br /></dt>
+<dd><p>constructor for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> class </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">storage_type.</span></code>: Defaults to memory. Other options include: “hashes”, “file”, “mysql”, “postgresql”, “sqlite”, “uri”, </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">storage_name</span></code>: name used for storage. When storage is not internally held in memory, this becomes the name of the file or database. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">storage_options</span></code>: options that get passed on to storage. Please study <a class="reference external" href="http://librdf.org/docs/api/redland-storage-modules.html">http://librdf.org/docs/api/redland-storage-modules.html</a> for more information.  options that get passed to the model. Please see <a class="reference external" href="http://librdf.org/docs/api/index.html">http://librdf.org/docs/api/index.html</a> for more details. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDFD0Ev">
+<span id="_CPPv3N8omexmeta3RDFD0Ev"></span><span id="_CPPv2N8omexmeta3RDFD0Ev"></span><span id="omexmeta::RDF::~RDF"></span><span class="target" id="classomexmeta_1_1RDF_1a87b1eb7fe49f4928e61c399edf49e09c"></span><code class="sig-name descname">~RDF</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>destructor for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF3RDFERK3RDF">
+<span id="_CPPv3N8omexmeta3RDF3RDFERK3RDF"></span><span id="_CPPv2N8omexmeta3RDF3RDFERK3RDF"></span><span id="omexmeta::RDF::RDF__RDFCR"></span><span class="target" id="classomexmeta_1_1RDF_1ad95c4a8588988efe399c7f984e304990"></span><code class="sig-name descname">RDF</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF3RDFERK3RDF" title="omexmeta::RDF::RDF">RDF</a> &amp;<em>rdf</em><span class="sig-paren">)</span> = delete<br /></dt>
+<dd><p>copy constructor for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> class </p>
+<p><a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> instances are not copyable due to restrictions within the redland libraries. You must instead move <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> objects. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF3RDFERR3RDF">
+<span id="_CPPv3N8omexmeta3RDF3RDFERR3RDF"></span><span id="_CPPv2N8omexmeta3RDF3RDFERR3RDF"></span><span id="omexmeta::RDF::RDF__RDFRR"></span><span class="target" id="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9"></span><code class="sig-name descname">RDF</code><span class="sig-paren">(</span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF3RDFERR3RDF" title="omexmeta::RDF::RDF">RDF</a> &amp;&amp;<em>rdf</em><span class="sig-paren">)</span> <em class="property">noexcept</em><br /></dt>
+<dd><p>move constructor for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> class </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDFaSERK3RDF">
+<span id="_CPPv3N8omexmeta3RDFaSERK3RDF"></span><span id="_CPPv2N8omexmeta3RDFaSERK3RDF"></span><span id="omexmeta::RDF::assign-operator__RDFCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<em>rdf</em><span class="sig-paren">)</span> = delete<br /></dt>
+<dd><p>copy assignment constructor for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> ojects </p>
+<p>Copy assignment functionality is prohibited for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> objects. Use move semantics insead. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDFaSERR3RDF">
+<span id="_CPPv3N8omexmeta3RDFaSERR3RDF"></span><span id="_CPPv2N8omexmeta3RDFaSERR3RDF"></span><span id="omexmeta::RDF::assign-operator__RDFRR"></span><span class="target" id="classomexmeta_1_1RDF_1ae3739bda3be0986547c31559381f3df4"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;&amp;<em>rdf</em><span class="sig-paren">)</span> <em class="property">noexcept</em><br /></dt>
+<dd><p>move assignment operator for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF4sizeEv">
+<span id="_CPPv3NK8omexmeta3RDF4sizeEv"></span><span id="_CPPv2NK8omexmeta3RDF4sizeEv"></span><span id="omexmeta::RDF::sizeC"></span><span class="target" id="classomexmeta_1_1RDF_1a63247bb3a05957abf7320c060543c3ca"></span>int <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>returns the number of triples currently present in the <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF5emptyEv">
+<span id="_CPPv3NK8omexmeta3RDF5emptyEv"></span><span id="_CPPv2NK8omexmeta3RDF5emptyEv"></span><span id="omexmeta::RDF::emptyC"></span><span class="target" id="classomexmeta_1_1RDF_1ab6525e8db606ffd48425b05ad2a204d8"></span>bool <code class="sig-name descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd><p>indicator for whether the <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph is empty </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph has no triples, false otherwise. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9a29912bc44d47d371a2357b75194fc3"></span>void <code class="sig-name descname">addFromString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><br /></dt>
+<dd><p>non-static variant of <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"><span class="std std-ref">RDF::fromString()</span></a>. Reads rdf into an <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> instance. See <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"><span class="std std-ref">RDF::fromString()</span></a> for argument requirements. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromUri__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1af99201be3782319d32e963ca7bed5b2b"></span>void <code class="sig-name descname">addFromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri_string</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><br /></dt>
+<dd><p>non-static counterpart of <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6"><span class="std std-ref">RDF::fromUri</span></a>. Downloads and parses rdf from a URI. </p>
+<p>See <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6"><span class="std std-ref">RDF::fromUri</span></a> for details. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1ac88eeb1a0f6911a2c1e4c43cef1b9047"></span>void <code class="sig-name descname">addFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>format</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>non-static counter part of <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f"><span class="std std-ref">RDF::fromFile</span></a>. Reads rdf from annotations in a file </p>
+<p><p>Uses LibrdfParser::fromFile under the hood </p>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>an instantiated <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> object</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: the filename to read as string </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format of the <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> in filename </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE"></span><span id="omexmeta::RDF::propagateNamespacesFromParser__std::vector:ss:CR"></span><span class="target" id="classomexmeta_1_1RDF_1af5f598560ab2a4ebe661f9bdb8665755"></span>std::unordered_map&lt;std::string, std::string&gt; <code class="sig-name descname">propagateNamespacesFromParser</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<em>seen_namespaces</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>compared namespaces seen with namespaces known and ensures models that use a known namespace use that namespace. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">seen_namespaces</span></code>: a vector of strings of namespaces the parser has seen before. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc">
+<span id="_CPPv3N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::toString__ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1a53bc4c91a3c39eef9b27886873badca2"></span>std::string <code class="sig-name descname">toString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, <em class="property">const</em> char *<em>mime_type</em> = nullptr, <em class="property">const</em> char *<em>type_uri</em> = nullptr<span class="sig-paren">)</span><br /></dt>
+<dd><p>serialize <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph to string </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the expected output format. Options include: “ntriples”, “turtle”, “rdfxml-xmp”, “rdfxml-abbrev”, “rdfxml”, “dot”, “json-triples”, “json”, “nquads”, “html”. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc">
+<span id="_CPPv3N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::toFile__ssCR.ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1a42a7be2a6261f03dc275b24a152dcaae"></span>void <code class="sig-name descname">toFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, <em class="property">const</em> char *<em>mime_type</em> = nullptr, <em class="property">const</em> char *<em>type_uri</em> = nullptr<span class="sig-paren">)</span><br /></dt>
+<dd><p>Write annotations to file. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the expected output format. Options include: “ntriples”, “turtle”, “rdfxml-xmp”, “rdfxml-abbrev”, “rdfxml”, “dot”, “json-triples”, “json”, “nquads”, “html”. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: full path of file to write </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mime_type</span></code>: optional valid mime </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type_uri</span></code>: optional type uri </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF8toEditorERKNSt6stringEbb">
+<span id="_CPPv3N8omexmeta3RDF8toEditorERKNSt6stringEbb"></span><span id="_CPPv2N8omexmeta3RDF8toEditorERKNSt6stringEbb"></span><span id="omexmeta::RDF::toEditor__ssCR.b.b"></span><span class="target" id="classomexmeta_1_1RDF_1ac09044c8a4c1af4f9536dbf29b4c3f3c"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> <code class="sig-name descname">toEditor</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true<span class="sig-paren">)</span><br /></dt>
+<dd><p>instantiate an <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> object. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: the xml you want to open for editing. This can be any type of xml document, but SBML and CellML are most common. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate_new_metaids</span></code>: When true, will add metaids onto a copy of the xml source code for annotation. Default = false. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OmexMetaXmlType</span></code>: an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is “OMEXMETA_TYPE_NOTSET” </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb">
+<span id="_CPPv3N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb"></span><span id="_CPPv2N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb"></span><span id="omexmeta::RDF::toEditorPtr__ssCR.b.b"></span><span class="target" id="classomexmeta_1_1RDF_1a80c6ad0b9c9daddd5e2150ababcc7476"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> *<code class="sig-name descname">toEditorPtr</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true<span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF8getModelEv">
+<span id="_CPPv3NK8omexmeta3RDF8getModelEv"></span><span id="_CPPv2NK8omexmeta3RDF8getModelEv"></span><span id="omexmeta::RDF::getModelC"></span><span class="target" id="classomexmeta_1_1RDF_1a8007b0ce5729c7dd3f8cab86d42216f5"></span>librdf_model *<code class="sig-name descname">getModel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF10getStorageEv">
+<span id="_CPPv3NK8omexmeta3RDF10getStorageEv"></span><span id="_CPPv2NK8omexmeta3RDF10getStorageEv"></span><span id="omexmeta::RDF::getStorageC"></span><span class="target" id="classomexmeta_1_1RDF_1a71b0e5f3b85a87c2231e7700d86060c3"></span>librdf_storage *<code class="sig-name descname">getStorage</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF17commitTransactionEv">
+<span id="_CPPv3NK8omexmeta3RDF17commitTransactionEv"></span><span id="_CPPv2NK8omexmeta3RDF17commitTransactionEv"></span><span id="omexmeta::RDF::commitTransactionC"></span><span class="target" id="classomexmeta_1_1RDF_1a711f228bb86c5cbf9740f64b8633d04c"></span>int <code class="sig-name descname">commitTransaction</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF16startTransactionEv">
+<span id="_CPPv3NK8omexmeta3RDF16startTransactionEv"></span><span id="_CPPv2NK8omexmeta3RDF16startTransactionEv"></span><span id="omexmeta::RDF::startTransactionC"></span><span class="target" id="classomexmeta_1_1RDF_1afa2b148ecb235b3ac9497fa3b528d2ed"></span>int <code class="sig-name descname">startTransaction</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF20getTransactionHandleEv">
+<span id="_CPPv3NK8omexmeta3RDF20getTransactionHandleEv"></span><span id="_CPPv2NK8omexmeta3RDF20getTransactionHandleEv"></span><span id="omexmeta::RDF::getTransactionHandleC"></span><span class="target" id="classomexmeta_1_1RDF_1ad30bbe5c9b274713f87d4d4a5f2b28e9"></span>void *<code class="sig-name descname">getTransactionHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF26startTransactionWithHandleEPv">
+<span id="_CPPv3NK8omexmeta3RDF26startTransactionWithHandleEPv"></span><span id="_CPPv2NK8omexmeta3RDF26startTransactionWithHandleEPv"></span><span id="omexmeta::RDF::startTransactionWithHandle__voidPC"></span><span class="target" id="classomexmeta_1_1RDF_1a278b78d5b1b88397c2eb4143f23dab8b"></span>int <code class="sig-name descname">startTransactionWithHandle</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF22getTransactionRollbackEv">
+<span id="_CPPv3NK8omexmeta3RDF22getTransactionRollbackEv"></span><span id="_CPPv2NK8omexmeta3RDF22getTransactionRollbackEv"></span><span id="omexmeta::RDF::getTransactionRollbackC"></span><span class="target" id="classomexmeta_1_1RDF_1af5c7c6104496c09762518d56e94e6048"></span>int <code class="sig-name descname">getTransactionRollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::query__ssCR.ssCRC"></span><span class="target" id="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6"></span>std::string <code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>query_str</em>, <em class="property">const</em> std::string &amp;<em>results_format</em><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF11namespaces_E">
+<span id="_CPPv3N8omexmeta3RDF11namespaces_E"></span><span id="_CPPv2N8omexmeta3RDF11namespaces_E"></span><span id="omexmeta::RDF::namespaces___NamespaceMap"></span><span class="target" id="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF12NamespaceMapE" title="omexmeta::RDF::NamespaceMap">NamespaceMap</a> <code class="sig-name descname">namespaces_</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF16seen_namespaces_E">
+<span id="_CPPv3N8omexmeta3RDF16seen_namespaces_E"></span><span id="_CPPv2N8omexmeta3RDF16seen_namespaces_E"></span><span id="omexmeta::RDF::seen_namespaces___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">seen_namespaces_</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF8OMEXlib_E">
+<span id="_CPPv3N8omexmeta3RDF8OMEXlib_E"></span><span id="_CPPv2N8omexmeta3RDF8OMEXlib_E"></span><span id="omexmeta::RDF::OMEXlib___ssC"></span><span class="target" id="classomexmeta_1_1RDF_1a59014bbb45a43dbfa760480f1713c473"></span><em class="property">const</em> std::string <code class="sig-name descname">OMEXlib_</code> = &quot;http://OMEXlibrary.org/&quot;<br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF19default_namespaces_E">
+<span id="_CPPv3N8omexmeta3RDF19default_namespaces_E"></span><span id="_CPPv2N8omexmeta3RDF19default_namespaces_E"></span><span id="omexmeta::RDF::default_namespaces___NamespaceMap"></span><span class="target" id="classomexmeta_1_1RDF_1a5b1184955f2401c30116c7473be1ca1d"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF12NamespaceMapE" title="omexmeta::RDF::NamespaceMap">NamespaceMap</a> <code class="sig-name descname">default_namespaces_</code> = <a class="reference internal" href="Predicate.html#_CPPv4N8omexmeta9PredicateE" title="omexmeta::Predicate">Predicate</a>::<a class="reference internal" href="Predicate.html#_CPPv4N8omexmeta9Predicate12namespaceMapEv" title="omexmeta::Predicate::namespaceMap">namespaceMap</a>()<br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><br /></dt>
+<dd><p>instantiate an <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> instance and read annotations from a string. This is a static method. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: a reference to the string containing annotations </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: which format str is in. Default=”guess” : try to guess. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromUri__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri_string</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><br /></dt>
+<dd><p>parse <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> directly from a uri </p>
+<p><p>downloads uri from the internet and creates an </p>
+<a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. See Librdf::parseUri() for more details. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> an instantiated <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> object.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uri_string</span></code>: the uri to download containing <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format that the <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> is in </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f"></span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>format</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>read rdf from annotations in a file </p>
+<p><p>Uses LibrdfParser::fromFile under the hood </p>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>an instantiated <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> object</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: the filename to read as string </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format of the <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> in filename </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE"></span><span id="omexmeta::RDF::fromString__RDFP.ssCR.ssCR.ss"></span><span class="target" id="classomexmeta_1_1RDF_1ab2dadc7ff1cf25edbb401b2c879a21b0"></span>void <code class="sig-name descname">fromString</code><span class="sig-paren">(</span><a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>rdf</em>, <em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>format</em>, std::string <em>base_uri</em> = &quot;Annotations.rdf&quot;<span class="sig-paren">)</span><br /></dt>
+<dd><p>non static version of <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"><span class="std std-ref">RDF::fromString</span></a> that takes a * <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> pointer object and modifies in place. </p>
+<p>Primarily used for C API For developers: look into replacing this function fully with <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF_1a9a29912bc44d47d371a2357b75194fc3"><span class="std std-ref">RDF::addFromString()</span></a> method. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF11listOptionsEv">
+<span id="_CPPv3N8omexmeta3RDF11listOptionsEv"></span><span id="_CPPv2N8omexmeta3RDF11listOptionsEv"></span><span id="omexmeta::RDF::listOptions"></span><span class="target" id="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177"></span>std::ostringstream <code class="sig-name descname">listOptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N8omexmeta3RDF12NamespaceMapE">
+<span id="_CPPv3N8omexmeta3RDF12NamespaceMapE"></span><span id="_CPPv2N8omexmeta3RDF12NamespaceMapE"></span><span id="omexmeta::RDF::NamespaceMap"></span><span class="target" id="classomexmeta_1_1RDF_1ad31e5bb632eeaa00a3ac0e69c5e4f89c"></span><em class="property">typedef </em>std::unordered_map&lt;std::string, std::string&gt; <code class="sig-name descname">NamespaceMap</code><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::classifyXmlType__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a91574f34be1fe3054f4f7ce6830098b4"></span>void <code class="sig-name descname">classifyXmlType</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, <em class="property">const</em> std::string &amp;<em>input_format</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>autoset the xmlType variable based on xml content. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::classifyXmlTypeFromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a71b3dd4837a918a273f8d15aaa5c6c7b"></span>void <code class="sig-name descname">classifyXmlTypeFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml_file</em>, <em class="property">const</em> std::string &amp;<em>input_format</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>reads xml from file before calling classifyXmlType </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF34extractSemanticInformationFromSBMLERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF34extractSemanticInformationFromSBMLERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF34extractSemanticInformationFromSBMLERKNSt6stringE"></span><span id="omexmeta::RDF::extractSemanticInformationFromSBML__ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a"></span>void <code class="sig-name descname">extractSemanticInformationFromSBML</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>sbml</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>pull semantic information out of the sbml int the <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF7freeRDFEv">
+<span id="_CPPv3N8omexmeta3RDF7freeRDFEv"></span><span id="_CPPv2N8omexmeta3RDF7freeRDFEv"></span><span id="omexmeta::RDF::freeRDF"></span><span class="target" id="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399"></span>void <code class="sig-name descname">freeRDF</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>release memory consumed by <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a>. </p>
+<p>Memory consumed by <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> is destructed using RAII so users normally do not need this function. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF8storage_E">
+<span id="_CPPv3N8omexmeta3RDF8storage_E"></span><span id="_CPPv2N8omexmeta3RDF8storage_E"></span><span id="omexmeta::RDF::storage___LibrdfStorage"></span><span class="target" id="classomexmeta_1_1RDF_1a345bcba83c6928f750ba732b6e6c748b"></span>LibrdfStorage <code class="sig-name descname">storage_</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF6model_E">
+<span id="_CPPv3N8omexmeta3RDF6model_E"></span><span id="_CPPv2N8omexmeta3RDF6model_E"></span><span id="omexmeta::RDF::model___LibrdfModel"></span><span class="target" id="classomexmeta_1_1RDF_1a88a09d66eb9d6881fd77e9ef6133b4e6"></span>LibrdfModel <code class="sig-name descname">model_</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF7xmlTypeE">
+<span id="_CPPv3N8omexmeta3RDF7xmlTypeE"></span><span id="_CPPv2N8omexmeta3RDF7xmlTypeE"></span><span id="omexmeta::RDF::xmlType__OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1RDF_1ac7eaa8a5c0fdf7b563ba56550fede82a"></span>OmexMetaXmlType <code class="sig-name descname">xmlType</code> = OMEXMETA_TYPE_NOTSET<br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF15repository_uri_E">
+<span id="_CPPv3N8omexmeta3RDF15repository_uri_E"></span><span id="_CPPv2N8omexmeta3RDF15repository_uri_E"></span><span id="omexmeta::RDF::repository_uri___ss"></span><span class="target" id="classomexmeta_1_1RDF_1ad770e9fa1ee14c75bc628c36c82ccd9d"></span>std::string <code class="sig-name descname">repository_uri_</code> = &quot;http://omex-library.org/&quot;<br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF12archive_uri_E">
+<span id="_CPPv3N8omexmeta3RDF12archive_uri_E"></span><span id="_CPPv2N8omexmeta3RDF12archive_uri_E"></span><span id="omexmeta::RDF::archive_uri___ss"></span><span class="target" id="classomexmeta_1_1RDF_1a15c959c8b8644866131acb76747b0b29"></span>std::string <code class="sig-name descname">archive_uri_</code> = <a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF15repository_uri_E" title="omexmeta::RDF::repository_uri_">repository_uri_</a> + &quot;NewOmex.omex/&quot;<br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF10model_uri_E">
+<span id="_CPPv3N8omexmeta3RDF10model_uri_E"></span><span id="_CPPv2N8omexmeta3RDF10model_uri_E"></span><span id="omexmeta::RDF::model_uri___ss"></span><span class="target" id="classomexmeta_1_1RDF_1a5b29aa14e3516ef3622750a620431289"></span>std::string <code class="sig-name descname">model_uri_</code> = <a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF12archive_uri_E" title="omexmeta::RDF::archive_uri_">archive_uri_</a> + &quot;NewModel.xml#&quot;<br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta3RDF10local_uri_E">
+<span id="_CPPv3N8omexmeta3RDF10local_uri_E"></span><span id="_CPPv2N8omexmeta3RDF10local_uri_E"></span><span id="omexmeta::RDF::local_uri___ss"></span><span class="target" id="classomexmeta_1_1RDF_1af9b15ca5c5f9aea688e7f5fc2b03897d"></span>std::string <code class="sig-name descname">local_uri_</code> = <a class="reference internal" href="ElementExtractor.html#_CPPv4N8omexmeta3RDF12archive_uri_E" title="omexmeta::RDF::archive_uri_">archive_uri_</a> + &quot;NewModel.rdf#&quot;<br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Editor.html" class="btn btn-neutral float-right" title="Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api_reference_index.html" class="btn btn-neutral float-left" title="libOmexMeta API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

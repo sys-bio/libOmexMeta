@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PhysicalProcess &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PhysicalPropery" href="PhysicalPropery.html" />
+    <link rel="prev" title="PhysicalForce" href="PhysicalForce.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>PhysicalProcess</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/PhysicalProcess.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="physicalprocess">
+<h1>PhysicalProcess<a class="headerlink" href="#physicalprocess" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta15PhysicalProcessE">
+<span id="_CPPv3N8omexmeta15PhysicalProcessE"></span><span id="_CPPv2N8omexmeta15PhysicalProcessE"></span><span id="omexmeta::PhysicalProcess"></span><span class="target" id="classomexmeta_1_1PhysicalProcess"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalProcess</code> : <em class="property">public</em> omexmeta::PhysicalPhenomenon<a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEv">
+<span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEv"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1acf4c42d10d6dbdd3aa4285bed7bd823b"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcessD0Ev">
+<span id="_CPPv3N8omexmeta15PhysicalProcessD0Ev"></span><span id="_CPPv2N8omexmeta15PhysicalProcessD0Ev"></span><span id="omexmeta::PhysicalProcess::~PhysicalProcess"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a20821628486c64885ca2523067a71eb8"></span><code class="sig-name descname">~PhysicalProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcessD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators">
+<span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess__librdf_modelP.ss.ss.PhysicalPropertyCR.Sources.Sinks.Mediators"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a37f99033da4635ff1af2b9f19c1b84ce"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em>, <em class="property">const</em> PhysicalProperty &amp;<em>physicalProperty</em>, Sources <em>sources</em>, Sinks <em>sinks</em>, Mediators <em>mediators</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess4freeEv">
+<span id="_CPPv3N8omexmeta15PhysicalProcess4freeEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess4freeEv"></span><span id="omexmeta::PhysicalProcess::free"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a8dfcffe80f264ad24e70de9d7b71c73b"></span>void <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess4freeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model">
+<span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess__librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a2b694395a318335e81c884ed76b5f4dd"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span>librdf_model *<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess__librdf_modelP.ss.ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a974e2717dbf4b690b95b07e9c026fd2a"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta15PhysicalProcess10getSourcesEv">
+<span id="_CPPv3NK8omexmeta15PhysicalProcess10getSourcesEv"></span><span id="_CPPv2NK8omexmeta15PhysicalProcess10getSourcesEv"></span><span id="omexmeta::PhysicalProcess::getSourcesC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb"></span><em class="property">const</em> Sources &amp;<code class="sig-name descname">getSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcess10getSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta15PhysicalProcess8getSinksEv">
+<span id="_CPPv3NK8omexmeta15PhysicalProcess8getSinksEv"></span><span id="_CPPv2NK8omexmeta15PhysicalProcess8getSinksEv"></span><span id="omexmeta::PhysicalProcess::getSinksC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535"></span><em class="property">const</em> Sinks &amp;<code class="sig-name descname">getSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcess8getSinksEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta15PhysicalProcess12getMediatorsEv">
+<span id="_CPPv3NK8omexmeta15PhysicalProcess12getMediatorsEv"></span><span id="_CPPv2NK8omexmeta15PhysicalProcess12getMediatorsEv"></span><span id="omexmeta::PhysicalProcess::getMediatorsC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a349b76ad1831d2510904510583f0d7f2"></span><em class="property">const</em> Mediators &amp;<code class="sig-name descname">getMediators</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcess12getMediatorsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess9toTriplesEv">
+<span id="_CPPv3N8omexmeta15PhysicalProcess9toTriplesEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess9toTriplesEv"></span><span id="omexmeta::PhysicalProcess::toTriples"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE"></span><span id="omexmeta::PhysicalProcess::setPhysicalProperty__ss.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>std::string <em>subject_metaid</em>, <em class="property">const</em> std::string &amp;<em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty">
+<span id="_CPPv3N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty"></span><span id="_CPPv2N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty"></span><span id="omexmeta::PhysicalProcess::setPhysicalProperty__PhysicalProperty"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ac49bf4a1c21c6590a9d2af7ae93e13a7"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>PhysicalProperty <em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE"></span><span id="omexmeta::PhysicalProcess::addSource__i.ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ab83f58b7df77fdee131c22c71da22f39"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">addSource</code><span class="sig-paren">(</span>int <em>multiplier</em>, std::string <em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE"></span><span id="omexmeta::PhysicalProcess::addSink__i.ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a403ffc7d7d29702f2ff4e56084a1d714"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">addSink</code><span class="sig-paren">(</span>int <em>multiplier</em>, std::string <em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess11addMediatorENSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess11addMediatorENSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess11addMediatorENSt6stringE"></span><span id="omexmeta::PhysicalProcess::addMediator__ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">addMediator</code><span class="sig-paren">(</span>std::string <em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess11addMediatorENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess13getNumSourcesEv">
+<span id="_CPPv3N8omexmeta15PhysicalProcess13getNumSourcesEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess13getNumSourcesEv"></span><span id="omexmeta::PhysicalProcess::getNumSources"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a56459d9f0087a3f92b0aca5d148b65f5"></span>int <code class="sig-name descname">getNumSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess13getNumSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess11getNumSinksEv">
+<span id="_CPPv3N8omexmeta15PhysicalProcess11getNumSinksEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess11getNumSinksEv"></span><span id="omexmeta::PhysicalProcess::getNumSinks"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ac8b79af15d4d19042ee34abca25f679f"></span>int <code class="sig-name descname">getNumSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess11getNumSinksEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess15getNumMediatorsEv">
+<span id="_CPPv3N8omexmeta15PhysicalProcess15getNumMediatorsEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15getNumMediatorsEv"></span><span id="omexmeta::PhysicalProcess::getNumMediators"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26"></span>int <code class="sig-name descname">getNumMediators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15getNumMediatorsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta15PhysicalProcesseqERK15PhysicalProcess">
+<span id="_CPPv3NK8omexmeta15PhysicalProcesseqERK15PhysicalProcess"></span><span id="_CPPv2NK8omexmeta15PhysicalProcesseqERK15PhysicalProcess"></span><span id="omexmeta::PhysicalProcess::eq-operator__PhysicalProcessCRC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a65585bf5cd473d509f6f66c96757ff8d"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcesseqERK15PhysicalProcess" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta15PhysicalProcessneERK15PhysicalProcess">
+<span id="_CPPv3NK8omexmeta15PhysicalProcessneERK15PhysicalProcess"></span><span id="_CPPv2NK8omexmeta15PhysicalProcessneERK15PhysicalProcess"></span><span id="omexmeta::PhysicalProcess::neq-operator__PhysicalProcessCRC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcessneERK15PhysicalProcess" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess8sources_E">
+<span id="_CPPv3N8omexmeta15PhysicalProcess8sources_E"></span><span id="_CPPv2N8omexmeta15PhysicalProcess8sources_E"></span><span id="omexmeta::PhysicalProcess::sources___Sources"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a078e2a2f6554f2144ce69d817d9b23b9"></span>Sources <code class="sig-name descname">sources_</code><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess8sources_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess6sinks_E">
+<span id="_CPPv3N8omexmeta15PhysicalProcess6sinks_E"></span><span id="_CPPv2N8omexmeta15PhysicalProcess6sinks_E"></span><span id="omexmeta::PhysicalProcess::sinks___Sinks"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a2e32cf60245f3d3d55caba72165fe3fd"></span>Sinks <code class="sig-name descname">sinks_</code><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess6sinks_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess10mediators_E">
+<span id="_CPPv3N8omexmeta15PhysicalProcess10mediators_E"></span><span id="_CPPv2N8omexmeta15PhysicalProcess10mediators_E"></span><span id="omexmeta::PhysicalProcess::mediators___Mediators"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a127844f0eb3350b2d2335ccd26438b7d"></span>Mediators <code class="sig-name descname">mediators_</code><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess10mediators_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess20physical_process_id_E">
+<span id="_CPPv3N8omexmeta15PhysicalProcess20physical_process_id_E"></span><span id="_CPPv2N8omexmeta15PhysicalProcess20physical_process_id_E"></span><span id="omexmeta::PhysicalProcess::physical_process_id___ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a01f2b974c79564bbb325dbe981f34ec9"></span>std::string <code class="sig-name descname">physical_process_id_</code><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess20physical_process_id_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PhysicalPropery.html" class="btn btn-neutral float-right" title="PhysicalPropery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PhysicalForce.html" class="btn btn-neutral float-left" title="PhysicalForce" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
