@@ -35,18 +35,18 @@ sbml = te.antimonyToSBML(antimony_string)
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, generate_new_metaids=True, sbml_semantic_extraction=False) as editor:
-    sbml_with_metaids = editor.get_xml()
-    print(sbml_with_metaids)
+editor = rdf.to_editor(sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
+sbml_with_metaids = editor.get_xml()
+print(sbml_with_metaids)
 
-    # annotate reaction #OmexMetaId0011 as the chemical concentration
-    # flow rate OPB:OPB_00593 of Smad3 to phosphorylated smad3
-    with editor.new_physical_process() as physical_process:
-        physical_process \
-            .set_physical_property("#OmexMetaId0005", "OPB:OPB_00593") \
-            .add_source(multiplier=1, physical_entity_reference="#OmexMetaID0001") \
-            .add_sink(multiplier=1, physical_entity_reference="#OmexMetaID0002") \
-            .add_mediator(physical_entity_reference="#OmexMetaID0003")
+# annotate reaction #OmexMetaId0011 as the chemical concentration
+# flow rate OPB:OPB_00593 of Smad3 to phosphorylated smad3
+with editor.new_physical_process() as physical_process:
+    physical_process \
+        .set_physical_property("#OmexMetaId0005", "OPB:OPB_00593") \
+        .add_source(multiplier=1, physical_entity_reference="#OmexMetaID0001") \
+        .add_sink(multiplier=1, physical_entity_reference="#OmexMetaID0002") \
+        .add_mediator(physical_entity_reference="#OmexMetaID0003")
 
 
 print(rdf)

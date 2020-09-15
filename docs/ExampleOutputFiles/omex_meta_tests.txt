@@ -1,21 +1,15 @@
 Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gtest_main.cc
-[==========] Running 408 tests from 38 test suites.
+[==========] Running 397 tests from 38 test suites.
 [----------] Global test environment set-up.
-[----------] 23 tests from OmexMetaUtilsTests
-[ RUN      ] OmexMetaUtilsTests.TestFileExists
-[       OK ] OmexMetaUtilsTests.TestFileExists (883 ms)
+[----------] 20 tests from OmexMetaUtilsTests
 [ RUN      ] OmexMetaUtilsTests.TestFileDoesNotExists
-[       OK ] OmexMetaUtilsTests.TestFileDoesNotExists (1 ms)
-[ RUN      ] OmexMetaUtilsTests.TestDeleteFile
-[       OK ] OmexMetaUtilsTests.TestDeleteFile (358 ms)
-[ RUN      ] OmexMetaUtilsTests.TestRemoveIfExists
-[       OK ] OmexMetaUtilsTests.TestRemoveIfExists (387 ms)
+[       OK ] OmexMetaUtilsTests.TestFileDoesNotExists (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestRemoveIfExists2
-[       OK ] OmexMetaUtilsTests.TestRemoveIfExists2 (1 ms)
+[       OK ] OmexMetaUtilsTests.TestRemoveIfExists2 (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestPrefixFile
 [       OK ] OmexMetaUtilsTests.TestPrefixFile (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestGEtNamespacesFromUri
-[       OK ] OmexMetaUtilsTests.TestGEtNamespacesFromUri (0 ms)
+[       OK ] OmexMetaUtilsTests.TestGEtNamespacesFromUri (5 ms)
 [ RUN      ] OmexMetaUtilsTests.TestGEtNamespacesFromUriSemsim
 [       OK ] OmexMetaUtilsTests.TestGEtNamespacesFromUriSemsim (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestIsFormattedUri1
@@ -43,16 +37,16 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] OmexMetaUtilsTests.TestStartsWithFail
 [       OK ] OmexMetaUtilsTests.TestStartsWithFail (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestStringInVector
-[       OK ] OmexMetaUtilsTests.TestStringInVector (0 ms)
+[       OK ] OmexMetaUtilsTests.TestStringInVector (3 ms)
 [ RUN      ] OmexMetaUtilsTests.TestGenerateMetaids
-[       OK ] OmexMetaUtilsTests.TestGenerateMetaids (58 ms)
+[       OK ] OmexMetaUtilsTests.TestGenerateMetaids (80 ms)
 [ RUN      ] OmexMetaUtilsTests.TestGenerateMetaidsUsingExclusionList
-[       OK ] OmexMetaUtilsTests.TestGenerateMetaidsUsingExclusionList (6 ms)
-[----------] 23 tests from OmexMetaUtilsTests (1695 ms total)
+[       OK ] OmexMetaUtilsTests.TestGenerateMetaidsUsingExclusionList (5 ms)
+[----------] 20 tests from OmexMetaUtilsTests (94 ms total)
 
 [----------] 7 tests from SubjectTests
 [ RUN      ] SubjectTests.TestSubjectFromUri
-[       OK ] SubjectTests.TestSubjectFromUri (0 ms)
+[       OK ] SubjectTests.TestSubjectFromUri (1 ms)
 [ RUN      ] SubjectTests.TestStringUri
 [       OK ] SubjectTests.TestStringUri (0 ms)
 [ RUN      ] SubjectTests.TestGetNodeUri
@@ -62,10 +56,10 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] SubjectTests.TestGetNodeAsConstRef
 [       OK ] SubjectTests.TestGetNodeAsConstRef (0 ms)
 [ RUN      ] SubjectTests.TestEquality
-[       OK ] SubjectTests.TestEquality (1 ms)
+[       OK ] SubjectTests.TestEquality (0 ms)
 [ RUN      ] SubjectTests.TestInequality
-[       OK ] SubjectTests.TestInequality (0 ms)
-[----------] 7 tests from SubjectTests (1 ms total)
+[       OK ] SubjectTests.TestInequality (1 ms)
+[----------] 7 tests from SubjectTests (2 ms total)
 
 [----------] 16 tests from ResourceTests
 [ RUN      ] ResourceTests.TestResourceUri1
@@ -81,7 +75,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] ResourceTests.TestResourceUriFromFileOnDiskStr
 [       OK ] ResourceTests.TestResourceUriFromFileOnDiskStr (0 ms)
 [ RUN      ] ResourceTests.TestResourceUriFromFileOnDiskNode
-[       OK ] ResourceTests.TestResourceUriFromFileOnDiskNode (1 ms)
+[       OK ] ResourceTests.TestResourceUriFromFileOnDiskNode (0 ms)
 [ RUN      ] ResourceTests.TestResourceUriFromRelativeFileOnDiskStr
 [       OK ] ResourceTests.TestResourceUriFromRelativeFileOnDiskStr (0 ms)
 [ RUN      ] ResourceTests.TestResourceUriFromRelativeFileOnDiskNode
@@ -109,7 +103,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [       OK ] ResourceTestsNoFixture.TestInequality (0 ms)
 [ RUN      ] ResourceTestsNoFixture.TestCreateTwoIdenticalResources
 [       OK ] ResourceTestsNoFixture.TestCreateTwoIdenticalResources (0 ms)
-[----------] 3 tests from ResourceTestsNoFixture (0 ms total)
+[----------] 3 tests from ResourceTestsNoFixture (1 ms total)
 
 [----------] 28 tests from PredicateTests
 [ RUN      ] PredicateTests.TestCreateStaticFunctionFromBasePredicate
@@ -119,7 +113,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestGetNodeFromPtr
 [       OK ] PredicateTests.TestGetNodeFromPtr (0 ms)
 [ RUN      ] PredicateTests.TestGetNodebqb
-[       OK ] PredicateTests.TestGetNodebqb (1 ms)
+[       OK ] PredicateTests.TestGetNodebqb (0 ms)
 [ RUN      ] PredicateTests.TestGetNodeFromPtrBqB
 [       OK ] PredicateTests.TestGetNodeFromPtrBqB (0 ms)
 [ RUN      ] PredicateTests.TestGetNodebqqPrefix
@@ -133,13 +127,13 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestDCTermGetPrefix
 [       OK ] PredicateTests.TestDCTermGetPrefix (0 ms)
 [ RUN      ] PredicateTests.TestBqBiolGetNamespace
-[       OK ] PredicateTests.TestBqBiolGetNamespace (0 ms)
+[       OK ] PredicateTests.TestBqBiolGetNamespace (1 ms)
 [ RUN      ] PredicateTests.TestBqBiolGetPrefix
 [       OK ] PredicateTests.TestBqBiolGetPrefix (0 ms)
 [ RUN      ] PredicateTests.TestBqModelGetNamespace
 [       OK ] PredicateTests.TestBqModelGetNamespace (0 ms)
 [ RUN      ] PredicateTests.TestBqModelGetPrefix
-[       OK ] PredicateTests.TestBqModelGetPrefix (1 ms)
+[       OK ] PredicateTests.TestBqModelGetPrefix (0 ms)
 [ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtr
 [       OK ] PredicateTests.TestBqModelGetPrefixFromPtr (0 ms)
 [ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClass
@@ -155,45 +149,45 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestNamespaceKnownWhenNamespaceIsNotKnown
 [       OK ] PredicateTests.TestNamespaceKnownWhenNamespaceIsNotKnown (0 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory
-[       OK ] PredicateTests.TestPredicateFactory (0 ms)
+[       OK ] PredicateTests.TestPredicateFactory (1 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory2
 [       OK ] PredicateTests.TestPredicateFactory2 (0 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory3
 [       OK ] PredicateTests.TestPredicateFactory3 (0 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory4
-[       OK ] PredicateTests.TestPredicateFactory4 (1 ms)
+[       OK ] PredicateTests.TestPredicateFactory4 (0 ms)
 [ RUN      ] PredicateTests.TestPredicateWithoutSubclass
 [       OK ] PredicateTests.TestPredicateWithoutSubclass (0 ms)
 [ RUN      ] PredicateTests.TestPredicateWithoutSubclass2
 [       OK ] PredicateTests.TestPredicateWithoutSubclass2 (0 ms)
 [ RUN      ] PredicateTests.TestPredicateWithoutSubclass3
 [       OK ] PredicateTests.TestPredicateWithoutSubclass3 (0 ms)
-[----------] 28 tests from PredicateTests (3 ms total)
+[----------] 28 tests from PredicateTests (2 ms total)
 
 [----------] 2 tests from PredicateTestsNoFixture
 [ RUN      ] PredicateTestsNoFixture.TestEquality
 [       OK ] PredicateTestsNoFixture.TestEquality (0 ms)
 [ RUN      ] PredicateTestsNoFixture.TestInequality
-[       OK ] PredicateTestsNoFixture.TestInequality (0 ms)
-[----------] 2 tests from PredicateTestsNoFixture (0 ms total)
+[       OK ] PredicateTestsNoFixture.TestInequality (1 ms)
+[----------] 2 tests from PredicateTestsNoFixture (1 ms total)
 
 [----------] 12 tests from TripleTests
 [ RUN      ] TripleTests.TestInstantiation1
 [       OK ] TripleTests.TestInstantiation1 (0 ms)
 [ RUN      ] TripleTests.TestInstantiation2
-[       OK ] TripleTests.TestInstantiation2 (1 ms)
+[       OK ] TripleTests.TestInstantiation2 (0 ms)
 [ RUN      ] TripleTests.TestSubjectString
 [       OK ] TripleTests.TestSubjectString (0 ms)
 [ RUN      ] TripleTests.TestSubjectStr2
-[       OK ] TripleTests.TestSubjectStr2 (0 ms)
+[       OK ] TripleTests.TestSubjectStr2 (1 ms)
 [ RUN      ] TripleTests.TestPredicate1
-[       OK ] TripleTests.TestPredicate1 (1 ms)
+[       OK ] TripleTests.TestPredicate1 (0 ms)
 [ RUN      ] TripleTests.TestResource
 [       OK ] TripleTests.TestResource (0 ms)
 [ RUN      ] TripleTests.TestStatementPred
 [       OK ] TripleTests.TestStatementPred (0 ms)
 [ RUN      ] TripleTests.TestStatementResource
-[       OK ] TripleTests.TestStatementResource (0 ms)
+[       OK ] TripleTests.TestStatementResource (1 ms)
 [ RUN      ] TripleTests.TestStatementSubject
 [       OK ] TripleTests.TestStatementSubject (0 ms)
 [ RUN      ] TripleTests.TestBuilderPattern1
@@ -232,7 +226,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 
 
 [       OK ] TripleTests.TestBuilderPatternWithSemSimPredicate (1 ms)
-[----------] 12 tests from TripleTests (5 ms total)
+[----------] 12 tests from TripleTests (4 ms total)
 
 [----------] 10 tests from TripleTestsNoFixture
 [ RUN      ] TripleTestsNoFixture.TestInstantiationEmptyForBuilder
@@ -259,46 +253,46 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 
 [----------] 1 test from TripleTestsVector
 [ RUN      ] TripleTestsVector.TestTripleVecMove
-[       OK ] TripleTestsVector.TestTripleVecMove (1 ms)
-[----------] 1 test from TripleTestsVector (1 ms total)
+[       OK ] TripleTestsVector.TestTripleVecMove (0 ms)
+[----------] 1 test from TripleTestsVector (0 ms total)
 
 [----------] 8 tests from TestTripleTwice
 [ RUN      ] TestTripleTwice.WithRawNodes
-[       OK ] TestTripleTwice.WithRawNodes (0 ms)
+[       OK ] TestTripleTwice.WithRawNodes (1 ms)
 [ RUN      ] TestTripleTwice.WithSubjectPredAndRes
-[       OK ] TestTripleTwice.WithSubjectPredAndRes (1 ms)
+[       OK ] TestTripleTwice.WithSubjectPredAndRes (0 ms)
 [ RUN      ] TestTripleTwice.WithSubjectBiomodelModelQualifierAndRes
-[       OK ] TestTripleTwice.WithSubjectBiomodelModelQualifierAndRes (0 ms)
+[       OK ] TestTripleTwice.WithSubjectBiomodelModelQualifierAndRes (1 ms)
 [ RUN      ] TestTripleTwice.WithRawNodesWithMovingTheFirst
-[       OK ] TestTripleTwice.WithRawNodesWithMovingTheFirst (1 ms)
+[       OK ] TestTripleTwice.WithRawNodesWithMovingTheFirst (0 ms)
 [ RUN      ] TestTripleTwice.TestUsageSimple
-[       OK ] TestTripleTwice.TestUsageSimple (0 ms)
+[       OK ] TestTripleTwice.TestUsageSimple (1 ms)
 [ RUN      ] TestTripleTwice.TestUsageTwoUrisTheSame
 [       OK ] TestTripleTwice.TestUsageTwoUrisTheSame (0 ms)
 [ RUN      ] TestTripleTwice.TestUsageWhenTripleSimple
-[       OK ] TestTripleTwice.TestUsageWhenTripleSimple (1 ms)
+[       OK ] TestTripleTwice.TestUsageWhenTripleSimple (0 ms)
 [ RUN      ] TestTripleTwice.TestUsageWhenTripleMoved
 [       OK ] TestTripleTwice.TestUsageWhenTripleMoved (0 ms)
 [----------] 8 tests from TestTripleTwice (3 ms total)
 
 [----------] 8 tests from TriplesTests
 [ RUN      ] TriplesTests.TestCreateMoveAfterInstantiation
-[       OK ] TriplesTests.TestCreateMoveAfterInstantiation (0 ms)
+[       OK ] TriplesTests.TestCreateMoveAfterInstantiation (1 ms)
 [ RUN      ] TriplesTests.TestCreateMoveOnInstantiation
 [       OK ] TriplesTests.TestCreateMoveOnInstantiation (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack
-[       OK ] TriplesTests.TestEmplaceBack (1 ms)
+[       OK ] TriplesTests.TestEmplaceBack (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack2
-[       OK ] TriplesTests.TestEmplaceBack2 (0 ms)
+[       OK ] TriplesTests.TestEmplaceBack2 (1 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack3
 [       OK ] TriplesTests.TestEmplaceBack3 (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack4
-[       OK ] TriplesTests.TestEmplaceBack4 (1 ms)
+[       OK ] TriplesTests.TestEmplaceBack4 (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack5
-[       OK ] TriplesTests.TestEmplaceBack5 (0 ms)
+[       OK ] TriplesTests.TestEmplaceBack5 (1 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack6
 [       OK ] TriplesTests.TestEmplaceBack6 (0 ms)
-[----------] 8 tests from TriplesTests (2 ms total)
+[----------] 8 tests from TriplesTests (3 ms total)
 
 [----------] 9 tests from TriplesTestsNoFixture
 [ RUN      ] TriplesTestsNoFixture.TestPop
@@ -318,7 +312,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 
 <subject> <http://www.bhi.washington.edu/semsim#hasSinkParticipant> <UriNode1> .
 
-[       OK ] TriplesTestsNoFixture.TestPopFrontSubjectUriTheSame (0 ms)
+[       OK ] TriplesTestsNoFixture.TestPopFrontSubjectUriTheSame (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestStr
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -332,22 +326,22 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
     <http://predicate2.com/predicate2> <http://resource2.com/resource2> .
 
 
-[       OK ] TriplesTestsNoFixture.TestStr (1 ms)
+[       OK ] TriplesTestsNoFixture.TestStr (0 ms)
 [ RUN      ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed
 [       OK ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestIteration
-[       OK ] TriplesTestsNoFixture.TestIteration (0 ms)
+[       OK ] TriplesTestsNoFixture.TestIteration (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestEquality
 [       OK ] TriplesTestsNoFixture.TestEquality (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestUsagesPhysicalForce
-[       OK ] TriplesTestsNoFixture.TestUsagesPhysicalForce (2 ms)
+[       OK ] TriplesTestsNoFixture.TestUsagesPhysicalForce (1 ms)
 [----------] 9 tests from TriplesTestsNoFixture (7 ms total)
 
 [----------] 1 test from TestTriplesTwice
 [ RUN      ] TestTriplesTwice.TestMakeSameTriplesTwice
 creating triples 2 
-[       OK ] TestTriplesTwice.TestMakeSameTriplesTwice (1 ms)
-[----------] 1 test from TestTriplesTwice (1 ms total)
+[       OK ] TestTriplesTwice.TestMakeSameTriplesTwice (2 ms)
+[----------] 1 test from TestTriplesTwice (2 ms total)
 
 [----------] 19 tests from RDFTests
 [ RUN      ] RDFTests.TestCreateEmptyRDF
@@ -393,13 +387,13 @@ option, name, label, domain, value type, uri
 39,wwwSslVerifyPeer,SSL verify peer certficate,3,1,http://feature.librdf.org/raptor-wwwSslVerifyPeer
 40,wwwSslVerifyHost,SSL verify host matching,3,1,http://feature.librdf.org/raptor-wwwSslVerifyHost
 
-[       OK ] RDFTests.TestListOptions (3 ms)
+[       OK ] RDFTests.TestListOptions (4 ms)
 [ RUN      ] RDFTests.TestFromStringSingularAnnotation
-[       OK ] RDFTests.TestFromStringSingularAnnotation (3 ms)
+[       OK ] RDFTests.TestFromStringSingularAnnotation (4 ms)
 [ RUN      ] RDFTests.TestFromStringSingularAnnotationSqlite
-[       OK ] RDFTests.TestFromStringSingularAnnotationSqlite (66 ms)
+[       OK ] RDFTests.TestFromStringSingularAnnotationSqlite (64 ms)
 [ RUN      ] RDFTests.TestFromStringTurtleBag
-[       OK ] RDFTests.TestFromStringTurtleBag (12 ms)
+[       OK ] RDFTests.TestFromStringTurtleBag (9 ms)
 [ RUN      ] RDFTests.TestToString
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -414,19 +408,19 @@ option, name, label, domain, value type, uri
     <http://purl.org/dc/elements/1.1/title> "RDF1.1 XML Syntax" .
 
 
-[       OK ] RDFTests.TestToString (2 ms)
+[       OK ] RDFTests.TestToString (1 ms)
 [ RUN      ] RDFTests.TestAddFromString
-[       OK ] RDFTests.TestAddFromString (3 ms)
+[       OK ] RDFTests.TestAddFromString (2 ms)
 [ RUN      ] RDFTests.TestAddFromStringMultipleTimes
-[       OK ] RDFTests.TestAddFromStringMultipleTimes (3 ms)
+[       OK ] RDFTests.TestAddFromStringMultipleTimes (2 ms)
 [ RUN      ] RDFTests.TestParseFromUri
-[       OK ] RDFTests.TestParseFromUri (395 ms)
+[       OK ] RDFTests.TestParseFromUri (405 ms)
 [ RUN      ] RDFTests.TestParseFromUriNonStatic
-[       OK ] RDFTests.TestParseFromUriNonStatic (441 ms)
+[       OK ] RDFTests.TestParseFromUriNonStatic (409 ms)
 [ RUN      ] RDFTests.TestSqliteStorageWithUriParse
-[       OK ] RDFTests.TestSqliteStorageWithUriParse (7881 ms)
+[       OK ] RDFTests.TestSqliteStorageWithUriParse (6528 ms)
 [ RUN      ] RDFTests.TestParseFromFile
-/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docsTestParseFromFile.rdf
+/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -442,621 +436,15 @@ option, name, label, domain, value type, uri
     bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .
 
 
-[       OK ] RDFTests.TestParseFromFile (15 ms)
+[       OK ] RDFTests.TestParseFromFile (11 ms)
 [ RUN      ] RDFTests.TestParseFromFileCollectedFromBiomodels
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docsTestParseFromFile.rdf
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-local:metaid_0000002
-    <http://biomodels.net/biology-qualifiers/hasTaxon> [
-        rdf:_1 <http://identifiers.org/taxonomy/9606> ;
-        rdf:_2 <http://identifiers.org/taxonomy/10090> ;
-        a rdf:Bag
-    ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0048863> ;
-        a rdf:Bag
-    ] ;
-    <http://biomodels.net/model-qualifiers/is> [
-        rdf:_1 <http://identifiers.org/biomodels.db/MODEL7957942740> ;
-        a rdf:Bag
-    ], [
-        rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000204> ;
-        a rdf:Bag
-    ] ;
-    <http://biomodels.net/model-qualifiers/isDescribedBy> [
-        rdf:_1 <http://identifiers.org/pubmed/16978048> ;
-        a rdf:Bag
-    ] ;
-    <http://purl.org/dc/elements/1.1/creator> [
-        rdf:_1 [
-            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> "viji@ebi.ac.uk" ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#N> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Family> "Chelliah" ;
-                <http://www.w3.org/2001/vcard-rdf/3.0#Given> "Vijayalakshmi"
-            ] ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> "EMBL-EBI"
-            ]
-        ] ;
-        rdf:_2 [
-            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> "llukas@ebi.ac.uk" ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#N> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Family> "Endler" ;
-                <http://www.w3.org/2001/vcard-rdf/3.0#Given> "Lukas"
-            ] ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> "EMBL-EBI"
-            ]
-        ] ;
-        rdf:_3 [
-            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> "vchickar@caltech.edu" ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#N> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Family> "Chickarmane" ;
-                <http://www.w3.org/2001/vcard-rdf/3.0#Given> "Vijay"
-            ] ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> "Keck Graduate Institute, California"
-            ]
-        ] ;
-        rdf:_4 [
-            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> "carsten@thep.lu.se" ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#N> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Family> "Peterson" ;
-                <http://www.w3.org/2001/vcard-rdf/3.0#Given> "Carsten"
-            ] ;
-            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [
-                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> "Lund Strategic Research Centre for Stem Cell Biology and Cell Therapy, Lund University, Sweden."
-            ]
-        ] ;
-        a rdf:Bag
-    ] ;
-    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> [
-        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> "2008-11-26T13:10:43Z"
-    ] ;
-    <https://dublincore.org/specifications/dublin-core/dcmi-terms/modified> [
-        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> "2013-06-05T16:57:58Z"
-    ] .
-
-local:metaid_0000035
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0005623> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000036
-    <http://biomodels.net/biology-qualifiers/encodes> [
-        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;
-        a rdf:Bag
-    ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/ensembl/ENSG00000204531> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000037
-    <http://biomodels.net/biology-qualifiers/encodes> [
-        rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;
-        a rdf:Bag
-    ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/ensembl/ENSG00000176654> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000038
-    <http://biomodels.net/biology-qualifiers/encodes> [
-        rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;
-        a rdf:Bag
-    ] ;
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/ensembl/ENSG00000165661> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000041
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/uniprot/P04637> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000043
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000044
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000045
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000046
-    <http://biomodels.net/biology-qualifiers/hasPart> [
-        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;
-        rdf:_2 <http://identifiers.org/uniprot/Q6ZRP7> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000048
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000049
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000050
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000051
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000052
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0006461> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000053
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000054
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000055
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000056
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-        a rdf:Bag
-    ] .
-
-local:metaid_0000057
-    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-        a rdf:Bag
-    ] .
-
-/mnt/d/libOmexMeta/tests/cpp/RDFTests.cpp:454: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\nlocal:MediatorParticipant0000\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000042> .\n\nlocal:MediatorParticipant0001\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .\n\nlocal:MediatorParticipant0002\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .\n\nlocal:MediatorParticipant0003\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .\n\nlocal:MediatorParticipant0004\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000041> .\n\nlocal:MediatorParticipant0005\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000042> .\n\nlocal:MediatorParticipant0006\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .\n\nlocal:MediatorParticipant0007\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .\n\nlocal:MediatorParticipant0008\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .\n\nlocal:MediatorParticipant0009\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .\n\nlocal:PhysicalProcess0000\n    semsim:hasMediatorParticipant local:MediatorParticipant0000, local:MediatorParticipant0001, local:MediatorParticipant0002 ;\n    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n    semsim:hasSourceParticipant local:SourceParticipant0000 .\n\nlocal:PhysicalProcess0001\n    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n    semsim:hasSourceParticipant local:SourceParticipant0001 .\n\nlocal:PhysicalProcess0002\n    semsim:hasMediatorParticipant local:MediatorParticipant0003, local:MediatorParticipant0004 ;\n    semsim:hasSinkParticipant local:SinkParticipant0002 ;\n    semsim:hasSourceParticipant local:SourceParticipant0002 .\n\nlocal:PhysicalProcess0003\n    semsim:hasSinkParticipant local:SinkParticipant0003 ;\n    semsim:hasSourceParticipant local:SourceParticipant0003 .\n\nlocal:PhysicalProcess0004\n    semsim:hasSinkParticipant local:SinkParticipant0004 ;\n    semsim:hasSourceParticipant local:SourceParticipant0004, local:SourceParticipant0005 .\n\nlocal:PhysicalProcess0005\n    semsim:hasSinkParticipant local:SinkParticipant0005 ;\n    semsim:hasSourceParticipant local:SourceParticipant0006 .\n\nlocal:PhysicalProcess0006\n    semsim:hasMediatorParticipant local:MediatorParticipant0005, local:MediatorParticipant0006, local:MediatorParticipant0007 ;\n    semsim:hasSinkParticipant local:SinkParticipant0006 ;\n    semsim:hasSourceParticipant local:SourceParticipant0007 .\n\nlocal:PhysicalProcess0007\n    semsim:hasSinkParticipant local:SinkParticipant0007 ;\n    semsim:hasSourceParticipant local:SourceParticipant0008 .\n\nlocal:PhysicalProcess0008\n    semsim:hasMediatorParticipant local:MediatorParticipant0008, local:MediatorParticipant0009 ;\n    semsim:hasSinkParticipant local:SinkParticipant0008 ;\n    semsim:hasSourceParticipant local:SourceParticipant0009 .\n\nlocal:PhysicalProcess0009\n    semsim:hasSinkParticipant local:SinkParticipant0009 ;\n    semsim:hasSourceParticipant local:SourceParticipant0010 .\n\nlocal:SinkParticipant0000\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .\n\nlocal:SinkParticipant0001\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .\n\nlocal:SinkParticipant0002\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .\n\nlocal:SinkParticipant0003\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .\n\nlocal:SinkParticipant0004\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .\n\nlocal:SinkParticipant0005\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .\n\nlocal:SinkParticipant0006\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .\n\nlocal:SinkParticipant0007\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .\n\nlocal:SinkParticipant0008\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000047> .\n\nlocal:SinkParticipant0009\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .\n\nlocal:SourceParticipant0000\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000036> .\n\nlocal:SourceParticipant0001\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .\n\nlocal:SourceParticipant0002\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000037> .\n\nlocal:SourceParticipant0003\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .\n\nlocal:SourceParticipant0004\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .\n\nlocal:SourceParticipant0005\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .\n\nlocal:SourceParticipant0006\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .\n\nlocal:SourceParticipant0007\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000038> .\n\nlocal:SourceParticipant0008\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .\n\nlocal:SourceParticipant0009\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000039> .\n\nlocal:SourceParticipant0010\n    semsim:hasMultiplier \"1\"^^rdf:int ;\n    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000047> .\n\nlocal:metaid_0000002\n    bqbiol:hasTaxon [\n        rdf:_1 <http://identifiers.org/taxonomy/9606> ;\n        rdf:_2 <http://identifiers.org/taxonomy/10090> ;\n        a rdf:Bag\n    ] ;\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0048863> ;\n        a rdf:Bag\n    ] ;\n    bqmodel:is [\n        rdf:_1 <http://identifiers.org/biomodels.db/MODEL7957942740> ;\n        a rdf:Bag\n    ], [\n        rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000204> ;\n        a rdf:Bag\n    ] ;\n    bqmodel:isDescribedBy [\n        rdf:_1 <http://identifiers.org/pubmed/16978048> ;\n        a rdf:Bag\n    ] ;\n    <http://purl.org/dc/elements/1.1/creator> [\n        rdf:_1 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"viji@ebi.ac.uk\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Chelliah\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Vijayalakshmi\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"EMBL-EBI\"\n            ]\n        ] ;\n        rdf:_2 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"llukas@ebi.ac.uk\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Endler\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Lukas\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"EMBL-EBI\"\n            ]\n        ] ;\n        rdf:_3 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"vchickar@caltech.edu\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Chickarmane\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Vijay\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"Keck Graduate Institute, California\"\n            ]\n        ] ;\n        rdf:_4 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"carsten@thep.lu.se\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Peterson\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Carsten\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"Lund Strategic Research Centre for Stem Cell Biology and Cell Therapy, Lund University, Sweden.\"\n            ]\n        ] ;\n        a rdf:Bag\n    ] ;\n    dc:created [\n        dc:W3CDTF \"2008-11-26T13:10:43Z\"\n    ] ;\n    dc:modified [\n        dc:W3CDTF \"2013-06-05T16:57:58Z\"\n    ] .\n\nlocal:metaid_0000035\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0005623> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000036\n    bqbiol:encodes [\n        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;\n        a rdf:Bag\n    ] ;\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/ensembl/ENSG00000204531> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000037\n    bqbiol:encodes [\n        rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;\n        a rdf:Bag\n    ] ;\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/ensembl/ENSG00000176654> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000038\n    bqbiol:encodes [\n        rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;\n        a rdf:Bag\n    ] ;\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/ensembl/ENSG00000165661> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000041\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/uniprot/P04637> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000043\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000044\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000045\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000046\n    bqbiol:hasPart [\n        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;\n        rdf:_2 <http://identifiers.org/uniprot/Q6ZRP7> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000048\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000049\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000050\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000051\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000052\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0006461> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000053\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000054\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000055\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000056\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000057\n    bqbiol:isVersionOf [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000048>\n    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000049>\n    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000050>\n    bqbiol:isPropertyOf local:PhysicalProcess0002 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000051>\n    bqbiol:isPropertyOf local:PhysicalProcess0003 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000052>\n    bqbiol:isPropertyOf local:PhysicalProcess0004 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000053>\n    bqbiol:isPropertyOf local:PhysicalProcess0005 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000054>\n    bqbiol:isPropertyOf local:PhysicalProcess0006 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000055>\n    bqbiol:isPropertyOf local:PhysicalProcess0007 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000056>\n    bqbiol:isPropertyOf local:PhysicalProcess0008 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000057>\n    bqbiol:isPropertyOf local:PhysicalProcess0009 ;\n    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\nlocal:metaid_0000002\n    <http://biomodels.net/biology-qualifiers/hasTaxon> [\n        rdf:_1 <http://identifiers.org/taxonomy/9606> ;\n        rdf:_2 <http://identifiers.org/taxonomy/10090> ;\n        a rdf:Bag\n    ] ;\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0048863> ;\n        a rdf:Bag\n    ] ;\n    <http://biomodels.net/model-qualifiers/is> [\n        rdf:_1 <http://identifiers.org/biomodels.db/MODEL7957942740> ;\n        a rdf:Bag\n    ], [\n        rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000204> ;\n        a rdf:Bag\n    ] ;\n    <http://biomodels.net/model-qualifiers/isDescribedBy> [\n        rdf:_1 <http://identifiers.org/pubmed/16978048> ;\n        a rdf:Bag\n    ] ;\n    <http://purl.org/dc/elements/1.1/creator> [\n        rdf:_1 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"viji@ebi.ac.uk\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Chelliah\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Vijayalakshmi\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"EMBL-EBI\"\n            ]\n        ] ;\n        rdf:_2 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"llukas@ebi.ac.uk\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Endler\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Lukas\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"EMBL-EBI\"\n            ]\n        ] ;\n        rdf:_3 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"vchickar@caltech.edu\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Chickarmane\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Vijay\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"Keck Graduate Institute, California\"\n            ]\n        ] ;\n        rdf:_4 [\n            <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"carsten@thep.lu.se\" ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Peterson\" ;\n                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Carsten\"\n            ] ;\n            <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n                <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"Lund Strategic Research Centre for Stem Cell Biology and Cell Therapy, Lund University, Sweden.\"\n            ]\n        ] ;\n        a rdf:Bag\n    ] ;\n    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> [\n        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> \"2008-11-26T13:10:43Z\"\n    ] ;\n    <https://dublincore.org/specifications/dublin-core/dcmi-terms/modified> [\n        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> \"2013-06-05T16:57:58Z\"\n    ] .\n\nlocal:metaid_0000035\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0005623> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000036\n    <http://biomodels.net/biology-qualifiers/encodes> [\n        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;\n        a rdf:Bag\n    ] ;\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/ensembl/ENSG00000204531> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000037\n    <http://biomodels.net/biology-qualifiers/encodes> [\n        rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;\n        a rdf:Bag\n    ] ;\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/ensembl/ENSG00000176654> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000038\n    <http://biomodels.net/biology-qualifiers/encodes> [\n        rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;\n        a rdf:Bag\n    ] ;\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/ensembl/ENSG00000165661> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000041\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/uniprot/P04637> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000043\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000044\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000045\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000046\n    <http://biomodels.net/biology-qualifiers/hasPart> [\n        rdf:_1 <http://identifiers.org/uniprot/Q01860> ;\n        rdf:_2 <http://identifiers.org/uniprot/Q6ZRP7> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000048\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000049\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000050\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000051\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000052\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0006461> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000053\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000054\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000055\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000056\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;\n        a rdf:Bag\n    ] .\n\nlocal:metaid_0000057\n    <http://biomodels.net/biology-qualifiers/isVersionOf> [\n        rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;\n        a rdf:Bag\n    ] .\n"
-With diff:
-@@ -1,171 +1,9 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
--@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
--@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
--@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
- @prefix OMEXlib: <http://omex-library.org/> .
- @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
- @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
--
--local:MediatorParticipant0000
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000042> .
--
--local:MediatorParticipant0001
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
--
--local:MediatorParticipant0002
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
--
--local:MediatorParticipant0003
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
--
--local:MediatorParticipant0004
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000041> .
--
--local:MediatorParticipant0005
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000042> .
--
--local:MediatorParticipant0006
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
--
--local:MediatorParticipant0007
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
--
--local:MediatorParticipant0008
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
--
--local:MediatorParticipant0009
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
--
--local:PhysicalProcess0000
--    semsim:hasMediatorParticipant local:MediatorParticipant0000, local:MediatorParticipant0001, local:MediatorParticipant0002 ;
--    semsim:hasSinkParticipant local:SinkParticipant0000 ;
--    semsim:hasSourceParticipant local:SourceParticipant0000 .
--
--local:PhysicalProcess0001
--    semsim:hasSinkParticipant local:SinkParticipant0001 ;
--    semsim:hasSourceParticipant local:SourceParticipant0001 .
--
--local:PhysicalProcess0002
--    semsim:hasMediatorParticipant local:MediatorParticipant0003, local:MediatorParticipant0004 ;
--    semsim:hasSinkParticipant local:SinkParticipant0002 ;
--    semsim:hasSourceParticipant local:SourceParticipant0002 .
--
--local:PhysicalProcess0003
--    semsim:hasSinkParticipant local:SinkParticipant0003 ;
--    semsim:hasSourceParticipant local:SourceParticipant0003 .
--
--local:PhysicalProcess0004
--    semsim:hasSinkParticipant local:SinkParticipant0004 ;
--    semsim:hasSourceParticipant local:SourceParticipant0004, local:SourceParticipant0005 .
--
--local:PhysicalProcess0005
--    semsim:hasSinkParticipant local:SinkParticipant0005 ;
--    semsim:hasSourceParticipant local:SourceParticipant0006 .
--
--local:PhysicalProcess0006
--    semsim:hasMediatorParticipant local:MediatorParticipant0005, local:MediatorParticipant0006, local:MediatorParticipant0007 ;
--    semsim:hasSinkParticipant local:SinkParticipant0006 ;
--    semsim:hasSourceParticipant local:SourceParticipant0007 .
--
--local:PhysicalProcess0007
--    semsim:hasSinkParticipant local:SinkParticipant0007 ;
--    semsim:hasSourceParticipant local:SourceParticipant0008 .
--
--local:PhysicalProcess0008
--    semsim:hasMediatorParticipant local:MediatorParticipant0008, local:MediatorParticipant0009 ;
--    semsim:hasSinkParticipant local:SinkParticipant0008 ;
--    semsim:hasSourceParticipant local:SourceParticipant0009 .
--
--local:PhysicalProcess0009
--    semsim:hasSinkParticipant local:SinkParticipant0009 ;
--    semsim:hasSourceParticipant local:SourceParticipant0010 .
--
--local:SinkParticipant0000
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .
--
--local:SinkParticipant0001
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
--
--local:SinkParticipant0002
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
--
--local:SinkParticipant0003
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
--
--local:SinkParticipant0004
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
--
--local:SinkParticipant0005
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
--
--local:SinkParticipant0006
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .
--
--local:SinkParticipant0007
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
--
--local:SinkParticipant0008
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000047> .
--
--local:SinkParticipant0009
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
--
--local:SourceParticipant0000
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000036> .
--
--local:SourceParticipant0001
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .
--
--local:SourceParticipant0002
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000037> .
--
--local:SourceParticipant0003
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
--
--local:SourceParticipant0004
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .
--
--local:SourceParticipant0005
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .
--
--local:SourceParticipant0006
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
--
--local:SourceParticipant0007
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000038> .
--
--local:SourceParticipant0008
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .
--
--local:SourceParticipant0009
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000039> .
--
--local:SourceParticipant0010
--    semsim:hasMultiplier \"1\"^^rdf:int ;
--    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000047> .
- 
- local:metaid_0000002
--    bqbiol:hasTaxon [
-+    <http://biomodels.net/biology-qualifiers/hasTaxon> [
-         rdf:_1 <http://identifiers.org/taxonomy/9606> ;
-         rdf:_2 <http://identifiers.org/taxonomy/10090> ;
-@@ -172,9 +10,9 @@
-         a rdf:Bag
-     ] ;
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0048863> ;
-         a rdf:Bag
-     ] ;
--    bqmodel:is [
-+    <http://biomodels.net/model-qualifiers/is> [
-         rdf:_1 <http://identifiers.org/biomodels.db/MODEL7957942740> ;
-         a rdf:Bag
-@@ -183,5 +21,5 @@
-         a rdf:Bag
-     ] ;
--    bqmodel:isDescribedBy [
-+    <http://biomodels.net/model-qualifiers/isDescribedBy> [
-         rdf:_1 <http://identifiers.org/pubmed/16978048> ;
-         a rdf:Bag
-@@ -230,13 +68,13 @@
-         a rdf:Bag
-     ] ;
--    dc:created [
--        dc:W3CDTF \"2008-11-26T13:10:43Z\"
-+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> [
-+        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> \"2008-11-26T13:10:43Z\"
-     ] ;
--    dc:modified [
--        dc:W3CDTF \"2013-06-05T16:57:58Z\"
-+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/modified> [
-+        <https://dublincore.org/specifications/dublin-core/dcmi-terms/W3CDTF> \"2013-06-05T16:57:58Z\"
-     ] .
- 
- local:metaid_0000035
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0005623> ;
-         a rdf:Bag
-@@ -244,9 +82,9 @@
- 
- local:metaid_0000036
--    bqbiol:encodes [
-+    <http://biomodels.net/biology-qualifiers/encodes> [
-         rdf:_1 <http://identifiers.org/uniprot/Q01860> ;
-         a rdf:Bag
-     ] ;
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/ensembl/ENSG00000204531> ;
-         a rdf:Bag
-@@ -254,9 +92,9 @@
- 
- local:metaid_0000037
--    bqbiol:encodes [
-+    <http://biomodels.net/biology-qualifiers/encodes> [
-         rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;
-         a rdf:Bag
-     ] ;
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/ensembl/ENSG00000176654> ;
-         a rdf:Bag
-@@ -264,9 +102,9 @@
- 
- local:metaid_0000038
--    bqbiol:encodes [
-+    <http://biomodels.net/biology-qualifiers/encodes> [
-         rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;
-         a rdf:Bag
-     ] ;
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/ensembl/ENSG00000165661> ;
-         a rdf:Bag
-@@ -274,5 +112,5 @@
- 
- local:metaid_0000041
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/uniprot/P04637> ;
-         a rdf:Bag
-@@ -280,5 +118,5 @@
- 
- local:metaid_0000043
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/uniprot/Q01860> ;
-         a rdf:Bag
-@@ -286,5 +124,5 @@
- 
- local:metaid_0000044
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/uniprot/Q6ZRP7> ;
-         a rdf:Bag
-@@ -292,5 +130,5 @@
- 
- local:metaid_0000045
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/uniprot/Q8N7R0> ;
-         a rdf:Bag
-@@ -298,5 +136,5 @@
- 
- local:metaid_0000046
--    bqbiol:hasPart [
-+    <http://biomodels.net/biology-qualifiers/hasPart> [
-         rdf:_1 <http://identifiers.org/uniprot/Q01860> ;
-         rdf:_2 <http://identifiers.org/uniprot/Q6ZRP7> ;
-@@ -305,5 +143,5 @@
- 
- local:metaid_0000048
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-         a rdf:Bag
-@@ -311,5 +149,5 @@
- 
- local:metaid_0000049
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-         a rdf:Bag
-@@ -317,5 +155,5 @@
- 
- local:metaid_0000050
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-         a rdf:Bag
-@@ -323,5 +161,5 @@
- 
- local:metaid_0000051
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-         a rdf:Bag
-@@ -329,5 +167,5 @@
- 
- local:metaid_0000052
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0006461> ;
-         a rdf:Bag
-@@ -335,5 +173,5 @@
- 
- local:metaid_0000053
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-         a rdf:Bag
-@@ -341,5 +179,5 @@
- 
- local:metaid_0000054
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-         a rdf:Bag
-@@ -347,5 +185,5 @@
- 
- local:metaid_0000055
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-         a rdf:Bag
-@@ -353,5 +191,5 @@
- 
- local:metaid_0000056
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0010467> ;
-         a rdf:Bag
-@@ -359,47 +197,6 @@
- 
- local:metaid_0000057
--    bqbiol:isVersionOf [
-+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
-         rdf:_1 <http://identifiers.org/obo.go/GO:0030163> ;
-         a rdf:Bag
--    ] .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000048>
--    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000049>
--    bqbiol:isPropertyOf local:PhysicalProcess0001 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000050>
--    bqbiol:isPropertyOf local:PhysicalProcess0002 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000051>
--    bqbiol:isPropertyOf local:PhysicalProcess0003 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000052>
--    bqbiol:isPropertyOf local:PhysicalProcess0004 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000053>
--    bqbiol:isPropertyOf local:PhysicalProcess0005 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000054>
--    bqbiol:isPropertyOf local:PhysicalProcess0006 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000055>
--    bqbiol:isPropertyOf local:PhysicalProcess0007 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000056>
--    bqbiol:isPropertyOf local:PhysicalProcess0008 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--
--<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000057>
--    bqbiol:isPropertyOf local:PhysicalProcess0009 ;
--    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
--\n
-+    ] .\n
-
-[  FAILED  ] RDFTests.TestParseFromFileCollectedFromBiomodels (70 ms)
+[       OK ] RDFTests.TestParseFromFileCollectedFromBiomodels (64 ms)
 [ RUN      ] RDFTests.TestParseFromFileNonStatic
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
-[       OK ] RDFTests.TestParseFromFileNonStatic (13 ms)
+[       OK ] RDFTests.TestParseFromFileNonStatic (11 ms)
 [ RUN      ] RDFTests.TestWriteToFile
-[       OK ] RDFTests.TestWriteToFile (12 ms)
+[       OK ] RDFTests.TestWriteToFile (5 ms)
 [ RUN      ] RDFTests.TestReadFromSBMLWithExtraction
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -1464,14 +852,14 @@ local:metaid_0000057
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 
-[       OK ] RDFTests.TestReadFromSBMLWithExtraction (49 ms)
+[       OK ] RDFTests.TestReadFromSBMLWithExtraction (48 ms)
 [ RUN      ] RDFTests.TestRepositoryPrefix
 [       OK ] RDFTests.TestRepositoryPrefix (3 ms)
 [ RUN      ] RDFTests.TestOmexPrefix
 [       OK ] RDFTests.TestOmexPrefix (3 ms)
 [ RUN      ] RDFTests.TestLocalPrefix
 [       OK ] RDFTests.TestLocalPrefix (2 ms)
-[----------] 19 tests from RDFTests (8980 ms total)
+[----------] 19 tests from RDFTests (7580 ms total)
 
 [----------] 1 test from RDFTestsNoFigure
 [ RUN      ] RDFTestsNoFigure.TestRDFCanReadFromTwoStrings
@@ -1490,22 +878,22 @@ local:metaid_0000057
 
 [----------] 2 tests from ParserReadTesReadFromFileHasPrefixesTests
 [ RUN      ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromStringHasPrefixes
-[       OK ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromStringHasPrefixes (1 ms)
+[       OK ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromStringHasPrefixes (0 ms)
 [ RUN      ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromFileHasPrefixes
-[       OK ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromFileHasPrefixes (9 ms)
-[----------] 2 tests from ParserReadTesReadFromFileHasPrefixesTests (10 ms total)
+[       OK ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromFileHasPrefixes (7 ms)
+[----------] 2 tests from ParserReadTesReadFromFileHasPrefixesTests (7 ms total)
 
 [----------] 3 tests from CurlGetTests
 [ RUN      ] CurlGetTests.TestDownloadHtml
 size is: 38952 bytes.
-File deleted successfully[       OK ] CurlGetTests.TestDownloadHtml (872 ms)
+File deleted successfully[       OK ] CurlGetTests.TestDownloadHtml (771 ms)
 [ RUN      ] CurlGetTests.TestDownloadSBMLFile
 size is: 236281 bytes.
-File deleted successfully[       OK ] CurlGetTests.TestDownloadSBMLFile (426 ms)
+File deleted successfully[       OK ] CurlGetTests.TestDownloadSBMLFile (497 ms)
 [ RUN      ] CurlGetTests.TestDownloadCellML
 size is: 60656 bytes.
-File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1275 ms)
-[----------] 3 tests from CurlGetTests (2573 ms total)
+File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1242 ms)
+[----------] 3 tests from CurlGetTests (2510 ms total)
 
 [----------] 16 tests from MetaIDTests
 [ RUN      ] MetaIDTests.TestCountDigits1
@@ -1639,7 +1027,7 @@ File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1275 ms)
   </model>
 </sbml>
 
-[       OK ] SemsimXmlAssistantTests.TestMetaIdsAll (0 ms)
+[       OK ] SemsimXmlAssistantTests.TestMetaIdsAll (1 ms)
 [ RUN      ] SemsimXmlAssistantTests.TestMetaIdsSBML
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -1734,7 +1122,7 @@ File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1275 ms)
   </model>
 </sbml>
 
-[       OK ] SemsimXmlAssistantTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML (1 ms)
+[       OK ] SemsimXmlAssistantTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML (0 ms)
 [ RUN      ] SemsimXmlAssistantTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid
 #cytosol
 #glucose
@@ -1749,7 +1137,7 @@ http://www.bhi.washington.edu/semsim#hasSourceParticipant
 [       OK ] ParticipantTests.TestCreateParticipant (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipant1
 http://www.bhi.washington.edu/semsim#hasSinkParticipant
-[       OK ] ParticipantTests.TestSinkParticipant1 (0 ms)
+[       OK ] ParticipantTests.TestSinkParticipant1 (1 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipantMakMetaid
 #SinkParticipant0000
 [       OK ] ParticipantTests.TestSinkParticipantMakMetaid (0 ms)
@@ -1767,7 +1155,7 @@ local:SinkParticipant
     semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .
 
 
-[       OK ] ParticipantTests.TestCreateTripleFromParticipantInfo (1 ms)
+[       OK ] ParticipantTests.TestCreateTripleFromParticipantInfo (0 ms)
 [ RUN      ] ParticipantTests.TestCreateTripleVector
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -1779,7 +1167,7 @@ local:SinkParticipant
     semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .
 
 
-[       OK ] ParticipantTests.TestCreateTripleVector (0 ms)
+[       OK ] ParticipantTests.TestCreateTripleVector (1 ms)
 [ RUN      ] ParticipantTests.TestToTriples1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -1810,7 +1198,7 @@ local:SinkParticipant0000
     semsim:hasSinkParticipant local:SinkParticipant0000 .
 
 
-[       OK ] ParticipantTests.TestToTriplesWhenMultiplierIs0 (1 ms)
+[       OK ] ParticipantTests.TestToTriplesWhenMultiplierIs0 (0 ms)
 [ RUN      ] ParticipantTests.TestToTriplesMediator
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -1825,10 +1213,10 @@ local:MediatorParticipant0000
     semsim:hasMediatorParticipant local:MediatorParticipant0000 .
 
 
-[       OK ] ParticipantTests.TestToTriplesMediator (0 ms)
+[       OK ] ParticipantTests.TestToTriplesMediator (1 ms)
 [ RUN      ] ParticipantTests.TestParticipantVecToTriples
 [       OK ] ParticipantTests.TestParticipantVecToTriples (2 ms)
-[----------] 10 tests from ParticipantTests (5 ms total)
+[----------] 10 tests from ParticipantTests (6 ms total)
 
 [----------] 3 tests from ParticipantTestsToTriplesTwice
 [ RUN      ] ParticipantTestsToTriplesTwice.TestToTriplesRefAccountability
@@ -1855,20 +1243,20 @@ local:MediatorParticipant0000
 [ RUN      ] PhysicalEntityTests.TestIdentityResourceStr
 [       OK ] PhysicalEntityTests.TestIdentityResourceStr (0 ms)
 [ RUN      ] PhysicalEntityTests.TestIdentityResourceNode
-[       OK ] PhysicalEntityTests.TestIdentityResourceNode (0 ms)
+[       OK ] PhysicalEntityTests.TestIdentityResourceNode (1 ms)
 [ RUN      ] PhysicalEntityTests.TestLocationResourceStr
-[       OK ] PhysicalEntityTests.TestLocationResourceStr (1 ms)
+[       OK ] PhysicalEntityTests.TestLocationResourceStr (0 ms)
 [ RUN      ] PhysicalEntityTests.TestLocationResourceNode
 [       OK ] PhysicalEntityTests.TestLocationResourceNode (0 ms)
 [ RUN      ] PhysicalEntityTests.TestSubject
-[       OK ] PhysicalEntityTests.TestSubject (0 ms)
+[       OK ] PhysicalEntityTests.TestSubject (1 ms)
 [ RUN      ] PhysicalEntityTests.TestSubjectFromAbout
-[       OK ] PhysicalEntityTests.TestSubjectFromAbout (1 ms)
+[       OK ] PhysicalEntityTests.TestSubjectFromAbout (0 ms)
 [ RUN      ] PhysicalEntityTests.TestAboutIsSet
 http://omex-library.org/NewOmex.omex/NewModel.xml#metaid
 [       OK ] PhysicalEntityTests.TestAboutIsSet (0 ms)
 [ RUN      ] PhysicalEntityTests.TestToTripleSize
-[       OK ] PhysicalEntityTests.TestToTripleSize (1 ms)
+[       OK ] PhysicalEntityTests.TestToTripleSize (2 ms)
 [ RUN      ] PhysicalEntityTests.TestTriples
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1902,13 +1290,13 @@ local:PhysicalEntity0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00154> .
 
 
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderInterface (1 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderInterface (2 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderAddTwoItems
 [       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderAddTwoItems (0 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond
 [       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond (0 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilder
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilder (0 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilder (1 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriples
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1925,37 +1313,37 @@ local:PhysicalEntity0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriples (2 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriples (1 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty
 <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty (1 ms)
-[----------] 17 tests from PhysicalEntityTests (10 ms total)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty (2 ms)
+[----------] 17 tests from PhysicalEntityTests (13 ms total)
 
 [----------] 2 tests from PhysicalEntityTestsNoFixture
 [ RUN      ] PhysicalEntityTestsNoFixture.TestToTripleRefCounts
-[       OK ] PhysicalEntityTestsNoFixture.TestToTripleRefCounts (2 ms)
+[       OK ] PhysicalEntityTestsNoFixture.TestToTripleRefCounts (1 ms)
 [ RUN      ] PhysicalEntityTestsNoFixture.TestEquality
 [       OK ] PhysicalEntityTestsNoFixture.TestEquality (0 ms)
-[----------] 2 tests from PhysicalEntityTestsNoFixture (2 ms total)
+[----------] 2 tests from PhysicalEntityTestsNoFixture (1 ms total)
 
 [----------] 9 tests from PhysicalPropertyTests
 [ RUN      ] PhysicalPropertyTests.TestPhysicalPropertySubjectStr
 http://omex-library.org/NewOmex.omex/NewModel.rdf#subject
-[       OK ] PhysicalPropertyTests.TestPhysicalPropertySubjectStr (1 ms)
+[       OK ] PhysicalPropertyTests.TestPhysicalPropertySubjectStr (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestPhysicalPropertyResourceStr
 OPB:OPB_00154
 [       OK ] PhysicalPropertyTests.TestPhysicalPropertyResourceStr (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestPhysicalPropertyGetItWrong
-[       OK ] PhysicalPropertyTests.TestPhysicalPropertyGetItWrong (0 ms)
+[       OK ] PhysicalPropertyTests.TestPhysicalPropertyGetItWrong (2 ms)
 [ RUN      ] PhysicalPropertyTests.TestToTriples
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_1234> .
 
-[       OK ] PhysicalPropertyTests.TestToTriples (0 ms)
+[       OK ] PhysicalPropertyTests.TestToTriples (1 ms)
 [ RUN      ] PhysicalPropertyTests.TestToTriplesLowerCaseOPB
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
@@ -1965,14 +1353,14 @@ OPB:OPB_00154
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
 
-[       OK ] PhysicalPropertyTests.TestToTriplesUsingColonNotSlash (1 ms)
+[       OK ] PhysicalPropertyTests.TestToTriplesUsingColonNotSlash (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestEquality
-[       OK ] PhysicalPropertyTests.TestEquality (0 ms)
+[       OK ] PhysicalPropertyTests.TestEquality (1 ms)
 [ RUN      ] PhysicalPropertyTests.TestInequality
-[       OK ] PhysicalPropertyTests.TestInequality (1 ms)
+[       OK ] PhysicalPropertyTests.TestInequality (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestInequality2
 [       OK ] PhysicalPropertyTests.TestInequality2 (0 ms)
-[----------] 9 tests from PhysicalPropertyTests (4 ms total)
+[----------] 9 tests from PhysicalPropertyTests (6 ms total)
 
 [----------] 3 tests from PhysicalPhenomenonTests
 [ RUN      ] PhysicalPhenomenonTests.TestSubjectStr
@@ -1980,12 +1368,12 @@ OPB:OPB_00154
 [ RUN      ] PhysicalPhenomenonTests.TestSubjectNodeToStr
 [       OK ] PhysicalPhenomenonTests.TestSubjectNodeToStr (0 ms)
 [ RUN      ] PhysicalPhenomenonTests.TestPhysicalProperty
-[       OK ] PhysicalPhenomenonTests.TestPhysicalProperty (0 ms)
-[----------] 3 tests from PhysicalPhenomenonTests (0 ms total)
+[       OK ] PhysicalPhenomenonTests.TestPhysicalProperty (1 ms)
+[----------] 3 tests from PhysicalPhenomenonTests (1 ms total)
 
 [----------] 6 tests from PhysicalForceTests
 [ RUN      ] PhysicalForceTests.TestPhysicalForceSubjectMetaidNode
-[       OK ] PhysicalForceTests.TestPhysicalForceSubjectMetaidNode (1 ms)
+[       OK ] PhysicalForceTests.TestPhysicalForceSubjectMetaidNode (0 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalProperty1
 [       OK ] PhysicalForceTests.TestPhysicalProperty1 (0 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalProperty2
@@ -1993,7 +1381,7 @@ OPB:OPB_00154
 [ RUN      ] PhysicalForceTests.TestPhysicalForceNumTriples
 [       OK ] PhysicalForceTests.TestPhysicalForceNumTriples (2 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalForceTrips
-[       OK ] PhysicalForceTests.TestPhysicalForceTrips (5 ms)
+[       OK ] PhysicalForceTests.TestPhysicalForceTrips (7 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalForceTriples
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2020,7 +1408,7 @@ local:SourceParticipant0000
 
 
 [       OK ] PhysicalForceTests.TestPhysicalForceTriples (2 ms)
-[----------] 6 tests from PhysicalForceTests (10 ms total)
+[----------] 6 tests from PhysicalForceTests (11 ms total)
 
 [----------] 2 tests from PhysicalForceTestsNoFixture
 [ RUN      ] PhysicalForceTestsNoFixture.TestPhysicalForceBuilder
@@ -2052,7 +1440,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalForceTestsNoFixture.TestPhysicalForceBuilder (3 ms)
+[       OK ] PhysicalForceTestsNoFixture.TestPhysicalForceBuilder (4 ms)
 [ RUN      ] PhysicalForceTestsNoFixture.TestGenerateTheSamePhysicalForceTwice
 <http://omex-library.org/myomex.omex/mymodel.xml#Force5> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/myomex.omex/mymodel.rdf#PhysicalForce0000> .
 <http://omex-library.org/myomex.omex/mymodel.xml#Force5> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .
@@ -2079,7 +1467,7 @@ local:SourceParticipant0000
 <http://omex-library.org/myomex.omex/mymodel.rdf#SinkParticipant0001> <http://www.bhi.washington.edu/semsim#hasMultiplier> "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#int> .
 
 [       OK ] PhysicalForceTestsNoFixture.TestGenerateTheSamePhysicalForceTwice (6 ms)
-[----------] 2 tests from PhysicalForceTestsNoFixture (9 ms total)
+[----------] 2 tests from PhysicalForceTestsNoFixture (10 ms total)
 
 [----------] 5 tests from PhysicalForceEqualityTests
 [ RUN      ] PhysicalForceEqualityTests.TestEquality
@@ -2194,9 +1582,9 @@ local:SourceParticipant0001
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 
-[       OK ] PhysicalProcessTests.TestPhysicalProcessBuilder1 (3 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessBuilder1 (4 ms)
 [ RUN      ] PhysicalProcessTests.TestEquality
-[       OK ] PhysicalProcessTests.TestEquality (1 ms)
+[       OK ] PhysicalProcessTests.TestEquality (0 ms)
 [ RUN      ] PhysicalProcessTests.TestInequality
 [       OK ] PhysicalProcessTests.TestInequality (0 ms)
 [----------] 8 tests from PhysicalProcessTests (12 ms total)
@@ -2206,23 +1594,23 @@ local:SourceParticipant0001
 x,y,z
 http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237
 
-[       OK ] QueryTests.TestStr (0 ms)
+[       OK ] QueryTests.TestStr (1 ms)
 [ RUN      ] QueryTests.TestRunQueryTwice
 x,y,z
 http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237
 
-[       OK ] QueryTests.TestRunQueryTwice (0 ms)
+[       OK ] QueryTests.TestRunQueryTwice (1 ms)
 [ RUN      ] QueryTests.TestgetResultsAsMap
-[       OK ] QueryTests.TestgetResultsAsMap (0 ms)
+[       OK ] QueryTests.TestgetResultsAsMap (1 ms)
 [ RUN      ] QueryTests.TestgetResultsAsMapTwice
-[       OK ] QueryTests.TestgetResultsAsMapTwice (1 ms)
+[       OK ] QueryTests.TestgetResultsAsMapTwice (0 ms)
 [ RUN      ] QueryTests.TestResultsAsStream
-[       OK ] QueryTests.TestResultsAsStream (0 ms)
-[----------] 5 tests from QueryTests (2 ms total)
+[       OK ] QueryTests.TestResultsAsStream (1 ms)
+[----------] 5 tests from QueryTests (4 ms total)
 
 [----------] 41 tests from EditorTests
 [ RUN      ] EditorTests.TestMetaIds
-[       OK ] EditorTests.TestMetaIds (1 ms)
+[       OK ] EditorTests.TestMetaIds (0 ms)
 [ RUN      ] EditorTests.TestRepositoryName1
 [       OK ] EditorTests.TestRepositoryName1 (0 ms)
 [ RUN      ] EditorTests.TestepositoryName2
@@ -2238,13 +1626,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 [ RUN      ] EditorTests.TestSetLocalName
 [       OK ] EditorTests.TestSetLocalName (0 ms)
 [ RUN      ] EditorTests.TestSetLocalNam
-[       OK ] EditorTests.TestSetLocalNam (0 ms)
+[       OK ] EditorTests.TestSetLocalNam (1 ms)
 [ RUN      ] EditorTests.TestAddAnnotation
-[       OK ] EditorTests.TestAddAnnotation (1 ms)
+[       OK ] EditorTests.TestAddAnnotation (0 ms)
 [ RUN      ] EditorTests.TestAddSingleAnnotationToEditor
-[       OK ] EditorTests.TestAddSingleAnnotationToEditor (0 ms)
+[       OK ] EditorTests.TestAddSingleAnnotationToEditor (1 ms)
 [ RUN      ] EditorTests.TestEditorCreateUriRelativeToLocalUri
-[       OK ] EditorTests.TestEditorCreateUriRelativeToLocalUri (1 ms)
+[       OK ] EditorTests.TestEditorCreateUriRelativeToLocalUri (0 ms)
 [ RUN      ] EditorTests.TestAddSingleAnnotationToRDF1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2280,10 +1668,10 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .
 
 
-[       OK ] EditorTests.TestAddSingleAnnotationToRDF3 (0 ms)
+[       OK ] EditorTests.TestAddSingleAnnotationToRDF3 (1 ms)
 [ RUN      ] EditorTests.TestToRDFSingularAnnotationWithLiteral
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -2292,7 +1680,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     dc:description "Cardiomyocyte cytosolic ATP concentration"^^rdf:string .
 
 
-[       OK ] EditorTests.TestToRDFSingularAnnotationWithLiteral (1 ms)
+[       OK ] EditorTests.TestToRDFSingularAnnotationWithLiteral (0 ms)
 [ RUN      ] EditorTests.TestSingularAnnotWithBuilderPattern
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2304,7 +1692,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .
 
 
-[       OK ] EditorTests.TestSingularAnnotWithBuilderPattern (0 ms)
+[       OK ] EditorTests.TestSingularAnnotWithBuilderPattern (1 ms)
 [ RUN      ] EditorTests.TestSingularAnnotWithBuilderPattern2
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2328,9 +1716,9 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02636> .
 
 
-[       OK ] EditorTests.TestEditASingularAnnotWithBuilderPatternThenRemove (1 ms)
+[       OK ] EditorTests.TestEditASingularAnnotWithBuilderPatternThenRemove (4 ms)
 [ RUN      ] EditorTests.TestAddPhysicalEntityToEditor
-[       OK ] EditorTests.TestAddPhysicalEntityToEditor (1 ms)
+[       OK ] EditorTests.TestAddPhysicalEntityToEditor (3 ms)
 [ RUN      ] EditorTests.TestAddAnnotationCompositeTypePhysicalProcess
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -2360,7 +1748,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB1234> .
 
 
-[       OK ] EditorTests.TestAddAnnotationCompositeTypePhysicalProcess (3 ms)
+[       OK ] EditorTests.TestAddAnnotationCompositeTypePhysicalProcess (6 ms)
 [ RUN      ] EditorTests.TestAddAnnotationCompositeTypePhysicalForce
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -2386,11 +1774,11 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB1234> .
 
 
-[       OK ] EditorTests.TestAddAnnotationCompositeTypePhysicalForce (3 ms)
+[       OK ] EditorTests.TestAddAnnotationCompositeTypePhysicalForce (2 ms)
 [ RUN      ] EditorTests.TestSingularAnnotationBuilder
 [       OK ] EditorTests.TestSingularAnnotationBuilder (0 ms)
 [ RUN      ] EditorTests.TestSingularAnnotationBuilder2
-[       OK ] EditorTests.TestSingularAnnotationBuilder2 (0 ms)
+[       OK ] EditorTests.TestSingularAnnotationBuilder2 (1 ms)
 [ RUN      ] EditorTests.TestModelLevelAnnotationAddCreator
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -2401,7 +1789,7 @@ local:SourceParticipant0000
     <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/0000-1111-2222-3333> .
 
 
-[       OK ] EditorTests.TestModelLevelAnnotationAddCreator (1 ms)
+[       OK ] EditorTests.TestModelLevelAnnotationAddCreator (0 ms)
 [ RUN      ] EditorTests.TestModelLevelAnnotationAddCurator
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -2412,7 +1800,7 @@ local:SourceParticipant0000
     <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/0000-1111-2222-3333> .
 
 
-[       OK ] EditorTests.TestModelLevelAnnotationAddCurator (0 ms)
+[       OK ] EditorTests.TestModelLevelAnnotationAddCurator (1 ms)
 [ RUN      ] EditorTests.TestModelLevelAnnotationAddDateCreated
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -2423,7 +1811,7 @@ local:SourceParticipant0000
     <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> "14/01/1991"^^rdf:string .
 
 
-[       OK ] EditorTests.TestModelLevelAnnotationAddDateCreated (1 ms)
+[       OK ] EditorTests.TestModelLevelAnnotationAddDateCreated (0 ms)
 [ RUN      ] EditorTests.TestModelLevelAnnotationAddDescription
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -2434,7 +1822,7 @@ local:SourceParticipant0000
     <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "Predictive model of chip butty consumer's risk of heart failure."^^rdf:string .
 
 
-[       OK ] EditorTests.TestModelLevelAnnotationAddDescription (0 ms)
+[       OK ] EditorTests.TestModelLevelAnnotationAddDescription (1 ms)
 [ RUN      ] EditorTests.TestModelLevelAnnotationPubmed
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -2445,7 +1833,7 @@ local:SourceParticipant0000
     <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/27887851> .
 
 
-[       OK ] EditorTests.TestModelLevelAnnotationPubmed (1 ms)
+[       OK ] EditorTests.TestModelLevelAnnotationPubmed (0 ms)
 [ RUN      ] EditorTests.TestModelLevelAnnotationAddParentModel
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -2456,13 +1844,13 @@ local:SourceParticipant0000
     <http://biomodels.net/model-qualifiers/isDerivedFrom> <https://identifiers.org/biomod/BIOMD0000011> .
 
 
-[       OK ] EditorTests.TestModelLevelAnnotationAddParentModel (0 ms)
+[       OK ] EditorTests.TestModelLevelAnnotationAddParentModel (1 ms)
 [ RUN      ] EditorTests.TestPhysicalEntityBuilder
 [       OK ] EditorTests.TestPhysicalEntityBuilder (2 ms)
 [ RUN      ] EditorTests.TestPhysicalForceBuilder
 [       OK ] EditorTests.TestPhysicalForceBuilder (2 ms)
 [ RUN      ] EditorTests.TestPhysicalProcessBuilder
-[       OK ] EditorTests.TestPhysicalProcessBuilder (3 ms)
+[       OK ] EditorTests.TestPhysicalProcessBuilder (2 ms)
 [ RUN      ] EditorTests.TestSingularAnnotationBuilderAlternativeInterface
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2474,7 +1862,7 @@ local:SourceParticipant0000
     bqbiol:is "resource"^^rdf:string .
 
 
-[       OK ] EditorTests.TestSingularAnnotationBuilderAlternativeInterface (0 ms)
+[       OK ] EditorTests.TestSingularAnnotationBuilderAlternativeInterface (1 ms)
 [ RUN      ] EditorTests.TestRemoveSingularAnnotation
 [       OK ] EditorTests.TestRemoveSingularAnnotation (0 ms)
 [ RUN      ] EditorTests.TestRemovePhysicalForce
@@ -2501,29 +1889,7 @@ local:SourceParticipant0000
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-/mnt/d/libOmexMeta/tests/cpp/EditorTests.cpp:870: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-With diff:
-@@ -1,5 +1,5 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix OMEXlib: <http://omex-library.org/> .
- @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
-@@ -7,5 +7,5 @@
- 
- <http://omex-library.org/NewOmex.omex/NewModel.xml#>
--    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
-+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
- 
- <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-
-[  FAILED  ] EditorTests.TestAddPersonalInformation (2 ms)
+[       OK ] EditorTests.TestAddPersonalInformation (1 ms)
 [ RUN      ] EditorTests.TestAddTwoDifferentPhysicalEntities
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -2804,30 +2170,30 @@ local:SourceParticipant0003
 
 
 [       OK ] EditorTests.TestEditorWithoutGivingTypeInformation (10 ms)
-[----------] 41 tests from EditorTests (57 ms total)
+[----------] 41 tests from EditorTests (64 ms total)
 
 [----------] 3 tests from EditorTestsPhysicalEntityMemory
 [ RUN      ] EditorTestsPhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel
-[       OK ] EditorTestsPhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel (2 ms)
+[       OK ] EditorTestsPhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel (1 ms)
 [ RUN      ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForStatements
-[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForStatements (2 ms)
+[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForStatements (1 ms)
 [ RUN      ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForTerms
-[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForTerms (1 ms)
-[----------] 3 tests from EditorTestsPhysicalEntityMemory (5 ms total)
+[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForTerms (2 ms)
+[----------] 3 tests from EditorTestsPhysicalEntityMemory (4 ms total)
 
-[----------] 29 tests from EditorTestsDeletePhysicalEntity
+[----------] 28 tests from EditorTestsDeletePhysicalEntity
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks
 [       OK ] EditorTestsDeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple1
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple1 (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple1 (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple2
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple2 (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple2 (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple3
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple3 (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple3 (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple4
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple4 (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple4 (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleWithFreeInMiddle
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleWithFreeInMiddle (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleWithFreeInMiddle (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleFromTriples
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleFromTriples (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesDifferentContent
@@ -2835,9 +2201,9 @@ local:SourceParticipant0003
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubject
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubject (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameEverything
@@ -2862,7 +2228,7 @@ local:SourceParticipant0003
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPhysicalPropertyWithoutDeletingItInMiddle
@@ -2924,7 +2290,7 @@ local:OmexMetaId0001
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPhysicalPropertyWithFreeInMiddle (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPhysicalPropertyWithFreeInMiddle (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntity
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2960,15 +2326,15 @@ local:PhysicalEntity0000
 
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithNamespaceHandling (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle (3 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2 (2 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2 (3 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove3
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove3 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4 (3 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestAddAndRemovePhysicalEntity
@@ -2980,29 +2346,9 @@ local:PhysicalEntity0000
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
 
 [       OK ] EditorTestsDeletePhysicalEntity.TestDeleteFirstTriple (2 ms)
-[ RUN      ] EditorTestsDeletePhysicalEntity.TestDeleteOneByOne
-trip: <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
-   xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
-    <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/fma:1234"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000">
-    <bqbiol:isPropertyOf rdf:resource="http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_1234"/>
-  </rdf:Description>
-</rdf:RDF>
+[----------] 28 tests from EditorTestsDeletePhysicalEntity (34 ms total)
 
-rdfunknown file: Failure
-C++ exception with description "std::invalid_argument: LibrdfSerializer::setOption: Invalid feature: relativeURIs" thrown in the test body.
-[  FAILED  ] EditorTestsDeletePhysicalEntity.TestDeleteOneByOne (3 ms)
-[----------] 29 tests from EditorTestsDeletePhysicalEntity (38 ms total)
-
-[----------] 71 tests from ReadAndWriteTests
+[----------] 64 tests from ReadAndWriteTests
 [ RUN      ] ReadAndWriteTests.TestDefaultConstructor
 [       OK ] ReadAndWriteTests.TestDefaultConstructor (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1turtle
@@ -3038,40 +2384,7 @@ C++ exception with description "std::invalid_argument: LibrdfSerializer::setOpti
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation1rdfxml (0 ms)
-[ RUN      ] ReadAndWriteTests.singularannotation1dot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1" -> "Rhttps://identifiers.org/uniprot/P0DP23" [ label="bqbiol:is" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1" [ label="OMEXlib:NewOmex.omex/NewModel.xml#metaid_1", shape = ellipse, color = blue ];
-	"Rhttps://identifiers.org/uniprot/P0DP23" [ label="https://identifiers.org/uniprot/P0DP23", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#metaid_1\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#metaid_1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#metaid_1\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -13,4 +13,4 @@
- \t// Literals
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation1dot (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation1rdfxml (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1jsontriples
 {
   "triples" : [
@@ -3106,7 +2419,7 @@ With diff:
     }
   }
 
-[       OK ] ReadAndWriteTests.singularannotation1json (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation1json (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1html
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -3142,7 +2455,7 @@ With diff:
 
 [       OK ] ReadAndWriteTests.singularannotation2ntriples (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2turtle
-[       OK ] ReadAndWriteTests.singularannotation2turtle (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation2turtle (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2rdfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -3156,7 +2469,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation2rdfxmlabbrev (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation2rdfxmlabbrev (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2rdfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -3165,40 +2478,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation2rdfxml (0 ms)
-[ RUN      ] ReadAndWriteTests.singularannotation2dot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1" -> "Rhttps://identifiers.org/pubmed/12991237" [ label="bqmodel:isDescribedBy" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1" [ label="OMEXlib:NewOmex.omex/NewModel.xml#modelmeta1", shape = ellipse, color = blue ];
-	"Rhttps://identifiers.org/pubmed/12991237" [ label="https://identifiers.org/pubmed/12991237", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nbqmodel: http://biomodels.net/model-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#modelmeta1\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -13,4 +13,4 @@
- \t// Literals
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation2dot (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation2rdfxml (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2jsontriples
 {
   "triples" : [
@@ -3219,7 +2499,7 @@ With diff:
     ]
   }
 
-[       OK ] ReadAndWriteTests.singularannotation2jsontriples (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation2jsontriples (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2json
 
 {
@@ -3302,39 +2582,6 @@ With diff:
 </rdf:RDF>
 
 [       OK ] ReadAndWriteTests.singularannotation3rdfxml (0 ms)
-[ RUN      ] ReadAndWriteTests.singularannotation3dot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#meta1" -> "Rhttps://identifiers.org/chebi/CHEBI:15422" [ label="bqbiol:is" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#meta1" [ label="OMEXlib:NewOmex.omex/NewModel.xml#meta1", shape = ellipse, color = blue ];
-	"Rhttps://identifiers.org/chebi/CHEBI:15422" [ label="https://identifiers.org/chebi/CHEBI:15422", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta1\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"https://identifiers.org/chebi/CHEBI:15422\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta1\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"https://identifiers.org/chebi/CHEBI:15422\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -13,4 +13,4 @@
- \t// Literals
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation3dot (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3jsontriples
 {
   "triples" : [
@@ -3355,7 +2602,7 @@ With diff:
     ]
   }
 
-[       OK ] ReadAndWriteTests.singularannotation3jsontriples (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation3jsontriples (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3json
 
 {
@@ -3369,7 +2616,7 @@ With diff:
     }
   }
 
-[       OK ] ReadAndWriteTests.singularannotation3json (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation3json (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3html
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -3395,15 +2642,15 @@ With diff:
 </body>
 </html>
 
-[       OK ] ReadAndWriteTests.singularannotation3html (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation3html (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3nquads
 <http://omex-library.org/NewOmex.omex/NewModel.xml#meta1> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/chebi/CHEBI:15422> .
 
-[       OK ] ReadAndWriteTests.singularannotation3nquads (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation3nquads (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4ntriples
 <http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "Cardiomyocyte cytosolic ATP concentration" .
 
-[       OK ] ReadAndWriteTests.singularannotation4ntriples (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation4ntriples (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -3416,28 +2663,7 @@ With diff:
     dc:description "Cardiomyocyte cytosolic ATP concentration" .
 
 
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>\n    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>\n    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n\n"
-With diff:
-@@ -1,5 +1,5 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
- @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix OMEXlib: <http://omex-library.org/> .
- @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
-@@ -7,4 +7,4 @@
- 
- <http://omex-library.org/NewOmex.omex/NewModel.xml#meta2>
--    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .
-+    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .
- \n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation4turtle (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation4turtle (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4rdfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -3451,29 +2677,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
-  actual.c_str()
-    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
-With diff:
-@@ -2,5 +2,5 @@
- <rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"
-    xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"
--   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"
-+   xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"
-    xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"
-    xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"
-@@ -7,5 +7,5 @@
-    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
-   <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">
--    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
-+    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
-   </rdf:Description>
- </rdf:RDF>\n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation4rdfxmlabbrev (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation4rdfxmlabbrev (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4rdfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:dc="https://dublincore.org/specifications/dublin-core/dcmi-terms/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -3482,64 +2686,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
-  actual.c_str()
-    Which is: "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">\n    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>\n  </rdf:Description>\n</rdf:RDF>\n"
-With diff:
-@@ -1,6 +1,6 @@
- <?xml version=\"1.1\" encoding=\"utf-8\"?>
--<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
-+<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\" xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">
-   <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#meta2\">
--    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
-+    <dc:description>Cardiomyocyte cytosolic ATP concentration</dc:description>
-   </rdf:Description>
- </rdf:RDF>\n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation4rdfxml (0 ms)
-[ RUN      ] ReadAndWriteTests.singularannotation4dot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#meta2" -> "LCardiomyocyte cytosolic ATP concentration" [ label="dc:description" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#meta2" [ label="OMEXlib:NewOmex.omex/NewModel.xml#meta2", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-	"LCardiomyocyte cytosolic ATP concentration" [ label="Cardiomyocyte cytosolic ATP concentration", shape = record ];
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#meta2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -3,5 +3,5 @@
- \tcharset=\"utf-8\";
- 
--\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];
-+\t\"ROMEXlib:NewOmex.omex/NewModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dc:description\" ];
- 
- \t// Resources
-@@ -13,4 +13,4 @@
- \t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndc: https://dublincore.org/specifications/dublin-core/dcmi-terms/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.singularannotation4dot (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation4rdfxml (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4jsontriples
 {
   "triples" : [
@@ -3612,7 +2759,7 @@ With diff:
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .
 
-[       OK ] ReadAndWriteTests.compositeannotationpentriples (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpentriples (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpeturtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -3629,7 +2776,7 @@ With diff:
     bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .
 
 
-[       OK ] ReadAndWriteTests.compositeannotationpeturtle (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpeturtle (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationperdfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -3648,45 +2795,6 @@ With diff:
 </rdf:RDF>
 
 [       OK ] ReadAndWriteTests.compositeannotationperdfxmlabbrev (1 ms)
-[ RUN      ] ReadAndWriteTests.compositeannotationpedot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#VLV" -> "Rhttp://identifiers.org/opb/OPB_00154" [ label="bqbiol:isVersionOf" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#VLV" -> "ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" [ label="bqbiol:isPropertyOf" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" -> "Rhttp://identifiers.org/fma/FMA:9670" [ label="bqbiol:is" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" -> "Rhttp://identifiers.org/fma/FMA:18228" [ label="bqbiol:isPartOf" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#VLV" [ label="OMEXlib:NewOmex.omex/NewModel.xml#VLV", shape = ellipse, color = blue ];
-	"Rhttp://identifiers.org/opb/OPB_00154" [ label="http://identifiers.org/opb/OPB_00154", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#entity_0", shape = ellipse, color = blue ];
-	"Rhttp://identifiers.org/fma/FMA:9670" [ label="http://identifiers.org/fma/FMA:9670", shape = ellipse, color = blue ];
-	"Rhttp://identifiers.org/fma/FMA:18228" [ label="http://identifiers.org/fma/FMA:18228", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#VLV\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#entity_0\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VLV\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#VLV\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#entity_0\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -19,4 +19,4 @@
- \t// Literals
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.compositeannotationpedot (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpejsontriples
 {
   "triples" : [
@@ -3749,7 +2857,7 @@ With diff:
     ]
   }
 
-[       OK ] ReadAndWriteTests.compositeannotationpejsontriples (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpejsontriples (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpejson
 
 {
@@ -3784,7 +2892,7 @@ With diff:
     }
   }
 
-[       OK ] ReadAndWriteTests.compositeannotationpejson (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpejson (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpehtml
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -3832,7 +2940,7 @@ With diff:
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .
 
-[       OK ] ReadAndWriteTests.compositeannotationpenquads (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpenquads (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppntriples
 [       OK ] ReadAndWriteTests.compositeannotationppntriples (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppturtle
@@ -3867,7 +2975,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.compositeannotationpprdfxmlabbrev (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpprdfxmlabbrev (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpprdfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:semsim="http://www.bhi.washington.edu/semsim#">
@@ -3904,57 +3012,6 @@ With diff:
 </rdf:RDF>
 
 [       OK ] ReadAndWriteTests.compositeannotationpprdfxml (1 ms)
-[ RUN      ] ReadAndWriteTests.compositeannotationppdot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0" [ label="bqbiol:isPropertyOf" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0" -> "Rhttps://identifiers.org/opb/OPB_00592" [ label="bqbiol:isVersionOf" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#source_0" [ label="semsim:hasSourceParticipant" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#sink_0" [ label="semsim:hasSinkParticipant" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0" [ label="semsim:hasMediatorParticipant" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#source_0" -> "L1.0" [ label="semsim:hasMultiplier" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#source_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0" [ label="semsim:hasPhysicalEntityReference" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0" -> "L2.0" [ label="semsim:hasMultiplier" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1" [ label="semsim:hasPhysicalEntityReference" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0" -> "ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2" [ label="semsim:hasPhysicalEntityReference" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0", shape = ellipse, color = blue ];
-	"Rhttps://identifiers.org/opb/OPB_00592" [ label="https://identifiers.org/opb/OPB_00592", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#source_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#source_0", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#sink_0", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#mediator_0", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1" [ label="OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2" [ label="OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-	"L1.0" [ label="1.0", shape = record ];
-	"L2.0" [ label="2.0", shape = record ];
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nsemsim: http://www.bhi.washington.edu/semsim#\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#source_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#sink_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#mediator_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"L1.0\" [ label=\"1.0\", shape = record ];\n\t\"L2.0\" [ label=\"2.0\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#property_metaid_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#process_metaid_0\", shape = ellipse, color = blue ];\n\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#source_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#source_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#sink_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#sink_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#mediator_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#mediator_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_0\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_1\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#special_metaid_2\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\t\"L1.0\" [ label=\"1.0\", shape = record ];\n\t\"L2.0\" [ label=\"2.0\", shape = record ];\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -31,4 +31,4 @@
- \t\"L2.0\" [ label=\"2.0\", shape = record ];
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.compositeannotationppdot (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppjsontriples
 {
   "triples" : [
@@ -4183,7 +3240,7 @@ With diff:
     }
   }
 
-[       OK ] ReadAndWriteTests.compositeannotationppjson (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationppjson (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpphtml
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -4254,7 +3311,7 @@ With diff:
 </body>
 </html>
 
-[       OK ] ReadAndWriteTests.compositeannotationpphtml (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpphtml (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppnquads
 <http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#process_metaid_0> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/OPB_00592> .
@@ -4269,7 +3326,7 @@ With diff:
 
 [       OK ] ReadAndWriteTests.compositeannotationppnquads (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpfntriples
-[       OK ] ReadAndWriteTests.compositeannotationpfntriples (2 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpfntriples (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpfturtle
 [       OK ] ReadAndWriteTests.compositeannotationpfturtle (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpfrdfxmlabbrev
@@ -4297,7 +3354,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.compositeannotationpfrdfxmlabbrev (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpfrdfxmlabbrev (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpfrdfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:semsim="http://www.bhi.washington.edu/semsim#">
@@ -4531,7 +3588,7 @@ With diff:
 [ RUN      ] ReadAndWriteTests.tabulardatantriples
 [       OK ] ReadAndWriteTests.tabulardatantriples (1 ms)
 [ RUN      ] ReadAndWriteTests.tabulardataturtle
-[       OK ] ReadAndWriteTests.tabulardataturtle (0 ms)
+[       OK ] ReadAndWriteTests.tabulardataturtle (1 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatardfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -4551,7 +3608,7 @@ With diff:
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.tabulardatardfxmlabbrev (1 ms)
+[       OK ] ReadAndWriteTests.tabulardatardfxmlabbrev (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatardfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:semsim="http://www.bhi.washington.edu/semsim#">
@@ -4570,45 +3627,6 @@ With diff:
 </rdf:RDF>
 
 [       OK ] ReadAndWriteTests.tabulardatardfxml (1 ms)
-[ RUN      ] ReadAndWriteTests.tabulardatadot
-digraph {
-	rankdir = LR;
-	charset="utf-8";
-
-	"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt" -> "Rhttp://identifiers.org/opb/OPB_00154" [ label="bqbiol:isVersionOf" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt" -> "ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" [ label="bqbiol:isPropertyOf" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" -> "Rhttp://identifiers.org/fma/FMA:9670" [ label="bqbiol:is" ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" -> "Rhttp://identifiers.org/fma/FMA:18228" [ label="bqbiol:isPartOf" ];
-
-	// Resources
-	"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt" [ label="OMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt", shape = ellipse, color = blue ];
-	"Rhttp://identifiers.org/opb/OPB_00154" [ label="http://identifiers.org/opb/OPB_00154", shape = ellipse, color = blue ];
-	"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0" [ label="OMEXlib:NewOmex.omex/NewModel.xml#entity_0", shape = ellipse, color = blue ];
-	"Rhttp://identifiers.org/fma/FMA:9670" [ label="http://identifiers.org/fma/FMA:9670", shape = ellipse, color = blue ];
-	"Rhttp://identifiers.org/fma/FMA:18228" [ label="http://identifiers.org/fma/FMA:18228", shape = ellipse, color = blue ];
-
-	// Anonymous nodes
-
-	// Literals
-
-	label="\n\nModel:\nbase\n\nNamespaces:\nbqmodel: http://biomodels.net/model-qualifiers/\nbqbiol: http://biomodels.net/biology-qualifiers/\nsemsim: http://www.bhi.washington.edu/semsim#\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
-}
-
-/mnt/d/libOmexMeta/tests/cpp/RDFReadAndWriteTests.cpp:32: Failure
-Expected equality of these values:
-  expected_output.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#entity_0\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-  actual.c_str()
-    Which is: "digraph {\n\trankdir = LR;\n\tcharset=\"utf-8\";\n\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" -> \"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n\n\t// Resources\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#VleftCorArt\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n\t\"ROMEXlib:NewOmex.omex/NewModel.xml#entity_0\" [ label=\"OMEXlib:NewOmex.omex/NewModel.xml#entity_0\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n\n\t// Anonymous nodes\n\n\t// Literals\n\n\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";\n}\n"
-With diff:
-@@ -19,4 +19,4 @@
- \t// Literals
- 
--\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
-+\tlabel=\"\\n\\nModel:\\nbase\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nOMEXlib: http://omex-library.org/\\nmyOMEX: http://omex-library.org/NewOmex.omex/\\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\\n\";
- }\n
-
-[  FAILED  ] ReadAndWriteTests.tabulardatadot (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatajsontriples
 {
   "triples" : [
@@ -4671,7 +3689,7 @@ With diff:
     ]
   }
 
-[       OK ] ReadAndWriteTests.tabulardatajsontriples (1 ms)
+[       OK ] ReadAndWriteTests.tabulardatajsontriples (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatajson
 
 {
@@ -4706,7 +3724,7 @@ With diff:
     }
   }
 
-[       OK ] ReadAndWriteTests.tabulardatajson (0 ms)
+[       OK ] ReadAndWriteTests.tabulardatajson (1 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatahtml
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -4747,7 +3765,7 @@ With diff:
 </body>
 </html>
 
-[       OK ] ReadAndWriteTests.tabulardatahtml (1 ms)
+[       OK ] ReadAndWriteTests.tabulardatahtml (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatanquads
 <http://omex-library.org/NewOmex.omex/NewModel.xml#VleftCorArt> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#VleftCorArt> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> .
@@ -4755,7 +3773,7 @@ With diff:
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .
 
 [       OK ] ReadAndWriteTests.tabulardatanquads (1 ms)
-[----------] 71 tests from ReadAndWriteTests (42 ms total)
+[----------] 64 tests from ReadAndWriteTests (37 ms total)
 
 [----------] 8 tests from PersonalInformationTests
 [ RUN      ] PersonalInformationTests.TestAddFoaf
@@ -4773,28 +3791,7 @@ With diff:
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:48: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestAddFoaf (1 ms)
+[       OK ] PersonalInformationTests.TestAddFoaf (0 ms)
 [ RUN      ] PersonalInformationTests.TestAddFoafUsingLiteral
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -4810,28 +3807,7 @@ With diff:
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:71: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestAddFoafUsingLiteral (0 ms)
+[       OK ] PersonalInformationTests.TestAddFoafUsingLiteral (1 ms)
 [ RUN      ] PersonalInformationTests.TestAddFoafUsingUri
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -4847,28 +3823,7 @@ With diff:
     foaf:accountName <https://orcid.org/0000-0001-8254-4957> .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:95: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-8254-4957> .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-8254-4957> .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestAddFoafUsingUri (1 ms)
+[       OK ] PersonalInformationTests.TestAddFoafUsingUri (1 ms)
 [ RUN      ] PersonalInformationTests.TestAddName
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -4884,28 +3839,7 @@ With diff:
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:118: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestAddName (1 ms)
+[       OK ] PersonalInformationTests.TestAddName (1 ms)
 [ RUN      ] PersonalInformationTests.TestMBox
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -4921,28 +3855,7 @@ With diff:
     foaf:mbox "annotations@uw.edu"^^rdf:string .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:141: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:mbox \"annotations@uw.edu\"^^rdf:string .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestMBox (1 ms)
+[       OK ] PersonalInformationTests.TestMBox (0 ms)
 [ RUN      ] PersonalInformationTests.TestAccountName
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -4958,28 +3871,7 @@ With diff:
     foaf:accountName <https://orcid.org/0000-0001-9876-3928> .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:164: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-9876-3928> .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-0001-9876-3928> .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestAccountName (1 ms)
+[       OK ] PersonalInformationTests.TestAccountName (1 ms)
 [ RUN      ] PersonalInformationTests.TestaddAccountServiceHomepage
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -4995,28 +3887,7 @@ With diff:
     foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:187: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestaddAccountServiceHomepage (1 ms)
+[       OK ] PersonalInformationTests.TestaddAccountServiceHomepage (1 ms)
 [ RUN      ] PersonalInformationTests.TestMultipleEntries
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -5035,29 +3906,8 @@ With diff:
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-/mnt/d/libOmexMeta/tests/cpp/PersonalInformationTests.cpp:217: Failure
-Expected equality of these values:
-  expected.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-1111-2222-3333> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations.uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-  actual.c_str()
-    Which is: "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix OMEXlib: <http://omex-library.org/> .\n@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n\n<TestModel.sbml>\n    dc:creator <TestModel.sbml#PersonalInfo0000> .\n\n<TestModel.sbml#PersonalInfo0000>\n    foaf:accountName <https://orcid.org/0000-1111-2222-3333> ;\n    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n    foaf:mbox \"annotations.uw.edu\"^^rdf:string ;\n    foaf:name \"Ciaran Welsh\"^^rdf:string .\n\n"
-With diff:
-@@ -1,4 +1,4 @@
- @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
--@prefix dc <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
- @prefix foaf: <http://xmlns.com/foaf/0.1/> .
- @prefix OMEXlib: <http://omex-library.org/> .
-@@ -7,5 +7,5 @@
- 
- <TestModel.sbml>
--    dc:creator <TestModel.sbml#PersonalInfo0000> .
-+    dc:creator <TestModel.sbml#PersonalInfo0000> .
- 
- <TestModel.sbml#PersonalInfo0000>
-
-[  FAILED  ] PersonalInformationTests.TestMultipleEntries (2 ms)
-[----------] 8 tests from PersonalInformationTests (8 ms total)
+[       OK ] PersonalInformationTests.TestMultipleEntries (2 ms)
+[----------] 8 tests from PersonalInformationTests (7 ms total)
 
 [----------] 3 tests from MarkupIdentifierTests
 [ RUN      ] MarkupIdentifierTests.ElementNames
@@ -5065,12 +3915,12 @@ With diff:
 [ RUN      ] MarkupIdentifierTests.isSBMLTest
 [       OK ] MarkupIdentifierTests.isSBMLTest (0 ms)
 [ RUN      ] MarkupIdentifierTests.isCellMLTest
-[       OK ] MarkupIdentifierTests.isCellMLTest (2 ms)
-[----------] 3 tests from MarkupIdentifierTests (2 ms total)
+[       OK ] MarkupIdentifierTests.isCellMLTest (1 ms)
+[----------] 3 tests from MarkupIdentifierTests (1 ms total)
 
 [----------] 4 tests from ElementExtractorTests
 [ RUN      ] ElementExtractorTests.TetsListOfCompartmentsExtraction
-[       OK ] ElementExtractorTests.TetsListOfCompartmentsExtraction (1 ms)
+[       OK ] ElementExtractorTests.TetsListOfCompartmentsExtraction (0 ms)
 [ RUN      ] ElementExtractorTests.TestCompartmentExtraction
 [       OK ] ElementExtractorTests.TestCompartmentExtraction (0 ms)
 [ RUN      ] ElementExtractorTests.TestReactionExtraction
@@ -5173,7 +4023,7 @@ local:SinkParticipant0001
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 
-[       OK ] SBMLSemanticExtractionTests.TestCompartmentSingleCompartment (4 ms)
+[       OK ] SBMLSemanticExtractionTests.TestCompartmentSingleCompartment (3 ms)
 [ RUN      ] SBMLSemanticExtractionTests.TestReactionExtraction
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -5270,33 +4120,9 @@ local:SourceParticipant0005
     bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .
 
 
-[       OK ] SBMLSemanticExtractionTests.TestReactionExtraction (16 ms)
-[----------] 3 tests from SBMLSemanticExtractionTests (29 ms total)
+[       OK ] SBMLSemanticExtractionTests.TestReactionExtraction (13 ms)
+[----------] 3 tests from SBMLSemanticExtractionTests (25 ms total)
 
 [----------] Global test environment tear-down
-[==========] 408 tests from 38 test suites ran. (13542 ms total)
-[  PASSED  ] 387 tests.
-[  FAILED  ] 21 tests, listed below:
-[  FAILED  ] RDFTests.TestParseFromFileCollectedFromBiomodels
-[  FAILED  ] EditorTests.TestAddPersonalInformation
-[  FAILED  ] EditorTestsDeletePhysicalEntity.TestDeleteOneByOne
-[  FAILED  ] ReadAndWriteTests.singularannotation1dot
-[  FAILED  ] ReadAndWriteTests.singularannotation2dot
-[  FAILED  ] ReadAndWriteTests.singularannotation3dot
-[  FAILED  ] ReadAndWriteTests.singularannotation4turtle
-[  FAILED  ] ReadAndWriteTests.singularannotation4rdfxmlabbrev
-[  FAILED  ] ReadAndWriteTests.singularannotation4rdfxml
-[  FAILED  ] ReadAndWriteTests.singularannotation4dot
-[  FAILED  ] ReadAndWriteTests.compositeannotationpedot
-[  FAILED  ] ReadAndWriteTests.compositeannotationppdot
-[  FAILED  ] ReadAndWriteTests.tabulardatadot
-[  FAILED  ] PersonalInformationTests.TestAddFoaf
-[  FAILED  ] PersonalInformationTests.TestAddFoafUsingLiteral
-[  FAILED  ] PersonalInformationTests.TestAddFoafUsingUri
-[  FAILED  ] PersonalInformationTests.TestAddName
-[  FAILED  ] PersonalInformationTests.TestMBox
-[  FAILED  ] PersonalInformationTests.TestAccountName
-[  FAILED  ] PersonalInformationTests.TestaddAccountServiceHomepage
-[  FAILED  ] PersonalInformationTests.TestMultipleEntries
-
-21 FAILED TESTS
+[==========] 397 tests from 38 test suites ran. (10475 ms total)
+[  PASSED  ] 397 tests.

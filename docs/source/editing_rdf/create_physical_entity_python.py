@@ -35,17 +35,19 @@ sbml = te.antimonyToSBML(antimony_string)
 rdf = RDF()
 
 
-with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
-    sbml_with_metaids = editor.get_xml()
-    print(sbml_with_metaids)
-    with editor.new_physical_entity() as physical_entity:
-        physical_entity\
-            .set_physical_property("#OmexMetaId0001", "OPB:OPB_00340") \
-            .set_identity("uniprot/P84022") \
-            .add_location("fma/FMA:63877") \
-            .add_location("fma:FMA:70737") \
-            .add_location("fma/FMA:24178") \
-            .add_location("fma/FMA_7163")
+editor = rdf.to_editor(sbml, generate_new_metaids=True)
+
+sbml_with_metaids = editor.get_xml()
+print(sbml_with_metaids)
+
+with editor.new_physical_entity() as physical_entity:
+    physical_entity\
+        .set_physical_property("#OmexMetaId0001", "OPB:OPB_00340") \
+        .set_identity("uniprot/P84022") \
+        .add_location("fma/FMA:63877") \
+        .add_location("fma:FMA:70737") \
+        .add_location("fma/FMA:24178") \
+        .add_location("fma/FMA_7163")
 
 print(rdf)
 

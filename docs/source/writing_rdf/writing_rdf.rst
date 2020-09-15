@@ -75,10 +75,9 @@ Writing to a file
             :linenos:
             :caption: Output
 
-
     .. tab:: C
 
-        .. literalinclude:: writing_to_file_c.c
+        .. literalinclude:: writing_to_file_c.cpp
             :linenos:
             :language: C
             :caption: Write to a file in C

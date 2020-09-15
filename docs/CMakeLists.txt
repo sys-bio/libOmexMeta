@@ -18,6 +18,7 @@
 ############################################################
 # Build the documentation examples
 #
+include(GoogleTest)
 
 set(EXAMPLE_EXECUTABLES_TARGETS)
 
@@ -25,7 +26,6 @@ macro(add_doc_example BINARY_NAME)
 
     # binary for testing Editor's ability to extract information from sbml
     add_executable(${BINARY_NAME} ${ARGN})
-    gtest_discover_test(${BINARY_NAME})
     set(EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS} "${BINARY_NAME}")
 
     target_compile_definitions(
@@ -53,7 +53,6 @@ macro(add_doc_example BINARY_NAME)
 
     target_include_directories(${BINARY_NAME} PRIVATE
                                ${GOOGLETEST_SOURCE}/googletest/include
-
                                ${INCLUDE_DIRECTORIES}
                                ${WRAPPER_SOURCE_DIR}
                                )

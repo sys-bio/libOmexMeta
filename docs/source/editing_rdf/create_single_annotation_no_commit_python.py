@@ -40,16 +40,18 @@ sbml = """<?xml version="1.0" encoding="UTF-8"?>
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
-    with editor.new_singular_annotation() as singular_annotation:
-        singular_annotation \
-            .set_about('#OmexMetaId0002') \
-            .set_predicate("bqbiol", "is") \
-            .set_resource_uri("uniprot/P01137")
+editor = rdf.to_editor(sbml, generate_new_metaids=True)
 
-        # In python, the singular annotation gets committed to the model
-        # automatically after the current context manager looses scope (i.e.
-        # at the end of the current with block). But serializing (printing)
-        # here does so without adding to the current RDF graph.
-        # This features makes more sense in C/C++
-        print(singular_annotation)
+
+with editor.new_singular_annotation() as singular_annotation:
+    singular_annotation \
+        .set_about('#OmexMetaId0002') \
+        .set_predicate("bqbiol", "is") \
+        .set_resource_uri("uniprot/P01137")
+
+    # In python, the singular annotation gets committed to the model
+    # automatically after the current context manager looses scope (i.e.
+    # at the end of the current with block). But serializing (printing)
+    # here does so without adding to the current RDF graph.
+    # This features makes more sense in C/C++
+    print(singular_annotation)

@@ -150,6 +150,7 @@ namespace omexmeta {
         return getLocationResources().size();
     }
 
+
     bool PhysicalEntity::operator==(const PhysicalEntity &rhs) const {
         return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
                static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
@@ -160,6 +161,7 @@ namespace omexmeta {
     bool PhysicalEntity::operator!=(const PhysicalEntity &rhs) const {
         return !(rhs == *this);
     }
+
 
 }
 

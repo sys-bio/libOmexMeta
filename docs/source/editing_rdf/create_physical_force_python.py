@@ -34,16 +34,18 @@ sbml = te.antimonyToSBML(antimony_string)
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, generate_new_metaids=True, sbml_semantic_extraction=False) as editor:
-    sbml_with_metaids = editor.get_xml()
-    print(sbml_with_metaids)
+editor = rdf.to_editor(sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
 
-#     # Property: Osmotic Pressure
-    with editor.new_physical_force() as physical_force:
-        physical_force \
-            .set_physical_property("#OmexMetaId0005", "OPB:OPB_01012") \
-            .add_source(multiplier=1, physical_entity_reference="#OmexMetaId0001") \
-            .add_sink(multiplier=1, physical_entity_reference="#OmexMetaId0002") \
+
+sbml_with_metaids = editor.get_xml()
+print(sbml_with_metaids)
+
+# Property: Osmotic Pressure
+with editor.new_physical_force() as physical_force:
+    physical_force \
+        .set_physical_property("#OmexMetaId0005", "OPB:OPB_01012") \
+        .add_source(multiplier=1, physical_entity_reference="#OmexMetaId0001") \
+        .add_sink(multiplier=1, physical_entity_reference="#OmexMetaId0002") \
 
 print(rdf)
 

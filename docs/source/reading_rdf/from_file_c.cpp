@@ -38,14 +38,7 @@ int main(){
     // read the string into our RDF graph
     RDF* rdf_ptr = RDF_fromFile(fname, "turtle");
 
-    // generate some output
-    char*rdfxml_string = RDF_toString(rdf_ptr, "rdfxml-abbrev");
-
-    // print to console
-    printf("%s", rdfxml_string);
-
-    // free dynamically generated output string
-    free(rdfxml_string);
+    printf("%d triples read from file", rdf_ptr->size());
 
     // clear up the file we wrote
     remove(fname);

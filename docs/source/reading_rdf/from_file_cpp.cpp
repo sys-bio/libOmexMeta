@@ -34,11 +34,7 @@ int main(){
     // create an RDF graph
     RDF rdf = RDF::fromFile(fname, "turtle"); // assume the content of annotation_file is turtle
 
-    std::string xml_abbrev_string = rdf.toString("rdfxml-abbrev");
-
-    // Write rdf graph to rdfxml and print to console
-    std::cout << xml_abbrev_string << std::endl;
-
+    std::cout << rdf.size() << " triples read from file" << std::endl;
     // RDF clears up after itself via RAII
 
     return 0;

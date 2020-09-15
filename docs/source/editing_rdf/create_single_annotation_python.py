@@ -40,12 +40,13 @@ sbml = """<?xml version="1.0" encoding="UTF-8"?>
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, "sbml") as editor:
-    print(editor.get_metaids())  # prints out model metaids
+editor = rdf.to_editor(sbml, "sbml")
 
-    with editor.new_singular_annotation() as singular_annotation:
-        singular_annotation \
-            .set_about('ToyModel') \
-            .set_predicate("dc", "description") \
-            .set_resource_literal("This is a toy model for demonstration purposes")
+print(editor.get_metaids())  # prints out model metaids
+
+with editor.new_singular_annotation() as singular_annotation:
+    singular_annotation \
+        .set_about('ToyModel') \
+        .set_predicate("dc", "description") \
+        .set_resource_literal("This is a toy model for demonstration purposes")
 print(rdf)

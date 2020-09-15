@@ -17,5 +17,7 @@ Developers Documentation
     world_singleton.rst
     incrementing_version.rst
     compile_definitions.rst
+    adding_to_documentation.rst
+
 
 

@@ -20,6 +20,8 @@ with open (fname, "w") as f:
 # Add to our RDF graph by reading the second string
 rdf = RDF.from_file(fname, "turtle")
 
+print(f"{rdf.size()} triples read from file")
+
 # remove the file we wrote
 if os.path.isfile(fname):
     os.remove(fname)

@@ -3,8 +3,8 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [----------] Global test environment set-up.
 [----------] 1 test from LibrdfWorldTests
 [ RUN      ] LibrdfWorldTests.TestSingleton
-[       OK ] LibrdfWorldTests.TestSingleton (84 ms)
-[----------] 1 test from LibrdfWorldTests (85 ms total)
+[       OK ] LibrdfWorldTests.TestSingleton (77 ms)
+[----------] 1 test from LibrdfWorldTests (77 ms total)
 
 [----------] 19 tests from LibrdfUriTests
 [ RUN      ] LibrdfUriTests.TestCreate
@@ -56,7 +56,7 @@ file:../uri.com
 [ RUN      ] LibrdfNodeTests.TestMoveConstructor
 [       OK ] LibrdfNodeTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfNodeTests.TestMoveAssignmentOperator
-[       OK ] LibrdfNodeTests.TestMoveAssignmentOperator (0 ms)
+[       OK ] LibrdfNodeTests.TestMoveAssignmentOperator (1 ms)
 [ RUN      ] LibrdfNodeTests.TestLiteral1
 [       OK ] LibrdfNodeTests.TestLiteral1 (0 ms)
 [ RUN      ] LibrdfNodeTests.TestTypedLiteral1
@@ -90,9 +90,9 @@ file:../uri.com
 [ RUN      ] LibrdfNodeTests.TestSetBlankValueNotChanged
 [       OK ] LibrdfNodeTests.TestSetBlankValueNotChanged (0 ms)
 [ RUN      ] LibrdfNodeTests.TestSetUri2
-[       OK ] LibrdfNodeTests.TestSetUri2 (0 ms)
+[       OK ] LibrdfNodeTests.TestSetUri2 (1 ms)
 [ RUN      ] LibrdfNodeTests.TestEquality
-[       OK ] LibrdfNodeTests.TestEquality (1 ms)
+[       OK ] LibrdfNodeTests.TestEquality (0 ms)
 [ RUN      ] LibrdfNodeTests.TestInequality
 [       OK ] LibrdfNodeTests.TestInequality (0 ms)
 [ RUN      ] LibrdfNodeTests.TestCopyNodeUri
@@ -146,7 +146,7 @@ file:../uri.com
 [[
   <http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/creator> "Dave Beckett". 
 ]]
-[       OK ] LibrdfStorageTests.TestSQLiteStorage (56 ms)
+[       OK ] LibrdfStorageTests.TestSQLiteStorage (46 ms)
 [ RUN      ] LibrdfStorageTests.TestPrintAvailableStorages
 hashes
 trees
@@ -156,7 +156,7 @@ uri
 postgresql
 sqlite
 [       OK ] LibrdfStorageTests.TestPrintAvailableStorages (0 ms)
-[----------] 5 tests from LibrdfStorageTests (56 ms total)
+[----------] 5 tests from LibrdfStorageTests (46 ms total)
 
 [----------] 6 tests from LibrdfModelTests
 [ RUN      ] LibrdfModelTests.TestNew
@@ -177,13 +177,13 @@ sqlite
 [ RUN      ] LibrdfParserTests.TestInstantiateParser
 [       OK ] LibrdfParserTests.TestInstantiateParser (0 ms)
 [ RUN      ] LibrdfParserTests.TestMoveConstructor
-[       OK ] LibrdfParserTests.TestMoveConstructor (0 ms)
+[       OK ] LibrdfParserTests.TestMoveConstructor (1 ms)
 [ RUN      ] LibrdfParserTests.TestMoveAssignment
 [       OK ] LibrdfParserTests.TestMoveAssignment (0 ms)
 [ RUN      ] LibrdfParserTests.TestValidParserName
-[       OK ] LibrdfParserTests.TestValidParserName (1 ms)
+[       OK ] LibrdfParserTests.TestValidParserName (0 ms)
 [ RUN      ] LibrdfParserTests.TestInvalidParserName
-[       OK ] LibrdfParserTests.TestInvalidParserName (18 ms)
+[       OK ] LibrdfParserTests.TestInvalidParserName (10 ms)
 [ RUN      ] LibrdfParserTests.TestSetName
 [       OK ] LibrdfParserTests.TestSetName (0 ms)
 [ RUN      ] LibrdfParserTests.TestGetMimeType
@@ -192,23 +192,18 @@ sqlite
 [       OK ] LibrdfParserTests.TestGetMimeType2 (0 ms)
 [ RUN      ] LibrdfParserTests.TestParseFromAFile
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/example_rdf.rdf
-[       OK ] LibrdfParserTests.TestParseFromAFile (19 ms)
+[       OK ] LibrdfParserTests.TestParseFromAFile (18 ms)
 [ RUN      ] LibrdfParserTests.TestParserFromUrl
-[       OK ] LibrdfParserTests.TestParserFromUrl (326 ms)
+[       OK ] LibrdfParserTests.TestParserFromUrl (370 ms)
 [ RUN      ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly
 "/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/LibrdfParserTests_TestBaseUri.db"
-[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (106 ms)
+[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (79 ms)
 [ RUN      ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly2
 "/mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/LibrdfParserTests_TestBaseUri.db"
-[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly2 (94 ms)
+[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly2 (81 ms)
 [ RUN      ] LibrdfParserTests.TestFeatures
-/mnt/d/libOmexMeta/src/redland/RedlandWrapper/test/LibrdfParserTests.cpp:241: Failure
-Expected equality of these values:
-  "1"
-  allowBagIDNode.str()
-    Which is: "0"
-[  FAILED  ] LibrdfParserTests.TestFeatures (1 ms)
-[----------] 13 tests from LibrdfParserTests (565 ms total)
+[       OK ] LibrdfParserTests.TestFeatures (0 ms)
+[----------] 13 tests from LibrdfParserTests (559 ms total)
 
 [----------] 9 tests from LibrdfSerializerTests
 [ RUN      ] LibrdfSerializerTests.TestInstantiateSerializer
@@ -220,7 +215,7 @@ Expected equality of these values:
 [ RUN      ] LibrdfSerializerTests.TestMoveAssignment
 [       OK ] LibrdfSerializerTests.TestMoveAssignment (0 ms)
 [ RUN      ] LibrdfSerializerTests.TestToString
-[       OK ] LibrdfSerializerTests.TestToString (0 ms)
+[       OK ] LibrdfSerializerTests.TestToString (1 ms)
 [ RUN      ] LibrdfSerializerTests.TestToStringTurtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -232,14 +227,14 @@ Expected equality of these values:
 [ RUN      ] LibrdfSerializerTests.TestToStringNTriples
 <https://subject.com> <https://predicate.com> <https://resource.com> .
 
-[       OK ] LibrdfSerializerTests.TestToStringNTriples (1 ms)
+[       OK ] LibrdfSerializerTests.TestToStringNTriples (0 ms)
 [ RUN      ] LibrdfSerializerTests.TestBaseUri
 <https://subject.com> <https://predicate.com> <https://resource.com> .
 
 [       OK ] LibrdfSerializerTests.TestBaseUri (0 ms)
 [ RUN      ] LibrdfSerializerTests.TestFeatures
-[       OK ] LibrdfSerializerTests.TestFeatures (0 ms)
-[----------] 9 tests from LibrdfSerializerTests (1 ms total)
+[       OK ] LibrdfSerializerTests.TestFeatures (1 ms)
+[----------] 9 tests from LibrdfSerializerTests (2 ms total)
 
 [----------] 3 tests from LibrdfQueryTests
 [ RUN      ] LibrdfQueryTests.TestInstantiateQuery
@@ -252,12 +247,12 @@ Expected equality of these values:
 
 [----------] 3 tests from LibrdfQueryResultsTests
 [ RUN      ] LibrdfQueryResultsTests.TestInstantiateQueryResults
-[       OK ] LibrdfQueryResultsTests.TestInstantiateQueryResults (10 ms)
+[       OK ] LibrdfQueryResultsTests.TestInstantiateQueryResults (6 ms)
 [ RUN      ] LibrdfQueryResultsTests.TestMoveConstructor
 [       OK ] LibrdfQueryResultsTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfQueryResultsTests.TestMoveAssignment
 [       OK ] LibrdfQueryResultsTests.TestMoveAssignment (1 ms)
-[----------] 3 tests from LibrdfQueryResultsTests (11 ms total)
+[----------] 3 tests from LibrdfQueryResultsTests (7 ms total)
 
 [----------] 3 tests from LibrdfStreamTests
 [ RUN      ] LibrdfStreamTests.TestInstantiateStream
@@ -269,9 +264,5 @@ Expected equality of these values:
 [----------] 3 tests from LibrdfStreamTests (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 101 tests from 12 test suites ran. (724 ms total)
-[  PASSED  ] 100 tests.
-[  FAILED  ] 1 test, listed below:
-[  FAILED  ] LibrdfParserTests.TestFeatures
-
- 1 FAILED TEST
+[==========] 101 tests from 12 test suites ran. (697 ms total)
+[  PASSED  ] 101 tests.

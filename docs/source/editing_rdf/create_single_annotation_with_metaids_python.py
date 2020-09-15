@@ -40,12 +40,13 @@ sbml = """<?xml version="1.0" encoding="UTF-8"?>
 # create an empty RDF object
 rdf = RDF()
 
-with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
-    print(editor.get_xml()) # prints out sbml with metaids
+editor = rdf.to_editor(sbml, generate_new_metaids=True)
 
-    with editor.new_singular_annotation() as identity:
-        identity \
-            .set_about('#OmexMetaId0001') \
-            .set_predicate("bqbiol", "is") \
-            .set_resource_uri("uniprot/P01137")
+print(editor.get_xml()) # prints out sbml with metaids
+
+with editor.new_singular_annotation() as identity:
+    identity \
+        .set_about('#OmexMetaId0001') \
+        .set_predicate("bqbiol", "is") \
+        .set_resource_uri("uniprot/P01137")
 print(rdf)

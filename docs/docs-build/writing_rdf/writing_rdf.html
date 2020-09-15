@@ -97,6 +97,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
@@ -2891,7 +2892,105 @@ Serializing to html:
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Write to a file in C</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">turtle_string</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix myOMEX: &lt;http://omex-library.org/Welsh2020.omex/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;@prefix local: &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+
+    <span class="c1">// remember that the default parser is &quot;guess&quot;.</span>
+    <span class="c1">// the parser will try to figure out which syntax is being used.</span>
+    <span class="c1">// but if it doesn&#39;t guess well, you can use the format argument for `fromString`</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">turtle_string</span><span class="p">,</span> <span class="s">&quot;guess&quot;</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">syntax</span> <span class="o">=</span> <span class="s">&quot;ntriples&quot;</span><span class="p">;</span>
+
+    <span class="c1">// we cheat and use c++ for system independent filepath</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/+</span> <span class="s">&quot;annotations.rdf&quot;</span><span class="p">).</span><span class="n">string</span><span class="p">().</span><span class="n">c_str</span><span class="p">();</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Serializing to %s: </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">syntax</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">failed</span> <span class="o">=</span> <span class="n">RDF_toFile</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">syntax</span><span class="p">);</span> <span class="c1">// 1 if failed else 0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">failed</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;You broke C&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Annotation file written to </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+
+    <span class="c1">// clean up (more cheating)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)){</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Serializing</span> <span class="n">to</span> <span class="n">ntriples</span><span class="p">:</span> 
 <span class="n">You</span> <span class="n">broke</span> <span class="n">C</span>
