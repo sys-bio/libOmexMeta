@@ -183,11 +183,11 @@ TEST_F(RDFTests, TestParseFromUriNonStatic) {
 }
 
 TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
-    std::filesystem::path fname = std::filesystem::current_path() += "sqlite_db";
+    std::string fname = (std::filesystem::current_path() /= "sqlite_db").string();
     if (std::filesystem::exists(fname)) {
         std::filesystem::remove(fname);
     }
-    RDF rdf("sqlite", fname.string(), "new='yes'");
+    RDF rdf("sqlite", fname, "new='yes'");
     rdf.addFromUri(samples.sbml_url1, "rdfxml");
     int expected = 277;
     int actual = rdf.size();
@@ -356,7 +356,7 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
     annot_file.open(fname);
     annot_file << samples.simple_input_turtle_string;
     annot_file.close();
-    RDF rdf = RDF::fromFile(fname, "turtle");
+    RDF rdf = RDF::fromFile(fname.string(), "turtle");
     std::string output = rdf.toString("rdfxml-abbrev");
 
     ASSERT_STREQ(expected.c_str(), output.c_str());
