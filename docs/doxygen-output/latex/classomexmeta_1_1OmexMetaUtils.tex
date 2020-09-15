@@ -3,60 +3,44 @@
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_ab72b362607e6bbdd0025eefa574cd073}\label{classomexmeta_1_1OmexMetaUtils_ab72b362607e6bbdd0025eefa574cd073}} 
-static bool {\bfseries exists} (const std\+::string \&filename)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}\label{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}} 
-static int {\bfseries remove\+File} (const std\+::string \&filename)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a8e629136cb2685ed839ea3a0e88094e6}\label{classomexmeta_1_1OmexMetaUtils_a8e629136cb2685ed839ea3a0e88094e6}} 
-static void {\bfseries remove\+If\+Exists} (const std\+::string \&filename)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a046b603d6308242b70b55de6cb72325c}\label{classomexmeta_1_1OmexMetaUtils_a046b603d6308242b70b55de6cb72325c}} 
-static void {\bfseries download} (const std\+::string \&url, std\+::string filename)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}\label{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}} 
-static std\+::vector$<$ std\+::string $>$ {\bfseries split\+String\+By} (const std\+::string \&str, char delimiter)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a4700231d455a5f65f7cc290d98d2b0ec}\label{classomexmeta_1_1OmexMetaUtils_a4700231d455a5f65f7cc290d98d2b0ec}} 
-static std\+::string {\bfseries generate\+Unique\+Metaid} (librdf\+\_\+model $\ast$model, const std\+::string \&metaid\+\_\+base, std\+::vector$<$ std\+::string $>$ \&exclusions)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}\label{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}} 
-static std\+::string {\bfseries prepare\+Base\+Uri} (std\+::string str, bool absolute\+\_\+path=false)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a0956bde073b212596d8e4b2ffc983e47}\label{classomexmeta_1_1OmexMetaUtils_a0956bde073b212596d8e4b2ffc983e47}} 
-static std\+::string {\bfseries get\+Namespace\+From\+Uri} (const std\+::string \&uri)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}\label{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}} 
-static bool {\bfseries is\+Formatted\+Uri} (std\+::string uri)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a9c2b712b85f74fff9740477660f7b371}\label{classomexmeta_1_1OmexMetaUtils_a9c2b712b85f74fff9740477660f7b371}} 
-static bool {\bfseries ends\+With} (std\+::string const \&full\+\_\+string, std\+::string const \&ending)
-\item 
+static bool \hyperlink{classomexmeta_1_1OmexMetaUtils_ab72b362607e6bbdd0025eefa574cd073}{exists} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em return true when filename is a file that exists on system \end{DoxyCompactList}\item 
+static int \hyperlink{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}{remove\+File} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em remove file called \end{DoxyCompactList}\item 
+static void \hyperlink{classomexmeta_1_1OmexMetaUtils_a8e629136cb2685ed839ea3a0e88094e6}{remove\+If\+Exists} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em remove a file, checking for its existance first \end{DoxyCompactList}\item 
+static void \hyperlink{classomexmeta_1_1OmexMetaUtils_a046b603d6308242b70b55de6cb72325c}{download} (const std\+::string \&url, std\+::string filename)
+\begin{DoxyCompactList}\small\item\em download a file from \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::string $>$ \hyperlink{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}{split\+String\+By} (const std\+::string \&str, char delimiter)
+\begin{DoxyCompactList}\small\item\em split a string into a vector of strings by \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{classomexmeta_1_1OmexMetaUtils_a4700231d455a5f65f7cc290d98d2b0ec}{generate\+Unique\+Metaid} (librdf\+\_\+model $\ast$model, const std\+::string \&metaid\+\_\+base, std\+::vector$<$ std\+::string $>$ \&exclusions)
+\begin{DoxyCompactList}\small\item\em utility for generating unique metaids given an xml document \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}{prepare\+Base\+Uri} (std\+::string str, bool absolute\+\_\+path=false)
+\begin{DoxyCompactList}\small\item\em process a string intended to be a base uri. \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{classomexmeta_1_1OmexMetaUtils_a0956bde073b212596d8e4b2ffc983e47}{get\+Namespace\+From\+Uri} (const std\+::string \&uri)
+\begin{DoxyCompactList}\small\item\em takes a uri as std\+::string and returns the string with the last section removed; \end{DoxyCompactList}\item 
+static bool \hyperlink{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}{is\+Formatted\+Uri} (std\+::string uri)
+\begin{DoxyCompactList}\small\item\em helper function that returns true when uri starts with either {\ttfamily \href{https://}{\tt https\+://}} {\ttfamily \href{http://}{\tt http\+://}} or {\ttfamily \href{file://}{\tt file\+://}} \end{DoxyCompactList}\item 
+static bool \hyperlink{classomexmeta_1_1OmexMetaUtils_a9c2b712b85f74fff9740477660f7b371}{ends\+With} (std\+::string const \&full\+\_\+string, std\+::string const \&ending)
+\begin{DoxyCompactList}\small\item\em test to see whether a string ends with another string \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a4ec81c80bf33d232331ea9ef0b94da61}\label{classomexmeta_1_1OmexMetaUtils_a4ec81c80bf33d232331ea9ef0b94da61}} 
-static bool {\bfseries assert\+Regex\+Match\+Split\+By\+New\+Line} (const std\+::string \&expected\+\_\+string, const std\+::string \&actual\+\_\+string)
-\item 
+static bool \hyperlink{classomexmeta_1_1OmexMetaUtils_a4ec81c80bf33d232331ea9ef0b94da61}{assert\+Regex\+Match\+Split\+By\+New\+Line} (const std\+::string \&expected\+\_\+string, const std\+::string \&actual\+\_\+string)
+\begin{DoxyCompactList}\small\item\em test that expected\+\_\+string matches actual\+\_\+string when split by new lines and matched as a regex \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6ddc16d56f238ef7ff3c8ab355163ef7}\label{classomexmeta_1_1OmexMetaUtils_a6ddc16d56f238ef7ff3c8ab355163ef7}} 
 static bool {\bfseries assert\+Match\+By\+New\+Line} (const std\+::string \&expected\+\_\+string, const std\+::string \&actual\+\_\+string)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}\label{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}} 
-static std\+::vector$<$ std\+::string $>$ {\bfseries configure\+Prefix\+Strings} (std\+::string repository\+\_\+name, std\+::string omex\+\_\+name, std\+::string model\+\_\+name)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_ae645af49ce57dac8bd0e0eba9e39a6c0}\label{classomexmeta_1_1OmexMetaUtils_ae645af49ce57dac8bd0e0eba9e39a6c0}} 
-static std\+::string {\bfseries concat\+Meta\+Id\+And\+Uri} (std\+::string metaid, std\+::string uri)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_aca2230ca99338b9dc0fc7d296b0c553b}\label{classomexmeta_1_1OmexMetaUtils_aca2230ca99338b9dc0fc7d296b0c553b}} 
-static std\+::string {\bfseries string\+Replace} (std\+::string str, const std\+::string \&string\+\_\+to\+\_\+replace, const std\+::string \&replacement)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}\label{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}} 
-static bool {\bfseries starts\+With} (const std\+::string \&full\+\_\+string, const std\+::string \&start)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}\label{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}} 
-static bool {\bfseries string\+In\+Vector} (std\+::vector$<$ std\+::string $>$ vec, const std\+::string \&string)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}\label{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}} 
-static xml\+Doc $\ast$ {\bfseries parse\+Xml\+Document} (const std\+::string \&xml\+\_\+string)
-\item 
+static std\+::vector$<$ std\+::string $>$ \hyperlink{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}{configure\+Prefix\+Strings} (std\+::string repository\+\_\+name, std\+::string omex\+\_\+name, std\+::string model\+\_\+name)
+\begin{DoxyCompactList}\small\item\em configures the \char`\"{}\+O\+M\+E\+Xlib\char`\"{}, \char`\"{}my\+O\+M\+E\+X\char`\"{} and \char`\"{}local\char`\"{} prefixes @ param omex\+\_\+name the name of the omex container your model is in \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{classomexmeta_1_1OmexMetaUtils_ae645af49ce57dac8bd0e0eba9e39a6c0}{concat\+Meta\+Id\+And\+Uri} (std\+::string metaid, std\+::string uri)
+\begin{DoxyCompactList}\small\item\em concatonate metaid and uri strings \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{classomexmeta_1_1OmexMetaUtils_aca2230ca99338b9dc0fc7d296b0c553b}{string\+Replace} (std\+::string str, const std\+::string \&string\+\_\+to\+\_\+replace, const std\+::string \&replacement)
+\begin{DoxyCompactList}\small\item\em replace a part of a string  from a main \end{DoxyCompactList}\item 
+static bool \hyperlink{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}{starts\+With} (const std\+::string \&full\+\_\+string, const std\+::string \&start)
+\begin{DoxyCompactList}\small\item\em returns true when \end{DoxyCompactList}\item 
+static bool \hyperlink{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}{string\+In\+Vector} (std\+::vector$<$ std\+::string $>$ vec, const std\+::string \&string)
+\begin{DoxyCompactList}\small\item\em returns true when \end{DoxyCompactList}\item 
+static xml\+Doc $\ast$ \hyperlink{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}{parse\+Xml\+Document} (const std\+::string \&xml\+\_\+string)
+\begin{DoxyCompactList}\small\item\em read an xml document using libxml2. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a29cc8222c809162eadbc424a0687cbf3}\label{classomexmeta_1_1OmexMetaUtils_a29cc8222c809162eadbc424a0687cbf3}} 
 static std\+::string {\bfseries get\+Xml\+Node\+Property} (xml\+Node $\ast$node, const std\+::string \&property)
 \item 
@@ -69,6 +53,258 @@ static std\+::vector$<$ xml\+Node $\ast$ $>$ {\bfseries get\+All\+Child\+Element
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a96e93667c8799b9569cb30fc102b129b}\label{classomexmeta_1_1OmexMetaUtils_a96e93667c8799b9569cb30fc102b129b}} 
 static bool {\bfseries is\+Sub\+String} (const std\+::string \&full\+\_\+string, const std\+::string \&substring)
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_ae645af49ce57dac8bd0e0eba9e39a6c0}\label{classomexmeta_1_1OmexMetaUtils_ae645af49ce57dac8bd0e0eba9e39a6c0}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!concat\+Meta\+Id\+And\+Uri@{concat\+Meta\+Id\+And\+Uri}}
+\index{concat\+Meta\+Id\+And\+Uri@{concat\+Meta\+Id\+And\+Uri}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{concat\+Meta\+Id\+And\+Uri()}{concatMetaIdAndUri()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::concat\+Meta\+Id\+And\+Uri (\begin{DoxyParamCaption}\item[{std\+::string}]{metaid,  }\item[{std\+::string}]{uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+concatonate metaid and uri strings 
+
+
+\begin{DoxyParams}{Parameters}
+{\em metaid} & string. Like \char`\"{}\#metaid\char`\"{} or \char`\"{}metaid\char`\"{} \\
+\hline
+{\em uri} & string. Like \char`\"{}https\+://omex-\/library/jeff2019.\+omex/mymodel.\+xml\char`\"{} or \char`\"{}https\+://omex-\/library/jeff2019.\+omex/mymodel.\+rdf\char`\"{}\\
+\hline
+\end{DoxyParams}
+Sometimes a uri has a trailing \char`\"{}\#\char`\"{} and somtimes a metaid has a leading \char`\"{}\#\char`\"{}. \hyperlink{classThis}{This} method concatonates whilst accounting for permutations of \char`\"{}\#\char`\"{} \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}\label{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!configure\+Prefix\+Strings@{configure\+Prefix\+Strings}}
+\index{configure\+Prefix\+Strings@{configure\+Prefix\+Strings}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{configure\+Prefix\+Strings()}{configurePrefixStrings()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ omexmeta\+::\+Omex\+Meta\+Utils\+::configure\+Prefix\+Strings (\begin{DoxyParamCaption}\item[{std\+::string}]{repository\+\_\+name,  }\item[{std\+::string}]{omex\+\_\+name,  }\item[{std\+::string}]{model\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+configures the \char`\"{}\+O\+M\+E\+Xlib\char`\"{}, \char`\"{}my\+O\+M\+E\+X\char`\"{} and \char`\"{}local\char`\"{} prefixes @ param omex\+\_\+name the name of the omex container your model is in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+\_\+name} & the name of the model your are annotating. Extension should be included or it will be given the \char`\"{}.\+xml\char`\"{} suffix. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a046b603d6308242b70b55de6cb72325c}\label{classomexmeta_1_1OmexMetaUtils_a046b603d6308242b70b55de6cb72325c}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!download@{download}}
+\index{download@{download}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{download()}{download()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Omex\+Meta\+Utils\+::download (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{url,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+download a file from 
+
+
+\begin{DoxyParams}{Parameters}
+{\em url} & to \\
+\hline
+{\em filename} & wrapper around the \hyperlink{classomexmeta_1_1CurlGet}{Curl\+Get} function, as the utils class seems like a good place for the download features. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a9c2b712b85f74fff9740477660f7b371}\label{classomexmeta_1_1OmexMetaUtils_a9c2b712b85f74fff9740477660f7b371}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!ends\+With@{ends\+With}}
+\index{ends\+With@{ends\+With}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{ends\+With()}{endsWith()}}
+{\footnotesize\ttfamily bool omexmeta\+::\+Omex\+Meta\+Utils\+::ends\+With (\begin{DoxyParamCaption}\item[{std\+::string const \&}]{full\+\_\+string,  }\item[{std\+::string const \&}]{ending }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test to see whether a string ends with another string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+String} & the string to test \\
+\hline
+{\em ending} & the ending to test for \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_ab72b362607e6bbdd0025eefa574cd073}\label{classomexmeta_1_1OmexMetaUtils_ab72b362607e6bbdd0025eefa574cd073}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!exists@{exists}}
+\index{exists@{exists}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{exists()}{exists()}}
+{\footnotesize\ttfamily bool omexmeta\+::\+Omex\+Meta\+Utils\+::exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+return true when filename is a file that exists on system 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a4700231d455a5f65f7cc290d98d2b0ec}\label{classomexmeta_1_1OmexMetaUtils_a4700231d455a5f65f7cc290d98d2b0ec}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!generate\+Unique\+Metaid@{generate\+Unique\+Metaid}}
+\index{generate\+Unique\+Metaid@{generate\+Unique\+Metaid}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{generate\+Unique\+Metaid()}{generateUniqueMetaid()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::generate\+Unique\+Metaid (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{const std\+::string \&}]{metaid\+\_\+base,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{exclusions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+utility for generating unique metaids given an xml document 
+
+model a librdf\+\_\+model$\ast$ pointer a string that will be used for the ID. There will be 4 digits, though this can be changed. exclusions. Mostly needed internally for dealing with metaids that already exist. \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a0956bde073b212596d8e4b2ffc983e47}\label{classomexmeta_1_1OmexMetaUtils_a0956bde073b212596d8e4b2ffc983e47}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!get\+Namespace\+From\+Uri@{get\+Namespace\+From\+Uri}}
+\index{get\+Namespace\+From\+Uri@{get\+Namespace\+From\+Uri}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{get\+Namespace\+From\+Uri()}{getNamespaceFromUri()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::get\+Namespace\+From\+Uri (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+takes a uri as std\+::string and returns the string with the last section removed; 
+
+Example\+: www.\+uri.\+com/identifer/\+P\+D12345 will turn into www.\+uri.\+com/identifier/ \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}\label{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!is\+Formatted\+Uri@{is\+Formatted\+Uri}}
+\index{is\+Formatted\+Uri@{is\+Formatted\+Uri}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{is\+Formatted\+Uri()}{isFormattedUri()}}
+{\footnotesize\ttfamily bool omexmeta\+::\+Omex\+Meta\+Utils\+::is\+Formatted\+Uri (\begin{DoxyParamCaption}\item[{std\+::string}]{uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+helper function that returns true when uri starts with either {\ttfamily \href{https://}{\tt https\+://}} {\ttfamily \href{http://}{\tt http\+://}} or {\ttfamily \href{file://}{\tt file\+://}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uri} & the uri to test. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}\label{classomexmeta_1_1OmexMetaUtils_a718710d8ba7fc7598bd73a5456b3d903}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!parse\+Xml\+Document@{parse\+Xml\+Document}}
+\index{parse\+Xml\+Document@{parse\+Xml\+Document}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{parse\+Xml\+Document()}{parseXmlDocument()}}
+{\footnotesize\ttfamily xml\+Doc $\ast$ omexmeta\+::\+Omex\+Meta\+Utils\+::parse\+Xml\+Document (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{xml\+\_\+string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+read an xml document using libxml2. 
+
+\begin{DoxyReturn}{Returns}
+xml\+Doc$\ast$. Caller is responsible for calling xml\+Free\+Doc(doc). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}\label{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!prepare\+Base\+Uri@{prepare\+Base\+Uri}}
+\index{prepare\+Base\+Uri@{prepare\+Base\+Uri}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{prepare\+Base\+Uri()}{prepareBaseUri()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::prepare\+Base\+Uri (\begin{DoxyParamCaption}\item[{std\+::string}]{str,  }\item[{bool}]{absolute\+\_\+path = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+process a string intended to be a base uri. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string that will become a base uri \\
+\hline
+{\em absolute\+\_\+path} & automatically make str an absolute path to the current working directory.\\
+\hline
+\end{DoxyParams}
+Base uri\textquotesingle{}s are important in redland libraries. If they do not begin with {\ttfamily \href{file://}{\tt file\+://}} {\ttfamily http} or {\ttfamily https}, sparql querying will break down. \hyperlink{classThis}{This} is a helper function to ensure the base uri is properly formatted. \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}\label{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!remove\+File@{remove\+File}}
+\index{remove\+File@{remove\+File}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{remove\+File()}{removeFile()}}
+{\footnotesize\ttfamily int omexmeta\+::\+Omex\+Meta\+Utils\+::remove\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+remove file called 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+{\em filename} & to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 when successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a8e629136cb2685ed839ea3a0e88094e6}\label{classomexmeta_1_1OmexMetaUtils_a8e629136cb2685ed839ea3a0e88094e6}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!remove\+If\+Exists@{remove\+If\+Exists}}
+\index{remove\+If\+Exists@{remove\+If\+Exists}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{remove\+If\+Exists()}{removeIfExists()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Omex\+Meta\+Utils\+::remove\+If\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+remove a file, checking for its existance first 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}\label{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!split\+String\+By@{split\+String\+By}}
+\index{split\+String\+By@{split\+String\+By}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{split\+String\+By()}{splitStringBy()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ omexmeta\+::\+Omex\+Meta\+Utils\+::split\+String\+By (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{char}]{delimiter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+split a string into a vector of strings by 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delimiter} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}\label{classomexmeta_1_1OmexMetaUtils_a66d58e0ebcbee1857b23ead70c87de7f}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!starts\+With@{starts\+With}}
+\index{starts\+With@{starts\+With}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{starts\+With()}{startsWith()}}
+{\footnotesize\ttfamily bool omexmeta\+::\+Omex\+Meta\+Utils\+::starts\+With (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{full\+\_\+string,  }\item[{const std\+::string \&}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+returns true when 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+\_\+string} & starts with the substring \\
+\hline
+{\em start} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}\label{classomexmeta_1_1OmexMetaUtils_a6f8e406b8798bd2f1f0ae0d1bd07ed2b}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!string\+In\+Vector@{string\+In\+Vector}}
+\index{string\+In\+Vector@{string\+In\+Vector}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{string\+In\+Vector()}{stringInVector()}}
+{\footnotesize\ttfamily bool omexmeta\+::\+Omex\+Meta\+Utils\+::string\+In\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{vec,  }\item[{const std\+::string \&}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+returns true when 
+
+return true if
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & is in \\
+\hline
+{\em vec} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_aca2230ca99338b9dc0fc7d296b0c553b}\label{classomexmeta_1_1OmexMetaUtils_aca2230ca99338b9dc0fc7d296b0c553b}} 
+\index{omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}!string\+Replace@{string\+Replace}}
+\index{string\+Replace@{string\+Replace}!omexmeta\+::\+Omex\+Meta\+Utils@{omexmeta\+::\+Omex\+Meta\+Utils}}
+\subsubsection{\texorpdfstring{string\+Replace()}{stringReplace()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::string\+Replace (\begin{DoxyParamCaption}\item[{std\+::string}]{str,  }\item[{const std\+::string \&}]{string\+\_\+to\+\_\+replace,  }\item[{const std\+::string \&}]{replacement }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+replace a part of a string  from a main 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & with a replacement string \\
+\hline
+{\em replacement} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

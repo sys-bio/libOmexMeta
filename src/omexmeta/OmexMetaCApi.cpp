@@ -19,7 +19,7 @@ namespace omexmeta {
         }
     }
 
-    /*
+    /**
      * For testing.
      */
     char *_func_that_returns_dynamic_alloc_str() {

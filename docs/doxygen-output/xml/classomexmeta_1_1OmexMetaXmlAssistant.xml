@@ -231,20 +231,20 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="139">
+      <node id="143">
         <label>omexmeta::OmexMetaXmlAssistant</label>
         <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
       </node>
-      <node id="140">
+      <node id="144">
         <label>omexmeta::CellMLAssistant</label>
         <link refid="classomexmeta_1_1CellMLAssistant"/>
-        <childnode refid="139" relation="public-inheritance">
+        <childnode refid="143" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="141">
+      <node id="145">
         <label>omexmeta::SBMLAssistant</label>
         <link refid="classomexmeta_1_1SBMLAssistant"/>
-        <childnode refid="139" relation="public-inheritance">
+        <childnode refid="143" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

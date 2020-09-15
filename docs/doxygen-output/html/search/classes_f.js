@@ -6,5 +6,6 @@ var searchData=
   ['semsimxmlassistantfactory',['SemsimXmlAssistantFactory',['../classomexmeta_1_1SemsimXmlAssistantFactory.html',1,'omexmeta']]],
   ['sinkparticipant',['SinkParticipant',['../classomexmeta_1_1SinkParticipant.html',1,'omexmeta']]],
   ['sourceparticipant',['SourceParticipant',['../classomexmeta_1_1SourceParticipant.html',1,'omexmeta']]],
+  ['subclass',['Subclass',['../classSubclass.html',1,'Subclass'],['../classSubclass.html',1,'Subclass'],['../classSubclass.html',1,'Subclass'],['../classSubclass.html',1,'Subclass'],['../classSubclass.html',1,'Subclass']]],
   ['subject',['Subject',['../classomexmeta_1_1Subject.html',1,'omexmeta']]]
 ];

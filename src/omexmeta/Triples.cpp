@@ -19,7 +19,7 @@ namespace omexmeta {
         }
     }
 
-    /*
+    /**
      * @brief moves a Triple object to the back of Triples
      * @param triple The Triple object to move.
      * @details The vector storing the Triples is increased

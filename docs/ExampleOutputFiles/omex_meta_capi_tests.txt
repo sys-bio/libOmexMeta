@@ -3,7 +3,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [----------] Global test environment set-up.
 [----------] 72 tests from CAPITests
 [ RUN      ] CAPITests.RDFSize
-[       OK ] CAPITests.RDFSize (102 ms)
+[       OK ] CAPITests.RDFSize (112 ms)
 [ RUN      ] CAPITests.FreeCharStar
 [       OK ] CAPITests.FreeCharStar (0 ms)
 [ RUN      ] CAPITests.RDFToString
@@ -18,9 +18,9 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] CAPITests.RDFToString (34 ms)
+[       OK ] CAPITests.RDFToString (40 ms)
 [ RUN      ] CAPITests.RDF_fromString
-[       OK ] CAPITests.RDF_fromString (1 ms)
+[       OK ] CAPITests.RDF_fromString (0 ms)
 [ RUN      ] CAPITests.RDF_toFile
 [       OK ] CAPITests.RDF_toFile (9 ms)
 [ RUN      ] CAPITests.RDF_addFromString
@@ -36,21 +36,21 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
     bqbiol:is <https://identifiers.org/uniprot/P0DP23> .
 
 
-[       OK ] CAPITests.RDF_addFromStringOutput (0 ms)
+[       OK ] CAPITests.RDF_addFromStringOutput (1 ms)
 [ RUN      ] CAPITests.RDF_fromUri
-[       OK ] CAPITests.RDF_fromUri (392 ms)
+[       OK ] CAPITests.RDF_fromUri (331 ms)
 [ RUN      ] CAPITests.RDF_addFromUri
-[       OK ] CAPITests.RDF_addFromUri (315 ms)
+[       OK ] CAPITests.RDF_addFromUri (286 ms)
 [ RUN      ] CAPITests.RDF_addFromUriSqliteStorage
-[       OK ] CAPITests.RDF_addFromUriSqliteStorage (4976 ms)
+[       OK ] CAPITests.RDF_addFromUriSqliteStorage (4832 ms)
 [ RUN      ] CAPITests.RDF_fromFile
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
-[       OK ] CAPITests.RDF_fromFile (8 ms)
+[       OK ] CAPITests.RDF_fromFile (11 ms)
 [ RUN      ] CAPITests.RDF_addFromFile
 /TestParseFromFile.rdf
 unknown file: Failure
 C++ exception with description "No file was opened for test" thrown in the test body.
-[  FAILED  ] CAPITests.RDF_addFromFile (4 ms)
+[  FAILED  ] CAPITests.RDF_addFromFile (2 ms)
 [ RUN      ] CAPITests.RDFqueryResultsAsStr
 x,y,z
 http://omex-library.org/NewOmex.omex/NewModel.xml#VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154
@@ -60,13 +60,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0,http://biomodels.net/
 
 [       OK ] CAPITests.RDFqueryResultsAsStr (3 ms)
 [ RUN      ] CAPITests.TestCheckValidMetaid
-[       OK ] CAPITests.TestCheckValidMetaid (1 ms)
+[       OK ] CAPITests.TestCheckValidMetaid (2 ms)
 [ RUN      ] CAPITests.TestGetMetaID
 #OmexMetaId0000
 [       OK ] CAPITests.TestGetMetaID (0 ms)
 [ RUN      ] CAPITests.TestGetNumMetaIDs
 13
-[       OK ] CAPITests.TestGetNumMetaIDs (1 ms)
+[       OK ] CAPITests.TestGetNumMetaIDs (0 ms)
 [ RUN      ] CAPITests.TestEditorGetXml
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -124,11 +124,11 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0,http://biomodels.net/
   </model>
 </sbml>
 
-[       OK ] CAPITests.TestEditorGetXml (0 ms)
+[       OK ] CAPITests.TestEditorGetXml (1 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetAbout
-[       OK ] CAPITests.TestSingularAnnotationSetAbout (1 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetAbout (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetPredicate
-[       OK ] CAPITests.TestSingularAnnotationSetPredicate (0 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetPredicate (1 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetPredicateUri
 [       OK ] CAPITests.TestSingularAnnotationSetPredicateUri (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationFull
@@ -140,13 +140,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0,http://biomodels.net/
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
     <http://predicate.com/from/uri> "Cheese"^^rdf:string .
 
-[       OK ] CAPITests.TestSingularAnnotationFull (0 ms)
+[       OK ] CAPITests.TestSingularAnnotationFull (1 ms)
 [ RUN      ] CAPITests.TestEditorPtrMem
 [       OK ] CAPITests.TestEditorPtrMem (1 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceLiteral
 [       OK ] CAPITests.TestSingularAnnotationSetResourceLiteral (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceUri
-[       OK ] CAPITests.TestSingularAnnotationSetResourceUri (1 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetResourceUri (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceBlank
 [       OK ] CAPITests.TestSingularAnnotationSetResourceBlank (0 ms)
 [ RUN      ] CAPITests.TestPhysicalEntity
@@ -169,7 +169,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0,http://biomodels.net/
 [       OK ] CAPITests.TestPhysicalEntity (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityGetIdentity
 https://identifiers.org/uniprot/PD7363
-[       OK ] CAPITests.TestPhysicalEntityGetIdentity (0 ms)
+[       OK ] CAPITests.TestPhysicalEntityGetIdentity (1 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityLocations
 [       OK ] CAPITests.TestPhysicalEntityLocations (1 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityNumLocations
@@ -223,7 +223,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/opb/opb93864> .
 
 
-[       OK ] CAPITests.TestPhysicalProcess (4 ms)
+[       OK ] CAPITests.TestPhysicalProcess (3 ms)
 [ RUN      ] CAPITests.TestPhysicalForce
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -249,7 +249,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/opb/opb93864> .
 
 
-[       OK ] CAPITests.TestPhysicalForce (2 ms)
+[       OK ] CAPITests.TestPhysicalForce (3 ms)
 [ RUN      ] CAPITests.TestEditorToRDF
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -306,9 +306,9 @@ local:SourceParticipant0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] CAPITests.TestEditorToRDF (8 ms)
+[       OK ] CAPITests.TestEditorToRDF (7 ms)
 [ RUN      ] CAPITests.TestRDFTwice1
-[       OK ] CAPITests.TestRDFTwice1 (0 ms)
+[       OK ] CAPITests.TestRDFTwice1 (1 ms)
 [ RUN      ] CAPITests.TestRDFTwice2
 [       OK ] CAPITests.TestRDFTwice2 (0 ms)
 [ RUN      ] CAPITests.TestRDFTwice3
@@ -318,10 +318,10 @@ http://omex-library.org/NewOmex.omex/
 [       OK ] CAPITests.RDFgetArchiveUri (0 ms)
 [ RUN      ] CAPITests.RDFgetLocalUri
 http://omex-library.org/NewOmex.omex/NewModel.rdf#
-[       OK ] CAPITests.RDFgetLocalUri (1 ms)
+[       OK ] CAPITests.RDFgetLocalUri (0 ms)
 [ RUN      ] CAPITests.RDFgetModelUri
 http://omex-library.org/NewOmex.omex/NewModel.xml#
-[       OK ] CAPITests.RDFgetModelUri (0 ms)
+[       OK ] CAPITests.RDFgetModelUri (1 ms)
 [ RUN      ] CAPITests.RDFgetOmexRepository
 http://omex-library.org/
 [       OK ] CAPITests.RDFgetOmexRepository (0 ms)
@@ -553,7 +553,7 @@ localUri
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-[       OK ] CAPITests.PersonalInformationaddFoafLiteral (2 ms)
+[       OK ] CAPITests.PersonalInformationaddFoafLiteral (1 ms)
 [ RUN      ] CAPITests.PersonalInformationgetMetaid
 http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000
 [       OK ] CAPITests.PersonalInformationgetMetaid (0 ms)
@@ -637,10 +637,10 @@ local:SourceParticipant0002
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 [       OK ] CAPITests.RDFToEditorTestWithoutSemanticExtraction (1 ms)
-[----------] 72 tests from CAPITests (5907 ms total)
+[----------] 72 tests from CAPITests (5692 ms total)
 
 [----------] Global test environment tear-down
-[==========] 72 tests from 1 test suite ran. (5907 ms total)
+[==========] 72 tests from 1 test suite ran. (5692 ms total)
 [  PASSED  ] 71 tests.
 [  FAILED  ] 1 test, listed below:
 [  FAILED  ] CAPITests.RDF_addFromFile

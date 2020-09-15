@@ -342,7 +342,7 @@
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor">#<sp/>Just<sp/>take<sp/>all<sp/>of<sp/>them<sp/>on<sp/>windows,<sp/>since<sp/>we&apos;ve<sp/>linked<sp/>dynamically<sp/>to<sp/>everything</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBRARIES}<sp/>DESTINATION<sp/>bin)</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"></highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>Remember<sp/>to<sp/>copy<sp/>dependency<sp/>dlls<sp/>to<sp/>pyomexmeta<sp/>directory</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>Remember<sp/>to<sp/><ref refid="classcopy" kindref="compound">copy</ref><sp/>dependency<sp/>dlls<sp/>to<sp/>pyomexmeta<sp/>directory</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBRARIES}<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>install(FILES<sp/>$&lt;TARGET_FILE:<ref refid="namespaceredland" kindref="compound">redland</ref>-combined&gt;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"></highlight></codeline>

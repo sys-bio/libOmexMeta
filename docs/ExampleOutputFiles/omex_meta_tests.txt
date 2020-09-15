@@ -3,7 +3,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [----------] Global test environment set-up.
 [----------] 20 tests from OmexMetaUtilsTests
 [ RUN      ] OmexMetaUtilsTests.TestFileDoesNotExists
-[       OK ] OmexMetaUtilsTests.TestFileDoesNotExists (0 ms)
+[       OK ] OmexMetaUtilsTests.TestFileDoesNotExists (1 ms)
 [ RUN      ] OmexMetaUtilsTests.TestRemoveIfExists2
 [       OK ] OmexMetaUtilsTests.TestRemoveIfExists2 (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestPrefixFile
@@ -37,16 +37,16 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] OmexMetaUtilsTests.TestStartsWithFail
 [       OK ] OmexMetaUtilsTests.TestStartsWithFail (0 ms)
 [ RUN      ] OmexMetaUtilsTests.TestStringInVector
-[       OK ] OmexMetaUtilsTests.TestStringInVector (3 ms)
+[       OK ] OmexMetaUtilsTests.TestStringInVector (4 ms)
 [ RUN      ] OmexMetaUtilsTests.TestGenerateMetaids
-[       OK ] OmexMetaUtilsTests.TestGenerateMetaids (80 ms)
+[       OK ] OmexMetaUtilsTests.TestGenerateMetaids (84 ms)
 [ RUN      ] OmexMetaUtilsTests.TestGenerateMetaidsUsingExclusionList
 [       OK ] OmexMetaUtilsTests.TestGenerateMetaidsUsingExclusionList (5 ms)
-[----------] 20 tests from OmexMetaUtilsTests (94 ms total)
+[----------] 20 tests from OmexMetaUtilsTests (100 ms total)
 
 [----------] 7 tests from SubjectTests
 [ RUN      ] SubjectTests.TestSubjectFromUri
-[       OK ] SubjectTests.TestSubjectFromUri (1 ms)
+[       OK ] SubjectTests.TestSubjectFromUri (0 ms)
 [ RUN      ] SubjectTests.TestStringUri
 [       OK ] SubjectTests.TestStringUri (0 ms)
 [ RUN      ] SubjectTests.TestGetNodeUri
@@ -58,12 +58,12 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] SubjectTests.TestEquality
 [       OK ] SubjectTests.TestEquality (0 ms)
 [ RUN      ] SubjectTests.TestInequality
-[       OK ] SubjectTests.TestInequality (1 ms)
-[----------] 7 tests from SubjectTests (2 ms total)
+[       OK ] SubjectTests.TestInequality (0 ms)
+[----------] 7 tests from SubjectTests (0 ms total)
 
 [----------] 16 tests from ResourceTests
 [ RUN      ] ResourceTests.TestResourceUri1
-[       OK ] ResourceTests.TestResourceUri1 (0 ms)
+[       OK ] ResourceTests.TestResourceUri1 (1 ms)
 [ RUN      ] ResourceTests.TestResourceUriFromIdentifiersOrg
 [       OK ] ResourceTests.TestResourceUriFromIdentifiersOrg (0 ms)
 [ RUN      ] ResourceTests.TestResourceUriIdentifiersOrgColonNotationFromStr
@@ -87,14 +87,14 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] ResourceTests.TestFromUriNode
 [       OK ] ResourceTests.TestFromUriNode (0 ms)
 [ RUN      ] ResourceTests.TestIsSetWhenTrue
-[       OK ] ResourceTests.TestIsSetWhenTrue (0 ms)
+[       OK ] ResourceTests.TestIsSetWhenTrue (1 ms)
 [ RUN      ] ResourceTests.TestIsSetWhenFalse
 [       OK ] ResourceTests.TestIsSetWhenFalse (0 ms)
 [ RUN      ] ResourceTests.TestIsLiterralWithDatatype
 [       OK ] ResourceTests.TestIsLiterralWithDatatype (0 ms)
 [ RUN      ] ResourceTests.TestThatIcanPutAResourceInAVector
 [       OK ] ResourceTests.TestThatIcanPutAResourceInAVector (0 ms)
-[----------] 16 tests from ResourceTests (1 ms total)
+[----------] 16 tests from ResourceTests (2 ms total)
 
 [----------] 3 tests from ResourceTestsNoFixture
 [ RUN      ] ResourceTestsNoFixture.TestEquality
@@ -103,7 +103,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [       OK ] ResourceTestsNoFixture.TestInequality (0 ms)
 [ RUN      ] ResourceTestsNoFixture.TestCreateTwoIdenticalResources
 [       OK ] ResourceTestsNoFixture.TestCreateTwoIdenticalResources (0 ms)
-[----------] 3 tests from ResourceTestsNoFixture (1 ms total)
+[----------] 3 tests from ResourceTestsNoFixture (0 ms total)
 
 [----------] 28 tests from PredicateTests
 [ RUN      ] PredicateTests.TestCreateStaticFunctionFromBasePredicate
@@ -119,7 +119,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestGetNodebqqPrefix
 [       OK ] PredicateTests.TestGetNodebqqPrefix (0 ms)
 [ RUN      ] PredicateTests.TestDCTermPrefix
-[       OK ] PredicateTests.TestDCTermPrefix (0 ms)
+[       OK ] PredicateTests.TestDCTermPrefix (1 ms)
 [ RUN      ] PredicateTests.TestDCTermUri
 [       OK ] PredicateTests.TestDCTermUri (0 ms)
 [ RUN      ] PredicateTests.TestDCTermGetNamespace
@@ -127,7 +127,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestDCTermGetPrefix
 [       OK ] PredicateTests.TestDCTermGetPrefix (0 ms)
 [ RUN      ] PredicateTests.TestBqBiolGetNamespace
-[       OK ] PredicateTests.TestBqBiolGetNamespace (1 ms)
+[       OK ] PredicateTests.TestBqBiolGetNamespace (0 ms)
 [ RUN      ] PredicateTests.TestBqBiolGetPrefix
 [       OK ] PredicateTests.TestBqBiolGetPrefix (0 ms)
 [ RUN      ] PredicateTests.TestBqModelGetNamespace
@@ -137,7 +137,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtr
 [       OK ] PredicateTests.TestBqModelGetPrefixFromPtr (0 ms)
 [ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClass
-[       OK ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClass (0 ms)
+[       OK ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClass (1 ms)
 [ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClassvsdf
 [       OK ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClassvsdf (0 ms)
 [ RUN      ] PredicateTests.TestSemsimPredicatePrefix
@@ -149,7 +149,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestNamespaceKnownWhenNamespaceIsNotKnown
 [       OK ] PredicateTests.TestNamespaceKnownWhenNamespaceIsNotKnown (0 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory
-[       OK ] PredicateTests.TestPredicateFactory (1 ms)
+[       OK ] PredicateTests.TestPredicateFactory (0 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory2
 [       OK ] PredicateTests.TestPredicateFactory2 (0 ms)
 [ RUN      ] PredicateTests.TestPredicateFactory3
@@ -159,35 +159,35 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] PredicateTests.TestPredicateWithoutSubclass
 [       OK ] PredicateTests.TestPredicateWithoutSubclass (0 ms)
 [ RUN      ] PredicateTests.TestPredicateWithoutSubclass2
-[       OK ] PredicateTests.TestPredicateWithoutSubclass2 (0 ms)
+[       OK ] PredicateTests.TestPredicateWithoutSubclass2 (1 ms)
 [ RUN      ] PredicateTests.TestPredicateWithoutSubclass3
 [       OK ] PredicateTests.TestPredicateWithoutSubclass3 (0 ms)
-[----------] 28 tests from PredicateTests (2 ms total)
+[----------] 28 tests from PredicateTests (3 ms total)
 
 [----------] 2 tests from PredicateTestsNoFixture
 [ RUN      ] PredicateTestsNoFixture.TestEquality
 [       OK ] PredicateTestsNoFixture.TestEquality (0 ms)
 [ RUN      ] PredicateTestsNoFixture.TestInequality
-[       OK ] PredicateTestsNoFixture.TestInequality (1 ms)
-[----------] 2 tests from PredicateTestsNoFixture (1 ms total)
+[       OK ] PredicateTestsNoFixture.TestInequality (0 ms)
+[----------] 2 tests from PredicateTestsNoFixture (0 ms total)
 
 [----------] 12 tests from TripleTests
 [ RUN      ] TripleTests.TestInstantiation1
 [       OK ] TripleTests.TestInstantiation1 (0 ms)
 [ RUN      ] TripleTests.TestInstantiation2
-[       OK ] TripleTests.TestInstantiation2 (0 ms)
+[       OK ] TripleTests.TestInstantiation2 (1 ms)
 [ RUN      ] TripleTests.TestSubjectString
 [       OK ] TripleTests.TestSubjectString (0 ms)
 [ RUN      ] TripleTests.TestSubjectStr2
-[       OK ] TripleTests.TestSubjectStr2 (1 ms)
+[       OK ] TripleTests.TestSubjectStr2 (0 ms)
 [ RUN      ] TripleTests.TestPredicate1
 [       OK ] TripleTests.TestPredicate1 (0 ms)
 [ RUN      ] TripleTests.TestResource
-[       OK ] TripleTests.TestResource (0 ms)
+[       OK ] TripleTests.TestResource (1 ms)
 [ RUN      ] TripleTests.TestStatementPred
 [       OK ] TripleTests.TestStatementPred (0 ms)
 [ RUN      ] TripleTests.TestStatementResource
-[       OK ] TripleTests.TestStatementResource (1 ms)
+[       OK ] TripleTests.TestStatementResource (0 ms)
 [ RUN      ] TripleTests.TestStatementSubject
 [       OK ] TripleTests.TestStatementSubject (0 ms)
 [ RUN      ] TripleTests.TestBuilderPattern1
@@ -213,7 +213,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
     bqbiol:is _:Blank .
 
 
-[       OK ] TripleTests.TestBuilderPattern2 (0 ms)
+[       OK ] TripleTests.TestBuilderPattern2 (1 ms)
 [ RUN      ] TripleTests.TestBuilderPatternWithSemSimPredicate
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -225,20 +225,20 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
     semsim:hasSourceParticipant <https://identifiers.org/uniprot/PD4034> .
 
 
-[       OK ] TripleTests.TestBuilderPatternWithSemSimPredicate (1 ms)
+[       OK ] TripleTests.TestBuilderPatternWithSemSimPredicate (0 ms)
 [----------] 12 tests from TripleTests (4 ms total)
 
 [----------] 10 tests from TripleTestsNoFixture
 [ RUN      ] TripleTestsNoFixture.TestInstantiationEmptyForBuilder
 [       OK ] TripleTestsNoFixture.TestInstantiationEmptyForBuilder (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestEquality
-[       OK ] TripleTestsNoFixture.TestEquality (0 ms)
+[       OK ] TripleTestsNoFixture.TestEquality (1 ms)
 [ RUN      ] TripleTestsNoFixture.TestInequality
-[       OK ] TripleTestsNoFixture.TestInequality (1 ms)
+[       OK ] TripleTestsNoFixture.TestInequality (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestAboutTwoArguments
 [       OK ] TripleTestsNoFixture.TestAboutTwoArguments (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestAboutOneArgumentWithSetLocal
-[       OK ] TripleTestsNoFixture.TestAboutOneArgumentWithSetLocal (0 ms)
+[       OK ] TripleTestsNoFixture.TestAboutOneArgumentWithSetLocal (1 ms)
 [ RUN      ] TripleTestsNoFixture.TestAboutAgain2
 [       OK ] TripleTestsNoFixture.TestAboutAgain2 (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestSetPredicate
@@ -249,7 +249,7 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [       OK ] TripleTestsNoFixture.TestResourceUri (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestResourceBlank
 [       OK ] TripleTestsNoFixture.TestResourceBlank (0 ms)
-[----------] 10 tests from TripleTestsNoFixture (1 ms total)
+[----------] 10 tests from TripleTestsNoFixture (2 ms total)
 
 [----------] 1 test from TripleTestsVector
 [ RUN      ] TripleTestsVector.TestTripleVecMove
@@ -266,9 +266,9 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 [ RUN      ] TestTripleTwice.WithRawNodesWithMovingTheFirst
 [       OK ] TestTripleTwice.WithRawNodesWithMovingTheFirst (0 ms)
 [ RUN      ] TestTripleTwice.TestUsageSimple
-[       OK ] TestTripleTwice.TestUsageSimple (1 ms)
+[       OK ] TestTripleTwice.TestUsageSimple (0 ms)
 [ RUN      ] TestTripleTwice.TestUsageTwoUrisTheSame
-[       OK ] TestTripleTwice.TestUsageTwoUrisTheSame (0 ms)
+[       OK ] TestTripleTwice.TestUsageTwoUrisTheSame (1 ms)
 [ RUN      ] TestTripleTwice.TestUsageWhenTripleSimple
 [       OK ] TestTripleTwice.TestUsageWhenTripleSimple (0 ms)
 [ RUN      ] TestTripleTwice.TestUsageWhenTripleMoved
@@ -277,26 +277,26 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
 
 [----------] 8 tests from TriplesTests
 [ RUN      ] TriplesTests.TestCreateMoveAfterInstantiation
-[       OK ] TriplesTests.TestCreateMoveAfterInstantiation (1 ms)
+[       OK ] TriplesTests.TestCreateMoveAfterInstantiation (0 ms)
 [ RUN      ] TriplesTests.TestCreateMoveOnInstantiation
 [       OK ] TriplesTests.TestCreateMoveOnInstantiation (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack
 [       OK ] TriplesTests.TestEmplaceBack (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack2
-[       OK ] TriplesTests.TestEmplaceBack2 (1 ms)
+[       OK ] TriplesTests.TestEmplaceBack2 (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack3
-[       OK ] TriplesTests.TestEmplaceBack3 (0 ms)
+[       OK ] TriplesTests.TestEmplaceBack3 (1 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack4
 [       OK ] TriplesTests.TestEmplaceBack4 (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack5
-[       OK ] TriplesTests.TestEmplaceBack5 (1 ms)
+[       OK ] TriplesTests.TestEmplaceBack5 (0 ms)
 [ RUN      ] TriplesTests.TestEmplaceBack6
-[       OK ] TriplesTests.TestEmplaceBack6 (0 ms)
+[       OK ] TriplesTests.TestEmplaceBack6 (1 ms)
 [----------] 8 tests from TriplesTests (3 ms total)
 
 [----------] 9 tests from TriplesTestsNoFixture
 [ RUN      ] TriplesTestsNoFixture.TestPop
-[       OK ] TriplesTestsNoFixture.TestPop (1 ms)
+[       OK ] TriplesTestsNoFixture.TestPop (0 ms)
 [ RUN      ] TriplesTestsNoFixture.TestPreallocate
 [       OK ] TriplesTestsNoFixture.TestPreallocate (0 ms)
 [ RUN      ] TriplesTestsNoFixture.TestPopFrontUrisDifferent
@@ -326,16 +326,16 @@ Running main() from /mnt/d/libOmexMeta/third_party/googletest/googletest/src/gte
     <http://predicate2.com/predicate2> <http://resource2.com/resource2> .
 
 
-[       OK ] TriplesTestsNoFixture.TestStr (0 ms)
+[       OK ] TriplesTestsNoFixture.TestStr (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed
-[       OK ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed (1 ms)
+[       OK ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed (0 ms)
 [ RUN      ] TriplesTestsNoFixture.TestIteration
 [       OK ] TriplesTestsNoFixture.TestIteration (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestEquality
 [       OK ] TriplesTestsNoFixture.TestEquality (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestUsagesPhysicalForce
 [       OK ] TriplesTestsNoFixture.TestUsagesPhysicalForce (1 ms)
-[----------] 9 tests from TriplesTestsNoFixture (7 ms total)
+[----------] 9 tests from TriplesTestsNoFixture (6 ms total)
 
 [----------] 1 test from TestTriplesTwice
 [ RUN      ] TestTriplesTwice.TestMakeSameTriplesTwice
@@ -387,13 +387,13 @@ option, name, label, domain, value type, uri
 39,wwwSslVerifyPeer,SSL verify peer certficate,3,1,http://feature.librdf.org/raptor-wwwSslVerifyPeer
 40,wwwSslVerifyHost,SSL verify host matching,3,1,http://feature.librdf.org/raptor-wwwSslVerifyHost
 
-[       OK ] RDFTests.TestListOptions (4 ms)
+[       OK ] RDFTests.TestListOptions (2 ms)
 [ RUN      ] RDFTests.TestFromStringSingularAnnotation
-[       OK ] RDFTests.TestFromStringSingularAnnotation (4 ms)
+[       OK ] RDFTests.TestFromStringSingularAnnotation (2 ms)
 [ RUN      ] RDFTests.TestFromStringSingularAnnotationSqlite
-[       OK ] RDFTests.TestFromStringSingularAnnotationSqlite (64 ms)
+[       OK ] RDFTests.TestFromStringSingularAnnotationSqlite (52 ms)
 [ RUN      ] RDFTests.TestFromStringTurtleBag
-[       OK ] RDFTests.TestFromStringTurtleBag (9 ms)
+[       OK ] RDFTests.TestFromStringTurtleBag (6 ms)
 [ RUN      ] RDFTests.TestToString
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -408,17 +408,17 @@ option, name, label, domain, value type, uri
     <http://purl.org/dc/elements/1.1/title> "RDF1.1 XML Syntax" .
 
 
-[       OK ] RDFTests.TestToString (1 ms)
+[       OK ] RDFTests.TestToString (2 ms)
 [ RUN      ] RDFTests.TestAddFromString
-[       OK ] RDFTests.TestAddFromString (2 ms)
+[       OK ] RDFTests.TestAddFromString (1 ms)
 [ RUN      ] RDFTests.TestAddFromStringMultipleTimes
-[       OK ] RDFTests.TestAddFromStringMultipleTimes (2 ms)
+[       OK ] RDFTests.TestAddFromStringMultipleTimes (3 ms)
 [ RUN      ] RDFTests.TestParseFromUri
-[       OK ] RDFTests.TestParseFromUri (405 ms)
+[       OK ] RDFTests.TestParseFromUri (498 ms)
 [ RUN      ] RDFTests.TestParseFromUriNonStatic
-[       OK ] RDFTests.TestParseFromUriNonStatic (409 ms)
+[       OK ] RDFTests.TestParseFromUriNonStatic (414 ms)
 [ RUN      ] RDFTests.TestSqliteStorageWithUriParse
-[       OK ] RDFTests.TestSqliteStorageWithUriParse (6528 ms)
+[       OK ] RDFTests.TestSqliteStorageWithUriParse (5829 ms)
 [ RUN      ] RDFTests.TestParseFromFile
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -436,15 +436,15 @@ option, name, label, domain, value type, uri
     bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .
 
 
-[       OK ] RDFTests.TestParseFromFile (11 ms)
+[       OK ] RDFTests.TestParseFromFile (9 ms)
 [ RUN      ] RDFTests.TestParseFromFileCollectedFromBiomodels
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docsTestParseFromFile.rdf
-[       OK ] RDFTests.TestParseFromFileCollectedFromBiomodels (64 ms)
+[       OK ] RDFTests.TestParseFromFileCollectedFromBiomodels (68 ms)
 [ RUN      ] RDFTests.TestParseFromFileNonStatic
 /mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/docs/TestParseFromFile.rdf
-[       OK ] RDFTests.TestParseFromFileNonStatic (11 ms)
+[       OK ] RDFTests.TestParseFromFileNonStatic (9 ms)
 [ RUN      ] RDFTests.TestWriteToFile
-[       OK ] RDFTests.TestWriteToFile (5 ms)
+[       OK ] RDFTests.TestWriteToFile (4 ms)
 [ RUN      ] RDFTests.TestReadFromSBMLWithExtraction
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -852,14 +852,14 @@ local:metaid_0000057
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 
-[       OK ] RDFTests.TestReadFromSBMLWithExtraction (48 ms)
+[       OK ] RDFTests.TestReadFromSBMLWithExtraction (47 ms)
 [ RUN      ] RDFTests.TestRepositoryPrefix
-[       OK ] RDFTests.TestRepositoryPrefix (3 ms)
+[       OK ] RDFTests.TestRepositoryPrefix (2 ms)
 [ RUN      ] RDFTests.TestOmexPrefix
-[       OK ] RDFTests.TestOmexPrefix (3 ms)
+[       OK ] RDFTests.TestOmexPrefix (2 ms)
 [ RUN      ] RDFTests.TestLocalPrefix
 [       OK ] RDFTests.TestLocalPrefix (2 ms)
-[----------] 19 tests from RDFTests (7580 ms total)
+[----------] 19 tests from RDFTests (6958 ms total)
 
 [----------] 1 test from RDFTestsNoFigure
 [ RUN      ] RDFTestsNoFigure.TestRDFCanReadFromTwoStrings
@@ -886,14 +886,14 @@ local:metaid_0000057
 [----------] 3 tests from CurlGetTests
 [ RUN      ] CurlGetTests.TestDownloadHtml
 size is: 38952 bytes.
-File deleted successfully[       OK ] CurlGetTests.TestDownloadHtml (771 ms)
+File deleted successfully[       OK ] CurlGetTests.TestDownloadHtml (778 ms)
 [ RUN      ] CurlGetTests.TestDownloadSBMLFile
 size is: 236281 bytes.
-File deleted successfully[       OK ] CurlGetTests.TestDownloadSBMLFile (497 ms)
+File deleted successfully[       OK ] CurlGetTests.TestDownloadSBMLFile (400 ms)
 [ RUN      ] CurlGetTests.TestDownloadCellML
 size is: 60656 bytes.
-File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1242 ms)
-[----------] 3 tests from CurlGetTests (2510 ms total)
+File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (856 ms)
+[----------] 3 tests from CurlGetTests (2034 ms total)
 
 [----------] 16 tests from MetaIDTests
 [ RUN      ] MetaIDTests.TestCountDigits1
@@ -911,7 +911,7 @@ File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1242 ms)
 [ RUN      ] MetaIDTests.TestMaxNumber2
 [       OK ] MetaIDTests.TestMaxNumber2 (0 ms)
 [ RUN      ] MetaIDTests.TestMaxNumberFail
-[       OK ] MetaIDTests.TestMaxNumberFail (13 ms)
+[       OK ] MetaIDTests.TestMaxNumberFail (8 ms)
 [ RUN      ] MetaIDTests.TestGenerate
 [       OK ] MetaIDTests.TestGenerate (0 ms)
 [ RUN      ] MetaIDTests.TestGenerate5
@@ -928,7 +928,7 @@ File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1242 ms)
 [       OK ] MetaIDTests.TestInequality1 (0 ms)
 [ RUN      ] MetaIDTests.AnotherTest
 [       OK ] MetaIDTests.AnotherTest (0 ms)
-[----------] 16 tests from MetaIDTests (13 ms total)
+[----------] 16 tests from MetaIDTests (8 ms total)
 
 [----------] 7 tests from SemsimXmlAssistantTests
 [ RUN      ] SemsimXmlAssistantTests.TestValidElements
@@ -1027,7 +1027,7 @@ File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1242 ms)
   </model>
 </sbml>
 
-[       OK ] SemsimXmlAssistantTests.TestMetaIdsAll (1 ms)
+[       OK ] SemsimXmlAssistantTests.TestMetaIdsAll (0 ms)
 [ RUN      ] SemsimXmlAssistantTests.TestMetaIdsSBML
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -1126,7 +1126,7 @@ File deleted successfully[       OK ] CurlGetTests.TestDownloadCellML (1242 ms)
 [ RUN      ] SemsimXmlAssistantTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid
 #cytosol
 #glucose
-[       OK ] SemsimXmlAssistantTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid (0 ms)
+[       OK ] SemsimXmlAssistantTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid (1 ms)
 [ RUN      ] SemsimXmlAssistantTests.TestXmlAssistantFactory
 [       OK ] SemsimXmlAssistantTests.TestXmlAssistantFactory (0 ms)
 [----------] 7 tests from SemsimXmlAssistantTests (1 ms total)
@@ -1137,7 +1137,7 @@ http://www.bhi.washington.edu/semsim#hasSourceParticipant
 [       OK ] ParticipantTests.TestCreateParticipant (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipant1
 http://www.bhi.washington.edu/semsim#hasSinkParticipant
-[       OK ] ParticipantTests.TestSinkParticipant1 (1 ms)
+[       OK ] ParticipantTests.TestSinkParticipant1 (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipantMakMetaid
 #SinkParticipant0000
 [       OK ] ParticipantTests.TestSinkParticipantMakMetaid (0 ms)
@@ -1216,7 +1216,7 @@ local:MediatorParticipant0000
 [       OK ] ParticipantTests.TestToTriplesMediator (1 ms)
 [ RUN      ] ParticipantTests.TestParticipantVecToTriples
 [       OK ] ParticipantTests.TestParticipantVecToTriples (2 ms)
-[----------] 10 tests from ParticipantTests (6 ms total)
+[----------] 10 tests from ParticipantTests (5 ms total)
 
 [----------] 3 tests from ParticipantTestsToTriplesTwice
 [ RUN      ] ParticipantTestsToTriplesTwice.TestToTriplesRefAccountability
@@ -1243,9 +1243,9 @@ local:MediatorParticipant0000
 [ RUN      ] PhysicalEntityTests.TestIdentityResourceStr
 [       OK ] PhysicalEntityTests.TestIdentityResourceStr (0 ms)
 [ RUN      ] PhysicalEntityTests.TestIdentityResourceNode
-[       OK ] PhysicalEntityTests.TestIdentityResourceNode (1 ms)
+[       OK ] PhysicalEntityTests.TestIdentityResourceNode (0 ms)
 [ RUN      ] PhysicalEntityTests.TestLocationResourceStr
-[       OK ] PhysicalEntityTests.TestLocationResourceStr (0 ms)
+[       OK ] PhysicalEntityTests.TestLocationResourceStr (1 ms)
 [ RUN      ] PhysicalEntityTests.TestLocationResourceNode
 [       OK ] PhysicalEntityTests.TestLocationResourceNode (0 ms)
 [ RUN      ] PhysicalEntityTests.TestSubject
@@ -1273,7 +1273,7 @@ local:PhysicalEntity0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalEntityTests.TestTriples (2 ms)
+[       OK ] PhysicalEntityTests.TestTriples (1 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderInterface
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1296,7 +1296,7 @@ local:PhysicalEntity0000
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond
 [       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond (0 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilder
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilder (1 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilder (0 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriples
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1313,22 +1313,22 @@ local:PhysicalEntity0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriples (1 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriples (2 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty
 <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .
-[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty (2 ms)
-[----------] 17 tests from PhysicalEntityTests (13 ms total)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty (1 ms)
+[----------] 17 tests from PhysicalEntityTests (11 ms total)
 
 [----------] 2 tests from PhysicalEntityTestsNoFixture
 [ RUN      ] PhysicalEntityTestsNoFixture.TestToTripleRefCounts
-[       OK ] PhysicalEntityTestsNoFixture.TestToTripleRefCounts (1 ms)
+[       OK ] PhysicalEntityTestsNoFixture.TestToTripleRefCounts (2 ms)
 [ RUN      ] PhysicalEntityTestsNoFixture.TestEquality
 [       OK ] PhysicalEntityTestsNoFixture.TestEquality (0 ms)
-[----------] 2 tests from PhysicalEntityTestsNoFixture (1 ms total)
+[----------] 2 tests from PhysicalEntityTestsNoFixture (2 ms total)
 
 [----------] 9 tests from PhysicalPropertyTests
 [ RUN      ] PhysicalPropertyTests.TestPhysicalPropertySubjectStr
@@ -1336,14 +1336,14 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#subject
 [       OK ] PhysicalPropertyTests.TestPhysicalPropertySubjectStr (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestPhysicalPropertyResourceStr
 OPB:OPB_00154
-[       OK ] PhysicalPropertyTests.TestPhysicalPropertyResourceStr (0 ms)
+[       OK ] PhysicalPropertyTests.TestPhysicalPropertyResourceStr (1 ms)
 [ RUN      ] PhysicalPropertyTests.TestPhysicalPropertyGetItWrong
 [       OK ] PhysicalPropertyTests.TestPhysicalPropertyGetItWrong (2 ms)
 [ RUN      ] PhysicalPropertyTests.TestToTriples
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_1234> .
 
-[       OK ] PhysicalPropertyTests.TestToTriples (1 ms)
+[       OK ] PhysicalPropertyTests.TestToTriples (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestToTriplesLowerCaseOPB
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
@@ -1353,14 +1353,14 @@ OPB:OPB_00154
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
 
-[       OK ] PhysicalPropertyTests.TestToTriplesUsingColonNotSlash (0 ms)
+[       OK ] PhysicalPropertyTests.TestToTriplesUsingColonNotSlash (1 ms)
 [ RUN      ] PhysicalPropertyTests.TestEquality
-[       OK ] PhysicalPropertyTests.TestEquality (1 ms)
+[       OK ] PhysicalPropertyTests.TestEquality (0 ms)
 [ RUN      ] PhysicalPropertyTests.TestInequality
-[       OK ] PhysicalPropertyTests.TestInequality (0 ms)
+[       OK ] PhysicalPropertyTests.TestInequality (1 ms)
 [ RUN      ] PhysicalPropertyTests.TestInequality2
 [       OK ] PhysicalPropertyTests.TestInequality2 (0 ms)
-[----------] 9 tests from PhysicalPropertyTests (6 ms total)
+[----------] 9 tests from PhysicalPropertyTests (7 ms total)
 
 [----------] 3 tests from PhysicalPhenomenonTests
 [ RUN      ] PhysicalPhenomenonTests.TestSubjectStr
@@ -1368,12 +1368,12 @@ OPB:OPB_00154
 [ RUN      ] PhysicalPhenomenonTests.TestSubjectNodeToStr
 [       OK ] PhysicalPhenomenonTests.TestSubjectNodeToStr (0 ms)
 [ RUN      ] PhysicalPhenomenonTests.TestPhysicalProperty
-[       OK ] PhysicalPhenomenonTests.TestPhysicalProperty (1 ms)
-[----------] 3 tests from PhysicalPhenomenonTests (1 ms total)
+[       OK ] PhysicalPhenomenonTests.TestPhysicalProperty (0 ms)
+[----------] 3 tests from PhysicalPhenomenonTests (0 ms total)
 
 [----------] 6 tests from PhysicalForceTests
 [ RUN      ] PhysicalForceTests.TestPhysicalForceSubjectMetaidNode
-[       OK ] PhysicalForceTests.TestPhysicalForceSubjectMetaidNode (0 ms)
+[       OK ] PhysicalForceTests.TestPhysicalForceSubjectMetaidNode (1 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalProperty1
 [       OK ] PhysicalForceTests.TestPhysicalProperty1 (0 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalProperty2
@@ -1381,7 +1381,7 @@ OPB:OPB_00154
 [ RUN      ] PhysicalForceTests.TestPhysicalForceNumTriples
 [       OK ] PhysicalForceTests.TestPhysicalForceNumTriples (2 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalForceTrips
-[       OK ] PhysicalForceTests.TestPhysicalForceTrips (7 ms)
+[       OK ] PhysicalForceTests.TestPhysicalForceTrips (6 ms)
 [ RUN      ] PhysicalForceTests.TestPhysicalForceTriples
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1440,7 +1440,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalForceTestsNoFixture.TestPhysicalForceBuilder (4 ms)
+[       OK ] PhysicalForceTestsNoFixture.TestPhysicalForceBuilder (5 ms)
 [ RUN      ] PhysicalForceTestsNoFixture.TestGenerateTheSamePhysicalForceTwice
 <http://omex-library.org/myomex.omex/mymodel.xml#Force5> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/myomex.omex/mymodel.rdf#PhysicalForce0000> .
 <http://omex-library.org/myomex.omex/mymodel.xml#Force5> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .
@@ -1466,18 +1466,18 @@ local:SourceParticipant0000
 <http://omex-library.org/myomex.omex/mymodel.rdf#SinkParticipant0001> <http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference> <http://omex-library.org/myomex.omex/mymodel.xml#PhysicalEntityReference3> .
 <http://omex-library.org/myomex.omex/mymodel.rdf#SinkParticipant0001> <http://www.bhi.washington.edu/semsim#hasMultiplier> "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#int> .
 
-[       OK ] PhysicalForceTestsNoFixture.TestGenerateTheSamePhysicalForceTwice (6 ms)
+[       OK ] PhysicalForceTestsNoFixture.TestGenerateTheSamePhysicalForceTwice (5 ms)
 [----------] 2 tests from PhysicalForceTestsNoFixture (10 ms total)
 
 [----------] 5 tests from PhysicalForceEqualityTests
 [ RUN      ] PhysicalForceEqualityTests.TestEquality
-[       OK ] PhysicalForceEqualityTests.TestEquality (0 ms)
+[       OK ] PhysicalForceEqualityTests.TestEquality (1 ms)
 [ RUN      ] PhysicalForceEqualityTests.TestInequality1
 [       OK ] PhysicalForceEqualityTests.TestInequality1 (0 ms)
 [ RUN      ] PhysicalForceEqualityTests.TestInequality2
 [       OK ] PhysicalForceEqualityTests.TestInequality2 (0 ms)
 [ RUN      ] PhysicalForceEqualityTests.TestInequality3
-[       OK ] PhysicalForceEqualityTests.TestInequality3 (1 ms)
+[       OK ] PhysicalForceEqualityTests.TestInequality3 (0 ms)
 [ RUN      ] PhysicalForceEqualityTests.TestInequality4
 [       OK ] PhysicalForceEqualityTests.TestInequality4 (0 ms)
 [----------] 5 tests from PhysicalForceEqualityTests (1 ms total)
@@ -1486,7 +1486,7 @@ local:SourceParticipant0000
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessSubjectMetaidNode
 [       OK ] PhysicalProcessTests.TestPhysicalProcessSubjectMetaidNode (0 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessSource
-[       OK ] PhysicalProcessTests.TestPhysicalProcessSource (0 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessSource (1 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessNumTriples
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1516,9 +1516,9 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalProcessTests.TestPhysicalProcessNumTriples (3 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessNumTriples (2 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessTrips
-[       OK ] PhysicalProcessTests.TestPhysicalProcessTrips (2 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessTrips (3 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessToTriplesStr
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1548,7 +1548,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 
-[       OK ] PhysicalProcessTests.TestPhysicalProcessToTriplesStr (3 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessToTriplesStr (4 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessBuilder1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1582,19 +1582,19 @@ local:SourceParticipant0001
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 
-[       OK ] PhysicalProcessTests.TestPhysicalProcessBuilder1 (4 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessBuilder1 (3 ms)
 [ RUN      ] PhysicalProcessTests.TestEquality
-[       OK ] PhysicalProcessTests.TestEquality (0 ms)
+[       OK ] PhysicalProcessTests.TestEquality (1 ms)
 [ RUN      ] PhysicalProcessTests.TestInequality
 [       OK ] PhysicalProcessTests.TestInequality (0 ms)
-[----------] 8 tests from PhysicalProcessTests (12 ms total)
+[----------] 8 tests from PhysicalProcessTests (14 ms total)
 
 [----------] 5 tests from QueryTests
 [ RUN      ] QueryTests.TestStr
 x,y,z
 http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237
 
-[       OK ] QueryTests.TestStr (1 ms)
+[       OK ] QueryTests.TestStr (0 ms)
 [ RUN      ] QueryTests.TestRunQueryTwice
 x,y,z
 http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237
@@ -1606,31 +1606,31 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 [       OK ] QueryTests.TestgetResultsAsMapTwice (0 ms)
 [ RUN      ] QueryTests.TestResultsAsStream
 [       OK ] QueryTests.TestResultsAsStream (1 ms)
-[----------] 5 tests from QueryTests (4 ms total)
+[----------] 5 tests from QueryTests (3 ms total)
 
 [----------] 41 tests from EditorTests
 [ RUN      ] EditorTests.TestMetaIds
 [       OK ] EditorTests.TestMetaIds (0 ms)
 [ RUN      ] EditorTests.TestRepositoryName1
-[       OK ] EditorTests.TestRepositoryName1 (0 ms)
+[       OK ] EditorTests.TestRepositoryName1 (1 ms)
 [ RUN      ] EditorTests.TestepositoryName2
 [       OK ] EditorTests.TestepositoryName2 (0 ms)
 [ RUN      ] EditorTests.TestArchiveName
 [       OK ] EditorTests.TestArchiveName (0 ms)
 [ RUN      ] EditorTests.TestArchiveName2
-[       OK ] EditorTests.TestArchiveName2 (1 ms)
+[       OK ] EditorTests.TestArchiveName2 (0 ms)
 [ RUN      ] EditorTests.TestArchiveName3
-[       OK ] EditorTests.TestArchiveName3 (0 ms)
+[       OK ] EditorTests.TestArchiveName3 (1 ms)
 [ RUN      ] EditorTests.TestSetModelName
 [       OK ] EditorTests.TestSetModelName (0 ms)
 [ RUN      ] EditorTests.TestSetLocalName
 [       OK ] EditorTests.TestSetLocalName (0 ms)
 [ RUN      ] EditorTests.TestSetLocalNam
-[       OK ] EditorTests.TestSetLocalNam (1 ms)
+[       OK ] EditorTests.TestSetLocalNam (0 ms)
 [ RUN      ] EditorTests.TestAddAnnotation
-[       OK ] EditorTests.TestAddAnnotation (0 ms)
+[       OK ] EditorTests.TestAddAnnotation (1 ms)
 [ RUN      ] EditorTests.TestAddSingleAnnotationToEditor
-[       OK ] EditorTests.TestAddSingleAnnotationToEditor (1 ms)
+[       OK ] EditorTests.TestAddSingleAnnotationToEditor (0 ms)
 [ RUN      ] EditorTests.TestEditorCreateUriRelativeToLocalUri
 [       OK ] EditorTests.TestEditorCreateUriRelativeToLocalUri (0 ms)
 [ RUN      ] EditorTests.TestAddSingleAnnotationToRDF1
@@ -1644,7 +1644,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:is <https://identifiers.org/uniprot/P0DP23> .
 
 
-[       OK ] EditorTests.TestAddSingleAnnotationToRDF1 (0 ms)
+[       OK ] EditorTests.TestAddSingleAnnotationToRDF1 (1 ms)
 [ RUN      ] EditorTests.TestAddSingleAnnotationToRDF2
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1668,7 +1668,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .
 
 
-[       OK ] EditorTests.TestAddSingleAnnotationToRDF3 (1 ms)
+[       OK ] EditorTests.TestAddSingleAnnotationToRDF3 (0 ms)
 [ RUN      ] EditorTests.TestToRDFSingularAnnotationWithLiteral
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -1680,7 +1680,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     dc:description "Cardiomyocyte cytosolic ATP concentration"^^rdf:string .
 
 
-[       OK ] EditorTests.TestToRDFSingularAnnotationWithLiteral (0 ms)
+[       OK ] EditorTests.TestToRDFSingularAnnotationWithLiteral (1 ms)
 [ RUN      ] EditorTests.TestSingularAnnotWithBuilderPattern
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1692,7 +1692,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .
 
 
-[       OK ] EditorTests.TestSingularAnnotWithBuilderPattern (1 ms)
+[       OK ] EditorTests.TestSingularAnnotWithBuilderPattern (0 ms)
 [ RUN      ] EditorTests.TestSingularAnnotWithBuilderPattern2
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1704,7 +1704,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .
 
 
-[       OK ] EditorTests.TestSingularAnnotWithBuilderPattern2 (1 ms)
+[       OK ] EditorTests.TestSingularAnnotWithBuilderPattern2 (2 ms)
 [ RUN      ] EditorTests.TestEditASingularAnnotWithBuilderPatternThenRemove
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1716,9 +1716,9 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02636> .
 
 
-[       OK ] EditorTests.TestEditASingularAnnotWithBuilderPatternThenRemove (4 ms)
+[       OK ] EditorTests.TestEditASingularAnnotWithBuilderPatternThenRemove (1 ms)
 [ RUN      ] EditorTests.TestAddPhysicalEntityToEditor
-[       OK ] EditorTests.TestAddPhysicalEntityToEditor (3 ms)
+[       OK ] EditorTests.TestAddPhysicalEntityToEditor (1 ms)
 [ RUN      ] EditorTests.TestAddAnnotationCompositeTypePhysicalProcess
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -1748,7 +1748,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB1234> .
 
 
-[       OK ] EditorTests.TestAddAnnotationCompositeTypePhysicalProcess (6 ms)
+[       OK ] EditorTests.TestAddAnnotationCompositeTypePhysicalProcess (4 ms)
 [ RUN      ] EditorTests.TestAddAnnotationCompositeTypePhysicalForce
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -1846,11 +1846,11 @@ local:SourceParticipant0000
 
 [       OK ] EditorTests.TestModelLevelAnnotationAddParentModel (1 ms)
 [ RUN      ] EditorTests.TestPhysicalEntityBuilder
-[       OK ] EditorTests.TestPhysicalEntityBuilder (2 ms)
+[       OK ] EditorTests.TestPhysicalEntityBuilder (1 ms)
 [ RUN      ] EditorTests.TestPhysicalForceBuilder
-[       OK ] EditorTests.TestPhysicalForceBuilder (2 ms)
+[       OK ] EditorTests.TestPhysicalForceBuilder (3 ms)
 [ RUN      ] EditorTests.TestPhysicalProcessBuilder
-[       OK ] EditorTests.TestPhysicalProcessBuilder (2 ms)
+[       OK ] EditorTests.TestPhysicalProcessBuilder (4 ms)
 [ RUN      ] EditorTests.TestSingularAnnotationBuilderAlternativeInterface
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -1862,13 +1862,13 @@ local:SourceParticipant0000
     bqbiol:is "resource"^^rdf:string .
 
 
-[       OK ] EditorTests.TestSingularAnnotationBuilderAlternativeInterface (1 ms)
+[       OK ] EditorTests.TestSingularAnnotationBuilderAlternativeInterface (0 ms)
 [ RUN      ] EditorTests.TestRemoveSingularAnnotation
-[       OK ] EditorTests.TestRemoveSingularAnnotation (0 ms)
+[       OK ] EditorTests.TestRemoveSingularAnnotation (1 ms)
 [ RUN      ] EditorTests.TestRemovePhysicalForce
-[       OK ] EditorTests.TestRemovePhysicalForce (4 ms)
+[       OK ] EditorTests.TestRemovePhysicalForce (3 ms)
 [ RUN      ] EditorTests.TestRemovePersonalInformation
-[       OK ] EditorTests.TestRemovePersonalInformation (1 ms)
+[       OK ] EditorTests.TestRemovePersonalInformation (0 ms)
 [ RUN      ] EditorTests.TestRemovePhysicalProcess
 [       OK ] EditorTests.TestRemovePhysicalProcess (5 ms)
 [ RUN      ] EditorTests.TestAddPersonalInformation
@@ -1889,7 +1889,7 @@ local:SourceParticipant0000
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-[       OK ] EditorTests.TestAddPersonalInformation (1 ms)
+[       OK ] EditorTests.TestAddPersonalInformation (3 ms)
 [ RUN      ] EditorTests.TestAddTwoDifferentPhysicalEntities
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -2170,30 +2170,30 @@ local:SourceParticipant0003
 
 
 [       OK ] EditorTests.TestEditorWithoutGivingTypeInformation (10 ms)
-[----------] 41 tests from EditorTests (64 ms total)
+[----------] 41 tests from EditorTests (61 ms total)
 
 [----------] 3 tests from EditorTestsPhysicalEntityMemory
 [ RUN      ] EditorTestsPhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel
 [       OK ] EditorTestsPhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel (1 ms)
 [ RUN      ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForStatements
-[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForStatements (1 ms)
+[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForStatements (2 ms)
 [ RUN      ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForTerms
-[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForTerms (2 ms)
+[       OK ] EditorTestsPhysicalEntityMemory.TestUnpackTriplesAndAccountForTerms (1 ms)
 [----------] 3 tests from EditorTestsPhysicalEntityMemory (4 ms total)
 
 [----------] 28 tests from EditorTestsDeletePhysicalEntity
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks
 [       OK ] EditorTestsDeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple1
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple1 (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple1 (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple2
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple2 (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple2 (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple3
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple3 (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple3 (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple4
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple4 (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTriple4 (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleWithFreeInMiddle
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleWithFreeInMiddle (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleWithFreeInMiddle (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleFromTriples
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveSingleTripleFromTriples (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesDifferentContent
@@ -2201,9 +2201,9 @@ local:SourceParticipant0003
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubject
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubject (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameEverything
@@ -2228,9 +2228,9 @@ local:SourceParticipant0003
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle
 [       OK ] EditorTestsDeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential (0 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential (1 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd
-[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd (1 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd (0 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPhysicalPropertyWithoutDeletingItInMiddle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2328,15 +2328,15 @@ local:PhysicalEntity0000
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1 (2 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1 (3 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2 (3 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove3
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove3 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4
 [       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4 (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2
-[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2 (2 ms)
+[       OK ] EditorTestsDeletePhysicalEntity.TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2 (3 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestAddAndRemovePhysicalEntity
 [       OK ] EditorTestsDeletePhysicalEntity.TestAddAndRemovePhysicalEntity (2 ms)
 [ RUN      ] EditorTestsDeletePhysicalEntity.TestDeleteFirstTriple
@@ -2346,7 +2346,7 @@ local:PhysicalEntity0000
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
 
 [       OK ] EditorTestsDeletePhysicalEntity.TestDeleteFirstTriple (2 ms)
-[----------] 28 tests from EditorTestsDeletePhysicalEntity (34 ms total)
+[----------] 28 tests from EditorTestsDeletePhysicalEntity (35 ms total)
 
 [----------] 64 tests from ReadAndWriteTests
 [ RUN      ] ReadAndWriteTests.TestDefaultConstructor
@@ -2362,7 +2362,7 @@ local:PhysicalEntity0000
     bqbiol:is <https://identifiers.org/uniprot/P0DP23> .
 
 
-[       OK ] ReadAndWriteTests.singularannotation1turtle (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation1turtle (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1rdfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -2375,7 +2375,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation1rdfxmlabbrev (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation1rdfxmlabbrev (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1rdfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2384,7 +2384,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation1rdfxml (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation1rdfxml (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1jsontriples
 {
   "triples" : [
@@ -2405,7 +2405,7 @@ local:PhysicalEntity0000
     ]
   }
 
-[       OK ] ReadAndWriteTests.singularannotation1jsontriples (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation1jsontriples (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation1json
 
 {
@@ -2453,7 +2453,7 @@ local:PhysicalEntity0000
 [ RUN      ] ReadAndWriteTests.singularannotation2ntriples
 <http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1> <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/12991237> .
 
-[       OK ] ReadAndWriteTests.singularannotation2ntriples (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation2ntriples (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2turtle
 [       OK ] ReadAndWriteTests.singularannotation2turtle (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2rdfxmlabbrev
@@ -2469,7 +2469,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation2rdfxmlabbrev (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation2rdfxmlabbrev (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2rdfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2478,7 +2478,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation2rdfxml (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation2rdfxml (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation2jsontriples
 {
   "triples" : [
@@ -2602,7 +2602,7 @@ local:PhysicalEntity0000
     ]
   }
 
-[       OK ] ReadAndWriteTests.singularannotation3jsontriples (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation3jsontriples (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3json
 
 {
@@ -2616,7 +2616,7 @@ local:PhysicalEntity0000
     }
   }
 
-[       OK ] ReadAndWriteTests.singularannotation3json (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation3json (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3html
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -2642,15 +2642,15 @@ local:PhysicalEntity0000
 </body>
 </html>
 
-[       OK ] ReadAndWriteTests.singularannotation3html (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation3html (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation3nquads
 <http://omex-library.org/NewOmex.omex/NewModel.xml#meta1> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/chebi/CHEBI:15422> .
 
-[       OK ] ReadAndWriteTests.singularannotation3nquads (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation3nquads (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4ntriples
 <http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "Cardiomyocyte cytosolic ATP concentration" .
 
-[       OK ] ReadAndWriteTests.singularannotation4ntriples (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation4ntriples (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2663,7 +2663,7 @@ local:PhysicalEntity0000
     dc:description "Cardiomyocyte cytosolic ATP concentration" .
 
 
-[       OK ] ReadAndWriteTests.singularannotation4turtle (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation4turtle (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4rdfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -2686,7 +2686,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.singularannotation4rdfxml (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation4rdfxml (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4jsontriples
 {
   "triples" : [
@@ -2722,7 +2722,7 @@ local:PhysicalEntity0000
     }
   }
 
-[       OK ] ReadAndWriteTests.singularannotation4json (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation4json (1 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4html
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -2748,18 +2748,18 @@ local:PhysicalEntity0000
 </body>
 </html>
 
-[       OK ] ReadAndWriteTests.singularannotation4html (1 ms)
+[       OK ] ReadAndWriteTests.singularannotation4html (0 ms)
 [ RUN      ] ReadAndWriteTests.singularannotation4nquads
 <http://omex-library.org/NewOmex.omex/NewModel.xml#meta2> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "Cardiomyocyte cytosolic ATP concentration" .
 
-[       OK ] ReadAndWriteTests.singularannotation4nquads (0 ms)
+[       OK ] ReadAndWriteTests.singularannotation4nquads (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpentriples
 <http://omex-library.org/NewOmex.omex/NewModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .
 
-[       OK ] ReadAndWriteTests.compositeannotationpentriples (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpentriples (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpeturtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -2776,7 +2776,7 @@ local:PhysicalEntity0000
     bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .
 
 
-[       OK ] ReadAndWriteTests.compositeannotationpeturtle (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpeturtle (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationperdfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -2794,7 +2794,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.compositeannotationperdfxmlabbrev (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationperdfxmlabbrev (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpejsontriples
 {
   "triples" : [
@@ -2857,7 +2857,7 @@ local:PhysicalEntity0000
     ]
   }
 
-[       OK ] ReadAndWriteTests.compositeannotationpejsontriples (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpejsontriples (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpejson
 
 {
@@ -2892,7 +2892,7 @@ local:PhysicalEntity0000
     }
   }
 
-[       OK ] ReadAndWriteTests.compositeannotationpejson (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpejson (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpehtml
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -2940,7 +2940,7 @@ local:PhysicalEntity0000
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .
 
-[       OK ] ReadAndWriteTests.compositeannotationpenquads (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpenquads (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppntriples
 [       OK ] ReadAndWriteTests.compositeannotationppntriples (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppturtle
@@ -3011,7 +3011,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.compositeannotationpprdfxml (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpprdfxml (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppjsontriples
 {
   "triples" : [
@@ -3311,7 +3311,7 @@ local:PhysicalEntity0000
 </body>
 </html>
 
-[       OK ] ReadAndWriteTests.compositeannotationpphtml (0 ms)
+[       OK ] ReadAndWriteTests.compositeannotationpphtml (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationppnquads
 <http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#process_metaid_0> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/OPB_00592> .
@@ -3324,7 +3324,7 @@ local:PhysicalEntity0000
 <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_0> <http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference> <http://omex-library.org/NewOmex.omex/NewModel.xml#special_metaid_1> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#mediator_0> <http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference> <http://omex-library.org/NewOmex.omex/NewModel.xml#special_metaid_2> .
 
-[       OK ] ReadAndWriteTests.compositeannotationppnquads (1 ms)
+[       OK ] ReadAndWriteTests.compositeannotationppnquads (0 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpfntriples
 [       OK ] ReadAndWriteTests.compositeannotationpfntriples (1 ms)
 [ RUN      ] ReadAndWriteTests.compositeannotationpfturtle
@@ -3586,9 +3586,9 @@ local:PhysicalEntity0000
 
 [       OK ] ReadAndWriteTests.compositeannotationpfnquads (1 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatantriples
-[       OK ] ReadAndWriteTests.tabulardatantriples (1 ms)
+[       OK ] ReadAndWriteTests.tabulardatantriples (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardataturtle
-[       OK ] ReadAndWriteTests.tabulardataturtle (1 ms)
+[       OK ] ReadAndWriteTests.tabulardataturtle (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatardfxmlabbrev
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -3608,7 +3608,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.tabulardatardfxmlabbrev (0 ms)
+[       OK ] ReadAndWriteTests.tabulardatardfxmlabbrev (1 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatardfxml
 <?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#" xmlns:myOMEX="http://omex-library.org/NewOmex.omex/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:semsim="http://www.bhi.washington.edu/semsim#">
@@ -3626,7 +3626,7 @@ local:PhysicalEntity0000
   </rdf:Description>
 </rdf:RDF>
 
-[       OK ] ReadAndWriteTests.tabulardatardfxml (1 ms)
+[       OK ] ReadAndWriteTests.tabulardatardfxml (0 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatajsontriples
 {
   "triples" : [
@@ -3689,7 +3689,7 @@ local:PhysicalEntity0000
     ]
   }
 
-[       OK ] ReadAndWriteTests.tabulardatajsontriples (0 ms)
+[       OK ] ReadAndWriteTests.tabulardatajsontriples (1 ms)
 [ RUN      ] ReadAndWriteTests.tabulardatajson
 
 {
@@ -3906,17 +3906,17 @@ local:PhysicalEntity0000
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 
-[       OK ] PersonalInformationTests.TestMultipleEntries (2 ms)
-[----------] 8 tests from PersonalInformationTests (7 ms total)
+[       OK ] PersonalInformationTests.TestMultipleEntries (1 ms)
+[----------] 8 tests from PersonalInformationTests (6 ms total)
 
 [----------] 3 tests from MarkupIdentifierTests
 [ RUN      ] MarkupIdentifierTests.ElementNames
-[       OK ] MarkupIdentifierTests.ElementNames (0 ms)
+[       OK ] MarkupIdentifierTests.ElementNames (1 ms)
 [ RUN      ] MarkupIdentifierTests.isSBMLTest
 [       OK ] MarkupIdentifierTests.isSBMLTest (0 ms)
 [ RUN      ] MarkupIdentifierTests.isCellMLTest
 [       OK ] MarkupIdentifierTests.isCellMLTest (1 ms)
-[----------] 3 tests from MarkupIdentifierTests (1 ms total)
+[----------] 3 tests from MarkupIdentifierTests (2 ms total)
 
 [----------] 4 tests from ElementExtractorTests
 [ RUN      ] ElementExtractorTests.TetsListOfCompartmentsExtraction
@@ -3927,7 +3927,7 @@ local:PhysicalEntity0000
 [       OK ] ElementExtractorTests.TestReactionExtraction (0 ms)
 [ RUN      ] ElementExtractorTests.TestElementNamesAreAccessibleAfterExtraction
 [       OK ] ElementExtractorTests.TestElementNamesAreAccessibleAfterExtraction (0 ms)
-[----------] 4 tests from ElementExtractorTests (1 ms total)
+[----------] 4 tests from ElementExtractorTests (0 ms total)
 
 [----------] 3 tests from SBMLSemanticExtractionTests
 [ RUN      ] SBMLSemanticExtractionTests.TestTwoCompartments
@@ -3994,7 +3994,7 @@ local:SourceParticipant0002
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
 
 
-[       OK ] SBMLSemanticExtractionTests.TestTwoCompartments (9 ms)
+[       OK ] SBMLSemanticExtractionTests.TestTwoCompartments (10 ms)
 [ RUN      ] SBMLSemanticExtractionTests.TestCompartmentSingleCompartment
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -4121,8 +4121,8 @@ local:SourceParticipant0005
 
 
 [       OK ] SBMLSemanticExtractionTests.TestReactionExtraction (13 ms)
-[----------] 3 tests from SBMLSemanticExtractionTests (25 ms total)
+[----------] 3 tests from SBMLSemanticExtractionTests (26 ms total)
 
 [----------] Global test environment tear-down
-[==========] 397 tests from 38 test suites ran. (10475 ms total)
+[==========] 397 tests from 38 test suites ran. (9373 ms total)
 [  PASSED  ] 397 tests.

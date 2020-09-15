@@ -34,7 +34,7 @@
         <location file="src/omexmeta/PhysicalPhenomenon.h" line="27" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a74e88adb2099099e411b55cb9aa460a0" prot="protected" static="no" mutable="no">
-        <type>AnnotationType</type>
+        <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
         <definition>AnnotationType omexmeta::PhysicalPhenomenon::type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
@@ -342,7 +342,7 @@
           <declname>propertyResource</declname>
         </param>
         <param>
-          <type>AnnotationType</type>
+          <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -397,7 +397,7 @@
         <location file="src/omexmeta/PhysicalPhenomenon.h" line="111" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>AnnotationType</type>
+        <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
         <definition>AnnotationType omexmeta::PhysicalPhenomenon::getType</definition>
         <argsstring>() const</argsstring>
         <name>getType</name>
@@ -491,7 +491,7 @@
         <argsstring>(AnnotationType type)</argsstring>
         <name>setType</name>
         <param>
-          <type>AnnotationType</type>
+          <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -538,38 +538,38 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="165">
+      <node id="169">
         <label>omexmeta::PhysicalProcess</label>
         <link refid="classomexmeta_1_1PhysicalProcess"/>
-        <childnode refid="162" relation="public-inheritance">
+        <childnode refid="166" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="162">
-        <label>omexmeta::PhysicalPhenomenon</label>
-        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-      </node>
-      <node id="164">
-        <label>omexmeta::PhysicalForce</label>
-        <link refid="classomexmeta_1_1PhysicalForce"/>
-        <childnode refid="162" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="163">
-        <label>omexmeta::PhysicalEntity</label>
-        <link refid="classomexmeta_1_1PhysicalEntity"/>
-        <childnode refid="162" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="167">
-        <label>omexmeta::PhysicalProperty</label>
-        <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
       <node id="166">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-        <childnode refid="167" relation="usage">
+      </node>
+      <node id="168">
+        <label>omexmeta::PhysicalForce</label>
+        <link refid="classomexmeta_1_1PhysicalForce"/>
+        <childnode refid="166" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>omexmeta::PhysicalEntity</label>
+        <link refid="classomexmeta_1_1PhysicalEntity"/>
+        <childnode refid="166" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="171">
+        <label>omexmeta::PhysicalProperty</label>
+        <link refid="classomexmeta_1_1PhysicalProperty"/>
+      </node>
+      <node id="170">
+        <label>omexmeta::PhysicalPhenomenon</label>
+        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
+        <childnode refid="171" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
       </node>

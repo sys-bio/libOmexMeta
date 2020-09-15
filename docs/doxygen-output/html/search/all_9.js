@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['markupidentifier',['MarkupIdentifier',['../classomexmeta_1_1MarkupIdentifier.html',1,'omexmeta']]],
-  ['mediatorparticipant',['MediatorParticipant',['../classomexmeta_1_1MediatorParticipant.html',1,'omexmeta']]],
-  ['metaid',['MetaID',['../classomexmeta_1_1MetaID.html',1,'omexmeta']]],
-  ['msg_5f',['msg_',['../classomexmeta_1_1Exception.html#a99067aa4ed7e38cf27b986cca3734512',1,'omexmeta::Exception::msg_()'],['../classException.html#a5d59cc46086c61391ed26773ce861780',1,'Exception::msg_()']]]
+  ['inappropriateresourceexception',['InappropriateResourceException',['../classomexmeta_1_1InappropriateResourceException.html',1,'omexmeta']]],
+  ['is_5fcontainer',['is_container',['../structdbg_1_1detail_1_1is__container.html',1,'dbg::detail']]],
+  ['iscellml',['isCellML',['../classomexmeta_1_1MarkupIdentifier.html#a2fd631a49a8a3d06e668cdbf130d5cb3',1,'omexmeta::MarkupIdentifier']]],
+  ['isformatteduri',['isFormattedUri',['../classomexmeta_1_1OmexMetaUtils.html#af663724f2efb0324a64c6a57e8491c13',1,'omexmeta::OmexMetaUtils']]],
+  ['issbml',['isSBML',['../classomexmeta_1_1MarkupIdentifier.html#a541ffd197ce109e20112923d7fc0641b',1,'omexmeta::MarkupIdentifier']]]
 ];

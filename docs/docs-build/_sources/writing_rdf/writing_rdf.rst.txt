@@ -75,7 +75,6 @@ Writing to a file
             :linenos:
             :caption: Output
 
-
     .. tab:: C
 
         .. literalinclude:: writing_to_file_c.cpp

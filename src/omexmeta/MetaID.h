@@ -13,7 +13,7 @@
 #include "redland/RedlandAPI.h"
 
 namespace omexmeta {
-    /*
+    /**
      * @brief an ID generator
      */
     class MetaID {
@@ -23,8 +23,8 @@ namespace omexmeta {
         int num_digits_;
 
     public:
-        /*
-         * @brief an ID generator used when creating IDs in the Editor.
+        /**
+     * @brief an ID generator used when creating IDs in the Editor.
          * @param base_ the constant portion of the id. Like semsim in semsim00001
          * @param start_number_ the start_number portion of the id, like 1 in semsim00001
          * @param num_digits specifies the start_number of digits to use in the id. So semsim00001 has 5 digits.
@@ -40,27 +40,27 @@ namespace omexmeta {
 
         bool operator!=(const MetaID &rhs) const;
 
-        /*
-         * @brief generate the string for a metaid
+        /**
+     * @brief generate the string for a metaid
          * @return a metaid defined by the parameters in instantiation
          */
         [[nodiscard]] std::string generate() const;
 
-        /*
-         * @brief generate the string for a metaid
+        /**
+     * @brief generate the string for a metaid
          * @param number of digits
          * @return a metaid defined by the parameters in instantiation
          */
         [[nodiscard]] std::string generate(long n) const;
 
-        /*
-         * @brief figure out the max number possible with user parameters
+        /**
+     * @brief figure out the max number possible with user parameters
          * @return the maximum possible number with user parameters
          */
         [[nodiscard]] int maxNumber() const;
 
-        /*
-         * @brief count the digits in a number
+        /**
+     * @brief count the digits in a number
          * @param n the number to count digits in
          * @return the number of digits in n
          */

@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1CurlGet" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::CurlGet</compoundname>
+    <includes refid="CurlGet_8h" local="no">CurlGet.h</includes>
       <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classomexmeta_1_1CurlGet_1a32357d9722cbedf644ae66f5b8e26876" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -25,7 +26,7 @@
           <declname>userp</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>callback used to write bytes to file </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -63,16 +64,32 @@
           <declname>output_filename</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>download a file from the internet </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>url</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The url to download. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_filename.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Where to put the downloaded content. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>success code. Non-0 fails. </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/CurlGet.h" line="35" column="1" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="13" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>Use libcurl to download from url. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="src/omexmeta/CurlGet.h" line="18" column="1" bodyfile="src/omexmeta/CurlGet.h" bodystart="18" bodyend="36"/>

@@ -1,11 +1,45 @@
 \hypertarget{classomexmeta_1_1CurlGet}{}\section{omexmeta\+:\+:Curl\+Get Class Reference}
 \label{classomexmeta_1_1CurlGet}\index{omexmeta\+::\+Curl\+Get@{omexmeta\+::\+Curl\+Get}}
+
+
+Use libcurl to download from url.  
+
+
+
+
+{\ttfamily \#include $<$Curl\+Get.\+h$>$}
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static int \hyperlink{classomexmeta_1_1CurlGet_a52eaa2b1179cf49ec298022011b2477c}{download} (const std\+::string \&url, const std\+::string \&output\+\_\+filename)
+\begin{DoxyCompactList}\small\item\em download a file from the internet \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Use libcurl to download from url. 
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1CurlGet_a52eaa2b1179cf49ec298022011b2477c}\label{classomexmeta_1_1CurlGet_a52eaa2b1179cf49ec298022011b2477c}} 
-static int {\bfseries download} (const std\+::string \&url, const std\+::string \&output\+\_\+filename)
-\end{DoxyCompactItemize}
+\index{omexmeta\+::\+Curl\+Get@{omexmeta\+::\+Curl\+Get}!download@{download}}
+\index{download@{download}!omexmeta\+::\+Curl\+Get@{omexmeta\+::\+Curl\+Get}}
+\subsubsection{\texorpdfstring{download()}{download()}}
+{\footnotesize\ttfamily int omexmeta\+::\+Curl\+Get\+::download (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{url,  }\item[{const std\+::string \&}]{output\+\_\+filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+download a file from the internet 
+
+
+\begin{DoxyParams}{Parameters}
+{\em url} & The url to download. \\
+\hline
+{\em output\+\_\+filename.} & Where to put the downloaded content. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success code. Non-\/0 fails. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

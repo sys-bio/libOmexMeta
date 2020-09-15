@@ -60,7 +60,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>omexmeta</b></li><li class="navelem"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceomexmeta.html">omexmeta</a></li><li class="navelem"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,8 +89,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a8c9df0d37572179d682127cb7368dd82"><td class="memItemLeft" align="right" valign="top"><a id="a8c9df0d37572179d682127cb7368dd82"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> &amp;rhs) const</td></tr>
 <tr class="separator:a8c9df0d37572179d682127cb7368dd82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88dcf4b950f105acb621bd07f07a38a0"><td class="memItemLeft" align="right" valign="top"><a id="a88dcf4b950f105acb621bd07f07a38a0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>move_back</b> (<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;triple)</td></tr>
+<tr class="memitem:a88dcf4b950f105acb621bd07f07a38a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#a88dcf4b950f105acb621bd07f07a38a0">move_back</a> (<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;triple)</td></tr>
+<tr class="memdesc:a88dcf4b950f105acb621bd07f07a38a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">moves a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> object to the back of <a class="el" href="classomexmeta_1_1Triples.html">Triples</a>  <a href="#a88dcf4b950f105acb621bd07f07a38a0">More...</a><br /></td></tr>
 <tr class="separator:a88dcf4b950f105acb621bd07f07a38a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9882f6f582e8d2e34e09d2f7076a0e2e"><td class="memItemLeft" align="right" valign="top"><a id="a9882f6f582e8d2e34e09d2f7076a0e2e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>emplace_back</b> (<a class="el" href="classomexmeta_1_1Subject.html">Subject</a> subject, const PredicatePtr &amp;predicatePtr, const <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource)</td></tr>
@@ -153,6 +153,39 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isEmpty</b> ()</td></
 int&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b> ()</td></tr>
 <tr class="separator:a1f7ba9d5cd575ba5c63ed9dbbd1f279c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a88dcf4b950f105acb621bd07f07a38a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88dcf4b950f105acb621bd07f07a38a0">&#9670;&nbsp;</a></span>move_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void omexmeta::Triples::move_back </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&#160;</td>
+          <td class="paramname"><em>triple</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>moves a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> object to the back of <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">triple</td><td>The <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> object to move.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The vector storing the <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> is increased in size by 1 and the </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">triple</td><td>is moved into that slot. Therefore, ownership of the triple passes to the <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object who is reposible for freeing the <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="Triples_8h_source.html">Triples.h</a></li>
 <li>src/omexmeta/Triples.cpp</li>

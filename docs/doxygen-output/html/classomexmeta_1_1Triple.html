@@ -60,7 +60,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>omexmeta</b></li><li class="navelem"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceomexmeta.html">omexmeta</a></li><li class="navelem"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,13 +94,15 @@ Public Member Functions</h2></td></tr>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
 <tr class="separator:a1cb45dd3a5778f0e0e92e4a185da9400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6694daa46597ea91dda045aa0d5e6cfc"><td class="memItemLeft" align="right" valign="top"><a id="a6694daa46597ea91dda045aa0d5e6cfc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setLocalUri</b> (std::string localUri)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#a6694daa46597ea91dda045aa0d5e6cfc">setLocalUri</a> (std::string localUri)</td></tr>
+<tr class="memdesc:a6694daa46597ea91dda045aa0d5e6cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the local_uri_ attribute for this triple <br /></td></tr>
 <tr class="separator:a6694daa46597ea91dda045aa0d5e6cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="memItemLeft" align="right" valign="top"><a id="afd918ecccfa23079d9cb70f2e1a3e9b0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;model_uri)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#afd918ecccfa23079d9cb70f2e1a3e9b0">setModelUri</a> (const std::string &amp;model_uri)</td></tr>
+<tr class="memdesc:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the model_uri_ attribute for this triple <br /></td></tr>
 <tr class="separator:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabfef726172656b6c61c602b4d8d33e5"><td class="memItemLeft" align="right" valign="top"><a id="aabfef726172656b6c61c602b4d8d33e5"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>str</b> (const std::string &amp;format=&quot;turtle&quot;, const std::string &amp;base=(std::filesystem::current_path()/=&quot;annotations.rdf&quot;).string(), std::string omex_name=&quot;NewOmex.omex/&quot;, std::string model_name=&quot;NewModel.xml#&quot;) const</td></tr>
+<tr class="memitem:aabfef726172656b6c61c602b4d8d33e5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#aabfef726172656b6c61c602b4d8d33e5">str</a> (const std::string &amp;format=&quot;turtle&quot;, const std::string &amp;base=(std::filesystem::current_path()/=&quot;annotations.rdf&quot;).string(), std::string omex_name=&quot;NewOmex.omex/&quot;, std::string model_name=&quot;NewModel.xml#&quot;) const</td></tr>
+<tr class="memdesc:aabfef726172656b6c61c602b4d8d33e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">serialize the triple using a  serializer.  <a href="#aabfef726172656b6c61c602b4d8d33e5">More...</a><br /></td></tr>
 <tr class="separator:aabfef726172656b6c61c602b4d8d33e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f3868622349d3a3e14ed3e4b21d49a9"><td class="memItemLeft" align="right" valign="top"><a id="a3f3868622349d3a3e14ed3e4b21d49a9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freeTriple</b> ()</td></tr>
@@ -245,6 +247,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>refreshStatement</b> 
 librdf_statement *&#160;</td><td class="memItemRight" valign="bottom"><b>statement_</b> = librdf_new_statement(World::getWorld())</td></tr>
 <tr class="separator:acd1e53cd114c6744cf808174a9333ce5 inherit pro_attribs_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aabfef726172656b6c61c602b4d8d33e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabfef726172656b6c61c602b4d8d33e5">&#9670;&nbsp;</a></span>str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string omexmeta::Triple::str </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>format</em> = <code>&quot;turtle&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>base</em> = <code>(std::filesystem::current_path()&#160;/=&#160;&#160;&quot;annotations.rdf&quot;).string()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>omex_name</em> = <code>&quot;NewOmex.omex/&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>model_name</em> = <code>&quot;NewModel.xml#&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>serialize the triple using a  serializer. </p>
+<p>Creates an isolated serializer that does not get added to the users annotations. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> method is for visualizing a triple only. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="Triple_8h_source.html">Triple.h</a></li>
 <li>src/omexmeta/Triple.cpp</li>

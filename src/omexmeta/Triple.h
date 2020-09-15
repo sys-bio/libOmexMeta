@@ -26,8 +26,8 @@
 
 using namespace redland;
 
-/*
- * should inherit from librdf_statement?
+/**
+     * should inherit from librdf_statement?
  */
 
 namespace omexmeta {
@@ -53,18 +53,18 @@ namespace omexmeta {
 
         const std::string &getLocalUri() const;
 
-        /*
-         * @brief set the local_uri_ attribute for this triple
+        /**
+     * @brief set the local_uri_ attribute for this triple
          */
         void setLocalUri(std::string localUri);
 
-        /*
-         * @brief set the model_uri_ attribute for this triple
+        /**
+     * @brief set the model_uri_ attribute for this triple
          */
         void setModelUri(const std::string& model_uri);
 
-        /*
-         * @brief serialize the triple using a @format serializer.
+        /**
+     * @brief serialize the triple using a @format serializer.
          *
          * Creates an isolated serializer that does not get added
          * to the users annotations. This method is for visualizing

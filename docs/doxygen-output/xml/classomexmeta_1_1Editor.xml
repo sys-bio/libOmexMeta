@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1Editor" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Editor</compoundname>
+    <includes refid="Editor_8h" local="no">Editor.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a36eecb635c6384ad186f0e750602b58e" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -247,9 +248,74 @@
           <defval>std::string()</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The valid xml content for annotation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>generate_new_metaids.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Autogenerate metaids for xml element that do not already have them </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sbml_semantic_extraction.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is determined to be sbml, automatically extract some information regarding species and reactions. <ref refid="classThis" kindref="compound">This</ref> option is ignored when </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is not sbml. Default is true. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a reference to the current model (owned by <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref>). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nm_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a set of namespaces for current xml</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usually instantiated from the RDF::to_editor class which automatically takes care of the <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>and </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ns_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by SBMLAssistant::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by CellMLAssistant::getValidElements() are used. If the type is unknown, then all elements are given metaids. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="82" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="10" bodyend="45"/>
@@ -443,7 +509,7 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
+<para>Implementation note: <ref refid="classThis" kindref="compound">This</ref> method generates triples on the fly and then frees. <ref refid="classThis" kindref="compound">This</ref> was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> class.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="168" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="142" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -460,7 +526,7 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
+<para>Because we now want to use  local for the about section, we need to inject it here, if not already formatted properly.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="174" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="180" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -511,7 +577,7 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
+<para>Because we now want to use  Omex for the about section, we need to inject it here, if not already formatted properly.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="192" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="199" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -545,7 +611,7 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
+<para>Because we now want to use  local for the about section, we need to inject it here, if not already formatted properly.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="204" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="218" bodyend="235"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1033,7 +1099,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>Add or change annotations in xml. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="src/omexmeta/Editor.h" line="44" column="1" bodyfile="src/omexmeta/Editor.h" bodystart="44" bodyend="391"/>

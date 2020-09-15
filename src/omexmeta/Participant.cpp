@@ -48,8 +48,8 @@ namespace omexmeta {
 
 //
 
-        /*
-         * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
+        /**
+     * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
          * have been used in order to ensure unique metaid's when we have more than one Sink/Source/Mediate Participant.
          * For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way
          * local_uri's were added after the original design was in place. Future developers might want to look at this.

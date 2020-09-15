@@ -18,6 +18,10 @@
     <member refid="classomexmeta_1_1CellMLAssistant_1ad0fa4e23c94197d5682a0f8e1dec0889" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1CellMLAssistant_1a4aaccf21ed47201abaf20d67ad7bfaab" kind="function"><name>metaIdTagName</name></member>
   </compound>
+  <compound refid="classcopy" kind="class"><name>copy</name>
+  </compound>
+  <compound refid="classcopy" kind="class"><name>copy</name>
+  </compound>
   <compound refid="classomexmeta_1_1CurlGet" kind="class"><name>omexmeta::CurlGet</name>
     <member refid="classomexmeta_1_1CurlGet_1a32357d9722cbedf644ae66f5b8e26876" kind="function"><name>curlWriteCallback</name></member>
     <member refid="classomexmeta_1_1CurlGet_1ab7170b3c78cd45d7112da1a436017201" kind="function"><name>CurlGet</name></member>
@@ -848,6 +852,16 @@
   <compound refid="classomexmeta_1_1SourceParticipant" kind="class"><name>omexmeta::SourceParticipant</name>
     <member refid="classomexmeta_1_1SourceParticipant_1a84b77b854e235cc9e0cb8da2b6a2cee5" kind="function"><name>SourceParticipant</name></member>
   </compound>
+  <compound refid="classSubclass" kind="class"><name>Subclass</name>
+  </compound>
+  <compound refid="classSubclass" kind="class"><name>Subclass</name>
+  </compound>
+  <compound refid="classSubclass" kind="class"><name>Subclass</name>
+  </compound>
+  <compound refid="classSubclass" kind="class"><name>Subclass</name>
+  </compound>
+  <compound refid="classSubclass" kind="class"><name>Subclass</name>
+  </compound>
   <compound refid="classomexmeta_1_1Subject" kind="class"><name>omexmeta::Subject</name>
     <member refid="classomexmeta_1_1Subject_1ac6f8f8b58d81748ba000f05ed4f4eecb" kind="variable"><name>node_</name></member>
     <member refid="classomexmeta_1_1Subject_1a6ea1f43fab08770a4e0b0e9679af1880" kind="function"><name>Subject</name></member>
@@ -863,6 +877,8 @@
     <member refid="classomexmeta_1_1Subject_1a845dda888ce07265306d0eb6b46cd989" kind="function"><name>fromRawPtr</name></member>
     <member refid="classomexmeta_1_1Subject_1a346583235b81d5bd523818de09d7359e" kind="function"><name>fromUri</name></member>
     <member refid="classomexmeta_1_1Subject_1a315d058097112f4081c4db7860346aef" kind="function"><name>fromBlank</name></member>
+  </compound>
+  <compound refid="classThis" kind="class"><name>This</name>
   </compound>
   <compound refid="structdbg_1_1time" kind="struct"><name>dbg::time</name>
   </compound>
@@ -992,151 +1008,151 @@
   <compound refid="namespacedbg_1_1pretty__function" kind="namespace"><name>dbg::pretty_function</name>
   </compound>
   <compound refid="namespaceomexmeta" kind="namespace"><name>omexmeta</name>
-    <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7" kind="enum"><name>AnnotationType</name></member>
-    <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a3824ab8797b64bb683236b279cc19008" kind="enumvalue"><name>PHYSICAL_ENTITY</name></member>
-    <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a6c3faf0bc18122cbbc7179c788ffb072" kind="enumvalue"><name>PHYSICAL_PROCESS</name></member>
-    <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a6bde31f12751f0681a92d77283ff6bb1" kind="enumvalue"><name>PHYSICAL_FORCE</name></member>
-    <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7aed56225d3530aa68f5f9000d5a25712b" kind="enumvalue"><name>SINGULAR</name></member>
-    <member refid="AnnotationType_8h_1a1129ebb8a92218ebb27b9c76ac8462f7a986abc31d579b2dbb50e64fe50dfc49e" kind="enumvalue"><name>UNKNOWN</name></member>
-    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fb" kind="enum"><name>OmexMetaXmlType</name></member>
-    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba3262bd1f62095e6bb270ecd33a5e3a6a" kind="enumvalue"><name>OMEXMETA_TYPE_SBML</name></member>
-    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba230cbeb9caea8d8070c9a18b61dec5e1" kind="enumvalue"><name>OMEXMETA_TYPE_CELLML</name></member>
-    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba96b5aed9b5170f80d6e57867a8f84671" kind="enumvalue"><name>OMEXMETA_TYPE_UNKNOWN</name></member>
-    <member refid="OmexMetaXmlType_8h_1a6d848ffddcd75e64efafb46013b0e6fba1dd3c4fcdae0a5b5ba6f8c155e95ad13" kind="enumvalue"><name>OMEXMETA_TYPE_NOTSET</name></member>
-    <member refid="Editor_8h_1ad9c3f36d18cb218950d2780f2d4dc0a0" kind="typedef"><name>NamespaceMap</name></member>
-    <member refid="OmexMetaXmlAssistant_8h_1a602c5d1094d065496b79af07e9a3b28a" kind="typedef"><name>XmlAssistantPtr</name></member>
-    <member refid="Participant_8h_1a90b8619f565d06ee3a8fa4d1cfda893c" kind="typedef"><name>ParticipantPtr</name></member>
-    <member refid="Participant_8h_1a1c258e53336c37fdc17cf08a394f5198" kind="typedef"><name>Sources</name></member>
-    <member refid="Participant_8h_1ac2d6392fea1506f1d5d13ebb155db3df" kind="typedef"><name>Mediators</name></member>
-    <member refid="Participant_8h_1a57d60796797e34581e3c1780985f0b59" kind="typedef"><name>Sinks</name></member>
-    <member refid="PhysicalPhenomenon_8h_1aeb3054fca8bdfaeeae91c2f3e1bd8c27" kind="typedef"><name>PhysicalPhenomenonPtr</name></member>
-    <member refid="Predicate_8h_1a2edd0078a7f3b226df6fb3382d76471a" kind="typedef"><name>PredicatePtr</name></member>
-    <member refid="Predicate_8h_1af916f97aa87900541cf46ca66139fc14" kind="typedef"><name>Predicates</name></member>
-    <member refid="Predicate_8h_1a84ba746aac1e9ee5c7256a2f2f393a41" kind="typedef"><name>PredicatePtrs</name></member>
-    <member refid="Query_8h_1a08a1cea39a93f919e8c481f1307e9d64" kind="typedef"><name>ResultsMap</name></member>
-    <member refid="Resource_8h_1a211f941200e84d6258b6980a1101a978" kind="typedef"><name>Resources</name></member>
-    <member refid="Subject_8h_1a55c310aac91280285453df83fafa7d69" kind="typedef"><name>Subjects</name></member>
-    <member refid="Triple_8h_1a7fc6fa4ba32424705fe4953ee297a795" kind="typedef"><name>SingularAnnotation</name></member>
-    <member refid="Triples_8h_1a866d550d1c1d6bdadd778a73fef571bb" kind="typedef"><name>SharedTripleVector</name></member>
-    <member refid="Triples_8h_1a0591b044477ac1101740fd7db67088bc" kind="typedef"><name>TripleVector</name></member>
-    <member refid="OmexMetaCApi_8cpp_1abd7043e0483a7393bd76a7469580d555" kind="function"><name>free_c_char_star</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a1d7bca5e4a24d7482048bd28d901e502" kind="function"><name>_func_that_returns_dynamic_alloc_str</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad25c02c4a271f0b7c5585d0cb241f102" kind="function"><name>RDF_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aa9f83a736bf28d204b9f485f09e59c59" kind="function"><name>RDF_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a3df47da280fd76301f4db3ff70225457" kind="function"><name>RDF_fromString</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a81b2c4407acfd8c80be70cb0ab34c8dc" kind="function"><name>RDF_addFromString</name></member>
-    <member refid="OmexMetaCApi_8cpp_1abb12dce1dc0ca915b778843360ff6844" kind="function"><name>RDF_fromUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1adec4d2ab4b51525933fe7afde29b42d3" kind="function"><name>RDF_addFromUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6c414c3b4ae513bca35a9608a9fd752d" kind="function"><name>RDF_fromFile</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad9bcbd4e6b1f93d5d4c8645a37a823cd" kind="function"><name>RDF_addFromFile</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a32f9114a274297acbc44bac3c3ee52a8" kind="function"><name>RDF_toString</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a7d21ddd436c1a145123bdfeaeaa40663" kind="function"><name>RDF_toFile</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad8f80e096c07f028d5c4a281a3e8f093" kind="function"><name>RDF_query</name></member>
-    <member refid="OmexMetaCApi_8cpp_1acbf6fdf01b402172f7434fa7ec9e057b" kind="function"><name>RDF_size</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a934e6c245b9ad896f10e177865095c3f" kind="function"><name>RDF_setRepositoryUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a9c1dcbcf82b851e5998f24b10a08566a" kind="function"><name>RDF_setArchiveUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae4867650bb4affd1a0ece773b85f125b" kind="function"><name>RDF_setModelUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad459c70147e6e1f0264b1c24b516fd0f" kind="function"><name>RDF_getRepositoryUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae273ee890977b35fa8b4fdea9ccd1297" kind="function"><name>RDF_getArchiveUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad92ca3d3ae83ad7d46027a6a399d21e9" kind="function"><name>RDF_getModelUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1adc76b37982d7d44b3e48f3686064a966" kind="function"><name>RDF_getLocalUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a32e6dbf136ae77858262cab19093a6a1" kind="function"><name>RDF_toEditor</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a3c05babeced84a464bcf29fb618230b4" kind="function"><name>Editor_addNamespace</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5eb4a4857c135a1aa5bd5c0a7eff6432" kind="function"><name>Editor_addSingleAnnotation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac76722abeb1ceac922b1493a65c8de1c" kind="function"><name>Editor_addPhysicalEntity</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a26a63ff240f5400dc1f05c2c449f6e51" kind="function"><name>Editor_addPhysicalProcess</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a25c470e9dd1cd508e103c687d08fea07" kind="function"><name>Editor_addPhysicalForce</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5da4e46f21b19e38fad07c06ad668efd" kind="function"><name>Editor_addPersonalInformation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a9cd0c78c5bf996caa79555b81bbfef1b" kind="function"><name>Editor_removeSingleAnnotation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad83a65f14c1035b46cd81f0a963da6e4" kind="function"><name>Editor_removePhysicalEntity</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a8b8f9382a445fca997eb8db8963cce4e" kind="function"><name>Editor_removePhysicalProcess</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5d9f7c0c294472359ce3d70db5cb1035" kind="function"><name>Editor_removePhysicalForce</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aac121eb946b9380ca162061ab725dad0" kind="function"><name>Editor_removePersonalInformation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a8127880005ca59e64ae81fe57cd824fa" kind="function"><name>Editor_checkValidMetaid</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aec2f4973721ccc82ae54980e951f7565" kind="function"><name>Editor_getMetaId</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6a97e52deef1b7abde9b4491de14f68b" kind="function"><name>Editor_getNumMetaIds</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a96e4c18dc172184811a0bd6468d00b35" kind="function"><name>Editor_getXml</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ade855a67befd16925ed583d228606d43" kind="function"><name>Editor_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad0a68ce47a12363204bde49b838cd5d0" kind="function"><name>Editor_getArchiveUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a28c678eeb0c4457bbbd671eb2dac73d0" kind="function"><name>Editor_getLocalUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aaddb4c2e6bc636650b20c2eb526ff691" kind="function"><name>Editor_getModelUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1afc5399a7743a7ddbb79a903ca5676170" kind="function"><name>Editor_getRepositoryUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a7b612eade9eb34450ea88ef85657c838" kind="function"><name>Editor_addCreator</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a86cf5fb8f670b0b648162ddfbe5d8a02" kind="function"><name>Editor_addCurator</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5f46902a5da35486989b7e74c42c451a" kind="function"><name>Editor_addTaxon</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a8a2613943915dc228a4b53de2423ba62" kind="function"><name>Editor_addPubmed</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a117e6430247224600755a3c3bffb0632" kind="function"><name>Editor_addDescription</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a438d94f9c2af78f41cfb28d92da25bd5" kind="function"><name>Editor_addDateCreated</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6bd3edcdc8e62d3da2ff9328280e2612" kind="function"><name>Editor_addParentModel</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a56234965820e6e731cb377af949585a3" kind="function"><name>SingularAnnotation_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6c1d37ce851c1853f83a3622a5bd00bc" kind="function"><name>SingularAnnotation_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad8b1a3d657ffffadcef2d723044c18e9" kind="function"><name>free_singular_annotation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aba899b6a9b09d4d747dae983ead4eb3c" kind="function"><name>SingularAnnotation_setAbout</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aeedfc49054398f038e3e5dc431463ccd" kind="function"><name>SingularAnnotation_setPredicate</name></member>
-    <member refid="OmexMetaCApi_8cpp_1abea6cebaf66d178b8cca6dd636bd47d0" kind="function"><name>SingularAnnotation_setPredicateFromUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6b829135446cd1744f20a1ce3e8e4215" kind="function"><name>SingularAnnotation_setResourceLiteral</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ab3fbe78f87d3275c23f10712b1a77f87" kind="function"><name>SingularAnnotation_setResourceUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a72ef479adb05bad7b91b332fbbc3c886" kind="function"><name>SingularAnnotation_setResourceBlank</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aa2be46b784b2c7840ae58087bfeccd68" kind="function"><name>SingularAnnotation_getAbout</name></member>
-    <member refid="OmexMetaCApi_8cpp_1af1fb5e2e7cad553b230addfb56a8bdbf" kind="function"><name>SingularAnnotation_getPredicate</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a886b19fc7c95cebd0a82ae2c9f36ab68" kind="function"><name>SingularAnnotation_getResource</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ab75e894bdc1440c5e9af28156c1083be" kind="function"><name>SingularAnnotation_str</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a3a7a18de6e1b6c264c3ee22cd289d243" kind="function"><name>PhysicalEntity_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a2468442b832806a57f5891c792c293d1" kind="function"><name>PhysicalEntity_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a1003038196d64626a43affdaae4f10c7" kind="function"><name>PhysicalEntity_freeAll</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a37974ee43bc12c63dc5b1e7f451b6e9c" kind="function"><name>PhysicalEntity_setPhysicalProperty</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac44f68863532b3aa719a2cb9f0a1f73f" kind="function"><name>PhysicalEntity_setIdentity</name></member>
-    <member refid="OmexMetaCApi_8cpp_1abba48577926517d7d484b6b3b67fffb2" kind="function"><name>PhysicalEntity_addLocation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a7f59e7b6f143fc61441cfb435262e1cb" kind="function"><name>PhysicalEntity_getAbout</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aaa3ea01b3791ca3f7eb417457b07db6b" kind="function"><name>PhysicalEntity_getIdentity</name></member>
-    <member refid="OmexMetaCApi_8cpp_1acc3cb121e83fea6627185101e64db8e9" kind="function"><name>PhysicalEntity_getNumLocations</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a63e0d41567ae512005d7c9e50037e44e" kind="function"><name>PhysicalEntity_getLocation</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a2ca2e5f41e156dc785bb858f82a088d4" kind="function"><name>PhysicalEntity_str</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a4b7cef4fcdbd4502c94b18da2f85470f" kind="function"><name>PhysicalProcess_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a97146d9b855c53650e54c471f053a4dc" kind="function"><name>PhysicalProcess_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a3ccca8297fc991baf57065570938ed84" kind="function"><name>PhysicalProcess_freeAll</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae0e715da1275124448d22005f2848722" kind="function"><name>PhysicalProcess_setPhysicalProperty</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a08408524a5a4f75ae4b0c1c8cad6c28e" kind="function"><name>PhysicalProcess_addSource</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a68d8b919e923231d8a17e3506dca393b" kind="function"><name>PhysicalProcess_addSink</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a1554e14b6f4401341fa0e7f23f6d4c90" kind="function"><name>PhysicalProcess_addMediator</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae79e87b864da4b401488f522bb6734e7" kind="function"><name>PhysicalProcess_str</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a738e9d39898919fb01bd9a7ed5af3687" kind="function"><name>PhysicalProcess_getAbout</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aa7371fdf91f4c6c120e4559b23ad3585" kind="function"><name>PhysicalProcess_getNumSources</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aaf4162aa78c2c7f73449705a3e0fc951" kind="function"><name>PhysicalProcess_getNumSinks</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a7ad65f0ec2f5c8433ebc126c75779520" kind="function"><name>PhysicalProcess_getNumMediators</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a20e720c23e2368bf19c316971ebeafd7" kind="function"><name>PhysicalForce_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aad5757f8832cf5fcaf546cec1f97af82" kind="function"><name>PhysicalForce_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac9903c88bb127f778476bdffe075ed8a" kind="function"><name>PhysicalForce_freeAll</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae66097c6bfe2f6370bcb614a3d384a41" kind="function"><name>PhysicalForce_addSource</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a75abc8bc74d8bacefd65935f49210343" kind="function"><name>PhysicalForce_addSink</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a3942ac5b5d7393eea5f0644c2f31cbc5" kind="function"><name>PhysicalForce_setPhysicalProperty</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aae66100eb98adbc738a6476dcb018e8f" kind="function"><name>PhysicalForce_getNumSources</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a1bec2b6579c0eba8a719f68d39b09c2e" kind="function"><name>PhysicalForce_getNumSinks</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a8a3f3cf23e3c5253f0a92f6374a2059b" kind="function"><name>PhysicalForce_str</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a4428467ced5ab11c48a3b16284048a36" kind="function"><name>PhysicalForce_getAbout</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a119fbc0317a5af631e7f68caece8c70b" kind="function"><name>PersonalInformation_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5dcd490456bde3f95069f91e65c2b042" kind="function"><name>PersonalInformation_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a9db9c9c591926b3e9061b2ca7cb4541f" kind="function"><name>PersonalInformation_getLocalUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1af1ed67bfbe5c55b04c5164030f9f5fef" kind="function"><name>PersonalInformation_setLocalUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a46f59a8d3104d824826d5dd104d55393" kind="function"><name>PersonalInformation_addCreator</name></member>
-    <member refid="OmexMetaCApi_8cpp_1af1ab848f3e3f81ab4dbc822c84aab92e" kind="function"><name>PersonalInformation_addName</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a30bf0fbfd78a23a0e2d87e1cb981cc8a" kind="function"><name>PersonalInformation_addMbox</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a75306b1329c755b124ad9b40f147abdc" kind="function"><name>PersonalInformation_addAccountName</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ad597791b54c6f08a3572033aab6487dd" kind="function"><name>PersonalInformation_addAccountServiceHomepage</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac131d8bd8df53e89fa1256a0be45358d" kind="function"><name>PersonalInformation_addFoafBlank</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a31ecc9357011658fa6785451886a0b64" kind="function"><name>PersonalInformation_addFoafUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a692328b7caa5527bf1f5ff86e7077637" kind="function"><name>PersonalInformation_addFoafLiteral</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6edcf0c8af06246bb3344ff3f4ea7a21" kind="function"><name>PersonalInformation_addFoaf</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aba8bceb7297f33061319f06af29d14ec" kind="function"><name>PersonalInformation_getMetaid</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac71f84e1edff4f5023e02a607e9809f4" kind="function"><name>PersonalInformation_setMetaid</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a7a1a593f975f9b4c81a6f4b762eacb97" kind="function"><name>PersonalInformation_getModelUri</name></member>
-    <member refid="OmexMetaCApi_8cpp_1af1b8bfaffdb6766ddaf1f52785436980" kind="function"><name>PersonalInformation_setModelUri</name></member>
-    <member refid="OmexMetaCApi_8h_1ae46820e98812e5f7e15fba6c2fa5ea55" kind="function"><name>free_c_char_star_star</name></member>
-    <member refid="OmexMetaCApi_8h_1ada1c39e1f5456668968eabe1a0ff33ec" kind="function"><name>_func_that_returns_dynamic_alloc_char_star_star</name></member>
-    <member refid="OmexMetaCApi_8h_1a273e4922a97b016e54bbb441c23de885" kind="function"><name>free_world</name></member>
-    <member refid="OmexMetaCApi_8h_1a5d07b1a3b03615813dbb9efb62efda45" kind="function"><name>RDF_getBaseUri</name></member>
-    <member refid="OmexMetaCApi_8h_1a64ae848c4570f1efb4d47e795b76adcd" kind="function"><name>RDF_setBaseUri</name></member>
-    <member refid="Predicate_8cpp_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
+    <member refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kind="enum"><name>AnnotationType</name></member>
+    <member refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7a3824ab8797b64bb683236b279cc19008" kind="enumvalue"><name>PHYSICAL_ENTITY</name></member>
+    <member refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7a6c3faf0bc18122cbbc7179c788ffb072" kind="enumvalue"><name>PHYSICAL_PROCESS</name></member>
+    <member refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7a6bde31f12751f0681a92d77283ff6bb1" kind="enumvalue"><name>PHYSICAL_FORCE</name></member>
+    <member refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7aed56225d3530aa68f5f9000d5a25712b" kind="enumvalue"><name>SINGULAR</name></member>
+    <member refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7a986abc31d579b2dbb50e64fe50dfc49e" kind="enumvalue"><name>UNKNOWN</name></member>
+    <member refid="namespaceomexmeta_1a6d848ffddcd75e64efafb46013b0e6fb" kind="enum"><name>OmexMetaXmlType</name></member>
+    <member refid="namespaceomexmeta_1a6d848ffddcd75e64efafb46013b0e6fba3262bd1f62095e6bb270ecd33a5e3a6a" kind="enumvalue"><name>OMEXMETA_TYPE_SBML</name></member>
+    <member refid="namespaceomexmeta_1a6d848ffddcd75e64efafb46013b0e6fba230cbeb9caea8d8070c9a18b61dec5e1" kind="enumvalue"><name>OMEXMETA_TYPE_CELLML</name></member>
+    <member refid="namespaceomexmeta_1a6d848ffddcd75e64efafb46013b0e6fba96b5aed9b5170f80d6e57867a8f84671" kind="enumvalue"><name>OMEXMETA_TYPE_UNKNOWN</name></member>
+    <member refid="namespaceomexmeta_1a6d848ffddcd75e64efafb46013b0e6fba1dd3c4fcdae0a5b5ba6f8c155e95ad13" kind="enumvalue"><name>OMEXMETA_TYPE_NOTSET</name></member>
+    <member refid="namespaceomexmeta_1ad9c3f36d18cb218950d2780f2d4dc0a0" kind="typedef"><name>NamespaceMap</name></member>
+    <member refid="namespaceomexmeta_1a602c5d1094d065496b79af07e9a3b28a" kind="typedef"><name>XmlAssistantPtr</name></member>
+    <member refid="namespaceomexmeta_1a90b8619f565d06ee3a8fa4d1cfda893c" kind="typedef"><name>ParticipantPtr</name></member>
+    <member refid="namespaceomexmeta_1a1c258e53336c37fdc17cf08a394f5198" kind="typedef"><name>Sources</name></member>
+    <member refid="namespaceomexmeta_1ac2d6392fea1506f1d5d13ebb155db3df" kind="typedef"><name>Mediators</name></member>
+    <member refid="namespaceomexmeta_1a57d60796797e34581e3c1780985f0b59" kind="typedef"><name>Sinks</name></member>
+    <member refid="namespaceomexmeta_1aeb3054fca8bdfaeeae91c2f3e1bd8c27" kind="typedef"><name>PhysicalPhenomenonPtr</name></member>
+    <member refid="namespaceomexmeta_1a2edd0078a7f3b226df6fb3382d76471a" kind="typedef"><name>PredicatePtr</name></member>
+    <member refid="namespaceomexmeta_1af916f97aa87900541cf46ca66139fc14" kind="typedef"><name>Predicates</name></member>
+    <member refid="namespaceomexmeta_1a84ba746aac1e9ee5c7256a2f2f393a41" kind="typedef"><name>PredicatePtrs</name></member>
+    <member refid="namespaceomexmeta_1a08a1cea39a93f919e8c481f1307e9d64" kind="typedef"><name>ResultsMap</name></member>
+    <member refid="namespaceomexmeta_1a211f941200e84d6258b6980a1101a978" kind="typedef"><name>Resources</name></member>
+    <member refid="namespaceomexmeta_1a55c310aac91280285453df83fafa7d69" kind="typedef"><name>Subjects</name></member>
+    <member refid="namespaceomexmeta_1a7fc6fa4ba32424705fe4953ee297a795" kind="typedef"><name>SingularAnnotation</name></member>
+    <member refid="namespaceomexmeta_1a866d550d1c1d6bdadd778a73fef571bb" kind="typedef"><name>SharedTripleVector</name></member>
+    <member refid="namespaceomexmeta_1a0591b044477ac1101740fd7db67088bc" kind="typedef"><name>TripleVector</name></member>
+    <member refid="namespaceomexmeta_1abd7043e0483a7393bd76a7469580d555" kind="function"><name>free_c_char_star</name></member>
+    <member refid="namespaceomexmeta_1a1d7bca5e4a24d7482048bd28d901e502" kind="function"><name>_func_that_returns_dynamic_alloc_str</name></member>
+    <member refid="namespaceomexmeta_1ad25c02c4a271f0b7c5585d0cb241f102" kind="function"><name>RDF_new</name></member>
+    <member refid="namespaceomexmeta_1aa9f83a736bf28d204b9f485f09e59c59" kind="function"><name>RDF_delete</name></member>
+    <member refid="namespaceomexmeta_1a3df47da280fd76301f4db3ff70225457" kind="function"><name>RDF_fromString</name></member>
+    <member refid="namespaceomexmeta_1a81b2c4407acfd8c80be70cb0ab34c8dc" kind="function"><name>RDF_addFromString</name></member>
+    <member refid="namespaceomexmeta_1abb12dce1dc0ca915b778843360ff6844" kind="function"><name>RDF_fromUri</name></member>
+    <member refid="namespaceomexmeta_1adec4d2ab4b51525933fe7afde29b42d3" kind="function"><name>RDF_addFromUri</name></member>
+    <member refid="namespaceomexmeta_1a6c414c3b4ae513bca35a9608a9fd752d" kind="function"><name>RDF_fromFile</name></member>
+    <member refid="namespaceomexmeta_1ad9bcbd4e6b1f93d5d4c8645a37a823cd" kind="function"><name>RDF_addFromFile</name></member>
+    <member refid="namespaceomexmeta_1a32f9114a274297acbc44bac3c3ee52a8" kind="function"><name>RDF_toString</name></member>
+    <member refid="namespaceomexmeta_1a7d21ddd436c1a145123bdfeaeaa40663" kind="function"><name>RDF_toFile</name></member>
+    <member refid="namespaceomexmeta_1ad8f80e096c07f028d5c4a281a3e8f093" kind="function"><name>RDF_query</name></member>
+    <member refid="namespaceomexmeta_1acbf6fdf01b402172f7434fa7ec9e057b" kind="function"><name>RDF_size</name></member>
+    <member refid="namespaceomexmeta_1a934e6c245b9ad896f10e177865095c3f" kind="function"><name>RDF_setRepositoryUri</name></member>
+    <member refid="namespaceomexmeta_1a9c1dcbcf82b851e5998f24b10a08566a" kind="function"><name>RDF_setArchiveUri</name></member>
+    <member refid="namespaceomexmeta_1ae4867650bb4affd1a0ece773b85f125b" kind="function"><name>RDF_setModelUri</name></member>
+    <member refid="namespaceomexmeta_1ad459c70147e6e1f0264b1c24b516fd0f" kind="function"><name>RDF_getRepositoryUri</name></member>
+    <member refid="namespaceomexmeta_1ae273ee890977b35fa8b4fdea9ccd1297" kind="function"><name>RDF_getArchiveUri</name></member>
+    <member refid="namespaceomexmeta_1ad92ca3d3ae83ad7d46027a6a399d21e9" kind="function"><name>RDF_getModelUri</name></member>
+    <member refid="namespaceomexmeta_1adc76b37982d7d44b3e48f3686064a966" kind="function"><name>RDF_getLocalUri</name></member>
+    <member refid="namespaceomexmeta_1a32e6dbf136ae77858262cab19093a6a1" kind="function"><name>RDF_toEditor</name></member>
+    <member refid="namespaceomexmeta_1a3c05babeced84a464bcf29fb618230b4" kind="function"><name>Editor_addNamespace</name></member>
+    <member refid="namespaceomexmeta_1a5eb4a4857c135a1aa5bd5c0a7eff6432" kind="function"><name>Editor_addSingleAnnotation</name></member>
+    <member refid="namespaceomexmeta_1ac76722abeb1ceac922b1493a65c8de1c" kind="function"><name>Editor_addPhysicalEntity</name></member>
+    <member refid="namespaceomexmeta_1a26a63ff240f5400dc1f05c2c449f6e51" kind="function"><name>Editor_addPhysicalProcess</name></member>
+    <member refid="namespaceomexmeta_1a25c470e9dd1cd508e103c687d08fea07" kind="function"><name>Editor_addPhysicalForce</name></member>
+    <member refid="namespaceomexmeta_1a5da4e46f21b19e38fad07c06ad668efd" kind="function"><name>Editor_addPersonalInformation</name></member>
+    <member refid="namespaceomexmeta_1a9cd0c78c5bf996caa79555b81bbfef1b" kind="function"><name>Editor_removeSingleAnnotation</name></member>
+    <member refid="namespaceomexmeta_1ad83a65f14c1035b46cd81f0a963da6e4" kind="function"><name>Editor_removePhysicalEntity</name></member>
+    <member refid="namespaceomexmeta_1a8b8f9382a445fca997eb8db8963cce4e" kind="function"><name>Editor_removePhysicalProcess</name></member>
+    <member refid="namespaceomexmeta_1a5d9f7c0c294472359ce3d70db5cb1035" kind="function"><name>Editor_removePhysicalForce</name></member>
+    <member refid="namespaceomexmeta_1aac121eb946b9380ca162061ab725dad0" kind="function"><name>Editor_removePersonalInformation</name></member>
+    <member refid="namespaceomexmeta_1a8127880005ca59e64ae81fe57cd824fa" kind="function"><name>Editor_checkValidMetaid</name></member>
+    <member refid="namespaceomexmeta_1aec2f4973721ccc82ae54980e951f7565" kind="function"><name>Editor_getMetaId</name></member>
+    <member refid="namespaceomexmeta_1a6a97e52deef1b7abde9b4491de14f68b" kind="function"><name>Editor_getNumMetaIds</name></member>
+    <member refid="namespaceomexmeta_1a96e4c18dc172184811a0bd6468d00b35" kind="function"><name>Editor_getXml</name></member>
+    <member refid="namespaceomexmeta_1ade855a67befd16925ed583d228606d43" kind="function"><name>Editor_delete</name></member>
+    <member refid="namespaceomexmeta_1ad0a68ce47a12363204bde49b838cd5d0" kind="function"><name>Editor_getArchiveUri</name></member>
+    <member refid="namespaceomexmeta_1a28c678eeb0c4457bbbd671eb2dac73d0" kind="function"><name>Editor_getLocalUri</name></member>
+    <member refid="namespaceomexmeta_1aaddb4c2e6bc636650b20c2eb526ff691" kind="function"><name>Editor_getModelUri</name></member>
+    <member refid="namespaceomexmeta_1afc5399a7743a7ddbb79a903ca5676170" kind="function"><name>Editor_getRepositoryUri</name></member>
+    <member refid="namespaceomexmeta_1a7b612eade9eb34450ea88ef85657c838" kind="function"><name>Editor_addCreator</name></member>
+    <member refid="namespaceomexmeta_1a86cf5fb8f670b0b648162ddfbe5d8a02" kind="function"><name>Editor_addCurator</name></member>
+    <member refid="namespaceomexmeta_1a5f46902a5da35486989b7e74c42c451a" kind="function"><name>Editor_addTaxon</name></member>
+    <member refid="namespaceomexmeta_1a8a2613943915dc228a4b53de2423ba62" kind="function"><name>Editor_addPubmed</name></member>
+    <member refid="namespaceomexmeta_1a117e6430247224600755a3c3bffb0632" kind="function"><name>Editor_addDescription</name></member>
+    <member refid="namespaceomexmeta_1a438d94f9c2af78f41cfb28d92da25bd5" kind="function"><name>Editor_addDateCreated</name></member>
+    <member refid="namespaceomexmeta_1a6bd3edcdc8e62d3da2ff9328280e2612" kind="function"><name>Editor_addParentModel</name></member>
+    <member refid="namespaceomexmeta_1a56234965820e6e731cb377af949585a3" kind="function"><name>SingularAnnotation_new</name></member>
+    <member refid="namespaceomexmeta_1a6c1d37ce851c1853f83a3622a5bd00bc" kind="function"><name>SingularAnnotation_delete</name></member>
+    <member refid="namespaceomexmeta_1ad8b1a3d657ffffadcef2d723044c18e9" kind="function"><name>free_singular_annotation</name></member>
+    <member refid="namespaceomexmeta_1aba899b6a9b09d4d747dae983ead4eb3c" kind="function"><name>SingularAnnotation_setAbout</name></member>
+    <member refid="namespaceomexmeta_1aeedfc49054398f038e3e5dc431463ccd" kind="function"><name>SingularAnnotation_setPredicate</name></member>
+    <member refid="namespaceomexmeta_1abea6cebaf66d178b8cca6dd636bd47d0" kind="function"><name>SingularAnnotation_setPredicateFromUri</name></member>
+    <member refid="namespaceomexmeta_1a6b829135446cd1744f20a1ce3e8e4215" kind="function"><name>SingularAnnotation_setResourceLiteral</name></member>
+    <member refid="namespaceomexmeta_1ab3fbe78f87d3275c23f10712b1a77f87" kind="function"><name>SingularAnnotation_setResourceUri</name></member>
+    <member refid="namespaceomexmeta_1a72ef479adb05bad7b91b332fbbc3c886" kind="function"><name>SingularAnnotation_setResourceBlank</name></member>
+    <member refid="namespaceomexmeta_1aa2be46b784b2c7840ae58087bfeccd68" kind="function"><name>SingularAnnotation_getAbout</name></member>
+    <member refid="namespaceomexmeta_1af1fb5e2e7cad553b230addfb56a8bdbf" kind="function"><name>SingularAnnotation_getPredicate</name></member>
+    <member refid="namespaceomexmeta_1a886b19fc7c95cebd0a82ae2c9f36ab68" kind="function"><name>SingularAnnotation_getResource</name></member>
+    <member refid="namespaceomexmeta_1ab75e894bdc1440c5e9af28156c1083be" kind="function"><name>SingularAnnotation_str</name></member>
+    <member refid="namespaceomexmeta_1a3a7a18de6e1b6c264c3ee22cd289d243" kind="function"><name>PhysicalEntity_new</name></member>
+    <member refid="namespaceomexmeta_1a2468442b832806a57f5891c792c293d1" kind="function"><name>PhysicalEntity_delete</name></member>
+    <member refid="namespaceomexmeta_1a1003038196d64626a43affdaae4f10c7" kind="function"><name>PhysicalEntity_freeAll</name></member>
+    <member refid="namespaceomexmeta_1a37974ee43bc12c63dc5b1e7f451b6e9c" kind="function"><name>PhysicalEntity_setPhysicalProperty</name></member>
+    <member refid="namespaceomexmeta_1ac44f68863532b3aa719a2cb9f0a1f73f" kind="function"><name>PhysicalEntity_setIdentity</name></member>
+    <member refid="namespaceomexmeta_1abba48577926517d7d484b6b3b67fffb2" kind="function"><name>PhysicalEntity_addLocation</name></member>
+    <member refid="namespaceomexmeta_1a7f59e7b6f143fc61441cfb435262e1cb" kind="function"><name>PhysicalEntity_getAbout</name></member>
+    <member refid="namespaceomexmeta_1aaa3ea01b3791ca3f7eb417457b07db6b" kind="function"><name>PhysicalEntity_getIdentity</name></member>
+    <member refid="namespaceomexmeta_1acc3cb121e83fea6627185101e64db8e9" kind="function"><name>PhysicalEntity_getNumLocations</name></member>
+    <member refid="namespaceomexmeta_1a63e0d41567ae512005d7c9e50037e44e" kind="function"><name>PhysicalEntity_getLocation</name></member>
+    <member refid="namespaceomexmeta_1a2ca2e5f41e156dc785bb858f82a088d4" kind="function"><name>PhysicalEntity_str</name></member>
+    <member refid="namespaceomexmeta_1a4b7cef4fcdbd4502c94b18da2f85470f" kind="function"><name>PhysicalProcess_new</name></member>
+    <member refid="namespaceomexmeta_1a97146d9b855c53650e54c471f053a4dc" kind="function"><name>PhysicalProcess_delete</name></member>
+    <member refid="namespaceomexmeta_1a3ccca8297fc991baf57065570938ed84" kind="function"><name>PhysicalProcess_freeAll</name></member>
+    <member refid="namespaceomexmeta_1ae0e715da1275124448d22005f2848722" kind="function"><name>PhysicalProcess_setPhysicalProperty</name></member>
+    <member refid="namespaceomexmeta_1a08408524a5a4f75ae4b0c1c8cad6c28e" kind="function"><name>PhysicalProcess_addSource</name></member>
+    <member refid="namespaceomexmeta_1a68d8b919e923231d8a17e3506dca393b" kind="function"><name>PhysicalProcess_addSink</name></member>
+    <member refid="namespaceomexmeta_1a1554e14b6f4401341fa0e7f23f6d4c90" kind="function"><name>PhysicalProcess_addMediator</name></member>
+    <member refid="namespaceomexmeta_1ae79e87b864da4b401488f522bb6734e7" kind="function"><name>PhysicalProcess_str</name></member>
+    <member refid="namespaceomexmeta_1a738e9d39898919fb01bd9a7ed5af3687" kind="function"><name>PhysicalProcess_getAbout</name></member>
+    <member refid="namespaceomexmeta_1aa7371fdf91f4c6c120e4559b23ad3585" kind="function"><name>PhysicalProcess_getNumSources</name></member>
+    <member refid="namespaceomexmeta_1aaf4162aa78c2c7f73449705a3e0fc951" kind="function"><name>PhysicalProcess_getNumSinks</name></member>
+    <member refid="namespaceomexmeta_1a7ad65f0ec2f5c8433ebc126c75779520" kind="function"><name>PhysicalProcess_getNumMediators</name></member>
+    <member refid="namespaceomexmeta_1a20e720c23e2368bf19c316971ebeafd7" kind="function"><name>PhysicalForce_new</name></member>
+    <member refid="namespaceomexmeta_1aad5757f8832cf5fcaf546cec1f97af82" kind="function"><name>PhysicalForce_delete</name></member>
+    <member refid="namespaceomexmeta_1ac9903c88bb127f778476bdffe075ed8a" kind="function"><name>PhysicalForce_freeAll</name></member>
+    <member refid="namespaceomexmeta_1ae66097c6bfe2f6370bcb614a3d384a41" kind="function"><name>PhysicalForce_addSource</name></member>
+    <member refid="namespaceomexmeta_1a75abc8bc74d8bacefd65935f49210343" kind="function"><name>PhysicalForce_addSink</name></member>
+    <member refid="namespaceomexmeta_1a3942ac5b5d7393eea5f0644c2f31cbc5" kind="function"><name>PhysicalForce_setPhysicalProperty</name></member>
+    <member refid="namespaceomexmeta_1aae66100eb98adbc738a6476dcb018e8f" kind="function"><name>PhysicalForce_getNumSources</name></member>
+    <member refid="namespaceomexmeta_1a1bec2b6579c0eba8a719f68d39b09c2e" kind="function"><name>PhysicalForce_getNumSinks</name></member>
+    <member refid="namespaceomexmeta_1a8a3f3cf23e3c5253f0a92f6374a2059b" kind="function"><name>PhysicalForce_str</name></member>
+    <member refid="namespaceomexmeta_1a4428467ced5ab11c48a3b16284048a36" kind="function"><name>PhysicalForce_getAbout</name></member>
+    <member refid="namespaceomexmeta_1a119fbc0317a5af631e7f68caece8c70b" kind="function"><name>PersonalInformation_new</name></member>
+    <member refid="namespaceomexmeta_1a5dcd490456bde3f95069f91e65c2b042" kind="function"><name>PersonalInformation_delete</name></member>
+    <member refid="namespaceomexmeta_1a9db9c9c591926b3e9061b2ca7cb4541f" kind="function"><name>PersonalInformation_getLocalUri</name></member>
+    <member refid="namespaceomexmeta_1af1ed67bfbe5c55b04c5164030f9f5fef" kind="function"><name>PersonalInformation_setLocalUri</name></member>
+    <member refid="namespaceomexmeta_1a46f59a8d3104d824826d5dd104d55393" kind="function"><name>PersonalInformation_addCreator</name></member>
+    <member refid="namespaceomexmeta_1af1ab848f3e3f81ab4dbc822c84aab92e" kind="function"><name>PersonalInformation_addName</name></member>
+    <member refid="namespaceomexmeta_1a30bf0fbfd78a23a0e2d87e1cb981cc8a" kind="function"><name>PersonalInformation_addMbox</name></member>
+    <member refid="namespaceomexmeta_1a75306b1329c755b124ad9b40f147abdc" kind="function"><name>PersonalInformation_addAccountName</name></member>
+    <member refid="namespaceomexmeta_1ad597791b54c6f08a3572033aab6487dd" kind="function"><name>PersonalInformation_addAccountServiceHomepage</name></member>
+    <member refid="namespaceomexmeta_1ac131d8bd8df53e89fa1256a0be45358d" kind="function"><name>PersonalInformation_addFoafBlank</name></member>
+    <member refid="namespaceomexmeta_1a31ecc9357011658fa6785451886a0b64" kind="function"><name>PersonalInformation_addFoafUri</name></member>
+    <member refid="namespaceomexmeta_1a692328b7caa5527bf1f5ff86e7077637" kind="function"><name>PersonalInformation_addFoafLiteral</name></member>
+    <member refid="namespaceomexmeta_1a6edcf0c8af06246bb3344ff3f4ea7a21" kind="function"><name>PersonalInformation_addFoaf</name></member>
+    <member refid="namespaceomexmeta_1aba8bceb7297f33061319f06af29d14ec" kind="function"><name>PersonalInformation_getMetaid</name></member>
+    <member refid="namespaceomexmeta_1ac71f84e1edff4f5023e02a607e9809f4" kind="function"><name>PersonalInformation_setMetaid</name></member>
+    <member refid="namespaceomexmeta_1a7a1a593f975f9b4c81a6f4b762eacb97" kind="function"><name>PersonalInformation_getModelUri</name></member>
+    <member refid="namespaceomexmeta_1af1b8bfaffdb6766ddaf1f52785436980" kind="function"><name>PersonalInformation_setModelUri</name></member>
+    <member refid="namespaceomexmeta_1ae46820e98812e5f7e15fba6c2fa5ea55" kind="function"><name>free_c_char_star_star</name></member>
+    <member refid="namespaceomexmeta_1ada1c39e1f5456668968eabe1a0ff33ec" kind="function"><name>_func_that_returns_dynamic_alloc_char_star_star</name></member>
+    <member refid="namespaceomexmeta_1a273e4922a97b016e54bbb441c23de885" kind="function"><name>free_world</name></member>
+    <member refid="namespaceomexmeta_1a5d07b1a3b03615813dbb9efb62efda45" kind="function"><name>RDF_getBaseUri</name></member>
+    <member refid="namespaceomexmeta_1a64ae848c4570f1efb4d47e795b76adcd" kind="function"><name>RDF_setBaseUri</name></member>
+    <member refid="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
   </compound>
   <compound refid="namespaceredland" kind="namespace"><name>redland</name>
     <member refid="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" kind="function"><name>toIOStream</name></member>
@@ -1354,5 +1370,7 @@
   <compound refid="dir_e793c0dc4ccd224149063390ee134027" kind="dir"><name>src/redland/RedlandWrapper/src</name>
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="_2mnt_2d_2libOmexMeta_2src_2omexmeta_2Predicate_8h-example" kind="example"><name>/mnt/d/libOmexMeta/src/omexmeta/Predicate.h</name>
   </compound>
 </doxygenindex>

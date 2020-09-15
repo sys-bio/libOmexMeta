@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['editor',['Editor',['../classomexmeta_1_1Editor.html',1,'omexmeta']]],
-  ['elementextractor',['ElementExtractor',['../classomexmeta_1_1ElementExtractor.html',1,'omexmeta']]],
-  ['exception',['Exception',['../classomexmeta_1_1Exception.html',1,'omexmeta::Exception'],['../classException.html',1,'Exception'],['../classomexmeta_1_1Exception.html#ad09e2a190a245199974678e2790e81ff',1,'omexmeta::Exception::Exception(const char *message)'],['../classomexmeta_1_1Exception.html#ac50b0a25504303cc1a4a1a20de0127eb',1,'omexmeta::Exception::Exception(std::string message)'],['../classException.html#ac541ead5c20548813d7dea73c28c7fab',1,'Exception::Exception(const char *message)'],['../classException.html#a0b1693d4d5007815322070c907ee5cc2',1,'Exception::Exception(std::string message)']]]
+  ['dcterm',['DCTerm',['../classomexmeta_1_1DCTerm.html',1,'omexmeta']]],
+  ['debugoutput',['DebugOutput',['../classdbg_1_1DebugOutput.html',1,'dbg']]],
+  ['detector',['detector',['../structdbg_1_1detail__detector_1_1detector.html',1,'dbg::detail_detector']]],
+  ['detector_3c_20default_2c_20void_5ft_3c_20op_3c_20args_2e_2e_2e_20_3e_20_3e_2c_20op_2c_20args_2e_2e_2e_20_3e',['detector&lt; Default, void_t&lt; Op&lt; Args... &gt; &gt;, Op, Args... &gt;',['../structdbg_1_1detail__detector_1_1detector_3_01Default_00_01void__t_3_01Op_3_01Args_8_8_8_01_4_01_4_00_01Op_00_01Args_8_8_8_01_4.html',1,'dbg::detail_detector']]],
+  ['download',['download',['../classomexmeta_1_1CurlGet.html#a52eaa2b1179cf49ec298022011b2477c',1,'omexmeta::CurlGet::download()'],['../classomexmeta_1_1OmexMetaUtils.html#a046b603d6308242b70b55de6cb72325c',1,'omexmeta::OmexMetaUtils::download()']]]
 ];

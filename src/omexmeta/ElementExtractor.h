@@ -16,7 +16,7 @@
 #include <algorithm>
 
 namespace omexmeta {
-    /*
+    /**
      * @brief extract all elements from a document with name and put into a list
      */
     class ElementExtractor {

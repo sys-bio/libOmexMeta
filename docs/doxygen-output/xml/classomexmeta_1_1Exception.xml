@@ -109,60 +109,60 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="53">
+      <node id="57">
         <label>omexmeta::NotImplementedException</label>
         <link refid="classomexmeta_1_1NotImplementedException"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="54">
+      <node id="58">
         <label>omexmeta::NullPointerException</label>
         <link refid="classomexmeta_1_1NullPointerException"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="49">
+      <node id="53">
         <label>exception</label>
       </node>
-      <node id="52">
+      <node id="56">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>omexmeta::ValueException</label>
+        <link refid="classomexmeta_1_1ValueException"/>
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
       </node>
       <node id="55">
-        <label>omexmeta::ValueException</label>
-        <link refid="classomexmeta_1_1ValueException"/>
-        <childnode refid="48" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="51">
         <label>omexmeta::InappropriateResourceException</label>
         <link refid="classomexmeta_1_1InappropriateResourceException"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="50">
+      <node id="54">
         <label>omexmeta::AnnotationBuilderException</label>
         <link refid="classomexmeta_1_1AnnotationBuilderException"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="48">
+      <node id="52">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="49" relation="public-inheritance">
+        <childnode refid="53" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="57">
+      <node id="61">
         <label>exception</label>
       </node>
-      <node id="56">
+      <node id="60">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="57" relation="public-inheritance">
+        <childnode refid="61" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

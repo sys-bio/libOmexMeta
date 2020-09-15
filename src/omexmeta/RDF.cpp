@@ -120,7 +120,7 @@ namespace omexmeta {
 
     }
 
-    /*
+    /**
      * @brief parse RDF directly from a uri
      * @param uri_string the uri to download containing RDF
      * @param format the format that the RDF is in
@@ -144,7 +144,7 @@ namespace omexmeta {
         return rdf;
     }
 
-    /*
+    /**
      * @brief non-static counterpart of RDF::fromUri. Downloads and
      * parses rdf from a URI.
      *
@@ -197,7 +197,7 @@ namespace omexmeta {
         extractSemanticInformationFromSBML(filename);
     }
 
-    /*
+    /**
      * @brief compared namespaces seen with namespaces
      * known and ensures models that use a known namespace
      * use that namespace.

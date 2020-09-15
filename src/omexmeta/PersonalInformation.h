@@ -11,7 +11,7 @@
 #include <memory>
 
 namespace omexmeta {
-    /*
+    /**
      * @brief add personal information to the model as a
      * composite annotation.
      *

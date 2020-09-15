@@ -75,25 +75,25 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="64">
+      <node id="68">
         <label>omexmeta::Foaf</label>
         <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="65" relation="public-inheritance">
+        <childnode refid="69" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="65">
+      <node id="69">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="66">
+      <node id="70">
         <label>omexmeta::Foaf</label>
         <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="67" relation="public-inheritance">
+        <childnode refid="71" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="67">
+      <node id="71">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>

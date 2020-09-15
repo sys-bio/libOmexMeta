@@ -140,8 +140,8 @@ namespace omexmeta {
     }
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
-        /*
-   * Implementation note: This method generates triples on the
+        /**
+     * Implementation note: This method generates triples on the
    * fly and then frees. This was implemented this way as it helped avoid
    * memory issues but perhaps a better implementation would be similar to
    * that in the PersonalInformation class.
@@ -183,8 +183,8 @@ namespace omexmeta {
                     "NullPointerException: Editor::addPhysicalEntity() "
                     "physicalEntity::subject_ (i.e. about) node is empty");
         }
-        /*
-   * Because we now want to use @prefix local for the
+        /**
+     * Because we now want to use @prefix local for the
    * about section, we need to inject it here,
    * if not already formatted properly.
    */
@@ -203,8 +203,8 @@ namespace omexmeta {
                     "PhysicalProcess::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalProcess.getAbout());
-        /*
-   * Because we now want to use @prefix Omex for the
+        /**
+     * Because we now want to use @prefix Omex for the
    * about section, we need to inject it here,
    * if not already formatted properly.
    */
@@ -222,8 +222,8 @@ namespace omexmeta {
                     "PhysicalForce::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalForce.getAbout());
-        /*
-   * Because we now want to use @prefix local for the
+        /**
+     * Because we now want to use @prefix local for the
    * about section, we need to inject it here,
    * if not already formatted properly.
    */

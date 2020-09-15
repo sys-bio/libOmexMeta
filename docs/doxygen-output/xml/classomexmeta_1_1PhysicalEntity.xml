@@ -3,6 +3,7 @@
   <compounddef id="classomexmeta_1_1PhysicalEntity" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalEntity</compoundname>
     <basecompoundref refid="classomexmeta_1_1PhysicalPhenomenon" prot="public" virt="non-virtual">omexmeta::PhysicalPhenomenon</basecompoundref>
+    <includes refid="PhysicalEntity_8h" local="no">PhysicalEntity.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalEntity_1ac5f674248ef40f86df4a5160c2d193e3" prot="private" static="no" mutable="no">
         <type><ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref></type>
@@ -51,9 +52,9 @@
         <argsstring>()=delete</argsstring>
         <name>PhysicalEntity</name>
         <briefdescription>
-        </briefdescription>
+<para>default constructor for <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> you will get an error, because there will be no model assicated with <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. Instead, always instantiate a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> from the <ref refid="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" kindref="member">Editor::addPhysicalEntity()</ref> method. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="45" column="1"/>
@@ -88,9 +89,47 @@
           <declname>is_part_of</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for instantiating a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the model being used by the current rdf graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>about</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The subject portion of the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> representing the metaid for the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>physicalProperty</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A term from the ontology of physical for biology of type <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>is</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;what&quot; portion of a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>is_part_of</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;where&quot; portion of the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<verbatim>Users should not need to use this constructor directly as it is embedded in the
+builder interface. The @param is_part_of parameter is actually a std::vector of
+Resource objects. It can be as long as needed.</verbatim> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="60" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="9" bodyend="12"/>
@@ -114,9 +153,9 @@
         <argsstring>()</argsstring>
         <name>free</name>
         <briefdescription>
-        </briefdescription>
+<para>free resources uses by <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> objects are owned either by the caller or by a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object, depending on whether you have &quot;given&quot; the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> to a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object by calling &quot;str&quot; or &quot;toTriples&quot;. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="72" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="14" bodyend="26"/>
@@ -131,9 +170,17 @@
           <declname>model</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the librdf_model object in use. Passed down from <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> class during instantiation.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="classThis" kindref="compound">This</ref> alternative constructor is used when users use the builder interface (which should actually be most of the time). The <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> is instantiated with only the model to allow for a better way of collecting necessary information from the user. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="84" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="28" bodyend="28"/>
@@ -156,9 +203,24 @@
           <declname>local_uri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the librdf_model object in use. Passed down from <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> class during instantiation. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>model_uri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the current localName argument. Passed down from <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="classThis" kindref="compound">This</ref> alternative constructor is used when users use the builder interface (which should actually be most of the time). The <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> is instantiated with only the model to allow for a better way of collecting necessary information from the user. The <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> also needs access to the model_uri, which we pass here. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="99" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="30" bodyend="31"/>
@@ -170,9 +232,10 @@
         <name>toTriples</name>
         <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273">toTriples</reimplements>
         <briefdescription>
-        </briefdescription>
+<para>convert <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> to a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object, which can then be passed to a model via the <ref refid="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" kindref="member">Editor::addPhysicalEntity</ref> method. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> objects containing the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref></para></simplesect>
+When using &quot;toTriples&quot; you are giving ownership of the nodes used by <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> to the returned <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object, which automatically cleans up after itself in its destructor. If you instantiate a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> and do not call toTriples (which will not be often), then the caller is responsible for calling <ref refid="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba" kindref="member">PhysicalEntity::free</ref> when finished. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="114" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="69" bodyend="147"/>
@@ -183,9 +246,10 @@
         <argsstring>() const</argsstring>
         <name>getIdentityResource</name>
         <briefdescription>
-        </briefdescription>
+<para>return the IdentityResource in use. I.e. the &quot;what&quot; portion of the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the identity <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="121" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="61" bodyend="63"/>
@@ -196,9 +260,10 @@
         <argsstring>() const</argsstring>
         <name>getLocationResources</name>
         <briefdescription>
-        </briefdescription>
+<para>return a vector of resources representing the &quot;where&quot; part of the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>vector of <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> objects representing anatomical location of physical entity </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="128" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="65" bodyend="67"/>
@@ -217,9 +282,26 @@
           <declname>physicalProperty</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>sets the physical property for a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> instance. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalProperty</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a string representing the OPB term used by the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this Physical entity. Allows chaining together builder commands.</para></simplesect>
+The OBP argument requires a string of the form &quot;obp:opbxxx&quot; where &quot;xxx&quot; is the id for the OPB term. An instance of <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> is instantiated with <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalProperty</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>as its value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="138" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="39" bodyend="43"/>
@@ -234,9 +316,10 @@
           <declname>physicalProperty</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>sets the physical property for a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> instance </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a reference to this Physical entity. Allows chaining together builder commands.</para></simplesect>
+Prefer the alternative setPhysicalProperty instance, since you do not need to instantiate the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> yourself.</para><para>For developers. Consider removing. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="149" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="33" bodyend="36"/>
@@ -326,35 +409,35 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>The <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> type of <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="153">
+      <node id="157">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
       </node>
-      <node id="152">
+      <node id="156">
         <label>omexmeta::PhysicalEntity</label>
         <link refid="classomexmeta_1_1PhysicalEntity"/>
-        <childnode refid="153" relation="public-inheritance">
+        <childnode refid="157" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="156">
+      <node id="160">
         <label>omexmeta::PhysicalProperty</label>
         <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
-      <node id="155">
+      <node id="159">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-        <childnode refid="156" relation="usage">
+        <childnode refid="160" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
       </node>
-      <node id="154">
+      <node id="158">
         <label>omexmeta::PhysicalEntity</label>
         <link refid="classomexmeta_1_1PhysicalEntity"/>
-        <childnode refid="155" relation="public-inheritance">
+        <childnode refid="159" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

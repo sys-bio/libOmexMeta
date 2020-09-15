@@ -60,7 +60,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>omexmeta</b></li><li class="navelem"><a class="el" href="classomexmeta_1_1MetaID.html">MetaID</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceomexmeta.html">omexmeta</a></li><li class="navelem"><a class="el" href="classomexmeta_1_1MetaID.html">MetaID</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,11 +72,16 @@ $(function() {
 <div class="title">omexmeta::MetaID Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>an ID generator  
+ <a href="classomexmeta_1_1MetaID.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="MetaID_8h_source.html">MetaID.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af5cc076ccd6db8c411de98902d2a1218"><td class="memItemLeft" align="right" valign="top"><a id="af5cc076ccd6db8c411de98902d2a1218"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MetaID</b> (std::string base, long start_number, int num_digits=4)</td></tr>
+<tr class="memitem:af5cc076ccd6db8c411de98902d2a1218"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1MetaID.html#af5cc076ccd6db8c411de98902d2a1218">MetaID</a> (std::string base, long start_number, int num_digits=4)</td></tr>
+<tr class="memdesc:af5cc076ccd6db8c411de98902d2a1218"><td class="mdescLeft">&#160;</td><td class="mdescRight">an ID generator used when creating IDs in the <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml. ">Editor</a>.  <a href="#af5cc076ccd6db8c411de98902d2a1218">More...</a><br /></td></tr>
 <tr class="separator:af5cc076ccd6db8c411de98902d2a1218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d6466efca8d9e931ca8c440c0809584"><td class="memItemLeft" align="right" valign="top"><a id="a3d6466efca8d9e931ca8c440c0809584"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classomexmeta_1_1MetaID.html">MetaID</a> &amp;rhs) const</td></tr>
@@ -84,22 +89,173 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a25af693b284b0110914c537b48b20937"><td class="memItemLeft" align="right" valign="top"><a id="a25af693b284b0110914c537b48b20937"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1MetaID.html">MetaID</a> &amp;rhs) const</td></tr>
 <tr class="separator:a25af693b284b0110914c537b48b20937"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95e709df9b0ee47473bc40012738cdc8"><td class="memItemLeft" align="right" valign="top"><a id="a95e709df9b0ee47473bc40012738cdc8"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generate</b> () const</td></tr>
+<tr class="memitem:a95e709df9b0ee47473bc40012738cdc8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1MetaID.html#a95e709df9b0ee47473bc40012738cdc8">generate</a> () const</td></tr>
+<tr class="memdesc:a95e709df9b0ee47473bc40012738cdc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the string for a metaid  <a href="#a95e709df9b0ee47473bc40012738cdc8">More...</a><br /></td></tr>
 <tr class="separator:a95e709df9b0ee47473bc40012738cdc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a3c9b479d522e7630275d85582edd26"><td class="memItemLeft" align="right" valign="top"><a id="a9a3c9b479d522e7630275d85582edd26"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>generate</b> (long n) const</td></tr>
+<tr class="memitem:a9a3c9b479d522e7630275d85582edd26"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1MetaID.html#a9a3c9b479d522e7630275d85582edd26">generate</a> (long n) const</td></tr>
+<tr class="memdesc:a9a3c9b479d522e7630275d85582edd26"><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the string for a metaid  <a href="#a9a3c9b479d522e7630275d85582edd26">More...</a><br /></td></tr>
 <tr class="separator:a9a3c9b479d522e7630275d85582edd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a343f4b48c9673f8943e03057370f01e4"><td class="memItemLeft" align="right" valign="top"><a id="a343f4b48c9673f8943e03057370f01e4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>maxNumber</b> () const</td></tr>
+<tr class="memitem:a343f4b48c9673f8943e03057370f01e4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1MetaID.html#a343f4b48c9673f8943e03057370f01e4">maxNumber</a> () const</td></tr>
+<tr class="memdesc:a343f4b48c9673f8943e03057370f01e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">figure out the max number possible with user parameters  <a href="#a343f4b48c9673f8943e03057370f01e4">More...</a><br /></td></tr>
 <tr class="separator:a343f4b48c9673f8943e03057370f01e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae4fe83a3512f64065e8e2997bc710be6"><td class="memItemLeft" align="right" valign="top"><a id="ae4fe83a3512f64065e8e2997bc710be6"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>countDigits</b> (long long int n)</td></tr>
+<tr class="memitem:ae4fe83a3512f64065e8e2997bc710be6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1MetaID.html#ae4fe83a3512f64065e8e2997bc710be6">countDigits</a> (long long int n)</td></tr>
+<tr class="memdesc:ae4fe83a3512f64065e8e2997bc710be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">count the digits in a number  <a href="#ae4fe83a3512f64065e8e2997bc710be6">More...</a><br /></td></tr>
 <tr class="separator:ae4fe83a3512f64065e8e2997bc710be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>an ID generator </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af5cc076ccd6db8c411de98902d2a1218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5cc076ccd6db8c411de98902d2a1218">&#9670;&nbsp;</a></span>MetaID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">omexmeta::MetaID::MetaID </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>start_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_digits</em> = <code>4</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>an ID generator used when creating IDs in the <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml. ">Editor</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base_</td><td>the constant portion of the id. Like semsim in semsim00001 </td></tr>
+    <tr><td class="paramname">start_number_</td><td>the start_number portion of the id, like 1 in semsim00001 </td></tr>
+    <tr><td class="paramname">num_digits</td><td>specifies the start_number of digits to use in the id. So semsim00001 has 5 digits.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="el" href="classomexmeta_1_1MetaID.html" title="an ID generator ">MetaID</a> metaid("ANewMetaID", 15, 3); std::string id = metaid.generate(); </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae4fe83a3512f64065e8e2997bc710be6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4fe83a3512f64065e8e2997bc710be6">&#9670;&nbsp;</a></span>countDigits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int omexmeta::MetaID::countDigits </td>
+          <td>(</td>
+          <td class="paramtype">long long int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>count the digits in a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the number to count digits in </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of digits in n </dd></dl>
+
+</div>
+</div>
+<a id="a95e709df9b0ee47473bc40012738cdc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e709df9b0ee47473bc40012738cdc8">&#9670;&nbsp;</a></span>generate() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string omexmeta::MetaID::generate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>generate the string for a metaid </p>
+<dl class="section return"><dt>Returns</dt><dd>a metaid defined by the parameters in instantiation </dd></dl>
+
+</div>
+</div>
+<a id="a9a3c9b479d522e7630275d85582edd26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a3c9b479d522e7630275d85582edd26">&#9670;&nbsp;</a></span>generate() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string omexmeta::MetaID::generate </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>generate the string for a metaid </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>of digits </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a metaid defined by the parameters in instantiation </dd></dl>
+
+</div>
+</div>
+<a id="a343f4b48c9673f8943e03057370f01e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a343f4b48c9673f8943e03057370f01e4">&#9670;&nbsp;</a></span>maxNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int omexmeta::MetaID::maxNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>figure out the max number possible with user parameters </p>
+<dl class="section return"><dt>Returns</dt><dd>the maximum possible number with user parameters </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="MetaID_8h_source.html">MetaID.h</a></li>
 <li>src/omexmeta/MetaID.cpp</li>

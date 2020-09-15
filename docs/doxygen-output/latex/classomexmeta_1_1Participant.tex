@@ -9,12 +9,10 @@ Inheritance diagram for omexmeta\+:\+:Participant\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Participant_a97c047d67dc86db1e617c3528bf8035e}\label{classomexmeta_1_1Participant_a97c047d67dc86db1e617c3528bf8035e}} 
-void {\bfseries set\+Multiplier} (int multiplier)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}\label{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}} 
-void {\bfseries set\+Physical\+Entity\+Reference} (const std\+::string \&physical\+Entity\+Reference)
-\item 
+void \hyperlink{classomexmeta_1_1Participant_a97c047d67dc86db1e617c3528bf8035e}{set\+Multiplier} (int multiplier)
+\begin{DoxyCompactList}\small\item\em return the vector of strings that keeps track of newly generated metaids. \hyperlink{classThis}{This} mechanism ensures unique metaids in the situation where the user has added $>$1 participant of a certain type i.\+e. sink. \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}{set\+Physical\+Entity\+Reference} (const std\+::string \&physical\+Entity\+Reference)
+\begin{DoxyCompactList}\small\item\em setter for physical entity reference field of \hyperlink{classomexmeta_1_1Participant}{Participant} types \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Participant_a8a6626e17aca48b76465d66928eee78f}\label{classomexmeta_1_1Participant_a8a6626e17aca48b76465d66928eee78f}} 
 const std\+::string \& {\bfseries get\+Local\+Participant\+Metaid} () const
 \item 
@@ -39,8 +37,7 @@ bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1Participant}{Part
 \mbox{\Hypertarget{classomexmeta_1_1Participant_aa4baa62cb4ccffe8443262382490328d}\label{classomexmeta_1_1Participant_aa4baa62cb4ccffe8443262382490328d}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1Participant}{Participant} \&rhs) const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Participant_a6757eea8a56972eb369e0e102ae5bfc8}\label{classomexmeta_1_1Participant_a6757eea8a56972eb369e0e102ae5bfc8}} 
-\hyperlink{classomexmeta_1_1Triples}{Triples} {\bfseries to\+Triples} (const std\+::string \&subject\+\_\+metaid, std\+::vector$<$ std\+::string $>$ \&metaid\+\_\+exclusions)
+\hyperlink{classomexmeta_1_1Triples}{Triples} \hyperlink{classomexmeta_1_1Participant_a6757eea8a56972eb369e0e102ae5bfc8}{to\+Triples} (const std\+::string \&subject\+\_\+metaid, std\+::vector$<$ std\+::string $>$ \&metaid\+\_\+exclusions)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Participant_a03a1ffc7e9efaed5c0e94a62f7c72650}\label{classomexmeta_1_1Participant_a03a1ffc7e9efaed5c0e94a62f7c72650}} 
 std\+::string {\bfseries create\+Metaid} (const std\+::string \&base, std\+::vector$<$ std\+::string $>$ \&metaid\+\_\+exclusions) const
@@ -67,6 +64,35 @@ const std\+::string \& {\bfseries get\+Model\+Uri} () const
 void {\bfseries set\+Model\+Uri} (const std\+::string \&model\+\_\+uri)
 \end{DoxyCompactItemize}
 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1Participant_a97c047d67dc86db1e617c3528bf8035e}\label{classomexmeta_1_1Participant_a97c047d67dc86db1e617c3528bf8035e}} 
+\index{omexmeta\+::\+Participant@{omexmeta\+::\+Participant}!set\+Multiplier@{set\+Multiplier}}
+\index{set\+Multiplier@{set\+Multiplier}!omexmeta\+::\+Participant@{omexmeta\+::\+Participant}}
+\subsubsection{\texorpdfstring{set\+Multiplier()}{setMultiplier()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Participant\+::set\+Multiplier (\begin{DoxyParamCaption}\item[{int}]{multiplier }\end{DoxyParamCaption})}
+
+
+
+return the vector of strings that keeps track of newly generated metaids. \hyperlink{classThis}{This} mechanism ensures unique metaids in the situation where the user has added $>$1 participant of a certain type i.\+e. sink. 
+
+setter for the multiplier field of \hyperlink{classomexmeta_1_1Participant}{Participant} types \mbox{\Hypertarget{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}\label{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}} 
+\index{omexmeta\+::\+Participant@{omexmeta\+::\+Participant}!set\+Physical\+Entity\+Reference@{set\+Physical\+Entity\+Reference}}
+\index{set\+Physical\+Entity\+Reference@{set\+Physical\+Entity\+Reference}!omexmeta\+::\+Participant@{omexmeta\+::\+Participant}}
+\subsubsection{\texorpdfstring{set\+Physical\+Entity\+Reference()}{setPhysicalEntityReference()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Participant\+::set\+Physical\+Entity\+Reference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{physical\+Entity\+Reference }\end{DoxyParamCaption})}
+
+
+
+setter for physical entity reference field of \hyperlink{classomexmeta_1_1Participant}{Participant} types 
+
+A physical entity reference must exist and point to a physical entity in the xml. \mbox{\Hypertarget{classomexmeta_1_1Participant_a6757eea8a56972eb369e0e102ae5bfc8}\label{classomexmeta_1_1Participant_a6757eea8a56972eb369e0e102ae5bfc8}} 
+\index{omexmeta\+::\+Participant@{omexmeta\+::\+Participant}!to\+Triples@{to\+Triples}}
+\index{to\+Triples@{to\+Triples}!omexmeta\+::\+Participant@{omexmeta\+::\+Participant}}
+\subsubsection{\texorpdfstring{to\+Triples()}{toTriples()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1Triples}{Triples} omexmeta\+::\+Participant\+::to\+Triples (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{subject\+\_\+metaid,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{metaid\+\_\+exclusions }\end{DoxyParamCaption})}
+
+Since \hyperlink{classomexmeta_1_1Triple}{Triple}\textquotesingle{}s are added to the model as a unit, we need a way of keeping track of which metaids have been used in order to ensure unique metaid\textquotesingle{}s when we have more than one Sink/\+Source/\+Mediate \hyperlink{classomexmeta_1_1Participant}{Participant}. For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way local\+\_\+uri\textquotesingle{}s were added after the original design was in place. Future developers might want to look at this.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

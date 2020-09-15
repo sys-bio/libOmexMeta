@@ -137,7 +137,7 @@
           <declname>localUri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>set the local_uri_ attribute for this triple </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -154,7 +154,7 @@
           <declname>model_uri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>set the model_uri_ attribute for this triple </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -187,9 +187,9 @@
           <defval>&quot;NewModel.xml#&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>serialize the triple using a  serializer. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Creates an isolated serializer that does not get added to the users annotations. <ref refid="classThis" kindref="compound">This</ref> method is for visualizing a triple only. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triple.h" line="73" column="1" bodyfile="src/omexmeta/Triple.cpp" bodystart="24" bodyend="90"/>
@@ -445,26 +445,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="235">
+      <node id="251">
         <label>redland::LibrdfStatement</label>
         <link refid="classredland_1_1LibrdfStatement"/>
       </node>
-      <node id="234">
+      <node id="250">
         <label>omexmeta::Triple</label>
         <link refid="classomexmeta_1_1Triple"/>
-        <childnode refid="235" relation="public-inheritance">
+        <childnode refid="251" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="237">
+      <node id="253">
         <label>redland::LibrdfStatement</label>
         <link refid="classredland_1_1LibrdfStatement"/>
       </node>
-      <node id="236">
+      <node id="252">
         <label>omexmeta::Triple</label>
         <link refid="classomexmeta_1_1Triple"/>
-        <childnode refid="237" relation="public-inheritance">
+        <childnode refid="253" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

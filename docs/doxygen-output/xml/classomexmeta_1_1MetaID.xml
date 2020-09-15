@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1MetaID" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::MetaID</compoundname>
+    <includes refid="MetaID_8h" local="no">MetaID.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1MetaID_1a51a9bc3c81218b25902e0285c878a2b9" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -63,9 +64,31 @@
           <defval>4</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>an ID generator used when creating IDs in the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the constant portion of the id. Like semsim in semsim00001 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_number_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the start_number portion of the id, like 1 in semsim00001 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_digits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the start_number of digits to use in the id. So semsim00001 has 5 digits.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para><para><ref refid="classomexmeta_1_1MetaID" kindref="compound">MetaID</ref> metaid(&quot;ANewMetaID&quot;, 15, 3); std::string id = metaid.generate(); </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MetaID.h" line="37" column="1" bodyfile="src/omexmeta/MetaID.cpp" bodystart="8" bodyend="27"/>
@@ -110,9 +133,10 @@
         <argsstring>() const</argsstring>
         <name>generate</name>
         <briefdescription>
-        </briefdescription>
+<para>generate the string for a metaid </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a metaid defined by the parameters in instantiation </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MetaID.h" line="47" column="1" bodyfile="src/omexmeta/MetaID.cpp" bodystart="57" bodyend="59"/>
@@ -127,9 +151,18 @@
           <declname>n</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>generate the string for a metaid </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>number</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of digits </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a metaid defined by the parameters in instantiation </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MetaID.h" line="54" column="1" bodyfile="src/omexmeta/MetaID.cpp" bodystart="61" bodyend="77"/>
@@ -140,9 +173,10 @@
         <argsstring>() const</argsstring>
         <name>maxNumber</name>
         <briefdescription>
-        </briefdescription>
+<para>figure out the max number possible with user parameters </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the maximum possible number with user parameters </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MetaID.h" line="60" column="1" bodyfile="src/omexmeta/MetaID.cpp" bodystart="37" bodyend="43"/>
@@ -159,16 +193,25 @@
           <declname>n</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>count the digits in a number </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number to count digits in </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of digits in n </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MetaID.h" line="67" column="1" bodyfile="src/omexmeta/MetaID.cpp" bodystart="45" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>an ID generator </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="src/omexmeta/MetaID.h" line="19" column="1" bodyfile="src/omexmeta/MetaID.h" bodystart="19" bodyend="68"/>

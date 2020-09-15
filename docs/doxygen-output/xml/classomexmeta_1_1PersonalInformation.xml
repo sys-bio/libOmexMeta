@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1PersonalInformation" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PersonalInformation</compoundname>
+    <includes refid="PersonalInformation_8h" local="no">PersonalInformation.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1aa7926298a95c2e0418e360afaa9036d7" prot="private" static="no" mutable="no">
         <type>librdf_model *</type>
@@ -639,9 +640,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>add personal information to the model as a composite annotation. </para>    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>For developers: <ref refid="classThis" kindref="compound">This</ref> composite annotation is fundamentally different to the Physical* composites in that the structure is more arbitrary. With the Physical* composites, the structure is very well defined, so it was easier to implement the toTriples() method to construct those triples when called. <ref refid="classThis" kindref="compound">This</ref> differs subtly in <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> in that we have a class level <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the getTriples() method to get a unique ptr to the triples. </para>    </detaileddescription>
     <location file="src/omexmeta/PersonalInformation.h" line="29" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="29" bodyend="118"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PersonalInformation_1a9fd33e3189e1f77725e54dd24cc9dcb7" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>addAccountName</name></member>

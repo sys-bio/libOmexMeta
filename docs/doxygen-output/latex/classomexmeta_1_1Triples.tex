@@ -18,9 +18,8 @@ bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1Triples}{Triples}
 \mbox{\Hypertarget{classomexmeta_1_1Triples_a8c9df0d37572179d682127cb7368dd82}\label{classomexmeta_1_1Triples_a8c9df0d37572179d682127cb7368dd82}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1Triples}{Triples} \&rhs) const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}\label{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}} 
-void {\bfseries move\+\_\+back} (\hyperlink{classomexmeta_1_1Triple}{Triple} \&triple)
-\item 
+void \hyperlink{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}{move\+\_\+back} (\hyperlink{classomexmeta_1_1Triple}{Triple} \&triple)
+\begin{DoxyCompactList}\small\item\em moves a \hyperlink{classomexmeta_1_1Triple}{Triple} object to the back of \hyperlink{classomexmeta_1_1Triples}{Triples} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Triples_a9882f6f582e8d2e34e09d2f7076a0e2e}\label{classomexmeta_1_1Triples_a9882f6f582e8d2e34e09d2f7076a0e2e}} 
 void {\bfseries emplace\+\_\+back} (\hyperlink{classomexmeta_1_1Subject}{Subject} subject, const Predicate\+Ptr \&predicate\+Ptr, const \hyperlink{classomexmeta_1_1Resource}{Resource} \&resource)
 \item 
@@ -81,6 +80,29 @@ bool {\bfseries is\+Empty} ()
 \mbox{\Hypertarget{classomexmeta_1_1Triples_a1f7ba9d5cd575ba5c63ed9dbbd1f279c}\label{classomexmeta_1_1Triples_a1f7ba9d5cd575ba5c63ed9dbbd1f279c}} 
 int {\bfseries capacity} ()
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}\label{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}} 
+\index{omexmeta\+::\+Triples@{omexmeta\+::\+Triples}!move\+\_\+back@{move\+\_\+back}}
+\index{move\+\_\+back@{move\+\_\+back}!omexmeta\+::\+Triples@{omexmeta\+::\+Triples}}
+\subsubsection{\texorpdfstring{move\+\_\+back()}{move\_back()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::move\+\_\+back (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1Triple}{Triple} \&}]{triple }\end{DoxyParamCaption})}
+
+
+
+moves a \hyperlink{classomexmeta_1_1Triple}{Triple} object to the back of \hyperlink{classomexmeta_1_1Triples}{Triples} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em triple} & The \hyperlink{classomexmeta_1_1Triple}{Triple} object to move.\\
+\hline
+\end{DoxyParams}
+The vector storing the \hyperlink{classomexmeta_1_1Triples}{Triples} is increased in size by 1 and the 
+\begin{DoxyParams}{Parameters}
+{\em triple} & is moved into that slot. Therefore, ownership of the triple passes to the \hyperlink{classomexmeta_1_1Triples}{Triples} object who is reposible for freeing the \hyperlink{classomexmeta_1_1Triple}{Triple}. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

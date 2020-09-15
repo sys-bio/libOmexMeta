@@ -1,5 +1,14 @@
 \hypertarget{classomexmeta_1_1PersonalInformation}{}\section{omexmeta\+:\+:Personal\+Information Class Reference}
 \label{classomexmeta_1_1PersonalInformation}\index{omexmeta\+::\+Personal\+Information@{omexmeta\+::\+Personal\+Information}}
+
+
+add personal information to the model as a composite annotation.  
+
+
+
+
+{\ttfamily \#include $<$Personal\+Information.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -91,6 +100,11 @@ void {\bfseries free\+Triples} ()
 void {\bfseries set\+Triples} (\hyperlink{classomexmeta_1_1Triples}{Triples} triples)
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+add personal information to the model as a composite annotation. 
+
+For developers\+: \hyperlink{classThis}{This} composite annotation is fundamentally different to the Physical$\ast$ composites in that the structure is more arbitrary. With the Physical$\ast$ composites, the structure is very well defined, so it was easier to implement the to\+Triples() method to construct those triples when called. \hyperlink{classThis}{This} differs subtly in \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} in that we have a class level \hyperlink{classomexmeta_1_1Triples}{Triples} object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the get\+Triples() method to get a unique ptr to the triples. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

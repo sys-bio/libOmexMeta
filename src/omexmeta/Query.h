@@ -24,7 +24,7 @@ namespace omexmeta {
 
     typedef std::unordered_map<std::string, std::vector<std::string>> ResultsMap;
 
-    /*
+    /**
      * @brief interface for querying an rdf graph
      * @class This class is basically a wrapper around both librdf_query and
      * librdf_query_results. Query is not used by users directly but
@@ -136,13 +136,13 @@ namespace omexmeta {
 
     public:
 
-        /*
-         * @brief constructor for Query object
+        /**
+     * @brief constructor for Query object
          */
         Query(librdf_model *model, std::string query);
 
-        /*
-         *
+        /**
+     *
          * @brief copy constructor for Query object
          * @details deleted
          *
@@ -152,13 +152,13 @@ namespace omexmeta {
          */
         Query(const Query &query) = delete;
 
-        /*
-         * @brief move constructor for Query object
+        /**
+     * @brief move constructor for Query object
          */
         Query(Query &&query) noexcept;
 
-/*
-         *
+/**
+     *
          * @brief copy assignment constructor for Query object
          * @details deleted
          *
@@ -168,29 +168,29 @@ namespace omexmeta {
          */
         Query &operator=(const Query &query) = delete;
 
-/*
-         *
+/**
+     *
          * @brief move assignment constructor for Query object
          *
          */
         Query &operator=(Query &&query) noexcept;
 
-        /*
-         * @brief free resources associated with a query object.
+        /**
+     * @brief free resources associated with a query object.
          * @details it is the callers responsibility to ensure
          * resources used by Query are released after use.
          */
         void freeQuery();
 
-        /*
-         * @breif returns the results as a librdf_stream* object
+        /**
+     * @breif returns the results as a librdf_stream* object
          *
          * developers. Consider removing.
          */
         [[maybe_unused]]librdf_stream *resultsAsLibRdfStream();
 
-        /*
-         * @brief returns query results in a map where keys are
+        /**
+     * @brief returns query results in a map where keys are
          * the variable names used in query and values are vectors
          * of values for results.
          *
@@ -216,8 +216,8 @@ namespace omexmeta {
          */
         ResultsMap resultsAsMap();
 
-        /*
-         * @brief collect the result of the query as a string
+        /**
+     * @brief collect the result of the query as a string
          * @param output_format one of 9 strings used to choose how you
          * want the results to be presented.
          * Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml.

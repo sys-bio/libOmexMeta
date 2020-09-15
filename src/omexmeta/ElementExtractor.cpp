@@ -17,7 +17,7 @@ namespace omexmeta {
         xmlFreeDoc(doc_);
     }
 
-    /*
+    /**
      * @brief collect the name of the element pointed to by a_node
      * @brief *a_node pointer to an xmlNode
      */

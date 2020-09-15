@@ -205,8 +205,8 @@ namespace omexmeta {
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
             Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
-        /*
-         * note: verify cannot be a virtual function
+        /**
+     * note: verify cannot be a virtual function
          * because I want to use it in the constructor.
          * Therefore, I made Predicate::verify static
          * to reduce code duplication.
@@ -254,7 +254,7 @@ namespace omexmeta {
         Predicate::verify(valid_terms_, term_);
     }
 
-    /*
+    /**
      * A factory function for creating PredicatePtr objects.
      */
     PredicatePtr PredicateFactory(std::string namespace_, const std::string &term) {

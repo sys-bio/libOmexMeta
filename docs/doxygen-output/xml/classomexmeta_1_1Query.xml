@@ -49,7 +49,7 @@
           <declname>query</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -83,7 +83,7 @@
           <declname>query</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>move constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -117,7 +117,7 @@
           <declname>query</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>move assignment constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -130,9 +130,9 @@
         <argsstring>()</argsstring>
         <name>freeQuery</name>
         <briefdescription>
-        </briefdescription>
+<para>free resources associated with a query object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>it is the callers responsibility to ensure resources used by <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> are released after use. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Query.h" line="183" column="1" bodyfile="src/omexmeta/Query.cpp" bodystart="66" bodyend="75"/>
@@ -145,7 +145,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>returns the results as a librdf_stream* object <verbatim>developers. Consider removing.</verbatim> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Query.h" line="190" column="1" bodyfile="src/omexmeta/Query.cpp" bodystart="103" bodyend="105"/>
@@ -156,9 +156,14 @@
         <argsstring>()</argsstring>
         <name>resultsAsMap</name>
         <briefdescription>
-        </briefdescription>
+<para>returns query results in a map where keys are the variable names used in query and values are vectors of values for results. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classThis" kindref="compound">This</ref> is the only supported mechanism for ascertaining query results programatically, without needing to read/write to/from file. <ref refid="classThis" kindref="compound">This</ref> method uses an iterator from librdf. When it gets to the end of the iterator, the iterator is &quot;used up&quot;. Therefore at the end of collecting the results as a map, the original query is re-run, so that the presently instantiated <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object is not rendered useless.</para><para>If the query looks like this: <programlisting><codeline><highlight class="normal">std::string<sp/>query_string<sp/>=<sp/><sp/><sp/>&quot;SELECT<sp/>?x<sp/>?y<sp/>?z</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;WHERE<sp/>{&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/><sp/><sp/>?x<sp/>?y<sp/>?z&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;}&quot;;</highlight></codeline>
+<codeline><highlight class="normal">Query<sp/>query(query_string);</highlight></codeline>
+</programlisting> The column names will be x, y and z and the results will be string representations of all subjects (?x), predicates (?y) and resources (?z) in a vector of size <computeroutput>n</computeroutput>, where n is the number of query results. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Query.h" line="217" column="1" bodyfile="src/omexmeta/Query.cpp" bodystart="158" bodyend="185"/>
@@ -178,9 +183,17 @@
           <defval>&quot;query_results&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>collect the result of the query as a string </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>output_format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>one of 9 strings used to choose how you want the results to be presented. Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Query.h" line="225" column="1" bodyfile="src/omexmeta/Query.cpp" bodystart="128" bodyend="151"/>

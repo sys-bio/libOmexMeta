@@ -23,7 +23,7 @@
 using namespace redland;
 
 namespace omexmeta {
-    /*
+    /**
      * The PhysicalEntity type of PhysicalPhenomenon
      */
     class PhysicalEntity : public PhysicalPhenomenon {
@@ -34,8 +34,8 @@ namespace omexmeta {
 
     public:
 
-        /*
-         * @brief default constructor for PhysicalEntity
+        /**
+     * @brief default constructor for PhysicalEntity
          * @details deliberately deleted. If you try using the
          * builder interface (chaining setter methods) from a default
          * instantiated PhysicalEntity you will get an error, because there
@@ -44,8 +44,8 @@ namespace omexmeta {
          */
         PhysicalEntity() = delete;
 
-        /*
-         * @brief constructor for instantiating a PhysicalEntity object
+        /**
+     * @brief constructor for instantiating a PhysicalEntity object
          * @param model the model being used by the current rdf graph.
          * @param about The subject portion of the PhysicalEntity representing the metaid for the PhysicalEntity
          * @param physicalProperty A term from the ontology of physical for biology of type PhysicalProperty.
@@ -62,8 +62,8 @@ namespace omexmeta {
 
         ~PhysicalEntity() = default;
 
-                /*
-         * @brief free resources uses by PhysicalEntity
+                /**
+     * @brief free resources uses by PhysicalEntity
          *
          * PhysicalEntity objects are owned either by the caller or by a Triples
          * object, depending on whether you have "given" the PhysicalEntity to
@@ -71,8 +71,8 @@ namespace omexmeta {
          */
         void free();
 
-        /*
-         * @brief constructor for PhysicalEntity object.
+        /**
+     * @brief constructor for PhysicalEntity object.
          * @param model the librdf_model object in use. Passed down from Editor class during
          * instantiation.
          *
@@ -84,8 +84,8 @@ namespace omexmeta {
         explicit PhysicalEntity(librdf_model *model);
 
 
-        /*
-         * @brief constructor for PhysicalEntity object.
+        /**
+     * @brief constructor for PhysicalEntity object.
          * @param model the librdf_model object in use. Passed down from Editor class during
          * instantiation.
          * @param model_uri the current localName argument. Passed down from Editor
@@ -100,8 +100,8 @@ namespace omexmeta {
 
 
 
-        /*
-         * @brief convert PhysicalEntity to a Triples object, which can then be
+        /**
+     * @brief convert PhysicalEntity to a Triples object, which can then be
          * passed to a model via the Editor::addPhysicalEntity method.
          * @return a Triples objects containing the Triple objects associated with this PhysicalEntity
          *
@@ -113,22 +113,22 @@ namespace omexmeta {
          */
         [[nodiscard]] Triples toTriples() override;
 
-        /*
-         * @brief return the IdentityResource in use. I.e. the "what"
+        /**
+     * @brief return the IdentityResource in use. I.e. the "what"
          * portion of the PhysicalEntity
          * @return the identity Resource
          */
         [[nodiscard]] const Resource &getIdentityResource() const;
 
-        /*
-         * @brief return a vector of resources representing the
+        /**
+     * @brief return a vector of resources representing the
          * "where" part of the PhysicalEntity
          * @return vector of Resource objects representing anatomical location of physical entity
          */
         [[nodiscard]] const Resources &getLocationResources() const;
 
-        /*
-         * @brief sets the physical property for a PhysicalEntity instance.
+        /**
+     * @brief sets the physical property for a PhysicalEntity instance.
          * @param physicalProperty a string representing the OPB term used by the PhysicalEntity
          * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
@@ -137,8 +137,8 @@ namespace omexmeta {
          */
         PhysicalEntity &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
-        /*
-         * @brief sets the physical property for a PhysicalEntity instance
+        /**
+     * @brief sets the physical property for a PhysicalEntity instance
          * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * Prefer the alternative setPhysicalProperty instance, since you do not need to instantiate

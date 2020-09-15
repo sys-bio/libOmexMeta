@@ -8,36 +8,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="86">
+      <node id="90">
         <label>exception</label>
       </node>
-      <node id="84">
+      <node id="88">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
-        <childnode refid="85" relation="public-inheritance">
+        <childnode refid="89" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="85">
+      <node id="89">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="86" relation="public-inheritance">
+        <childnode refid="90" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="89">
+      <node id="93">
         <label>exception</label>
       </node>
-      <node id="87">
+      <node id="91">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
-        <childnode refid="88" relation="public-inheritance">
+        <childnode refid="92" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="88">
+      <node id="92">
         <label>omexmeta::Exception</label>
         <link refid="classomexmeta_1_1Exception"/>
-        <childnode refid="89" relation="public-inheritance">
+        <childnode refid="93" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

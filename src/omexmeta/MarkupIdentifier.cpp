@@ -15,7 +15,7 @@ namespace omexmeta {
         xmlFreeDoc(doc_);
     }
 
-    /*
+    /**
      * @brief read an xml document using libxml2.
      */
     xmlDoc *MarkupIdentifier::parseML() {
@@ -28,7 +28,7 @@ namespace omexmeta {
         return doc_;
     }
 
-    /*
+    /**
      * @brief collect the name of the element pointed to by a_node
      * @brief *a_node pointer to an xmlNode
      */

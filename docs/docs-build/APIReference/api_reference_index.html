@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -34,9 +29,13 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Developers Documentation" href="../Developers/developers_index.html" />
+    <link rel="next" title="RDF" href="RDF.html" />
     <link rel="prev" title="Building Diagrams" href="../diagrams/diagrams_index.html" /> 
 </head>
 
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+            <a href="../index.html" class="icon icon-home"> libomexmeta
           
 
           
@@ -74,7 +73,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -89,14 +87,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">libOmexMeta API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">libOmexMeta API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -135,7 +152,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>libOmexMeta API Reference</li>
     
@@ -158,11 +175,28 @@
             
   <div class="section" id="libomexmeta-api-reference">
 <h1>libOmexMeta API Reference<a class="headerlink" href="#libomexmeta-api-reference" title="Permalink to this headline">¶</a></h1>
-<dl class="cpp class">
-<dt id="_CPPv4N8omexmeta3RDFE">
-<span id="_CPPv3N8omexmeta3RDFE"></span><span id="_CPPv2N8omexmeta3RDFE"></span><span id="omexmeta::RDF"></span><span class="target" id="classomexmeta_1_1RDF"></span><em class="property">class </em><code class="sig-name descname">RDF</code><a class="headerlink" href="#_CPPv4N8omexmeta3RDFE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -173,7 +207,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Developers/developers_index.html" class="btn btn-neutral float-right" title="Developers Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="RDF.html" class="btn btn-neutral float-right" title="RDF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../diagrams/diagrams_index.html" class="btn btn-neutral float-left" title="Building Diagrams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -185,19 +219,11 @@
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -208,6 +234,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

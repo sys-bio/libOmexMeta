@@ -25,8 +25,8 @@ namespace omexmeta {
         }
     }
 
-/*
- * wrapper around the CurlGet function, as the utils
+/**
+     * wrapper around the CurlGet function, as the utils
  * class seems like a good place for the download features.
  */
     void OmexMetaUtils::download(const std::string &url, const std::string filename) {
@@ -180,7 +180,7 @@ namespace omexmeta {
         return full_string.rfind(start) == 0;
     }
 
-    /*
+    /**
      * @brief test that expected_string matches actual_string when
      * split by new lines and matched as a regex
      */
@@ -306,14 +306,14 @@ namespace omexmeta {
         return str;
     }
 
-    /*
+    /**
      * @brief return true if @param string is in @param vec
      */
     bool OmexMetaUtils::stringInVector(std::vector<std::string> vec, const std::string &string) {
         return std::find(vec.begin(), vec.end(), string) != vec.end();
     }
 
-    /*
+    /**
      * @brief read an xml document using libxml2.
      * @return xmlDoc*. Caller is responsible for calling xmlFreeDoc(doc).
      */

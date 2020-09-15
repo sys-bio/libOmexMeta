@@ -39,21 +39,21 @@ namespace omexmeta {
 
     public:
 
-        /*
-         * @brief return the vector of strings that keeps track of
+        /**
+     * @brief return the vector of strings that keeps track of
          * newly generated metaids. This mechanism ensures unique metaids
          * in the situation where the user has added >1 participant of a
          * certain type i.e. sink.
          */
 //        [[nodiscard]] const std::vector<std::string> &getMetaidExclusionList() ;
 
-        /*
-         * @brief setter for the multiplier field of Participant types
+        /**
+     * @brief setter for the multiplier field of Participant types
          */
         void setMultiplier(int multiplier);
 
-        /*
-         * @brief setter for physical entity reference field of Participant types
+        /**
+     * @brief setter for physical entity reference field of Participant types
          * @details A physical entity reference must exist and point to a physical entity in the xml.
          */
         void setPhysicalEntityReference(const std::string &physicalEntityReference);

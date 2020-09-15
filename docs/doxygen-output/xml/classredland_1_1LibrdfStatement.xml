@@ -500,14 +500,14 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="102">
+      <node id="106">
         <label>redland::LibrdfStatement</label>
         <link refid="classredland_1_1LibrdfStatement"/>
       </node>
-      <node id="103">
+      <node id="107">
         <label>omexmeta::Triple</label>
         <link refid="classomexmeta_1_1Triple"/>
-        <childnode refid="102" relation="public-inheritance">
+        <childnode refid="106" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

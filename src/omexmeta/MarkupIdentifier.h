@@ -18,7 +18,7 @@
 #include <algorithm>
 
 namespace omexmeta {
-    /*
+    /**
      * @brief determines whether input language is sbml, cellml or unknown
      */
     class MarkupIdentifier {
@@ -35,22 +35,22 @@ namespace omexmeta {
 
     public:
 
-        /*
-         * @brief constructor for MarkupIdentifier
+        /**
+     * @brief constructor for MarkupIdentifier
          * @param markup a string of your xml.
          */
         explicit MarkupIdentifier(std::string markup);
 
         ~MarkupIdentifier();
 
-        /*
-         * @brief test to see whether the xml passed to constructor is SBML
+        /**
+     * @brief test to see whether the xml passed to constructor is SBML
          * @return true if xml passed to constructor is SBML
          */
         bool isSBML();
 
-        /*
-         * @brief test to see whether the xml passed to constructor is CellML
+        /**
+     * @brief test to see whether the xml passed to constructor is CellML
          * @return true if xml passed to constructor is CellML
          */
         bool isCellML();

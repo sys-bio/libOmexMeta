@@ -8,36 +8,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="202">
-        <label>RedlandNullPointerException</label>
-        <link refid="classRedlandNullPointerException"/>
-        <childnode refid="203" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="203">
-        <label>Exception</label>
-        <link refid="classException"/>
-        <childnode refid="204" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="204">
-        <label>std::exception</label>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="205">
-        <label>RedlandNullPointerException</label>
-        <link refid="classRedlandNullPointerException"/>
-        <childnode refid="206" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="206">
-        <label>Exception</label>
-        <link refid="classException"/>
+        <label>RedlandNullPointerException</label>
+        <link refid="classRedlandNullPointerException"/>
         <childnode refid="207" relation="public-inheritance">
         </childnode>
       </node>
       <node id="207">
+        <label>Exception</label>
+        <link refid="classException"/>
+        <childnode refid="208" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="208">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="209">
+        <label>RedlandNullPointerException</label>
+        <link refid="classRedlandNullPointerException"/>
+        <childnode refid="210" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="210">
+        <label>Exception</label>
+        <link refid="classException"/>
+        <childnode refid="211" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="211">
         <label>std::exception</label>
       </node>
     </collaborationgraph>

@@ -1,32 +1,128 @@
 \hypertarget{classomexmeta_1_1MetaID}{}\section{omexmeta\+:\+:Meta\+ID Class Reference}
 \label{classomexmeta_1_1MetaID}\index{omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}}
+
+
+an ID generator  
+
+
+
+
+{\ttfamily \#include $<$Meta\+I\+D.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1MetaID_af5cc076ccd6db8c411de98902d2a1218}\label{classomexmeta_1_1MetaID_af5cc076ccd6db8c411de98902d2a1218}} 
-{\bfseries Meta\+ID} (std\+::string base, long start\+\_\+number, int num\+\_\+digits=4)
-\item 
+\hyperlink{classomexmeta_1_1MetaID_af5cc076ccd6db8c411de98902d2a1218}{Meta\+ID} (std\+::string base, long start\+\_\+number, int num\+\_\+digits=4)
+\begin{DoxyCompactList}\small\item\em an ID generator used when creating I\+Ds in the \hyperlink{classomexmeta_1_1Editor}{Editor}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1MetaID_a3d6466efca8d9e931ca8c440c0809584}\label{classomexmeta_1_1MetaID_a3d6466efca8d9e931ca8c440c0809584}} 
 bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1MetaID}{Meta\+ID} \&rhs) const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1MetaID_a25af693b284b0110914c537b48b20937}\label{classomexmeta_1_1MetaID_a25af693b284b0110914c537b48b20937}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1MetaID}{Meta\+ID} \&rhs) const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1MetaID_a95e709df9b0ee47473bc40012738cdc8}\label{classomexmeta_1_1MetaID_a95e709df9b0ee47473bc40012738cdc8}} 
-std\+::string {\bfseries generate} () const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1MetaID_a9a3c9b479d522e7630275d85582edd26}\label{classomexmeta_1_1MetaID_a9a3c9b479d522e7630275d85582edd26}} 
-std\+::string {\bfseries generate} (long n) const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1MetaID_a343f4b48c9673f8943e03057370f01e4}\label{classomexmeta_1_1MetaID_a343f4b48c9673f8943e03057370f01e4}} 
-int {\bfseries max\+Number} () const
-\end{DoxyCompactItemize}
+std\+::string \hyperlink{classomexmeta_1_1MetaID_a95e709df9b0ee47473bc40012738cdc8}{generate} () const
+\begin{DoxyCompactList}\small\item\em generate the string for a metaid \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classomexmeta_1_1MetaID_a9a3c9b479d522e7630275d85582edd26}{generate} (long n) const
+\begin{DoxyCompactList}\small\item\em generate the string for a metaid \end{DoxyCompactList}\item 
+int \hyperlink{classomexmeta_1_1MetaID_a343f4b48c9673f8943e03057370f01e4}{max\+Number} () const
+\begin{DoxyCompactList}\small\item\em figure out the max number possible with user parameters \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static int \hyperlink{classomexmeta_1_1MetaID_ae4fe83a3512f64065e8e2997bc710be6}{count\+Digits} (long long int n)
+\begin{DoxyCompactList}\small\item\em count the digits in a number \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+an ID generator 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1MetaID_af5cc076ccd6db8c411de98902d2a1218}\label{classomexmeta_1_1MetaID_af5cc076ccd6db8c411de98902d2a1218}} 
+\index{omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}!Meta\+ID@{Meta\+ID}}
+\index{Meta\+ID@{Meta\+ID}!omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}}
+\subsubsection{\texorpdfstring{Meta\+I\+D()}{MetaID()}}
+{\footnotesize\ttfamily omexmeta\+::\+Meta\+I\+D\+::\+Meta\+ID (\begin{DoxyParamCaption}\item[{std\+::string}]{base,  }\item[{long}]{start\+\_\+number,  }\item[{int}]{num\+\_\+digits = {\ttfamily 4} }\end{DoxyParamCaption})}
+
+
+
+an ID generator used when creating I\+Ds in the \hyperlink{classomexmeta_1_1Editor}{Editor}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\+\_\+} & the constant portion of the id. Like semsim in semsim00001 \\
+\hline
+{\em start\+\_\+number\+\_\+} & the start\+\_\+number portion of the id, like 1 in semsim00001 \\
+\hline
+{\em num\+\_\+digits} & specifies the start\+\_\+number of digits to use in the id. So semsim00001 has 5 digits.\\
+\hline
+\end{DoxyParams}
+
+
+\hyperlink{classomexmeta_1_1MetaID}{Meta\+ID} metaid(\char`\"{}\+A\+New\+Meta\+I\+D\char`\"{}, 15, 3); std\+::string id = metaid.\+generate(); 
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1MetaID_ae4fe83a3512f64065e8e2997bc710be6}\label{classomexmeta_1_1MetaID_ae4fe83a3512f64065e8e2997bc710be6}} 
-static int {\bfseries count\+Digits} (long long int n)
-\end{DoxyCompactItemize}
+\index{omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}!count\+Digits@{count\+Digits}}
+\index{count\+Digits@{count\+Digits}!omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}}
+\subsubsection{\texorpdfstring{count\+Digits()}{countDigits()}}
+{\footnotesize\ttfamily int omexmeta\+::\+Meta\+I\+D\+::count\+Digits (\begin{DoxyParamCaption}\item[{long long int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+count the digits in a number 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & the number to count digits in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of digits in n 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1MetaID_a95e709df9b0ee47473bc40012738cdc8}\label{classomexmeta_1_1MetaID_a95e709df9b0ee47473bc40012738cdc8}} 
+\index{omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}!generate@{generate}}
+\index{generate@{generate}!omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}}
+\subsubsection{\texorpdfstring{generate()}{generate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Meta\+I\+D\+::generate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+generate the string for a metaid 
+
+\begin{DoxyReturn}{Returns}
+a metaid defined by the parameters in instantiation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1MetaID_a9a3c9b479d522e7630275d85582edd26}\label{classomexmeta_1_1MetaID_a9a3c9b479d522e7630275d85582edd26}} 
+\index{omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}!generate@{generate}}
+\index{generate@{generate}!omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}}
+\subsubsection{\texorpdfstring{generate()}{generate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Meta\+I\+D\+::generate (\begin{DoxyParamCaption}\item[{long}]{n }\end{DoxyParamCaption}) const}
+
+
+
+generate the string for a metaid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & of digits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a metaid defined by the parameters in instantiation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1MetaID_a343f4b48c9673f8943e03057370f01e4}\label{classomexmeta_1_1MetaID_a343f4b48c9673f8943e03057370f01e4}} 
+\index{omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}!max\+Number@{max\+Number}}
+\index{max\+Number@{max\+Number}!omexmeta\+::\+Meta\+ID@{omexmeta\+::\+Meta\+ID}}
+\subsubsection{\texorpdfstring{max\+Number()}{maxNumber()}}
+{\footnotesize\ttfamily int omexmeta\+::\+Meta\+I\+D\+::max\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+figure out the max number possible with user parameters 
+
+\begin{DoxyReturn}{Returns}
+the maximum possible number with user parameters 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

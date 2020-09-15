@@ -161,7 +161,7 @@
         <definition>NamespaceMap omexmeta::RDF::default_namespaces_</definition>
         <argsstring></argsstring>
         <name>default_namespaces_</name>
-        <initializer>= Predicate::namespaceMap()</initializer>
+        <initializer>= <ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -186,7 +186,7 @@
           <declname>input_format</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>autoset the xmlType variable based on xml content. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -207,7 +207,7 @@
           <declname>input_format</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>reads xml from file before calling classifyXmlType </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -224,7 +224,7 @@
           <declname>sbml</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>pull semantic information out of the sbml int the <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -237,9 +237,9 @@
         <argsstring>()</argsstring>
         <name>freeRDF</name>
         <briefdescription>
-        </briefdescription>
+<para>release memory consumed by <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Memory consumed by <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> is destructed using RAII so users normally do not need this function. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="72" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="18" bodyend="21"/>
@@ -252,9 +252,9 @@
         <argsstring>() const</argsstring>
         <name>getXmlType</name>
         <briefdescription>
-        </briefdescription>
+<para>getter for xmlType attribue. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>when the rdf graph is sbml, it will return OMEXMETA_TYPE_SBML. When cellML it will return OMEXMETA_TYPE_CELLML. Otherwise it is OMEXMETA_TYPE_UNKNOWN. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="86" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="441" bodyend="443"/>
@@ -269,9 +269,9 @@
           <declname>xmlType</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>set the xml type for the current graph. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>If you have been reading from an SBML you cannot then read from another format (such as cellml). </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="93" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="445" bodyend="447"/>
@@ -282,7 +282,7 @@
         <argsstring>() const</argsstring>
         <name>getRepositoryUri</name>
         <briefdescription>
-        </briefdescription>
+<para>getter for repository uri which defaults to &quot;http://omex-library.org/&quot; </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -299,9 +299,17 @@
           <declname>repositoryName</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>setter for the repository uri which defaults to &quot;http://omex-library.org/&quot;. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>repositoryName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the repository uri. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="106" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="339" bodyend="349"/>
@@ -312,9 +320,9 @@
         <argsstring>() const</argsstring>
         <name>getArchiveUri</name>
         <briefdescription>
-        </briefdescription>
+<para>getter for archiveUri attribute. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>default to <ulink url="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</ulink> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="112" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="351" bodyend="353"/>
@@ -329,9 +337,17 @@
           <declname>archiveName</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>setter for archiveUri attribute. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>archiveName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new name for archive uri attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+default to <ulink url="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</ulink> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="119" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="355" bodyend="367"/>
@@ -342,9 +358,9 @@
         <argsstring>() const</argsstring>
         <name>getModelUri</name>
         <briefdescription>
-        </briefdescription>
+<para>getter for model uri. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml#">http://omex-library.org/NewOmex.omex/NewModel.xml#</ulink> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="125" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="369" bodyend="371"/>
@@ -359,9 +375,17 @@
           <declname>modelName</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>setter for model uri. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string for new model uri.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml#">http://omex-library.org/NewOmex.omex/NewModel.xml#</ulink> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="132" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="373" bodyend="434"/>
@@ -372,9 +396,9 @@
         <argsstring>() const</argsstring>
         <name>getLocalUri</name>
         <briefdescription>
-        </briefdescription>
+<para>getter for local uri attribute. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.rdf#">http://omex-library.org/NewOmex.omex/NewModel.rdf#</ulink> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="138" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="437" bodyend="439"/>
@@ -405,9 +429,31 @@
           <defval>nullptr</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> class </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>storage_type.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Defaults to memory. Other options include: &quot;hashes&quot;, &quot;file&quot;, &quot;mysql&quot;, &quot;postgresql&quot;, &quot;sqlite&quot;, &quot;uri&quot;, </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>storage_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name used for storage. When storage is not internally held in memory, this becomes the name of the file or database. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>storage_options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>options that get passed on to storage. Please study <ulink url="http://librdf.org/docs/api/redland-storage-modules.html">http://librdf.org/docs/api/redland-storage-modules.html</ulink> for more information.  options that get passed to the model. Please see <ulink url="http://librdf.org/docs/api/index.html">http://librdf.org/docs/api/index.html</ulink> for more details. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="156" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="11" bodyend="16"/>
@@ -418,7 +464,7 @@
         <argsstring>()</argsstring>
         <name>~RDF</name>
         <briefdescription>
-        </briefdescription>
+<para>destructor for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -435,9 +481,9 @@
           <declname>rdf</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>copy constructor for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> class </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> instances are not copyable due to restrictions within the redland libraries. You must instead move <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> objects. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="171" column="1"/>
@@ -452,7 +498,7 @@
           <declname>rdf</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>move constructor for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> class </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -469,9 +515,9 @@
           <declname>rdf</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>copy assignment constructor for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> ojects </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Copy assignment functionality is prohibited for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> objects. Use move semantics insead. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="183" column="1"/>
@@ -486,7 +532,7 @@
           <declname>rdf</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>move assignment operator for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -499,7 +545,7 @@
         <argsstring>() const</argsstring>
         <name>size</name>
         <briefdescription>
-        </briefdescription>
+<para>returns the number of triples currently present in the <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -512,9 +558,10 @@
         <argsstring>() const</argsstring>
         <name>empty</name>
         <briefdescription>
-        </briefdescription>
+<para>indicator for whether the <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph is empty </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>true if <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph has no triples, false otherwise. </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="200" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="50" bodyend="52"/>
@@ -534,7 +581,7 @@
           <defval>&quot;guess&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>non-static variant of <ref refid="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2" kindref="member">RDF::fromString()</ref>. Reads rdf into an <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> instance. See <ref refid="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2" kindref="member">RDF::fromString()</ref> for argument requirements. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -556,9 +603,9 @@
           <defval>&quot;guess&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>non-static counterpart of <ref refid="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" kindref="member">RDF::fromUri</ref>. Downloads and parses rdf from a URI. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>See <ref refid="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" kindref="member">RDF::fromUri</ref> for details. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="235" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="153" bodyend="165"/>
@@ -577,9 +624,25 @@
           <declname>format</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>non-static counter part of <ref refid="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f" kindref="member">RDF::fromFile</ref>. Reads rdf from annotations in a file </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the filename to read as string </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the format of the <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> in filename </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an instantiated <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object</para></simplesect>
+Uses LibrdfParser::fromFile under the hood </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="253" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="186" bodyend="198"/>
@@ -594,9 +657,17 @@
           <declname>seen_namespaces</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>compared namespaces seen with namespaces known and ensures models that use a known namespace use that namespace. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>seen_namespaces</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a vector of strings of namespaces the parser has seen before. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="276" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="208" bodyend="217"/>
@@ -622,9 +693,17 @@
           <defval>nullptr</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>serialize <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph to string </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the expected output format. Options include: &quot;ntriples&quot;, &quot;turtle&quot;, &quot;rdfxml-xmp&quot;, &quot;rdfxml-abbrev&quot;, &quot;rdfxml&quot;, &quot;dot&quot;, &quot;json-triples&quot;, &quot;json&quot;, &quot;nquads&quot;, &quot;html&quot;. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="284" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="219" bodyend="232"/>
@@ -654,9 +733,38 @@
           <defval>nullptr</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Write annotations to file. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the expected output format. Options include: &quot;ntriples&quot;, &quot;turtle&quot;, &quot;rdfxml-xmp&quot;, &quot;rdfxml-abbrev&quot;, &quot;rdfxml&quot;, &quot;dot&quot;, &quot;json-triples&quot;, &quot;json&quot;, &quot;nquads&quot;, &quot;html&quot;. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>full path of file to write </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mime_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional valid mime </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type_uri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional type uri </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="297" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="242" bodyend="252"/>
@@ -681,9 +789,31 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>instantiate an <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the xml you want to open for editing. <ref refid="classThis" kindref="compound">This</ref> can be any type of xml document, but SBML and CellML are most common. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>generate_new_metaids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When true, will add metaids onto a copy of the xml source code for annotation. Default = false. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OmexMetaXmlType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is &quot;OMEXMETA_TYPE_NOTSET&quot; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="307" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="258" bodyend="261"/>
@@ -848,9 +978,24 @@
           <defval>&quot;guess&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>instantiate an <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> instance and read annotations from a string. <ref refid="classThis" kindref="compound">This</ref> is a static method. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a reference to the string containing annotations </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>which format str is in. Default=&quot;guess&quot; : try to guess. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="208" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="54" bodyend="77"/>
@@ -870,9 +1015,25 @@
           <defval>&quot;guess&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>parse <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> directly from a uri </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uri_string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the uri to download containing <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the format that the <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> is in </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> an instantiated <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object.</para></simplesect>
+downloads uri from the internet and creates an <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. See Librdf::parseUri() for more details. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="227" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="132" bodyend="145"/>
@@ -891,9 +1052,25 @@
           <declname>format</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>read rdf from annotations in a file </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the filename to read as string </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the format of the <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> in filename </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an instantiated <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object</para></simplesect>
+Uses LibrdfParser::fromFile under the hood </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="244" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="167" bodyend="184"/>
@@ -921,9 +1098,9 @@
           <defval>&quot;Annotations.rdf&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>non static version of <ref refid="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2" kindref="member">RDF::fromString</ref> that takes a * <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> pointer object and modifies in place. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Primarily used for C API For developers: look into replacing this function fully with <ref refid="classomexmeta_1_1RDF_1a9a29912bc44d47d371a2357b75194fc3" kindref="member">RDF::addFromString()</ref> method. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/RDF.h" line="265" column="1" bodyfile="src/omexmeta/RDF.cpp" bodystart="80" bodyend="97"/>

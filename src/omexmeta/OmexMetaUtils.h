@@ -30,37 +30,37 @@ namespace omexmeta {
     public:
         OmexMetaUtils() = default;
 
-        /*
-         * @brief return true when filename is a file that exists on system
+        /**
+     * @brief return true when filename is a file that exists on system
          * @param filename
          */
         static bool exists(const std::string &filename);
 
-        /*
-         * @brief remove file called @param filename
+        /**
+     * @brief remove file called @param filename
          * @param filename to remove
          * @return int 0 when successful.
          */
         static int removeFile(const std::string &filename);
 
-        /*
-         * @brief remove a file, checking for its existance first
+        /**
+     * @brief remove a file, checking for its existance first
          * @param filename to remove
          */
         static void removeIfExists(const std::string &filename);
 
-        /*
-         * @brief download a file from @param url to @param filename
+        /**
+     * @brief download a file from @param url to @param filename
          */
         static void download(const std::string &url, std::string filename);
 
-        /*
-         * @brief split a string into a vector of strings by @param delimiter
+        /**
+     * @brief split a string into a vector of strings by @param delimiter
          */
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
-        /*
-         * @brief utility for generating unique metaids given an xml document
+        /**
+     * @brief utility for generating unique metaids given an xml document
          * @brief model a librdf_model* pointer
          * @brief a string that will be used for the ID. There will be 4 digits, though this can be changed.
          * @brief exclusions. Mostly needed internally for dealing with metaids that already exist.
@@ -70,8 +70,8 @@ namespace omexmeta {
                 std::vector<std::string> &exclusions
         );
 
-        /*
-         * @brief process a string intended to be a base uri.
+        /**
+     * @brief process a string intended to be a base uri.
          * @param str The string that will become a base uri
          * @param absolute_path automatically make str an absolute path to the current
          * working directory.
@@ -82,8 +82,8 @@ namespace omexmeta {
          */
         static std::string prepareBaseUri(std::string str, bool absolute_path = false);
 
-        /*
-         * @brief takes a uri as std::string and returns the string
+        /**
+     * @brief takes a uri as std::string and returns the string
          * with the last section removed;
          *
          * Example: www.uri.com/identifer/PD12345 will
@@ -91,15 +91,15 @@ namespace omexmeta {
          */
         static std::string getNamespaceFromUri(const std::string &uri);
 
-        /*
-         * @brief helper function that returns true when
+        /**
+     * @brief helper function that returns true when
          * uri starts with either `https://` `http://` or `file://`
          * @param uri the uri to test.
          */
         static bool isFormattedUri(std::string uri);
 
-        /*
-         * @brief test to see whether a string ends with another string
+        /**
+     * @brief test to see whether a string ends with another string
          * @param fullString the string to test
          * @param ending the ending to test for
          */
@@ -110,8 +110,8 @@ namespace omexmeta {
 
         static bool assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string);
 
-        /*
-         * @brief configures the "OMEXlib", "myOMEX" and "local"
+        /**
+     * @brief configures the "OMEXlib", "myOMEX" and "local"
          * prefixes
          * @ param omex_name the name of the omex container your model is in
          * @param model_name the name of the model your are annotating. Extension should
@@ -120,8 +120,8 @@ namespace omexmeta {
         static std::vector<std::string>
         configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name);
 
-        /*
-         * @brief concatonate metaid and uri strings
+        /**
+     * @brief concatonate metaid and uri strings
          * @param metaid string. Like "#metaid" or "metaid"
          * @param uri string. Like "https://omex-library/jeff2019.omex/mymodel.xml" or "https://omex-library/jeff2019.omex/mymodel.rdf"
          * @details Sometimes a uri has a trailing "#" and somtimes a metaid has a leading
@@ -129,20 +129,20 @@ namespace omexmeta {
          */
         static std::string concatMetaIdAndUri(std::string metaid, std::string uri);
 
-        /*
-         * @brief replace a part of a string @string_to_replace from a main @param string
+        /**
+     * @brief replace a part of a string @string_to_replace from a main @param string
          * with a replacement string @param replacement
          */
         static std::string
         stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
 
-        /*
-         * @brief returns true when @param full_string starts with the substring @param start
+        /**
+     * @brief returns true when @param full_string starts with the substring @param start
          */
         static bool startsWith(const std::string &full_string, const std::string &start);
 
-        /*
-         * @brief returns true when @param string is in @param vec
+        /**
+     * @brief returns true when @param string is in @param vec
          */
         static bool stringInVector(std::vector<std::string> vec, const std::string &string);
 

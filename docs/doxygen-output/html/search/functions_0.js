@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exception',['Exception',['../classomexmeta_1_1Exception.html#ad09e2a190a245199974678e2790e81ff',1,'omexmeta::Exception::Exception(const char *message)'],['../classomexmeta_1_1Exception.html#ac50b0a25504303cc1a4a1a20de0127eb',1,'omexmeta::Exception::Exception(std::string message)'],['../classException.html#ac541ead5c20548813d7dea73c28c7fab',1,'Exception::Exception(const char *message)'],['../classException.html#a0b1693d4d5007815322070c907ee5cc2',1,'Exception::Exception(std::string message)']]]
+  ['_5ffunc_5fthat_5freturns_5fdynamic_5falloc_5fstr',['_func_that_returns_dynamic_alloc_str',['../namespaceomexmeta.html#a1d7bca5e4a24d7482048bd28d901e502',1,'omexmeta']]]
 ];

@@ -5,12 +5,12 @@
 #ifndef LIBOMEXMETA_ANNOTATIONTYPE_H
 #define LIBOMEXMETA_ANNOTATIONTYPE_H
 
-/*
- * AnnotationType enum for indicating the type of annotation.
+/**
+     * AnnotationType enum for indicating the type of annotation.
  * For developers: Possibly not needed.
  */
 namespace omexmeta {
-    /*
+    /**
      * Denotes the type of composite annotation in use.
      */
     enum AnnotationType {

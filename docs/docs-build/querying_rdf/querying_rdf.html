@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,22 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -40,6 +31,14 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Building Diagrams" href="../diagrams/diagrams_index.html" />
@@ -57,7 +56,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+            <a href="../index.html" class="icon icon-home"> libomexmeta
           
 
           
@@ -80,7 +79,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -102,7 +100,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -141,7 +138,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>Querying RDF</li>
     
@@ -458,11 +455,11 @@
   &lt;/head&gt;
   &lt;results&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600204245r26010r21&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600207024r29297r21&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600204245r26010r43&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600207024r29297r43&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
   &lt;/results&gt;
@@ -481,11 +478,11 @@ Sparql results format: json
     &quot;distinct&quot; : false,
     &quot;bindings&quot; : [
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600204245r26010r21&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600207024r29297r21&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       },
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600204245r26010r43&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600207024r29297r43&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       }
     ]
@@ -499,8 +496,8 @@ Sparql results format: table
 -----------------------------------------------------------------------------------
 |
 ===================================================================================
-| blank r1600204245r26010r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1600204245r26010r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1600207024r29297r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1600207024r29297r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
 -----------------------------------------------------------------------------------
 
 
@@ -508,8 +505,8 @@ Sparql results format: table
 
 Sparql results format: csv
 x,y
-_:r1600204245r26010r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1600204245r26010r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1600207024r29297r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1600207024r29297r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
 
 
 
@@ -518,8 +515,8 @@ Sparql results format: mkr
 result is relation with format = csv;
 begin relation result;
 x,y;
-_:r1600204245r26010r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1600204245r26010r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1600207024r29297r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1600207024r29297r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
 end relation result;
 
 
@@ -527,8 +524,8 @@ end relation result;
 
 Sparql results format: tsv
 ?x	?y
-_:r1600204245r26010r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1600204245r26010r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1600207024r29297r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1600207024r29297r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
 
 
 
@@ -548,11 +545,11 @@ Sparql results format: html
       &lt;th&gt;?y&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600204245r26010r21&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600207024r29297r21&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600204245r26010r43&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600207024r29297r43&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/table&gt;
@@ -572,14 +569,14 @@ Sparql results format: turtle
       rs:resultVariable  &quot;x&quot; ;
       rs:resultVariable  &quot;y&quot; ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1600204245r26010r21
+                                      rs:value      _:r1600207024r29297r21
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
                                     ] 
       ] ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1600204245r26010r43
+                                      rs:value      _:r1600207024r29297r43
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
@@ -601,7 +598,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1600204245r26010r21&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1600207024r29297r21&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -617,7 +614,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1600204245r26010r43&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1600207024r29297r43&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -901,11 +898,11 @@ Sparql results format: rdfxml
   &lt;/head&gt;
   &lt;results&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600204235r25906r21&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600207015r29193r21&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600204235r25906r43&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600207015r29193r43&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
   &lt;/results&gt;
@@ -923,11 +920,11 @@ Sparql results format: json
     &quot;distinct&quot; : false,
     &quot;bindings&quot; : [
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600204235r25906r21&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600207015r29193r21&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       },
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600204235r25906r43&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600207015r29193r43&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       }
     ]
@@ -940,16 +937,16 @@ Sparql results format: table
 -----------------------------------------------------------------------------------
 |
 ===================================================================================
-| blank r1600204235r25906r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1600204235r25906r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1600207015r29193r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1600207015r29193r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
 -----------------------------------------------------------------------------------
 
 
 
 Sparql results format: csv
 x,y
-_:r1600204235r25906r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1600204235r25906r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1600207015r29193r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1600207015r29193r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
 
 
 
@@ -957,16 +954,16 @@ Sparql results format: mkr
 result is relation with format = csv;
 begin relation result;
 x,y;
-_:r1600204235r25906r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1600204235r25906r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1600207015r29193r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1600207015r29193r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
 end relation result;
 
 
 
 Sparql results format: tsv
 ?x	?y
-_:r1600204235r25906r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1600204235r25906r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1600207015r29193r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1600207015r29193r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
 
 
 
@@ -985,11 +982,11 @@ Sparql results format: html
       &lt;th&gt;?y&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600204235r25906r21&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600207015r29193r21&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600204235r25906r43&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600207015r29193r43&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/table&gt;
@@ -1008,14 +1005,14 @@ Sparql results format: turtle
       rs:resultVariable  &quot;x&quot; ;
       rs:resultVariable  &quot;y&quot; ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1600204235r25906r21
+                                      rs:value      _:r1600207015r29193r21
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
                                     ] 
       ] ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1600204235r25906r43
+                                      rs:value      _:r1600207015r29193r43
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
@@ -1036,7 +1033,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1600204235r25906r21&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1600207015r29193r21&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -1052,7 +1049,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1600204235r25906r43&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1600207015r29193r43&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -1332,11 +1329,11 @@ Sparql results format: rdfxml
   &lt;/head&gt;
   &lt;results&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600204235r25904r21&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600207014r29191r21&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600204235r25904r43&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1600207014r29191r43&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
   &lt;/results&gt;
@@ -1353,11 +1350,11 @@ Sparql results format: json
     &quot;distinct&quot; : false,
     &quot;bindings&quot; : [
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600204235r25904r21&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600207014r29191r21&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       },
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600204235r25904r43&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1600207014r29191r43&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       }
     ]
@@ -1369,30 +1366,30 @@ Sparql results format: table
 -----------------------------------------------------------------------------------
 |
 ===================================================================================
-| blank r1600204235r25904r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1600204235r25904r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1600207014r29191r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1600207014r29191r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
 -----------------------------------------------------------------------------------
 
 
 Sparql results format: csv
 x,y
-_:r1600204235r25904r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1600204235r25904r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1600207014r29191r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1600207014r29191r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
 
 
 Sparql results format: mkr
 result is relation with format = csv;
 begin relation result;
 x,y;
-_:r1600204235r25904r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1600204235r25904r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1600207014r29191r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1600207014r29191r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
 end relation result;
 
 
 Sparql results format: tsv
 ?x	?y
-_:r1600204235r25904r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1600204235r25904r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1600207014r29191r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1600207014r29191r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
 
 
 Sparql results format: html
@@ -1410,11 +1407,11 @@ Sparql results format: html
       &lt;th&gt;?y&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600204235r25904r21&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600207014r29191r21&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600204235r25904r43&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1600207014r29191r43&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/table&gt;
@@ -1432,14 +1429,14 @@ Sparql results format: turtle
       rs:resultVariable  &quot;x&quot; ;
       rs:resultVariable  &quot;y&quot; ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1600204235r25904r21
+                                      rs:value      _:r1600207014r29191r21
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
                                     ] 
       ] ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1600204235r25904r43
+                                      rs:value      _:r1600207014r29191r43
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
@@ -1459,7 +1456,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1600204235r25904r21&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1600207014r29191r21&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -1475,7 +1472,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1600204235r25904r43&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1600207014r29191r43&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -1518,19 +1515,11 @@ Sparql results format: rdfxml
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1541,6 +1530,7 @@ Sparql results format: rdfxml
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['cellmlassistant',['CellMLAssistant',['../classomexmeta_1_1CellMLAssistant.html',1,'omexmeta']]],
-  ['curlget',['CurlGet',['../classomexmeta_1_1CurlGet.html',1,'omexmeta']]]
+  ['biomodelsbiologyqualifier',['BiomodelsBiologyQualifier',['../classomexmeta_1_1BiomodelsBiologyQualifier.html',1,'omexmeta::BiomodelsBiologyQualifier'],['../classomexmeta_1_1BiomodelsBiologyQualifier.html#a4dfa8fd975ceba60da6d3ccabdfb4514',1,'omexmeta::BiomodelsBiologyQualifier::BiomodelsBiologyQualifier()']]],
+  ['biomodelsmodelqualifier',['BiomodelsModelQualifier',['../classomexmeta_1_1BiomodelsModelQualifier.html',1,'omexmeta']]]
 ];

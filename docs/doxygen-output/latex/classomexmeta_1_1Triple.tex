@@ -19,14 +19,13 @@ Inheritance diagram for omexmeta\+:\+:Triple\+:\begin{figure}[H]
 const std\+::string \& {\bfseries get\+Local\+Uri} () const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}\label{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}} 
-void {\bfseries set\+Local\+Uri} (std\+::string local\+Uri)
-\item 
+void \hyperlink{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}{set\+Local\+Uri} (std\+::string local\+Uri)
+\begin{DoxyCompactList}\small\item\em set the local\+\_\+uri\+\_\+ attribute for this triple \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}\label{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}} 
-void {\bfseries set\+Model\+Uri} (const std\+::string \&model\+\_\+uri)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}\label{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}} 
-std\+::string {\bfseries str} (const std\+::string \&format=\char`\"{}turtle\char`\"{}, const std\+::string \&base=(std\+::filesystem\+::current\+\_\+path()/=\char`\"{}annotations.\+rdf\char`\"{}).string(), std\+::string omex\+\_\+name=\char`\"{}New\+Omex.\+omex/\char`\"{}, std\+::string model\+\_\+name=\char`\"{}New\+Model.\+xml\#\char`\"{}) const
-\item 
+void \hyperlink{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}{set\+Model\+Uri} (const std\+::string \&model\+\_\+uri)
+\begin{DoxyCompactList}\small\item\em set the model\+\_\+uri\+\_\+ attribute for this triple \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}{str} (const std\+::string \&format=\char`\"{}turtle\char`\"{}, const std\+::string \&base=(std\+::filesystem\+::current\+\_\+path()/=\char`\"{}annotations.\+rdf\char`\"{}).string(), std\+::string omex\+\_\+name=\char`\"{}New\+Omex.\+omex/\char`\"{}, std\+::string model\+\_\+name=\char`\"{}New\+Model.\+xml\#\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em serialize the triple using a  serializer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a3f3868622349d3a3e14ed3e4b21d49a9}\label{classomexmeta_1_1Triple_a3f3868622349d3a3e14ed3e4b21d49a9}} 
 void {\bfseries free\+Triple} ()
 \item 
@@ -77,6 +76,19 @@ static \hyperlink{classomexmeta_1_1Triple}{Triple} {\bfseries from\+Raw\+Stateme
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}\label{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}} 
+\index{omexmeta\+::\+Triple@{omexmeta\+::\+Triple}!str@{str}}
+\index{str@{str}!omexmeta\+::\+Triple@{omexmeta\+::\+Triple}}
+\subsubsection{\texorpdfstring{str()}{str()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Triple\+::str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}},  }\item[{const std\+::string \&}]{base = {\ttfamily (std\+:\+:filesystem\+:\+:current\+\_\+path()~/=~~\char`\"{}annotations.rdf\char`\"{}).string()},  }\item[{std\+::string}]{omex\+\_\+name = {\ttfamily \char`\"{}NewOmex.omex/\char`\"{}},  }\item[{std\+::string}]{model\+\_\+name = {\ttfamily \char`\"{}NewModel.xml\#\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+serialize the triple using a  serializer. 
+
+Creates an isolated serializer that does not get added to the users annotations. \hyperlink{classThis}{This} method is for visualizing a triple only. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

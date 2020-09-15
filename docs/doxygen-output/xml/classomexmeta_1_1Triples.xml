@@ -126,9 +126,25 @@
           <declname>triple</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>moves a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>triple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object to move.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> is increased in size by 1 and the <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>triple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is moved into that slot. Therefore, ownership of the triple passes to the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object who is reposible for freeing the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="76" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="30" bodyend="33"/>

@@ -124,9 +124,9 @@
           <declname>multiplier</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>return the vector of strings that keeps track of newly generated metaids. <ref refid="classThis" kindref="compound">This</ref> mechanism ensures unique metaids in the situation where the user has added &gt;1 participant of a certain type i.e. sink. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>setter for the multiplier field of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Participant.h" line="53" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="157" bodyend="159"/>
@@ -141,9 +141,9 @@
           <declname>physicalEntityReference</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>setter for physical entity reference field of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>A physical entity reference must exist and point to a physical entity in the xml. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Participant.h" line="59" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="161" bodyend="163"/>
@@ -327,7 +327,7 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
+<para>Since <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>&apos;s are added to the model as a unit, we need a way of keeping track of which metaids have been used in order to ensure unique metaid&apos;s when we have more than one Sink/Source/Mediate <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way local_uri&apos;s were added after the original design was in place. Future developers might want to look at this.</para>        </inbodydescription>
         <location file="src/omexmeta/Participant.h" line="125" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="31" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a03a1ffc7e9efaed5c0e94a62f7c72650" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -456,26 +456,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="145">
+      <node id="149">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="148">
+      <node id="152">
         <label>omexmeta::SourceParticipant</label>
         <link refid="classomexmeta_1_1SourceParticipant"/>
-        <childnode refid="145" relation="public-inheritance">
+        <childnode refid="149" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="147">
+      <node id="151">
         <label>omexmeta::SinkParticipant</label>
         <link refid="classomexmeta_1_1SinkParticipant"/>
-        <childnode refid="145" relation="public-inheritance">
+        <childnode refid="149" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="146">
+      <node id="150">
         <label>omexmeta::MediatorParticipant</label>
         <link refid="classomexmeta_1_1MediatorParticipant"/>
-        <childnode refid="145" relation="public-inheritance">
+        <childnode refid="149" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

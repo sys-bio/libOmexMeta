@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1MarkupIdentifier" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::MarkupIdentifier</compoundname>
+    <includes refid="MarkupIdentifier_8h" local="no">MarkupIdentifier.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1MarkupIdentifier_1aee48438435455b27c7e709e5b4ecf57e" prot="private" static="no" mutable="no">
         <type>xmlDocPtr</type>
@@ -50,7 +51,7 @@
         <argsstring>()</argsstring>
         <name>parseML</name>
         <briefdescription>
-        </briefdescription>
+<para>read an xml document using libxml2. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -67,9 +68,9 @@
           <declname>a_node</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>collect the name of the element pointed to by a_node </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>*a_node pointer to an xmlNode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MarkupIdentifier.h" line="34" column="1" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="35" bodyend="46"/>
@@ -86,9 +87,17 @@
           <declname>markup</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1MarkupIdentifier" kindref="compound">MarkupIdentifier</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>markup</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a string of your xml. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MarkupIdentifier.h" line="42" column="1" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="10" bodyend="12"/>
@@ -112,9 +121,10 @@
         <argsstring>()</argsstring>
         <name>isSBML</name>
         <briefdescription>
-        </briefdescription>
+<para>test to see whether the xml passed to constructor is SBML </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>true if xml passed to constructor is SBML </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MarkupIdentifier.h" line="50" column="1" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="49" bodyend="65"/>
@@ -125,9 +135,10 @@
         <argsstring>()</argsstring>
         <name>isCellML</name>
         <briefdescription>
-        </briefdescription>
+<para>test to see whether the xml passed to constructor is CellML </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>true if xml passed to constructor is CellML </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/MarkupIdentifier.h" line="56" column="1" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="67" bodyend="80"/>
@@ -147,7 +158,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>determines whether input language is sbml, cellml or unknown </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="src/omexmeta/MarkupIdentifier.h" line="24" column="1" bodyfile="src/omexmeta/MarkupIdentifier.h" bodystart="24" bodyend="59"/>
