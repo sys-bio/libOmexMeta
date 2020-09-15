@@ -94,6 +94,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PhysicalForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPhenomenon.html">PhysicalPhenomenon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
@@ -179,13 +180,15 @@
 <h1>PhysicalForce<a class="headerlink" href="#physicalforce" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
 <dt id="_CPPv4N8omexmeta13PhysicalForceE">
-<span id="_CPPv3N8omexmeta13PhysicalForceE"></span><span id="_CPPv2N8omexmeta13PhysicalForceE"></span><span id="omexmeta::PhysicalForce"></span><span class="target" id="classomexmeta_1_1PhysicalForce"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalForce</code> : <em class="property">public</em> omexmeta::PhysicalPhenomenon<a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForceE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta13PhysicalForceE"></span><span id="_CPPv2N8omexmeta13PhysicalForceE"></span><span id="omexmeta::PhysicalForce"></span><span class="target" id="classomexmeta_1_1PhysicalForce"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalForce</code> : <em class="property">public</em> omexmeta::<a class="reference internal" href="PhysicalPhenomenon.html#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEv">
 <span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEv"></span><span id="omexmeta::PhysicalForce::PhysicalForce"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ad5b43ea5489891c45f5ebc4c9b62e44e"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>default constructor for <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+<p>deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> you will get an error, because there will be no model assicated with <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>. Instead, always instantiate a <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> from the <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c"><span class="std std-ref">Editor::addPhysicalForce()</span></a> method. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForceD0Ev">
@@ -200,67 +203,167 @@
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce4freeEv">
 <span id="_CPPv3N8omexmeta13PhysicalForce4freeEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce4freeEv"></span><span id="omexmeta::PhysicalForce::free"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a41cd6c9904f3287bb8cbbab2b9d2ada3"></span>void <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce4freeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Free nodes associated with <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>. </p>
+<p>The <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> is owned by the caller if the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0"><span class="std std-ref">PhysicalForce::toTriples</span></a> method is NOT used. When <a class="reference internal" href="#classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0"><span class="std std-ref">toTriples()</span></a> is used, the nodes that create the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> are “given” to the <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object, which automatically destroys them at the right time.</p>
+<p>Most of the time, users will not have to remember to free the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> themselves as the toTriples method is always used. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model">
 <span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model"></span><span id="omexmeta::PhysicalForce::PhysicalForce__librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a673e6810fe969bcd087ab88c62e5e041"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span>librdf_model *<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_model" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>constructor for instantiating a <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> type composite annotation </p>
+<p><p>Users do not need to instantiate </p>
+<a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> manually, since it is done by <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. This constructor instantiates an empty <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> object which is filled by <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model.</span></code>: A librdf_model pass down by <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE">
 <span id="_CPPv3N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE"></span><span id="omexmeta::PhysicalForce::PhysicalForce__librdf_modelP.ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a2ff9aecd73a5356be701d8ba7e9bf71c"></span><code class="sig-name descname">PhysicalForce</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, <em class="property">const</em> std::string &amp;<em>model_uri</em>, <em class="property">const</em> std::string &amp;<em>local_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13PhysicalForceEP12librdf_modelRKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>constructor for instantiating a <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> type composite annotation </p>
+<p><p>Users do not need to instantiate </p>
+<a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> manually, since it is done by <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. This constructor instantiates an empty <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> object which is filled by <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model.</span></code>: A librdf_model pass down by <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_uri.</span></code>: String passed down by <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. The local uri to use for metaids</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce12createMetaIdEv">
 <span id="_CPPv3N8omexmeta13PhysicalForce12createMetaIdEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce12createMetaIdEv"></span><span id="omexmeta::PhysicalForce::createMetaId"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ae0a9ec4689b4765d985ab8f7a8878f38"></span>std::string <code class="sig-name descname">createMetaId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce12createMetaIdEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>create a metaid for the physical force annotation </p>
+<p>a new metaid for <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta13PhysicalForce10getSourcesEv">
 <span id="_CPPv3NK8omexmeta13PhysicalForce10getSourcesEv"></span><span id="_CPPv2NK8omexmeta13PhysicalForce10getSourcesEv"></span><span id="omexmeta::PhysicalForce::getSourcesC"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1aa42b8e04573d2ae88f952c76b146d5ac"></span><em class="property">const</em> Sources &amp;<code class="sig-name descname">getSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta13PhysicalForce10getSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>return vector of Source objects assocated with <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a vector of SourceParticipants </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta13PhysicalForce8getSinksEv">
 <span id="_CPPv3NK8omexmeta13PhysicalForce8getSinksEv"></span><span id="_CPPv2NK8omexmeta13PhysicalForce8getSinksEv"></span><span id="omexmeta::PhysicalForce::getSinksC"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ab37bbe3a0f762066fdb43e5c2ce608eb"></span><em class="property">const</em> Sinks &amp;<code class="sig-name descname">getSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta13PhysicalForce8getSinksEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>return vector of Sink objects assocated with <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a vector of SinkParticipants </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce9toTriplesEv">
 <span id="_CPPv3N8omexmeta13PhysicalForce9toTriplesEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce9toTriplesEv"></span><span id="omexmeta::PhysicalForce::toTriples"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>converts the PhyicalForce object into a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. </p>
+<p><p>When this method is called ownership of all </p>
+<a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> nodes gets transferred from the caller to the returned <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object containing the individual <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects of a <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>.</p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty">
 <span id="_CPPv3N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty"></span><span id="_CPPv2N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty"></span><span id="omexmeta::PhysicalForce::setPhysicalProperty__PhysicalProperty"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a081aecc43d16b2fc8826c4050eb2055d"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>PhysicalProperty <em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyE16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>sets the physical property of the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>  physicalProperty An instance of PhysicalProperty representing the physical property term for the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>. </p>
+<p><p>Prefer the other setPhysicalProperty method since it only requires a string input and instantiates the </p>
+PhysicalProperty for you.<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> to enable the builder interface.</p>
+</dd>
+</dl>
+</p>
+<p>For developers. Consider removing. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE">
 <span id="_CPPv3N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE"></span><span id="omexmeta::PhysicalForce::setPhysicalProperty__ss.ss"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a3f979432322d40efc8a15cf5ee883100"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>std::string <em>subject_metaid</em>, std::string <em>physical_property</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce19setPhysicalPropertyENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>sets the physical property of the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> to enable the builder interface. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subject_metaid.</span></code>: The subject portion of the two triples produced by PhysicalProperty. Metaid of a model element. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: string representing the OPB term to use as the physical property. Like “OPB:OPB_1234” </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE">
 <span id="_CPPv3N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE"></span><span id="omexmeta::PhysicalForce::addSource__i.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1ace7d3703d7e4bdb9a256208f456f2c4f"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">addSource</code><span class="sig-paren">(</span>int <em>multiplier</em>, <em class="property">const</em> std::string &amp;<em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce9addSourceEiRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>add a SourceParticipant to the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>. </p>
+<p><p>See </p>
+SourceParticipant documentation for more details on arguments. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> to enable the builder interface.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">metaid</span></code>: the ID for the SourceParticipant. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplier</span></code>: The multiplier argument for SourceParticipant </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physical_entity_reference</span></code>: The physicalEntityReference argument for the SourceParticipant. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE">
 <span id="_CPPv3N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE"></span><span id="_CPPv2N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE"></span><span id="omexmeta::PhysicalForce::addSink__i.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a8ec5e262b82526ac914d8c7f10b6c2f1"></span><a class="reference internal" href="#_CPPv4N8omexmeta13PhysicalForceE" title="omexmeta::PhysicalForce">PhysicalForce</a> &amp;<code class="sig-name descname">addSink</code><span class="sig-paren">(</span>int <em>multiplier</em>, <em class="property">const</em> std::string &amp;<em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce7addSinkEiRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>add a SinkParticipant to the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a>. </p>
+<p><p>See </p>
+SinkParticipant documentation for more details on arguments. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> to enable the builder interface.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sink_metaid</span></code>: the ID for the SinkParticipant. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplier</span></code>: The multiplier argument for SinkParticipant </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physical_entity_reference</span></code>: The physicalEntityReference argument for the SinkParticipant. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce13getNumSourcesEv">
 <span id="_CPPv3N8omexmeta13PhysicalForce13getNumSourcesEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce13getNumSourcesEv"></span><span id="omexmeta::PhysicalForce::getNumSources"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a9910c8edac57daf70faa1f1e2e0208d1"></span>int <code class="sig-name descname">getNumSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce13getNumSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>returns the number of sources associated with the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer number of sources </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13PhysicalForce11getNumSinksEv">
 <span id="_CPPv3N8omexmeta13PhysicalForce11getNumSinksEv"></span><span id="_CPPv2N8omexmeta13PhysicalForce11getNumSinksEv"></span><span id="omexmeta::PhysicalForce::getNumSinks"></span><span class="target" id="classomexmeta_1_1PhysicalForce_1a1135c75705b59afa7037bab313009534"></span>int <code class="sig-name descname">getNumSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13PhysicalForce11getNumSinksEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>returns the number of sinks associated with the <a class="reference internal" href="#classomexmeta_1_1PhysicalForce"><span class="std std-ref">PhysicalForce</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer number of sinks </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta13PhysicalForceeqERK13PhysicalForce">

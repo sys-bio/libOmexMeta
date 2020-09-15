@@ -94,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPhenomenon.html">PhysicalPhenomenon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
@@ -179,8 +180,8 @@
 <h1>PhysicalEntity<a class="headerlink" href="#physicalentity" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
 <dt id="_CPPv4N8omexmeta14PhysicalEntityE">
-<span id="_CPPv3N8omexmeta14PhysicalEntityE"></span><span id="_CPPv2N8omexmeta14PhysicalEntityE"></span><span id="omexmeta::PhysicalEntity"></span><span class="target" id="classomexmeta_1_1PhysicalEntity"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalEntity</code> : <em class="property">public</em> omexmeta::PhysicalPhenomenon<a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> type of PhysicalPhenomenon </p>
+<span id="_CPPv3N8omexmeta14PhysicalEntityE"></span><span id="_CPPv2N8omexmeta14PhysicalEntityE"></span><span id="omexmeta::PhysicalEntity"></span><span class="target" id="classomexmeta_1_1PhysicalEntity"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalEntity</code> : <em class="property">public</em> omexmeta::<a class="reference internal" href="PhysicalPhenomenon.html#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> type of <a class="reference internal" href="PhysicalPhenomenon.html#classomexmeta_1_1PhysicalPhenomenon"><span class="std std-ref">PhysicalPhenomenon</span></a> </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -321,17 +322,47 @@ PhysicalProperty yourself.<dl class="simple">
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta14PhysicalEntity11setIdentityERKNSt6stringE">
 <span id="_CPPv3N8omexmeta14PhysicalEntity11setIdentityERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity11setIdentityERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::setIdentity__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">setIdentity</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity11setIdentityERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>sets the identity portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> (the “What”). </p>
+<p><p>The input string gets converted to a </p>
+<a class="reference internal" href="Resource.html#classomexmeta_1_1Resource"><span class="std std-ref">Resource</span></a> automatically.<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this Physical entity. Allows chaining together builder commands.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resource</span></code>: The resource to be used for the identity. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>See <a class="reference internal" href="Resource.html#classomexmeta_1_1Resource"><span class="std std-ref">Resource</span></a> documentation for more details of valid input strings. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta14PhysicalEntity11addLocationERKNSt6stringE">
 <span id="_CPPv3N8omexmeta14PhysicalEntity11addLocationERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity11addLocationERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::addLocation__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">addLocation</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>where</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity11addLocationERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>add a location to the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a>. </p>
+<p><p>The input string gets converted to a </p>
+<a class="reference internal" href="Resource.html#classomexmeta_1_1Resource"><span class="std std-ref">Resource</span></a> automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the “isPartOf” predicate. For example, a cytosolic TGFb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. This ends up being cytosol&lt;isPartOf&gt;fibroblast&lt;isPartOf&gt;dermis&lt;isPartOf&gt;skin.<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this Physical entity. Allows chaining together builder commands.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">where</span></code>: The resource representing a location. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>See <a class="reference internal" href="Resource.html#classomexmeta_1_1Resource"><span class="std std-ref">Resource</span></a> documentation for more details of valid input strings. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta14PhysicalEntity15getNumLocationsEv">
 <span id="_CPPv3NK8omexmeta14PhysicalEntity15getNumLocationsEv"></span><span id="_CPPv2NK8omexmeta14PhysicalEntity15getNumLocationsEv"></span><span id="omexmeta::PhysicalEntity::getNumLocationsC"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4"></span>int <code class="sig-name descname">getNumLocations</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PhysicalEntity15getNumLocationsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>returns the number of locations used by <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the number of locations in a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta14PhysicalEntityeqERK14PhysicalEntity">

@@ -94,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PhysicalProcess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPhenomenon.html">PhysicalPhenomenon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
@@ -179,13 +180,15 @@
 <h1>PhysicalProcess<a class="headerlink" href="#physicalprocess" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
 <dt id="_CPPv4N8omexmeta15PhysicalProcessE">
-<span id="_CPPv3N8omexmeta15PhysicalProcessE"></span><span id="_CPPv2N8omexmeta15PhysicalProcessE"></span><span id="omexmeta::PhysicalProcess"></span><span class="target" id="classomexmeta_1_1PhysicalProcess"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalProcess</code> : <em class="property">public</em> omexmeta::PhysicalPhenomenon<a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta15PhysicalProcessE"></span><span id="_CPPv2N8omexmeta15PhysicalProcessE"></span><span id="omexmeta::PhysicalProcess"></span><span class="target" id="classomexmeta_1_1PhysicalProcess"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalProcess</code> : <em class="property">public</em> omexmeta::<a class="reference internal" href="PhysicalPhenomenon.html#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEv">
 <span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEv"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1acf4c42d10d6dbdd3aa4285bed7bd823b"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>default constructor for <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p>deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> you will get an error, because there will be no model associated with <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>. Instead, always instantiate a <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> from the <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1"><span class="std std-ref">Editor::addPhysicalProcess()</span></a> method. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcessD0Ev">
@@ -195,82 +198,187 @@
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators">
 <span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess__librdf_modelP.ss.ss.PhysicalPropertyCR.Sources.Sinks.Mediators"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a37f99033da4635ff1af2b9f19c1b84ce"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em>, <em class="property">const</em> PhysicalProperty &amp;<em>physicalProperty</em>, Sources <em>sources</em>, Sinks <em>sinks</em>, Mediators <em>mediators</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringERK16PhysicalProperty7Sources5Sinks9Mediators" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Constructor for <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> object. Subclass of <a class="reference internal" href="PhysicalPhenomenon.html#classomexmeta_1_1PhysicalPhenomenon"><span class="std std-ref">PhysicalPhenomenon</span></a>. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: a librdf_model pointer for current rdf graph. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physicalProperty</span></code>: the physical property for the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sources</span></code>: a vector of Source objects representing the energetic sources for the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sinks</span></code>: a vector of Sink objects representing the energetic sinks for the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mediator</span></code>: a vector of Sink objects representing the energetic modulators for the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess4freeEv">
 <span id="_CPPv3N8omexmeta15PhysicalProcess4freeEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess4freeEv"></span><span id="omexmeta::PhysicalProcess::free"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a8dfcffe80f264ad24e70de9d7b71c73b"></span>void <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess4freeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>free the node resources used by <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>. </p>
+<p>When the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a"><span class="std std-ref">toTriples()</span></a> method is used, ownership of the nodes associated with <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> are transferred to the resulting <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object, which destroys them automatically at the right time. If user does not use the toTriples method, then resources used by <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> must be freed manually with this method. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model">
 <span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess__librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a2b694395a318335e81c884ed76b5f4dd"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span>librdf_model *<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_model" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>constructor for the builder interface of <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> instantiation </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: the currently active <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> model. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE">
 <span id="_CPPv3N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE"></span><span id="omexmeta::PhysicalProcess::PhysicalProcess__librdf_modelP.ss.ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a974e2717dbf4b690b95b07e9c026fd2a"></span><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15PhysicalProcessEP12librdf_modelNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>constructor for the builder interface of <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> instantiation </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: the currently active <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> model. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_uri</span></code>: the local uri in current use. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta15PhysicalProcess10getSourcesEv">
 <span id="_CPPv3NK8omexmeta15PhysicalProcess10getSourcesEv"></span><span id="_CPPv2NK8omexmeta15PhysicalProcess10getSourcesEv"></span><span id="omexmeta::PhysicalProcess::getSourcesC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb"></span><em class="property">const</em> Sources &amp;<code class="sig-name descname">getSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcess10getSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>getter for sources </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a vector of SourceParticipant objects </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta15PhysicalProcess8getSinksEv">
 <span id="_CPPv3NK8omexmeta15PhysicalProcess8getSinksEv"></span><span id="_CPPv2NK8omexmeta15PhysicalProcess8getSinksEv"></span><span id="omexmeta::PhysicalProcess::getSinksC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535"></span><em class="property">const</em> Sinks &amp;<code class="sig-name descname">getSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcess8getSinksEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>getter for sinks </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a vector of SinkParticipant objects </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta15PhysicalProcess12getMediatorsEv">
 <span id="_CPPv3NK8omexmeta15PhysicalProcess12getMediatorsEv"></span><span id="_CPPv2NK8omexmeta15PhysicalProcess12getMediatorsEv"></span><span id="omexmeta::PhysicalProcess::getMediatorsC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a349b76ad1831d2510904510583f0d7f2"></span><em class="property">const</em> Mediators &amp;<code class="sig-name descname">getMediators</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcess12getMediatorsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>getter for mediators </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a vector of MediatorParticipant objects </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess9toTriplesEv">
 <span id="_CPPv3N8omexmeta15PhysicalProcess9toTriplesEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess9toTriplesEv"></span><span id="omexmeta::PhysicalProcess::toTriples"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>convert a <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> into a set of <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
+<p><p>When used, the ownership of nodes in </p>
+<a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> are pass to the <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object, which automatically destroys them when appropriate. Otherwise the caller is responsible for freeing resources. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object containing the set of <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects that represent this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a></p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE">
 <span id="_CPPv3N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE"></span><span id="omexmeta::PhysicalProcess::setPhysicalProperty__ss.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>std::string <em>subject_metaid</em>, <em class="property">const</em> std::string &amp;<em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyENSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>setter for the physical property portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> to enable chaining setter commands </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty">
 <span id="_CPPv3N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty"></span><span id="_CPPv2N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty"></span><span id="omexmeta::PhysicalProcess::setPhysicalProperty__PhysicalProperty"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ac49bf4a1c21c6590a9d2af7ae93e13a7"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span>PhysicalProperty <em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess19setPhysicalPropertyE16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>setter for the physical property portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>. </p>
+<p><p>Developers. Consider removing this method in favour of the setPhysicalProperty version that only takes a string as argument </p>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> to enable chaining setter commands</p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE">
 <span id="_CPPv3N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE"></span><span id="omexmeta::PhysicalProcess::addSource__i.ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ab83f58b7df77fdee131c22c71da22f39"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">addSource</code><span class="sig-paren">(</span>int <em>multiplier</em>, std::string <em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess9addSourceEiNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>add a source to the list of Source object associated with a <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> to enable chaining setter commands </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE">
 <span id="_CPPv3N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE"></span><span id="omexmeta::PhysicalProcess::addSink__i.ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a403ffc7d7d29702f2ff4e56084a1d714"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">addSink</code><span class="sig-paren">(</span>int <em>multiplier</em>, std::string <em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess7addSinkEiNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>add a sink to the list of Source object associated with a <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> to enable chaining setter commands </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess11addMediatorENSt6stringE">
 <span id="_CPPv3N8omexmeta15PhysicalProcess11addMediatorENSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess11addMediatorENSt6stringE"></span><span id="omexmeta::PhysicalProcess::addMediator__ss"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">addMediator</code><span class="sig-paren">(</span>std::string <em>physical_entity_reference</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess11addMediatorENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>add a mediator to the list of Source object associated with a <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> to enable chaining setter commands </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess13getNumSourcesEv">
 <span id="_CPPv3N8omexmeta15PhysicalProcess13getNumSourcesEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess13getNumSourcesEv"></span><span id="omexmeta::PhysicalProcess::getNumSources"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a56459d9f0087a3f92b0aca5d148b65f5"></span>int <code class="sig-name descname">getNumSources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess13getNumSourcesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>returns the number of sources assocaited with the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the number of Source objects associated with this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess11getNumSinksEv">
 <span id="_CPPv3N8omexmeta15PhysicalProcess11getNumSinksEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess11getNumSinksEv"></span><span id="omexmeta::PhysicalProcess::getNumSinks"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1ac8b79af15d4d19042ee34abca25f679f"></span>int <code class="sig-name descname">getNumSinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess11getNumSinksEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>returns the number of sinks assocaited with the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the number of Sink objects associated with this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta15PhysicalProcess15getNumMediatorsEv">
 <span id="_CPPv3N8omexmeta15PhysicalProcess15getNumMediatorsEv"></span><span id="_CPPv2N8omexmeta15PhysicalProcess15getNumMediatorsEv"></span><span id="omexmeta::PhysicalProcess::getNumMediators"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26"></span>int <code class="sig-name descname">getNumMediators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess15getNumMediatorsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>returns the number of mediators assocaited with the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the number of Mediator objects associated with this <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta15PhysicalProcesseqERK15PhysicalProcess">
