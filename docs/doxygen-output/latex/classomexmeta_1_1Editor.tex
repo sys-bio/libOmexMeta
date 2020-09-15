@@ -14,92 +14,73 @@ Add or change annotations in xml.
 \item 
 \hyperlink{classomexmeta_1_1Editor_a6ac976c1a3762f77a577b5735cd509f4}{Editor} (const std\+::string \&xml, bool create\+\_\+ids, const \hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model} \&model, Namespace\+Map \&ns\+\_\+map, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true, const std\+::string \&repository\+\_\+uri=std\+::string(), const std\+::string \&archive\+\_\+uri=std\+::string(), const std\+::string \&model\+\_\+uri=std\+::string(), const std\+::string \&local\+\_\+uri=std\+::string())
 \begin{DoxyCompactList}\small\item\em constructor for \hyperlink{classomexmeta_1_1Editor}{Editor}. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}{$\sim$\+Editor} ()=default
+\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ab5b39f1f137312ce77575e73a86dfb05}\label{classomexmeta_1_1Editor_ab5b39f1f137312ce77575e73a86dfb05}} 
 int {\bfseries size} () const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}\label{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}} 
-const Namespace\+Map \& {\bfseries get\+Namespaces} () const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}\label{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}} 
-librdf\+\_\+model $\ast$ {\bfseries get\+Model} () const
-\item 
+const Namespace\+Map \& \hyperlink{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}{get\+Namespaces} () const
+\begin{DoxyCompactList}\small\item\em returns a hashmap of namespaces to prefixes. \end{DoxyCompactList}\item 
+librdf\+\_\+model $\ast$ \hyperlink{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}{get\+Model} () const
+\begin{DoxyCompactList}\small\item\em return the underlying librdf\+\_\+model$\ast$ pointer \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}\label{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}} 
-void {\bfseries set\+Namespaces} (const Namespace\+Map \&namespaces)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}\label{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}} 
-const std\+::string \& {\bfseries get\+Xml} () const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a242c86222e1aeff337d3af22641db1de}\label{classomexmeta_1_1Editor_a242c86222e1aeff337d3af22641db1de}} 
-const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Metaids} () const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a052a725cee8b8e577c55e977eee81ace}\label{classomexmeta_1_1Editor_a052a725cee8b8e577c55e977eee81ace}} 
-void {\bfseries add\+Namespace} (const std\+::string \&ns, std\+::string prefix)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}\label{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}} 
-void {\bfseries add\+Single\+Annotation} (\hyperlink{classomexmeta_1_1Subject}{Subject} subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \hyperlink{classomexmeta_1_1Resource}{Resource} \&resource)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}\label{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}} 
-void {\bfseries add\+Single\+Annotation} (\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&singular\+Annotation)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_afcb5ce7397aab23fabd3b4b4b89d3a54}\label{classomexmeta_1_1Editor_afcb5ce7397aab23fabd3b4b4b89d3a54}} 
-void {\bfseries remove\+Single\+Annotation} (const \hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&singular\+Annotation) const
-\item 
+void \hyperlink{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}{set\+Namespaces} (const Namespace\+Map \&namespaces)
+\begin{DoxyCompactList}\small\item\em set the namespace map. \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}{get\+Xml} () const
+\begin{DoxyCompactList}\small\item\em return the xml \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::string $>$ \& \hyperlink{classomexmeta_1_1Editor_a242c86222e1aeff337d3af22641db1de}{get\+Metaids} () const
+\begin{DoxyCompactList}\small\item\em returns a list of metaids both that existed previously and that was added during instantiation. \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a052a725cee8b8e577c55e977eee81ace}{add\+Namespace} (const std\+::string \&ns, std\+::string prefix)
+\begin{DoxyCompactList}\small\item\em add a namespace \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}{add\+Single\+Annotation} (\hyperlink{classomexmeta_1_1Subject}{Subject} subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \hyperlink{classomexmeta_1_1Resource}{Resource} \&resource)
+\begin{DoxyCompactList}\small\item\em Add a Single\+Annotation (aka a \hyperlink{classomexmeta_1_1Triple}{Triple}) to the model. \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}{add\+Single\+Annotation} (\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&singular\+Annotation)
+\begin{DoxyCompactList}\small\item\em Add a Single\+Annotation (aka \hyperlink{classomexmeta_1_1Triple}{Triple}) to the rdf graph. \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_afcb5ce7397aab23fabd3b4b4b89d3a54}{remove\+Single\+Annotation} (const \hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&singular\+Annotation) const
+\begin{DoxyCompactList}\small\item\em remove a singular annotation (aka \hyperlink{classomexmeta_1_1Triple}{Triple}) from the rdf graph \end{DoxyCompactList}\item 
 void \hyperlink{classomexmeta_1_1Editor_a146ae84fb44991d9c6135e98f03fa972}{add\+Composite\+Annotation} (\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon} $\ast$phenomenon\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em add a composite annotation to the rdf graph. \end{DoxyCompactList}\item 
 void \hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{add\+Physical\+Entity} (\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&physical\+Entity)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a0acf94314252b70a4db89f83e6047e8f}\label{classomexmeta_1_1Editor_a0acf94314252b70a4db89f83e6047e8f}} 
-void {\bfseries remove\+Physical\+Entity} (\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&physical\+Entity) const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a8be7fa01bef49ff1c93965781797c9bc}\label{classomexmeta_1_1Editor_a8be7fa01bef49ff1c93965781797c9bc}} 
-void {\bfseries remove\+Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$information) const
-\item 
+\begin{DoxyCompactList}\small\item\em add a composite annotation of type \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} to the rdf graph \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a0acf94314252b70a4db89f83e6047e8f}{remove\+Physical\+Entity} (\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&physical\+Entity) const
+\begin{DoxyCompactList}\small\item\em remove triples associated with a a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} object from the rdf graph \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a8be7fa01bef49ff1c93965781797c9bc}{remove\+Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$information) const
+\begin{DoxyCompactList}\small\item\em remove triples associated with a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object from the rdf graph \end{DoxyCompactList}\item 
 void \hyperlink{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}{add\+Physical\+Process} (\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} \&physical\+Process)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}\label{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}} 
-void {\bfseries remove\+Physical\+Process} (\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} \&physical\+Process) const
-\item 
+\begin{DoxyCompactList}\small\item\em add a composite annotation of type \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} to the rdf graph \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}{remove\+Physical\+Process} (\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} \&physical\+Process) const
+\begin{DoxyCompactList}\small\item\em remove triples associated with a \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} object from the rdf graph \end{DoxyCompactList}\item 
 void \hyperlink{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}{add\+Physical\+Force} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \&physical\+Force)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a1b2e0f5859fe2e2784ecff2a78f7f1f8}\label{classomexmeta_1_1Editor_a1b2e0f5859fe2e2784ecff2a78f7f1f8}} 
-void {\bfseries add\+Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$personal\+Information)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}\label{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}} 
-void {\bfseries remove\+Physical\+Force} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \&physical\+Force) const
-\item 
+\begin{DoxyCompactList}\small\item\em add a composite annotation of type \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} to the rdf graph \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a1b2e0f5859fe2e2784ecff2a78f7f1f8}{add\+Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$personal\+Information)
+\begin{DoxyCompactList}\small\item\em add a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} class to the rdf model \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}{remove\+Physical\+Force} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \&physical\+Force) const
+\begin{DoxyCompactList}\small\item\em remove triples associated with a a \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} object from the rdf graph \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a790458ef32f01ce0a6fd87bf14bed81a}\label{classomexmeta_1_1Editor_a790458ef32f01ce0a6fd87bf14bed81a}} 
-void {\bfseries check\+Valid\+Metaid} (const std\+::string \&metaid)
-\item 
+void \hyperlink{classomexmeta_1_1Editor_a790458ef32f01ce0a6fd87bf14bed81a}{check\+Valid\+Metaid} (const std\+::string \&metaid)
+\begin{DoxyCompactList}\small\item\em check that a metaid is valid by comparing with the output from Editor\+::get\+Meta\+Ids() \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a3fef7f1c38949b50239a9a07cc327d67}\label{classomexmeta_1_1Editor_a3fef7f1c38949b50239a9a07cc327d67}} 
-void {\bfseries add\+Namespace\+From\+Annotation} (const std\+::string \&predicate\+\_\+string)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}\label{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}} 
-const std\+::string \& {\bfseries get\+Metaid\+Base} () const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}\label{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}} 
-void {\bfseries set\+Metaid\+Base} (const std\+::string \&metaid\+Base)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}\label{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}} 
-Omex\+Meta\+Xml\+Type {\bfseries get\+Type} () const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}\label{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}} 
-void {\bfseries set\+Type} (Omex\+Meta\+Xml\+Type type)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}\label{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}} 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} {\bfseries new\+Physical\+Entity} ()
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}\label{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}} 
-\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} {\bfseries new\+Physical\+Force} ()
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}\label{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}} 
-\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} {\bfseries new\+Physical\+Process} ()
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a1943079ddbc4a4c6d896f51f360a11df}\label{classomexmeta_1_1Editor_a1943079ddbc4a4c6d896f51f360a11df}} 
-\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} {\bfseries new\+Personal\+Information} ()
-\item 
+void \hyperlink{classomexmeta_1_1Editor_a3fef7f1c38949b50239a9a07cc327d67}{add\+Namespace\+From\+Annotation} (const std\+::string \&predicate\+\_\+string)
+\begin{DoxyCompactList}\small\item\em extract namespace part of uri from  predicate\+\_\+string and add it to namespace\+\_\+ if we know it. \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}{get\+Metaid\+Base} () const
+\begin{DoxyCompactList}\small\item\em get the string that is being used for the metaid base (default is Omex\+Meta\+ID) \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}{set\+Metaid\+Base} (const std\+::string \&metaid\+Base)
+\begin{DoxyCompactList}\small\item\em set the base metaid string (default is Omex\+Meta\+Id) \end{DoxyCompactList}\item 
+Omex\+Meta\+Xml\+Type \hyperlink{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}{get\+Type} () const
+\begin{DoxyCompactList}\small\item\em getter for the current xml type identification variable. \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}{set\+Type} (Omex\+Meta\+Xml\+Type type)
+\begin{DoxyCompactList}\small\item\em setter for the current xml type identification variable. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \hyperlink{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}{new\+Physical\+Entity} ()
+\begin{DoxyCompactList}\small\item\em create a new \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} object. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \hyperlink{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}{new\+Physical\+Force} ()
+\begin{DoxyCompactList}\small\item\em create a new \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} object. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} \hyperlink{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}{new\+Physical\+Process} ()
+\begin{DoxyCompactList}\small\item\em create a new \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} object. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \hyperlink{classomexmeta_1_1Editor_a1943079ddbc4a4c6d896f51f360a11df}{new\+Personal\+Information} ()
+\begin{DoxyCompactList}\small\item\em create a new \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a8fb3a19e8f64aeff2ac9b78c483843de}\label{classomexmeta_1_1Editor_a8fb3a19e8f64aeff2ac9b78c483843de}} 
-void {\bfseries add\+Single\+Annotation\+No\+Validation} (\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&singular\+Annotation)
-\item 
+void \hyperlink{classomexmeta_1_1Editor_a8fb3a19e8f64aeff2ac9b78c483843de}{add\+Single\+Annotation\+No\+Validation} (\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&singular\+Annotation)
+\begin{DoxyCompactList}\small\item\em like add\+Single\+Annotation \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ad05d04a31263f9c7cb8105e29fd9d158}\label{classomexmeta_1_1Editor_ad05d04a31263f9c7cb8105e29fd9d158}} 
 void {\bfseries add\+Composite\+Annotation2} (\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon} $\ast$phenomenon\+Ptr)
 \item 
@@ -110,50 +91,40 @@ void {\bfseries add\+Triples} (\hyperlink{classomexmeta_1_1Triples}{Triples} \&t
 void {\bfseries remove\+Physical\+Phenomenon} (\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon} $\ast$physical\+Phenomenon) const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a736e49794c5a358f06d13d41c3657fe2}\label{classomexmeta_1_1Editor_a736e49794c5a358f06d13d41c3657fe2}} 
-std\+::string {\bfseries get\+Archive\+Uri} () const
-\item 
+std\+::string \hyperlink{classomexmeta_1_1Editor_a736e49794c5a358f06d13d41c3657fe2}{get\+Archive\+Uri} () const
+\begin{DoxyCompactList}\small\item\em get the current value of archive\+\_\+uri\+\_\+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a8494826923de713c19f971fd9c7908c0}\label{classomexmeta_1_1Editor_a8494826923de713c19f971fd9c7908c0}} 
-std\+::string {\bfseries get\+Local\+Uri} () const
-\item 
+std\+::string \hyperlink{classomexmeta_1_1Editor_a8494826923de713c19f971fd9c7908c0}{get\+Local\+Uri} () const
+\begin{DoxyCompactList}\small\item\em get the current value of local\+\_\+uri\+\_\+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a0020d3b9c3e91fb37c134ba8b211c13e}\label{classomexmeta_1_1Editor_a0020d3b9c3e91fb37c134ba8b211c13e}} 
-std\+::string {\bfseries get\+Model\+Uri} () const
-\item 
+std\+::string \hyperlink{classomexmeta_1_1Editor_a0020d3b9c3e91fb37c134ba8b211c13e}{get\+Model\+Uri} () const
+\begin{DoxyCompactList}\small\item\em get the current value of model\+\_\+uri\+\_\+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f402d8721bf}\label{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f402d8721bf}} 
-std\+::string {\bfseries get\+Repository\+Uri} () const
-\item 
+std\+::string \hyperlink{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f402d8721bf}{get\+Repository\+Uri} () const
+\begin{DoxyCompactList}\small\item\em get the current value of archive\+\_\+uri\+\_\+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}\label{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}} 
-\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} {\bfseries create\+Node\+With\+Model\+Uri} (const std\+::string \&string) const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}\label{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}} 
-void {\bfseries add\+Creator} (std\+::string orcid\+\_\+id)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}\label{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}} 
-void {\bfseries add\+Curator} (std\+::string orcid\+\_\+id)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}\label{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}} 
-void {\bfseries add\+Taxon} (const std\+::string \&taxon\+\_\+id)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}\label{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}} 
-void {\bfseries add\+Pubmed} (const std\+::string \&pubmedid)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}\label{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}} 
-void {\bfseries add\+Description} (const std\+::string \&date)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}\label{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}} 
-void {\bfseries add\+Date\+Created} (const std\+::string \&date)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}\label{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}} 
-\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} {\bfseries new\+Singular\+Annotation} (std\+::string metaid) const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}\label{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}} 
-void {\bfseries add\+Parent\+Model} (const std\+::string \&biomod\+\_\+id)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f}\label{classomexmeta_1_1Editor_ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f}} 
-void {\bfseries add\+Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$personal\+Information) const
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a6142da2b89068e9638410c3c903e3b64}\label{classomexmeta_1_1Editor_a6142da2b89068e9638410c3c903e3b64}} 
-\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} {\bfseries new\+Singular\+Annotation} () const
-\end{DoxyCompactItemize}
+\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} \hyperlink{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}{create\+Node\+With\+Model\+Uri} (const std\+::string \&string) const
+\begin{DoxyCompactList}\small\item\em instantiate a Librdf\+Node that is prefixed with the current local\+\_\+uri \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}{add\+Creator} (std\+::string orcid\+\_\+id)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}creator\char`\"{} model level annotation \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}{add\+Curator} (std\+::string orcid\+\_\+id)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}curator\char`\"{} model level annotation \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}{add\+Taxon} (const std\+::string \&taxon\+\_\+id)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}taxon id\char`\"{} model level annotation \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}{add\+Pubmed} (const std\+::string \&pubmedid)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}pubmed id\char`\"{} model level annotation \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}{add\+Description} (const std\+::string \&date)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}description\char`\"{} model level annotation \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}{add\+Date\+Created} (const std\+::string \&date)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}date created\char`\"{} model level annotation \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \hyperlink{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}{new\+Singular\+Annotation} (std\+::string metaid) const
+\begin{DoxyCompactList}\small\item\em create a new singular annotation object with metaid \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}{add\+Parent\+Model} (const std\+::string \&biomod\+\_\+id)
+\begin{DoxyCompactList}\small\item\em add the \char`\"{}parent model\char`\"{} model level annotation \end{DoxyCompactList}\item 
+void \hyperlink{classomexmeta_1_1Editor_ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f}{add\+Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$personal\+Information) const
+\begin{DoxyCompactList}\small\item\em Add a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object to the current \hyperlink{classomexmeta_1_1RDF}{R\+DF} graph. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \hyperlink{classomexmeta_1_1Editor_a6142da2b89068e9638410c3c903e3b64}{new\+Singular\+Annotation} () const
+\begin{DoxyCompactList}\small\item\em create a new Singular\+Annotation object \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -194,7 +165,13 @@ The \hyperlink{classomexmeta_1_1Editor}{Editor} is usually instantiated from the
 {\em ns\+\_\+map} & arguments. When instantiated, the editor class automatically reads the X\+ML and adds metaids to some or all of the elements, depending on the X\+ML type parameter. If the user specifies that they are annotating an S\+B\+ML model, the elements returned by S\+B\+M\+L\+Assistant\+::get\+Valid\+Elements() are given metaids (if not exist), while if the user chooses cellml the elements returned by Cell\+M\+L\+Assistant\+::get\+Valid\+Elements() are used. If the type is unknown, then all elements are given metaids. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}\label{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!````~Editor@{$\sim$\+Editor}}
+\index{````~Editor@{$\sim$\+Editor}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{$\sim$\+Editor()}{~Editor()}}
+{\footnotesize\ttfamily omexmeta\+::\+Editor\+::$\sim$\+Editor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
+We no longer required to free the triples\+\_\+ used by \hyperlink{classomexmeta_1_1Editor}{Editor} since they are created and freed inplace -\/ i.\+e. locally, not at the class scope. 
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a146ae84fb44991d9c6135e98f03fa972}\label{classomexmeta_1_1Editor_a146ae84fb44991d9c6135e98f03fa972}} 
@@ -203,25 +180,504 @@ The \hyperlink{classomexmeta_1_1Editor}{Editor} is usually instantiated from the
 \subsubsection{\texorpdfstring{add\+Composite\+Annotation()}{addCompositeAnnotation()}}
 {\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Composite\+Annotation (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon} $\ast$}]{phenomenon\+Ptr }\end{DoxyParamCaption})}
 
-Implementation note\+: \hyperlink{classThis}{This} method generates triples on the fly and then frees. \hyperlink{classThis}{This} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}\label{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}} 
+
+
+add a composite annotation to the rdf graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phenomenon\+Ptr} & A pointer to an object of type \hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}, the superclass of the composite annotations.\\
+\hline
+\end{DoxyParams}
+Composite annotations currently supported are \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}, \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} and \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}. The Physical\+Dependency type will be supported in future releases.
+
+For developers. Consider removing this function in favour of using the add$\ast$ functions. Implementation note\+: \hyperlink{classThis}{This} method generates triples on the fly and then frees. \hyperlink{classThis}{This} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}\label{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Creator@{add\+Creator}}
+\index{add\+Creator@{add\+Creator}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Creator()}{addCreator()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Creator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}creator\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an} & orchid\+\_\+id as string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}\label{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Curator@{add\+Curator}}
+\index{add\+Curator@{add\+Curator}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Curator()}{addCurator()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Curator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}curator\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an} & orchid\+\_\+id as string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}\label{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Date\+Created@{add\+Date\+Created}}
+\index{add\+Date\+Created@{add\+Date\+Created}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Date\+Created()}{addDateCreated()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Date\+Created (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{date }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}date created\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & date that the model was created \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}\label{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Description@{add\+Description}}
+\index{add\+Description@{add\+Description}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Description()}{addDescription()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Description (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{date }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}description\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & description of the model as string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a052a725cee8b8e577c55e977eee81ace}\label{classomexmeta_1_1Editor_a052a725cee8b8e577c55e977eee81ace}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Namespace@{add\+Namespace}}
+\index{add\+Namespace@{add\+Namespace}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Namespace()}{addNamespace()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Namespace (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ns,  }\item[{std\+::string}]{prefix }\end{DoxyParamCaption})}
+
+
+
+add a namespace 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ns} & the namespace \\
+\hline
+{\em prefix} & the prefix used in serialized annotations to refer to the namespace \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}\label{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Parent\+Model@{add\+Parent\+Model}}
+\index{add\+Parent\+Model@{add\+Parent\+Model}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Parent\+Model()}{addParentModel()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Parent\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{biomod\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}parent model\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & biomodels id for the model in which this model was derived from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a1b2e0f5859fe2e2784ecff2a78f7f1f8}\label{classomexmeta_1_1Editor_a1b2e0f5859fe2e2784ecff2a78f7f1f8}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Personal\+Information@{add\+Personal\+Information}}
+\index{add\+Personal\+Information@{add\+Personal\+Information}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Personal\+Information()}{addPersonalInformation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Personal\+Information (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$}]{personal\+Information }\end{DoxyParamCaption})}
+
+
+
+add a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} class to the rdf model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em personal\+Information} & An instance of a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object to add to the rdf graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f}\label{classomexmeta_1_1Editor_ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Personal\+Information@{add\+Personal\+Information}}
+\index{add\+Personal\+Information@{add\+Personal\+Information}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Personal\+Information()}{addPersonalInformation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Personal\+Information (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$}]{personal\+Information }\end{DoxyParamCaption}) const}
+
+
+
+Add a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object to the current \hyperlink{classomexmeta_1_1RDF}{R\+DF} graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em personal\+Information} & the \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}\label{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}} 
 \index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Physical\+Entity@{add\+Physical\+Entity}}
 \index{add\+Physical\+Entity@{add\+Physical\+Entity}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
 \subsubsection{\texorpdfstring{add\+Physical\+Entity()}{addPhysicalEntity()}}
 {\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Physical\+Entity (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&}]{physical\+Entity }\end{DoxyParamCaption})}
 
+
+
+add a composite annotation of type \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} to the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Entity} & An instance of a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} object to add to the rdf graph. \\
+\hline
+\end{DoxyParams}
 Because we now want to use  local for the about section, we need to inject it here, if not already formatted properly.\mbox{\Hypertarget{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}\label{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}} 
 \index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Physical\+Force@{add\+Physical\+Force}}
 \index{add\+Physical\+Force@{add\+Physical\+Force}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
 \subsubsection{\texorpdfstring{add\+Physical\+Force()}{addPhysicalForce()}}
 {\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Physical\+Force (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \&}]{physical\+Force }\end{DoxyParamCaption})}
 
+
+
+add a composite annotation of type \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} to the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Force} & An instance of a \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} objec to add to the rdf graph. \\
+\hline
+\end{DoxyParams}
 Because we now want to use  local for the about section, we need to inject it here, if not already formatted properly.\mbox{\Hypertarget{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}\label{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}} 
 \index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Physical\+Process@{add\+Physical\+Process}}
 \index{add\+Physical\+Process@{add\+Physical\+Process}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
 \subsubsection{\texorpdfstring{add\+Physical\+Process()}{addPhysicalProcess()}}
 {\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Physical\+Process (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} \&}]{physical\+Process }\end{DoxyParamCaption})}
 
-Because we now want to use  Omex for the about section, we need to inject it here, if not already formatted properly.
+
+
+add a composite annotation of type \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} to the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Process} & An instance of a \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} object to add to the rdf graph. \\
+\hline
+\end{DoxyParams}
+Because we now want to use  Omex for the about section, we need to inject it here, if not already formatted properly.\mbox{\Hypertarget{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}\label{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Pubmed@{add\+Pubmed}}
+\index{add\+Pubmed@{add\+Pubmed}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Pubmed()}{addPubmed()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Pubmed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pubmedid }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}pubmed id\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & pubmed id as string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}\label{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Single\+Annotation@{add\+Single\+Annotation}}
+\index{add\+Single\+Annotation@{add\+Single\+Annotation}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Single\+Annotation()}{addSingleAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Single\+Annotation (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1Subject}{Subject}}]{subject,  }\item[{const Predicate\+Ptr \&}]{predicate\+\_\+ptr,  }\item[{const \hyperlink{classomexmeta_1_1Resource}{Resource} \&}]{resource }\end{DoxyParamCaption})}
+
+
+
+Add a Single\+Annotation (aka a \hyperlink{classomexmeta_1_1Triple}{Triple}) to the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subject} & the subject portion of the triple \\
+\hline
+{\em pointer} & to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls. \\
+\hline
+{\em resource} & the resource portion of the triple \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}\label{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Single\+Annotation@{add\+Single\+Annotation}}
+\index{add\+Single\+Annotation@{add\+Single\+Annotation}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Single\+Annotation()}{addSingleAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Single\+Annotation (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&}]{singular\+Annotation }\end{DoxyParamCaption})}
+
+
+
+Add a Single\+Annotation (aka \hyperlink{classomexmeta_1_1Triple}{Triple}) to the rdf graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em singular\+Annotation} & An instance of Singular\+Annotation to add to the model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}\label{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!add\+Taxon@{add\+Taxon}}
+\index{add\+Taxon@{add\+Taxon}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{add\+Taxon()}{addTaxon()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Taxon (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{taxon\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}taxon id\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an} & taxon\+\_\+id as string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}\label{classomexmeta_1_1Editor_af987e450e4bf9d75391ad3f5ac6233f6}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!get\+Metaid\+Base@{get\+Metaid\+Base}}
+\index{get\+Metaid\+Base@{get\+Metaid\+Base}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{get\+Metaid\+Base()}{getMetaidBase()}}
+{\footnotesize\ttfamily const std\+::string \& omexmeta\+::\+Editor\+::get\+Metaid\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the string that is being used for the metaid base (default is Omex\+Meta\+ID) 
+
+this base will only be used when the generate\+\_\+metaids boolean is set to true in the constructor. \begin{DoxyReturn}{Returns}
+std\+::string of metaid base 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a242c86222e1aeff337d3af22641db1de}\label{classomexmeta_1_1Editor_a242c86222e1aeff337d3af22641db1de}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!get\+Metaids@{get\+Metaids}}
+\index{get\+Metaids@{get\+Metaids}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{get\+Metaids()}{getMetaids()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ \& omexmeta\+::\+Editor\+::get\+Metaids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+returns a list of metaids both that existed previously and that was added during instantiation. 
+
+\begin{DoxyReturn}{Returns}
+vector of metaids used in the xml 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}\label{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!get\+Model@{get\+Model}}
+\index{get\+Model@{get\+Model}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{get\+Model()}{getModel()}}
+{\footnotesize\ttfamily librdf\+\_\+model $\ast$ omexmeta\+::\+Editor\+::get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return the underlying librdf\+\_\+model$\ast$ pointer 
+
+\begin{DoxyReturn}{Returns}
+the librdf\+\_\+model pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}\label{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!get\+Namespaces@{get\+Namespaces}}
+\index{get\+Namespaces@{get\+Namespaces}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{get\+Namespaces()}{getNamespaces()}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \& omexmeta\+::\+Editor\+::get\+Namespaces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+returns a hashmap of namespaces to prefixes. 
+
+\begin{DoxyReturn}{Returns}
+Map where keys are namespaces and values are prefixes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}\label{classomexmeta_1_1Editor_a68ade6a293061a98243a3b2853e55a4b}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily Omex\+Meta\+Xml\+Type omexmeta\+::\+Editor\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter for the current xml type identification variable. 
+
+\begin{DoxyReturn}{Returns}
+Omex\+Meta\+Type
+\end{DoxyReturn}
+\hyperlink{classThis}{This} should be set automatically in the \hyperlink{classomexmeta_1_1Editor}{Editor} constructor \mbox{\Hypertarget{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}\label{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!get\+Xml@{get\+Xml}}
+\index{get\+Xml@{get\+Xml}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{get\+Xml()}{getXml()}}
+{\footnotesize\ttfamily const std\+::string \& omexmeta\+::\+Editor\+::get\+Xml (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+return the xml 
+
+\begin{DoxyReturn}{Returns}
+the xml string after metaids are added 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a1943079ddbc4a4c6d896f51f360a11df}\label{classomexmeta_1_1Editor_a1943079ddbc4a4c6d896f51f360a11df}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!new\+Personal\+Information@{new\+Personal\+Information}}
+\index{new\+Personal\+Information@{new\+Personal\+Information}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{new\+Personal\+Information()}{newPersonalInformation()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} omexmeta\+::\+Editor\+::new\+Personal\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+create a new \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object. 
+
+\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} objects should only be instantiated via the \hyperlink{classomexmeta_1_1Editor}{Editor} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}\label{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!new\+Physical\+Entity@{new\+Physical\+Entity}}
+\index{new\+Physical\+Entity@{new\+Physical\+Entity}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{new\+Physical\+Entity()}{newPhysicalEntity()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} omexmeta\+::\+Editor\+::new\+Physical\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+create a new \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} object. 
+
+\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} objects should only be instantiated via the \hyperlink{classomexmeta_1_1Editor}{Editor} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}\label{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!new\+Physical\+Force@{new\+Physical\+Force}}
+\index{new\+Physical\+Force@{new\+Physical\+Force}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{new\+Physical\+Force()}{newPhysicalForce()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} omexmeta\+::\+Editor\+::new\+Physical\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+create a new \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} object. 
+
+\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} objects should only be instantiated via the \hyperlink{classomexmeta_1_1Editor}{Editor} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}\label{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!new\+Physical\+Process@{new\+Physical\+Process}}
+\index{new\+Physical\+Process@{new\+Physical\+Process}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{new\+Physical\+Process()}{newPhysicalProcess()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} omexmeta\+::\+Editor\+::new\+Physical\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+create a new \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} object. 
+
+\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} objects should only be instantiated via the \hyperlink{classomexmeta_1_1Editor}{Editor} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}\label{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!new\+Singular\+Annotation@{new\+Singular\+Annotation}}
+\index{new\+Singular\+Annotation@{new\+Singular\+Annotation}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{new\+Singular\+Annotation()}{newSingularAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} omexmeta\+::\+Editor\+::new\+Singular\+Annotation (\begin{DoxyParamCaption}\item[{std\+::string}]{metaid }\end{DoxyParamCaption}) const}
+
+
+
+create a new singular annotation object with metaid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em metaid} & the string to use in the \char`\"{}rdf\+:about\char`\"{} field or subject \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a new Singular\+Annotation object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a6142da2b89068e9638410c3c903e3b64}\label{classomexmeta_1_1Editor_a6142da2b89068e9638410c3c903e3b64}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!new\+Singular\+Annotation@{new\+Singular\+Annotation}}
+\index{new\+Singular\+Annotation@{new\+Singular\+Annotation}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{new\+Singular\+Annotation()}{newSingularAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} omexmeta\+::\+Editor\+::new\+Singular\+Annotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+create a new Singular\+Annotation object 
+
+\begin{DoxyReturn}{Returns}
+A Singular\+Annotation object
+\end{DoxyReturn}
+a Singular\+Annotation is a typedefed \hyperlink{classomexmeta_1_1Triple}{Triple} object. \mbox{\Hypertarget{classomexmeta_1_1Editor_a8be7fa01bef49ff1c93965781797c9bc}\label{classomexmeta_1_1Editor_a8be7fa01bef49ff1c93965781797c9bc}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!remove\+Personal\+Information@{remove\+Personal\+Information}}
+\index{remove\+Personal\+Information@{remove\+Personal\+Information}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{remove\+Personal\+Information()}{removePersonalInformation()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Personal\+Information (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} $\ast$}]{information }\end{DoxyParamCaption}) const}
+
+
+
+remove triples associated with a \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object from the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em information} & the \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} object to remove. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a0acf94314252b70a4db89f83e6047e8f}\label{classomexmeta_1_1Editor_a0acf94314252b70a4db89f83e6047e8f}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!remove\+Physical\+Entity@{remove\+Physical\+Entity}}
+\index{remove\+Physical\+Entity@{remove\+Physical\+Entity}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{remove\+Physical\+Entity()}{removePhysicalEntity()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Physical\+Entity (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&}]{physical\+Entity }\end{DoxyParamCaption}) const}
+
+
+
+remove triples associated with a a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} object from the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Entity} & the Physical\+Entityto remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}\label{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!remove\+Physical\+Force@{remove\+Physical\+Force}}
+\index{remove\+Physical\+Force@{remove\+Physical\+Force}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{remove\+Physical\+Force()}{removePhysicalForce()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Physical\+Force (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \&}]{physical\+Force }\end{DoxyParamCaption}) const}
+
+
+
+remove triples associated with a a \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} object from the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Force} & the \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}\label{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!remove\+Physical\+Process@{remove\+Physical\+Process}}
+\index{remove\+Physical\+Process@{remove\+Physical\+Process}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{remove\+Physical\+Process()}{removePhysicalProcess()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Physical\+Process (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} \&}]{physical\+Process }\end{DoxyParamCaption}) const}
+
+
+
+remove triples associated with a \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process} object from the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Process} & the Physical\+Processto remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_afcb5ce7397aab23fabd3b4b4b89d3a54}\label{classomexmeta_1_1Editor_afcb5ce7397aab23fabd3b4b4b89d3a54}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!remove\+Single\+Annotation@{remove\+Single\+Annotation}}
+\index{remove\+Single\+Annotation@{remove\+Single\+Annotation}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{remove\+Single\+Annotation()}{removeSingleAnnotation()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Single\+Annotation (\begin{DoxyParamCaption}\item[{const \hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation} \&}]{singular\+Annotation }\end{DoxyParamCaption}) const}
+
+
+
+remove a singular annotation (aka \hyperlink{classomexmeta_1_1Triple}{Triple}) from the rdf graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em singular\+Annotation} & An instance of Singular\+Annotation to remove from the model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}\label{classomexmeta_1_1Editor_a206feee18473abbeda5e4e55906e73eb}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!set\+Metaid\+Base@{set\+Metaid\+Base}}
+\index{set\+Metaid\+Base@{set\+Metaid\+Base}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{set\+Metaid\+Base()}{setMetaidBase()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::set\+Metaid\+Base (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{metaid\+Base }\end{DoxyParamCaption})}
+
+
+
+set the base metaid string (default is Omex\+Meta\+Id) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em metaid\+Base} & the string you want to use for metaid base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+using editor.\+set\+Metaid\+Base(\char`\"{}\+My\+New\+Metaid\char`\"{}) will make metaids added by libomexmeta look like My\+New\+Metaid0001, My\+New\+Metaid0002, etc. It is assumed that it will not be necessary to have more than 9999 new metaids. \mbox{\Hypertarget{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}\label{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}} 
+\index{omexmeta\+::\+Editor@{omexmeta\+::\+Editor}!set\+Type@{set\+Type}}
+\index{set\+Type@{set\+Type}!omexmeta\+::\+Editor@{omexmeta\+::\+Editor}}
+\subsubsection{\texorpdfstring{set\+Type()}{setType()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::set\+Type (\begin{DoxyParamCaption}\item[{Omex\+Meta\+Xml\+Type}]{type }\end{DoxyParamCaption})}
+
+
+
+setter for the current xml type identification variable. 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+\hyperlink{classThis}{This} should be set automatically in the \hyperlink{classomexmeta_1_1Editor}{Editor} constructor 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

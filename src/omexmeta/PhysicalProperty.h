@@ -21,8 +21,8 @@ using namespace redland;
 
 namespace omexmeta {
 
-    /*
-     * PhysicalProperty is a subclass of the Resource
+    /**
+         * PhysicalProperty is a subclass of the Resource
      * object. It is a special type of Resource that is restricted
      * to terms from the ontology of physics for biology.
      *
@@ -48,7 +48,7 @@ namespace omexmeta {
 
         PhysicalProperty() = default;
 
-        /*
+        /**
          * @brief constructor for PhysicalProperty
          * @param physical_property_string is used to create a URI node representing the physical property
          */
@@ -70,7 +70,7 @@ namespace omexmeta {
 
         void setResource(const std::string &resource);
 
-        /*
+        /**
          * @brief creates a Triples object using the information in the PhysicalProperty
          * @return a Triples object containing the set of Triple object used to represent this PhysicalProperty
          */

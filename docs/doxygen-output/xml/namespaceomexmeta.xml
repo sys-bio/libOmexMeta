@@ -217,7 +217,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="158" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="158" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="153" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1a2edd0078a7f3b226df6fb3382d76471a" prot="public" static="no">
         <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> &gt;</type>
@@ -1152,9 +1152,9 @@
           <declname>editor_ptr</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>get the xml from the editor </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>The returned string is owned by the caller. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="396" column="1" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="396" bodyend="406"/>
@@ -2126,7 +2126,7 @@
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>deletes physical force excluding all nodes associated with it. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -2143,7 +2143,7 @@
           <declname>physical_force_ptr</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>deletes physical force including all nodes associated with it. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -2786,7 +2786,7 @@ namespace_ argument is:<itemizedlist>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>AnnotationType enum for indicating the type of annotation. For developers: Possibly not needed.</para><para>should inherit from librdf_statement? </para>    </detaileddescription>
+<para>AnnotationType enum for indicating the type of annotation. For developers: Possibly not needed.</para><para>Here&apos;s the basic logic that we use in SemGen to determine which OPB physical property is represented by a &lt;species&gt; in an SBML model:</para><para>Using libSBML, we first look up the substance base units for the model and also whether the species&apos;s &quot;hasOnlySubstanceUnits&quot; attribute is true...</para><para>if the substance base unit is mole if hasOnlySubstanceUnits for species is TRUE, then use OPB:Chemical_molar_amount (OPB_00425) else use OPB:Chemical_concentration (OPB_00340)</para><para>else if the substance base unit is item if hasOnlySubstanceUnits for species is TRUE, then use OPB:Particle_count (OPB_01001) else use OPB:Particle_concentration (OPB_01000)</para><para>else if the base unit is kilogram or gram if hasOnlySubstanceUnits is TRUE, then use OPB:Mass_of_solid_entity (OPB_01226) else if the spatial dimensions of the compartment containing the species = 1, use OPB:Mass_lineal_density (OPB_00190) else, if the spatial dimensions of the compartment containing the species = 2, use OPB:Mass_areal_density (OPB_00258) else, if the spatial dimensions of the compartment containing the species = 3, use OPB:Mass_volumetric_density (OPB_00101)</para><para>Hope that&apos;s helpful for determining which OPB property to use in composite annotations for SBML &lt;species&gt;.</para><para>Any questions, just lemme know.</para><para>should inherit from librdf_statement? </para>    </detaileddescription>
     <location file="src/omexmeta/AnnotationType.h" line="12" column="1"/>
   </compounddef>
 </doxygen>

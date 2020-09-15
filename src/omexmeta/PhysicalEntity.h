@@ -148,7 +148,7 @@ namespace omexmeta {
          */
         [[maybe_unused]] PhysicalEntity &setPhysicalProperty(PhysicalProperty physicalProperty);
 
-        /*
+        /**
          * @brief sets the identity portion of the PhysicalEntity (the "What").
          * @param resource The resource to be used for the identity.
          * @return a reference to this Physical entity. Allows chaining together builder commands.
@@ -159,7 +159,7 @@ namespace omexmeta {
          */
         PhysicalEntity &setIdentity(const std::string& resource);
 
-        /*
+        /**
          * @brief add a location to the PhysicalEntity.
          * @param where The resource representing a location.
          * @return a reference to this Physical entity. Allows chaining together builder commands.
@@ -177,7 +177,7 @@ namespace omexmeta {
          */
         PhysicalEntity &addLocation(const std::string& where);
 
-        /*
+        /**
          * @brief returns the number of locations used by PhysicalEntity
          * @return the number of locations in a PhysicalEntity
          */

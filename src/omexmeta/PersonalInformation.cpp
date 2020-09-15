@@ -17,8 +17,8 @@ namespace omexmeta {
         freeTriples();
     }
 
-    /*
-     * @brief move constructor
+    /**
+         * @brief move constructor
      */
     PersonalInformation::PersonalInformation(PersonalInformation &&information) noexcept {
         model_ = information.model_;
@@ -28,8 +28,8 @@ namespace omexmeta {
         model_uri_ = information.model_uri_;
     }
 
-    /*
-     * @brief move assignment constructor
+    /**
+         * @brief move assignment constructor
      */
     PersonalInformation &PersonalInformation::operator=(PersonalInformation &&information) noexcept {
         if (this != &information) {

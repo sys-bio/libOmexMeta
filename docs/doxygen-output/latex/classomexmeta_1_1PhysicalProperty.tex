@@ -1,5 +1,9 @@
 \hypertarget{classomexmeta_1_1PhysicalProperty}{}\section{omexmeta\+:\+:Physical\+Property Class Reference}
 \label{classomexmeta_1_1PhysicalProperty}\index{omexmeta\+::\+Physical\+Property@{omexmeta\+::\+Physical\+Property}}
+
+
+{\ttfamily \#include $<$Physical\+Property.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -9,9 +13,8 @@ bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1PhysicalProperty}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a1a85ba2c50f5b79e49e8a01b96756f0a}\label{classomexmeta_1_1PhysicalProperty_a1a85ba2c50f5b79e49e8a01b96756f0a}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} \&rhs) const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}\label{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}} 
-{\bfseries Physical\+Property} (std\+::string subject\+\_\+str, std\+::string resource\+\_\+str, std\+::string model\+\_\+uri)
-\item 
+\hyperlink{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}{Physical\+Property} (std\+::string subject\+\_\+str, std\+::string resource\+\_\+str, std\+::string model\+\_\+uri)
+\begin{DoxyCompactList}\small\item\em constructor for \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_acf399e14fd579efc6384ebc677341ead}\label{classomexmeta_1_1PhysicalProperty_acf399e14fd579efc6384ebc677341ead}} 
 const std\+::string \& {\bfseries get\+Subject} () const
 \item 
@@ -36,9 +39,47 @@ const std\+::string \& {\bfseries get\+Resource\+Str} () const
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a420dab52a424d1be5a8610e19407980c}\label{classomexmeta_1_1PhysicalProperty_a420dab52a424d1be5a8610e19407980c}} 
 void {\bfseries set\+Resource} (const std\+::string \&resource)
 \item 
+\hyperlink{classomexmeta_1_1Triples}{Triples} \hyperlink{classomexmeta_1_1PhysicalProperty_a03056210a70ea8446b44de250646eeb5}{to\+Triples} (const std\+::string \&property\+\_\+metaid) const
+\begin{DoxyCompactList}\small\item\em creates a \hyperlink{classomexmeta_1_1Triples}{Triples} object using the information in the \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} is a subclass of the \hyperlink{classomexmeta_1_1Resource}{Resource} object. It is a special type of \hyperlink{classomexmeta_1_1Resource}{Resource} that is restricted to terms from the ontology of physics for biology.
+
+Usage\+: \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} r(\char`\"{}http\+://identifiers.\+org/opb\+:opb12345\char`\"{}); is equilavent to\+: \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} r(\char`\"{}opb\+:opb12345\char`\"{}); is equilavent to\+: \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} r(\char`\"{}opb/opb12345\char`\"{}); 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}\label{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}} 
+\index{omexmeta\+::\+Physical\+Property@{omexmeta\+::\+Physical\+Property}!Physical\+Property@{Physical\+Property}}
+\index{Physical\+Property@{Physical\+Property}!omexmeta\+::\+Physical\+Property@{omexmeta\+::\+Physical\+Property}}
+\subsubsection{\texorpdfstring{Physical\+Property()}{PhysicalProperty()}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Property\+::\+Physical\+Property (\begin{DoxyParamCaption}\item[{std\+::string}]{subject\+\_\+str,  }\item[{std\+::string}]{resource\+\_\+str,  }\item[{std\+::string}]{model\+\_\+uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+constructor for \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+\_\+property\+\_\+string} & is used to create a U\+RI node representing the physical property \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a03056210a70ea8446b44de250646eeb5}\label{classomexmeta_1_1PhysicalProperty_a03056210a70ea8446b44de250646eeb5}} 
-\hyperlink{classomexmeta_1_1Triples}{Triples} {\bfseries to\+Triples} (const std\+::string \&property\+\_\+metaid) const
-\end{DoxyCompactItemize}
+\index{omexmeta\+::\+Physical\+Property@{omexmeta\+::\+Physical\+Property}!to\+Triples@{to\+Triples}}
+\index{to\+Triples@{to\+Triples}!omexmeta\+::\+Physical\+Property@{omexmeta\+::\+Physical\+Property}}
+\subsubsection{\texorpdfstring{to\+Triples()}{toTriples()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1Triples}{Triples} omexmeta\+::\+Physical\+Property\+::to\+Triples (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+\_\+metaid }\end{DoxyParamCaption}) const}
+
+
+
+creates a \hyperlink{classomexmeta_1_1Triples}{Triples} object using the information in the \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} 
+
+\begin{DoxyReturn}{Returns}
+a \hyperlink{classomexmeta_1_1Triples}{Triples} object containing the set of \hyperlink{classomexmeta_1_1Triple}{Triple} object used to represent this \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

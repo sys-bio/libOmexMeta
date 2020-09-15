@@ -31,9 +31,8 @@ Results\+Map \hyperlink{classomexmeta_1_1Query_ab50cc5f76dcf7f863f9fa9d0bf755071
 \begin{DoxyCompactList}\small\item\em returns query results in a map where keys are the variable names used in query and values are vectors of values for results. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classomexmeta_1_1Query_a7109dd08bd808bf5a20becb164622ed6}{results\+As\+Str} (const std\+::string \&output\+\_\+format, std\+::string baseuri=\char`\"{}query\+\_\+results\char`\"{}) const
 \begin{DoxyCompactList}\small\item\em collect the result of the query as a string \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}\label{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}} 
-void {\bfseries run\+Query} ()
-\end{DoxyCompactItemize}
+void \hyperlink{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}{run\+Query} ()
+\begin{DoxyCompactList}\small\item\em Run a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Member Function Documentation}
@@ -89,7 +88,17 @@ collect the result of the query as a string
 {\em output\+\_\+format} & one of 9 strings used to choose how you want the results to be presented. Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}\label{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}} 
+\index{omexmeta\+::\+Query@{omexmeta\+::\+Query}!run\+Query@{run\+Query}}
+\index{run\+Query@{run\+Query}!omexmeta\+::\+Query@{omexmeta\+::\+Query}}
+\subsubsection{\texorpdfstring{run\+Query()}{runQuery()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Query\+::run\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Run a query. 
+
+Users do not need to manually execute a query using this method. It is used automatically in the constructor for \hyperlink{classomexmeta_1_1Query}{Query} and again in \hyperlink{classomexmeta_1_1Query_ab50cc5f76dcf7f863f9fa9d0bf755071}{Query\+::results\+As\+Map}. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

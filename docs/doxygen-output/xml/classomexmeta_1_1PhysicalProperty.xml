@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1PhysicalProperty" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalProperty</compoundname>
+    <includes refid="PhysicalProperty_8h" local="no">PhysicalProperty.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -124,9 +125,17 @@
           <declname>model_uri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physical_property_string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is used to create a URI node representing the physical property </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalProperty.h" line="55" column="1" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="9" bodyend="14"/>
@@ -257,9 +266,10 @@
           <declname>property_metaid</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>creates a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object using the information in the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object containing the set of <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object used to represent this <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalProperty.h" line="77" column="1" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="46" bodyend="67"/>
@@ -268,7 +278,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> is a subclass of the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> object. It is a special type of <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> that is restricted to terms from the ontology of physics for biology.</para><para>Usage: <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> r(&quot;http://identifiers.org/opb:opb12345&quot;); is equilavent to: <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> r(&quot;opb:opb12345&quot;); is equilavent to: <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> r(&quot;opb/opb12345&quot;); </para>    </detaileddescription>
     <location file="src/omexmeta/PhysicalProperty.h" line="37" column="1" bodyfile="src/omexmeta/PhysicalProperty.h" bodystart="37" bodyend="79"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalProperty_1a0f27071bfef5a9de4eb89fb21461ba76" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>getModelUri</name></member>

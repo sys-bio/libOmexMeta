@@ -56,8 +56,8 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT int RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
 
-    /*
-     * @brief read RDF formatted annotations a string.
+    /**
+         * @brief read RDF formatted annotations a string.
      * @param pdf_ptr a pointer to an RDF object.
      * @param str the string to read annotations from
      * @param format the format that the string annotations are in (get it
@@ -251,14 +251,14 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
 
 
-    /*
-     * @brief deletes physical force excluding all
+    /**
+         * @brief deletes physical force excluding all
      * nodes associated with it.
      */
     OMEXMETACAPI_EXPORT int PhysicalForce_delete(PhysicalForce *physicalForce);
 
-    /*
-     * @brief deletes physical force including all
+    /**
+         * @brief deletes physical force including all
      * nodes associated with it.
      */
     OMEXMETACAPI_EXPORT int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);

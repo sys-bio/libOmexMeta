@@ -46,22 +46,22 @@ namespace omexmeta {
 
         PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri);
 
-        /*
+        /**
          * @brief Copy constructor for PersonalInformation
          */
         PersonalInformation(const PersonalInformation &information) = delete;
 
-        /*
+        /**
          * @brief Move constructor for PersonalInformation
          */
         PersonalInformation(PersonalInformation &&information) noexcept;
 
-        /*
+        /**
          * @brief assignment operator for PersonalInformation
          */
         PersonalInformation &operator=(const PersonalInformation &information) = delete;
 
-        /*
+        /**
          * @brief move assignment operator for PersonalInformation
          */
         PersonalInformation &operator=(PersonalInformation &&information) noexcept;

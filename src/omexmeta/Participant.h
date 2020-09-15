@@ -58,7 +58,7 @@ namespace omexmeta {
          */
         void setPhysicalEntityReference(const std::string &physicalEntityReference);
 
-        /*
+        /**
          * @brief return the local participant metaid.
          * @details When Participant types are created they are
          * done so with a metaid that is local to the annotation document
@@ -66,7 +66,7 @@ namespace omexmeta {
          */
         [[nodiscard]] const std::string &getLocalParticipantMetaid() const;
 
-        /*
+        /**
          * @brief set the local participant metaid.
          * @details When Participant types are created they are
          * done so with a metaid that is local to the annotation document
@@ -74,23 +74,23 @@ namespace omexmeta {
          */
         void setUniqueParticipantMetaid(const std::string &uniqueParticipantMetaid);
 
-        /*
+        /**
          * @brief getter for local uri attribute
          */
         [[nodiscard]] const std::string &getLocalUri() const;
 
-        /*
+        /**
          * @brief setter for local uri attribute
          */
         void setLocalUri(const std::string &localUri);
 
-        /*
+        /**
          * @biref currently more of a placeholder so as to not break the tests.
          * todo remove this method, Triple objects deal with memory for Participants.
          */
         [[maybe_unused]] void free();
 
-        /*
+        /**
          * @brief Superclass of participant types
          * @param model pointer to the librdf_model* in use. Passed down from RDF.
          * @param base_metaid the content of the participant base_metaid. A valid metaid.
@@ -115,7 +115,7 @@ namespace omexmeta {
 
         bool operator!=(const Participant &rhs) const;
 
-        /*
+        /**
          * @brief create a Triples object from the Participant.
          * @param subject_metaid the metaid for a process
          * @return A Triples container for the Triples associated with this Participant
@@ -125,20 +125,20 @@ namespace omexmeta {
         [[nodiscard]] Triples toTriples(const std::string &subject_metaid,
                                         std::vector<std::string> &metaid_exclusions);
 
-        /*
+        /**
          * @brief create a new metaid use base @param base
          */
         [[nodiscard]] std::string createMetaid(const std::string &base,
                                                std::vector<std::string> &metaid_exclusions) const;
 
 
-        /*
+        /**
          * @brief get the predicate currently in use by the participant
          * @return a SemSim predicate
          */
         std::basic_string<char> getPredicate();
 
-        /*
+        /**
          * @brief set the predicate used in the participant
          * @param semsim_predicate_string The predicate portion of the SemSim predicate you want to use.
          *
@@ -146,31 +146,31 @@ namespace omexmeta {
          */
         void setPredicate(const std::string &semsim_predicate_string);
 
-        /*
+        /**
          * @brief get the subject portion of the Participant, which is the
          * @return the string of the subject value
          * metaid of the Participant
          */
         [[nodiscard]] const std::string &getSubject() const;
 
-        /*
+        /**
          * @brief get the multiplier representing the stoiciometry of the process being described
          * @return the multiplier
          */
         [[nodiscard]] int getMultiplier() const;
 
-        /*
+        /**
          * @brief get the physicalEntityReference
          * @return the physicalEntityReference string
          */
         [[nodiscard]] const std::string &getPhysicalEntityReference() const;
 
-        /*
+        /**
          * @brief getter for model_uri_ attribute
          */
         [[nodiscard]] const std::string &getModelUri() const;
 
-        /*
+        /**
          * @brief setter for model_uri_ attribute
          */
         void setModelUri(const std::string &model_uri);
@@ -179,28 +179,28 @@ namespace omexmeta {
 
     typedef std::shared_ptr<Participant> ParticipantPtr;
 
-    /*
-     * Subclass of Participant. See Participants for arguments.
+    /**
+         * Subclass of Participant. See Participants for arguments.
      */
     class SourceParticipant : public Participant {
 
     public:
-        /*
+        /**
          * @brief A class representing process/force energetic source.
          */
         SourceParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference,
                           const std::string &model_uri, const std::string &local_uri);
     };
 
-    /*
-     * Subclass of Participant. See Participants for arguments.
+    /**
+         * Subclass of Participant. See Participants for arguments.
      */
     class SinkParticipant : public Participant {
     private:
 
     public:
 
-        /*
+        /**
          * @brief A class representing process/force energetic sinks.
          */
         SinkParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference,
@@ -208,15 +208,15 @@ namespace omexmeta {
 
     };
 
-    /*
-     * Subclass of Participant. See Participants for arguments.
+    /**
+         * Subclass of Participant. See Participants for arguments.
      */
     class MediatorParticipant : public Participant {
     private:
         int multiplier_ = 0;
     public:
 
-        /*
+        /**
          * @brief A class representing process mediators (such as a catalyst).
          */
         MediatorParticipant(librdf_model *model, std::string physicalEntityReference, const std::string &model_uri,

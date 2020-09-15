@@ -3,6 +3,7 @@
   <compounddef id="classomexmeta_1_1MediatorParticipant" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::MediatorParticipant</compoundname>
     <basecompoundref refid="classomexmeta_1_1Participant" prot="public" virt="non-virtual">omexmeta::Participant</basecompoundref>
+    <includes refid="Participant_8h" local="no">Participant.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1MediatorParticipant_1aacbd5a629a1a1c355d68ea1305b48d2f" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -42,7 +43,7 @@
           <declname>local_uri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>A class representing process mediators (such as a catalyst). </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -53,7 +54,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para><ref refid="classSubclass" kindref="compound">Subclass</ref> of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. See Participants for arguments. </para>    </detaileddescription>
     <inheritancegraph>
       <node id="120">
         <label>omexmeta::Participant</label>

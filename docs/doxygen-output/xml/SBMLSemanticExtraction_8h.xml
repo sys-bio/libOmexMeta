@@ -651,33 +651,7 @@
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Here&apos;s<sp/>the<sp/>basic<sp/>logic<sp/>that<sp/>we<sp/>use<sp/>in<sp/>SemGen<sp/>to<sp/>determine<sp/>which<sp/>OPB<sp/>physical<sp/>property<sp/>is<sp/>represented<sp/>by<sp/>a<sp/>&lt;species&gt;<sp/>in<sp/>an<sp/>SBML<sp/>model:</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>Using<sp/>libSBML,<sp/>we<sp/>first<sp/>look<sp/>up<sp/>the<sp/>substance<sp/>base<sp/>units<sp/>for<sp/>the<sp/>model<sp/>and<sp/>also<sp/>whether<sp/>the<sp/>species&apos;s<sp/>&quot;hasOnlySubstanceUnits&quot;<sp/>attribute<sp/>is<sp/>true...</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>if<sp/>the<sp/>substance<sp/>base<sp/>unit<sp/>is<sp/>mole</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>hasOnlySubstanceUnits<sp/>for<sp/>species<sp/>is<sp/>TRUE,<sp/>then<sp/>use<sp/>OPB:Chemical_molar_amount<sp/>(OPB_00425)</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>use<sp/>OPB:Chemical_concentration<sp/>(OPB_00340)</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>else<sp/>if<sp/>the<sp/>substance<sp/>base<sp/>unit<sp/>is<sp/>item</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>hasOnlySubstanceUnits<sp/>for<sp/>species<sp/>is<sp/>TRUE,<sp/>then<sp/>use<sp/>OPB:Particle_count<sp/>(OPB_01001)</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>use<sp/>OPB:Particle_concentration<sp/>(OPB_01000)</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>else<sp/>if<sp/>the<sp/>base<sp/>unit<sp/>is<sp/>kilogram<sp/>or<sp/>gram</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>hasOnlySubstanceUnits<sp/>is<sp/>TRUE,<sp/>then<sp/>use<sp/>OPB:Mass_of_solid_entity<sp/>(OPB_01226)</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>the<sp/>spatial<sp/>dimensions<sp/>of<sp/>the<sp/>compartment<sp/>containing<sp/>the<sp/>species<sp/>=<sp/>1,<sp/>use<sp/>OPB:Mass_lineal_density<sp/>(OPB_00190)</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else,<sp/>if<sp/>the<sp/>spatial<sp/>dimensions<sp/>of<sp/>the<sp/>compartment<sp/>containing<sp/>the<sp/>species<sp/>=<sp/>2,<sp/>use<sp/>OPB:Mass_areal_density<sp/>(OPB_00258)</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else,<sp/>if<sp/>the<sp/>spatial<sp/>dimensions<sp/>of<sp/>the<sp/>compartment<sp/>containing<sp/>the<sp/>species<sp/>=<sp/>3,<sp/>use<sp/>OPB:Mass_volumetric_density<sp/>(OPB_00101)</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>Hope<sp/>that&apos;s<sp/>helpful<sp/>for<sp/>determining<sp/>which<sp/>OPB<sp/>property<sp/>to<sp/>use<sp/>in<sp/>composite<sp/>annotations<sp/>for<sp/>SBML<sp/>&lt;species&gt;.</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>Any<sp/>questions,<sp/>just<sp/>lemme<sp/>know.</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Editor;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>

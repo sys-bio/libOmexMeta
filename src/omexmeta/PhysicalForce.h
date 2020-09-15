@@ -33,7 +33,7 @@ namespace omexmeta {
 
     public:
 
-        /*
+        /**
          * @brief default constructor for PhysicalForce
          * @details deliberately deleted. If you try using the
          * builder interface (chaining setter methods) from a default
@@ -49,7 +49,7 @@ namespace omexmeta {
         PhysicalForce(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
 
-        /*
+        /**
          * @brief Free nodes associated with PhysicalForce.
          *
          * The PhysicalForce is
@@ -63,7 +63,7 @@ namespace omexmeta {
          */
         void free();
 
-        /*
+        /**
          * @brief constructor for instantiating a PhysicalForce type composite annotation
          * @param model. A librdf_model pass down by Editor.
          *
@@ -74,7 +74,7 @@ namespace omexmeta {
          */
         explicit PhysicalForce(librdf_model *model);
 
-        /*
+        /**
          * @brief constructor for instantiating a PhysicalForce type composite annotation
          * @param model. A librdf_model pass down by Editor.
          * @param model_uri. String passed down by Editor. The local uri to use for metaids
@@ -86,25 +86,25 @@ namespace omexmeta {
          */
         explicit PhysicalForce(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
 
-        /*
+        /**
          * @brief create a metaid for the physical force annotation
          * @brief a new metaid for PhysicalForce
          */
         [[maybe_unused]] [[nodiscard]] std::string createMetaId();
 
-        /*
+        /**
          * @brief return vector of Source objects assocated with PhysicalForce
          * @return a vector of SourceParticipants
          */
         [[nodiscard]] const Sources &getSources() const;
 
-        /*
+        /**
          * @brief return vector of Sink objects assocated with PhysicalForce
          * @return a vector of SinkParticipants
          */
         [[nodiscard]] const Sinks &getSinks() const;
 
-        /*
+        /**
          * @brief converts the PhyicalForce object into a Triples object.
          * @return a Triples object containing the individual Triple objects of a PhysicalForce.
          *
@@ -113,7 +113,7 @@ namespace omexmeta {
          */
         [[nodiscard]] Triples toTriples() override;
 
-        /*
+        /**
          * @brief sets the physical property of the PhysicalForce
          * @parameter physicalProperty An instance of PhysicalProperty representing the
          * physical property term for the PhysicalForce.
@@ -126,7 +126,7 @@ namespace omexmeta {
          */
         [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
 
-        /*
+        /**
          * @brief sets the physical property of the PhysicalForce
          * @param subject_metaid. The subject portion of the two triples produced by PhysicalProperty. Metaid of a model element.
          * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
@@ -134,7 +134,7 @@ namespace omexmeta {
          */
         PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
 
-        /*
+        /**
          * @brief add a SourceParticipant to the PhysicalForce.
          * @param metaid the ID for the SourceParticipant.
          * @param multiplier The multiplier argument for SourceParticipant
@@ -146,7 +146,7 @@ namespace omexmeta {
          */
         PhysicalForce &addSource(int multiplier, const std::string& physical_entity_reference);
 
-        /*
+        /**
          * @brief add a SinkParticipant to the PhysicalForce.
          * @param sink_metaid the ID for the SinkParticipant.
          * @param multiplier The multiplier argument for SinkParticipant
@@ -158,14 +158,14 @@ namespace omexmeta {
          */
         PhysicalForce & addSink(int multiplier, const std::string& physical_entity_reference);
 
-        /*
+        /**
          * @brief returns the number of sources associated with the
          * PhysicalForce
          * @return the integer number of sources
          */
         int getNumSources();
 
-        /*
+        /**
          * @brief returns the number of sinks associated with the
          * PhysicalForce
          * @return the integer number of sinks

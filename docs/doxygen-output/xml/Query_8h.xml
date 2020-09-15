@@ -456,18 +456,8 @@
 <codeline lineno="218"><highlight class="normal"></highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/>resultsAsStr(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;output_format,<sp/>std::string<sp/>baseuri<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;query_results&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Run<sp/>a<sp/>query.</highlight></codeline>
-<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Users<sp/>do<sp/>not<sp/>need<sp/>to<sp/>manually<sp/>execute<sp/>a<sp/>query<sp/>using<sp/>this<sp/>method.</highlight></codeline>
-<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>is<sp/>used<sp/>automatically<sp/>in<sp/>the<sp/>constructor<sp/>for<sp/>Query<sp/>and<sp/>again<sp/>in<sp/>Query::resultsAsMap.</highlight></codeline>
-<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>runQuery();</highlight></codeline>
 <codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>todo<sp/>test<sp/>implementing<sp/>these<sp/>commented<sp/>out<sp/>functions.</highlight></codeline>
-<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/>They<sp/>were<sp/>commented<sp/>out<sp/>before<sp/>for<sp/>circular<sp/>dependency<sp/>issues</highlight></codeline>
-<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/>but<sp/>might<sp/>be<sp/>able<sp/>do<sp/>the<sp/>same<sp/>thing<sp/>but<sp/>inside<sp/>the<sp/>RDF<sp/>object?</highlight></codeline>
-<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>resultsAsTriples();</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RDF<sp/>resultsAsRDF();</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>

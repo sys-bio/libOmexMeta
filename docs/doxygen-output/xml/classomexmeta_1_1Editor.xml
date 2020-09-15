@@ -328,7 +328,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>We no longer required to free the triples_ used by <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> since they are created and freed inplace - i.e. locally, not at the class scope. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="94" column="1"/>
@@ -352,9 +352,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getNamespaces</name>
         <briefdescription>
-        </briefdescription>
+<para>returns a hashmap of namespaces to prefixes. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>Map where keys are namespaces and values are prefixes </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="103" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="54" bodyend="56"/>
@@ -365,9 +366,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getModel</name>
         <briefdescription>
-        </briefdescription>
+<para>return the underlying librdf_model* pointer </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the librdf_model pointer </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="109" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="63" bodyend="63"/>
@@ -382,7 +384,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>namespaces</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>set the namespace map. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -395,9 +397,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getXml</name>
         <briefdescription>
-        </briefdescription>
+<para>return the xml </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the xml string after metaids are added </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="120" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="49" bodyend="49"/>
@@ -408,9 +411,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getMetaids</name>
         <briefdescription>
-        </briefdescription>
+<para>returns a list of metaids both that existed previously and that was added during instantiation. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>vector of metaids used in the xml </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="127" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="51" bodyend="51"/>
@@ -429,9 +433,24 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>prefix</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a namespace </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the namespace </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>prefix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the prefix used in serialized annotations to refer to the namespace </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="134" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="102" bodyend="104"/>
@@ -454,9 +473,31 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Add a SingleAnnotation (aka a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>) to the model. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the subject portion of the triple </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the resource portion of the triple </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="142" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="106" bodyend="120"/>
@@ -471,9 +512,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>singularAnnotation</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Add a SingleAnnotation (aka <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>) to the rdf graph. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>singularAnnotation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of SingularAnnotation to add to the model </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="148" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="122" bodyend="126"/>
@@ -488,9 +537,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>singularAnnotation</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>remove a singular annotation (aka <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>) from the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>singularAnnotation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of SingularAnnotation to remove from the model </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="154" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="253" bodyend="257"/>
@@ -505,9 +562,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>phenomenonPtr</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a composite annotation to the rdf graph. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>phenomenonPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to an object of type <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>, the superclass of the composite annotations.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Composite annotations currently supported are <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> and <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. The PhysicalDependency type will be supported in future releases.</para><para>For developers. Consider removing this function in favour of using the add* functions. </para>        </detaileddescription>
         <inbodydescription>
 <para>Implementation note: <ref refid="classThis" kindref="compound">This</ref> method generates triples on the fly and then frees. <ref refid="classThis" kindref="compound">This</ref> was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> class.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="168" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="142" bodyend="160"/>
@@ -522,9 +587,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>physicalEntity</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a composite annotation of type <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> to the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalEntity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object to add to the rdf graph. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
 <para>Because we now want to use  local for the about section, we need to inject it here, if not already formatted properly.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="174" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="180" bodyend="197"/>
@@ -539,9 +612,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>physicalEntity</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>remove triples associated with a a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object from the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalEntity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the PhysicalEntityto remove </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="180" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="268" bodyend="270"/>
@@ -556,9 +637,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>information</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>remove triples associated with a <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object from the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>information</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="186" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="272" bodyend="279"/>
@@ -573,9 +662,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>physicalProcess</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a composite annotation of type <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> to the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of a <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> object to add to the rdf graph. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
 <para>Because we now want to use  Omex for the about section, we need to inject it here, if not already formatted properly.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="192" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="199" bodyend="216"/>
@@ -590,9 +687,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>physicalProcess</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>remove triples associated with a <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> object from the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the PhysicalProcessto remove </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="198" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="285" bodyend="287"/>
@@ -607,9 +712,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a composite annotation of type <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalForce</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> objec to add to the rdf graph. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
 <para>Because we now want to use  local for the about section, we need to inject it here, if not already formatted properly.</para>        </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="204" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="218" bodyend="235"/>
@@ -624,9 +737,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>personalInformation</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> class to the rdf model </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>personalInformation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of a <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object to add to the rdf graph. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="210" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="237" bodyend="251"/>
@@ -641,9 +762,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>remove triples associated with a a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> object from the rdf graph </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>physicalForce</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to remove </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="216" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="281" bodyend="283"/>
@@ -658,7 +787,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>metaid</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>check that a metaid is valid by comparing with the output from Editor::getMetaIds() </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -675,7 +804,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>predicate_string</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>extract namespace part of uri from  predicate_string and add it to namespace_ if we know it. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -688,9 +817,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getMetaidBase</name>
         <briefdescription>
-        </briefdescription>
+<para>get the string that is being used for the metaid base (default is OmexMetaID) </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this base will only be used when the generate_metaids boolean is set to true in the constructor. <simplesect kind="return"><para>std::string of metaid base </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="235" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="412" bodyend="412"/>
@@ -705,9 +835,18 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>metaidBase</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>set the base metaid string (default is OmexMetaId) </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>metaidBase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string you want to use for metaid base </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para></simplesect>
+using editor.setMetaidBase(&quot;MyNewMetaid&quot;) will make metaids added by libomexmeta look like MyNewMetaid0001, MyNewMetaid0002, etc. It is assumed that it will not be necessary to have more than 9999 new metaids. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="245" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="414" bodyend="416"/>
@@ -718,9 +857,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getType</name>
         <briefdescription>
-        </briefdescription>
+<para>getter for the current xml type identification variable. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>OmexMetaType</para></simplesect>
+<ref refid="classThis" kindref="compound">This</ref> should be set automatically in the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> constructor </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="252" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="418" bodyend="418"/>
@@ -735,9 +875,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>type</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>setter for the current xml type identification variable. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>void</para></simplesect>
+<ref refid="classThis" kindref="compound">This</ref> should be set automatically in the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> constructor </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="259" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="420" bodyend="420"/>
@@ -748,9 +889,9 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>()</argsstring>
         <name>newPhysicalEntity</name>
         <briefdescription>
-        </briefdescription>
+<para>create a new <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> objects should only be instantiated via the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="267" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="289" bodyend="291"/>
@@ -761,9 +902,9 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>()</argsstring>
         <name>newPhysicalForce</name>
         <briefdescription>
-        </briefdescription>
+<para>create a new <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> objects should only be instantiated via the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="275" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="293" bodyend="295"/>
@@ -774,9 +915,9 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>()</argsstring>
         <name>newPhysicalProcess</name>
         <briefdescription>
-        </briefdescription>
+<para>create a new <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> objects should only be instantiated via the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="283" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="297" bodyend="299"/>
@@ -787,9 +928,9 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>()</argsstring>
         <name>newPersonalInformation</name>
         <briefdescription>
-        </briefdescription>
+<para>create a new <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> objects should only be instantiated via the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="291" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="301" bodyend="304"/>
@@ -804,7 +945,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>singularAnnotation</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>like addSingleAnnotation </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -868,7 +1009,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getArchiveUri</name>
         <briefdescription>
-        </briefdescription>
+<para>get the current value of archive_uri_ </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -881,7 +1022,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getLocalUri</name>
         <briefdescription>
-        </briefdescription>
+<para>get the current value of local_uri_ </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -894,7 +1035,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getModelUri</name>
         <briefdescription>
-        </briefdescription>
+<para>get the current value of model_uri_ </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -907,7 +1048,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>getRepositoryUri</name>
         <briefdescription>
-        </briefdescription>
+<para>get the current value of archive_uri_ </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -924,7 +1065,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>string</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>instantiate a LibrdfNode that is prefixed with the current local_uri </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -941,9 +1082,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>orcid_id</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;creator&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>an</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>orchid_id as string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="334" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="306" bodyend="316"/>
@@ -958,9 +1107,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>orcid_id</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;curator&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>an</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>orchid_id as string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="340" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="318" bodyend="328"/>
@@ -975,9 +1132,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>taxon_id</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;taxon id&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>an</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>taxon_id as string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="346" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="362" bodyend="368"/>
@@ -992,9 +1157,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>pubmedid</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;pubmed id&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pubmed id as string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="352" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="346" bodyend="352"/>
@@ -1009,9 +1182,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>date</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;description&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>description of the model as string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="358" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="338" bodyend="344"/>
@@ -1026,9 +1207,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>date</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;date created&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>date that the model was created </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="364" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="330" bodyend="336"/>
@@ -1043,9 +1232,18 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>metaid</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>create a new singular annotation object with metaid </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>metaid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to use in the &quot;rdf:about&quot; field or subject </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new SingularAnnotation object </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="371" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="404" bodyend="410"/>
@@ -1060,9 +1258,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>biomod_id</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add the &quot;parent model&quot; model level annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>biomodels id for the model in which this model was derived from </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="377" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="354" bodyend="360"/>
@@ -1077,9 +1283,17 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
           <declname>personalInformation</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Add a <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object to the current <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>personalInformation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object to add </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="383" column="1"/>
@@ -1090,9 +1304,10 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         <argsstring>() const</argsstring>
         <name>newSingularAnnotation</name>
         <briefdescription>
-        </briefdescription>
+<para>create a new SingularAnnotation object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>A SingularAnnotation object</para></simplesect>
+a SingularAnnotation is a typedefed <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="390" column="1" bodyfile="src/omexmeta/Editor.cpp" bodystart="397" bodyend="402"/>

@@ -29,7 +29,7 @@ namespace omexmeta {
         std::string physical_process_id_;
     public:
 
-        /*
+        /**
          * @brief default constructor for PhysicalProcess
          * @details deliberately deleted. If you try using the
          * builder interface (chaining setter methods) from a default
@@ -42,7 +42,7 @@ namespace omexmeta {
         ~PhysicalProcess() = default;
 
 
-        /*
+        /**
          * @brief Constructor for PhysicalProcess object. Subclass of PhysicalPhenomenon.
          * @param model a librdf_model pointer for current rdf graph.
          * @param physicalProperty the physical property for the PhysicalProcess
@@ -54,7 +54,7 @@ namespace omexmeta {
         PhysicalProcess(librdf_model *model, std::string model_uri,std::string local_uri, const PhysicalProperty &physicalProperty,
                         Sources sources, Sinks sinks, Mediators mediators);
 
-        /*
+        /**
          * @brief free the node resources used by PhysicalProcess.
          *
          * When the toTriples() method is used, ownership of the nodes associated with
@@ -65,38 +65,38 @@ namespace omexmeta {
          */
         void free();
 
-        /*
+        /**
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          */
         explicit PhysicalProcess(librdf_model *model);
 
-        /*
+        /**
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          * @param model_uri the local uri in current use.
          */
         explicit PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri);
 
-        /*
+        /**
          * @brief getter for sources
          * @return a vector of SourceParticipant objects
          */
         [[nodiscard]] const Sources &getSources() const;
 
-        /*
+        /**
          * @brief getter for sinks
          * @return a vector of SinkParticipant objects
          */
         [[nodiscard]] const Sinks &getSinks() const;
 
-        /*
+        /**
          * @brief getter for mediators
          * @return a vector of MediatorParticipant objects
          */
         [[nodiscard]] const Mediators &getMediators() const;
 
-        /*
+        /**
          * @brief convert a PhysicalProcess into a set of Triples
          * @return A Triples object containing the set of Triple objects that represent this PhysicalProcess
          *
@@ -106,13 +106,13 @@ namespace omexmeta {
          */
         Triples toTriples() override;
 
-        /*
+        /**
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
-        /*
+        /**
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          *
@@ -121,37 +121,37 @@ namespace omexmeta {
          */
         PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
 
-        /*
+        /**
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &addSource(int multiplier, std::string physical_entity_reference);
 
-        /*
+        /**
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &addSink(int multiplier, std::string physical_entity_reference);
 
-        /*
+        /**
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &addMediator(std::string physical_entity_reference);
 
-        /*
+        /**
          * @brief returns the number of sources assocaited with the PhysicalProcess
          * @return the number of Source objects associated with this PhysicalProcess
          */
         int getNumSources();
 
-        /*
+        /**
          * @brief returns the number of sinks assocaited with the PhysicalProcess
          * @return the number of Sink objects associated with this PhysicalProcess
          */
         int getNumSinks();
 
-        /*
+        /**
          * @brief returns the number of mediators assocaited with the PhysicalProcess
          * @return the number of Mediator objects associated with this PhysicalProcess
          */

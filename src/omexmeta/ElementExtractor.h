@@ -31,7 +31,7 @@ namespace omexmeta {
         void collectElements(xmlNode *a_node);
 
     public:
-        /*
+        /**
          * @brief constructor for ElementExtractor
          * @param markup the string containing the sbml document string
          * @param element a string with the sbml element you want to extract
@@ -40,7 +40,7 @@ namespace omexmeta {
 
         ~ElementExtractor();
 
-        /*
+        /**
          * @brief get xml elements called element_
          */
         [[nodiscard]] const std::vector<xmlNode *> &getElements() const;

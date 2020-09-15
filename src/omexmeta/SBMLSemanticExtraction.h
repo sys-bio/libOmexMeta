@@ -11,8 +11,8 @@
 
 #include <iostream>
 
-/*
- * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
+/**
+         * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
  *
  * Using libSBML, we first look up the substance base units for the model and also whether the species's "hasOnlySubstanceUnits" attribute is true...
  *

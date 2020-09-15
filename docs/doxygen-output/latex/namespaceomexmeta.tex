@@ -80,7 +80,7 @@ class \hyperlink{classomexmeta_1_1Subject}{Subject}
 class \hyperlink{classomexmeta_1_1Triple}{Triple}
 \item 
 class \hyperlink{classomexmeta_1_1Triples}{Triples}
-\item 
+\begin{DoxyCompactList}\small\item\em A \hyperlink{classomexmeta_1_1Triples}{Triples} object is a collection of \hyperlink{classomexmeta_1_1Triple}{Triple} objects. \end{DoxyCompactList}\item 
 class \hyperlink{classomexmeta_1_1ValueException}{Value\+Exception}
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
@@ -263,9 +263,8 @@ char $\ast$ {\bfseries Editor\+\_\+get\+Meta\+Id} (\hyperlink{classomexmeta_1_1E
 \mbox{\Hypertarget{namespaceomexmeta_a6a97e52deef1b7abde9b4491de14f68b}\label{namespaceomexmeta_a6a97e52deef1b7abde9b4491de14f68b}} 
 int {\bfseries Editor\+\_\+get\+Num\+Meta\+Ids} (\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}\label{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}} 
-char $\ast$ {\bfseries Editor\+\_\+get\+Xml} (\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$editor\+\_\+ptr)
-\item 
+char $\ast$ \hyperlink{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}{Editor\+\_\+get\+Xml} (\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$editor\+\_\+ptr)
+\begin{DoxyCompactList}\small\item\em get the xml from the editor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceomexmeta_ade855a67befd16925ed583d228606d43}\label{namespaceomexmeta_ade855a67befd16925ed583d228606d43}} 
 int {\bfseries Editor\+\_\+delete} (\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$editor\+\_\+ptr)
 \item 
@@ -414,11 +413,11 @@ int {\bfseries Physical\+Process\+\_\+get\+Num\+Mediators} (\hyperlink{classomex
 \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$ {\bfseries Physical\+Force\+\_\+new} (\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$editor\+\_\+ptr)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}\label{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}} 
-int {\bfseries Physical\+Force\+\_\+delete} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$physical\+Force)
-\item 
+int \hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{Physical\+Force\+\_\+delete} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$physical\+Force)
+\begin{DoxyCompactList}\small\item\em deletes physical force excluding all nodes associated with it. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}\label{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}} 
-int {\bfseries Physical\+Force\+\_\+free\+All} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$physical\+\_\+force\+\_\+ptr)
-\item 
+int \hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{Physical\+Force\+\_\+free\+All} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$physical\+\_\+force\+\_\+ptr)
+\begin{DoxyCompactList}\small\item\em deletes physical force including all nodes associated with it. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceomexmeta_ae66097c6bfe2f6370bcb614a3d384a41}\label{namespaceomexmeta_ae66097c6bfe2f6370bcb614a3d384a41}} 
 \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Source} (\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
 \item 
@@ -513,6 +512,20 @@ Predicate\+Ptr \hyperlink{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}{P
 \subsection{Detailed Description}
 Annotation\+Type enum for indicating the type of annotation. For developers\+: Possibly not needed.
 
+Here\textquotesingle{}s the basic logic that we use in Sem\+Gen to determine which O\+PB physical property is represented by a $<$species$>$ in an S\+B\+ML model\+:
+
+Using lib\+S\+B\+ML, we first look up the substance base units for the model and also whether the species\textquotesingle{}s \char`\"{}has\+Only\+Substance\+Units\char`\"{} attribute is true...
+
+if the substance base unit is mole if has\+Only\+Substance\+Units for species is T\+R\+UE, then use O\+PB\+:Chemical\+\_\+molar\+\_\+amount (O\+P\+B\+\_\+00425) else use O\+PB\+:Chemical\+\_\+concentration (O\+P\+B\+\_\+00340)
+
+else if the substance base unit is item if has\+Only\+Substance\+Units for species is T\+R\+UE, then use O\+PB\+:Particle\+\_\+count (O\+P\+B\+\_\+01001) else use O\+PB\+:Particle\+\_\+concentration (O\+P\+B\+\_\+01000)
+
+else if the base unit is kilogram or gram if has\+Only\+Substance\+Units is T\+R\+UE, then use O\+PB\+:Mass\+\_\+of\+\_\+solid\+\_\+entity (O\+P\+B\+\_\+01226) else if the spatial dimensions of the compartment containing the species = 1, use O\+PB\+:Mass\+\_\+lineal\+\_\+density (O\+P\+B\+\_\+00190) else, if the spatial dimensions of the compartment containing the species = 2, use O\+PB\+:Mass\+\_\+areal\+\_\+density (O\+P\+B\+\_\+00258) else, if the spatial dimensions of the compartment containing the species = 3, use O\+PB\+:Mass\+\_\+volumetric\+\_\+density (O\+P\+B\+\_\+00101)
+
+Hope that\textquotesingle{}s helpful for determining which O\+PB property to use in composite annotations for S\+B\+ML $<$species$>$.
+
+Any questions, just lemme know.
+
 should inherit from librdf\+\_\+statement? 
 
 \subsection{Enumeration Type Documentation}
@@ -531,7 +544,23 @@ Denotes the type of composite annotation in use.
 \subsubsection{\texorpdfstring{\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str()}{\_func\_that\_returns\_dynamic\_alloc\_str()}}
 {\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ omexmeta\+::\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-For testing. \mbox{\Hypertarget{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}\label{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}} 
+For testing. \begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2mnt_2d_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{/mnt/d/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}\label{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}} 
+\index{omexmeta@{omexmeta}!Editor\+\_\+get\+Xml@{Editor\+\_\+get\+Xml}}
+\index{Editor\+\_\+get\+Xml@{Editor\+\_\+get\+Xml}!omexmeta@{omexmeta}}
+\subsubsection{\texorpdfstring{Editor\+\_\+get\+Xml()}{Editor\_getXml()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ omexmeta\+::\+Editor\+\_\+get\+Xml (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1Editor}{Editor} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+
+
+
+get the xml from the editor 
+
+The returned string is owned by the caller. \begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2mnt_2d_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{/mnt/d/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}\label{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}} 
 \index{omexmeta@{omexmeta}!Predicate\+Factory@{Predicate\+Factory}}
 \index{Predicate\+Factory@{Predicate\+Factory}!omexmeta@{omexmeta}}
 \subsubsection{\texorpdfstring{Predicate\+Factory()}{PredicateFactory()}}

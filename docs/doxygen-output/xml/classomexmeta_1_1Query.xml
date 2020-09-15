@@ -204,9 +204,9 @@
         <argsstring>()</argsstring>
         <name>runQuery</name>
         <briefdescription>
-        </briefdescription>
+<para>Run a query. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> and again in <ref refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kindref="member">Query::resultsAsMap</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Query.h" line="232" column="1" bodyfile="src/omexmeta/Query.cpp" bodystart="77" bodyend="89"/>

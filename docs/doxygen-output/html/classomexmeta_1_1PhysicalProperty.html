@@ -71,6 +71,8 @@ $(function() {
 <div class="title">omexmeta::PhysicalProperty Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="PhysicalProperty_8h_source.html">PhysicalProperty.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -80,8 +82,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a1a85ba2c50f5b79e49e8a01b96756f0a"><td class="memItemLeft" align="right" valign="top"><a id="a1a85ba2c50f5b79e49e8a01b96756f0a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;rhs) const</td></tr>
 <tr class="separator:a1a85ba2c50f5b79e49e8a01b96756f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memItemLeft" align="right" valign="top"><a id="a76d1ffd15ea6aad76c322bdd8991a111"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProperty</b> (std::string subject_str, std::string resource_str, std::string model_uri)</td></tr>
+<tr class="memitem:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#a76d1ffd15ea6aad76c322bdd8991a111">PhysicalProperty</a> (std::string subject_str, std::string resource_str, std::string model_uri)</td></tr>
+<tr class="memdesc:a76d1ffd15ea6aad76c322bdd8991a111"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="#a76d1ffd15ea6aad76c322bdd8991a111">More...</a><br /></td></tr>
 <tr class="separator:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf399e14fd579efc6384ebc677341ead"><td class="memItemLeft" align="right" valign="top"><a id="acf399e14fd579efc6384ebc677341ead"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getSubject</b> () const</td></tr>
@@ -107,10 +109,86 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:a420dab52a424d1be5a8610e19407980c"><td class="memItemLeft" align="right" valign="top"><a id="a420dab52a424d1be5a8610e19407980c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setResource</b> (const std::string &amp;resource)</td></tr>
 <tr class="separator:a420dab52a424d1be5a8610e19407980c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03056210a70ea8446b44de250646eeb5"><td class="memItemLeft" align="right" valign="top"><a id="a03056210a70ea8446b44de250646eeb5"></a>
-<a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toTriples</b> (const std::string &amp;property_metaid) const</td></tr>
+<tr class="memitem:a03056210a70ea8446b44de250646eeb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#a03056210a70ea8446b44de250646eeb5">toTriples</a> (const std::string &amp;property_metaid) const</td></tr>
+<tr class="memdesc:a03056210a70ea8446b44de250646eeb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects. ">Triples</a> object using the information in the <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="#a03056210a70ea8446b44de250646eeb5">More...</a><br /></td></tr>
 <tr class="separator:a03056210a70ea8446b44de250646eeb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> is a subclass of the <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> object. It is a special type of <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> that is restricted to terms from the ontology of physics for biology.</p>
+<p>Usage: <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> r("http://identifiers.org/opb:opb12345"); is equilavent to: <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> r("opb:opb12345"); is equilavent to: <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> r("opb/opb12345"); </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a76d1ffd15ea6aad76c322bdd8991a111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76d1ffd15ea6aad76c322bdd8991a111">&#9670;&nbsp;</a></span>PhysicalProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">omexmeta::PhysicalProperty::PhysicalProperty </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>subject_str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>resource_str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>model_uri</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">physical_property_string</td><td>is used to create a URI node representing the physical property </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a03056210a70ea8446b44de250646eeb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03056210a70ea8446b44de250646eeb5">&#9670;&nbsp;</a></span>toTriples()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a> omexmeta::PhysicalProperty::toTriples </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>property_metaid</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects. ">Triples</a> object using the information in the <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects. ">Triples</a> object containing the set of <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> object used to represent this <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/omexmeta/<a class="el" href="PhysicalProperty_8h_source.html">PhysicalProperty.h</a></li>
 <li>src/omexmeta/PhysicalProperty.cpp</li>

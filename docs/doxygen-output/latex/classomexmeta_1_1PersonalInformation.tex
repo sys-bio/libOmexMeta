@@ -16,17 +16,15 @@ add personal information to the model as a composite annotation.
 {\bfseries Personal\+Information} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_a75cedb2a97efb996852b4e7cd39d6440}\label{classomexmeta_1_1PersonalInformation_a75cedb2a97efb996852b4e7cd39d6440}} 
-{\bfseries Personal\+Information} (const \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&information)=delete
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_a6653d6c5751154f5f33562d9879d6727}\label{classomexmeta_1_1PersonalInformation_a6653d6c5751154f5f33562d9879d6727}} 
-{\bfseries Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&\&information) noexcept
-\item 
+\hyperlink{classomexmeta_1_1PersonalInformation_a75cedb2a97efb996852b4e7cd39d6440}{Personal\+Information} (const \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&information)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor for \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}. \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PersonalInformation_a6653d6c5751154f5f33562d9879d6727}{Personal\+Information} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&\&information) noexcept
+\begin{DoxyCompactList}\small\item\em Move constructor for \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_a11a759dd5f065ba6a48f0bc3b4c48438}\label{classomexmeta_1_1PersonalInformation_a11a759dd5f065ba6a48f0bc3b4c48438}} 
-\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \& {\bfseries operator=} (const \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&information)=delete
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_a048a3377b27d4b87681e4f8c24dd8c4f}\label{classomexmeta_1_1PersonalInformation_a048a3377b27d4b87681e4f8c24dd8c4f}} 
-\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \& {\bfseries operator=} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&\&information) noexcept
-\item 
+\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \& \hyperlink{classomexmeta_1_1PersonalInformation_a11a759dd5f065ba6a48f0bc3b4c48438}{operator=} (const \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&information)=delete
+\begin{DoxyCompactList}\small\item\em assignment operator for \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \& \hyperlink{classomexmeta_1_1PersonalInformation_a048a3377b27d4b87681e4f8c24dd8c4f}{operator=} (\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&\&information) noexcept
+\begin{DoxyCompactList}\small\item\em move assignment operator for \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_aef8b8cfd83f8247b487d58f887c93e54}\label{classomexmeta_1_1PersonalInformation_aef8b8cfd83f8247b487d58f887c93e54}} 
 const std\+::string \& {\bfseries get\+Local\+Uri} () const
 \item 
@@ -105,6 +103,32 @@ void {\bfseries set\+Triples} (\hyperlink{classomexmeta_1_1Triples}{Triples} tri
 add personal information to the model as a composite annotation. 
 
 For developers\+: \hyperlink{classThis}{This} composite annotation is fundamentally different to the Physical$\ast$ composites in that the structure is more arbitrary. With the Physical$\ast$ composites, the structure is very well defined, so it was easier to implement the to\+Triples() method to construct those triples when called. \hyperlink{classThis}{This} differs subtly in \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} in that we have a class level \hyperlink{classomexmeta_1_1Triples}{Triples} object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the get\+Triples() method to get a unique ptr to the triples. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_a6653d6c5751154f5f33562d9879d6727}\label{classomexmeta_1_1PersonalInformation_a6653d6c5751154f5f33562d9879d6727}} 
+\index{omexmeta\+::\+Personal\+Information@{omexmeta\+::\+Personal\+Information}!Personal\+Information@{Personal\+Information}}
+\index{Personal\+Information@{Personal\+Information}!omexmeta\+::\+Personal\+Information@{omexmeta\+::\+Personal\+Information}}
+\subsubsection{\texorpdfstring{Personal\+Information()}{PersonalInformation()}}
+{\footnotesize\ttfamily omexmeta\+::\+Personal\+Information\+::\+Personal\+Information (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&\&}]{information }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Move constructor for \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}. 
+
+move constructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1PersonalInformation_a048a3377b27d4b87681e4f8c24dd8c4f}\label{classomexmeta_1_1PersonalInformation_a048a3377b27d4b87681e4f8c24dd8c4f}} 
+\index{omexmeta\+::\+Personal\+Information@{omexmeta\+::\+Personal\+Information}!operator=@{operator=}}
+\index{operator=@{operator=}!omexmeta\+::\+Personal\+Information@{omexmeta\+::\+Personal\+Information}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \& omexmeta\+::\+Personal\+Information\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} \&\&}]{information }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+move assignment operator for \hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information} 
+
+move assignment constructor 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

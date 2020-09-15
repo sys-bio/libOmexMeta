@@ -624,6 +624,7 @@
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5528b12e5dbc702c0c270328662e7031" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" kind="function"><name>setModelUri</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" kind="function"><name>getAbout</name></member>
+    <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" kind="function"><name>setAbout</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" kind="function"><name>getType</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" kind="function"><name>getPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273" kind="function"><name>toTriples</name></member>
@@ -632,7 +633,6 @@
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" kind="function"><name>setType</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" kind="function"><name>getPhysicalPropertyId</name></member>
-    <member refid="classomexmeta_1_1PhysicalPhenomenon_1a715b76003eba8e5808fe44a768199fab" kind="function"><name>setPhysicalPropertyId</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalProcess" kind="class"><name>omexmeta::PhysicalProcess</name>
     <member refid="classomexmeta_1_1PhysicalProcess_1a078e2a2f6554f2144ce69d817d9b23b9" kind="variable"><name>sources_</name></member>
@@ -1370,6 +1370,8 @@
   <compound refid="dir_e793c0dc4ccd224149063390ee134027" kind="dir"><name>src/redland/RedlandWrapper/src</name>
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="_2mnt_2d_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>/mnt/d/libOmexMeta/src/omexmeta/OmexMetaCApi.h</name>
   </compound>
   <compound refid="_2mnt_2d_2libOmexMeta_2src_2omexmeta_2Predicate_8h-example" kind="example"><name>/mnt/d/libOmexMeta/src/omexmeta/Predicate.h</name>
   </compound>

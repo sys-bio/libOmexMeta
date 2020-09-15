@@ -334,9 +334,18 @@ Prefer the alternative setPhysicalProperty instance, since you do not need to in
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>sets the identity portion of the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> (the &quot;What&quot;). </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The resource to be used for the identity. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this Physical entity. Allows chaining together builder commands.</para></simplesect>
+The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> automatically.</para><para>See <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> documentation for more details of valid input strings. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="160" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="46" bodyend="51"/>
@@ -351,9 +360,18 @@ Prefer the alternative setPhysicalProperty instance, since you do not need to in
           <declname>where</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a location to the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>where</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The resource representing a location. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this Physical entity. Allows chaining together builder commands.</para></simplesect>
+The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the &quot;isPartOf&quot; predicate. For example, a cytosolic TGFb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. <ref refid="classThis" kindref="compound">This</ref> ends up being cytosol&lt;isPartOf&gt;fibroblast&lt;isPartOf&gt;dermis&lt;isPartOf&gt;skin.</para><para>See <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> documentation for more details of valid input strings. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="178" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="53" bodyend="59"/>
@@ -364,9 +382,10 @@ Prefer the alternative setPhysicalProperty instance, since you do not need to in
         <argsstring>() const</argsstring>
         <name>getNumLocations</name>
         <briefdescription>
-        </briefdescription>
+<para>returns the number of locations used by <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the number of locations in a <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="184" column="1" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="149" bodyend="151"/>
@@ -481,6 +500,7 @@ Prefer the alternative setPhysicalProperty instance, since you do not need to in
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setIdentity</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setLocalUri</name></member>
@@ -488,7 +508,6 @@ Prefer the alternative setPhysicalProperty instance, since you do not need to in
       <member refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a9bca0cb13601b6f9617df9f264968f1f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalEntity</scope><name>setPhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a715b76003eba8e5808fe44a768199fab" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setPhysicalPropertyId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setType</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>toTriples</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a74e88adb2099099e411b55cb9aa460a0" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>type_</name></member>

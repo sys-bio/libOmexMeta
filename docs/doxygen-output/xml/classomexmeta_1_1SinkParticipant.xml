@@ -3,6 +3,7 @@
   <compounddef id="classomexmeta_1_1SinkParticipant" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::SinkParticipant</compoundname>
     <basecompoundref refid="classomexmeta_1_1Participant" prot="public" virt="non-virtual">omexmeta::Participant</basecompoundref>
+    <includes refid="Participant_8h" local="no">Participant.h</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classomexmeta_1_1SinkParticipant_1a0adac71db2271549cbb6dc17346d89b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -30,7 +31,7 @@
           <declname>local_uri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>A class representing process/force energetic sinks. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -41,7 +42,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para><ref refid="classSubclass" kindref="compound">Subclass</ref> of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. See Participants for arguments. </para>    </detaileddescription>
     <inheritancegraph>
       <node id="227">
         <label>omexmeta::Participant</label>

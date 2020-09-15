@@ -51,9 +51,9 @@
         <argsstring>()=delete</argsstring>
         <name>PhysicalForce</name>
         <briefdescription>
-        </briefdescription>
+<para>default constructor for <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> you will get an error, because there will be no model assicated with <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. Instead, always instantiate a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> from the <ref refid="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" kindref="member">Editor::addPhysicalForce()</ref> method. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="44" column="1"/>
@@ -114,9 +114,9 @@
         <argsstring>()</argsstring>
         <name>free</name>
         <briefdescription>
-        </briefdescription>
+<para>Free nodes associated with <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>The <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> is owned by the caller if the <ref refid="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0" kindref="member">PhysicalForce::toTriples</ref> method is NOT used. When <ref refid="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0" kindref="member">toTriples()</ref> is used, the nodes that create the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> are &quot;given&quot; to the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object, which automatically destroys them at the right time.</para><para>Most of the time, users will not have to remember to free the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> themselves as the toTriples method is always used. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="64" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="108" bodyend="116"/>
@@ -131,9 +131,17 @@
           <declname>model</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for instantiating a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> type composite annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>model.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A librdf_model pass down by <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Users do not need to instantiate <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> manually, since it is done by <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. <ref refid="classThis" kindref="compound">This</ref> constructor instantiates an empty <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> object which is filled by </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="75" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="94" bodyend="95"/>
@@ -156,9 +164,24 @@
           <declname>local_uri</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for instantiating a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> type composite annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>model.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A librdf_model pass down by <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>model_uri.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String passed down by <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. The local uri to use for metaids</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Users do not need to instantiate <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> manually, since it is done by <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. <ref refid="classThis" kindref="compound">This</ref> constructor instantiates an empty <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> object which is filled by </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="87" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="97" bodyend="98"/>
@@ -169,9 +192,9 @@
         <argsstring>()</argsstring>
         <name>createMetaId</name>
         <briefdescription>
-        </briefdescription>
+<para>create a metaid for the physical force annotation </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>a new metaid for <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="93" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="27" bodyend="29"/>
@@ -182,9 +205,10 @@
         <argsstring>() const</argsstring>
         <name>getSources</name>
         <briefdescription>
-        </briefdescription>
+<para>return vector of Source objects assocated with <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a vector of SourceParticipants </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="99" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="19" bodyend="21"/>
@@ -195,9 +219,10 @@
         <argsstring>() const</argsstring>
         <name>getSinks</name>
         <briefdescription>
-        </briefdescription>
+<para>return vector of Sink objects assocated with <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a vector of SinkParticipants </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="105" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="23" bodyend="25"/>
@@ -209,9 +234,10 @@
         <name>toTriples</name>
         <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273">toTriples</reimplements>
         <briefdescription>
-        </briefdescription>
+<para>converts the PhyicalForce object into a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object containing the individual <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects of a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>.</para></simplesect>
+When this method is called ownership of all <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> nodes gets transferred from the caller to the returned <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="114" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="31" bodyend="63"/>
@@ -226,9 +252,10 @@
           <declname>physicalProperty</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>sets the physical property of the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>  physicalProperty An instance of <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> representing the physical property term for the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a reference to this <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to enable the builder interface.</para></simplesect>
+Prefer the other setPhysicalProperty method since it only requires a string input and instantiates the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> for you.</para><para>For developers. Consider removing. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="127" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="65" bodyend="68"/>
@@ -247,9 +274,25 @@
           <declname>physical_property</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>sets the physical property of the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subject_metaid.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The subject portion of the two triples produced by <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref>. Metaid of a model element. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string representing the OPB term to use as the physical property. Like &quot;OPB:OPB_1234&quot; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to enable the builder interface. </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="135" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="70" bodyend="76"/>
@@ -268,9 +311,32 @@
           <declname>physical_entity_reference</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> to the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>metaid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ID for the <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiplier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The multiplier argument for <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>physical_entity_reference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The physicalEntityReference argument for the <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to enable the builder interface.</para></simplesect>
+See <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> documentation for more details on arguments. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="147" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="78" bodyend="85"/>
@@ -289,9 +355,32 @@
           <declname>physical_entity_reference</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>add a <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkParticipant</ref> to the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sink_metaid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ID for the <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkParticipant</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiplier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The multiplier argument for <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkParticipant</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>physical_entity_reference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The physicalEntityReference argument for the <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkParticipant</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to enable the builder interface.</para></simplesect>
+See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkParticipant</ref> documentation for more details on arguments. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="159" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="87" bodyend="92"/>
@@ -302,9 +391,10 @@
         <argsstring>()</argsstring>
         <name>getNumSources</name>
         <briefdescription>
-        </briefdescription>
+<para>returns the number of sources associated with the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the integer number of sources </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="166" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="100" bodyend="102"/>
@@ -315,9 +405,10 @@
         <argsstring>()</argsstring>
         <name>getNumSinks</name>
         <briefdescription>
-        </briefdescription>
+<para>returns the number of sinks associated with the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the integer number of sinks </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="173" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="104" bodyend="106"/>
@@ -433,13 +524,13 @@
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a081aecc43d16b2fc8826c4050eb2055d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a3f979432322d40efc8a15cf5ee883100" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalForce</scope><name>setPhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a715b76003eba8e5808fe44a768199fab" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setPhysicalPropertyId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setType</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a42c0ae3fe54ba4b69a709feefb01cee3" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>sinks_</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a79c5d2ad46b427dea58ab7058c8cd78b" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>sources_</name></member>

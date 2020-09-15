@@ -33,15 +33,12 @@ const Resources \& \hyperlink{classomexmeta_1_1PhysicalEntity_a3e2fba07a4622db01
 \begin{DoxyCompactList}\small\item\em sets the physical property for a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} instance. \end{DoxyCompactList}\item 
 \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a9bca0cb13601b6f9617df9f264968f1f}{set\+Physical\+Property} (\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} physical\+Property)
 \begin{DoxyCompactList}\small\item\em sets the physical property for a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} instance \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}\label{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}} 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& {\bfseries set\+Identity} (const std\+::string \&resource)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a82e77be3327c537b2426b571afaa5045}\label{classomexmeta_1_1PhysicalEntity_a82e77be3327c537b2426b571afaa5045}} 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& {\bfseries add\+Location} (const std\+::string \&where)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}\label{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}} 
-int {\bfseries get\+Num\+Locations} () const
-\item 
+\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}{set\+Identity} (const std\+::string \&resource)
+\begin{DoxyCompactList}\small\item\em sets the identity portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} (the \char`\"{}\+What\char`\"{}). \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a82e77be3327c537b2426b571afaa5045}{add\+Location} (const std\+::string \&where)
+\begin{DoxyCompactList}\small\item\em add a location to the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}. \end{DoxyCompactList}\item 
+int \hyperlink{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}{get\+Num\+Locations} () const
+\begin{DoxyCompactList}\small\item\em returns the number of locations used by \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5f54e5c2df0fd5c3b9121e1426b23af6}\label{classomexmeta_1_1PhysicalEntity_a5f54e5c2df0fd5c3b9121e1426b23af6}} 
 bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&rhs) const
 \item 
@@ -126,7 +123,27 @@ constructor for \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} ob
 \hyperlink{classThis}{This} alternative constructor is used when users use the builder interface (which should actually be most of the time). The \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} is instantiated with only the model to allow for a better way of collecting necessary information from the user. The \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} also needs access to the model\+\_\+uri, which we pass here. 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}\label{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a82e77be3327c537b2426b571afaa5045}\label{classomexmeta_1_1PhysicalEntity_a82e77be3327c537b2426b571afaa5045}} 
+\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!add\+Location@{add\+Location}}
+\index{add\+Location@{add\+Location}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
+\subsubsection{\texorpdfstring{add\+Location()}{addLocation()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& omexmeta\+::\+Physical\+Entity\+::add\+Location (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{where }\end{DoxyParamCaption})}
+
+
+
+add a location to the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em where} & The resource representing a location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to this Physical entity. Allows chaining together builder commands.
+\end{DoxyReturn}
+The input string gets converted to a \hyperlink{classomexmeta_1_1Resource}{Resource} automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the \char`\"{}is\+Part\+Of\char`\"{} predicate. For example, a cytosolic T\+G\+Fb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. \hyperlink{classThis}{This} ends up being cytosol$<$is\+Part\+Of$>$fibroblast$<$is\+Part\+Of$>$dermis$<$is\+Part\+Of$>$skin.
+
+See \hyperlink{classomexmeta_1_1Resource}{Resource} documentation for more details of valid input strings. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}\label{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}} 
 \index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!free@{free}}
 \index{free@{free}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
 \subsubsection{\texorpdfstring{free()}{free()}}
@@ -162,7 +179,40 @@ return a vector of resources representing the \char`\"{}where\char`\"{} part of 
 \begin{DoxyReturn}{Returns}
 vector of \hyperlink{classomexmeta_1_1Resource}{Resource} objects representing anatomical location of physical entity 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5d7168c527d2dbdacd612de37aa9a605}\label{classomexmeta_1_1PhysicalEntity_a5d7168c527d2dbdacd612de37aa9a605}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}\label{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}} 
+\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!get\+Num\+Locations@{get\+Num\+Locations}}
+\index{get\+Num\+Locations@{get\+Num\+Locations}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
+\subsubsection{\texorpdfstring{get\+Num\+Locations()}{getNumLocations()}}
+{\footnotesize\ttfamily int omexmeta\+::\+Physical\+Entity\+::get\+Num\+Locations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+returns the number of locations used by \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} 
+
+\begin{DoxyReturn}{Returns}
+the number of locations in a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}\label{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}} 
+\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!set\+Identity@{set\+Identity}}
+\index{set\+Identity@{set\+Identity}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
+\subsubsection{\texorpdfstring{set\+Identity()}{setIdentity()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& omexmeta\+::\+Physical\+Entity\+::set\+Identity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{resource }\end{DoxyParamCaption})}
+
+
+
+sets the identity portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} (the \char`\"{}\+What\char`\"{}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource} & The resource to be used for the identity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to this Physical entity. Allows chaining together builder commands.
+\end{DoxyReturn}
+The input string gets converted to a \hyperlink{classomexmeta_1_1Resource}{Resource} automatically.
+
+See \hyperlink{classomexmeta_1_1Resource}{Resource} documentation for more details of valid input strings. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5d7168c527d2dbdacd612de37aa9a605}\label{classomexmeta_1_1PhysicalEntity_a5d7168c527d2dbdacd612de37aa9a605}} 
 \index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!set\+Physical\+Property@{set\+Physical\+Property}}
 \index{set\+Physical\+Property@{set\+Physical\+Property}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
 \subsubsection{\texorpdfstring{set\+Physical\+Property()}{setPhysicalProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -215,7 +265,7 @@ a \hyperlink{classomexmeta_1_1Triples}{Triples} objects containing the \hyperlin
 \end{DoxyReturn}
 When using \char`\"{}to\+Triples\char`\"{} you are giving ownership of the nodes used by \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} to the returned \hyperlink{classomexmeta_1_1Triples}{Triples} object, which automatically cleans up after itself in its destructor. If you instantiate a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} and do not call to\+Triples (which will not be often), then the caller is responsible for calling \hyperlink{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}{Physical\+Entity\+::free} when finished. 
 
-Reimplemented from \hyperlink{classomexmeta_1_1PhysicalPhenomenon}{omexmeta\+::\+Physical\+Phenomenon}.
+Reimplemented from \hyperlink{classomexmeta_1_1PhysicalPhenomenon_a30617e685bd8b155a76d38ab5a9db273}{omexmeta\+::\+Physical\+Phenomenon}.
 
 
 

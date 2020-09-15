@@ -91,9 +91,24 @@
           <declname>element</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1ElementExtractor" kindref="compound">ElementExtractor</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>markup</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string containing the sbml document string </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a string with the sbml element you want to extract </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/ElementExtractor.h" line="39" column="1" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="9" bodyend="14"/>
@@ -117,7 +132,7 @@
         <argsstring>() const</argsstring>
         <name>getElements</name>
         <briefdescription>
-        </briefdescription>
+<para>get xml elements called element_ </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>

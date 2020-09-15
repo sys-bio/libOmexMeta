@@ -224,14 +224,14 @@ namespace omexmeta {
          */
         [[nodiscard]] std::string resultsAsStr(const std::string &output_format, std::string baseuri = "query_results") const;
 
-        /*
+        /**
          * @brief Run a query.
          * @details Users do not need to manually execute a query using this method.
          * It is used automatically in the constructor for Query and again in Query::resultsAsMap.
          */
         void runQuery();
 
-        /*
+        /**
          * todo test implementing these commented out functions.
          *  They were commented out before for circular dependency issues
          *  but might be able do the same thing but inside the RDF object?

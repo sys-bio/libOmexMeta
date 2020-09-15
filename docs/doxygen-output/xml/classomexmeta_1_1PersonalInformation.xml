@@ -160,7 +160,7 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Copy constructor for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref>. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -177,9 +177,9 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Move constructor for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref>. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>move constructor </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PersonalInformation.h" line="57" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="23" bodyend="29"/>
@@ -194,7 +194,7 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>assignment operator for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -211,9 +211,9 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>move assignment operator for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>move assignment constructor </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/PersonalInformation.h" line="67" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="34" bodyend="43"/>

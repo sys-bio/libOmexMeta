@@ -388,8 +388,8 @@ namespace omexmeta {
         }
     }
 
-    /*
-     * @brief get the xml from the editor
+    /**
+         * @brief get the xml from the editor
      *
      * The returned string is owned by the caller.
      */

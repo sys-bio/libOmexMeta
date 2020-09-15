@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classomexmeta_1_1Triples" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Triples</compoundname>
+    <includes refid="Triples_8h" local="no">Triples.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1Triples_1ac1bedb4d0e572623208e032280abd634" prot="private" static="no" mutable="no">
         <type>TripleVector</type>
@@ -41,9 +42,17 @@
           <declname>size</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>create an empty <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object big enough for </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="49" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="215" bodyend="217"/>
@@ -58,9 +67,17 @@
           <declname>triple</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object from a single triple </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>triple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The triple to put into triples</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+The triple is moved into element 0 of a new <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. The <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object (which is a memory leak). </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="59" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="12" bodyend="14"/>
@@ -75,7 +92,7 @@
           <declname>triples</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object directly from a std::vector&lt;Triple&gt; </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -126,9 +143,9 @@
           <declname>triple</declname>
         </param>
         <briefdescription>
-<para>moves a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
+<para>move a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> to the back of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. Analogous to push back but with move semantics. </para>        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
+<para>moves a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>triple</parametername>
 </parameternamelist>
@@ -167,9 +184,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="83" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="40" bodyend="43"/>
@@ -192,9 +209,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="91" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="45" bodyend="48"/>
@@ -217,9 +234,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="99" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="50" bodyend="54"/>
@@ -242,9 +259,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="107" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="56" bodyend="60"/>
@@ -267,9 +284,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="115" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="62" bodyend="65"/>
@@ -292,9 +309,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="123" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="67" bodyend="70"/>
@@ -317,9 +334,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>resource</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object from the necessary components and move it to the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at the back of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="130" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="35" bodyend="38"/>
@@ -330,9 +347,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>getSubjectsStr</name>
         <briefdescription>
-        </briefdescription>
+<para>get all subjects as strings </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>we do not return the subject itself because subjects cannot be copied, which complicates matters. <simplesect kind="return"><para>All subject uri&apos;s as strings in a std::vector </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="138" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="72" bodyend="78"/>
@@ -343,9 +361,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>getPredicates</name>
         <briefdescription>
-        </briefdescription>
+<para>get all predicates as strings </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>we do not return the predicate itself because <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> objects cannot be copied. <simplesect kind="return"><para>All predicate uri&apos;s as strings in a std::vector </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="146" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="80" bodyend="86"/>
@@ -356,9 +375,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>getResources</name>
         <briefdescription>
-        </briefdescription>
+<para>get all resources as strings </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>we do not return the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> itself because <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> objects cannot be copied. <simplesect kind="return"><para>All resource uri&apos;s as strings in a std::vector </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="154" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="88" bodyend="94"/>
@@ -369,9 +389,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>() const</argsstring>
         <name>size</name>
         <briefdescription>
-        </briefdescription>
+<para>get the number of triples in the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the integer number of triples in the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="160" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="96" bodyend="98"/>
@@ -382,9 +403,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>begin</name>
         <briefdescription>
-        </briefdescription>
+<para>the begin iterator for a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is simply forwarded on to std::vector::begin() </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="166" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="100" bodyend="102"/>
@@ -395,9 +416,9 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>end</name>
         <briefdescription>
-        </briefdescription>
+<para>the end iterator for a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>this method is simply forwarded on to std::vector::end() </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="172" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="104" bodyend="106"/>
@@ -428,9 +449,45 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <defval>&quot;NewModel.xml#&quot;</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Serialize the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object to. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the format to serialize </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>argument for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. <ref refid="classThis" kindref="compound">This</ref> is hidden so basically irrelevant. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>omex_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the omex portion of the current local uri. Default is NewOmex.omex </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>model_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the omex portion of the current local uri. Default is NewModel.xml</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+See RDF::str for more details regarding arguments. <ref refid="classThis" kindref="compound">This</ref> method is only for checking to see what <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object looks like when serialized. The annotations are not added to the main <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. <ref refid="classThis" kindref="compound">This</ref> is analogous to <ref refid="classomexmeta_1_1Triple_1aabfef726172656b6c61c602b4d8d33e5" kindref="member">Triple::str</ref>. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="185" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="109" bodyend="173"/>
@@ -454,9 +511,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>pop</name>
         <briefdescription>
-        </briefdescription>
+<para>moves one triple of the end of triples </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>the triple from the end of the triples vector</para></simplesect>
+No copies are made. <ref refid="classThis" kindref="compound">This</ref> is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object and return it. <ref refid="classThis" kindref="compound">This</ref> means that responsibility for freeing the returned <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> switches to the caller. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="201" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="175" bodyend="182"/>
@@ -471,9 +529,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
           <declname>index</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>getter operator for <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a reference to the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at index <computeroutput>index</computeroutput></para></simplesect>
+A copy is made of the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> you want to return. To get a reference without copying see <ref refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" kindref="member">Triples::pop()</ref>. Remember that iterating over a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object and making copies will cause complications with freeing the objects. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="211" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="203" bodyend="205"/>
@@ -484,9 +543,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>isEmpty</name>
         <briefdescription>
-        </briefdescription>
+<para>indicates whether <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object is empty. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>true if the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object doesn&apos;t contain any <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects</para></simplesect>
+Useful for iterating over <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> in a while loop without using the <computeroutput>[]</computeroutput> operator, which makes unwanted copies that causes memory issues. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="220" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="199" bodyend="201"/>
@@ -497,9 +557,10 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>pop_front</name>
         <briefdescription>
-        </briefdescription>
+<para>move the from <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object out of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> from position 0 in <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></para></simplesect>
+caller is responsible for <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> resources </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="227" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="184" bodyend="191"/>
@@ -510,18 +571,19 @@ The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">
         <argsstring>()</argsstring>
         <name>capacity</name>
         <briefdescription>
-        </briefdescription>
+<para>forwarded on to std::vector::capacity </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><simplesect kind="return"><para>int the size of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> currently allowed </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/omexmeta/Triples.h" line="233" column="1" bodyfile="src/omexmeta/Triples.cpp" bodystart="219" bodyend="221"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>A <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object is a collection of <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects. </para>    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>the implementation of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> is hampered by the inability to clone <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects. Instead triples must use move semantics to get <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> in or out of a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. Under the hood, the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object is just a std::vector&lt;Triple&gt;. </para>    </detaileddescription>
     <location file="src/omexmeta/Triples.h" line="37" column="1" bodyfile="src/omexmeta/Triples.h" bodystart="37" bodyend="235"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Triples_1aa6735eb506ff0d5a3179fab3af3b2602" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>begin</name></member>

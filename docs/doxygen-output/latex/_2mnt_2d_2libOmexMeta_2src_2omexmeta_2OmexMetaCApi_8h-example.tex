@@ -1,0 +1,391 @@
+\hypertarget{_2mnt_2d_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{}\section{/mnt/d/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}
+read R\+DF formatted annotations a string. 
+\begin{DoxyParams}{Parameters}
+{\em pdf\+\_\+ptr} & a pointer to an R\+DF object. \\
+\hline
+{\em str} & the string to read annotations from \\
+\hline
+{\em format} & the format that the string annotations are in (get it wrong to be provided a list of supported syntaxes) \\
+\hline
+{\em baseuri} & the uri used for the base. All relative uri\textquotesingle{}s in the R\+DF graph are relative to the base uri\\
+\hline
+\end{DoxyParams}
+R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, \char`\"{}rdfxml\char`\"{}, \char`\"{}string\+\_\+annotations\+\_\+base\+\_\+uri\char`\"{});
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//}
+\textcolor{comment}{// Created by Ciaran on 5/8/2020.}
+\textcolor{comment}{//}
+
+\textcolor{preprocessor}{#ifndef LIBOMEXMETA\_OMEXMETACAPI\_H}
+\textcolor{preprocessor}{#define LIBOMEXMETA\_OMEXMETACAPI\_H}
+
+\textcolor{preprocessor}{#include "omexmeta/RDF.h"}
+\textcolor{preprocessor}{#include "omexmeta/Editor.h"}
+\textcolor{preprocessor}{#include "omexmeta/OmexMetaXmlAssistant.h"}
+\textcolor{preprocessor}{#include "omexmeta/PhysicalEntity.h"}
+\textcolor{preprocessor}{#include "omexmeta/PhysicalProcess.h"}
+\textcolor{preprocessor}{#include "omexmeta/PhysicalForce.h"}
+\textcolor{preprocessor}{#include "omexmeta/OmexMetaUtils.h"}
+\textcolor{preprocessor}{#include "omexmetacapi\_export.h"}
+\textcolor{preprocessor}{#include <cstring>}
+
+\textcolor{keyword}{namespace }\hyperlink{namespaceomexmeta}{omexmeta} \{
+
+\textcolor{preprocessor}{#ifdef \_\_cplusplus}
+    \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+\textcolor{preprocessor}{#endif}
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} free\_c\_char\_star(\textcolor{keywordtype}{char} *c);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} free\_c\_char\_star\_star(\textcolor{keywordtype}{char} **c, \textcolor{keywordtype}{int} size);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *\hyperlink{namespaceomexmeta_a1d7bca5e4a24d7482048bd28d901e502}{\_func\_that\_returns\_dynamic\_alloc\_str}();
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} **\_func\_that\_returns\_dynamic\_alloc\_char\_star\_star();
+
+\textcolor{comment}{/***************************************************}
+\textcolor{comment}{ * librdf\_world methods}
+\textcolor{comment}{ *}
+\textcolor{comment}{ * note: Really I do not want users to have to deal with this}
+\textcolor{comment}{ * todo take steps to ensure users do not need to interact with the librdf\_world*}
+\textcolor{comment}{ *}
+\textcolor{comment}{ */}
+
+    OMEXMETACAPI\_EXPORT [[maybe\_unused]] \textcolor{keywordtype}{int} free\_world(librdf\_world *world);
+
+\textcolor{comment}{/***************************************************}
+\textcolor{comment}{ * RDF class methods}
+\textcolor{comment}{ */}
+
+    OMEXMETACAPI\_EXPORT RDF *RDF\_new(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"memory"}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"
+      semsim\_store"},
+                            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{void} RDF\_delete(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getBaseUri(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_setBaseUri(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_toString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_toFile(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename);
+
+    OMEXMETACAPI\_EXPORT RDF *RDF\_fromString(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"memory"}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"
+      semsim\_store"},
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{
+      nullptr});
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);
+
+    OMEXMETACAPI\_EXPORT RDF *RDF\_fromUri(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format,
+                                \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"memory"}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"
+      semsim\_store"},
+                                \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr})
+      ;
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromUri(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);
+
+    OMEXMETACAPI\_EXPORT RDF *RDF\_fromFile(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      storage\_type = \textcolor{stringliteral}{"memory"},
+                                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"semsim\_store"},
+                                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr}
+      );
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromFile(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_query(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *results\_format);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_size(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_setRepositoryUri(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *repository\_uri);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_setArchiveUri(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *archive\_uri);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_setModelUri(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_uri);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getRepositoryUri(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getArchiveUri(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getModelUri(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getLocalUri(RDF *rdf\_ptr);
+
+    OMEXMETACAPI\_EXPORT Editor *
+    RDF\_toEditor(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *xml, \textcolor{keywordtype}{bool} generate\_new\_metaids, \textcolor{keywordtype}{bool} sbml\_semantic\_extraction);
+
+\textcolor{comment}{/*********************************************}
+\textcolor{comment}{ *  Editor class methods}
+\textcolor{comment}{ */}
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addNamespace(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *namespace\_, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      prefix);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addSingleAnnotation(Editor *editor\_ptr, SingularAnnotation *
+      singularAnnotation);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalEntity(Editor *editor\_ptr, PhysicalEntity *physicalEntity);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalProcess(Editor *editor\_ptr, PhysicalProcess *physicalProcess)
+      ;
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalForce(Editor *editor\_ptr, PhysicalForce *physicalForce);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPersonalInformation(Editor *editor\_ptr, PersonalInformation *
+      personalInformation);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removeSingleAnnotation(Editor *editor\_ptr, SingularAnnotation *
+      singularAnnotation);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalEntity(Editor *editor\_ptr, PhysicalEntity *physicalEntity)
+      ;
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalProcess(Editor *editor\_ptr, PhysicalProcess *
+      physicalProcess);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalForce(Editor *editor\_ptr, PhysicalForce *physicalForce);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePersonalInformation(Editor *editor\_ptr, PersonalInformation *
+      information);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_checkValidMetaid(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{id});
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getMetaId(Editor *editor\_ptr, \textcolor{keywordtype}{int} index);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *\hyperlink{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}{Editor\_getXml}(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_getNumMetaIds(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_delete(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getArchiveUri(Editor *editor\_ptr);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getLocalUri(Editor *editor\_ptr);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getModelUri(Editor *editor\_ptr);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getRepositoryUri(Editor *editor\_ptr);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addCreator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addCurator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addTaxon(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *taxon\_id);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPubmed(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pubmedid);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addDescription(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addDateCreated(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addParentModel(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *biomod\_id);
+
+\textcolor{comment}{/*********************************************************************}
+\textcolor{comment}{ * SingularAnnotation class methods}
+\textcolor{comment}{ */}
+    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_new(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} SingularAnnotation\_delete(SingularAnnotation *singularAnnotation);
+
+    OMEXMETACAPI\_EXPORT SingularAnnotation *
+    SingularAnnotation\_setAbout(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);
+
+    OMEXMETACAPI\_EXPORT SingularAnnotation *
+    SingularAnnotation\_setPredicate(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *namespace\_, \textcolor{keyword}{const} \textcolor{keywordtype}{
+      char} *term);
+
+    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_setPredicateFromUri(
+            SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri);
+
+    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_setResourceLiteral(
+            SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *literal);
+
+    OMEXMETACAPI\_EXPORT SingularAnnotation *
+    SingularAnnotation\_setResourceUri(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identifiers\_uri)
+      ;
+
+    OMEXMETACAPI\_EXPORT SingularAnnotation *
+    SingularAnnotation\_setResourceBlank(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *blank\_id);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getAbout(SingularAnnotation *singular\_annotation);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *
+    SingularAnnotation\_str(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getPredicate(SingularAnnotation *singular\_annotation);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getResource(SingularAnnotation *singular\_annotation);
+
+\textcolor{comment}{/*********************************************************************}
+\textcolor{comment}{ * PhysicalEntity class methods}
+\textcolor{comment}{ */}
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_new(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalEntity\_delete(PhysicalEntity *physical\_entity\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalEntity\_freeAll(PhysicalEntity *physical\_entity\_ptr);
+
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setPhysicalProperty(
+            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property)
+      ;
+
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setIdentity(
+            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identity\_resource);
+
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_addLocation(
+            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *location\_resource);
+
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getAbout(PhysicalEntity *physical\_entity\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getIdentity(PhysicalEntity *physical\_entity\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalEntity\_getNumLocations(PhysicalEntity *physicalEntity);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getLocation(PhysicalEntity *physical\_entity\_ptr, \textcolor{keywordtype}{int} index);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_str(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{char} *base\_uri);
+
+\textcolor{comment}{/*********************************************************************}
+\textcolor{comment}{ * PhysicalProcess class methods}
+\textcolor{comment}{ */}
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_new(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalProcess\_delete(PhysicalProcess *physicalProcess);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalProcess\_freeAll(PhysicalProcess *physicalProcess);
+
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_setPhysicalProperty(
+            PhysicalProcess *physical\_process, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);
+
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_addSource(
+            PhysicalProcess *physical\_process, \textcolor{keywordtype}{int} multiplier,
+            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
+
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_addSink(
+            PhysicalProcess *physical\_process, \textcolor{keywordtype}{int} multiplier,
+            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
+
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_addMediator(
+            PhysicalProcess *physical\_process, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *
+    PhysicalProcess\_str(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *base\_uri);
+
+
+\textcolor{comment}{/*********************************************************************}
+\textcolor{comment}{ * PhysicalForce class methods}
+\textcolor{comment}{ */}
+    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_new(Editor *editor\_ptr);
+
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{PhysicalForce\_delete}(PhysicalForce *physicalForce);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{PhysicalForce\_freeAll}(PhysicalForce *physical\_force\_ptr);
+
+    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_addSource(
+            PhysicalForce *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,
+            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
+
+    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_addSink(
+            PhysicalForce *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,
+            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
+
+    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_setPhysicalProperty(
+            PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalForce\_getNumSources(PhysicalForce *physicalForce);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalForce\_getNumSinks(PhysicalForce *physicalForce);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_str(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{char} *base\_uri);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_getAbout(PhysicalForce *physical\_force\_ptr);
+
+\textcolor{comment}{/*********************************************************************}
+\textcolor{comment}{ * PersonalInformation class methods}
+\textcolor{comment}{ */}
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_new(Editor *editor\_ptr);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_delete(PersonalInformation *information);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PersonalInformation\_getLocalUri(PersonalInformation *information);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setLocalUri(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      localUri);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addCreator(PersonalInformation *
+      information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value);
+
+\textcolor{comment}{//    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addCurator(PersonalInformation
+       *information, const char*value);}
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addName(PersonalInformation *information, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{char} *value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addMbox(PersonalInformation *information, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{char} *value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *
+    PersonalInformation\_addAccountName(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *
+    PersonalInformation\_addAccountServiceHomepage(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *
+    PersonalInformation\_addFoafBlank(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *predicate, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      blank\_value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *
+    PersonalInformation\_addFoafUri(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *predicate, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      uri\_value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *
+    PersonalInformation\_addFoafLiteral(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *predicate,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{char} *literal\_value);
+
+    OMEXMETACAPI\_EXPORT PersonalInformation *
+    PersonalInformation\_addFoaf(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *predicate, \textcolor{keyword}{const} LibrdfNode &
+      value\_node);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PersonalInformation\_getMetaid(PersonalInformation *information);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setMetaid(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      metaid);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PersonalInformation\_getModelUri(PersonalInformation *information);
+
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setModelUri(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      modelUri);
+
+
+\textcolor{preprocessor}{#ifdef \_\_cplusplus}
+    \}
+\textcolor{preprocessor}{#endif}
+\}
+
+\textcolor{preprocessor}{#endif //LIBOMEXMETA\_OMEXMETACAPI\_H}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{DoxyCodeInclude}
+ 

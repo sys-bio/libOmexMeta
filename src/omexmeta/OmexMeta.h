@@ -5,8 +5,8 @@
 #ifndef LIBOMEXMETA_OMEXMETA_H
 #define LIBOMEXMETA_OMEXMETA_H
 
-/*
- * This is a public header that includes the
+/**
+         * This is a public header that includes the
  * other headers that are needed to use libOmexMeta.
  */
 

@@ -624,12 +624,7 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_OMEXMETA_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_OMEXMETA_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>a<sp/>public<sp/>header<sp/>that<sp/>includes<sp/>the</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>other<sp/>headers<sp/>that<sp/>are<sp/>needed<sp/>to<sp/>use<sp/>libOmexMeta.</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/RDF.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor">#include<sp/>&quot;omexmeta/RDF.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Editor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triples.h&quot;</highlight><highlight class="normal"></highlight></codeline>
