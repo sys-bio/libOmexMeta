@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PhysicalPhenomenon &mdash; libomexmeta 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Query" href="Query.html" />
+    <link rel="prev" title="PhysicalPropery" href="PhysicalPropery.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalForce.html">PhysicalForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PhysicalPhenomenon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resource.html">Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>PhysicalPhenomenon</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/APIReference/PhysicalPhenomenon.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="physicalphenomenon">
+<h1>PhysicalPhenomenon<a class="headerlink" href="#physicalphenomenon" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenonE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenonE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenonE"></span><span id="omexmeta::PhysicalPhenomenon"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalPhenomenon</code><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="PhysicalEntity.html#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">omexmeta::PhysicalEntity</span></a>, <a class="reference internal" href="PhysicalForce.html#classomexmeta_1_1PhysicalForce"><span class="std std-ref">omexmeta::PhysicalForce</span></a>, <a class="reference internal" href="PhysicalProcess.html#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">omexmeta::PhysicalProcess</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEv">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEv"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEv"></span><span id="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1af5416111e5358d3582ff598ad51d62a9"></span><code class="sig-name descname">PhysicalPhenomenon</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenoneqERK18PhysicalPhenomenon">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenoneqERK18PhysicalPhenomenon"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenoneqERK18PhysicalPhenomenon"></span><span id="omexmeta::PhysicalPhenomenon::eq-operator__PhysicalPhenomenonCRC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a1c3322453b3c6831668ffa98d9f4b6af"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenoneqERK18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenonneERK18PhysicalPhenomenon">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenonneERK18PhysicalPhenomenon"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenonneERK18PhysicalPhenomenon"></span><span id="omexmeta::PhysicalPhenomenon::neq-operator__PhysicalPhenomenonCRC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a2c726263714e31c7c19d6e73c2c593f8"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenonneERK18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenonD0Ev">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenonD0Ev"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenonD0Ev"></span><span id="omexmeta::PhysicalPhenomenon::~PhysicalPhenomenon"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a215daebc00eed1cf7d9eddeaed0d1603"></span><code class="sig-name descname">~PhysicalPhenomenon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenonD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon11getLocalUriEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon11getLocalUriEv"></span><span id="omexmeta::PhysicalPhenomenon::getLocalUriC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a2d59ebbc920a40348d102af31ed6661a"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon11getLocalUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon11setLocalUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon11setLocalUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon11setLocalUriERKNSt6stringE"></span><span id="omexmeta::PhysicalPhenomenon::setLocalUri__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4"></span>void <code class="sig-name descname">setLocalUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>localUri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon11setLocalUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERK18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERK18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERK18PhysicalPhenomenon"></span><span id="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon__PhysicalPhenomenonCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1ad823dad75504adb78975c810e5f1ff94"></span><code class="sig-name descname">PhysicalPhenomenon</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERK18PhysicalPhenomenon" title="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<em>phenomenon</em><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERK18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERR18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERR18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERR18PhysicalPhenomenon"></span><span id="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon__PhysicalPhenomenonRR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1aeb95aedf1756ded154ec6753108a691e"></span><code class="sig-name descname">PhysicalPhenomenon</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERR18PhysicalPhenomenon" title="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;&amp;<em>phenomenon</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonERR18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenonaSERK18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenonaSERK18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenonaSERK18PhysicalPhenomenon"></span><span id="omexmeta::PhysicalPhenomenon::assign-operator__PhysicalPhenomenonCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1aac3920bfe9bf16e071ebdd8ed4fabe2f"></span><a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<em>phenomenon</em><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenonaSERK18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenonaSERR18PhysicalPhenomenon">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenonaSERR18PhysicalPhenomenon"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenonaSERR18PhysicalPhenomenon"></span><span id="omexmeta::PhysicalPhenomenon::assign-operator__PhysicalPhenomenonRR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1af15355b4c2a361b4b02dca02d3877aed"></span><a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;&amp;<em>phenomenon</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenonaSERR18PhysicalPhenomenon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_model">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_model"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_model"></span><span id="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon__librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865"></span><code class="sig-name descname">PhysicalPhenomenon</code><span class="sig-paren">(</span>librdf_model *<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_model" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE"></span><span id="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon__librdf_modelP.ss.ss"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac"></span><code class="sig-name descname">PhysicalPhenomenon</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty14AnnotationType">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty14AnnotationType"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty14AnnotationType"></span><span id="omexmeta::PhysicalPhenomenon::PhysicalPhenomenon__librdf_modelP.ss.ss.PhysicalProperty.AnnotationType"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b"></span><code class="sig-name descname">PhysicalPhenomenon</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, std::string <em>model_uri</em>, std::string <em>local_uri</em>, PhysicalProperty <em>propertyResource</em>, <a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18PhysicalPhenomenonEP12librdf_modelNSt6stringENSt6stringE16PhysicalProperty14AnnotationType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon11getModelUriEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon11getModelUriEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon11getModelUriEv"></span><span id="omexmeta::PhysicalPhenomenon::getModelUriC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a5528b12e5dbc702c0c270328662e7031"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon11getModelUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon11setModelUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon11setModelUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon11setModelUriERKNSt6stringE"></span><span id="omexmeta::PhysicalPhenomenon::setModelUri__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2"></span>void <code class="sig-name descname">setModelUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>modelUri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon11setModelUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon8getAboutEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon8getAboutEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon8getAboutEv"></span><span id="omexmeta::PhysicalPhenomenon::getAboutC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getAbout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon8getAboutEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon7getTypeEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon7getTypeEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon7getTypeEv"></span><span id="omexmeta::PhysicalPhenomenon::getTypeC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4"></span><a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <code class="sig-name descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon7getTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon19getPhysicalPropertyEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon19getPhysicalPropertyEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon19getPhysicalPropertyEv"></span><span id="omexmeta::PhysicalPhenomenon::getPhysicalPropertyC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839"></span>PhysicalProperty <code class="sig-name descname">getPhysicalProperty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon19getPhysicalPropertyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon9toTriplesEv">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon9toTriplesEv"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon9toTriplesEv"></span><span id="omexmeta::PhysicalPhenomenon::toTriples"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon13getSubjectStrEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon13getSubjectStrEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon13getSubjectStrEv"></span><span id="omexmeta::PhysicalPhenomenon::getSubjectStrC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getSubjectStr</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon13getSubjectStrEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon8setAboutENSt6stringE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon8setAboutENSt6stringE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon8setAboutENSt6stringE"></span><span id="omexmeta::PhysicalPhenomenon::setAbout__ss"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8"></span><a class="reference internal" href="#_CPPv4N8omexmeta18PhysicalPhenomenonE" title="omexmeta::PhysicalPhenomenon">PhysicalPhenomenon</a> &amp;<code class="sig-name descname">setAbout</code><span class="sig-paren">(</span>std::string <em>about</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon8setAboutENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon19setPhysicalPropertyERK16PhysicalProperty">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon19setPhysicalPropertyERK16PhysicalProperty"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon19setPhysicalPropertyERK16PhysicalProperty"></span><span id="omexmeta::PhysicalPhenomenon::setPhysicalProperty__PhysicalPropertyCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9"></span>void <code class="sig-name descname">setPhysicalProperty</code><span class="sig-paren">(</span><em class="property">const</em> PhysicalProperty &amp;<em>physicalProperty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon19setPhysicalPropertyERK16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon7setTypeE14AnnotationType">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon7setTypeE14AnnotationType"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon7setTypeE14AnnotationType"></span><span id="omexmeta::PhysicalPhenomenon::setType__AnnotationType"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec"></span>void <code class="sig-name descname">setType</code><span class="sig-paren">(</span><a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon7setTypeE14AnnotationType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta18PhysicalPhenomenon21getPhysicalPropertyIdEv">
+<span id="_CPPv3NK8omexmeta18PhysicalPhenomenon21getPhysicalPropertyIdEv"></span><span id="_CPPv2NK8omexmeta18PhysicalPhenomenon21getPhysicalPropertyIdEv"></span><span id="omexmeta::PhysicalPhenomenon::getPhysicalPropertyIdC"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getPhysicalPropertyId</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta18PhysicalPhenomenon21getPhysicalPropertyIdEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon21setPhysicalPropertyIdERKNSt6stringE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon21setPhysicalPropertyIdERKNSt6stringE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon21setPhysicalPropertyIdERKNSt6stringE"></span><span id="omexmeta::PhysicalPhenomenon::setPhysicalPropertyId__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a715b76003eba8e5808fe44a768199fab"></span>void <code class="sig-name descname">setPhysicalPropertyId</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>physicalPropertyId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon21setPhysicalPropertyIdERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon25getNewMetaidExclusionListEv">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon25getNewMetaidExclusionListEv"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon25getNewMetaidExclusionListEv"></span><span id="omexmeta::PhysicalPhenomenon::getNewMetaidExclusionList"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a54d90cf6db78e98bd091f478dc5bd74a"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">getNewMetaidExclusionList</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon25getNewMetaidExclusionListEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon14generateMetaIdERKNSt6stringE">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon14generateMetaIdERKNSt6stringE"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon14generateMetaIdERKNSt6stringE"></span><span id="omexmeta::PhysicalPhenomenon::generateMetaId__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1afe71a5c6399b992922eb6eeda6de49bd"></span>std::string <code class="sig-name descname">generateMetaId</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>id_base</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon14generateMetaIdERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon6model_E">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon6model_E"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon6model_E"></span><span id="omexmeta::PhysicalPhenomenon::model___librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b"></span>librdf_model *<code class="sig-name descname">model_</code> = nullptr<a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon6model_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon18physical_property_E">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon18physical_property_E"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon18physical_property_E"></span><span id="omexmeta::PhysicalPhenomenon::physical_property___PhysicalProperty"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a9e17807d60d9e3f797d6c02ef85cdfc6"></span>PhysicalProperty <code class="sig-name descname">physical_property_</code><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon18physical_property_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon5type_E">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon5type_E"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon5type_E"></span><span id="omexmeta::PhysicalPhenomenon::type___AnnotationType"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a74e88adb2099099e411b55cb9aa460a0"></span><a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <code class="sig-name descname">type_</code> = <a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a>::<a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationType7UNKNOWNE" title="omexmeta::AnnotationType::UNKNOWN">UNKNOWN</a><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon5type_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon10model_uri_E">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon10model_uri_E"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon10model_uri_E"></span><span id="omexmeta::PhysicalPhenomenon::model_uri___ss"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a696cbc4f6490dd55d6bd41c7711cd0ec"></span>std::string <code class="sig-name descname">model_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon10model_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon10local_uri_E">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon10local_uri_E"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon10local_uri_E"></span><span id="omexmeta::PhysicalPhenomenon::local_uri___ss"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c"></span>std::string <code class="sig-name descname">local_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon10local_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta18PhysicalPhenomenon26new_metaid_exclusion_list_E">
+<span id="_CPPv3N8omexmeta18PhysicalPhenomenon26new_metaid_exclusion_list_E"></span><span id="_CPPv2N8omexmeta18PhysicalPhenomenon26new_metaid_exclusion_list_E"></span><span id="omexmeta::PhysicalPhenomenon::new_metaid_exclusion_list___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1PhysicalPhenomenon_1a710756d611350395539dfa9f7fbf764e"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">new_metaid_exclusion_list_</code><a class="headerlink" href="#_CPPv4N8omexmeta18PhysicalPhenomenon26new_metaid_exclusion_list_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Query.html" class="btn btn-neutral float-right" title="Query" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PhysicalPropery.html" class="btn btn-neutral float-left" title="PhysicalPropery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -11,6 +11,7 @@ libOmexMeta API Reference
     PhysicalForce.rst
     PhysicalProcess.rst
     PhysicalPropery.rst
+    PhysicalPhenomenon.rst
     Query.rst
     Triple.rst
     Triples.rst
