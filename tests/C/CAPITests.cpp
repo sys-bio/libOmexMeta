@@ -965,7 +965,7 @@ TEST_F(CAPITests, PhysicalProcessAlternativeAPITest){
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>\n"
                            "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
                            "    bqbiol:isVersionOf <#OmexMetaId0000> .\n"
-                           "";
+                           "\n";
     printf("%s", actual);
     ASSERT_STREQ(expected, actual);
     free((void*)actual);

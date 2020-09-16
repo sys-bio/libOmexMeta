@@ -852,7 +852,21 @@ local:PhysicalEntity0000
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_entity_delete(physical_entity)
-        expected = """"""
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:PhysicalEntity0000
+    bqbiol:is <https://identifiers.org/uniprot/PD12345> ;
+    bqbiol:isPartOf <https://identifiers.org/fma/fma12345> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
+
+"""
         self.assertEqual(expected, actual)
 
     def test_physical_process_str(self):
@@ -965,7 +979,25 @@ local:SourceParticipant0000
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_process_delete(physical_process)
-        expected = """"""
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:PhysicalProcess0000
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#fma:fma12345> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
+
+"""
         self.assertEqual(expected, actual)
 
     def test_editor_add_physical_force(self):
@@ -1024,31 +1056,22 @@ local:SourceParticipant0000
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_force_delete(physical_force)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:MediatorParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity3> .
-
-local:PhysicalProcess0000
-    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+local:PhysicalForce0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
-
-local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity2> .
 
 local:SourceParticipant0000
     semsim:hasMultiplier "1"^^rdf:int ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#fma:fma12345> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+    bqbiol:isPropertyOf local:PhysicalForce0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
 
 """
         self.assertEqual(expected, actual)

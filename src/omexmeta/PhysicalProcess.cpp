@@ -127,9 +127,9 @@ namespace omexmeta {
         }
         if (getPhysicalProperty().getResourceStr().empty()) {
             throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"physical_property\" information is not set. "
-                    "Use the setPhysicalProperty() method."
+                    "PhysicalProcess::toTriples(): cannot create "
+                    "triples object because the\"location\" information "
+                    "is empty. Please use the \"isVersionOf()\"."
             );
         }
         if (physical_process_id_.empty()){

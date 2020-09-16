@@ -41,7 +41,7 @@ namespace omexmeta {
             return rdf_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -58,7 +58,7 @@ namespace omexmeta {
             return rdf;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -80,7 +80,7 @@ namespace omexmeta {
             return rdf;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -102,7 +102,7 @@ namespace omexmeta {
             return rdf;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -125,7 +125,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -147,7 +147,7 @@ namespace omexmeta {
             return s;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -198,7 +198,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -210,7 +210,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -222,7 +222,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -234,7 +234,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -243,7 +243,7 @@ namespace omexmeta {
             return rdf_ptr->toEditorPtr(xml, generate_new_metaids, sbml_semantic_extraction);
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -382,7 +382,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -408,7 +408,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -432,7 +432,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -444,7 +444,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -456,7 +456,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -468,7 +468,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -554,7 +554,7 @@ namespace omexmeta {
             return singularAnnotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -589,7 +589,7 @@ namespace omexmeta {
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     };
 
@@ -600,7 +600,7 @@ namespace omexmeta {
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -611,7 +611,7 @@ namespace omexmeta {
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -622,7 +622,7 @@ namespace omexmeta {
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -633,7 +633,7 @@ namespace omexmeta {
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -644,7 +644,7 @@ namespace omexmeta {
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -656,7 +656,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -668,7 +668,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -680,7 +680,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -692,7 +692,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -704,7 +704,7 @@ namespace omexmeta {
             return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -736,7 +736,7 @@ namespace omexmeta {
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -746,7 +746,7 @@ namespace omexmeta {
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -756,7 +756,7 @@ namespace omexmeta {
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -768,7 +768,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -780,7 +780,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -801,7 +801,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -815,7 +815,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -825,7 +825,7 @@ namespace omexmeta {
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -835,7 +835,7 @@ namespace omexmeta {
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -845,7 +845,7 @@ namespace omexmeta {
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -857,7 +857,7 @@ namespace omexmeta {
             return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -890,7 +890,7 @@ namespace omexmeta {
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -902,7 +902,7 @@ namespace omexmeta {
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -914,7 +914,7 @@ namespace omexmeta {
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -926,7 +926,7 @@ namespace omexmeta {
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -940,7 +940,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -952,7 +952,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -989,7 +989,7 @@ namespace omexmeta {
             return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -999,7 +999,7 @@ namespace omexmeta {
             return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1011,7 +1011,7 @@ namespace omexmeta {
             return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1044,7 +1044,7 @@ namespace omexmeta {
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1055,7 +1055,7 @@ namespace omexmeta {
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1066,7 +1066,7 @@ namespace omexmeta {
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1098,7 +1098,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1111,7 +1111,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1121,7 +1121,7 @@ namespace omexmeta {
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1131,7 +1131,7 @@ namespace omexmeta {
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1145,7 +1145,7 @@ namespace omexmeta {
                                            editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1167,7 +1167,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1187,7 +1187,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1197,7 +1197,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1207,7 +1207,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1217,7 +1217,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1228,7 +1228,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1239,7 +1239,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1250,7 +1250,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1262,7 +1262,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1273,7 +1273,7 @@ namespace omexmeta {
             return information;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1285,7 +1285,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 
@@ -1307,7 +1307,7 @@ namespace omexmeta {
             return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return nullptr;
+            exit(1);
         }
     }
 

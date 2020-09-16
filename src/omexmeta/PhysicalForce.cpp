@@ -38,10 +38,11 @@ namespace omexmeta {
         }
         if (getPhysicalProperty().getResourceStr().empty()) {
             throw AnnotationBuilderException(
-                    "PhysicalForce::toTriples(): Cannot create"
-                    " triples because the \"physical_property resource\" information is not set. "
-                    "Use the setPhysicalProperty() method."
+                    "PhysicalProcess::toTriples(): cannot create "
+                    "triples object because the\"location\" information "
+                    "is empty. Please use the \"isVersionOf()\"."
             );
+
         }
         if (physical_force_id_.empty()){
             physical_force_id_ = generateMetaId("PhysicalForce");

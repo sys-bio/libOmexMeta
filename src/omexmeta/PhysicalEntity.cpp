@@ -79,15 +79,15 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
                     " triples because the \"physical_property\" information is not set. "
-                    "Use the setPhysicalProperty() method."
+                    "Use the isVersionOf() method."
             );
         }
 
         if (getLocationResources().empty()) {
             throw AnnotationBuilderException(
-                    "PhysicalEntity::toTriples(): cannot create "
+                    "PhysicalProcess::toTriples(): cannot create "
                     "triples object because the\"location\" information "
-                    "is empty. Use the addLocation() method."
+                    "is empty. Please use the \"isVersionOf()\"."
             );
         }
 
