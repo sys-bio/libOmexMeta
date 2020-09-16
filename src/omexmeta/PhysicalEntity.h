@@ -187,7 +187,39 @@ namespace omexmeta {
 
         bool operator!=(const PhysicalEntity &rhs) const;
 
+        /**
+         * @brief Set the isVersionOf portion of the PhysicalEntity composite annotation.
+         * @param about: The string to put in rdf:about
+         * @details Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set
+         * the Resource resource_ property on the PhysicalProperty associated with this PhysicalEntity.
+         */
+        PhysicalEntity& isVersionOf(const std::string& is_version_of);
 
+        /**
+         * @brief Set the about portion of the PhysicalEntity composite annotation.
+         * @param about: The string to put in rdf:about
+         * @details This function will set the Subject subject_ property on the
+         * PhysicalProperty associated with this PhysicalEntity
+         */
+        PhysicalEntity& setAbout(const std::string& about) override;
+
+        /**
+         * @brief Set the `is` portion of the PhysicalEntity composite annotation.
+         * @param is: the string to be used for is. This should be of the form OPB:OPB_00134
+         * @details This function calls the `PhysicalEntity::setIdentity` method and can be used
+         * as an alternative. For developers, consider which (or both? )sets of methods to keep,
+         * `is` or `setIdentity`
+         */
+        PhysicalEntity& is(const std::string& is);
+
+        /**
+         * @brief Set the location (`isPartOf`) portion of the PhysicalEntity composite annotation.
+         * @param isPartOf: the string to be used for isPartOf predicate. This should be of the form fma:FMA:12345 or fma/FMA:12345
+         * @details This function calls the `PhysicalEntity::addLocation` method and can be used
+         * as an alternative. For developers, consider which (or both? )sets of methods to keep,
+         * `addLocation` or `isPartOf`
+         */
+        PhysicalEntity& isPartOf(const std::string& is);
     };
 }
 

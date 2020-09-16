@@ -10,13 +10,13 @@ int main(){
                        "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
                        "  <model metaid=\"SimpleRegulation\" id=\"SimpleRegulation\">\n"
                        "    <listOfCompartments>\n"
-                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"#OmexMetaId0000\"/>\n"
+                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"OmexMetaId0000\"/>\n"
                        "    </listOfCompartments>\n"
                        "    <listOfSpecies>\n"
-                       "      <species id=\"A\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0001\"/>\n"
-                       "      <species id=\"B\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0002\"/>\n"
-                       "      <species id=\"C\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0003\"/>\n"
-                       "      <species id=\"D\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0004\"/>\n"
+                       "      <species id=\"A\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"OmexMetaId0001\"/>\n"
+                       "      <species id=\"B\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"OmexMetaId0002\"/>\n"
+                       "      <species id=\"C\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"OmexMetaId0003\"/>\n"
+                       "      <species id=\"D\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"OmexMetaId0004\"/>\n"
                        "    </listOfSpecies>\n"
                        "    <listOfParameters>\n"
                        "      <parameter id=\"S\" value=\"0\" constant=\"true\"/>\n"
@@ -26,14 +26,14 @@ int main(){
                        "      <parameter id=\"k4\" value=\"0.1\" constant=\"true\"/>\n"
                        "    </listOfParameters>\n"
                        "    <listOfReactions>\n"
-                       "      <reaction id=\"R1\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0005\">\n"
+                       "      <reaction id=\"R1\" reversible=\"false\" fast=\"false\" metaid=\"OmexMetaId0005\">\n"
                        "        <listOfReactants>\n"
                        "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
                        "        <listOfProducts>\n"
                        "          <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0006\">\n"
+                       "        <kineticLaw metaid=\"OmexMetaId0006\">\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
@@ -44,14 +44,14 @@ int main(){
                        "          </math>\n"
                        "        </kineticLaw>\n"
                        "      </reaction>\n"
-                       "      <reaction id=\"R2\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0007\">\n"
+                       "      <reaction id=\"R2\" reversible=\"false\" fast=\"false\" metaid=\"OmexMetaId0007\">\n"
                        "        <listOfReactants>\n"
                        "          <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
                        "        <listOfProducts>\n"
                        "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0008\">\n"
+                       "        <kineticLaw metaid=\"OmexMetaId0008\">\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
@@ -61,7 +61,7 @@ int main(){
                        "          </math>\n"
                        "        </kineticLaw>\n"
                        "      </reaction>\n"
-                       "      <reaction id=\"R3\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0009\">\n"
+                       "      <reaction id=\"R3\" reversible=\"false\" fast=\"false\" metaid=\"OmexMetaId0009\">\n"
                        "        <listOfReactants>\n"
                        "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
@@ -71,7 +71,7 @@ int main(){
                        "        <listOfModifiers>\n"
                        "          <modifierSpeciesReference species=\"B\"/>\n"
                        "        </listOfModifiers>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0010\">\n"
+                       "        <kineticLaw metaid=\"OmexMetaId0010\">\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
@@ -82,14 +82,14 @@ int main(){
                        "          </math>\n"
                        "        </kineticLaw>\n"
                        "      </reaction>\n"
-                       "      <reaction id=\"R4\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0011\">\n"
+                       "      <reaction id=\"R4\" reversible=\"false\" fast=\"false\" metaid=\"OmexMetaId0011\">\n"
                        "        <listOfReactants>\n"
                        "          <speciesReference species=\"D\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
                        "        <listOfProducts>\n"
                        "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0012\">\n"
+                       "        <kineticLaw metaid=\"OmexMetaId0012\">\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
@@ -108,12 +108,13 @@ int main(){
     Editor editor = rdf.toEditor(sbml, true, true);
 
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity.setPhysicalProperty( "#OmexMetaId0000", "OPB:OPB_00340")
-        .setIdentity("uniprot/P84022")
-        .addLocation("fma/FMA:63877")
-        .addLocation("fma:FMA:70737")
-        .addLocation("fma/FMA:24178")
-        .addLocation("fma/FMA_7163");
+    physicalEntity.setAbout( "OmexMetaId0000")
+        .isVersionOf("OPB:OPB_00340")
+        .is("uniprot/P84022")
+        .isPartOf("fma/FMA:63877")
+        .isPartOf("fma:FMA:70737")
+        .isPartOf("fma/FMA:24178")
+        .isPartOf("fma/FMA_7163");
 
     editor.addPhysicalEntity(physicalEntity);
     std::cout << rdf.toString() << std::endl;

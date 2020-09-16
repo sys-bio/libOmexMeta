@@ -252,7 +252,14 @@ namespace omexmeta {
  */
 
     int Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix) {
-        editor_ptr->addNamespace(namespace_, prefix);
+        try{
+            editor_ptr->addNamespace(namespace_, prefix);
+            return 0;
+        } catch (std::exception &error){
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            return -1;
+        }
+
     }
 
     int Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {

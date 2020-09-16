@@ -162,6 +162,24 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
+    PhysicalEntity &PhysicalEntity::isVersionOf(const std::string &is_version_of) {
+        physical_property_.setResource(is_version_of);
+        return *this;
+    }
+
+    PhysicalEntity &PhysicalEntity::setAbout(const std::string &about) {
+        physical_property_.setSubject(about);
+        return *this;
+    }
+
+    PhysicalEntity &PhysicalEntity::is(const std::string &is) {
+        return setIdentity(is);
+    }
+
+    PhysicalEntity &PhysicalEntity::isPartOf(const std::string &isPartOf) {
+        return addLocation(isPartOf);
+    }
+
 
 }
 

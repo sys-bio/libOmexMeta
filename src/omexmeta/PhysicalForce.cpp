@@ -126,4 +126,15 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
+    PhysicalForce &PhysicalForce::isVersionOf(const std::string &is_version_of) {
+        physical_property_.setResource(is_version_of);
+        return *this;
+    }
+
+
+    PhysicalForce &PhysicalForce::setAbout(const std::string &about) {
+        physical_property_.setSubject(about);
+        return *this;
+    }
+
 }

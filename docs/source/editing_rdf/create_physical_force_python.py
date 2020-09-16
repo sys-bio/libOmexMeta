@@ -43,9 +43,9 @@ print(sbml_with_metaids)
 # Property: Osmotic Pressure
 with editor.new_physical_force() as physical_force:
     physical_force \
-        .set_physical_property("#OmexMetaId0005", "OPB:OPB_01012") \
-        .add_source(multiplier=1, physical_entity_reference="#OmexMetaId0001") \
-        .add_sink(multiplier=1, physical_entity_reference="#OmexMetaId0002") \
+        .set_physical_property("OmexMetaId0005", "OPB:OPB_01012") \
+        .add_source(multiplier=1, physical_entity_reference="OmexMetaId0001") \
+        .add_sink(multiplier=1, physical_entity_reference="OmexMetaId0002") \
 
 print(rdf)
 

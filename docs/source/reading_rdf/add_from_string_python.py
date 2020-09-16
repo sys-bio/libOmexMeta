@@ -15,7 +15,7 @@ rdf_str2 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
               @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
               @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
               
-              <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>
+              <http://omex-library.org/NewOmex.omex/NewModel.xmlOmexMetaId0001>
                   bqbiol:is <https://identifiers.org/uniprot/PD12345> ."""
 
 # read the first string into our RDF graph

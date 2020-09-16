@@ -159,4 +159,16 @@ namespace omexmeta {
         return triples;
     }
 
+
+    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string &is_version_of) {
+        physical_property_.setResource(is_version_of);
+        return *this;
+    }
+
+
+    PhysicalProcess &PhysicalProcess::setAbout(const std::string &about) {
+        physical_property_.setSubject(about);
+        return *this;
+    }
+
 }

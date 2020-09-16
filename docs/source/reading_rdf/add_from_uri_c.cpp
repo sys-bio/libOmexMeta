@@ -11,7 +11,7 @@ int main(){
                           "@prefix myOMEX: <http://omex-library.org/Welsh2020.omex/> .\n"
                           "@prefix local: <http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#> .\n"
                           "\n"
-                          "<http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0000>\n"
+                          "<http://omex-library.org/Welsh2020.omex/Welsh2020.xmlOmexMetaId0000>\n"
                           "   bqbiol:is <https://identifiers.org/uniprot/PD12345> .\n";
 
     // first create a RDF graph, by any means available - here we choose from_string

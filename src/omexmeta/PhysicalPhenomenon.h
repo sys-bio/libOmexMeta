@@ -140,13 +140,14 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getSubjectStr() const;
 
-        PhysicalPhenomenon& setAbout(const std::string& about);
+        virtual PhysicalPhenomenon& setAbout(const std::string& about);
 
         void setPhysicalProperty(const PhysicalProperty &physicalProperty);
 
         void setType(AnnotationType type);
 
         [[nodiscard]] const std::string &getPhysicalPropertyId() const;
+
 
     };
 

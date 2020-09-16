@@ -57,6 +57,7 @@ namespace omexmeta {
                 BiomodelsBiologyQualifier("isVersionOf").getNode(),
                 Resource(LibrdfNode::fromUriString(resource_)).getNode()
         );
+
         Triple is_property_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),

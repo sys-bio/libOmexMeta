@@ -160,6 +160,25 @@ namespace omexmeta {
         bool operator==(const PhysicalProcess &rhs) const;
 
         bool operator!=(const PhysicalProcess &rhs) const;
+
+        /**
+         * @brief set the isVersionOf portion of the PhysicalProcess composite annotation
+         * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
+         * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
+         * @details This method will set the Resource resource_ attribute of the PhysicalProperty
+         * associated with the PhysicalProcess.
+         */
+        PhysicalProcess &isVersionOf(const std::string &is_version_of) ;
+
+        /**
+         * @brief set the subject (rdf:about) portion of the PhysicalProcess composite annotation
+         * @param about the string to be used as the Subject portion of the isVersionOf Triple. This
+         * should be an existing metaid on the model you are annotating. Will error when metaid does not exist.
+         * @details This method will set the Subject subject_ attribute of the PhysicalProperty
+         * associated with the PhysicalProcess.
+         */
+        PhysicalProcess& setAbout(const std::string& about) override;
+
     };
 }
 

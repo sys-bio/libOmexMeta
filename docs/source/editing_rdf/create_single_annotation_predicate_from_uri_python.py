@@ -43,7 +43,7 @@ rdf = RDF()
 editor = rdf.to_editor(sbml, generate_new_metaids=True)
 with editor.new_singular_annotation() as singular_annotation:
     singular_annotation \
-        .set_about('#OmexMetaId0001') \
+        .set_about('OmexMetaId0001') \
         .set_predicate_from_uri("https://predicate.com/linker") \
         .set_resource_literal("New predicate demonstration")
 print(rdf)

@@ -11,7 +11,7 @@ int main(){
                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                           "\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xmlOmexMetaId0000>\n"
                           "   bqbiol:is <https://identifiers.org/uniprot/PD12345> .\n";
 
     // first create a RDF graph, by any means available - here we choose from_string
