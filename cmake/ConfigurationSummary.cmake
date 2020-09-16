@@ -90,6 +90,8 @@ Dependencies
         ICONV_STATIC_LIBRARY                ${ICONV_STATIC_LIBRARY}
         ICONV_LIBRARY                       ${ICONV_LIBRARY}
         ICONV_INCLUDE_DIR                   ${ICONV_INCLUDE_DIR}
+    libcharset
+        LIBCHARSET_LIBRARY                  ${LIBCHARSET_LIBRARY}
     SQLITE
         SQLITE3_STATIC_LIBRARY              ${SQLITE3_STATIC_LIBRARY}
         SQLITE3_LIBRARY                     ${SQLITE3_LIBRARY}

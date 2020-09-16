@@ -121,6 +121,7 @@ if (BUILD_DOCS_EXAMPLES)
 
     # We now create a target that runs the Python script which runs the
     # executables.
+    message(STATUS "CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}")
     set(DOC_EXAMPLE_RUNNER "${CMAKE_CURRENT_SOURCE_DIR}/build_doc_examples.py")
     if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
         message(FATAL_ERROR "No Python script found where \"build_doc_examples.py\" should be")

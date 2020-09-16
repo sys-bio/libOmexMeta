@@ -113,7 +113,7 @@ if (${BUILD_PYTHON})
                     PackageOmexMetaPython
                     COMMENT "create a pip wheel"
                     COMMAND ${PYTHON_EXECUTABLE} ${PYTHON_SETUP_FILE} sdist bdist_wheel
-                    DEPENDS libOmexMetaInstall
+#                    DEPENDS libOmexMetaInstall
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             )
 #            add_dependencies(packaging PackageOmexMetaPython)
@@ -134,7 +134,7 @@ linux version. Both linux and windows are required to build a pip Wheel.")
                     PackageOmexMetaPython
                     COMMENT "create a pip wheel"
                     COMMAND ${PYTHON_EXECUTABLE} ${PYTHON_SETUP_FILE} sdist bdist_wheel
-                    DEPENDS libOmexMetaInstall
+#                    DEPENDS libOmexMetaInstall
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             )
 #            add_dependencies(packaging PackageOmexMetaPython)

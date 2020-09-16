@@ -50,6 +50,7 @@ binaries = [
     # os.path.join(PYOMEXMETA_DIR, "libdb48.dll"),
     # os.path.join(PYOMEXMETA_DIR, "libdb-5.3.so"),
     os.path.join(PYOMEXMETA_DIR, "libiconv.dll"),
+    os.path.join(PYOMEXMETA_DIR, "libcharset.dll"),
     # os.path.join(PYOMEXMETA_DIR, "libpq.dll"),
     os.path.join(PYOMEXMETA_DIR, "libssl-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libxml2.dll"),
@@ -84,7 +85,7 @@ binaries = [
 
 
 for i in binaries:
-    print(i)
+    print(f"Looking for binary \"{i}\"")
     if not os.path.isfile(i):
         raise FileNotFoundError(f"Dependency \"{i}\" not found.")
 
