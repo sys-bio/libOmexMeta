@@ -42,7 +42,7 @@ print(sbml_with_metaids)
 
 with editor.new_physical_entity() as physical_entity:
     physical_entity\
-        .set_physical_property("OmexMetaId0001", "OPB:OPB_00340") \
+        .set_physical_property("#OmexMetaId0001", "OPB:OPB_00340") \
         .set_identity("uniprot/P84022") \
         .add_location("fma/FMA:63877") \
         .add_location("fma:FMA:70737") \

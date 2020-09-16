@@ -56,21 +56,21 @@ int main(){
 
     SingularAnnotation blank = editor.newSingularAnnotation();
     blank
-        .setAbout("OmexMetaId0001")
+        .setAbout("#OmexMetaId0001")
         .setPredicate("dc", "description")
         .setResourceBlank("BlankIdentifier");
     editor.addSingleAnnotation(blank);
 
     // The `uniprot/PD1234` gets resolved to https://identifier.org/uniprot/PD12345
     SingularAnnotation uri1 = editor.newSingularAnnotation();
-    uri1.setAbout("OmexMetaId0002")
+    uri1.setAbout("#OmexMetaId0002")
         .setPredicate("bqbiol", "is")
         .setResourceUri("uniprot/PD1234");
     editor.addSingleAnnotation(uri1);
 
     // In fact, this can be string with a format string1/string2
     SingularAnnotation uri2 = editor.newSingularAnnotation();
-    uri2.setAbout("OmexMetaId0002")
+    uri2.setAbout("#OmexMetaId0002")
         .setPredicate("bqbiol", "is")
         .setResourceUri("string1/string2");
     editor.addSingleAnnotation(uri2);

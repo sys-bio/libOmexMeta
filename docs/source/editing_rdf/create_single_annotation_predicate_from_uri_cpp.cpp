@@ -50,7 +50,7 @@ int main(){
     // create out annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
-        .setAbout("OmexMetaId0001")
+        .setAbout("#OmexMetaId0001")
         .setPredicate("https://predicate.com/linker")
         .setResourceLiteral("New predicate demonstration");
 

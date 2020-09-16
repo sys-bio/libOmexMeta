@@ -229,6 +229,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_addLocation(
             PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *location\_resource);
 
+
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getAbout(PhysicalEntity *physical\_entity\_ptr);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getIdentity(PhysicalEntity *physical\_entity\_ptr);
@@ -239,15 +240,6 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_str(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{
       const} \textcolor{keywordtype}{char} *base\_uri);
-
-    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isVersionOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{
-      const} \textcolor{keywordtype}{char} *is\_version\_of);
-
-    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isPartOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
-      char} *is\_part\_of);
-
-    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setAbout(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
-      char} *about);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * PhysicalProcess class methods}
@@ -275,11 +267,6 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *
     PhysicalProcess\_str(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *base\_uri);
 
-    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_isVersionOf(PhysicalProcess *physical\_process\_ptr,
-       \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);
-
-    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_setAbout(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{
-      const} \textcolor{keywordtype}{char} *about);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * PhysicalForce class methods}
@@ -310,12 +297,6 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
       const} \textcolor{keywordtype}{char} *base\_uri);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_getAbout(PhysicalForce *physical\_force\_ptr);
-
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_isVersionOf(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
-      char} *is\_version\_of);
-
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_setAbout(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}
-       *about);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * PersonalInformation class methods}

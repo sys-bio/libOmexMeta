@@ -15,7 +15,7 @@ Inheritance diagram for omexmeta\+:\+:Physical\+Entity\+:\begin{figure}[H]
 \item 
 \hyperlink{classomexmeta_1_1PhysicalEntity_a9d29348a080c64f91ff6ec184fd45ece}{Physical\+Entity} ()=delete
 \begin{DoxyCompactList}\small\item\em default constructor for \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \end{DoxyCompactList}\item 
-\hyperlink{classomexmeta_1_1PhysicalEntity_a0341918665af91cacdb4481d037c42d2}{Physical\+Entity} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri, \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} physical\+Property, \hyperlink{classomexmeta_1_1Resource}{Resource} \hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}, Resources is\+\_\+part\+\_\+of)
+\hyperlink{classomexmeta_1_1PhysicalEntity_a0341918665af91cacdb4481d037c42d2}{Physical\+Entity} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri, \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} physical\+Property, \hyperlink{classomexmeta_1_1Resource}{Resource} is, Resources is\+\_\+part\+\_\+of)
 \begin{DoxyCompactList}\small\item\em constructor for instantiating a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} object \end{DoxyCompactList}\item 
 void \hyperlink{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}{free} ()
 \begin{DoxyCompactList}\small\item\em free resources uses by \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \end{DoxyCompactList}\item 
@@ -44,15 +44,7 @@ bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1PhysicalEntity}{P
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_afee546a420f16e128ed1add9fec35b4f}\label{classomexmeta_1_1PhysicalEntity_afee546a420f16e128ed1add9fec35b4f}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \&rhs) const
-\item 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a5399ef8eef084f2dd8b13ef537823d94}{is\+Version\+Of} (const std\+::string \&is\+\_\+version\+\_\+of)
-\begin{DoxyCompactList}\small\item\em Set the is\+Version\+Of portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. \end{DoxyCompactList}\item 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a1736d331705bf2f1569f492fc733949e}{set\+About} (const std\+::string \&about) override
-\begin{DoxyCompactList}\small\item\em Set the about portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. \end{DoxyCompactList}\item 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is} (const std\+::string \&is)
-\begin{DoxyCompactList}\small\item\em Set the {\ttfamily is} portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. \end{DoxyCompactList}\item 
-\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& \hyperlink{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}{is\+Part\+Of} (const std\+::string \&\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is})
-\begin{DoxyCompactList}\small\item\em Set the location ({\ttfamily is\+Part\+Of}) portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -200,70 +192,6 @@ returns the number of locations used by \hyperlink{classomexmeta_1_1PhysicalEnti
 \begin{DoxyReturn}{Returns}
 the number of locations in a \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}\label{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}} 
-\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!is@{is}}
-\index{is@{is}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
-\subsubsection{\texorpdfstring{is()}{is()}}
-{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& omexmeta\+::\+Physical\+Entity\+::is (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{is }\end{DoxyParamCaption})}
-
-
-
-Set the {\ttfamily is} portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em is} & the string to be used for is. \hyperlink{classThis}{This} should be of the form O\+PB\+:O\+P\+B\+\_\+00134\\
-\hline
-\end{DoxyParams}
-\hyperlink{classThis}{This} function calls the {\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}{Physical\+Entity\+::set\+Identity}} method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, {\ttfamily is} or {\ttfamily set\+Identity} \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}\label{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}} 
-\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!is\+Part\+Of@{is\+Part\+Of}}
-\index{is\+Part\+Of@{is\+Part\+Of}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
-\subsubsection{\texorpdfstring{is\+Part\+Of()}{isPartOf()}}
-{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& omexmeta\+::\+Physical\+Entity\+::is\+Part\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{is }\end{DoxyParamCaption})}
-
-
-
-Set the location ({\ttfamily is\+Part\+Of}) portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em is\+Part\+Of} & the string to be used for is\+Part\+Of predicate. \hyperlink{classThis}{This} should be of the form fma\+:\+F\+MA\+:12345 or fma/\+F\+MA\+:12345\\
-\hline
-\end{DoxyParams}
-\hyperlink{classThis}{This} function calls the {\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity_a82e77be3327c537b2426b571afaa5045}{Physical\+Entity\+::add\+Location}} method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, {\ttfamily add\+Location} or {\ttfamily is\+Part\+Of} \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5399ef8eef084f2dd8b13ef537823d94}\label{classomexmeta_1_1PhysicalEntity_a5399ef8eef084f2dd8b13ef537823d94}} 
-\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!is\+Version\+Of@{is\+Version\+Of}}
-\index{is\+Version\+Of@{is\+Version\+Of}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
-\subsubsection{\texorpdfstring{is\+Version\+Of()}{isVersionOf()}}
-{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& omexmeta\+::\+Physical\+Entity\+::is\+Version\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{is\+\_\+version\+\_\+of }\end{DoxyParamCaption})}
-
-
-
-Set the is\+Version\+Of portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em about} & The string to put in rdf\+:about\\
-\hline
-\end{DoxyParams}
-Should be of the form O\+PB\+:O\+P\+B\+\_\+12345 or O\+P\+B/\+O\+P\+B\+\_\+12345. \hyperlink{classThis}{This} function will set the \hyperlink{classomexmeta_1_1Resource}{Resource} resource\+\_\+ property on the \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} associated with this \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a1736d331705bf2f1569f492fc733949e}\label{classomexmeta_1_1PhysicalEntity_a1736d331705bf2f1569f492fc733949e}} 
-\index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!set\+About@{set\+About}}
-\index{set\+About@{set\+About}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}
-\subsubsection{\texorpdfstring{set\+About()}{setAbout()}}
-{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} \& omexmeta\+::\+Physical\+Entity\+::set\+About (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{about }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the about portion of the \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} composite annotation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em about} & The string to put in rdf\+:about\\
-\hline
-\end{DoxyParams}
-\hyperlink{classThis}{This} function will set the \hyperlink{classomexmeta_1_1Subject}{Subject} subject\+\_\+ property on the \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} associated with this \hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity} 
-
-Reimplemented from \hyperlink{classomexmeta_1_1PhysicalPhenomenon}{omexmeta\+::\+Physical\+Phenomenon}.
-
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}\label{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}} 
 \index{omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}!set\+Identity@{set\+Identity}}
 \index{set\+Identity@{set\+Identity}!omexmeta\+::\+Physical\+Entity@{omexmeta\+::\+Physical\+Entity}}

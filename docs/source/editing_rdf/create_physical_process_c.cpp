@@ -140,19 +140,13 @@ int main(){
     Editor* editor_ptr = RDF_toEditor(rdf_ptr, sbml, true, false);
 
     PhysicalProcess* process = PhysicalProcess_new(editor_ptr);
-    PhysicalProcess_setAbout(process,"OmexMetaId0001");
-    PhysicalProcess_isVersionOf(process, "GO:GO12345");
+    PhysicalProcess_setPhysicalProperty(process, "OmexMeta0000", "OPB:OPB_00340");
     PhysicalProcess_addSource(process, 1, "OmexMeta0001");
     PhysicalProcess_addSink(process, 1, "OmexMeta0002");
     PhysicalProcess_addMediator(process,"OmexMeta0003");
 
-    const char* turtle_string = RDF_toString(rdf_ptr, "turtle");
-    printf("%s", turtle_string);
 
-    free((void *) turtle_string);
-    PhysicalProcess_delete(process);
-    Editor_delete(editor_ptr);
-    RDF_delete(rdf_ptr);
+
 
     return 0;
 }

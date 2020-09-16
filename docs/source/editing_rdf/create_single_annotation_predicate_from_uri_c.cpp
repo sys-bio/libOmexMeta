@@ -48,7 +48,7 @@ int main(){
 
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-    SingularAnnotation_setAbout(singular_annotation, "OmexMetaId0001");
+    SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0001");
     SingularAnnotation_setPredicateFromUri(singular_annotation, "https://predicate.com/linker");
     SingularAnnotation_setResourceLiteral(singular_annotation, "New predicate demonstration");
 

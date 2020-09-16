@@ -51,7 +51,7 @@ int main(){
 
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-    SingularAnnotation_setAbout(singular_annotation, "OmexMetaId0001");
+    SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0001");
     SingularAnnotation_setPredicate(singular_annotation, "bqbiol", "is");
     SingularAnnotation_setResourceUri(singular_annotation, "uniprot/P01137");
 

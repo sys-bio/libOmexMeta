@@ -10,7 +10,7 @@ int main() {
                                 "@prefix myOMEX: <http://omex-library.org/Welsh2020.omex/> .\n"
                                 "@prefix local: <http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#> .\n"
                                 "\n"
-                                "<http://omex-library.org/Welsh2020.omex/Welsh2020.xmlOmexMetaId0001>\n"
+                                "<http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001>\n"
                                 "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
                                 "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
                                 "\n"

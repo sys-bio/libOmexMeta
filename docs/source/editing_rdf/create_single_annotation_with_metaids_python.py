@@ -46,7 +46,7 @@ print(editor.get_xml()) # prints out sbml with metaids
 
 with editor.new_singular_annotation() as identity:
     identity \
-        .set_about('OmexMetaId0001') \
+        .set_about('#OmexMetaId0001') \
         .set_predicate("bqbiol", "is") \
         .set_resource_uri("uniprot/P01137")
 print(rdf)

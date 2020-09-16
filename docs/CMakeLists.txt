@@ -123,7 +123,7 @@ if (BUILD_DOCS_EXAMPLES)
     # executables.
     set(DOC_EXAMPLE_RUNNER "${CMAKE_CURRENT_SOURCE_DIR}/build_doc_examples.py")
     if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
-        message(FATAL_ERROR "No Python script found where \"build_doc_examples.pY\" should be")
+        message(FATAL_ERROR "No Python script found where \"build_doc_examples.py\" should be")
     endif ()
 
 

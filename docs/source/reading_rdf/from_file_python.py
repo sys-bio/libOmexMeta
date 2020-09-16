@@ -7,7 +7,7 @@ rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xmlOmexMetaId0000>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
   bqbiol:is <https://identifiers.org/uniprot/PD12345> ."""
 
 # we write the annotations to file, so we can read it in from file

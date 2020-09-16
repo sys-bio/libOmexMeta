@@ -234,7 +234,7 @@ we focus on singular annotations here, this generalizes to the other
 of annotations supported by libOmexMeta.
 
 In this example, we have forced the generation of new metaids, which defaults
-to `#OmexMetaId` followed by a 4 digit number. Hence the metaid `OmexMetaId0002`
+to `##OmexMetaId` followed by a 4 digit number. Hence the metaid `#OmexMetaId0002`
 exists and is the metaid for the `Species` element with the name `"A"`
 (see xml above).
 
@@ -257,7 +257,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
 
             with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
                 with editor.new_singular_annotation() as singular_annotation:
-                    singular_annotation.set_about('OmexMetaId0002')
+                    singular_annotation.set_about('#OmexMetaId0002')
 
         .. code-block:: C++
             :linenos:
@@ -266,7 +266,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
             RDF rdf;
             Editor editor = rdf.toEditor(sbml, "sbml", false);
             SingularAnnotation singular_annotation = editor.newSingularAnnotation();
-            singular_annotation.setAbout("OmexMetaId0002")
+            singular_annotation.setAbout("#OmexMetaId0002")
 
         .. code-block:: C
             :linenos:
@@ -280,11 +280,11 @@ exists and is the metaid for the `Species` element with the name `"A"`
 
             // create out annotation
             SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-            SingularAnnotation_setAbout(singular_annotation, "OmexMetaId0002");
+            SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
 
 
 However, leaving `generate_new_metaids=False` (the default) causes an error,
-because the metaid `OmexMetaId0002` was not found in your model.
+because the metaid `#OmexMetaId0002` was not found in your model.
 
 
 .. tabs::
@@ -299,7 +299,7 @@ because the metaid `OmexMetaId0002` was not found in your model.
 
             with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
                 with editor.new_singular_annotation() as singular_annotation:
-                    singular_annotation.set_about('OmexMetaId0002')
+                    singular_annotation.set_about('#OmexMetaId0002')
 
     .. tab:: C++
 
@@ -310,7 +310,7 @@ because the metaid `OmexMetaId0002` was not found in your model.
             RDF rdf;
             Editor editor = rdf.toEditor(sbml, "sbml", false);
             SingularAnnotation singular_annotation = editor.newSingularAnnotation();
-            singular_annotation.setAbout("OmexMetaId0002")
+            singular_annotation.setAbout("#OmexMetaId0002")
 
     .. tab:: C
 
@@ -326,7 +326,7 @@ because the metaid `OmexMetaId0002` was not found in your model.
 
             // create out annotation
             SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-            SingularAnnotation_setAbout(singular_annotation, "OmexMetaId0002");
+            SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
 
 
 Predicate
@@ -529,7 +529,7 @@ For simplicity, the string was copied from Python and stored as a string
 for the C++ and C examples.
 
 In the example we create a PhysicalEntity type annotation of A, which
-has the metid `OmexMetaId0001`. Our annotation states that we are
+has the metid `#OmexMetaId0001`. Our annotation states that we are
 simulating the chemical concetration (OPB:OPB_00340) of Smad3 (`uniprot/P84022') in the
 dermal fibroblasts `fma/FMA:63877` of the dermal papilla `fma:FMA:70737` in the
 skin `FMA_7163` of the surface or the arm `FMA:24178`.
