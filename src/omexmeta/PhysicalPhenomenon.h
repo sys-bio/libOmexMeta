@@ -140,7 +140,7 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getSubjectStr() const;
 
-        PhysicalPhenomenon& setAbout(std::string about);
+        PhysicalPhenomenon& setAbout(const std::string& about);
 
         void setPhysicalProperty(const PhysicalProperty &physicalProperty);
 

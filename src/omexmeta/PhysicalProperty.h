@@ -54,11 +54,11 @@ namespace omexmeta {
          */
         explicit PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri);
 
-        const std::string &getSubject() const;
+        [[nodiscard]] const std::string &getSubject() const;
 
-        const std::string &getResource() const;
+        [[nodiscard]] const std::string &getResource() const;
 
-        const std::string &getModelUri() const;
+        [[nodiscard]] const std::string &getModelUri() const;
 
         void setModelUri(const std::string &model_uri);
 

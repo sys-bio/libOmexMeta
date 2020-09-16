@@ -62,7 +62,7 @@ namespace omexmeta {
     public:
 
         /**
-     * @brief constructor for Editor.
+         * @brief constructor for Editor.
          * @param xml The valid xml content for annotation
          * @param generate_new_metaids. Autogenerate metaids for xml element that do not already have them
          * @param sbml_semantic_extraction. When @param xml is determined to be sbml, automatically extract some information regarding species and reactions. This

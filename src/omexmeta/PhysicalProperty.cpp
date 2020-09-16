@@ -4,12 +4,14 @@
 
 #include "PhysicalProperty.h"
 
+#include <utility>
+
 namespace omexmeta {
 
     PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri)
-            : subject_(subject_str),
+            : subject_(std::move(subject_str)),
               resource_(std::move(resource_str)),
-              model_uri_(model_uri){
+              model_uri_(std::move(model_uri)){
         validate();
     }
 
