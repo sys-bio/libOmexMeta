@@ -842,9 +842,10 @@ local:PhysicalEntity0000
     def test_physical_entity_using_is_version_of(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
-        physical_entity = PyOmexMetaAPI.physical_entity_set_about(physical_entity, "OmexMetaId")
-        physical_entity = PyOmexMetaAPI.physical_entity_is_version_of(physical_entity, "OPB:OPB12345")
-        physical_entity = PyOmexMetaAPI.physical_entity_is_part_of(physical_entity, "fma:fma12345")
+        physical_entity = PyOmexMetaAPI.physical_entity_set_about(physical_entity, "#OmexMetaId0000".encode())
+        physical_entity = PyOmexMetaAPI.physical_entity_is_version_of(physical_entity, "OPB:OPB12345".encode())
+        physical_entity = PyOmexMetaAPI.physical_entity_set_identity(physical_entity, "uniprot/PD12345".encode())
+        physical_entity = PyOmexMetaAPI.physical_entity_is_part_of(physical_entity, "fma:fma12345".encode())
 
         PyOmexMetaAPI.editor_add_physical_entity(editor_ptr, physical_entity)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
@@ -955,9 +956,9 @@ local:SourceParticipant0000
     def test_physical_process_using_is_version_of(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
-        physical_process = PyOmexMetaAPI.physical_process_set_about(physical_process, "OmexMetaId")
-        physical_process = PyOmexMetaAPI.physical_process_is_version_of(physical_process, "OPB:OPB12345")
-        physical_process = PyOmexMetaAPI.physical_process_add_source(physical_process, "fma:fma12345")
+        physical_process = PyOmexMetaAPI.physical_process_set_about(physical_process, "#OmexMetaId0000".encode())
+        physical_process = PyOmexMetaAPI.physical_process_is_version_of(physical_process, "OPB:OPB12345".encode())
+        physical_process = PyOmexMetaAPI.physical_process_add_source(physical_process, 1, "fma:fma12345".encode())
 
         PyOmexMetaAPI.editor_add_physical_process(editor_ptr, physical_process)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
@@ -1013,9 +1014,9 @@ local:SourceParticipant0000
     def test_physical_force_using_is_version_of(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_force = PyOmexMetaAPI.editor_new_physical_force(editor_ptr)
-        physical_force = PyOmexMetaAPI.physical_force_set_about(physical_force, "OmexMetaId")
-        physical_force = PyOmexMetaAPI.physical_force_is_version_of(physical_force, "OPB:OPB12345")
-        physical_force = PyOmexMetaAPI.physical_force_add_source(physical_force, "fma:fma12345")
+        physical_force = PyOmexMetaAPI.physical_force_set_about(physical_force, "#OmexMetaId0000".encode())
+        physical_force = PyOmexMetaAPI.physical_force_is_version_of(physical_force, "OPB:OPB12345".encode())
+        physical_force = PyOmexMetaAPI.physical_force_add_source(physical_force, 1, "fma:fma12345".encode())
 
         PyOmexMetaAPI.editor_add_physical_force(editor_ptr, physical_force)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
@@ -1122,16 +1123,16 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-    dcterms:creator <1234-1234-1234-1234> .
+    dc:creator <1234-1234-1234-1234> .
 
 """
         self.assertEqual(expected, actual)
@@ -1147,14 +1148,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:name "Ciaran Welsh"^^rdf:string .
@@ -1174,14 +1175,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:mbox "annotations.uw.edu"^^rdf:string .
@@ -1201,14 +1202,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:accountName <https://orcid.org/1234-1234-1234-1234> .
@@ -1231,14 +1232,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .
@@ -1258,14 +1259,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:name _:Blank .
@@ -1285,14 +1286,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:mbox <http://uri.com/> .
@@ -1312,14 +1313,14 @@ local:SourceParticipant0000
             PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:name "literal"^^rdf:string .

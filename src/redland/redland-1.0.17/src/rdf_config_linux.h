@@ -28,33 +28,33 @@
 /* Define to 1 if you have the `argz_stringify' function. */
 #define HAVE_ARGZ_STRINGIFY 1
 
-#if defined(WITH_BDB)
-/* BDB has close method with 2 args */
-#define HAVE_BDB_CLOSE_2_ARGS 1
-
-/* BDB defines DBC */
-#define HAVE_BDB_CURSOR 1
-
-/* BDB cursor method has 4 arguments */
-#define HAVE_BDB_CURSOR_4_ARGS 1
-
-/* BDB defines DB_TXN */
-#define HAVE_BDB_DB_TXN 1
-
-/* BDB has fd method with 2 args */
-#define HAVE_BDB_FD_2_ARGS 1
-
-/* Have BDB hash support */
-#define HAVE_BDB_HASH 1
-
-/* BDB has open method with 6 args */
-//#define HAVE_BDB_OPEN_6_ARGS */
-
-/* BDB has open method with 7 args */
-#define HAVE_BDB_OPEN_7_ARGS
-
-/* BDB has set_flags method */
-#define HAVE_BDB_SET_FLAGS 1
+//#if defined(WITH_BDB)
+///* BDB has close method with 2 args */
+//#define HAVE_BDB_CLOSE_2_ARGS 1
+//
+///* BDB defines DBC */
+//#define HAVE_BDB_CURSOR 1
+//
+///* BDB cursor method has 4 arguments */
+//#define HAVE_BDB_CURSOR_4_ARGS 1
+//
+///* BDB defines DB_TXN */
+//#define HAVE_BDB_DB_TXN 1
+//
+///* BDB has fd method with 2 args */
+//#define HAVE_BDB_FD_2_ARGS 1
+//
+///* Have BDB hash support */
+//#define HAVE_BDB_HASH 1
+//
+///* BDB has open method with 6 args */
+////#define HAVE_BDB_OPEN_6_ARGS */
+//
+///* BDB has open method with 7 args */
+//#define HAVE_BDB_OPEN_7_ARGS
+//
+///* BDB has set_flags method */
+//#define HAVE_BDB_SET_FLAGS 1
 
 /* BDB has dbopen method */
 //#define HAVE_DBOPEN */
@@ -65,7 +65,7 @@
 /* Define to 1 if you have the <db.h> header file. */
 #define HAVE_DB_H 1
 
-#endif
+//#endif
 
 /* Define to 1 if the system has the type `byte'. */
 /* #undef HAVE_BYTE */
@@ -347,7 +347,7 @@
 /* #undef STORAGE_MYSQL */
 
 /* Building PostgreSQL storage */
-#define STORAGE_POSTGRESQL 1
+//#define STORAGE_POSTGRESQL 1
 
 /* Building SQLite storage */
 #define STORAGE_SQLITE 1

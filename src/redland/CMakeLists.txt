@@ -290,7 +290,7 @@ set(LIBRDF_SOURCES
     ${LIBRDF_SOURCE_DIR}/rdf_files.h
     ${LIBRDF_SOURCE_DIR}/rdf_hash.c
     ${LIBRDF_SOURCE_DIR}/rdf_hash.h
-    ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
+#    ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
     ${LIBRDF_SOURCE_DIR}/rdf_hash_cursor.c
     ${LIBRDF_SOURCE_DIR}/rdf_hash_internal.h
     ${LIBRDF_SOURCE_DIR}/rdf_hash_memory.c
@@ -345,7 +345,7 @@ set(LIBRDF_SOURCES
     ${LIBRDF_SOURCE_DIR}/rdf_storage_internal.h
     ${LIBRDF_SOURCE_DIR}/rdf_storage_list.c
     ${LIBRDF_SOURCE_DIR}/rdf_storage_module.h
-    ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
+#    ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
     ${LIBRDF_SOURCE_DIR}/rdf_storage_sql.c
     ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
     ${LIBRDF_SOURCE_DIR}/rdf_storage_trees.c

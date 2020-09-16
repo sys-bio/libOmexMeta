@@ -22,7 +22,7 @@ macro(FindDependencies)
     # libxml2
     find_library(LIBXML2_STATIC_LIBRARY
             NAMES libxml2.lib libxml2.a
-            PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             )
 
@@ -46,7 +46,7 @@ macro(FindDependencies)
     if (PLATFORM STREQUAL "windows-msvc")
         find_library(LIBXSLT_STATIC_LIBRARY
                 NAMES libxslt.lib libxslt.a
-                PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
+                PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
                 /usr/local/lib
                 mnt/d/usr/local/lib
                 mnt/c/usr/local/lib
@@ -72,7 +72,7 @@ macro(FindDependencies)
     message(STATUS "VCPKG_X64_LIB_DIR ${VCPKG_X64_LIB_DIR}")
     find_library(CURL_STATIC_LIBRARY
             NAMES libcurl.lib libcurl.a
-            PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             )
 
@@ -92,27 +92,28 @@ macro(FindDependencies)
             )
 
     # libcharset (from libiconv)
-    if (PLATFORM STREQUAL "windows-msvc")
+    if (${WIN32})
         find_library(LIBCHARSET_STATIC_LIBRARY
                 NAMES libcharset.lib libcharset.a
-                PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
+                PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
                 ${LINUX_DEFAULT_LOCATIONS}
                 NO_DEFAULT_PATH
                 )
+        message(STATUS "VCPKG_X64_BIN_DIR ${VCPKG_X64_BIN_DIR}")
+    find_file(LIBCHARSET_LIBRARY
+            NAMES libcharset.dll libcharset.so
+            PATHS ${VCPKG_X64_BIN_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
+            NO_DEFAULT_PATH
+            REQUIRED
+            )
     endif ()
 
-#    find_file(LIBCHARSET_LIBRARY
-#            NAMES libcharset.dll libcharset.so
-#            PATHS ${VCPKG_X64_BIN_DIR}
-#            ${DEFAULT_LINUX_LOCATIONS}
-#            NO_DEFAULT_PATH
-#            REQUIRED
-#            )
-    #       POSSIBLY NOT NEEDED
-    #        find_path(LIBCHARSETL_INCLUDE_DIR
-    #                NAMES curl/curl.h
-    #                PATHS ${VCPKG_X64_INCLUDE_DIR}
-    #                )
+    #           POSSIBLY NOT NEEDED
+    #            find_path(LIBCHARSETL_INCLUDE_DIR
+    #                    NAMES curl/curl.h
+    #                    PATHS ${VCPKG_X64_INCLUDE_DIR}
+    #                    )
 
 
     # openssl
@@ -259,7 +260,7 @@ macro(FindDependencies)
     endif ()
 
     find_file(ICONV_LIBRARY
-#            NAMES libiconv.dll libiconv.so.2.6.1.hidden libiconv.so libiconv.so.2 #libicuuc.so.60
+            #            NAMES libiconv.dll libiconv.so.2.6.1.hidden libiconv.so libiconv.so.2 #libicuuc.so.60
             NAMES libiconv.dll libicuuc.so#.60
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
@@ -301,56 +302,56 @@ macro(FindDependencies)
             )
 
 
-    # berkely
-    find_library(BERKELY_STATIC_LIBRARY
-            NAMES libdb48.lib libdb.a
-            PATHS
-            ${VCPKG_X64_STATIC_LIB_DIR}
-#            ${VCPKG_X64_LIB_DIR}
-            ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            )
-
-    find_file(BERKELY_LIBRARY
-            NAMES libdb48.dll libdb-5.3.so libdb.so
-            PATHS ${VCPKG_X64_BIN_DIR}
-            ${DEFAULT_LINUX_LOCATIONS}
-            REQUIRED
-            )
-
-    find_path(BERKELY_INCLUDE_DIR
-            NAMES db.h
-            PATHS ${VCPKG_X64_INCLUDE_DIR}
-            ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            )
-
-
-    # berkely
-    find_library(POSTGRESQL_STATIC_LIBRARY
-            NAMES libpq.a libpq.lib pq.lib
-            PATHS
-            ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
-            #                        ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            )
-
-#    find_file(POSTGRESQL_LIBRARY
-#            NAMES libpq.so.5.12 libpq.so libpq.dll
-#            PATHS ${VCPKG_X64_BIN_DIR}
-#            #            ${DEFAULT_LINUX_LOCATIONS}
-#            NO_DEFAULT_PATH
-#            REQUIRED
-#            )
-
-    message(STATUS "VCPKG_X64_STATIC_INCLUDE_DIR ${VCPKG_X64_STATIC_INCLUDE_DIR}")
-    find_path(POSTGRESQL_INCLUDE_DIR
-            NAMES postgresql/server/pg_config.h
-                libpq/libpq-fs.h
-            PATHS ${VCPKG_X64_STATIC_INCLUDE_DIR}
-            #            ${DEFAULT_LINUX_LOCATIONS}
-            #            NO_DEFAULT_PATH
-            )
+    #    # berkely
+    #    find_library(BERKELY_STATIC_LIBRARY
+    #            NAMES libdb48.lib libdb.a
+    #            PATHS
+    #            ${VCPKG_X64_STATIC_LIB_DIR}
+    ##            ${VCPKG_X64_LIB_DIR}
+    #            ${DEFAULT_LINUX_LOCATIONS}
+    #            NO_DEFAULT_PATH
+    #            )
+    #
+    #    find_file(BERKELY_LIBRARY
+    #            NAMES libdb48.dll libdb-5.3.so libdb.so
+    #            PATHS ${VCPKG_X64_BIN_DIR}
+    #            ${DEFAULT_LINUX_LOCATIONS}
+    #            REQUIRED
+    #            )
+    #
+    #    find_path(BERKELY_INCLUDE_DIR
+    #            NAMES db.h
+    #            PATHS ${VCPKG_X64_INCLUDE_DIR}
+    #            ${DEFAULT_LINUX_LOCATIONS}
+    #            NO_DEFAULT_PATH
+    #            )
+    #
+    #
+    #    # berkely
+    #    find_library(POSTGRESQL_STATIC_LIBRARY
+    #            NAMES libpq.a libpq.lib pq.lib
+    #            PATHS
+    #            ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
+    #            #                        ${DEFAULT_LINUX_LOCATIONS}
+    #            NO_DEFAULT_PATH
+    #            )
+    #
+    #    find_file(POSTGRESQL_LIBRARY
+    #            NAMES libpq.so.5.12 libpq.so libpq.dll
+    #            PATHS ${VCPKG_X64_BIN_DIR}
+    #            #            ${DEFAULT_LINUX_LOCATIONS}
+    #            NO_DEFAULT_PATH
+    #            REQUIRED
+    #            )
+    #
+    #    message(STATUS "VCPKG_X64_STATIC_INCLUDE_DIR ${VCPKG_X64_STATIC_INCLUDE_DIR}")
+    #    find_path(POSTGRESQL_INCLUDE_DIR
+    #            NAMES postgresql/server/pg_config.h
+    #                libpq/libpq-fs.h
+    #            PATHS ${VCPKG_X64_STATIC_INCLUDE_DIR}
+    #            #            ${DEFAULT_LINUX_LOCATIONS}
+    #            #            NO_DEFAULT_PATH
+    #            )
 
     # Note: on windows these are note actually static libraries,
     # but the *.lib files which contain stubs that need filling with dll
