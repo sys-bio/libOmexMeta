@@ -408,6 +408,18 @@ class PhysicalEntity:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_entity_delete(self._obj)
 
+    def set_about(self, about: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
+        return self
+
+    def is_version_of(self, is_version_of: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), is_version_of.encode())
+        return self
+
+    def is_part_of(self, is_part_of: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_is_part_of(self.get_ptr(), is_part_of.encode())
+        return self
+
 
 class PhysicalProcess:
 
@@ -444,6 +456,14 @@ class PhysicalProcess:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_process_delete(self._obj)
 
+    def set_about(self, about: str) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
+        return self
+
+    def is_version_of(self, is_version_of: str) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), is_version_of.encode())
+        return self
+
 
 class PhysicalForce:
 
@@ -475,6 +495,14 @@ class PhysicalForce:
 
     def delete(self) -> None:
         PyOmexMetaAPI.physical_force_delete(self._obj)
+
+    def set_about(self, about: str) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
+        return self
+
+    def is_version_of(self, is_version_of: str) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), is_version_of.encode())
+        return self
 
 
 class PersonalInformation:

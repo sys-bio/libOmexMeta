@@ -22,7 +22,7 @@ macro(FindDependencies)
     # libxml2
     find_library(LIBXML2_STATIC_LIBRARY
             NAMES libxml2.lib libxml2.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             )
 
@@ -46,7 +46,7 @@ macro(FindDependencies)
     if (PLATFORM STREQUAL "windows-msvc")
         find_library(LIBXSLT_STATIC_LIBRARY
                 NAMES libxslt.lib libxslt.a
-                PATHS ${VCPKG_X64_LIB_DIR}
+                PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
                 /usr/local/lib
                 mnt/d/usr/local/lib
                 mnt/c/usr/local/lib
@@ -72,7 +72,7 @@ macro(FindDependencies)
     message(STATUS "VCPKG_X64_LIB_DIR ${VCPKG_X64_LIB_DIR}")
     find_library(CURL_STATIC_LIBRARY
             NAMES libcurl.lib libcurl.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             )
 
@@ -95,7 +95,7 @@ macro(FindDependencies)
     if (PLATFORM STREQUAL "windows-msvc")
         find_library(LIBCHARSET_STATIC_LIBRARY
                 NAMES libcharset.lib libcharset.a
-                PATHS ${VCPKG_X64_LIB_DIR}
+                PATHS ${VCPKG_X64_STATIC_LIB_DIR}  ${VCPKG_X64_LIB_DIR}
                 ${LINUX_DEFAULT_LOCATIONS}
                 NO_DEFAULT_PATH
                 )
@@ -118,7 +118,7 @@ macro(FindDependencies)
     # openssl
     find_library(SSL_STATIC_LIBRARY
             NAMES libssl.lib libssl.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             )
 
@@ -138,7 +138,7 @@ macro(FindDependencies)
     # libcrypto
     find_library(CRYPTO_STATIC_LIBRARY
             NAMES libcrypto.lib libcrypto.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             )
 
@@ -158,7 +158,7 @@ macro(FindDependencies)
     # yajl
     find_library(YAJL_STATIC_LIBRARY
             NAMES yajl.lib libyajl_s.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             ${LINUX_DEFAULT_LOCATIONS}
             NO_DEFAULT_PATH
             )
@@ -180,7 +180,7 @@ macro(FindDependencies)
     # lzma
     find_library(LZMA_STATIC_LIBRARY
             NAMES lzma.lib lzma.a liblzma.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
@@ -202,7 +202,7 @@ macro(FindDependencies)
     # zlib
     find_library(ZLIB_STATIC_LIBRARY
             NAMES zlib.lib zlib libz libz.lib libz.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             NO_DEFAULT_PATH
             REQUIRED
             )
@@ -226,7 +226,7 @@ macro(FindDependencies)
     # pcre
     find_library(PCRE_STATIC_LIBRARY
             NAMES pcre.lib libpcre.a
-            PATHS ${VCPKG_X64_LIB_DIR}
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             ${LINUDEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             REQUIRED
@@ -252,7 +252,7 @@ macro(FindDependencies)
         find_library(ICONV_STATIC_LIBRARY
                 NAMES libiconv.lib libiconv.a
                 PATHS
-                ${VCPKG_X64_LIB_DIR}
+                ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
                 ${DEFAULT_LINUX_LOCATIONS}
                 NO_DEFAULT_PATH
                 )
@@ -277,6 +277,7 @@ macro(FindDependencies)
     find_library(SQLITE3_STATIC_LIBRARY
             NAMES sqlite3.lib sqlite3.a libsqlite3.a
             PATHS
+            ${VCPKG_X64_STATIC_LIB_DIR}
             ${VCPKG_X64_LIB_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -304,7 +305,8 @@ macro(FindDependencies)
     find_library(BERKELY_STATIC_LIBRARY
             NAMES libdb48.lib libdb.a
             PATHS
-            ${VCPKG_X64_LIB_DIR}
+            ${VCPKG_X64_STATIC_LIB_DIR}
+#            ${VCPKG_X64_LIB_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
@@ -328,22 +330,24 @@ macro(FindDependencies)
     find_library(POSTGRESQL_STATIC_LIBRARY
             NAMES libpq.a libpq.lib pq.lib
             PATHS
-            ${VCPKG_X64_LIB_DIR}
+            ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
             #                        ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
 
-    find_file(POSTGRESQL_LIBRARY
-            NAMES libpq.so.5.12 libpq.so libpq.dll
-            PATHS ${VCPKG_X64_BIN_DIR}
-            #            ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            REQUIRED
-            )
+#    find_file(POSTGRESQL_LIBRARY
+#            NAMES libpq.so.5.12 libpq.so libpq.dll
+#            PATHS ${VCPKG_X64_BIN_DIR}
+#            #            ${DEFAULT_LINUX_LOCATIONS}
+#            NO_DEFAULT_PATH
+#            REQUIRED
+#            )
 
+    message(STATUS "VCPKG_X64_STATIC_INCLUDE_DIR ${VCPKG_X64_STATIC_INCLUDE_DIR}")
     find_path(POSTGRESQL_INCLUDE_DIR
             NAMES postgresql/server/pg_config.h
-            PATHS ${VCPKG_X64_INCLUDE_DIR}
+                libpq/libpq-fs.h
+            PATHS ${VCPKG_X64_STATIC_INCLUDE_DIR}
             #            ${DEFAULT_LINUX_LOCATIONS}
             #            NO_DEFAULT_PATH
             )

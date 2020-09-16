@@ -110,7 +110,7 @@ int main(){
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity.setAbout( "OmexMetaId0000")
         .isVersionOf("OPB:OPB_00340")
-        .is("uniprot/P84022")
+        .setIdentity("uniprot/P84022")
         .isPartOf("fma/FMA:63877")
         .isPartOf("fma:FMA:70737")
         .isPartOf("fma/FMA:24178")

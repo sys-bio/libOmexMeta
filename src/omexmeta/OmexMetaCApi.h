@@ -57,7 +57,7 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT int RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
 
     /**
-         * @brief read RDF formatted annotations a string.
+     * @brief read RDF formatted annotations a string.
      * @param pdf_ptr a pointer to an RDF object.
      * @param str the string to read annotations from
      * @param format the format that the string annotations are in (get it
@@ -207,7 +207,6 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(
             PhysicalEntity *physical_entity_ptr, const char *location_resource);
 
-
     OMEXMETACAPI_EXPORT char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
 
     OMEXMETACAPI_EXPORT char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
@@ -217,6 +216,12 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
 
     OMEXMETACAPI_EXPORT char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
+
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isVersionOf(PhysicalEntity *physical_entity_ptr, const char *is_version_of);
+
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
+
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
 
 /*********************************************************************
  * PhysicalProcess class methods
@@ -244,6 +249,9 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *is_version_of);
+
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_process_ptr, const char *about);
 
 /*********************************************************************
  * PhysicalForce class methods
@@ -281,6 +289,10 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
 
     OMEXMETACAPI_EXPORT char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_isVersionOf(PhysicalForce *physical_force_ptr, const char *is_version_of);
+
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_force_ptr, const char *about);
 
 /*********************************************************************
  * PersonalInformation class methods

@@ -447,6 +447,57 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </inbodydescription>
         <location file="src/omexmeta/PhysicalForce.h" line="177" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="125" bodyend="127"/>
       </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1ab05616b46d417cc7376ae58abd4fe0e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; omexmeta::PhysicalForce::isVersionOf</definition>
+        <argsstring>(const std::string &amp;is_version_of)</argsstring>
+        <name>isVersionOf</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>is_version_of</declname>
+        </param>
+        <briefdescription>
+<para>set the isVersionOf portion of the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> composite annotation </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>is_version_of</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to be used as the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_12345 or OPB/OPB_12345.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> resource_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/PhysicalForce.h" line="186" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="129" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; omexmeta::PhysicalForce::setAbout</definition>
+        <argsstring>(const std::string &amp;about) override</argsstring>
+        <name>setAbout</name>
+        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d">setAbout</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+<para>set the subject (rdf:about) portion of the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> composite annotation </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>about</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to be used as the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> subject_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/PhysicalForce.h" line="195" column="1" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="135" bodyend="138"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
@@ -483,7 +534,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/PhysicalForce.h" line="28" column="1" bodyfile="src/omexmeta/PhysicalForce.h" bodystart="28" bodyend="178"/>
+    <location file="src/omexmeta/PhysicalForce.h" line="28" column="1" bodyfile="src/omexmeta/PhysicalForce.h" bodystart="28" bodyend="196"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalForce_1a8ec5e262b82526ac914d8c7f10b6c2f1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>addSink</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1ace7d3703d7e4bdb9a256208f456f2c4f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>addSource</name></member>
@@ -502,6 +553,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1PhysicalForce_1aa42b8e04573d2ae88f952c76b146d5ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>getSources</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>getSubjectStr</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>getType</name></member>
+      <member refid="classomexmeta_1_1PhysicalForce_1ab05616b46d417cc7376ae58abd4fe0e6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a696cbc4f6490dd55d6bd41c7711cd0ec" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>model_uri_</name></member>
@@ -524,8 +576,8 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
+      <member refid="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" prot="public" virt="virtual"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a081aecc43d16b2fc8826c4050eb2055d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setPhysicalProperty</name></member>

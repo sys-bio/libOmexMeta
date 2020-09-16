@@ -575,6 +575,10 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kind="function"><name>getNumLocations</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a5f54e5c2df0fd5c3b9121e1426b23af6" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1afee546a420f16e128ed1add9fec35b4f" kind="function"><name>operator!=</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a5399ef8eef084f2dd8b13ef537823d94" kind="function"><name>isVersionOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a1736d331705bf2f1569f492fc733949e" kind="function"><name>setAbout</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kind="function"><name>is</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" kind="function"><name>isPartOf</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalForce" kind="class"><name>omexmeta::PhysicalForce</name>
     <member refid="classomexmeta_1_1PhysicalForce_1a79c5d2ad46b427dea58ab7058c8cd78b" kind="variable"><name>sources_</name></member>
@@ -598,6 +602,8 @@
     <member refid="classomexmeta_1_1PhysicalForce_1a1135c75705b59afa7037bab313009534" kind="function"><name>getNumSinks</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1affa0a1f3cdce0a3336d56658a92c65f3" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1aeb7adb235c0caac04c7aa599f98f258a" kind="function"><name>operator!=</name></member>
+    <member refid="classomexmeta_1_1PhysicalForce_1ab05616b46d417cc7376ae58abd4fe0e6" kind="function"><name>isVersionOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" kind="function"><name>setAbout</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalPhenomenon" kind="class"><name>omexmeta::PhysicalPhenomenon</name>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" kind="variable"><name>model_</name></member>
@@ -629,7 +635,7 @@
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" kind="function"><name>getPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273" kind="function"><name>toTriples</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" kind="function"><name>getSubjectStr</name></member>
-    <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" kind="function"><name>setAbout</name></member>
+    <member refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d" kind="function"><name>setAbout</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" kind="function"><name>setType</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" kind="function"><name>getPhysicalPropertyId</name></member>
@@ -659,6 +665,8 @@
     <member refid="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26" kind="function"><name>getNumMediators</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a65585bf5cd473d509f6f66c96757ff8d" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e" kind="function"><name>operator!=</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a52ff2832ac567a4cee2043d37ddcbc6b" kind="function"><name>isVersionOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97" kind="function"><name>setAbout</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalProperty" kind="class"><name>omexmeta::PhysicalProperty</name>
     <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" kind="variable"><name>subject_</name></member>
@@ -1108,6 +1116,9 @@
     <member refid="namespaceomexmeta_1acc3cb121e83fea6627185101e64db8e9" kind="function"><name>PhysicalEntity_getNumLocations</name></member>
     <member refid="namespaceomexmeta_1a63e0d41567ae512005d7c9e50037e44e" kind="function"><name>PhysicalEntity_getLocation</name></member>
     <member refid="namespaceomexmeta_1a2ca2e5f41e156dc785bb858f82a088d4" kind="function"><name>PhysicalEntity_str</name></member>
+    <member refid="namespaceomexmeta_1a91c343638a5190337fec566ac68666b8" kind="function"><name>PhysicalEntity_isVersionOf</name></member>
+    <member refid="namespaceomexmeta_1ad16c74638e4679527511519745b2826c" kind="function"><name>PhysicalEntity_isPartOf</name></member>
+    <member refid="namespaceomexmeta_1a971552a103140035279fa2eb0b402fc0" kind="function"><name>PhysicalEntity_setAbout</name></member>
     <member refid="namespaceomexmeta_1a4b7cef4fcdbd4502c94b18da2f85470f" kind="function"><name>PhysicalProcess_new</name></member>
     <member refid="namespaceomexmeta_1a97146d9b855c53650e54c471f053a4dc" kind="function"><name>PhysicalProcess_delete</name></member>
     <member refid="namespaceomexmeta_1a3ccca8297fc991baf57065570938ed84" kind="function"><name>PhysicalProcess_freeAll</name></member>
@@ -1120,6 +1131,8 @@
     <member refid="namespaceomexmeta_1aa7371fdf91f4c6c120e4559b23ad3585" kind="function"><name>PhysicalProcess_getNumSources</name></member>
     <member refid="namespaceomexmeta_1aaf4162aa78c2c7f73449705a3e0fc951" kind="function"><name>PhysicalProcess_getNumSinks</name></member>
     <member refid="namespaceomexmeta_1a7ad65f0ec2f5c8433ebc126c75779520" kind="function"><name>PhysicalProcess_getNumMediators</name></member>
+    <member refid="namespaceomexmeta_1af73229fd4219d7dfa0fa3876ac982ad9" kind="function"><name>PhysicalProcess_isVersionOf</name></member>
+    <member refid="namespaceomexmeta_1afde7fdd0535279191576bcab4a9d665b" kind="function"><name>PhysicalProcess_setAbout</name></member>
     <member refid="namespaceomexmeta_1a20e720c23e2368bf19c316971ebeafd7" kind="function"><name>PhysicalForce_new</name></member>
     <member refid="namespaceomexmeta_1aad5757f8832cf5fcaf546cec1f97af82" kind="function"><name>PhysicalForce_delete</name></member>
     <member refid="namespaceomexmeta_1ac9903c88bb127f778476bdffe075ed8a" kind="function"><name>PhysicalForce_freeAll</name></member>
@@ -1130,6 +1143,8 @@
     <member refid="namespaceomexmeta_1a1bec2b6579c0eba8a719f68d39b09c2e" kind="function"><name>PhysicalForce_getNumSinks</name></member>
     <member refid="namespaceomexmeta_1a8a3f3cf23e3c5253f0a92f6374a2059b" kind="function"><name>PhysicalForce_str</name></member>
     <member refid="namespaceomexmeta_1a4428467ced5ab11c48a3b16284048a36" kind="function"><name>PhysicalForce_getAbout</name></member>
+    <member refid="namespaceomexmeta_1af046e4eed3949643feca6decaa570340" kind="function"><name>PhysicalForce_isVersionOf</name></member>
+    <member refid="namespaceomexmeta_1aaf31dd28c34186769fa91c5c5bd205b6" kind="function"><name>PhysicalForce_setAbout</name></member>
     <member refid="namespaceomexmeta_1a119fbc0317a5af631e7f68caece8c70b" kind="function"><name>PersonalInformation_new</name></member>
     <member refid="namespaceomexmeta_1a5dcd490456bde3f95069f91e65c2b042" kind="function"><name>PersonalInformation_delete</name></member>
     <member refid="namespaceomexmeta_1a9db9c9c591926b3e9061b2ca7cb4541f" kind="function"><name>PersonalInformation_getLocalUri</name></member>

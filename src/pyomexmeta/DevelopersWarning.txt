@@ -1,0 +1,1 @@
+The pyomexmeta_api.py file is configured by cmake to include the version information. Therefore, you should modify pyomexmeta_api.py.in and then rerun cmake, rather than editing pyomexmeta_api.py itself.

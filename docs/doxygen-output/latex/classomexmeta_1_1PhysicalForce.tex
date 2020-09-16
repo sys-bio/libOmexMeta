@@ -45,7 +45,11 @@ bool {\bfseries operator==} (const \hyperlink{classomexmeta_1_1PhysicalForce}{Ph
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalForce_aeb7adb235c0caac04c7aa599f98f258a}\label{classomexmeta_1_1PhysicalForce_aeb7adb235c0caac04c7aa599f98f258a}} 
 bool {\bfseries operator!=} (const \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \&rhs) const
-\end{DoxyCompactItemize}
+\item 
+\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \& \hyperlink{classomexmeta_1_1PhysicalForce_ab05616b46d417cc7376ae58abd4fe0e6}{is\+Version\+Of} (const std\+::string \&is\+\_\+version\+\_\+of)
+\begin{DoxyCompactList}\small\item\em set the is\+Version\+Of portion of the \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} composite annotation \end{DoxyCompactList}\item 
+\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \& \hyperlink{classomexmeta_1_1PhysicalForce_a77345d665e492085b81d96337711dc35}{set\+About} (const std\+::string \&about) override
+\begin{DoxyCompactList}\small\item\em set the subject (rdf\+:about) portion of the \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} composite annotation \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -213,6 +217,40 @@ return vector of Source objects assocated with \hyperlink{classomexmeta_1_1Physi
 \begin{DoxyReturn}{Returns}
 a vector of Source\+Participants 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalForce_ab05616b46d417cc7376ae58abd4fe0e6}\label{classomexmeta_1_1PhysicalForce_ab05616b46d417cc7376ae58abd4fe0e6}} 
+\index{omexmeta\+::\+Physical\+Force@{omexmeta\+::\+Physical\+Force}!is\+Version\+Of@{is\+Version\+Of}}
+\index{is\+Version\+Of@{is\+Version\+Of}!omexmeta\+::\+Physical\+Force@{omexmeta\+::\+Physical\+Force}}
+\subsubsection{\texorpdfstring{is\+Version\+Of()}{isVersionOf()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \& omexmeta\+::\+Physical\+Force\+::is\+Version\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{is\+\_\+version\+\_\+of }\end{DoxyParamCaption})}
+
+
+
+set the is\+Version\+Of portion of the \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} composite annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+version\+\_\+of} & the string to be used as the \hyperlink{classomexmeta_1_1Resource}{Resource} portion of the is\+Version\+Of \hyperlink{classomexmeta_1_1Triple}{Triple}. \hyperlink{classThis}{This} should be of the form O\+PB\+:O\+P\+B\+\_\+12345 or O\+P\+B/\+O\+P\+B\+\_\+12345.\\
+\hline
+\end{DoxyParams}
+\hyperlink{classThis}{This} method will set the \hyperlink{classomexmeta_1_1Resource}{Resource} resource\+\_\+ attribute of the \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} associated with the \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}. \mbox{\Hypertarget{classomexmeta_1_1PhysicalForce_a77345d665e492085b81d96337711dc35}\label{classomexmeta_1_1PhysicalForce_a77345d665e492085b81d96337711dc35}} 
+\index{omexmeta\+::\+Physical\+Force@{omexmeta\+::\+Physical\+Force}!set\+About@{set\+About}}
+\index{set\+About@{set\+About}!omexmeta\+::\+Physical\+Force@{omexmeta\+::\+Physical\+Force}}
+\subsubsection{\texorpdfstring{set\+About()}{setAbout()}}
+{\footnotesize\ttfamily \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} \& omexmeta\+::\+Physical\+Force\+::set\+About (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{about }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the subject (rdf\+:about) portion of the \hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force} composite annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em about} & the string to be used as the \hyperlink{classomexmeta_1_1Subject}{Subject} portion of the is\+Version\+Of \hyperlink{classomexmeta_1_1Triple}{Triple}. \hyperlink{classThis}{This} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.\\
+\hline
+\end{DoxyParams}
+\hyperlink{classThis}{This} method will set the \hyperlink{classomexmeta_1_1Subject}{Subject} subject\+\_\+ attribute of the \hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property} associated with the \hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}. 
+
+Reimplemented from \hyperlink{classomexmeta_1_1PhysicalPhenomenon}{omexmeta\+::\+Physical\+Phenomenon}.
+
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalForce_a081aecc43d16b2fc8826c4050eb2055d}\label{classomexmeta_1_1PhysicalForce_a081aecc43d16b2fc8826c4050eb2055d}} 
 \index{omexmeta\+::\+Physical\+Force@{omexmeta\+::\+Physical\+Force}!set\+Physical\+Property@{set\+Physical\+Property}}
 \index{set\+Physical\+Property@{set\+Physical\+Property}!omexmeta\+::\+Physical\+Force@{omexmeta\+::\+Physical\+Force}}
