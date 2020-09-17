@@ -22,7 +22,7 @@ copyright = '2020, Ciaran Welsh'
 author = 'Ciaran Welsh'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '1.1.13'
 
 
 # -- General configuration ---------------------------------------------------

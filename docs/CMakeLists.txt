@@ -20,6 +20,12 @@
 #
 include(GoogleTest)
 
+#configure the sphinx conf file with correct version.
+configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/source/conf.py.in"
+        "${CMAKE_CURRENT_SOURCE_DIR}/source/conf.py" @ONLY
+)
+
 set(EXAMPLE_EXECUTABLES_TARGETS)
 
 macro(add_doc_example BINARY_NAME)
