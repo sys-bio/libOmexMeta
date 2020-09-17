@@ -27,8 +27,6 @@ License :: OSI Approved :: Apache Software License
 Programming Language :: C
 Programming Language :: C++
 Programming Language :: Python
-Programming Language :: Python :: 3
-Programming Language :: Python :: 3.6
 Programming Language :: Python :: 3.7
 Programming Language :: Python :: 3.8
 Programming Language :: Python :: 3 :: Only
@@ -99,7 +97,7 @@ setup(
     author_email='cwelsh2@uw.edu',
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
-    install_requires=["graphviz", "pydot"],
+    install_requires=["graphviz", "pydot", 'pywin32; platform_system=="Windows"'],
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'src/pyomexmeta'},
     package_data={'pyomexmeta': [

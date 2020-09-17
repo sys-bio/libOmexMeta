@@ -14,6 +14,13 @@ rdf = RDF.from_uri(teusink_biomod_link, format="rdfxml",
 print(rdf)
 
 # draw a diagram
-fname = os.path.join(os.path.dirname(__file__), "TeusinkDiagram.pdf")
+fname = os.path.join(os.path.getcwd(), "TeusinkDiagram.png")
 rdf.draw(fname)
 plt.show()
+
+
+
+
+
+
+

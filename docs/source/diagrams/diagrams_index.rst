@@ -20,9 +20,7 @@ of the Teusink annotations.
 
         Output:
 
-        .. literalinclude:: ../../ExampleOutputFiles/draw_teusink2000.txt
-
-        .. image:: ../_images/TeusinkDiagram.svg
+        .. image:: ../TeusinkDiagram.png
             :width: 400
 
     .. tab:: C++

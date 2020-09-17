@@ -9,8 +9,11 @@ try:
     # for use from outside the package, as a python package
     from .pyomexmeta_api import PyOmexMetaAPI
 except ImportError:
+    try:# for internal use
+        from pyomexmeta_api import PyOmexMetaAPI
+    except ImportError:
     # for internal use
-    from pyomexmeta_api import PyOmexMetaAPI
+        from . import pyomexmeta_api
 
 
 def _xml_type_factory(xml_type: str):

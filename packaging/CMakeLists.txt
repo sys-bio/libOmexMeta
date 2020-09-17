@@ -101,12 +101,15 @@ if (${BUILD_PYTHON})
     # We only present this target to used on windows if libOmexMeta.so
     # is found in ${PYOMEXMETA_DIR} or on linux if OmexMeta.dll is found
     # at the same place.
-    if (WIN32)
+    if (${WIN32})
+        message(STATUS "BUILDIN pyokna")
         find_program(
                 LINUX_LIBRARIES_FOUND
                 NAMES ${PYOMEXMETA_DIR}/libOmexMeta.so.${LIBOMEXMETA_VERSION}
                 NO_DEFAULT_PATH
         )
+
+        message(STATUS "LINUX_LIBRARIES_FOUND ${LINUX_LIBRARIES_FOUND}")
 
         if (LINUX_LIBRARIES_FOUND)
             add_custom_target(
@@ -117,11 +120,11 @@ if (${BUILD_PYTHON})
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             )
 #            add_dependencies(packaging PackageOmexMetaPython)
-        else ()
+        else (LINUX_LIBRARIES_FOUND)
             message(WARNING "You are packaging libOmexMeta but will not be able \
 to build the Python package because you have not yet built and installed the \
 linux version. Both linux and windows are required to build a pip Wheel.")
-        endif ()
+        endif (LINUX_LIBRARIES_FOUND)
     elseif (UNIX)
         find_program(
                 WINDOWS_LIBRARIES_FOUND

@@ -449,4 +449,4 @@
     ] .
 
 
-RDF graph saved to "D:/libOmexMeta/docs\TeusinkDiagram.pdf"
+RDF graph saved to "D:/libOmexMeta/docs\TeusinkDiagram.png"
