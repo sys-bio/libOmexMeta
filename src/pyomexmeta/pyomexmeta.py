@@ -349,9 +349,9 @@ class SingularAnnotation:
     def __str__(self):
         return self.to_string("turtle")
 
-    def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
+    def to_string(self, format: str) -> str:
         return PyOmexMetaAPI.get_and_free_c_str(
-            PyOmexMetaAPI.singular_annotation_str(self._obj, format.encode(), base_uri.encode()))
+            PyOmexMetaAPI.singular_annotation_str(self._obj, format.encode()))
 
     def get_predicate(self) -> str:
         return PyOmexMetaAPI.get_and_free_c_str(

@@ -24,7 +24,6 @@ rdf = RDF.from_string(turtle_string)
 formats = [
     "ntriples",
     "turtle",
-    "rdfxml-xmp",
     "rdfxml-abbrev",
     "rdfxml",
     "dot",
@@ -35,7 +34,7 @@ formats = [
 ]
 
 for syntax in formats:
-    print("Serializing to {}:".format(syntax))
+    print("Serializing to {}".format(syntax))
     print(rdf.to_string(syntax))
     print("\n\n")
 

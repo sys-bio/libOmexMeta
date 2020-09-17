@@ -1,0 +1,206 @@
+\hypertarget{D_1_2libOmexMeta_2src_2omexmeta_2Predicate_8h-example}{}\doxysection{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Predicate.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{BiomodelBiologyQualifier is(\textcolor{stringliteral}{"{}is"{}});}
+\DoxyCodeLine{std::cout << is.str() << std::endl;}
+\end{DoxyCode}
+ will output \href{http://biomodels.net/biology-qualifiers/is}{\texttt{ http\+://biomodels.\+net/biology-\/qualifiers/is}} to console.
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{//}}
+\DoxyCodeLine{\textcolor{comment}{// Created by Ciaran on 4/17/2020.}}
+\DoxyCodeLine{\textcolor{comment}{//}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef LIBOMEXMETA\_PREDICATE\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define LIBOMEXMETA\_PREDICATE\_H}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/World.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/librdf.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/OmexMetaUtils.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using namespace }redland;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceomexmeta}{omexmeta}} \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{typedef} std::unordered\_map<std::string, std::string> NamespaceMap;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{class }Predicate \{}
+\DoxyCodeLine{    \textcolor{keyword}{protected}:}
+\DoxyCodeLine{}
+\DoxyCodeLine{        std::string namespace\_, term\_, prefix\_;}
+\DoxyCodeLine{        std::string uri\_;}
+\DoxyCodeLine{        librdf\_node *node\_ = \textcolor{keyword}{nullptr}; }
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{\textcolor{stringliteral}{"{}All"{}}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} Predicate(librdf\_node *node);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{public}:}
+\DoxyCodeLine{        Predicate() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{static} std::unordered\_map<std::string, std::string> namespaceMap();}
+\DoxyCodeLine{}
+\DoxyCodeLine{        Predicate(\textcolor{keyword}{const} std::string \&namespace\_,}
+\DoxyCodeLine{                  std::string term, std::string prefix);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} Predicate \&rhs) \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{bool} operator!=(\textcolor{keyword}{const} Predicate \&rhs) \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        std::string str();}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{void} verify(std::vector<std::string> valid\_terms, \textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{bool} namespaceKnown(\textcolor{keyword}{const} std::string \&ns);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        [[nodiscard]] librdf\_node *getNode() \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&getValidTerms() \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        [[nodiscard]] \textcolor{keyword}{const} std::string \&getNamespace() \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        [[nodiscard]] \textcolor{keyword}{const} std::string \&getTerm() \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        [[nodiscard]] \textcolor{keyword}{const} std::string \&getPrefix() \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        [[maybe\_unused]] [[nodiscard]] \textcolor{keyword}{const} std::string \&getUri() \textcolor{keyword}{const};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} freeNode();}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{        addSeenNamespaceToSerializer(librdf\_world *world, librdf\_serializer *serializer, librdf\_node *predicate);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} setNode(librdf\_node *node);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<Predicate> makeShared();}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{class }BiomodelsBiologyQualifier : \textcolor{keyword}{public} Predicate \{}
+\DoxyCodeLine{    \textcolor{keyword}{public}:}
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}is"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasPart"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isPartOf"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isVersionOf"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasVersion"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isHomologTo"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isDescribedBy"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isEncodedBy"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}encodes"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}occursIn"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasProperty"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isPropertyOf"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasTaxon"{}}}
+\DoxyCodeLine{        \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        BiomodelsBiologyQualifier() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} BiomodelsBiologyQualifier(\textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<BiomodelsBiologyQualifier> makeShared();}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{class }BiomodelsModelQualifier : \textcolor{keyword}{public} Predicate \{}
+\DoxyCodeLine{    \textcolor{keyword}{public}:}
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isDerivedFrom"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isDescribedBy"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isInstanceOf"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasInstance"{}},}
+\DoxyCodeLine{        \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        BiomodelsModelQualifier() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} BiomodelsModelQualifier(\textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<BiomodelsModelQualifier> makeShared();}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{class }DCTerm : \textcolor{keyword}{public} Predicate \{}
+\DoxyCodeLine{    \textcolor{keyword}{public}:}
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}abstract"{}}, \textcolor{stringliteral}{"{}accessRights"{}}, \textcolor{stringliteral}{"{}accrualMethod"{}}, \textcolor{stringliteral}{"{}accrualPeriodicity"{}}, \textcolor{stringliteral}{"{}accrualPolicy"{}}, \textcolor{stringliteral}{"{}alternative"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}audience"{}}, \textcolor{stringliteral}{"{}available"{}}, \textcolor{stringliteral}{"{}bibliographicCitation"{}}, \textcolor{stringliteral}{"{}conformsTo"{}}, \textcolor{stringliteral}{"{}contributor"{}}, \textcolor{stringliteral}{"{}coverage"{}}, \textcolor{stringliteral}{"{}created"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}creator"{}}, \textcolor{stringliteral}{"{}date"{}}, \textcolor{stringliteral}{"{}dateAccepted"{}}, \textcolor{stringliteral}{"{}dateCopyrighted"{}}, \textcolor{stringliteral}{"{}dateSubmitted"{}}, \textcolor{stringliteral}{"{}description"{}}, \textcolor{stringliteral}{"{}educationLevel"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}extent"{}}, \textcolor{stringliteral}{"{}format"{}}, \textcolor{stringliteral}{"{}hasFormat"{}}, \textcolor{stringliteral}{"{}hasPart"{}}, \textcolor{stringliteral}{"{}hasVersion"{}}, \textcolor{stringliteral}{"{}identifier"{}}, \textcolor{stringliteral}{"{}instructionalMethod"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}isFormatOf"{}}, \textcolor{stringliteral}{"{}isPartOf"{}}, \textcolor{stringliteral}{"{}isReferencedBy"{}}, \textcolor{stringliteral}{"{}isReplacedBy"{}}, \textcolor{stringliteral}{"{}isRequiredBy"{}}, \textcolor{stringliteral}{"{}issued"{}}, \textcolor{stringliteral}{"{}isVersionOf"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}language"{}}, \textcolor{stringliteral}{"{}license"{}}, \textcolor{stringliteral}{"{}mediator"{}}, \textcolor{stringliteral}{"{}medium"{}}, \textcolor{stringliteral}{"{}modified"{}}, \textcolor{stringliteral}{"{}provenance"{}}, \textcolor{stringliteral}{"{}publisher"{}}, \textcolor{stringliteral}{"{}references"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}relation"{}}, \textcolor{stringliteral}{"{}replaces"{}}, \textcolor{stringliteral}{"{}requires"{}}, \textcolor{stringliteral}{"{}rights"{}}, \textcolor{stringliteral}{"{}rightsHolder"{}}, \textcolor{stringliteral}{"{}source"{}}, \textcolor{stringliteral}{"{}spatial"{}}, \textcolor{stringliteral}{"{}subject"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}tableOfContents"{}}, \textcolor{stringliteral}{"{}temporal"{}}, \textcolor{stringliteral}{"{}title"{}}, \textcolor{stringliteral}{"{}type"{}}, \textcolor{stringliteral}{"{}valid"{}},\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        DCTerm() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} DCTerm(\textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<DCTerm> makeShared() ;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{class }SemSim : \textcolor{keyword}{public} Predicate \{}
+\DoxyCodeLine{    \textcolor{keyword}{public}:}
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasSourceParticipant"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasSinkParticipant"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasMediatorParticipant"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasMultiplier"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasPhysicalEntityReference"{}},}
+\DoxyCodeLine{        \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        SemSim() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} SemSim(\textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{class }Foaf : \textcolor{keyword}{public} Predicate \{}
+\DoxyCodeLine{    \textcolor{keyword}{public}:}
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Agent"{}}, \textcolor{stringliteral}{"{}Person"{}}, \textcolor{stringliteral}{"{}name"{}}, \textcolor{stringliteral}{"{}title"{}}, \textcolor{stringliteral}{"{}img"{}}, \textcolor{stringliteral}{"{}depiction"{}}, \textcolor{stringliteral}{"{}familyName"{}}, \textcolor{stringliteral}{"{}givenName"{}}, \textcolor{stringliteral}{"{}knows"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}based\_near"{}}, \textcolor{stringliteral}{"{}age"{}}, \textcolor{stringliteral}{"{}made"{}}, \textcolor{stringliteral}{"{}primaryTopic"{}}, \textcolor{stringliteral}{"{}Project"{}}, \textcolor{stringliteral}{"{}Organization"{}}, \textcolor{stringliteral}{"{}Group"{}}, \textcolor{stringliteral}{"{}member"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Document"{}}, \textcolor{stringliteral}{"{}Image"{}}, \textcolor{stringliteral}{"{}nick"{}}, \textcolor{stringliteral}{"{}mbox"{}}, \textcolor{stringliteral}{"{}homepage"{}}, \textcolor{stringliteral}{"{}weblog"{}}, \textcolor{stringliteral}{"{}openid"{}}, \textcolor{stringliteral}{"{}jabberID"{}}, \textcolor{stringliteral}{"{}mbox\_sha1sum"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}interest"{}}, \textcolor{stringliteral}{"{}topic\_interest"{}}, \textcolor{stringliteral}{"{}topic"{}}, \textcolor{stringliteral}{"{}workplaceHomepage"{}}, \textcolor{stringliteral}{"{}workInfoHomepage"{}}, \textcolor{stringliteral}{"{}schoolHomepage"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}publications"{}}, \textcolor{stringliteral}{"{}currentProject"{}}, \textcolor{stringliteral}{"{}pastProject"{}}, \textcolor{stringliteral}{"{}account"{}}, \textcolor{stringliteral}{"{}OnlineAccount"{}}, \textcolor{stringliteral}{"{}accountName"{}},}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}accountServiceHomepage"{}}, \textcolor{stringliteral}{"{}PersonalProfileDocument"{}}, \textcolor{stringliteral}{"{}tipjar"{}}, \textcolor{stringliteral}{"{}sha1"{}}, \textcolor{stringliteral}{"{}thumbnail"{}}, \textcolor{stringliteral}{"{}logo"{}},\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        Foaf() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} Foaf(\textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<SemSim> makeShared() ;}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{typedef} std::shared\_ptr<Predicate> PredicatePtr;}
+\DoxyCodeLine{    \textcolor{keyword}{typedef} std::vector<Predicate> Predicates;}
+\DoxyCodeLine{    \textcolor{keyword}{typedef} std::vector<PredicatePtr> PredicatePtrs;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    PredicatePtr \mbox{\hyperlink{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}{PredicateFactory}}(std::string namespace\_, \textcolor{keyword}{const} std::string \&term);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif //LIBOMEXMETA\_PREDICATE\_H}}
+\end{DoxyCodeInclude}
+ 

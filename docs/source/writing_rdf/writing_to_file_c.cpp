@@ -29,13 +29,14 @@ int main() {
     // we cheat and use c++ for system independent filepath
     const char* filename = (std::filesystem::current_path() /+ "annotations.rdf").string().c_str();
 
-    printf("Serializing to %s: \n", syntax);
-    int failed = RDF_toFile(rdf, filename, syntax); // 1 if failed else 0
+    printf("Serializing to %s \n", syntax);
+    int failed = RDF_toFile(rdf, syntax, filename); // 1 if failed else 0
     if (failed) {
         printf("You broke C");
         exit(1);
     }
-    printf("Annotation file written to \"%s\"", filename);
+    printf("RDF graph serialized to \"%s\"", filename);
+    printf("Counted \"%d\" triples", RDF_size(rdf));
 
     // clean up (more cheating)
     if(std::filesystem::exists(filename)){

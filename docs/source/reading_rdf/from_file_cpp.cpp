@@ -32,7 +32,7 @@ int main(){
     writeToFile(fname.string());
 
     // create an RDF graph
-    RDF rdf = RDF::fromFile(fname, "turtle"); // assume the content of annotation_file is turtle
+    RDF rdf = RDF::fromFile(fname.string(), "turtle"); // assume the content of annotation_file is turtle
 
     std::cout << rdf.size() << " triples read from file" << std::endl;
     // RDF clears up after itself via RAII

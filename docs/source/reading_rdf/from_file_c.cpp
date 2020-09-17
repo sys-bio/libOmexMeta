@@ -2,7 +2,6 @@
 
 using namespace omexmeta;
 
-int writeToFile(const char* fname);
 
 int writeToFile(const char* fname) {
     const char *rdf_str = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -32,16 +31,17 @@ int writeToFile(const char* fname) {
 int main(){
 
 
-    const char *fname = "/mnt/d/libOmexMeta/docs/turtle_string.rdf"; // change for your own system
-    writeToFile(fname);
+    std::filesystem::path fname = std::filesystem::current_path() /+ "annotation_file.rdf";
+
+    writeToFile(fname.string().c_str());
 
     // read the string into our RDF graph
-    RDF* rdf_ptr = RDF_fromFile(fname, "turtle");
+    RDF* rdf_ptr = RDF_fromFile( fname.string().c_str(), "turtle");
 
     printf("%d triples read from file", rdf_ptr->size());
 
     // clear up the file we wrote
-    remove(fname);
+    remove(fname.string().c_str());
 
     // clear up rdf
     RDF_delete(rdf_ptr);

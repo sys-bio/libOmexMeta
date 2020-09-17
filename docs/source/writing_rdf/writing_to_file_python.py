@@ -25,9 +25,9 @@ rdf = RDF.from_string(turtle_string)
 syntax = "ntriples"
 filename = os.path.join(os.path.dirname(__file__), "write_to_file.rdf")
 print("Serializing to {}:".format(syntax))
-print(rdf.to_file(syntax))
-print("\n\n")
-print(f"File writtten to: \"{filename}\"")
+print(rdf.to_file(syntax, filename))
+print(f"RDF graph serialized to \"{filename}\"")
+print(f"Counted \"{len(rdf)}\" triples")
 
 # clear up file
 if os.path.isfile(filename):
