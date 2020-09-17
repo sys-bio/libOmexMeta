@@ -1,50 +1,50 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="Subject_8cpp" kind="file" language="C++">
     <compoundname>Subject.cpp</compoundname>
     <includes refid="Subject_8h" local="yes">omexmeta/Subject.h</includes>
     <incdepgraph>
-      <node id="1664">
-        <label>exception</label>
-      </node>
-      <node id="1659">
+      <node id="1">
         <label>src/omexmeta/Subject.cpp</label>
         <link refid="Subject_8cpp"/>
-        <childnode refid="1660" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="1661">
-        <label>redland/World.h</label>
-      </node>
-      <node id="1666">
-        <label>vector</label>
-      </node>
-      <node id="1663">
-        <label>omexmeta/Error.h</label>
-        <link refid="Error_8h_source"/>
-        <childnode refid="1664" relation="include">
-        </childnode>
-        <childnode refid="1665" relation="include">
-        </childnode>
-      </node>
-      <node id="1665">
-        <label>iostream</label>
-      </node>
-      <node id="1660">
+      <node id="2">
         <label>omexmeta/Subject.h</label>
         <link refid="Subject_8h_source"/>
-        <childnode refid="1661" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="1662" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="1663" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="1665" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="1666" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="1662">
+      <node id="6">
+        <label>exception</label>
+      </node>
+      <node id="5">
+        <label>omexmeta/Error.h</label>
+        <link refid="Error_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>redland/World.h</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="4">
         <label>redland/LibrdfNode.h</label>
       </node>
     </incdepgraph>
@@ -71,11 +71,11 @@
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>node_(node.get())<sp/>{}</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>Subject<sp/>Subject::fromUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri)<sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Subject(LibrdfNode::fromUriString(uri).</highlight><highlight class="keyword">get</highlight><highlight class="normal">());</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Subject(LibrdfNode::fromUriString(uri).get());</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Subject<sp/>Subject::fromBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank)<sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Subject(LibrdfNode::fromBlank(blank).</highlight><highlight class="keyword">get</highlight><highlight class="normal">());</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Subject(LibrdfNode::fromBlank(blank).get());</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>Subject::str()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>

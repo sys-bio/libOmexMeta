@@ -1,175 +1,175 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="Predicate_8cpp" kind="file" language="C++">
     <compoundname>Predicate.cpp</compoundname>
     <includes refid="Predicate_8h" local="yes">omexmeta/Predicate.h</includes>
     <incdepgraph>
-      <node id="1280">
+      <node id="22">
         <label>sys/stat.h</label>
       </node>
-      <node id="1263">
-        <label>omexmeta/OmexMetaUtils.h</label>
-        <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="1262" relation="include">
-        </childnode>
-        <childnode refid="1264" relation="include">
-        </childnode>
-        <childnode refid="1265" relation="include">
-        </childnode>
-        <childnode refid="1275" relation="include">
-        </childnode>
-        <childnode refid="1278" relation="include">
-        </childnode>
-        <childnode refid="1279" relation="include">
-        </childnode>
-        <childnode refid="1272" relation="include">
-        </childnode>
-        <childnode refid="1271" relation="include">
-        </childnode>
-        <childnode refid="1280" relation="include">
-        </childnode>
-        <childnode refid="1277" relation="include">
-        </childnode>
-        <childnode refid="1273" relation="include">
-        </childnode>
-        <childnode refid="1281" relation="include">
-        </childnode>
-        <childnode refid="1282" relation="include">
-        </childnode>
-      </node>
-      <node id="1281">
+      <node id="23">
         <label>filesystem</label>
       </node>
-      <node id="1282">
+      <node id="24">
         <label>assert.h</label>
       </node>
-      <node id="1275">
-        <label>omexmeta/CurlGet.h</label>
-        <link refid="CurlGet_8h_source"/>
-        <childnode refid="1272" relation="include">
-        </childnode>
-        <childnode refid="1276" relation="include">
-        </childnode>
-        <childnode refid="1277" relation="include">
-        </childnode>
-      </node>
-      <node id="1265">
-        <label>omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="1266" relation="include">
-        </childnode>
-        <childnode refid="1267" relation="include">
-        </childnode>
-        <childnode refid="1263" relation="include">
-        </childnode>
-        <childnode refid="1262" relation="include">
-        </childnode>
-        <childnode refid="1270" relation="include">
-        </childnode>
-        <childnode refid="1271" relation="include">
-        </childnode>
-        <childnode refid="1272" relation="include">
-        </childnode>
-        <childnode refid="1273" relation="include">
-        </childnode>
-        <childnode refid="1269" relation="include">
-        </childnode>
-        <childnode refid="1274" relation="include">
-        </childnode>
-      </node>
-      <node id="1277">
-        <label>stdexcept</label>
-      </node>
-      <node id="1272">
-        <label>string</label>
-      </node>
-      <node id="1264">
-        <label>redland/LibrdfQuery.h</label>
-      </node>
-      <node id="1268">
-        <label>exception</label>
-      </node>
-      <node id="1266">
-        <label>redland/RedlandAPI.h</label>
-      </node>
-      <node id="1276">
-        <label>curl/curl.h</label>
-      </node>
-      <node id="1261">
-        <label>redland/World.h</label>
-      </node>
-      <node id="1271">
-        <label>vector</label>
-      </node>
-      <node id="1262">
-        <label>redland/librdf.h</label>
-      </node>
-      <node id="1274">
-        <label>utility</label>
-      </node>
-      <node id="1278">
-        <label>omexmeta/MetaID.h</label>
-        <link refid="MetaID_8h_source"/>
-        <childnode refid="1272" relation="include">
-        </childnode>
-        <childnode refid="1273" relation="include">
-        </childnode>
-        <childnode refid="1274" relation="include">
-        </childnode>
-        <childnode refid="1269" relation="include">
-        </childnode>
-        <childnode refid="1266" relation="include">
-        </childnode>
-      </node>
-      <node id="1273">
-        <label>sstream</label>
-      </node>
-      <node id="1267">
-        <label>omexmeta/Error.h</label>
-        <link refid="Error_8h_source"/>
-        <childnode refid="1268" relation="include">
-        </childnode>
-        <childnode refid="1269" relation="include">
-        </childnode>
-      </node>
-      <node id="1259">
-        <label>src/omexmeta/Predicate.cpp</label>
-        <link refid="Predicate_8cpp"/>
-        <childnode refid="1260" relation="include">
-        </childnode>
-      </node>
-      <node id="1269">
-        <label>iostream</label>
-      </node>
-      <node id="1270">
-        <label>unordered_map</label>
-      </node>
-      <node id="1279">
-        <label>libxml/tree.h</label>
-      </node>
-      <node id="1260">
+      <node id="2">
         <label>omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
-        <childnode refid="1261" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="1262" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="1263" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="1271" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="1283" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="1273" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="1270" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="1269" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="1274" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="1283">
+      <node id="19">
+        <label>stdexcept</label>
+      </node>
+      <node id="14">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>redland/LibrdfQuery.h</label>
+      </node>
+      <node id="20">
+        <label>omexmeta/MetaID.h</label>
+        <link refid="MetaID_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>omexmeta/OmexMetaUtils.h</label>
+        <link refid="OmexMetaUtils_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>exception</label>
+      </node>
+      <node id="1">
+        <label>src/omexmeta/Predicate.cpp</label>
+        <link refid="Predicate_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>redland/RedlandAPI.h</label>
+      </node>
+      <node id="17">
+        <label>omexmeta/CurlGet.h</label>
+        <link refid="CurlGet_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="9">
+        <label>omexmeta/Error.h</label>
+        <link refid="Error_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>redland/World.h</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+      <node id="4">
+        <label>redland/librdf.h</label>
+      </node>
+      <node id="16">
+        <label>utility</label>
+      </node>
+      <node id="15">
+        <label>sstream</label>
+      </node>
+      <node id="11">
+        <label>iostream</label>
+      </node>
+      <node id="12">
+        <label>unordered_map</label>
+      </node>
+      <node id="21">
+        <label>libxml/tree.h</label>
+      </node>
+      <node id="25">
         <label>algorithm</label>
       </node>
     </incdepgraph>
@@ -304,7 +304,7 @@
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;<ref refid="classomexmeta_1_1Predicate_1aee19b8fc8b21f8e5ffd5b64691e1e530" kindref="member">Predicate::getValidTerms</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>valid_terms_;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Predicate_1a14ae7768fbd3aaf444bcde8650910c0b" kindref="member">valid_terms_</ref>;</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Predicate_1a1e7e59b8a48c9f89eeec73f3bbaea19c" kindref="member">Predicate::verify</ref>(std::vector&lt;std::string&gt;<sp/>valid_terms,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;term)<sp/>{</highlight></codeline>

@@ -24,10 +24,9 @@ int main() {
     // but if it doesn't guess well, you can use the format argument for `fromString`
     RDF* rdf = RDF_fromString(turtle_string, "guess");
 
-    const char* formats[10] = {
+    const char* formats[9] = {
             "ntriples",
             "turtle",
-            "rdfxml-xmp",
             "rdfxml-abbrev",
             "rdfxml",
             "dot",
@@ -37,7 +36,7 @@ int main() {
             "html"
     };
 
-    for (int i=0; i<10; i++){
+    for (int i=0; i<9; i++){
         printf("Serializing to %s: \n", formats[i]);
         char* string = RDF_toString(rdf, formats[i]);
         printf("%s\n", string );

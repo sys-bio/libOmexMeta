@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classcopy" kind="class" language="C++" prot="public">
     <compoundname>copy</compoundname>
     <briefdescription>
-<para>copy assignment constructor for Query object </para>    </briefdescription>
+<para>copy assignment constructor for Query object </para>
+    </briefdescription>
     <detaileddescription>
-<para>deleted</para><para>is deleted because it makes using the underlying librdf_query and librdf_query_results pointers safer from a memory management perspective. </para>    </detaileddescription>
+<para>deleted</para>
+<para>is deleted because it makes using the underlying librdf_query and librdf_query_results pointers safer from a memory management perspective. </para>
+    </detaileddescription>
     <location file="src/omexmeta/Query.h" line="165" column="1"/>
     <listofallmembers>
     </listofallmembers>

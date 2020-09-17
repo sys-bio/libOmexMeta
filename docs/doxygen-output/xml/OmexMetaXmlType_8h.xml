@@ -1,63 +1,63 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="OmexMetaXmlType_8h" kind="file" language="C++">
     <compoundname>OmexMetaXmlType.h</compoundname>
     <includedby refid="OmexMetaXmlAssistant_8h" local="yes">src/omexmeta/OmexMetaXmlAssistant.h</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
     <invincdepgraph>
-      <node id="666">
-        <label>src/omexmeta/RDF.h</label>
-        <link refid="RDF_8h_source"/>
-        <childnode refid="664" relation="include">
-        </childnode>
-        <childnode refid="665" relation="include">
-        </childnode>
-        <childnode refid="667" relation="include">
-        </childnode>
-      </node>
-      <node id="663">
-        <label>src/omexmeta/Editor.h</label>
-        <link refid="Editor_8h_source"/>
-        <childnode refid="664" relation="include">
-        </childnode>
-        <childnode refid="665" relation="include">
-        </childnode>
-        <childnode refid="666" relation="include">
-        </childnode>
-        <childnode refid="667" relation="include">
-        </childnode>
-      </node>
-      <node id="661">
+      <node id="1">
         <label>src/omexmeta/OmexMetaXmlType.h</label>
         <link refid="OmexMetaXmlType_8h"/>
-        <childnode refid="662" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="666" relation="include">
-        </childnode>
-      </node>
-      <node id="665">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
-      </node>
-      <node id="662">
-        <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
-        <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="663" relation="include">
-        </childnode>
-        <childnode refid="665" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="667">
+      <node id="6">
+        <label>src/omexmeta/RDF.h</label>
+        <link refid="RDF_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>src/omexmeta/SBMLSemanticExtraction.h</label>
         <link refid="SBMLSemanticExtraction_8h_source"/>
-        <childnode refid="663" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="666" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="664">
+      <node id="4">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
+      </node>
+      <node id="2">
+        <label>src/omexmeta/OmexMetaXmlAssistant.h</label>
+        <link refid="OmexMetaXmlAssistant_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/omexmeta/Editor.h</label>
+        <link refid="Editor_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/omexmeta/OmexMetaCApi.h</label>
+        <link refid="OmexMetaCApi_8h_source"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>

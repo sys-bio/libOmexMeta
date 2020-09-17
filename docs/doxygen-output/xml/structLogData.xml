@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="structLogData" kind="struct" language="C++" prot="public">
     <compoundname>LogData</compoundname>
     <templateparamlist>
       <param>
-        <type>typename</type>
-        <declname>List</declname>
-        <defname>List</defname>
+        <type>typename List</type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-attrib">
@@ -21,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="20" column="1" bodyfile="src/omexmeta/logger.h" bodystart="20" bodyend="-1"/>
+        <location file="src/omexmeta/logger.h" line="20" column="8" bodyfile="src/omexmeta/logger.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

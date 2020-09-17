@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.20" xml:lang="en-US">
   <compound refid="classomexmeta_1_1AnnotationBuilderException" kind="class"><name>omexmeta::AnnotationBuilderException</name>
+    <member refid="classomexmeta_1_1AnnotationBuilderException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1AnnotationBuilderException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classomexmeta_1_1BiomodelsBiologyQualifier" kind="class"><name>omexmeta::BiomodelsBiologyQualifier</name>
     <member refid="classomexmeta_1_1BiomodelsBiologyQualifier_1a5ae1a3da58f05beb1e8b389f36f486bf" kind="variable"><name>valid_terms_</name></member>
@@ -17,6 +19,7 @@
   <compound refid="classomexmeta_1_1CellMLAssistant" kind="class"><name>omexmeta::CellMLAssistant</name>
     <member refid="classomexmeta_1_1CellMLAssistant_1ad0fa4e23c94197d5682a0f8e1dec0889" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1CellMLAssistant_1a4aaccf21ed47201abaf20d67ad7bfaab" kind="function"><name>metaIdTagName</name></member>
+    <member refid="classomexmeta_1_1CellMLAssistant_1af619a65dd28d04dfabd1930ff4110ce0" kind="function"><name>OmexMetaXmlAssistant</name></member>
   </compound>
   <compound refid="classcopy" kind="class"><name>copy</name>
   </compound>
@@ -179,6 +182,8 @@
   <compound refid="structdbg_1_1detail_1_1has__ostream__operator" kind="struct"><name>dbg::detail::has_ostream_operator</name>
   </compound>
   <compound refid="classomexmeta_1_1InappropriateResourceException" kind="class"><name>omexmeta::InappropriateResourceException</name>
+    <member refid="classomexmeta_1_1InappropriateResourceException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1InappropriateResourceException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="structdbg_1_1detail_1_1is__container" kind="struct"><name>dbg::detail::is_container</name>
     <member refid="structdbg_1_1detail_1_1is__container_1aa9a4594488352384b65b36198ac414f8" kind="variable"><name>value</name></member>
@@ -190,6 +195,8 @@
     <member refid="structdbg_1_1last_3_01T_01_4_1a6715c2f60dfaa8a096517ce45ff43999" kind="typedef"><name>type</name></member>
   </compound>
   <compound refid="classomexmeta_1_1LibRDFException" kind="class"><name>omexmeta::LibRDFException</name>
+    <member refid="classomexmeta_1_1LibRDFException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1LibRDFException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfModel" kind="class"><name>redland::LibrdfModel</name>
     <member refid="classredland_1_1LibrdfModel_1a909fe2f497040585a33d6789aa6d3f20" kind="variable"><name>model_</name></member>
@@ -438,8 +445,12 @@
     <member refid="structdbg_1_1detail__detector_1_1nonesuch_1af0d1b2ab32ace678e2c9d95684d1917b" kind="function"><name>operator=</name></member>
   </compound>
   <compound refid="classomexmeta_1_1NotImplementedException" kind="class"><name>omexmeta::NotImplementedException</name>
+    <member refid="classomexmeta_1_1NotImplementedException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1NotImplementedException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classomexmeta_1_1NullPointerException" kind="class"><name>omexmeta::NullPointerException</name>
+    <member refid="classomexmeta_1_1NullPointerException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1NullPointerException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaUtils" kind="class"><name>omexmeta::OmexMetaUtils</name>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a28ab6d86e458158ac441457d74d0ebd7" kind="function"><name>OmexMetaUtils</name></member>
@@ -575,6 +586,10 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kind="function"><name>getNumLocations</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a5f54e5c2df0fd5c3b9121e1426b23af6" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1afee546a420f16e128ed1add9fec35b4f" kind="function"><name>operator!=</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a5399ef8eef084f2dd8b13ef537823d94" kind="function"><name>isVersionOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a1736d331705bf2f1569f492fc733949e" kind="function"><name>setAbout</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kind="function"><name>is</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" kind="function"><name>isPartOf</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalForce" kind="class"><name>omexmeta::PhysicalForce</name>
     <member refid="classomexmeta_1_1PhysicalForce_1a79c5d2ad46b427dea58ab7058c8cd78b" kind="variable"><name>sources_</name></member>
@@ -598,6 +613,8 @@
     <member refid="classomexmeta_1_1PhysicalForce_1a1135c75705b59afa7037bab313009534" kind="function"><name>getNumSinks</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1affa0a1f3cdce0a3336d56658a92c65f3" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1aeb7adb235c0caac04c7aa599f98f258a" kind="function"><name>operator!=</name></member>
+    <member refid="classomexmeta_1_1PhysicalForce_1ab05616b46d417cc7376ae58abd4fe0e6" kind="function"><name>isVersionOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" kind="function"><name>setAbout</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalPhenomenon" kind="class"><name>omexmeta::PhysicalPhenomenon</name>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" kind="variable"><name>model_</name></member>
@@ -629,7 +646,7 @@
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" kind="function"><name>getPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273" kind="function"><name>toTriples</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" kind="function"><name>getSubjectStr</name></member>
-    <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" kind="function"><name>setAbout</name></member>
+    <member refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d" kind="function"><name>setAbout</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" kind="function"><name>setType</name></member>
     <member refid="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" kind="function"><name>getPhysicalPropertyId</name></member>
@@ -659,6 +676,8 @@
     <member refid="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26" kind="function"><name>getNumMediators</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a65585bf5cd473d509f6f66c96757ff8d" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e" kind="function"><name>operator!=</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a52ff2832ac567a4cee2043d37ddcbc6b" kind="function"><name>isVersionOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97" kind="function"><name>setAbout</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalProperty" kind="class"><name>omexmeta::PhysicalProperty</name>
     <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" kind="variable"><name>subject_</name></member>
@@ -809,8 +828,12 @@
     <member refid="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177" kind="function"><name>listOptions</name></member>
   </compound>
   <compound refid="classRedlandLibrdfException" kind="class"><name>RedlandLibrdfException</name>
+    <member refid="classRedlandLibrdfException_1ac541ead5c20548813d7dea73c28c7fab" kind="function"><name>Exception</name></member>
+    <member refid="classRedlandLibrdfException_1a0b1693d4d5007815322070c907ee5cc2" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classRedlandNullPointerException" kind="class"><name>RedlandNullPointerException</name>
+    <member refid="classRedlandNullPointerException_1ac541ead5c20548813d7dea73c28c7fab" kind="function"><name>Exception</name></member>
+    <member refid="classRedlandNullPointerException_1a0b1693d4d5007815322070c907ee5cc2" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Resource" kind="class"><name>omexmeta::Resource</name>
     <member refid="classomexmeta_1_1Resource_1a9695da843dd795e090f8b89886d432b9" kind="variable"><name>node_</name></member>
@@ -829,6 +852,7 @@
   <compound refid="classomexmeta_1_1SBMLAssistant" kind="class"><name>omexmeta::SBMLAssistant</name>
     <member refid="classomexmeta_1_1SBMLAssistant_1afcc69d3e7a12673071632f757290d798" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1SBMLAssistant_1ad3c3ab0ac3004961e5c2951568528d8a" kind="function"><name>metaIdTagName</name></member>
+    <member refid="classomexmeta_1_1SBMLAssistant_1af619a65dd28d04dfabd1930ff4110ce0" kind="function"><name>OmexMetaXmlAssistant</name></member>
   </compound>
   <compound refid="classomexmeta_1_1SBMLSemanticExtraction" kind="class"><name>omexmeta::SBMLSemanticExtraction</name>
     <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a6ffc358e6fa4d4c214cdb667b5c8c313" kind="variable"><name>editor_</name></member>
@@ -942,6 +966,8 @@
   <compound refid="structdbg_1_1type__tag" kind="struct"><name>dbg::type_tag</name>
   </compound>
   <compound refid="classomexmeta_1_1ValueException" kind="class"><name>omexmeta::ValueException</name>
+    <member refid="classomexmeta_1_1ValueException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1ValueException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classredland_1_1World" kind="class"><name>redland::World</name>
     <member refid="classredland_1_1World_1aac4a7976699e6d14787b13accd4e1e51" kind="variable"><name>world_</name></member>
@@ -1000,7 +1026,7 @@
     <member refid="dbg_8h_1a19adefcfcaddecb9f32e810ebcae4856" kind="typedef"><name>detect_size_t</name></member>
     <member refid="dbg_8h_1a2c6a2bc0c8581b3b0d285d1d2971e44d" kind="typedef"><name>ostream_operator_t</name></member>
   </compound>
-  <compound refid="namespacedbg_1_1detail_1_1_0D5" kind="namespace"><name>dbg::detail::@5</name>
+  <compound refid="namespacedbg_1_1detail_1_1_0d0" kind="namespace"><name>dbg::detail::@0</name>
   </compound>
   <compound refid="namespacedbg_1_1detail__detector" kind="namespace"><name>dbg::detail_detector</name>
     <member refid="dbg_8h_1a1dbadccf461338e71c55ea392d4ed47c" kind="typedef"><name>void_t</name></member>
@@ -1108,6 +1134,9 @@
     <member refid="namespaceomexmeta_1acc3cb121e83fea6627185101e64db8e9" kind="function"><name>PhysicalEntity_getNumLocations</name></member>
     <member refid="namespaceomexmeta_1a63e0d41567ae512005d7c9e50037e44e" kind="function"><name>PhysicalEntity_getLocation</name></member>
     <member refid="namespaceomexmeta_1a2ca2e5f41e156dc785bb858f82a088d4" kind="function"><name>PhysicalEntity_str</name></member>
+    <member refid="namespaceomexmeta_1a91c343638a5190337fec566ac68666b8" kind="function"><name>PhysicalEntity_isVersionOf</name></member>
+    <member refid="namespaceomexmeta_1ad16c74638e4679527511519745b2826c" kind="function"><name>PhysicalEntity_isPartOf</name></member>
+    <member refid="namespaceomexmeta_1a971552a103140035279fa2eb0b402fc0" kind="function"><name>PhysicalEntity_setAbout</name></member>
     <member refid="namespaceomexmeta_1a4b7cef4fcdbd4502c94b18da2f85470f" kind="function"><name>PhysicalProcess_new</name></member>
     <member refid="namespaceomexmeta_1a97146d9b855c53650e54c471f053a4dc" kind="function"><name>PhysicalProcess_delete</name></member>
     <member refid="namespaceomexmeta_1a3ccca8297fc991baf57065570938ed84" kind="function"><name>PhysicalProcess_freeAll</name></member>
@@ -1120,6 +1149,8 @@
     <member refid="namespaceomexmeta_1aa7371fdf91f4c6c120e4559b23ad3585" kind="function"><name>PhysicalProcess_getNumSources</name></member>
     <member refid="namespaceomexmeta_1aaf4162aa78c2c7f73449705a3e0fc951" kind="function"><name>PhysicalProcess_getNumSinks</name></member>
     <member refid="namespaceomexmeta_1a7ad65f0ec2f5c8433ebc126c75779520" kind="function"><name>PhysicalProcess_getNumMediators</name></member>
+    <member refid="namespaceomexmeta_1af73229fd4219d7dfa0fa3876ac982ad9" kind="function"><name>PhysicalProcess_isVersionOf</name></member>
+    <member refid="namespaceomexmeta_1afde7fdd0535279191576bcab4a9d665b" kind="function"><name>PhysicalProcess_setAbout</name></member>
     <member refid="namespaceomexmeta_1a20e720c23e2368bf19c316971ebeafd7" kind="function"><name>PhysicalForce_new</name></member>
     <member refid="namespaceomexmeta_1aad5757f8832cf5fcaf546cec1f97af82" kind="function"><name>PhysicalForce_delete</name></member>
     <member refid="namespaceomexmeta_1ac9903c88bb127f778476bdffe075ed8a" kind="function"><name>PhysicalForce_freeAll</name></member>
@@ -1130,6 +1161,8 @@
     <member refid="namespaceomexmeta_1a1bec2b6579c0eba8a719f68d39b09c2e" kind="function"><name>PhysicalForce_getNumSinks</name></member>
     <member refid="namespaceomexmeta_1a8a3f3cf23e3c5253f0a92f6374a2059b" kind="function"><name>PhysicalForce_str</name></member>
     <member refid="namespaceomexmeta_1a4428467ced5ab11c48a3b16284048a36" kind="function"><name>PhysicalForce_getAbout</name></member>
+    <member refid="namespaceomexmeta_1af046e4eed3949643feca6decaa570340" kind="function"><name>PhysicalForce_isVersionOf</name></member>
+    <member refid="namespaceomexmeta_1aaf31dd28c34186769fa91c5c5bd205b6" kind="function"><name>PhysicalForce_setAbout</name></member>
     <member refid="namespaceomexmeta_1a119fbc0317a5af631e7f68caece8c70b" kind="function"><name>PersonalInformation_new</name></member>
     <member refid="namespaceomexmeta_1a5dcd490456bde3f95069f91e65c2b042" kind="function"><name>PersonalInformation_delete</name></member>
     <member refid="namespaceomexmeta_1a9db9c9c591926b3e9061b2ca7cb4541f" kind="function"><name>PersonalInformation_getLocalUri</name></member>
@@ -1149,7 +1182,7 @@
     <member refid="namespaceomexmeta_1af1b8bfaffdb6766ddaf1f52785436980" kind="function"><name>PersonalInformation_setModelUri</name></member>
     <member refid="namespaceomexmeta_1ae46820e98812e5f7e15fba6c2fa5ea55" kind="function"><name>free_c_char_star_star</name></member>
     <member refid="namespaceomexmeta_1ada1c39e1f5456668968eabe1a0ff33ec" kind="function"><name>_func_that_returns_dynamic_alloc_char_star_star</name></member>
-    <member refid="namespaceomexmeta_1a273e4922a97b016e54bbb441c23de885" kind="function"><name>free_world</name></member>
+    <member refid="namespaceomexmeta_1ab666d5ff29f6e475cd802828097498cf" kind="function"><name>free_world</name></member>
     <member refid="namespaceomexmeta_1a5d07b1a3b03615813dbb9efb62efda45" kind="function"><name>RDF_getBaseUri</name></member>
     <member refid="namespaceomexmeta_1a64ae848c4570f1efb4d47e795b76adcd" kind="function"><name>RDF_setBaseUri</name></member>
     <member refid="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
@@ -1371,8 +1404,8 @@
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
   </compound>
-  <compound refid="_2mnt_2d_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>/mnt/d/libOmexMeta/src/omexmeta/OmexMetaCApi.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/OmexMetaCApi.h</name>
   </compound>
-  <compound refid="_2mnt_2d_2libOmexMeta_2src_2omexmeta_2Predicate_8h-example" kind="example"><name>/mnt/d/libOmexMeta/src/omexmeta/Predicate.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2Predicate_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/Predicate.h</name>
   </compound>
 </doxygenindex>

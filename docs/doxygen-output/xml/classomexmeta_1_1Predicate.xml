@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1Predicate" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Predicate</compoundname>
     <derivedcompoundref refid="classomexmeta_1_1BiomodelsBiologyQualifier" prot="public" virt="non-virtual">omexmeta::BiomodelsBiologyQualifier</derivedcompoundref>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="32" column="21" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1ab626a5fd9fa8f302767d4ca544a9eff2" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="32" column="32" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1a5dfbbc85f7bdc5a3e4da72913f6ce306" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="32" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="32" column="38" bodyfile="src/omexmeta/Predicate.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1a4fe359b93a9dea9b60f7bc28c1aa913b" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="33" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="33" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="33" column="21" bodyfile="src/omexmeta/Predicate.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1ad0548a6d31dbc6f32734032b1540e58f" prot="protected" static="no" mutable="no">
         <type>librdf_node *</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="34" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="34" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="34" column="21" bodyfile="src/omexmeta/Predicate.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Predicate_1a14ae7768fbd3aaf444bcde8650910c0b" prot="protected" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -82,12 +82,13 @@
         <name>valid_terms_</name>
         <initializer>{&quot;All&quot;}</initializer>
         <briefdescription>
-<para>predicates can only have type uri </para>        </briefdescription>
+<para>predicates can only have type uri </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="35" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="35" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="35" column="21" bodyfile="src/omexmeta/Predicate.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -106,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="37" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="23" bodyend="69"/>
+        <location file="src/omexmeta/Predicate.h" line="37" column="18" bodyfile="src/omexmeta/Predicate.cpp" bodystart="23" bodyend="69"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -121,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="40" column="1"/>
+        <location file="src/omexmeta/Predicate.h" line="40" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1ad5a91eb29204202d2f18816d09677622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -141,34 +142,41 @@
           <declname>prefix</declname>
         </param>
         <briefdescription>
-<para>construct a <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> from a namespace, term and prefix portion of a predicate </para>        </briefdescription>
+<para>construct a <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> from a namespace, term and prefix portion of a predicate </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>namespace_</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the namespace portion of a predicate. i.e. <ulink url="http://biomodels.net/biology-qualifiers/">http://biomodels.net/biology-qualifiers/</ulink> </para></parameterdescription>
+<para>the namespace portion of a predicate. i.e. <ulink url="http://biomodels.net/biology-qualifiers/">http://biomodels.net/biology-qualifiers/</ulink> </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>term</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the last portion of the predicate, i.e. is </para></parameterdescription>
+<para>the last portion of the predicate, i.e. is </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>prefix</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the prefix that can be used instead of the full namespace, i.e. bqbiol</para></parameterdescription>
+<para>the prefix that can be used instead of the full namespace, i.e. bqbiol</para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-<ulink url="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</ulink> ------------------------------------<mdash/>|<ndash/> | | namespace term</para><para>is equivalent to</para><para>bqbiol:is ---<mdash/>|<ndash/> | | prefix term </para>        </detaileddescription>
+<ulink url="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</ulink> ------------------------------------<mdash/>|<ndash/> | | namespace term</para>
+<para>is equivalent to</para>
+<para>bqbiol:is ---<mdash/>|<ndash/> | | prefix term </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="67" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="11" bodyend="21"/>
+        <location file="src/omexmeta/Predicate.h" line="67" column="9" bodyfile="src/omexmeta/Predicate.cpp" bodystart="11" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a5db1e6150f8cfd7605e82996e2aebb50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -185,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="70" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="197" bodyend="199"/>
+        <location file="src/omexmeta/Predicate.h" line="70" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="197" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a7bf4b8769eb9801eb26cc976723b56f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -202,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="72" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="201" bodyend="203"/>
+        <location file="src/omexmeta/Predicate.h" line="72" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="201" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -210,13 +218,16 @@
         <argsstring>()</argsstring>
         <name>str</name>
         <briefdescription>
-<para>get the predicate as a full string </para>        </briefdescription>
+<para>get the predicate as a full string </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a string representing the predicate </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>a string representing the predicate </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="78" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="121" bodyend="123"/>
+        <location file="src/omexmeta/Predicate.h" line="78" column="21" bodyfile="src/omexmeta/Predicate.cpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_node *</type>
@@ -224,13 +235,16 @@
         <argsstring>() const</argsstring>
         <name>getNode</name>
         <briefdescription>
-<para>getter for the node contained by the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> object </para>        </briefdescription>
+<para>getter for the node contained by the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> object </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the librdf_node* pointer for the redland libraries under the hood </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the librdf_node* pointer for the redland libraries under the hood </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="104" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="146" bodyend="148"/>
+        <location file="src/omexmeta/Predicate.h" line="104" column="22" bodyfile="src/omexmeta/Predicate.cpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1aee19b8fc8b21f8e5ffd5b64691e1e530" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -238,13 +252,16 @@
         <argsstring>() const</argsstring>
         <name>getValidTerms</name>
         <briefdescription>
-<para>stores the valid terms that are allowed in a particular predicate subclass </para>        </briefdescription>
+<para>stores the valid terms that are allowed in a particular predicate subclass </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a vector of strings</para></simplesect>
-Subclasses override this method so they return a complete list of valid terms for their own class </para>        </detaileddescription>
+<para><simplesect kind="return"><para>a vector of strings</para>
+</simplesect>
+Subclasses override this method so they return a complete list of valid terms for their own class </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="112" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="125" bodyend="127"/>
+        <location file="src/omexmeta/Predicate.h" line="112" column="28" bodyfile="src/omexmeta/Predicate.cpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1add4ab1cd86f83de3512279bbfdad947c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -252,13 +269,16 @@ Subclasses override this method so they return a complete list of valid terms fo
         <argsstring>() const</argsstring>
         <name>getNamespace</name>
         <briefdescription>
-<para>getter for the namespace portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>        </briefdescription>
+<para>getter for the namespace portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the string representing the namespace of the current <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the string representing the namespace of the current <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="119" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="71" bodyend="73"/>
+        <location file="src/omexmeta/Predicate.h" line="119" column="28" bodyfile="src/omexmeta/Predicate.cpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a54a15176bd697d37d00573bf86954630" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -266,13 +286,16 @@ Subclasses override this method so they return a complete list of valid terms fo
         <argsstring>() const</argsstring>
         <name>getTerm</name>
         <briefdescription>
-<para>getter for term portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>        </briefdescription>
+<para>getter for term portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the string representing the term portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the string representing the term portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="125" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="75" bodyend="77"/>
+        <location file="src/omexmeta/Predicate.h" line="125" column="28" bodyfile="src/omexmeta/Predicate.cpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a0147e977f71604db05763815ae6b553f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -280,13 +303,16 @@ Subclasses override this method so they return a complete list of valid terms fo
         <argsstring>() const</argsstring>
         <name>getPrefix</name>
         <briefdescription>
-<para>getter for the prefix portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>        </briefdescription>
+<para>getter for the prefix portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the string representing the prefix portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the string representing the prefix portion of the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="131" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="79" bodyend="81"/>
+        <location file="src/omexmeta/Predicate.h" line="131" column="28" bodyfile="src/omexmeta/Predicate.cpp" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -294,12 +320,15 @@ Subclasses override this method so they return a complete list of valid terms fo
         <argsstring>() const</argsstring>
         <name>getUri</name>
         <briefdescription>
-<para>getter for uri </para>        </briefdescription>
+<para>getter for uri </para>
+        </briefdescription>
         <detaileddescription>
-<para>For developers. Consider removing since <ref refid="classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf" kindref="member">str()</ref> method does the same thing </para>        </detaileddescription>
+<para><verbatim>For developers. Consider removing since str() method does the same thing
+</verbatim> </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="138" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="83" bodyend="85"/>
+        <location file="src/omexmeta/Predicate.h" line="138" column="29" bodyfile="src/omexmeta/Predicate.cpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -307,12 +336,22 @@ Subclasses override this method so they return a complete list of valid terms fo
         <argsstring>()</argsstring>
         <name>freeNode</name>
         <briefdescription>
-<para>release resources associated with this <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref>. </para>        </briefdescription>
+<para>release resources associated with this <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref>. </para>
+        </briefdescription>
         <detaileddescription>
-<para><ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> objects contain a librdf_node pointer which needs to be freed by the caller. If a <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> is passed to a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object (which most of the time is it), responsibility for deleting the contained librdf_node is transferred to the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object, which automatically clears up resources. If not, then it is the callers responsibility to call this method when they are done with <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> instances. </para>        </detaileddescription>
+<para><verbatim>Predicate objects contain a librdf_node pointer which
+needs to be freed by the caller. If a Predicate is passed
+to a Triple object (which most of the time is it),
+responsibility for deleting the contained librdf_node
+is transferred to the Triple object, which automatically
+clears up resources. If not, then it is the callers
+responsibility to call this method when they are done with
+Predicate instances.
+</verbatim> </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="152" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="154" bodyend="156"/>
+        <location file="src/omexmeta/Predicate.h" line="152" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="154" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a0bf6030510247a6999d81cada92c1e51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -324,20 +363,23 @@ Subclasses override this method so they return a complete list of valid terms fo
           <declname>node</declname>
         </param>
         <briefdescription>
-<para>replace the current librdf_node assicated with this <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> with node </para>        </briefdescription>
+<para>replace the current librdf_node assicated with this <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> with node </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>node</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the new librdf_node pointer to use in the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para></parameterdescription>
+<para>the new librdf_node pointer to use in the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="168" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="150" bodyend="152"/>
+        <location file="src/omexmeta/Predicate.h" line="168" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="150" bodyend="152"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -347,13 +389,16 @@ Subclasses override this method so they return a complete list of valid terms fo
         <argsstring>()</argsstring>
         <name>namespaceMap</name>
         <briefdescription>
-<para>get a map namespaces and prefixes </para>        </briefdescription>
+<para>get a map namespaces and prefixes </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a unordered_map with namespaces as keys and prefixes as values </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>a unordered_map with namespaces as keys and prefixes as values </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="46" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="98" bodyend="119"/>
+        <location file="src/omexmeta/Predicate.h" line="46" column="35" bodyfile="src/omexmeta/Predicate.cpp" bodystart="98" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a1e7e59b8a48c9f89eeec73f3bbaea19c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -369,27 +414,31 @@ Subclasses override this method so they return a complete list of valid terms fo
           <declname>term</declname>
         </param>
         <briefdescription>
-<para>Static method for checking validity of term against valid_terms. </para>        </briefdescription>
+<para>Static method for checking validity of term against valid_terms. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>term</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the term to validate </para></parameterdescription>
+<para>the term to validate </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>valid_terms</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the set of terms to validate term against</para></parameterdescription>
+<para>the set of terms to validate term against</para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-Throws an error when term is not in valid_terms. Used by subclasses to verify user input. </para>        </detaileddescription>
+Throws an error when term is not in valid_terms. Used by subclasses to verify user input. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="88" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="129" bodyend="144"/>
+        <location file="src/omexmeta/Predicate.h" line="88" column="21" bodyfile="src/omexmeta/Predicate.cpp" bodystart="129" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a8381c8b0c7bbaa27de29608cbff08bf5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -401,21 +450,25 @@ Throws an error when term is not in valid_terms. Used by subclasses to verify us
           <declname>ns</declname>
         </param>
         <briefdescription>
-<para>check if we have &quot;know&quot; a namespace. Known namespaces are returned by <ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap()</ref>. </para>        </briefdescription>
+<para>check if we have &quot;know&quot; a namespace. Known namespaces are returned by <ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap()</ref>. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>ns</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the namespace to check </para></parameterdescription>
+<para>the namespace to check </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True if we have seen the namespace ns before </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>True if we have seen the namespace ns before </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="97" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="87" bodyend="96"/>
+        <location file="src/omexmeta/Predicate.h" line="97" column="21" bodyfile="src/omexmeta/Predicate.cpp" bodystart="87" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -435,55 +488,57 @@ Throws an error when term is not in valid_terms. Used by subclasses to verify us
           <declname>predicate</declname>
         </param>
         <briefdescription>
-<para>utility for checking whether the uri in  predicate has a namespace that we already know. If found, the namespace is added to  serializer </para>        </briefdescription>
+<para>utility for checking whether the uri in @parameter predicate has a namespace that we already know. If found, the namespace is added to @parameter serializer </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="161" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="158" bodyend="195"/>
+        <location file="src/omexmeta/Predicate.h" line="161" column="9" bodyfile="src/omexmeta/Predicate.cpp" bodystart="158" bodyend="195"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>The predicate class creates and stores a URI node. </para>    </detaileddescription>
+<para>The predicate class creates and stores a URI node. </para>
+    </detaileddescription>
     <inheritancegraph>
-      <node id="182">
+      <node id="4">
         <label>omexmeta::DCTerm</label>
         <link refid="classomexmeta_1_1DCTerm"/>
-        <childnode refid="179" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="181">
+      <node id="3">
         <label>omexmeta::BiomodelsModelQualifier</label>
         <link refid="classomexmeta_1_1BiomodelsModelQualifier"/>
-        <childnode refid="179" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="180">
+      <node id="2">
         <label>omexmeta::BiomodelsBiologyQualifier</label>
         <link refid="classomexmeta_1_1BiomodelsBiologyQualifier"/>
-        <childnode refid="179" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="184">
+      <node id="6">
         <label>omexmeta::SemSim</label>
         <link refid="classomexmeta_1_1SemSim"/>
-        <childnode refid="179" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="183">
+      <node id="5">
         <label>omexmeta::Foaf</label>
         <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="179" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="179">
+      <node id="1">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </inheritancegraph>
-    <location file="src/omexmeta/Predicate.h" line="29" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="29" bodyend="176"/>
+    <location file="src/omexmeta/Predicate.h" line="29" column="5" bodyfile="src/omexmeta/Predicate.h" bodystart="29" bodyend="176"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>freeNode</name></member>

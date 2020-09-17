@@ -1,65 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="logger_8h" kind="file" language="C++">
     <compoundname>logger.h</compoundname>
     <includes local="no">iostream</includes>
     <includedby refid="MarkupIdentifier_8cpp" local="yes">src/omexmeta/MarkupIdentifier.cpp</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
     <incdepgraph>
-      <node id="261">
+      <node id="1">
         <label>src/omexmeta/logger.h</label>
         <link refid="logger_8h"/>
-        <childnode refid="262" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="262">
+      <node id="2">
         <label>iostream</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="264">
+      <node id="2">
         <label>src/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="265" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="266" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="267" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="263">
+      <node id="1">
         <label>src/omexmeta/logger.h</label>
         <link refid="logger_8h"/>
-        <childnode refid="264" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="268">
-        <label>src/omexmeta/Editor.h</label>
-        <link refid="Editor_8h_source"/>
-        <childnode refid="265" relation="include">
-        </childnode>
-        <childnode refid="266" relation="include">
-        </childnode>
-        <childnode refid="264" relation="include">
-        </childnode>
-        <childnode refid="267" relation="include">
-        </childnode>
-      </node>
-      <node id="266">
-        <label>src/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
-      </node>
-      <node id="267">
+      <node id="5">
         <label>src/omexmeta/SBMLSemanticExtraction.h</label>
         <link refid="SBMLSemanticExtraction_8h_source"/>
-        <childnode refid="268" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="264" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="265">
+      <node id="3">
         <label>src/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
+      </node>
+      <node id="6">
+        <label>src/omexmeta/Editor.h</label>
+        <link refid="Editor_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/omexmeta/OmexMetaCApi.h</label>
+        <link refid="OmexMetaCApi_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structNone" prot="public">None</innerclass>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="44" column="1" bodyfile="src/omexmeta/logger.h" bodystart="25" bodyend="28"/>
+        <location file="src/omexmeta/logger.h" line="1" column="0" bodyfile="src/omexmeta/logger.h" bodystart="25" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="logger_8h_1a2cf87bd0339ae36c35d95e4ec708f36d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="44" column="1" bodyfile="src/omexmeta/logger.h" bodystart="32" bodyend="35"/>
+        <location file="src/omexmeta/logger.h" line="1" column="0" bodyfile="src/omexmeta/logger.h" bodystart="32" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="logger_8h_1a78941df6fd543ee5d88f96625f0047a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="37" column="1" bodyfile="src/omexmeta/logger.h" bodystart="37" bodyend="39"/>
+        <location file="src/omexmeta/logger.h" line="37" column="13" bodyfile="src/omexmeta/logger.h" bodystart="37" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="logger_8h_1aa99f584b7df937bea8439a998575b096" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -188,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="43" column="1" bodyfile="src/omexmeta/logger.h" bodystart="43" bodyend="47"/>
+        <location file="src/omexmeta/logger.h" line="43" column="6" bodyfile="src/omexmeta/logger.h" bodystart="43" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="logger_8h_1a5c40ab41439724fa2e51529f78fae5b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="50" column="1" bodyfile="src/omexmeta/logger.h" bodystart="50" bodyend="55"/>
+        <location file="src/omexmeta/logger.h" line="50" column="6" bodyfile="src/omexmeta/logger.h" bodystart="50" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -250,14 +250,14 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Value&gt;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData&lt;Pair&lt;Begin,const Value &amp;&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(LogData&lt;Begin&gt;<sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Value<sp/>&amp;value)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(<ref refid="structLogData" kindref="compound">LogData&lt;Begin&gt;</ref><sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Value<sp/>&amp;value)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{{begin.list,value}};</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n&gt;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData&lt;Pair&lt;Begin,const char *&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(LogData&lt;Begin&gt;<sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>char<sp/>(&amp;value)[n])</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(<ref refid="structLogData" kindref="compound">LogData&lt;Begin&gt;</ref><sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>(&amp;value)[n])</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{{begin.list,value}};</highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}</highlight></codeline>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PhysicalPhenomenon" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalPhenomenon</compoundname>
     <derivedcompoundref refid="classomexmeta_1_1PhysicalEntity" prot="public" virt="non-virtual">omexmeta::PhysicalEntity</derivedcompoundref>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="26" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="26" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="26" column="22" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a9e17807d60d9e3f797d6c02ef85cdfc6" prot="protected" static="no" mutable="no">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="27" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="27" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="27" column="26" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a74e88adb2099099e411b55cb9aa460a0" prot="protected" static="no" mutable="no">
         <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="28" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="28" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="28" column="24" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a696cbc4f6490dd55d6bd41c7711cd0ec" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="29" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="29" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="29" column="21" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" static="no" mutable="no">
         <type>std::string</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="30" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="30" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="30" column="21" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a710756d611350395539dfa9f7fbf764e" prot="protected" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="31" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="31" bodyend="-1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="31" column="21" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -94,12 +94,14 @@
         <argsstring>()</argsstring>
         <name>getNewMetaidExclusionList</name>
         <briefdescription>
-<para>getter for a vector of strings that keeps track of used metaids. </para>        </briefdescription>
+<para>getter for a vector of strings that keeps track of used metaids. </para>
+        </briefdescription>
         <detaileddescription>
-<para>this mechanism is necessary in order to ensure unique metaids in the case of adding multiple instances of a type to the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> before commiting to the model. For instance, you can have arbitrary sink participants, which would all be given the SinkParticipant0000 metaid if not for this mechanism. </para>        </detaileddescription>
+<para>this mechanism is necessary in order to ensure unique metaids in the case of adding multiple instances of a type to the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> before commiting to the model. For instance, you can have arbitrary sink participants, which would all be given the SinkParticipant0000 metaid if not for this mechanism. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="41" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="117" bodyend="119"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="41" column="22" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1afe71a5c6399b992922eb6eeda6de49bd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -116,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="44" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="32" bodyend="34"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="44" column="22" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="32" bodyend="34"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -131,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="47" column="1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="47" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a1c3322453b3c6831668ffa98d9f4b6af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -148,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="49" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="75" bodyend="77"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="49" column="14" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a2c726263714e31c7c19d6e73c2c593f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -165,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="51" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="79" bodyend="81"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="51" column="14" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a215daebc00eed1cf7d9eddeaed0d1603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -178,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="53" column="1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="53" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a2d59ebbc920a40348d102af31ed6661a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -191,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="55" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="104" bodyend="111"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="55" column="27" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="104" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -208,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="57" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="113" bodyend="115"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="57" column="14" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="113" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1ad823dad75504adb78975c810e5f1ff94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -220,14 +222,15 @@
           <declname>phenomenon</declname>
         </param>
         <briefdescription>
-<para>Copy constructor for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. </para>        </briefdescription>
+<para>Copy constructor for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="62" column="1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="62" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aeb95aedf1756ded154ec6753108a691e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aeb95aedf1756ded154ec6753108a691e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PhysicalPhenomenon::PhysicalPhenomenon</definition>
         <argsstring>(PhysicalPhenomenon &amp;&amp;phenomenon) noexcept</argsstring>
@@ -237,12 +240,13 @@
           <declname>phenomenon</declname>
         </param>
         <briefdescription>
-<para>Move constructor for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. </para>        </briefdescription>
+<para>Move constructor for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="67" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="56" bodyend="62"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="67" column="9" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="56" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aac3920bfe9bf16e071ebdd8ed4fabe2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
@@ -254,14 +258,15 @@
           <declname>phenomenon</declname>
         </param>
         <briefdescription>
-<para>assignment operator for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>        </briefdescription>
+<para>assignment operator for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="72" column="1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="72" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1af15355b4c2a361b4b02dca02d3877aed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1af15355b4c2a361b4b02dca02d3877aed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
         <definition>PhysicalPhenomenon &amp; omexmeta::PhysicalPhenomenon::operator=</definition>
         <argsstring>(PhysicalPhenomenon &amp;&amp;phenomenon) noexcept</argsstring>
@@ -271,12 +276,13 @@
           <declname>phenomenon</declname>
         </param>
         <briefdescription>
-<para>move assignment operator for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>        </briefdescription>
+<para>move assignment operator for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="77" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="64" bodyend="73"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="77" column="28" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="64" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -288,12 +294,14 @@
           <declname>model</declname>
         </param>
         <briefdescription>
-<para>Constructor for builder interface. </para>        </briefdescription>
+<para>Constructor for builder interface. </para>
+        </briefdescription>
         <detaileddescription>
-<para>Shouldn&apos;t be needed by users. </para>        </detaileddescription>
+<para>Shouldn&apos;t be needed by users. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="84" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="18" bodyend="19"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="84" column="19" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="18" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -313,12 +321,14 @@
           <declname>local_uri</declname>
         </param>
         <briefdescription>
-<para>Constructor for builder interface. </para>        </briefdescription>
+<para>Constructor for builder interface. </para>
+        </briefdescription>
         <detaileddescription>
-<para>Shouldn&apos;t be needed by users directly. </para>        </detaileddescription>
+<para>Shouldn&apos;t be needed by users directly. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="91" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="21" bodyend="22"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="91" column="19" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="21" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -346,41 +356,47 @@
           <declname>type</declname>
         </param>
         <briefdescription>
-<para>constructor for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> object. </para>        </briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> object. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>model</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>a librdf_model object assicated with <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. </para></parameterdescription>
+<para>a librdf_model object assicated with <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The subject for the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. <ref refid="classThis" kindref="compound">This</ref> is the metaid. </para></parameterdescription>
+<para>The subject for the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. <ref refid="classThis" kindref="compound">This</ref> is the metaid. </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>propertyResource</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> assocaited with a composite annotation </para></parameterdescription>
+<para>The <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> assocaited with a composite annotation </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An AnnotationType to distinguish composite annotations. </para></parameterdescription>
+<para>An AnnotationType to distinguish composite annotations. </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="100" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="100" column="9" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a5528b12e5dbc702c0c270328662e7031" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -393,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="103" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="91" bodyend="98"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="103" column="28" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="91" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -410,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="105" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="100" bodyend="102"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="105" column="14" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="100" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -418,13 +434,16 @@
         <argsstring>() const</argsstring>
         <name>getAbout</name>
         <briefdescription>
-<para>get the subject portion of the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>        </briefdescription>
+<para>get the subject portion of the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the string associated with the subject node </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the string associated with the subject node </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="111" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="46" bodyend="48"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="111" column="28" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -432,13 +451,16 @@
         <argsstring>() const</argsstring>
         <name>setAbout</name>
         <briefdescription>
-<para>set the subject portion of the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>        </briefdescription>
+<para>set the subject portion of the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the string associated with the subject node </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the string associated with the subject node </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="117" column="1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="117" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
@@ -446,13 +468,16 @@
         <argsstring>() const</argsstring>
         <name>getType</name>
         <briefdescription>
-<para>getter for Type argument </para>        </briefdescription>
+<para>getter for Type argument </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the AnnotationType currently used (<ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> or <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>) </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the AnnotationType currently used (<ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> or <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>) </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="123" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="28" bodyend="30"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="123" column="25" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="28" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref></type>
@@ -460,30 +485,36 @@
         <argsstring>() const</argsstring>
         <name>getPhysicalProperty</name>
         <briefdescription>
-<para>getter for <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> argument </para>        </briefdescription>
+<para>getter for <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> argument </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the resource representing the physical property being annotated </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the resource representing the physical property being annotated </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="129" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="36" bodyend="38"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="129" column="27" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="36" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
         <definition>Triples omexmeta::PhysicalPhenomenon::toTriples</definition>
         <argsstring>()</argsstring>
         <name>toTriples</name>
-        <reimplementedby refid="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a">toTriples</reimplementedby>
-        <reimplementedby refid="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0">toTriples</reimplementedby>
         <reimplementedby refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba">toTriples</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0">toTriples</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a">toTriples</reimplementedby>
         <briefdescription>
-<para>create a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object using the information contained in the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. Overridden by subclasses. </para>        </briefdescription>
+<para>create a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object using the information contained in the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. Overridden by subclasses. </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object containing the individual <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects representing the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref></para></simplesect>
-Refer to subclasses for more documentation. </para>        </detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object containing the individual <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects representing the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref></para>
+</simplesect>
+Refer to subclasses for more documentation. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="139" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="40" bodyend="43"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="139" column="26" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -496,15 +527,18 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="141" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="24" bodyend="26"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="141" column="28" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="24" bodyend="26"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
         <definition>PhysicalPhenomenon &amp; omexmeta::PhysicalPhenomenon::setAbout</definition>
-        <argsstring>(std::string about)</argsstring>
+        <argsstring>(const std::string &amp;about)</argsstring>
         <name>setAbout</name>
+        <reimplementedby refid="classomexmeta_1_1PhysicalEntity_1a1736d331705bf2f1569f492fc733949e">setAbout</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35">setAbout</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97">setAbout</reimplementedby>
         <param>
-          <type>std::string</type>
+          <type>const std::string &amp;</type>
           <declname>about</declname>
         </param>
         <briefdescription>
@@ -513,7 +547,7 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="143" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="50" bodyend="53"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="143" column="36" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -530,7 +564,7 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="145" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="83" bodyend="85"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="145" column="14" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -547,7 +581,7 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="147" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="87" bodyend="89"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="147" column="14" bodyfile="src/omexmeta/PhysicalPhenomenon.cpp" bodystart="87" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -560,7 +594,7 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalPhenomenon.h" line="149" column="1"/>
+        <location file="src/omexmeta/PhysicalPhenomenon.h" line="149" column="28"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -568,43 +602,43 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="169">
+      <node id="4">
         <label>omexmeta::PhysicalProcess</label>
         <link refid="classomexmeta_1_1PhysicalProcess"/>
-        <childnode refid="166" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="166">
+      <node id="1">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
       </node>
-      <node id="168">
+      <node id="3">
         <label>omexmeta::PhysicalForce</label>
         <link refid="classomexmeta_1_1PhysicalForce"/>
-        <childnode refid="166" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="167">
+      <node id="2">
         <label>omexmeta::PhysicalEntity</label>
         <link refid="classomexmeta_1_1PhysicalEntity"/>
-        <childnode refid="166" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="171">
+      <node id="2">
         <label>omexmeta::PhysicalProperty</label>
         <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
-      <node id="170">
+      <node id="1">
         <label>omexmeta::PhysicalPhenomenon</label>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
-        <childnode refid="171" relation="usage">
+        <childnode refid="2" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/PhysicalPhenomenon.h" line="23" column="1" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="23" bodyend="151"/>
+    <location file="src/omexmeta/PhysicalPhenomenon.h" line="23" column="5" bodyfile="src/omexmeta/PhysicalPhenomenon.h" bodystart="23" bodyend="152"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afe71a5c6399b992922eb6eeda6de49bd" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>generateMetaId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>getAbout</name></member>
@@ -631,7 +665,7 @@ Refer to subclasses for more documentation. </para>        </detaileddescription
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a0a9c54b0c4bfad62b618766474dc70f8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setAbout</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d" prot="public" virt="virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalPhenomenon</scope><name>setPhysicalProperty</name></member>

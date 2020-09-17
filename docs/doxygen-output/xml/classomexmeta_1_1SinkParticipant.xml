@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1SinkParticipant" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::SinkParticipant</compoundname>
     <basecompoundref refid="classomexmeta_1_1Participant" prot="public" virt="non-virtual">omexmeta::Participant</basecompoundref>
@@ -31,43 +31,45 @@
           <declname>local_uri</declname>
         </param>
         <briefdescription>
-<para>A class representing process/force energetic sinks. </para>        </briefdescription>
+<para>A class representing process/force energetic sinks. </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="206" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="194" bodyend="200"/>
+        <location file="src/omexmeta/Participant.h" line="206" column="9" bodyfile="src/omexmeta/Participant.cpp" bodystart="194" bodyend="200"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classSubclass" kindref="compound">Subclass</ref> of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. See Participants for arguments. </para>    </detaileddescription>
+<para><ref refid="classSubclass" kindref="compound">Subclass</ref> of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. See Participants for arguments. </para>
+    </detaileddescription>
     <inheritancegraph>
-      <node id="227">
+      <node id="2">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="226">
+      <node id="1">
         <label>omexmeta::SinkParticipant</label>
         <link refid="classomexmeta_1_1SinkParticipant"/>
-        <childnode refid="227" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="229">
+      <node id="2">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="228">
+      <node id="1">
         <label>omexmeta::SinkParticipant</label>
         <link refid="classomexmeta_1_1SinkParticipant"/>
-        <childnode refid="229" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/Participant.h" line="198" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="198" bodyend="209"/>
+    <location file="src/omexmeta/Participant.h" line="198" column="5" bodyfile="src/omexmeta/Participant.h" bodystart="198" bodyend="209"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Participant_1a03a1ffc7e9efaed5c0e94a62f7c72650" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>createMetaid</name></member>
       <member refid="classomexmeta_1_1Participant_1a395bc8d2561149a77371ed80e2ed1517" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>free</name></member>

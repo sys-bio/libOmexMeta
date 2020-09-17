@@ -1,29 +1,30 @@
-\hypertarget{structdbg_1_1detail_1_1is__container}{}\section{dbg\+:\+:detail\+:\+:is\+\_\+container$<$ T $>$ Struct Template Reference}
-\label{structdbg_1_1detail_1_1is__container}\index{dbg\+::detail\+::is\+\_\+container$<$ T $>$@{dbg\+::detail\+::is\+\_\+container$<$ T $>$}}
-\subsection*{Static Public Attributes}
+\hypertarget{structdbg_1_1detail_1_1is__container}{}\doxysection{dbg\+::detail\+::is\+\_\+container$<$ T $>$ Struct Template Reference}
+\label{structdbg_1_1detail_1_1is__container}\index{dbg::detail::is\_container$<$ T $>$@{dbg::detail::is\_container$<$ T $>$}}
+\doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static constexpr bool {\bfseries value}
 \end{DoxyCompactItemize}
 
 
-\subsection{Member Data Documentation}
+\doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{structdbg_1_1detail_1_1is__container_aa9a4594488352384b65b36198ac414f8}\label{structdbg_1_1detail_1_1is__container_aa9a4594488352384b65b36198ac414f8}} 
-\index{dbg\+::detail\+::is\+\_\+container@{dbg\+::detail\+::is\+\_\+container}!value@{value}}
-\index{value@{value}!dbg\+::detail\+::is\+\_\+container@{dbg\+::detail\+::is\+\_\+container}}
-\subsubsection{\texorpdfstring{value}{value}}
+\index{dbg::detail::is\_container$<$ T $>$@{dbg::detail::is\_container$<$ T $>$}!value@{value}}
+\index{value@{value}!dbg::detail::is\_container$<$ T $>$@{dbg::detail::is\_container$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-constexpr bool \hyperlink{structdbg_1_1detail_1_1is__container}{dbg\+::detail\+::is\+\_\+container}$<$ T $>$\+::value\hspace{0.3cm}{\ttfamily [static]}}
+constexpr bool \mbox{\hyperlink{structdbg_1_1detail_1_1is__container}{dbg\+::detail\+::is\+\_\+container}}$<$ T $>$\+::value\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 {\bfseries Initial value\+:}
-\begin{DoxyCode}
-=
-      is\_detected<detect\_begin\_t, T>::value &&
-      is\_detected<detect\_end\_t, T>::value &&
-      is\_detected<detect\_size\_t, T>::value &&
-      !std::is\_same<std::string,
-                    \textcolor{keyword}{typename} std::remove\_cv<
-                        \textcolor{keyword}{typename} std::remove\_reference<T>::type>::type>::value
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      is\_detected<detect\_begin\_t, T>::value \&\&}
+\DoxyCodeLine{      is\_detected<detect\_end\_t, T>::value \&\&}
+\DoxyCodeLine{      is\_detected<detect\_size\_t, T>::value \&\&}
+\DoxyCodeLine{      !std::is\_same<std::string,}
+\DoxyCodeLine{                    \textcolor{keyword}{typename} std::remove\_cv<}
+\DoxyCodeLine{                        \textcolor{keyword}{typename} std::remove\_reference<T>::type>::type>::value}
+
 \end{DoxyCode}
 
 

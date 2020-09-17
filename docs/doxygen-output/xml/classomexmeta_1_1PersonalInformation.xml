@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PersonalInformation" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PersonalInformation</compoundname>
     <includes refid="PersonalInformation_8h" local="no">PersonalInformation.h</includes>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="31" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="31" bodyend="-1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="31" column="22" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1ac4708b8e04dba32b67bc67a68f7c7fc7" prot="private" static="no" mutable="no">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="32" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="32" bodyend="-1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="32" column="17" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="33" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="33" bodyend="-1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="33" column="21" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="34" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="34" bodyend="-1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="34" column="21" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1aa4dcccf20c51c9e4e3f120e95de76963" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="35" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="35" bodyend="-1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="35" column="21" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="38" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="54" bodyend="58"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="38" column="22" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="54" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a9c705b23c9935cbf827e2c11a8bd266b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="40" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="165" bodyend="176"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="40" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="165" bodyend="176"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="43" column="1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="43" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1ad06c48c239cf4e2c62b44c9b97fde011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="45" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="16" bodyend="18"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="45" column="9" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="16" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a7494a26893d42e33953dee18bc6db4e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="47" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="10" bodyend="14"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="47" column="9" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="10" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a75cedb2a97efb996852b4e7cd39d6440" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -160,14 +160,15 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-<para>Copy constructor for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref>. </para>        </briefdescription>
+<para>Copy constructor for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref>. </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="52" column="1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="52" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a6653d6c5751154f5f33562d9879d6727" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a6653d6c5751154f5f33562d9879d6727" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PersonalInformation::PersonalInformation</definition>
         <argsstring>(PersonalInformation &amp;&amp;information) noexcept</argsstring>
@@ -177,12 +178,14 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-<para>Move constructor for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref>. </para>        </briefdescription>
+<para>Move constructor for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref>. </para>
+        </briefdescription>
         <detaileddescription>
-<para>move constructor </para>        </detaileddescription>
+<para>move constructor </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="57" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="23" bodyend="29"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="57" column="9" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="23" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a11a759dd5f065ba6a48f0bc3b4c48438" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -194,14 +197,15 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-<para>assignment operator for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> </para>        </briefdescription>
+<para>assignment operator for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="62" column="1"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="62" column="29"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a048a3377b27d4b87681e4f8c24dd8c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a048a3377b27d4b87681e4f8c24dd8c4f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
         <definition>PersonalInformation &amp; omexmeta::PersonalInformation::operator=</definition>
         <argsstring>(PersonalInformation &amp;&amp;information) noexcept</argsstring>
@@ -211,12 +215,14 @@
           <declname>information</declname>
         </param>
         <briefdescription>
-<para>move assignment operator for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> </para>        </briefdescription>
+<para>move assignment operator for <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> </para>
+        </briefdescription>
         <detaileddescription>
-<para>move assignment constructor </para>        </detaileddescription>
+<para>move assignment constructor </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="67" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="34" bodyend="43"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="67" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="34" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1aef8b8cfd83f8247b487d58f887c93e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -229,7 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="69" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="157" bodyend="159"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="69" column="28" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="157" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1ab7d25a7a99ae29ef8cbb004343b9b540" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -246,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="71" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="161" bodyend="163"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="71" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="161" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a84ce9ae11ad2ed4a01fe1b5b84707146" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -263,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="73" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="45" bodyend="48"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="73" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="45" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1abb71bc363efd7466c71733709aa50394" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -280,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="75" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="50" bodyend="52"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="75" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="50" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1af37c1c7065dd9edbb89e90e8b37f35e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -297,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="77" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="152" bodyend="155"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="77" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="152" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a14d941856c6a188a964fb4a0c5475885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -314,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="81" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="128" bodyend="131"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="81" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="128" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1aab4c7522fba200d4776d59c32085371d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -331,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="83" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="133" bodyend="136"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="83" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="133" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a9fd33e3189e1f77725e54dd24cc9dcb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -348,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="85" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="138" bodyend="141"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="85" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="138" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a344fc47bde65f8c0ea75409160fdfe00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -365,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="87" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="147" bodyend="150"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="87" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="147" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1af26bf72dc840b9c45fa7494f7164c04d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -386,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="89" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="79" bodyend="83"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="89" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="79" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a1df32d40f46d98767fc360015bf0f3ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -407,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="91" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="70" bodyend="76"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="91" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="70" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a1458c6e092a9436a956ffd6a92c71d16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -428,7 +434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="93" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="104" bodyend="108"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="93" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="104" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a1c605320ec0f12dda246cc3abdb0aeae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -449,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="95" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="111" bodyend="117"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="95" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="111" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a843d2eddcdb33fc49d7de5059f5fa04c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -470,7 +476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="97" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="120" bodyend="126"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="97" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="120" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a7d760a327fe103386f1bb08063f8795a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -491,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="99" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="86" bodyend="92"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="99" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="86" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1ae6fbd4fad2a738fae9fce7affa6b2f15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -512,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="101" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="95" bodyend="101"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="101" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="95" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a99198226df0c8acfdd7bc30ff7c4bf8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> &amp;</type>
@@ -533,7 +539,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="103" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="61" bodyend="67"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="103" column="29" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="61" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1ae00bfe55d51745ac11f37986443feb28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -546,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="105" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="178" bodyend="180"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="105" column="27" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="178" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a2bf7f31511c545eb0158643645115b00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -563,7 +569,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="107" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="186" bodyend="188"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="107" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="186" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a6b2ce3a6c724b67afe3d0c2df00bb484" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -576,7 +582,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="109" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="190" bodyend="192"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="109" column="27" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="190" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1afc5f378fc98d02112a9a569f4388552e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -593,7 +599,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="111" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="194" bodyend="196"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="111" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="194" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1aecc5783753b41ed88a49c5b3bce82ba4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
@@ -606,7 +612,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="113" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="182" bodyend="184"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="113" column="17" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="182" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1aea3a34c765f176a3d6f6b88a6b8c8369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -619,7 +625,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="115" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="198" bodyend="200"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="115" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="198" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PersonalInformation_1a25a1e9ba56dda2459cb1bbbe61cc4346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -636,14 +642,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PersonalInformation.h" line="117" column="1" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="143" bodyend="145"/>
+        <location file="src/omexmeta/PersonalInformation.h" line="117" column="14" bodyfile="src/omexmeta/PersonalInformation.cpp" bodystart="143" bodyend="145"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>add personal information to the model as a composite annotation. </para>    </briefdescription>
+<para>add personal information to the model as a composite annotation. </para>
+    </briefdescription>
     <detaileddescription>
-<para>For developers: <ref refid="classThis" kindref="compound">This</ref> composite annotation is fundamentally different to the Physical* composites in that the structure is more arbitrary. With the Physical* composites, the structure is very well defined, so it was easier to implement the toTriples() method to construct those triples when called. <ref refid="classThis" kindref="compound">This</ref> differs subtly in <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> in that we have a class level <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the getTriples() method to get a unique ptr to the triples. </para>    </detaileddescription>
-    <location file="src/omexmeta/PersonalInformation.h" line="29" column="1" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="29" bodyend="118"/>
+<para>For developers: <ref refid="classThis" kindref="compound">This</ref> composite annotation is fundamentally different to the Physical* composites in that the structure is more arbitrary. With the Physical* composites, the structure is very well defined, so it was easier to implement the toTriples() method to construct those triples when called. <ref refid="classThis" kindref="compound">This</ref> differs subtly in <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> in that we have a class level <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the getTriples() method to get a unique ptr to the triples. </para>
+    </detaileddescription>
+    <location file="src/omexmeta/PersonalInformation.h" line="29" column="5" bodyfile="src/omexmeta/PersonalInformation.h" bodystart="29" bodyend="118"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PersonalInformation_1a9fd33e3189e1f77725e54dd24cc9dcb7" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>addAccountName</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1a344fc47bde65f8c0ea75409160fdfe00" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>addAccountServiceHomepage</name></member>

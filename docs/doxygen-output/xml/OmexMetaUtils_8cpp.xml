@@ -1,147 +1,147 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="OmexMetaUtils_8cpp" kind="file" language="C++">
     <compoundname>OmexMetaUtils.cpp</compoundname>
     <includes refid="OmexMetaUtils_8h" local="yes">omexmeta/OmexMetaUtils.h</includes>
     <incdepgraph>
-      <node id="557">
+      <node id="20">
         <label>sys/stat.h</label>
       </node>
-      <node id="539">
-        <label>omexmeta/OmexMetaUtils.h</label>
-        <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="540" relation="include">
-        </childnode>
-        <childnode refid="541" relation="include">
-        </childnode>
-        <childnode refid="542" relation="include">
-        </childnode>
-        <childnode refid="552" relation="include">
-        </childnode>
-        <childnode refid="555" relation="include">
-        </childnode>
-        <childnode refid="556" relation="include">
-        </childnode>
-        <childnode refid="549" relation="include">
-        </childnode>
-        <childnode refid="548" relation="include">
-        </childnode>
-        <childnode refid="557" relation="include">
-        </childnode>
-        <childnode refid="554" relation="include">
-        </childnode>
-        <childnode refid="550" relation="include">
-        </childnode>
-        <childnode refid="558" relation="include">
-        </childnode>
-        <childnode refid="559" relation="include">
-        </childnode>
-      </node>
-      <node id="558">
+      <node id="21">
         <label>filesystem</label>
       </node>
-      <node id="559">
+      <node id="22">
         <label>assert.h</label>
       </node>
-      <node id="552">
-        <label>omexmeta/CurlGet.h</label>
-        <link refid="CurlGet_8h_source"/>
-        <childnode refid="549" relation="include">
-        </childnode>
-        <childnode refid="553" relation="include">
-        </childnode>
-        <childnode refid="554" relation="include">
-        </childnode>
-      </node>
-      <node id="542">
-        <label>omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="543" relation="include">
-        </childnode>
-        <childnode refid="544" relation="include">
-        </childnode>
-        <childnode refid="539" relation="include">
-        </childnode>
-        <childnode refid="540" relation="include">
-        </childnode>
-        <childnode refid="547" relation="include">
-        </childnode>
-        <childnode refid="548" relation="include">
-        </childnode>
-        <childnode refid="549" relation="include">
-        </childnode>
-        <childnode refid="550" relation="include">
-        </childnode>
-        <childnode refid="546" relation="include">
-        </childnode>
-        <childnode refid="551" relation="include">
-        </childnode>
-      </node>
-      <node id="554">
+      <node id="17">
         <label>stdexcept</label>
       </node>
-      <node id="549">
+      <node id="12">
         <label>string</label>
       </node>
-      <node id="538">
-        <label>src/omexmeta/OmexMetaUtils.cpp</label>
-        <link refid="OmexMetaUtils_8cpp"/>
-        <childnode refid="539" relation="include">
-        </childnode>
-      </node>
-      <node id="541">
+      <node id="4">
         <label>redland/LibrdfQuery.h</label>
       </node>
-      <node id="545">
-        <label>exception</label>
-      </node>
-      <node id="543">
-        <label>redland/RedlandAPI.h</label>
-      </node>
-      <node id="553">
-        <label>curl/curl.h</label>
-      </node>
-      <node id="548">
-        <label>vector</label>
-      </node>
-      <node id="540">
-        <label>redland/librdf.h</label>
-      </node>
-      <node id="551">
-        <label>utility</label>
-      </node>
-      <node id="555">
+      <node id="18">
         <label>omexmeta/MetaID.h</label>
         <link refid="MetaID_8h_source"/>
-        <childnode refid="549" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="550" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="551" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="546" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="543" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="550">
-        <label>sstream</label>
+      <node id="2">
+        <label>omexmeta/OmexMetaUtils.h</label>
+        <link refid="OmexMetaUtils_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
-      <node id="544">
+      <node id="8">
+        <label>exception</label>
+      </node>
+      <node id="6">
+        <label>redland/RedlandAPI.h</label>
+      </node>
+      <node id="1">
+        <label>src/omexmeta/OmexMetaUtils.cpp</label>
+        <link refid="OmexMetaUtils_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>omexmeta/CurlGet.h</label>
+        <link refid="CurlGet_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="7">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="545" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="546" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="546">
+      <node id="5">
+        <label>omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+      <node id="3">
+        <label>redland/librdf.h</label>
+      </node>
+      <node id="14">
+        <label>utility</label>
+      </node>
+      <node id="13">
+        <label>sstream</label>
+      </node>
+      <node id="9">
         <label>iostream</label>
       </node>
-      <node id="547">
+      <node id="10">
         <label>unordered_map</label>
       </node>
-      <node id="556">
+      <node id="19">
         <label>libxml/tree.h</label>
       </node>
     </incdepgraph>
@@ -169,7 +169,7 @@
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Filename<sp/>\&quot;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>filename<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\&quot;<sp/>does<sp/>not<sp/>exist,<sp/>so<sp/>can&apos;t<sp/>be<sp/>removed&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(os.str());</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">(filename.c_str());</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>remove(filename.c_str());</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a8e629136cb2685ed839ea3a0e88094e6" kindref="member">OmexMetaUtils::removeIfExists</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename)<sp/>{</highlight></codeline>
@@ -452,11 +452,11 @@
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a6f8e406b8798bd2f1f0ae0d1bd07ed2b" kindref="member">OmexMetaUtils::stringInVector</ref>(std::vector&lt;std::string&gt;<sp/>vec,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::find(vec.begin(),<sp/>vec.end(),<sp/>string)<sp/>!=<sp/>vec.end();</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::find(vec.begin(),<sp/>vec.end(),<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)<sp/>!=<sp/>vec.end();</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"></highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>xmlDoc<sp/>*<ref refid="classomexmeta_1_1OmexMetaUtils_1a718710d8ba7fc7598bd73a5456b3d903" kindref="member">OmexMetaUtils::parseXmlDocument</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml_string)<sp/>{</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlDoc<sp/>*doc_<sp/>=<sp/>xmlReadMemory(xml_string.c_str(),<sp/>(int)<sp/>xml_string.length()<sp/>+<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;noname.xml&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlDoc<sp/>*doc_<sp/>=<sp/>xmlReadMemory(xml_string.c_str(),<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>xml_string.length()<sp/>+<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;noname.xml&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(doc_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>NullPointerException(</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NullPointerException:<sp/>OmexMetaUtils::parseXmlDocument:<sp/>Could<sp/>not<sp/>read<sp/>xml<sp/>into<sp/>document.<sp/>nullptr&quot;</highlight><highlight class="normal">);</highlight></codeline>

@@ -1,360 +1,360 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="PhysicalEntity_8cpp" kind="file" language="C++">
     <compoundname>PhysicalEntity.cpp</compoundname>
     <includes refid="PhysicalEntity_8h" local="yes">omexmeta/PhysicalEntity.h</includes>
     <incdepgraph>
-      <node id="854">
+      <node id="29">
         <label>sys/stat.h</label>
       </node>
-      <node id="861">
-        <label>omexmeta/Triples.h</label>
-        <link refid="Triples_8h_source"/>
-        <childnode refid="829" relation="include">
-        </childnode>
-        <childnode refid="838" relation="include">
-        </childnode>
-        <childnode refid="841" relation="include">
-        </childnode>
-        <childnode refid="858" relation="include">
-        </childnode>
-        <childnode refid="830" relation="include">
-        </childnode>
-        <childnode refid="833" relation="include">
-        </childnode>
-        <childnode refid="837" relation="include">
-        </childnode>
-        <childnode refid="855" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
-        </childnode>
-      </node>
-      <node id="838">
-        <label>omexmeta/Triple.h</label>
-        <link refid="Triple_8h_source"/>
-        <childnode refid="831" relation="include">
-        </childnode>
-        <childnode refid="839" relation="include">
-        </childnode>
-        <childnode refid="832" relation="include">
-        </childnode>
-        <childnode refid="840" relation="include">
-        </childnode>
-        <childnode refid="841" relation="include">
-        </childnode>
-        <childnode refid="858" relation="include">
-        </childnode>
-        <childnode refid="830" relation="include">
-        </childnode>
-        <childnode refid="838" relation="include">
-        </childnode>
-        <childnode refid="859" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
-        </childnode>
-        <childnode refid="857" relation="include">
-        </childnode>
-        <childnode refid="860" relation="include">
-        </childnode>
-        <childnode refid="856" relation="include">
-        </childnode>
-      </node>
-      <node id="843">
-        <label>omexmeta/OmexMetaUtils.h</label>
-        <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="831" relation="include">
-        </childnode>
-        <childnode refid="844" relation="include">
-        </childnode>
-        <childnode refid="845" relation="include">
-        </childnode>
-        <childnode refid="849" relation="include">
-        </childnode>
-        <childnode refid="852" relation="include">
-        </childnode>
-        <childnode refid="853" relation="include">
-        </childnode>
-        <childnode refid="847" relation="include">
-        </childnode>
-        <childnode refid="837" relation="include">
-        </childnode>
-        <childnode refid="854" relation="include">
-        </childnode>
-        <childnode refid="851" relation="include">
-        </childnode>
-        <childnode refid="836" relation="include">
-        </childnode>
-        <childnode refid="855" relation="include">
-        </childnode>
-        <childnode refid="856" relation="include">
-        </childnode>
-      </node>
-      <node id="839">
+      <node id="14">
         <label>redland/raptor2.h</label>
       </node>
-      <node id="855">
+      <node id="30">
         <label>filesystem</label>
       </node>
-      <node id="856">
+      <node id="31">
         <label>assert.h</label>
       </node>
-      <node id="849">
-        <label>omexmeta/CurlGet.h</label>
-        <link refid="CurlGet_8h_source"/>
-        <childnode refid="847" relation="include">
+      <node id="16">
+        <label>omexmeta/Predicate.h</label>
+        <link refid="Predicate_8h_source"/>
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="850" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="851" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-      </node>
-      <node id="845">
-        <label>omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="829" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="833" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="843" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="831" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="846" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="837" relation="include">
-        </childnode>
-        <childnode refid="847" relation="include">
-        </childnode>
-        <childnode refid="836" relation="include">
-        </childnode>
-        <childnode refid="835" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="828">
-        <label>omexmeta/PhysicalProperty.h</label>
-        <link refid="PhysicalProperty_8h_source"/>
-        <childnode refid="829" relation="include">
-        </childnode>
-        <childnode refid="830" relation="include">
-        </childnode>
-        <childnode refid="833" relation="include">
-        </childnode>
-        <childnode refid="838" relation="include">
-        </childnode>
-        <childnode refid="861" relation="include">
-        </childnode>
-        <childnode refid="862" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
+      <node id="1">
+        <label>src/omexmeta/PhysicalEntity.cpp</label>
+        <link refid="PhysicalEntity_8cpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="867">
+      <node id="42">
         <label>cassert</label>
       </node>
-      <node id="851">
+      <node id="26">
         <label>stdexcept</label>
       </node>
-      <node id="847">
+      <node id="22">
         <label>string</label>
       </node>
-      <node id="844">
+      <node id="33">
+        <label>omexmeta/Subject.h</label>
+        <link refid="Subject_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
         <label>redland/LibrdfQuery.h</label>
       </node>
-      <node id="862">
+      <node id="37">
         <label>regex</label>
       </node>
-      <node id="864">
+      <node id="27">
+        <label>omexmeta/MetaID.h</label>
+        <link refid="MetaID_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>omexmeta/OmexMetaUtils.h</label>
+        <link refid="OmexMetaUtils_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>exception</label>
+      </node>
+      <node id="34">
+        <label>ostream</label>
+      </node>
+      <node id="4">
+        <label>redland/RedlandAPI.h</label>
+      </node>
+      <node id="24">
+        <label>omexmeta/CurlGet.h</label>
+        <link refid="CurlGet_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="8">
+        <label>omexmeta/Error.h</label>
+        <link refid="Error_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>omexmeta/PhysicalProperty.h</label>
+        <link refid="PhysicalProperty_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>omexmeta/Triple.h</label>
+        <link refid="Triple_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>omexmeta_export.h</label>
+      </node>
+      <node id="20">
+        <label>omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>redland/LibrdfStatement.h</label>
+      </node>
+      <node id="17">
+        <label>redland/World.h</label>
+      </node>
+      <node id="12">
+        <label>vector</label>
+      </node>
+      <node id="6">
+        <label>redland/librdf.h</label>
+      </node>
+      <node id="23">
+        <label>utility</label>
+      </node>
+      <node id="11">
+        <label>sstream</label>
+      </node>
+      <node id="36">
+        <label>omexmeta/Triples.h</label>
+        <link refid="Triples_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>iostream</label>
+      </node>
+      <node id="2">
+        <label>omexmeta/PhysicalEntity.h</label>
+        <link refid="PhysicalEntity_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>unordered_map</label>
+      </node>
+      <node id="5">
+        <label>omexmeta/Resource.h</label>
+        <link refid="Resource_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
         <label>omexmeta/AnnotationType.h</label>
         <link refid="AnnotationType_8h_source"/>
       </node>
-      <node id="834">
-        <label>exception</label>
-      </node>
-      <node id="859">
-        <label>ostream</label>
-      </node>
-      <node id="829">
-        <label>redland/RedlandAPI.h</label>
-      </node>
-      <node id="850">
-        <label>curl/curl.h</label>
-      </node>
-      <node id="865">
-        <label>omexmeta_export.h</label>
-      </node>
-      <node id="840">
-        <label>redland/LibrdfStatement.h</label>
-      </node>
-      <node id="863">
-        <label>omexmeta/PhysicalPhenomenon.h</label>
-        <link refid="PhysicalPhenomenon_8h_source"/>
-        <childnode refid="858" relation="include">
-        </childnode>
-        <childnode refid="828" relation="include">
-        </childnode>
-        <childnode refid="864" relation="include">
-        </childnode>
-        <childnode refid="838" relation="include">
-        </childnode>
-        <childnode refid="861" relation="include">
-        </childnode>
-        <childnode refid="852" relation="include">
-        </childnode>
-        <childnode refid="833" relation="include">
-        </childnode>
-        <childnode refid="845" relation="include">
-        </childnode>
-        <childnode refid="829" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
-        </childnode>
-      </node>
-      <node id="842">
-        <label>redland/World.h</label>
-      </node>
-      <node id="837">
-        <label>vector</label>
-      </node>
-      <node id="831">
-        <label>redland/librdf.h</label>
-      </node>
-      <node id="848">
-        <label>utility</label>
-      </node>
-      <node id="852">
-        <label>omexmeta/MetaID.h</label>
-        <link refid="MetaID_8h_source"/>
-        <childnode refid="847" relation="include">
-        </childnode>
-        <childnode refid="836" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
-        </childnode>
-        <childnode refid="835" relation="include">
-        </childnode>
-        <childnode refid="829" relation="include">
-        </childnode>
-      </node>
-      <node id="836">
-        <label>sstream</label>
-      </node>
-      <node id="833">
-        <label>omexmeta/Error.h</label>
-        <link refid="Error_8h_source"/>
-        <childnode refid="834" relation="include">
-        </childnode>
-        <childnode refid="835" relation="include">
-        </childnode>
-      </node>
-      <node id="830">
-        <label>omexmeta/Resource.h</label>
-        <link refid="Resource_8h_source"/>
-        <childnode refid="831" relation="include">
-        </childnode>
-        <childnode refid="832" relation="include">
-        </childnode>
-        <childnode refid="833" relation="include">
-        </childnode>
-        <childnode refid="835" relation="include">
-        </childnode>
-        <childnode refid="836" relation="include">
-        </childnode>
-        <childnode refid="837" relation="include">
-        </childnode>
-      </node>
-      <node id="827">
-        <label>omexmeta/PhysicalEntity.h</label>
-        <link refid="PhysicalEntity_8h_source"/>
-        <childnode refid="828" relation="include">
-        </childnode>
-        <childnode refid="830" relation="include">
-        </childnode>
-        <childnode refid="858" relation="include">
-        </childnode>
-        <childnode refid="863" relation="include">
-        </childnode>
-        <childnode refid="852" relation="include">
-        </childnode>
-        <childnode refid="829" relation="include">
-        </childnode>
-        <childnode refid="838" relation="include">
-        </childnode>
-        <childnode refid="845" relation="include">
-        </childnode>
-        <childnode refid="843" relation="include">
-        </childnode>
-        <childnode refid="865" relation="include">
-        </childnode>
-        <childnode refid="866" relation="include">
-        </childnode>
-        <childnode refid="867" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
-        </childnode>
-      </node>
-      <node id="835">
-        <label>iostream</label>
-      </node>
-      <node id="846">
-        <label>unordered_map</label>
-      </node>
-      <node id="853">
+      <node id="28">
         <label>libxml/tree.h</label>
       </node>
-      <node id="841">
-        <label>omexmeta/Predicate.h</label>
-        <link refid="Predicate_8h_source"/>
-        <childnode refid="842" relation="include">
-        </childnode>
-        <childnode refid="831" relation="include">
-        </childnode>
-        <childnode refid="843" relation="include">
-        </childnode>
-        <childnode refid="837" relation="include">
-        </childnode>
-        <childnode refid="857" relation="include">
-        </childnode>
-        <childnode refid="836" relation="include">
-        </childnode>
-        <childnode refid="846" relation="include">
-        </childnode>
-        <childnode refid="835" relation="include">
-        </childnode>
-        <childnode refid="848" relation="include">
-        </childnode>
-      </node>
-      <node id="857">
+      <node id="32">
         <label>algorithm</label>
       </node>
-      <node id="858">
-        <label>omexmeta/Subject.h</label>
-        <link refid="Subject_8h_source"/>
-        <childnode refid="842" relation="include">
+      <node id="38">
+        <label>omexmeta/PhysicalPhenomenon.h</label>
+        <link refid="PhysicalPhenomenon_8h_source"/>
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="832" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="833" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="835" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="837" relation="include">
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="826">
-        <label>src/omexmeta/PhysicalEntity.cpp</label>
-        <link refid="PhysicalEntity_8cpp"/>
-        <childnode refid="827" relation="include">
-        </childnode>
-      </node>
-      <node id="860">
+      <node id="35">
         <label>cstring</label>
       </node>
-      <node id="866">
+      <node id="41">
         <label>memory</label>
       </node>
-      <node id="832">
+      <node id="7">
         <label>redland/LibrdfNode.h</label>
       </node>
     </incdepgraph>
@@ -433,7 +433,7 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba" kindref="member">PhysicalEntity::toTriples</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(getAbout().empty())<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" kindref="member">getAbout</ref>().empty())<sp/>{</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>AnnotationBuilderException(</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalEntity::toTriples():<sp/>Cannot<sp/>create&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>triples<sp/>because<sp/>the<sp/>\&quot;about\&quot;<sp/>information<sp/>is<sp/>not<sp/>set.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -441,24 +441,24 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(getPhysicalProperty().getResourceStr().empty())<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" kindref="member">getPhysicalProperty</ref>().getResourceStr().empty())<sp/>{</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>AnnotationBuilderException(</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalEntity::toTriples():<sp/>Cannot<sp/>create&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>triples<sp/>because<sp/>the<sp/>\&quot;physical_property\&quot;<sp/>information<sp/>is<sp/>not<sp/>set.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Use<sp/>the<sp/>setPhysicalProperty()<sp/>method.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Use<sp/>the<sp/>isVersionOf()<sp/>method.&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(getLocationResources().empty())<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">getLocationResources</ref>().empty())<sp/>{</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>AnnotationBuilderException(</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalEntity::toTriples():<sp/>cannot<sp/>create<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalProcess::toTriples():<sp/>cannot<sp/>create<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;triples<sp/>object<sp/>because<sp/>the\&quot;location\&quot;<sp/>information<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;is<sp/>empty.<sp/>Use<sp/>the<sp/>addLocation()<sp/>method.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;is<sp/>empty.<sp/>Please<sp/>use<sp/>the<sp/>\&quot;isVersionOf()\&quot;.&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/>getLocationResources())<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">getLocationResources</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i.getNode()<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>err;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;PhysicalEntity::toTriples():<sp/>Cannot<sp/>create&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -486,17 +486,17 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entity_id_<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(entity_id_,<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>preallocate<sp/>for<sp/>efficiency</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)getLocationResources().size()<sp/>+<sp/>3);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>physical_property_triples<sp/>=<sp/>physical_property_.toTriples(entity_id_);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">getLocationResources</ref>().size()<sp/>+<sp/>3);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>physical_property_triples<sp/>=<sp/>physical_property_.<ref refid="classomexmeta_1_1PhysicalProperty_1a03056210a70ea8446b44de250646eeb5" kindref="member">toTriples</ref>(entity_id_);</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;it<sp/>:<sp/>physical_property_triples)<sp/>{</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.move_back(it);<sp/></highlight><highlight class="comment">//<sp/>moves<sp/>the<sp/>statement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.<ref refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kindref="member">move_back</ref>(it);<sp/></highlight><highlight class="comment">//<sp/>moves<sp/>the<sp/>statement</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_triples.freeTriples();</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(physical_property_triples.size()<sp/>==<sp/>0);</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;what&quot;<sp/>part<sp/>of<sp/>physical<sp/>entity<sp/>triple</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(entity_id_).</highlight><highlight class="keyword">get</highlight><highlight class="normal">(),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(entity_id_).get(),</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;is&quot;</highlight><highlight class="normal">).getNode(),</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_.getNode()</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
@@ -504,7 +504,7 @@
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;where&quot;<sp/>part<sp/>of<sp/>the<sp/>physical<sp/>entity</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;locationResource<sp/>:<sp/>location_resources_)<sp/>{</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(entity_id_).</highlight><highlight class="keyword">get</highlight><highlight class="normal">(),</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(entity_id_).get(),</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;isPartOf&quot;</highlight><highlight class="normal">).getNode(),</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>locationResource.getNode()</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
@@ -513,7 +513,7 @@
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>[[maybe_unused]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kindref="member">PhysicalEntity::getNumLocations</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getLocationResources().size();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">getLocationResources</ref>().size();</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
@@ -528,24 +528,42 @@
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(rhs<sp/>==<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a5399ef8eef084f2dd8b13ef537823d94" kindref="member">PhysicalEntity::isVersionOf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.setResource(is_version_of);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" kindref="member">PhysicalEntity::setAbout</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.setSubject(about);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kindref="member">PhysicalEntity::is</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" kindref="member">setIdentity</ref>(<ref refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kindref="member">is</ref>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" kindref="member">PhysicalEntity::isPartOf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;isPartOf)<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">addLocation</ref>(<ref refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" kindref="member">isPartOf</ref>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/PhysicalEntity.cpp"/>
   </compounddef>

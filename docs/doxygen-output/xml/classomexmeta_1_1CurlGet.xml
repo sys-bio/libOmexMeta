@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1CurlGet" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::CurlGet</compoundname>
     <includes refid="CurlGet_8h" local="no">CurlGet.h</includes>
@@ -26,12 +26,13 @@
           <declname>userp</declname>
         </param>
         <briefdescription>
-<para>callback used to write bytes to file </para>        </briefdescription>
+<para>callback used to write bytes to file </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/CurlGet.h" line="24" column="1" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="8" bodyend="11"/>
+        <location file="src/omexmeta/CurlGet.h" line="24" column="23" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="8" bodyend="11"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/CurlGet.h" line="27" column="1"/>
+        <location file="src/omexmeta/CurlGet.h" line="27" column="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -64,35 +65,41 @@
           <declname>output_filename</declname>
         </param>
         <briefdescription>
-<para>download a file from the internet </para>        </briefdescription>
+<para>download a file from the internet </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>url</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The url to download. </para></parameterdescription>
+<para>The url to download. </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>output_filename.</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Where to put the downloaded content. </para></parameterdescription>
+<para>Where to put the downloaded content. </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>success code. Non-0 fails. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>success code. Non-0 fails. </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/CurlGet.h" line="35" column="1" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="13" bodyend="62"/>
+        <location file="src/omexmeta/CurlGet.h" line="35" column="20" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="13" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Use libcurl to download from url. </para>    </briefdescription>
+<para>Use libcurl to download from url. </para>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/CurlGet.h" line="18" column="1" bodyfile="src/omexmeta/CurlGet.h" bodystart="18" bodyend="36"/>
+    <location file="src/omexmeta/CurlGet.h" line="18" column="6" bodyfile="src/omexmeta/CurlGet.h" bodystart="18" bodyend="36"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1CurlGet_1ab7170b3c78cd45d7112da1a436017201" prot="public" virt="non-virtual"><scope>omexmeta::CurlGet</scope><name>CurlGet</name></member>
       <member refid="classomexmeta_1_1CurlGet_1a32357d9722cbedf644ae66f5b8e26876" prot="private" virt="non-virtual"><scope>omexmeta::CurlGet</scope><name>curlWriteCallback</name></member>

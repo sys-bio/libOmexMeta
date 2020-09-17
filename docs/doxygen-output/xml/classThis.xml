@@ -1,13 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classThis" kind="class" language="C++" prot="public">
     <compoundname>This</compoundname>
     <briefdescription>
-<para>interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_results. Query is not used by users directly but accessed indurectly without the users knowledge via the RDF::query method. Query results can be returned in 1 of 9 formats: </para>    </briefdescription>
+<para>interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_results. Query is not used by users directly but accessed indurectly without the users knowledge via the RDF::query method. Query results can be returned in 1 of 9 formats: </para>
+    </briefdescription>
     <detaileddescription>
 <para><itemizedlist>
-<listitem><para>xml</para></listitem><listitem><para>json</para></listitem><listitem><para>table</para></listitem><listitem><para>csv</para></listitem><listitem><para>mrk</para></listitem><listitem><para>tsv</para></listitem><listitem><para>html</para></listitem><listitem><para>turtle</para></listitem><listitem><para>rdfxml </para></listitem></itemizedlist>
-</para>    </detaileddescription>
+<listitem><para>xml</para>
+</listitem><listitem><para>json</para>
+</listitem><listitem><para>table</para>
+</listitem><listitem><para>csv</para>
+</listitem><listitem><para>mrk</para>
+</listitem><listitem><para>tsv</para>
+</listitem><listitem><para>html</para>
+</listitem><listitem><para>turtle</para>
+</listitem><listitem><para>rdfxml </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
     <location file="src/omexmeta/Query.h" line="29" column="1"/>
     <listofallmembers>
     </listofallmembers>

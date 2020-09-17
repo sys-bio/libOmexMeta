@@ -1,4 +1,4 @@
-\hypertarget{classException}{}\section{Exception Class Reference}
+\hypertarget{classException}{}\doxysection{Exception Class Reference}
 \label{classException}\index{Exception@{Exception}}
 Inheritance diagram for Exception\+:\begin{figure}[H]
 \begin{center}
@@ -6,29 +6,29 @@ Inheritance diagram for Exception\+:\begin{figure}[H]
 \includegraphics[height=3.000000cm]{classException}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classException_ac541ead5c20548813d7dea73c28c7fab}{Exception} (const char $\ast$message)
+\mbox{\hyperlink{classException_ac541ead5c20548813d7dea73c28c7fab}{Exception}} (const char $\ast$message)
 \item 
-\hyperlink{classException_a0b1693d4d5007815322070c907ee5cc2}{Exception} (std\+::string message)
+\mbox{\hyperlink{classException_a0b1693d4d5007815322070c907ee5cc2}{Exception}} (std\+::string message)
 \item 
-\hyperlink{classException_ab834fdbc275748cf287b994503521ada}{$\sim$\+Exception} () noexcept override=default
+\mbox{\hyperlink{classException_ab834fdbc275748cf287b994503521ada}{$\sim$\+Exception}} () noexcept override=default
 \item 
-const char $\ast$ \hyperlink{classException_ae7ba8334eb35e001b4b0c6df9339c0dc}{what} () const noexcept override
+const char $\ast$ \mbox{\hyperlink{classException_ae7ba8334eb35e001b4b0c6df9339c0dc}{what}} () const noexcept override
 \end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \hyperlink{classException_a5d59cc46086c61391ed26773ce861780}{msg\+\_\+}
+std\+::string \mbox{\hyperlink{classException_a5d59cc46086c61391ed26773ce861780}{msg\+\_\+}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classException_ac541ead5c20548813d7dea73c28c7fab}\label{classException_ac541ead5c20548813d7dea73c28c7fab}} 
 \index{Exception@{Exception}!Exception@{Exception}}
 \index{Exception@{Exception}!Exception@{Exception}}
-\subsubsection{\texorpdfstring{Exception()}{Exception()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{Exception()}{Exception()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Exception\+::\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 Constructor (C strings). 
@@ -39,7 +39,7 @@ Constructor (C strings).
 \mbox{\Hypertarget{classException_a0b1693d4d5007815322070c907ee5cc2}\label{classException_a0b1693d4d5007815322070c907ee5cc2}} 
 \index{Exception@{Exception}!Exception@{Exception}}
 \index{Exception@{Exception}!Exception@{Exception}}
-\subsubsection{\texorpdfstring{Exception()}{Exception()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{Exception()}{Exception()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Exception\+::\+Exception (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 Constructor (C++ S\+TL strings). 
@@ -48,30 +48,30 @@ Constructor (C++ S\+TL strings).
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classException_ab834fdbc275748cf287b994503521ada}\label{classException_ab834fdbc275748cf287b994503521ada}} 
-\index{Exception@{Exception}!````~Exception@{$\sim$\+Exception}}
-\index{````~Exception@{$\sim$\+Exception}!Exception@{Exception}}
-\subsubsection{\texorpdfstring{$\sim$\+Exception()}{~Exception()}}
+\index{Exception@{Exception}!````~Exception@{$\sim$Exception}}
+\index{````~Exception@{$\sim$Exception}!Exception@{Exception}}
+\doxysubsubsection{\texorpdfstring{$\sim$Exception()}{~Exception()}}
 {\footnotesize\ttfamily Exception\+::$\sim$\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
 
 Destructor. Virtual to allow for subclassing. 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classException_ae7ba8334eb35e001b4b0c6df9339c0dc}\label{classException_ae7ba8334eb35e001b4b0c6df9339c0dc}} 
 \index{Exception@{Exception}!what@{what}}
 \index{what@{what}!Exception@{Exception}}
-\subsubsection{\texorpdfstring{what()}{what()}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
 {\footnotesize\ttfamily const char$\ast$ Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
 
 Returns a pointer to the (constant) error description. \begin{DoxyReturn}{Returns}
-A pointer to a const char$\ast$. The underlying memory is in posession of the \hyperlink{classException}{Exception} object. Callers must not attempt to free the memory. 
+A pointer to a const char$\ast$. The underlying memory is in posession of the \mbox{\hyperlink{classException}{Exception}} object. Callers must not attempt to free the memory. 
 \end{DoxyReturn}
 
 
-\subsection{Member Data Documentation}
+\doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classException_a5d59cc46086c61391ed26773ce861780}\label{classException_a5d59cc46086c61391ed26773ce861780}} 
-\index{Exception@{Exception}!msg\+\_\+@{msg\+\_\+}}
-\index{msg\+\_\+@{msg\+\_\+}!Exception@{Exception}}
-\subsubsection{\texorpdfstring{msg\+\_\+}{msg\_}}
+\index{Exception@{Exception}!msg\_@{msg\_}}
+\index{msg\_@{msg\_}!Exception@{Exception}}
+\doxysubsubsection{\texorpdfstring{msg\_}{msg\_}}
 {\footnotesize\ttfamily std\+::string Exception\+::msg\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
 
 Error message. 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="structredland_1_1World_1_1deleter" kind="struct" language="C++" prot="private">
     <compoundname>redland::World::deleter</compoundname>
       <sectiondef kind="public-func">
@@ -18,14 +18,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/World.h" line="52" column="1" bodyfile="src/redland/RedlandWrapper/src/World.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/redland/RedlandWrapper/src/World.h" line="52" column="18" bodyfile="src/redland/RedlandWrapper/src/World.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/World.h" line="51" column="1" bodyfile="src/redland/RedlandWrapper/src/World.h" bodystart="51" bodyend="53"/>
+    <location file="src/redland/RedlandWrapper/src/World.h" line="51" column="9" bodyfile="src/redland/RedlandWrapper/src/World.h" bodystart="51" bodyend="53"/>
     <listofallmembers>
       <member refid="structredland_1_1World_1_1deleter_1a65ccd95d5ad0420bde2a5ed2abca0043" prot="public" virt="non-virtual"><scope>redland::World::deleter</scope><name>operator()</name></member>
     </listofallmembers>

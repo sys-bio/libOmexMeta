@@ -27,7 +27,6 @@ int main() {
     std::vector<std::string> formats = {
             "ntriples",
             "turtle",
-            "rdfxml-xmp",
             "rdfxml-abbrev",
             "rdfxml",
             "dot",

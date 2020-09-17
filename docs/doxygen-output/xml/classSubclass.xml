@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classSubclass" kind="class" language="C++" prot="public">
     <compoundname>Subclass</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>specifically for predicates from the Foaf set of predicates. All predicates have the namespace <computeroutput><ulink url="http://www.bhi.washington.edu/semsim#">http://www.bhi.washington.edu/semsim#</ulink></computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix. </para>    </detaileddescription>
+<para>specifically for predicates from the Foaf set of predicates. All predicates have the namespace <computeroutput><ulink url="http://www.bhi.washington.edu/semsim">http://www.bhi.washington.edu/semsim</ulink>#</computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix. </para>
+    </detaileddescription>
     <location file="src/omexmeta/Predicate.h" line="326" column="1"/>
     <listofallmembers>
     </listofallmembers>

@@ -1,213 +1,213 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="LibrdfSerializer_8cpp" kind="file" language="C++">
     <compoundname>LibrdfSerializer.cpp</compoundname>
     <includes refid="LibrdfSerializer_8h" local="yes">LibrdfSerializer.h</includes>
     <incdepgraph>
-      <node id="2023">
-        <label>LibrdfSerializer.h</label>
-        <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-        <childnode refid="2029" relation="include">
-        </childnode>
-        <childnode refid="2032" relation="include">
-        </childnode>
-        <childnode refid="2043" relation="include">
-        </childnode>
-        <childnode refid="2036" relation="include">
-        </childnode>
-        <childnode refid="2045" relation="include">
-        </childnode>
-      </node>
-      <node id="2045">
-        <label>stdlib.h</label>
-      </node>
-      <node id="2032">
-        <label>LibrdfModel.h</label>
-        <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2033" relation="include">
-        </childnode>
-        <childnode refid="2027" relation="include">
-        </childnode>
-        <childnode refid="2034" relation="include">
-        </childnode>
-        <childnode refid="2039" relation="include">
-        </childnode>
-        <childnode refid="2040" relation="include">
-        </childnode>
-        <childnode refid="2041" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-        <childnode refid="2042" relation="include">
-        </childnode>
-      </node>
-      <node id="2033">
-        <label>string</label>
-      </node>
-      <node id="2028">
-        <label>regex</label>
-      </node>
-      <node id="2031">
-        <label>exception</label>
-      </node>
-      <node id="2043">
-        <label>RaptorIOStream.h</label>
-        <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-        <childnode refid="2044" relation="include">
-        </childnode>
-        <childnode refid="2030" relation="include">
-        </childnode>
-      </node>
-      <node id="2040">
-        <label>LibrdfQuery.h</label>
-        <link refid="LibrdfQuery_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-      </node>
-      <node id="2036">
-        <label>LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2037" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2038" relation="include">
-        </childnode>
-        <childnode refid="2029" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-        <childnode refid="2030" relation="include">
-        </childnode>
-      </node>
-      <node id="2026">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2027" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2028" relation="include">
-        </childnode>
-      </node>
-      <node id="2030">
-        <label>LibrdfException.h</label>
-        <link refid="LibrdfException_8h_source"/>
-        <childnode refid="2031" relation="include">
-        </childnode>
-        <childnode refid="2027" relation="include">
-        </childnode>
-      </node>
-      <node id="2029">
-        <label>LibrdfUri.h</label>
-        <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2030" relation="include">
-        </childnode>
-      </node>
-      <node id="2039">
-        <label>LibrdfQueryResults.h</label>
-        <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-      </node>
-      <node id="2044">
-        <label>utility</label>
-      </node>
-      <node id="2038">
-        <label>sstream</label>
-      </node>
-      <node id="2027">
-        <label>iostream</label>
-      </node>
-      <node id="2037">
-        <label>raptor2.h</label>
-      </node>
-      <node id="2035">
-        <label>unordered_map</label>
-      </node>
-      <node id="2022">
-        <label>src/redland/RedlandWrapper/src/LibrdfSerializer.cpp</label>
-        <link refid="LibrdfSerializer_8cpp"/>
-        <childnode refid="2023" relation="include">
-        </childnode>
-      </node>
-      <node id="2034">
-        <label>LibrdfStatement.h</label>
-        <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2027" relation="include">
-        </childnode>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2035" relation="include">
-        </childnode>
-        <childnode refid="2036" relation="include">
-        </childnode>
-      </node>
-      <node id="2041">
-        <label>LibrdfStorage.h</label>
-        <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="2024" relation="include">
-        </childnode>
-        <childnode refid="2033" relation="include">
-        </childnode>
-        <childnode refid="2025" relation="include">
-        </childnode>
-        <childnode refid="2026" relation="include">
-        </childnode>
-        <childnode refid="2038" relation="include">
-        </childnode>
-        <childnode refid="2034" relation="include">
-        </childnode>
-      </node>
-      <node id="2024">
-        <label>librdf.h</label>
-      </node>
-      <node id="2042">
+      <node id="21">
         <label>LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="2024" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="2025" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="2026" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="2025">
+      <node id="2">
+        <label>LibrdfSerializer.h</label>
+        <link refid="LibrdfSerializer_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>stdlib.h</label>
+      </node>
+      <node id="12">
+        <label>string</label>
+      </node>
+      <node id="18">
+        <label>LibrdfQueryResults.h</label>
+        <link refid="LibrdfQueryResults_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/redland/RedlandWrapper/src/LibrdfSerializer.cpp</label>
+        <link refid="LibrdfSerializer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>regex</label>
+      </node>
+      <node id="10">
+        <label>exception</label>
+      </node>
+      <node id="20">
+        <label>LibrdfStorage.h</label>
+        <link refid="LibrdfStorage_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>utility</label>
+      </node>
+      <node id="17">
+        <label>sstream</label>
+      </node>
+      <node id="8">
+        <label>LibrdfUri.h</label>
+        <link refid="LibrdfUri_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>LibrdfNode.h</label>
+        <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="16">
+        <label>raptor2.h</label>
+      </node>
+      <node id="14">
+        <label>unordered_map</label>
+      </node>
+      <node id="9">
+        <label>LibrdfException.h</label>
+        <link refid="LibrdfException_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>World.h</label>
+        <link refid="World_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>LibrdfStatement.h</label>
+        <link refid="LibrdfStatement_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>RaptorIOStream.h</label>
+        <link refid="RaptorIOStream_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>librdf.h</label>
+      </node>
+      <node id="11">
+        <label>LibrdfModel.h</label>
+        <link refid="LibrdfModel_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
         <label>memory</label>
+      </node>
+      <node id="19">
+        <label>LibrdfQuery.h</label>
+        <link refid="LibrdfQuery_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceredland">redland</innernamespace>
@@ -219,7 +219,7 @@
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;LibrdfSerializer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceredland" kindref="compound">redland</ref><sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>LibrdfSerializer::LibrdfSerializer(librdf_serializer<sp/>*serializer)<sp/>:</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serializer_(serializer)<sp/>{}</highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
@@ -341,7 +341,7 @@
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>feature_uri_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;http://feature.librdf.org/raptor-&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfUri<sp/>feature_uri(feature_uri_base<sp/>+<sp/>option);</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode<sp/>node<sp/>=<sp/>LibrdfNode::fromLiteral(value);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>failure<sp/>=<sp/>librdf_serializer_set_feature(</highlight><highlight class="keyword">get</highlight><highlight class="normal">(),<sp/>feature_uri.get(),<sp/>node.get());</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>failure<sp/>=<sp/>librdf_serializer_set_feature(get(),<sp/>feature_uri.get(),<sp/>node.get());</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(failure<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;std::invalid_argument:<sp/>LibrdfSerializer::setOption:<sp/>Invalid<sp/>feature:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>option);</highlight></codeline>

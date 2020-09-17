@@ -28,8 +28,9 @@ int main() {
     std::string syntax = "ntriples";
     std::filesystem::path filename = std::filesystem::current_path() /+ "annotations.rdf";
     std::cout << "Serializing to " << syntax << ":" << std::endl;
-    rdf.toFile(syntax, filename.string());
+    rdf.toFile(filename.string(), syntax);
     std::cout << "RDF graph serialized to \"" << filename << "\"" << std::endl;
+    std::cout << "Counted \""<< rdf.size() <<"\" triples" << std::endl;
 
     // clean up
     if(std::filesystem::exists(filename)){

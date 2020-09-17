@@ -1,111 +1,111 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="LibrdfException_8h" kind="file" language="C++">
     <compoundname>LibrdfException.h</compoundname>
     <includes local="no">exception</includes>
     <includes local="no">iostream</includes>
-    <includedby refid="LibrdfUri_8h" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.h</includedby>
     <includedby refid="LibrdfNode_8h" local="yes">src/redland/RedlandWrapper/src/LibrdfNode.h</includedby>
+    <includedby refid="LibrdfUri_8h" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.h</includedby>
     <includedby refid="RaptorIOStream_8h" local="yes">src/redland/RedlandWrapper/src/RaptorIOStream.h</includedby>
     <incdepgraph>
-      <node id="1852">
+      <node id="2">
         <label>exception</label>
       </node>
-      <node id="1851">
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="1">
         <label>src/redland/RedlandWrapper/src/LibrdfException.h</label>
         <link refid="LibrdfException_8h"/>
-        <childnode refid="1852" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="1853" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="1853">
-        <label>iostream</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1861">
+      <node id="5">
         <label>src/redland/RedlandWrapper/src/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="1860" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="1858">
-        <label>src/redland/RedlandWrapper/src/LibrdfModel.h</label>
-        <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="1859" relation="include">
-        </childnode>
-        <childnode refid="1861" relation="include">
-        </childnode>
-        <childnode refid="1860" relation="include">
-        </childnode>
-      </node>
-      <node id="1859">
+      <node id="3">
         <label>src/redland/RedlandWrapper/src/LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="1860" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="1863">
-        <label>src/redland/RedlandWrapper/src/RaptorIOStream.h</label>
-        <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="1861" relation="include">
+      <node id="8">
+        <label>src/redland/RedlandWrapper/src/LibrdfStorage.h</label>
+        <link refid="LibrdfStorage_8h_source"/>
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="1860" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="1860">
+      <node id="4">
         <label>src/redland/RedlandWrapper/src/RedlandAPI.h</label>
         <link refid="RedlandAPI_8h_source"/>
       </node>
-      <node id="1856">
-        <label>src/redland/RedlandWrapper/src/LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="1857" relation="include">
-        </childnode>
-        <childnode refid="1859" relation="include">
-        </childnode>
-        <childnode refid="1861" relation="include">
-        </childnode>
-        <childnode refid="1860" relation="include">
-        </childnode>
-      </node>
-      <node id="1854">
-        <label>src/redland/RedlandWrapper/src/LibrdfException.h</label>
-        <link refid="LibrdfException_8h"/>
-        <childnode refid="1855" relation="include">
-        </childnode>
-        <childnode refid="1856" relation="include">
-        </childnode>
-        <childnode refid="1863" relation="include">
-        </childnode>
-      </node>
-      <node id="1855">
+      <node id="9">
         <label>src/redland/RedlandWrapper/src/LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="1856" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="1859" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="1861" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="1860" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="1857">
+      <node id="2">
+        <label>src/redland/RedlandWrapper/src/LibrdfNode.h</label>
+        <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/redland/RedlandWrapper/src/LibrdfException.h</label>
+        <link refid="LibrdfException_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
         <label>src/redland/RedlandWrapper/src/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="1858" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="1862" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="1862">
-        <label>src/redland/RedlandWrapper/src/LibrdfStorage.h</label>
-        <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="1858" relation="include">
+      <node id="10">
+        <label>src/redland/RedlandWrapper/src/RaptorIOStream.h</label>
+        <link refid="RaptorIOStream_8h_source"/>
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="1860" relation="include">
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/redland/RedlandWrapper/src/LibrdfModel.h</label>
+        <link refid="LibrdfModel_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -136,9 +136,9 @@
 <codeline lineno="26" refid="classException_1a0b1693d4d5007815322070c907ee5cc2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classException_1a0b1693d4d5007815322070c907ee5cc2" kindref="member">Exception</ref>(std::string<sp/>message)<sp/>:</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classException_1a5d59cc46086c61391ed26773ce861780" kindref="member">msg_</ref>(std::move(message))<sp/>{}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classException_1ab834fdbc275748cf287b994503521ada" kindref="member">~Exception</ref>()<sp/>noexcept<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32" refid="classException_1ab834fdbc275748cf287b994503521ada" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classException_1ab834fdbc275748cf287b994503521ada" kindref="member">~Exception</ref>()<sp/>noexcept<sp/>override<sp/>=<sp/>default;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" kindref="member">what</ref>()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39" refid="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" kindref="member">what</ref>()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classException_1a5d59cc46086c61391ed26773ce861780" kindref="member">msg_</ref>.c_str();</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>

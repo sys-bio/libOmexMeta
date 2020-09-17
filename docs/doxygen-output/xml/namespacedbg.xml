@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="namespacedbg" kind="namespace" language="C++">
     <compoundname>dbg</compoundname>
     <innerclass refid="classdbg_1_1DebugOutput" prot="public">dbg::DebugOutput</innerclass>
@@ -16,6 +16,18 @@
     <innernamespace refid="namespacedbg_1_1pretty__function">dbg::pretty_function</innernamespace>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="dbg_8h_1a4fff29dc9282f3e887a7c1290477708c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>template&lt; class... &gt; class</type>
+            <declname>Op</declname>
+            <defname>Op</defname>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
         <type>typename <ref refid="structdbg_1_1detail__detector_1_1detector" kindref="compound">detail_detector::detector</ref>&lt; <ref refid="structdbg_1_1detail__detector_1_1nonesuch" kindref="compound">detail_detector::nonesuch</ref>, void, Op, Args... &gt;::value_t</type>
         <definition>using dbg::is_detected = typedef typename detail_detector:: detector&lt;detail_detector::nonesuch, void, Op, Args...&gt;::value_t</definition>
         <argsstring></argsstring>
@@ -29,6 +41,13 @@
         <location file="src/omexmeta/dbg.h" line="282" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="283" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="dbg_8h_1a4754c7365d6eb31696a4613230e21ac4" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
         <type>typename <ref refid="structdbg_1_1last" kindref="compound">last</ref>&lt; T... &gt;::type</type>
         <definition>using dbg::last_t = typedef typename last&lt;T...&gt;::type</definition>
         <argsstring></argsstring>
@@ -54,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="72" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="72" bodyend="74"/>
+        <location file="src/omexmeta/dbg.h" line="72" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1afe9f0e1588144f8bb978cdc78d346682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -76,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="135" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="135" bodyend="137"/>
+        <location file="src/omexmeta/dbg.h" line="135" column="17" bodyfile="src/omexmeta/dbg.h" bodystart="135" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1af52f01dbdbb25506c5cfecab4c57d52a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -98,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="140" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="140" bodyend="142"/>
+        <location file="src/omexmeta/dbg.h" line="140" column="17" bodyfile="src/omexmeta/dbg.h" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a554c31997738273466a9f1fd426a3369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -120,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="145" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="145" bodyend="147"/>
+        <location file="src/omexmeta/dbg.h" line="145" column="17" bodyfile="src/omexmeta/dbg.h" bodystart="145" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1aaf90b7c26aa95f1666f2446996973cac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -138,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="152" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="152" bodyend="154"/>
+        <location file="src/omexmeta/dbg.h" line="152" column="12" bodyfile="src/omexmeta/dbg.h" bodystart="152" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a20edc7ca4e92e4b3bddc6b983384aa00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -164,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="160" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="160" bodyend="166"/>
+        <location file="src/omexmeta/dbg.h" line="160" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="160" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1aab63fa619583229308f148088ffac7a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -182,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="169" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="169" bodyend="194"/>
+        <location file="src/omexmeta/dbg.h" line="169" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="169" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a77b693006b8b158eb9a4604fba56a782" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -198,7 +217,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="196" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="196" bodyend="198"/>
+        <location file="src/omexmeta/dbg.h" line="196" column="20" bodyfile="src/omexmeta/dbg.h" bodystart="196" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1ae70efee8c9a9d398975f71b216602097" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -214,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="200" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="200" bodyend="202"/>
+        <location file="src/omexmeta/dbg.h" line="200" column="20" bodyfile="src/omexmeta/dbg.h" bodystart="200" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a380f1bf409dda5e8c67a269b27d14aee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -230,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="204" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="204" bodyend="206"/>
+        <location file="src/omexmeta/dbg.h" line="204" column="20" bodyfile="src/omexmeta/dbg.h" bodystart="204" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a5316d9f58e72c20cfbb14496326d89f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -246,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="208" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="208" bodyend="210"/>
+        <location file="src/omexmeta/dbg.h" line="208" column="20" bodyfile="src/omexmeta/dbg.h" bodystart="208" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a3bcf58cf4aba1da7a34e79b0fb2ce036" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -262,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="212" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="212" bodyend="214"/>
+        <location file="src/omexmeta/dbg.h" line="212" column="20" bodyfile="src/omexmeta/dbg.h" bodystart="212" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a09680fe23089b62fd2879bd1f38897a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -283,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="217" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="217" bodyend="219"/>
+        <location file="src/omexmeta/dbg.h" line="217" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="217" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1aa4daf4ad755b0a3b4206debc162f064d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -307,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="222" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="222" bodyend="224"/>
+        <location file="src/omexmeta/dbg.h" line="222" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="222" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1aef0097e53230ee373eaabc4981048cac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -327,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="227" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="227" bodyend="237"/>
+        <location file="src/omexmeta/dbg.h" line="227" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="227" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a1d187f8063d8c8c024e57a7985bcac78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -350,7 +369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="240" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="240" bodyend="242"/>
+        <location file="src/omexmeta/dbg.h" line="240" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="240" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a6224c816a1c695160e869f427854d569" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -371,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="245" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="245" bodyend="247"/>
+        <location file="src/omexmeta/dbg.h" line="245" column="20" bodyfile="src/omexmeta/dbg.h" bodystart="245" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a2365d80e3a3525e6025040383ff8661b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -389,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="338" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="338" bodyend="340"/>
+        <location file="src/omexmeta/dbg.h" line="338" column="12" bodyfile="src/omexmeta/dbg.h" bodystart="338" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a4ba5b016ce65b09fef3935a945310904" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -418,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="345" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="345" bodyend="347"/>
+        <location file="src/omexmeta/dbg.h" line="345" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="345" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1ab875770941388a1d8279e9b5257e5a93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -445,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="350" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="350" bodyend="353"/>
+        <location file="src/omexmeta/dbg.h" line="350" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="350" bodyend="353"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a4920208faa7096e0333f9d14119a9c2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -492,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="365" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="365" bodyend="368"/>
+        <location file="src/omexmeta/dbg.h" line="365" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="365" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1acc6a678f0c3954671e247468e249e5a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -513,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="370" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="370" bodyend="380"/>
+        <location file="src/omexmeta/dbg.h" line="370" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="370" bodyend="380"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a2194ca6a2105fd8c57e5cb43f688d240" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -539,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="383" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="383" bodyend="390"/>
+        <location file="src/omexmeta/dbg.h" line="383" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="383" bodyend="390"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a6cbcb99c1fdd640925d80c390af3954a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -568,7 +587,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="393" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="393" bodyend="397"/>
+        <location file="src/omexmeta/dbg.h" line="393" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="393" bodyend="397"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1ae36a726fc12c4b6c13878e051f4f3ad7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -594,7 +613,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="400" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="400" bodyend="405"/>
+        <location file="src/omexmeta/dbg.h" line="400" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="400" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1adb407af036065563d2e8ef131305475a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -623,7 +642,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="408" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="408" bodyend="411"/>
+        <location file="src/omexmeta/dbg.h" line="408" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="408" bodyend="411"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a17cebbee60948a473318356a59d7f825" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -646,7 +665,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="414" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="414" bodyend="417"/>
+        <location file="src/omexmeta/dbg.h" line="414" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="414" bodyend="417"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a48e38a2e7f91709c4eac1c3ff1532f35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -674,7 +693,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="438" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="438" bodyend="444"/>
+        <location file="src/omexmeta/dbg.h" line="438" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="438" bodyend="444"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a077f3d4254963a89c600b07eb1b8608b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -696,7 +715,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="447" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="447" bodyend="451"/>
+        <location file="src/omexmeta/dbg.h" line="447" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="447" bodyend="451"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a43fb1da62bd4a702ea7ca37e665c53c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -718,7 +737,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="454" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="454" bodyend="466"/>
+        <location file="src/omexmeta/dbg.h" line="454" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="454" bodyend="466"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1acbbd001b36aaa78716ea7d9d2aeb3e46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -740,7 +759,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="470" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="470" bodyend="481"/>
+        <location file="src/omexmeta/dbg.h" line="470" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="470" bodyend="481"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a3f0682f5939ac9a18ba7ee86a5c63243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -766,7 +785,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="484" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="484" bodyend="515"/>
+        <location file="src/omexmeta/dbg.h" line="484" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="484" bodyend="515"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1abb85fb70314b6ada2e66eebeafcd15bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -791,7 +810,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="518" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="518" bodyend="539"/>
+        <location file="src/omexmeta/dbg.h" line="518" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="518" bodyend="539"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1acd3034b7476cdf474e46eb2bbca6e0d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -838,7 +857,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="550" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="550" bodyend="553"/>
+        <location file="src/omexmeta/dbg.h" line="550" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="550" bodyend="553"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1adf02078069da78815c208dd638a01640" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -867,7 +886,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="565" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="565" bodyend="572"/>
+        <location file="src/omexmeta/dbg.h" line="565" column="13" bodyfile="src/omexmeta/dbg.h" bodystart="565" bodyend="572"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a1212dc990d58f20efcf5d66eb4a5781c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -915,7 +934,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="728" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="728" bodyend="730"/>
+        <location file="src/omexmeta/dbg.h" line="728" column="3" bodyfile="src/omexmeta/dbg.h" bodystart="728" bodyend="730"/>
       </memberdef>
       <memberdef kind="function" id="dbg_8h_1a2f87ce2acfce330c46dba7f4c62c2fb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -945,7 +964,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="733" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="733" bodyend="735"/>
+        <location file="src/omexmeta/dbg.h" line="733" column="6" bodyfile="src/omexmeta/dbg.h" bodystart="733" bodyend="735"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

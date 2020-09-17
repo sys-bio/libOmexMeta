@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1Participant" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Participant</compoundname>
     <derivedcompoundref refid="classomexmeta_1_1MediatorParticipant" prot="public" virt="non-virtual">omexmeta::MediatorParticipant</derivedcompoundref>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="26" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="26" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="26" column="22" bodyfile="src/omexmeta/Participant.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1aa947afd3fb5d53a7bd2029261f5be45e" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="27" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="27" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="27" column="21" bodyfile="src/omexmeta/Participant.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1acc6eb18feca176230dfd107f94a7b0db" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -39,12 +39,13 @@
         <argsstring></argsstring>
         <name>semsim_predicate_term_</name>
         <briefdescription>
-<para>like <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> in SourceParticipant0000 </para>        </briefdescription>
+<para>like <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> in SourceParticipant0000 </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="28" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="28" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="28" column="21" bodyfile="src/omexmeta/Participant.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1a16f1f408871af50730db7eaae4950bf2" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -58,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="29" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="29" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="29" column="13" bodyfile="src/omexmeta/Participant.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1ae0d944207f96c78ccfc0002a7084d861" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -71,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="30" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="30" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="30" column="21" bodyfile="src/omexmeta/Participant.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1a2d1b200f736249f791559b5b65afea2d" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -84,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="34" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="34" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="34" column="21" bodyfile="src/omexmeta/Participant.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1adc7f331875342471ca28c8b0ccc9f625" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -97,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="36" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="36" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="36" column="21" bodyfile="src/omexmeta/Participant.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1a3c5e24de1d42e00ebf0b9d05fda0bdab" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -110,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="37" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="37" bodyend="-1"/>
+        <location file="src/omexmeta/Participant.h" line="37" column="21" bodyfile="src/omexmeta/Participant.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -124,12 +125,14 @@
           <declname>multiplier</declname>
         </param>
         <briefdescription>
-<para>return the vector of strings that keeps track of newly generated metaids. <ref refid="classThis" kindref="compound">This</ref> mechanism ensures unique metaids in the situation where the user has added &gt;1 participant of a certain type i.e. sink. </para>        </briefdescription>
+<para>return the vector of strings that keeps track of newly generated metaids. <ref refid="classThis" kindref="compound">This</ref> mechanism ensures unique metaids in the situation where the user has added &gt;1 participant of a certain type i.e. sink. </para>
+        </briefdescription>
         <detaileddescription>
-<para>setter for the multiplier field of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types </para>        </detaileddescription>
+<para>setter for the multiplier field of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="53" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="157" bodyend="159"/>
+        <location file="src/omexmeta/Participant.h" line="53" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="157" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a415c1205762dff6943426d830d74edcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -141,12 +144,14 @@
           <declname>physicalEntityReference</declname>
         </param>
         <briefdescription>
-<para>setter for physical entity reference field of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types </para>        </briefdescription>
+<para>setter for physical entity reference field of <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types </para>
+        </briefdescription>
         <detaileddescription>
-<para>A physical entity reference must exist and point to a physical entity in the xml. </para>        </detaileddescription>
+<para>A physical entity reference must exist and point to a physical entity in the xml. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="59" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="161" bodyend="163"/>
+        <location file="src/omexmeta/Participant.h" line="59" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="161" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a8a6626e17aca48b76465d66928eee78f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -154,12 +159,14 @@
         <argsstring>() const</argsstring>
         <name>getLocalParticipantMetaid</name>
         <briefdescription>
-<para>return the local participant metaid. </para>        </briefdescription>
+<para>return the local participant metaid. </para>
+        </briefdescription>
         <detaileddescription>
-<para>When <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types are created they are done so with a metaid that is local to the annotation document not to the model. </para>        </detaileddescription>
+<para>When <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types are created they are done so with a metaid that is local to the annotation document not to the model. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="67" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="165" bodyend="167"/>
+        <location file="src/omexmeta/Participant.h" line="67" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="165" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a5e8f680950f55230587c0f85498c5047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -171,12 +178,14 @@
           <declname>uniqueParticipantMetaid</declname>
         </param>
         <briefdescription>
-<para>set the local participant metaid. </para>        </briefdescription>
+<para>set the local participant metaid. </para>
+        </briefdescription>
         <detaileddescription>
-<para>When <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types are created they are done so with a metaid that is local to the annotation document not to the model. </para>        </detaileddescription>
+<para>When <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> types are created they are done so with a metaid that is local to the annotation document not to the model. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="75" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="169" bodyend="171"/>
+        <location file="src/omexmeta/Participant.h" line="75" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a6bf4c724ab5212d10f2a89893f369cd1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -184,12 +193,13 @@
         <argsstring>() const</argsstring>
         <name>getLocalUri</name>
         <briefdescription>
-<para>getter for local uri attribute </para>        </briefdescription>
+<para>getter for local uri attribute </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="80" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="173" bodyend="175"/>
+        <location file="src/omexmeta/Participant.h" line="80" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a595323ae0681f42a7ba5981e2ee840f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -201,12 +211,13 @@
           <declname>localUri</declname>
         </param>
         <briefdescription>
-<para>setter for local uri attribute </para>        </briefdescription>
+<para>setter for local uri attribute </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="85" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="177" bodyend="179"/>
+        <location file="src/omexmeta/Participant.h" line="85" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="177" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a395bc8d2561149a77371ed80e2ed1517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -216,10 +227,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>currently more of a placeholder so as to not break the tests. todo remove this method, <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects deal with memory for Participants. </para>        </detaileddescription>
+<para>@biref currently more of a placeholder so as to not break the tests. todo remove this method, <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects deal with memory for Participants. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="91" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="25" bodyend="25"/>
+        <location file="src/omexmeta/Participant.h" line="91" column="15" bodyfile="src/omexmeta/Participant.cpp" bodystart="25" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a95c8c86650d1b0d31bb47eb618ff81b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -255,48 +267,56 @@
           <declname>physicalEntityReference</declname>
         </param>
         <briefdescription>
-<para>Superclass of participant types. </para>        </briefdescription>
+<para>Superclass of participant types. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>model</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>pointer to the librdf_model* in use. Passed down from <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref>. </para></parameterdescription>
+<para>pointer to the librdf_model* in use. Passed down from <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref>. </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>base_metaid</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the content of the participant base_metaid. A valid metaid. </para></parameterdescription>
+<para>the content of the participant base_metaid. A valid metaid. </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>semsim_predicate_term</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>a string from the <ref refid="classomexmeta_1_1SemSim" kindref="compound">SemSim</ref> vocabulary. </para></parameterdescription>
+<para>a string from the <ref refid="classomexmeta_1_1SemSim" kindref="compound">SemSim</ref> vocabulary. </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>multiplier</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Specifies the stoiciometry for the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> in the process </para></parameterdescription>
+<para>Specifies the stoiciometry for the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> in the process </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>physicalEntityReference</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the ID of the physicalEntity assicated with the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref></para></parameterdescription>
+<para>the ID of the physicalEntity assicated with the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-<ref refid="classThis" kindref="compound">This</ref> class should not be used directly - the subclasses should be preferred.</para><para>For developers - <ref refid="classThis" kindref="compound">This</ref> superclass is implemented in order to substantially reduce code duplication in the subclasses. </para>        </detaileddescription>
+<ref refid="classThis" kindref="compound">This</ref> class should not be used directly - the subclasses should be preferred.</para>
+<para>For developers - <ref refid="classThis" kindref="compound">This</ref> superclass is implemented in order to substantially reduce code duplication in the subclasses. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="107" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="12" bodyend="23"/>
+        <location file="src/omexmeta/Participant.h" line="107" column="9" bodyfile="src/omexmeta/Participant.cpp" bodystart="12" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a78529cee5b9d5b30d76f937af652d4f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -309,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="112" column="1"/>
+        <location file="src/omexmeta/Participant.h" line="112" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1ad3db317039b403fdb7728885152cbeda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -326,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="114" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="143" bodyend="151"/>
+        <location file="src/omexmeta/Participant.h" line="114" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="143" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1aa4baa62cb4ccffe8443262382490328d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -343,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="116" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="153" bodyend="155"/>
+        <location file="src/omexmeta/Participant.h" line="116" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="153" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a6757eea8a56972eb369e0e102ae5bfc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
@@ -359,21 +379,26 @@
           <declname>metaid_exclusions</declname>
         </param>
         <briefdescription>
-<para>create a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object from the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. </para>        </briefdescription>
+<para>create a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object from the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>subject_metaid</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the metaid for a process </para></parameterdescription>
+<para>the metaid for a process </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> container for the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> associated with this <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref></para></simplesect>
-The same toTriples method is used for all participants. </para>        </detaileddescription>
+<simplesect kind="return"><para>A <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> container for the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> associated with this <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref></para>
+</simplesect>
+The same toTriples method is used for all participants. </para>
+        </detaileddescription>
         <inbodydescription>
-<para>Since <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>&apos;s are added to the model as a unit, we need a way of keeping track of which metaids have been used in order to ensure unique metaid&apos;s when we have more than one Sink/Source/Mediate <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way local_uri&apos;s were added after the original design was in place. Future developers might want to look at this.</para>        </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="125" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="31" bodyend="121"/>
+<para>Since <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>&apos;s are added to the model as a unit, we need a way of keeping track of which metaids have been used in order to ensure unique metaid&apos;s when we have more than one Sink/Source/Mediate <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way local_uri&apos;s were added after the original design was in place. Future developers might want to look at this.</para>
+        </inbodydescription>
+        <location file="src/omexmeta/Participant.h" line="125" column="18" bodyfile="src/omexmeta/Participant.cpp" bodystart="31" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a03a1ffc7e9efaed5c0e94a62f7c72650" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -389,20 +414,23 @@ The same toTriples method is used for all participants. </para>        </detaile
           <declname>metaid_exclusions</declname>
         </param>
         <briefdescription>
-<para>create a new metaid use base </para>        </briefdescription>
+<para>create a new metaid use base </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>base</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="131" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="27" bodyend="29"/>
+        <location file="src/omexmeta/Participant.h" line="131" column="22" bodyfile="src/omexmeta/Participant.cpp" bodystart="27" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::basic_string&lt; char &gt;</type>
@@ -410,13 +438,16 @@ The same toTriples method is used for all participants. </para>        </detaile
         <argsstring>()</argsstring>
         <name>getPredicate</name>
         <briefdescription>
-<para>get the predicate currently in use by the participant </para>        </briefdescription>
+<para>get the predicate currently in use by the participant </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1SemSim" kindref="compound">SemSim</ref> predicate </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1SemSim" kindref="compound">SemSim</ref> predicate </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="139" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="123" bodyend="125"/>
+        <location file="src/omexmeta/Participant.h" line="139" column="27" bodyfile="src/omexmeta/Participant.cpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a1188d6a2036514eb6b649ce1e08eca4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -428,20 +459,23 @@ The same toTriples method is used for all participants. </para>        </detaile
           <declname>semsim_predicate_string</declname>
         </param>
         <briefdescription>
-<para>set the predicate used in the participant </para>        </briefdescription>
+<para>set the predicate used in the participant </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>semsim_predicate_string</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The predicate portion of the <ref refid="classomexmeta_1_1SemSim" kindref="compound">SemSim</ref> predicate you want to use.</para></parameterdescription>
+<para>The predicate portion of the <ref refid="classomexmeta_1_1SemSim" kindref="compound">SemSim</ref> predicate you want to use.</para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/semsim#hasSourceParticipant&quot; </para>        </detaileddescription>
+i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/semsim#hasSourceParticipant&quot; </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="147" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="127" bodyend="129"/>
+        <location file="src/omexmeta/Participant.h" line="147" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -449,13 +483,16 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         <argsstring>() const</argsstring>
         <name>getSubject</name>
         <briefdescription>
-<para>get the subject portion of the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>, which is the </para>        </briefdescription>
+<para>get the subject portion of the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>, which is the </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the string of the subject value metaid of the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the string of the subject value metaid of the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="154" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="131" bodyend="133"/>
+        <location file="src/omexmeta/Participant.h" line="154" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1ac7121064734a05141a57f39dce10e71a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -463,13 +500,16 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         <argsstring>() const</argsstring>
         <name>getMultiplier</name>
         <briefdescription>
-<para>get the multiplier representing the stoiciometry of the process being described </para>        </briefdescription>
+<para>get the multiplier representing the stoiciometry of the process being described </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the multiplier </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the multiplier </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="160" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="135" bodyend="137"/>
+        <location file="src/omexmeta/Participant.h" line="160" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="135" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a40a5858db6aaae7ec7095b320de838d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -477,13 +517,16 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         <argsstring>() const</argsstring>
         <name>getPhysicalEntityReference</name>
         <briefdescription>
-<para>get the physicalEntityReference </para>        </briefdescription>
+<para>get the physicalEntityReference </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the physicalEntityReference string </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>the physicalEntityReference string </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="166" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="139" bodyend="141"/>
+        <location file="src/omexmeta/Participant.h" line="166" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1ae78613f8d39ccfc23fc3624deb960fb0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -491,12 +534,13 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         <argsstring>() const</argsstring>
         <name>getModelUri</name>
         <briefdescription>
-<para>getter for model_uri_ attribute </para>        </briefdescription>
+<para>getter for model_uri_ attribute </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="171" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="181" bodyend="183"/>
+        <location file="src/omexmeta/Participant.h" line="171" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1abea74e8605f7314a51db8dc723961462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -508,12 +552,13 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
           <declname>model_uri</declname>
         </param>
         <briefdescription>
-<para>setter for model_uri_ attribute </para>        </briefdescription>
+<para>setter for model_uri_ attribute </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Participant.h" line="176" column="1" bodyfile="src/omexmeta/Participant.cpp" bodystart="185" bodyend="187"/>
+        <location file="src/omexmeta/Participant.h" line="176" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="185" bodyend="187"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -521,30 +566,30 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="149">
+      <node id="1">
         <label>omexmeta::Participant</label>
         <link refid="classomexmeta_1_1Participant"/>
       </node>
-      <node id="152">
+      <node id="4">
         <label>omexmeta::SourceParticipant</label>
         <link refid="classomexmeta_1_1SourceParticipant"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="151">
+      <node id="3">
         <label>omexmeta::SinkParticipant</label>
         <link refid="classomexmeta_1_1SinkParticipant"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="150">
+      <node id="2">
         <label>omexmeta::MediatorParticipant</label>
         <link refid="classomexmeta_1_1MediatorParticipant"/>
-        <childnode refid="149" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/omexmeta/Participant.h" line="24" column="1" bodyfile="src/omexmeta/Participant.h" bodystart="24" bodyend="177"/>
+    <location file="src/omexmeta/Participant.h" line="24" column="5" bodyfile="src/omexmeta/Participant.h" bodystart="24" bodyend="177"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Participant_1a03a1ffc7e9efaed5c0e94a62f7c72650" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>createMetaid</name></member>
       <member refid="classomexmeta_1_1Participant_1a395bc8d2561149a77371ed80e2ed1517" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>free</name></member>

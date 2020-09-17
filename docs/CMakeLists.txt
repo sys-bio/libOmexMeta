@@ -42,28 +42,25 @@ macro(add_doc_example BINARY_NAME)
 
     # links
     target_link_libraries(${BINARY_NAME} PRIVATE
-                          # Order matters!
-                          $<TARGET_FILE:OmexMetaCAPI> # for C examples
-                          $<TARGET_FILE:OmexMeta-static> # for c++ examples
-                          $<TARGET_FILE:redland-combined-static>
-                          ${LINK_LIBRARIES}
-                          ${RUNTIME}# best here so no clash with dynamic
-                          pthread
-                          )
-
+            # Order matters!
+            OmexMetaCAPI # for C examples
+            OmexMeta-static # for c++ examples
+            redland-combined-static
+            ${LINK_LIBRARIES}
+            ${RUNTIME}# best here so no clash with dynamic
+#            pthread
+            )
     target_include_directories(${BINARY_NAME} PRIVATE
-                               ${GOOGLETEST_SOURCE}/googletest/include
-                               ${INCLUDE_DIRECTORIES}
-                               ${WRAPPER_SOURCE_DIR}
-                               )
+            ${GOOGLETEST_SOURCE}/googletest/include
+            ${INCLUDE_DIRECTORIES}
+            ${WRAPPER_SOURCE_DIR}
+            )
 
 
 endmacro()
 
 
-
-
-if (BUILD_DOCS_EXAMPLES)
+if (${BUILD_DOCS_EXAMPLES})
 
     # I've automated this as much as possible. The idea is that
     # I write the examples and compile the programs. Then I capture the
@@ -78,40 +75,40 @@ if (BUILD_DOCS_EXAMPLES)
     # sphinx's job to pickup both code and output and include them in
     # the documentation.
 
-    add_doc_example(AddFromFileC                                  source/reading_rdf/add_from_file_c.cpp)
-    add_doc_example(AddFromFileCpp                                source/reading_rdf/add_from_file_cpp.cpp)
-    add_doc_example(AddFromStringC                                source/reading_rdf/add_from_string_c.cpp)
-    add_doc_example(AddFromStringCpp                              source/reading_rdf/add_from_string_cpp.cpp)
-    add_doc_example(AddFromUriC                                   source/reading_rdf/add_from_uri_c.cpp)
-    add_doc_example(AddFromUriCpp                                 source/reading_rdf/add_from_uri_cpp.cpp)
-    add_doc_example(FromStringC                                   source/reading_rdf/from_string_c.cpp)
-    add_doc_example(FromStringCpp                                 source/reading_rdf/from_string_cpp.cpp)
-    add_doc_example(FromUriC                                      source/reading_rdf/from_uri_c.cpp)
-    add_doc_example(FromUriCpp                                    source/reading_rdf/from_uri_cpp.cpp)
-    add_doc_example(FromFileC                                     source/reading_rdf/from_file_c.cpp)
-    add_doc_example(FromFileCpp                                   source/reading_rdf/from_file_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationC                       source/editing_rdf/create_single_annotation_c.cpp)
-    add_doc_example(CreateSingleAnnotationCpp                     source/editing_rdf/create_single_annotation_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationNoCommitC               source/editing_rdf/create_single_annotation_no_commit_c.cpp)
-    add_doc_example(CreateSingleAnnotationNoCommitCpp             source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationPredicateFromUriC       source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
-    add_doc_example(CreateSingleAnnotationPredicateFromUriCpp     source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationResourceC               source/editing_rdf/create_single_annotation_resource_c.cpp)
-    add_doc_example(CreateSingleAnnotationResourceCpp             source/editing_rdf/create_single_annotation_resource_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationWithMetaidsC            source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
-    add_doc_example(CreateSingleAnnotationWithMetaidsCpp          source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
-    add_doc_example(CreatePhysicalEntityC                         source/editing_rdf/create_physical_entity_c.cpp)
-    add_doc_example(CreatePhysicalEntityCpp                       source/editing_rdf/create_physical_entity_cpp.cpp)
-    add_doc_example(CreatePhysicalProcessC                        source/editing_rdf/create_physical_process_c.cpp)
-    add_doc_example(CreatePhysicalProcessCpp                      source/editing_rdf/create_physical_process_cpp.cpp)
-    add_doc_example(CreatePhysicalForceC                          source/editing_rdf/create_physical_force_c.cpp)
-    add_doc_example(CreatePhysicalForceCpp                        source/editing_rdf/create_physical_force_cpp.cpp)
-    add_doc_example(WritingToStringC                              source/writing_rdf/writing_to_string_c.cpp)
-    add_doc_example(WritingToStringCpp                            source/writing_rdf/writing_to_string_cpp.cpp)
-    add_doc_example(WritingToFileC                                source/writing_rdf/writing_to_file_c.cpp)
-    add_doc_example(WritingToFileCpp                              source/writing_rdf/writing_to_file_cpp.cpp)
-    add_doc_example(QueryingRdfGraphC                             source/querying_rdf/querying_rdf_c.cpp)
-    add_doc_example(QueryingRdfGraphCpp                           source/querying_rdf/querying_rdf_cpp.cpp)
+    add_doc_example(AddFromFileC source/reading_rdf/add_from_file_c.cpp)
+    add_doc_example(AddFromFileCpp source/reading_rdf/add_from_file_cpp.cpp)
+    add_doc_example(AddFromStringC source/reading_rdf/add_from_string_c.cpp)
+    add_doc_example(AddFromStringCpp source/reading_rdf/add_from_string_cpp.cpp)
+    add_doc_example(AddFromUriC source/reading_rdf/add_from_uri_c.cpp)
+    add_doc_example(AddFromUriCpp source/reading_rdf/add_from_uri_cpp.cpp)
+    add_doc_example(FromStringC source/reading_rdf/from_string_c.cpp)
+    add_doc_example(FromStringCpp source/reading_rdf/from_string_cpp.cpp)
+    add_doc_example(FromUriC source/reading_rdf/from_uri_c.cpp)
+    add_doc_example(FromUriCpp source/reading_rdf/from_uri_cpp.cpp)
+    add_doc_example(FromFileC source/reading_rdf/from_file_c.cpp)
+    add_doc_example(FromFileCpp source/reading_rdf/from_file_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationC source/editing_rdf/create_single_annotation_c.cpp)
+    add_doc_example(CreateSingleAnnotationCpp source/editing_rdf/create_single_annotation_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationNoCommitC source/editing_rdf/create_single_annotation_no_commit_c.cpp)
+    add_doc_example(CreateSingleAnnotationNoCommitCpp source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationPredicateFromUriC source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
+    add_doc_example(CreateSingleAnnotationPredicateFromUriCpp source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationResourceC source/editing_rdf/create_single_annotation_resource_c.cpp)
+    add_doc_example(CreateSingleAnnotationResourceCpp source/editing_rdf/create_single_annotation_resource_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationWithMetaidsC source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
+    add_doc_example(CreateSingleAnnotationWithMetaidsCpp source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
+    add_doc_example(CreatePhysicalEntityC source/editing_rdf/create_physical_entity_c.cpp)
+    add_doc_example(CreatePhysicalEntityCpp source/editing_rdf/create_physical_entity_cpp.cpp)
+    add_doc_example(CreatePhysicalProcessC source/editing_rdf/create_physical_process_c.cpp)
+    add_doc_example(CreatePhysicalProcessCpp source/editing_rdf/create_physical_process_cpp.cpp)
+    add_doc_example(CreatePhysicalForceC source/editing_rdf/create_physical_force_c.cpp)
+    add_doc_example(CreatePhysicalForceCpp source/editing_rdf/create_physical_force_cpp.cpp)
+    add_doc_example(WritingToStringC source/writing_rdf/writing_to_string_c.cpp)
+    add_doc_example(WritingToStringCpp source/writing_rdf/writing_to_string_cpp.cpp)
+    add_doc_example(WritingToFileC source/writing_rdf/writing_to_file_c.cpp)
+    add_doc_example(WritingToFileCpp source/writing_rdf/writing_to_file_cpp.cpp)
+    add_doc_example(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
+    add_doc_example(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
@@ -123,18 +120,20 @@ if (BUILD_DOCS_EXAMPLES)
     # executables.
     message(STATUS "CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}")
     set(DOC_EXAMPLE_RUNNER "${CMAKE_CURRENT_SOURCE_DIR}/build_doc_examples.py")
-    if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
-        message(FATAL_ERROR "No Python script found where \"build_doc_examples.py\" should be")
-    endif ()
+        if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
+            message(FATAL_ERROR "No Python script found where \"build_doc_examples.py\" should be")
+        endif ()
 
 
     # we do not want to use CMAKE_BINARY_DIR so we just take parent of current binary dir
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
-    add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${PARENT_CURRENT_BINARY_DIR}
-            DEPENDS AllDocExamples
-            )
+    #    add_custom_target(RunDocExamplesAndGenerateOutput
+    #            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${PARENT_CURRENT_BINARY_DIR}
+    #            DEPENDS AllDocExamples
+    #            )
+
+    install(TARGETS ${EXAMPLE_EXECUTABLES_TARGETS})
 endif ()
 
 
@@ -209,9 +208,9 @@ add_custom_target(libomexmeta-docs-sphinx DEPENDS ${SPHINX_INDEX_FILE})
 
 # when were building the docs examples, we add the dependency so the
 # examples get built when we run build the libomexmeta-dpcs-sphinx target
-if (BUILD_DOCS_EXAMPLES)
-    add_dependencies(libomexmeta-docs-sphinx RunDocExamplesAndGenerateOutput)
-endif ()
+#if (BUILD_DOCS_EXAMPLES)
+#    add_dependencies(libomexmeta-docs-sphinx RunDocExamplesAndGenerateOutput)
+#endif ()
 
 # Add an install target to install the docs
 include(GNUInstallDirs)

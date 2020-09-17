@@ -1,17 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="structPair" kind="struct" language="C++" prot="public">
     <compoundname>Pair</compoundname>
     <templateparamlist>
       <param>
-        <type>typename</type>
-        <declname>First</declname>
-        <defname>First</defname>
+        <type>typename First</type>
       </param>
       <param>
-        <type>typename</type>
-        <declname>Second</declname>
-        <defname>Second</defname>
+        <type>typename Second</type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-attrib">
@@ -26,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="14" column="1" bodyfile="src/omexmeta/logger.h" bodystart="14" bodyend="-1"/>
+        <location file="src/omexmeta/logger.h" line="14" column="9" bodyfile="src/omexmeta/logger.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPair_1a86b9ae89026109ed31635f6c938b5b57" prot="public" static="no" mutable="no">
         <type>Second</type>
@@ -39,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="15" column="1" bodyfile="src/omexmeta/logger.h" bodystart="15" bodyend="-1"/>
+        <location file="src/omexmeta/logger.h" line="15" column="10" bodyfile="src/omexmeta/logger.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

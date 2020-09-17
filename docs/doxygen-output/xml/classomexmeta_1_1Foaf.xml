@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1Foaf" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Foaf</compoundname>
     <basecompoundref refid="classomexmeta_1_1Predicate" prot="public" virt="non-virtual">omexmeta::Predicate</basecompoundref>
@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="342" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="342" bodyend="-1"/>
+        <location file="src/omexmeta/Predicate.h" line="342" column="21" bodyfile="src/omexmeta/Predicate.h" bodystart="342" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="350" column="1"/>
+        <location file="src/omexmeta/Predicate.h" line="350" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Foaf_1af60965a79363573d9df78010936e1c81" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="352" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="248" bodyend="251"/>
+        <location file="src/omexmeta/Predicate.h" line="352" column="18" bodyfile="src/omexmeta/Predicate.cpp" bodystart="248" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Foaf_1a044d1eedbaf2be1ac6fcd160e3365a16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.h" line="354" column="1" bodyfile="src/omexmeta/Predicate.cpp" bodystart="253" bodyend="255"/>
+        <location file="src/omexmeta/Predicate.h" line="354" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="253" bodyend="255"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,30 +75,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="68">
+      <node id="1">
         <label>omexmeta::Foaf</label>
         <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="69" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="69">
+      <node id="2">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="70">
+      <node id="1">
         <label>omexmeta::Foaf</label>
         <link refid="classomexmeta_1_1Foaf"/>
-        <childnode refid="71" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="71">
+      <node id="2">
         <label>omexmeta::Predicate</label>
         <link refid="classomexmeta_1_1Predicate"/>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/Predicate.h" line="340" column="1" bodyfile="src/omexmeta/Predicate.h" bodystart="340" bodyend="358"/>
+    <location file="src/omexmeta/Predicate.h" line="340" column="5" bodyfile="src/omexmeta/Predicate.h" bodystart="340" bodyend="358"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::Foaf</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1Foaf_1a8e86983793ae4dda976ef2af94b9bcf7" prot="public" virt="non-virtual"><scope>omexmeta::Foaf</scope><name>Foaf</name></member>

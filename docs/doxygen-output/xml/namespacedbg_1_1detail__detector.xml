@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="namespacedbg_1_1detail__detector" kind="namespace" language="C++">
     <compoundname>dbg::detail_detector</compoundname>
     <innerclass refid="structdbg_1_1detail__detector_1_1detector" prot="public">dbg::detail_detector::detector</innerclass>
@@ -7,6 +7,11 @@
     <innerclass refid="structdbg_1_1detail__detector_1_1nonesuch" prot="public">dbg::detail_detector::nonesuch</innerclass>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="dbg_8h_1a1dbadccf461338e71c55ea392d4ed47c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+          </param>
+        </templateparamlist>
         <type>void</type>
         <definition>using dbg::detail_detector::void_t = typedef void</definition>
         <argsstring></argsstring>

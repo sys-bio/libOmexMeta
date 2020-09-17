@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1OmexMetaUtils" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::OmexMetaUtils</compoundname>
       <sectiondef kind="public-func">
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="31" column="1"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="31" column="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -28,20 +28,23 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
-<para>return true when filename is a file that exists on system </para>        </briefdescription>
+<para>return true when filename is a file that exists on system </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="37" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="8" bodyend="11"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="37" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="8" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a9c445a8e0cc6589b25d6fa630686c171" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -53,28 +56,33 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
-<para>remove file called </para>        </briefdescription>
+<para>remove file called </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>to remove </para></parameterdescription>
+<para>to remove </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>int 0 when successful. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>int 0 when successful. </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="44" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="13" bodyend="20"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="44" column="20" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="13" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a8e629136cb2685ed839ea3a0e88094e6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -86,20 +94,23 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
-<para>remove a file, checking for its existance first </para>        </briefdescription>
+<para>remove a file, checking for its existance first </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>to remove </para></parameterdescription>
+<para>to remove </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="50" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="22" bodyend="26"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="50" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="22" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a046b603d6308242b70b55de6cb72325c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -115,27 +126,32 @@
           <declname>filename</declname>
         </param>
         <briefdescription>
-<para>download a file from </para>        </briefdescription>
+<para>download a file from </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>url</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>to </para></parameterdescription>
+<para>to</para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>filename</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>wrapper around the <ref refid="classomexmeta_1_1CurlGet" kindref="compound">CurlGet</ref> function, as the utils class seems like a good place for the download features. </para></parameterdescription>
+<para><verbatim>wrapper around the CurlGet function, as the utils
+</verbatim> class seems like a good place for the download features. </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="55" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="32" bodyend="34"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="55" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="32" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1aac769ce6e901f32820cd7dc3fef989fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -151,20 +167,23 @@
           <declname>delimiter</declname>
         </param>
         <briefdescription>
-<para>split a string into a vector of strings by </para>        </briefdescription>
+<para>split a string into a vector of strings by </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>delimiter</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="60" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="36" bodyend="50"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="60" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="36" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a4700231d455a5f65f7cc290d98d2b0ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -184,12 +203,16 @@
           <declname>exclusions</declname>
         </param>
         <briefdescription>
-<para>utility for generating unique metaids given an xml document </para>        </briefdescription>
+<para>utility for generating unique metaids given an xml document </para>
+        </briefdescription>
         <detaileddescription>
-<para>model a librdf_model* pointer a string that will be used for the ID. There will be 4 digits, though this can be changed. exclusions. Mostly needed internally for dealing with metaids that already exist. </para>        </detaileddescription>
+<para>model a librdf_model* pointer</para>
+<para>a string that will be used for the ID. There will be 4 digits, though this can be changed.</para>
+<para>exclusions. Mostly needed internally for dealing with metaids that already exist. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="68" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="59" bodyend="100"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="68" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="59" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a6694715cf3f5dccd33d416ecc84ff375" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -206,27 +229,31 @@
           <defval>false</defval>
         </param>
         <briefdescription>
-<para>process a string intended to be a base uri. </para>        </briefdescription>
+<para>process a string intended to be a base uri. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>str</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The string that will become a base uri </para></parameterdescription>
+<para>The string that will become a base uri </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>absolute_path</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>automatically make str an absolute path to the current working directory.</para></parameterdescription>
+<para>automatically make str an absolute path to the current working directory.</para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-Base uri&apos;s are important in redland libraries. If they do not begin with <computeroutput><ulink url="file://">file://</ulink></computeroutput> <computeroutput>http</computeroutput> or <computeroutput>https</computeroutput>, sparql querying will break down. <ref refid="classThis" kindref="compound">This</ref> is a helper function to ensure the base uri is properly formatted. </para>        </detaileddescription>
+Base uri&apos;s are important in redland libraries. If they do not begin with <computeroutput><ulink url="file://">file://</ulink></computeroutput> <computeroutput>http</computeroutput> or <computeroutput>https</computeroutput>, sparql querying will break down. <ref refid="classThis" kindref="compound">This</ref> is a helper function to ensure the base uri is properly formatted. </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="83" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="102" bodyend="128"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="83" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="102" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a0956bde073b212596d8e4b2ffc983e47" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -238,12 +265,14 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
           <declname>uri</declname>
         </param>
         <briefdescription>
-<para>takes a uri as std::string and returns the string with the last section removed; </para>        </briefdescription>
+<para>takes a uri as std::string and returns the string with the last section removed; </para>
+        </briefdescription>
         <detaileddescription>
-<para>Example: www.uri.com/identifer/PD12345 will turn into www.uri.com/identifier/ </para>        </detaileddescription>
+<para>Example: www.uri.com/identifer/PD12345 will turn into www.uri.com/identifier/ </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="92" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="130" bodyend="159"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="92" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="130" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1af663724f2efb0324a64c6a57e8491c13" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -255,20 +284,23 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
           <declname>uri</declname>
         </param>
         <briefdescription>
-<para>helper function that returns true when uri starts with either <computeroutput><ulink url="https://">https://</ulink></computeroutput> <computeroutput><ulink url="http://">http://</ulink></computeroutput> or <computeroutput><ulink url="file://">file://</ulink></computeroutput> </para>        </briefdescription>
+<para>helper function that returns true when uri starts with either <computeroutput><ulink url="https://">https://</ulink></computeroutput> <computeroutput><ulink url="http://">http://</ulink></computeroutput> or <computeroutput><ulink url="file://">file://</ulink></computeroutput> </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>uri</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the uri to test. </para></parameterdescription>
+<para>the uri to test. </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="99" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="161" bodyend="169"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="99" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="161" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a9c2b712b85f74fff9740477660f7b371" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -284,27 +316,31 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
           <declname>ending</declname>
         </param>
         <briefdescription>
-<para>test to see whether a string ends with another string </para>        </briefdescription>
+<para>test to see whether a string ends with another string </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>fullString</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to test </para></parameterdescription>
+<para>the string to test </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>ending</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the ending to test for </para></parameterdescription>
+<para>the ending to test for </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="106" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="171" bodyend="177"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="106" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="171" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -320,12 +356,13 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
           <declname>actual_string</declname>
         </param>
         <briefdescription>
-<para>test that expected_string matches actual_string when split by new lines and matched as a regex </para>        </briefdescription>
+<para>test that expected_string matches actual_string when split by new lines and matched as a regex </para>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="109" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="188" bodyend="207"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="109" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="188" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -346,7 +383,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="111" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="210" bodyend="224"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="111" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="210" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a744a0575136f1cc60b76a6560a5595e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -366,20 +403,23 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
           <declname>model_name</declname>
         </param>
         <briefdescription>
-<para>configures the &quot;OMEXlib&quot;, &quot;myOMEX&quot; and &quot;local&quot; prefixes @ param omex_name the name of the omex container your model is in </para>        </briefdescription>
+<para>configures the &quot;OMEXlib&quot;, &quot;myOMEX&quot; and &quot;local&quot; prefixes @ param omex_name the name of the omex container your model is in </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>model_name</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the name of the model your are annotating. Extension should be included or it will be given the &quot;.xml&quot; suffix. </para></parameterdescription>
+<para>the name of the model your are annotating. Extension should be included or it will be given the &quot;.xml&quot; suffix. </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="121" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="227" bodyend="270"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="121" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="227" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -395,27 +435,31 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
           <declname>uri</declname>
         </param>
         <briefdescription>
-<para>concatonate metaid and uri strings </para>        </briefdescription>
+<para>concatonate metaid and uri strings </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>metaid</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>string. Like &quot;#metaid&quot; or &quot;metaid&quot; </para></parameterdescription>
+<para>string. Like &quot;#metaid&quot; or &quot;metaid&quot; </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>uri</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>string. Like &quot;https://omex-library/jeff2019.omex/mymodel.xml&quot; or &quot;https://omex-library/jeff2019.omex/mymodel.rdf&quot;</para></parameterdescription>
+<para>string. Like &quot;https://omex-library/jeff2019.omex/mymodel.xml&quot; or &quot;https://omex-library/jeff2019.omex/mymodel.rdf&quot;  Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading &quot;#&quot;. <ref refid="classThis" kindref="compound">This</ref> method concatonates whilst accounting for permutations of &quot;#&quot; </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading &quot;#&quot;. <ref refid="classThis" kindref="compound">This</ref> method concatonates whilst accounting for permutations of &quot;#&quot; </para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="130" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="272" bodyend="296"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="130" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="272" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1aca2230ca99338b9dc0fc7d296b0c553b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -435,27 +479,31 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
           <declname>replacement</declname>
         </param>
         <briefdescription>
-<para>replace a part of a string  from a main </para>        </briefdescription>
+<para>replace a part of a string @string_to_replace from a main </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>string</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>with a replacement string </para></parameterdescription>
+<para>with a replacement string</para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>replacement</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="137" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="299" bodyend="307"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="137" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="299" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a66d58e0ebcbee1857b23ead70c87de7f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -471,27 +519,31 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
           <declname>start</declname>
         </param>
         <briefdescription>
-<para>returns true when </para>        </briefdescription>
+<para>returns true when </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>full_string</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>starts with the substring </para></parameterdescription>
+<para>starts with the substring</para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>start</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="142" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="179" bodyend="181"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="142" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="179" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a6f8e406b8798bd2f1f0ae0d1bd07ed2b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -507,27 +559,32 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
           <declname>string</declname>
         </param>
         <briefdescription>
-<para>returns true when </para>        </briefdescription>
+<para>returns true when </para>
+        </briefdescription>
         <detaileddescription>
-<para>return true if</para><para><parameterlist kind="param"><parameteritem>
+<para>return true if</para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>string</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>is in </para></parameterdescription>
+<para>is in</para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>vec</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para></para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="147" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="312" bodyend="314"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="147" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="312" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a718710d8ba7fc7598bd73a5456b3d903" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>xmlDoc *</type>
@@ -539,13 +596,16 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
           <declname>xml_string</declname>
         </param>
         <briefdescription>
-<para>read an xml document using libxml2. </para>        </briefdescription>
+<para>read an xml document using libxml2. </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>xmlDoc*. Caller is responsible for calling xmlFreeDoc(doc). </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="return"><para>xmlDoc*. Caller is responsible for calling xmlFreeDoc(doc). </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="149" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="320" bodyend="327"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="149" column="23" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="320" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a29cc8222c809162eadbc424a0687cbf3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -566,7 +626,7 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="151" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="329" bodyend="341"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="151" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="329" bodyend="341"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a1dbcd874b2b72531e7f4f9e82524d8e8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>xmlNode *</type>
@@ -587,7 +647,7 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="153" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="343" bodyend="353"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="153" column="24" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="343" bodyend="353"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a4d6f7d2140c42435be9339edf975b949" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; xmlNode * &gt;</type>
@@ -604,7 +664,7 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="155" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="355" bodyend="370"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="155" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="355" bodyend="370"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a96e93667c8799b9569cb30fc102b129b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -625,14 +685,14 @@ Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="157" column="1" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="52" bodyend="57"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="157" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="52" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/OmexMetaUtils.h" line="29" column="1" bodyfile="src/omexmeta/OmexMetaUtils.h" bodystart="29" bodyend="158"/>
+    <location file="src/omexmeta/OmexMetaUtils.h" line="29" column="5" bodyfile="src/omexmeta/OmexMetaUtils.h" bodystart="29" bodyend="158"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertMatchByNewLine</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertRegexMatchSplitByNewLine</name></member>
