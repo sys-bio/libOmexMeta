@@ -1,6 +1,14 @@
 import os, sys, subprocess, glob
 import tempfile
+import argparse
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--install-folder", help="absolute path to where you install libomexmeta", default=r"D:\libOmexMeta\install-msvc", type=str)
+parser.add_argument("--pyomexmeta-package-dir", help="absolute path to where the pyomexmeta package lives", default=r"D:\libOmexMeta\src", type=str)
+parser.add_argument("--output-location", help="where to save the output from examples", default=r"D:\libOmexMeta\docs\ExampleOutputFiles", type=str)
+args = parser.parse_args()
+
+print(args)
 CURRENT_DIRECTORY = DOCS_DIRECTORY = os.path.join(os.path.dirname(__file__))
 PYTHON_FILES = glob.glob(os.path.join(DOCS_DIRECTORY, "*/*/*.py"))
 
@@ -20,13 +28,7 @@ else:
 EXCLUSION_LIST = [i + ext for i in EXCLUSION_LIST]
 
 # USER SUPPLIED
-INSTALL_FOLDER = r"D:\libOmexMeta\install-msvc"
-
-OUTPUT_LOCATION = r"D:\libOmexMeta\docs\ExampleOutputFiles"
-INSTALL_BIN_FOLDER = os.path.join(INSTALL_FOLDER, "bin")
-PYOMEXMETA_SOURCE_DIR = r"D:\libOmexMeta\src"
-
-sys.path.append(PYOMEXMETA_SOURCE_DIR)
+INSTALL_BIN_FOLDER = os.path.join(args.install_folder, "bin")
 
 BINARY_FILES = glob.glob(os.path.join(INSTALL_BIN_FOLDER, "*"+ext))
 
@@ -39,7 +41,7 @@ if "CreatePhysicalEntityCpp" not in [os.path.splitext(os.path.split(i)[1])[0] fo
 # we must prepend this to any python file that gets executed.
 path_code = f"""
 import sys
-sys.path.append('{PYOMEXMETA_SOURCE_DIR}')
+sys.path.append('{args.pyomexmeta_package_dir}')
 """
 
 
@@ -60,7 +62,7 @@ def run_python_files():
 
         output_filename = os.path.split(os.path.splitext(python_file)[0])[1]
 
-        output_filename = os.path.join(OUTPUT_LOCATION, output_filename +".txt")
+        output_filename = os.path.join(args.output_location, output_filename +".txt")
         with open(output_filename, "w") as f:
             f.write(output.decode())
         print(f"output written to \"{output_filename}\"")
@@ -77,7 +79,7 @@ def run_binary_files():
 
         output_filename = os.path.split(os.path.splitext(binary)[0])[1]
 
-        output_filename = os.path.join(OUTPUT_LOCATION, output_filename + ".txt")
+        output_filename = os.path.join(args.output_location, output_filename + ".txt")
         with open(output_filename, "w") as f:
             f.write(output.decode())
 

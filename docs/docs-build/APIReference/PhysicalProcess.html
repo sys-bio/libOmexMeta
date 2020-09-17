@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PhysicalPropery" href="PhysicalPropery.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> libomexmeta
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +117,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -153,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
         
@@ -390,6 +393,32 @@
 <span id="_CPPv3NK8omexmeta15PhysicalProcessneERK15PhysicalProcess"></span><span id="_CPPv2NK8omexmeta15PhysicalProcessneERK15PhysicalProcess"></span><span id="omexmeta::PhysicalProcess::neq-operator__PhysicalProcessCRC"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta15PhysicalProcessneERK15PhysicalProcess" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess11isVersionOfERKNSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess11isVersionOfERKNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess11isVersionOfERKNSt6stringE"></span><span id="omexmeta::PhysicalProcess::isVersionOf__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a52ff2832ac567a4cee2043d37ddcbc6b"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">isVersionOf</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>is_version_of</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess11isVersionOfERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set the isVersionOf portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> composite annotation </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">is_version_of</span></code>: the string to be used as the <a class="reference internal" href="Resource.html#classomexmeta_1_1Resource"><span class="std std-ref">Resource</span></a> portion of the isVersionOf <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a>. This should be of the form OPB:OPB_12345 or OPB/OPB_12345.  This method will set the <a class="reference internal" href="Resource.html#classomexmeta_1_1Resource"><span class="std std-ref">Resource</span></a> resource_ attribute of the PhysicalProperty associated with the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta15PhysicalProcess8setAboutERKNSt6stringE">
+<span id="_CPPv3N8omexmeta15PhysicalProcess8setAboutERKNSt6stringE"></span><span id="_CPPv2N8omexmeta15PhysicalProcess8setAboutERKNSt6stringE"></span><span id="omexmeta::PhysicalProcess::setAbout__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97"></span><a class="reference internal" href="#_CPPv4N8omexmeta15PhysicalProcessE" title="omexmeta::PhysicalProcess">PhysicalProcess</a> &amp;<code class="sig-name descname">setAbout</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>about</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta15PhysicalProcess8setAboutERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set the subject (rdf:about) portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> composite annotation </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">about</span></code>: the string to be used as the Subject portion of the isVersionOf <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a>. This should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  This method will set the Subject subject_ attribute of the PhysicalProperty associated with the <a class="reference internal" href="#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Private Members</p>
@@ -438,11 +467,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -453,7 +490,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

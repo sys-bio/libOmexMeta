@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ElementExtractor" href="ElementExtractor.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> libomexmeta
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +117,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -153,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
         
@@ -181,8 +184,10 @@
 <dl class="cpp class">
 <dt id="_CPPv4N8omexmeta7TriplesE">
 <span id="_CPPv3N8omexmeta7TriplesE"></span><span id="_CPPv2N8omexmeta7TriplesE"></span><span id="omexmeta::Triples"></span><span class="target" id="classomexmeta_1_1Triples"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Triples</code><a class="headerlink" href="#_CPPv4N8omexmeta7TriplesE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is a collection of <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects. </p>
-<p>the implementation of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is hampered by the inability to clone <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects. Instead triples must use move semantics to get <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in or out of a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. Under the hood, the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is just a std::vector&lt;Triple&gt;. </p>
+<dd><p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@brief</span> <span class="n">A</span> <span class="n">Triples</span> <span class="nb">object</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">Triple</span> <span class="n">objects</span><span class="o">.</span>
+</pre></div>
+</div>
+  the implementation of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is hampered by the inability to clone <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects. Instead triples must use move semantics to get <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in or out of a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. Under the hood, the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is just a std::vector&lt;Triple&gt;. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -207,10 +212,9 @@
 <dt id="_CPPv4N8omexmeta7Triples7TriplesER6Triple">
 <span id="_CPPv3N8omexmeta7Triples7TriplesER6Triple"></span><span id="_CPPv2N8omexmeta7Triples7TriplesER6Triple"></span><span id="omexmeta::Triples::Triples__TripleR"></span><span class="target" id="classomexmeta_1_1Triples_1a733eea0f6a2c206eb96771bc7a8cb430"></span><code class="sig-name descname">Triples</code><span class="sig-paren">(</span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<em>triple</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesER6Triple" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>construct a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object from a single triple </p>
-<p><p>The triple is moved into element 0 of a new </p>
-<a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object (which is a memory leak). <dl class="simple">
+<p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: The triple to put into triples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: The triple to put into triples  The triple is moved into element 0 of a new <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object (which is a memory leak). </p></li>
 </ul>
 </dd>
 </dl>
@@ -238,13 +242,9 @@
 <span id="_CPPv3N8omexmeta7Triples9move_backER6Triple"></span><span id="_CPPv2N8omexmeta7Triples9move_backER6Triple"></span><span id="omexmeta::Triples::move_back__TripleR"></span><span class="target" id="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0"></span>void <code class="sig-name descname">move_back</code><span class="sig-paren">(</span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<em>triple</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples9move_backER6Triple" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> to the back of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. Analogous to push back but with move semantics. </p>
 <p>moves a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a></p>
-<p><p>The vector storing the </p>
-<a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is increased in size by 1 and the <dl class="simple">
+<p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object to move.</p></li>
-</ul>
-</dd>
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object to move.  The vector storing the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is increased in size by 1 and the</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: is moved into that slot. Therefore, ownership of the triple passes to the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object who is reposible for freeing the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a>. </p></li>
 </ul>
 </dd>
@@ -363,14 +363,13 @@
 <dt id="_CPPv4N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE">
 <span id="_CPPv3N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE"></span><span id="omexmeta::Triples::str__ssCR.ss.ss.ss"></span><span class="target" id="classomexmeta_1_1Triples_1ad2510c5b335b0266b05507c53bcc64af"></span>std::string <code class="sig-name descname">str</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, std::string <em>base</em> = (std::filesystem::current_path() /= &quot;annotations.rdf&quot;).string(), std::string <em>omex_name</em> = &quot;NewOmex.omex/&quot;, std::string <em>model_name</em> = &quot;NewModel.xml#&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Serialize the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object to. </p>
-<p><p>See RDF::str for more details regarding arguments. </p>
-This method is only for checking to see what <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object looks like when serialized. The annotations are not added to the main <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. This is analogous to <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple_1aabfef726172656b6c61c602b4d8d33e5"><span class="std std-ref">Triple::str</span></a>. <dl class="simple">
+<p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format to serialize </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">base</span></code>: argument for <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. This is hidden so basically irrelevant. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">omex_name</span></code>: the omex portion of the current local uri. Default is NewOmex.omex </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">model_name</span></code>: the omex portion of the current local uri. Default is NewModel.xml</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_name</span></code>: the omex portion of the current local uri. Default is NewModel.xml  See RDF::str for more details regarding arguments. This method is only for checking to see what <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object looks like when serialized. The annotations are not added to the main <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. This is analogous to <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple_1aabfef726172656b6c61c602b4d8d33e5"><span class="std std-ref">Triple::str</span></a>. </p></li>
 </ul>
 </dd>
 </dl>
@@ -386,9 +385,8 @@ This method is only for checking to see what <a class="reference internal" href=
 <dt id="_CPPv4N8omexmeta7Triples3popEv">
 <span id="_CPPv3N8omexmeta7Triples3popEv"></span><span id="_CPPv2N8omexmeta7Triples3popEv"></span><span id="omexmeta::Triples::pop"></span><span class="target" id="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> <code class="sig-name descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3popEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>moves one triple of the end of triples </p>
-<p><p>No copies are made. </p>
-This is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and return it. This means that responsibility for freeing the returned <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> switches to the caller. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the triple from the end of the triples vector</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the triple from the end of the triples vector  No copies are made. This is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and return it. This means that responsibility for freeing the returned <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> switches to the caller. </p>
 </dd>
 </dl>
 </p>
@@ -398,9 +396,8 @@ This is deliberate as it reduces risk of memory issues. When you pop, you remove
 <dt id="_CPPv4NK8omexmeta7TriplesixEi">
 <span id="_CPPv3NK8omexmeta7TriplesixEi"></span><span id="_CPPv2NK8omexmeta7TriplesixEi"></span><span id="omexmeta::Triples::subscript-operator__iC"></span><span class="target" id="classomexmeta_1_1Triples_1a43d540423a436986d9f72d7cf0f02d72"></span><em class="property">const</em> <a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">operator[]</code><span class="sig-paren">(</span>int <em>index</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta7TriplesixEi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>getter operator for <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
-<p><p>A copy is made of the </p>
-<a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> you want to return. To get a reference without copying see <a class="reference internal" href="#classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"><span class="std std-ref">Triples::pop()</span></a>. Remember that iterating over a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and making copies will cause complications with freeing the objects. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>a reference to the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at index <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at index <code class="docutils literal notranslate"><span class="pre">index</span></code>  A copy is made of the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> you want to return. To get a reference without copying see <a class="reference internal" href="#classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"><span class="std std-ref">Triples::pop()</span></a>. Remember that iterating over a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and making copies will cause complications with freeing the objects. </p>
 </dd>
 </dl>
 </p>
@@ -410,9 +407,8 @@ This is deliberate as it reduces risk of memory issues. When you pop, you remove
 <dt id="_CPPv4N8omexmeta7Triples7isEmptyEv">
 <span id="_CPPv3N8omexmeta7Triples7isEmptyEv"></span><span id="_CPPv2N8omexmeta7Triples7isEmptyEv"></span><span id="omexmeta::Triples::isEmpty"></span><span class="target" id="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a"></span>bool <code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7isEmptyEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>indicates whether <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is empty. </p>
-<p><p>Useful for iterating over </p>
-<a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in a while loop without using the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator, which makes unwanted copies that causes memory issues. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object doesn’t contain any <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object doesn’t contain any <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects  Useful for iterating over <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in a while loop without using the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator, which makes unwanted copies that causes memory issues. </p>
 </dd>
 </dl>
 </p>
@@ -422,9 +418,8 @@ This is deliberate as it reduces risk of memory issues. When you pop, you remove
 <dt id="_CPPv4N8omexmeta7Triples9pop_frontEv">
 <span id="_CPPv3N8omexmeta7Triples9pop_frontEv"></span><span id="_CPPv2N8omexmeta7Triples9pop_frontEv"></span><span id="omexmeta::Triples::pop_front"></span><span class="target" id="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0"></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> <code class="sig-name descname">pop_front</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples9pop_frontEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move the from <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object out of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
-<p><p>caller is responsible for </p>
-<a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> resources <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> from position 0 in <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a></p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> from position 0 in <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>  caller is responsible for <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> resources </p>
 </dd>
 </dl>
 </p>
@@ -474,11 +469,19 @@ This is deliberate as it reduces risk of memory issues. When you pop, you remove
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -489,7 +492,6 @@ This is deliberate as it reduces risk of memory issues. When you pop, you remove
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

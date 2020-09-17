@@ -25,7 +25,7 @@ Use `sparql <https://www.w3.org/TR/rdf-sparql-query/>`_.
             :language: C++
             :caption: Demonstrate creating a sparql query in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/querying_rdf_graph_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/QueryingRdfGraphCpp.txt
             :linenos:
             :caption: Output
 
@@ -36,7 +36,7 @@ Use `sparql <https://www.w3.org/TR/rdf-sparql-query/>`_.
             :language: C
             :caption: Demonstrate creating a sparql query in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/querying_rdf_graph_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/QueryingRdfGraphC.txt
             :linenos:
             :caption: Output
 

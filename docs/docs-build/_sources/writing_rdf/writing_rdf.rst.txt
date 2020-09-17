@@ -32,7 +32,7 @@ Writing to string
             :language: C++
             :caption: Write to a string in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/writing_to_string_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/WritingToStringCpp.txt
             :linenos:
             :caption: Output
 
@@ -44,7 +44,7 @@ Writing to string
             :language: C
             :caption: Write to a string in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/writing_to_string_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/WritingToStringC.txt
             :linenos:
             :caption: Output
 
@@ -71,7 +71,7 @@ Writing to a file
             :language: C++
             :caption: Write to a file in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/writing_to_file_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/WritingToFileCpp.txt
             :linenos:
             :caption: Output
 
@@ -82,7 +82,7 @@ Writing to a file
             :language: C
             :caption: Write to a file in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/writing_to_file_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/WritingToFileC.txt
             :linenos:
             :caption: Output
 

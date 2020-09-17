@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Predicate" href="Predicate.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> libomexmeta
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +117,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -153,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
         
@@ -239,8 +242,11 @@
 <dd><p>download a file from </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: to </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: wrapper around the CurlGet function, as the utils class seems like a good place for the download features. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrapper</span> <span class="n">around</span> <span class="n">the</span> <span class="n">CurlGet</span> <span class="n">function</span><span class="p">,</span> <span class="k">as</span> <span class="n">the</span> <span class="n">utils</span>
+</pre></div>
+</div>
+ class seems like a good place for the download features. </p></li>
 </ul>
 </dd>
 </dl>
@@ -264,7 +270,9 @@
 <dt id="_CPPv4N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERNSt6vectorINSt6stringEEE">
 <span id="_CPPv3N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERNSt6vectorINSt6stringEEE"></span><span id="omexmeta::OmexMetaUtils::generateUniqueMetaid__librdf_modelP.ssCR.std::vector:ss:R"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a4700231d455a5f65f7cc290d98d2b0ec"></span>std::string <code class="sig-name descname">generateUniqueMetaid</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, <em class="property">const</em> std::string &amp;<em>metaid_base</em>, std::vector&lt;std::string&gt; &amp;<em>exclusions</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERNSt6vectorINSt6stringEEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>utility for generating unique metaids given an xml document </p>
-<p>model a librdf_model* pointer a string that will be used for the ID. There will be 4 digits, though this can be changed. exclusions. Mostly needed internally for dealing with metaids that already exist. </p>
+<p>model a librdf_model* pointer</p>
+<p>a string that will be used for the ID. There will be 4 digits, though this can be changed.</p>
+<p>exclusions. Mostly needed internally for dealing with metaids that already exist. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -344,11 +352,10 @@
 <dt id="_CPPv4N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE">
 <span id="_CPPv3N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE"></span><span id="omexmeta::OmexMetaUtils::concatMetaIdAndUri__ss.ss"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0"></span>std::string <code class="sig-name descname">concatMetaIdAndUri</code><span class="sig-paren">(</span>std::string <em>metaid</em>, std::string <em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>concatonate metaid and uri strings </p>
-<p><p>Sometimes a uri has a trailing “#” and somtimes a metaid has a leading “#”. </p>
-This method concatonates whilst accounting for permutations of “#” <dl class="simple">
+<p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">metaid</span></code>: string. Like “#metaid” or “metaid” </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: string. Like “https://omex-library/jeff2019.omex/mymodel.xml” or “https://omex-library/jeff2019.omex/mymodel.rdf”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: string. Like “https://omex-library/jeff2019.omex/mymodel.xml” or “https://omex-library/jeff2019.omex/mymodel.rdf”  Sometimes a uri has a trailing “#” and somtimes a metaid has a leading “#”. This method concatonates whilst accounting for permutations of “#” </p></li>
 </ul>
 </dd>
 </dl>
@@ -358,10 +365,10 @@ This method concatonates whilst accounting for permutations of “#” <dl class
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE">
 <span id="_CPPv3N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::stringReplace__ss.ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1aca2230ca99338b9dc0fc7d296b0c553b"></span>std::string <code class="sig-name descname">stringReplace</code><span class="sig-paren">(</span>std::string <em>str</em>, <em class="property">const</em> std::string &amp;<em>string_to_replace</em>, <em class="property">const</em> std::string &amp;<em>replacement</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>replace a part of a string  from a main </p>
+<dd><p>replace a part of a string &#64;string_to_replace from a main </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: with a replacement string </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: with a replacement string</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">replacement</span></code>: </p></li>
 </ul>
 </dd>
@@ -375,7 +382,7 @@ This method concatonates whilst accounting for permutations of “#” <dl class
 <dd><p>returns true when </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">full_string</span></code>: starts with the substring </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">full_string</span></code>: starts with the substring</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: </p></li>
 </ul>
 </dd>
@@ -390,7 +397,7 @@ This method concatonates whilst accounting for permutations of “#” <dl class
 <p>return true if</p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: is in </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: is in</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vec</span></code>: </p></li>
 </ul>
 </dd>
@@ -454,11 +461,19 @@ This method concatonates whilst accounting for permutations of “#” <dl class
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -469,7 +484,6 @@ This method concatonates whilst accounting for permutations of “#” <dl class
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

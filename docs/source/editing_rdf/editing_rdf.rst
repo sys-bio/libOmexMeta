@@ -102,7 +102,7 @@ Simple example of creating a single annotation
             :language: C++
             :caption: Create a single annotation in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationCpp.txt
             :linenos:
             :caption: Output
 
@@ -115,7 +115,7 @@ Simple example of creating a single annotation
 
         Output:
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationC.txt
             :linenos:
             :caption: Output
 
@@ -152,7 +152,7 @@ create metaids
             :language: C++
             :caption: Create a single annotation in C++ and create metaids
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_with_metaids_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationWithMetaidsCpp.txt
             :linenos:
             :caption: Output
 
@@ -163,7 +163,7 @@ create metaids
             :language: C
             :caption: Create a single annotation in C and create metaids
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_with_metaids_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationWithMetaidsC.txt
             :linenos:
             :caption: Output
 
@@ -197,7 +197,7 @@ RDF graph.
             :caption: Create a single annotation in C++ and serialize to turtle without commiting the triples to the current RDF graph
 
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationNoCommitCpp.txt
             :linenos:
             :caption: Output
 
@@ -209,7 +209,7 @@ RDF graph.
             :caption: Create a single annotation in C and serialize to turtle without commiting the triples to the current RDF graph
 
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationNoCommitC.txt
             :linenos:
             :caption: Output
 
@@ -458,7 +458,7 @@ this is a different method call - see below.
             :language: C++
             :caption: Create a single annotation in C++ using an arbitrary uri
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_predicate_from_uri_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationPredicateFromUriCpp.txt
             :linenos:
             :caption: Output
 
@@ -469,7 +469,7 @@ this is a different method call - see below.
             :language: C
             :caption: Create a single annotation in C using an arbitrary uri
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_predicate_from_uri_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationPredicateFromUriC.txt
             :linenos:
             :caption: Output
 
@@ -501,7 +501,7 @@ that demonstrate the various usages of Resource.
             :language: c++
             :caption: Demonstration of options for the resource node in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_resource_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationResourceCpp.txt
             :linenos:
             :caption: Output
 
@@ -512,7 +512,7 @@ that demonstrate the various usages of Resource.
             :language: C
             :caption: Demonstration of options for the resource node in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_resource_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationResourceC.txt
             :linenos:
             :caption: Output
 
@@ -562,7 +562,7 @@ skin `FMA_7163` of the surface or the arm `FMA:24178`.
             :language: C++
             :caption: Demonstrate the creation of a physical entity composite annotation in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_entity_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalEntityCpp.txt
             :linenos:
             :caption: Output
 
@@ -573,7 +573,7 @@ skin `FMA_7163` of the surface or the arm `FMA:24178`.
             :language: C
             :caption: Demonstrate the creation of a physical entity composite annotation in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_entity_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalEntityC.txt
             :linenos:
             :caption: Output
 
@@ -601,7 +601,7 @@ Annotations on a Property of a Physical Process
             :language: C++
             :caption: Demonstrate the creation of a physical process composite annotation in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_process_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalProcessCpp.txt
             :linenos:
             :caption: Output
 
@@ -612,7 +612,7 @@ Annotations on a Property of a Physical Process
             :language: C
             :caption: Demonstrate the creation of a physical process composite annotation in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_process_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalProcessC.txt
             :linenos:
             :caption: Output
 
@@ -641,7 +641,7 @@ Annotations on a Property of a Physical Force
             :language: C++
             :caption: Demonstrate the creation of a physical force composite annotation in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_force_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalForceCpp.txt
             :linenos:
             :caption: Output
 
@@ -652,7 +652,7 @@ Annotations on a Property of a Physical Force
             :language: C
             :caption: Demonstrate the creation of a physical force composite annotation in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_force_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalForceC.txt
             :linenos:
             :caption: Output
 

@@ -37,7 +37,7 @@ Reading from a string
             :language: C++
             :caption: Read from a string in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/from_string_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/FromStringCpp.txt
             :linenos:
             :caption: Output
 
@@ -48,7 +48,7 @@ Reading from a string
             :language: C
             :caption: Read from a string in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/from_string_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/FromStringC.txt
             :linenos:
             :caption: Output
 
@@ -77,7 +77,7 @@ Adding from a string
             :language: C++
             :caption: Read from a string and add to existing graph in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/add_from_string_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/AddFromStringCpp.txt
             :linenos:
             :caption: Output
 
@@ -88,7 +88,7 @@ Adding from a string
             :language: C
             :caption: Read from a string and add to existing graph in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/add_from_string_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/AddFromStringC.txt
             :linenos:
             :caption: Output
 
@@ -116,7 +116,7 @@ Reading from a file
             :language: C++
             :caption: Read from a file in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/from_file_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/FromFileCpp.txt
             :linenos:
             :caption: Output
 
@@ -127,7 +127,7 @@ Reading from a file
             :language: C
             :caption: Read from a file in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/from_file_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/FromFileC.txt
             :linenos:
             :caption: Output
 
@@ -155,7 +155,7 @@ Adding from a file
             :language: C++
             :caption: Read from a file and add to existing graph in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/add_from_file_cpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/AddFromFileCpp.txt
             :linenos:
             :caption: Output
 
@@ -166,7 +166,7 @@ Adding from a file
             :language: C
             :caption: Read from a file and add to existing graph in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/add_from_file_c.txt
+        .. literalinclude:: ../../ExampleOutputFiles/AddFromFileC.txt
             :linenos:
             :caption: Output
 

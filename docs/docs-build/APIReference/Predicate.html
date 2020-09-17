@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Resource" href="Resource.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> libomexmeta
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +117,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -153,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
         
@@ -288,14 +291,27 @@
 <dt id="_CPPv4NK8omexmeta9Predicate6getUriEv">
 <span id="_CPPv3NK8omexmeta9Predicate6getUriEv"></span><span id="_CPPv2NK8omexmeta9Predicate6getUriEv"></span><span id="omexmeta::Predicate::getUriC"></span><span class="target" id="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta9Predicate6getUriEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>getter for uri </p>
-<p>For developers. Consider removing since <a class="reference internal" href="#classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf"><span class="std std-ref">str()</span></a> method does the same thing </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">developers</span><span class="o">.</span> <span class="n">Consider</span> <span class="n">removing</span> <span class="n">since</span> <span class="nb">str</span><span class="p">()</span> <span class="n">method</span> <span class="n">does</span> <span class="n">the</span> <span class="n">same</span> <span class="n">thing</span>
+</pre></div>
+</div>
+ </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta9Predicate8freeNodeEv">
 <span id="_CPPv3N8omexmeta9Predicate8freeNodeEv"></span><span id="_CPPv2N8omexmeta9Predicate8freeNodeEv"></span><span id="omexmeta::Predicate::freeNode"></span><span class="target" id="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b"></span>void <code class="sig-name descname">freeNode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta9Predicate8freeNodeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release resources associated with this <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a>. </p>
-<p><a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> objects contain a librdf_node pointer which needs to be freed by the caller. If a <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> is passed to a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object (which most of the time is it), responsibility for deleting the contained librdf_node is transferred to the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object, which automatically clears up resources. If not, then it is the callers responsibility to call this method when they are done with <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> instances. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Predicate</span> <span class="n">objects</span> <span class="n">contain</span> <span class="n">a</span> <span class="n">librdf_node</span> <span class="n">pointer</span> <span class="n">which</span>
+<span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">freed</span> <span class="n">by</span> <span class="n">the</span> <span class="n">caller</span><span class="o">.</span> <span class="n">If</span> <span class="n">a</span> <span class="n">Predicate</span> <span class="ow">is</span> <span class="n">passed</span>
+<span class="n">to</span> <span class="n">a</span> <span class="n">Triple</span> <span class="nb">object</span> <span class="p">(</span><span class="n">which</span> <span class="n">most</span> <span class="n">of</span> <span class="n">the</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">it</span><span class="p">),</span>
+<span class="n">responsibility</span> <span class="k">for</span> <span class="n">deleting</span> <span class="n">the</span> <span class="n">contained</span> <span class="n">librdf_node</span>
+<span class="ow">is</span> <span class="n">transferred</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Triple</span> <span class="nb">object</span><span class="p">,</span> <span class="n">which</span> <span class="n">automatically</span>
+<span class="n">clears</span> <span class="n">up</span> <span class="n">resources</span><span class="o">.</span> <span class="n">If</span> <span class="ow">not</span><span class="p">,</span> <span class="n">then</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">callers</span>
+<span class="n">responsibility</span> <span class="n">to</span> <span class="n">call</span> <span class="n">this</span> <span class="n">method</span> <span class="n">when</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span>
+<span class="n">Predicate</span> <span class="n">instances</span><span class="o">.</span>
+</pre></div>
+</div>
+ </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -358,7 +374,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta9Predicate28addSeenNamespaceToSerializerEP12librdf_worldP17librdf_serializerP11librdf_node">
 <span id="_CPPv3N8omexmeta9Predicate28addSeenNamespaceToSerializerEP12librdf_worldP17librdf_serializerP11librdf_node"></span><span id="_CPPv2N8omexmeta9Predicate28addSeenNamespaceToSerializerEP12librdf_worldP17librdf_serializerP11librdf_node"></span><span id="omexmeta::Predicate::addSeenNamespaceToSerializer__librdf_worldP.librdf_serializerP.librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd"></span>void <code class="sig-name descname">addSeenNamespaceToSerializer</code><span class="sig-paren">(</span>librdf_world *<em>world</em>, librdf_serializer *<em>serializer</em>, librdf_node *<em>predicate</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta9Predicate28addSeenNamespaceToSerializerEP12librdf_worldP17librdf_serializerP11librdf_node" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>utility for checking whether the uri in  predicate has a namespace that we already know. If found, the namespace is added to  serializer </p>
+<dd><p>utility for checking whether the uri in &#64;parameter predicate has a namespace that we already know. If found, the namespace is added to &#64;parameter serializer </p>
 </dd></dl>
 
 </div>
@@ -428,11 +444,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -443,7 +467,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

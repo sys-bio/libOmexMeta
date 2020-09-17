@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PhysicalEntity" href="PhysicalEntity.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> libomexmeta
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +117,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -153,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="api_reference_index.html">libOmexMeta API Reference</a> &raquo;</li>
         
@@ -189,19 +192,19 @@
 <span id="_CPPv3N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::Editor::Editor__ssCR.b.LibrdfModelCR.NamespaceMapR.b.b.ssCR.ssCR.ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a6ac976c1a3762f77a577b5735cd509f4"></span><code class="sig-name descname">Editor</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>create_ids</em>, <em class="property">const</em> LibrdfModel &amp;<em>model</em>, NamespaceMap &amp;<em>ns_map</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true, <em class="property">const</em> std::string &amp;<em>repository_uri</em> = std::string(), <em class="property">const</em> std::string &amp;<em>archive_uri</em> = std::string(), <em class="property">const</em> std::string &amp;<em>model_uri</em> = std::string(), <em class="property">const</em> std::string &amp;<em>local_uri</em> = std::string()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor6EditorERKNSt6stringEbRK11LibrdfModelR12NamespaceMapbbRKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. </p>
 <p><p>The </p>
-<a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> is usually instantiated from the RDF::to_editor class which automatically takes care of the <dl class="simple">
+<a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> is usually instantiated from the RDF::to_editor class which automatically takes care of the<dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: The valid xml content for annotation </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">generate_new_metaids.</span></code>: Autogenerate metaids for xml element that do not already have them </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sbml_semantic_extraction.</span></code>: When </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: is determined to be sbml, automatically extract some information regarding species and reactions. This option is ignored when </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sbml_semantic_extraction.</span></code>: When</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: is determined to be sbml, automatically extract some information regarding species and reactions. This option is ignored when</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: is not sbml. Default is true. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: a reference to the current model (owned by <a class="reference internal" href="SBMLSemanticExtraction.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a>). </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nm_map</span></code>: a set of namespaces for current xml</p></li>
 </ul>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: and </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: and</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ns_map</span></code>: arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by SBMLAssistant::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by CellMLAssistant::getValidElements() are used. If the type is unknown, then all elements are given metaids. </p></li>
 </ul>
 </dd>
@@ -453,7 +456,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE">
 <span id="_CPPv3N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE"></span><span id="omexmeta::Editor::addNamespaceFromAnnotation__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67"></span>void <code class="sig-name descname">addNamespaceFromAnnotation</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>predicate_string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor26addNamespaceFromAnnotationERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>extract namespace part of uri from  predicate_string and add it to namespace_ if we know it. </p>
+<dd><p>extract namespace part of uri from &#64;parameter predicate_string and add it to namespace_ if we know it. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -471,9 +474,8 @@
 <dt id="_CPPv4N8omexmeta6Editor13setMetaidBaseERKNSt6stringE">
 <span id="_CPPv3N8omexmeta6Editor13setMetaidBaseERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor13setMetaidBaseERKNSt6stringE"></span><span id="omexmeta::Editor::setMetaidBase__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a206feee18473abbeda5e4e55906e73eb"></span>void <code class="sig-name descname">setMetaidBase</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>metaidBase</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor13setMetaidBaseERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the base metaid string (default is OmexMetaId) </p>
-<p><p>using editor.setMetaidBase(“MyNewMetaid”) will make metaids added by libomexmeta look like MyNewMetaid0001, MyNewMetaid0002, etc. It is assumed that it will not be necessary to have more than 9999 new metaids. </p>
-<dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>void</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>void  using editor.setMetaidBase(“MyNewMetaid”) will make metaids added by libomexmeta look like MyNewMetaid0001, MyNewMetaid0002, etc. It is assumed that it will not be necessary to have more than 9999 new metaids. </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">metaidBase</span></code>: the string you want to use for metaid base </p></li>
@@ -487,8 +489,8 @@
 <dt id="_CPPv4NK8omexmeta6Editor7getTypeEv">
 <span id="_CPPv3NK8omexmeta6Editor7getTypeEv"></span><span id="_CPPv2NK8omexmeta6Editor7getTypeEv"></span><span id="omexmeta::Editor::getTypeC"></span><span class="target" id="classomexmeta_1_1Editor_1a68ade6a293061a98243a3b2853e55a4b"></span>OmexMetaXmlType <code class="sig-name descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor7getTypeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>getter for the current xml type identification variable. </p>
-<p>This should be set automatically in the <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> constructor <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>OmexMetaType</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>OmexMetaType  This should be set automatically in the <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> constructor </p>
 </dd>
 </dl>
 </p>
@@ -498,8 +500,8 @@
 <dt id="_CPPv4N8omexmeta6Editor7setTypeE15OmexMetaXmlType">
 <span id="_CPPv3N8omexmeta6Editor7setTypeE15OmexMetaXmlType"></span><span id="_CPPv2N8omexmeta6Editor7setTypeE15OmexMetaXmlType"></span><span id="omexmeta::Editor::setType__OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1Editor_1a3e2c493ed5034a15e6915b7b649b58a3"></span>void <code class="sig-name descname">setType</code><span class="sig-paren">(</span>OmexMetaXmlType <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor7setTypeE15OmexMetaXmlType" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>setter for the current xml type identification variable. </p>
-<p>This should be set automatically in the <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> constructor <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>void</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>void  This should be set automatically in the <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> constructor </p>
 </dd>
 </dl>
 </p>
@@ -707,9 +709,8 @@
 <dt id="_CPPv4NK8omexmeta6Editor21newSingularAnnotationEv">
 <span id="_CPPv3NK8omexmeta6Editor21newSingularAnnotationEv"></span><span id="_CPPv2NK8omexmeta6Editor21newSingularAnnotationEv"></span><span id="omexmeta::Editor::newSingularAnnotationC"></span><span class="target" id="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64"></span>SingularAnnotation <code class="sig-name descname">newSingularAnnotation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Editor21newSingularAnnotationEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new SingularAnnotation object </p>
-<p><p>a SingularAnnotation is a typedefed </p>
-<a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>A SingularAnnotation object</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A SingularAnnotation object  a SingularAnnotation is a typedefed <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object. </p>
 </dd>
 </dl>
 </p>
@@ -816,11 +817,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Ciaran Welsh
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -831,7 +840,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

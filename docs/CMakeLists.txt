@@ -119,19 +119,19 @@ if (${BUILD_DOCS_EXAMPLES})
     # We now create a target that runs the Python script which runs the
     # executables.
     message(STATUS "CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}")
-    set(DOC_EXAMPLE_RUNNER "${CMAKE_CURRENT_SOURCE_DIR}/build_doc_examples.py")
+    set(DOC_EXAMPLE_RUNNER "${CMAKE_CURRENT_SOURCE_DIR}/run_docs_examples.py")
         if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
-            message(FATAL_ERROR "No Python script found where \"build_doc_examples.py\" should be")
+            message(FATAL_ERROR "No Python script found where \"run_docs_examples.py\" should be")
         endif ()
 
 
     # we do not want to use CMAKE_BINARY_DIR so we just take parent of current binary dir
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
-    #    add_custom_target(RunDocExamplesAndGenerateOutput
-    #            COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --python-interpretor ${PYTHON_EXECUTABLE} --build-dir ${PARENT_CURRENT_BINARY_DIR}
-    #            DEPENDS AllDocExamples
-    #            )
+        add_custom_target(RunDocExamplesAndGenerateOutput
+                COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-package-dir ${PYOMEXMETA_DIR} --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
+                DEPENDS AllDocExamples
+                )
 
     install(TARGETS ${EXAMPLE_EXECUTABLES_TARGETS})
 endif ()
@@ -173,14 +173,21 @@ add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 ############################################################
 #   Sphinx
 #
-
-set(SPHINX_EXECUTABLE "/home/ciaran/miniconda3/bin/sphinx-build" CACHE FILEPATH
+get_filename_component(PYTHON_ROOT ${PYTHON_EXECUTABLE} DIRECTORY)
+find_program(SPHINX_EXECUTABLE
+        NAMES sphinx-build sphinx-build.exe
+        PATHS
+        "/home/ciaran/miniconda3/bin/sphinx-build"
+        "${PYTHON_ROOT}/Scripts/sphinx-build.exe"
+        "${PYTHON_ROOT}/Scripts/sphinx-build"
+        REQUIRED
+        COMMENT
         "absolute path to the sphinx-build executable. If you do not have sphinx-build
 you will need to install it. In your conda environment do: $conda activate <env>;
 pip install breathe sphinx sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme; which sphinx-build. Then copy the value of which sphinx-build into
--DSPHINX_EXECUTABLE")
+-DSPHINX_EXECUTABLE"
+        )
 
-message(STATUS "SPHINX_EXECUTABLE ${SPHINX_EXECUTABLE}")
 set(SPHINX_SOURCE ${CMAKE_SOURCE_DIR}/docs/source)
 set(SPHINX_BUILD ${CMAKE_SOURCE_DIR}/docs/docs-build)
 set(SPHINX_INDEX_FILE ${SPHINX_BUILD}/index.html)
