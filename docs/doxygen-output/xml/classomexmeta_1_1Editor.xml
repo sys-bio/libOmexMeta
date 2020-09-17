@@ -647,7 +647,6 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>Because we now want to use @prefix local for the about section, we need to inject it here, if not already formatted properly.</para>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="174" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="180" bodyend="197"/>
       </memberdef>
@@ -789,7 +788,6 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>Because we now want to use @prefix local for the about section, we need to inject it here, if not already formatted properly.</para>
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="204" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="218" bodyend="235"/>
       </memberdef>

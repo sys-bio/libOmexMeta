@@ -20,7 +20,7 @@ of the Teusink annotations.
 
         Output:
 
-        .. image:: ../TeusinkDiagram.png
+        .. image:: TeusinkDiagram.png
             :width: 400
 
     .. tab:: C++

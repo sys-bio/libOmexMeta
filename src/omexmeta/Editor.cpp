@@ -183,11 +183,11 @@ namespace omexmeta {
                     "NullPointerException: Editor::addPhysicalEntity() "
                     "physicalEntity::subject_ (i.e. about) node is empty");
         }
-        /**
-     * Because we now want to use @prefix local for the
-   * about section, we need to inject it here,
-   * if not already formatted properly.
-   */
+       /*
+       * Because we now want to use @prefix local for the
+       * about section, we need to inject it here,
+       * if not already formatted properly.
+       */
         if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")) {
             physicalEntity.setAbout(OmexMetaUtils::concatMetaIdAndUri(
                     physicalEntity.getAbout(), getModelUri()));
@@ -222,11 +222,11 @@ namespace omexmeta {
                     "PhysicalForce::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalForce.getAbout());
-        /**
-     * Because we now want to use @prefix local for the
-   * about section, we need to inject it here,
-   * if not already formatted properly.
-   */
+        /*
+         * Because we now want to use @prefix local for the
+         * about section, we need to inject it here,
+         * if not already formatted properly.
+         */
         if (!OmexMetaUtils::startsWith(physicalForce.getAbout(), "http")) {
             physicalForce.setAbout(OmexMetaUtils::concatMetaIdAndUri(
                     physicalForce.getAbout(), getModelUri()));

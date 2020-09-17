@@ -1,26 +1,22 @@
 import os
-import matplotlib.pyplot as plt
 from pyomexmeta import RDF
 
 # get the link to teusink2000
-teusink_biomod_link = r"https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
+rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+  bqbiol:is <https://identifiers.org/uniprot/PD12345> ."""
 
 # download model xml, scan for rdf, create rdf graph and store in sqlite database
-rdf = RDF.from_uri(teusink_biomod_link, format="rdfxml",
-                   storage_type="sqlite", storage_name="TeusinkAnnotations2000",
-                   storage_options="new='yes'")
-
-# serialize to turtle
-print(rdf)
+rdf = RDF.from_string(rdf_str, format="turtle")
 
 # draw a diagram
-fname = os.path.join(os.path.getcwd(), "TeusinkDiagram.png")
+docs_dir = os.path.join(os.path.dirname(__file__), "source")
+diagrams_dir = os.path.join(docs_dir, "diagrams")
+fname = os.path.join(diagrams_dir, "TeusinkDiagram.png")
 rdf.draw(fname)
-plt.show()
-
-
-
-
-
-
-
+print(f"file saved to {fname}")

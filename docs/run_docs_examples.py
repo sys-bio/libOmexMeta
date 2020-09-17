@@ -81,7 +81,10 @@ def run_binary_files():
 
         output_filename = os.path.join(args.output_location, output_filename + ".txt")
         with open(output_filename, "w") as f:
-            f.write(output.decode())
+            try:
+                f.write(output.decode())
+            except UnicodeDecodeError: # for python programs that produce diagrams
+                continue
 
         print(f"output written to \"{output_filename}\"")
 
