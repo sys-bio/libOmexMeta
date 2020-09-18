@@ -4,6 +4,7 @@
     <compoundname>logger.h</compoundname>
     <includes local="no">iostream</includes>
     <includedby refid="MarkupIdentifier_8cpp" local="yes">src/omexmeta/MarkupIdentifier.cpp</includedby>
+    <includedby refid="OmexMetaUtils_8cpp" local="yes">src/omexmeta/OmexMetaUtils.cpp</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
     <incdepgraph>
       <node id="1">

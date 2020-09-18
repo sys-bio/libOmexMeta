@@ -860,6 +860,30 @@ local:SourceParticipant0001
 """
         self.assertEqual(expected, actual)
 
+    def test_personal_information(self):
+        rdf = RDF()
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        with editor.new_personal_information() as personal_information:
+            personal_information.add_creator("1234-1234-1234-1234") \
+                .add_name("Ciaran") \
+                .add_mbox("cwelsh2@uw.edu") \
+                .add_account_name("1234-1234-1234-1234") \
+                .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+
+        print(rdf)
+
+    def test_model_level_annotation(self):
+        rdf = RDF()
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        with editor.new_personal_information() as personal_information:
+            personal_information.add_creator("1234-1234-1234-1234") \
+                .add_name("Ciaran") \
+                .add_mbox("cwelsh2@uw.edu") \
+                .add_account_name("1234-1234-1234-1234") \
+                .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+
+        print(rdf)
+
 
 class GoldStandardOmexArchiveTests(unittest.TestCase):
     maxDiff = None

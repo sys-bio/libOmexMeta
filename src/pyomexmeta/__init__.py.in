@@ -2,6 +2,7 @@ from .pyomexmeta import PhysicalForce
 from .pyomexmeta import PhysicalProcess
 from .pyomexmeta import RDF, Editor, PhysicalEntity
 from .pyomexmeta import SingularAnnotation
+from .pyomexmeta import PersonalInformation
 from .pyomexmeta_api import PyOmexMetaAPI
 
 __version__ = "@LIBOMEXMETA_VERSION@"

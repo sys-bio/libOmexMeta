@@ -313,6 +313,28 @@ class Editor:
     def delete(self):
         PyOmexMetaAPI.editor_delete(self._obj)
 
+    def add_creator(self, creator):
+        return PyOmexMetaAPI.editor_add_creator(self._obj, creator.encode())
+
+    def add_curator(self, curator):
+        return PyOmexMetaAPI.editor_add_curator(self._obj, curator.encode())
+
+    def add_taxon(self, taxon):
+        return PyOmexMetaAPI.editor_add_taxon(self._obj, taxon.encode())
+
+    def add_pubmed(self, pubmed):
+        return PyOmexMetaAPI.editor_add_pubmed(self._obj, pubmed.encode())
+
+    def add_description(self, description):
+        return PyOmexMetaAPI.editor_add_description(self._obj, description.encode())
+
+    def add_date_created(self, date_created):
+        return PyOmexMetaAPI.editor_add_date_created(self._obj, date_created.encode())
+
+    def add_parent_model(self, parent_model):
+        return PyOmexMetaAPI.editor_add_parent_model(self._obj, parent_model.encode())
+
+
 
 class SingularAnnotation:
 
@@ -437,12 +459,12 @@ class PhysicalProcess:
         return self
 
     def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_source(self._obj, multiplier,
+        self._obj = PyOmexMetaAPI.physical_process_add_source(self._obj, int(multiplier),
                                                               physical_entity_reference.encode())
         return self
 
     def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_sink(self._obj, multiplier, physical_entity_reference.encode())
+        self._obj = PyOmexMetaAPI.physical_process_add_sink(self._obj, int(multiplier), physical_entity_reference.encode())
         return self
 
     def add_mediator(self, physical_entity_reference: str) -> PhysicalProcess:
@@ -481,11 +503,11 @@ class PhysicalForce:
         return self
 
     def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_add_source(self._obj, multiplier, physical_entity_reference.encode())
+        self._obj = PyOmexMetaAPI.physical_force_add_source(self._obj, int(multiplier), physical_entity_reference.encode())
         return self
 
     def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_add_sink(self._obj, multiplier,
+        self._obj = PyOmexMetaAPI.physical_force_add_sink(self._obj, int(multiplier),
                                                           physical_entity_reference.encode())
         return self
 

@@ -95,7 +95,6 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
-
 TEST_F(PersonalInformationTests, TestAddName) {
     PersonalInformation information(model.get(), "TestModel.sbml", local_uri);
     information.addName("Ciaran Welsh");

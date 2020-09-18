@@ -19,8 +19,9 @@ macro(add_test_executable BINARY)
     # links
     target_link_libraries(${BINARY} PUBLIC
             # Order matters!
-            $<TARGET_FILE:OmexMeta-static>
-            $<TARGET_FILE:redland-combined-static>
+            OmexMeta-static
+            OmexMetaCAPI
+            redland-combined-static
             ${LINK_LIBRARIES}
             ${RUNTIME}# best here so no clash with dynamic
             gtest gtest_main
@@ -79,7 +80,8 @@ set(
 # main test executable. These should really further be divided into modules.
 add_test_executable(OmexMetaTests ${TEST_SOURCES})
 
-
+add_test_executable(OmexMetaEndToEndCpp end_to_end_cpp.cpp)
+add_test_executable(OmexMetaEndToEndC end_to_end_c.cpp)
 
 
 

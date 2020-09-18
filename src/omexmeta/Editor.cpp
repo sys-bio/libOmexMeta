@@ -18,6 +18,14 @@ namespace omexmeta {
           sbml_semantic_extraction_(sbml_semantic_extraction),
           repository_uri_(repository_uri), archive_uri_(archive_uri),
           model_uri_(model_uri), local_uri_(local_uri) {
+
+        // sometimes in the python api users can accidently start the sbml
+        // string with a new line character. Catch this and error.
+        if (OmexMetaUtils::startsWith(xml_, "\n")){
+            throw std::invalid_argument("std::invalid_argument: Editor::Editor() "
+                                        "xml input string starts with a newline character. "
+                                        "Please remove the newline.");
+        }
         MarkupIdentifier identifier(xml);
         if (identifier.isSBML()) {
             type_ = OMEXMETA_TYPE_SBML;

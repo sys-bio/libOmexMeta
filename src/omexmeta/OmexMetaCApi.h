@@ -144,15 +144,25 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT int Editor_delete(Editor *editor_ptr);
 
     OMEXMETACAPI_EXPORT char *Editor_getArchiveUri(Editor *editor_ptr);
+
     OMEXMETACAPI_EXPORT char *Editor_getLocalUri(Editor *editor_ptr);
+
     OMEXMETACAPI_EXPORT char *Editor_getModelUri(Editor *editor_ptr);
+
     OMEXMETACAPI_EXPORT char *Editor_getRepositoryUri(Editor *editor_ptr);
+
     OMEXMETACAPI_EXPORT int Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
+
     OMEXMETACAPI_EXPORT int Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+
     OMEXMETACAPI_EXPORT int Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+
     OMEXMETACAPI_EXPORT int Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+
     OMEXMETACAPI_EXPORT int Editor_addDescription(Editor *editor_ptr, const char *date);
+
     OMEXMETACAPI_EXPORT int Editor_addDateCreated(Editor *editor_ptr, const char *date);
+
     OMEXMETACAPI_EXPORT int Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
 /*********************************************************************
