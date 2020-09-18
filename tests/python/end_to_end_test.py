@@ -3,7 +3,7 @@
 import libcombine
 import sys
 import os
-
+import glob
 sys.path.append(r"D:\libOmexMeta\src")
 from pyomexmeta import RDF, Editor, PersonalInformation, PhysicalEntity, PhysicalProcess, PhysicalForce
 import tellurium as te
@@ -483,11 +483,15 @@ if __name__ == "__main__":
     spec_examples.section2_3_7_2_physical_process()
     spec_examples.section2_3_7_3_physical_force()
 
+    directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "*.omex")
+    omex_files = glob.glob(directory)
+
+    # error if we have not created 6 omex files.
+    # When this script runs without error, we assume we've passed.
+    if len(omex_files) != 6:
+        raise FileNotFoundError("Something has gone wrong. You should have 6 omex files")
+
+
     if CLEAN_UP:
         # prevents cluttering of the repository.
-        import glob
-        directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "*.omex")
-        omex_files = glob.glob(directory)
-        print(omex_files)
-        assert len(omex_files) == 6, "Something has gone wrong. You should have 6 omex files to delete"
         [os.remove(i) for i in omex_files]
