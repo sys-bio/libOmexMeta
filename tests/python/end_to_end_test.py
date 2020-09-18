@@ -471,6 +471,10 @@ class OmexMetaSpec1_1:
 
 
 if __name__ == "__main__":
+
+    # when True, delete all created omex archives.
+    CLEAN_UP = True
+
     spec_examples = OmexMetaSpec1_1()
     spec_examples.section2_3_4_model_level_annotations()
     spec_examples.section2_3_4_personal_information()
@@ -478,3 +482,12 @@ if __name__ == "__main__":
     spec_examples.section2_3_7_1_physical_entity()
     spec_examples.section2_3_7_2_physical_process()
     spec_examples.section2_3_7_3_physical_force()
+
+    if CLEAN_UP:
+        # prevents cluttering of the repository.
+        import glob
+        directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "*.omex")
+        omex_files = glob.glob(directory)
+        print(omex_files)
+        assert len(omex_files) == 6, "Something has gone wrong. You should have 6 omex files to delete"
+        [os.remove(i) for i in omex_files]
