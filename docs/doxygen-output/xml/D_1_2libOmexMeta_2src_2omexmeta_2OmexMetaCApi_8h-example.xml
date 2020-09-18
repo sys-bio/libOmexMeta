@@ -160,15 +160,25 @@ RDF* rdf_ptr = RDF_fromString(string_annotations, &quot;rdfxml&quot;, &quot;stri
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_delete(Editor<sp/>*editor_ptr);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Editor_getArchiveUri(Editor<sp/>*editor_ptr);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Editor_getLocalUri(Editor<sp/>*editor_ptr);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Editor_getModelUri(Editor<sp/>*editor_ptr);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Editor_getRepositoryUri(Editor<sp/>*editor_ptr);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addCreator(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*orcid_id);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addCurator(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*orcid_id);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addTaxon(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*taxon_id);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addPubmed(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pubmedid);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addDescription(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*date);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addDateCreated(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*date);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Editor_addParentModel(Editor<sp/>*editor_ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*biomod_id);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>

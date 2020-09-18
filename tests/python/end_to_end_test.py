@@ -4,8 +4,8 @@ import libcombine
 import sys
 import os
 import glob
-sys.path.append(r"D:\libOmexMeta\src")
-from pyomexmeta import RDF, Editor, PersonalInformation, PhysicalEntity, PhysicalProcess, PhysicalForce
+# sys.path.append(r"D:\libOmexMeta\src")
+from pyomexmeta import RDF
 import tellurium as te
 
 ant = """
@@ -162,6 +162,7 @@ def extract_sbml_from_combine_archive(archive_path):
     return [archive.extractEntryToString(i) for i in annotation_entries]
 
 
+# note: not used: delete?
 def extract_rdf_from_combine_archive(self, archive_path: str):
     if not os.path.isfile(archive_path):
         raise FileNotFoundError(archive_path)
@@ -473,7 +474,7 @@ class OmexMetaSpec1_1:
 if __name__ == "__main__":
 
     # when True, delete all created omex archives.
-    CLEAN_UP = True
+    CLEAN_UP = False
 
     spec_examples = OmexMetaSpec1_1()
     spec_examples.section2_3_4_model_level_annotations()

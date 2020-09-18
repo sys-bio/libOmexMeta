@@ -1,0 +1,16 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"ROMEXlib:NewOmex.omex/NewModel.xml#OmexMetaId0000" -> "Rhttps://identifiers.org/uniprot/PD12345" [ label="bqbiol:is" ];
+
+	// Resources
+	"ROMEXlib:NewOmex.omex/NewModel.xml#OmexMetaId0000" [ label="OMEXlib:NewOmex.omex/NewModel.xml#OmexMetaId0000", shape = ellipse, color = blue ];
+	"Rhttps://identifiers.org/uniprot/PD12345" [ label="https://identifiers.org/uniprot/PD12345", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+
+	label="\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n";
+}

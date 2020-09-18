@@ -102,7 +102,6 @@ if (${BUILD_PYTHON})
     # is found in ${PYOMEXMETA_DIR} or on linux if OmexMeta.dll is found
     # at the same place.
     if (${WIN32})
-        message(STATUS "BUILDIN pyokna")
         find_program(
                 LINUX_LIBRARIES_FOUND
                 NAMES ${PYOMEXMETA_DIR}/libOmexMeta.so.${LIBOMEXMETA_VERSION}
@@ -119,7 +118,7 @@ if (${BUILD_PYTHON})
 #                    DEPENDS libOmexMetaInstall
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             )
-#            add_dependencies(packaging PackageOmexMetaPython)
+#            add_dependencies(PackageOmexMetaPython libOmexMetaInstall )
         else (LINUX_LIBRARIES_FOUND)
             message(WARNING "You are packaging libOmexMeta but will not be able \
 to build the Python package because you have not yet built and installed the \

@@ -80,10 +80,6 @@ set(
 # main test executable. These should really further be divided into modules.
 add_test_executable(OmexMetaTests ${TEST_SOURCES})
 
-add_test_executable(OmexMetaEndToEndCpp end_to_end_cpp.cpp)
-add_test_executable(OmexMetaEndToEndC end_to_end_c.cpp)
-
-
 
 install(
         TARGETS ${TEST_EXECUTABLES}
