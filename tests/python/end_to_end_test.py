@@ -4,7 +4,7 @@ import libcombine
 import sys
 import os
 import glob
-# sys.path.append(r"D:\libOmexMeta\src")
+sys.path.append(r"D:\libOmexMeta\src")
 from pyomexmeta import RDF
 import tellurium as te
 
