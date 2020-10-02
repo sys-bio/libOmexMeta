@@ -151,19 +151,19 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT char *Editor_getRepositoryUri(Editor *editor_ptr);
 
-    OMEXMETACAPI_EXPORT int Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETACAPI_EXPORT Editor* Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
 
-    OMEXMETACAPI_EXPORT int Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETACAPI_EXPORT Editor* Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
 
-    OMEXMETACAPI_EXPORT int Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    OMEXMETACAPI_EXPORT Editor* Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
 
-    OMEXMETACAPI_EXPORT int Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    OMEXMETACAPI_EXPORT Editor* Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
 
-    OMEXMETACAPI_EXPORT int Editor_addDescription(Editor *editor_ptr, const char *date);
+    OMEXMETACAPI_EXPORT Editor* Editor_addDescription(Editor *editor_ptr, const char *date);
 
-    OMEXMETACAPI_EXPORT int Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    OMEXMETACAPI_EXPORT Editor* Editor_addDateCreated(Editor *editor_ptr, const char *date);
 
-    OMEXMETACAPI_EXPORT int Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
+    OMEXMETACAPI_EXPORT Editor* Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
 /*********************************************************************
  * SingularAnnotation class methods

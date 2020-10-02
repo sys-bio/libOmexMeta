@@ -331,37 +331,37 @@ namespace omexmeta {
          * @brief add the "creator" model level annotation
          * @param an orchid_id as string
          */
-        void addCreator(std::string orcid_id);
+        Editor& addCreator(std::string orcid_id);
 
         /**
          * @brief add the "curator" model level annotation
          * @param an orchid_id as string
          */
-        void addCurator(std::string orcid_id);
+        Editor& addCurator(std::string orcid_id);
 
         /**
          * @brief add the "taxon id" model level annotation
          * @param an taxon_id as string
          */
-        void addTaxon(const std::string &taxon_id);
+        Editor& addTaxon(const std::string &taxon_id);
 
         /**
          * @brief add the "pubmed id" model level annotation
          * @param a pubmed id as string
          */
-        void addPubmed(const std::string &pubmedid);
+        Editor& addPubmed(const std::string &pubmedid);
 
         /**
          * @brief add the "description" model level annotation
          * @param a description of the model as string
          */
-        void addDescription(const std::string &date);
+        Editor& addDescription(const std::string &date);
 
         /**
          * @brief add the "date created" model level annotation
          * @param The date that the model was created
          */
-        void addDateCreated(const std::string &date);
+        Editor& addDateCreated(const std::string &date);
 
         /**
          * @brief create a new singular annotation object with metaid

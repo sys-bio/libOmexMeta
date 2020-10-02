@@ -323,7 +323,7 @@ namespace omexmeta {
         triple.freeTriple();
     }
 
-    void Editor::addCurator(std::string orcid_id) {
+    Editor& Editor::addCurator(std::string orcid_id) {
         std::string orcid_namespace = "https://orchid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
@@ -333,46 +333,52 @@ namespace omexmeta {
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
-    void Editor::addDateCreated(const std::string &date) {
+    Editor& Editor::addDateCreated(const std::string &date) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("dc", "created")->getNode(),
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
-    void Editor::addDescription(const std::string &date) {
+    Editor& Editor::addDescription(const std::string &date) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("dc", "description")->getNode(),
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
-    void Editor::addPubmed(const std::string &pubmedid) {
+    Editor& Editor::addPubmed(const std::string &pubmedid) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
                       LibrdfNode::fromUriString("pubmed:" + pubmedid).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
-    void Editor::addParentModel(const std::string &biomod_id) {
+    Editor& Editor::addParentModel(const std::string &biomod_id) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
                       LibrdfNode::fromUriString("biomod:" + biomod_id).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
-    void Editor::addTaxon(const std::string &taxon_id) {
+    Editor& Editor::addTaxon(const std::string &taxon_id) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("bqbiol", "hasTaxon")->getNode(),
                       LibrdfNode::fromUriString("NCBI_Taxon:" + taxon_id).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
     std::string Editor::getLocalUri() const { return local_uri_; }

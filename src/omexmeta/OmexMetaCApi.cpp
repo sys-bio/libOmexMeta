@@ -472,73 +472,73 @@ namespace omexmeta {
         }
     }
 
-    int Editor_addCreator(Editor *editor_ptr, const char *orcid_id) {
+    Editor* Editor_addCreator(Editor *editor_ptr, const char *orcid_id) {
         try {
             editor_ptr->addCreator(orcid_id);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
-    int Editor_addCurator(Editor *editor_ptr, const char *orcid_id) {
+    Editor* Editor_addCurator(Editor *editor_ptr, const char *orcid_id) {
         try {
             editor_ptr->addCurator(orcid_id);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
-    int Editor_addTaxon(Editor *editor_ptr, const char *taxon_id) {
+    Editor* Editor_addTaxon(Editor *editor_ptr, const char *taxon_id) {
         try {
             editor_ptr->addTaxon(taxon_id);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
-    int Editor_addPubmed(Editor *editor_ptr, const char *pubmedid) {
+    Editor* Editor_addPubmed(Editor *editor_ptr, const char *pubmedid) {
         try {
             editor_ptr->addPubmed(pubmedid);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
-    int Editor_addDescription(Editor *editor_ptr, const char *date) {
+    Editor* Editor_addDescription(Editor *editor_ptr, const char *date) {
         try {
             editor_ptr->addDescription(date);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
-    int Editor_addDateCreated(Editor *editor_ptr, const char *date) {
+    Editor* Editor_addDateCreated(Editor *editor_ptr, const char *date) {
         try {
             editor_ptr->addDateCreated(date);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
-    int Editor_addParentModel(Editor *editor_ptr, const char *biomod_id) {
+    Editor* Editor_addParentModel(Editor *editor_ptr, const char *biomod_id) {
         try {
             editor_ptr->addParentModel(biomod_id);
-            return 0;
+            return editor_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
-            return -1;
+            exit(1);
         }
     }
 
