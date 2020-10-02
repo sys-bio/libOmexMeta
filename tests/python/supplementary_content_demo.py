@@ -1,12 +1,6 @@
-# Can we do all that is in the spec?
-
 import glob
 import os
-import sys
-
 import libcombine
-
-sys.path.append(r"D:\libOmexMeta\src")
 from pyomexmeta import RDF
 import tellurium as te
 
@@ -328,16 +322,6 @@ class OmexMetaSpec1_1:
                 .set_predicate("bqmodel", "isDescribedBy") \
                 .set_resource_literal("Anything can go here. It is a string literal.")
 
-        with editor.new_singular_annotation() as example_using_semsim_pred_and_blank_resource:
-            example_using_semsim_pred_and_blank_resource.set_about("P") \
-                .set_predicate("semsim", "hasSourceParticipant") \
-                .set_resource_blank("ProductBlankIdentifier")
-
-        with editor.new_singular_annotation() as example_using_foaf_pred_and_uri_resource:
-            example_using_foaf_pred_and_uri_resource.set_about("ES") \
-                .set_predicate("foaf", "name") \
-                .set_resource_uri("https://uri.com/you/can/also/use/raw/html/string")
-
         # recreate the combine archive
         fname = create_combine_archive(sbml, "SingularAnnotations", str(rdf))
 
@@ -366,34 +350,36 @@ class OmexMetaSpec1_1:
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=False)
 
         # note: the syntax "fma:fma_12345" == "fma/fma_12345"
-        # note: add_location() method == is_part_of() method. They are aliases.
+        # OPB:OPB_00340 = concentration of chemical
+        # FMA:66836 = part of cytosol
+        # FMA:63877 = fibroblast
         with editor.new_physical_entity() as substrate_entity:
             substrate_entity.set_about("S") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as product_entity:
             product_entity.set_about("P") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2-p") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as enzyme_entity:
             enzyme_entity.set_about("E") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/tgf-beta-receptor") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
             complex_entity.set_about("ES") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/SmadReceptorComplex") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         fname = create_combine_archive(sbml, "PhysicalEntity", str(rdf))
 
@@ -426,31 +412,31 @@ class OmexMetaSpec1_1:
         # therefore we build on the content from OmexMetaSpec1_1.section2_3_7_1_physical_entity()
         with editor.new_physical_entity() as substrate_entity:
             substrate_entity.set_about("S") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as product_entity:
             product_entity.set_about("P") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2-p") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as enzyme_entity:
             enzyme_entity.set_about("E") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/tgf-beta-receptor") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
             complex_entity.set_about("ES") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/SmadReceptorComplex") \
-                .add_location("fma:fma_12345") \
-                .is_part_of("fma/:fma_12346")
+                .is_part_of("FMA:66836") \
+                .is_part_of("FMA:63877")
 
         ## optionally print out xml to look at the metaids
         # print(editor.get_xml())
@@ -458,21 +444,21 @@ class OmexMetaSpec1_1:
 
         with editor.new_physical_process() as substrate_bind_enzyme:
             substrate_bind_enzyme.set_about("R1") \
-                .is_version_of("opb/opb12345") \
+                .has_property("OPB:OPB_00593") \
                 .add_source(1.0, "PhysicalEntity0000") \
                 .add_source(1.0, "PhysicalEntity0003") \
                 .add_sink(1.0, "PhysicalEntity0000")
 
         with editor.new_physical_process() as substrate_unbind_enzyme:
             substrate_unbind_enzyme.set_about("R2") \
-                .is_version_of("opb/opb12345") \
+                .has_property("OPB:OPB_00593") \
                 .add_sink(1.0, "PhysicalEntity0000") \
                 .add_sink(1.0, "PhysicalEntity0003") \
                 .add_source(1.0, "PhysicalEntity0000")
 
         with editor.new_physical_process() as product_formation:
             product_formation.set_about("R3") \
-                .is_version_of("opb/opb12345") \
+                .has_property("OPB:OPB_00593") \
                 .add_sink(1.0, "PhysicalEntity0002") \
                 .add_sink(1.0, "PhysicalEntity0001") \
                 .add_source(1.0, "PhysicalEntity0003")
@@ -504,10 +490,10 @@ class OmexMetaSpec1_1:
         # here, we turn it off so we can create them manually
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=False)
 
-        # note: this example doesn't really make sense. Perhaps we should use a cellml string as input instead?
+        # OPB:OPB_00378 = chemical potential
         with editor.new_physical_force() as physcial_force:
             physcial_force.set_about("S") \
-                .is_version_of("OPB:OPB12345") \
+                .has_property("OPB:OPB_00378") \
                 .add_source(1.0, "PhysicalEntity0002") \
                 .add_sink(1.0, "PhysicalEntity0001")
 

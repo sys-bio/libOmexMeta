@@ -314,25 +314,39 @@ class Editor:
         PyOmexMetaAPI.editor_delete(self._obj)
 
     def add_creator(self, creator) -> Editor:
-        return PyOmexMetaAPI.editor_add_creator(self._obj, creator.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_creator(self._obj, creator.encode())
+        )
 
     def add_curator(self, curator) -> Editor:
-        return PyOmexMetaAPI.editor_add_curator(self._obj, curator.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_curator(self._obj, curator.encode())
+        )
 
     def add_taxon(self, taxon) -> Editor:
-        return PyOmexMetaAPI.editor_add_taxon(self._obj, taxon.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_taxon(self._obj, taxon.encode())
+        )
 
     def add_pubmed(self, pubmed) -> Editor:
-        return PyOmexMetaAPI.editor_add_pubmed(self._obj, pubmed.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_pubmed(self._obj, pubmed.encode())
+        )
 
     def add_description(self, description) -> Editor:
-        return PyOmexMetaAPI.editor_add_description(self._obj, description.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_description(self._obj, description.encode())
+        )
 
     def add_date_created(self, date_created) -> Editor:
-        return PyOmexMetaAPI.editor_add_date_created(self._obj, date_created.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_date_created(self._obj, date_created.encode())
+        )
 
     def add_parent_model(self, parent_model) -> Editor:
-        return PyOmexMetaAPI.editor_add_parent_model(self._obj, parent_model.encode())
+        return Editor(
+            PyOmexMetaAPI.editor_add_parent_model(self._obj, parent_model.encode())
+        )
 
 
 class SingularAnnotation:

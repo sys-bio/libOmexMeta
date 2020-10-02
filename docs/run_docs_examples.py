@@ -1,5 +1,4 @@
 import os, sys, subprocess, glob
-import tempfile
 import argparse
 
 parser = argparse.ArgumentParser()

@@ -5,4 +5,4 @@ from .pyomexmeta import SingularAnnotation
 from .pyomexmeta import PersonalInformation
 from .pyomexmeta_api import PyOmexMetaAPI
 
-__version__ = "1.1.15"
+__version__ = "1.1.16"

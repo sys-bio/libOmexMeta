@@ -21,7 +21,7 @@ class Util:
     @staticmethod
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
-            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.15")
+            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.16")
             try:
                 lib = ct.CDLL(lib_path)
             except OSError as e:
@@ -261,26 +261,26 @@ class PyOmexMetaAPI:
     # char*Editor_getRepositoryUri(Editor *editor_ptr);
     editor_get_repository_uri = Util.load_func("Editor_getRepositoryUri", [ct.c_int64], ct.c_int64)
 
-    # void Editor_addCreator(Editor *editor_ptr, std::string orcid_id);
-    editor_add_creator = Util.load_func("Editor_addCreator", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addCreator(Editor *editor_ptr, std::string orcid_id);
+    editor_add_creator = Util.load_func("Editor_addCreator", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void Editor_addCurator(Editor *editor_ptr, std::string orcid_id);
-    editor_add_curator = Util.load_func("Editor_addCurator", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addCurator(Editor *editor_ptr, std::string orcid_id);
+    editor_add_curator = Util.load_func("Editor_addCurator", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
-    editor_add_taxon = Util.load_func("Editor_addTaxon", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    editor_add_taxon = Util.load_func("Editor_addTaxon", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
-    editor_add_pubmed = Util.load_func("Editor_addPubmed", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    editor_add_pubmed = Util.load_func("Editor_addPubmed", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void Editor_addDescription(Editor *editor_ptr, const char *date);
-    editor_add_description = Util.load_func("Editor_addDescription", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addDescription(Editor *editor_ptr, const char *date);
+    editor_add_description = Util.load_func("Editor_addDescription", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void Editor_addDateCreated(Editor *editor_ptr, const char *date);
-    editor_add_date_created = Util.load_func("Editor_addDateCreated", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    editor_add_date_created = Util.load_func("Editor_addDateCreated", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
-    editor_add_parent_model = Util.load_func("Editor_addParentModel", [ct.c_int64, ct.c_char_p], None)
+    # Editor* Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
+    editor_add_parent_model = Util.load_func("Editor_addParentModel", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     #################################################################
     # SingularAnnotations methods
