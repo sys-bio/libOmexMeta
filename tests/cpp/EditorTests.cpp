@@ -391,7 +391,6 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     int expected = 4;
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
-
 }
 
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
@@ -713,6 +712,24 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
             .setPhysicalProperty("#OmexMetaId0000", "OPB:OPB1234")
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2");
+
+    editor.addPhysicalForce(physicalForce);
+    int expected = 8;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(EditorTests, TestPhysicalForceBuilder2) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalForce physicalForce = editor.newPhysicalForce();
+    physicalForce
+            .setAbout("#OmexMetaId0000")
+            .hasProperty("OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 

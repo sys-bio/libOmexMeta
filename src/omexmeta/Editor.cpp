@@ -311,7 +311,7 @@ namespace omexmeta {
         return PersonalInformation(model_.get(), getModelUri(), getLocalUri());
     }
 
-    void Editor::addCreator(std::string orcid_id) {
+    Editor& Editor::addCreator(std::string orcid_id) {
         std::string orcid_namespace = "https://orchid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
@@ -321,6 +321,7 @@ namespace omexmeta {
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         triple.freeTriple();
+        return *this;
     }
 
     Editor& Editor::addCurator(std::string orcid_id) {

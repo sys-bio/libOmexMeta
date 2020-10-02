@@ -1,3 +1,5 @@
+import sys
+sys.path.append(r"D:\libOmexMeta\src")
 import tellurium as te
 from pyomexmeta import RDF
 import os

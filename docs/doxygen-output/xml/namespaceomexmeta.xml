@@ -1254,9 +1254,9 @@
         </inbodydescription>
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="463" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="463" bodyend="473" declfile="src/omexmeta/OmexMetaCApi.h" declline="152" declcolumn="30"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a7b612eade9eb34450ea88ef85657c838" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addCreator</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1a50920280fdbfed97fdceaab3351c8110" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addCreator</definition>
         <argsstring>(Editor *editor_ptr, const char *orcid_id)</argsstring>
         <name>Editor_addCreator</name>
         <param>
@@ -1273,11 +1273,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="475" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="475" bodyend="483" declfile="src/omexmeta/OmexMetaCApi.h" declline="154" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="475" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="475" bodyend="483" declfile="src/omexmeta/OmexMetaCApi.h" declline="154" declcolumn="32"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a86cf5fb8f670b0b648162ddfbe5d8a02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addCurator</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1adef5bacd6082d8c7a31bac8512beb88e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addCurator</definition>
         <argsstring>(Editor *editor_ptr, const char *orcid_id)</argsstring>
         <name>Editor_addCurator</name>
         <param>
@@ -1294,11 +1294,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="485" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="485" bodyend="493" declfile="src/omexmeta/OmexMetaCApi.h" declline="156" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="485" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="485" bodyend="493" declfile="src/omexmeta/OmexMetaCApi.h" declline="156" declcolumn="32"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a5f46902a5da35486989b7e74c42c451a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addTaxon</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1a5c4e1428342257b2ee39c365a7f3088f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addTaxon</definition>
         <argsstring>(Editor *editor_ptr, const char *taxon_id)</argsstring>
         <name>Editor_addTaxon</name>
         <param>
@@ -1315,11 +1315,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="495" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="495" bodyend="503" declfile="src/omexmeta/OmexMetaCApi.h" declline="158" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="495" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="495" bodyend="503" declfile="src/omexmeta/OmexMetaCApi.h" declline="158" declcolumn="32"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a8a2613943915dc228a4b53de2423ba62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addPubmed</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1a6c0234656aeb84aaeda92a1480f98c47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addPubmed</definition>
         <argsstring>(Editor *editor_ptr, const char *pubmedid)</argsstring>
         <name>Editor_addPubmed</name>
         <param>
@@ -1336,11 +1336,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="505" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="505" bodyend="513" declfile="src/omexmeta/OmexMetaCApi.h" declline="160" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="505" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="505" bodyend="513" declfile="src/omexmeta/OmexMetaCApi.h" declline="160" declcolumn="32"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a117e6430247224600755a3c3bffb0632" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addDescription</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1a0a71078ff0984cd1c67a3844c7f065d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addDescription</definition>
         <argsstring>(Editor *editor_ptr, const char *date)</argsstring>
         <name>Editor_addDescription</name>
         <param>
@@ -1357,11 +1357,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="515" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="515" bodyend="523" declfile="src/omexmeta/OmexMetaCApi.h" declline="162" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="515" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="515" bodyend="523" declfile="src/omexmeta/OmexMetaCApi.h" declline="162" declcolumn="32"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a438d94f9c2af78f41cfb28d92da25bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addDateCreated</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1aa85a2336d491e1137a9ba7238d2a62ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addDateCreated</definition>
         <argsstring>(Editor *editor_ptr, const char *date)</argsstring>
         <name>Editor_addDateCreated</name>
         <param>
@@ -1378,11 +1378,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="525" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="525" bodyend="533" declfile="src/omexmeta/OmexMetaCApi.h" declline="164" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="525" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="525" bodyend="533" declfile="src/omexmeta/OmexMetaCApi.h" declline="164" declcolumn="32"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a6bd3edcdc8e62d3da2ff9328280e2612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>OMEXMETACAPI_EXPORT int omexmeta::Editor_addParentModel</definition>
+      <memberdef kind="function" id="namespaceomexmeta_1a6b2b5bad57a439b356acc85f42fd9047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>OMEXMETACAPI_EXPORT Editor * omexmeta::Editor_addParentModel</definition>
         <argsstring>(Editor *editor_ptr, const char *biomod_id)</argsstring>
         <name>Editor_addParentModel</name>
         <param>
@@ -1399,7 +1399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="535" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="535" bodyend="543" declfile="src/omexmeta/OmexMetaCApi.h" declline="166" declcolumn="29"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="535" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="535" bodyend="543" declfile="src/omexmeta/OmexMetaCApi.h" declline="166" declcolumn="32"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a56234965820e6e731cb377af949585a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>

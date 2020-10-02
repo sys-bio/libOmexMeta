@@ -105,21 +105,21 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f40
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}\label{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}} 
 \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \mbox{\hyperlink{classomexmeta_1_1Editor_a5143e1f8db82393faed322810acf5e92}{create\+Node\+With\+Model\+Uri}} (const std\+::string \&string) const
 \begin{DoxyCompactList}\small\item\em instantiate a Librdf\+Node that is prefixed with the current local\+\_\+uri \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}{add\+Creator}} (std\+::string orcid\+\_\+id)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}{add\+Creator}} (std\+::string orcid\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}creator\char`\"{} model level annotation \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}{add\+Curator}} (std\+::string orcid\+\_\+id)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_abc8dd83a176d73f9211386ad08bb35b3}{add\+Curator}} (std\+::string orcid\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}curator\char`\"{} model level annotation \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}{add\+Taxon}} (const std\+::string \&taxon\+\_\+id)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a4da72139f63090ab5682bf51c96d7886}{add\+Taxon}} (const std\+::string \&taxon\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}taxon id\char`\"{} model level annotation \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}{add\+Pubmed}} (const std\+::string \&pubmedid)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a9eeaa4cfeeb9bae8b5d5f7705e170de4}{add\+Pubmed}} (const std\+::string \&pubmedid)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}pubmed id\char`\"{} model level annotation \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}{add\+Description}} (const std\+::string \&date)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a58db6f81ad362189bed21780be5f3611}{add\+Description}} (const std\+::string \&date)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}description\char`\"{} model level annotation \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}{add\+Date\+Created}} (const std\+::string \&date)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_ace652a3364ba755330179e2aeb630761}{add\+Date\+Created}} (const std\+::string \&date)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}date created\char`\"{} model level annotation \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} \mbox{\hyperlink{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}{new\+Singular\+Annotation}} (std\+::string metaid) const
 \begin{DoxyCompactList}\small\item\em create a new singular annotation object with metaid \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}{add\+Parent\+Model}} (const std\+::string \&biomod\+\_\+id)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a904a1beb0ba56ccfc1aca70d512030ed}{add\+Parent\+Model}} (const std\+::string \&biomod\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}parent model\char`\"{} model level annotation \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f}{add\+Personal\+Information}} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$personal\+Information) const
 \begin{DoxyCompactList}\small\item\em Add a \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} object to the current \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} graph. \end{DoxyCompactList}\item 
@@ -191,11 +191,11 @@ add a composite annotation to the rdf graph.
 \end{DoxyParams}
 Composite annotations currently supported are \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} and \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}}. The Physical\+Dependency type will be supported in future releases.
 
-For developers. Consider removing this function in favour of using the add$\ast$ functions. Implementation note\+: \mbox{\hyperlink{classThis}{This}} method generates triples on the fly and then frees. \mbox{\hyperlink{classThis}{This}} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}\label{classomexmeta_1_1Editor_a9c8b060005146f3cf5a231ea6789e7d7}} 
+For developers. Consider removing this function in favour of using the add$\ast$ functions. Implementation note\+: \mbox{\hyperlink{classThis}{This}} method generates triples on the fly and then frees. \mbox{\hyperlink{classThis}{This}} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}\label{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addCreator@{addCreator}}
 \index{addCreator@{addCreator}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addCreator()}{addCreator()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Creator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Creator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
 
 
 
@@ -206,11 +206,11 @@ add the \char`\"{}creator\char`\"{} model level annotation
 {\em an} & orchid\+\_\+id as string \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}\label{classomexmeta_1_1Editor_a8b83488faf68546733114acf54595b02}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_abc8dd83a176d73f9211386ad08bb35b3}\label{classomexmeta_1_1Editor_abc8dd83a176d73f9211386ad08bb35b3}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addCurator@{addCurator}}
 \index{addCurator@{addCurator}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addCurator()}{addCurator()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Curator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Curator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
 
 
 
@@ -221,11 +221,11 @@ add the \char`\"{}curator\char`\"{} model level annotation
 {\em an} & orchid\+\_\+id as string \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}\label{classomexmeta_1_1Editor_ae1b146f142ec10237f8edbecf0368f8e}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ace652a3364ba755330179e2aeb630761}\label{classomexmeta_1_1Editor_ace652a3364ba755330179e2aeb630761}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addDateCreated@{addDateCreated}}
 \index{addDateCreated@{addDateCreated}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addDateCreated()}{addDateCreated()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Date\+Created (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{date }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Date\+Created (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{date }\end{DoxyParamCaption})}
 
 
 
@@ -236,11 +236,11 @@ add the \char`\"{}date created\char`\"{} model level annotation
 {\em The} & date that the model was created \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}\label{classomexmeta_1_1Editor_a8526a87544b1265695f1749100da5fa2}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a58db6f81ad362189bed21780be5f3611}\label{classomexmeta_1_1Editor_a58db6f81ad362189bed21780be5f3611}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addDescription@{addDescription}}
 \index{addDescription@{addDescription}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addDescription()}{addDescription()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Description (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{date }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Description (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{date }\end{DoxyParamCaption})}
 
 
 
@@ -268,11 +268,11 @@ add a namespace
 {\em prefix} & the prefix used in serialized annotations to refer to the namespace \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}\label{classomexmeta_1_1Editor_ad7240613a1f3e215af6e4a05d121508c}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a904a1beb0ba56ccfc1aca70d512030ed}\label{classomexmeta_1_1Editor_a904a1beb0ba56ccfc1aca70d512030ed}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addParentModel@{addParentModel}}
 \index{addParentModel@{addParentModel}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addParentModel()}{addParentModel()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Parent\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{biomod\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Parent\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{biomod\+\_\+id }\end{DoxyParamCaption})}
 
 
 
@@ -358,11 +358,11 @@ add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1PhysicalPro
 {\em physical\+Process} & An instance of a \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} object to add to the rdf graph. \\
 \hline
 \end{DoxyParams}
-Because we now want to use @prefix Omex for the about section, we need to inject it here, if not already formatted properly.\mbox{\Hypertarget{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}\label{classomexmeta_1_1Editor_a533f93c8ae0c3081dfe2fc8e8ebee8ea}} 
+Because we now want to use @prefix Omex for the about section, we need to inject it here, if not already formatted properly.\mbox{\Hypertarget{classomexmeta_1_1Editor_a9eeaa4cfeeb9bae8b5d5f7705e170de4}\label{classomexmeta_1_1Editor_a9eeaa4cfeeb9bae8b5d5f7705e170de4}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addPubmed@{addPubmed}}
 \index{addPubmed@{addPubmed}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addPubmed()}{addPubmed()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Pubmed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pubmedid }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Pubmed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pubmedid }\end{DoxyParamCaption})}
 
 
 
@@ -407,11 +407,11 @@ Add a Single\+Annotation (aka a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple
 {\em resource} & the resource portion of the triple \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}\label{classomexmeta_1_1Editor_af64f0cac6b7e27b121df94ab5b1fa217}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a4da72139f63090ab5682bf51c96d7886}\label{classomexmeta_1_1Editor_a4da72139f63090ab5682bf51c96d7886}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addTaxon@{addTaxon}}
 \index{addTaxon@{addTaxon}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addTaxon()}{addTaxon()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Taxon (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{taxon\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Taxon (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{taxon\+\_\+id }\end{DoxyParamCaption})}
 
 
 

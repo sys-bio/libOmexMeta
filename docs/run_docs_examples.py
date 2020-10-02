@@ -63,26 +63,28 @@ def run_python_files():
         output_filename = os.path.split(os.path.splitext(python_file)[0])[1]
 
         output_filename = os.path.join(args.output_location, output_filename +".txt")
-        with open(output_filename, "w") as f:
-            f.write(output.decode())
+        with open(output_filename, "wb") as f:
+            f.write(output)
         print(f"output written to \"{output_filename}\"")
 
 
 def run_binary_files():
     for binary in BINARY_FILES:
         print(f"running binary file \"{binary}\"")
+        print("Exists: " , os.path.isfile(binary))
         try:
             output = subprocess.check_output([binary])
         except subprocess.CalledProcessError as e:
             print(e)
-            exit(1)
+            # exit(1)
+        # print(output.decode())
 
         output_filename = os.path.split(os.path.splitext(binary)[0])[1]
 
         output_filename = os.path.join(args.output_location, output_filename + ".txt")
-        with open(output_filename, "w") as f:
+        with open(output_filename, "wb") as f:
             try:
-                f.write(output.decode())
+                f.write(output)
             except UnicodeDecodeError: # for python programs that produce diagrams
                 continue
 
@@ -90,8 +92,8 @@ def run_binary_files():
 
 
 if __name__ == "__main__":
-    run_binary_files()
     run_python_files()
+    run_binary_files()
 
 
 

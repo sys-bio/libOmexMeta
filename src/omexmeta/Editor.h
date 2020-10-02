@@ -374,7 +374,7 @@ namespace omexmeta {
          * @brief add the "parent model" model level annotation
          * @param The biomodels id for the model in which this model was derived from
          */
-        void addParentModel(const std::string &biomod_id);
+        Editor& addParentModel(const std::string &biomod_id);
 
         /**
          * @brief Add a PersonalInformation object to the current RDF graph

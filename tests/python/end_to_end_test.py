@@ -248,13 +248,13 @@ class OmexMetaSpec1_1:
         # create an editor. Note these are the default arguments - but shown here for completeness
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=True)
 
-        editor.add_creator("orcid:0000-0001-8254-4957")
-        editor.add_curator("orcid:0000-0001-8254-4958")
-        editor.add_taxon("taxon/9895")
-        editor.add_pubmed("pubmed/12334")
-        editor.add_description("My supercool model")
-        editor.add_date_created("18-09-2020")
-        editor.add_parent_model("pubmed/123456")
+        editor.add_creator("orcid:0000-0001-8254-4957")\
+            .add_curator("orcid:0000-0001-8254-4958")\
+            .add_taxon("taxon/9895")\
+            .add_pubmed("pubmed/12334")\
+            .add_description("My supercool model")\
+            .add_date_created("18-09-2020")\
+            .add_parent_model("pubmed/123456")
 
         fname = create_combine_archive(sbml, "ModelLevelAnnotations", str(rdf))
 
@@ -281,12 +281,17 @@ class OmexMetaSpec1_1:
         # create an editor. Note these are the default arguments - but shown here for completeness
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=True)
 
+        # Here we use a "with" block.
+        # internally, the "with" block will always execute a piece of code before
+        # exiting the with block. In this case, it calls "Editor.add_personal_information()"
+        # so that the user cannot forget to do it.
+        # Note that in C or C++, the user must remember to add a newly created annotation to the editor.
         with editor.new_personal_information() as information:
             information.add_creator("orcid:0000-0001-8254-4957") \
                 .add_name("Robin hood") \
                 .add_mbox("rhood@theifinthenight.com") \
                 .add_account_name("stolen_goods") \
-                .add_account_service_homepage("https://get-your-free-shit-here.com")
+                .add_account_service_homepage("https://get-your-free-stuff-here.com")
 
         fname = create_combine_archive(sbml, "PersonalInformation", str(rdf))
 

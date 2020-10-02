@@ -120,9 +120,9 @@ else ()
     set(base $ORIGIN)
 endif ()
 file(RELATIVE_PATH INSTALL_RPATH_DIRECTORIES
-     ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}
-     ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}
-     )
+        ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}
+        ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}
+        )
 # make all shared libraries have the same directory, the bin and the lib dirs in RPATH
 set(CMAKE_INSTALL_RPATH ${base} ${base}/${INSTALL_RPATH_DIRECTORIES})
 
@@ -253,10 +253,10 @@ set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_ARCH}")
 
 # location of installed static packages in vcpkg
 SetCrossPlatform(VCPKG_X64_STATIC_INSTALLED_PACKAGES
-                 "${VCPKG_ROOT}/installed/x64-windows-static"
-                 "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
-                 "${VCPKG_ROOT}/installed/x64-osx"
-                 )
+        "${VCPKG_ROOT}/installed/x64-windows-static"
+        "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
+        "${VCPKG_ROOT}/installed/x64-osx"
+        )
 
 # Path to static libraries
 set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
@@ -264,20 +264,20 @@ set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
 set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
 # Path to binaries
 SetCrossPlatform(VCPKG_X64_BIN_DIR
-                 "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
-                 "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
-                 "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
-                 )
+        "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
+        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
+        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
+        )
 # include directories (should be the same for static and dynamic)
 set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
 
 
 set(_VCPKG_DIRECTORIES
-    ${VCPKG_X64_STATIC_LIB_DIR}
-    ${VCPKG_X64_LIB_DIR}
-    ${VCPKG_X64_BIN_DIR}
-    ${VCPKG_X64_INCLUDE_DIR}
-    )
+        ${VCPKG_X64_STATIC_LIB_DIR}
+        ${VCPKG_X64_LIB_DIR}
+        ${VCPKG_X64_BIN_DIR}
+        ${VCPKG_X64_INCLUDE_DIR}
+        )
 
 # ensure the directories we've located exist
 foreach (d ${_VCPKG_DIRECTORIES})
@@ -309,22 +309,22 @@ if (PLATFORM STREQUAL "windows-msvc")
     # fixme
     #Note these "static" libraries are not actually static.
     set(LINK_LIBRARIES
-        "${LIBXML2_STATIC_LIBRARY}"
-        "${LIBXSLT_STATIC_LIBRARY}"
-        "${CURL_STATIC_LIBRARY}"
-        "${LIBCHARSET_STATIC_LIBRARY}"
-        "${SSL_STATIC_LIBRARY}"
-        "${CRYPTO_STATIC_LIBRARY}"
-        "${YAJL_STATIC_LIBRARY}"
-        "${LZMA_STATIC_LIBRARY}"
-        "${ZLIB_STATIC_LIBRARY}"
-        "${ICONV_STATIC_LIBRARY}"
-        "${PCRE_STATIC_LIBRARY}"
-        "${SQLITE3_STATIC_LIBRARY}"
-        "${BERKELY_STATIC_LIBRARY}"
-        "${POSTGRESQL_STATIC_LIBRARY}"
-        ws2_32 # needed on windows to statically link libxml2
-        )
+            "${LIBXML2_STATIC_LIBRARY}"
+            "${LIBXSLT_STATIC_LIBRARY}"
+            "${CURL_STATIC_LIBRARY}"
+            "${LIBCHARSET_STATIC_LIBRARY}"
+            "${SSL_STATIC_LIBRARY}"
+            "${CRYPTO_STATIC_LIBRARY}"
+            "${YAJL_STATIC_LIBRARY}"
+            "${LZMA_STATIC_LIBRARY}"
+            "${ZLIB_STATIC_LIBRARY}"
+            "${ICONV_STATIC_LIBRARY}"
+            "${PCRE_STATIC_LIBRARY}"
+            "${SQLITE3_STATIC_LIBRARY}"
+            "${BERKELY_STATIC_LIBRARY}"
+            "${POSTGRESQL_STATIC_LIBRARY}"
+            ws2_32 # needed on windows to statically link libxml2
+            )
     # on windows it was much easier to just
     # set up to link to dynamic versions of libraries.
     # I tried to pull all into a single static library
@@ -345,30 +345,31 @@ elseif (PLATFORM STREQUAL "linux")
     # for strange and unusual reasons which only the programming gods
     # can explain.
     set(LINK_LIBRARIES
-        ${LIBXML2_LIBRARY} # dynamic
-        ${LIBXSLT_LIBRARY} # dynamic
-        ${SQLITE3_LIBRARY}
-        ${BERKELY_LIBRARY}
-        ${POSTGRESQL_LIBRARY}
-        # flag for including whole archive, not just the function used.
-        -Wl,--whole-archive
-        ${ZLIB_STATIC_LIBRARY}
-        ${LZMA_STATIC_LIBRARY}
-        -Wl,--no-whole-archive
-        ${ICONV_LIBRARY} # We use dynamic for now.
-        ltdl
-        -Wl,--whole-archive
-        ${CURL_STATIC_LIBRARY}
-        ${SSL_STATIC_LIBRARY}
-        ${CRYPTO_STATIC_LIBRARY}
-        ${YAJL_STATIC_LIBRARY}
-        ${PCRE_STATIC_LIBRARY}
-        -Wl,--no-whole-archive
-        m
-        dl
-        ldap
-        lber
-        )
+            ${LIBXML2_LIBRARY} # dynamic
+            ${LIBXSLT_LIBRARY} # dynamic
+            ${SQLITE3_LIBRARY}
+            ${BERKELY_LIBRARY}
+            ${POSTGRESQL_LIBRARY}
+            # flag for including whole archive, not just the function used.
+            -Wl,--whole-archive
+            ${ZLIB_STATIC_LIBRARY}
+            ${LZMA_STATIC_LIBRARY}
+            -Wl,--no-whole-archive
+            ${ICONV_LIBRARY} # We use dynamic for now.
+            ltdl
+            -Wl,--whole-archive
+            ${CURL_STATIC_LIBRARY}
+            ${SSL_STATIC_LIBRARY}
+            ${CRYPTO_STATIC_LIBRARY}
+            ${YAJL_STATIC_LIBRARY}
+            ${PCRE_STATIC_LIBRARY}
+            -Wl,--no-whole-archive
+            m
+            dl
+            ldap
+            lber
+            pthread
+            )
 
 elseif (PLATFORM STREQUAL "macos")
     message(FATAL_ERROR "Stupid mac.")
@@ -376,46 +377,46 @@ endif ()
 
 
 set(INCLUDE_DIRECTORIES
-    # raptor includes
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa>
+        # raptor includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa>
 
-    # rasqal includes
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/src>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils>
+        # rasqal includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils>
 
-    # librdf includes
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/src>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl>
+        # librdf includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl>
 
-    # wrapper includes
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src>
+        # wrapper includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src>
 
-    # libomexmeta includes
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/C>
+        # libomexmeta includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/C>
 
-    # dependency includes
-    $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${LIBXSLT_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${CURL_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${YAJL_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${LZMA_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
-    $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
+        # dependency includes
+        $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${LIBXSLT_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${CURL_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${YAJL_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${LZMA_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
 
-    ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
-    ${CMAKE_CURRENT_BINARY_DIR}/src/redland
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
-    )
+        ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
+        ${CMAKE_CURRENT_BINARY_DIR}/src/redland
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
+        )
 
 
 #############################################
@@ -423,7 +424,6 @@ set(INCLUDE_DIRECTORIES
 
 # source directories
 add_subdirectory(src)
-
 
 
 # test directories
@@ -459,14 +459,14 @@ if (BUILD_TESTS)
 
             # optional excludes - None needed here
             set(COVERAGE_EXCLUDES
-                ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
-                ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
-                ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
-                ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
-                ${CMAKE_SOURCE_DIR}/tests
-                ${CMAKE_SOURCE_DIR}/test
-                ${CMAKE_SOURCE_DIR}/third_party
-                )
+                    ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
+                    ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
+                    ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
+                    ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
+                    ${CMAKE_SOURCE_DIR}/tests
+                    ${CMAKE_SOURCE_DIR}/test
+                    ${CMAKE_SOURCE_DIR}/third_party
+                    )
 
             # importantly, set the path to the gcovr executable that you downladed
             #  https://github.com/bilke/cmake-modules/issues/8
@@ -500,16 +500,16 @@ endif ()
 
 # only enable this option if building as top level package
 if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-#    mkdir graphviz && cd graphviz
-#    cmake --graphviz=graph ..
-#    dot graph -Tsvg -o graph.svg
+    #    mkdir graphviz && cd graphviz
+    #    cmake --graphviz=graph ..
+    #    dot graph -Tsvg -o graph.svg
     add_custom_target(
             DependencyGraph
             COMMENT "Use CMake to generate dependency graph"
             COMMAND ${CMAKE_COMMAND} --graphviz=graph .
             COMMAND dot graph -Tsvg -o "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graph.svg"
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                      )
+    )
 
 endif ()
 

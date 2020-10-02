@@ -163,16 +163,26 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_delete(Editor *editor\_ptr);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getArchiveUri(Editor *editor\_ptr);
+
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getLocalUri(Editor *editor\_ptr);
+
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getModelUri(Editor *editor\_ptr);
+
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getRepositoryUri(Editor *editor\_ptr);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addCreator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addCurator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addTaxon(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *taxon\_id);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPubmed(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pubmedid);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addDescription(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addDateCreated(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addParentModel(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *biomod\_id);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addCreator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addCurator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addTaxon(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *taxon\_id);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addPubmed(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pubmedid);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addDescription(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addDateCreated(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);
+
+    OMEXMETACAPI\_EXPORT Editor* Editor\_addParentModel(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *biomod\_id);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * SingularAnnotation class methods}
@@ -229,7 +239,6 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_addLocation(
             PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *location\_resource);
 
-
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getAbout(PhysicalEntity *physical\_entity\_ptr);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getIdentity(PhysicalEntity *physical\_entity\_ptr);
@@ -240,6 +249,15 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_str(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{
       const} \textcolor{keywordtype}{char} *base\_uri);
+
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasProperty(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{char} *property);
+
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isPartOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
+      char} *is\_part\_of);
+
+    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setAbout(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
+      char} *about);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * PhysicalProcess class methods}
@@ -267,6 +285,14 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *
     PhysicalProcess\_str(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *base\_uri);
 
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasProperty(PhysicalProcess *physical\_process\_ptr,
+       \textcolor{keyword}{const} \textcolor{keywordtype}{char} *property);
+
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_setAbout(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{char} *about);
+
+    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_isVersionOf(PhysicalProcess *physical\_process\_ptr,
+       \textcolor{keyword}{const} \textcolor{keywordtype}{char} *version);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * PhysicalForce class methods}
@@ -297,6 +323,12 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
       const} \textcolor{keywordtype}{char} *base\_uri);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_getAbout(PhysicalForce *physical\_force\_ptr);
+
+    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_hasProperty(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
+      char} *is\_version\_of);
+
+    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_setAbout(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}
+       *about);
 
 \textcolor{comment}{/*********************************************************************}
 \textcolor{comment}{ * PersonalInformation class methods}

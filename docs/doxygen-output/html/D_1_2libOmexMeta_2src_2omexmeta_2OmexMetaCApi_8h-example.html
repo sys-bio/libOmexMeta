@@ -205,19 +205,19 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">char</span> *Editor_getRepositoryUri(Editor *editor_ptr);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addCreator(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *orcid_id);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addCreator(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *orcid_id);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addCurator(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *orcid_id);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addCurator(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *orcid_id);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addTaxon(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *taxon_id);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addTaxon(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *taxon_id);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addPubmed(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *pubmedid);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addPubmed(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *pubmedid);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addDescription(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *date);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addDescription(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *date);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addDateCreated(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *date);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addDateCreated(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *date);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> Editor_addParentModel(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *biomod_id);</div>
+<div class="line">    OMEXMETACAPI_EXPORT Editor* Editor_addParentModel(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *biomod_id);</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT SingularAnnotation *<a name="a5"></a><a class="code" href="namespaceomexmeta.html#a56234965820e6e731cb377af949585a3">SingularAnnotation_new</a>(Editor *editor_ptr);</div>

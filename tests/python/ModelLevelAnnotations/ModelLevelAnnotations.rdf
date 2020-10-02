@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.rdf#>
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/orcid:0000-0001-8254-4958> .
+
+local:PhysicalProcess0000
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001 .
+
+local:PhysicalProcess0001
+    semsim:hasSinkParticipant local:SinkParticipant0001, local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 .
+
+local:PhysicalProcess0002
+    semsim:hasSinkParticipant local:SinkParticipant0003, local:SinkParticipant0004 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#ES> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#S> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#E> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#E> .
+
+local:SinkParticipant0004
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#P> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#S> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#E> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#ES> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#ES> .
+
+<http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#>
+    bqbiol:hasTaxon <NCBI_Taxon:taxon/9895> ;
+    <http://biomodels.net/model-qualifiers/isDerivedFrom> <https://identifiers.org/biomod/pubmed/123456> ;
+    <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/pubmed/12334> ;
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/created> "18-09-2020"^^rdf:string ;
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/orcid:0000-0001-8254-4957> ;
+    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "My supercool model"^^rdf:string .
+
+<http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#R1>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#R2>
+    bqbiol:isPropertyOf local:PhysicalProcess0001 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/ModelLevelAnnotations.xml#R3>
+    bqbiol:isPropertyOf local:PhysicalProcess0002 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+

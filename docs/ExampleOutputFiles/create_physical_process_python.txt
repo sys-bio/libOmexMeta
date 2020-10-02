@@ -1,0 +1,29 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaID0003> .
+
+local:PhysicalProcess0000
+    bqbiol:isVersionOf <https://identifiers.org/GO/GO12345> ;
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaID0002> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaID0001> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00593> .
+
+

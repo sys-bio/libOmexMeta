@@ -138,14 +138,14 @@
     <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" kind="function"><name>getRepositoryUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" kind="function"><name>createNodeWithModelUri</name></member>
-    <member refid="classomexmeta_1_1Editor_1a9c8b060005146f3cf5a231ea6789e7d7" kind="function"><name>addCreator</name></member>
-    <member refid="classomexmeta_1_1Editor_1a8b83488faf68546733114acf54595b02" kind="function"><name>addCurator</name></member>
-    <member refid="classomexmeta_1_1Editor_1af64f0cac6b7e27b121df94ab5b1fa217" kind="function"><name>addTaxon</name></member>
-    <member refid="classomexmeta_1_1Editor_1a533f93c8ae0c3081dfe2fc8e8ebee8ea" kind="function"><name>addPubmed</name></member>
-    <member refid="classomexmeta_1_1Editor_1a8526a87544b1265695f1749100da5fa2" kind="function"><name>addDescription</name></member>
-    <member refid="classomexmeta_1_1Editor_1ae1b146f142ec10237f8edbecf0368f8e" kind="function"><name>addDateCreated</name></member>
+    <member refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" kind="function"><name>addCreator</name></member>
+    <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" kind="function"><name>addCurator</name></member>
+    <member refid="classomexmeta_1_1Editor_1a4da72139f63090ab5682bf51c96d7886" kind="function"><name>addTaxon</name></member>
+    <member refid="classomexmeta_1_1Editor_1a9eeaa4cfeeb9bae8b5d5f7705e170de4" kind="function"><name>addPubmed</name></member>
+    <member refid="classomexmeta_1_1Editor_1a58db6f81ad362189bed21780be5f3611" kind="function"><name>addDescription</name></member>
+    <member refid="classomexmeta_1_1Editor_1ace652a3364ba755330179e2aeb630761" kind="function"><name>addDateCreated</name></member>
     <member refid="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c" kind="function"><name>newSingularAnnotation</name></member>
-    <member refid="classomexmeta_1_1Editor_1ad7240613a1f3e215af6e4a05d121508c" kind="function"><name>addParentModel</name></member>
+    <member refid="classomexmeta_1_1Editor_1a904a1beb0ba56ccfc1aca70d512030ed" kind="function"><name>addParentModel</name></member>
     <member refid="classomexmeta_1_1Editor_1ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f" kind="function"><name>addPersonalInformation</name></member>
     <member refid="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" kind="function"><name>newSingularAnnotation</name></member>
   </compound>
@@ -1105,13 +1105,13 @@
     <member refid="namespaceomexmeta_1a28c678eeb0c4457bbbd671eb2dac73d0" kind="function"><name>Editor_getLocalUri</name></member>
     <member refid="namespaceomexmeta_1aaddb4c2e6bc636650b20c2eb526ff691" kind="function"><name>Editor_getModelUri</name></member>
     <member refid="namespaceomexmeta_1afc5399a7743a7ddbb79a903ca5676170" kind="function"><name>Editor_getRepositoryUri</name></member>
-    <member refid="namespaceomexmeta_1a7b612eade9eb34450ea88ef85657c838" kind="function"><name>Editor_addCreator</name></member>
-    <member refid="namespaceomexmeta_1a86cf5fb8f670b0b648162ddfbe5d8a02" kind="function"><name>Editor_addCurator</name></member>
-    <member refid="namespaceomexmeta_1a5f46902a5da35486989b7e74c42c451a" kind="function"><name>Editor_addTaxon</name></member>
-    <member refid="namespaceomexmeta_1a8a2613943915dc228a4b53de2423ba62" kind="function"><name>Editor_addPubmed</name></member>
-    <member refid="namespaceomexmeta_1a117e6430247224600755a3c3bffb0632" kind="function"><name>Editor_addDescription</name></member>
-    <member refid="namespaceomexmeta_1a438d94f9c2af78f41cfb28d92da25bd5" kind="function"><name>Editor_addDateCreated</name></member>
-    <member refid="namespaceomexmeta_1a6bd3edcdc8e62d3da2ff9328280e2612" kind="function"><name>Editor_addParentModel</name></member>
+    <member refid="namespaceomexmeta_1a50920280fdbfed97fdceaab3351c8110" kind="function"><name>Editor_addCreator</name></member>
+    <member refid="namespaceomexmeta_1adef5bacd6082d8c7a31bac8512beb88e" kind="function"><name>Editor_addCurator</name></member>
+    <member refid="namespaceomexmeta_1a5c4e1428342257b2ee39c365a7f3088f" kind="function"><name>Editor_addTaxon</name></member>
+    <member refid="namespaceomexmeta_1a6c0234656aeb84aaeda92a1480f98c47" kind="function"><name>Editor_addPubmed</name></member>
+    <member refid="namespaceomexmeta_1a0a71078ff0984cd1c67a3844c7f065d0" kind="function"><name>Editor_addDescription</name></member>
+    <member refid="namespaceomexmeta_1aa85a2336d491e1137a9ba7238d2a62ce" kind="function"><name>Editor_addDateCreated</name></member>
+    <member refid="namespaceomexmeta_1a6b2b5bad57a439b356acc85f42fd9047" kind="function"><name>Editor_addParentModel</name></member>
     <member refid="namespaceomexmeta_1a56234965820e6e731cb377af949585a3" kind="function"><name>SingularAnnotation_new</name></member>
     <member refid="namespaceomexmeta_1a6c1d37ce851c1853f83a3622a5bd00bc" kind="function"><name>SingularAnnotation_delete</name></member>
     <member refid="namespaceomexmeta_1ad8b1a3d657ffffadcef2d723044c18e9" kind="function"><name>free_singular_annotation</name></member>
