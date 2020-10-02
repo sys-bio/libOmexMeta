@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/sys-bio/libOmexMeta.svg?branch=master)](https://travis-ci.org/sys-bio/libOmexMeta) 
 [![PyPI version](https://badge.fury.io/py/pyomexmeta.svg)](https://badge.fury.io/py/pyomexmeta)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
