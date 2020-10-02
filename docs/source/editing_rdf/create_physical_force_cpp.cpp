@@ -107,7 +107,8 @@ int main(){
     Editor editor = rdf.toEditor(sbml, true);
 
     PhysicalForce force = editor.newPhysicalForce();
-    force.setPhysicalProperty("OmexMetaId0001", "OPB:OPB_00340")
+    force.setAbout("OmexMetaId0001")
+            .hasProperty( "OPB:OPB_00340")
             .addSink(1, "OmexMetaID0001")
             .addSource(1, "OmexMetaID0002");
 

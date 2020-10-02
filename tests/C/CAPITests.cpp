@@ -661,6 +661,60 @@ TEST_F(CAPITests, TestPhysicalProcess) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, TestPhysicalProcess2) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
+    PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
+
+    physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "Metaid0937");
+    physical_process_ptr = PhysicalProcess_hasProperty(physical_process_ptr, "opb/opb93864");
+    physical_process_ptr = PhysicalProcess_isVersionOf(physical_process_ptr, "GO:12345");
+    physical_process_ptr = PhysicalProcess_addSink(
+            physical_process_ptr, 1, "Entity8");
+    physical_process_ptr = PhysicalProcess_addSource(
+            physical_process_ptr, 1, "Entity8");
+    physical_process_ptr = PhysicalProcess_addMediator(
+            physical_process_ptr, "Entity8");
+
+    char *actual = PhysicalProcess_str(physical_process_ptr, "turtle", "./annotations.rdf");
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<Metaid0937>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/opb93864> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity8> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/GO:12345> ;\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity8> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity8> .\n"
+                           "\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual);
+
+    Editor_delete(editor_ptr);
+    PhysicalProcess_delete(physical_process_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
 TEST_F(CAPITests, TestPhysicalForce) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
@@ -812,7 +866,7 @@ TEST_F(CAPITests, TestEditorToRDFUsingAlternativeAPI) {
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
     physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "#OmexMetaId0006");
-    physical_process_ptr = PhysicalProcess_isVersionOf(physical_process_ptr,"opb/opb93864");
+    physical_process_ptr = PhysicalProcess_hasProperty(physical_process_ptr,"opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
             physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addSource(
@@ -822,7 +876,7 @@ TEST_F(CAPITests, TestEditorToRDFUsingAlternativeAPI) {
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "#OmexMetaId0007");
-    physical_entity_ptr = PhysicalEntity_isVersionOf(physical_entity_ptr, "opb/opb_465");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb/opb_465");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8377");
@@ -831,7 +885,7 @@ TEST_F(CAPITests, TestEditorToRDFUsingAlternativeAPI) {
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
     physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "#OmexMetaId0008");
-    physical_force_ptr = PhysicalForce_isVersionOf(physical_force_ptr,"opb/opb93864");
+    physical_force_ptr = PhysicalForce_hasProperty(physical_force_ptr,"opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
             physical_force_ptr, 1, "Entity8");
     physical_force_ptr = PhysicalForce_addSource(
@@ -891,14 +945,12 @@ TEST_F(CAPITests, TestEditorToRDFUsingAlternativeAPI) {
     char *actual = RDF_toString(rdf_ptr, "rdfxml-abbrev");
     std::cout << actual << std::endl;
 
-
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     PhysicalProcess_delete(physical_process_ptr);
     PhysicalForce_delete(physical_force_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
-
 }
 
 TEST_F(CAPITests, PhysicalEntityAlternativeAPITest){
@@ -908,7 +960,7 @@ TEST_F(CAPITests, PhysicalEntityAlternativeAPITest){
     PhysicalEntity* physicalEntity = PhysicalEntity_new(editor_ptr);
     physicalEntity = PhysicalEntity_setAbout(physicalEntity,"#OmexMetaId0000");
     physicalEntity = PhysicalEntity_setIdentity(physicalEntity, "uniprot/PD7363");
-    physicalEntity = PhysicalEntity_isVersionOf(physicalEntity, "opb:opb_12345");
+    physicalEntity = PhysicalEntity_hasProperty(physicalEntity, "opb:opb_12345");
     physicalEntity = PhysicalEntity_isPartOf(physicalEntity, "fma:fma12345");
 
     Editor_addPhysicalEntity(editor_ptr, physicalEntity);
@@ -942,7 +994,7 @@ TEST_F(CAPITests, PhysicalProcessAlternativeAPITest){
 
     PhysicalProcess* process = PhysicalProcess_new(editor_ptr);
     process = PhysicalProcess_setAbout(process ,"#OmexMetaId0000");
-    process = PhysicalProcess_isVersionOf(process ,"#OmexMetaId0000");
+    process = PhysicalProcess_hasProperty(process ,"#OmexMetaId0000");
     process = PhysicalProcess_addSource(process , 1.0, "#OmexMetaId0001");
 
 
@@ -981,7 +1033,7 @@ TEST_F(CAPITests, PhysicalForceAlternativeAPITest){
 
     PhysicalForce* force = PhysicalForce_new(editor_ptr);
     force = PhysicalForce_setAbout(force  ,"#OmexMetaId0000");
-    force = PhysicalForce_isVersionOf(force  ,"#OmexMetaId0000");
+    force = PhysicalForce_hasProperty(force  ,"#OmexMetaId0000");
     force = PhysicalForce_addSource(force  , 1.0, "#OmexMetaId0001");
 
     Editor_addPhysicalForce(editor_ptr, force);

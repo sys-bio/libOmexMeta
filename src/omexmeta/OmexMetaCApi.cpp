@@ -819,9 +819,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_isVersionOf(PhysicalEntity *physical_entity_ptr, const char *is_version_of) {
+    PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *property) {
         try {
-            physical_entity_ptr->isVersionOf(is_version_of);
+            physical_entity_ptr->hasProperty(property);
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -983,9 +983,19 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *is_version_of) {
+    PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, const char *property) {
         try {
-            physical_process_ptr->isVersionOf(is_version_of);
+            physical_process_ptr->hasProperty(property);
+            return physical_process_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version) {
+        try {
+            physical_process_ptr->isVersionOf(version);
             return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1115,9 +1125,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *PhysicalForce_isVersionOf(PhysicalForce *physical_force_ptr, const char *is_version_of) {
+    PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, const char *property) {
         try {
-            physical_force_ptr->isVersionOf(is_version_of);
+            physical_force_ptr->hasProperty(property);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());

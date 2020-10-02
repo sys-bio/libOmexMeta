@@ -106,7 +106,9 @@ int main(){
     Editor editor = rdf.toEditor(sbml, true);
 
     PhysicalProcess process = editor.newPhysicalProcess();
-    process.setPhysicalProperty("OmexMetaId0001", "OPB:OPB_00340")
+    process.setAbout("OmexMetaId0001")
+            .hasProperty("OPB:OPB_00340")
+            .isVersionOf("GO:12345")
             .addSink(1, "OmexMetaID0001")
             .addSource(1, "OmexMetaID0002")
             .addMediator("OmexMetaID0003");

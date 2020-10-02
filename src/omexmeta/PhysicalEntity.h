@@ -189,11 +189,11 @@ namespace omexmeta {
 
         /**
          * @brief Set the isVersionOf portion of the PhysicalEntity composite annotation.
-         * @param about: The string to put in rdf:about
+         * @param property: an opb term
          * @details Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set
          * the Resource resource_ property on the PhysicalProperty associated with this PhysicalEntity.
          */
-        PhysicalEntity& isVersionOf(const std::string& is_version_of);
+        PhysicalEntity& hasProperty(const std::string& property);
 
         /**
          * @brief Set the about portion of the PhysicalEntity composite annotation.

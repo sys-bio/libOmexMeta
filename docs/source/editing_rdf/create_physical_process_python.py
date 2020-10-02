@@ -2,6 +2,7 @@ import tellurium as te
 from pyomexmeta import RDF
 import os
 
+
 antimony_string = """
 model SimpleRegulation
     compartment cell = 1;
@@ -37,13 +38,14 @@ rdf = RDF()
 
 editor = rdf.to_editor(sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
 sbml_with_metaids = editor.get_xml()
-print(sbml_with_metaids)
 
 # annotate reaction #OmexMetaId0011 as the chemical concentration
 # flow rate OPB:OPB_00593 of Smad3 to phosphorylated smad3
 with editor.new_physical_process() as physical_process:
     physical_process \
-        .set_physical_property("#OmexMetaId0005", "OPB:OPB_00593") \
+        .set_about("#OmexMetaId0005") \
+        .has_property("OPB:OPB_00593") \
+        .is_version_of("GO/GO12345") \
         .add_source(multiplier=1, physical_entity_reference="#OmexMetaID0001") \
         .add_sink(multiplier=1, physical_entity_reference="#OmexMetaID0002") \
         .add_mediator(physical_entity_reference="#OmexMetaID0003")

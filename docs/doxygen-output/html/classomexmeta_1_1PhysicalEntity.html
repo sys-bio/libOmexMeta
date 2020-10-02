@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.14</span>
+   &#160;<span id="projectnumber">1.1.15</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -133,9 +133,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:afee546a420f16e128ed1add9fec35b4f"><td class="memItemLeft" align="right" valign="top"><a id="afee546a420f16e128ed1add9fec35b4f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;rhs) const</td></tr>
 <tr class="separator:afee546a420f16e128ed1add9fec35b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5399ef8eef084f2dd8b13ef537823d94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#a5399ef8eef084f2dd8b13ef537823d94">isVersionOf</a> (const std::string &amp;is_version_of)</td></tr>
-<tr class="memdesc:a5399ef8eef084f2dd8b13ef537823d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the isVersionOf portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#a5399ef8eef084f2dd8b13ef537823d94">More...</a><br /></td></tr>
-<tr class="separator:a5399ef8eef084f2dd8b13ef537823d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae160c410eeffe04a1fcc9c050ddd1b42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#ae160c410eeffe04a1fcc9c050ddd1b42">hasProperty</a> (const std::string &amp;property)</td></tr>
+<tr class="memdesc:ae160c410eeffe04a1fcc9c050ddd1b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the isVersionOf portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#ae160c410eeffe04a1fcc9c050ddd1b42">More...</a><br /></td></tr>
+<tr class="separator:ae160c410eeffe04a1fcc9c050ddd1b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1736d331705bf2f1569f492fc733949e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#a1736d331705bf2f1569f492fc733949e">setAbout</a> (const std::string &amp;about) override</td></tr>
 <tr class="memdesc:a1736d331705bf2f1569f492fc733949e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the about portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#a1736d331705bf2f1569f492fc733949e">More...</a><br /></td></tr>
 <tr class="separator:a1736d331705bf2f1569f492fc733949e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -543,6 +543,32 @@ a Triples object by calling "str" or "toTriples".
 
 </div>
 </div>
+<a id="ae160c410eeffe04a1fcc9c050ddd1b42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae160c410eeffe04a1fcc9c050ddd1b42">&#9670;&nbsp;</a></span>hasProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp; omexmeta::PhysicalEntity::hasProperty </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>property</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the isVersionOf portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">property</td><td>an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> function will set the <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> resource_ property on the <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> associated with this <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a2498e9b0b11a00200e47332c4515b1f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2498e9b0b11a00200e47332c4515b1f1">&#9670;&nbsp;</a></span>is()</h2>
 
@@ -589,32 +615,6 @@ a Triples object by calling "str" or "toTriples".
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">isPartOf</td><td>the string to be used for isPartOf predicate. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> should be of the form fma:FMA:12345 or fma/FMA:12345  <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> function calls the <code><a class="el" href="classomexmeta_1_1PhysicalEntity.html#a82e77be3327c537b2426b571afaa5045" title="add a location to the PhysicalEntity.">PhysicalEntity::addLocation</a></code> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <code>addLocation</code> or <code>isPartOf</code> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a5399ef8eef084f2dd8b13ef537823d94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5399ef8eef084f2dd8b13ef537823d94">&#9670;&nbsp;</a></span>isVersionOf()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp; omexmeta::PhysicalEntity::isVersionOf </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>is_version_of</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the isVersionOf portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">about</td><td>The string to put in rdf:about  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> function will set the <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> resource_ property on the <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> associated with this <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>. </td></tr>
   </table>
   </dd>
 </dl>

@@ -40,7 +40,7 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalProcess::toTriples(): cannot create "
                     "triples object because the\"location\" information "
-                    "is empty. Please use the \"isVersionOf()\"."
+                    "is empty. Please use the \"hasProperty()\"."
             );
 
         }
@@ -127,8 +127,8 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    PhysicalForce &PhysicalForce::isVersionOf(const std::string &is_version_of) {
-        physical_property_.setResource(is_version_of);
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &property) {
+        physical_property_.setResource(property);
         return *this;
     }
 

@@ -140,7 +140,9 @@ int main(){
     Editor* editor_ptr = RDF_toEditor(rdf_ptr, sbml, true, false);
 
     PhysicalProcess* process = PhysicalProcess_new(editor_ptr);
-    PhysicalProcess_setPhysicalProperty(process, "OmexMeta0000", "OPB:OPB_00340");
+    PhysicalProcess_setAbout(process, "OmexMeta0000");
+    PhysicalProcess_hasProperty(process, "OPB:OPB_00340");
+    PhysicalProcess_isVersionOf(process, "GO:12345");
     PhysicalProcess_addSource(process, 1, "OmexMeta0001");
     PhysicalProcess_addSink(process, 1, "OmexMeta0002");
     PhysicalProcess_addMediator(process,"OmexMeta0003");

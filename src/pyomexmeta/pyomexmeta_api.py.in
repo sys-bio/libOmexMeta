@@ -365,8 +365,8 @@ class PyOmexMetaAPI:
     # PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
     physical_entity_set_about = Util.load_func("PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # PhysicalEntity *PhysicalEntity_isVersionOf(PhysicalEntity *physical_entity_ptr, const char *is_version_of);
-    physical_entity_is_version_of = Util.load_func("PhysicalEntity_isVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *is_version_of);
+    physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
     physical_entity_is_part_of = Util.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -412,7 +412,10 @@ class PyOmexMetaAPI:
     # PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_entity_ptr, const char *about);
     physical_process_set_about = Util.load_func("PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_entity_ptr, const char *is_version_of);
+    # PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_entity_ptr, const char *property);
+    physical_process_has_property = Util.load_func("PhysicalProcess_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_entity_ptr, const char *version);
     physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
 
@@ -450,8 +453,8 @@ class PyOmexMetaAPI:
     # PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_entity_ptr, const char *about);
     physical_force_set_about = Util.load_func("PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_isVersionOf(PhysicalForce *physical_entity_ptr, const char *is_version_of);
-    physical_force_is_version_of = Util.load_func("PhysicalForce_isVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_entity_ptr, const char *property);
+    physical_force_has_property = Util.load_func("PhysicalForce_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     #################################################################
     # PersonalInformation Methods

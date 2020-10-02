@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['markupidentifier_418',['MarkupIdentifier',['../classomexmeta_1_1MarkupIdentifier.html#a0bb73ce6d5c94efcd97471059a378058',1,'omexmeta::MarkupIdentifier']]],
-  ['maxnumber_419',['maxNumber',['../classomexmeta_1_1MetaID.html#a343f4b48c9673f8943e03057370f01e4',1,'omexmeta::MetaID']]],
-  ['mediatorparticipant_420',['MediatorParticipant',['../classomexmeta_1_1MediatorParticipant.html#a82d3e1fe6f987e1bf2ba838b75c9c3f0',1,'omexmeta::MediatorParticipant']]],
-  ['metaid_421',['MetaID',['../classomexmeta_1_1MetaID.html#af5cc076ccd6db8c411de98902d2a1218',1,'omexmeta::MetaID']]],
-  ['move_5fback_422',['move_back',['../classomexmeta_1_1Triples.html#a88dcf4b950f105acb621bd07f07a38a0',1,'omexmeta::Triples']]]
+  ['is_413',['is',['../classomexmeta_1_1PhysicalEntity.html#a2498e9b0b11a00200e47332c4515b1f1',1,'omexmeta::PhysicalEntity']]],
+  ['iscellml_414',['isCellML',['../classomexmeta_1_1MarkupIdentifier.html#a2fd631a49a8a3d06e668cdbf130d5cb3',1,'omexmeta::MarkupIdentifier']]],
+  ['isempty_415',['isEmpty',['../classomexmeta_1_1Triples.html#a48ab93d0e38e3cfcb4eac9264b047f0a',1,'omexmeta::Triples']]],
+  ['isformatteduri_416',['isFormattedUri',['../classomexmeta_1_1OmexMetaUtils.html#af663724f2efb0324a64c6a57e8491c13',1,'omexmeta::OmexMetaUtils']]],
+  ['ispartof_417',['isPartOf',['../classomexmeta_1_1PhysicalEntity.html#a6a68c098a063d5a8416b83ae219eddca',1,'omexmeta::PhysicalEntity']]],
+  ['issbml_418',['isSBML',['../classomexmeta_1_1MarkupIdentifier.html#a541ffd197ce109e20112923d7fc0641b',1,'omexmeta::MarkupIdentifier']]],
+  ['isversionof_419',['isVersionOf',['../classomexmeta_1_1PhysicalProcess.html#a79d2b794d0a10a180a05d32cd04ac353',1,'omexmeta::PhysicalProcess']]]
 ];

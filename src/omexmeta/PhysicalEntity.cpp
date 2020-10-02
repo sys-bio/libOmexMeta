@@ -79,7 +79,7 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
                     " triples because the \"physical_property\" information is not set. "
-                    "Use the isVersionOf() method."
+                    "Use the hasProperty() method."
             );
         }
 
@@ -87,7 +87,7 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalProcess::toTriples(): cannot create "
                     "triples object because the\"location\" information "
-                    "is empty. Please use the \"isVersionOf()\"."
+                    "is empty. Please use the \"addLocation()\" method."
             );
         }
 
@@ -162,8 +162,8 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    PhysicalEntity &PhysicalEntity::isVersionOf(const std::string &is_version_of) {
-        physical_property_.setResource(is_version_of);
+    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property) {
+        physical_property_.setResource(property);
         return *this;
     }
 

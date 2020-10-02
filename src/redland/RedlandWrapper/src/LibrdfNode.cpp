@@ -21,11 +21,14 @@ namespace redland {
         std::regex http_regex("^https://");
         std::regex identifiers_org_form1("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+)[/:]{1}(\\S*)");
         std::regex file_regex("^file://");
+        std::regex go_regex("^GO:\d*");
 
         std::smatch m;
         std::string uri_string_;
         // if we find identifiers.org form 1
-        if (std::regex_search(uri_string, m, identifiers_org_form1)) {
+        if (std::regex_search(uri_string, m, go_regex)){
+            uri_string_ = identifier_dot_org + uri_string;
+        } else if (std::regex_search(uri_string, m, identifiers_org_form1)) {
             uri_string_ = identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
         } else {
             uri_string_ = uri_string;

@@ -227,7 +227,7 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
-    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isVersionOf(PhysicalEntity *physical_entity_ptr, const char *is_version_of);
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *property);
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
 
@@ -259,9 +259,11 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
-    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *is_version_of);
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, const char *property);
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_process_ptr, const char *about);
+
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version);
 
 /*********************************************************************
  * PhysicalForce class methods
@@ -300,7 +302,7 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
-    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_isVersionOf(PhysicalForce *physical_force_ptr, const char *is_version_of);
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, const char *is_version_of);
 
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_force_ptr, const char *about);
 

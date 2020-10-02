@@ -317,6 +317,60 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     triples.freeTriples();
 }
 
+TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilderWithAdditionalOptionalIsVersionOf) {
+    PhysicalProcess process(model.get());
+    process.setModelUri(model_uri);
+    process.setLocalUri(local_uri);
+    process.setAbout("property_metaid_0")
+            .hasProperty( "opb/OPB_00592")
+            .isVersionOf("GO:0006915")
+            .addSource(1.0, "species_metaid0")
+            .addSource(2.0, "species_metaid1")
+            .addSink(1.0, "species_metaid2")
+            .addMediator("species_metaid2");
+
+    Triples triples = process.toTriples();
+
+    std::string actual = triples.str("turtle");
+    std::cout << actual << std::endl;
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid2> .\n"
+                           "\n"
+                           "local:PhysicalProcess0000\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/GO:0006915> ;\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid0> .\n"
+                           "\n"
+                           "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"2\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid1> .\n"
+                           "\n"
+                           "<property_metaid_0>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                           "\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    // remember to free the unused physical property from test fixture
+    triples.freeTriples();
+}
+
 TEST_F(PhysicalProcessTests, TestEquality) {
     PhysicalProcess process1(model.get());
     process1.setModelUri(model_uri);

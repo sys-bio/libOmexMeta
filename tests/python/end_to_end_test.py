@@ -1,13 +1,22 @@
 # Can we do all that is in the spec?
 
-import libcombine
-import sys
-import os
 import glob
+import os
+import sys
+
+import libcombine
+
 sys.path.append(r"D:\libOmexMeta\src")
 from pyomexmeta import RDF
 import tellurium as te
 
+#################################################################################################
+#   Setup
+#   -----
+#   In this section we generate some SBML to work with.
+#   To do so we use antimony and tellurium.
+
+# The antimony model
 ant = """
 model MichaelisMenten
     R1: S + E => ES ; kf*S*E;
@@ -28,8 +37,12 @@ model MichaelisMenten
 end
 """
 
+# The sbml string can be generated using tellurium
 SBML_STRING = te.loada(ant).getSBML()
-# print(SBML_STRING)
+
+# This SBML String was printed out and pasted below.
+# Then, metaids were added to each SBML attribute that needed them (compartment, species, parameters and reactions)
+
 SBML_STRING = """<?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model metaid="MichaelisMenten" id="MichaelisMenten">
@@ -109,10 +122,18 @@ SBML_STRING = """<?xml version="1.0" encoding="UTF-8"?>
 """
 
 
+##########################################################################################
+#   Helper functions
+#   -----------------
+#
+
+
 def create_combine_archive(sbml, name, annotation_string=None):
     """
-    Create a combine archive using libcombine. Archive will contain only
-    a single sbml file.
+    Create a combine archive using libcombine. Archive will contain
+    a single sbml file with the Manifest that is autocreated by libcombine.
+    If annotation_string is not None, an additional annotation file will be
+    stored in the combine containing annotation_string.
     Args:
         sbml: the sbml string to be put into a file
         name: Name used for archive and file in archive
@@ -146,6 +167,14 @@ def create_combine_archive(sbml, name, annotation_string=None):
 
 
 def extract_sbml_from_combine_archive(archive_path):
+    """
+    Opens a combine archive and extracts sbml models as a list of strings.
+    Args:
+        archive_path: full path to combine archive on disk
+
+    Returns:
+
+    """
     if not os.path.isfile(archive_path):
         raise FileNotFoundError(archive_path)
 
@@ -162,8 +191,15 @@ def extract_sbml_from_combine_archive(archive_path):
     return [archive.extractEntryToString(i) for i in annotation_entries]
 
 
-# note: not used: delete?
-def extract_rdf_from_combine_archive(self, archive_path: str):
+def extract_rdf_from_combine_archive(archive_path: str):
+    """
+    Opens a combine archive and extracts annotation string as a list.
+    Args:
+        archive_path: full path to combine archive on disk
+
+    Returns:
+
+    """
     if not os.path.isfile(archive_path):
         raise FileNotFoundError(archive_path)
 
@@ -180,11 +216,15 @@ def extract_rdf_from_combine_archive(self, archive_path: str):
     return [archive.extractEntryToString(i) for i in annotation_entries]
 
 
+#############################################################################################
+#   Demonstration of OmexMeta Specification v1.1
+#
+
 class OmexMetaSpec1_1:
     """
-    This class is simply a container around some examples of using libOmexMeta via the
-    pyomexmeta python front end. Each example is self contained (and static, but thats
-    just a layer of unneeded complexity. The sections correspond to the OmexMeta spec v1.1
+    This class is a container around some examples of using libOmexMeta via the
+    pyomexmeta python front end. Each example is self contained and has corresponding
+    method calls in both C++ and C, if either of those are you language of choice.
     """
 
     def section2_3_4_model_level_annotations(self):
@@ -491,7 +531,6 @@ if __name__ == "__main__":
     # When this script runs without error, we assume we've passed.
     if len(omex_files) != 6:
         raise FileNotFoundError("Something has gone wrong. You should have 6 omex files")
-
 
     if CLEAN_UP:
         # prevents cluttering of the repository.

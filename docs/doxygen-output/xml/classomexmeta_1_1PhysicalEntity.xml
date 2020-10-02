@@ -483,14 +483,14 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="188" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="161" bodyend="163"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5399ef8eef084f2dd8b13ef537823d94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ae160c410eeffe04a1fcc9c050ddd1b42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
-        <definition>PhysicalEntity &amp; omexmeta::PhysicalEntity::isVersionOf</definition>
-        <argsstring>(const std::string &amp;is_version_of)</argsstring>
-        <name>isVersionOf</name>
+        <definition>PhysicalEntity &amp; omexmeta::PhysicalEntity::hasProperty</definition>
+        <argsstring>(const std::string &amp;property)</argsstring>
+        <name>hasProperty</name>
         <param>
           <type>const std::string &amp;</type>
-          <declname>is_version_of</declname>
+          <declname>property</declname>
         </param>
         <briefdescription>
 <para>Set the isVersionOf portion of the <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> composite annotation. </para>
@@ -498,10 +498,10 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>about</parametername>
+<parametername>property</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The string to put in rdf:about  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
+<para>an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -650,10 +650,10 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getPhysicalPropertyId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getSubjectStr</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getType</name></member>
+      <member refid="classomexmeta_1_1PhysicalEntity_1ae160c410eeffe04a1fcc9c050ddd1b42" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>hasProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ac5f674248ef40f86df4a5160c2d193e3" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>identity_resource_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>is</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>isPartOf</name></member>
-      <member refid="classomexmeta_1_1PhysicalEntity_1a5399ef8eef084f2dd8b13ef537823d94" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ac8f480836499a208e2cfbe71a1492e5b" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>location_resources_</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>model_</name></member>

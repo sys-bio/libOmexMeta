@@ -1,4 +1,0 @@
-Serializing to ntriples:
-None
-RDF graph serialized to "D:/libOmexMeta/docs\write_to_file.rdf"
-Counted "7" triples

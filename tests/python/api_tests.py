@@ -843,7 +843,7 @@ local:PhysicalEntity0000
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
         physical_entity = PyOmexMetaAPI.physical_entity_set_about(physical_entity, "#OmexMetaId0000".encode())
-        physical_entity = PyOmexMetaAPI.physical_entity_is_version_of(physical_entity, "OPB:OPB12345".encode())
+        physical_entity = PyOmexMetaAPI.physical_entity_has_property(physical_entity, "OPB:OPB12345".encode())
         physical_entity = PyOmexMetaAPI.physical_entity_set_identity(physical_entity, "uniprot/PD12345".encode())
         physical_entity = PyOmexMetaAPI.physical_entity_is_part_of(physical_entity, "fma:fma12345".encode())
 
@@ -971,7 +971,8 @@ local:SourceParticipant0000
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
         physical_process = PyOmexMetaAPI.physical_process_set_about(physical_process, "#OmexMetaId0000".encode())
-        physical_process = PyOmexMetaAPI.physical_process_is_version_of(physical_process, "OPB:OPB12345".encode())
+        physical_process = PyOmexMetaAPI.physical_process_has_property(physical_process, "OPB:OPB12345".encode())
+        physical_process = PyOmexMetaAPI.physical_process_is_version_of(physical_process, "GO:12345".encode())
         physical_process = PyOmexMetaAPI.physical_process_add_source(physical_process, 1, "fma:fma12345".encode())
 
         PyOmexMetaAPI.editor_add_physical_process(editor_ptr, physical_process)
@@ -987,6 +988,7 @@ local:SourceParticipant0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:PhysicalProcess0000
+    bqbiol:isVersionOf <https://identifiers.org/GO:12345> ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SourceParticipant0000
@@ -998,6 +1000,7 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
 
 """
+        print(actual)
         self.assertEqual(expected, actual)
 
     def test_editor_add_physical_force(self):
@@ -1047,7 +1050,7 @@ local:SourceParticipant0000
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_force = PyOmexMetaAPI.editor_new_physical_force(editor_ptr)
         physical_force = PyOmexMetaAPI.physical_force_set_about(physical_force, "#OmexMetaId0000".encode())
-        physical_force = PyOmexMetaAPI.physical_force_is_version_of(physical_force, "OPB:OPB12345".encode())
+        physical_force = PyOmexMetaAPI.physical_force_has_property(physical_force, "OPB:OPB12345".encode())
         physical_force = PyOmexMetaAPI.physical_force_add_source(physical_force, 1, "fma:fma12345".encode())
 
         PyOmexMetaAPI.editor_add_physical_force(editor_ptr, physical_force)

@@ -129,7 +129,7 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalProcess::toTriples(): cannot create "
                     "triples object because the\"location\" information "
-                    "is empty. Please use the \"isVersionOf()\"."
+                    "is empty. Please use the \"hasProperty()\"."
             );
         }
         if (physical_process_id_.empty()){
@@ -140,7 +140,13 @@ namespace omexmeta {
 
         Triples triples = physical_property_.toTriples(physical_process_id_);
 
-
+        if (!is_version_of_.empty()) {
+            SingularAnnotation singularAnnotation(
+                    LibrdfNode::fromUriString(physical_process_id_).get(),
+                    PredicateFactory("bqbiol", "isVersionOf")->getNode(),
+                    LibrdfNode::fromUriString(is_version_of_).get());
+            triples.move_back(singularAnnotation);
+        }
         for (auto &source: sources_) {
             for (auto &triple: source.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
@@ -160,14 +166,17 @@ namespace omexmeta {
     }
 
 
-    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string &is_version_of) {
-        physical_property_.setResource(is_version_of);
+    PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property) {
+        physical_property_.setResource(property);
         return *this;
     }
 
-
     PhysicalProcess &PhysicalProcess::setAbout(const std::string &about) {
         physical_property_.setSubject(about);
+        return *this;
+    }
+    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string& version) {
+        is_version_of_ = version;
         return *this;
     }
 

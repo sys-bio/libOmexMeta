@@ -1,2 +1,0 @@
-Serializing to ntriples 
-RDF graph serialized to ""Counted "7" triples

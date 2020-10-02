@@ -437,8 +437,8 @@ class PhysicalEntity:
         self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
         return self
 
-    def is_version_of(self, is_version_of: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), is_version_of.encode())
+    def has_property(self, property: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_has_property(self.get_ptr(), property.encode())
         return self
 
     def is_part_of(self, is_part_of: str) -> PhysicalEntity:
@@ -485,8 +485,12 @@ class PhysicalProcess:
         self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
         return self
 
-    def is_version_of(self, is_version_of: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), is_version_of.encode())
+    def has_property(self, property: str) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_entity_has_property(self.get_ptr(), property.encode())
+        return self
+
+    def is_version_of(self, version: str) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), version.encode())
         return self
 
 
@@ -525,8 +529,8 @@ class PhysicalForce:
         self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
         return self
 
-    def is_version_of(self, is_version_of: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_entity_is_version_of(self.get_ptr(), is_version_of.encode())
+    def has_property(self, property: str) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_entity_has_property(self.get_ptr(), property.encode())
         return self
 
 
