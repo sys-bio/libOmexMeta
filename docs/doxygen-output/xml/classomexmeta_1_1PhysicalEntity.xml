@@ -529,12 +529,12 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="201" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="158" bodyend="161"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a1736d331705bf2f1569f492fc733949e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
         <definition>PhysicalEntity &amp; omexmeta::PhysicalEntity::about</definition>
         <argsstring>(const std::string &amp;about) override</argsstring>
         <name>about</name>
-        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d">about</reimplements>
+        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a3e180b556420ba210fb6bde06c931014">about</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>about</declname>
@@ -653,6 +653,8 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
     </collaborationgraph>
     <location file="src/omexmeta/PhysicalEntity.h" line="29" column="5" bodyfile="src/omexmeta/PhysicalEntity.h" bodystart="29" bodyend="228"/>
     <listofallmembers>
+      <member refid="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1afc8269da5c85c549c73c0431992d2658" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>addLocation</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>entity_id_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>free</name></member>
@@ -695,8 +697,6 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalEntity_1a1736d331705bf2f1569f492fc733949e" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setIdentity</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setModelUri</name></member>

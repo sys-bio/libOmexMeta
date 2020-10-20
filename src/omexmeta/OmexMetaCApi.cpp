@@ -604,6 +604,11 @@ namespace omexmeta {
         }
     }
 
+    SingularAnnotation *SingularAnnotation_predicate(
+            SingularAnnotation *singular_annotation, const char *namespace_, const char *term) {
+        return SingularAnnotation_setPredicate(singular_annotation, namespace_, term);
+    }
+
     SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri) {
         try {
@@ -613,6 +618,11 @@ namespace omexmeta {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
+    }
+
+    SingularAnnotation *SingularAnnotation_predicateFromUri(
+            SingularAnnotation *singular_annotation, const char *uri){
+        return SingularAnnotation_setPredicateFromUri(singular_annotation, uri);
     }
 
     SingularAnnotation *
@@ -627,6 +637,11 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
+    SingularAnnotation_resourceLiteral(SingularAnnotation *singular_annotation, const char *literal){
+        return SingularAnnotation_setResourceLiteral(singular_annotation, literal);
+    }
+
+    SingularAnnotation *
     SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri) {
         try {
             singular_annotation->setResourceUri(identifiers_uri);
@@ -638,6 +653,11 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
+    SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri){
+        return SingularAnnotation_setResourceUri(singular_annotation, identifiers_uri);
+    }
+
+    SingularAnnotation *
     SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id) {
         try {
             singular_annotation->setResourceBlank(blank_id);
@@ -646,6 +666,10 @@ namespace omexmeta {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
+    }
+    SingularAnnotation *
+    SingularAnnotation_resourceBlank(SingularAnnotation *singular_annotation, const char *blank_id) {
+        return SingularAnnotation_setResourceBlank(singular_annotation, blank_id);
     }
 
     char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation) {

@@ -192,17 +192,32 @@ RDF* rdf_ptr = RDF_fromString(string_annotations, &quot;rdfxml&quot;, &quot;stri
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation_setPredicate(SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*namespace_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*term);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation_predicate(SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*namespace_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*term);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*SingularAnnotation_setPredicateFromUri(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*uri);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*SingularAnnotation_predicateFromUri(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*uri);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*SingularAnnotation_setResourceLiteral(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*literal);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*SingularAnnotation_resourceLiteral(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*literal);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation_setResourceUri(SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*identifiers_uri);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation_resourceUri(SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*identifiers_uri);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation_setResourceBlank(SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*blank_id);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>SingularAnnotation<sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SingularAnnotation_resourceBlank(SingularAnnotation<sp/>*singular_annotation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*blank_id);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*SingularAnnotation_getAbout(SingularAnnotation<sp/>*singular_annotation);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -319,8 +334,6 @@ RDF* rdf_ptr = RDF_fromString(string_annotations, &quot;rdfxml&quot;, &quot;stri
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>PersonalInformation_setLocalUri(PersonalInformation<sp/>*information,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*localUri);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>PersonalInformation<sp/>*PersonalInformation_addCreator(PersonalInformation<sp/>*information,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*value);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>PersonalInformation<sp/>*PersonalInformation_addCurator(PersonalInformation<sp/>*information,<sp/>const<sp/>char*value);</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETACAPI_EXPORT<sp/>PersonalInformation<sp/>*PersonalInformation_addName(PersonalInformation<sp/>*information,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*value);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>

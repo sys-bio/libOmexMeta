@@ -363,6 +363,10 @@ class SingularAnnotation:
         self._obj = PyOmexMetaAPI.singular_annotation_set_predicate(self._obj, namespace.encode(), term.encode())
         return self
 
+    def predicate(self, namespace: str, term: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_predicate(self._obj, namespace.encode(), term.encode())
+        return self
+
     def set_predicate_from_uri(self, uri: str) -> SingularAnnotation:
         self._obj = PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(self._obj, uri.encode())
         return self
@@ -377,6 +381,23 @@ class SingularAnnotation:
 
     def set_resource_blank(self, blank_id: str) -> SingularAnnotation:
         self._obj = PyOmexMetaAPI.singular_annotation_set_resource_blank(self._obj, blank_id.encode())
+        return self
+
+
+    def predicate_from_uri(self, uri: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_predicate_from_uri(self._obj, uri.encode())
+        return self
+
+    def resource_literal(self, literal: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_resource_literal(self._obj, literal.encode())
+        return self
+
+    def resource_uri(self, uri: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_resource_uri(self._obj, uri.encode())
+        return self
+
+    def resource_blank(self, blank_id: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_resource_blank(self._obj, blank_id.encode())
         return self
 
     def get_about(self) -> str:

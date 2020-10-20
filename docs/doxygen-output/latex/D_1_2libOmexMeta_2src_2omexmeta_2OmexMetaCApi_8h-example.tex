@@ -167,17 +167,32 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
 \DoxyCodeLine{    SingularAnnotation\_setPredicate(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *namespace\_, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *term);}
 \DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
+\DoxyCodeLine{    SingularAnnotation\_predicate(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *namespace\_, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *term);}
+\DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_setPredicateFromUri(}
 \DoxyCodeLine{            SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri);}
 \DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_predicateFromUri(}
+\DoxyCodeLine{            SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri);}
+\DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_setResourceLiteral(}
+\DoxyCodeLine{            SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *literal);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *SingularAnnotation\_resourceLiteral(}
 \DoxyCodeLine{            SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *literal);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
 \DoxyCodeLine{    SingularAnnotation\_setResourceUri(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identifiers\_uri);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
+\DoxyCodeLine{    SingularAnnotation\_resourceUri(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identifiers\_uri);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
 \DoxyCodeLine{    SingularAnnotation\_setResourceBlank(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *blank\_id);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
+\DoxyCodeLine{    SingularAnnotation\_resourceBlank(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *blank\_id);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getAbout(SingularAnnotation *singular\_annotation);}
 \DoxyCodeLine{}
@@ -294,8 +309,6 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setLocalUri(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *localUri);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addCreator(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addCurator(PersonalInformation *information, const char*value);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PersonalInformation *PersonalInformation\_addName(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value);}
 \DoxyCodeLine{}

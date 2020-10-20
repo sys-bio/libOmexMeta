@@ -54,17 +54,17 @@ namespace omexmeta {
         const std::string &getLocalUri() const;
 
         /**
-     * @brief set the local_uri_ attribute for this triple
+         * @brief set the local_uri_ attribute for this triple
          */
         void setLocalUri(std::string localUri);
 
         /**
-     * @brief set the model_uri_ attribute for this triple
+         * @brief set the model_uri_ attribute for this triple
          */
         void setModelUri(const std::string& model_uri);
 
         /**
-     * @brief serialize the triple using a @format serializer.
+         * @brief serialize the triple using a @format serializer.
          *
          * Creates an isolated serializer that does not get added
          * to the users annotations. This method is for visualizing
@@ -87,6 +87,11 @@ namespace omexmeta {
 
         Triple &setPredicate(const std::string &namespace_, const std::string &term);
 
+        /**
+         * @brief alias for setPredicate
+         */
+        Triple &predicate(const std::string &namespace_, const std::string &term);
+
         Triple &setResourceLiteral(const std::string &literal);
 
         Triple &setResourceUri(const std::string &identifiers_uri);
@@ -97,12 +102,23 @@ namespace omexmeta {
 
         Triple &setPredicate(const std::string &uri);
 
+        Triple &predicate(const std::string &uri);
+
         void freeTripleAndUris();
 
 //        Triple &about(const std::string &metaid);
 
         const std::string &getModelUri() const;
+
         Triple &setResourceWithModelUri(const std::string &metaid);
+
+        Triple &resourceWithModelUri(const std::string &metaid);
+
+        Triple &resourceLiteral(const std::string &literal);
+
+        Triple &resourceUri(const std::string &identifiers_uri);
+
+        Triple &resourceBlank(const std::string &blank_id);
     };
 
     typedef Triple SingularAnnotation;

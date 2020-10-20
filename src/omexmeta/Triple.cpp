@@ -3,6 +3,7 @@
 //
 
 #include "omexmeta/Triple.h"
+#include "omexmeta_export.h"
 
 namespace omexmeta {
 
@@ -138,8 +139,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Triple &
-    Triple::setPredicate(const std::string &namespace_, const std::string &term) {
+    Triple& Triple::setPredicate(const std::string &namespace_, const std::string &term) {
         if (getPredicate() != nullptr)
             LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
@@ -149,6 +149,11 @@ namespace omexmeta {
         return *this;
     }
 
+    Triple& Triple::predicate(const std::string &namespace_, const std::string &term) {
+        return setPredicate(namespace_, term);
+    }
+
+
     Triple &
     Triple::setPredicate(const std::string &uri) {
         if (getPredicate() != nullptr)
@@ -157,6 +162,11 @@ namespace omexmeta {
         // we pass ownership of node to the statement.
         librdf_statement_set_predicate(statement_, node.get());
         return *this;
+    }
+
+    Triple &
+    Triple::predicate(const std::string &uri) {
+        return setPredicate(uri);
     }
 
     Triple &Triple::setResourceLiteral(const std::string &literal) {
@@ -174,6 +184,24 @@ namespace omexmeta {
         return *this;
     }
 
+    Triple &Triple::setResourceBlank(const std::string &blank_id) {
+        if (getResource() != nullptr)
+            LibrdfNode::freeNode(getResource());
+        setResource(LibrdfNode::fromBlank(blank_id).get());
+        return *this;
+    }
+    Triple &Triple::resourceLiteral(const std::string &literal) {
+        return setResourceLiteral(literal);
+    }
+
+    Triple &Triple::resourceUri(const std::string &identifiers_uri) {
+        return setResourceUri(identifiers_uri);
+    }
+
+    Triple &Triple::resourceBlank(const std::string &blank_id) {
+        return setResourceBlank(blank_id);
+    }
+
     Triple &Triple::setResourceWithModelUri(const std::string &metaid) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
@@ -181,11 +209,8 @@ namespace omexmeta {
         return *this;
     }
 
-    Triple &Triple::setResourceBlank(const std::string &blank_id) {
-        if (getResource() != nullptr)
-            LibrdfNode::freeNode(getResource());
-        setResource(LibrdfNode::fromBlank(blank_id).get());
-        return *this;
+    Triple &Triple::resourceWithModelUri(const std::string &metaid) {
+        return setResourceWithModelUri(metaid);
     }
 
     std::string Triple::getAbout() const {

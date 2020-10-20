@@ -47,7 +47,7 @@ void {\bfseries set\+Model\+Uri} (const std\+::string \&model\+Uri)
 \item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon_a8be912d1256d6b913c4965f96f1b730b}{get\+About}} () const
 \begin{DoxyCompactList}\small\item\em get the subject portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} \end{DoxyCompactList}\item 
-const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon_aa09896afed6124d042d7d8f82b21cae9}{set\+About}} () const
+const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon_afc8269da5c85c549c73c0431992d2658}{about}} () const
 \begin{DoxyCompactList}\small\item\em set the subject portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespaceomexmeta_a1129ebb8a92218ebb27b9c76ac8462f7}{Annotation\+Type}} \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon_a9676a1dcc458247a19d19cda16d640f4}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em getter for Type argument \end{DoxyCompactList}\item 
@@ -58,8 +58,8 @@ virtual \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \mbox{\hyperlink{cl
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_ae99e667cbceff2da0c4c0f5c64a8ba8f}\label{classomexmeta_1_1PhysicalPhenomenon_ae99e667cbceff2da0c4c0f5c64a8ba8f}} 
 const std\+::string \& {\bfseries get\+Subject\+Str} () const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a80a3e9f413cc665248a22fd8657ff74d}\label{classomexmeta_1_1PhysicalPhenomenon_a80a3e9f413cc665248a22fd8657ff74d}} 
-virtual \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} \& {\bfseries set\+About} (const std\+::string \&about)
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a3e180b556420ba210fb6bde06c931014}\label{classomexmeta_1_1PhysicalPhenomenon_a3e180b556420ba210fb6bde06c931014}} 
+virtual \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} \& {\bfseries about} (const std\+::string \&about)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_afad41dbf096b22ab9b64441cb25e9db9}\label{classomexmeta_1_1PhysicalPhenomenon_afad41dbf096b22ab9b64441cb25e9db9}} 
 void {\bfseries set\+Physical\+Property} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&physical\+Property)
@@ -146,6 +146,19 @@ constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_afc8269da5c85c549c73c0431992d2658}\label{classomexmeta_1_1PhysicalPhenomenon_afc8269da5c85c549c73c0431992d2658}} 
+\index{omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}!about@{about}}
+\index{about@{about}!omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}}
+\doxysubsubsection{\texorpdfstring{about()}{about()}}
+{\footnotesize\ttfamily const std\+::string\& omexmeta\+::\+Physical\+Phenomenon\+::about (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+set the subject portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} 
+
+\begin{DoxyReturn}{Returns}
+the string associated with the subject node 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a8be912d1256d6b913c4965f96f1b730b}\label{classomexmeta_1_1PhysicalPhenomenon_a8be912d1256d6b913c4965f96f1b730b}} 
 \index{omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}!getAbout@{getAbout}}
 \index{getAbout@{getAbout}!omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}}
@@ -194,19 +207,6 @@ getter for Type argument
 
 \begin{DoxyReturn}{Returns}
 the Annotation\+Type currently used (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}, \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} or \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}) 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_aa09896afed6124d042d7d8f82b21cae9}\label{classomexmeta_1_1PhysicalPhenomenon_aa09896afed6124d042d7d8f82b21cae9}} 
-\index{omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}!about@{about}}
-\index{about@{about}!omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}}
-\doxysubsubsection{\texorpdfstring{about()}{about()}}
-{\footnotesize\ttfamily const std\+::string\& omexmeta\+::\+Physical\+Phenomenon\+::set\+About (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-set the subject portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} 
-
-\begin{DoxyReturn}{Returns}
-the string associated with the subject node 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalPhenomenon_a30617e685bd8b155a76d38ab5a9db273}\label{classomexmeta_1_1PhysicalPhenomenon_a30617e685bd8b155a76d38ab5a9db273}} 
 \index{omexmeta::PhysicalPhenomenon@{omexmeta::PhysicalPhenomenon}!toTriples@{toTriples}}

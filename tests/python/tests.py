@@ -219,8 +219,8 @@ class EditorTests(unittest.TestCase):
         with editor.new_singular_annotation() as singular_annotation:
             singular_annotation \
                 .about("OmexMetaId0000") \
-                .set_predicate("bqbiol", "is") \
-                .set_resource_uri("uniprot:PD88776")
+                .predicate("bqbiol", "is") \
+                .resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -372,8 +372,8 @@ local:SourceParticipant0007
         with editor.new_singular_annotation() as singular_annotation:
             singular_annotation \
                 .about("#OmexMetaId0000") \
-                .set_predicate("bqbiol", "is") \
-                .set_resource_uri("uniprot:PD88776")
+                .predicate("bqbiol", "is") \
+                .resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -472,7 +472,8 @@ local:SourceParticipant0003
         editor = self.rdf.to_editor(XML, True)
         with editor.new_physical_process() as physical_process:
             physical_process \
-                .set_physical_property("OmexMetaId0001", "opb/opb_275") \
+                .about("OmexMetaId0001") \
+                .has_property("opb/opb_275") \
                 .add_source(1, "physicalEntity4") \
                 .add_sink(1, "PhysicalEntity7") \
                 .add_mediator("PhysicalEntity8")
@@ -576,7 +577,8 @@ local:SourceParticipant0000
         with self.rdf.to_editor(XML, True) as editor:
             with editor.new_physical_force() as physical_force:
                 physical_force \
-                    .set_physical_property("OmexMetaId0004", "opb/opb_275") \
+                    .about("OmexMetaId0004") \
+                    .has_property("opb/opb_275") \
                     .add_source(1, "physicalEntity4") \
                     .add_sink(1, "PhysicalEntity7")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -757,13 +759,14 @@ class AnnotateAModelTest(unittest.TestCase):
         # model level annotations
         with editor.new_singular_annotation() as author:
             author.about("SmadNuclearTransport") \
-                .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                .set_resource_literal("Ciaran Welsh")
+                .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
+                .resource_literal("Ciaran Welsh")
 
         # annotate Smad3nuc
         with editor.new_physical_entity() as smad3nuc:
             smad3nuc \
-                .set_physical_property("OmexMetaId0002", "OPB:OPB_00340") \
+                .about("OmexMetaId0002") \
+                .has_property("OPB:OPB_00340") \
                 .identity("uniprot:P84022") \
                 .add_location("obo/FMA_7163") \
                 .add_location("obo/FMA_264020")
@@ -771,7 +774,8 @@ class AnnotateAModelTest(unittest.TestCase):
         # annotate Smad3nuc
         with editor.new_physical_entity() as smad3nuc:
             smad3nuc \
-                .set_physical_property("OmexMetaId0003", "OPB:OPB_00340") \
+                .about("OmexMetaId0003") \
+                .has_property("OPB:OPB_00340") \
                 .identity("uniprot:P84022") \
                 .add_location("obo/FMA_7163") \
                 .add_location("obo/FMA_63877") \
@@ -780,14 +784,16 @@ class AnnotateAModelTest(unittest.TestCase):
         # annotate r1 (Smad3Nuc -> Smad3Cyt)
         with editor.new_physical_process() as export_reaction:
             export_reaction \
-                .set_physical_property("OmexMetaId0004", "OPB:OPB_00237") \
+                .about("OmexMetaId0004") \
+                .has_property("OPB:OPB_00237") \
                 .add_source(1, "OmexMetaId0003") \
                 .add_sink(1, "OmexMetaId0002")
 
         # annotate r2 (Smad3Cyt -> Smad3Nuc)
         with editor.new_physical_process() as export_reaction:
             export_reaction \
-                .set_physical_property("OmexMetaId0005", "OPB:OPB_00237") \
+                .about("OmexMetaId0005") \
+                .has_property("OPB:OPB_00237") \
                 .add_source(1, "OmexMetaId0002") \
                 .add_sink(1, "OmexMetaId0003")
 
@@ -846,8 +852,8 @@ local:SourceParticipant0000
         # model level annotations
         with editor.new_singular_annotation() as author:
             author.about("SmadNuclearTransport") \
-                .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                .set_resource_literal("Ciaran Welsh")
+                .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
+                .resource_literal("Ciaran Welsh")
 
         actual = rdf.to_string()
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -907,8 +913,8 @@ local:SourceParticipant0001
         # model level annotations
         with editor.new_singular_annotation() as author:
             author.about("SmadNuclearTransport") \
-                .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                .set_resource_literal("Ciaran Welsh")
+                .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
+                .resource_literal("Ciaran Welsh")
 
         actual = rdf.to_string()
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1082,8 +1088,8 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation.about("OmexMetaId0000") \
-                    .set_predicate("bqbiol", "is") \
-                    .set_resource_uri("fma/FMA_66835")
+                    .predicate("bqbiol", "is") \
+                    .resource_uri("fma/FMA_66835")
 
         print(rdf)
 
@@ -1113,8 +1119,8 @@ class DrawTests(unittest.TestCase):
         with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
             with editor.new_singular_annotation() as s:
                 s.about("OmexMetaId0000") \
-                    .set_predicate("bqbiol", "is") \
-                    .set_resource_uri("fma/FMA_66835")
+                    .predicate("bqbiol", "is") \
+                    .resource_uri("fma/FMA_66835")
         fname = os.path.join(os.path.realpath("."), "test_draw.png")
         rdf.draw(fname)
         self.assertTrue(os.path.isfile(fname))

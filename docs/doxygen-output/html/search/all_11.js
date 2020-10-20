@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['sbmlassistant_196',['SBMLAssistant',['../classomexmeta_1_1SBMLAssistant.html',1,'omexmeta']]],
-  ['sbmlsemanticextraction_197',['SBMLSemanticExtraction',['../classomexmeta_1_1SBMLSemanticExtraction.html',1,'omexmeta']]],
-  ['semsim_198',['SemSim',['../classomexmeta_1_1SemSim.html',1,'omexmeta']]],
-  ['semsimxmlassistantfactory_199',['SemsimXmlAssistantFactory',['../classomexmeta_1_1SemsimXmlAssistantFactory.html',1,'omexmeta']]],
-  ['setabout_200',['about',['../classomexmeta_1_1PhysicalEntity.html#a1736d331705bf2f1569f492fc733949e',1,'omexmeta::PhysicalEntity::about()'],['../classomexmeta_1_1PhysicalForce.html#a77345d665e492085b81d96337711dc35',1,'omexmeta::PhysicalForce::about()'],['../classomexmeta_1_1PhysicalPhenomenon.html#aa09896afed6124d042d7d8f82b21cae9',1,'omexmeta::PhysicalPhenomenon::about()'],['../classomexmeta_1_1PhysicalProcess.html#a6aacc0d7277768fc7a146b46b8606d97',1,'omexmeta::PhysicalProcess::about()']]],
+  ['sbmlassistant_197',['SBMLAssistant',['../classomexmeta_1_1SBMLAssistant.html',1,'omexmeta']]],
+  ['sbmlsemanticextraction_198',['SBMLSemanticExtraction',['../classomexmeta_1_1SBMLSemanticExtraction.html',1,'omexmeta']]],
+  ['semsim_199',['SemSim',['../classomexmeta_1_1SemSim.html',1,'omexmeta']]],
+  ['semsimxmlassistantfactory_200',['SemsimXmlAssistantFactory',['../classomexmeta_1_1SemsimXmlAssistantFactory.html',1,'omexmeta']]],
   ['setarchiveuri_201',['setArchiveUri',['../classomexmeta_1_1RDF.html#a77ba0cbdb6070ac78f14044197d79cd8',1,'omexmeta::RDF']]],
   ['setidentity_202',['setIdentity',['../classomexmeta_1_1PhysicalEntity.html#a4d4c3ee9572b19e44e79a44f18f1ac31',1,'omexmeta::PhysicalEntity']]],
   ['setlocaluri_203',['setLocalUri',['../classomexmeta_1_1Participant.html#a595323ae0681f42a7ba5981e2ee840f1',1,'omexmeta::Participant::setLocalUri()'],['../classomexmeta_1_1Triple.html#a6694daa46597ea91dda045aa0d5e6cfc',1,'omexmeta::Triple::setLocalUri()']]],

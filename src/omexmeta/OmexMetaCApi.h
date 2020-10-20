@@ -178,17 +178,32 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
 
+    OMEXMETACAPI_EXPORT SingularAnnotation *
+    SingularAnnotation_predicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
+
     OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);
 
+    OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_predicateFromUri(
+            SingularAnnotation *singular_annotation, const char *uri);
+
     OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_setResourceLiteral(
+            SingularAnnotation *singular_annotation, const char *literal);
+
+    OMEXMETACAPI_EXPORT SingularAnnotation *SingularAnnotation_resourceLiteral(
             SingularAnnotation *singular_annotation, const char *literal);
 
     OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
 
     OMEXMETACAPI_EXPORT SingularAnnotation *
+    SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
+
+    OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
+
+    OMEXMETACAPI_EXPORT SingularAnnotation *
+    SingularAnnotation_resourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
 
     OMEXMETACAPI_EXPORT char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
@@ -322,8 +337,6 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT int PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
 
     OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
-
-//    OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addCurator(PersonalInformation *information, const char*value);
 
     OMEXMETACAPI_EXPORT PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
 

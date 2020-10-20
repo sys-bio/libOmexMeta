@@ -293,23 +293,51 @@ class PyOmexMetaAPI:
     singular_annotation_set_predicate = Util.load_func("SingularAnnotation_setPredicate",
                                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
+    # SingularAnnotation *
+    #   SingularAnnotation_predicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
+    singular_annotation_predicate = Util.load_func("SingularAnnotation_predicate",
+                                                       [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+
     # SingularAnnotation *SingularAnnotation_setPredicateFromUri(
     #         SingularAnnotation *singular_annotation, const char *uri);
     singular_annotation_set_predicate_from_uri = Util.load_func("SingularAnnotation_setPredicateFromUri",
+                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+
+    # SingularAnnotation *SingularAnnotation_predicateFromUri(
+    #         SingularAnnotation *singular_annotation, const char *uri);
+    singular_annotation_predicate_from_uri = Util.load_func("SingularAnnotation_predicateFromUri",
                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_setResourceLiteral(
     #         SingularAnnotation *singular_annotation, const char *literal);
     singular_annotation_set_resource_literal = Util.load_func("SingularAnnotation_setResourceLiteral",
                                                               [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # SingularAnnotation *SingularAnnotation_resourceLiteral(
+    #         SingularAnnotation *singular_annotation, const char *literal);
+    singular_annotation_resource_literal = Util.load_func("SingularAnnotation_resourceLiteral",
+                                                              [ct.c_int64, ct.c_char_p], ct.c_int64)
+
     # SingularAnnotation *
     # SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
     singular_annotation_set_resource_uri = Util.load_func("SingularAnnotation_setResourceUri",
                                                           [ct.c_int64, ct.c_char_p],
                                                           ct.c_int64)
     # SingularAnnotation *
+    # SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
+    singular_annotation_resource_uri = Util.load_func("SingularAnnotation_resourceUri",
+                                                          [ct.c_int64, ct.c_char_p],
+                                                          ct.c_int64)
+
+    # SingularAnnotation *
     # SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
     singular_annotation_set_resource_blank = Util.load_func("SingularAnnotation_setResourceBlank",
+                                                            [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # SingularAnnotation *
+    # SingularAnnotation_resourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
+    singular_annotation_resource_blank = Util.load_func("SingularAnnotation_resourceBlank",
                                                             [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);

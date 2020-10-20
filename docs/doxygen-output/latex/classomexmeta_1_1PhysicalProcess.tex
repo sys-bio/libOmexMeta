@@ -51,7 +51,7 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalPro
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_ac09599ba82cb3cb9d58b0c171090ba44}{has\+Property}} (const std\+::string \&property)
 \begin{DoxyCompactList}\small\item\em set the has\+Property portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} composite annotation \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a6aacc0d7277768fc7a146b46b8606d97}{set\+About}} (const std\+::string \&about) override
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a5d4e730b52c01ceea8868fb6e2372ef5}{about}} (const std\+::string \&about) override
 \begin{DoxyCompactList}\small\item\em set the subject (rdf\+:about) portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} composite annotation \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a79d2b794d0a10a180a05d32cd04ac353}\label{classomexmeta_1_1PhysicalProcess_a79d2b794d0a10a180a05d32cd04ac353}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a79d2b794d0a10a180a05d32cd04ac353}{is\+Version\+Of}} (const std\+::string \&version)
@@ -128,6 +128,25 @@ constructor for the builder interface of \mbox{\hyperlink{classomexmeta_1_1Physi
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a5d4e730b52c01ceea8868fb6e2372ef5}\label{classomexmeta_1_1PhysicalProcess_a5d4e730b52c01ceea8868fb6e2372ef5}} 
+\index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!about@{about}}
+\index{about@{about}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
+\doxysubsubsection{\texorpdfstring{about()}{about()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& omexmeta\+::\+Physical\+Process\+::about (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{about }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the subject (rdf\+:about) portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} composite annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em about} & the string to be used as the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} portion of the is\+Version\+Of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  \mbox{\hyperlink{classThis}{This}} method will set the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{omexmeta\+::\+Physical\+Phenomenon}}.
+
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a2bdf8dde5ffa6b38d5042db49fd211d1}\label{classomexmeta_1_1PhysicalProcess_a2bdf8dde5ffa6b38d5042db49fd211d1}} 
 \index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!addMediator@{addMediator}}
 \index{addMediator@{addMediator}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
@@ -270,25 +289,6 @@ set the has\+Property portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalP
 {\em is\+\_\+version\+\_\+of} & the string to be used as the \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} portion of the has\+Property \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be of the form O\+PB\+:O\+P\+B\+\_\+12345 or O\+P\+B/\+O\+P\+B\+\_\+12345.  \mbox{\hyperlink{classThis}{This}} method will set the \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} resource\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a6aacc0d7277768fc7a146b46b8606d97}\label{classomexmeta_1_1PhysicalProcess_a6aacc0d7277768fc7a146b46b8606d97}} 
-\index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!about@{about}}
-\index{about@{about}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{about()}{about()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& omexmeta\+::\+Physical\+Process\+::set\+About (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{about }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-set the subject (rdf\+:about) portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} composite annotation 
-
-
-\begin{DoxyParams}{Parameters}
-{\em about} & the string to be used as the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} portion of the is\+Version\+Of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  \mbox{\hyperlink{classThis}{This}} method will set the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \\
-\hline
-\end{DoxyParams}
-
-
-Reimplemented from \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{omexmeta\+::\+Physical\+Phenomenon}}.
-
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_ac49bf4a1c21c6590a9d2af7ae93e13a7}\label{classomexmeta_1_1PhysicalProcess_ac49bf4a1c21c6590a9d2af7ae93e13a7}} 
 \index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!setPhysicalProperty@{setPhysicalProperty}}
 \index{setPhysicalProperty@{setPhysicalProperty}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}

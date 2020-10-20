@@ -625,10 +625,33 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
+    def test_singular_annotation_predicate2(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
+        singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
+        ptr = PyOmexMetaAPI.singular_annotation_get_predicate(singular_annotation)
+        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
+        expected = "http://biomodels.net/biology-qualifiers/is"
+        self.assertEqual(expected, actual)
+        PyOmexMetaAPI.editor_delete(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
+
     def test_singular_annotation_predicate_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
         PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(singular_annotation,
+                                                                 "https://predicate.com/from/uri".encode())
+        ptr = PyOmexMetaAPI.singular_annotation_get_predicate(singular_annotation)
+        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
+        expected = "https://predicate.com/from/uri"
+        self.assertEqual(expected, actual)
+        PyOmexMetaAPI.editor_delete(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
+
+    def test_singular_annotation_predicate_uri2(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
+        singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_predicate_from_uri(singular_annotation,
                                                                  "https://predicate.com/from/uri".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_predicate(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
@@ -648,6 +671,17 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
+    def test_singular_annotation_resource_literal2(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
+        singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_resource_literal(singular_annotation, "LiteralValue".encode())
+        ptr = PyOmexMetaAPI.singular_annotation_get_resource(singular_annotation)
+        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
+        expected = "LiteralValue"
+        self.assertEqual(expected, actual)
+        PyOmexMetaAPI.editor_delete(editor_ptr)
+        PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
+
     def test_singular_annotation_resource_uri(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
@@ -659,10 +693,11 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
-    def test_singular_annotation_resource_blank(self):
+
+    def test_singular_annotation_resource_blank2(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_resource_blank(singular_annotation, "blank".encode())
+        PyOmexMetaAPI.singular_annotation_resource_blank(singular_annotation, "blank".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_resource(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         expected = "blank"
