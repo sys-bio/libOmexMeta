@@ -87,7 +87,7 @@
 //    // create out annotation
 //    SingularAnnotation singular_annotation = editor.newSingularAnnotation();
 //    singular_annotation
-//            .setAbout("ToyModel")
+//            .about("ToyModel")
 //            .setPredicate("dc", "description")
 //            .setResourceLiteral("This is a toy model for demonstration purposes");
 //
@@ -155,7 +155,7 @@
 //
 //    // create out annotation
 //    SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-//    SingularAnnotation_setAbout(singular_annotation, "ToyModel");
+//    SingularAnnotation_about(singular_annotation, "ToyModel");
 //    SingularAnnotation_setPredicate(singular_annotation, "dc", "description");
 //    SingularAnnotation_setResourceLiteral(singular_annotation, "This is a toy model for demonstration purposes");
 //
@@ -263,7 +263,7 @@
 //
 //    // create out annotation
 //    SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-//    SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0001");
+//    SingularAnnotation_about(singular_annotation, "#OmexMetaId0001");
 //    SingularAnnotation_setPredicate(singular_annotation, "bqbiol", "is");
 //    SingularAnnotation_setResourceUri(singular_annotation, "uniprot/P01137");
 //
@@ -332,7 +332,7 @@
 //    // create out annotation
 //    SingularAnnotation singular_annotation = editor.newSingularAnnotation();
 //    singular_annotation
-//        .setAbout("#OmexMetaId0001")
+//        .about("#OmexMetaId0001")
 //        .setPredicate("bqbiol", "is")
 //        .setResourceUri("uniprot/P01137");
 //
@@ -395,7 +395,7 @@
 //
 //    // create out annotation
 //    SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-//    SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
+//    SingularAnnotation_about(singular_annotation, "#OmexMetaId0002");
 //    SingularAnnotation_setPredicate(singular_annotation, "bqbiol", "is");
 //    SingularAnnotation_setResourceUri(singular_annotation, "uniprot/P01137");
 //
@@ -457,7 +457,7 @@
 //    // create out annotation
 //    SingularAnnotation singular_annotation = editor.newSingularAnnotation();
 //    singular_annotation
-//        .setAbout("#OmexMetaId0001")
+//        .about("#OmexMetaId0001")
 //        .setPredicate("bqbiol", "is")
 //        .setResourceUri("uniprot/P01137");
 //
@@ -515,7 +515,7 @@
 //
 //    // create out annotation
 //    SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-//    SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0001");
+//    SingularAnnotation_about(singular_annotation, "#OmexMetaId0001");
 //    SingularAnnotation_setPredicateFromUri(singular_annotation, "https://predicate.com/linker");
 //    SingularAnnotation_setResourceLiteral(singular_annotation, "New predicate demonstration");
 //
@@ -580,7 +580,7 @@
 //    // create out annotation
 //    SingularAnnotation singular_annotation = editor.newSingularAnnotation();
 //    singular_annotation
-//        .setAbout("#OmexMetaId0001")
+//        .about("#OmexMetaId0001")
 //        .setPredicate("https://predicate.com/linker")
 //        .setResourceLiteral("New predicate demonstration");
 //
@@ -636,7 +636,7 @@
 //
 //    // create out annotation
 //    SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-//    SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0001");
+//    SingularAnnotation_about(singular_annotation, "#OmexMetaId0001");
 //    SingularAnnotation_setPredicateFromUri(singular_annotation, "https://predicate.com/linker");
 //    SingularAnnotation_setResourceLiteral(singular_annotation, "New predicate demonstration");
 //
@@ -700,35 +700,35 @@
 //
 //    SingularAnnotation literal = editor.newSingularAnnotation();
 //    literal
-//        .setAbout("ToyModel")
+//        .about("ToyModel")
 //        .setPredicate("dc", "description")
 //        .setResourceUri("This is a toy model for demonstration purposes");
 //    editor.addSingleAnnotation(literal);
 //
 //    SingularAnnotation blank = editor.newSingularAnnotation();
 //    blank
-//        .setAbout("#OmexMetaId0001")
+//        .about("#OmexMetaId0001")
 //        .setPredicate("dc", "description")
 //        .setResourceBlank("BlankIdentifier");
 //    editor.addSingleAnnotation(blank);
 //
 //    // The `uniprot/PD1234` gets resolved to https://identifier.org/uniprot/PD12345
 //    SingularAnnotation uri1 = editor.newSingularAnnotation();
-//    uri1.setAbout("#OmexMetaId0002")
+//    uri1.about("#OmexMetaId0002")
 //        .setPredicate("bqbiol", "is")
 //        .setResourceUri("uniprot/PD1234");
 //    editor.addSingleAnnotation(uri1);
 //
 ////    // In fact, this can be string with a format string1/string2
 ////    SingularAnnotation uri2 = editor.newSingularAnnotation();
-////    uri2.setAbout("#OmexMetaId0003")
+////    uri2.about("#OmexMetaId0003")
 ////        .setPredicate("bqbiol", "is")
 ////        .setResourceUri("string1/string2");
 ////    editor.addSingleAnnotation(uri2);
 ////
 ////    // Colons work too
 ////    SingularAnnotation uri3 = editor.newSingularAnnotation();
-////    uri1.setAbout("#OmexMetaId0004")
+////    uri1.about("#OmexMetaId0004")
 ////        .setPredicate("bqbiol", "is")
 ////        .setResourceUri("FMA:75132");
 ////    editor.addSingleAnnotation(uri3);

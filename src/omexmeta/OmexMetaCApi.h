@@ -173,7 +173,7 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT int SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
     OMEXMETACAPI_EXPORT SingularAnnotation *
-    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+    SingularAnnotation_about(SingularAnnotation *singular_annotation, const char *about);
 
     OMEXMETACAPI_EXPORT SingularAnnotation *
     SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
@@ -234,7 +234,7 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
 
-    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
 
 /*********************************************************************
  * PhysicalProcess class methods
@@ -264,7 +264,7 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, const char *property);
 
-    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_process_ptr, const char *about);
+    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about);
 
     OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version);
 
@@ -307,7 +307,7 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, const char *is_version_of);
 
-    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_force_ptr, const char *about);
+    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about);
 
 /*********************************************************************
  * PersonalInformation class methods

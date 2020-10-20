@@ -280,7 +280,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         PyOmexMetaAPI.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        singular_annotation = PyOmexMetaAPI.singular_annotation_set_about(singular_annotation,
+        singular_annotation = PyOmexMetaAPI.singular_annotation_about(singular_annotation,
                                                                           "http://cytosol".encode())
         singular_annotation = PyOmexMetaAPI.singular_annotation_set_predicate_from_uri(singular_annotation,
                                                                                        "https://predicate.com/from/uri".encode())
@@ -606,7 +606,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_singular_annotation_about(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
+        PyOmexMetaAPI.singular_annotation_about(singular_annotation, "cytosol".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_about(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol"
@@ -673,7 +673,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_singular_annotation_str(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
+        PyOmexMetaAPI.singular_annotation_about(singular_annotation, "cytosol".encode())
         PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         ptr = PyOmexMetaAPI.singular_annotation_str(
@@ -697,7 +697,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_singular_annotation_str2(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, True)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
+        PyOmexMetaAPI.singular_annotation_about(singular_annotation, "cytosol".encode())
         PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         ptr = PyOmexMetaAPI.singular_annotation_str(
@@ -721,7 +721,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_editor_add_single_annotation(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "https://cytosol".encode())
+        PyOmexMetaAPI.singular_annotation_about(singular_annotation, "https://cytosol".encode())
         PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         PyOmexMetaAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
@@ -853,7 +853,7 @@ local:PhysicalEntity0000
     def test_physical_entity_using_is_version_of(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
-        physical_entity = PyOmexMetaAPI.physical_entity_set_about(physical_entity, "#OmexMetaId0000".encode())
+        physical_entity = PyOmexMetaAPI.physical_entity_about(physical_entity, "#OmexMetaId0000".encode())
         physical_entity = PyOmexMetaAPI.physical_entity_has_property(physical_entity, "OPB:OPB12345".encode())
         physical_entity = PyOmexMetaAPI.physical_entity_set_identity(physical_entity, "uniprot/PD12345".encode())
         physical_entity = PyOmexMetaAPI.physical_entity_is_part_of(physical_entity, "fma:fma12345".encode())
@@ -981,7 +981,7 @@ local:SourceParticipant0000
     def test_physical_process_using_is_version_of(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
-        physical_process = PyOmexMetaAPI.physical_process_set_about(physical_process, "#OmexMetaId0000".encode())
+        physical_process = PyOmexMetaAPI.physical_process_about(physical_process, "#OmexMetaId0000".encode())
         physical_process = PyOmexMetaAPI.physical_process_has_property(physical_process, "OPB:OPB12345".encode())
         physical_process = PyOmexMetaAPI.physical_process_is_version_of(physical_process, "GO:12345".encode())
         physical_process = PyOmexMetaAPI.physical_process_add_source(physical_process, 1, "fma:fma12345".encode())
@@ -1060,7 +1060,7 @@ local:SourceParticipant0000
     def test_physical_force_using_is_version_of(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_force = PyOmexMetaAPI.editor_new_physical_force(editor_ptr)
-        physical_force = PyOmexMetaAPI.physical_force_set_about(physical_force, "#OmexMetaId0000".encode())
+        physical_force = PyOmexMetaAPI.physical_force_about(physical_force, "#OmexMetaId0000".encode())
         physical_force = PyOmexMetaAPI.physical_force_has_property(physical_force, "OPB:OPB12345".encode())
         physical_force = PyOmexMetaAPI.physical_force_add_source(physical_force, 1, "fma:fma12345".encode())
 

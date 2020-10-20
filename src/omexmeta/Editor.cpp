@@ -197,7 +197,7 @@ namespace omexmeta {
        * if not already formatted properly.
        */
         if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")) {
-            physicalEntity.setAbout(OmexMetaUtils::concatMetaIdAndUri(
+            physicalEntity.about(OmexMetaUtils::concatMetaIdAndUri(
                     physicalEntity.getAbout(), getModelUri()));
         }
         checkValidMetaid(physicalEntity.getAbout());
@@ -217,7 +217,7 @@ namespace omexmeta {
    * if not already formatted properly.
    */
         if (!OmexMetaUtils::startsWith(physicalProcess.getAbout(), "http")) {
-            physicalProcess.setAbout(OmexMetaUtils::concatMetaIdAndUri(
+            physicalProcess.about(OmexMetaUtils::concatMetaIdAndUri(
                     physicalProcess.getAbout(), getModelUri()));
         }
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
@@ -236,7 +236,7 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         if (!OmexMetaUtils::startsWith(physicalForce.getAbout(), "http")) {
-            physicalForce.setAbout(OmexMetaUtils::concatMetaIdAndUri(
+            physicalForce.about(OmexMetaUtils::concatMetaIdAndUri(
                     physicalForce.getAbout(), getModelUri()));
         }
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
@@ -419,7 +419,7 @@ namespace omexmeta {
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
         SingularAnnotation singularAnnotation;
         singularAnnotation.setModelUri(getModelUri());
-        singularAnnotation.setAbout(
+        singularAnnotation.about(
                 OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
         return singularAnnotation;
     }

@@ -571,10 +571,10 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
-        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::setAbout</definition>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::about</definition>
         <argsstring>(const std::string &amp;about) override</argsstring>
-        <name>setAbout</name>
-        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d">setAbout</reimplements>
+        <name>about</name>
+        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d">about</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>about</declname>
@@ -699,8 +699,8 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
       <member refid="classomexmeta_1_1PhysicalProcess_1a37f99033da4635ff1af2b9f19c1b84ce" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a2b694395a318335e81c884ed76b5f4dd" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a974e2717dbf4b690b95b07e9c026fd2a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalProcess</scope><name>setAbout</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a6aacc0d7277768fc7a146b46b8606d97" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>about</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalProcess</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setPhysicalProperty</name></member>

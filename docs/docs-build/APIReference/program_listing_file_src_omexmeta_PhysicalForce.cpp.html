@@ -196,7 +196,7 @@
             <span class="k">throw</span> <span class="n">AnnotationBuilderException</span><span class="p">(</span>
                     <span class="s">&quot;PhysicalForce::toTriples(): Cannot create&quot;</span>
                     <span class="s">&quot; triples because the </span><span class="se">\&quot;</span><span class="s">about</span><span class="se">\&quot;</span><span class="s"> information is not set. &quot;</span>
-                    <span class="s">&quot;Use the setAbout() method.&quot;</span>
+                    <span class="s">&quot;Use the about() method.&quot;</span>
             <span class="p">);</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getPhysicalProperty</span><span class="p">().</span><span class="n">getResourceStr</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
@@ -233,7 +233,7 @@
         <span class="k">return</span> <span class="n">triples</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="c1">//    PhysicalForce &amp;PhysicalForce::setAbout(std::string metaid) {</span>
+<span class="c1">//    PhysicalForce &amp;PhysicalForce::about(std::string metaid) {</span>
 <span class="c1">//        physical_property_.setSubject(metaid);</span>
 <span class="c1">//        return (*this);</span>
 <span class="c1">//    }</span>

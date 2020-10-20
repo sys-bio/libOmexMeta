@@ -47,7 +47,7 @@ namespace omexmeta {
         return physical_property_.getSubjectStr();
     }
 
-    PhysicalPhenomenon& PhysicalPhenomenon::setAbout(const std::string& about) {
+    PhysicalPhenomenon& PhysicalPhenomenon::about(const std::string& about) {
         physical_property_.setSubject(about);
         return *this;
     }

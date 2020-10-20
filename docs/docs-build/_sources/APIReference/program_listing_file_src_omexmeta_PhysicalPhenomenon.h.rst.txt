@@ -139,7 +139,7 @@ Program Listing for File PhysicalPhenomenon.h
    
            const std::string &getSubjectStr() const;
    
-           PhysicalPhenomenon& setAbout(std::string about);
+           PhysicalPhenomenon& about(std::string about);
    
            void setPhysicalProperty(const PhysicalProperty &physicalProperty);
    

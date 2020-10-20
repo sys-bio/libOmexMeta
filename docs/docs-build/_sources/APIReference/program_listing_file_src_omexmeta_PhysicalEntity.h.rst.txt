@@ -148,7 +148,7 @@ Program Listing for File PhysicalEntity.h
             * This method is a part of the PhysicalEntity builder interface
             *
             */
-   //        PhysicalEntity &setAbout(std::string metaid);
+   //        PhysicalEntity &about(std::string metaid);
    
            /*
             * @brief sets the physical property for a PhysicalEntity instance.

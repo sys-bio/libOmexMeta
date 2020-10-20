@@ -61,7 +61,7 @@ Program Listing for File PhysicalPhenomenon.cpp
            return physical_property_.getSubjectStr();
        }
    
-       PhysicalPhenomenon& PhysicalPhenomenon::setAbout(std::string about) {
+       PhysicalPhenomenon& PhysicalPhenomenon::about(std::string about) {
            physical_property_.setSubject(about);
            return *this;
        }

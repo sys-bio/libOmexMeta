@@ -192,7 +192,7 @@ namespace omexmeta {
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalForce &setAbout(const std::string &about) override;
+        PhysicalForce &about(const std::string &about) override;
     };
 }
 

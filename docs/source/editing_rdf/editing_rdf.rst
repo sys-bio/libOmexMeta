@@ -229,7 +229,7 @@ Subject
 
 A subject in libOmexMeta is the metaid of the element being element appended onto
 the local namespace. In RDF, the subject is the value of the `about` attribute. To set
-the subject of an annotation in libOmexMeta, use the `setAbout()` method. Although
+the subject of an annotation in libOmexMeta, use the `about()` method. Although
 we focus on singular annotations here, this generalizes to the other
 of annotations supported by libOmexMeta.
 
@@ -257,7 +257,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
 
             with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
                 with editor.new_singular_annotation() as singular_annotation:
-                    singular_annotation.set_about('#OmexMetaId0002')
+                    singular_annotation.about('#OmexMetaId0002')
 
         .. code-block:: C++
             :linenos:
@@ -266,7 +266,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
             RDF rdf;
             Editor editor = rdf.toEditor(sbml, "sbml", false);
             SingularAnnotation singular_annotation = editor.newSingularAnnotation();
-            singular_annotation.setAbout("#OmexMetaId0002")
+            singular_annotation.about("#OmexMetaId0002")
 
         .. code-block:: C
             :linenos:
@@ -280,7 +280,7 @@ exists and is the metaid for the `Species` element with the name `"A"`
 
             // create out annotation
             SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-            SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
+            SingularAnnotation_about(singular_annotation, "#OmexMetaId0002");
 
 
 However, leaving `generate_new_metaids=False` (the default) causes an error,
@@ -299,7 +299,7 @@ because the metaid `#OmexMetaId0002` was not found in your model.
 
             with rdf.to_editor(sbml, generate_new_metaids=True) as editor:
                 with editor.new_singular_annotation() as singular_annotation:
-                    singular_annotation.set_about('#OmexMetaId0002')
+                    singular_annotation.about('#OmexMetaId0002')
 
     .. tab:: C++
 
@@ -310,7 +310,7 @@ because the metaid `#OmexMetaId0002` was not found in your model.
             RDF rdf;
             Editor editor = rdf.toEditor(sbml, "sbml", false);
             SingularAnnotation singular_annotation = editor.newSingularAnnotation();
-            singular_annotation.setAbout("#OmexMetaId0002")
+            singular_annotation.about("#OmexMetaId0002")
 
     .. tab:: C
 
@@ -326,7 +326,7 @@ because the metaid `#OmexMetaId0002` was not found in your model.
 
             // create out annotation
             SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-            SingularAnnotation_setAbout(singular_annotation, "#OmexMetaId0002");
+            SingularAnnotation_about(singular_annotation, "#OmexMetaId0002");
 
 
 Predicate

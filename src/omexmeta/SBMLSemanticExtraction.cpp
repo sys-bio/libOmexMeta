@@ -39,7 +39,7 @@ namespace omexmeta {
                     // and use the information to construct a singular annotation and add it to the model
                     SingularAnnotation singularAnnotation = editor_->newSingularAnnotation();
                     singularAnnotation
-                        .setAbout(species_metaid)
+                        .about(species_metaid)
                         .setPredicate("bqbiol", "isPartOf")
                         .setResourceWithModelUri(compartment_id_that_species_node_belongs_to);
                     editor_->addSingleAnnotation(singularAnnotation);

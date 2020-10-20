@@ -147,7 +147,7 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
             "#OmexMetaId", exclusions);
     // add annotation to the modelw ith the generated metaid
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
-    singularAnnotation.setAbout(metaid1)
+    singularAnnotation.about(metaid1)
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("FirstAnnotation");
     editor.addSingleAnnotation(singularAnnotation);

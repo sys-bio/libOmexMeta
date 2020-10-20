@@ -583,9 +583,9 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
-    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about) {
+    SingularAnnotation_about(SingularAnnotation *singular_annotation, const char *about) {
         try {
-            singular_annotation->setAbout(about);
+            singular_annotation->about(about);
             return singular_annotation;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -848,9 +848,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about){
+    PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about){
         try{
-            physical_entity_ptr->setAbout(about);
+            physical_entity_ptr->about(about);
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1012,9 +1012,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_process_ptr, const char *about){
+    PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about){
         try{
-            physical_process_ptr->setAbout(about);
+            physical_process_ptr->about(about);
             return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1144,9 +1144,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_force_ptr, const char *about){
+    PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about){
         try{
-            physical_force_ptr->setAbout(about);
+            physical_force_ptr->about(about);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());

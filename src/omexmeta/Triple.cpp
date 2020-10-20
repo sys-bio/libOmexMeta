@@ -89,11 +89,11 @@ namespace omexmeta {
 
     }
 
-    Triple &Triple::setAbout(std::string omex_name, const std::string &model_name, std::string metaid) {
+    Triple &Triple::about(std::string omex_name, const std::string &model_name, std::string metaid) {
         if (getSubject() != nullptr)
             LibrdfNode::freeNode(getSubject());
         if (omex_name.rfind("http", 0) != 0) {
-            throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
+            throw std::invalid_argument("std::invalid_argument Triple::about: metaid does not "
                                         "begin with \"http\" which suggests that it is not properly "
                                         "formatted. Metaid's should look like: "
                                         "\"http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\" but yours "
@@ -112,7 +112,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Triple &Triple::setAbout(std::string metaid) {
+    Triple &Triple::about(std::string metaid) {
         // get rid of starting "#" characters in metaid.
         if (OmexMetaUtils::startsWith(metaid, "#")) {
             metaid.erase(metaid.begin());
@@ -120,10 +120,10 @@ namespace omexmeta {
         // if not start with http, assume local_uri not included and add it on
         if (!OmexMetaUtils::startsWith(metaid, "http")) {
             if (getModelUri().empty()) {
-                throw std::logic_error("std::logic_error: Triple::setAbout: Trying to "
-                                       "setAbout(), i.e. the subject portion of a singular annotation. Either "
+                throw std::logic_error("std::logic_error: Triple::about: Trying to "
+                                       "about(), i.e. the subject portion of a singular annotation. Either "
                                        "give a full uri (i.e. starts with http) or set the local_uri_ attribute "
-                                       "using setLocalUri() before calling setAbout().");
+                                       "using setLocalUri() before calling about().");
             }
             std::string model_uri = getModelUri();
             if (OmexMetaUtils::endsWith(model_uri, "#")){

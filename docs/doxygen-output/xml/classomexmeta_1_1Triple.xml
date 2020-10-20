@@ -216,9 +216,9 @@ a triple only.
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a2b673a8166a19fb4feae0fc42d31c105" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
-        <definition>Triple &amp; omexmeta::Triple::setAbout</definition>
+        <definition>Triple &amp; omexmeta::Triple::about</definition>
         <argsstring>(std::string omex_name, const std::string &amp;model_name, std::string metaid)</argsstring>
-        <name>setAbout</name>
+        <name>about</name>
         <param>
           <type>std::string</type>
           <declname>omex_name</declname>
@@ -241,9 +241,9 @@ a triple only.
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a6329b09efb05005d248790e8a3d507f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
-        <definition>Triple &amp; omexmeta::Triple::setAbout</definition>
+        <definition>Triple &amp; omexmeta::Triple::about</definition>
         <argsstring>(std::string metaid)</argsstring>
-        <name>setAbout</name>
+        <name>about</name>
         <param>
           <type>std::string</type>
           <declname>metaid</declname>
@@ -512,8 +512,8 @@ a triple only.
       <member refid="classredland_1_1LibrdfStatement_1ada81e9bfb312e25daf20d6dda10eeb2e" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>operator==</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a1881b122993ff4a24f560b7b31ea3176" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>printUsages</name></member>
       <member refid="classredland_1_1LibrdfStatement_1afd63d6425b2130dbe4e76fdee4d7218b" prot="protected" virt="non-virtual"><scope>omexmeta::Triple</scope><name>refreshStatement</name></member>
-      <member refid="classomexmeta_1_1Triple_1a2b673a8166a19fb4feae0fc42d31c105" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1Triple_1a6329b09efb05005d248790e8a3d507f3" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setAbout</name></member>
+      <member refid="classomexmeta_1_1Triple_1a2b673a8166a19fb4feae0fc42d31c105" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>about</name></member>
+      <member refid="classomexmeta_1_1Triple_1a6329b09efb05005d248790e8a3d507f3" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>about</name></member>
       <member refid="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1Triple_1afd918ecccfa23079d9cb70f2e1a3e9b0" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1Triple_1a57b4521321178af38415e76cd483207e" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>setPredicate</name></member>

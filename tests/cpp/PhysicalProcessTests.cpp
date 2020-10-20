@@ -321,7 +321,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilderWithAdditionalOptionalIsV
     PhysicalProcess process(model.get());
     process.setModelUri(model_uri);
     process.setLocalUri(local_uri);
-    process.setAbout("property_metaid_0")
+    process.about("property_metaid_0")
             .hasProperty( "opb/OPB_00592")
             .isVersionOf("GO:0006915")
             .addSource(1.0, "species_metaid0")

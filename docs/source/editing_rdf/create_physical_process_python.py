@@ -45,7 +45,7 @@ sbml_with_metaids = editor.get_xml()
 # flow rate OPB:OPB_00593 of Smad3 to phosphorylated smad3
 with editor.new_physical_process() as physical_process:
     physical_process \
-        .set_about("#OmexMetaId0005") \
+        .about("#OmexMetaId0005") \
         .has_property("OPB:OPB_00593") \
         .is_version_of("GO/GO12345") \
         .add_source(multiplier=1, physical_entity_reference="#OmexMetaID0001") \

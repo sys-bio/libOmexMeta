@@ -102,11 +102,11 @@ Program Listing for File Triple.cpp
    
        }
    
-       Triple &Triple::setAbout(std::string omex_name, const std::string &model_name, std::string metaid) {
+       Triple &Triple::about(std::string omex_name, const std::string &model_name, std::string metaid) {
            if (getSubject() != nullptr)
                LibrdfNode::freeNode(getSubject());
            if (omex_name.rfind("http", 0) != 0) {
-               throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
+               throw std::invalid_argument("std::invalid_argument Triple::about: metaid does not "
                                            "begin with \"http\" which suggests that it is not properly "
                                            "formatted. Metaid's should look like: "
                                            "\"http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\" but yours "
@@ -125,7 +125,7 @@ Program Listing for File Triple.cpp
            return *this;
        }
    
-       Triple &Triple::setAbout(std::string metaid) {
+       Triple &Triple::about(std::string metaid) {
            // get rid of starting "#" characters in metaid.
            if (OmexMetaUtils::startsWith(metaid, "#")) {
                metaid.erase(metaid.begin());
@@ -133,10 +133,10 @@ Program Listing for File Triple.cpp
            // if not start with http, assume local_uri not included and add it on
            if (!OmexMetaUtils::startsWith(metaid, "http")) {
                if (getLocalUri().empty()) {
-                   throw std::logic_error("std::logic_error: Triple::setAbout: Trying to "
-                                          "setAbout(), i.e. the subject portion of a singular annotation. Either "
+                   throw std::logic_error("std::logic_error: Triple::about: Trying to "
+                                          "about(), i.e. the subject portion of a singular annotation. Either "
                                           "give a full uri (i.e. starts with http) or set the local_uri attribute"
-                                          "using setModelUri() before calling setAbout().");
+                                          "using setModelUri() before calling about().");
                }
                metaid = getModelUri() + metaid;
            }
@@ -147,9 +147,9 @@ Program Listing for File Triple.cpp
            return *this;
        }
    
-   //    Triple &Triple::setAbout(const std::string &metaid) {
+   //    Triple &Triple::about(const std::string &metaid) {
    //        if (metaid.rfind("http", 0) != 0){
-   //            throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
+   //            throw std::invalid_argument("std::invalid_argument Triple::about: metaid does not "
    //                                        "begin with \"http\" which suggests that it is not properly"
    //                                        "formatted. Metaid's should look like: "
    //                                        "\"http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\"");

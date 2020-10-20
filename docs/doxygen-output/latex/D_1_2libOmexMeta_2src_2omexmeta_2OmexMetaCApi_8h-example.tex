@@ -162,7 +162,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} SingularAnnotation\_delete(SingularAnnotation *singularAnnotation);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
-\DoxyCodeLine{    SingularAnnotation\_setAbout(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
+\DoxyCodeLine{    SingularAnnotation\_about(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT SingularAnnotation *}
 \DoxyCodeLine{    SingularAnnotation\_setPredicate(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *namespace\_, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *term);}
@@ -221,7 +221,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isPartOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_part\_of);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setAbout(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_about(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalProcess *\mbox{\hyperlink{namespaceomexmeta_a4b7cef4fcdbd4502c94b18da2f85470f}{PhysicalProcess\_new}}(Editor *editor\_ptr);}
@@ -249,7 +249,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasProperty(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_setAbout(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_about(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_isVersionOf(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *version);}
 \DoxyCodeLine{}
@@ -282,7 +282,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_hasProperty(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_setAbout(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_about(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PersonalInformation *\mbox{\hyperlink{namespaceomexmeta_a119fbc0317a5af631e7f68caece8c70b}{PersonalInformation\_new}}(Editor *editor\_ptr);}

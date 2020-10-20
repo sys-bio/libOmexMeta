@@ -494,7 +494,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
     physicalEntity.setLocalUri(local_uri);
 
     physicalEntity
-            .setAbout("metaid")
+            .about("metaid")
             .hasProperty("OPB:OPB_00340")
             .identity("uniprot/PD12345")
             .isPartOf("https://identifiers.org/fma/FMA:72564")
@@ -522,7 +522,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringNoProper
     physicalEntity.setModelUri(model_uri);
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
-            .setAbout("metaid")
+            .about("metaid")
             .hasProperty("obo/OPB12345")
             .identity("uniprot/PR12345")
             .isPartOf("https://identifiers.org/fma/FMA:72564")

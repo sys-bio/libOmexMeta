@@ -218,7 +218,7 @@ class EditorTests(unittest.TestCase):
         editor = self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=True)
         with editor.new_singular_annotation() as singular_annotation:
             singular_annotation \
-                .set_about("OmexMetaId0000") \
+                .about("OmexMetaId0000") \
                 .set_predicate("bqbiol", "is") \
                 .set_resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -371,7 +371,7 @@ local:SourceParticipant0007
         editor = self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_singular_annotation() as singular_annotation:
             singular_annotation \
-                .set_about("#OmexMetaId0000") \
+                .about("#OmexMetaId0000") \
                 .set_predicate("bqbiol", "is") \
                 .set_resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -515,7 +515,7 @@ local:SourceParticipant0000
 
         with editor.new_physical_entity() as physical_entity:
             physical_entity \
-                .set_about("OmexMetaId0001") \
+                .about("OmexMetaId0001") \
                 .has_property( "opb/opb_275") \
                 .identity("uniprot/PD12345") \
                 .is_part_of("fma:FMA:63877") \
@@ -533,7 +533,7 @@ local:SourceParticipant0000
 
         with editor.new_physical_entity() as physical_entity:
             physical_entity \
-                .set_about("OmexMetaId0001") \
+                .about("OmexMetaId0001") \
                 .has_property( "opb/opb_275") \
                 .is_part_of("fma:FMA:63877") \
                 .is_part_of("fma:FMA:63878")
@@ -756,7 +756,7 @@ class AnnotateAModelTest(unittest.TestCase):
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
         # model level annotations
         with editor.new_singular_annotation() as author:
-            author.set_about("SmadNuclearTransport") \
+            author.about("SmadNuclearTransport") \
                 .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
                 .set_resource_literal("Ciaran Welsh")
 
@@ -845,7 +845,7 @@ local:SourceParticipant0000
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=True)
         # model level annotations
         with editor.new_singular_annotation() as author:
-            author.set_about("SmadNuclearTransport") \
+            author.about("SmadNuclearTransport") \
                 .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
                 .set_resource_literal("Ciaran Welsh")
 
@@ -906,7 +906,7 @@ local:SourceParticipant0001
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
         # model level annotations
         with editor.new_singular_annotation() as author:
-            author.set_about("SmadNuclearTransport") \
+            author.about("SmadNuclearTransport") \
                 .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
                 .set_resource_literal("Ciaran Welsh")
 
@@ -1081,7 +1081,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         with rdf.to_editor(sbml1, True) as editor:
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:
-                singular_annotation.set_about("OmexMetaId0000") \
+                singular_annotation.about("OmexMetaId0000") \
                     .set_predicate("bqbiol", "is") \
                     .set_resource_uri("fma/FMA_66835")
 
@@ -1112,7 +1112,7 @@ class DrawTests(unittest.TestCase):
         rdf = RDF()
         with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
             with editor.new_singular_annotation() as s:
-                s.set_about("OmexMetaId0000") \
+                s.about("OmexMetaId0000") \
                     .set_predicate("bqbiol", "is") \
                     .set_resource_uri("fma/FMA_66835")
         fname = os.path.join(os.path.realpath("."), "test_draw.png")

@@ -355,8 +355,8 @@ class SingularAnnotation:
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def set_about(self, about: str) -> SingularAnnotation:
-        self._obj = PyOmexMetaAPI.singular_annotation_set_about(self._obj, about.encode())
+    def about(self, about: str) -> SingularAnnotation:
+        self._obj = PyOmexMetaAPI.singular_annotation_about(self._obj, about.encode())
         return self
 
     def set_predicate(self, namespace: str, term: str) -> SingularAnnotation:
@@ -448,8 +448,8 @@ class PhysicalEntity:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_entity_delete(self._obj)
 
-    def set_about(self, about: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_set_about(self.get_ptr(), about.encode())
+    def about(self, about: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_about(self.get_ptr(), about.encode())
         return self
 
     def has_property(self, property: str) -> PhysicalEntity:
@@ -497,8 +497,8 @@ class PhysicalProcess:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_process_delete(self._obj)
 
-    def set_about(self, about: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_set_about(self.get_ptr(), about.encode())
+    def about(self, about: str) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_process_about(self.get_ptr(), about.encode())
         return self
 
     def has_property(self, property: str) -> PhysicalProcess:
@@ -542,8 +542,8 @@ class PhysicalForce:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_force_delete(self._obj)
 
-    def set_about(self, about: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_set_about(self.get_ptr(), about.encode())
+    def about(self, about: str) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_force_about(self.get_ptr(), about.encode())
         return self
 
     def has_property(self, property: str) -> PhysicalForce:

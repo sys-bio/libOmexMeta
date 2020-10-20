@@ -313,12 +313,12 @@ class OmexMetaSpec1_1:
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=False)
 
         with editor.new_singular_annotation() as example_using_bqbiol_pred_and_uri_resource:
-            example_using_bqbiol_pred_and_uri_resource.set_about("S") \
+            example_using_bqbiol_pred_and_uri_resource.about("S") \
                 .set_predicate("bqbiol", "is") \
                 .set_resource_uri("uniprot/smad2")
 
         with editor.new_singular_annotation() as example_using_bqmodel_pred_and_literal_resource:
-            example_using_bqmodel_pred_and_literal_resource.set_about("MichaelisMenten") \
+            example_using_bqmodel_pred_and_literal_resource.about("MichaelisMenten") \
                 .set_predicate("bqmodel", "isDescribedBy") \
                 .set_resource_literal("Anything can go here. It is a string literal.")
 
@@ -354,28 +354,28 @@ class OmexMetaSpec1_1:
         # FMA:66836 = part of cytosol
         # FMA:63877 = fibroblast
         with editor.new_physical_entity() as substrate_entity:
-            substrate_entity.set_about("S") \
+            substrate_entity.about("S") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as product_entity:
-            product_entity.set_about("P") \
+            product_entity.about("P") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2-p") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as enzyme_entity:
-            enzyme_entity.set_about("E") \
+            enzyme_entity.about("E") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/tgf-beta-receptor") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
-            complex_entity.set_about("ES") \
+            complex_entity.about("ES") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/SmadReceptorComplex") \
                 .is_part_of("FMA:66836") \
@@ -411,28 +411,28 @@ class OmexMetaSpec1_1:
         # physical process composite annotations use references to physical entities.
         # therefore we build on the content from OmexMetaSpec1_1.section2_3_7_1_physical_entity()
         with editor.new_physical_entity() as substrate_entity:
-            substrate_entity.set_about("S") \
+            substrate_entity.about("S") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as product_entity:
-            product_entity.set_about("P") \
+            product_entity.about("P") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/smad2-p") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as enzyme_entity:
-            enzyme_entity.set_about("E") \
+            enzyme_entity.about("E") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/tgf-beta-receptor") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
-            complex_entity.set_about("ES") \
+            complex_entity.about("ES") \
                 .has_property("OPB:OPB_00340") \
                 .set_identity("uniprot/SmadReceptorComplex") \
                 .is_part_of("FMA:66836") \
@@ -443,21 +443,21 @@ class OmexMetaSpec1_1:
         # print(editor.get_metaids())
 
         with editor.new_physical_process() as substrate_bind_enzyme:
-            substrate_bind_enzyme.set_about("R1") \
+            substrate_bind_enzyme.about("R1") \
                 .has_property("OPB:OPB_00593") \
                 .add_source(1.0, "PhysicalEntity0000") \
                 .add_source(1.0, "PhysicalEntity0003") \
                 .add_sink(1.0, "PhysicalEntity0000")
 
         with editor.new_physical_process() as substrate_unbind_enzyme:
-            substrate_unbind_enzyme.set_about("R2") \
+            substrate_unbind_enzyme.about("R2") \
                 .has_property("OPB:OPB_00593") \
                 .add_sink(1.0, "PhysicalEntity0000") \
                 .add_sink(1.0, "PhysicalEntity0003") \
                 .add_source(1.0, "PhysicalEntity0000")
 
         with editor.new_physical_process() as product_formation:
-            product_formation.set_about("R3") \
+            product_formation.about("R3") \
                 .has_property("OPB:OPB_00593") \
                 .add_sink(1.0, "PhysicalEntity0002") \
                 .add_sink(1.0, "PhysicalEntity0001") \
@@ -492,7 +492,7 @@ class OmexMetaSpec1_1:
 
         # OPB:OPB_00378 = chemical potential
         with editor.new_physical_force() as physcial_force:
-            physcial_force.set_about("S") \
+            physcial_force.about("S") \
                 .has_property("OPB:OPB_00378") \
                 .add_source(1.0, "PhysicalEntity0002") \
                 .add_sink(1.0, "PhysicalEntity0001")

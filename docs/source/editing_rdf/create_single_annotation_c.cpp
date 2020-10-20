@@ -54,7 +54,7 @@ int main(){
 
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
-    SingularAnnotation_setAbout(singular_annotation, "ToyModel");
+    SingularAnnotation_about(singular_annotation, "ToyModel");
     SingularAnnotation_setPredicate(singular_annotation, "dc", "description");
     SingularAnnotation_setResourceLiteral(singular_annotation, "This is a toy model for demonstration purposes");
 

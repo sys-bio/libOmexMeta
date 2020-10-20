@@ -286,8 +286,8 @@ class PyOmexMetaAPI:
     # SingularAnnotations methods
     #
 
-    # SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
-    singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # SingularAnnotation *SingularAnnotation_about(SingularAnnotation *singular_annotation, const char *about);
+    singular_annotation_about = Util.load_func("SingularAnnotation_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
     singular_annotation_set_predicate = Util.load_func("SingularAnnotation_setPredicate",
@@ -366,8 +366,8 @@ class PyOmexMetaAPI:
     # void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
     physical_entity_free_all = Util.load_func("PhysicalEntity_freeAll", [ct.c_int64], None)
 
-    # PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
-    physical_entity_set_about = Util.load_func("PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
+    physical_entity_about = Util.load_func("PhysicalEntity_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *is_version_of);
     physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -413,8 +413,8 @@ class PyOmexMetaAPI:
     # void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
     physical_process_free_all = Util.load_func("PhysicalProcess_freeAll", [ct.c_int64], None)
 
-    # PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_entity_ptr, const char *about);
-    physical_process_set_about = Util.load_func("PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_entity_ptr, const char *about);
+    physical_process_about = Util.load_func("PhysicalProcess_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_entity_ptr, const char *property);
     physical_process_has_property = Util.load_func("PhysicalProcess_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -454,8 +454,8 @@ class PyOmexMetaAPI:
     # void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
     physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
 
-    # PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_entity_ptr, const char *about);
-    physical_force_set_about = Util.load_func("PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalForce *PhysicalForce_about(PhysicalForce *physical_entity_ptr, const char *about);
+    physical_force_about = Util.load_func("PhysicalForce_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_entity_ptr, const char *property);
     physical_force_has_property = Util.load_func("PhysicalForce_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)

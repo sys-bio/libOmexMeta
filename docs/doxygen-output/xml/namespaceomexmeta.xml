@@ -1455,9 +1455,9 @@
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aba899b6a9b09d4d747dae983ead4eb3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
-        <definition>OMEXMETACAPI_EXPORT SingularAnnotation * omexmeta::SingularAnnotation_setAbout</definition>
+        <definition>OMEXMETACAPI_EXPORT SingularAnnotation * omexmeta::SingularAnnotation_about</definition>
         <argsstring>(SingularAnnotation *singular_annotation, const char *about)</argsstring>
-        <name>SingularAnnotation_setAbout</name>
+        <name>SingularAnnotation_about</name>
         <param>
           <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
           <declname>singular_annotation</declname>
@@ -1936,9 +1936,9 @@
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a971552a103140035279fa2eb0b402fc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
-        <definition>OMEXMETACAPI_EXPORT PhysicalEntity * omexmeta::PhysicalEntity_setAbout</definition>
+        <definition>OMEXMETACAPI_EXPORT PhysicalEntity * omexmeta::PhysicalEntity_about</definition>
         <argsstring>(PhysicalEntity *physical_entity_ptr, const char *about)</argsstring>
-        <name>PhysicalEntity_setAbout</name>
+        <name>PhysicalEntity_about</name>
         <param>
           <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
           <declname>physical_entity_ptr</declname>
@@ -2240,9 +2240,9 @@
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afde7fdd0535279191576bcab4a9d665b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
-        <definition>OMEXMETACAPI_EXPORT PhysicalProcess * omexmeta::PhysicalProcess_setAbout</definition>
+        <definition>OMEXMETACAPI_EXPORT PhysicalProcess * omexmeta::PhysicalProcess_about</definition>
         <argsstring>(PhysicalProcess *physical_process_ptr, const char *about)</argsstring>
-        <name>PhysicalProcess_setAbout</name>
+        <name>PhysicalProcess_about</name>
         <param>
           <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
           <declname>physical_process_ptr</declname>
@@ -2489,9 +2489,9 @@
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aaf31dd28c34186769fa91c5c5bd205b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
-        <definition>OMEXMETACAPI_EXPORT PhysicalForce * omexmeta::PhysicalForce_setAbout</definition>
+        <definition>OMEXMETACAPI_EXPORT PhysicalForce * omexmeta::PhysicalForce_about</definition>
         <argsstring>(PhysicalForce *physical_force_ptr, const char *about)</argsstring>
-        <name>PhysicalForce_setAbout</name>
+        <name>PhysicalForce_about</name>
         <param>
           <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
           <declname>physical_force_ptr</declname>

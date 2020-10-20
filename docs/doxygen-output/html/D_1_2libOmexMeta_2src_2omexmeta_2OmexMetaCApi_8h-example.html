@@ -225,7 +225,7 @@ $(function() {
 <div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> SingularAnnotation_delete(SingularAnnotation *singularAnnotation);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT SingularAnnotation *</div>
-<div class="line">    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
+<div class="line">    SingularAnnotation_about(SingularAnnotation *singular_annotation, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT SingularAnnotation *</div>
 <div class="line">    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, <span class="keyword">const</span> <span class="keywordtype">char</span> *namespace_, <span class="keyword">const</span> <span class="keywordtype">char</span> *term);</div>
@@ -284,7 +284,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *is_part_of);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
+<div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalProcess *<a name="a7"></a><a class="code" href="namespaceomexmeta.html#a4b7cef4fcdbd4502c94b18da2f85470f">PhysicalProcess_new</a>(Editor *editor_ptr);</div>
@@ -312,7 +312,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *property);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_process_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
+<div class="line">    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *version);</div>
 <div class="line"> </div>
@@ -345,7 +345,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *is_version_of);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_force_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
+<div class="line">    OMEXMETACAPI_EXPORT PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PersonalInformation *<a name="a11"></a><a class="code" href="namespaceomexmeta.html#a119fbc0317a5af631e7f68caece8c70b">PersonalInformation_new</a>(Editor *editor_ptr);</div>

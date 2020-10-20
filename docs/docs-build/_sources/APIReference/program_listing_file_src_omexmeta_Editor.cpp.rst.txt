@@ -195,7 +195,7 @@ Program Listing for File Editor.cpp
             * about section, we need to inject it here,
             * if not already formatted properly.
             */
-           physicalEntity.setAbout(
+           physicalEntity.about(
                    OmexMetaUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalUri())
            );
            checkValidMetaid(physicalEntity.getAbout());
@@ -213,7 +213,7 @@ Program Listing for File Editor.cpp
             * about section, we need to inject it here,
             * if not already formatted properly.
             */
-           physicalProcess.setAbout(
+           physicalProcess.about(
                    OmexMetaUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalUri())
            );
            addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
@@ -231,7 +231,7 @@ Program Listing for File Editor.cpp
             * about section, we need to inject it here,
             * if not already formatted properly.
             */
-           physicalForce.setAbout(
+           physicalForce.about(
                    OmexMetaUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalUri())
            );
            addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
@@ -416,7 +416,7 @@ Program Listing for File Editor.cpp
        SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
            SingularAnnotation singularAnnotation;
            singularAnnotation.setModelUri(getModelUri());
-           singularAnnotation.setAbout(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
+           singularAnnotation.about(OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
            return singularAnnotation;
        }
    

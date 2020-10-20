@@ -107,7 +107,7 @@ int main(){
     Editor* editor = RDF_toEditor(rdf, sbml, true, false);
 
     PhysicalForce* physicalForce = PhysicalForce_new(editor);
-    PhysicalForce_setAbout(physicalForce,"#OmexMetaId0001");
+    PhysicalForce_about(physicalForce,"#OmexMetaId0001");
     PhysicalForce_hasProperty(physicalForce, "OPB:OPB_00340");
     PhysicalForce_addSink(physicalForce, 1, "OmexMetaID0001");
     PhysicalForce_addSource(physicalForce, 1, "OmexMetaID0002");

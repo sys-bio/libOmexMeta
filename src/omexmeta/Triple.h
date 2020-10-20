@@ -77,9 +77,9 @@ namespace omexmeta {
 
         void freeTriple();
 
-        Triple &setAbout(std::string omex_name, const std::string& model_name, std::string metaid);
+        Triple &about(std::string omex_name, const std::string& model_name, std::string metaid);
 
-        Triple &setAbout(std::string metaid);
+        Triple &about(std::string metaid);
 
         std::string getAbout() const;
 
@@ -99,7 +99,7 @@ namespace omexmeta {
 
         void freeTripleAndUris();
 
-//        Triple &setAbout(const std::string &metaid);
+//        Triple &about(const std::string &metaid);
 
         const std::string &getModelUri() const;
         Triple &setResourceWithModelUri(const std::string &metaid);

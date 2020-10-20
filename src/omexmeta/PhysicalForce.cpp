@@ -33,7 +33,7 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalForce::toTriples(): Cannot create"
                     " triples because the \"about\" information is not set. "
-                    "Use the setAbout() method."
+                    "Use the about() method."
             );
         }
         if (getPhysicalProperty().getResourceStr().empty()) {
@@ -133,7 +133,7 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce &PhysicalForce::setAbout(const std::string &about) {
+    PhysicalForce &PhysicalForce::about(const std::string &about) {
         physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         return *this;
     }

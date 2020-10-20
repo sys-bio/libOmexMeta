@@ -114,7 +114,7 @@ namespace omexmeta {
          * @brief set the subject portion of the PhysicalPhenomenon
          * @return the string associated with the subject node
          */
-        [[nodiscard]] const std::string& setAbout() const;
+        [[nodiscard]] const std::string& about() const;
 
         /**
          * @brief getter for Type argument
@@ -140,7 +140,7 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getSubjectStr() const;
 
-        virtual PhysicalPhenomenon& setAbout(const std::string& about);
+        virtual PhysicalPhenomenon& about(const std::string& about);
 
         void setPhysicalProperty(const PhysicalProperty &physicalProperty);
 

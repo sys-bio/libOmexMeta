@@ -147,7 +147,7 @@ TEST_F(TripleTests, TestStatementResource) {
 
 TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
     Triple triple;
-    triple.setAbout("http://omex-library/myomex.omex", "mymodel.xml", "metaid2");
+    triple.about("http://omex-library/myomex.omex", "mymodel.xml", "metaid2");
     std::string expected = "http://omex-library/myomex.omex/mymodel.xml#metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -157,7 +157,7 @@ TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
 TEST(TripleTestsNoFixture, TestAboutOneArgumentWithSetLocal) {
     Triple triple;
     triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
-    triple.setAbout("metaid2");
+    triple.about("metaid2");
     std::string expected = "http://omex-library.org/omex.omex/model.xml#metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -168,7 +168,7 @@ TEST(TripleTestsNoFixture, TestAboutAgain2) {
     Triple triple;
 
     triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
-    triple.setAbout("#metaid3");
+    triple.about("#metaid3");
     std::string expected = "http://omex-library.org/omex.omex/model.xml#metaid3";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -230,7 +230,7 @@ TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple;
 //    triple.setLocalUri("http://omex-library.org/NewOmex.omex/NewModel.rdf");
     triple.setModelUri("http://omex-library.org/NewOmex.omex/NewModel.xml");
-    triple.setAbout("#metaid1")
+    triple.about("#metaid1")
             .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
 
@@ -257,7 +257,7 @@ TEST_F(TripleTests, TestBuilderPattern1) {
 TEST_F(TripleTests, TestBuilderPattern2) {
     Triple triple;
     triple.setModelUri("http://omex-library.org/omex.omex/model.xml#");
-    triple.setAbout("#metaid00001")
+    triple.about("#metaid00001")
             .setPredicate("bqbiol", "is")
             .setResourceBlank("Blank");
 
@@ -285,7 +285,7 @@ TEST_F(TripleTests, TestBuilderPattern2) {
 TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     Triple triple;
     triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
-    triple.setAbout("metaid1")
+    triple.about("metaid1")
             .setPredicate("semsim", "hasSourceParticipant")
             .setResourceUri("uniprot/PD4034");
 

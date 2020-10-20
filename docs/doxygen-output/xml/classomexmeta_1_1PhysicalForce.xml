@@ -527,10 +527,10 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
-        <definition>PhysicalForce &amp; omexmeta::PhysicalForce::setAbout</definition>
+        <definition>PhysicalForce &amp; omexmeta::PhysicalForce::about</definition>
         <argsstring>(const std::string &amp;about) override</argsstring>
-        <name>setAbout</name>
-        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d">setAbout</reimplements>
+        <name>about</name>
+        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a80a3e9f413cc665248a22fd8657ff74d">about</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>about</declname>
@@ -632,8 +632,8 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" prot="public" virt="virtual"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalForce</scope><name>setAbout</name></member>
+      <member refid="classomexmeta_1_1PhysicalForce_1a77345d665e492085b81d96337711dc35" prot="public" virt="virtual"><scope>omexmeta::PhysicalForce</scope><name>about</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa09896afed6124d042d7d8f82b21cae9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalForce</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalForce_1a081aecc43d16b2fc8826c4050eb2055d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalForce</scope><name>setPhysicalProperty</name></member>

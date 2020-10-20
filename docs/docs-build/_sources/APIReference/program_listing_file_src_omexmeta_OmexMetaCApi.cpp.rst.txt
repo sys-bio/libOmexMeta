@@ -355,8 +355,8 @@ Program Listing for File OmexMetaCApi.cpp
        }
    
        SingularAnnotation *
-       SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about) {
-           singular_annotation->setAbout(about);
+       SingularAnnotation_about(SingularAnnotation *singular_annotation, const char *about) {
+           singular_annotation->about(about);
            return singular_annotation;
        };
    

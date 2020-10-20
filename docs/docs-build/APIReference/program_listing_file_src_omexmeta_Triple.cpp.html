@@ -250,11 +250,11 @@
 
     <span class="p">}</span>
 
-    <span class="n">Triple</span> <span class="o">&amp;</span><span class="n">Triple</span><span class="o">::</span><span class="n">setAbout</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">model_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Triple</span> <span class="o">&amp;</span><span class="n">Triple</span><span class="o">::</span><span class="n">about</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">omex_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">model_name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getSubject</span><span class="p">()</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
             <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">freeNode</span><span class="p">(</span><span class="n">getSubject</span><span class="p">());</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">omex_name</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;http&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument Triple::setAbout: metaid does not &quot;</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;std::invalid_argument Triple::about: metaid does not &quot;</span>
                                         <span class="s">&quot;begin with </span><span class="se">\&quot;</span><span class="s">http</span><span class="se">\&quot;</span><span class="s"> which suggests that it is not properly &quot;</span>
                                         <span class="s">&quot;formatted. Metaid&#39;s should look like: &quot;</span>
                                         <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000</span><span class="se">\&quot;</span><span class="s"> but yours &quot;</span>
@@ -273,7 +273,7 @@
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">Triple</span> <span class="o">&amp;</span><span class="n">Triple</span><span class="o">::</span><span class="n">setAbout</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Triple</span> <span class="o">&amp;</span><span class="n">Triple</span><span class="o">::</span><span class="n">about</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// get rid of starting &quot;#&quot; characters in metaid.</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="n">metaid</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">metaid</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">metaid</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
@@ -281,10 +281,10 @@
         <span class="c1">// if not start with http, assume local_uri not included and add it on</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="n">metaid</span><span class="p">,</span> <span class="s">&quot;http&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">getModelUri</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;std::logic_error: Triple::setAbout: Trying to &quot;</span>
-                                       <span class="s">&quot;setAbout(), i.e. the subject portion of a singular annotation. Either &quot;</span>
+                <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;std::logic_error: Triple::about: Trying to &quot;</span>
+                                       <span class="s">&quot;about(), i.e. the subject portion of a singular annotation. Either &quot;</span>
                                        <span class="s">&quot;give a full uri (i.e. starts with http) or set the local_uri attribute&quot;</span>
-                                       <span class="s">&quot;using setModelUri() before calling setAbout().&quot;</span><span class="p">);</span>
+                                       <span class="s">&quot;using setModelUri() before calling about().&quot;</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="n">metaid</span> <span class="o">=</span> <span class="n">getModelUri</span><span class="p">()</span> <span class="o">+</span> <span class="n">metaid</span><span class="p">;</span>
         <span class="p">}</span>
@@ -295,9 +295,9 @@
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="c1">//    Triple &amp;Triple::setAbout(const std::string &amp;metaid) {</span>
+<span class="c1">//    Triple &amp;Triple::about(const std::string &amp;metaid) {</span>
 <span class="c1">//        if (metaid.rfind(&quot;http&quot;, 0) != 0){</span>
-<span class="c1">//            throw std::invalid_argument(&quot;std::invalid_argument Triple::setAbout: metaid does not &quot;</span>
+<span class="c1">//            throw std::invalid_argument(&quot;std::invalid_argument Triple::about: metaid does not &quot;</span>
 <span class="c1">//                                        &quot;begin with \&quot;http\&quot; which suggests that it is not properly&quot;</span>
 <span class="c1">//                                        &quot;formatted. Metaid&#39;s should look like: &quot;</span>
 <span class="c1">//                                        &quot;\&quot;http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\&quot;&quot;);</span>

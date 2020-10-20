@@ -45,7 +45,7 @@ editor = rdf.to_editor(sbml, generate_new_metaids=True)
 
 with editor.new_singular_annotation() as singular_annotation:
     singular_annotation \
-        .set_about('#OmexMetaId0002') \
+        .about('#OmexMetaId0002') \
         .set_predicate("bqbiol", "is") \
         .set_resource_uri("uniprot/P01137")
 

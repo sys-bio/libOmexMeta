@@ -57,7 +57,7 @@ int main(){
     // create out annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
-        .setAbout("#OmexMetaId0001")
+        .about("#OmexMetaId0001")
         .setPredicate("bqbiol", "is")
         .setResourceUri("uniprot/P01137");
 

@@ -132,7 +132,7 @@ Program Listing for File PhysicalForce.h
             *
             * See Resource for more information about input format for @param metaid
             */
-   //        PhysicalForce &setAbout(std::string metaid);
+   //        PhysicalForce &about(std::string metaid);
    
            /*
             * @brief sets the physical property of the PhysicalForce

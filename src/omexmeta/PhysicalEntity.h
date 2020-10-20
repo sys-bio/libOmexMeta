@@ -206,9 +206,7 @@ namespace omexmeta {
          * @details This function will set the Subject subject_ property on the
          * PhysicalProperty associated with this PhysicalEntity
          */
-        PhysicalEntity& setAbout(const std::string& about) override;
-
-        PhysicalEntity& setAbout(const std::string& about) override;
+        PhysicalEntity& about(const std::string& about) override;
 
         /**
          * @brief Set the `is` portion of the PhysicalEntity composite annotation.

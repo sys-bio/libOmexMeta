@@ -312,7 +312,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .setAbout("OmexMetaId0001")
+            .about("OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -342,7 +342,7 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .setAbout("#OmexMetaId0001")
+            .about("#OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -543,7 +543,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .setAbout("#OmexMetaId0001")
+            .about("#OmexMetaId0001")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
@@ -728,7 +728,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilder2) {
 
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
-            .setAbout("#OmexMetaId0000")
+            .about("#OmexMetaId0000")
             .hasProperty("OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");

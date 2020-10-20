@@ -46,7 +46,7 @@ print(editor.get_metaids())  # prints out model metaids
 
 with editor.new_singular_annotation() as singular_annotation:
     singular_annotation \
-        .set_about('ToyModel') \
+        .about('ToyModel') \
         .set_predicate("dc", "description") \
         .set_resource_literal("This is a toy model for demonstration purposes")
 print(rdf)

@@ -343,7 +343,7 @@
 <span class="cm">         * about section, we need to inject it here,</span>
 <span class="cm">         * if not already formatted properly.</span>
 <span class="cm">         */</span>
-        <span class="n">physicalEntity</span><span class="p">.</span><span class="n">setAbout</span><span class="p">(</span>
+        <span class="n">physicalEntity</span><span class="p">.</span><span class="n">about</span><span class="p">(</span>
                 <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">.</span><span class="n">getAbout</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">())</span>
         <span class="p">);</span>
         <span class="n">checkValidMetaid</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">.</span><span class="n">getAbout</span><span class="p">());</span>
@@ -361,7 +361,7 @@
 <span class="cm">         * about section, we need to inject it here,</span>
 <span class="cm">         * if not already formatted properly.</span>
 <span class="cm">         */</span>
-        <span class="n">physicalProcess</span><span class="p">.</span><span class="n">setAbout</span><span class="p">(</span>
+        <span class="n">physicalProcess</span><span class="p">.</span><span class="n">about</span><span class="p">(</span>
                 <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">physicalProcess</span><span class="p">.</span><span class="n">getAbout</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">())</span>
         <span class="p">);</span>
         <span class="n">addCompositeAnnotation</span><span class="p">((</span><span class="n">PhysicalPhenomenon</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">physicalProcess</span><span class="p">);</span>
@@ -379,7 +379,7 @@
 <span class="cm">         * about section, we need to inject it here,</span>
 <span class="cm">         * if not already formatted properly.</span>
 <span class="cm">         */</span>
-        <span class="n">physicalForce</span><span class="p">.</span><span class="n">setAbout</span><span class="p">(</span>
+        <span class="n">physicalForce</span><span class="p">.</span><span class="n">about</span><span class="p">(</span>
                 <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">.</span><span class="n">getAbout</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">())</span>
         <span class="p">);</span>
         <span class="n">addCompositeAnnotation</span><span class="p">((</span><span class="n">PhysicalPhenomenon</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">);</span>
@@ -564,7 +564,7 @@
     <span class="n">SingularAnnotation</span> <span class="n">Editor</span><span class="o">::</span><span class="n">newSingularAnnotation</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
         <span class="n">SingularAnnotation</span> <span class="n">singularAnnotation</span><span class="p">;</span>
         <span class="n">singularAnnotation</span><span class="p">.</span><span class="n">setModelUri</span><span class="p">(</span><span class="n">getModelUri</span><span class="p">());</span>
-        <span class="n">singularAnnotation</span><span class="p">.</span><span class="n">setAbout</span><span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">metaid</span><span class="p">),</span> <span class="n">getModelUri</span><span class="p">()));</span>
+        <span class="n">singularAnnotation</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">metaid</span><span class="p">),</span> <span class="n">getModelUri</span><span class="p">()));</span>
         <span class="k">return</span> <span class="n">singularAnnotation</span><span class="p">;</span>
     <span class="p">}</span>
 
