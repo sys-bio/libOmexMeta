@@ -314,13 +314,13 @@ class OmexMetaSpec1_1:
 
         with editor.new_singular_annotation() as example_using_bqbiol_pred_and_uri_resource:
             example_using_bqbiol_pred_and_uri_resource.about("S") \
-                .set_predicate("bqbiol", "is") \
-                .set_resource_uri("uniprot/smad2")
+                .predicate("bqbiol", "is") \
+                .resource_uri("uniprot/smad2")
 
         with editor.new_singular_annotation() as example_using_bqmodel_pred_and_literal_resource:
             example_using_bqmodel_pred_and_literal_resource.about("MichaelisMenten") \
-                .set_predicate("bqmodel", "isDescribedBy") \
-                .set_resource_literal("Anything can go here. It is a string literal.")
+                .predicate("bqmodel", "isDescribedBy") \
+                .resource_literal("Anything can go here. It is a string literal.")
 
         # recreate the combine archive
         fname = create_combine_archive(sbml, "SingularAnnotations", str(rdf))
@@ -356,28 +356,28 @@ class OmexMetaSpec1_1:
         with editor.new_physical_entity() as substrate_entity:
             substrate_entity.about("S") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/smad2") \
+                .identity("uniprot/smad2") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as product_entity:
             product_entity.about("P") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/smad2-p") \
+                .identity("uniprot/smad2-p") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as enzyme_entity:
             enzyme_entity.about("E") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/tgf-beta-receptor") \
+                .identity("uniprot/tgf-beta-receptor") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
             complex_entity.about("ES") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/SmadReceptorComplex") \
+                .identity("uniprot/SmadReceptorComplex") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
@@ -413,28 +413,28 @@ class OmexMetaSpec1_1:
         with editor.new_physical_entity() as substrate_entity:
             substrate_entity.about("S") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/smad2") \
+                .identity("uniprot/smad2") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as product_entity:
             product_entity.about("P") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/smad2-p") \
+                .identity("uniprot/smad2-p") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as enzyme_entity:
             enzyme_entity.about("E") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/tgf-beta-receptor") \
+                .identity("uniprot/tgf-beta-receptor") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
             complex_entity.about("ES") \
                 .has_property("OPB:OPB_00340") \
-                .set_identity("uniprot/SmadReceptorComplex") \
+                .identity("uniprot/SmadReceptorComplex") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
