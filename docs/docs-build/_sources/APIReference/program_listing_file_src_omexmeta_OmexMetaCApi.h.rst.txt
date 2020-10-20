@@ -215,7 +215,7 @@ Program Listing for File OmexMetaCApi.h
        SEMSIM_API PhysicalEntity *PhysicalEntity_setPhysicalProperty(
                PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
    
-       SEMSIM_API PhysicalEntity *PhysicalEntity_setIdentity(
+       SEMSIM_API PhysicalEntity *PhysicalEntity_identity(
                PhysicalEntity *physical_entity_ptr, const char *identity_resource);
    
        SEMSIM_API PhysicalEntity *PhysicalEntity_addLocation(

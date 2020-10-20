@@ -172,7 +172,7 @@ namespace omexmeta {
     }
 
     PhysicalProcess &PhysicalProcess::setAbout(const std::string &about) {
-        physical_property_.setSubject(about);
+        physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         return *this;
     }
     PhysicalProcess &PhysicalProcess::isVersionOf(const std::string& version) {

@@ -180,7 +180,7 @@ Program Listing for File PhysicalEntity.h
             *
             * See Resource documentation for more details of valid input strings.
             */
-           PhysicalEntity &setIdentity(const std::string& resource);
+           PhysicalEntity &identity(const std::string& resource);
    
            /*
             * @brief add a location to the PhysicalEntity.

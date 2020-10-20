@@ -21,19 +21,6 @@ using namespace redland;
 
 namespace omexmeta {
 
-    /**
-         * PhysicalProperty is a subclass of the Resource
-     * object. It is a special type of Resource that is restricted
-     * to terms from the ontology of physics for biology.
-     *
-     * Usage:
-     *  PhysicalProperty r("http://identifiers.org/opb:opb12345");
-     * is equilavent to:
-     *  PhysicalProperty r("opb:opb12345");
-     * is equilavent to:
-     *  PhysicalProperty r("opb/opb12345");
-     *
-     */
     class PhysicalProperty {
 
         std::string subject_;
@@ -52,7 +39,13 @@ namespace omexmeta {
          * @brief constructor for PhysicalProperty
          * @param physical_property_string is used to create a URI node representing the physical property
          */
-        explicit PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri);
+        PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri);
+
+        /**
+         * @brief constructor for PhysicalProperty
+         * @param physical_property_string is used to create a URI node representing the physical property
+         */
+        PhysicalProperty(std::string subject_str, std::string model_uri);
 
         [[nodiscard]] const std::string &getSubject() const;
 

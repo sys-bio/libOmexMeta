@@ -50,6 +50,10 @@ namespace omexmeta {
         return *this;
     }
 
+    PhysicalEntity &PhysicalEntity::identity(const std::string &resource) {
+        return setIdentity(resource);
+    }
+
     PhysicalEntity &PhysicalEntity::addLocation(const std::string &where) {
         location_resources_.push_back(std::move(
                 Resource(LibrdfNode::fromUriString(where))
@@ -75,33 +79,19 @@ namespace omexmeta {
             );
         }
 
-        if (getPhysicalProperty().getResourceStr().empty()) {
-            throw AnnotationBuilderException(
-                    "PhysicalEntity::toTriples(): Cannot create"
-                    " triples because the \"physical_property\" information is not set. "
-                    "Use the hasProperty() method."
-            );
-        }
-
-        if (getLocationResources().empty()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): cannot create "
-                    "triples object because the\"location\" information "
-                    "is empty. Please use the \"addLocation()\" method."
-            );
-        }
-
-        int count = 0;
-        for (auto &i : getLocationResources()) {
-            if (i.getNode() == nullptr) {
-                std::ostringstream err;
-                err << "PhysicalEntity::toTriples(): Cannot create"
-                       " triples because item ";
-                err << count << "of the \"location\" information is not set. ";
-                err << "Use the addLocation() method.";
-                throw AnnotationBuilderException(
-                        err.str()
-                );
+        // location_resources_ is optional
+        if (!location_resources_.empty()) {
+            int count = 0;
+            for (auto &i : getLocationResources()) {
+                if (i.getNode() == nullptr) {
+                    std::ostringstream err;
+                    err << "PhysicalEntity::toTriples(): Cannot create"
+                           " triples because item ";
+                    err << count << "of the \"location\" information is not set. ";
+                    err << "Use the addLocation() method.";
+                    throw AnnotationBuilderException(
+                            err.str());
+                }
             }
         }
         // when physical_property_id_ is empty it means we have not
@@ -128,6 +118,7 @@ namespace omexmeta {
         physical_property_triples.freeTriples();
         assert(physical_property_triples.size() == 0);
 
+
         // the "what" part of physical entity triple
         triples.emplace_back(
                 LibrdfNode::fromUriString(entity_id_).get(),
@@ -135,13 +126,15 @@ namespace omexmeta {
                 identity_resource_.getNode()
         );
 
-        // the "where" part of the physical entity
-        for (auto &locationResource : location_resources_) {
-            triples.emplace_back(
-                    LibrdfNode::fromUriString(entity_id_).get(),
-                    BiomodelsBiologyQualifier("isPartOf").getNode(),
-                    locationResource.getNode()
-            );
+        // make it explicit that location resources is optional
+        if (!location_resources_.empty()) {
+            // the "where" part of the physical entity
+            for (auto &locationResource : location_resources_) {
+                triples.emplace_back(
+                        LibrdfNode::fromUriString(entity_id_).get(),
+                        BiomodelsBiologyQualifier("isPartOf").getNode(),
+                        locationResource.getNode());
+            }
         }
         return std::move(triples);
     }
@@ -168,7 +161,7 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::setAbout(const std::string &about) {
-        physical_property_.setSubject(about);
+        physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         return *this;
     }
 

@@ -146,7 +146,6 @@
     <member refid="classomexmeta_1_1Editor_1ace652a3364ba755330179e2aeb630761" kind="function"><name>addDateCreated</name></member>
     <member refid="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c" kind="function"><name>newSingularAnnotation</name></member>
     <member refid="classomexmeta_1_1Editor_1a904a1beb0ba56ccfc1aca70d512030ed" kind="function"><name>addParentModel</name></member>
-    <member refid="classomexmeta_1_1Editor_1ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f" kind="function"><name>addPersonalInformation</name></member>
     <member refid="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" kind="function"><name>newSingularAnnotation</name></member>
   </compound>
   <compound refid="classomexmeta_1_1ElementExtractor" kind="class"><name>omexmeta::ElementExtractor</name>
@@ -582,6 +581,7 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a9bca0cb13601b6f9617df9f264968f1f" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" kind="function"><name>setIdentity</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" kind="function"><name>identity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kind="function"><name>addLocation</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kind="function"><name>getNumLocations</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a5f54e5c2df0fd5c3b9121e1426b23af6" kind="function"><name>operator==</name></member>
@@ -690,6 +690,7 @@
     <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" kind="function"><name>PhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a76d1ffd15ea6aad76c322bdd8991a111" kind="function"><name>PhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a9a8b291c9516decaa67afa1b15ac7c2d" kind="function"><name>PhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1acf399e14fd579efc6384ebc677341ead" kind="function"><name>getSubject</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a2d60b90270a6ba73646707b8c475fbb1" kind="function"><name>getResource</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a0f27071bfef5a9de4eb89fb21461ba76" kind="function"><name>getModelUri</name></member>
@@ -1130,6 +1131,7 @@
     <member refid="namespaceomexmeta_1a1003038196d64626a43affdaae4f10c7" kind="function"><name>PhysicalEntity_freeAll</name></member>
     <member refid="namespaceomexmeta_1a37974ee43bc12c63dc5b1e7f451b6e9c" kind="function"><name>PhysicalEntity_setPhysicalProperty</name></member>
     <member refid="namespaceomexmeta_1ac44f68863532b3aa719a2cb9f0a1f73f" kind="function"><name>PhysicalEntity_setIdentity</name></member>
+    <member refid="namespaceomexmeta_1a4520eb759e1fe4330dc7c66eae588ef2" kind="function"><name>PhysicalEntity_identity</name></member>
     <member refid="namespaceomexmeta_1abba48577926517d7d484b6b3b67fffb2" kind="function"><name>PhysicalEntity_addLocation</name></member>
     <member refid="namespaceomexmeta_1a7f59e7b6f143fc61441cfb435262e1cb" kind="function"><name>PhysicalEntity_getAbout</name></member>
     <member refid="namespaceomexmeta_1aaa3ea01b3791ca3f7eb417457b07db6b" kind="function"><name>PhysicalEntity_getIdentity</name></member>

@@ -1397,34 +1397,6 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </inbodydescription>
         <location file="src/omexmeta/Editor.h" line="377" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="367" bodyend="374"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::Editor::addPersonalInformation</definition>
-        <argsstring>(PersonalInformation *personalInformation) const</argsstring>
-        <name>addPersonalInformation</name>
-        <param>
-          <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
-          <declname>personalInformation</declname>
-        </param>
-        <briefdescription>
-<para>Add a <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object to the current <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>personalInformation</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>the <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> object to add </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="383" column="14"/>
-      </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref></type>
         <definition>SingularAnnotation omexmeta::Editor::newSingularAnnotation</definition>
@@ -1440,7 +1412,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="390" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="412" bodyend="417"/>
+        <location file="src/omexmeta/Editor.h" line="384" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="412" bodyend="417"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1448,7 +1420,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/Editor.h" line="44" column="5" bodyfile="src/omexmeta/Editor.h" bodystart="44" bodyend="391"/>
+    <location file="src/omexmeta/Editor.h" line="44" column="5" bodyfile="src/omexmeta/Editor.h" bodystart="44" bodyend="385"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Editor_1a146ae84fb44991d9c6135e98f03fa972" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1ad05d04a31263f9c7cb8105e29fd9d158" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation2</name></member>
@@ -1460,7 +1432,6 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addNamespaceFromAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a904a1beb0ba56ccfc1aca70d512030ed" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addParentModel</name></member>
       <member refid="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPersonalInformation</name></member>
-      <member refid="classomexmeta_1_1Editor_1ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalEntity</name></member>
       <member refid="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalForce</name></member>
       <member refid="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalProcess</name></member>

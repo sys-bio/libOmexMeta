@@ -134,7 +134,7 @@ namespace omexmeta {
 
 
     PhysicalForce &PhysicalForce::setAbout(const std::string &about) {
-        physical_property_.setSubject(about);
+        physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         return *this;
     }
 

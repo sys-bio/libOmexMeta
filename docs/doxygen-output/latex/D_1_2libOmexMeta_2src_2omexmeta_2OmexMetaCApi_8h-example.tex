@@ -196,9 +196,12 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalEntity\_freeAll(PhysicalEntity *physical\_entity\_ptr);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setPhysicalProperty(}
-\DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);}
+\DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property=\textcolor{keyword}{nullptr});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setIdentity(}
+\DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identity\_resource);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_identity(}
 \DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identity\_resource);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalEntity *PhysicalEntity\_addLocation(}

@@ -21,7 +21,7 @@ class Util:
     @staticmethod
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
-            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.16")
+            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.17")
             try:
                 lib = ct.CDLL(lib_path)
             except OSError as e:
@@ -338,6 +338,10 @@ class PyOmexMetaAPI:
     # PhysicalEntity *PhysicalEntity_setIdentity(
     #         PhysicalEntity *physical_entity_ptr, const char *identity_resource);
     physical_entity_set_identity = Util.load_func("PhysicalEntity_setIdentity", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PhysicalEntity *PhysicalEntity_identity(
+    #        PhysicalEntity *physical_entity_ptr, const char *identity_resource);
+    physical_entity_identity = Util.load_func("PhysicalEntity_identity", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_addLocation(
     #         PhysicalEntity *physical_entity_ptr, const char *location_resource);

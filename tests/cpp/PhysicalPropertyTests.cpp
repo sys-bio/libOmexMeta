@@ -3,9 +3,10 @@
 //
 
 
-#include "gtest/gtest.h"
-#include "omexmeta/Triple.h"
 #include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/Triple.h"
+#include "gtest/gtest.h"
+#include <omexmeta/RDF.h>
 
 using namespace omexmeta;
 
@@ -104,6 +105,24 @@ TEST_F(PhysicalPropertyTests, TestInequality2) {
     PhysicalProperty resource1 = PhysicalProperty("property_metaid_0", "opb/OPB_00592", local_uri);
     PhysicalProperty resource2 = PhysicalProperty("property_metaid_1", "opb/OPB_00592", local_uri);
     ASSERT_NE(resource1, resource2);
+}
+
+
+TEST_F(PhysicalPropertyTests, OptionalProperty) {
+    PhysicalProperty resource = PhysicalProperty("property_metaid_0", local_uri);
+    Triples triples = resource.toTriples(OmexMetaUtils::concatMetaIdAndUri("property_metaid_0", local_uri));
+    std::cout << triples.str() << std::endl;
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:property_metaid_0\n"
+                           "    bqbiol:isPropertyOf local:property_metaid_0 .\n"
+                           "\n";
+    ASSERT_STREQ(expected.c_str(), triples.str().c_str());
 }
 
 

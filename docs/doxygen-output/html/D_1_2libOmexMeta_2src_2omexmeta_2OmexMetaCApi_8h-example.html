@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.16</span>
+   &#160;<span id="projectnumber">1.1.17</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -259,9 +259,12 @@ $(function() {
 <div class="line">    OMEXMETACAPI_EXPORT <span class="keywordtype">int</span> PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(</div>
-<div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *subject_metaid, <span class="keyword">const</span> <span class="keywordtype">char</span> *physical_property);</div>
+<div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *subject_metaid, <span class="keyword">const</span> <span class="keywordtype">char</span> *physical_property=<span class="keyword">nullptr</span>);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(</div>
+<div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *identity_resource);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_identity(</div>
 <div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *identity_resource);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(</div>
@@ -422,16 +425,16 @@ $(function() {
 <div class="line"> </div>
 </div><!-- fragment --> </div><!-- contents -->
 <div class="ttc" id="anamespaceomexmeta_html_a3a7a18de6e1b6c264c3ee22cd289d243"><div class="ttname"><a href="namespaceomexmeta.html#a3a7a18de6e1b6c264c3ee22cd289d243">omexmeta::PhysicalEntity_new</a></div><div class="ttdeci">PhysicalEntity * PhysicalEntity_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:702</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_ac9903c88bb127f778476bdffe075ed8a"><div class="ttname"><a href="namespaceomexmeta.html#ac9903c88bb127f778476bdffe075ed8a">omexmeta::PhysicalForce_freeAll</a></div><div class="ttdeci">int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1038</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_ac9903c88bb127f778476bdffe075ed8a"><div class="ttname"><a href="namespaceomexmeta.html#ac9903c88bb127f778476bdffe075ed8a">omexmeta::PhysicalForce_freeAll</a></div><div class="ttdeci">int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1047</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> AnnotationType.h:12</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_ab666d5ff29f6e475cd802828097498cf"><div class="ttname"><a href="namespaceomexmeta.html#ab666d5ff29f6e475cd802828097498cf">omexmeta::free_world</a></div><div class="ttdeci">OMEXMETACAPI_EXPORT int free_world(librdf_world *world)</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a4b7cef4fcdbd4502c94b18da2f85470f"><div class="ttname"><a href="namespaceomexmeta.html#a4b7cef4fcdbd4502c94b18da2f85470f">omexmeta::PhysicalProcess_new</a></div><div class="ttdeci">PhysicalProcess * PhysicalProcess_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:855</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a4b7cef4fcdbd4502c94b18da2f85470f"><div class="ttname"><a href="namespaceomexmeta.html#a4b7cef4fcdbd4502c94b18da2f85470f">omexmeta::PhysicalProcess_new</a></div><div class="ttdeci">PhysicalProcess * PhysicalProcess_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:864</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_ad25c02c4a271f0b7c5585d0cb241f102"><div class="ttname"><a href="namespaceomexmeta.html#ad25c02c4a271f0b7c5585d0cb241f102">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:37</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a96e4c18dc172184811a0bd6468d00b35"><div class="ttname"><a href="namespaceomexmeta.html#a96e4c18dc172184811a0bd6468d00b35">omexmeta::Editor_getXml</a></div><div class="ttdeci">char * Editor_getXml(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:403</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a1d7bca5e4a24d7482048bd28d901e502"><div class="ttname"><a href="namespaceomexmeta.html#a1d7bca5e4a24d7482048bd28d901e502">omexmeta::_func_that_returns_dynamic_alloc_str</a></div><div class="ttdeci">char * _func_that_returns_dynamic_alloc_str()</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:25</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_aad5757f8832cf5fcaf546cec1f97af82"><div class="ttname"><a href="namespaceomexmeta.html#aad5757f8832cf5fcaf546cec1f97af82">omexmeta::PhysicalForce_delete</a></div><div class="ttdeci">int PhysicalForce_delete(PhysicalForce *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1028</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a119fbc0317a5af631e7f68caece8c70b"><div class="ttname"><a href="namespaceomexmeta.html#a119fbc0317a5af631e7f68caece8c70b">omexmeta::PersonalInformation_new</a></div><div class="ttdeci">PersonalInformation * PersonalInformation_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1152</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a20e720c23e2368bf19c316971ebeafd7"><div class="ttname"><a href="namespaceomexmeta.html#a20e720c23e2368bf19c316971ebeafd7">omexmeta::PhysicalForce_new</a></div><div class="ttdeci">PhysicalForce * PhysicalForce_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1019</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_aad5757f8832cf5fcaf546cec1f97af82"><div class="ttname"><a href="namespaceomexmeta.html#aad5757f8832cf5fcaf546cec1f97af82">omexmeta::PhysicalForce_delete</a></div><div class="ttdeci">int PhysicalForce_delete(PhysicalForce *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1037</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a119fbc0317a5af631e7f68caece8c70b"><div class="ttname"><a href="namespaceomexmeta.html#a119fbc0317a5af631e7f68caece8c70b">omexmeta::PersonalInformation_new</a></div><div class="ttdeci">PersonalInformation * PersonalInformation_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1161</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a20e720c23e2368bf19c316971ebeafd7"><div class="ttname"><a href="namespaceomexmeta.html#a20e720c23e2368bf19c316971ebeafd7">omexmeta::PhysicalForce_new</a></div><div class="ttdeci">PhysicalForce * PhysicalForce_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1028</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a56234965820e6e731cb377af949585a3"><div class="ttname"><a href="namespaceomexmeta.html#a56234965820e6e731cb377af949585a3">omexmeta::SingularAnnotation_new</a></div><div class="ttdeci">SingularAnnotation * SingularAnnotation_new(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:549</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a3c05babeced84a464bcf29fb618230b4"><div class="ttname"><a href="namespaceomexmeta.html#a3c05babeced84a464bcf29fb618230b4">omexmeta::Editor_addNamespace</a></div><div class="ttdeci">int Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:254</div></div>
 <!-- start footer part -->

@@ -44,7 +44,7 @@ with editor.new_physical_entity() as physical_entity:
     physical_entity \
         .set_about("#OmexMetaId0001") \
         .has_property("OPB:OPB_00340") \
-        .set_identity("uniprot/P84022") \
+        .identity("uniprot/P84022") \
         .add_location("fma/FMA:63877") \
         .add_location("fma:FMA:70737") \
         .add_location("fma/FMA:24178") \

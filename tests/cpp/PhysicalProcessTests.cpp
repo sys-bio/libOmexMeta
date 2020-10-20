@@ -361,7 +361,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilderWithAdditionalOptionalIsV
                            "    semsim:hasMultiplier \"2\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species_metaid1> .\n"
                            "\n"
-                           "<property_metaid_0>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#property_metaid_0>\n"
                            "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n";

@@ -750,6 +750,15 @@ namespace omexmeta {
         }
     }
 
+    PhysicalEntity *PhysicalEntity_identity(PhysicalEntity *physical_entity_ptr, const char *identity_resource) {
+        try {
+            return PhysicalEntity_setIdentity(physical_entity_ptr, identity_resource);
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
     PhysicalEntity *PhysicalEntity_addLocation(PhysicalEntity *physical_entity_ptr, const char *location_resource) {
         try {
             physical_entity_ptr->addLocation(location_resource);

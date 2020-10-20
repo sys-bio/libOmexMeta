@@ -215,12 +215,12 @@ class EditorTests(unittest.TestCase):
         self.assertIsInstance(self.editor, Editor)
 
     def test_context_manager_single_annotation_with_sbml_extraction(self):
-        with self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=True) as editor:
-            with editor.new_singular_annotation() as singular_annotation:
-                singular_annotation \
-                    .set_about("OmexMetaId0000") \
-                    .set_predicate("bqbiol", "is") \
-                    .set_resource_uri("uniprot:PD88776")
+        editor = self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=True)
+        with editor.new_singular_annotation() as singular_annotation:
+            singular_annotation \
+                .set_about("OmexMetaId0000") \
+                .set_predicate("bqbiol", "is") \
+                .set_resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -469,13 +469,75 @@ local:SourceParticipant0003
         self.assertEqual(expected, actual)
 
     def test_context_manager_physical_process(self):
-        with self.rdf.to_editor(XML, True) as editor:
-            with editor.new_physical_process() as physical_process:
-                physical_process \
-                    .set_physical_property("OmexMetaId0001", "opb/opb_275") \
-                    .add_source(1, "physicalEntity4") \
-                    .add_sink(1, "PhysicalEntity7") \
-                    .add_mediator("PhysicalEntity8")
+        editor = self.rdf.to_editor(XML, True)
+        with editor.new_physical_process() as physical_process:
+            physical_process \
+                .set_physical_property("OmexMetaId0001", "opb/opb_275") \
+                .add_source(1, "physicalEntity4") \
+                .add_sink(1, "PhysicalEntity7") \
+                .add_mediator("PhysicalEntity8")
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference local:PhysicalEntity8 .
+
+local:OmexMetaId0001
+    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/opb_275> .
+
+local:PhysicalProcess0000
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:PhysicalEntity7 .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference local:physicalEntity4 .
+
+"""
+        actual = str(self.rdf)
+        print(actual)
+
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
+
+    def test_context_manager_physical_entity(self):
+        editor = self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=False)
+
+        with editor.new_physical_entity() as physical_entity:
+            physical_entity \
+                .set_about("OmexMetaId0001") \
+                .has_property( "opb/opb_275") \
+                .identity("uniprot/PD12345") \
+                .is_part_of("fma:FMA:63877") \
+                .is_part_of("fma:FMA:63878")
+
+        expected = """"""
+        actual = str(self.rdf)
+        print(actual)
+
+        for i in actual.split("\n"):
+            self.assertTrue(i.strip() in actual)
+
+    def test_context_manager_physical_entity_optional_bits(self):
+        editor = self.rdf.to_editor(XML, sbml_semantic_extraction=False)
+
+        with editor.new_physical_entity() as physical_entity:
+            physical_entity \
+                .set_about("OmexMetaId0001") \
+                .has_property( "opb/opb_275") \
+                .is_part_of("fma:FMA:63877") \
+                .is_part_of("fma:FMA:63878")
+
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
@@ -602,8 +664,8 @@ class AnnotateAModelTest(unittest.TestCase):
 
     def test_get_metaids(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
-            metaids = editor.get_metaids()
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        metaids = editor.get_metaids()
 
         expected = ['SmadNuclearTransport',
                     '#OmexMetaId0000',
@@ -619,8 +681,8 @@ class AnnotateAModelTest(unittest.TestCase):
 
     def test_get_xml(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
-            xml_with_metaids = editor.get_xml()
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        xml_with_metaids = editor.get_xml()
 
         expected = """<?xml version="1.0" encoding="UTF-8"?>
 <!-- Created by libAntimony version v2.12.0.3 with libSBML version 5.18.1. -->
@@ -691,43 +753,43 @@ class AnnotateAModelTest(unittest.TestCase):
 
         """
         rdf = RDF()
-        with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
-            # model level annotations
-            with editor.new_singular_annotation() as author:
-                author.set_about("SmadNuclearTransport") \
-                    .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                    .set_resource_literal("Ciaran Welsh")
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        # model level annotations
+        with editor.new_singular_annotation() as author:
+            author.set_about("SmadNuclearTransport") \
+                .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
+                .set_resource_literal("Ciaran Welsh")
 
-            # annotate Smad3nuc
-            with editor.new_physical_entity() as smad3nuc:
-                smad3nuc \
-                    .set_physical_property("OmexMetaId0002", "OPB:OPB_00340") \
-                    .set_identity("uniprot:P84022") \
-                    .add_location("obo/FMA_7163") \
-                    .add_location("obo/FMA_264020")
+        # annotate Smad3nuc
+        with editor.new_physical_entity() as smad3nuc:
+            smad3nuc \
+                .set_physical_property("OmexMetaId0002", "OPB:OPB_00340") \
+                .identity("uniprot:P84022") \
+                .add_location("obo/FMA_7163") \
+                .add_location("obo/FMA_264020")
 
-            # annotate Smad3nuc
-            with editor.new_physical_entity() as smad3nuc:
-                smad3nuc \
-                    .set_physical_property("OmexMetaId0003", "OPB:OPB_00340") \
-                    .set_identity("uniprot:P84022") \
-                    .add_location("obo/FMA_7163") \
-                    .add_location("obo/FMA_63877") \
-                    .add_location("obo/FMA_63840")
+        # annotate Smad3nuc
+        with editor.new_physical_entity() as smad3nuc:
+            smad3nuc \
+                .set_physical_property("OmexMetaId0003", "OPB:OPB_00340") \
+                .identity("uniprot:P84022") \
+                .add_location("obo/FMA_7163") \
+                .add_location("obo/FMA_63877") \
+                .add_location("obo/FMA_63840")
 
-            # annotate r1 (Smad3Nuc -> Smad3Cyt)
-            with editor.new_physical_process() as export_reaction:
-                export_reaction \
-                    .set_physical_property("OmexMetaId0004", "OPB:OPB_00237") \
-                    .add_source(1, "OmexMetaId0003") \
-                    .add_sink(1, "OmexMetaId0002")
+        # annotate r1 (Smad3Nuc -> Smad3Cyt)
+        with editor.new_physical_process() as export_reaction:
+            export_reaction \
+                .set_physical_property("OmexMetaId0004", "OPB:OPB_00237") \
+                .add_source(1, "OmexMetaId0003") \
+                .add_sink(1, "OmexMetaId0002")
 
-            # annotate r2 (Smad3Cyt -> Smad3Nuc)
-            with editor.new_physical_process() as export_reaction:
-                export_reaction \
-                    .set_physical_property("OmexMetaId0005", "OPB:OPB_00237") \
-                    .add_source(1, "OmexMetaId0002") \
-                    .add_sink(1, "OmexMetaId0003")
+        # annotate r2 (Smad3Cyt -> Smad3Nuc)
+        with editor.new_physical_process() as export_reaction:
+            export_reaction \
+                .set_physical_property("OmexMetaId0005", "OPB:OPB_00237") \
+                .add_source(1, "OmexMetaId0002") \
+                .add_sink(1, "OmexMetaId0003")
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -780,12 +842,12 @@ local:SourceParticipant0000
 
     def test_to_editor_with_sbml_extraction(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=True) as editor:
-            # model level annotations
-            with editor.new_singular_annotation() as author:
-                author.set_about("SmadNuclearTransport") \
-                    .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                    .set_resource_literal("Ciaran Welsh")
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=True)
+        # model level annotations
+        with editor.new_singular_annotation() as author:
+            author.set_about("SmadNuclearTransport") \
+                .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
+                .set_resource_literal("Ciaran Welsh")
 
         actual = rdf.to_string()
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -841,12 +903,12 @@ local:SourceParticipant0001
 
     def test_to_editor_without_sbml_extraction(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=False) as editor:
-            # model level annotations
-            with editor.new_singular_annotation() as author:
-                author.set_about("SmadNuclearTransport") \
-                    .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                    .set_resource_literal("Ciaran Welsh")
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
+        # model level annotations
+        with editor.new_singular_annotation() as author:
+            author.set_about("SmadNuclearTransport") \
+                .set_predicate_from_uri("https://unknownpredicate.com/changeme#author") \
+                .set_resource_literal("Ciaran Welsh")
 
         actual = rdf.to_string()
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .

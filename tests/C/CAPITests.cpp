@@ -474,9 +474,10 @@ TEST_F(CAPITests, TestPhysicalEntity) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/OPB007");
-    physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot:PD58736");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "fma:FMA_8764");
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb/opb_1234");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD58736");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "fma:FMA_8764");
 
     char *actual = PhysicalEntity_str(physical_entity_ptr, "rdfxml-abbrev", "./annotations.rdf");
     const char *expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -491,12 +492,10 @@ TEST_F(CAPITests, TestPhysicalEntity) {
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid87\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB007\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb_1234\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
-    std::cout << actual <<
-              std::endl;
+                           "</rdf:RDF>\n";
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
 
 
@@ -511,13 +510,14 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb/opb_1234");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD58736");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "fma:FMA_8764");
     char *actual = PhysicalEntity_getIdentity(physical_entity_ptr);
-    const char *expected = "https://identifiers.org/uniprot/PD7363";
-    std::cout << actual <<
-              std::endl;
+    const char *expected = "https://identifiers.org/uniprot/PD58736";
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
-
 
     Editor_delete(editor_ptr);
     // as opposed to PhysicalEntity_delete which would leave behind un-freed nodes.
@@ -526,14 +526,88 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, TestPhysicalEntityOptionalProperty) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
+
+    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "OPB/OPB_12345");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "uniprot:PD58736");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "fma:FMA_8764");
+    printf("here");
+    char *actual = PhysicalEntity_str(physical_entity_ptr, "rdfxml-abbrev", "./annotations.rdf");
+    const char *expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/OPB/OPB_12345\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA_8764\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid87\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD58736\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+
+    Editor_delete(editor_ptr);
+    PhysicalEntity_delete(physical_entity_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, TestPhysicalEntityOptionalLocation) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
+
+    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD58736");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb:opb12345");
+
+    char *actual = PhysicalEntity_str(physical_entity_ptr, "rdfxml-abbrev", "./annotations.rdf");
+    const char *expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                           "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD58736\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid87\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb12345\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+
+
+    Editor_delete(editor_ptr);
+    PhysicalEntity_delete(physical_entity_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+
 TEST_F(CAPITests, TestPhysicalEntityLocations) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8376");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8377");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8378");
     int num_locations = PhysicalEntity_getNumLocations(physical_entity_ptr);
     const char *expected = "https://identifiers.org/FMA/fma:8376\n"
                            "https://identifiers.org/FMA/fma:8377\n"
@@ -557,9 +631,10 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot/PD12345");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8376");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8377");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8378");
     int expected = 3;
     int actual = PhysicalEntity_getNumLocations(physical_entity_ptr);
     ASSERT_EQ(expected, actual);
@@ -575,11 +650,12 @@ TEST_F(CAPITests, TestPhysicalEntityStr) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/opb_465");
-    physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb/opb_465");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot/PD7363");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8376");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8377");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8378");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                            "   xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
@@ -685,10 +761,6 @@ TEST_F(CAPITests, TestPhysicalProcess2) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<Metaid0937>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb/opb93864> .\n"
-                           "\n"
                            "local:MediatorParticipant0000\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity8> .\n"
                            "\n"
@@ -705,6 +777,10 @@ TEST_F(CAPITests, TestPhysicalProcess2) {
                            "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity8> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#Metaid0937>\n"
+                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb/opb93864> .\n"
                            "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
@@ -778,11 +854,12 @@ TEST_F(CAPITests, TestEditorToRDF) {
             physical_process_ptr, "Entity8");
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "#OmexMetaId0007", "opb/opb_465");
-    physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
-    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "#OmexMetaId0007");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb/opb_465");
+    physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot/PD7363");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8376");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8377");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8378");
 
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
@@ -877,7 +954,7 @@ TEST_F(CAPITests, TestEditorToRDFUsingAlternativeAPI) {
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "#OmexMetaId0007");
     physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb/opb_465");
-    physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
+    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8377");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:fma:8378");
@@ -959,7 +1036,7 @@ TEST_F(CAPITests, PhysicalEntityAlternativeAPITest){
 
     PhysicalEntity* physicalEntity = PhysicalEntity_new(editor_ptr);
     physicalEntity = PhysicalEntity_setAbout(physicalEntity,"#OmexMetaId0000");
-    physicalEntity = PhysicalEntity_setIdentity(physicalEntity, "uniprot/PD7363");
+    physicalEntity = PhysicalEntity_identity(physicalEntity, "uniprot/PD7363");
     physicalEntity = PhysicalEntity_hasProperty(physicalEntity, "opb:opb_12345");
     physicalEntity = PhysicalEntity_isPartOf(physicalEntity, "fma:fma12345");
 
@@ -1026,6 +1103,7 @@ TEST_F(CAPITests, PhysicalProcessAlternativeAPITest){
     RDF_delete(rdf_ptr);
 
 }
+
 
 TEST_F(CAPITests, PhysicalForceAlternativeAPITest){
     RDF *rdf_ptr = RDF_new();
@@ -1834,6 +1912,7 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
 }
+
 
 TEST_F(CAPITests, RDFToEditorTestWithoutSemanticExtraction) {
     RDF *rdf_ptr = RDF_new();

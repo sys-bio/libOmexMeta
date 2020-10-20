@@ -110,7 +110,7 @@ int main(){
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity.setAbout( "#OmexMetaId0000")
         .hasProperty( "OPB:OPB_00340")
-        .setIdentity("uniprot/P84022")
+        .identity("uniprot/P84022")
         .addLocation("fma/FMA:63877")
         .addLocation("fma:FMA:70737")
         .addLocation("fma/FMA:24178")

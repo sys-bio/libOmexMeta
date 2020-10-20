@@ -377,12 +377,6 @@ namespace omexmeta {
         Editor& addParentModel(const std::string &biomod_id);
 
         /**
-         * @brief Add a PersonalInformation object to the current RDF graph
-         * @param personalInformation the PersonalInformation object to add
-         */
-        void addPersonalInformation(PersonalInformation *personalInformation) const;
-
-        /**
          * @brief create a new SingularAnnotation object
          * @return A SingularAnnotation object
          * @details a SingularAnnotation is a typedefed Triple object.

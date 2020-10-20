@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 16)
+set(VERSION_MICRO 17)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 project(libOmexMeta
@@ -488,7 +488,9 @@ if (BUILD_TESTS)
 endif (BUILD_TESTS)
 
 # docs-build documentation.
-if (BUILD_DOCS)
+message(STATUS "BUILD_DOCS ${BUILD_DOCS}")
+if (${BUILD_DOCS})
+    message(STATUS "Building the docs")
     add_subdirectory(docs)
 endif ()
 

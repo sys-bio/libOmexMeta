@@ -1097,11 +1097,11 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple2) {
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple3) {
     /* Take and delete triple number 1
- * 1) <#OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <#OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
- * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
- * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
- */
+     * 1) <#OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+     * 2) <#OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+     * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
+     * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
+     */
     Triple triple(
             LibrdfNode::fromUriString("#Meta00001"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),

@@ -108,7 +108,7 @@ int main(){
     PhysicalEntity* physicalEntity = PhysicalEntity_new(editor);
     PhysicalEntity_setAbout(physicalEntity,"#OmexMetaId0001");
     PhysicalEntity_hasProperty(physicalEntity, "OPB:OPB_00340");
-    PhysicalEntity_setIdentity(physicalEntity, "uniprot/P84022");
+    PhysicalEntity_identity(physicalEntity, "uniprot/P84022");
     PhysicalEntity_addLocation(physicalEntity, "fma/FMA:63877");
     PhysicalEntity_addLocation(physicalEntity, "fma:FMA:70737");
     PhysicalEntity_addLocation(physicalEntity, "fma/FMA:24178");

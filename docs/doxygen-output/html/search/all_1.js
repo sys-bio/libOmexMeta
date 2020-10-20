@@ -13,7 +13,7 @@ var searchData=
   ['addnamespace_11',['addNamespace',['../classomexmeta_1_1Editor.html#a052a725cee8b8e577c55e977eee81ace',1,'omexmeta::Editor']]],
   ['addnamespacefromannotation_12',['addNamespaceFromAnnotation',['../classomexmeta_1_1Editor.html#a3fef7f1c38949b50239a9a07cc327d67',1,'omexmeta::Editor']]],
   ['addparentmodel_13',['addParentModel',['../classomexmeta_1_1Editor.html#a904a1beb0ba56ccfc1aca70d512030ed',1,'omexmeta::Editor']]],
-  ['addpersonalinformation_14',['addPersonalInformation',['../classomexmeta_1_1Editor.html#a1b2e0f5859fe2e2784ecff2a78f7f1f8',1,'omexmeta::Editor::addPersonalInformation(PersonalInformation *personalInformation)'],['../classomexmeta_1_1Editor.html#ae97ebb9bb2bc3ebd7d3b0a5eca9dfb0f',1,'omexmeta::Editor::addPersonalInformation(PersonalInformation *personalInformation) const']]],
+  ['addpersonalinformation_14',['addPersonalInformation',['../classomexmeta_1_1Editor.html#a1b2e0f5859fe2e2784ecff2a78f7f1f8',1,'omexmeta::Editor']]],
   ['addphysicalentity_15',['addPhysicalEntity',['../classomexmeta_1_1Editor.html#a0740831baafe244374ad7a324d51a87e',1,'omexmeta::Editor']]],
   ['addphysicalforce_16',['addPhysicalForce',['../classomexmeta_1_1Editor.html#a7833e03995f6323109c2db8d59104f6c',1,'omexmeta::Editor']]],
   ['addphysicalprocess_17',['addPhysicalProcess',['../classomexmeta_1_1Editor.html#ae4a608ecbe64f05c1b64efbeeb1fdeb1',1,'omexmeta::Editor']]],

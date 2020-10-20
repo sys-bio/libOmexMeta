@@ -205,7 +205,7 @@
     <span class="p">}</span>
 
 
-    <span class="n">PhysicalEntity</span> <span class="o">&amp;</span><span class="n">PhysicalEntity</span><span class="o">::</span><span class="n">setIdentity</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">resource</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">PhysicalEntity</span> <span class="o">&amp;</span><span class="n">PhysicalEntity</span><span class="o">::</span><span class="n">identity</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">resource</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// todo implement second argument which defaults to RDFUriNode</span>
         <span class="c1">//  and controls whether we use literal/blank/uri node</span>
         <span class="n">identity_resource_</span> <span class="o">=</span> <span class="n">Resource</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">resource</span><span class="p">));</span>

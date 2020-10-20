@@ -129,8 +129,6 @@ class RDF:
         """destructor. Delete the dynamically allocated rdf object"""
         PyOmexMetaAPI.rdf_delete(self._obj)
 
-    def query(self, query_string: str, results_format: str):
-        return PyOmexMetaAPI.rdf_query(self._obj, query_string.encode(), results_format.encode())
 
     def to_string(self, format: str = "turtle") -> str:
         str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode())
@@ -418,6 +416,10 @@ class PhysicalEntity:
 
     def set_identity(self, identity: str) -> PhysicalEntity:
         self._obj = PyOmexMetaAPI.physical_entity_set_identity(self.get_ptr(), identity.encode())
+        return self
+
+    def identity(self, identity: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_identity(self.get_ptr(), identity.encode())
         return self
 
     def add_location(self, location: str) -> PhysicalEntity:

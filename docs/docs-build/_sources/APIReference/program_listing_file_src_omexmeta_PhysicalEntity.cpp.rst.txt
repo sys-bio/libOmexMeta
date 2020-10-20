@@ -57,7 +57,7 @@ Program Listing for File PhysicalEntity.cpp
        }
    
    
-       PhysicalEntity &PhysicalEntity::setIdentity(const std::string &resource) {
+       PhysicalEntity &PhysicalEntity::identity(const std::string &resource) {
            // todo implement second argument which defaults to RDFUriNode
            //  and controls whether we use literal/blank/uri node
            identity_resource_ = Resource(LibrdfNode::fromUriString(resource));

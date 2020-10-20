@@ -209,9 +209,12 @@ namespace omexmeta {
     OMEXMETACAPI_EXPORT int PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-            PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
+            PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property=nullptr);
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(
+            PhysicalEntity *physical_entity_ptr, const char *identity_resource);
+
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_identity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(

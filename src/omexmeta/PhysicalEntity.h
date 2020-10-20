@@ -35,7 +35,7 @@ namespace omexmeta {
     public:
 
         /**
-     * @brief default constructor for PhysicalEntity
+         * @brief default constructor for PhysicalEntity
          * @details deliberately deleted. If you try using the
          * builder interface (chaining setter methods) from a default
          * instantiated PhysicalEntity you will get an error, because there
@@ -45,7 +45,7 @@ namespace omexmeta {
         PhysicalEntity() = delete;
 
         /**
-     * @brief constructor for instantiating a PhysicalEntity object
+         * @brief constructor for instantiating a PhysicalEntity object
          * @param model the model being used by the current rdf graph.
          * @param about The subject portion of the PhysicalEntity representing the metaid for the PhysicalEntity
          * @param physicalProperty A term from the ontology of physical for biology of type PhysicalProperty.
@@ -160,6 +160,11 @@ namespace omexmeta {
         PhysicalEntity &setIdentity(const std::string& resource);
 
         /**
+         * @brief alias for setIdentity
+         */
+        PhysicalEntity &identity(const std::string& resource);
+
+        /**
          * @brief add a location to the PhysicalEntity.
          * @param where The resource representing a location.
          * @return a reference to this Physical entity. Allows chaining together builder commands.
@@ -201,6 +206,8 @@ namespace omexmeta {
          * @details This function will set the Subject subject_ property on the
          * PhysicalProperty associated with this PhysicalEntity
          */
+        PhysicalEntity& setAbout(const std::string& about) override;
+
         PhysicalEntity& setAbout(const std::string& about) override;
 
         /**

@@ -1,9 +1,5 @@
 \hypertarget{classomexmeta_1_1PhysicalProperty}{}\doxysection{omexmeta\+::Physical\+Property Class Reference}
 \label{classomexmeta_1_1PhysicalProperty}\index{omexmeta::PhysicalProperty@{omexmeta::PhysicalProperty}}
-
-
-{\ttfamily \#include $<$Physical\+Property.\+h$>$}
-
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -14,6 +10,8 @@ bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalPro
 bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&rhs) const
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}{Physical\+Property}} (std\+::string subject\+\_\+str, std\+::string resource\+\_\+str, std\+::string model\+\_\+uri)
+\begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty_a9a8b291c9516decaa67afa1b15ac7c2d}{Physical\+Property}} (std\+::string subject\+\_\+str, std\+::string model\+\_\+uri)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_acf399e14fd579efc6384ebc677341ead}\label{classomexmeta_1_1PhysicalProperty_acf399e14fd579efc6384ebc677341ead}} 
 const std\+::string \& {\bfseries get\+Subject} () const
@@ -43,19 +41,27 @@ void {\bfseries set\+Resource} (const std\+::string \&resource)
 \begin{DoxyCompactList}\small\item\em creates a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object using the information in the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-\begin{DoxyVerb}PhysicalProperty is a subclass of the Resource
-\end{DoxyVerb}
- object. It is a special type of \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} that is restricted to terms from the ontology of physics for biology.
-
-Usage\+: \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} r(\char`\"{}http\+://identifiers.\+org/opb\+:opb12345\char`\"{}); is equilavent to\+: \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} r(\char`\"{}opb\+:opb12345\char`\"{}); is equilavent to\+: \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} r(\char`\"{}opb/opb12345\char`\"{}); 
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}\label{classomexmeta_1_1PhysicalProperty_a76d1ffd15ea6aad76c322bdd8991a111}} 
 \index{omexmeta::PhysicalProperty@{omexmeta::PhysicalProperty}!PhysicalProperty@{PhysicalProperty}}
 \index{PhysicalProperty@{PhysicalProperty}!omexmeta::PhysicalProperty@{omexmeta::PhysicalProperty}}
-\doxysubsubsection{\texorpdfstring{PhysicalProperty()}{PhysicalProperty()}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Property\+::\+Physical\+Property (\begin{DoxyParamCaption}\item[{std\+::string}]{subject\+\_\+str,  }\item[{std\+::string}]{resource\+\_\+str,  }\item[{std\+::string}]{model\+\_\+uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+\doxysubsubsection{\texorpdfstring{PhysicalProperty()}{PhysicalProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Property\+::\+Physical\+Property (\begin{DoxyParamCaption}\item[{std\+::string}]{subject\+\_\+str,  }\item[{std\+::string}]{resource\+\_\+str,  }\item[{std\+::string}]{model\+\_\+uri }\end{DoxyParamCaption})}
+
+
+
+constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+\_\+property\+\_\+string} & is used to create a U\+RI node representing the physical property \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalProperty_a9a8b291c9516decaa67afa1b15ac7c2d}\label{classomexmeta_1_1PhysicalProperty_a9a8b291c9516decaa67afa1b15ac7c2d}} 
+\index{omexmeta::PhysicalProperty@{omexmeta::PhysicalProperty}!PhysicalProperty@{PhysicalProperty}}
+\index{PhysicalProperty@{PhysicalProperty}!omexmeta::PhysicalProperty@{omexmeta::PhysicalProperty}}
+\doxysubsubsection{\texorpdfstring{PhysicalProperty()}{PhysicalProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Property\+::\+Physical\+Property (\begin{DoxyParamCaption}\item[{std\+::string}]{subject\+\_\+str,  }\item[{std\+::string}]{model\+\_\+uri }\end{DoxyParamCaption})}
 
 
 

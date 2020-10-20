@@ -753,6 +753,17 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_entity_delete(physical_entity)
 
+    def test_physical_entity_identity(self):
+        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
+        physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
+        PyOmexMetaAPI.physical_entity_identity(physical_entity, "uniprot:P456".encode())
+        ptr = PyOmexMetaAPI.physical_entity_get_identity(physical_entity)
+        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
+        expected = "https://identifiers.org/uniprot/P456"
+        self.assertEqual(expected, actual)
+        PyOmexMetaAPI.editor_delete(editor_ptr)
+        PyOmexMetaAPI.physical_entity_delete(physical_entity)
+
     def test_physical_entity_num_locations(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)

@@ -445,8 +445,8 @@ Program Listing for File OmexMetaCApi.cpp
            return physical_entity_ptr;
        }
    
-       PhysicalEntity *PhysicalEntity_setIdentity(PhysicalEntity *physical_entity_ptr, const char *identity_resource) {
-           physical_entity_ptr->setIdentity(identity_resource);
+       PhysicalEntity *PhysicalEntity_identity(PhysicalEntity *physical_entity_ptr, const char *identity_resource) {
+           physical_entity_ptr->identity(identity_resource);
            return physical_entity_ptr;
        }
    

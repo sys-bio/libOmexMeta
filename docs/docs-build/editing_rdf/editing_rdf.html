@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Editing Annotations &mdash; libomexmeta 1.1.15 documentation</title>
+  <title>Editing Annotations &mdash; libomexmeta 1.1.17 documentation</title>
   
 
   
@@ -3672,7 +3672,7 @@ add more locations.</p>
     <span class="n">physical_entity</span> \
         <span class="o">.</span><span class="n">set_about</span><span class="p">(</span><span class="s2">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_identity</span><span class="p">(</span><span class="s2">&quot;uniprot/P84022&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;uniprot/P84022&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">add_location</span><span class="p">(</span><span class="s2">&quot;fma/FMA:63877&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">add_location</span><span class="p">(</span><span class="s2">&quot;fma:FMA:70737&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">add_location</span><span class="p">(</span><span class="s2">&quot;fma/FMA:24178&quot;</span><span class="p">)</span> \
@@ -4152,7 +4152,7 @@ local:PhysicalEntity0000
     <span class="n">PhysicalEntity</span> <span class="n">physicalEntity</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalEntity</span><span class="p">();</span>
     <span class="n">physicalEntity</span><span class="p">.</span><span class="n">setAbout</span><span class="p">(</span> <span class="s">&quot;#OmexMetaId0000&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span> <span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setIdentity</span><span class="p">(</span><span class="s">&quot;uniprot/P84022&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/P84022&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="n">addLocation</span><span class="p">(</span><span class="s">&quot;fma/FMA:63877&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="n">addLocation</span><span class="p">(</span><span class="s">&quot;fma:FMA:70737&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="n">addLocation</span><span class="p">(</span><span class="s">&quot;fma/FMA:24178&quot;</span><span class="p">)</span>
@@ -4576,7 +4576,7 @@ local:PhysicalEntity0000
     <span class="n">PhysicalEntity</span><span class="o">*</span> <span class="n">physicalEntity</span> <span class="o">=</span> <span class="n">PhysicalEntity_new</span><span class="p">(</span><span class="n">editor</span><span class="p">);</span>
     <span class="n">PhysicalEntity_setAbout</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">);</span>
     <span class="n">PhysicalEntity_hasProperty</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span> <span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span>
-    <span class="n">PhysicalEntity_setIdentity</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span> <span class="s">&quot;uniprot/P84022&quot;</span><span class="p">);</span>
+    <span class="n">PhysicalEntity_identity</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span> <span class="s">&quot;uniprot/P84022&quot;</span><span class="p">);</span>
     <span class="n">PhysicalEntity_addLocation</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span> <span class="s">&quot;fma/FMA:63877&quot;</span><span class="p">);</span>
     <span class="n">PhysicalEntity_addLocation</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span> <span class="s">&quot;fma:FMA:70737&quot;</span><span class="p">);</span>
     <span class="n">PhysicalEntity_addLocation</span><span class="p">(</span><span class="n">physicalEntity</span><span class="p">,</span> <span class="s">&quot;fma/FMA:24178&quot;</span><span class="p">);</span>
@@ -5083,7 +5083,199 @@ local:PhysicalEntity0000
 </div>
 <div class="literal-block-wrapper docutils container" id="id47">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id47" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">bhi</span><span class="o">.</span><span class="n">washington</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0003&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0001</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0001</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0002</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0002</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0002</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0003</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0003</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0003</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0004</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">GO</span><span class="p">:</span><span class="mi">12345</span><span class="o">&gt;</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0001</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0004</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0004</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0002</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0004&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0003</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0003&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0004</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0002</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0003&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0003</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0004&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0004</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0005&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0000</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0007&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0001</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0009&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0002</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0011&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0003</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0012&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0004</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="o">/</span><span class="n">OPB_00340</span><span class="o">&gt;</span> <span class="o">.</span>
+
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -5421,7 +5613,63 @@ local:PhysicalEntity0000
 </div>
 <div class="literal-block-wrapper docutils container" id="id49">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id49" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">bhi</span><span class="o">.</span><span class="n">washington</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="c1">#&gt; .</span>
+<span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMeta0003&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0000</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">GO</span><span class="p">:</span><span class="mi">12345</span><span class="o">&gt;</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMeta0002&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMeta0001&gt; .</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0000</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="o">/</span><span class="n">OPB_00340</span><span class="o">&gt;</span> <span class="o">.</span>
+
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -6076,28 +6324,164 @@ local:SourceParticipant0000
 21
 22
 23
-24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">bhi</span><span class="o">.</span><span class="n">washington</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
+<span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
 <span class="n">local</span><span class="p">:</span><span class="n">PhysicalForce0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0004</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0004</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0000</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
 
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0001</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0001</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0002</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0002</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0002</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0003</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0003</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0003</span> <span class="o">.</span>
+
 <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0002</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0004&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0003</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0003&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0004</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaID0001&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0001</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0002</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0003&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0003</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0004&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0004</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="nb">int</span> <span class="p">;</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaID0002&gt; .</span>
 
 <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt;</span>
     <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalForce0000</span> <span class="p">;</span>
     <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="o">/</span><span class="n">OPB_00340</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0005&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0000</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0007&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0001</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0009&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0002</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0011&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">PhysicalProcess0003</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="o">/</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
 
 
 </pre></div>

@@ -269,7 +269,7 @@ When using &quot;toTriples&quot; you are giving ownership of the nodes used by <
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="114" column="18" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="69" bodyend="147"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="114" column="18" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="73" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ae4b3374e9ebb817eb63f9105b491e958" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> &amp;</type>
@@ -286,7 +286,7 @@ When using &quot;toTriples&quot; you are giving ownership of the nodes used by <
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="121" column="25" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="61" bodyend="63"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="121" column="25" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Resources &amp;</type>
@@ -303,7 +303,7 @@ When using &quot;toTriples&quot; you are giving ownership of the nodes used by <
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="128" column="26" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="65" bodyend="67"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="128" column="26" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="69" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -401,6 +401,24 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </inbodydescription>
         <location file="src/omexmeta/PhysicalEntity.h" line="160" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="46" bodyend="51"/>
       </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
+        <definition>PhysicalEntity &amp; omexmeta::PhysicalEntity::identity</definition>
+        <argsstring>(const std::string &amp;resource)</argsstring>
+        <name>identity</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+<para>alias for setIdentity </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/PhysicalEntity.h" line="165" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
         <definition>PhysicalEntity &amp; omexmeta::PhysicalEntity::addLocation</definition>
@@ -430,7 +448,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="178" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="53" bodyend="59"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="183" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="57" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -447,7 +465,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="184" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="149" bodyend="151"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="189" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="142" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5f54e5c2df0fd5c3b9121e1426b23af6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -464,7 +482,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="186" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="154" bodyend="159"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="191" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="147" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1afee546a420f16e128ed1add9fec35b4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -481,7 +499,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="188" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="161" bodyend="163"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="193" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="154" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ae160c410eeffe04a1fcc9c050ddd1b42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -509,7 +527,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="196" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="165" bodyend="168"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="201" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="158" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a1736d331705bf2f1569f492fc733949e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -538,7 +556,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="204" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="170" bodyend="173"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="209" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="163" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -566,7 +584,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="213" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="175" bodyend="177"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="218" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="168" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -594,7 +612,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalEntity.h" line="222" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="179" bodyend="181"/>
+        <location file="src/omexmeta/PhysicalEntity.h" line="227" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="172" bodyend="174"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -633,7 +651,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/PhysicalEntity.h" line="29" column="5" bodyfile="src/omexmeta/PhysicalEntity.h" bodystart="29" bodyend="223"/>
+    <location file="src/omexmeta/PhysicalEntity.h" line="29" column="5" bodyfile="src/omexmeta/PhysicalEntity.h" bodystart="29" bodyend="228"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>addLocation</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>entity_id_</name></member>
@@ -651,6 +669,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getSubjectStr</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getType</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ae160c410eeffe04a1fcc9c050ddd1b42" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>hasProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>identity</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ac5f674248ef40f86df4a5160c2d193e3" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>identity_resource_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>is</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>isPartOf</name></member>
