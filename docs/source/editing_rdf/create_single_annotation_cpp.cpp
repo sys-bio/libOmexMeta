@@ -58,8 +58,8 @@ int main(){
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
         .about("ToyModel")
-        .setPredicate("dc", "description")
-        .setResourceLiteral("This is a toy model for demonstration purposes");
+        .predicate("dc", "description")
+        .resourceLiteral("This is a toy model for demonstration purposes");
 
     // in C/C++ we need to manually add the annotation to the editor
     editor.addSingleAnnotation(singular_annotation);

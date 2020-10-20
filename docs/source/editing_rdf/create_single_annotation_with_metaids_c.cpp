@@ -52,8 +52,8 @@ int main(){
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_about(singular_annotation, "#OmexMetaId0001");
-    SingularAnnotation_setPredicate(singular_annotation, "bqbiol", "is");
-    SingularAnnotation_setResourceUri(singular_annotation, "uniprot/P01137");
+    SingularAnnotation_predicate(singular_annotation, "bqbiol", "is");
+    SingularAnnotation_resourceUri(singular_annotation, "uniprot/P01137");
 
     // in C/C++ we need to manually add the annotation to the editor
     Editor_addSingleAnnotation(editor_ptr, singular_annotation);

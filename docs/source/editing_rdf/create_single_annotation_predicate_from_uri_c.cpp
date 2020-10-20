@@ -49,8 +49,8 @@ int main(){
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_about(singular_annotation, "#OmexMetaId0001");
-    SingularAnnotation_setPredicateFromUri(singular_annotation, "https://predicate.com/linker");
-    SingularAnnotation_setResourceLiteral(singular_annotation, "New predicate demonstration");
+    SingularAnnotation_predicateFromUri(singular_annotation, "https://predicate.com/linker");
+    SingularAnnotation_resourceLiteral(singular_annotation, "New predicate demonstration");
 
     // in C/C++ we need to manually add the annotation to the editor
     Editor_addSingleAnnotation(editor_ptr, singular_annotation);

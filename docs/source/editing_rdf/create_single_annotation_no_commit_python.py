@@ -46,8 +46,8 @@ editor = rdf.to_editor(sbml, generate_new_metaids=True)
 with editor.new_singular_annotation() as singular_annotation:
     singular_annotation \
         .about('#OmexMetaId0002') \
-        .set_predicate("bqbiol", "is") \
-        .set_resource_uri("uniprot/P01137")
+        .predicate("bqbiol", "is") \
+        .resource_uri("uniprot/P01137")
 
     # In python, the singular annotation gets committed to the model
     # automatically after the current context manager looses scope (i.e.

@@ -51,8 +51,8 @@ int main(){
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
         .about("#OmexMetaId0001")
-        .setPredicate("https://predicate.com/linker")
-        .setResourceLiteral("New predicate demonstration");
+        .predicate("https://predicate.com/linker")
+        .resourceLiteral("New predicate demonstration");
 
     editor.addSingleAnnotation(singular_annotation);
     singular_annotation.freeTriple();

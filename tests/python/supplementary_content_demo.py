@@ -315,7 +315,7 @@ class OmexMetaSpec1_1:
         with editor.new_singular_annotation() as example_using_bqbiol_pred_and_uri_resource:
             example_using_bqbiol_pred_and_uri_resource.about("S") \
                 .predicate("bqbiol", "is") \
-                .resource_uri("uniprot/smad2")
+                .resource_uri("uniprot/Q15796")
 
         with editor.new_singular_annotation() as example_using_bqmodel_pred_and_literal_resource:
             example_using_bqmodel_pred_and_literal_resource.about("MichaelisMenten") \
@@ -356,7 +356,7 @@ class OmexMetaSpec1_1:
         with editor.new_physical_entity() as substrate_entity:
             substrate_entity.about("S") \
                 .has_property("OPB:OPB_00340") \
-                .identity("uniprot/smad2") \
+                .identity("uniprot/Q15796") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
@@ -370,14 +370,14 @@ class OmexMetaSpec1_1:
         with editor.new_physical_entity() as enzyme_entity:
             enzyme_entity.about("E") \
                 .has_property("OPB:OPB_00340") \
-                .identity("uniprot/tgf-beta-receptor") \
+                .identity("uniprot/P37173") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
         with editor.new_physical_entity() as complex_entity:
             complex_entity.about("ES") \
                 .has_property("OPB:OPB_00340") \
-                .identity("uniprot/SmadReceptorComplex") \
+                .identity("uniprot/P37173") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
@@ -410,10 +410,11 @@ class OmexMetaSpec1_1:
 
         # physical process composite annotations use references to physical entities.
         # therefore we build on the content from OmexMetaSpec1_1.section2_3_7_1_physical_entity()
+
         with editor.new_physical_entity() as substrate_entity:
             substrate_entity.about("S") \
                 .has_property("OPB:OPB_00340") \
-                .identity("uniprot/smad2") \
+                .identity("uniprot/Q15796") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
@@ -427,7 +428,7 @@ class OmexMetaSpec1_1:
         with editor.new_physical_entity() as enzyme_entity:
             enzyme_entity.about("E") \
                 .has_property("OPB:OPB_00340") \
-                .identity("uniprot/tgf-beta-receptor") \
+                .identity("uniprot/P37173") \
                 .is_part_of("FMA:66836") \
                 .is_part_of("FMA:63877")
 
@@ -442,12 +443,15 @@ class OmexMetaSpec1_1:
         # print(editor.get_xml())
         # print(editor.get_metaids())
 
+        # We now create annotations for three reactions (physical processes)
+        #  that are simulated in the sbml model
         with editor.new_physical_process() as substrate_bind_enzyme:
             substrate_bind_enzyme.about("R1") \
                 .has_property("OPB:OPB_00593") \
                 .add_source(1.0, "PhysicalEntity0000") \
                 .add_source(1.0, "PhysicalEntity0003") \
-                .add_sink(1.0, "PhysicalEntity0000")
+                .add_sink(1.0, "PhysicalEntity0000") \
+                .is_version_of()
 
         with editor.new_physical_process() as substrate_unbind_enzyme:
             substrate_unbind_enzyme.about("R2") \

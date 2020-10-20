@@ -55,8 +55,8 @@ int main(){
     // create out annotation
     SingularAnnotation *singular_annotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_about(singular_annotation, "ToyModel");
-    SingularAnnotation_setPredicate(singular_annotation, "dc", "description");
-    SingularAnnotation_setResourceLiteral(singular_annotation, "This is a toy model for demonstration purposes");
+    SingularAnnotation_predicate(singular_annotation, "dc", "description");
+    SingularAnnotation_resourceLiteral(singular_annotation, "This is a toy model for demonstration purposes");
 
     // in C/C++ we need to manually add the annotation to the editor
     Editor_addSingleAnnotation(editor_ptr, singular_annotation);

@@ -44,35 +44,35 @@ editor = rdf.to_editor(sbml, generate_new_metaids=True)
 with editor.new_singular_annotation() as literal:
     literal \
         .about('ToyModel') \
-        .set_predicate("dc", "description") \
-        .set_resource_literal("This is a toy model for demonstration purposes")
+        .predicate("dc", "description") \
+        .resource_literal("This is a toy model for demonstration purposes")
 
 with editor.new_singular_annotation() as blank:
     blank \
         .about('#OmexMetaId0001') \
-        .set_predicate("dc", "description") \
-        .set_resource_blank("BankIdentifier")
+        .predicate("dc", "description") \
+        .resource_blank("BankIdentifier")
 
 # The `uniprot/PD1234` gets resolved to https://identifier.org/uniprot/PD12345
 with editor.new_singular_annotation() as uri:
     uri \
         .about('#OmexMetaId0002') \
-        .set_predicate("bqbiol", "is") \
-        .set_resource_uri("uniprot/PD1234")
+        .predicate("bqbiol", "is") \
+        .resource_uri("uniprot/PD1234")
 
 # In fact, this can be string with a format string1/string2
 with editor.new_singular_annotation() as uri:
     uri \
         .about('#OmexMetaId0003') \
-        .set_predicate("bqbiol", "is") \
-        .set_resource_uri("string1/string2")
+        .predicate("bqbiol", "is") \
+        .resource_uri("string1/string2")
 
 # Colons work too
 with editor.new_singular_annotation() as uri:
     uri \
         .about('#OmexMetaId0004') \
-        .set_predicate("bqbiol", "is") \
-        .set_resource_uri("FMA:75132")
+        .predicate("bqbiol", "is") \
+        .resource_uri("FMA:75132")
 
 print(len(rdf))
 print(rdf)

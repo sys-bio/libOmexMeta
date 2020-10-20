@@ -376,8 +376,8 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">singular_annotation</span><span class="p">:</span>
     <span class="n">singular_annotation</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_literal</span><span class="p">(</span><span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_literal</span><span class="p">(</span><span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
@@ -583,8 +583,8 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
     <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">singular_annotation</span>
         <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;ToyModel&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;dc&quot;</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceLiteral</span><span class="p">(</span><span class="s">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;dc&quot;</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceLiteral</span><span class="p">(</span><span class="s">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">);</span>
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
@@ -799,8 +799,8 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
     <span class="c1">// create out annotation</span>
     <span class="n">SingularAnnotation</span> <span class="o">*</span><span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">SingularAnnotation_new</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
     <span class="n">SingularAnnotation_about</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;ToyModel&quot;</span><span class="p">);</span>
-    <span class="n">SingularAnnotation_setPredicate</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;dc&quot;</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">);</span>
-    <span class="n">SingularAnnotation_setResourceLiteral</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_predicate</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;dc&quot;</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_resourceLiteral</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">);</span>
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">Editor_addSingleAnnotation</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">singular_annotation</span><span class="p">);</span>
@@ -1012,8 +1012,8 @@ create metaids</p>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">identity</span><span class="p">:</span>
     <span class="n">identity</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0001&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot/P01137&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot/P01137&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
@@ -1289,8 +1289,8 @@ local:SourceParticipant0000
     <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">singular_annotation</span>
         <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceUri</span><span class="p">(</span><span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceUri</span><span class="p">(</span><span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
@@ -1497,8 +1497,8 @@ local:SourceParticipant0000
     <span class="c1">// create out annotation</span>
     <span class="n">SingularAnnotation</span> <span class="o">*</span><span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">SingularAnnotation_new</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
     <span class="n">SingularAnnotation_about</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">);</span>
-    <span class="n">SingularAnnotation_setPredicate</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">);</span>
-    <span class="n">SingularAnnotation_setResourceUri</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_predicate</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_resourceUri</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">Editor_addSingleAnnotation</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">singular_annotation</span><span class="p">);</span>
@@ -1709,8 +1709,8 @@ RDF graph.</p>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">singular_annotation</span><span class="p">:</span>
     <span class="n">singular_annotation</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0002&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot/P01137&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot/P01137&quot;</span><span class="p">)</span>
 
     <span class="c1"># In python, the singular annotation gets committed to the model</span>
     <span class="c1"># automatically after the current context manager looses scope (i.e.</span>
@@ -1863,8 +1863,8 @@ RDF graph.</p>
     <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">singular_annotation</span>
         <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceUri</span><span class="p">(</span><span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceUri</span><span class="p">(</span><span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">singular_annotation_string</span> <span class="o">=</span> <span class="n">singular_annotation</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">);</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">singular_annotation_string</span><span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -2017,8 +2017,8 @@ RDF graph.</p>
     <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">singular_annotation</span>
         <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceUri</span><span class="p">(</span><span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceUri</span><span class="p">(</span><span class="s">&quot;uniprot/P01137&quot;</span><span class="p">);</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">singular_annotation_string</span> <span class="o">=</span> <span class="n">singular_annotation</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">);</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">singular_annotation_string</span><span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -2432,8 +2432,8 @@ this is a different method call - see below.</p>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">singular_annotation</span><span class="p">:</span>
     <span class="n">singular_annotation</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0001&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate_from_uri</span><span class="p">(</span><span class="s2">&quot;https://predicate.com/linker&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_literal</span><span class="p">(</span><span class="s2">&quot;New predicate demonstration&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate_from_uri</span><span class="p">(</span><span class="s2">&quot;https://predicate.com/linker&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_literal</span><span class="p">(</span><span class="s2">&quot;New predicate demonstration&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
@@ -2613,8 +2613,8 @@ this is a different method call - see below.</p>
     <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">singular_annotation</span>
         <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;https://predicate.com/linker&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceLiteral</span><span class="p">(</span><span class="s">&quot;New predicate demonstration&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;https://predicate.com/linker&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceLiteral</span><span class="p">(</span><span class="s">&quot;New predicate demonstration&quot;</span><span class="p">);</span>
 
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
     <span class="n">singular_annotation</span><span class="p">.</span><span class="n">freeTriple</span><span class="p">();</span>
@@ -2803,8 +2803,8 @@ this is a different method call - see below.</p>
     <span class="c1">// create out annotation</span>
     <span class="n">SingularAnnotation</span> <span class="o">*</span><span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">SingularAnnotation_new</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
     <span class="n">SingularAnnotation_about</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">);</span>
-    <span class="n">SingularAnnotation_setPredicateFromUri</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;https://predicate.com/linker&quot;</span><span class="p">);</span>
-    <span class="n">SingularAnnotation_setResourceLiteral</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;New predicate demonstration&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_predicateFromUri</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;https://predicate.com/linker&quot;</span><span class="p">);</span>
+    <span class="n">SingularAnnotation_resourceLiteral</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">,</span> <span class="s">&quot;New predicate demonstration&quot;</span><span class="p">);</span>
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">Editor_addSingleAnnotation</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">singular_annotation</span><span class="p">);</span>
@@ -3030,35 +3030,35 @@ that demonstrate the various usages of Resource.</p>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">literal</span><span class="p">:</span>
     <span class="n">literal</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_literal</span><span class="p">(</span><span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_literal</span><span class="p">(</span><span class="s2">&quot;This is a toy model for demonstration purposes&quot;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">blank</span><span class="p">:</span>
     <span class="n">blank</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0001&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_blank</span><span class="p">(</span><span class="s2">&quot;BankIdentifier&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_blank</span><span class="p">(</span><span class="s2">&quot;BankIdentifier&quot;</span><span class="p">)</span>
 
 <span class="c1"># The `uniprot/PD1234` gets resolved to https://identifier.org/uniprot/PD12345</span>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">uri</span><span class="p">:</span>
     <span class="n">uri</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0002&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot/PD1234&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot/PD1234&quot;</span><span class="p">)</span>
 
 <span class="c1"># In fact, this can be string with a format string1/string2</span>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">uri</span><span class="p">:</span>
     <span class="n">uri</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0003&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_uri</span><span class="p">(</span><span class="s2">&quot;string1/string2&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_uri</span><span class="p">(</span><span class="s2">&quot;string1/string2&quot;</span><span class="p">)</span>
 
 <span class="c1"># Colons work too</span>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">uri</span><span class="p">:</span>
     <span class="n">uri</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s1">&#39;#OmexMetaId0004&#39;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">set_resource_uri</span><span class="p">(</span><span class="s2">&quot;FMA:75132&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">resource_uri</span><span class="p">(</span><span class="s2">&quot;FMA:75132&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rdf</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
@@ -3304,8 +3304,8 @@ that demonstrate the various usages of Resource.</p>
     <span class="c1">// In fact, this can be string with a format string1/string2</span>
     <span class="n">SingularAnnotation</span> <span class="n">uri2</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">uri2</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0002&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceUri</span><span class="p">(</span><span class="s">&quot;string1/string2&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceUri</span><span class="p">(</span><span class="s">&quot;string1/string2&quot;</span><span class="p">);</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">uri2</span><span class="p">);</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -3510,8 +3510,8 @@ that demonstrate the various usages of Resource.</p>
     <span class="c1">// In fact, this can be string with a format string1/string2</span>
     <span class="n">SingularAnnotation</span> <span class="n">uri2</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">uri2</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0003&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setPredicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">setResourceUri</span><span class="p">(</span><span class="s">&quot;string1/string2&quot;</span><span class="p">);</span>
+        <span class="p">.</span><span class="n">predicate</span><span class="p">(</span><span class="s">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">resourceUri</span><span class="p">(</span><span class="s">&quot;string1/string2&quot;</span><span class="p">);</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">uri2</span><span class="p">);</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>

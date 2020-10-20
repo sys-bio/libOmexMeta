@@ -71,8 +71,8 @@ int main(){
     // In fact, this can be string with a format string1/string2
     SingularAnnotation uri2 = editor.newSingularAnnotation();
     uri2.about("#OmexMetaId0002")
-        .setPredicate("bqbiol", "is")
-        .setResourceUri("string1/string2");
+        .predicate("bqbiol", "is")
+        .resourceUri("string1/string2");
     editor.addSingleAnnotation(uri2);
 
     std::cout << rdf.toString() << std::endl;

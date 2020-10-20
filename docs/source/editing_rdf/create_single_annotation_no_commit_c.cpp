@@ -51,8 +51,8 @@ int main(){
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
         .about("#OmexMetaId0001")
-        .setPredicate("bqbiol", "is")
-        .setResourceUri("uniprot/P01137");
+        .predicate("bqbiol", "is")
+        .resourceUri("uniprot/P01137");
 
     std::string singular_annotation_string = singular_annotation.str("turtle");
     std::cout << singular_annotation_string<< std::endl;

@@ -58,8 +58,8 @@ int main(){
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
         .about("#OmexMetaId0001")
-        .setPredicate("bqbiol", "is")
-        .setResourceUri("uniprot/P01137");
+        .predicate("bqbiol", "is")
+        .resourceUri("uniprot/P01137");
 
     // in C/C++ we need to manually add the annotation to the editor
     editor.addSingleAnnotation(singular_annotation);
