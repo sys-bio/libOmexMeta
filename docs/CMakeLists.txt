@@ -116,6 +116,14 @@ if (${BUILD_DOCS_EXAMPLES})
     add_doc_example(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
     add_doc_example(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
 
+    add_doc_example(AnnotatingAComplexCpp source/annotating_models/annotating_a_biological_complex_cpp.cpp)
+    add_doc_example(AnnotatingAComplexC source/annotating_models/annotating_a_biological_complex_c.cpp)
+
+    set(XML_MODEL_FILES
+            "${CMAKE_CURRENT_SOURCE_DIR}/source/annotating_models/models/ComplexBinding.sbml"
+            )
+    file(COPY ${XML_MODEL_FILES} DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/models")
+
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
             )

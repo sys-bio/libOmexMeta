@@ -13,7 +13,7 @@
 namespace redland {
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-            : node_(node) {}
+        : node_(node) {}
 
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
         std::string identifier_dot_org = "https://identifiers.org/";
@@ -22,25 +22,40 @@ namespace redland {
         std::regex identifiers_org_form1("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+)[/:]{1}(\\S*)");
         std::regex file_regex("^file://");
         std::regex go_regex("^GO:\d*");
+        std::regex opb_regex("^OPB:\d*");
+        std::regex chebi_regex("^[Cc][Hh][Ee][Bb][Ii]:\d*");
 
         std::smatch m;
         std::string uri_string_;
         // if we find identifiers.org form 1
-        if (std::regex_search(uri_string, m, go_regex)){
+        if (std::regex_search(uri_string, m, go_regex)) {
             uri_string_ = identifier_dot_org + uri_string;
-        } else if (std::regex_search(uri_string, m, identifiers_org_form1)) {
+        }
+
+        else if (std::regex_search(uri_string, m, chebi_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, opb_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, identifiers_org_form1)) {
             uri_string_ = identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
-        } else {
+        }
+
+        else {
             uri_string_ = uri_string;
         }
+
         librdf_node *n = librdf_new_node_from_uri_string(
                 World::getWorld(), (const unsigned char *) uri_string_.c_str());
         return LibrdfNode(n);
     }
 
-    LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string& base_uri) {
+    LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string &base_uri) {
         LibrdfUri uri(base_uri);
-        librdf_uri* u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char*) uri_string.c_str());
+        librdf_uri *u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char *) uri_string.c_str());
         uri.freeUri();
         librdf_node *n = librdf_new_node_from_uri(World::getWorld(), u);
         return LibrdfNode(n);
@@ -48,25 +63,24 @@ namespace redland {
 
     LibrdfNode LibrdfNode::fromBlank(const std::string &blank) {
         return LibrdfNode(librdf_new_node_from_blank_identifier(
-                World::getWorld(), (const unsigned char *) blank.c_str()
-        ));
+                World::getWorld(), (const unsigned char *) blank.c_str()));
     }
 
     std::string LibrdfNode::validateLiteralDatatype(const std::string &literal_datatype_uri) {
         std::string literal_datatype_prefix_ = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
         std::string literal_datatype_;
 
-        if (literal_datatype_uri.rfind("http", 0) == 0){
+        if (literal_datatype_uri.rfind("http", 0) == 0) {
             throw std::invalid_argument("std::invalid_argument: LibrdfNode::validateLiteralDatatype() "
                                         "literal_datatype argument should not begin with http. Instead "
                                         "just provide the type portion of the uri.");
         }
         literal_datatype_ = literal_datatype_prefix_ + literal_datatype_uri;
 
-//        if (literal_datatype_uri.rfind(literal_datatype_prefix_, 0) != 0) {
-//        } else {
-//            literal_datatype_ = literal_datatype_uri;
-//        }
+        //        if (literal_datatype_uri.rfind(literal_datatype_prefix_, 0) != 0) {
+        //        } else {
+        //            literal_datatype_ = literal_datatype_uri;
+        //        }
         return literal_datatype_;
     }
 
@@ -166,7 +180,6 @@ namespace redland {
          */
         node_ = librdf_new_node_from_uri_string(
                 World::getWorld(), (const unsigned char *) uri.c_str());
-
     }
 
     void LibrdfNode::setLiteralDatatype(const std::string &datatype) {
@@ -227,7 +240,7 @@ namespace redland {
         LibrdfNode::freeNode(node_);
     }
 
-    std::string LibrdfNode::str() const{
+    std::string LibrdfNode::str() const {
         return LibrdfNode::str(node_);
     }
 
@@ -264,8 +277,8 @@ namespace redland {
         return !(rhs == *this);
     }
 
-    LibrdfNode LibrdfNode::copyNode(const LibrdfNode& node) {
+    LibrdfNode LibrdfNode::copyNode(const LibrdfNode &node) {
         return LibrdfNode(librdf_new_node_from_node(node.node_));
     }
 
-}
+}// namespace redland

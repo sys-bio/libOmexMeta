@@ -63,10 +63,10 @@ namespace omexmeta {
 
         /**
          * @brief constructor for Editor.
-         * @param xml The valid xml content for annotation
+         * @param xml_or_file The valid xml content for annotation OR the path to the file on disk containing this content
          * @param generate_new_metaids. Autogenerate metaids for xml element that do not already have them
-         * @param sbml_semantic_extraction. When @param xml is determined to be sbml, automatically extract some information regarding species and reactions. This
-         * option is ignored when @param xml is not sbml. Default is true.
+         * @param sbml_semantic_extraction. When @param xml_or_file is determined to be sbml, automatically extract some information regarding species and reactions. This
+         * option is ignored when @param xml_or_file is not sbml. Default is true.
          * @param model a reference to the current model (owned by RDF).
          * @param nm_map a set of namespaces for current xml
          *
@@ -79,7 +79,7 @@ namespace omexmeta {
          * the user chooses cellml the elements returned by CellMLAssistant::getValidElements()
          * are used. If the type is unknown, then all elements are given metaids.
          */
-        explicit Editor(const std::string &xml, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
+        explicit Editor(std::string xml_or_file, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
                         bool generate_new_metaids = false, bool sbml_semantic_extraction = true,
                         const std::string &repository_uri = std::string(),
                         const std::string &archive_uri = std::string(), const std::string &model_uri = std::string(),

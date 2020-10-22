@@ -468,6 +468,17 @@ local:SourceParticipant0003
         actual = self.rdf.to_string()
         self.assertEqual(expected, actual)
 
+    def test_context_manager_single_annotation_simple(self):
+        editor = self.rdf.to_editor(XML, generate_new_metaids=True, sbml_semantic_extraction=False)
+        with editor.new_singular_annotation() as example01_singular_annotation:
+            example01_singular_annotation.about("EtOH") \
+                .predicate("bqbiol", "is") \
+                .resource_uri("CHEBI:16236")
+        actual = self.rdf.to_string()
+        expected = ""
+        self.assertEqual(expected, actual)
+
+
     def test_context_manager_physical_process(self):
         editor = self.rdf.to_editor(XML, True)
         with editor.new_physical_process() as physical_process:

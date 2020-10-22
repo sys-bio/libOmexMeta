@@ -78,22 +78,22 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBOMEXMETA_OMEXMETAUTILS_H</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBOMEXMETA_OMEXMETAUTILS_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;redland/librdf.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;redland/LibrdfQuery.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;redland/LibrdfQuery.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;redland/librdf.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Query.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;omexmeta/CurlGet.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;omexmeta/MetaID.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;omexmeta/CurlGet.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;omexmeta/MetaID.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Query.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;libxml/tree.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span>redland;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
@@ -115,47 +115,48 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">static</span> std::string generateUniqueMetaid(</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                librdf_model *model, <span class="keyword">const</span> std::string &amp;metaid_base,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::vector&lt;std::string&gt; &amp;exclusions</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        );</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">static</span> std::string prepareBaseUri(std::string str, <span class="keywordtype">bool</span> absolute_path = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">static</span> std::string getNamespaceFromUri(<span class="keyword">const</span> std::string &amp;uri);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> isFormattedUri(std::string uri);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> endsWith(std::string <span class="keyword">const</span> &amp;full_string, std::string <span class="keyword">const</span> &amp;ending);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        assertRegexMatchSplitByNewLine(<span class="keyword">const</span> std::string &amp;expected_string, <span class="keyword">const</span> std::string &amp;actual_string);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> assertMatchByNewLine(<span class="keyword">const</span> std::string &amp;expected_string, <span class="keyword">const</span> std::string &amp;actual_string);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">static</span> std::vector&lt;std::string&gt;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">static</span> std::string concatMetaIdAndUri(std::string metaid, std::string uri);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">static</span> std::string</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        stringReplace(std::string str, <span class="keyword">const</span> std::string &amp;string_to_replace, <span class="keyword">const</span> std::string &amp;replacement);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> startsWith(<span class="keyword">const</span> std::string &amp;full_string, <span class="keyword">const</span> std::string &amp;start);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> stringInVector(std::vector&lt;std::string&gt; vec, <span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">static</span> xmlDoc *parseXmlDocument(<span class="keyword">const</span> std::string &amp;xml_string);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">static</span> std::string getXmlNodeProperty(xmlNode *node, <span class="keyword">const</span> std::string &amp;property);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">static</span> xmlNode *getChildElementCalled(xmlNode *node, <span class="keyword">const</span> std::string &amp;name);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">static</span> std::vector&lt;xmlNode *&gt; getAllChildElements(xmlNode *node);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> isSubString(<span class="keyword">const</span> std::string &amp;full_string, <span class="keyword">const</span> std::string &amp;substring);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    };</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_OMEXMETAUTILS_H</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::vector&lt;std::string&gt; &amp;exclusions);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">static</span> std::string prepareBaseUri(std::string str, <span class="keywordtype">bool</span> absolute_path = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">static</span> std::string getNamespaceFromUri(<span class="keyword">const</span> std::string &amp;uri);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> isFormattedUri(std::string uri);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> endsWith(std::string <span class="keyword">const</span> &amp;full_string, std::string <span class="keyword">const</span> &amp;ending);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        assertRegexMatchSplitByNewLine(<span class="keyword">const</span> std::string &amp;expected_string, <span class="keyword">const</span> std::string &amp;actual_string);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> assertMatchByNewLine(<span class="keyword">const</span> std::string &amp;expected_string, <span class="keyword">const</span> std::string &amp;actual_string);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">static</span> std::vector&lt;std::string&gt;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        configurePrefixStrings(std::string repository_name, std::string omex_name, std::string model_name);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">static</span> std::string concatMetaIdAndUri(std::string metaid, std::string uri);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keyword">static</span> std::string</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        stringReplace(std::string str, <span class="keyword">const</span> std::string &amp;string_to_replace, <span class="keyword">const</span> std::string &amp;replacement);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> startsWith(<span class="keyword">const</span> std::string &amp;full_string, <span class="keyword">const</span> std::string &amp;start);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> stringInVector(std::vector&lt;std::string&gt; vec, <span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">static</span> xmlDoc *parseXmlDocument(<span class="keyword">const</span> std::string &amp;xml_string);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">static</span> std::string getXmlNodeProperty(xmlNode *node, <span class="keyword">const</span> std::string &amp;property);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keyword">static</span> xmlNode *getChildElementCalled(xmlNode *node, <span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keyword">static</span> std::vector&lt;xmlNode *&gt; getAllChildElements(xmlNode *node);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> isSubString(<span class="keyword">const</span> std::string &amp;full_string, <span class="keyword">const</span> std::string &amp;substring);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">static</span> std::string readFromFile(<span class="keyword">const</span> std::string&amp; file);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    };</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_OMEXMETAUTILS_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassomexmeta_1_1OmexMetaUtils_html"><div class="ttname"><a href="classomexmeta_1_1OmexMetaUtils.html">omexmeta::OmexMetaUtils</a></div><div class="ttdef"><b>Definition:</b> OmexMetaUtils.h:29</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> AnnotationType.h:12</div></div>

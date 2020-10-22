@@ -82,9 +82,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6ac976c1a3762f77a577b5735cd509f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a6ac976c1a3762f77a577b5735cd509f4">Editor</a> (const std::string &amp;xml, bool create_ids, const <a class="el" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, bool sbml_semantic_extraction=true, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</td></tr>
-<tr class="memdesc:a6ac976c1a3762f77a577b5735cd509f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a>.  <a href="classomexmeta_1_1Editor.html#a6ac976c1a3762f77a577b5735cd509f4">More...</a><br /></td></tr>
-<tr class="separator:a6ac976c1a3762f77a577b5735cd509f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be7468055f21d94e72e15f7daa5da5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a6be7468055f21d94e72e15f7daa5da5c">Editor</a> (std::string xml_or_file, bool create_ids, const <a class="el" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, bool sbml_semantic_extraction=true, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</td></tr>
+<tr class="memdesc:a6be7468055f21d94e72e15f7daa5da5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a>.  <a href="classomexmeta_1_1Editor.html#a6be7468055f21d94e72e15f7daa5da5c">More...</a><br /></td></tr>
+<tr class="separator:a6be7468055f21d94e72e15f7daa5da5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa11380bb7e2ca7859937c3f5907b6240"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#aa11380bb7e2ca7859937c3f5907b6240">~Editor</a> ()=default</td></tr>
 <tr class="separator:aa11380bb7e2ca7859937c3f5907b6240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b39f1f137312ce77575e73a86dfb05"><td class="memItemLeft" align="right" valign="top"><a id="ab5b39f1f137312ce77575e73a86dfb05"></a>
@@ -241,8 +241,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Add or change annotations in xml. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6ac976c1a3762f77a577b5735cd509f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ac976c1a3762f77a577b5735cd509f4">&#9670;&nbsp;</a></span>Editor()</h2>
+<a id="a6be7468055f21d94e72e15f7daa5da5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be7468055f21d94e72e15f7daa5da5c">&#9670;&nbsp;</a></span>Editor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,8 +253,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
         <tr>
           <td class="memname">omexmeta::Editor::Editor </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>xml</em>, </td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>xml_or_file</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -326,11 +326,11 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <p>constructor for <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xml</td><td>The valid xml content for annotation </td></tr>
+    <tr><td class="paramname">xml_or_file</td><td>The valid xml content for annotation OR the path to the file on disk containing this content </td></tr>
     <tr><td class="paramname">generate_new_metaids.</td><td>Autogenerate metaids for xml element that do not already have them </td></tr>
     <tr><td class="paramname">sbml_semantic_extraction.</td><td>When</td></tr>
-    <tr><td class="paramname">xml</td><td>is determined to be sbml, automatically extract some information regarding species and reactions. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> option is ignored when</td></tr>
-    <tr><td class="paramname">xml</td><td>is not sbml. Default is true. </td></tr>
+    <tr><td class="paramname">xml_or_file</td><td>is determined to be sbml, automatically extract some information regarding species and reactions. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> option is ignored when</td></tr>
+    <tr><td class="paramname">xml_or_file</td><td>is not sbml. Default is true. </td></tr>
     <tr><td class="paramname">model</td><td>a reference to the current model (owned by <a class="el" href="classomexmeta_1_1RDF.html">RDF</a>). </td></tr>
     <tr><td class="paramname">nm_map</td><td>a set of namespaces for current xml</td></tr>
   </table>

@@ -98,7 +98,7 @@
     <member refid="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1Editor_1ad0bb5d79378fa2b18305780e93858959" kind="function"><name>extractNamespacesFromTriplesVector</name></member>
-    <member refid="classomexmeta_1_1Editor_1a6ac976c1a3762f77a577b5735cd509f4" kind="function"><name>Editor</name></member>
+    <member refid="classomexmeta_1_1Editor_1a6be7468055f21d94e72e15f7daa5da5c" kind="function"><name>Editor</name></member>
     <member refid="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240" kind="function"><name>~Editor</name></member>
     <member refid="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05" kind="function"><name>size</name></member>
     <member refid="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" kind="function"><name>getNamespaces</name></member>
@@ -475,6 +475,7 @@
     <member refid="classomexmeta_1_1OmexMetaUtils_1a1dbcd874b2b72531e7f4f9e82524d8e8" kind="function"><name>getChildElementCalled</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a4d6f7d2140c42435be9339edf975b949" kind="function"><name>getAllChildElements</name></member>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a96e93667c8799b9569cb30fc102b129b" kind="function"><name>isSubString</name></member>
+    <member refid="classomexmeta_1_1OmexMetaUtils_1a68c571d229b00a082f3b5c9ad2f10dbc" kind="function"><name>readFromFile</name></member>
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaXmlAssistant" kind="class"><name>omexmeta::OmexMetaXmlAssistant</name>
     <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aa746a5f71818ee691b7000f796a9c800" kind="variable"><name>xml_</name></member>
@@ -568,6 +569,7 @@
   <compound refid="classomexmeta_1_1PhysicalEntity" kind="class"><name>omexmeta::PhysicalEntity</name>
     <member refid="classomexmeta_1_1PhysicalEntity_1ac5f674248ef40f86df4a5160c2d193e3" kind="variable"><name>identity_resource_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1ac8f480836499a208e2cfbe71a1492e5b" kind="variable"><name>location_resources_</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1aa69e751efbd57e4f4e9c79dc00f7bf59" kind="variable"><name>part_resources_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" kind="variable"><name>entity_id_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kind="function"><name>PhysicalEntity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a0341918665af91cacdb4481d037c42d2" kind="function"><name>PhysicalEntity</name></member>
@@ -590,6 +592,7 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" kind="function"><name>about</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kind="function"><name>is</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" kind="function"><name>isPartOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f" kind="function"><name>hasPart</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalForce" kind="class"><name>omexmeta::PhysicalForce</name>
     <member refid="classomexmeta_1_1PhysicalForce_1a79c5d2ad46b427dea58ab7058c8cd78b" kind="variable"><name>sources_</name></member>
@@ -1151,6 +1154,7 @@
     <member refid="namespaceomexmeta_1a2ca2e5f41e156dc785bb858f82a088d4" kind="function"><name>PhysicalEntity_str</name></member>
     <member refid="namespaceomexmeta_1aa2a75afdf11776f56e4f192886e7beaf" kind="function"><name>PhysicalEntity_hasProperty</name></member>
     <member refid="namespaceomexmeta_1ad16c74638e4679527511519745b2826c" kind="function"><name>PhysicalEntity_isPartOf</name></member>
+    <member refid="namespaceomexmeta_1af19e92e167364a63e1640beb59bbe819" kind="function"><name>PhysicalEntity_hasPart</name></member>
     <member refid="namespaceomexmeta_1aace4dd04badaa0e3cbfa977a1d8d7016" kind="function"><name>PhysicalEntity_about</name></member>
     <member refid="namespaceomexmeta_1a4b7cef4fcdbd4502c94b18da2f85470f" kind="function"><name>PhysicalProcess_new</name></member>
     <member refid="namespaceomexmeta_1a97146d9b855c53650e54c471f053a4dc" kind="function"><name>PhysicalProcess_delete</name></member>

@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Annotating Models &mdash; libomexmeta 1.1.17 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reading RDF" href="../reading_rdf/reading_rdf.html" />
+    <link rel="prev" title="Background to Semantic Annotations" href="../background.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Annotating Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#annotating-a-biological-complex">Annotating a biological complex</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Annotating Models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/annotating_models/annotating_models_index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="annotating-models">
+<h1>Annotating Models<a class="headerlink" href="#annotating-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="annotating-a-biological-complex">
+<h2>Annotating a biological complex<a class="headerlink" href="#annotating-a-biological-complex" title="Permalink to this headline">¶</a></h2>
+<p>A biological complex is a functional unit composed of multiple parts. To annotate that you are modelling
+a complex you can neglect the <cite>identity</cite> and instead use an arbitrary number of <cite>hasPart</cite> predicates. In this example
+we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>.</p>
+<p>We use an SBML file located at <cite>models/ComplexBinding.sbml</cite> relative to our current working directory which contains the following SBML source code:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">SBML source code for</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;sbml</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.sbml.org/sbml/level3/version1/core&quot;</span> <span class="na">level=</span><span class="s">&quot;3&quot;</span> <span class="na">version=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;model</span> <span class="na">metaid=</span><span class="s">&quot;ComplexBinding&quot;</span> <span class="na">id=</span><span class="s">&quot;ComplexBinding&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;listOfCompartments&gt;</span>
+      <span class="nt">&lt;compartment</span> <span class="na">sboTerm=</span><span class="s">&quot;SBO:0000410&quot;</span> <span class="na">id=</span><span class="s">&quot;default_compartment&quot;</span> <span class="na">spatialDimensions=</span><span class="s">&quot;3&quot;</span> <span class="na">size=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;compartment</span> <span class="na">id=</span><span class="s">&quot;cytoplasm&quot;</span> <span class="na">spatialDimensions=</span><span class="s">&quot;3&quot;</span> <span class="na">size=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/listOfCompartments&gt;</span>
+    <span class="nt">&lt;listOfSpecies&gt;</span>
+      <span class="nt">&lt;species</span> <span class="na">id=</span><span class="s">&quot;Shc&quot;</span>  <span class="na">metaid=</span><span class="s">&quot;Shc&quot;</span> <span class="na">compartment=</span><span class="s">&quot;cytoplasm&quot;</span> <span class="na">initialConcentration=</span><span class="s">&quot;1&quot;</span> <span class="na">hasOnlySubstanceUnits=</span><span class="s">&quot;false&quot;</span> <span class="na">boundaryCondition=</span><span class="s">&quot;false&quot;</span> <span class="na">constant=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;species</span> <span class="na">id=</span><span class="s">&quot;Sos&quot;</span>  <span class="na">metaid=</span><span class="s">&quot;Sos&quot;</span> <span class="na">compartment=</span><span class="s">&quot;cytoplasm&quot;</span> <span class="na">initialConcentration=</span><span class="s">&quot;1&quot;</span> <span class="na">hasOnlySubstanceUnits=</span><span class="s">&quot;false&quot;</span> <span class="na">boundaryCondition=</span><span class="s">&quot;false&quot;</span> <span class="na">constant=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;species</span> <span class="na">id=</span><span class="s">&quot;Grb2&quot;</span> <span class="na">metaid=</span><span class="s">&quot;Grb2&quot;</span> <span class="na">compartment=</span><span class="s">&quot;cytoplasm&quot;</span> <span class="na">initialConcentration=</span><span class="s">&quot;1&quot;</span> <span class="na">hasOnlySubstanceUnits=</span><span class="s">&quot;false&quot;</span> <span class="na">boundaryCondition=</span><span class="s">&quot;false&quot;</span> <span class="na">constant=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;species</span> <span class="na">id=</span><span class="s">&quot;Shc_Sos_Grb2&quot;</span> <span class="na">compartment=</span><span class="s">&quot;default_compartment&quot;</span> <span class="na">initialConcentration=</span><span class="s">&quot;0&quot;</span> <span class="na">hasOnlySubstanceUnits=</span><span class="s">&quot;false&quot;</span> <span class="na">boundaryCondition=</span><span class="s">&quot;false&quot;</span> <span class="na">constant=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/listOfSpecies&gt;</span>
+    <span class="nt">&lt;listOfParameters&gt;</span>
+      <span class="nt">&lt;parameter</span> <span class="na">id=</span><span class="s">&quot;k_bind&quot;</span> <span class="na">metaid=</span><span class="s">&quot;k_bind&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;parameter</span> <span class="na">id=</span><span class="s">&quot;k_unbind&quot;</span> <span class="na">metaid=</span><span class="s">&quot;k_unbind&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/listOfParameters&gt;</span>
+    <span class="nt">&lt;listOfReactions&gt;</span>
+      <span class="nt">&lt;reaction</span> <span class="na">id=</span><span class="s">&quot;Binding&quot;</span> <span class="na">metaid=</span><span class="s">&quot;Binding&quot;</span> <span class="na">reversible=</span><span class="s">&quot;false&quot;</span> <span class="na">fast=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;listOfReactants&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Shc&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Sos&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Grb2&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/listOfReactants&gt;</span>
+        <span class="nt">&lt;listOfProducts&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Shc_Sos_Grb2&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/listOfProducts&gt;</span>
+        <span class="nt">&lt;kineticLaw&gt;</span>
+          <span class="nt">&lt;math</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;apply&gt;</span>
+              <span class="nt">&lt;times/&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> cytoplasm <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> k_bind <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> Shc <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> Sos <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> Grb2 <span class="nt">&lt;/ci&gt;</span>
+            <span class="nt">&lt;/apply&gt;</span>
+          <span class="nt">&lt;/math&gt;</span>
+        <span class="nt">&lt;/kineticLaw&gt;</span>
+      <span class="nt">&lt;/reaction&gt;</span>
+      <span class="nt">&lt;reaction</span> <span class="na">id=</span><span class="s">&quot;Unbinding&quot;</span> <span class="na">metaid=</span><span class="s">&quot;Unbinding&quot;</span> <span class="na">reversible=</span><span class="s">&quot;false&quot;</span> <span class="na">fast=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;listOfReactants&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Shc_Sos_Grb2&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/listOfReactants&gt;</span>
+        <span class="nt">&lt;listOfProducts&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Shc&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Sos&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;speciesReference</span> <span class="na">species=</span><span class="s">&quot;Grb2&quot;</span> <span class="na">stoichiometry=</span><span class="s">&quot;1&quot;</span> <span class="na">constant=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/listOfProducts&gt;</span>
+        <span class="nt">&lt;kineticLaw&gt;</span>
+          <span class="nt">&lt;math</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;apply&gt;</span>
+              <span class="nt">&lt;times/&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> cytoplasm <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> k_unbind <span class="nt">&lt;/ci&gt;</span>
+              <span class="nt">&lt;ci&gt;</span> Shc_Sos_Grb2 <span class="nt">&lt;/ci&gt;</span>
+            <span class="nt">&lt;/apply&gt;</span>
+          <span class="nt">&lt;/math&gt;</span>
+        <span class="nt">&lt;/kineticLaw&gt;</span>
+      <span class="nt">&lt;/reaction&gt;</span>
+    <span class="nt">&lt;/listOfReactions&gt;</span>
+  <span class="nt">&lt;/model&gt;</span>
+<span class="nt">&lt;/sbml&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can create this model using the following <cite>tellurium</cite> code:</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tellurium</span> <span class="k">as</span> <span class="nn">te</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    model ComplexBinding</span>
+<span class="s2">       compartment cytoplasm = 1;</span>
+
+<span class="s2">       Shc in cytoplasm;</span>
+<span class="s2">       Sos in cytoplasm;</span>
+<span class="s2">       Grb2 in cytoplasm;</span>
+<span class="s2">       Shc = 1;</span>
+<span class="s2">       Sos = 1;</span>
+<span class="s2">       Grb2 = 1;</span>
+<span class="s2">       Shc_Sos_Grb2 = 0;</span>
+<span class="s2">       k_bind = 0.1;</span>
+<span class="s2">       k_unbind = 0.1;</span>
+<span class="s2">       Binding: Shc + Sos + Grb2 =&gt; Shc_Sos_Grb2; cytoplasm*k_bind*Shc*Sos*Grb2;</span>
+<span class="s2">       Unbinding: Shc_Sos_Grb2 =&gt; Shc + Sos + Grb2; cytoplasm*k_unbind*Shc_Sos_Grb2;</span>
+<span class="s2">    end</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">sbml</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">getSBML</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sbml</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="docutils container">
+<p>C</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Annotating a biological complex in Python</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+
+<span class="c1"># create an empty RDF object</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
+
+
+<span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="s2">&quot;models/ComplexBinding&quot;</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sbml_semantic_extraction</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">sbml_with_metaids</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="n">get_xml</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sbml_with_metaids</span><span class="p">)</span>
+
+<span class="c1"># Remember that in Python, the with block takes care of adding the annotation to our RDF graph</span>
+<span class="c1"># so that its not possible to forget.</span>
+<span class="c1"># Annotate the Shc entity</span>
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">Shc</span><span class="p">:</span>
+    <span class="n">Shc</span> \
+        <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;Shc&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;uniprot/P29353&quot;</span><span class="p">)</span>
+
+    <span class="c1"># We could optionally annot</span>
+    <span class="c1"># ate where we are modelling Shc, for instance nucleus, cytoplasm, skin, bone, etc. Here</span>
+    <span class="c1"># we do not need to since we are only modelling reactions in the cytoplasm.</span>
+
+<span class="c1"># Annotate the Sos entity</span>
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">Sos</span><span class="p">:</span>
+    <span class="n">Sos</span> \
+        <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;Sos&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;uniprot/Q07889&quot;</span><span class="p">)</span>
+
+<span class="c1"># Annotate the Grb2 entity</span>
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">Grb2</span><span class="p">:</span>
+    <span class="n">Grb2</span> \
+        <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;Grb2&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;uniprot/P62993&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Annotate the shc_sos_grb2 entity</span>
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">shc_sos_grb2</span><span class="p">:</span>
+    <span class="n">shc_sos_grb2</span> \
+        <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;shc_sos_grb2&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_part</span><span class="p">(</span><span class="s2">&quot;uniprot/P29353&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_part</span><span class="p">(</span><span class="s2">&quot;uniprot/Q07889&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">has_part</span><span class="p">(</span><span class="s2">&quot;uniprot/P62993&quot;</span><span class="p">)</span>
+
+<span class="c1"># annotate the binding reaction</span>
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_process</span><span class="p">()</span> <span class="k">as</span> <span class="n">binding_reaction</span><span class="p">:</span>
+    <span class="n">binding_reaction</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;binding&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Shc&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Grb2&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Sos&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Shc_Sos_Grb2&quot;</span><span class="p">)</span>
+
+<span class="c1"># annotate the unbinding reaction</span>
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_process</span><span class="p">()</span> <span class="k">as</span> <span class="n">unbinding_reaction</span><span class="p">:</span>
+    <span class="n">unbinding_reaction</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;unbinding&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Shc_Sos_Grb2&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Shc&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Grb2&quot;</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Sos&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
+
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Annotating a biological complex in C++</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;filesystem&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">RDF</span> <span class="n">rdf</span><span class="p">;</span>
+
+    <span class="c1">// Here we leave &quot;generate_new_metaids&quot; argument to false and set &quot;sbml_semantic_extraction&quot; to false so that we can annotate ourselves</span>
+    <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toEditor</span><span class="p">(</span><span class="s">&quot;models/ComplexBinding.sbml&quot;</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
+
+    <span class="c1">// Annotate the Shc entity</span>
+    <span class="n">PhysicalEntity</span> <span class="n">Shc</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalEntity</span><span class="p">();</span>
+    <span class="n">Shc</span>
+            <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Shc&quot;</span><span class="p">)</span>                  <span class="c1">// corresponds to the metaid for Shc in the SBML source code</span>
+            <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/P29353&quot;</span><span class="p">)</span>   <span class="c1">// SHC1</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">Shc</span><span class="p">);</span>
+
+    <span class="c1">// We could optionally annotate where we are modelling Shc, for instance nucleus, cytoplasm, skin, bone, etc. Here</span>
+    <span class="c1">// we do not need to since we are only modelling reactions in the cytoplasm.</span>
+
+    <span class="c1">// Annotate the Sos entity</span>
+    <span class="n">PhysicalEntity</span> <span class="n">Sos</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalEntity</span><span class="p">();</span>
+    <span class="n">Sos</span>
+            <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Sos&quot;</span><span class="p">)</span>                 <span class="c1">// corresponds to the metaid for Sos in the SBML source code</span>
+            <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/Q07889&quot;</span><span class="p">)</span>   <span class="c1">// SOS1</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">Sos</span><span class="p">);</span>
+
+    <span class="c1">// Annotate the Grb2 entity</span>
+    <span class="n">PhysicalEntity</span> <span class="n">Grb2</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalEntity</span><span class="p">();</span>
+    <span class="n">Grb2</span>
+            <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Grb2&quot;</span><span class="p">)</span>                 <span class="c1">// corresponds to the metaid for Grb2 in the SBML source code</span>
+            <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/P62993&quot;</span><span class="p">)</span>   <span class="c1">// GRB2</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">Grb2</span><span class="p">);</span>
+
+
+    <span class="c1">// Annotate the Complex containing Shc, Sos and Grb2</span>
+    <span class="n">PhysicalEntity</span> <span class="n">shc_sos_grb2</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalEntity</span><span class="p">();</span>
+    <span class="n">shc_sos_grb2</span>
+            <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Shc_Sos_Grb2&quot;</span><span class="p">)</span>                 <span class="c1">// corresponds to the metaid for Grb2 in the SBML source code</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>        <span class="c1">// Were modelling the chemical concentration</span>
+            <span class="p">.</span><span class="n">hasPart</span><span class="p">(</span><span class="s">&quot;uniprot/P29353&quot;</span><span class="p">)</span>                   <span class="c1">// SHC1</span>
+            <span class="p">.</span><span class="n">hasPart</span><span class="p">(</span><span class="s">&quot;uniprot/Q07889&quot;</span><span class="p">)</span>                   <span class="c1">// SOS1</span>
+            <span class="p">.</span><span class="n">hasPart</span><span class="p">(</span><span class="s">&quot;uniprot/P62993&quot;</span><span class="p">)</span> <span class="p">;</span>            <span class="c1">// GRB2</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">shc_sos_grb2</span><span class="p">);</span>
+
+    <span class="c1">// annotate the binding reaction</span>
+    <span class="n">PhysicalProcess</span> <span class="n">binding_reaction</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalProcess</span><span class="p">();</span>
+    <span class="n">binding_reaction</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Binding&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Grb2&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Sos&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc_Sos_Grb2&quot;</span><span class="p">);</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalProcess</span><span class="p">(</span><span class="n">binding_reaction</span><span class="p">);</span>
+
+    <span class="c1">// annotate the unbinding reaction</span>
+    <span class="n">PhysicalProcess</span> <span class="n">unbinding_reaction</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalProcess</span><span class="p">();</span>
+    <span class="n">unbinding_reaction</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Unbinding&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc_Sos_Grb2&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Grb2&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Sos&quot;</span><span class="p">);</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalProcess</span><span class="p">(</span><span class="n">unbinding_reaction</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<p>Output:</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../reading_rdf/reading_rdf.html" class="btn btn-neutral float-right" title="Reading RDF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../background.html" class="btn btn-neutral float-left" title="Background to Semantic Annotations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ciaran Welsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

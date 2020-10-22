@@ -12,7 +12,7 @@ Add or change annotations in xml.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Editor_a6ac976c1a3762f77a577b5735cd509f4}{Editor}} (const std\+::string \&xml, bool create\+\_\+ids, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true, const std\+::string \&repository\+\_\+uri=std\+::string(), const std\+::string \&archive\+\_\+uri=std\+::string(), const std\+::string \&model\+\_\+uri=std\+::string(), const std\+::string \&local\+\_\+uri=std\+::string())
+\mbox{\hyperlink{classomexmeta_1_1Editor_a6be7468055f21d94e72e15f7daa5da5c}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true, const std\+::string \&repository\+\_\+uri=std\+::string(), const std\+::string \&archive\+\_\+uri=std\+::string(), const std\+::string \&model\+\_\+uri=std\+::string(), const std\+::string \&local\+\_\+uri=std\+::string())
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}{$\sim$\+Editor}} ()=default
 \item 
@@ -129,11 +129,11 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f40
 Add or change annotations in xml. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a6ac976c1a3762f77a577b5735cd509f4}\label{classomexmeta_1_1Editor_a6ac976c1a3762f77a577b5735cd509f4}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a6be7468055f21d94e72e15f7daa5da5c}\label{classomexmeta_1_1Editor_a6be7468055f21d94e72e15f7daa5da5c}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!Editor@{Editor}}
 \index{Editor@{Editor}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{Editor()}{Editor()}}
-{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{xml,  }\item[{bool}]{create\+\_\+ids,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true},  }\item[{const std\+::string \&}]{repository\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{archive\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{model\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{local\+\_\+uri = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true},  }\item[{const std\+::string \&}]{repository\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{archive\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{model\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{local\+\_\+uri = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -141,15 +141,15 @@ constructor for \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em xml} & The valid xml content for annotation \\
+{\em xml\+\_\+or\+\_\+file} & The valid xml content for annotation OR the path to the file on disk containing this content \\
 \hline
 {\em generate\+\_\+new\+\_\+metaids.} & Autogenerate metaids for xml element that do not already have them \\
 \hline
 {\em sbml\+\_\+semantic\+\_\+extraction.} & When\\
 \hline
-{\em xml} & is determined to be sbml, automatically extract some information regarding species and reactions. \mbox{\hyperlink{classThis}{This}} option is ignored when\\
+{\em xml\+\_\+or\+\_\+file} & is determined to be sbml, automatically extract some information regarding species and reactions. \mbox{\hyperlink{classThis}{This}} option is ignored when\\
 \hline
-{\em xml} & is not sbml. Default is true. \\
+{\em xml\+\_\+or\+\_\+file} & is not sbml. Default is true. \\
 \hline
 {\em model} & a reference to the current model (owned by \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}}). \\
 \hline

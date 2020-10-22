@@ -480,6 +480,10 @@ class PhysicalEntity:
         self._obj = PyOmexMetaAPI.physical_entity_is_part_of(self.get_ptr(), is_part_of.encode())
         return self
 
+    def has_part(self, part: str) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_has_part(self.get_ptr(), part.encode())
+        return self
+
 
 class PhysicalProcess:
 

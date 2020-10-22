@@ -52,7 +52,9 @@ static std\+::vector$<$ xml\+Node $\ast$ $>$ {\bfseries get\+All\+Child\+Element
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a96e93667c8799b9569cb30fc102b129b}\label{classomexmeta_1_1OmexMetaUtils_a96e93667c8799b9569cb30fc102b129b}} 
 static bool {\bfseries is\+Sub\+String} (const std\+::string \&full\+\_\+string, const std\+::string \&substring)
-\end{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_a68c571d229b00a082f3b5c9ad2f10dbc}{read\+From\+File}} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em read \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -208,7 +210,22 @@ process a string intended to be a base uri.
 {\em absolute\+\_\+path} & automatically make str an absolute path to the current working directory.\\
 \hline
 \end{DoxyParams}
-Base uri\textquotesingle{}s are important in redland libraries. If they do not begin with {\ttfamily \href{file://}{\texttt{ file\+://}}} {\ttfamily http} or {\ttfamily https}, sparql querying will break down. \mbox{\hyperlink{classThis}{This}} is a helper function to ensure the base uri is properly formatted. \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}\label{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}} 
+Base uri\textquotesingle{}s are important in redland libraries. If they do not begin with {\ttfamily \href{file://}{\texttt{ file\+://}}} {\ttfamily http} or {\ttfamily https}, sparql querying will break down. \mbox{\hyperlink{classThis}{This}} is a helper function to ensure the base uri is properly formatted. \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a68c571d229b00a082f3b5c9ad2f10dbc}\label{classomexmeta_1_1OmexMetaUtils_a68c571d229b00a082f3b5c9ad2f10dbc}} 
+\index{omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}!readFromFile@{readFromFile}}
+\index{readFromFile@{readFromFile}!omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}}
+\doxysubsubsection{\texorpdfstring{readFromFile()}{readFromFile()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::read\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+read 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & into std\+::string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}\label{classomexmeta_1_1OmexMetaUtils_a9c445a8e0cc6589b25d6fa630686c171}} 
 \index{omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}!removeFile@{removeFile}}
 \index{removeFile@{removeFile}!omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}}
 \doxysubsubsection{\texorpdfstring{removeFile()}{removeFile()}}

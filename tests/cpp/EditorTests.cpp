@@ -96,7 +96,6 @@ TEST_F(EditorTests, TestArchiveName3) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-
 TEST_F(EditorTests, TestSetModelName) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -133,6 +132,35 @@ TEST_F(EditorTests, TestSetLocalNam) {
     ASSERT_STREQ(expected.c_str(), editor.getLocalUri().c_str());
 }
 
+TEST_F(EditorTests, TestEditorFromSBMLInFile) {
+    std::ofstream myfile;
+    myfile.open ("example.sbml");
+    myfile <<  SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
+    myfile.close();
+
+    RDF rdf;
+    Editor editor = rdf.toEditor("example.sbml", true, false);
+    editor.addSingleAnnotation(
+            Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
+            std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
+            Resource(LibrdfNode::fromUriString("pubmed:12991237"))
+    );
+
+    std::string actual = rdf.toString();
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    remove("example.sbml");
+
+}
 
 TEST_F(EditorTests, TestAddAnnotation) {
     RDF rdf;
@@ -328,6 +356,66 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
+                           "\n"
+                           "";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    singularAnnotation.freeStatement();
+
+}
+
+TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternChebiResource) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation
+            .about("OmexMetaId0001")
+            .setPredicate("bqbiol", "isVersionOf")
+            .setResourceUri("CHEBI:16253");
+
+    editor.addSingleAnnotation(singularAnnotation);
+
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/CHEBI:16253> .\n"
+                           "\n"
+                           "";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    singularAnnotation.freeStatement();
+
+}
+
+TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternOPBResource) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation
+            .about("OmexMetaId0001")
+            .setPredicate("bqbiol", "isVersionOf")
+            .setResourceUri("OPB:16253");
+
+    editor.addSingleAnnotation(singularAnnotation);
+
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:16253> .\n"
                            "\n"
                            "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -937,8 +1025,6 @@ TEST_F(EditorTests, TestEditorWithoutGivingTypeInformation){
     editor.addPhysicalProcess(r2);
 
     std::cout << rdf.toString("turtle") << std::endl;
-
-
 }
 
 /*****************************************************************

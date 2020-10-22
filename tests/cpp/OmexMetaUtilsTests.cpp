@@ -122,10 +122,22 @@ TEST_F(OmexMetaUtilsTests, TestStartsWith) {
     ASSERT_TRUE(OmexMetaUtils::startsWith(s1, s2));
 }
 
+TEST_F(OmexMetaUtilsTests, TestStartsWith2) {
+    std::string s1 = "<sbml";
+    std::string s2 = "<";
+    ASSERT_TRUE(OmexMetaUtils::startsWith(s1, s2));
+}
+
 TEST_F(OmexMetaUtilsTests, TestStartsWithFail) {
     std::string s1 = "AString";
     std::string s2 = "N";
     ASSERT_FALSE(OmexMetaUtils::startsWith(s1, s2));
+}
+
+TEST_F(OmexMetaUtilsTests, TestStartsWithFail2) {
+    std::string s1 = "<sbml";
+    std::string s2 = "<";
+    ASSERT_FALSE(!OmexMetaUtils::startsWith(s1, s2));
 }
 
 TEST_F(OmexMetaUtilsTests, TestStringInVector) {
@@ -178,4 +190,17 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaidsUsingExclusionList) {
     ASSERT_STREQ("#OmexMetaId0000", metaid1.c_str());
     ASSERT_STREQ("#OmexMetaId0001", metaid2.c_str());
 
+}
+
+TEST_F(OmexMetaUtilsTests, TestReadFromFile) {
+      std::ofstream myfile;
+      myfile.open ("example.txt");
+      myfile << "Writing this to a file.\n";
+      myfile.close();
+
+      std::string actual = OmexMetaUtils::readFromFile("example.txt");
+      std::string expected = "Writing this to a file.\n";
+      ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+      remove("example.txt");
 }

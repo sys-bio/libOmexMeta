@@ -872,6 +872,16 @@ namespace omexmeta {
         }
     }
 
+    PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part) {
+        try {
+            physical_entity_ptr->hasPart(part);
+            return physical_entity_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
     PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about){
         try{
             physical_entity_ptr->about(about);

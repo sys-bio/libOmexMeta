@@ -3,21 +3,23 @@
 //
 
 #include "omexmeta/Editor.h"
-
+#include <filesystem>
+#include <utility>
 
 namespace omexmeta {
 
-    Editor::Editor(const std::string &xml, bool create_ids,
+    Editor::Editor(std::string xml_or_file, bool create_ids,
                    const LibrdfModel &model, NamespaceMap &ns_map,
                    bool generate_new_metaids, bool sbml_semantic_extraction,
                    const std::string &repository_uri,
                    const std::string &archive_uri, const std::string &model_uri,
                    const std::string &local_uri)
-        : xml_(xml), create_ids_(create_ids), model_(model), namespaces_(ns_map),
+        : xml_(std::move(xml_or_file)), create_ids_(create_ids), model_(model), namespaces_(ns_map),
           generate_new_metaids_(generate_new_metaids),
           sbml_semantic_extraction_(sbml_semantic_extraction),
           repository_uri_(repository_uri), archive_uri_(archive_uri),
           model_uri_(model_uri), local_uri_(local_uri) {
+
 
         // sometimes in the python api users can accidently start the sbml
         // string with a new line character. Catch this and error.
@@ -26,7 +28,14 @@ namespace omexmeta {
                                         "xml input string starts with a newline character. "
                                         "Please remove the newline.");
         }
-        MarkupIdentifier identifier(xml);
+        // if xml_does not start with < and exists on disk, read it. The first condition is not included we get a filename too long error from exists
+        if ( xml_.find("<", 0) != 0){ // != 0 means not found
+            if (std::filesystem::exists(xml_)) {
+                // read from disk
+                xml_ = OmexMetaUtils::readFromFile(xml_);
+            }
+        }
+        MarkupIdentifier identifier(xml_);
         if (identifier.isSBML()) {
             type_ = OMEXMETA_TYPE_SBML;
         } else if (identifier.isCellML()) {
@@ -38,7 +47,7 @@ namespace omexmeta {
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET);// this should never happen
         XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(
-                xml, getType(), generate_new_metaids, "#OmexMetaId", 4);
+                xml_, getType(), generate_new_metaids, "#OmexMetaId", 4);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids =
                 xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;

@@ -15,7 +15,7 @@
     <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/OmexMetaCApi.h</includedby>
     <includedby refid="OmexMetaXmlAssistant_8cpp" local="yes">src/omexmeta/OmexMetaXmlAssistant.cpp</includedby>
     <incdepgraph>
-      <node id="21">
+      <node id="23">
         <label>sys/stat.h</label>
       </node>
       <node id="24">
@@ -25,10 +25,10 @@
       <node id="22">
         <label>filesystem</label>
       </node>
-      <node id="23">
+      <node id="21">
         <label>assert.h</label>
       </node>
-      <node id="20">
+      <node id="15">
         <label>stdexcept</label>
       </node>
       <node id="2">
@@ -37,7 +37,7 @@
       <node id="5">
         <label>string</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>redland/LibrdfQuery.h</label>
       </node>
       <node id="4">
@@ -63,68 +63,68 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
         <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
       </node>
-      <node id="15">
+      <node id="18">
         <label>exception</label>
       </node>
       <node id="9">
         <label>redland/RedlandAPI.h</label>
       </node>
-      <node id="18">
+      <node id="13">
         <label>omexmeta/CurlGet.h</label>
         <link refid="CurlGet_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-      </node>
-      <node id="19">
-        <label>curl/curl.h</label>
       </node>
       <node id="14">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="17">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="16">
         <label>omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -135,10 +135,10 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="20">
         <label>vector</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>redland/librdf.h</label>
       </node>
       <node id="7">
@@ -163,7 +163,7 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -172,7 +172,7 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="19">
         <label>unordered_map</label>
       </node>
       <node id="3">

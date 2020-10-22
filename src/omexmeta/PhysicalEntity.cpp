@@ -62,6 +62,13 @@ namespace omexmeta {
         return *this;
     }
 
+    PhysicalEntity &PhysicalEntity::hasPart(const std::string &where) {
+        part_resources_.push_back(std::move(
+                Resource(LibrdfNode::fromUriString(where))
+        ));
+        return *this;
+    }
+
     const Resource &PhysicalEntity::getIdentityResource() const {
         return identity_resource_;
     }
@@ -94,6 +101,22 @@ namespace omexmeta {
                 }
             }
         }
+        // has part resources are optional
+        if (!part_resources_.empty()) {
+            int count = 0;
+            for (auto &i : part_resources_) {
+                if (i.getNode() == nullptr) {
+                    std::ostringstream err;
+                    err << "PhysicalEntity::toTriples(): Cannot create"
+                           " triples because item ";
+                    err << count << "of the \"hasPart\" information is not set. ";
+                    err << "Use the addPart() method.";
+                    throw AnnotationBuilderException(
+                            err.str());
+                }
+            }
+        }
+
         // when physical_property_id_ is empty it means we have not
         // called the toTriples() method before and an ID needs to be generated.
         // When it is not empty - we have called toTriples before and we can skip ID generation
@@ -110,21 +133,26 @@ namespace omexmeta {
         }
         entity_id_ = OmexMetaUtils::concatMetaIdAndUri(entity_id_, getLocalUri());
         // preallocate for efficiency
-        Triples triples((int)getLocationResources().size() + 3);
+        Triples triples((int)getLocationResources().size() + (int)part_resources_.size() + 3);
+
         Triples physical_property_triples = physical_property_.toTriples(entity_id_);
+
         for (auto &it : physical_property_triples) {
             triples.move_back(it); // moves the statement
         }
+
         physical_property_triples.freeTriples();
         assert(physical_property_triples.size() == 0);
 
 
         // the "what" part of physical entity triple
-        triples.emplace_back(
-                LibrdfNode::fromUriString(entity_id_).get(),
-                BiomodelsBiologyQualifier("is").getNode(),
-                identity_resource_.getNode()
-        );
+
+        if (identity_resource_.isSet()) {
+            triples.emplace_back(
+                    LibrdfNode::fromUriString(entity_id_).get(),
+                    BiomodelsBiologyQualifier("is").getNode(),
+                    identity_resource_.getNode());
+        }
 
         // make it explicit that location resources is optional
         if (!location_resources_.empty()) {
@@ -133,6 +161,16 @@ namespace omexmeta {
                 triples.emplace_back(
                         LibrdfNode::fromUriString(entity_id_).get(),
                         BiomodelsBiologyQualifier("isPartOf").getNode(),
+                        locationResource.getNode());
+            }
+        }
+        // make it explicit that hasPart resources is optional
+        if (!part_resources_.empty()) {
+            // the "where" part of the physical entity
+            for (auto &locationResource : part_resources_) {
+                triples.emplace_back(
+                        LibrdfNode::fromUriString(entity_id_).get(),
+                        BiomodelsBiologyQualifier("hasPart").getNode(),
                         locationResource.getNode());
             }
         }
@@ -172,6 +210,7 @@ namespace omexmeta {
     PhysicalEntity &PhysicalEntity::isPartOf(const std::string &isPartOf) {
         return addLocation(isPartOf);
     }
+
 
 
 }

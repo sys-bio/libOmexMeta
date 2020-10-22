@@ -4,13 +4,13 @@
     <compoundname>Query.cpp</compoundname>
     <includes refid="Query_8h" local="yes">omexmeta/Query.h</includes>
     <incdepgraph>
-      <node id="19">
+      <node id="20">
         <label>sys/stat.h</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>filesystem</label>
       </node>
-      <node id="21">
+      <node id="18">
         <label>assert.h</label>
       </node>
       <node id="13">
@@ -25,7 +25,7 @@
       <node id="11">
         <label>string</label>
       </node>
-      <node id="9">
+      <node id="8">
         <label>redland/LibrdfQuery.h</label>
       </node>
       <node id="14">
@@ -49,23 +49,23 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -108,11 +108,11 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -123,10 +123,10 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="21">
         <label>vector</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>redland/librdf.h</label>
       </node>
       <node id="16">

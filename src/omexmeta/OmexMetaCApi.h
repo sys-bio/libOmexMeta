@@ -249,6 +249,8 @@ namespace omexmeta {
 
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
 
+    OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
+
     OMEXMETACAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
 
 /*********************************************************************

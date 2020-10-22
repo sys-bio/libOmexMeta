@@ -145,6 +145,7 @@ TEST_F(TripleTests, TestStatementResource) {
 }
 
 
+
 TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
     Triple triple;
     triple.about("http://omex-library/myomex.omex", "mymodel.xml", "metaid2");

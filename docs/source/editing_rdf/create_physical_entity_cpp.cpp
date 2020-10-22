@@ -111,10 +111,10 @@ int main(){
     physicalEntity.about( "#OmexMetaId0000")
         .hasProperty( "OPB:OPB_00340")
         .identity("uniprot/P84022")
-        .addLocation("fma/FMA:63877")
-        .addLocation("fma:FMA:70737")
-        .addLocation("fma/FMA:24178")
-        .addLocation("fma/FMA_7163");
+        .isPartOf("fma/FMA:63877")
+        .isPartOf("fma:FMA:70737")
+        .isPartOf("fma/FMA:24178")
+        .isPartOf("fma/FMA_7163");
 
     editor.addPhysicalEntity(physicalEntity);
     std::cout << rdf.toString() << std::endl;

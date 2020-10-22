@@ -125,13 +125,6 @@ namespace omexmeta {
                     "Use the about() method."
             );
         }
-        if (getPhysicalProperty().getResourceStr().empty()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): cannot create "
-                    "triples object because the\"location\" information "
-                    "is empty. Please use the \"hasProperty()\"."
-            );
-        }
         if (physical_process_id_.empty()){
             physical_process_id_ = generateMetaId("PhysicalProcess");
         }

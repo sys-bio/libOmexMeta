@@ -27,7 +27,7 @@
     <includedby refid="RDF_8h" local="yes">src/omexmeta/RDF.h</includedby>
     <includedby refid="SBMLSemanticExtraction_8h" local="yes">src/omexmeta/SBMLSemanticExtraction.h</includedby>
     <incdepgraph>
-      <node id="22">
+      <node id="24">
         <label>sys/stat.h</label>
       </node>
       <node id="33">
@@ -40,7 +40,7 @@
       <node id="23">
         <label>filesystem</label>
       </node>
-      <node id="24">
+      <node id="22">
         <label>assert.h</label>
       </node>
       <node id="27">
@@ -48,17 +48,17 @@
         <link refid="Predicate_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -86,7 +86,7 @@
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -106,7 +106,7 @@
       <node id="46">
         <label>cassert</label>
       </node>
-      <node id="21">
+      <node id="16">
         <label>stdexcept</label>
       </node>
       <node id="3">
@@ -122,14 +122,14 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="12">
         <label>redland/LibrdfQuery.h</label>
       </node>
       <node id="42">
@@ -158,25 +158,25 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="55">
@@ -185,7 +185,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="19">
         <label>exception</label>
       </node>
       <node id="54">
@@ -197,23 +197,23 @@
       <node id="10">
         <label>redland/RedlandAPI.h</label>
       </node>
-      <node id="19">
+      <node id="14">
         <label>omexmeta/CurlGet.h</label>
         <link refid="CurlGet_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="20">
-        <label>curl/curl.h</label>
       </node>
       <node id="15">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="18">
         <label>omexmeta/Error.h</label>
         <link refid="Error_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -225,7 +225,7 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
@@ -239,7 +239,7 @@
       <node id="32">
         <label>omexmeta/Triple.h</label>
         <link refid="Triple_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
@@ -263,7 +263,7 @@
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -281,20 +281,20 @@
       <node id="45">
         <label>omexmeta_export.h</label>
       </node>
-      <node id="14">
+      <node id="17">
         <label>omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -311,13 +311,13 @@
       <node id="28">
         <label>redland/World.h</label>
       </node>
-      <node id="18">
+      <node id="21">
         <label>vector</label>
       </node>
       <node id="53">
         <label>streambuf</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>redland/librdf.h</label>
       </node>
       <node id="8">
@@ -329,7 +329,7 @@
       <node id="56">
         <label>omexmeta/ElementExtractor.h</label>
         <link refid="ElementExtractor_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -339,7 +339,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -357,9 +357,9 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
         <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -369,7 +369,7 @@
       <node id="48">
         <label>omexmeta/PhysicalForce.h</label>
         <link refid="PhysicalForce_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -383,7 +383,7 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -408,7 +408,7 @@
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -424,7 +424,7 @@
       <node id="38">
         <label>omexmeta/Participant.h</label>
         <link refid="Participant_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -454,7 +454,7 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -463,23 +463,23 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="20">
         <label>unordered_map</label>
       </node>
       <node id="30">
         <label>omexmeta/Resource.h</label>
         <link refid="Resource_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="50">
@@ -489,7 +489,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -497,7 +497,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -525,7 +525,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -537,7 +537,7 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -569,7 +569,7 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -589,9 +589,9 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -714,7 +714,7 @@
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_ids,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref><sp/>&amp;model,<sp/>NamespaceMap<sp/>&amp;ns_map,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>(std::string<sp/>xml_or_file,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_ids,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref><sp/>&amp;model,<sp/>NamespaceMap<sp/>&amp;ns_map,</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sbml_semantic_extraction<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;repository_uri<sp/>=<sp/>std::string(),</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;archive_uri<sp/>=<sp/>std::string(),<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;model_uri<sp/>=<sp/>std::string(),</highlight></codeline>

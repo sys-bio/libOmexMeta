@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['editor_47',['Editor',['../classomexmeta_1_1Editor.html',1,'omexmeta::Editor'],['../classomexmeta_1_1Editor.html#a6ac976c1a3762f77a577b5735cd509f4',1,'omexmeta::Editor::Editor()']]],
+  ['editor_47',['Editor',['../classomexmeta_1_1Editor.html',1,'omexmeta::Editor'],['../classomexmeta_1_1Editor.html#a6be7468055f21d94e72e15f7daa5da5c',1,'omexmeta::Editor::Editor()']]],
   ['editor_5faddnamespace_48',['Editor_addNamespace',['../namespaceomexmeta.html#a3c05babeced84a464bcf29fb618230b4',1,'omexmeta']]],
   ['editor_5fgetxml_49',['Editor_getXml',['../namespaceomexmeta.html#a96e4c18dc172184811a0bd6468d00b35',1,'omexmeta']]],
   ['elementextractor_50',['ElementExtractor',['../classomexmeta_1_1ElementExtractor.html',1,'omexmeta::ElementExtractor'],['../classomexmeta_1_1ElementExtractor.html#a9de35d2d6cf78dad4fa9fb2f46fa8e37',1,'omexmeta::ElementExtractor::ElementExtractor()']]],

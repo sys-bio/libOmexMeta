@@ -116,8 +116,6 @@ namespace omexmeta {
         classifyXmlType(str, format);
 
         extractSemanticInformationFromSBML(str);
-
-
     }
 
     /**
@@ -161,7 +159,6 @@ namespace omexmeta {
         // This allows us to only use the ones that are needed
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
         extractSemanticInformationFromSBML(uri_string);
-
     }
 
     RDF RDF::fromFile(const std::string &filename, const std::string &format) {
@@ -169,14 +166,11 @@ namespace omexmeta {
         LibrdfParser parser(format);
         parser.parseFile(filename, rdf.model_, rdf.getLocalUri());
         rdf.classifyXmlTypeFromFile(filename, format);
-
-       // update the list of "seen" namespaces
+        // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
-
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
-
         // Here we use the semantic extraction tool to collect
         // information if were using sbml
         rdf.extractSemanticInformationFromSBML(filename);
@@ -221,7 +215,7 @@ namespace omexmeta {
                               const char *type_uri) {
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
-        for (auto &it: namespaces_) {
+        for (auto &it : namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
         //todo play around with myOMEX
@@ -300,8 +294,7 @@ namespace omexmeta {
             raptor_option_description *parser_opt = raptor_world_get_option_description(
                     raptor_world_ptr,
                     RAPTOR_DOMAIN_PARSER,
-                    (raptor_option) i
-            );
+                    (raptor_option) i);
             if (parser_opt) {
                 unsigned char *uri_string1 = raptor_uri_to_string(parser_opt->uri);
                 os << parser_opt->option << "," << parser_opt->name << "," << parser_opt->label << ","
@@ -313,8 +306,7 @@ namespace omexmeta {
                 raptor_option_description *serializer_opt = raptor_world_get_option_description(
                         raptor_world_ptr,
                         RAPTOR_DOMAIN_SERIALIZER,
-                        (raptor_option) i
-                );
+                        (raptor_option) i);
                 if (serializer_opt) {
                     unsigned char *uri_string2 = raptor_uri_to_string(serializer_opt->uri);
                     os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label
@@ -339,8 +331,8 @@ namespace omexmeta {
     void RDF::setRepositoryUri(std::string repositoryName) {
         if (!OmexMetaUtils::startsWith(repositoryName, "http")) {
             throw std::invalid_argument("std::invalid_argument: RDF::setRepositoryUri: "
-                                        "Specified \"repositoryName\" argument \"" + repositoryName
-                                        + "\" does not begin with \"http\". Example: \"http://MyOmexRepository.org\"");
+                                        "Specified \"repositoryName\" argument \"" +
+                                        repositoryName + "\" does not begin with \"http\". Example: \"http://MyOmexRepository.org\"");
         }
         if (!OmexMetaUtils::endsWith(repositoryName, "/")) {
             repositoryName += "/";
@@ -355,10 +347,10 @@ namespace omexmeta {
     void RDF::setArchiveUri(std::string archiveName) {
         if (OmexMetaUtils::startsWith(archiveName, "http")) {
             throw std::invalid_argument("std::invalid_argument: RDF::setArchiveUri: "
-                                        "Specified \"archiveName\" argument \"" + archiveName
-                                        + "\" begins with \"http\". Since the archive url is built "
-                                          "using the repositoryName argument, please only specify "
-                                          "the name of the omex archive. Like \"myOmexFile.omex\"");
+                                        "Specified \"archiveName\" argument \"" +
+                                        archiveName + "\" begins with \"http\". Since the archive url is built "
+                                                      "using the repositoryName argument, please only specify "
+                                                      "the name of the omex archive. Like \"myOmexFile.omex\"");
         }
         if (!OmexMetaUtils::endsWith(archiveName, ".omex")) {
             archiveName = archiveName + ".omex";
@@ -373,10 +365,10 @@ namespace omexmeta {
     void RDF::setModelUri(std::string modelName) {
         if (OmexMetaUtils::startsWith(modelName, "http")) {
             throw std::invalid_argument("std::invalid_argument: RDF::setModelUri: "
-                                        "Specified \"modelName\" argument \"" + modelName
-                                        + "\" begins with \"http\". Since the model url is built "
-                                          "using the repositoryName argument, please only specify "
-                                          "the name of the model. Like \"NewModel.sbml\"");
+                                        "Specified \"modelName\" argument \"" +
+                                        modelName + "\" begins with \"http\". Since the model url is built "
+                                                    "using the repositoryName argument, please only specify "
+                                                    "the name of the model. Like \"NewModel.sbml\"");
         }
         // first we make sure the suffix ends with a "#"
         if (!OmexMetaUtils::endsWith(modelName, "#")) {
@@ -467,7 +459,6 @@ namespace omexmeta {
         } else {
             setXmlType(OMEXMETA_TYPE_UNKNOWN);
         }
-
     }
 
     void RDF::classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format) {
@@ -498,4 +489,4 @@ namespace omexmeta {
             Editor editor = toEditor(str, true);
         }
     }
-}
+}// namespace omexmeta

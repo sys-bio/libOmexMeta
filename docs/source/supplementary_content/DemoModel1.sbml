@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+    <model metaid="Demo1" id="Demo1">
+        <listOfCompartments>
+            <compartment id="cytosol" spatialDimensions="3" size="1" constant="true"/>
+        </listOfCompartments>
+        <listOfSpecies>
+            <species id="ACE" metaid="ACE" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false"
+                     boundaryCondition="false" constant="false"/>
+            <species id="EtOH" metaid="EtOH" compartment="cytosol" initialConcentration="1"
+                     hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+        </listOfSpecies>
+        <listOfParameters>
+            <parameter id="vmax_f" metaid="vmax_f" value="1" constant="true"/>
+            <parameter id="vmax_b" metaid="vmax_b" value="0.5" constant="true"/>
+            <parameter id="km_f" metaid="km_f" value="50" constant="true"/>
+            <parameter id="km_b" metaid="km_b" value="150" constant="true"/>
+        </listOfParameters>
+        <listOfReactions>
+            <reaction id="ADH_f" metaid="ADH_f" reversible="false" fast="false">
+                <listOfReactants>
+                    <speciesReference species="ACE" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="EtOH" stoichiometry="1" constant="true"/>
+                </listOfProducts>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <ci>vmax_f</ci>
+                                <ci>ACE</ci>
+                            </apply>
+                            <apply>
+                                <plus/>
+                                <ci>km_f</ci>
+                                <ci>ACE</ci>
+                            </apply>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction id="ADH_r" metaid="ADH_r" reversible="false" fast="false">
+                <listOfReactants>
+                    <speciesReference species="EtOH" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="ACE" stoichiometry="1" constant="true"/>
+                </listOfProducts>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <ci>vmax_b</ci>
+                                <ci>EtOH</ci>
+                            </apply>
+                            <apply>
+                                <plus/>
+                                <ci>km_b</ci>
+                                <ci>EtOH</ci>
+                            </apply>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+        </listOfReactions>
+    </model>
+</sbml>

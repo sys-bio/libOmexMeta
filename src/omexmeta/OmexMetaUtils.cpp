@@ -3,11 +3,12 @@
 //
 #include "omexmeta/OmexMetaUtils.h"
 #include "logger.h"
+#include <fstream>
 
 namespace omexmeta {
 
     bool OmexMetaUtils::exists(const std::string &filename) {
-        struct stat buffer{};
+        struct stat buffer {};
         return (stat(filename.c_str(), &buffer) == 0);
     }
 
@@ -26,7 +27,7 @@ namespace omexmeta {
         }
     }
 
-/**
+    /**
      * wrapper around the CurlGet function, as the utils
  * class seems like a good place for the download features.
  */
@@ -92,7 +93,7 @@ namespace omexmeta {
             MetaID metaId(metaid_base, count, 4);
             metaid = metaId.generate();
             if (std::find(subjects.begin(), subjects.end(), metaid) == subjects.end()) {
-                break; // not found existing metaid
+                break;// not found existing metaid
             }
             count++;
         }
@@ -133,10 +134,9 @@ namespace omexmeta {
         std::ostringstream os;
         // Uri's we want all begin with http.
         if (vec[0].rfind("http", 0) != 0)
-            throw std::invalid_argument("std::invalid_argument: OmexMetaUtils::getNamespaceFromUri: \"" + vec[0]
-                                        + R"(". Predicate arguments are URI's, they should begin with "http")");
+            throw std::invalid_argument("std::invalid_argument: OmexMetaUtils::getNamespaceFromUri: \"" + vec[0] + R"(". Predicate arguments are URI's, they should begin with "http")");
 
-        os << vec[0] + "//"; // we keep the first part and add back the missing '/'
+        os << vec[0] + "//";// we keep the first part and add back the missing '/'
 
         // iterate from second to penultimate, rebuilding the uri
         for (int i = 1; i < vec.size() - 1; i++) {
@@ -152,9 +152,9 @@ namespace omexmeta {
         }
         if (frag_in_ns) {
             std::vector<std::string> split_on_hash = OmexMetaUtils::splitStringBy(vec[last_index], '#');
-            os << split_on_hash[0] << "#"; // remember to put it back
+            os << split_on_hash[0] << "#";// remember to put it back
         } else {
-//            os << vec[last_index];
+            //            os << vec[last_index];
         }
         return os.str();
     }
@@ -164,9 +164,7 @@ namespace omexmeta {
         std::string http_protocol = "http://";
         std::string https_protocol = "https://";
 
-        return uri.rfind(https_protocol, 0) == 0
-               || uri.rfind(http_protocol, 0) == 0
-               || uri.rfind(file_prefix, 0) == 0;
+        return uri.rfind(https_protocol, 0) == 0 || uri.rfind(http_protocol, 0) == 0 || uri.rfind(file_prefix, 0) == 0;
     }
 
     bool OmexMetaUtils::endsWith(const std::string &full_string, const std::string &ending) {
@@ -200,7 +198,8 @@ namespace omexmeta {
             }
             if (!truth) {
                 all_lines_match = false;
-                std::cerr << "actual is:\n " << actual_string << "\n" << std::endl;
+                std::cerr << "actual is:\n " << actual_string << "\n"
+                          << std::endl;
                 std::cerr << "Failed on line\n: \"" << i << "\"" << std::endl;
             }
         }
@@ -217,7 +216,8 @@ namespace omexmeta {
             if (actual_string.find(i) == std::string::npos) {
                 // not found.
                 all_lines_match = false;
-                std::cout << "actual is:\n " << actual_string << "\n" << std::endl;
+                std::cout << "actual is:\n " << actual_string << "\n"
+                          << std::endl;
                 std::cout << "Failed on line:\n \"" << i << "\"" << std::endl;
             }
         }
@@ -267,7 +267,6 @@ namespace omexmeta {
         vec.push_back(local_string);
         assert(vec.size() == 3);
         return vec;
-
     }
 
     std::string OmexMetaUtils::concatMetaIdAndUri(std::string metaid, std::string uri) {
@@ -369,6 +368,19 @@ namespace omexmeta {
         }
         return v;
     }
+    std::string OmexMetaUtils::readFromFile(const std::string &file) {
+        if ( file.find('<', 0) == 0) {
+            throw std::invalid_argument("OmexMetaUtils::readFromFile: invalid file begins with a \"<\" character. This file is probably xml");
+        }
+
+        if (!std::filesystem::exists(file)){
+            throw std::invalid_argument("OmexMetaUtils::readFromFile: file \""+file+"\" does not exist");
+        }
+        std::ifstream t(file);
+        std::stringstream buffer;
+        buffer << t.rdbuf();
+        return buffer.str();
+    }
 
 
-}
+}// namespace omexmeta

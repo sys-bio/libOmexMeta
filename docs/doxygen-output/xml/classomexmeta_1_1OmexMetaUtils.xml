@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="37" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="9" bodyend="12"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="37" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a9c445a8e0cc6589b25d6fa630686c171" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="44" column="20" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="14" bodyend="21"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="44" column="20" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="15" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a8e629136cb2685ed839ea3a0e88094e6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="50" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="23" bodyend="27"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="50" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="24" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a046b603d6308242b70b55de6cb72325c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="55" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="33" bodyend="35"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="55" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="34" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1aac769ce6e901f32820cd7dc3fef989fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="60" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="37" bodyend="51"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="60" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="38" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a4700231d455a5f65f7cc290d98d2b0ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="68" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="60" bodyend="101"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="68" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="61" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a6694715cf3f5dccd33d416ecc84ff375" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -253,7 +253,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="83" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="103" bodyend="129"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="82" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="104" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a0956bde073b212596d8e4b2ffc983e47" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -272,7 +272,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="92" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="131" bodyend="160"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="91" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="132" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1af663724f2efb0324a64c6a57e8491c13" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -300,7 +300,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="99" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="162" bodyend="170"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="98" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="162" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a9c2b712b85f74fff9740477660f7b371" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -340,7 +340,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="106" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="172" bodyend="178"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="105" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="170" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -362,7 +362,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="109" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="189" bodyend="208"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="108" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="187" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -383,7 +383,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="111" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="211" bodyend="225"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="110" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="210" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a744a0575136f1cc60b76a6560a5595e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -419,7 +419,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="121" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="228" bodyend="271"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="120" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="228" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -459,7 +459,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="130" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="273" bodyend="297"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="129" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="272" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1aca2230ca99338b9dc0fc7d296b0c553b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -503,7 +503,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="137" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="300" bodyend="308"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="136" column="9" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="299" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a66d58e0ebcbee1857b23ead70c87de7f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -543,7 +543,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="142" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="180" bodyend="182"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="141" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="178" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a6f8e406b8798bd2f1f0ae0d1bd07ed2b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -584,7 +584,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="147" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="313" bodyend="315"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="146" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="312" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a718710d8ba7fc7598bd73a5456b3d903" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>xmlDoc *</type>
@@ -605,7 +605,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="149" column="23" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="321" bodyend="328"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="148" column="23" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="320" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a29cc8222c809162eadbc424a0687cbf3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -626,7 +626,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="151" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="330" bodyend="342"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="150" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="329" bodyend="341"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a1dbcd874b2b72531e7f4f9e82524d8e8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>xmlNode *</type>
@@ -647,7 +647,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="153" column="24" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="344" bodyend="354"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="152" column="24" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="343" bodyend="353"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a4d6f7d2140c42435be9339edf975b949" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; xmlNode * &gt;</type>
@@ -664,7 +664,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="155" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="356" bodyend="371"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="154" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="355" bodyend="370"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a96e93667c8799b9569cb30fc102b129b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -685,14 +685,42 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaUtils.h" line="157" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="53" bodyend="58"/>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="156" column="21" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="54" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaUtils_1a68c571d229b00a082f3b5c9ad2f10dbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::OmexMetaUtils::readFromFile</definition>
+        <argsstring>(const std::string &amp;file)</argsstring>
+        <name>readFromFile</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+<para>read </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>into std::string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaUtils.h" line="161" column="28" bodyfile="src/omexmeta/OmexMetaUtils.cpp" bodystart="371" bodyend="383"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/OmexMetaUtils.h" line="29" column="5" bodyfile="src/omexmeta/OmexMetaUtils.h" bodystart="29" bodyend="158"/>
+    <location file="src/omexmeta/OmexMetaUtils.h" line="29" column="5" bodyfile="src/omexmeta/OmexMetaUtils.h" bodystart="29" bodyend="162"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertMatchByNewLine</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>assertRegexMatchSplitByNewLine</name></member>
@@ -711,6 +739,7 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
       <member refid="classomexmeta_1_1OmexMetaUtils_1a28ab6d86e458158ac441457d74d0ebd7" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>OmexMetaUtils</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a718710d8ba7fc7598bd73a5456b3d903" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>parseXmlDocument</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a6694715cf3f5dccd33d416ecc84ff375" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>prepareBaseUri</name></member>
+      <member refid="classomexmeta_1_1OmexMetaUtils_1a68c571d229b00a082f3b5c9ad2f10dbc" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>readFromFile</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a9c445a8e0cc6589b25d6fa630686c171" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>removeFile</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1a8e629136cb2685ed839ea3a0e88094e6" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>removeIfExists</name></member>
       <member refid="classomexmeta_1_1OmexMetaUtils_1aac769ce6e901f32820cd7dc3fef989fa" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaUtils</scope><name>splitStringBy</name></member>

@@ -55,7 +55,9 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalEnt
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}} (const std\+::string \&is)
 \begin{DoxyCompactList}\small\item\em Set the {\ttfamily is} portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}{is\+Part\+Of}} (const std\+::string \&\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}})
-\begin{DoxyCompactList}\small\item\em Set the location ({\ttfamily is\+Part\+Of}) portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set the location ({\ttfamily is\+Part\+Of}) portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a200859dbbda1b17c244ced477d21f06f}{has\+Part}} (const std\+::string \&part)
+\begin{DoxyCompactList}\small\item\em Add item to an \char`\"{}has\+Part\char`\"{} triple on the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -185,11 +187,7 @@ See \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} documentation for mor
 
 free resources uses by \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 
-\begin{DoxyVerb}PhysicalEntity objects are owned either by the caller or by a Triples
-object, depending on whether you have "given" the PhysicalEntity to
-a Triples object by calling "str" or "toTriples".
-\end{DoxyVerb}
- \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}\label{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} objects are owned either by the caller or by a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object, depending on whether you have \char`\"{}given\char`\"{} the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} to a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object by calling \char`\"{}str\char`\"{} or \char`\"{}to\+Triples\char`\"{}. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}\label{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!getIdentityResource@{getIdentityResource}}
 \index{getIdentityResource@{getIdentityResource}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{getIdentityResource()}{getIdentityResource()}}
@@ -228,6 +226,21 @@ returns the number of locations used by \mbox{\hyperlink{classomexmeta_1_1Physic
 \begin{DoxyReturn}{Returns}
 the number of locations in a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a200859dbbda1b17c244ced477d21f06f}\label{classomexmeta_1_1PhysicalEntity_a200859dbbda1b17c244ced477d21f06f}} 
+\index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!hasPart@{hasPart}}
+\index{hasPart@{hasPart}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
+\doxysubsubsection{\texorpdfstring{hasPart()}{hasPart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& omexmeta\+::\+Physical\+Entity\+::has\+Part (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{part }\end{DoxyParamCaption})}
+
+
+
+Add item to an \char`\"{}has\+Part\char`\"{} triple on the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em part} & the string to be used for has\+Part predicate.  used in the case of annotating complexes which have no identity but several parts. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_ae160c410eeffe04a1fcc9c050ddd1b42}\label{classomexmeta_1_1PhysicalEntity_ae160c410eeffe04a1fcc9c050ddd1b42}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!hasProperty@{hasProperty}}
 \index{hasProperty@{hasProperty}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}

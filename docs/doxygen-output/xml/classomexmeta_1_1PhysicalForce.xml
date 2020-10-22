@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="64" column="14" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="109" bodyend="117"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="64" column="14" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="101" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a673e6810fe969bcd087ab88c62e5e041" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -152,7 +152,7 @@ Users do not need to instantiate <ref refid="classomexmeta_1_1PhysicalForce" kin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="75" column="18" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="95" bodyend="96"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="75" column="18" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="87" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a2ff9aecd73a5356be701d8ba7e9bf71c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -196,7 +196,7 @@ Users do not need to instantiate <ref refid="classomexmeta_1_1PhysicalForce" kin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="87" column="18" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="98" bodyend="99"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="87" column="18" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="90" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1ae0a9ec4689b4765d985ab8f7a8878f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -263,7 +263,7 @@ When this method is called ownership of all <ref refid="classomexmeta_1_1RDF" ki
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="114" column="18" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="31" bodyend="64"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="114" column="18" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="31" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a081aecc43d16b2fc8826c4050eb2055d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
@@ -285,7 +285,7 @@ Prefer the other setPhysicalProperty method since it only requires a string inpu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="127" column="24" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="66" bodyend="69"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="127" column="24" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a3f979432322d40efc8a15cf5ee883100" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
@@ -327,7 +327,7 @@ Prefer the other setPhysicalProperty method since it only requires a string inpu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="135" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="71" bodyend="77"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="135" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="63" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1ace7d3703d7e4bdb9a256208f456f2c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
@@ -377,7 +377,7 @@ See <ref refid="classomexmeta_1_1SourceParticipant" kindref="compound">SourcePar
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="147" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="79" bodyend="86"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="147" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="71" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a8ec5e262b82526ac914d8c7f10b6c2f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
@@ -427,7 +427,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="159" column="24" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="88" bodyend="93"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="159" column="24" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="80" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a9910c8edac57daf70faa1f1e2e0208d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -444,7 +444,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="166" column="13" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="101" bodyend="103"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="166" column="13" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="93" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a1135c75705b59afa7037bab313009534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -461,7 +461,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="173" column="13" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="105" bodyend="107"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="173" column="13" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1affa0a1f3cdce0a3336d56658a92c65f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -478,7 +478,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="175" column="14" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="119" bodyend="124"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="175" column="14" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1aeb7adb235c0caac04c7aa599f98f258a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -495,7 +495,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="177" column="14" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="126" bodyend="128"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="177" column="14" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1a4f0fbd2326f8cd9e58f464622f1303f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
@@ -523,7 +523,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="186" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="130" bodyend="133"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="186" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="122" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalForce_1aa7c920c063c432ed198e467bb00147d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
@@ -552,7 +552,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalForce.h" line="195" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="136" bodyend="139"/>
+        <location file="src/omexmeta/PhysicalForce.h" line="195" column="23" bodyfile="src/omexmeta/PhysicalForce.cpp" bodystart="128" bodyend="131"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
