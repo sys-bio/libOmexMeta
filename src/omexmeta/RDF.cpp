@@ -489,4 +489,11 @@ namespace omexmeta {
             Editor editor = toEditor(str, true);
         }
     }
+    bool RDF::operator==(const RDF &rhs) const {
+//        std::cout << "model_ == rhs.model_: " << (model_ == rhs.model_) << std::endl;
+        return model_ == rhs.model_;
+    }
+    bool RDF::operator!=(const RDF &rhs) const {
+        return !(rhs == *this);
+    }
 }// namespace omexmeta

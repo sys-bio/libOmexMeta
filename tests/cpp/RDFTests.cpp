@@ -101,6 +101,18 @@ TEST_F(RDFTests, TestFromStringTurtleBag) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(RDFTests, Equality) {
+    RDF rdf1 = RDF::fromString(samples.rdf_turtle_basic_example, "turtle");
+    RDF rdf2 = RDF::fromString(samples.rdf_turtle_basic_example, "turtle");
+    ASSERT_TRUE(rdf1 == rdf2);
+}
+
+TEST_F(RDFTests, Inquality) {
+    RDF rdf1 = RDF::fromString(samples.rdf_turtle_basic_example, "turtle");
+    RDF rdf2 = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
+    ASSERT_FALSE(rdf1 == rdf2);
+}
+
 TEST_F(RDFTests, TestToString) {
     RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"

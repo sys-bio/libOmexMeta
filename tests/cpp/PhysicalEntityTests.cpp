@@ -64,7 +64,7 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
     Resource r(LibrdfNode::fromUriString(
             physicalEntity.getPhysicalProperty().getResourceStr()));
     std::string actual = r.str();
-    std::string expected = "https://identifiers.org/OPB/OPB_00340";
+    std::string expected = "https://identifiers.org/OPB:OPB_00340";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
@@ -400,6 +400,29 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
             .isPartOf("fma:FMA:63877");
     ASSERT_FALSE(physicalEntity.getAbout().empty());
     //    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    physicalEntity.free();
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder2) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity.setModelUri(model_uri);
+    physicalEntity.setLocalUri(local_uri);
+    physicalEntity
+            .about("glucose_c")
+            .identity("CHEBI:17234")
+            .isPartOf("GO:0005737")
+            .hasProperty("OPB:00340");
+    std::string actual = physicalEntity.toTriples().str("turtle");
+    std::string expected = "myOMEX:glucose_transport.sbml#glucose_c\n"
+                           "    bqbiol:is <https://identifiers.org/CHEBI:17234> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/GO:0005737> .\n"
+                           "\n"
+                           "local:PhysicalProp0000\n"
+                           "    bqbiol:isPropertyOf myOMEX:glucose_transport.sbml#glucose_c ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:00340> .\n\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
     physicalEntity.free();
 }
 

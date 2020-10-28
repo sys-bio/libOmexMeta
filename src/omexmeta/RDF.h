@@ -84,7 +84,8 @@ namespace omexmeta {
          * it is OMEXMETA_TYPE_UNKNOWN.
          */
         OmexMetaXmlType getXmlType() const;
-
+        bool operator==(const RDF &rhs) const;
+        bool operator!=(const RDF &rhs) const;
         /**
          * @brief set the xml type for the current graph.
          * @details If you have been reading from an SBML you cannot

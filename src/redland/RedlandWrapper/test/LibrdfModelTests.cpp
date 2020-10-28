@@ -30,7 +30,7 @@ TEST_F(LibrdfModelTests, TestNew) {
 
 
 TEST_F(LibrdfModelTests, TestMoveConstructor) {
-    LibrdfModel model1 = LibrdfModel(std::move(storage1.get()));
+    LibrdfModel model1 = LibrdfModel(storage1.get());
     auto model1_int_ptr = reinterpret_cast<std::uintptr_t>(model1.get());
     LibrdfModel model2 = std::move(model1);
     auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(model2.get());
@@ -96,6 +96,104 @@ TEST_F(LibrdfModelTests, TestContext) {
 }
 
 
+TEST_F(LibrdfModelTests, containsPass) {
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject1").get(),
+            LibrdfNode::fromUriString("predicate1").get(),
+            LibrdfNode::fromUriString("resource1").get()
+    );
+
+    LibrdfModel model1 = LibrdfModel(storage1.get());
+    model1.addStatement(statement1);
+
+    ASSERT_TRUE(model1.containsStatement(statement1.get()));
+    ASSERT_TRUE(model1.containsStatement(statement1));
+    model1.freeModel();
+    statement1.freeStatement();
+}
+
+TEST_F(LibrdfModelTests, containsFail) {
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject1").get(),
+            LibrdfNode::fromUriString("predicate1").get(),
+            LibrdfNode::fromUriString("resource1").get()
+    );
+    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject2").get(),
+            LibrdfNode::fromUriString("predicate2").get(),
+            LibrdfNode::fromUriString("resource2").get()
+    );
+
+    LibrdfModel model1 = LibrdfModel(storage1.get());
+    model1.addStatement(statement1);
+
+    ASSERT_FALSE(model1.containsStatement(statement2.get()));
+    ASSERT_FALSE(model1.containsStatement(statement2));
+    model1.freeModel();
+    statement1.freeStatement();
+    statement2.freeStatement();
+}
+
+
+TEST_F(LibrdfModelTests, Equality1Pass) {
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject1").get(),
+            LibrdfNode::fromUriString("predicate1").get(),
+            LibrdfNode::fromUriString("resource1").get()
+    );
+
+    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject2").get(),
+            LibrdfNode::fromUriString("predicate2").get(),
+            LibrdfNode::fromUriString("resource2").get()
+    );
+
+    LibrdfModel model1 = LibrdfModel(storage1.get());
+    LibrdfModel model2 = LibrdfModel(storage2.get());
+    model1.addStatement(statement1);
+    model1.addStatement(statement2);
+    model2.addStatement(statement1);
+    model2.addStatement(statement2);
+
+    ASSERT_TRUE(model1 == model2);
+    model1.freeModel();
+    statement1.freeStatement();
+    statement2.freeStatement();
+}
+
+TEST_F(LibrdfModelTests, Equality1Fail) {
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject1").get(),
+            LibrdfNode::fromUriString("predicate1").get(),
+            LibrdfNode::fromUriString("resource1").get()
+    );
+
+    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject2").get(),
+            LibrdfNode::fromUriString("predicate2").get(),
+            LibrdfNode::fromUriString("resource2").get()
+    );
+
+    LibrdfStatement statement3 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject3").get(),
+            LibrdfNode::fromUriString("predicate3").get(),
+            LibrdfNode::fromUriString("resource3").get()
+    );
+
+    LibrdfModel model1 = LibrdfModel(storage1.get());
+    LibrdfModel model2 = LibrdfModel(storage2.get());
+    model1.addStatement(statement1);
+    model1.addStatement(statement3);
+
+    model2.addStatement(statement1);
+    model2.addStatement(statement2);
+
+    ASSERT_FALSE(model1 == model2);
+    model1.freeModel();
+    statement1.freeStatement();
+    statement2.freeStatement();
+    statement3.freeStatement();
+}
 
 
 

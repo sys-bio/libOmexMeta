@@ -82,6 +82,10 @@ namespace redland {
         void addStatement(const librdf_statement &statement) const;
 
         int supportsContexts() const;
+
+        bool containsStatement(librdf_statement* statement) const;
+
+        bool containsStatement(const LibrdfStatement &statement) const;
     };
 }
 
