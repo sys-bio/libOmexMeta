@@ -1,14 +1,14 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include "LibrdfStorage.h"
-#include "LibrdfModel.h"
-#include "LibrdfNode.h"
-#include "LibrdfStatement.h"
-#include "LibrdfQuery.h"
+#include "redland/LibrdfStorage.h"
+#include "redland/LibrdfModel.h"
+#include "redland/LibrdfNode.h"
+#include "redland/LibrdfStatement.h"
+#include "redland/LibrdfQuery.h"
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfQueryResults.h"
+#include "redland/World.h"
+#include "redland/LibrdfQueryResults.h"
 #include "iostream"
 
 

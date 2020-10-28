@@ -2,13 +2,13 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#include "LibrdfNode.h"
+#include "redland/LibrdfNode.h"
 
 
 /*
  * todo put name of exception in all error messages.
  */
-#include "World.h"
+#include "redland/World.h"
 
 namespace redland {
 
@@ -279,6 +279,34 @@ namespace redland {
 
     LibrdfNode LibrdfNode::copyNode(const LibrdfNode &node) {
         return LibrdfNode(librdf_new_node_from_node(node.node_));
+    }
+
+    std::vector<std::string> LibrdfNode::splitStringBy(const std::string &str, char delimiter) {
+        std::vector<std::string> tokens;
+        if (str.find(delimiter) == std::string::npos) {
+            // return the string in the vector
+            tokens.push_back(str);
+            return tokens;
+        }
+        std::string token;
+        std::istringstream is(str);
+        while (std::getline(is, token, delimiter)) {
+            if (!token.empty())
+                tokens.push_back(token);
+        }
+        return tokens;
+    }
+
+    std::string LibrdfNode::getNamespace() const {
+        std::vector<std::string> split = LibrdfNode::splitStringBy(str(), '/');
+        std::ostringstream ns;
+        for (int i=0; i<split.size()-1; i ++ ){
+            if (split[i] == "http:" || split[i] == "https:")
+                ns << split[i] << "//";
+            else
+                ns << split[i] << "/";
+        }
+        return ns.str();
     }
 
 }// namespace redland

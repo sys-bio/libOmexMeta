@@ -3,8 +3,8 @@
 //
 #include <fstream>
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfParser.h"
+#include "redland/World.h"
+#include "redland/LibrdfParser.h"
 #include "iostream"
 #include "filesystem"
 #include "filesystem"

@@ -1,4 +1,4 @@
-#include "LibrdfQuery.h"
+#include "redland/LibrdfQuery.h"
 
 namespace redland {
 

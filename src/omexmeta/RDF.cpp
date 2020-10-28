@@ -490,10 +490,32 @@ namespace omexmeta {
         }
     }
     bool RDF::operator==(const RDF &rhs) const {
-//        std::cout << "model_ == rhs.model_: " << (model_ == rhs.model_) << std::endl;
         return model_ == rhs.model_;
     }
     bool RDF::operator!=(const RDF &rhs) const {
         return !(rhs == *this);
     }
+
+    void RDF::addTriple(const Triple &triple) {
+        model_.addStatement(triple.getStatement());
+        // after adding content to the model we need to
+        // update namespace information
+        seen_namespaces_.push_back(triple.getPredicateStr());
+        namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
+    }
+
+    void RDF::addTriples(const Triples &triples) {
+        for (int i = 0; i < triples.size(); i++) {
+            const Triple &triple = triples[i];
+            model_.addStatement(triple.getStatement());
+            const std::string& ns = LibrdfNode(triple.getPredicate()).getNamespace();
+            seen_namespaces_.push_back(triple.getPredicateNamespaceStr());
+            for (auto &it: seen_namespaces_){
+                std::cout << "Seen namespace: " << it << std::endl;
+            }
+//            std::cout << seen_namespaces_ << std::endl;
+            namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
+        }
+    }
+
 }// namespace omexmeta

@@ -59,7 +59,6 @@ set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_PREFIX}/docs)
 
 # The InstallRequiredSystemLibraries module is intended to provide projects with the details of
 #relevant run time libraries for the major compilers
-set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT MyProj_Runtime)
 include(InstallRequiredSystemLibraries)
 
 # utility for debugging cmake
@@ -398,7 +397,7 @@ set(INCLUDE_DIRECTORIES
 
         # libomexmeta includes
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/C>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/include>
 
         # dependency includes
         $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>
@@ -420,7 +419,7 @@ set(INCLUDE_DIRECTORIES
 
 
 #############################################
-# Build libOmexMeta targets and tests
+## Build libOmexMeta targets and tests
 
 # source directories
 add_subdirectory(src)
@@ -488,8 +487,7 @@ if (BUILD_TESTS)
 endif (BUILD_TESTS)
 
 # docs-build documentation.
-message(STATUS "BUILD_DOCS ${BUILD_DOCS}")
-if (${BUILD_DOCS})
+if (BUILD_DOCS)
     message(STATUS "Building the docs")
     add_subdirectory(docs)
 endif ()

@@ -11,7 +11,9 @@ namespace omexmeta {
                                            PhysicalProperty propertyResource, AnnotationType type)
             : model_(model), physical_property_(std::move(propertyResource)), type_(type),
               model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)){}
-
+    librdf_model *PhysicalPhenomenon::getModel() const {
+        return model_;
+    }
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
 

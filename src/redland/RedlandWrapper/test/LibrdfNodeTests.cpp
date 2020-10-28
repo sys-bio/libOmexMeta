@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfNode.h"
+#include "redland/World.h"
+#include "redland/LibrdfNode.h"
 
 using namespace redland;
 
@@ -366,6 +366,17 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingMyCode) {
     n1.freeNode();
     ASSERT_EQ(1, librdf_uri_get_usage(n2.get()->value.uri));
     n2.freeNode();
+}
+
+
+TEST_F(LibrdfNodeTests, GetNamespace) {
+    // n1 and n2 are two different nodes
+    LibrdfNode n1 = LibrdfNode::fromUriString("https://uri.com/with/namespace");
+    std::string expected = "https://uri.com/with/";
+    std::string actual = n1.getNamespace();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    // uri count decreases by 1 when we free the node
+    n1.freeNode();
 }
 
 

@@ -2,7 +2,7 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#include "LibrdfModel.h"
+#include "redland/LibrdfModel.h"
 
 
 namespace redland {

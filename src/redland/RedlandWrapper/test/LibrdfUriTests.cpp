@@ -3,8 +3,8 @@
 //
 
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfUri.h"
+#include "redland/World.h"
+#include "redland/LibrdfUri.h"
 //#include "redland/OmexMetaUtils.h"
 #include "raptor2.h"
 #include <filesystem>

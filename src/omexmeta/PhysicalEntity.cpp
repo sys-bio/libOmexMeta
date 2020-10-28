@@ -131,6 +131,9 @@ namespace omexmeta {
             // to the model.
             entity_id_ = generateMetaId("PhysicalEntity");
         }
+        std::cout << "entity_id_: " << entity_id_ << std::endl;
+
+        // entity_id_: for instance "local:PhysicalEntity0000"
         entity_id_ = OmexMetaUtils::concatMetaIdAndUri(entity_id_, getLocalUri());
         // preallocate for efficiency
         Triples triples((int)getLocationResources().size() + (int)part_resources_.size() + 3);
@@ -149,7 +152,7 @@ namespace omexmeta {
 
         if (identity_resource_.isSet()) {
             triples.emplace_back(
-                    LibrdfNode::fromUriString(entity_id_).get(),
+                    LibrdfNode::fromUriString(getAbout()).get(),
                     BiomodelsBiologyQualifier("is").getNode(),
                     identity_resource_.getNode());
         }
@@ -159,7 +162,7 @@ namespace omexmeta {
             // the "where" part of the physical entity
             for (auto &locationResource : location_resources_) {
                 triples.emplace_back(
-                        LibrdfNode::fromUriString(entity_id_).get(),
+                        LibrdfNode::fromUriString(getAbout()).get(),
                         BiomodelsBiologyQualifier("isPartOf").getNode(),
                         locationResource.getNode());
             }
@@ -169,7 +172,7 @@ namespace omexmeta {
             // the "where" part of the physical entity
             for (auto &locationResource : part_resources_) {
                 triples.emplace_back(
-                        LibrdfNode::fromUriString(entity_id_).get(),
+                        LibrdfNode::fromUriString(getAbout()).get(),
                         BiomodelsBiologyQualifier("hasPart").getNode(),
                         locationResource.getNode());
             }

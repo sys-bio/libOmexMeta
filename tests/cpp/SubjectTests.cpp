@@ -5,7 +5,7 @@
 #include "omexmeta/Subject.h"
 #include "gtest/gtest.h"
 
-#include "World.h"
+#include "redland/World.h"
 
 using namespace omexmeta;
 

@@ -1,4 +1,4 @@
-#include "LibrdfStorage.h"
+#include "redland/LibrdfStorage.h"
 
 
 namespace redland {

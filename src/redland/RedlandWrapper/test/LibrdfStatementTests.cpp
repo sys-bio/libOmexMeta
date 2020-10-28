@@ -3,8 +3,8 @@
 //
 
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfStatement.h"
+#include "redland/World.h"
+#include "redland/LibrdfStatement.h"
 //#include "redland/OmexMetaUtils.h"
 
 using namespace redland;

@@ -2,7 +2,7 @@
 // Created by Ciaran on 5/26/2020.
 //
 
-#include "RaptorIOStream.h"
+#include "redland/RaptorIOStream.h"
 
 
 namespace redland {

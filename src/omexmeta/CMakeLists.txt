@@ -4,43 +4,43 @@
 
 set(target OmexMeta)
 
+set(OMEXMETA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
 # Note: this doesn't work as intended when using the install tree.
 SET(OMEXMETA_PUBLIC_HEADERS
-        "RDF.h"
-        "Editor.h"
-        "Triple.h"
-        "Triples.h"
-        "PhysicalForce.h"
-        "PhysicalEntity.h"
-        "PhysicalProcess.h"
-        "PersonalInformation.h"
-        "OmexMeta.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/RDF.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Editor.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Triple.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Triples.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalForce.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalEntity.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalProcess.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PersonalInformation.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMeta.h"
         "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
         )
 
 set(OMEXMETA_HEADERS
         ${OMEXMETA_PUBLIC_HEADERS}
-        "logger.h"
-        "OmexMetaUtils.h"
-        "CurlGet.h"
-        "OmexMetaXmlAssistant.h"
-
-        "Subject.h"
-        "Resource.h"
-        "Query.h"
-        "Predicate.h"
-        "MetaID.h"
-        "PhysicalProperty.h"
-        "Participant.h"
-
-        "PhysicalPhenomenon.h"
-        "AnnotationType.h"
-        "OmexMeta.h"
-        "MarkupIdentifier.h"
-        "ElementExtractor.h"
-        "SBMLSemanticExtraction.h"
-        "OmexMetaXmlType.h"
-        "Error.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/logger.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaUtils.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/CurlGet.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlAssistant.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Subject.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Resource.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Query.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Predicate.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/MetaID.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalProperty.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Participant.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalPhenomenon.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/AnnotationType.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMeta.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/MarkupIdentifier.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/ElementExtractor.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/SBMLSemanticExtraction.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlType.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
         #    dbg.h
         )
 
@@ -70,6 +70,8 @@ set(OMEXMETA_SOURCES
         "MarkupIdentifier.cpp"
         )
 
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${OMEXMETA_INCLUDE_DIR}")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} PARENT_SCOPE)
 
 #####################################################################3
 #
@@ -127,7 +129,7 @@ install(
 # and build the CAPI if needed
 # C API binary
 
-set(CAPI_SOURCES OmexMetaCApi.h OmexMetaCApi.cpp
+set(CAPI_SOURCES ${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaCApi.h OmexMetaCApi.cpp
         "${CMAKE_CURRENT_BINARY_DIR}/omexmetacapi_export.h"
         )
 

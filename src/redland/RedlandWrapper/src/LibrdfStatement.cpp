@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/19/2020.
 //
 
-#include "LibrdfStatement.h"
-#include "World.h"
+#include "redland/LibrdfStatement.h"
+#include "redland/World.h"
 
 
 namespace redland {
@@ -95,13 +95,20 @@ namespace redland {
         return LibrdfNode::str(getPredicate());
     }
 
+    std::string LibrdfStatement::getPredicateNamespaceStr() const {
+        if (!getPredicate())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::getPredicate(): predicate_ is nullptr");
+        return LibrdfNode(getPredicate()).getNamespace();
+    }
+
     LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement *statement) {
         return LibrdfStatement(statement);
     }
 
     LibrdfStatement
     LibrdfStatement::fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
-        return LibrdfStatement(subject, predicate, resource);
+        return {subject, predicate, resource};
     }
 
     void LibrdfStatement::refreshStatement() {

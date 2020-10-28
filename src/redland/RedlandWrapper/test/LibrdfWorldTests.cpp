@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "World.h"
+#include "redland/World.h"
 #include <cstdint>
 
 using namespace redland;

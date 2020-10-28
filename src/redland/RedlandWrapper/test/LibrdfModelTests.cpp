@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "LibrdfModel.h"
+#include "redland/LibrdfModel.h"
 
 using namespace redland;
 

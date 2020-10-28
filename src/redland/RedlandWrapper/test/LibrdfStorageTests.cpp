@@ -1,10 +1,10 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include <LibrdfModel.h>
+#include "redland/LibrdfModel.h"
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfStorage.h"
+#include "redland/World.h"
+#include "redland/LibrdfStorage.h"
 #include "iostream"
 #include <filesystem>
 

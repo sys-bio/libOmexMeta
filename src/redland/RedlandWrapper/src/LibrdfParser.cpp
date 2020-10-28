@@ -1,7 +1,7 @@
-#include "LibrdfParser.h"
+#include "redland/LibrdfParser.h"
 
 #include <utility>
-#include "LibrdfModel.h"
+#include "redland/LibrdfModel.h"
 
 namespace redland {
 

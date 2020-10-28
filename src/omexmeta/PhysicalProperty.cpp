@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include "PhysicalProperty.h"
+#include "omexmeta/PhysicalProperty.h"
 
 #include <utility>
 
@@ -61,16 +61,20 @@ namespace omexmeta {
                                         "argument but instead recieved \"" +
                                         property_metaid + "\"");
         }
+
+        std::cout << "PhysicalProperty::toTriples subject: " << subject_ << std::endl;
+        std::cout << "PhysicalProperty::toTriples property_metaid: " << property_metaid << std::endl;
+
         Triples triples;
         Triple is_property_of_triple(
-                LibrdfNode::fromUriString(subject_).get(),
+                LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
-                LibrdfNode::fromUriString(property_metaid).get());
+                LibrdfNode::fromUriString(subject_).get());
         triples.move_back(is_property_of_triple);
 
         if (!resource_.empty()) {
             Triple is_version_of_triple(
-                    LibrdfNode::fromUriString(subject_).get(),
+                    LibrdfNode::fromUriString(property_metaid).get(),
                     BiomodelsBiologyQualifier("isVersionOf").getNode(),
                     Resource(LibrdfNode::fromUriString(resource_)).getNode());
             triples.move_back(is_version_of_triple);

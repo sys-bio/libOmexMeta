@@ -1,4 +1,4 @@
-#include "LibrdfSerializer.h"
+#include "redland/LibrdfSerializer.h"
 
 
 namespace redland {

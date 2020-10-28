@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 #include "gtest/gtest.h"
-#include "World.h"
-#include "LibrdfStream.h"
+#include "redland/World.h"
+#include "redland/LibrdfStream.h"
 #include "iostream"
 
 using namespace redland;

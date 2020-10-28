@@ -1,4 +1,4 @@
-#include "LibrdfStream.h"
+#include "redland/LibrdfStream.h"
 
 namespace redland {
 

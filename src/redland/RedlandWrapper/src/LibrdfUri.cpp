@@ -1,8 +1,8 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include "LibrdfUri.h"
-#include "World.h"
+#include "redland/LibrdfUri.h"
+#include "redland/World.h"
 
 /*
  * developer notes. Do not try to implement a deep copy/clone
