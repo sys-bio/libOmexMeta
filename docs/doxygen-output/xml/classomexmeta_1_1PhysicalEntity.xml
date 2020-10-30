@@ -46,9 +46,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalEntity::entity_id_</definition>
+        <definition>std::string omexmeta::PhysicalEntity::physical_entity_property_id_</definition>
         <argsstring></argsstring>
-        <name>entity_id_</name>
+        <name>physical_entity_property_id_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -529,7 +529,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
 <parametername>property</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
+<para>an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> isVersionOfValue property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -558,7 +558,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The string to put in rdf:about  <ref refid="classThis" kindref="compound">This</ref> function will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> subject_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>
+<para>The string to put in rdf:about  <ref refid="classThis" kindref="compound">This</ref> function will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> isPropertyOfValue property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -694,7 +694,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
       <member refid="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afc8269da5c85c549c73c0431992d2658" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>addLocation</name></member>
-      <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>entity_id_</name></member>
+      <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>physical_entity_property_id_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>free</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1afe71a5c6399b992922eb6eeda6de49bd" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>generateMetaId</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getAbout</name></member>

@@ -251,10 +251,10 @@ that are supported by libOmexMeta, including:</p>
 <span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 
 <span class="s2">local:OmexMetaId0001</span>
-<span class="s2">    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span>
+<span class="s2">    bqbiol:isPropertyOf local:EntityProperty0000 ;</span>
 <span class="s2">    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span>
 
-<span class="s2">local:PhysicalEntity0000</span>
+<span class="s2">local:EntityProperty0000</span>
 <span class="s2">    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span>
 <span class="s2">    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span>
 
@@ -636,13 +636,13 @@ that are supported by libOmexMeta, including:</p>
 343
 344
 345</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Serializing to ntriples
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
 
 
@@ -655,10 +655,10 @@ Serializing to turtle
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:OmexMetaId0001
-    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isPropertyOf local:EntityProperty0000 ;
     bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .
 
-local:PhysicalEntity0000
+local:EntityProperty0000
     bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;
     bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
@@ -674,10 +674,10 @@ Serializing to rdfxml-abbrev
    xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
-    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
+    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
     &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
@@ -693,24 +693,24 @@ Serializing to rdfxml
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
-    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
+    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
   &lt;/rdf:Description&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;
@@ -723,17 +723,17 @@ digraph {
 	rankdir = LR;
 	charset=&quot;utf-8&quot;;
 
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
 	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;bqbiol:isVersionOf&quot; ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
 
 	// Resources
 	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;, shape = ellipse, color = blue ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;, shape = ellipse, color = blue ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;https://identifiers.org/OPB/OPB_00340&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;https://identifiers.org/uniprot/P84022&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;https://identifiers.org/fma/FMA:24178&quot;, shape = ellipse, color = blue ];
@@ -764,7 +764,7 @@ Serializing to json-triples
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;object&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         }
       },
@@ -784,7 +784,7 @@ Serializing to json-triples
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -798,7 +798,7 @@ Serializing to json-triples
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -812,7 +812,7 @@ Serializing to json-triples
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -826,7 +826,7 @@ Serializing to json-triples
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -840,7 +840,7 @@ Serializing to json-triples
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -863,7 +863,7 @@ Serializing to json
 {
   &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; : {
     &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot; : [ {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         }
       
@@ -876,7 +876,7 @@ Serializing to json
       ]
     }
   ,
-  &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; : {
+  &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; : {
     &quot;http://biomodels.net/biology-qualifiers/is&quot; : [ {
         &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
         &quot;type&quot; : &quot;uri&quot;
@@ -911,13 +911,13 @@ Serializing to json
 
 
 Serializing to nquads
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
 
 
@@ -940,7 +940,7 @@ Serializing to html
     &lt;tr class=&quot;triple&quot;&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPropertyOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
@@ -948,27 +948,27 @@ Serializing to html
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/OPB/OPB_00340&quot;&gt;https://identifiers.org/OPB/OPB_00340&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/uniprot/P84022&quot;&gt;https://identifiers.org/uniprot/P84022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:24178&quot;&gt;https://identifiers.org/fma/FMA:24178&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:63877&quot;&gt;https://identifiers.org/fma/FMA:63877&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:70737&quot;&gt;https://identifiers.org/fma/FMA:70737&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:7163&quot;&gt;https://identifiers.org/fma/FMA:7163&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
@@ -1046,10 +1046,10 @@ Serializing to html
                                 <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isPropertyOf local:EntityProperty0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -1422,13 +1422,13 @@ Serializing to html
 335
 336
 337</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Serializing to ntriples:
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
 
 
@@ -1440,10 +1440,10 @@ Serializing to turtle:
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;
-    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isPropertyOf local:EntityProperty0000 ;
     bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .
 
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt;
     bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;
     bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
@@ -1458,10 +1458,10 @@ Serializing to rdfxml-abbrev:
    xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;
-    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
+    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
     &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
@@ -1476,24 +1476,24 @@ Serializing to rdfxml:
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;
-    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;/&gt;
+    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
   &lt;/rdf:Description&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;
@@ -1505,19 +1505,19 @@ digraph {
 	rankdir = LR;
 	charset=&quot;utf-8&quot;;
 
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
 	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; -&gt; &quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;bqbiol:isVersionOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
 
 	// Resources
 	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;, shape = ellipse, color = blue ];
-	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;, shape = ellipse, color = blue ];
+	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;https://identifiers.org/OPB/OPB_00340&quot;, shape = ellipse, color = blue ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;, shape = ellipse, color = blue ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;https://identifiers.org/uniprot/P84022&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;https://identifiers.org/fma/FMA:24178&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;https://identifiers.org/fma/FMA:63877&quot;, shape = ellipse, color = blue ];
@@ -1546,7 +1546,7 @@ Serializing to json-triples:
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;object&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         }
       },
@@ -1566,7 +1566,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -1580,7 +1580,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -1594,7 +1594,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -1608,7 +1608,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -1622,7 +1622,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -1644,7 +1644,7 @@ Serializing to json:
 {
   &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; : {
     &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot; : [ {
-        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         }
       
@@ -1657,7 +1657,7 @@ Serializing to json:
       ]
     }
   ,
-  &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; : {
+  &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; : {
     &quot;http://biomodels.net/biology-qualifiers/is&quot; : [ {
         &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
         &quot;type&quot; : &quot;uri&quot;
@@ -1691,13 +1691,13 @@ Serializing to json:
 
 
 Serializing to nquads:
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
 
 
@@ -1719,7 +1719,7 @@ Serializing to html:
     &lt;tr class=&quot;triple&quot;&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPropertyOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
@@ -1727,27 +1727,27 @@ Serializing to html:
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/OPB/OPB_00340&quot;&gt;https://identifiers.org/OPB/OPB_00340&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/uniprot/P84022&quot;&gt;https://identifiers.org/uniprot/P84022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:24178&quot;&gt;https://identifiers.org/fma/FMA:24178&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:63877&quot;&gt;https://identifiers.org/fma/FMA:63877&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:70737&quot;&gt;https://identifiers.org/fma/FMA:70737&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:7163&quot;&gt;https://identifiers.org/fma/FMA:7163&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
@@ -1826,10 +1826,10 @@ Serializing to html:
                                 <span class="s">&quot;@prefix local: &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isPropertyOf local:EntityProperty0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -2204,13 +2204,13 @@ Serializing to html:
 335
 336
 337</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Serializing to ntriples: 
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
 
 
@@ -2222,10 +2222,10 @@ Serializing to turtle:
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;
-    bqbiol:isPropertyOf &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&gt; ;
+    bqbiol:isPropertyOf &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&gt; ;
     bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .
 
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt;
     bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;
     bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
@@ -2240,10 +2240,10 @@ Serializing to rdfxml-abbrev:
    xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;
-    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot;/&gt;
+    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot;/&gt;
     &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
@@ -2258,24 +2258,24 @@ Serializing to rdfxml:
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;
-    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot;/&gt;
+    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot;/&gt;
   &lt;/rdf:Description&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
   &lt;/rdf:Description&gt;
-  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;
     &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;
@@ -2287,19 +2287,19 @@ digraph {
 	rankdir = LR;
 	charset=&quot;utf-8&quot;;
 
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
 	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; -&gt; &quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;bqbiol:isVersionOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
 
 	// Resources
 	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;, shape = ellipse, color = blue ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot;, shape = ellipse, color = blue ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;https://identifiers.org/OPB/OPB_00340&quot;, shape = ellipse, color = blue ];
-	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;, shape = ellipse, color = blue ];
+	&quot;ROMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; [ label=&quot;OMEXlib:Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;https://identifiers.org/uniprot/P84022&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;https://identifiers.org/fma/FMA:24178&quot;, shape = ellipse, color = blue ];
 	&quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;https://identifiers.org/fma/FMA:63877&quot;, shape = ellipse, color = blue ];
@@ -2328,7 +2328,7 @@ Serializing to json-triples:
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;object&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         }
       },
@@ -2348,7 +2348,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -2362,7 +2362,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -2376,7 +2376,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -2390,7 +2390,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -2404,7 +2404,7 @@ Serializing to json-triples:
       },
     {
       &quot;subject&quot; : {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         },
       &quot;predicate&quot; : {
@@ -2426,7 +2426,7 @@ Serializing to json:
 {
   &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot; : {
     &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot; : [ {
-        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot;,
+        &quot;value&quot; : &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot;,
         &quot;type&quot; : &quot;uri&quot;
         }
       
@@ -2439,7 +2439,7 @@ Serializing to json:
       ]
     }
   ,
-  &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot; : {
+  &quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot; : {
     &quot;http://biomodels.net/biology-qualifiers/is&quot; : [ {
         &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
         &quot;type&quot; : &quot;uri&quot;
@@ -2473,13 +2473,13 @@ Serializing to json:
 
 
 Serializing to nquads: 
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
 
 
 
@@ -2501,7 +2501,7 @@ Serializing to html:
     &lt;tr class=&quot;triple&quot;&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPropertyOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
@@ -2509,27 +2509,27 @@ Serializing to html:
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/OPB/OPB_00340&quot;&gt;https://identifiers.org/OPB/OPB_00340&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/uniprot/P84022&quot;&gt;https://identifiers.org/uniprot/P84022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:24178&quot;&gt;https://identifiers.org/fma/FMA:24178&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:63877&quot;&gt;https://identifiers.org/fma/FMA:63877&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:70737&quot;&gt;https://identifiers.org/fma/FMA:70737&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;triple&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&quot;&gt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:7163&quot;&gt;https://identifiers.org/fma/FMA:7163&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
@@ -2615,10 +2615,10 @@ Serializing to html:
 <span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 
 <span class="s2">local:OmexMetaId0001</span>
-<span class="s2">    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span>
+<span class="s2">    bqbiol:isPropertyOf local:EntityProperty0000 ;</span>
 <span class="s2">    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span>
 
-<span class="s2">local:PhysicalEntity0000</span>
+<span class="s2">local:EntityProperty0000</span>
 <span class="s2">    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span>
 <span class="s2">    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span>
 
@@ -2715,10 +2715,10 @@ Serializing to html:
                                 <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isPropertyOf local:EntityProperty0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
@@ -2819,10 +2819,10 @@ Serializing to html:
                                 <span class="s">&quot;@prefix local: &lt;http://omex-library.org/Welsh2020.omex/Welsh2020.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#OmexMetaId0001&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;    bqbiol:isPropertyOf local:PhysicalEntity0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;    bqbiol:isPropertyOf local:EntityProperty0000 ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#PhysicalEntity0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                                <span class="s">&quot;&lt;http://omex-library.org/Welsh2020.omex/Welsh2020.xml#EntityProperty0000&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;</span><span class="se">\n</span><span class="s">&quot;</span>
                                 <span class="s">&quot;    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 

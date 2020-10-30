@@ -160,14 +160,14 @@ namespace omexmeta {
 		+Participant(librdf_world* world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier, std::string physicalEntityReference)
 		+getPredicatePtr() : PredicatePtr
 		-predicate_ptr_ : PredicatePtr
-		-resource_ : Resource
+		-isVersionOfValue : Resource
 		+getResource() : Resource& {query}
 		+getMultiplier() : double {query}
 		-multiplier_ : double
 		+getWorld() : librdf_world* {query}
 		-world_ : librdf_world*
 		-physicalEntityReference_ : std::string
-		-subject_ : std::string
+		-isPropertyOfValue : std::string
 		+getPhysicalEntityReference() : std::string& {query}
 		+getSubject() : std::string& {query}
 		+toTriples() : std::vector<Triple> {query}
@@ -498,9 +498,9 @@ namespace omexmeta {
 		+getPredicatePtr() : PredicatePtr {query}
 		-predicate_ptr_ : PredicatePtr
 		+getResource() : Resource {query}
-		-resource_ : Resource
+		-isVersionOfValue : Resource
 		+getSubject() : Subject {query}
-		-subject_ : Subject
+		-isPropertyOfValue : Subject
 		+toStatement() : librdf_statement*
 		#world_ : librdf_world*
 	}

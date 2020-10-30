@@ -220,7 +220,7 @@ namespace omexmeta {
         }
         //todo play around with myOMEX
         serializer.setNamespace(getRepositoryUri(), "OMEXlib");
-        serializer.setNamespace(getArchiveUri(), "myOMEX");
+        serializer.setNamespace(getArchiveUri(), "myOMEX"); // doesn't work! Why?
         serializer.setNamespace(getLocalUri(), "local");
         return serializer.toString("base", model_);
     }
@@ -510,11 +510,13 @@ namespace omexmeta {
             model_.addStatement(triple.getStatement());
             const std::string& ns = LibrdfNode(triple.getPredicate()).getNamespace();
             seen_namespaces_.push_back(triple.getPredicateNamespaceStr());
-            for (auto &it: seen_namespaces_){
-                std::cout << "Seen namespace: " << it << std::endl;
+            for (auto &it : seen_namespaces_){
+                std::cout << it << std::endl;
             }
-//            std::cout << seen_namespaces_ << std::endl;
             namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
+            for (auto&it:namespaces_){
+                std::cout <<"first : " << it.first << ", second: " << it.second << std::endl;
+            }
         }
     }
 

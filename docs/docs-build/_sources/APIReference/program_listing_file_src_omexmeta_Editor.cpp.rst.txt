@@ -188,7 +188,7 @@ Program Listing for File Editor.cpp
        void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
            if (physicalEntity.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
+                       "NullPointerException: Editor::addPhysicalEntity() physicalEntity::isPropertyOfValue (i.e. about) node is empty");
            }
            /*
             * Because we now want to use @prefix local for the
@@ -205,7 +205,7 @@ Program Listing for File Editor.cpp
        void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
            if (physicalProcess.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::subject_ (i.e. about) node is empty");
+                       "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::isPropertyOfValue (i.e. about) node is empty");
            }
            checkValidMetaid(physicalProcess.getAbout());
            /*
@@ -223,7 +223,7 @@ Program Listing for File Editor.cpp
        void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
            if (physicalForce.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalForce() PhysicalForce::subject_ (i.e. about) node is empty");
+                       "NullPointerException: Editor::addPhysicalForce() PhysicalForce::isPropertyOfValue (i.e. about) node is empty");
            }
            checkValidMetaid(physicalForce.getAbout());
            /*

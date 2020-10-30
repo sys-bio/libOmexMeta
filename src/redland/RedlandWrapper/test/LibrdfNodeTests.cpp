@@ -255,6 +255,15 @@ TEST_F(LibrdfNodeTests, TestEquality) {
     subject2.freeNode();
 }
 
+TEST_F(LibrdfNodeTests, TestEqualityBlank) {
+    LibrdfNode subject1 = LibrdfNode::fromBlank("subject");
+    LibrdfNode subject2 = LibrdfNode::fromBlank("subject");
+    ASSERT_EQ(subject1, subject2);
+
+    subject1.freeNode();
+    subject2.freeNode();
+}
+
 TEST_F(LibrdfNodeTests, TestInequality) {
     LibrdfNode subject1 = LibrdfNode::fromUriString("subject1");
     LibrdfNode subject2 = LibrdfNode::fromUriString("subject2");
@@ -369,10 +378,21 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingMyCode) {
 }
 
 
-TEST_F(LibrdfNodeTests, GetNamespace) {
+TEST_F(LibrdfNodeTests, GetNamespace1) {
     // n1 and n2 are two different nodes
-    LibrdfNode n1 = LibrdfNode::fromUriString("https://uri.com/with/namespace");
-    std::string expected = "https://uri.com/with/";
+    LibrdfNode n1 = LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is");
+    std::string expected = "http://biomodels.net/biology-qualifiers/";
+    std::string actual = n1.getNamespace();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    // uri count decreases by 1 when we free the node
+    n1.freeNode();
+}
+
+
+TEST_F(LibrdfNodeTests, GetNamespace2) {
+    // n1 and n2 are two different nodes
+    LibrdfNode n1 = LibrdfNode::fromUriString("http://www.bhi.washington.edu/semsim#hasMultiplier");
+    std::string expected = "http://www.bhi.washington.edu/semsim#";
     std::string actual = n1.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     // uri count decreases by 1 when we free the node

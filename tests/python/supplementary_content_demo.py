@@ -448,24 +448,24 @@ class OmexMetaSpec1_1:
         with editor.new_physical_process() as substrate_bind_enzyme:
             substrate_bind_enzyme.about("R1") \
                 .has_property("OPB:OPB_00593") \
-                .add_source(1.0, "PhysicalEntity0000") \
-                .add_source(1.0, "PhysicalEntity0003") \
-                .add_sink(1.0, "PhysicalEntity0000") \
+                .add_source(1.0, "EntityProperty0000") \
+                .add_source(1.0, "EntityProperty0003") \
+                .add_sink(1.0, "EntityProperty0000") \
                 .is_version_of()
 
         with editor.new_physical_process() as substrate_unbind_enzyme:
             substrate_unbind_enzyme.about("R2") \
                 .has_property("OPB:OPB_00593") \
-                .add_sink(1.0, "PhysicalEntity0000") \
-                .add_sink(1.0, "PhysicalEntity0003") \
-                .add_source(1.0, "PhysicalEntity0000")
+                .add_sink(1.0, "EntityProperty0000") \
+                .add_sink(1.0, "EntityProperty0003") \
+                .add_source(1.0, "EntityProperty0000")
 
         with editor.new_physical_process() as product_formation:
             product_formation.about("R3") \
                 .has_property("OPB:OPB_00593") \
-                .add_sink(1.0, "PhysicalEntity0002") \
-                .add_sink(1.0, "PhysicalEntity0001") \
-                .add_source(1.0, "PhysicalEntity0003")
+                .add_sink(1.0, "EntityProperty0002") \
+                .add_sink(1.0, "EntityProperty0001") \
+                .add_source(1.0, "EntityProperty0003")
 
         fname = create_combine_archive(sbml, "PhysicalProcess", str(rdf))
 
@@ -498,8 +498,8 @@ class OmexMetaSpec1_1:
         with editor.new_physical_force() as physcial_force:
             physcial_force.about("S") \
                 .has_property("OPB:OPB_00378") \
-                .add_source(1.0, "PhysicalEntity0002") \
-                .add_sink(1.0, "PhysicalEntity0001")
+                .add_source(1.0, "EntityProperty0002") \
+                .add_sink(1.0, "EntityProperty0001")
 
         fname = create_combine_archive(sbml, "PhysicalForce", str(rdf))
 

@@ -31,7 +31,7 @@ namespace omexmeta {
         Resource identity_resource_;
         Resources location_resources_;
         Resources part_resources_;
-        std::string entity_id_;
+        std::string physical_entity_property_id_;
 
     public:
 

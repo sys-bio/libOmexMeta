@@ -10,6 +10,7 @@
 #include "omexmeta/PhysicalForce.h"
 #include "omexmeta/Participant.h"
 #include "omexmeta/OmexMetaUtils.h"
+#include "OmexMetaTestUtils.h"
 
 using namespace omexmeta;
 
@@ -202,57 +203,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
 }
 
 
-TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
-    PhysicalForce force(
-            model.get(),
-            model_uri,
-            local_uri,physical_property,
-            std::vector<SourceParticipant>(
-                    {SourceParticipant(
-                            model.get(),
-                            1.0,
-                            "#PhysicalEntityReference1", model_uri, local_uri
-                    )}
-            ),
-            std::vector<SinkParticipant>(
-                    {SinkParticipant(
-                            model.get(),
-                            1.0,
-                            "PhysicalEntityReference2", model_uri, local_uri
-                    )}
-            )
-    );
-    Triples triples = force.toTriples();
-    std::string actual = triples.str("turtle");
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "local:PhysicalForce0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference2> .\n"
-                           "\n"
-                           "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalForce0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
-                           "\n"
-                           "";
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-    triples.freeTriples();
-}
-
 
 TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
@@ -262,7 +212,8 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     force.setModelUri(model_uri);
     force.setLocalUri(local_uri);
     //todo considering implementing the builder as a composite builder
-    force.setPhysicalProperty("Force5", "OPB:OPB_00340")
+    force.about("Force5")
+            .hasProperty("OPB:OPB_00340")
             .addSource(1, "#PhysicalEntityReference1")
             .addSink(2, "PhysicalEntityReference2")
             .addSink(1, "PhysicalEntityReference3");
@@ -275,9 +226,9 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalForce0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "local:ForceProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#Force5> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"2\"^^rdf:int ;\n"
@@ -292,12 +243,10 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntityReference1> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#Force5>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalForce0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
-                           "\n"
-                           "";
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 

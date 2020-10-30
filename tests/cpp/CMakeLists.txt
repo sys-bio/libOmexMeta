@@ -41,8 +41,9 @@ endmacro()
 
 set(
         TEST_SOURCES
+        OmexMetaTestUtils.cpp # utilities used in tests
         SBMLFactory.h
-        OmexMetaUtilsTests.cpp
+        OmexMetaUtilsTests.cpp # tests for omexmeta utils class
         SubjectTests.cpp
         ResourceTests.cpp
         PredicateTests.cpp
@@ -52,7 +53,7 @@ set(
 
         AnnotationSamples.h
 
-        CurlGetTests.cpp
+#        CurlGetTests.cpp # periodically breaks due to file size changes and link changes
         MetaIDTests.cpp
         XmlAssistantTests.cpp
         ParticipantTests.cpp
@@ -64,9 +65,7 @@ set(
         PhysicalProcessTests.cpp
         QueryTests.cpp
         EditorTests.cpp
-        RDFReadAndWriteTests.cpp
         PersonalInformationTests.cpp
-        DocTests.cpp
         MarkupIdentifierTests.cpp
         ElementExtractorTests.cpp
         SBMLSemanticExtractionTests.cpp

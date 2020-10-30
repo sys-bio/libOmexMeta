@@ -19,39 +19,39 @@ local:MediatorParticipant0002
 local:MediatorParticipant0003
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_2> .
 
-local:PhysicalProcess0000
+local:ProcessProperty0000
     semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
-local:PhysicalProcess0001
+local:ProcessProperty0001
     semsim:hasSinkParticipant local:SinkParticipant0001 ;
     semsim:hasSourceParticipant local:SourceParticipant0001 .
 
-local:PhysicalProcess0002
+local:ProcessProperty0002
     semsim:hasSinkParticipant local:SinkParticipant0002 ;
     semsim:hasSourceParticipant local:SourceParticipant0002, local:SourceParticipant0003, local:SourceParticipant0004 .
 
-local:PhysicalProcess0003
+local:ProcessProperty0003
     semsim:hasMediatorParticipant local:MediatorParticipant0001 ;
     semsim:hasSinkParticipant local:SinkParticipant0003 ;
     semsim:hasSourceParticipant local:SourceParticipant0005 .
 
-local:PhysicalProcess0004
+local:ProcessProperty0004
     semsim:hasMediatorParticipant local:MediatorParticipant0002 ;
     semsim:hasSinkParticipant local:SinkParticipant0004 ;
     semsim:hasSourceParticipant local:SourceParticipant0006 .
 
-local:PhysicalProcess0005
+local:ProcessProperty0005
     semsim:hasMediatorParticipant local:MediatorParticipant0003 ;
     semsim:hasSinkParticipant local:SinkParticipant0005 ;
     semsim:hasSourceParticipant local:SourceParticipant0007 .
 
-local:PhysicalProcess0006
+local:ProcessProperty0006
     semsim:hasSinkParticipant local:SinkParticipant0006 ;
     semsim:hasSourceParticipant local:SourceParticipant0008 .
 
-local:PhysicalProcess0007
+local:ProcessProperty0007
     semsim:hasSinkParticipant local:SinkParticipant0007 ;
     semsim:hasSourceParticipant local:SourceParticipant0009 .
 
@@ -233,35 +233,35 @@ local:_9
     ] .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_13>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isPropertyOf local:ProcessProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_14>
-    bqbiol:isPropertyOf local:PhysicalProcess0001 ;
+    bqbiol:isPropertyOf local:ProcessProperty0001 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_15>
-    bqbiol:isPropertyOf local:PhysicalProcess0002 ;
+    bqbiol:isPropertyOf local:ProcessProperty0002 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_16>
-    bqbiol:isPropertyOf local:PhysicalProcess0003 ;
+    bqbiol:isPropertyOf local:ProcessProperty0003 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_17>
-    bqbiol:isPropertyOf local:PhysicalProcess0004 ;
+    bqbiol:isPropertyOf local:ProcessProperty0004 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_18>
-    bqbiol:isPropertyOf local:PhysicalProcess0005 ;
+    bqbiol:isPropertyOf local:ProcessProperty0005 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_19>
-    bqbiol:isPropertyOf local:PhysicalProcess0006 ;
+    bqbiol:isPropertyOf local:ProcessProperty0006 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#_20>
-    bqbiol:isPropertyOf local:PhysicalProcess0007 ;
+    bqbiol:isPropertyOf local:ProcessProperty0007 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 

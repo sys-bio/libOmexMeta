@@ -57,7 +57,7 @@ TEST_F(LibrdfModelTests, TestAddStatement) {
             LibrdfNode::fromUriString("predicate").get(),
             LibrdfNode::fromUriString("resource").get()
     );
-    model1.addStatement(statement);
+    model1.addStatement(statement.get());
     int expected = 1;
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
@@ -72,14 +72,14 @@ TEST_F(LibrdfModelTests, TestRemoveStatement) {
             LibrdfNode::fromUriString("predicate1").get(),
             LibrdfNode::fromUriString("resource1").get()
     );
-    model1.addStatement(statement1);
+    model1.addStatement(statement1.get());
 
     LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
             LibrdfNode::fromUriString("subject2").get(),
             LibrdfNode::fromUriString("predicate2").get(),
             LibrdfNode::fromUriString("resource2").get()
     );
-    model1.addStatement(statement2);
+    model1.addStatement(statement2.get());
 //    librdf_model_remove_statement(model1.get(), statement2.get());
     model1.removeStatement(statement2);
     int expected = 1;
@@ -104,10 +104,10 @@ TEST_F(LibrdfModelTests, containsPass) {
     );
 
     LibrdfModel model1 = LibrdfModel(storage1.get());
-    model1.addStatement(statement1);
+    model1.addStatement(statement1.get());
 
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
-    ASSERT_TRUE(model1.containsStatement(statement1));
+    ASSERT_TRUE(model1.containsStatement(statement1.get()));
     model1.freeModel();
     statement1.freeStatement();
 }
@@ -125,10 +125,13 @@ TEST_F(LibrdfModelTests, containsFail) {
     );
 
     LibrdfModel model1 = LibrdfModel(storage1.get());
-    model1.addStatement(statement1);
+    model1.addStatement(statement1.get());
+    ASSERT_EQ(1, model1.size());
 
+    ASSERT_TRUE(model1.containsStatement(statement1.get()));
+//    ASSERT_FALSE(model1.containsStatement(statement2));
     ASSERT_FALSE(model1.containsStatement(statement2.get()));
-    ASSERT_FALSE(model1.containsStatement(statement2));
+
     model1.freeModel();
     statement1.freeStatement();
     statement2.freeStatement();
@@ -150,10 +153,36 @@ TEST_F(LibrdfModelTests, Equality1Pass) {
 
     LibrdfModel model1 = LibrdfModel(storage1.get());
     LibrdfModel model2 = LibrdfModel(storage2.get());
-    model1.addStatement(statement1);
-    model1.addStatement(statement2);
-    model2.addStatement(statement1);
-    model2.addStatement(statement2);
+    model1.addStatement(statement1.get());
+    model1.addStatement(statement2.get());
+    model2.addStatement(statement1.get());
+    model2.addStatement(statement2.get());
+
+    ASSERT_TRUE(model1 == model2);
+    model1.freeModel();
+    statement1.freeStatement();
+    statement2.freeStatement();
+}
+
+TEST_F(LibrdfModelTests, Equality1Blanks) {
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromBlank("subject1").get(),
+            LibrdfNode::fromUriString("predicate1").get(),
+            LibrdfNode::fromUriString("resource1").get()
+    );
+
+    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromBlank("subject2").get(),
+            LibrdfNode::fromUriString("predicate2").get(),
+            LibrdfNode::fromUriString("resource2").get()
+    );
+
+    LibrdfModel model1 = LibrdfModel(storage1.get());
+    LibrdfModel model2 = LibrdfModel(storage2.get());
+    model1.addStatement(statement1.get());
+    model1.addStatement(statement2.get());
+    model2.addStatement(statement1.get());
+    model2.addStatement(statement2.get());
 
     ASSERT_TRUE(model1 == model2);
     model1.freeModel();
@@ -182,11 +211,10 @@ TEST_F(LibrdfModelTests, Equality1Fail) {
 
     LibrdfModel model1 = LibrdfModel(storage1.get());
     LibrdfModel model2 = LibrdfModel(storage2.get());
-    model1.addStatement(statement1);
-    model1.addStatement(statement3);
-
-    model2.addStatement(statement1);
-    model2.addStatement(statement2);
+    model1.addStatement(statement1.get());
+    model1.addStatement(statement3.get());
+    model2.addStatement(statement1.get());
+    model2.addStatement(statement2.get());
 
     ASSERT_FALSE(model1 == model2);
     model1.freeModel();

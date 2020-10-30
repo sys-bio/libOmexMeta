@@ -5,7 +5,7 @@
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalProcess0000
+local:ProcessProperty0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
@@ -21,7 +21,7 @@ local:SourceParticipant0000
     <https://predicate.com/linker> "New predicate demonstration"^^rdf:string .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isPropertyOf local:ProcessProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
 
 

@@ -9,13 +9,13 @@
 namespace omexmeta {
 
     PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string model_uri)
-        : subject_(std::move(subject_str)),
-          resource_(std::move(resource_str)),
+        : isPropertyOfValue(std::move(subject_str)),
+          isVersionOfValue(std::move(resource_str)),
           model_uri_(std::move(model_uri)) {
         validate();
     }
     PhysicalProperty::PhysicalProperty(std::string subject_str, std::string model_uri)
-        : subject_(std::move(subject_str)),
+        : isPropertyOfValue(std::move(subject_str)),
           model_uri_(std::move(model_uri)) {
         validate();
     }
@@ -25,8 +25,8 @@ namespace omexmeta {
         std::string expected_prefix2 = "https://identifiers.org/opb";
 
         // create a temporary resource obj for checking only.
-        if (!resource_.empty()) {
-            Resource r(LibrdfNode::fromUriString(resource_));
+        if (!isVersionOfValue.empty()) {
+            Resource r(LibrdfNode::fromUriString(isVersionOfValue));
             std::string uri = r.str();
             r.free();
             if ((uri.rfind(expected_prefix1, 0) != 0) && (uri.rfind(expected_prefix2, 0) != 0)) {
@@ -39,22 +39,21 @@ namespace omexmeta {
         }
 
         // ensure subject_uri_ has the model_uri associated with it
-        if (OmexMetaUtils::startsWith(subject_, "http")) {
-            if (!OmexMetaUtils::startsWith(subject_, getModelUri())) {
+        if (OmexMetaUtils::startsWith(isPropertyOfValue, "http")) {
+            if (!OmexMetaUtils::startsWith(isPropertyOfValue, getModelUri())) {
                 throw std::invalid_argument("std::invalid_argument: PhysicalProperty::validate() "
                                             "The subject argument to PhysicalProperty is already a URI"
                                             "but is it not the uri associated with the model you are annotating "
                                             "(" +
-                                            getModelUri() + ") but instead \"" + subject_ + "\"");
+                                            getModelUri() + ") but instead \"" + isPropertyOfValue + "\"");
             }
         } else {
-            subject_ = OmexMetaUtils::concatMetaIdAndUri(subject_, getModelUri());
+            isPropertyOfValue = OmexMetaUtils::concatMetaIdAndUri(isPropertyOfValue, getModelUri());
         }
     }
 
 
     Triples PhysicalProperty::toTriples(const std::string &property_metaid) const {
-
         if (!OmexMetaUtils::startsWith(property_metaid, "http")) {
             throw std::invalid_argument("std::invalid_argument: PhysicalProperty::toTriples: "
                                         "Expected a full uri (i.e. begins with http) for property_metaid "
@@ -62,49 +61,48 @@ namespace omexmeta {
                                         property_metaid + "\"");
         }
 
-        std::cout << "PhysicalProperty::toTriples subject: " << subject_ << std::endl;
-        std::cout << "PhysicalProperty::toTriples property_metaid: " << property_metaid << std::endl;
 
         Triples triples;
         Triple is_property_of_triple(
                 LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
-                LibrdfNode::fromUriString(subject_).get());
+                LibrdfNode::fromUriString(isPropertyOfValue).get());
         triples.move_back(is_property_of_triple);
 
-        if (!resource_.empty()) {
+        if (!isVersionOfValue.empty()) {
             Triple is_version_of_triple(
                     LibrdfNode::fromUriString(property_metaid).get(),
                     BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                    Resource(LibrdfNode::fromUriString(resource_)).getNode());
+                    Resource(LibrdfNode::fromUriString(isVersionOfValue)).getNode());
             triples.move_back(is_version_of_triple);
         }
+
         return triples;
     }
 
     const std::string &PhysicalProperty::getSubjectStr() const {
-        return subject_;
+        return isPropertyOfValue;
     }
 
     void PhysicalProperty::setSubject(const std::string &subject) {
         if (OmexMetaUtils::startsWith(subject, "http")) {
-            subject_ = subject;
+            isPropertyOfValue = subject;
         } else {
-            subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
+            isPropertyOfValue = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
         }
     }
 
     const std::string &PhysicalProperty::getResourceStr() const {
-        return resource_;
+        return isVersionOfValue;
     }
 
     void PhysicalProperty::setResource(const std::string &resource) {
-        resource_ = resource;
+        isVersionOfValue = resource;
     }
 
     bool PhysicalProperty::operator==(const PhysicalProperty &rhs) const {
-        return subject_ == rhs.subject_ &&
-               resource_ == rhs.resource_;
+        return isPropertyOfValue == rhs.isPropertyOfValue &&
+               isVersionOfValue == rhs.isVersionOfValue;
     }
 
     bool PhysicalProperty::operator!=(const PhysicalProperty &rhs) const {
@@ -112,11 +110,11 @@ namespace omexmeta {
     }
 
     const std::string &PhysicalProperty::getSubject() const {
-        return subject_;
+        return isPropertyOfValue;
     }
 
     const std::string &PhysicalProperty::getResource() const {
-        return resource_;
+        return isVersionOfValue;
     }
 
     const std::string &PhysicalProperty::getModelUri() const {

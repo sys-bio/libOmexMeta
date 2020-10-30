@@ -53,7 +53,7 @@ TEST_F(LibrdfSerializerTests, TestToString) {
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
     );
-    model.addStatement(statement);
+    model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
 //    LibrdfUri uri("base_uri");
     std::string actual = serializer1.toString("base_uri", model);
@@ -78,7 +78,7 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
     );
-    model.addStatement(statement);
+    model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -100,7 +100,7 @@ TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
     );
-    model.addStatement(statement);
+    model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
@@ -118,7 +118,7 @@ TEST_F(LibrdfSerializerTests, TestBaseUri) {
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
     );
-    model.addStatement(statement);
+    model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
@@ -137,7 +137,7 @@ TEST_F(LibrdfSerializerTests, TestFeatures) {
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
     );
-    model.addStatement(statement);
+    model.addStatement(statement.get());
     LibrdfSerializer serializer("rdfxml-abbrev");
 
     serializer.setOption("relativeURIs", "0");

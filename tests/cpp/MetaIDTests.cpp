@@ -112,8 +112,8 @@ TEST_F(MetaIDTests, TestInequality1) {
 }
 
 TEST_F(MetaIDTests, AnotherTest) {
-    omexmeta::MetaID metaId1("PhysicalEntity", 0, 4);
-    std::string expected = "#PhysicalEntity0000";
+    omexmeta::MetaID metaId1("EntityProperty", 0, 4);
+    std::string expected = "#EntityProperty0000";
     std::string actual = metaId1.generate();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

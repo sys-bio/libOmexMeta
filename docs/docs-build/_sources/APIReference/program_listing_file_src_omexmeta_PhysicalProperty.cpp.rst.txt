@@ -22,8 +22,8 @@ Program Listing for File PhysicalProperty.cpp
    namespace omexmeta {
    
        PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri)
-               : subject_(std::move(OmexMetaUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
-                 resource_(std::move(resource_str)),
+               : isPropertyOfValue(std::move(OmexMetaUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
+                 isVersionOfValue(std::move(resource_str)),
                  model_uri_(local_uri){
            validate();
        }
@@ -33,7 +33,7 @@ Program Listing for File PhysicalProperty.cpp
            std::string expected_prefix2 = "https://identifiers.org/opb";
    
            // create a temporary resource obj for checking only.
-           Resource r(LibrdfNode::fromUriString(resource_));
+           Resource r(LibrdfNode::fromUriString(isVersionOfValue));
            std::string uri = r.str();
            r.free();
            if ((uri.rfind(expected_prefix1, 0) != 0) && (uri.rfind(expected_prefix2, 0) != 0)) {
@@ -49,12 +49,12 @@ Program Listing for File PhysicalProperty.cpp
        Triples PhysicalProperty::toTriples(std::string property_metaid) const {
            property_metaid = OmexMetaUtils::addLocalPrefixToMetaid(property_metaid, getLocalUri());
            Triple is_version_of_triple(
-                   LibrdfNode::fromUriString(subject_).get(),
+                   LibrdfNode::fromUriString(isPropertyOfValue).get(),
                    BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                   Resource(LibrdfNode::fromUriString(resource_)).getNode()
+                   Resource(LibrdfNode::fromUriString(isVersionOfValue)).getNode()
            );
            Triple is_property_of_triple(
-                   LibrdfNode::fromUriString(subject_).get(),
+                   LibrdfNode::fromUriString(isPropertyOfValue).get(),
                    BiomodelsBiologyQualifier("isPropertyOf").getNode(),
                    LibrdfNode::fromUriString(property_metaid).get()
            );
@@ -65,24 +65,24 @@ Program Listing for File PhysicalProperty.cpp
        }
    
        const std::string &PhysicalProperty::getSubjectStr() const {
-           return subject_;
+           return isPropertyOfValue;
        }
    
        void PhysicalProperty::setSubject(const std::string &subject) {
-           subject_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
+           isPropertyOfValue = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
        }
    
        const std::string &PhysicalProperty::getResourceStr() const {
-           return resource_;
+           return isVersionOfValue;
        }
    
        void PhysicalProperty::setResource(const std::string &resource) {
-           resource_ = resource;
+           isVersionOfValue = resource;
        }
    
        bool PhysicalProperty::operator==(const PhysicalProperty &rhs) const {
-           return subject_ == rhs.subject_ &&
-                  resource_ == rhs.resource_;
+           return isPropertyOfValue == rhs.isPropertyOfValue &&
+                  isVersionOfValue == rhs.isVersionOfValue;
        }
    
        bool PhysicalProperty::operator!=(const PhysicalProperty &rhs) const {
@@ -90,11 +90,11 @@ Program Listing for File PhysicalProperty.cpp
        }
    
        const std::string &PhysicalProperty::getSubject() const {
-           return subject_;
+           return isPropertyOfValue;
        }
    
        const std::string &PhysicalProperty::getResource() const {
-           return resource_;
+           return isVersionOfValue;
        }
    
        const std::string &PhysicalProperty::getModelUri() const {

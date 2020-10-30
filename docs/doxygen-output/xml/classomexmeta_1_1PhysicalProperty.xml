@@ -5,9 +5,9 @@
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalProperty::subject_</definition>
+        <definition>std::string omexmeta::PhysicalProperty::isPropertyOfValue</definition>
         <argsstring></argsstring>
-        <name>subject_</name>
+        <name>isPropertyOfValue</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,9 +18,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a85c53684ca7176b68bf8342cc20de639" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalProperty::resource_</definition>
+        <definition>std::string omexmeta::PhysicalProperty::isVersionOfValue</definition>
         <argsstring></argsstring>
-        <name>resource_</name>
+        <name>isVersionOfValue</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -329,11 +329,11 @@
       <member refid="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a76d1ffd15ea6aad76c322bdd8991a111" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a9a8b291c9516decaa67afa1b15ac7c2d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a85c53684ca7176b68bf8342cc20de639" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>resource_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a85c53684ca7176b68bf8342cc20de639" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isVersionOfValue</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1afd367b237fc93654c59c3b0c203b4640" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a420dab52a424d1be5a8610e19407980c" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setResource</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a8bb7c912a21e0e318a9e16d2af1801e5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setSubject</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>subject_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isPropertyOfValue</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a03056210a70ea8446b44de250646eeb5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>toTriples</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>validate</name></member>
     </listofallmembers>

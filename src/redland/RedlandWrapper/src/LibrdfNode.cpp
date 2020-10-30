@@ -299,12 +299,26 @@ namespace redland {
 
     std::string LibrdfNode::getNamespace() const {
         std::vector<std::string> split = LibrdfNode::splitStringBy(str(), '/');
+        std::string last = split[split.size() - 1];
+        std::string hash = "#";
+        bool hash_on_end = false;
+        std::vector<std::string> last_split;
+        if (last.find(hash) != std::string::npos) {
+            hash_on_end = true;
+            last_split = LibrdfNode::splitStringBy(last, '#');
+            if (last_split.size() != 2) {
+                throw std::logic_error("LibrdfNode::getNamespace(): expected 2 elements");
+            }
+        }
         std::ostringstream ns;
-        for (int i=0; i<split.size()-1; i ++ ){
+        for (int i = 0; i < split.size() - 1; i++) {
             if (split[i] == "http:" || split[i] == "https:")
                 ns << split[i] << "//";
             else
                 ns << split[i] << "/";
+        }
+        if (hash_on_end) {
+            ns << last_split[0] << "#";
         }
         return ns.str();
     }

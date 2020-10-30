@@ -841,12 +841,12 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalEntity0000
+local:EntityProperty0000
     bqbiol:is <https://identifiers.org/uniprot/P456> ;
     bqbiol:isPartOf <https://identifiers.org/fma/fma:3456>, <https://identifiers.org/fma/fma:3457> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isPropertyOf local:EntityProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """
@@ -872,12 +872,12 @@ local:PhysicalEntity0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalEntity0000
+local:EntityProperty0000
     bqbiol:is <https://identifiers.org/uniprot/P456> ;
     bqbiol:isPartOf <https://identifiers.org/fma/fma:3456>, <https://identifiers.org/fma/fma:3457> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isPropertyOf local:EntityProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """
@@ -904,12 +904,12 @@ local:PhysicalEntity0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalEntity0000
+local:EntityProperty0000
     bqbiol:is <https://identifiers.org/uniprot/PD12345> ;
     bqbiol:isPartOf <https://identifiers.org/fma/fma12345> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
-    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isPropertyOf local:EntityProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
 
 """
@@ -941,7 +941,7 @@ local:PhysicalEntity0000
 local:MediatorParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity3> .
 
-local:PhysicalProcess0000
+local:ProcessProperty0000
     semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
@@ -955,7 +955,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isPropertyOf local:ProcessProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """
@@ -991,7 +991,7 @@ local:SourceParticipant0000
 local:MediatorParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity3> .
 
-local:PhysicalProcess0000
+local:ProcessProperty0000
     semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
@@ -1005,7 +1005,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isPropertyOf local:ProcessProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """
@@ -1033,7 +1033,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalProcess0000
+local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/GO:12345> ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
@@ -1042,7 +1042,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#fma:fma12345> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isPropertyOf local:ProcessProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
 
 """
@@ -1070,7 +1070,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalForce0000
+local:ForceProperty0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
@@ -1083,7 +1083,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalForce0000 ;
+    bqbiol:isPropertyOf local:ForceProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """
@@ -1111,7 +1111,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalForce0000
+local:ForceProperty0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SourceParticipant0000
@@ -1119,7 +1119,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#fma:fma12345> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
-    bqbiol:isPropertyOf local:PhysicalForce0000 ;
+    bqbiol:isPropertyOf local:ForceProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB12345> .
 
 """
@@ -1147,7 +1147,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalForce0000
+local:ForceProperty0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
@@ -1160,7 +1160,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Entity1> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:isPropertyOf local:PhysicalForce0000 ;
+    bqbiol:isPropertyOf local:ForceProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """

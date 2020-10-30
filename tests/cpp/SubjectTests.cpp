@@ -5,8 +5,6 @@
 #include "omexmeta/Subject.h"
 #include "gtest/gtest.h"
 
-#include "redland/World.h"
-
 using namespace omexmeta;
 
 class SubjectTests : public ::testing::Test {

@@ -8,8 +8,10 @@
 #include "vector"
 #include "gtest/gtest.h"
 #include <vector>
+#include "OmexMetaTestUtils.h"
 
 using namespace omexmeta;
+
 
 class PhysicalEntityTests : public ::testing::Test {
 
@@ -318,17 +320,17 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalEntity0000\n"
-                           "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
                            "\n";
     std::string s = triples.str("turtle");
     std::cout << s << std::endl;
-    ASSERT_STREQ(s.c_str(), expected.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -351,19 +353,19 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalEntity0000\n"
-                           "    bqbiol:is <https://identifiers.org/fma/FMA:9690> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:18228> .\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#VLV> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00154> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#VLV>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00154> .\n"
+                           "    bqbiol:is <https://identifiers.org/fma/FMA:9690> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:18228> .\n"
                            "\n"
                            "";
     Triples triples = physicalEntity.toTriples();
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -413,47 +415,23 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder2) {
             .isPartOf("GO:0005737")
             .hasProperty("OPB:00340");
     Triples triples = physicalEntity.toTriples();
-    RDF rdf;
-    rdf.addTriples(triples);
 
-    std::cout << rdf.toString() << std::endl;
+    std::string expected_string = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                  "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                                  "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                                  "@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .\n"
+                                  "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                  "\n"
+                                  "local:EntityProperty0000\n"
+                                  "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#glucose_c> ;\n"
+                                  "    bqbiol:isVersionOf <https://identifiers.org/OPB:00340> .\n"
+                                  "\n"
+                                  "<http://omex-library.org/NewOmex.omex/NewModel.xml#glucose_c>\n"
+                                  "    bqbiol:is <https://identifiers.org/CHEBI:17234> ;\n"
+                                  "    bqbiol:isPartOf <https://identifiers.org/GO:0005737> .\n\n";
 
-//    std::string actual = physicalEntity.toTriples().str("turtle");
-//    std::string expected_string = "@prefix OMEXlib: <http://omex-library.org/> .\n"
-//                                  "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-//                                  "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-//                                  "\n"
-//                                  "local:PhysicalEntity0000\n"
-//                                  "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#glucose_c> ;\n"
-//                                  "    bqbiol:isVersionOf <https://identifiers.org/OPB:00340> .\n"
-//                                  "\n"
-//                                  "<http://omex-library.org/NewOmex.omex/NewModel.xml#glucose_c>\n"
-//                                  "    bqbiol:is <https://identifiers.org/CHEBI:17234> ;\n"
-//                                  "    bqbiol:isPartOf <https://identifiers.org/GO:0005737> .\n"
-//                                  "\n";
-//    RDF rdf = RDF::fromString(expected_string, "turtle");
-//    LibrdfModel expected_model(rdf.getModel());
-//    LibrdfModel actual_model(physicalEntity.getModel());
-//    ASSERT_TRUE(expected_model == actual_model);
-//
-//    expected_model.freeModel();
-//    actual_model.freeModel();
-
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected_string));
     physicalEntity.free();
-
-    /*
-     * This is what we have, and its wrong.
-
-        <http://omex-library.org/NewOmex.omex/NewModel.xml#glucose_c>
-            bqbiol:isPropertyOf local:PhysicalEntity0000 ;
-            bqbiol:isVersionOf <https://identifiers.org/OPB:00340> .
-
-        local:PhysicalEntity0000
-            bqbiol:is <https://identifiers.org/CHEBI:17234> ;
-            bqbiol:isPartOf <https://identifiers.org/GO:0005737> .
-
-
-     */
 }
 
 
@@ -475,17 +453,17 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalEntity0000\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
                            "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
-                           "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -505,16 +483,16 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesOptionalIsPartOf) 
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalEntity0000\n"
-                           "    bqbiol:is <https://identifiers.org/obo/PR_000000365> .\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "    bqbiol:is <https://identifiers.org/obo/PR_000000365> .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -534,14 +512,14 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderOptionalIdentityField) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalEntity0000\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
                            "\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(physicalEntity.toTriples(), expected));
     physicalEntity.free();
 }
 
@@ -561,14 +539,14 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderHasPart) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalEntity0000\n"
-                           "    bqbiol:hasPart <https://identifiers.org/uniprot/PD12345>, <https://identifiers.org/uniprot/PD12346> .\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalEntity0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "    bqbiol:hasPart <https://identifiers.org/uniprot/PD12345>, <https://identifiers.org/uniprot/PD12346> .\n"
                            "\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(physicalEntity.toTriples(), expected));
     physicalEntity.free();
 }
 
@@ -584,14 +562,23 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
             .isPartOf("fma:FMA:63877");
     Triples triples = physicalEntity.toTriples();
     ASSERT_EQ(5, triples.size());
-    std::string actual = triples.str("ntriples", "TestPhysicalEntityBuilder2");
-    printf("%s", actual.c_str());
-    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    std::string actual = triples.str();
+    std::cout << actual << std::endl;
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
+                           "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "\n";
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -611,16 +598,24 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
 
     ASSERT_EQ(5, triples.size());
 
-    std::string actual = triples.str("ntriples", "TestPhysicalEntityBuilder2");
+    std::string actual = triples.str();
 
     printf("%s", actual.c_str());
 
-    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/PD12345> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .";
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -636,14 +631,22 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringNoProper
             .isPartOf("fma:FMA:63877");
     Triples triples = physicalEntity.toTriples();
     ASSERT_EQ(5, triples.size());
-    std::string actual = triples.str("ntriples", "TestPhysicalEntityBuilder2");
+    std::string actual = triples.str();
     printf("%s", actual.c_str());
-    std::string expected = "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/obo/OPB12345> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PR12345> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/obo/OPB12345> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/PR12345> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .";
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 

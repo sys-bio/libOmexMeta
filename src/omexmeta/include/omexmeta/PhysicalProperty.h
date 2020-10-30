@@ -23,8 +23,8 @@ namespace omexmeta {
 
     class PhysicalProperty {
 
-        std::string subject_;
-        std::string resource_;
+        std::string isPropertyOfValue;
+        std::string isVersionOfValue;
         std::string model_uri_;
         void validate();
 

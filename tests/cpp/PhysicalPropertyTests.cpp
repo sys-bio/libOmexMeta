@@ -7,6 +7,7 @@
 #include "omexmeta/Triple.h"
 #include "gtest/gtest.h"
 #include <omexmeta/RDF.h>
+#include "OmexMetaTestUtils.h"
 
 using namespace omexmeta;
 
@@ -57,11 +58,17 @@ TEST_F(PhysicalPropertyTests, TestToTriples) {
     PhysicalProperty resource = PhysicalProperty("sub", "OPB/OPB_1234", model_uri);
     Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
-    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_1234> .\n";
-    std::string actual = triples.str("ntriples", "PhysicalPropertyTests_TestToTriples");
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expeted.c_str(), actual.c_str());
+    std::string expeted = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                          "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                          "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                          "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                          "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                          "\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#prop>\n"
+                          "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> ;\n"
+                          "    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_1234> .\n"
+                          "";
+    OmexMetaTestUtils::equals(triples, expeted);
     triples.freeTriples();
 }
 
@@ -69,8 +76,8 @@ TEST_F(PhysicalPropertyTests, TestToTriplesLowerCaseOPB) {
     PhysicalProperty resource = PhysicalProperty("sub", "opb/opb_1234", model_uri);
     Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
-    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
+    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#prop> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> .\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#prop> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
     std::string actual = triples.str("ntriples", "PhysicalPropertyTests_TestToTriplesLowerCaseOPB");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expeted.c_str(), actual.c_str());
@@ -81,8 +88,8 @@ TEST_F(PhysicalPropertyTests, TestToTriplesUsingColonNotSlash) {
     PhysicalProperty resource = PhysicalProperty("sub", "opb:opb_1234", model_uri);
     Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
-    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#prop> .\n"
-                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#sub> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
+    std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#prop> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> .\n"
+                          "<http://omex-library.org/NewOmex.omex/NewModel.xml#prop> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .\n";
     std::string actual = triples.str("ntriples", "PhysicalPropertyTests_TestToTriplesUsingColonNotSlash");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expeted.c_str(), actual.c_str());
@@ -122,7 +129,7 @@ TEST_F(PhysicalPropertyTests, OptionalProperty) {
                            "local:property_metaid_0\n"
                            "    bqbiol:isPropertyOf local:property_metaid_0 .\n"
                            "\n";
-    ASSERT_STREQ(expected.c_str(), triples.str().c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
 }
 
 

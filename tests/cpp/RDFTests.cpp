@@ -179,43 +179,6 @@ TEST_F(RDFTests, TestAddFromStringMultipleTimes) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(RDFTests, TestParseFromUri) {
-    RDF rdf = RDF::fromUri(samples.sbml_url1, "rdfxml");
-    int expected = 277;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-}
-
-TEST_F(RDFTests, TestParseFromUriNonStatic) {
-    RDF rdf;
-    rdf.addFromUri(samples.sbml_url1, "rdfxml");
-    int expected = 277;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-}
-
-TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
-    std::string fname = (std::filesystem::current_path() /= "sqlite_db").string();
-    if (std::filesystem::exists(fname)) {
-        std::filesystem::remove(fname);
-    }
-    RDF rdf("sqlite", fname, "new='yes'");
-    rdf.addFromUri(samples.sbml_url1, "rdfxml");
-    int expected = 277;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-    ASSERT_TRUE(std::filesystem::exists(fname));
-    // clean up after ourselves
-    // but windows holds the sqlite db file open so we can't delete
-    // on windows so on this instance we have to deal with test databases clogging up
-    // the test folder.
-    try {
-        std::filesystem::remove(fname);
-    } catch (std::exception &e) {
-        //
-    }
-}
-
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
 //    raptor_option_uri_prefix;

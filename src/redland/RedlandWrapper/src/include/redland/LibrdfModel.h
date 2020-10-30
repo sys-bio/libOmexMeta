@@ -57,8 +57,6 @@ namespace redland {
 
         int size() const;
 
-        void addStatement(const LibrdfStatement &statement) const;
-
         void addStatement(librdf_statement *statement) const;
 
         void freeModel();
@@ -79,13 +77,10 @@ namespace redland {
 
         int getTransactionRollback() const;
 
-        void addStatement(const librdf_statement &statement) const;
-
         int supportsContexts() const;
 
         bool containsStatement(librdf_statement* statement) const;
 
-        bool containsStatement(const LibrdfStatement &statement) const;
     };
 }
 

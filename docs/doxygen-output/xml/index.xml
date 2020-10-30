@@ -570,7 +570,7 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1ac5f674248ef40f86df4a5160c2d193e3" kind="variable"><name>identity_resource_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1ac8f480836499a208e2cfbe71a1492e5b" kind="variable"><name>location_resources_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1aa69e751efbd57e4f4e9c79dc00f7bf59" kind="variable"><name>part_resources_</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" kind="variable"><name>entity_id_</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a2567590f9b90e21e176ce6f447854faf" kind="variable"><name>physical_entity_property_id_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kind="function"><name>PhysicalEntity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a0341918665af91cacdb4481d037c42d2" kind="function"><name>PhysicalEntity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1ab905eecead2704afb14285fa44899958" kind="function"><name>~PhysicalEntity</name></member>
@@ -597,7 +597,7 @@
   <compound refid="classomexmeta_1_1PhysicalForce" kind="class"><name>omexmeta::PhysicalForce</name>
     <member refid="classomexmeta_1_1PhysicalForce_1a79c5d2ad46b427dea58ab7058c8cd78b" kind="variable"><name>sources_</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1a42c0ae3fe54ba4b69a709feefb01cee3" kind="variable"><name>sinks_</name></member>
-    <member refid="classomexmeta_1_1PhysicalForce_1a4ffbcd8ede36ce82b5b76910f533cb85" kind="variable"><name>physical_force_id_</name></member>
+    <member refid="classomexmeta_1_1PhysicalForce_1a4ffbcd8ede36ce82b5b76910f533cb85" kind="variable"><name>physical_force_property_id_</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1ad5b43ea5489891c45f5ebc4c9b62e44e" kind="function"><name>PhysicalForce</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1ad549162ec04a7aeb5b2c35f996f044a9" kind="function"><name>~PhysicalForce</name></member>
     <member refid="classomexmeta_1_1PhysicalForce_1a8761d703a67c6dc81b4a71b90391b20f" kind="function"><name>PhysicalForce</name></member>
@@ -658,7 +658,7 @@
     <member refid="classomexmeta_1_1PhysicalProcess_1a078e2a2f6554f2144ce69d817d9b23b9" kind="variable"><name>sources_</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a2e32cf60245f3d3d55caba72165fe3fd" kind="variable"><name>sinks_</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a127844f0eb3350b2d2335ccd26438b7d" kind="variable"><name>mediators_</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1a01f2b974c79564bbb325dbe981f34ec9" kind="variable"><name>physical_process_id_</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a01f2b974c79564bbb325dbe981f34ec9" kind="variable"><name>physical_process_property_id_</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a53e690a73469f891d5b6c3ab92fe31ff" kind="variable"><name>is_version_of_</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1acf4c42d10d6dbdd3aa4285bed7bd823b" kind="function"><name>PhysicalProcess</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a20821628486c64885ca2523067a71eb8" kind="function"><name>~PhysicalProcess</name></member>
@@ -685,8 +685,8 @@
     <member refid="classomexmeta_1_1PhysicalProcess_1a79d2b794d0a10a180a05d32cd04ac353" kind="function"><name>isVersionOf</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalProperty" kind="class"><name>omexmeta::PhysicalProperty</name>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" kind="variable"><name>subject_</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a85c53684ca7176b68bf8342cc20de639" kind="variable"><name>resource_</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a44e53030e70fa00bdf91df7097bab5dc" kind="variable"><name>isPropertyOfValue</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a85c53684ca7176b68bf8342cc20de639" kind="variable"><name>isVersionOfValue</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" kind="function"><name>validate</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" kind="function"><name>operator==</name></member>

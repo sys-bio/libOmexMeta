@@ -125,33 +125,33 @@ namespace omexmeta {
                     "Use the about() method."
             );
         }
-        if (physical_process_id_.empty()){
-            physical_process_id_ = generateMetaId("PhysicalProcess");
+        if (physical_process_property_id_.empty()){
+            physical_process_property_id_ = generateMetaId("ProcessProperty");
         }
-        physical_process_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_process_id_, getLocalUri());
+        physical_process_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_process_property_id_, getLocalUri());
 
 
-        Triples triples = physical_property_.toTriples(physical_process_id_);
+        Triples triples = physical_property_.toTriples(physical_process_property_id_);
 
         if (!is_version_of_.empty()) {
             SingularAnnotation singularAnnotation(
-                    LibrdfNode::fromUriString(physical_process_id_).get(),
+                    LibrdfNode::fromUriString(getAbout()).get(),
                     PredicateFactory("bqbiol", "isVersionOf")->getNode(),
                     LibrdfNode::fromUriString(is_version_of_).get());
             triples.move_back(singularAnnotation);
         }
         for (auto &source: sources_) {
-            for (auto &triple: source.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
+            for (auto &triple: source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink: sinks_) {
-            for (auto &triple: sink.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
+            for (auto &triple: sink.toTriples(getAbout(), new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
-            for (auto &triple: mediator.toTriples(physical_process_id_, new_metaid_exclusion_list_)) {
+            for (auto &triple: mediator.toTriples(getAbout(), new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }

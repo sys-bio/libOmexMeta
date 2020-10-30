@@ -7,10 +7,10 @@ turtle_string = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:OmexMetaId0001
-    bqbiol:isPropertyOf local:PhysicalEntity0000 ;
+    bqbiol:isPropertyOf local:EntityProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
-local:PhysicalEntity0000
+local:EntityProperty0000
     bqbiol:is <https://identifiers.org/uniprot/P84022> ;
     bqbiol:isPartOf <https://identifiers.org/fma/FMA:24178>, <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:70737>, <https://identifiers.org/fma/FMA:7163> .
 

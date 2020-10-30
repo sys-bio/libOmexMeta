@@ -36,19 +36,19 @@ namespace omexmeta {
                     "Use the about() method."
             );
         }
-        if (physical_force_id_.empty()){
-            physical_force_id_ = generateMetaId("PhysicalForce");
+        if (physical_force_property_id_.empty()){
+            physical_force_property_id_ = generateMetaId("ForceProperty");
         }
-        physical_force_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_force_id_, getLocalUri());
+        physical_force_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_force_property_id_, getLocalUri());
 
-        Triples triples = physical_property_.toTriples(physical_force_id_);
+        Triples triples = physical_property_.toTriples(physical_force_property_id_);
         for (auto &source : sources_) {
-            for (auto &triple : source.toTriples(physical_force_id_, new_metaid_exclusion_list_)) {
+            for (auto &triple : source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink : sinks_) {
-            for (auto &triple : sink.toTriples(physical_force_id_, new_metaid_exclusion_list_)) {
+            for (auto &triple : sink.toTriples(getAbout(), new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
             }
         }

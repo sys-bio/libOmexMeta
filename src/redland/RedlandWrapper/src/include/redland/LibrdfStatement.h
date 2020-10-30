@@ -28,10 +28,6 @@ namespace redland {
          */
         void refreshStatement();
 
-    public:
-        bool operator==(const LibrdfStatement &rhs) const;
-
-        bool operator!=(const LibrdfStatement &rhs) const;
 
     protected:
         explicit LibrdfStatement(librdf_statement *statement);
@@ -39,6 +35,11 @@ namespace redland {
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
     public:
+        bool operator==(const LibrdfStatement &rhs) const;
+
+        bool operator!=(const LibrdfStatement &rhs) const;
+
+        static bool equals(librdf_statement* first, librdf_statement* second);
 
         LibrdfStatement() = default;
 

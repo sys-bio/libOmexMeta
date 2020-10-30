@@ -277,7 +277,7 @@ namespace omexmeta {
                 "isFormatOf", "isPartOf", "isReferencedBy", "isReplacedBy", "isRequiredBy", "issued", "isVersionOf",
                 "language", "license", "mediator", "medium", "modified", "provenance", "publisher", "references",
                 "relation", "replaces", "requires", "rights", "rightsHolder", "source", "spatial", "subject",
-                "tableOfContents", "temporal", "title", "type", "valid",};
+                "tableOfContents", "temporal", "title", "type", "valid", "W3CDTF"};
 
         DCTerm() = default;
 
@@ -345,15 +345,13 @@ namespace omexmeta {
                 "Document", "Image", "nick", "mbox", "homepage", "weblog", "openid", "jabberID", "mbox_sha1sum",
                 "interest", "topic_interest", "topic", "workplaceHomepage", "workInfoHomepage", "schoolHomepage",
                 "publications", "currentProject", "pastProject", "account", "OnlineAccount", "accountName",
-                "accountServiceHomepage", "PersonalProfileDocument", "tipjar", "sha1", "thumbnail", "logo",};
+                "accountServiceHomepage", "PersonalProfileDocument", "tipjar", "sha1", "thumbnail", "logo"};
 
         Foaf() = default;
 
         explicit Foaf(const std::string &term);
 
         void verify();
-
-//        std::shared_ptr<SemSim> makeShared() ;
 
     };
 

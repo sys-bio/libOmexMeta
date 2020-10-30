@@ -126,19 +126,18 @@ namespace omexmeta {
         // new id but if its filled then we can generate Triples an arbitrary number
         // of times from the same PhysicalEntity instance and still get the same
         // Triples object. Note, this is important for deleting composites from the rdf model.
-        if (entity_id_.empty()) {
+        if (physical_entity_property_id_.empty()) {
             // no exclusions needed here - we only generate 1 process metaid before comiting the triples
             // to the model.
-            entity_id_ = generateMetaId("PhysicalEntity");
+            physical_entity_property_id_ = generateMetaId("EntityProperty");
         }
-        std::cout << "entity_id_: " << entity_id_ << std::endl;
 
-        // entity_id_: for instance "local:PhysicalEntity0000"
-        entity_id_ = OmexMetaUtils::concatMetaIdAndUri(entity_id_, getLocalUri());
+        // entity_id_: for instance "local:EntityProperty0000"
+        physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_entity_property_id_, getLocalUri());
         // preallocate for efficiency
         Triples triples((int)getLocationResources().size() + (int)part_resources_.size() + 3);
 
-        Triples physical_property_triples = physical_property_.toTriples(entity_id_);
+        Triples physical_property_triples = physical_property_.toTriples(physical_entity_property_id_);
 
         for (auto &it : physical_property_triples) {
             triples.move_back(it); // moves the statement

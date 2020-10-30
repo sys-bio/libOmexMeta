@@ -103,7 +103,7 @@
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:PhysicalForce0000
+local:ForceProperty0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
@@ -116,7 +116,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
-    bqbiol:isPropertyOf local:PhysicalForce0000 ;
+    bqbiol:isPropertyOf local:ForceProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_01012> .
 
 

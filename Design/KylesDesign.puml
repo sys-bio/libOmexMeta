@@ -225,7 +225,7 @@ namespace omexmeta {
 namespace omexmeta {
 	class IdentityCondition {
 		+IdentityCondition(Resource resource)
-		#resource_ : Resource
+		#isVersionOfValue : Resource
 		+matchEntity(const EntityBase& entity) : bool {query}
 		+matches(const Component& component) : bool {query}
 	}
@@ -292,7 +292,7 @@ namespace omexmeta {
 		+PhysicalProperty(Resource&& resource)
 		+PhysicalProperty(const std::string& resource)
 		+PhysicalProperty(std::string&& resource)
-		#resource_ : Resource
+		#isVersionOfValue : Resource
 		+getResource() : Resource& {query}
 		+getResource() : Resource&
 		+humanize() : std::string {query}
@@ -596,7 +596,7 @@ namespace omexmeta {
 		+Term(const Relation& relation, const double value)
 		#relation_ : Relation
 		+getRelation() : Relation& {query}
-		#resource_ : Resource
+		#isVersionOfValue : Resource
 		+getResource() : Resource& {query}
 		+isValue() : bool {query}
 		#is_value_ : bool

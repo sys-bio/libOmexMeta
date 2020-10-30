@@ -8,7 +8,7 @@
 local:MediatorParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMeta0003> .
 
-local:PhysicalProcess0000
+local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/GO:12345> ;
     semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
@@ -23,7 +23,7 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMeta0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>
-    bqbiol:isPropertyOf local:PhysicalProcess0000 ;
+    bqbiol:isPropertyOf local:ProcessProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 

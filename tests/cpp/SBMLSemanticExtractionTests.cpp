@@ -4,8 +4,9 @@
 
 #include "gtest/gtest.h"
 
-#include "omexmeta/SBMLSemanticExtraction.h"
+#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
+#include "omexmeta/SBMLSemanticExtraction.h"
 
 using namespace omexmeta;
 
@@ -33,11 +34,11 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
                            "local:MediatorParticipant0000\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5> .\n"
                            "\n"
-                           "local:PhysicalProcess0000\n"
+                           "local:ProcessProperty0000\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
-                           "local:PhysicalProcess0001\n"
+                           "local:ProcessProperty0001\n"
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002 .\n"
@@ -63,11 +64,11 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#react1>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isPropertyOf local:ProcessProperty0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#react2>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isPropertyOf local:ProcessProperty0001 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1>\n"
@@ -85,9 +86,7 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5>\n"
                            "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n";
-    std::string actual = rdf.toString();
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    OmexMetaTestUtils::equals(&rdf, expected);
 }
 
 TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
@@ -106,7 +105,7 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:PhysicalProcess0000\n"
+                           "local:ProcessProperty0000\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
@@ -118,16 +117,16 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000 ;\n"
+                           "    bqbiol:isPropertyOf local:ProcessProperty0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001 ;\n"
+                           "    bqbiol:isPropertyOf local:ProcessProperty0001 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    OmexMetaTestUtils::equals(&rdf, expected);
 }
 
 TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
@@ -151,20 +150,20 @@ TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
                            "local:MediatorParticipant0001\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
                            "\n"
-                           "local:PhysicalProcess0000\n"
+                           "local:ProcessProperty0000\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
-                           "local:PhysicalProcess0001\n"
+                           "local:ProcessProperty0001\n"
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002 .\n"
                            "\n"
-                           "local:PhysicalProcess0002\n"
+                           "local:ProcessProperty0002\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0002 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0003 .\n"
                            "\n"
-                           "local:PhysicalProcess0003\n"
+                           "local:ProcessProperty0003\n"
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0003 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0004, local:SourceParticipant0005 .\n"
@@ -210,11 +209,11 @@ TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
                            "\n"
                            "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0000, local:PhysicalProcess0002 ;\n"
+                           "    bqbiol:isPropertyOf local:ProcessProperty0000, local:ProcessProperty0002 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2>\n"
-                           "    bqbiol:isPropertyOf local:PhysicalProcess0001, local:PhysicalProcess0003 ;\n"
+                           "    bqbiol:isPropertyOf local:ProcessProperty0001, local:ProcessProperty0003 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1>\n"
@@ -234,7 +233,7 @@ TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
                            "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    OmexMetaTestUtils::equals(&rdf, expected);
 }
 
 

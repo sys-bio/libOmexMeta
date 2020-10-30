@@ -26,7 +26,7 @@ namespace omexmeta {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
-        std::string physical_process_id_;
+        std::string physical_process_property_id_;
         std::string is_version_of_ ; // optional class level attribute to store the isVErsionOf under the process ID.
     public:
 

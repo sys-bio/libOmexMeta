@@ -16,7 +16,8 @@ enum ModelType {
     SBML_NOT_ANNOTATED2,
     SBML_Semantic_Extraction_Model,
     SBML_BIOMD204,
-    SBML_BIOMD366
+    SBML_BIOMD366,
+    SBML_ADHMODEL
 };
 
 /*
@@ -1093,6 +1094,59 @@ public:
                "</sbml>";
     }
 };
+class ADHModel : SBMLModel {
+public:
+    ADHModel() = default;
+
+    std::string str() override {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+               "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+               "    <model metaid=\"ADHModel\" id=\"ADHModel\">\n"
+               "        <listOfCompartments>\n"
+               "            <compartment id=\"cytosol\" metaid=\"cytosol\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+               "        </listOfCompartments>\n"
+               "        <listOfSpecies>\n"
+               "            <species id=\"NAD\" metaid=\"NAD\" compartment=\"cytosol\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\"\n"
+               "                     boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "            <species id=\"EtOH\" metaid=\"EtOH\" compartment=\"cytosol\" initialConcentration=\"1\"\n"
+               "                     hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "            <species id=\"NADH\" metaid=\"NADH\" compartment=\"cytosol\" initialConcentration=\"1\"\n"
+               "                     hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "            <species id=\"Aldehyde\" metaid=\"Aldehyde\" compartment=\"cytosol\" initialConcentration=\"1\"\n"
+               "                     hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "            <species id=\"ADH\" metaid=\"ADH\" compartment=\"cytosol\" initialConcentration=\"1\"\n"
+               "                     hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "        </listOfSpecies>\n"
+               "        <listOfParameters>\n"
+               "            <parameter id=\"vmax\" metaid=\"k\" value=\"0.5\" constant=\"true\"/>\n"
+               "        </listOfParameters>\n"
+               "        <listOfReactions>\n"
+               "            <reaction id=\"ADH\" metaid=\"ADH\" reversible=\"false\" fast=\"false\">\n"
+               "                <listOfReactants>\n"
+               "                    <speciesReference species=\"EtOH\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "                    <speciesReference species=\"NAD\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "                </listOfReactants>\n"
+               "                <listOfProducts>\n"
+               "                    <speciesReference species=\"Aldehyde\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "                    <speciesReference species=\"NAD\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "                </listOfProducts>\n"
+               "                <kineticLaw>\n"
+               "                    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "                        <apply>\n"
+               "                            <times/>\n"
+               "                            <ci>k</ci>\n"
+               "                            <ci>ADH</ci>\n"
+               "                            <ci>EtOH</ci>\n"
+               "                            <ci>NAD</ci>\n"
+               "                        </apply>\n"
+               "                    </math>\n"
+               "                </kineticLaw>\n"
+               "            </reaction>\n"
+               "        </listOfReactions>\n"
+               "    </model>\n"
+               "</sbml>";
+    }
+};
 
 
 class BIOMD366 : SBMLModel {
@@ -1594,8 +1648,10 @@ public:
             return BIOMD204().str();
         else if (modelType == SBML_BIOMD366)
             return BIOMD366().str();
+        else if (modelType == SBML_ADHMODEL)
+            return ADHModel().str();
         else {
-            throw std::invalid_argument("ModelType is not a valid argument.");
+            throw std::invalid_argument("SBMLFactory error: ModelType is not a valid argument.");
         }
     }
 

@@ -191,7 +191,7 @@
     <span class="kt">void</span> <span class="n">LibrdfStatement</span><span class="o">::</span><span class="n">checkForNull</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">getSubject</span><span class="p">())</span>
             <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::checkForNull(): subject_ node is null&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::checkForNull(): isPropertyOfValue node is null&quot;</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">getPredicate</span><span class="p">())</span> <span class="c1">//todo another check on underlying pointer if possible (so far checking for null causes seg fault)</span>
             <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
@@ -199,7 +199,7 @@
 
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">getResource</span><span class="p">())</span>
             <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::checkForNull(): resource_ node is null&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::checkForNull(): isVersionOfValue node is null&quot;</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">statement_</span><span class="p">)</span>
             <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
@@ -237,14 +237,14 @@
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">LibrdfStatement</span><span class="o">::</span><span class="n">getResourceStr</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">getResource</span><span class="p">())</span>
             <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::getResourceStr(): resource_ is nullptr&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::getResourceStr(): isVersionOfValue is nullptr&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">str</span><span class="p">(</span><span class="n">getResource</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">LibrdfStatement</span><span class="o">::</span><span class="n">getSubjectStr</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getSubject</span><span class="p">()</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
             <span class="k">throw</span> <span class="n">RedlandNullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::getSubjectStr(): subject_ is nullptr&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;RedlandNullPointerException: LibrdfStatement::getSubjectStr(): isPropertyOfValue is nullptr&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">str</span><span class="p">(</span><span class="n">getSubject</span><span class="p">());</span>
     <span class="p">}</span>
 

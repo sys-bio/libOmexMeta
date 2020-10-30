@@ -232,8 +232,59 @@ namespace redland {
         return librdf_statement_is_complete(statement_);
     }
 
+    bool LibrdfStatement::equals(librdf_statement* first, librdf_statement* second){
+        librdf_node* this_subject =   librdf_statement_get_subject(first);
+        if (!this_subject){
+            throw std::logic_error("LibrdfStatement::equals:: this_subject is null");
+        }
+        librdf_node* this_predicate = librdf_statement_get_predicate(first);
+        if (!this_predicate){
+            throw std::logic_error("LibrdfStatement::equals:: this_predicate is null");
+        }
+        librdf_node* this_resource =  librdf_statement_get_object(first);
+        if (!this_resource){
+            throw std::logic_error("LibrdfStatement::equals:: this_resource is null");
+        }
+
+        librdf_node* that_subject = librdf_statement_get_subject(second);
+        if (!that_subject){
+            throw std::logic_error("LibrdfStatement::equals:: that_subject is null");
+        }
+        librdf_node* that_predicate = librdf_statement_get_predicate(second);
+        if (!that_predicate){
+            throw std::logic_error("LibrdfStatement::equals:: that_predicate is null");
+        }
+        librdf_node* that_resource = librdf_statement_get_object(second);
+        if (!that_resource){
+            throw std::logic_error("LibrdfStatement::equals:: that_resource is null");
+        }
+
+        bool subjects_equal = true;
+        bool resources_equal = true;
+
+        // we bypass comparing blank nodes.
+        if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)){
+            subjects_equal = librdf_node_equals(this_subject, that_subject);
+        }
+
+        if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)){
+            resources_equal = librdf_node_equals(this_resource, that_resource);
+        }
+
+        bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
+
+        librdf_free_node(this_subject);
+        librdf_free_node(this_resource);
+        librdf_free_node(this_predicate);
+        librdf_free_node(that_subject);
+        librdf_free_node(that_predicate);
+        librdf_free_node(that_resource);
+        return subjects_equal && predicates_equal && resources_equal;
+
+    }
+
     bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {
-        return librdf_statement_equals(statement_, rhs.statement_);
+        return equals(statement_, rhs.get());
     }
 
     bool LibrdfStatement::operator!=(const LibrdfStatement &rhs) const {

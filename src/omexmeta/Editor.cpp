@@ -23,13 +23,13 @@ namespace omexmeta {
 
         // sometimes in the python api users can accidently start the sbml
         // string with a new line character. Catch this and error.
-        if (OmexMetaUtils::startsWith(xml_, "\n")){
+        if (OmexMetaUtils::startsWith(xml_, "\n")) {
             throw std::invalid_argument("std::invalid_argument: Editor::Editor() "
                                         "xml input string starts with a newline character. "
                                         "Please remove the newline.");
         }
         // if xml_does not start with < and exists on disk, read it. The first condition is not included we get a filename too long error from exists
-        if ( xml_.find("<", 0) != 0){ // != 0 means not found
+        if (xml_.find("<", 0) != 0) {// != 0 means not found
             if (std::filesystem::exists(xml_)) {
                 // read from disk
                 xml_ = OmexMetaUtils::readFromFile(xml_);
@@ -200,7 +200,7 @@ namespace omexmeta {
                     "NullPointerException: Editor::addPhysicalEntity() "
                     "physicalEntity::subject_ (i.e. about) node is empty");
         }
-       /*
+        /*
        * Because we now want to use @prefix local for the
        * about section, we need to inject it here,
        * if not already formatted properly.
@@ -320,7 +320,7 @@ namespace omexmeta {
         return PersonalInformation(model_.get(), getModelUri(), getLocalUri());
     }
 
-    Editor& Editor::addCreator(std::string orcid_id) {
+    Editor &Editor::addCreator(std::string orcid_id) {
         std::string orcid_namespace = "https://orchid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
@@ -333,7 +333,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor& Editor::addCurator(std::string orcid_id) {
+    Editor &Editor::addCurator(std::string orcid_id) {
         std::string orcid_namespace = "https://orchid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
@@ -346,16 +346,23 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor& Editor::addDateCreated(const std::string &date) {
-        Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("dc", "created")->getNode(),
-                      LibrdfNode::fromLiteral(date).get());
-        model_.addStatement(triple);
-        triple.freeTriple();
+    Editor &Editor::addDateCreated(const std::string &date) {
+        LibrdfNode anon = LibrdfNode::fromBlank("");
+        Triple triple1(LibrdfNode::fromUriString(getModelUri()).get(),
+                       PredicateFactory("dc", "created")->getNode(),
+                       anon.get());
+        Triple triple2(anon.get(),
+                       PredicateFactory("dc", "W3CDTF")->getNode(),
+                       LibrdfNode::fromLiteral(date).get());
+        model_.addStatement(triple1);
+        model_.addStatement(triple2);
+        addNamespace("https://dublincore.org/specifications/dublin-core/dcmi-terms/", "dc" );
+        triple1.freeTriple();
+        triple2.freeTriple();
         return *this;
     }
 
-    Editor& Editor::addDescription(const std::string &date) {
+    Editor &Editor::addDescription(const std::string &date) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("dc", "description")->getNode(),
                       LibrdfNode::fromLiteral(date).get());
@@ -364,7 +371,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor& Editor::addPubmed(const std::string &pubmedid) {
+    Editor &Editor::addPubmed(const std::string &pubmedid) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
                       LibrdfNode::fromUriString("pubmed:" + pubmedid).get());
@@ -373,7 +380,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor& Editor::addParentModel(const std::string &biomod_id) {
+    Editor &Editor::addParentModel(const std::string &biomod_id) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
                       LibrdfNode::fromUriString("biomod:" + biomod_id).get());
@@ -382,7 +389,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor& Editor::addTaxon(const std::string &taxon_id) {
+    Editor &Editor::addTaxon(const std::string &taxon_id) {
         Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
                       PredicateFactory("bqbiol", "hasTaxon")->getNode(),
                       LibrdfNode::fromUriString("NCBI_Taxon:" + taxon_id).get());

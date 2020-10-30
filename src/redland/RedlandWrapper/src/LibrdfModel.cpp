@@ -48,10 +48,6 @@ namespace redland {
         : model_(librdf_new_model(World::getWorld(), storage, options)) {}
 
 
-    void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
-        librdf_model_add_statement(get(), statement.get());
-    }
-
     void LibrdfModel::addStatement(librdf_statement *statement) const {
         librdf_model_add_statement(get(), statement);
     }
@@ -122,6 +118,8 @@ namespace redland {
                 bool contains_statement = rhs.containsStatement(statement);
                 if (!contains_statement) {
                     all_this_in_rhs = false;
+                    std::cout << "Statement not contained in rhs: " << std::endl;
+                    librdf_statement_print(statement, stdout);
                     break;
                 }
                 librdf_stream_next(this_stream);
@@ -140,10 +138,17 @@ namespace redland {
                 if (!statement) {
                     std::cerr << "LibrdfModel::operator==  librdf_stream_next returned null" << std::endl;
                 }
+
+                std::cout << "\nrdf statements: " << std::endl;
+                librdf_statement_print(statement, stdout);
+                std::cout << std::endl;
                 // check statement is in other model
                 bool contains_statement = rhs.containsStatement(statement);
                 if (!contains_statement) {
                     all_rhs_in_this = false;
+                    std::cout << "Statement from rhs not contained in this: " << std::endl;
+                    librdf_statement_print(statement, stdout);
+                    std::cout << std::endl;
                     break;
                 }
                 librdf_stream_next(rhs_stream);
@@ -186,11 +191,29 @@ namespace redland {
         return librdf_model_supports_contexts(get());
     }
     bool LibrdfModel::containsStatement(librdf_statement *statement) const {
-        return librdf_model_contains_statement(model_, statement);
-    }
+        bool contains_statement = false;
+        librdf_stream * stream = librdf_model_as_stream(model_);
+        if (!stream){
+            throw std::logic_error("LibrdfModel::containsStatement stream is nullptr");
+        }
 
-    bool LibrdfModel::containsStatement(const LibrdfStatement &statement) const {
-        return librdf_model_contains_statement(model_, statement.get());
+        // non-owning
+        while (!librdf_stream_end(stream)){
+            librdf_statement* proposal_statement = librdf_stream_get_object(stream);
+            if (!proposal_statement){
+                throw std::logic_error("LibrdfModel::containsStatement proposal statement is nullptr");
+            }
+            librdf_statement_print(proposal_statement, stdout);
+            librdf_statement_print(statement, stdout);
+
+            if (LibrdfStatement::equals(statement, proposal_statement)){
+                contains_statement = true;
+                break;
+            }
+            librdf_stream_next(stream);
+        }
+        librdf_free_stream(stream);
+        return contains_statement;
     }
 
 }// namespace redland

@@ -33,7 +33,7 @@ public:
         statement = LibrdfStatement(subject, predicate, resource);
         query1 = LibrdfQuery(query_string);
         query2 = LibrdfQuery(query_string);
-        model.addStatement(statement);
+        model.addStatement(statement.get());
     };
 
 };

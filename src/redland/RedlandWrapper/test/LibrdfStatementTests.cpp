@@ -5,7 +5,6 @@
 #include "gtest/gtest.h"
 #include "redland/World.h"
 #include "redland/LibrdfStatement.h"
-//#include "redland/OmexMetaUtils.h"
 
 using namespace redland;
 
@@ -71,6 +70,15 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
     statement1.freeStatement();
 }
 
+TEST_F(LibrdfStatementTests, TestGetPredicateStr2) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
+                                                          resource);
+    std::string expected = "predicate";
+    std::string actual = statement1.getPredicateStr();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement1.freeStatement();
+}
+
 TEST(LibrdfStatementTestsNoFixture, TestInequality) {
     redland::LibrdfStatement statement1 = LibrdfStatement(
             LibrdfNode::fromUriString("subject1"),
@@ -99,6 +107,54 @@ TEST(LibrdfStatementTestsNoFixture, TestEquality) {
             LibrdfNode::fromUriString("resource")
     );
     ASSERT_EQ(statement1, statement2);
+    statement1.freeStatement();
+    statement2.freeStatement();
+}
+
+TEST(LibrdfStatementTestsNoFixture, TestBlankEquality) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromBlank("blank_subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    redland::LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromBlank("blank_subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    ASSERT_EQ(statement1, statement2);
+    statement1.freeStatement();
+    statement2.freeStatement();
+}
+
+TEST(LibrdfStatementTestsNoFixture, TestBlankEquality2) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromBlank(""),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    redland::LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromBlank("blank_subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    ASSERT_EQ(statement1, statement2);
+    statement1.freeStatement();
+    statement2.freeStatement();
+}
+
+TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality2) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromBlank("subject"),
+            LibrdfNode::fromBlank(""),
+            LibrdfNode::fromUriString("resource")
+    );
+    redland::LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromBlank("blank_subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    ASSERT_NE(statement1, statement2);
     statement1.freeStatement();
     statement2.freeStatement();
 }
