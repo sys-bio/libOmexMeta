@@ -20,6 +20,8 @@ jobs:
         echo "Pipeline.Workspace $(Pipeline.Workspace)"
         echo "VCPKG_INSTALL_PREFIX $(VCPKG_INSTALL_PREFIX)"
         echo "Agent.OS $(Agent.OS)"
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
 
       displayName: PrintAzureVariables
 
@@ -47,6 +49,7 @@ jobs:
         path: '$(VCPKG_INSTALL_PREFIX)'
 
     - script: |
+        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
         echo "pwd $(pwd)"
         echo "ls : $(ls -R)"
         mkdir build 
