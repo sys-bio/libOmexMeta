@@ -31,10 +31,7 @@ jobs:
         echo "ls $(ls -R)"
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt-get update
-        sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
-                        libxslt1-dev postgresql postgresql-contrib  libdb-dev \
-                        libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
-                        libpthread-stubs0-dev libltdl-dev git
+        sudo apt-get install -y yajl-tools flex bison sqlite3 libsqlite3-dev libxml2 libxml2-dev libxslt1-dev postgresql postgresql-contrib libdb-dev libdb-dev gcc-10 g++-10 gcc-9 g++-9 flex bison doxygen python3-sphinx libldap-dev libpthread-stubs0-dev libltdl-dev git slapd ldap-utils graphviz libssl-dev libpq-dev\
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
         git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
         cd $(VCPKG_INSTALL_PREFIX) 
