@@ -11,10 +11,19 @@ jobs:
   timeoutInMinutes: 0
   pool:
     vmImage: 'ubuntu-18.04'
+  variables:
+    VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
   steps:
     - script: |
         echo "Default directory: $(pwd)"
         echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
+        echo "Pipeline.Workspace $(Pipeline.Workspace)"
+        echo "VCPKG_INSTALL_PREFIX $(VCPKG_INSTALL_PREFIX)"
+        echo "Agent.OS $(Agent.OS)"
+
+      displayName: PrintAzureVariables
+
+    - script: |
         echo "cd'ing to agent.BuildDirectory"
         cd $(Agent.BuildDirectory)
         echo "ls $(ls -R)"
@@ -23,8 +32,8 @@ jobs:
                         libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
                         libpthread-stubs0-dev libltdl-dev git
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
-        git clone https://github.com/microsoft/vcpkg.git 
-        cd - 
+        git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
+        cd $(VCPKG_INSTALL_PREFIX) 
         ./bootstrap-vcpkg.sh  
         vcpkg integrate install 
         vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
@@ -33,14 +42,14 @@ jobs:
     - task: Cache@2
       inputs:
         key: 'SetupCache'
-        path: '$(Agent.BuildDirectory)/vcpkg'
+        path: '$(VCPKG_INSTALL_PREFIX)'
 
     - script: |
         echo "pwd $(pwd)"
         echo "ls : $(ls -R)"
         mkdir build 
         cd build
-        cmake -DVCPKG_ROOT=$(Agent).BuildDirectory/vcpkg -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
+        cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
         cmake --build . --target install --config Release -j 12 
       displayName: BuildLibOmexMeta
     - script: |
