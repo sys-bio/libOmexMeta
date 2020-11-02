@@ -52,8 +52,10 @@ jobs:
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
         echo "gcc $(gcc --version)"
         echo "g++ $(g++ --version)"
-        export CC=/usr/local/bin/gcc
-        export CXX=/usr/local/bin/g++
+        echo "which g++ $(which g++)"
+        echo "which g++-10 $(which g++-10)"
+        export CC=/usr/bin/gcc-10
+        export CXX=/usr/bin/g++-10
         echo "pwd $(pwd)"
         echo "ls : $(ls -R)"
         mkdir build 
