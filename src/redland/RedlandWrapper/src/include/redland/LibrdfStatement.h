@@ -32,9 +32,10 @@ namespace redland {
     protected:
         explicit LibrdfStatement(librdf_statement *statement);
 
-        LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
     public:
+        LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+
         bool operator==(const LibrdfStatement &rhs) const;
 
         bool operator!=(const LibrdfStatement &rhs) const;

@@ -43,28 +43,15 @@ namespace omexmeta {
                                         "Expected a full uri (i.e. starts with http) for subject_metaid argument "
                                         "but received \"" + subject_metaid + "\" instead");
         }
-
-
-
-//
-
         /**
-     * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
+        * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
          * have been used in order to ensure unique metaid's when we have more than one Sink/Source/Mediate Participant.
          * For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way
          * local_uri's were added after the original design was in place. Future developers might want to look at this.
          */
-
         metaid_exclusions.push_back(local_participant_metaid_);
 
-        for (auto &it: metaid_exclusions) {
-
-        }
-
-
-
         local_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(local_participant_metaid_, getLocalUri());
-
 
         Triples triples;
         // have source participant triple
@@ -82,7 +69,9 @@ namespace omexmeta {
         if (res1 == nullptr) {
             throw NullPointerException("NullPointerException: Participant::toTriples: res1");
         }
-        triples.emplace_back(sub1, pred1, res1);
+        Triple triple1(sub1, pred1, res1);
+        triples.move_back(triple1);
+
         librdf_node *sub2 = LibrdfNode::fromUriString(local_participant_metaid_).get();
         if (sub2 == nullptr) {
             throw NullPointerException("NullPointerException: Participant::toTriples: sub2");
@@ -97,7 +86,8 @@ namespace omexmeta {
         if (res2 == nullptr) {
             throw NullPointerException("NullPointerException: Participant::toTriples: res2");
         }
-        triples.emplace_back(sub2, pred2, res2);
+        Triple triple2(sub2, pred2, res2);
+        triples.move_back(triple2);
         if (multiplier_ != 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;

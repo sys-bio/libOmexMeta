@@ -1,0 +1,89 @@
+todo
+-----
+- Add cellml to list of examples
+- build system on mac
+- build system in general - dependency package?
+- write script for scraping biomodels annotations
+- identity is optional, for use with complexes.
+- pdf copy of jupyter notebook
+- consolidate into jupyter
+- Add some docs on hasPart for physical entity
+- change example to be the one used in the paper
+- Add a description to all things that need them
+- semantic extractoin is happening anyway on python. why?
+- When loading model in eitor, we need to update
+- Change buildsystem to have proper debug and release versions. Currently we just manually change the flags we need to use debugger
+- Try using double pointers in redland wrapper stuff. Does this bypass the pointer ownership problem?
+
+started
+--------
+- Implement equality operators of LibrdfModel and RDF.
+	- Complication: blank nodes cannot be compared when they are read from a string/file because they are given a random ID. Therefore, I implemented my own equality operators which do comparisons whilst ignoring blank identifiers in librdf_statements.
+    - Memory problem when comparing models that have statements which use blank nodes
+
+
+done
+-----
+- modify setAbout methods to auto add model uri if not already have.
+- make some fields optional
+- Add a hasPart method on PhysicalEntity
+- update api to remove "set" everywhere that you can.
+	- remember to update the docs on This
+
+
+
+
+
+
+
+
+
+
+
+
+We can't get the subject of statement 1 because its already been freed. 
+Its containsStatement that breaks under some conditions. Therefore we need to add more tests for this method. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

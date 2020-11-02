@@ -504,8 +504,6 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderOptionalIdentityField) {
             .setPhysicalProperty(physical_property)
             .isPartOf("https://identifiers.org/fma/FMA:72564")
             .isPartOf("fma:FMA:63877");
-    std::string actual = physicalEntity.toTriples().str();
-    std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -519,8 +517,9 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderOptionalIdentityField) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
                            "\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(physicalEntity.toTriples(), expected));
-    physicalEntity.free();
+    Triples triples = physicalEntity.toTriples();
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
+    triples.freeTriples();
 }
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderHasPart) {
@@ -528,11 +527,12 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderHasPart) {
     physicalEntity.setModelUri(model_uri);
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
-            .setPhysicalProperty(physical_property)
+            .about("metaid")
+            .hasProperty("OPB:OPB_00340")
             .hasPart("uniprot/PD12345")
             .hasPart("uniprot/PD12346");
-    std::string actual = physicalEntity.toTriples().str();
-    std::cout << actual << std::endl;
+//    std::string actual = physicalEntity.toTriples().str();
+//    std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -546,8 +546,9 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderHasPart) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:hasPart <https://identifiers.org/uniprot/PD12345>, <https://identifiers.org/uniprot/PD12346> .\n"
                            "\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(physicalEntity.toTriples(), expected));
-    physicalEntity.free();
+    Triples triples = physicalEntity.toTriples();
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
+    triples.freeTriples();
 }
 
 

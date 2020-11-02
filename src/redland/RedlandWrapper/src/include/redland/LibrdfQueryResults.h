@@ -14,23 +14,39 @@
 namespace redland {
 
     class LibrdfQueryResults {
+        librdf_query_results * query_results_ = nullptr;
 
-        struct deleter {
-            void operator()(librdf_query_results *query_results);
-        };
-
-        std::unique_ptr<librdf_query_results, deleter> query_results_;
     public:
         LibrdfQueryResults() = default;
 
         explicit LibrdfQueryResults(librdf_query_results *queryResults);
 
-//        explicit LibrdfQueryResults();
+        /**
+         * Copy constructor
+         */
+        LibrdfQueryResults(const LibrdfQueryResults &queryResults) = delete;
+
+        /**
+         * move constructor
+         */
+        LibrdfQueryResults(LibrdfQueryResults &&queryResults) noexcept;
+
+        /**
+         * Copy assignment constructor
+         */
+        LibrdfQueryResults &operator=(const LibrdfQueryResults &queryResults) = delete;
+
+        /**
+         * move assignment constructor
+         */
+        LibrdfQueryResults &operator=(LibrdfQueryResults &&queryResults) noexcept;
 
         [[nodiscard]] librdf_query_results *get() const;
 
         std::string str(std::string format);
-    };
-}
 
-#endif //LIBOMEXMETA_LIBRDFQuery_results_H
+        void freeQueryResults();
+    };
+}// namespace redland
+
+#endif//LIBOMEXMETA_LIBRDFQuery_results_H

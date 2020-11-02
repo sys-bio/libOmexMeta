@@ -510,13 +510,7 @@ namespace omexmeta {
             model_.addStatement(triple.getStatement());
             const std::string& ns = LibrdfNode(triple.getPredicate()).getNamespace();
             seen_namespaces_.push_back(triple.getPredicateNamespaceStr());
-            for (auto &it : seen_namespaces_){
-                std::cout << it << std::endl;
-            }
             namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
-            for (auto&it:namespaces_){
-                std::cout <<"first : " << it.first << ", second: " << it.second << std::endl;
-            }
         }
     }
 

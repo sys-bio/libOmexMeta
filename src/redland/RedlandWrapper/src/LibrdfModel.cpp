@@ -52,6 +52,10 @@ namespace redland {
         librdf_model_add_statement(get(), statement);
     }
 
+    void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
+        librdf_model_add_statement(get(), statement.get());
+    }
+
     librdf_model *LibrdfModel::get() const {
         return model_;
     }
@@ -118,8 +122,6 @@ namespace redland {
                 bool contains_statement = rhs.containsStatement(statement);
                 if (!contains_statement) {
                     all_this_in_rhs = false;
-                    std::cout << "Statement not contained in rhs: " << std::endl;
-                    librdf_statement_print(statement, stdout);
                     break;
                 }
                 librdf_stream_next(this_stream);
@@ -127,7 +129,6 @@ namespace redland {
             }
         }
         librdf_free_stream(this_stream);
-
         librdf_stream *rhs_stream = librdf_model_as_stream(rhs.model_);
         if (!rhs_stream) {
             std::cerr << "LibrdfModel::operator== Cannot create stream from model" << std::endl;
@@ -138,17 +139,10 @@ namespace redland {
                 if (!statement) {
                     std::cerr << "LibrdfModel::operator==  librdf_stream_next returned null" << std::endl;
                 }
-
-                std::cout << "\nrdf statements: " << std::endl;
-                librdf_statement_print(statement, stdout);
-                std::cout << std::endl;
                 // check statement is in other model
                 bool contains_statement = rhs.containsStatement(statement);
                 if (!contains_statement) {
                     all_rhs_in_this = false;
-                    std::cout << "Statement from rhs not contained in this: " << std::endl;
-                    librdf_statement_print(statement, stdout);
-                    std::cout << std::endl;
                     break;
                 }
                 librdf_stream_next(rhs_stream);
@@ -192,21 +186,21 @@ namespace redland {
     }
     bool LibrdfModel::containsStatement(librdf_statement *statement) const {
         bool contains_statement = false;
-        librdf_stream * stream = librdf_model_as_stream(model_);
-        if (!stream){
+        librdf_stream *stream = librdf_model_as_stream(model_);
+        if (!stream) {
             throw std::logic_error("LibrdfModel::containsStatement stream is nullptr");
         }
 
         // non-owning
-        while (!librdf_stream_end(stream)){
-            librdf_statement* proposal_statement = librdf_stream_get_object(stream);
-            if (!proposal_statement){
+        while (!librdf_stream_end(stream)) {
+            // this is a non-owning pointer that apparently doesn't add to the ref count.
+            // so don't free it.
+            librdf_statement *proposal_statement = librdf_stream_get_object(stream);
+            if (!proposal_statement) {
                 throw std::logic_error("LibrdfModel::containsStatement proposal statement is nullptr");
             }
-            librdf_statement_print(proposal_statement, stdout);
-            librdf_statement_print(statement, stdout);
 
-            if (LibrdfStatement::equals(statement, proposal_statement)){
+            if (LibrdfStatement::equals(statement, proposal_statement)) {
                 contains_statement = true;
                 break;
             }

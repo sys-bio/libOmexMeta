@@ -117,23 +117,6 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
 
 }
 
-TEST_F(LibrdfParserTests, TestParserFromUrl) {
-    LibrdfStorage storage;
-    LibrdfModel model(storage.get());
-
-    std::string sbml_url1 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
-    LibrdfParser parser("rdfxml");
-    parser.parseUri(sbml_url1, model);
-
-    int expected = 277;
-    int actual = model.size();
-    ASSERT_EQ(expected, actual);
-
-    storage.freeStorage();
-    model.freeModel();
-
-    // parser releases itself
-}
 
 TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     std::string input = "<?xml version=\"1.0\"?>\n"
@@ -161,43 +144,10 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     librdf_free_stream(stream);
-    stmt.freeStatement();
-    s.freeNode();
     model.freeModel();
     storage.freeStorage();
 }
 
-TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly2) {
-    std::string input = "<?xml version=\"1.0\"?>\n"
-                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                        "     xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
-                        "     xml:base=\"https://www.dajobe.org/net/this/is/the/base\">\n"
-                        "  <rdf:Description rdf:about=\"#dajobe\">\n"
-                        "    <dc:title>Dave Beckett's Home Page</dc:title>\n"
-                        "    <dc:creator>Dave Beckett</dc:creator>\n"
-                        "    <dc:description>The generic home page of Dave Beckett.</dc:description>\n"
-                        "  </rdf:Description> \n"
-                        "</rdf:RDF>";
-    std::filesystem::path storage_fname = std::filesystem::current_path() /= "LibrdfParserTests_TestBaseUri.db";
-    LibrdfStorage storage("sqlite", storage_fname.string(), "new='yes'");
-    LibrdfModel model(storage.get());
-    LibrdfParser parser("rdfxml");
-    parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
-    std::cout << storage_fname << std::endl;
-
-    std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
-    librdf_stream *stream = librdf_model_as_stream(model.get());
-    LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
-    auto s = LibrdfNode(stmt.getSubject());
-    std::string actual = s.str();
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-
-    librdf_free_stream(stream);
-    stmt.freeStatement();
-    s.freeNode();
-    model.freeModel();
-    storage.freeStorage();
-}
 
 TEST_F(LibrdfParserTests, TestFeatures) {
     LibrdfStorage storage;
@@ -205,35 +155,35 @@ TEST_F(LibrdfParserTests, TestFeatures) {
     LibrdfParser parser("turtle");
 
     LibrdfUri scanForRDFUri("http://feature.librdf.org/raptor-scanForRDF");
-    LibrdfNode scanForRDFNode = LibrdfNode(librdf_parser_get_feature(parser.get(), scanForRDFUri.get()));
+    auto scanForRDFNode = LibrdfNode(librdf_parser_get_feature(parser.get(), scanForRDFUri.get()));
 
     LibrdfUri allowNonNsAttributesUri("http://feature.librdf.org/raptor-allowNonNsAttributes");
-    LibrdfNode allowNonNsAttributesNode = LibrdfNode(
+    auto allowNonNsAttributesNode = LibrdfNode(
             librdf_parser_get_feature(parser.get(), allowNonNsAttributesUri.get()));
 
     LibrdfUri allowOtherParsetypesUri("http://feature.librdf.org/raptor-allowOtherParsetypes");
-    LibrdfNode allowOtherParsetypesNode = LibrdfNode(
+    auto allowOtherParsetypesNode = LibrdfNode(
             librdf_parser_get_feature(parser.get(), allowOtherParsetypesUri.get()));
 
     LibrdfUri allowBagIDUri("http://feature.librdf.org/raptor-allowBagID");
-    LibrdfNode allowBagIDNode = LibrdfNode(librdf_parser_get_feature(parser.get(), allowBagIDUri.get()));
+    auto allowBagIDNode = LibrdfNode(librdf_parser_get_feature(parser.get(), allowBagIDUri.get()));
 
     LibrdfUri allowRDFtypeRDFlistUri("http://feature.librdf.org/raptor-allowRDFtypeRDFlist");
-    LibrdfNode allowRDFtypeRDFlistNode = LibrdfNode(
+    auto allowRDFtypeRDFlistNode = LibrdfNode(
             librdf_parser_get_feature(parser.get(), allowRDFtypeRDFlistUri.get()));
 
     LibrdfUri normalizeLanguageUri("http://feature.librdf.org/raptor-normalizeLanguage");
-    LibrdfNode normalizeLanguageNode = LibrdfNode(librdf_parser_get_feature(parser.get(), normalizeLanguageUri.get()));
+    auto normalizeLanguageNode = LibrdfNode(librdf_parser_get_feature(parser.get(), normalizeLanguageUri.get()));
 
     LibrdfUri nonNFCfatalUri("http://feature.librdf.org/raptor-nonNFCfatal");
-    LibrdfNode nonNFCfatalNode = LibrdfNode(librdf_parser_get_feature(parser.get(), nonNFCfatalUri.get()));
+    auto nonNFCfatalNode = LibrdfNode(librdf_parser_get_feature(parser.get(), nonNFCfatalUri.get()));
 
     LibrdfUri warnOtherParseTypesUri("http://feature.librdf.org/raptor-warnOtherParseTypes");
-    LibrdfNode warnOtherParseTypesNode = LibrdfNode(
+    auto warnOtherParseTypesNode = LibrdfNode(
             librdf_parser_get_feature(parser.get(), warnOtherParseTypesUri.get()));
 
     LibrdfUri checkRdfIDUri("http://feature.librdf.org/raptor-checkRdfID");
-    LibrdfNode checkRdfIDNode = LibrdfNode(librdf_parser_get_feature(parser.get(), checkRdfIDUri.get()));
+    auto checkRdfIDNode = LibrdfNode(librdf_parser_get_feature(parser.get(), checkRdfIDUri.get()));
 
     ASSERT_EQ("1", scanForRDFNode.str());
     ASSERT_EQ("0", allowNonNsAttributesNode.str());

@@ -91,8 +91,11 @@ TEST_F(LibrdfModelTests, TestRemoveStatement) {
 }
 
 TEST_F(LibrdfModelTests, TestContext) {
-    LibrdfModel model(LibrdfStorage("file").get());
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
     ASSERT_FALSE(model.supportsContexts());
+    model.freeModel();
+    storage.freeStorage();
 }
 
 
@@ -103,7 +106,7 @@ TEST_F(LibrdfModelTests, containsPass) {
             LibrdfNode::fromUriString("resource1").get()
     );
 
-    LibrdfModel model1 = LibrdfModel(storage1.get());
+    auto model1 = LibrdfModel(storage1.get());
     model1.addStatement(statement1.get());
 
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
@@ -151,20 +154,22 @@ TEST_F(LibrdfModelTests, Equality1Pass) {
             LibrdfNode::fromUriString("resource2").get()
     );
 
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    LibrdfModel model2 = LibrdfModel(storage2.get());
+    auto model1 = LibrdfModel(storage1.get());
+    auto model2 = LibrdfModel(storage2.get());
     model1.addStatement(statement1.get());
     model1.addStatement(statement2.get());
     model2.addStatement(statement1.get());
     model2.addStatement(statement2.get());
 
     ASSERT_TRUE(model1 == model2);
-    model1.freeModel();
     statement1.freeStatement();
     statement2.freeStatement();
+    model1.freeModel();
+    model2.freeModel();
 }
 
 TEST_F(LibrdfModelTests, Equality1Blanks) {
+    // subject1 and subject2 are blank identifiers and not used in the comparison.
     LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
             LibrdfNode::fromBlank("subject1").get(),
             LibrdfNode::fromUriString("predicate1").get(),
@@ -177,8 +182,8 @@ TEST_F(LibrdfModelTests, Equality1Blanks) {
             LibrdfNode::fromUriString("resource2").get()
     );
 
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    LibrdfModel model2 = LibrdfModel(storage2.get());
+    auto model1 = LibrdfModel(storage1.get());
+    auto model2 = LibrdfModel(storage2.get());
     model1.addStatement(statement1.get());
     model1.addStatement(statement2.get());
     model2.addStatement(statement1.get());
@@ -186,6 +191,7 @@ TEST_F(LibrdfModelTests, Equality1Blanks) {
 
     ASSERT_TRUE(model1 == model2);
     model1.freeModel();
+    model2.freeModel();
     statement1.freeStatement();
     statement2.freeStatement();
 }

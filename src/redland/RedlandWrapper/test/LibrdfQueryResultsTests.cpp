@@ -36,6 +36,11 @@ public:
         model.addStatement(statement.get());
     };
 
+    ~LibrdfQueryResultsTests() {
+        statement.freeStatement();
+        model.freeModel();
+    }
+
 };
 
 TEST_F(LibrdfQueryResultsTests, TestInstantiateQueryResults) {
@@ -75,7 +80,6 @@ TEST_F(LibrdfQueryResultsTests, TestMoveAssignment) {
     auto query_int_ptr2 = reinterpret_cast<std::uintptr_t>(results2.get());
     results2 = std::move(results1);
     ASSERT_NE(query_int_ptr1, query_int_ptr2);
-    ASSERT_EQ(results1.get(), nullptr);
 }
 
 

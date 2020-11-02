@@ -273,13 +273,13 @@ namespace omexmeta {
         model_.removeStatement(stmt);
     }
 
-    void Editor::removePhysicalPhenomenon(
-            PhysicalPhenomenon *physicalPhenomenon) const {
+    void Editor::removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const {
         Triples triples = physicalPhenomenon->toTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
             model_.removeStatement(triple.getStatement());
         }
+//        triples.freeTriples();
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) const {
@@ -357,8 +357,8 @@ namespace omexmeta {
         model_.addStatement(triple1);
         model_.addStatement(triple2);
         addNamespace("https://dublincore.org/specifications/dublin-core/dcmi-terms/", "dc" );
-        triple1.freeTriple();
-        triple2.freeTriple();
+//        triple1.freeTriple();
+//        triple2.freeTriple();
         return *this;
     }
 

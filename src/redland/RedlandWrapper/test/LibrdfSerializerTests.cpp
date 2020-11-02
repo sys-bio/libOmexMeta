@@ -87,6 +87,7 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
                            "    <https://predicate.com> <https://resource.com> .\n\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement.freeStatement();
     model.freeModel();
     storage.freeStorage();
 }
@@ -106,6 +107,7 @@ TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement.freeStatement();
     model.freeModel();
     storage.freeStorage();
 }
