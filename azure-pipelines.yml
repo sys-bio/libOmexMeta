@@ -27,6 +27,8 @@ jobs:
         echo "cd'ing to agent.BuildDirectory"
         cd $(Agent.BuildDirectory)
         echo "ls $(ls -R)"
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt-get update
         sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
                         libxslt1-dev postgresql postgresql-contrib  libdb-dev \
                         libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
