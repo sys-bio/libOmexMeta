@@ -345,7 +345,7 @@ elseif (PLATFORM STREQUAL "linux")
     # can explain.
     set(LINK_LIBRARIES
             ${LIBXML2_LIBRARY} # dynamic
-            ${LIBXSLT_LIBRARY}
+            ${LIBXSLT_STATIC_LIBRARY}
             ${SQLITE3_LIBRARY}
             ${BERKELY_LIBRARY}
             ${POSTGRESQL_LIBRARY}
@@ -365,8 +365,8 @@ elseif (PLATFORM STREQUAL "linux")
             -Wl,--no-whole-archive
             m
             dl
-#            ldap
-#            lber
+            ldap
+            lber
             pthread
             )
 
