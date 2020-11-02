@@ -37,7 +37,7 @@ jobs:
         cd $(VCPKG_INSTALL_PREFIX) 
         ./bootstrap-vcpkg.sh  
         vcpkg integrate install 
-        vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+        vcpkg install libxml2 libxslt curl libiconv pcre openssl yajl libpq sqlite3
       displayName: InstallDependencies
     
     - task: Cache@2
@@ -52,6 +52,7 @@ jobs:
         mkdir build 
         cd build
         cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
+        echo "ls2: $(ls -R)"        
         cmake --build . --target install --config Release -j 12 
       displayName: BuildLibOmexMeta
     - script: |
