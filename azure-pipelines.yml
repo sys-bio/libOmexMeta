@@ -1,0 +1,81 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+jobs:
+- job: BuildLinux
+  timeoutInMinutes: 0
+  pool:
+    vmImage: 'ubuntu-18.04'
+  steps:
+    - script: |
+        echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
+        echo "cd'ing to agent.BuildDirectory"
+        cd $(Agent.BuildDirectory)
+        echo "ls $(ls -R)"
+        sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
+                        libxslt1-dev postgresql postgresql-contrib  libdb-dev \
+                        libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
+                        libpthread-stubs0-dev libltdl-dev git
+        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+        git clone https://github.com/microsoft/vcpkg.git 
+        cd vcpkg 
+        ./bootstrap-vcpkg.sh  
+        vcpkg integrate install 
+        vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+      displayName: InstallDependencies
+    - script: |
+        echo "cd'ing to agent.BuildDirectory"
+        cd $(Agent.BuildDirectory)
+        mkdir build 
+        cmake -DVCPKG_ROOT=$(Agent).BuildDirectory/vcpkg -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
+        cmake --build . --target install --config Release -j 12 
+      displayName: BuildLibOmexMeta
+    - script: |
+        echo "cd'ing to agent.BuildDirectory"
+        cd $(Agent.BuildDirectory)
+        mkdir build 
+        cmake -DVCPKG_ROOT=$(Agent).BuildDirectory/vcpkg -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
+        cmake --build . --target install --config Release -j 12 
+    - script: |
+        echo "cd'ing to agent.BuildDirectory/install-azure-release"
+        cd $(Agent.BuildDirectory)/install-azure-release
+        ctest --verbose --extra-verbose --progress .
+      displayName: RunLibOmexMetaTests 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
