@@ -43,16 +43,16 @@ macro(FindDependencies)
     # Note vcpkg port broken on x64-linux. I've reported
     # the issue and we'll docs-build in support for it when they
     # have fixed it. For now, on linux, we can use the apt version.
-    if (PLATFORM STREQUAL "windows-msvc")
-        find_library(LIBXSLT_STATIC_LIBRARY
-                NAMES libxslt.lib libxslt.a
-                PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
-                /usr/local/lib
-                mnt/d/usr/local/lib
-                mnt/c/usr/local/lib
-                NO_DEFAULT_PATH
-                )
-    endif ()
+#    if (PLATFORM STREQUAL "windows-msvc")
+    find_library(LIBXSLT_STATIC_LIBRARY
+            NAMES libxslt.lib libxslt.a
+            PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
+            /usr/local/lib
+            mnt/d/usr/local/lib
+            mnt/c/usr/local/lib
+            NO_DEFAULT_PATH
+            )
+#    endif ()
 
     find_file(LIBXSLT_LIBRARY
             NAMES libxslt.dll libxslt.so
