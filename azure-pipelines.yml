@@ -38,6 +38,8 @@ jobs:
         ./bootstrap-vcpkg.sh  
         vcpkg integrate install 
         vcpkg install libxml2 libxslt curl libiconv pcre openssl yajl libpq sqlite3
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
       displayName: InstallDependencies
     
     - task: Cache@2
@@ -46,7 +48,11 @@ jobs:
         path: '$(VCPKG_INSTALL_PREFIX)'
 
     - script: |
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
         echo "pwd $(pwd)"
         echo "ls : $(ls -R)"
         mkdir build 
