@@ -12,6 +12,8 @@ todo
 - When loading model in eitor, we need to update
 - Change buildsystem to have proper debug and release versions. Currently we just manually change the flags we need to use debugger
 - Try using double pointers in redland wrapper stuff. Does this bypass the pointer ownership problem?
+- remove the curl dependency and downloading features. They are not used. 
+- 
 
 started
 --------

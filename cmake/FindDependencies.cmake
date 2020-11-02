@@ -43,7 +43,7 @@ macro(FindDependencies)
     # Note vcpkg port broken on x64-linux. I've reported
     # the issue and we'll docs-build in support for it when they
     # have fixed it. For now, on linux, we can use the apt version.
-#    if (PLATFORM STREQUAL "windows-msvc")
+    #    if (PLATFORM STREQUAL "windows-msvc")
     find_library(LIBXSLT_STATIC_LIBRARY
             NAMES libxslt.lib libxslt.a
             PATHS ${VCPKG_X64_STATIC_LIB_DIR} ${VCPKG_X64_LIB_DIR}
@@ -52,7 +52,7 @@ macro(FindDependencies)
             mnt/c/usr/local/lib
             NO_DEFAULT_PATH
             )
-#    endif ()
+    #    endif ()
 
     find_file(LIBXSLT_LIBRARY
             NAMES libxslt.dll libxslt.so
@@ -100,13 +100,13 @@ macro(FindDependencies)
                 NO_DEFAULT_PATH
                 )
         message(STATUS "VCPKG_X64_BIN_DIR ${VCPKG_X64_BIN_DIR}")
-    find_file(LIBCHARSET_LIBRARY
-            NAMES libcharset.dll libcharset.so
-            PATHS ${VCPKG_X64_BIN_DIR}
-            ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            REQUIRED
-            )
+        find_file(LIBCHARSET_LIBRARY
+                NAMES libcharset.dll libcharset.so
+                PATHS ${VCPKG_X64_BIN_DIR}
+                ${DEFAULT_LINUX_LOCATIONS}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
     endif ()
 
     #           POSSIBLY NOT NEEDED
@@ -300,6 +300,16 @@ macro(FindDependencies)
             /mnt/c/usr/local/include # wsl
             NO_DEFAULT_PATH
             )
+
+#    if (PLATFORM STREQUAL "linux")
+#        find_file(
+#                LDAP_LIBRARY
+#                NAMES
+#                    ldap${CMAKE_SHARED_LIBRARY_SUFFIX}
+#                    libldap_r-2.4.so.2
+#        )
+#
+#    endif ()
 
 
     #    # berkely
