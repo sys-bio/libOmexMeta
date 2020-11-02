@@ -1,0 +1,104 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+jobs:
+- job: BuildLinux
+  timeoutInMinutes: 0
+  pool:
+    vmImage: 'ubuntu-20.04'
+  variables:
+    VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
+  steps:
+    - script: |
+        echo "Default directory: $(pwd)"
+        echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
+        echo "Pipeline.Workspace $(Pipeline.Workspace)"
+        echo "VCPKG_INSTALL_PREFIX $(VCPKG_INSTALL_PREFIX)"
+        echo "Agent.OS $(Agent.OS)"
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
+
+      displayName: PrintAzureVariables
+
+    - script: |
+        echo "cd'ing to agent.BuildDirectory"
+        cd $(Agent.BuildDirectory)
+        echo "ls $(ls -R)"
+        git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
+        cd $(VCPKG_INSTALL_PREFIX) 
+        ./bootstrap-vcpkg.sh  
+        vcpkg integrate install 
+        vcpkg install libxml2 libxslt curl libiconv pcre openssl yajl libpq sqlite3
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
+      displayName: InstallDependencies
+    
+    - task: Cache@2
+      inputs:
+        key: 'SetupCache'
+        path: '$(VCPKG_INSTALL_PREFIX)'
+
+    - script: |
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt-get update
+        sudo apt-get install -y yajl-tools flex bison sqlite3 libsqlite3-dev libxml2 libxml2-dev libxslt1-dev postgresql postgresql-contrib libdb-dev libdb-dev gcc-10 g++-10 gcc-9 g++-9 flex bison doxygen python3-sphinx libldap-dev libpthread-stubs0-dev libltdl-dev git slapd ldap-utils graphviz libssl-dev libpq-dev\
+        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+        echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
+        echo "which g++ $(which g++)"
+        echo "which g++-10 $(which g++-10)"
+        export CC=/usr/bin/gcc-10
+        export CXX=/usr/bin/g++-10
+        echo "pwd $(pwd)"
+        echo "ls : $(ls -R)"
+        mkdir build 
+        cd build
+        cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
+        echo "ls2: $(ls -R)"        
+        cmake --build . --target install --config Release -j 12 
+      displayName: BuildLibOmexMeta
+    - script: |
+        echo "cd'ing to agent.BuildDirectory/s/install-azure-release"
+        cd $(Agent.BuildDirectory)/s/install-azure-release
+        ctest --verbose --extra-verbose --progress .
+      displayName: RunLibOmexMetaTests 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
