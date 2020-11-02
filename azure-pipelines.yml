@@ -10,7 +10,7 @@ jobs:
 - job: BuildLinux
   timeoutInMinutes: 0
   pool:
-    vmImage: 'ubuntu-18.04'
+    vmImage: 'ubuntu-20.04'
   variables:
     VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
   steps:
@@ -52,6 +52,8 @@ jobs:
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
         echo "gcc $(gcc --version)"
         echo "g++ $(g++ --version)"
+        export CC=/usr/local/bin/gcc
+        export CXX=/usr/local/bin/g++
         echo "pwd $(pwd)"
         echo "ls : $(ls -R)"
         mkdir build 
