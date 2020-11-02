@@ -1,16 +1,16 @@
 # set varibale to hold wrapper sources.
 set(REDLAND_WRAPPER_TEST_SOURCES
-                LibrdfWorldTests.cpp
-                LibrdfUriTests.cpp
-                LibrdfNodeTests.cpp
-                LibrdfStatementTests.cpp
-                LibrdfStorageTests.cpp
-                LibrdfModelTests.cpp
-                LibrdfParserTests.cpp
-                LibrdfSerializerTests.cpp
-                LibrdfQueryTests.cpp
-                LibrdfQueryResultsTests.cpp
-                LibrdfStreamTests.cpp
+        LibrdfWorldTests.cpp
+        LibrdfUriTests.cpp
+        LibrdfNodeTests.cpp
+        LibrdfStatementTests.cpp
+        LibrdfStorageTests.cpp
+        LibrdfModelTests.cpp
+        LibrdfParserTests.cpp
+        LibrdfSerializerTests.cpp
+        LibrdfQueryTests.cpp
+        LibrdfQueryResultsTests.cpp
+        LibrdfStreamTests.cpp
         )
 
 # add test executable
@@ -21,11 +21,8 @@ target_compile_definitions(redland-wrapper-tests PRIVATE REDLAND_STATIC_DEFINE)
 
 # tell cmake about the test so we can run with $ctest or $ make test
 add_test(
-        NAME redland-wrapper-tests
-        COMMAND $<TARGET_FILE:redland-wrapper-tests>
+        TARGET redland-wrapper-tests
 )
-# tests_properties is apparently different to target properties
-set_tests_properties(redland-wrapper-tests PROPERTIES DEPENDS redland-wrapper-tests)
 
 # set the RPATH for both install and docs-build builds
 set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})
@@ -42,11 +39,10 @@ target_include_directories(redland-wrapper-tests PRIVATE
         )
 
 
-
 # links
-target_link_libraries(redland-wrapper-tests PRIVATE
+target_link_libraries(redland-wrapper-tests PUBLIC
         gtest gtest_main
-        $<TARGET_FILE:redland-combined-static>
+        redland-combined-static
         ${LINK_LIBRARIES}
         ${RUNTIME}# best here so no clash with dynamic
         )
@@ -58,7 +54,7 @@ install(
         RUNTIME DESTINATION bin
 )
 
-gtest_discover_tests(redland-wrapper-tests)
+#gtest_discover_tests(redland-wrapper-tests)
 
 
 # copies dependencies into docs-build directory. Commented out for now, delete in future if definately not needed.

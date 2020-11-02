@@ -3,40 +3,7 @@
 #
 
 
-set(TEST_EXECUTABLES)
-
-macro(add_test_executable BINARY)
-    add_executable(${BINARY} ${ARGN})
-
-    # indicate that on windows we are using the static library,
-    # not the static
-    target_compile_definitions(
-            ${BINARY} PRIVATE OMEXMETA_STATIC_DEFINE REDLAND_STATIC_DEFINE
-    )
-
-    add_dependencies(${BINARY} OmexMeta-static redland-combined-static gtest gtest_main)
-
-    # links
-    target_link_libraries(${BINARY} PUBLIC
-            # Order matters!
-            OmexMeta-static
-            OmexMetaCAPI
-            redland-combined-static
-            ${LINK_LIBRARIES}
-            ${RUNTIME}# best here so no clash with dynamic
-            gtest gtest_main
-            )
-
-    #includes
-    target_include_directories(${BINARY} PRIVATE
-            ${GOOGLETEST_SOURCE}/googletest/include
-            ${INCLUDE_DIRECTORIES}
-            ${WRAPPER_SOURCE_DIR}
-            )
-    # add test so it can be run with $ctest or $make test
-    gtest_discover_tests(${BINARY})
-    set(TEST_EXECUTABLES ${TEST_EXECUTABLES} ${BINARY})
-endmacro()
+include(AddTestExecutable)
 
 
 set(
@@ -53,7 +20,7 @@ set(
 
         AnnotationSamples.h
 
-#        CurlGetTests.cpp # periodically breaks due to file size changes and link changes
+        #        CurlGetTests.cpp # periodically breaks due to file size changes and link changes
         MetaIDTests.cpp
         XmlAssistantTests.cpp
         ParticipantTests.cpp
@@ -77,7 +44,16 @@ set(
 #
 
 # main test executable. These should really further be divided into modules.
-add_test_executable(OmexMetaTests ${TEST_SOURCES})
+#BINARY LINK_WITH_GOOGLETEST OUT_VARIABLE
+add_test_executable(OmexMetaTests ON TEST_EXECUTABLES ${TEST_SOURCES})
+
+
+add_custom_target(run-ctest
+        COMMAND ${CMAKE_CTEST_COMMAND} --verbose --extra-verbose --progress ${CMAKE_BINARY_DIR}
+        DEPENDS ${TEST_EXECUTABLES}
+        VERBATIM
+        )
+
 
 
 install(
