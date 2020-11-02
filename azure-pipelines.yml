@@ -11,7 +11,7 @@ jobs:
 - job: BuildLinux
   timeoutInMinutes: 0
   pool:
-    vmImage: 'ubuntu-20.04'
+    vmImage: 'ubuntu-18.04'
   variables:
     VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
   steps:
@@ -39,10 +39,10 @@ jobs:
         echo "g++ $(g++ --version)"
       displayName: InstallDependencies
     
-    - task: Cache@2
-      inputs:
-        key: 'SetupCache'
-        path: '$(VCPKG_INSTALL_PREFIX)'
+#    - task: Cache@2
+#      inputs:
+#        key: 'SetupCache'
+#        path: '$(VCPKG_INSTALL_PREFIX)'
 
     - script: |
         echo "gcc $(gcc --version)"
