@@ -24,21 +24,24 @@ jobs:
                         libpthread-stubs0-dev libltdl-dev git
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
         git clone https://github.com/microsoft/vcpkg.git 
-        cd vcpkg 
+        cd - 
         ./bootstrap-vcpkg.sh  
         vcpkg integrate install 
         vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
       displayName: InstallDependencies
+    
+    - task: Cache@2
+      inputs:
+        key: 'SetupCache'
+        path: '$(Agent.BuildDirectory)/vcpkg'
+
     - script: |
-        echo "cd'ing to agent.BuildDirectory"
-        cd $(Agent.BuildDirectory)
+        echo "pwd $(pwd)"
         mkdir build 
         cmake -DVCPKG_ROOT=$(Agent).BuildDirectory/vcpkg -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
         cmake --build . --target install --config Release -j 12 
       displayName: BuildLibOmexMeta
     - script: |
-        echo "cd'ing to agent.BuildDirectory / s"
-        cd $(Agent.BuildDirectory)/s
         echo "Current directory: $(pwd)"
         mkdir build 
         cmake -DVCPKG_ROOT=$(Agent).BuildDirectory/vcpkg -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
