@@ -13,6 +13,7 @@ jobs:
     vmImage: 'ubuntu-18.04'
   steps:
     - script: |
+        echo "Default directory: $(pwd)"
         echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
         echo "cd'ing to agent.BuildDirectory"
         cd $(Agent.BuildDirectory)
@@ -36,14 +37,15 @@ jobs:
         cmake --build . --target install --config Release -j 12 
       displayName: BuildLibOmexMeta
     - script: |
-        echo "cd'ing to agent.BuildDirectory"
-        cd $(Agent.BuildDirectory)
+        echo "cd'ing to agent.BuildDirectory / s"
+        cd $(Agent.BuildDirectory)/s
+        echo "Current directory: $(pwd)"
         mkdir build 
         cmake -DVCPKG_ROOT=$(Agent).BuildDirectory/vcpkg -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
         cmake --build . --target install --config Release -j 12 
     - script: |
-        echo "cd'ing to agent.BuildDirectory/install-azure-release"
-        cd $(Agent.BuildDirectory)/install-azure-release
+        echo "cd'ing to agent.BuildDirectory/s/install-azure-release"
+        cd $(Agent.BuildDirectory)/s/install-azure-release
         ctest --verbose --extra-verbose --progress .
       displayName: RunLibOmexMetaTests 
         
