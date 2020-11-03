@@ -45,7 +45,7 @@ namespace omexmeta {
 
         std::string repository_uri_ = "http://omex-library.org/";
         std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
-        std::string model_uri_ = archive_uri_ + "NewModel.xml#";
+        std::string model_uri_ = archive_uri_ + "NewModel.xml";
         std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
 
         /**
@@ -121,14 +121,14 @@ namespace omexmeta {
 
         /**
          * @brief getter for model uri.
-         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml#
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml
          */
         const std::string &getModelUri() const;
 
         /**
          * @brief setter for model uri.
          * @param modelName string for new model uri.
-         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml#
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml
          */
         void setModelUri(std::string modelName);
 
@@ -137,10 +137,10 @@ namespace omexmeta {
          * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.rdf#
          */
         const std::string &getLocalUri() const;
-
-        // todo remove this field and replace with the one
-        //  in Predicate. Should be a simple swap.
-        NamespaceMap default_namespaces_ = Predicate::namespaceMap();
+//
+//        // todo remove this field and replace with the one
+//        //  in Predicate. Should be a simple swap.
+//        NamespaceMap default_namespaces_ = Predicate::namespaceMap();
 
         /**
          * @brief constructor for RDF class

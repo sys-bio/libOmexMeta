@@ -2,13 +2,14 @@
 // Created by Ciaran on 5/31/2020.
 //
 
-#include "gtest/gtest.h"
-#include "omexmeta/RDF.h"
 #include "AnnotationSamples.h"
+#include "OmexMetaTestUtils.h"
+#include "SBMLFactory.h"
+#include "omexmeta/RDF.h"
+#include "gtest/gtest.h"
 #include <filesystem>
 #include <fstream>
 #include <thread>
-#include "SBMLFactory.h"
 
 using namespace omexmeta;
 
@@ -130,7 +131,7 @@ TEST_F(RDFTests, TestToString) {
                            "";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
 }
 
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
@@ -314,16 +315,13 @@ public:
                            "</rdf:RDF>\n";
     AnnotationSamples samples;
     const std::string& input_string = samples.simple_input_turtle_string;
-
-
     ParserReadTesReadFromFileHasPrefixesTests() = default;
 
 };
 
 TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes){
     RDF rdf = RDF::fromString(input_string, "turtle");
-    std::string output = rdf.toString("rdfxml-abbrev");
-    ASSERT_STREQ(expected.c_str(), output.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
 }
 
 TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
@@ -336,7 +334,7 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
     RDF rdf = RDF::fromFile(fname.string(), "turtle");
     std::string output = rdf.toString("rdfxml-abbrev");
 
-    ASSERT_STREQ(expected.c_str(), output.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
     remove(fname.string().c_str());
 
 }

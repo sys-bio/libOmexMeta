@@ -33,6 +33,7 @@ namespace omexmeta {
         std::string local_uri_;
         std::string metaid_;
         std::string model_uri_;
+        std::vector<std::string> namespaces_;
 
     private:
         [[nodiscard]] std::string generateMetaId() const;
@@ -40,6 +41,7 @@ namespace omexmeta {
         void createSubject();
 
     public:
+        const std::vector<std::string> &getNamespaces() const;
         PersonalInformation() = default;
 
         ~PersonalInformation();

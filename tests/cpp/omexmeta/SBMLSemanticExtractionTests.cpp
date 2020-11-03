@@ -25,7 +25,7 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
     SBMLSemanticExtraction extraction(&editor);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -99,7 +99,7 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
     SBMLSemanticExtraction extraction(&editor);
     extraction.extractSpeciesCompartmentSemantics();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
@@ -138,7 +138,7 @@ TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
     SBMLSemanticExtraction extraction(&editor);
     extraction.extractProcessesFromReactions();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/AnAwesomeOmex.omex> .\n"

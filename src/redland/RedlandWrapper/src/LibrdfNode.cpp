@@ -15,6 +15,7 @@ namespace redland {
     LibrdfNode::LibrdfNode(librdf_node *node)
         : node_(node) {}
 
+    //todo the content of thos method really belongs somewhere else
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
@@ -24,7 +25,7 @@ namespace redland {
         std::regex go_regex("^GO:\d*");
         std::regex pubmed_regex("^[Pp][Uu][Bb][Mm][Ee][Dd]:\d*");
         std::regex taxon_regex("^[Tt][Aa][Xx][Oo][Nn][Oo][Mm][Yy]:\d*");
-        std::regex biomodels_db_regex("^[Bb][Ii][Oo][Mm][Oo][Dd][Ee][Ll][Ss].[Dd][Bb]:\d*");
+        std::regex biomodels_db_regex("^[Bb][Ii][Oo][Mm][Oo][Dd][Ee][Ll][Ss]\.[Dd][Bb]:\d*");
         std::regex uniprot_regex("^[Uu][Nn][Ii][Pp][Rr][Oo][Tt]:\d*");
         std::regex opb_regex("^[Oo][Pp][Bb]:\d*");
         std::regex fma_regex("^[Ff][Mm][Aa]:\d*");
@@ -50,6 +51,7 @@ namespace redland {
         }
 
         else if (std::regex_search(uri_string, m, taxon_regex)) {
+            std::cout << "Taxon regex matched" << std::endl;
             uri_string_ = identifier_dot_org + uri_string;
         }
 

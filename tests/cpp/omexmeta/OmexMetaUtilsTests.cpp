@@ -47,14 +47,14 @@ TEST_F(OmexMetaUtilsTests, TestGEtNamespacesFromUri) {
 }
 
 TEST_F(OmexMetaUtilsTests, TestGEtNamespacesFromUriSemsim) {
-    std::string uri = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
-    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    std::string uri = "http://bime.uw.edu/semsim/hasSourceParticipant";
+    std::string expected = "http://bime.uw.edu/semsim/";
     std::string actual = OmexMetaUtils::getNamespaceFromUri(uri);
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(OmexMetaUtilsTests, TestIsFormattedUri1) {
-    std::string uri = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    std::string uri = "http://bime.uw.edu/semsim/hasSourceParticipant";
     ASSERT_TRUE(OmexMetaUtils::isFormattedUri(uri));
 }
 

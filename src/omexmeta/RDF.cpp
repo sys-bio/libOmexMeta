@@ -27,7 +27,6 @@ namespace omexmeta {
     RDF::RDF(RDF &&rdf) noexcept {
         namespaces_ = std::move(rdf.namespaces_);
         seen_namespaces_ = std::move(rdf.seen_namespaces_);
-        default_namespaces_ = std::move(rdf.default_namespaces_);
         storage_ = std::move(rdf.storage_);
         model_ = std::move(rdf.model_);
     }
@@ -36,7 +35,6 @@ namespace omexmeta {
         if (this != &rdf) {
             namespaces_ = std::move(rdf.namespaces_);
             seen_namespaces_ = std::move(rdf.seen_namespaces_);
-            default_namespaces_ = std::move(rdf.default_namespaces_);
             storage_ = std::move(rdf.storage_);
             model_ = std::move(rdf.model_);
         }
@@ -201,11 +199,17 @@ namespace omexmeta {
     std::unordered_map<std::string, std::string>
     RDF::propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces) {
         std::unordered_map<std::string, std::string> keep_map;
+
+        // flip the namespace map for this method:
+        NamespaceMap flippedNSMap;
+        for (auto &it: Predicate::namespaceMap()){
+            flippedNSMap[it.second] = it.first;
+        }
+
         for (auto &seen_namespace : seen_namespaces) {
-            std::cout << seen_namespace << std::endl;
-            auto iter = default_namespaces_.find(seen_namespace);
-            if (iter != default_namespaces_.end()) {
-                keep_map[seen_namespace] = default_namespaces_[seen_namespace];
+            auto iter = flippedNSMap.find(seen_namespace);
+            if (iter != flippedNSMap.end()) {
+                keep_map[seen_namespace] = flippedNSMap[seen_namespace];
             }
         }
         return keep_map;

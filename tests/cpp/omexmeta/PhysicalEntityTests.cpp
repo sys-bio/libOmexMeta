@@ -43,8 +43,8 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:63877").get())}));
     std::string actual = physicalEntity.getAbout();
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -61,8 +61,8 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:63877").get())}));
     Resource r(LibrdfNode::fromUriString(
             physicalEntity.getPhysicalProperty().getResourceStr()));
     std::string actual = r.str();
@@ -82,8 +82,8 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceStr) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::string actual = physicalEntity.getIdentityResource().str();
     std::string expected = "https://identifiers.org/obo/PR_000000365";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -100,8 +100,8 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceNode) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::string actual = (const char *) librdf_uri_as_string(
             librdf_node_get_uri(physicalEntity.getIdentityResource().getNode()));
     std::string expected = "https://identifiers.org/obo/PR_000000365";
@@ -118,14 +118,14 @@ TEST_F(PhysicalEntityTests, TestLocationResourceStr) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::ostringstream actual;
     for (auto &it : physicalEntity.getLocationResources()) {
         actual << it.str() << std::endl;
     }
-    std::string expected = "https://identifiers.org/fma/FMA:72564\n"
-                           "https://identifiers.org/fma/FMA:63877\n";
+    std::string expected = "https://identifiers.org/fma:72564\n"
+                           "https://identifiers.org/fma:63877\n";
     ASSERT_STREQ(expected.c_str(), actual.str().c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
@@ -139,14 +139,14 @@ TEST_F(PhysicalEntityTests, TestLocationResourceNode) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::ostringstream actual;
     for (auto &it : physicalEntity.getLocationResources()) {
         actual << librdf_uri_as_string(librdf_node_get_uri(it.getNode())) << std::endl;
     }
-    std::string expected = "https://identifiers.org/fma/FMA:72564\n"
-                           "https://identifiers.org/fma/FMA:63877\n";
+    std::string expected = "https://identifiers.org/fma:72564\n"
+                           "https://identifiers.org/fma:63877\n";
     ASSERT_STREQ(expected.c_str(), actual.str().c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
@@ -160,8 +160,8 @@ TEST_F(PhysicalEntityTests, TestSubject) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::string actual = physicalEntity.getSubjectStr();
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -177,8 +177,8 @@ TEST_F(PhysicalEntityTests, TestSubjectFromAbout) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::string actual = physicalEntity.getAbout();
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -194,8 +194,8 @@ TEST_F(PhysicalEntityTests, TestAboutIsSet) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     std::cout << physicalEntity.getAbout() << std::endl;
     ASSERT_FALSE(physicalEntity.getAbout().empty());
     //clear up as we didn't use Triple (which owns everything)
@@ -220,9 +220,9 @@ TEST(PhysicalEntityTestsNoFixture, TestToTripleRefCounts) {
     // ensure is ispartof has 1 reference per location
     std::vector<Resource> ispartof;
     ispartof.push_back(std::move(
-            Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get())));
+            Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get())));
     ispartof.push_back(std::move(
-            Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())));
+            Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())));
     ASSERT_EQ(1, ispartof[0].getNode()->usage);
     ASSERT_EQ(1, ispartof[1].getNode()->usage);
 
@@ -283,9 +283,9 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
     Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get());// is smad3
     std::vector<Resource> ispartof;
     ispartof.push_back(std::move(
-            Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get())));
+            Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get())));
     ispartof.push_back(std::move(
-            Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())));
+            Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())));
 
     PhysicalEntity physicalEntity(
             model.get(),
@@ -311,8 +311,8 @@ TEST_F(PhysicalEntityTests, TestTriples) {
             physical_property,
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:63877").get())}));
     Triples triples = physicalEntity.toTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -326,7 +326,7 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:63877>, <https://identifiers.org/fma:72564> .\n"
                            "\n";
     std::string s = triples.str("turtle");
     std::cout << s << std::endl;
@@ -343,25 +343,23 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
     physicalEntity.setModelUri(model_uri);
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
-            .setPhysicalProperty("VLV", "OPB:OPB_00154")
-            .identity("fma/FMA:9690")
+            .about("VLV")
+            .hasProperty("OPB:OPB_00154")
+            .identity("fma:9690")
             .isPartOf("fma:FMA:18228");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:EntityProperty0000\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#VLV> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00154> .\n"
+                           "    <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#VLV> ;\n"
+                           "    <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB:OPB_00154> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#VLV>\n"
-                           "    bqbiol:is <https://identifiers.org/fma/FMA:9690> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:18228> .\n"
-                           "\n"
-                           "";
+                           "    <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/fma:9690> ;\n"
+                           "    <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:FMA:18228> .";
     Triples triples = physicalEntity.toTriples();
     std::string actual = triples.str();
     std::cout << actual << std::endl;
@@ -398,8 +396,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
     physicalEntity
             .setPhysicalProperty(physical_property)
             .identity("obo/PR_000000365")
-            .isPartOf("https://identifiers.org/fma/FMA:72564")
-            .isPartOf("fma:FMA:63877");
+            .isPartOf("https://identifiers.org/fma:72564")
+            .isPartOf("fma:63877");
     ASSERT_FALSE(physicalEntity.getAbout().empty());
     //    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
     physicalEntity.free();
@@ -442,8 +440,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
     physicalEntity
             .setPhysicalProperty(physical_property)
             .identity("obo/PR_000000365")
-            .isPartOf("https://identifiers.org/fma/FMA:72564")
-            .isPartOf("fma:FMA:63877");
+            .isPartOf("https://identifiers.org/fma:72564")
+            .isPartOf("fma:63877");
 
     Triples triples = physicalEntity.toTriples();
     std::string actual = triples.str();
@@ -459,7 +457,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:63877>, <https://identifiers.org/fma:72564> .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -502,8 +500,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderOptionalIdentityField) {
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
             .setPhysicalProperty(physical_property)
-            .isPartOf("https://identifiers.org/fma/FMA:72564")
-            .isPartOf("fma:FMA:63877");
+            .isPartOf("https://identifiers.org/fma:72564")
+            .isPartOf("fma:63877");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -515,7 +513,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderOptionalIdentityField) {
                            "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:63877>, <https://identifiers.org/fma:72564> .\n"
                            "\n";
     Triples triples = physicalEntity.toTriples();
     ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
@@ -559,8 +557,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
     physicalEntity
             .setPhysicalProperty("metaid", "OPB:OPB_00340")
             .identity("obo/PR_000000365")
-            .isPartOf("https://identifiers.org/fma/FMA:72564")
-            .isPartOf("fma:FMA:63877");
+            .isPartOf("https://identifiers.org/fma:72564")
+            .isPartOf("fma:63877");
     Triples triples = physicalEntity.toTriples();
     ASSERT_EQ(5, triples.size());
     std::string actual = triples.str();
@@ -577,7 +575,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:is <https://identifiers.org/obo/PR_000000365> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:63877>, <https://identifiers.org/fma:72564> .\n"
                            "\n";
     ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
@@ -592,8 +590,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
             .about("metaid")
             .hasProperty("OPB:OPB_00340")
             .identity("uniprot/PD12345")
-            .isPartOf("https://identifiers.org/fma/FMA:72564")
-            .isPartOf("fma:FMA:63877");
+            .isPartOf("https://identifiers.org/fma:72564")
+            .isPartOf("fma:63877");
 
     Triples triples = physicalEntity.toTriples();
 
@@ -615,7 +613,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot/PD12345> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .";
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:63877>, <https://identifiers.org/fma:72564> .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
@@ -628,8 +626,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringNoProper
             .about("metaid")
             .hasProperty("obo/OPB12345")
             .identity("uniprot/PR12345")
-            .isPartOf("https://identifiers.org/fma/FMA:72564")
-            .isPartOf("fma:FMA:63877");
+            .isPartOf("https://identifiers.org/fma:72564")
+            .isPartOf("fma:63877");
     Triples triples = physicalEntity.toTriples();
     ASSERT_EQ(5, triples.size());
     std::string actual = triples.str();
@@ -646,7 +644,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringNoProper
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot/PR12345> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma/FMA:63877>, <https://identifiers.org/fma/FMA:72564> .";
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:63877>, <https://identifiers.org/fma:72564> .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
@@ -664,8 +662,8 @@ TEST(PhysicalEntityTestsNoFixture, TestEquality) {
             PhysicalProperty("metaid", "opb:opb_1234", model_uri),
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:63877").get())}));
     PhysicalEntity physicalEntity2(
             model.get(),
             "http://omex-library.org/NewOmex.omex/NewModel.xml#",
@@ -673,8 +671,8 @@ TEST(PhysicalEntityTestsNoFixture, TestEquality) {
             PhysicalProperty("metaid", "opb:opb_1234", model_uri),
             Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()),// is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())}));
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:63877").get())}));
     ASSERT_EQ(physicalEntity1, physicalEntity2);
     model.freeModel();
     storage.freeStorage();

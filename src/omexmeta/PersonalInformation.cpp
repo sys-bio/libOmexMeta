@@ -29,7 +29,7 @@ namespace omexmeta {
     }
 
     /**
-         * @brief move assignment constructor
+     * @brief move assignment constructor
      */
     PersonalInformation &PersonalInformation::operator=(PersonalInformation &&information) noexcept {
         if (this != &information) {
@@ -63,6 +63,7 @@ namespace omexmeta {
         Foaf foaf(predicate);
         Triple triple(subject.get(), foaf.getNode(), value_node.get());
         triples_.move_back(triple);
+        namespaces_.push_back(Predicate::namespaceMap()["foaf"]);
         return *this;
     }
 
@@ -72,6 +73,7 @@ namespace omexmeta {
         DCTerm dc(predicate);
         Triple triple(subject.get(), dc.getNode(), value_node.get());
         triples_.move_back(triple);
+        namespaces_.push_back(Predicate::namespaceMap()["dc"]);
         return *this;
     }
 
@@ -79,6 +81,7 @@ namespace omexmeta {
     PersonalInformation::addFoafBlank(const std::string &predicate, const std::string &blank_value) {
         LibrdfNode blank_node = LibrdfNode::fromBlank(blank_value);
         addFoaf(predicate, blank_node);
+        namespaces_.push_back(Predicate::namespaceMap()["foaf"]);
         return *this;
     }
 
@@ -88,6 +91,7 @@ namespace omexmeta {
         LibrdfNode uri_node = LibrdfNode::fromUriString(uri_value);
         addFoaf(predicate, uri_node);
         foaf.freeNode();
+        namespaces_.push_back(Predicate::namespaceMap()["foaf"]);
         return *this;
     }
 
@@ -97,6 +101,7 @@ namespace omexmeta {
         LibrdfNode literal_node = LibrdfNode::fromLiteral(literal_value);
         addFoaf(predicate, literal_node);
         foaf.freeNode();
+        namespaces_.push_back(Predicate::namespaceMap()["foaf"]);
         return *this;
     }
 
@@ -104,6 +109,7 @@ namespace omexmeta {
     PersonalInformation::addDCBlank(const std::string &predicate, const std::string &blank_value) {
         LibrdfNode blank_node = LibrdfNode::fromBlank(blank_value);
         addDC(predicate, blank_node);
+        namespaces_.push_back(Predicate::namespaceMap()["dc"]);
         return *this;
     }
 
@@ -113,7 +119,8 @@ namespace omexmeta {
         LibrdfNode uri_node = LibrdfNode::fromUriString(uri_value);
         addDC(predicate, uri_node);
         dcTerm.freeNode();
-        return *this;
+         namespaces_.push_back(Predicate::namespaceMap()["dc"]);
+       return *this;
     }
 
     PersonalInformation &
@@ -122,6 +129,7 @@ namespace omexmeta {
         LibrdfNode literal_node = LibrdfNode::fromLiteral(literal_value);
         addDC(predicate, literal_node);
         dcTerm.freeNode();
+        namespaces_.push_back(Predicate::namespaceMap()["dc"]);
         return *this;
     }
 
@@ -137,6 +145,7 @@ namespace omexmeta {
 
     PersonalInformation &PersonalInformation::addAccountName(const std::string& value) {
         addFoafUri("accountName", "https://orcid.org/" + value); // orchid id
+        namespaces_.push_back(Predicate::namespaceMap()["orcid"]);
         return *this;
     }
 
@@ -150,7 +159,7 @@ namespace omexmeta {
     }
 
     PersonalInformation &PersonalInformation::addCreator(const std::string &value) {
-        addDCUri("creator", value);
+        addDCUri("creator", "orcid:"+value);
         return *this;
     }
 
@@ -172,6 +181,7 @@ namespace omexmeta {
         DCTerm creator("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
         Triple triple(n.get(), creator.getNode(), r.get());
+        namespaces_.push_back(Predicate::namespaceMap()["orcid"]);
         triples_.move_back(triple);
     }
 
@@ -198,8 +208,9 @@ namespace omexmeta {
     void PersonalInformation::freeTriples() {
         triples_.freeTriples();
     }
-
-
+    const std::vector<std::string> &PersonalInformation::getNamespaces() const {
+        return namespaces_;
+    }
 
 
 }

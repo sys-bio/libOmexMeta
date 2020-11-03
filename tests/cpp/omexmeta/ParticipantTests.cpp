@@ -6,6 +6,7 @@
 #include "librdf.h"
 #include "omexmeta/RDF.h"
 #include "omexmeta/Participant.h"
+#include "OmexMetaTestUtils.h"
 
 using namespace omexmeta;
 
@@ -37,10 +38,11 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
             model.get(), "MetaId0014",model_uri,  local_uri, "hasSourceParticipant",
             1.0, "MetaId0015"
     );
+    std::cout << participant.getPredicate() <<std::endl;
     SemSim ss(participant.getPredicate());
     std::string actual = ss.str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    std::string expected = "http://bime.uw.edu/semsim/hasSourceParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     participant.free();
     ss.freeNode();
@@ -52,7 +54,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
     SemSim ss(sink.getPredicate());
     std::string actual = ss.str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/semsim#hasSinkParticipant";
+    std::string expected = "http://bime.uw.edu/semsim/hasSinkParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
     ss.freeNode();
@@ -86,7 +88,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     );
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -97,7 +99,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
                            "";
     std::string actual = triple.str();
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triple, expected));
     triple.freeStatement();
 }
 
@@ -112,7 +114,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     triples.move_back(triple);
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -121,9 +123,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
                            "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
                            "\n"
                            "";
-    std::string actual = triples[0].str();
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -134,7 +134,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -146,7 +146,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
                            "<https://metaid>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
                            "\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -157,7 +157,7 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -169,7 +169,7 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
                            "\n"
                            "";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
@@ -180,7 +180,7 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
     std::string actual = triples.str();
     std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -192,7 +192,7 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0000 .\n"
                            "\n"
                            "";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 

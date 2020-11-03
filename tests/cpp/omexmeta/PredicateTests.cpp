@@ -189,7 +189,7 @@ TEST_F(PredicateTests, TestSemsimPredicatePrefix) {
 TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
     std::shared_ptr<Predicate> term_ptr =
             std::make_unique<Predicate>(SemSim("hasSourceParticipant"));
-    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    std::string expected = "http://bime.uw.edu/semsim/";
     std::string actual = term_ptr->getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     term_ptr->freeNode();
@@ -224,16 +224,16 @@ TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
 //}
 //
 //TEST_F(PredicateTests, TestNamespaceWhenItEndsWithHash) {
-//    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+//    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
 //    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
 //    const std::string &actual = predicate.getNamespace();
-//    std::string expected = "http://www.bhi.washington.edu/semsim#";
+//    std::string expected = "http://bime.uw.edu/semsim#";
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //    predicate.freeNode();
 //}
 //
 //TEST_F(PredicateTests, TestPrefixWhenNamespaceEndsWithHash) {
-//    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+//    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
 //    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
 //    const std::string &actual = predicate.getPrefix();
 //    std::string expected = "omexmeta";
@@ -242,7 +242,7 @@ TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
 //}
 //
 //TEST_F(PredicateTests, TestTermWhenNamespaceEndsWithHash) {
-//    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+//    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
 //    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
 //    const std::string &actual = predicate.getTerm();
 //    std::string expected = "hasSourceParticipant";

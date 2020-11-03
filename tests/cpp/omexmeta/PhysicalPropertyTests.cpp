@@ -85,7 +85,7 @@ TEST_F(PhysicalPropertyTests, TestToTriplesLowerCaseOPB) {
 }
 
 TEST_F(PhysicalPropertyTests, TestToTriplesUsingColonNotSlash) {
-    PhysicalProperty resource = PhysicalProperty("sub", "opb:opb_1234", model_uri);
+    PhysicalProperty resource = PhysicalProperty("sub", "opb/opb_1234", model_uri);
     Triples triples = resource.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#prop");
     auto r = triples.getResources();
     std::string expeted = "<http://omex-library.org/NewOmex.omex/NewModel.xml#prop> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#sub> .\n"

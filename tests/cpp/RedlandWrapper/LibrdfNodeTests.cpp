@@ -391,8 +391,8 @@ TEST_F(LibrdfNodeTests, GetNamespace1) {
 
 TEST_F(LibrdfNodeTests, GetNamespace2) {
     // n1 and n2 are two different nodes
-    LibrdfNode n1 = LibrdfNode::fromUriString("http://www.bhi.washington.edu/semsim#hasMultiplier");
-    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    LibrdfNode n1 = LibrdfNode::fromUriString("http://bime.uw.edu/semsim#hasMultiplier");
+    std::string expected = "http://bime.uw.edu/semsim#";
     std::string actual = n1.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     // uri count decreases by 1 when we free the node

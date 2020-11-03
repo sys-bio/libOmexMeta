@@ -73,7 +73,7 @@ namespace omexmeta {
         std::string str(const std::string &format = "turtle",
                 const std::string &base = (std::filesystem::current_path() /=  "annotations.rdf").string(),
                 std::string omex_name = "NewOmex.omex/",
-                std::string model_name = "NewModel.xml#") const;
+                std::string model_name = "NewModel.xml") const;
 
         void freeTriple();
 

@@ -33,8 +33,8 @@ TEST_F(ResourceTests, TestResourceUri1) {
 
 
 TEST_F(ResourceTests, TestResourceUriFromIdentifiersOrg) {
-    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma/FMA:1234").get());
-    std::string expected = "https://identifiers.org/fma/FMA:1234";
+    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:1234").get());
+    std::string expected = "https://identifiers.org/fma:1234";
     std::string actual = resource.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     resource.free();
@@ -42,24 +42,24 @@ TEST_F(ResourceTests, TestResourceUriFromIdentifiersOrg) {
 
 
 TEST_F(ResourceTests, TestResourceUriIdentifiersOrgColonNotationFromStr) {
-    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:1234").get());
-    std::string expected = "https://identifiers.org/fma/FMA:1234";
+    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:1234").get());
+    std::string expected = "https://identifiers.org/fma:1234";
     std::string actual = resource.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     resource.free();
 }
 
 TEST_F(ResourceTests, TestResourceUriIdentifiersOrgColonNotationFromNode) {
-    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:1234").get());
-    std::string expected = "https://identifiers.org/fma/FMA:1234";
+    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:1234").get());
+    std::string expected = "https://identifiers.org/fma:1234";
     std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode()));
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     resource.free();
 }
 
 TEST_F(ResourceTests, TestResourceUriIdentifiersOrgColonNotationFromNod2e) {
-    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:1234").get());
-    std::string expected = "https://identifiers.org/fma/FMA:1234";
+    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:1234").get());
+    std::string expected = "https://identifiers.org/fma:1234";
     std::string actual = resource.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     resource.free();

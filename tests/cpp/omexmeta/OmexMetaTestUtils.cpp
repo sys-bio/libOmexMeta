@@ -59,3 +59,17 @@ bool OmexMetaTestUtils::equals(const Triples& actual, const std::string& expecte
     }
     return equal;
 }
+
+bool OmexMetaTestUtils::equals(const std::string& first, const std::string& second, const std::string& first_format, const std::string& second_format) {
+    RDF first_rdf = RDF::fromString(first, first_format);
+    RDF second_rdf = RDF::fromString(second, second_format);
+    bool equal = first_format == second_format;
+    if (!equal){
+        std::cout << "First rdf string does not equal second rdf string: " << std::endl;
+        std::cout << "first:" <<std::endl;
+        std::cout << first_rdf.toString("turtle") << std::endl;
+        std::cout << "Actual : " << std::endl;
+        std::cout << second_rdf.toString("turtle") << std::endl;
+    }
+    return equal;
+}

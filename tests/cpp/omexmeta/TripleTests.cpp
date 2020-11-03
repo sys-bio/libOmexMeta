@@ -2,18 +2,18 @@
 // Created by Ciaran on 4/4/2020.
 //
 
+#include "AnnotationSamples.h"
+#include "OmexMetaTestUtils.h"
 #include "omexmeta/Predicate.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
 #include "gtest/gtest.h"
-#include "AnnotationSamples.h"
 
 using namespace omexmeta;
 
 class TripleTests : public ::testing::Test {
 public:
-
     AnnotationSamples samples;
     std::string subject_str = "./NewModel#metaid_0";
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
@@ -30,13 +30,12 @@ public:
         subject = Subject::fromRawPtr(LibrdfNode::fromUriString(subject_str).get());
         resource = Resource::fromRawPtr(LibrdfNode::fromUriString(resource_namespace + "/" + resource_id).get());
         predicate = BiomodelsBiologyQualifier("is");
-
     }
 };
 
 TEST_F(TripleTests, TestInstantiation1) {
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
-    ASSERT_TRUE(true); // if we get this far the test has passed
+    ASSERT_TRUE(true);// if we get this far the test has passed
     triple.freeStatement();
 }
 
@@ -52,7 +51,7 @@ TEST_F(TripleTests, TestInstantiation2) {
     Triple triple(subject,
                   std::make_shared<Predicate>(predicate),
                   resource);
-    ASSERT_TRUE(true); // if we get this far the test has passed
+    ASSERT_TRUE(true);// if we get this far the test has passed
     triple.freeStatement();
 }
 
@@ -105,13 +104,11 @@ TEST(TripleTestsNoFixture, TestEquality) {
     Triple triple1(
             LibrdfNode::fromUriString("subject"),
             LibrdfNode::fromUriString("predicate"),
-            LibrdfNode::fromUriString("resource")
-    );
+            LibrdfNode::fromUriString("resource"));
     Triple triple2(
             LibrdfNode::fromUriString("subject"),
             LibrdfNode::fromUriString("predicate"),
-            LibrdfNode::fromUriString("resource")
-    );
+            LibrdfNode::fromUriString("resource"));
     ASSERT_EQ(triple1, triple2);
     triple2.freeStatement();
     triple1.freeStatement();
@@ -121,13 +118,11 @@ TEST(TripleTestsNoFixture, TestInequality) {
     Triple triple1(
             LibrdfNode::fromUriString("subject1"),
             LibrdfNode::fromUriString("predicate1"),
-            LibrdfNode::fromUriString("resource1")
-    );
+            LibrdfNode::fromUriString("resource1"));
     Triple triple2(
             LibrdfNode::fromUriString("subject2"),
             LibrdfNode::fromUriString("predicate2"),
-            LibrdfNode::fromUriString("resource2")
-    );
+            LibrdfNode::fromUriString("resource2"));
     ASSERT_NE(triple1, triple2);
     triple2.freeStatement();
     triple1.freeStatement();
@@ -143,7 +138,6 @@ TEST_F(TripleTests, TestStatementResource) {
     ASSERT_STREQ(expected.c_str(), (const char *) s);
     triple.freeStatement();
 }
-
 
 
 TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
@@ -229,7 +223,7 @@ TEST_F(TripleTests, TestStatementSubject) {
 
 TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple;
-//    triple.setLocalUri("http://omex-library.org/NewOmex.omex/NewModel.rdf");
+    //    triple.setLocalUri("http://omex-library.org/NewOmex.omex/NewModel.rdf");
     triple.setModelUri("http://omex-library.org/NewOmex.omex/NewModel.xml");
     triple.about("#metaid1")
             .setPredicate("bqbiol", "is")
@@ -283,38 +277,10 @@ TEST_F(TripleTests, TestBuilderPattern2) {
     resource.free();
 }
 
-TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
-    Triple triple;
-    triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
-    triple.about("metaid1")
-            .setPredicate("semsim", "hasSourceParticipant")
-            .setResourceUri("uniprot/PD4034");
-
-    std::string actual = triple.str();
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/omex.omex/model.xml#metaid1>\n"
-                           "    semsim:hasSourceParticipant <https://identifiers.org/uniprot/PD4034> .\n"
-                           "\n"
-                           "";
-    std::cout << actual << std::endl;
-ASSERT_TRUE(OmexMetaUtils::assertMatchByNewLine(expected, actual));
-triple.freeStatement();
-
-    // Aaand free the excess nodes
-    predicate.freeNode();
-    subject.free();
-    resource.free();
-}
 
 class TripleTestsVector : public ::testing::Test {
 
 public:
-
     AnnotationSamples samples;
     std::string subject_str = "./NewModel#metaid_0";
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
@@ -331,9 +297,7 @@ public:
         subject = Subject::fromRawPtr(LibrdfNode::fromUriString(subject_str).get());
         resource = Resource::fromRawPtr(LibrdfNode::fromUriString(resource_namespace + "/" + resource_id).get());
         predicate = BiomodelsBiologyQualifier("is");
-
     }
-
 };
 
 ///*
@@ -374,7 +338,7 @@ class TestTripleTwice : public ::testing::Test {
      * PhysicalEntity and free them both. Here I try to
      * reproduce the problem by process of elimination.
      */
-    TestTripleTwice() {};
+    TestTripleTwice(){};
 };
 
 /*
@@ -385,13 +349,11 @@ TEST(TestTripleTwice, WithRawNodes) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
+            LibrdfNode::fromUriString("resource").get());
     Triple triple2(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
+            LibrdfNode::fromUriString("resource").get());
     triple1.freeStatement();
     triple2.freeStatement();
 }
@@ -403,13 +365,11 @@ TEST(TestTripleTwice, WithSubjectPredAndRes) {
     Triple triple1(
             Subject(LibrdfNode::fromUriString("subject")).getNode(),
             Predicate("uniprot", "PD1234", "uni").getNode(),
-            Resource(LibrdfNode::fromUriString("resource")).getNode()
-    );
+            Resource(LibrdfNode::fromUriString("resource")).getNode());
     Triple triple2(
             Subject(LibrdfNode::fromUriString("subject")).getNode(),
             Predicate("uniprot", "PD1234", "uni").getNode(),
-            Resource(LibrdfNode::fromUriString("resource")).getNode()
-    );
+            Resource(LibrdfNode::fromUriString("resource")).getNode());
     triple1.freeStatement();
     triple2.freeStatement();
 }
@@ -421,13 +381,11 @@ TEST(TestTripleTwice, WithSubjectBiomodelModelQualifierAndRes) {
     Triple triple1(
             Subject(LibrdfNode::fromUriString("subject")).getNode(),
             BiomodelsBiologyQualifier("is").getNode(),
-            Resource(LibrdfNode::fromUriString("resource")).getNode()
-    );
+            Resource(LibrdfNode::fromUriString("resource")).getNode());
     Triple triple2(
             Subject(LibrdfNode::fromUriString("subject")).getNode(),
             Predicate("uniprot", "PD1234", "uni").getNode(),
-            Resource(LibrdfNode::fromUriString("resource")).getNode()
-    );
+            Resource(LibrdfNode::fromUriString("resource")).getNode());
     triple1.freeStatement();
     triple2.freeStatement();
 }
@@ -437,14 +395,12 @@ TEST(TestTripleTwice, WithRawNodesWithMovingTheFirst) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
+            LibrdfNode::fromUriString("resource").get());
     Triple triple2 = std::move(triple1);
     Triple triple3(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
+            LibrdfNode::fromUriString("resource").get());
     triple2.freeStatement();
     triple3.freeStatement();
 }
@@ -453,8 +409,7 @@ TEST(TestTripleTwice, TestUsageSimple) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
+            LibrdfNode::fromUriString("resource").get());
 
     auto usage = triple1.getUsages();
     ASSERT_EQ(1, usage["statement"]);
@@ -464,9 +419,9 @@ TEST(TestTripleTwice, TestUsageSimple) {
     ASSERT_EQ(1, usage["subject_uri"]);
     ASSERT_EQ(1, usage["predicate_uri"]);
     ASSERT_EQ(1, usage["resource_uri"]);
-//    for (auto &it: usage){
-//        std::cout << it.first << ": " << it.second << std::endl;
-//    }
+    //    for (auto &it: usage){
+    //        std::cout << it.first << ": " << it.second << std::endl;
+    //    }
 
     triple1.freeTriple();
 }
@@ -475,8 +430,7 @@ TEST(TestTripleTwice, TestUsageTwoUrisTheSame) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("subject").get()
-    );
+            LibrdfNode::fromUriString("subject").get());
 
     auto usage = triple1.getUsages();
     ASSERT_EQ(1, usage["statement"]);
@@ -493,8 +447,7 @@ TEST(TestTripleTwice, TestUsageWhenTripleSimple) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
+            LibrdfNode::fromUriString("resource").get());
 
     Triple triple2 = std::move(triple1);
 
@@ -513,8 +466,7 @@ TEST(TestTripleTwice, TestUsageWhenTripleMoved) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("subject").get()
-    );
+            LibrdfNode::fromUriString("subject").get());
 
     Triple triple2 = std::move(triple1);
 
@@ -528,31 +480,3 @@ TEST(TestTripleTwice, TestUsageWhenTripleMoved) {
     ASSERT_EQ(2, usage["resource_uri"]);
     triple2.freeTriple();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

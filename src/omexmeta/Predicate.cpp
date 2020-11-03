@@ -3,15 +3,14 @@
 //
 
 
-
 #include "omexmeta/Predicate.h"
 
 namespace omexmeta {
 
     Predicate::Predicate(const std::string &namespace_,
                          std::string term, std::string prefix)
-            : namespace_(namespace_), term_(std::move(term)),
-              prefix_(std::move(prefix)) {
+        : namespace_(namespace_), term_(std::move(term)),
+          prefix_(std::move(prefix)) {
         if (namespace_.back() == '/' || namespace_.back() == '#') {
             this->uri_ = namespace_ + term_;
         } else {
@@ -21,7 +20,7 @@ namespace omexmeta {
     }
 
     Predicate::Predicate(librdf_node *node)
-            : node_(node) {
+        : node_(node) {
         if (!node)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null");
@@ -36,7 +35,7 @@ namespace omexmeta {
 
         // add the middle portion to the stream.
         for (unsigned long i = 1; i < v.size() - 1; i++) {
-            os << v[i] << "/"; // other parts of the url - up until the last bit
+            os << v[i] << "/";// other parts of the url - up until the last bit
         }
         // When predicate ends in '#' we need different logic to when the predicate ends in '/'
         if (v[v.size() - 1].find('#') != std::string::npos) {
@@ -87,7 +86,7 @@ namespace omexmeta {
     bool Predicate::namespaceKnown(const std::string &ns) {
         bool known = false;
         for (const auto &it : Predicate::namespaceMap()) {
-            if (ns == it.first) {
+            if (ns == it.second) {
                 known = true;
                 break;
             }
@@ -97,20 +96,20 @@ namespace omexmeta {
 
     std::unordered_map<std::string, std::string> Predicate::namespaceMap() {
         return std::unordered_map<std::string, std::string>{
-                {"http://xmlns.com/foaf/0.1/",                                    "foaf"},
-                {"https://dublincore.org/specifications/dublin-core/dcmi-terms/", "dc"},
-                {"https://orcid.org/",                                            "orcid"},
-                {"http://biomodels.net/model-qualifiers/",                        "bqmodel"},
-                {"http://biomodels.net/biology-qualifiers/",                      "bqbiol"},
-                {"https:identifiers.org/pubmed:",                                 "pubmed"},
-                {"http://identifiers.org/taxonomy:",                              "NCBI_Taxon"},
-                {"http://identifiers.org/biomodels.db:"  ,                        "biomod"},
-                {"http://identifiers.org/CHEBI:",                                  "chebi"},
-                {"http://identifiers.org/uniprot:",                               "uniprot"},
-                {"http://bime.uw.edu/semsim/",                                    "semsim"},
-                {"http://identifiers.org/opb:",                                   "opb"},
-                {"http://identifiers.org/fma:",                                   "fma"},
-                {"http://OMEXlibrary.org/",                                       "OMEXlib"},
+                {"foaf",                            "http://xmlns.com/foaf/0.1/"},
+                {"dc",                              "https://dublincore.org/specifications/dublin-core/dcmi-terms/"},
+                {"orcid",                           "https://orcid.org/"},
+                {"bqmodel",                         "http://biomodels.net/model-qualifiers/"},
+                {"bqbiol",                          "http://biomodels.net/biology-qualifiers/"},
+                {"pubmed",                          "https://identifiers.org/pubmed:"},
+                {"NCBI_Taxon",                      "https://identifiers.org/taxonomy:"},
+                {"biomod",                          "https://identifiers.org/biomodels.db:"},
+                {"chebi",                           "https://identifiers.org/CHEBI:"},
+                {"uniprot",                         "https://identifiers.org/uniprot:"},
+                {"semsim",                          "http://bime.uw.edu/semsim/"},
+                {"opb",                             "https://identifiers.org/opb:"},
+                {"fma",                             "https://identifiers.org/fma:"},
+                {"OMEXlib",                         "http://OMEXlibrary.org/"},
 
         };
     }
@@ -181,8 +180,8 @@ namespace omexmeta {
 
         // if their namespace matches one we know, add it to the model
         for (auto &i : ns_map) {
-            const std::string &ns = i.first;
-            const std::string &prefix = i.second;
+            const std::string &ns = i.second;
+            const std::string &prefix = i.first;
             if (pred_namespace == ns) {
                 librdf_uri *u = librdf_new_uri(world, (const unsigned char *) ns.c_str());
                 librdf_serializer_set_namespace(serializer, u, prefix.c_str());
@@ -200,8 +199,7 @@ namespace omexmeta {
     }
 
 
-    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
-            Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
+    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) : Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
         /**
      * note: verify cannot be a virtual function
          * because I want to use it in the constructor.
@@ -215,8 +213,7 @@ namespace omexmeta {
         Predicate::verify(valid_terms_, term_);
     }
 
-    BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) :
-            Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
+    BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) : Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
         verify();
     }
 
@@ -224,8 +221,7 @@ namespace omexmeta {
         Predicate::verify(valid_terms_, term_);
     }
 
-    DCTerm::DCTerm(const std::string &term) :
-            Predicate("https://dublincore.org/specifications/dublin-core/dcmi-terms/", term, "dc") {
+    DCTerm::DCTerm(const std::string &term) : Predicate(Predicate::namespaceMap()["dc"], term, "dc") {
         verify();
     }
 
@@ -233,8 +229,7 @@ namespace omexmeta {
         Predicate::verify(valid_terms_, term_);
     }
 
-    SemSim::SemSim(const std::string &term) :
-            Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
+    SemSim::SemSim(const std::string &term) : Predicate(Predicate::namespaceMap()["semsim"], term, "semsim") {
         verify();
     }
 
@@ -242,8 +237,7 @@ namespace omexmeta {
         Predicate::verify(valid_terms_, term_);
     }
 
-    Foaf::Foaf(const std::string &term) :
-            Predicate("http://xmlns.com/foaf/0.1/", term, "foaf") {
+    Foaf::Foaf(const std::string &term) : Predicate(Predicate::namespaceMap()["foaf"], term, "foaf") {
         verify();
     }
 
@@ -264,8 +258,7 @@ namespace omexmeta {
                 "foaf",
                 "BiomodelsBiologyQualifier",
                 "BiomodelsModelQualifier",
-                "DCTerm"
-        };
+                "DCTerm"};
 
         if (std::find(valid_namespace_strings.begin(), valid_namespace_strings.end(), namespace_) ==
             valid_namespace_strings.end()) {
@@ -282,30 +275,25 @@ namespace omexmeta {
         }
         // ensure we only compare in lowercase
         std::for_each(namespace_.begin(), namespace_.end(), [](char &c) {
-            c = (char)std::tolower(c);
+            c = (char) std::tolower(c);
         });
 
         PredicatePtr predicatePtr;
         if (namespace_ == "bqbiol" || namespace_ == "biomodelsbiologyqualifier") {
             predicatePtr = std::make_unique<BiomodelsBiologyQualifier>(
-                    BiomodelsBiologyQualifier(term)
-            );
+                    BiomodelsBiologyQualifier(term));
         } else if (namespace_ == "bqmodel" || namespace_ == "biomodelsmodelqualifier") {
             predicatePtr = std::make_unique<BiomodelsModelQualifier>(
-                    BiomodelsModelQualifier(term)
-            );
-        } else if (namespace_ == "dc" || namespace_ == "dcterms" ) {
+                    BiomodelsModelQualifier(term));
+        } else if (namespace_ == "dc" || namespace_ == "dcterms") {
             predicatePtr = std::make_unique<DCTerm>(
-                    DCTerm(term)
-            );
+                    DCTerm(term));
         } else if (namespace_ == "semsim") {
             predicatePtr = std::make_unique<SemSim>(
-                    SemSim(term)
-            );
+                    SemSim(term));
         } else if (namespace_ == "foaf") {
             predicatePtr = std::make_unique<Foaf>(
-                    Foaf(term)
-            );
+                    Foaf(term));
         } else {
             throw std::invalid_argument("Invalid term argument: PredicateFactory(): \"" + term + "\"");
         }
@@ -313,6 +301,4 @@ namespace omexmeta {
     }
 
 
-}
-
-
+}// namespace omexmeta
