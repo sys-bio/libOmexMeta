@@ -279,7 +279,7 @@ namespace omexmeta {
             Triple triple = triples.pop();
             model_.removeStatement(triple.getStatement());
         }
-//        triples.freeTriples();
+        //        triples.freeTriples();
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) const {
@@ -329,6 +329,7 @@ namespace omexmeta {
                       PredicateFactory("dc", "creator")->getNode(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
+        addNamespace( Predicate::namespaceMap()["dc"], "dc");
         triple.freeTriple();
         return *this;
     }
@@ -342,6 +343,7 @@ namespace omexmeta {
                       PredicateFactory("dc", "creator")->getNode(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
+        addNamespace( Predicate::namespaceMap()["dc"], "dc");
         triple.freeTriple();
         return *this;
     }
@@ -356,9 +358,7 @@ namespace omexmeta {
                        LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple1);
         model_.addStatement(triple2);
-        addNamespace("https://dublincore.org/specifications/dublin-core/dcmi-terms/", "dc" );
-//        triple1.freeTriple();
-//        triple2.freeTriple();
+        addNamespace( Predicate::namespaceMap()["dc"], "dc");
         return *this;
     }
 
@@ -367,6 +367,7 @@ namespace omexmeta {
                       PredicateFactory("dc", "description")->getNode(),
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
+        addNamespace( Predicate::namespaceMap()["dc"], "dc");
         triple.freeTriple();
         return *this;
     }
@@ -376,6 +377,8 @@ namespace omexmeta {
                       PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
                       LibrdfNode::fromUriString("pubmed:" + pubmedid).get());
         model_.addStatement(triple);
+        addNamespace( Predicate::namespaceMap()["bqmodel"], "bqmodel");
+        addNamespace( Predicate::namespaceMap()["pubmed"], "pubmed");
         triple.freeTriple();
         return *this;
     }
@@ -385,6 +388,8 @@ namespace omexmeta {
                       PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
                       LibrdfNode::fromUriString("biomod:" + biomod_id).get());
         model_.addStatement(triple);
+        addNamespace( Predicate::namespaceMap()["bqmodel"], "bqmodel");
+        addNamespace( Predicate::namespaceMap()["biomod"], "biomod");
         triple.freeTriple();
         return *this;
     }
@@ -394,6 +399,9 @@ namespace omexmeta {
                       PredicateFactory("bqbiol", "hasTaxon")->getNode(),
                       LibrdfNode::fromUriString("NCBI_Taxon:" + taxon_id).get());
         model_.addStatement(triple);
+        addNamespace( Predicate::namespaceMap()["bqbiol"], "bqbiol");
+        addNamespace( Predicate::namespaceMap()["NCBI_Taxon"], "NCBI_Taxon");
+
         triple.freeTriple();
         return *this;
     }

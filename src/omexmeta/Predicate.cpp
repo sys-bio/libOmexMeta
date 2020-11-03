@@ -96,23 +96,20 @@ namespace omexmeta {
     }
 
     std::unordered_map<std::string, std::string> Predicate::namespaceMap() {
-        // todo I can't remember exactly why I chose to have prefix second and namespace first
-        //  but it no longer seems like it makes sense. Swap these around and change the bits of
-        //  code that use the namespaceMap so that first is second and second is first.
         return std::unordered_map<std::string, std::string>{
                 {"http://xmlns.com/foaf/0.1/",                                    "foaf"},
                 {"https://dublincore.org/specifications/dublin-core/dcmi-terms/", "dc"},
                 {"https://orcid.org/",                                            "orcid"},
                 {"http://biomodels.net/model-qualifiers/",                        "bqmodel"},
                 {"http://biomodels.net/biology-qualifiers/",                      "bqbiol"},
-                {"https:identifiers.org/pubmed/",                                 "pubmed"},
-                {"http://identifiers.org/taxonomy/",                              "NCBI_Taxon"},
-                {"http://identifiers.org/biomodels.db/"  ,                        "biomod"},
-                {"http://identifiers.org/CHEBI",                                  "chebi"},
-                {"http://identifiers.org/uniprot/",                               "uniprot"},
-                {"http://www.bhi.washington.edu/semsim#",                         "semsim"},
-                {"http://identifiers.org/opb/",                                   "opb"},
-                {"http://identifiers.org/fma/",                                   "fma"},
+                {"https:identifiers.org/pubmed:",                                 "pubmed"},
+                {"http://identifiers.org/taxonomy:",                              "NCBI_Taxon"},
+                {"http://identifiers.org/biomodels.db:"  ,                        "biomod"},
+                {"http://identifiers.org/CHEBI:",                                  "chebi"},
+                {"http://identifiers.org/uniprot:",                               "uniprot"},
+                {"http://bime.uw.edu/semsim/",                                    "semsim"},
+                {"http://identifiers.org/opb:",                                   "opb"},
+                {"http://identifiers.org/fma:",                                   "fma"},
                 {"http://OMEXlibrary.org/",                                       "OMEXlib"},
 
         };

@@ -11,6 +11,47 @@ set(VERSION_MINOR 1)
 set(VERSION_MICRO 18)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
+
+############################################################3
+# configure some paths relative to vcpkg root
+# should happen before call to project(libOmexMeta) as per the docs
+# https://vcpkg.readthedocs.io/en/latest/users/integration/
+
+find_path(VCPKG_ROOT NAMES ports/libxml2/CMakeLists.txt REQUIRED
+        HINTS "$ENV{HOMEDRIVE}" "$ENV{HOMEPATH}" "D:/")
+
+if (NOT EXISTS ${VCPKG_ROOT})
+    message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT})")
+endif ()
+
+find_file(
+        VCPKG_TOOLCHAIN_FILE
+        NAMES vcpkg.cmake
+        HINTS "${VCPKG_ROOT}/scripts/buildsystems"
+        REQUIRED
+)
+
+# ensure the toolchain file exists and user has provided it.
+if (NOT EXISTS ${VCPKG_TOOLCHAIN_FILE})
+    message(FATAL_ERROR "No vcpkg toolchain installed, got \"${CMAKE_TOOLCHAIN_FILE}\".
+Have you passed in the root to vcpkg? i.e. -DVCPKG_ROOT=\"D:/vcpkg\"")
+endif ()
+
+if (WIN32)
+    set(VCPKG_TARGET_TRIPLET x64-windows-static CACHE STRING "vcpkg triplet to use")
+elseif (UNIX AND NOT APPLE)
+    set(VCPKG_TARGET_TRIPLET x64-linux CACHE STRING "vcpkg triplet to use")
+elseif (APPLE)
+    set(VCPKG_TARGET_TRIPLET x64-osx-static CACHE STRING "vcpkg triplet to use")
+endif ()
+
+# this needs to be before project() call
+set(CMAKE_TOOLCHAIN_FILE "${VCPKG_TOOLCHAIN_FILE}")
+
+###########################################################################
+#   Start configuring libOmexMeta
+#
+
 project(libOmexMeta
         VERSION "${LIBOMEXMETA_VERSION}"
         DESCRIPTION "Annotation library for models in mathematical biology"
@@ -30,11 +71,9 @@ include(ExternalProject)
 # load a custom function for determining the current platform
 include(DeterminePlatform)
 
-# defines ${PLATFORM}
-DeterminePlatform()
 
 # defines a macro for locating the dependencies
-include(FindDependencies)
+#include(FindDependencies)
 
 # defines a macro that allows easily setting of platform dependent values for a variable
 include(SetCrossPlatform)
@@ -55,7 +94,7 @@ include(GNUInstallDirs)
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
 # cmake hierachy. Therefore its best to set now.
-set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_PREFIX}/docs)
+set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_PREFIX}/docs")
 
 # The InstallRequiredSystemLibraries module is intended to provide projects with the details of
 #relevant run time libraries for the major compilers
@@ -75,10 +114,10 @@ include(GoogleTest)
 #
 
 # global settings
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if (NOT WIN32)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 endif ()
 set(CXX_STANDARD_REQUIRED ON)
 
@@ -89,7 +128,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
 # location of googletesting framework
-set(GOOGLETEST_SOURCE ${CMAKE_SOURCE_DIR}/third_party/googletest)
+set(GOOGLETEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/googletest)
 
 # put all runtime targets (exe and dll) into bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
@@ -165,7 +204,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_SANITIZER "link with address sanitizer for memory debugging" OFF)
 if (WITH_SANITIZER)
-    if (${PLATFORM} STREQUAL "linux")
+    if (UNIX AND NOT APPLE)
         SET(ADDRESS_SANITIZER_FLAGS "-g -fsanitize=address")
         SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
         SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
@@ -224,104 +263,117 @@ if (${BUILD_PYTHON})
     set(PYTHON_API_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py.in")
     set(PYTHON_API_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py")
     configure_file(${PYTHON_API_CONFIG_FILE} ${PYTHON_API_FILE} @ONLY)
-
-
 endif ()
 
 
-############################################################3
-# configure some paths relative to vcpkg root
-set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its \"D:\\vcpkg\" on windows and \"/home/ciaran/vcpkg\" on WSL (Ubuntu)")
-if (NOT EXISTS ${VCPKG_ROOT})
-    message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT})")
-endif ()
 
-set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
+#add_definitions(-DVCPKG_TARGET_TRIPLET=${VCPKG_TARGET_TRIPLET} -DVCPKG_TOOLCHAIN_FILE=${VCPKG_TOOLCHAIN_FILE})
 
-# ensure the toolchain file exists and user has provided it.
-if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
-    message(FATAL_ERROR "No vcpkg toolchain installed, got \"${CMAKE_TOOLCHAIN_FILE}\".
-Have you passed in the root to vcpkg? i.e. -DVCPKG_ROOT=\"D:/vcpkg\"")
-endif ()
-
-# determine which triplet we need to use for finding shared libraries and include dirs.
-SetCrossPlatform(VCPKG_ARCH "x64-windows" "x64-linux" "x64-osx")
-
-# location of installed libraries in vcpkg
-set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_ARCH}")
-
-# location of installed static packages in vcpkg
-SetCrossPlatform(VCPKG_X64_STATIC_INSTALLED_PACKAGES
-        "${VCPKG_ROOT}/installed/x64-windows-static"
-        "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
-        "${VCPKG_ROOT}/installed/x64-osx"
-        )
-
-# Path to static libraries
-set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
-# Path to shared libraries
-set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
-# Path to binaries
-SetCrossPlatform(VCPKG_X64_BIN_DIR
-        "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
-        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
-        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
-        )
-# include directories (should be the same for static and dynamic)
-set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
-
-
-set(_VCPKG_DIRECTORIES
-        ${VCPKG_X64_STATIC_LIB_DIR}
-        ${VCPKG_X64_LIB_DIR}
-        ${VCPKG_X64_BIN_DIR}
-        ${VCPKG_X64_INCLUDE_DIR}
-        )
-
-# ensure the directories we've located exist
-foreach (d ${_VCPKG_DIRECTORIES})
-    if (NOT EXISTS ${d})
-        message(FATAL_ERROR "VCPKG directory \"${d}\" does not exist")
-    endif ()
-endforeach ()
-
-
-###########################################################
-#   Find the dependencies
+# The following are from vcpkg
+find_package(LibXml2 REQUIRED NO_DEFAULT)
+##The package libxml2 is compatible with built-in CMake targets:
+##
+##    target_include_directories(main PRIVATE ${LIBXML2_INCLUDE_DIR})
+##    target_link_libraries(main PRIVATE ${LIBXML2_LIBRARIES})
 #
+find_package(LibXslt REQUIRED NO_DEFAULT)
+#
+find_package(CURL CONFIG REQUIRED)
+#target_link_libraries(main PRIVATE CURL::libcurl)
 
-# note, I've not used the "find_package" command because
-# sometimes it doesn't work and its really difficult to debug why.
-# find_library, find_path and find_file are easier
+find_package(unofficial-iconv CONFIG REQUIRED)
+#target_link_libraries(main PRIVATE unofficial::iconv::libiconv unofficial::iconv::libcharset)
 
-# defines:
-#   - libraries as x_LIBRARY
-#   - static libraries as x_STATIC_LIBRARY
-#   - include paths as x_INCLUDE_DIR
-#   - STATIC_LIBRARIES = list of found static libraries
-#   - LIBRARIES = list of found shared libraries
-FindDependencies()
+find_library(YAJL_STATIC_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}yajl_s${CMAKE_STATIC_LIBRARY_SUFFIX} REQUIRED)
+find_path(YAJL_INCLUDE_DIR NAMES yajl/yajl_parse.h REQUIRED)
 
+find_package(ZLIB REQUIRED)
+#target_link_libraries(main PRIVATE ZLIB::ZLIB)
+
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
+#target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3)
+
+find_package(LibLZMA CONFIG REQUIRED)
+#target_link_libraries(main PRIVATE LibLZMA::LibLZMA)
+
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
+#target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3)
+
+## location of installed libraries in vcpkg
+#set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_ARCH}")
+#
+## location of installed static packages in vcpkg
+#SetCrossPlatform(VCPKG_X64_STATIC_INSTALLED_PACKAGES
+#        "${VCPKG_ROOT}/installed/x64-windows-static"
+#        "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
+#        "${VCPKG_ROOT}/installed/x64-osx"
+#        )
+#
+## Path to static libraries
+#set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
+## Path to shared libraries
+#set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
+## Path to binaries
+#SetCrossPlatform(VCPKG_X64_BIN_DIR
+#        "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
+#        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
+#        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
+#        )
+## include directories (should be the same for static and dynamic)
+#set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
+#
+#
+#set(_VCPKG_DIRECTORIES
+#        ${VCPKG_X64_STATIC_LIB_DIR}
+#        ${VCPKG_X64_LIB_DIR}
+#        ${VCPKG_X64_BIN_DIR}
+#        ${VCPKG_X64_INCLUDE_DIR}
+#        )
+#
+## ensure the directories we've located exist
+#foreach (d ${_VCPKG_DIRECTORIES})
+#    if (NOT EXISTS ${d})
+#        message(FATAL_ERROR "VCPKG directory \"${d}\" does not exist")
+#    endif ()
+#endforeach ()
+#
+#
+############################################################
+##   Find the dependencies
+##
+#
+## note, I've not used the "find_package" command because
+## sometimes it doesn't work and its really difficult to debug why.
+## find_library, find_path and find_file are easier
+#
+## defines:
+##   - libraries as x_LIBRARY
+##   - static libraries as x_STATIC_LIBRARY
+##   - include paths as x_INCLUDE_DIR
+##   - STATIC_LIBRARIES = list of found static libraries
+##   - LIBRARIES = list of found shared libraries
+#FindDependencies()
+#
 if (PLATFORM STREQUAL "windows-msvc")
     # On windows, order seems less important
 
     # fixme
     #Note these "static" libraries are not actually static.
     set(LINK_LIBRARIES
-            "${LIBXML2_STATIC_LIBRARY}"
-            "${LIBXSLT_STATIC_LIBRARY}"
-            "${CURL_STATIC_LIBRARY}"
-            "${LIBCHARSET_STATIC_LIBRARY}"
-            "${SSL_STATIC_LIBRARY}"
-            "${CRYPTO_STATIC_LIBRARY}"
-            "${YAJL_STATIC_LIBRARY}"
-            "${LZMA_STATIC_LIBRARY}"
-            "${ZLIB_STATIC_LIBRARY}"
-            "${ICONV_STATIC_LIBRARY}"
-            "${PCRE_STATIC_LIBRARY}"
-            "${SQLITE3_STATIC_LIBRARY}"
-            "${BERKELY_STATIC_LIBRARY}"
-            "${POSTGRESQL_STATIC_LIBRARY}"
+            #            "${LIBXML2_STATIC_LIBRARY}"
+            #            "${LIBXSLT_STATIC_LIBRARY}"
+            #            "${CURL_STATIC_LIBRARY}"
+            #            "${LIBCHARSET_STATIC_LIBRARY}"
+            #            "${SSL_STATIC_LIBRARY}"
+            #            "${CRYPTO_STATIC_LIBRARY}"
+            #            "${YAJL_STATIC_LIBRARY}"
+            #            "${LZMA_STATIC_LIBRARY}"
+            #            "${ZLIB_STATIC_LIBRARY}"
+            #            "${ICONV_STATIC_LIBRARY}"
+            #            "${PCRE_STATIC_LIBRARY}"
+            #            "${SQLITE3_STATIC_LIBRARY}"
+            #            "${BERKELY_STATIC_LIBRARY}"
+            #            "${POSTGRESQL_STATIC_LIBRARY}"
             ws2_32 # needed on windows to statically link libxml2
             )
     # on windows it was much easier to just
@@ -329,12 +381,12 @@ if (PLATFORM STREQUAL "windows-msvc")
     # I tried to pull all into a single static library
     # but this proved too faffy.
 
-    # determine runtime (set to static, dynamic libraries are modified later)
-    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
-    endif ()
+#    # determine runtime (set to static, dynamic libraries are modified later)
+#    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+#    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#    endif ()
 
 elseif (PLATFORM STREQUAL "linux")
     # On linux, order is essential.
@@ -344,7 +396,7 @@ elseif (PLATFORM STREQUAL "linux")
     # for strange and unusual reasons which only the programming gods
     # can explain.
     set(LINK_LIBRARIES
-            ${LIBXML2_LIBRARY} # dynamic
+            #            ${LIBXML2_LIBRARY} # dynamic
             ${LIBXSLT_STATIC_LIBRARY}
             ${SQLITE3_LIBRARY}
             ${BERKELY_LIBRARY}
@@ -398,22 +450,9 @@ set(INCLUDE_DIRECTORIES
         # libomexmeta includes
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/include>
-
-        # dependency includes
-        $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${LIBXSLT_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${CURL_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${YAJL_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${LZMA_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
-        $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
-
-        ${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
-        ${CMAKE_CURRENT_BINARY_DIR}/src/redland
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/redland>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
         )
 
@@ -427,95 +466,47 @@ add_subdirectory(src)
 
 # test directories
 if (BUILD_TESTS)
+    enable_testing()
     include(GoogleTest)
 
-    enable_testing()
-
     # include googletest as source
-    add_subdirectory(${GOOGLETEST_SOURCE})
+    add_subdirectory(${GOOGLETEST_SOURCE_DIR})
 
     # add the tests
-    add_subdirectory(tests/cpp)
-    add_subdirectory(tests/C)
-    add_subdirectory(tests/python)
+    add_subdirectory(tests)
 
-
-    if (WITH_COVERAGE)
-
-        set(GCOVR_PATH "/home/ciaran/miniconda3/bin/gcovr" CACHE FILEPATH "Full path to gcovr")
-        if (NOT GCOVR_PATH)
-            message(FATAL_ERROR "gcovr variable GCOVR_PATH (${GCOVR_PATH}) is empty")
-        endif ()
-
-        if (CMAKE_COMPILER_IS_GNUCXX)
-            include(CodeCoverage)
-            append_coverage_compiler_flags()
-
-            # we need to turn off optimization for non-skewed coverage reports
-            # we've done this in debug mode so we do not need to do it ehere
-            #            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
-            #            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
-
-            # optional excludes - None needed here
-            set(COVERAGE_EXCLUDES
-                    ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
-                    ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
-                    ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
-                    ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
-                    ${CMAKE_SOURCE_DIR}/tests
-                    ${CMAKE_SOURCE_DIR}/test
-                    ${CMAKE_SOURCE_DIR}/third_party
-                    )
-
-            # importantly, set the path to the gcovr executable that you downladed
-            #  https://github.com/bilke/cmake-modules/issues/8
-            setup_target_for_coverage_gcovr_html(
-                    NAME TestCoverageHtml
-                    EXECUTABLE ctest -j 8
-                    DEPENDENCIES ctest
-            )
-            setup_target_for_coverage_gcovr_xml(
-                    NAME TestCoverageXml
-                    EXECUTABLE ctest -j 8
-                    DEPENDENCIES ctest
-            )
-        else ()
-            message(FATAL_ERROR "Coverage only available using gcov with gcc compilers")
-        endif (CMAKE_COMPILER_IS_GNUCXX)
-        # need different code for windows.
-    endif (WITH_COVERAGE)
 endif (BUILD_TESTS)
-
-# docs-build documentation.
-if (BUILD_DOCS)
-    message(STATUS "Building the docs")
-    add_subdirectory(docs)
-endif ()
-
-
-# Best included near the end of the top leve cmakelists.
-if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
-    add_subdirectory(packaging)
-endif ()
-
-# only enable this option if building as top level package
-if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-    #    mkdir graphviz && cd graphviz
-    #    cmake --graphviz=graph ..
-    #    dot graph -Tsvg -o graph.svg
-    add_custom_target(
-            DependencyGraph
-            COMMENT "Use CMake to generate dependency graph"
-            COMMAND ${CMAKE_COMMAND} --graphviz=graph .
-            COMMAND dot graph -Tsvg -o "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graph.svg"
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    )
-
-endif ()
-
-
-# print out config summary
-ConfigurationSummary()
+#
+## docs-build documentation.
+#if (BUILD_DOCS)
+#    message(STATUS "Building the docs")
+#    add_subdirectory(docs)
+#endif ()
+#
+#
+## Best included near the end of the top leve cmakelists.
+#if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+#    add_subdirectory(packaging)
+#endif ()
+#
+## only enable this option if building as top level package
+#if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+#    #    mkdir graphviz && cd graphviz
+#    #    cmake --graphviz=graph ..
+#    #    dot graph -Tsvg -o graph.svg
+#    add_custom_target(
+#            DependencyGraph
+#            COMMENT "Use CMake to generate dependency graph"
+#            COMMAND ${CMAKE_COMMAND} --graphviz=graph .
+#            COMMAND dot graph -Tsvg -o "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graph.svg"
+#            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+#    )
+#
+#endif ()
+#
+#
+## print out config summary
+#ConfigurationSummary()
 
 
 

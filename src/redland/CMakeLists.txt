@@ -263,7 +263,7 @@ set(RASQAL_SOURCES
         ${RASQAL_SOURCE_DIR}/sparql_parser.c
         ${RASQAL_SOURCE_DIR}/sparql_parser.h
         ${RASQAL_SOURCE_DIR}/sparql_common.h
-        ${RASQAL_SOURCE_DIR}/strcasecmp.c
+        #        ${RASQAL_SOURCE_DIR}/strcasecmp.c
         ${RASQAL_SOURCE_DIR}/timegm.c
         ${RASQAL_SOURCE_DIR}/gettimeofday.c
         ${RASQAL_SOURCE_DIR}/rasqal_sort.c
@@ -420,24 +420,88 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/redland-1.0.17/src/librdf.h" "${CMAK
 #
 add_library(${target}-static STATIC ${ALL_REDLAND_SOURCES})
 
-# includes
-target_include_directories(
-        ${target}-static PRIVATE
-        ${INCLUDE_DIRECTORIES}
-)
-
-# link libraries
-target_link_libraries(
-        ${target}-static PUBLIC
-        ${LINK_LIBRARIES}
-        ${RUNTIME}# best here so no clash with dynamic
-)
-
 
 target_compile_definitions(
-        ${target}-static PRIVATE
+        ${target}-static
+        PUBLIC
+        RAPTOR_STATIC
+        RASQAL_STATIC
+        LIBRDF_STATIC
+        REDLAND_STATIC_DEFINE
+        XML_STATIC
+        CURL_STATICLIB
+        SQLITE_STATIC
+        YAJL_STATIC
         REDLAND_STATIC_DEFINE
 )
+
+if (WIN32)
+    target_link_options(${target}-static PUBLIC /NODEFAULTLIB:library)
+endif ()
+
+target_link_libraries(
+        ${target}-static PUBLIC
+        LibXml2::LibXml2
+        LibLZMA::LibLZMA
+        CURL::libcurl
+        unofficial::sqlite3::sqlite3
+        ${YAJL_STATIC_LIBRARY}
+        LibXslt::LibXslt
+)
+
+add_custom_target(
+        printIncl
+        COMMAND ${CMAKE_COMMAND} -E echo "cmd here$<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>"
+)
+
+
+
+target_include_directories(
+        ${target}-static
+        PUBLIC
+        # raptor includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa>
+
+        # rasqal includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils>
+
+        # librdf includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl>
+
+        # wrapper includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src/include>
+
+        # libomexmeta includes
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/include>
+
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/redland>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
+        #        # dependency includes
+        #        $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${LIBXSLT_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${CURL_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${SSL_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${YAJL_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${LZMA_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
+        #        $<BUILD_INTERFACE:${ICONV_INCLUDE_DIR}>
+
+)
+
 
 # install redland static target
 install(
@@ -468,35 +532,21 @@ if (PLATFORM STREQUAL "windows-msvc")
     endforeach ()
 endif ()
 
-# When BUILD_TESTS is on, add the tests
-if (BUILD_TESTS)
-    add_subdirectory(RedlandWrapper/test)
-endif ()
-
-# On windows I run into trouble trying to link to
-# static ${target}. Its easier on windows
-# to docs-build a dynamic library and link that. Its not used
-# on linux, (but certainly could be)
-
 
 # add the shared library
 add_library(${target} SHARED ${ALL_REDLAND_SOURCES})
+target_compile_definitions(${target} PUBLIC $<TARGET_PROPERTY:redland-combined-static,COMPILE_DEFINITIONS>)
+if (WIN32)
+    target_link_options(${target} PUBLIC /NODEFAULTLIB:library)
+endif ()
 
-
-message(STATUS "ALL_REDLAND_HEADER_FILES ${ALL_REDLAND_HEADER_FILES}")
-# Add public headers to the target
-set_target_properties(${target}-static PROPERTIES PUBLIC_HEADER "${ALL_REDLAND_HEADER_FILES}")
-# includes
+target_link_libraries(${target} PUBLIC $<TARGET_PROPERTY:redland-combined-static,LINK_LIBRARIES>)
 target_include_directories(
         ${target} PRIVATE
-        ${INCLUDE_DIRECTORIES}
+        $<TARGET_PROPERTY:redland-combined-static,INCLUDE_DIRECTORIES>
+        #        ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-
-# links
-target_link_libraries(
-        ${target} PUBLIC ${LINK_LIBRARIES}
-)
 
 include(GenerateExportHeader)
 generate_export_header(${target} BASE_NAME REDLAND)

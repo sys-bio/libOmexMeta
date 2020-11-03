@@ -202,6 +202,7 @@ namespace omexmeta {
     RDF::propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces) {
         std::unordered_map<std::string, std::string> keep_map;
         for (auto &seen_namespace : seen_namespaces) {
+            std::cout << seen_namespace << std::endl;
             auto iter = default_namespaces_.find(seen_namespace);
             if (iter != default_namespaces_.end()) {
                 keep_map[seen_namespace] = default_namespaces_[seen_namespace];

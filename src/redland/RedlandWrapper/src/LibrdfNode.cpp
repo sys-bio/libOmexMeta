@@ -22,7 +22,12 @@ namespace redland {
         std::regex identifiers_org_form1("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+)[/:]{1}(\\S*)");
         std::regex file_regex("^file://");
         std::regex go_regex("^GO:\d*");
-        std::regex opb_regex("^OPB:\d*");
+        std::regex pubmed_regex("^[Pp][Uu][Bb][Mm][Ee][Dd]:\d*");
+        std::regex taxon_regex("^[Tt][Aa][Xx][Oo][Nn][Oo][Mm][Yy]:\d*");
+        std::regex biomodels_db_regex("^[Bb][Ii][Oo][Mm][Oo][Dd][Ee][Ll][Ss].[Dd][Bb]:\d*");
+        std::regex uniprot_regex("^[Uu][Nn][Ii][Pp][Rr][Oo][Tt]:\d*");
+        std::regex opb_regex("^[Oo][Pp][Bb]:\d*");
+        std::regex fma_regex("^[Ff][Mm][Aa]:\d*");
         std::regex chebi_regex("^[Cc][Hh][Ee][Bb][Ii]:\d*");
 
         std::smatch m;
@@ -32,11 +37,35 @@ namespace redland {
             uri_string_ = identifier_dot_org + uri_string;
         }
 
+        else if (std::regex_search(uri_string, m, pubmed_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
         else if (std::regex_search(uri_string, m, chebi_regex)) {
             uri_string_ = identifier_dot_org + uri_string;
         }
 
         else if (std::regex_search(uri_string, m, opb_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, taxon_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, biomodels_db_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, uniprot_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, opb_regex)) {
+            uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        else if (std::regex_search(uri_string, m, fma_regex)) {
             uri_string_ = identifier_dot_org + uri_string;
         }
 
