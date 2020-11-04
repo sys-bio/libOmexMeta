@@ -420,7 +420,6 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/redland-1.0.17/src/librdf.h" "${CMAK
 #
 add_library(${target}-static STATIC ${ALL_REDLAND_SOURCES})
 
-
 target_compile_definitions(
         ${target}-static
         PUBLIC
@@ -428,30 +427,39 @@ target_compile_definitions(
         RASQAL_STATIC
         LIBRDF_STATIC
         REDLAND_STATIC_DEFINE
+        LIBXML_STATIC
         XML_STATIC
+        LIBEXSLT_STATIC
+        LIBXSLT_STATIC
         CURL_STATICLIB
         SQLITE_STATIC
         YAJL_STATIC
-        REDLAND_STATIC_DEFINE
+        LIBLAX_STATIC
+        ZLIB_STATIC
 )
 
 if (WIN32)
     target_link_options(${target}-static PUBLIC /NODEFAULTLIB:library)
 endif ()
 
+
+
 target_link_libraries(
         ${target}-static PUBLIC
-        LibXml2::LibXml2
-        LibLZMA::LibLZMA
-        CURL::libcurl
         unofficial::sqlite3::sqlite3
+        CURL::libcurl
+        LibLZMA::LibLZMA
+        LibXslt
+        LibXml2
         ${YAJL_STATIC_LIBRARY}
-        LibXslt::LibXslt
+        ${PCRE_STATIC_LIBRARY}
+#        ZLIB::ZLIB
 )
+add_dependencies(${target}-static LibXml2 LibXslt)
 
 add_custom_target(
         printIncl
-        COMMAND ${CMAKE_COMMAND} -E echo "cmd here$<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>"
+        COMMAND ${CMAKE_COMMAND} -E echo "cmd here $<TARGET_FILE:LibXslt>"
 )
 
 
@@ -482,6 +490,9 @@ target_include_directories(
         # libomexmeta includes
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/include>
+
+        # others
+        $<BUILD_INTERFACE:${PCRE_INCLUDE_DIR}>
 
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta>
@@ -546,7 +557,7 @@ target_include_directories(
         $<TARGET_PROPERTY:redland-combined-static,INCLUDE_DIRECTORIES>
         #        ${CMAKE_CURRENT_BINARY_DIR}
 )
-
+add_dependencies(${target} LibXml2 LibXslt)
 
 include(GenerateExportHeader)
 generate_export_header(${target} BASE_NAME REDLAND)

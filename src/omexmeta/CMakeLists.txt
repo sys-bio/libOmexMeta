@@ -170,10 +170,11 @@ add_library(${target}CAPI SHARED "${CMAKE_CURRENT_SOURCE_DIR}/OmexMetaCApi.cpp" 
 
 set_target_properties(${target}CAPI PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
 
-target_link_libraries(${target}CAPI PUBLIC ${target})
+target_link_libraries(${target}CAPI PUBLIC ${target}-static)
 target_include_directories(
         ${target}CAPI PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+        $<BUILD_INTERFACE:$<TARGET_PROPERTY:${target},INCLUDE_DIRECTORIES>>
 )
 add_dependencies(${target}CAPI ${target})
 generate_export_header(${target}CAPI BASE_NAME OMEXMETA_CAPI)

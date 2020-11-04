@@ -1,3 +1,15 @@
 [submodule "third_party/googletest"]
 	path = third_party/googletest
 	url = https://github.com/google/googletest.git
+[submodule "third_party/libxml2"]
+	path = third_party/libxml2
+	url = https://github.com/sys-bio/libxml2.git
+[submodule "third_party/libxslt"]
+	path = third_party/libxslt
+	url = https://github.com/sys-bio/libxslt.git
+[submodule "third_party/iconv"]
+	path = third_party/iconv
+	url = https://github.com/sys-bio/iconv.git
+[submodule "third_party/zlib"]
+	path = third_party/zlib
+	url = https://github.com/sys-bio/zlib.git

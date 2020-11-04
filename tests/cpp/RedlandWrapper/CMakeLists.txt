@@ -47,6 +47,7 @@ target_link_libraries(${target} PUBLIC
         redland-combined-static
         )
 
+
 if (WIN32)
     target_link_options(${target} PRIVATE "/NODEFAULTLIB:library")
 endif ()

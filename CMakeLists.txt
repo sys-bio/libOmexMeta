@@ -178,7 +178,7 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 
 include(CMakeDependentOption)
 
-option(BUILD_SHARED_LIBS "build share libraries" ON)
+option(BUILD_SHARED_LIBS "build share libraries" OFF)
 if (${BUILD_SHARED_LIBS})
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
@@ -228,14 +228,14 @@ option(WITH_COVERAGE OFF)
 # set RPATH for libraries and executables.
 set(RPATH "$ORIGIN:$ORIGIN/../lib")
 
-# set runtime library on windows, which is different between debug and release.
-if (PLATFORM STREQUAL "windows-msvc")
-    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set(RUNTIME "libucrtd")
-    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        set(RUNTIME "libucrt")
-    endif ()
-endif ()
+## set runtime library on windows, which is different between debug and release.
+#if (PLATFORM STREQUAL "windows-msvc")
+#    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#        set(RUNTIME "libucrtd")
+#    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#        set(RUNTIME "libucrt")
+#    endif ()
+#endif ()
 
 if (${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     message(FATAL_ERROR "In source builds are disabled")
@@ -248,7 +248,7 @@ set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
 set(README_FILE ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
 
 if (${BUILD_PYTHON})
-    find_package(PythonInterp)
+    find_package(Python)
     # configure the python setup.py
     set(PYTHON_SETUP_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
     set(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
@@ -266,29 +266,24 @@ if (${BUILD_PYTHON})
 endif ()
 
 
-
 #add_definitions(-DVCPKG_TARGET_TRIPLET=${VCPKG_TARGET_TRIPLET} -DVCPKG_TOOLCHAIN_FILE=${VCPKG_TOOLCHAIN_FILE})
 
-# The following are from vcpkg
-find_package(LibXml2 REQUIRED NO_DEFAULT)
-##The package libxml2 is compatible with built-in CMake targets:
+## The following are from vcpkg
+#find_package(LibXml2 REQUIRED NO_DEFAULT)
+###The package libxml2 is compatible with built-in CMake targets:
+###
+###    target_include_directories(main PRIVATE ${LIBXML2_INCLUDE_DIR})
+###    target_link_libraries(main PRIVATE ${LIBXML2_LIBRARIES})
 ##
-##    target_include_directories(main PRIVATE ${LIBXML2_INCLUDE_DIR})
-##    target_link_libraries(main PRIVATE ${LIBXML2_LIBRARIES})
+#find_package(LibXslt REQUIRED NO_DEFAULT)
 #
-find_package(LibXslt REQUIRED NO_DEFAULT)
+##get_target_property(LibXslt )
 #
 find_package(CURL CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE CURL::libcurl)
 
-find_package(unofficial-iconv CONFIG REQUIRED)
-#target_link_libraries(main PRIVATE unofficial::iconv::libiconv unofficial::iconv::libcharset)
-
 find_library(YAJL_STATIC_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}yajl_s${CMAKE_STATIC_LIBRARY_SUFFIX} REQUIRED)
 find_path(YAJL_INCLUDE_DIR NAMES yajl/yajl_parse.h REQUIRED)
-
-find_package(ZLIB REQUIRED)
-#target_link_libraries(main PRIVATE ZLIB::ZLIB)
 
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3)
@@ -296,169 +291,19 @@ find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(LibLZMA CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE LibLZMA::LibLZMA)
 
-find_package(unofficial-sqlite3 CONFIG REQUIRED)
-#target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3)
+find_library(
+        PCRE_STATIC_LIBRARY REQUIRED
+        NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}pcre${CMAKE_STATIC_LIBRARY_SUFFIX}
+)
+find_path(
+        PCRE_INCLUDE_DIR REQUIRED
+        NAMES pcre.h
+)
 
-## location of installed libraries in vcpkg
-#set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_ARCH}")
-#
-## location of installed static packages in vcpkg
-#SetCrossPlatform(VCPKG_X64_STATIC_INSTALLED_PACKAGES
-#        "${VCPKG_ROOT}/installed/x64-windows-static"
-#        "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
-#        "${VCPKG_ROOT}/installed/x64-osx"
-#        )
-#
-## Path to static libraries
-#set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
-## Path to shared libraries
-#set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
-## Path to binaries
-#SetCrossPlatform(VCPKG_X64_BIN_DIR
-#        "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
-#        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
-#        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
-#        )
-## include directories (should be the same for static and dynamic)
-#set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
-#
-#
-#set(_VCPKG_DIRECTORIES
-#        ${VCPKG_X64_STATIC_LIB_DIR}
-#        ${VCPKG_X64_LIB_DIR}
-#        ${VCPKG_X64_BIN_DIR}
-#        ${VCPKG_X64_INCLUDE_DIR}
-#        )
-#
-## ensure the directories we've located exist
-#foreach (d ${_VCPKG_DIRECTORIES})
-#    if (NOT EXISTS ${d})
-#        message(FATAL_ERROR "VCPKG directory \"${d}\" does not exist")
-#    endif ()
-#endforeach ()
-#
-#
-############################################################
-##   Find the dependencies
-##
-#
-## note, I've not used the "find_package" command because
-## sometimes it doesn't work and its really difficult to debug why.
-## find_library, find_path and find_file are easier
-#
-## defines:
-##   - libraries as x_LIBRARY
-##   - static libraries as x_STATIC_LIBRARY
-##   - include paths as x_INCLUDE_DIR
-##   - STATIC_LIBRARIES = list of found static libraries
-##   - LIBRARIES = list of found shared libraries
-#FindDependencies()
-#
-if (PLATFORM STREQUAL "windows-msvc")
-    # On windows, order seems less important
-
-    # fixme
-    #Note these "static" libraries are not actually static.
-    set(LINK_LIBRARIES
-            #            "${LIBXML2_STATIC_LIBRARY}"
-            #            "${LIBXSLT_STATIC_LIBRARY}"
-            #            "${CURL_STATIC_LIBRARY}"
-            #            "${LIBCHARSET_STATIC_LIBRARY}"
-            #            "${SSL_STATIC_LIBRARY}"
-            #            "${CRYPTO_STATIC_LIBRARY}"
-            #            "${YAJL_STATIC_LIBRARY}"
-            #            "${LZMA_STATIC_LIBRARY}"
-            #            "${ZLIB_STATIC_LIBRARY}"
-            #            "${ICONV_STATIC_LIBRARY}"
-            #            "${PCRE_STATIC_LIBRARY}"
-            #            "${SQLITE3_STATIC_LIBRARY}"
-            #            "${BERKELY_STATIC_LIBRARY}"
-            #            "${POSTGRESQL_STATIC_LIBRARY}"
-            ws2_32 # needed on windows to statically link libxml2
-            )
-    # on windows it was much easier to just
-    # set up to link to dynamic versions of libraries.
-    # I tried to pull all into a single static library
-    # but this proved too faffy.
-
-#    # determine runtime (set to static, dynamic libraries are modified later)
-#    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-#    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
-#    endif ()
-
-elseif (PLATFORM STREQUAL "linux")
-    # On linux, order is essential.
-    # if A depends on B, A must come before B in this list.
-    # On linux, I pulled as many libraries as possible
-    # into a static library. This was not possible with a few
-    # for strange and unusual reasons which only the programming gods
-    # can explain.
-    set(LINK_LIBRARIES
-            #            ${LIBXML2_LIBRARY} # dynamic
-            ${LIBXSLT_STATIC_LIBRARY}
-            ${SQLITE3_LIBRARY}
-            ${BERKELY_LIBRARY}
-            ${POSTGRESQL_LIBRARY}
-            # flag for including whole archive, not just the function used.
-            -Wl,--whole-archive
-            ${ZLIB_STATIC_LIBRARY}
-            ${LZMA_STATIC_LIBRARY}
-            -Wl,--no-whole-archive
-            ${ICONV_LIBRARY} # We use dynamic for now.
-            ltdl
-            -Wl,--whole-archive
-            ${CURL_STATIC_LIBRARY}
-            ${SSL_STATIC_LIBRARY}
-            ${CRYPTO_STATIC_LIBRARY}
-            ${YAJL_STATIC_LIBRARY}
-            ${PCRE_STATIC_LIBRARY}
-            -Wl,--no-whole-archive
-            m
-            dl
-            ldap
-            lber
-            pthread
-            )
-
-elseif (PLATFORM STREQUAL "macos")
-    message(FATAL_ERROR "Stupid mac.")
-endif ()
-
-
-set(INCLUDE_DIRECTORIES
-        # raptor includes
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa>
-
-        # rasqal includes
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/src>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils>
-
-        # librdf includes
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/src>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl>
-
-        # wrapper includes
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src>
-
-        # libomexmeta includes
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src/include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/redland>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
-        )
-
-
+add_subdirectory(third_party)
 #############################################
-## Build libOmexMeta targets and tests
+# Build libOmexMeta targets and tests
+#
 
 # source directories
 add_subdirectory(src)
