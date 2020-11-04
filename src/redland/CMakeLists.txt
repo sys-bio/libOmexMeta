@@ -453,7 +453,7 @@ target_link_libraries(
         LibXml2
         ${YAJL_STATIC_LIBRARY}
         ${PCRE_STATIC_LIBRARY}
-#        ZLIB::ZLIB
+        zlibstatic
 )
 add_dependencies(${target}-static LibXml2 LibXslt)
 

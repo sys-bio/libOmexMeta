@@ -14,6 +14,7 @@ target_link_libraries(
         OmexMetaCAPI
         gtest gtest_main
 )
+
 add_dependencies(OmexMetaCAPITests OmexMetaCAPI gtest gtest_main)
 
 

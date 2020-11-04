@@ -130,6 +130,8 @@ add_library(${target} SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}")
 
 set_target_properties(${target} PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
 
+add_custom_target(printsadadf
+        COMMAND ${CMAKE_COMMAND} -E echo "$<TARGET_PROPERTY:${target}-static,INTERFACE_LINK_LIBRARIES>")
 target_link_libraries(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,LINK_LIBRARIES>)
 target_include_directories(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>)
 add_dependencies(${target} redland-combined-static)
