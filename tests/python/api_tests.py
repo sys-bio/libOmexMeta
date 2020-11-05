@@ -1477,4 +1477,4 @@ local:SourceParticipant0000
 
 
 if __name__ == "__main__":
-    unittest.TestCase()
+    unittest.main()
