@@ -5,3 +5,6 @@ recommonmark
 beautifulsoup4
 requests
 sphinxcontrib-programoutput
+tellurium
+python-libcombine
+pytest

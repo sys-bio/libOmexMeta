@@ -14,6 +14,9 @@ set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file(VERSION.txt.in VERSION.txt)
 configure_file(VERSION.txt.in "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/VERSION.txt")
 
+
+install(FILES requirements.txt DESTINATION .)
+
 ############################################################3
 # configure some paths relative to vcpkg root
 # should happen before call to project(libOmexMeta) as per the docs
