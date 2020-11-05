@@ -180,7 +180,7 @@ class TestAPI(unittest.TestCase):
     bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
 
     def test_rdf_to_file(self):
         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
@@ -485,7 +485,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 <http://omex-library.org/NewOmex.omex/NewModel.xml>
     dc:creator <https://orchid.org/1234-1234-1234-1234> .
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_editor_add_curator(self):
@@ -504,7 +504,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     dc:creator <https://orchid.org/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_editor_get_taxon(self):
@@ -524,7 +524,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:hasTaxon <https://identifiers.org/taxonomy:9898> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_editor_add_pubmed(self):
@@ -544,7 +544,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqmodel:isDescribedBy <https://identifiers.org/pubmed:1234568> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_editor_add_description(self):
@@ -563,7 +563,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     dc:description "An awesome model"^^rdf:string .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_editor_add_date_created(self):
@@ -584,7 +584,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     ] .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_editor_add_parent_model(self):
@@ -605,7 +605,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
     def test_singular_annotation_about(self):
@@ -733,7 +733,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:is <https://identifiers.org/uniprot:PD12345> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
@@ -778,7 +778,7 @@ local:SinkParticipant0001
     bqbiol:is <https://identifiers.org/uniprot:PD12345> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
@@ -802,7 +802,7 @@ local:SinkParticipant0001
     bqbiol:is <https://identifiers.org/uniprot:PD12345> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
@@ -880,7 +880,7 @@ local:SinkParticipant0001
 #     bqbiol:isPartOf <https://identifiers.org/fma/fma:3457>, <https://identifiers.org/fma:fma:3456> .
 #
 # """
-#         self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+#         self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
 #         PyOmexMetaAPI.editor_delete(editor_ptr)
 #         PyOmexMetaAPI.physical_entity_delete(physical_entity)
 
@@ -910,7 +910,7 @@ local:EntityProperty0000
     bqbiol:isPartOf <https://identifiers.org/fma:3457> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_entity_delete(physical_entity)
 
@@ -942,7 +942,7 @@ local:EntityProperty0000
     bqbiol:isPartOf <https://identifiers.org/fma:fma12345> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
 
     def test_physical_process_str(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
@@ -991,7 +991,7 @@ local:SourceParticipant0000
 
 """
         print(actual)
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_process_delete(physical_process)
 
@@ -1040,7 +1040,7 @@ local:SourceParticipant0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_process_delete(physical_process)
 
@@ -1078,7 +1078,7 @@ local:SourceParticipant0000
 
 """
         print(actual)
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
 
     def test_editor_add_physical_force(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
@@ -1155,7 +1155,7 @@ local:SourceParticipant0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
 
 
     def test_physical_force_str(self):
@@ -1199,7 +1199,7 @@ local:SourceParticipant0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_force_delete(physical_force)
 
@@ -1242,7 +1242,7 @@ local:SourceParticipant0000
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(PyOmexMetaAPI.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(PyOmexMetaAPI.rdf_compare_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         PyOmexMetaAPI.personal_information_delete(information)
         PyOmexMetaAPI.editor_delete(editor_ptr)
 
