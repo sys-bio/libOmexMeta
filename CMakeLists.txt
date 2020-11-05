@@ -228,15 +228,6 @@ option(WITH_COVERAGE OFF)
 # set RPATH for libraries and executables.
 set(RPATH "$ORIGIN:$ORIGIN/../lib")
 
-## set runtime library on windows, which is different between debug and release.
-#if (PLATFORM STREQUAL "windows-msvc")
-#    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#        set(RUNTIME "libucrtd")
-#    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#        set(RUNTIME "libucrt")
-#    endif ()
-#endif ()
-
 if (${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     message(FATAL_ERROR "In source builds are disabled")
 endif ()
@@ -256,13 +247,17 @@ if (${BUILD_PYTHON})
 
     # configure the python __init.py
     set(PYTHON_INIT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/__init__.py.in")
-    set(PYTHON_INIT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/__init__.py")
+    set(PYTHON_INIT_FILE "${CMAKE_CURRENT_BINARY_DIR}/src/pyomexmeta/__init__.py")
     configure_file(${PYTHON_INIT_CONFIG_FILE} ${PYTHON_INIT_FILE} @ONLY)
 
     # configure the python pyomexmeta_api.py.in
     set(PYTHON_API_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py.in")
-    set(PYTHON_API_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py")
+    set(PYTHON_API_FILE "${CMAKE_CURRENT_BINARY_DIR}/src/pyomexmeta/pyomexmeta_api.py")
     configure_file(${PYTHON_API_CONFIG_FILE} ${PYTHON_API_FILE} @ONLY)
+
+    install(FILES ${PYTHON_SETUP_FILE} DESTINATION .)
+    install(FILES ${PYTHON_INIT_FILE} ${PYTHON_API_FILE} DESTINATION site-packages/pyomexmeta)
+
 endif ()
 
 
