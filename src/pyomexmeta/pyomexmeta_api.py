@@ -4,12 +4,17 @@ import ctypes as ct
 import os
 import sys
 from typing import List
-from functools import wraps
+
+import os
+import shutil
+import subprocess
+
 
 def get_version():
     with open("VERSION.txt", "r") as f:
         __version__ = f.read().strip()
     return __version__
+
 
 __version__ = get_version()
 
@@ -23,13 +28,73 @@ if sys.platform == "win32":
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 
-
 class Util:
 
     @staticmethod
-    def load_lib() -> ct.CDLL:
+    def wsl_available() -> bool:
+        """
+        heuristic to detect if Windows Subsystem for Linux is available.
+
+        Uses presence of /etc/os-release in the WSL image to say Linux is there.
+        This is a de facto file standard across Linux distros.
+        """
+        if os.name == "nt":
+            wsl = shutil.which("wsl")
+            if not wsl:
+                return False
+            return True
+        return False
+
+    @staticmethod
+    def find_libomexmeta_c_api():
+        omexmeta_capi_location = None
+        CMAKE_SHARED_LIBRARY_PREFIX = ""
+        CMAKE_SHARED_LIBRARY_SUFFIX = ""
+
         if sys.platform == "linux":
-            lib_path = os.path.join(_WORKING_DIRECTORY, f"libOmexMetaCAPI.so.{__version__}")
+            CMAKE_SHARED_LIBRARY_PREFIX = "lib"
+            CMAKE_SHARED_LIBRARY_SUFFIX = f"-{get_version()}.so{get_version()}"
+
+        elif sys.platform == "win32" and not Util.wsl_available():
+            CMAKE_SHARED_LIBRARY_SUFFIX = ".dll"
+
+        elif sys.platform == "darwin":
+            raise NotImplementedError("Mac support is not yet implemented.")
+
+        OMEXMETA_CAPI_FILENAME = f"{CMAKE_SHARED_LIBRARY_PREFIX}OmexMetaCAPI-{get_version()}{CMAKE_SHARED_LIBRARY_SUFFIX}"
+
+        # when working directory is different from __file__
+        current_working_dir = os.getcwd()
+
+        # when in install tree we look this current directory
+        pyomexmeta_init_dir = os.path.abspath(os.path.dirname(__file__))
+
+        # when in the build tree we look in ../../lib
+        build_tree_dir = os.path.abspath(
+            os.path.join(
+                os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "bin"
+            )
+        )
+        # Note: when in source tree we cannot locate the binary.
+
+        search_directories = [current_working_dir, pyomexmeta_init_dir, build_tree_dir]
+        search_files = [os.path.join(i, OMEXMETA_CAPI_FILENAME) for i in search_directories]
+
+        for proposal in search_files:
+            if os.path.isfile(proposal):
+                omexmeta_capi_location = proposal
+                return omexmeta_capi_location
+
+        s = ''
+        for i in search_files:
+            s += '\t -' + i + "\n"
+        raise FileNotFoundError(f"Could not locate OmexMeta. Searched paths: \n{s}")
+
+    @staticmethod
+    def load_lib() -> ct.CDLL:
+        lib_path = Util.find_libomexmeta_c_api()
+        if sys.platform == "linux":
+            # lib_path = os.path.join(_WORKING_DIRECTORY, f"libOmexMetaCAPI.so.{__version__}")
             try:
                 lib = ct.CDLL(lib_path)
             except OSError as e:
@@ -56,7 +121,7 @@ class Util:
 
         elif sys.platform == "win32":
             # windows has to be difficult
-            lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMetaCAPI.dll")
+            # lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMetaCAPI.dll")
             dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
             lib = ct.WinDLL(lib_path, handle=dll_handle)
         else:
@@ -188,7 +253,7 @@ class PyOmexMetaAPI:
     # Editor RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
 
-        #################################################################
+    #################################################################
     # Editor methods
     #
 
@@ -304,18 +369,17 @@ class PyOmexMetaAPI:
     # SingularAnnotation *
     #   SingularAnnotation_predicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
     singular_annotation_predicate = Util.load_func("SingularAnnotation_predicate",
-                                                       [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                   [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_setPredicateFromUri(
     #         SingularAnnotation *singular_annotation, const char *uri);
     singular_annotation_set_predicate_from_uri = Util.load_func("SingularAnnotation_setPredicateFromUri",
                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-
     # SingularAnnotation *SingularAnnotation_predicateFromUri(
     #         SingularAnnotation *singular_annotation, const char *uri);
     singular_annotation_predicate_from_uri = Util.load_func("SingularAnnotation_predicateFromUri",
-                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                            [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_setResourceLiteral(
     #         SingularAnnotation *singular_annotation, const char *literal);
@@ -325,7 +389,7 @@ class PyOmexMetaAPI:
     # SingularAnnotation *SingularAnnotation_resourceLiteral(
     #         SingularAnnotation *singular_annotation, const char *literal);
     singular_annotation_resource_literal = Util.load_func("SingularAnnotation_resourceLiteral",
-                                                              [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                          [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *
     # SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
@@ -335,8 +399,8 @@ class PyOmexMetaAPI:
     # SingularAnnotation *
     # SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
     singular_annotation_resource_uri = Util.load_func("SingularAnnotation_resourceUri",
-                                                          [ct.c_int64, ct.c_char_p],
-                                                          ct.c_int64)
+                                                      [ct.c_int64, ct.c_char_p],
+                                                      ct.c_int64)
 
     # SingularAnnotation *
     # SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
@@ -346,7 +410,7 @@ class PyOmexMetaAPI:
     # SingularAnnotation *
     # SingularAnnotation_resourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
     singular_annotation_resource_blank = Util.load_func("SingularAnnotation_resourceBlank",
-                                                            [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                        [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
     singular_annotation_get_about = Util.load_func("SingularAnnotation_getAbout", [ct.c_int64], ct.c_int64)
@@ -414,7 +478,6 @@ class PyOmexMetaAPI:
     # PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
     physical_entity_has_part = Util.load_func("PhysicalEntity_hasPart", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-
     #################################################################
     # PhysicalProcess methods
     #
@@ -458,8 +521,8 @@ class PyOmexMetaAPI:
     physical_process_has_property = Util.load_func("PhysicalProcess_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_entity_ptr, const char *version);
-    physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
+    physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf", [ct.c_int64, ct.c_char_p],
+                                                    ct.c_int64)
 
     #################################################################
     # PhysicalForce Methods
@@ -509,10 +572,12 @@ class PyOmexMetaAPI:
     personal_information_get_local_uri = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
 
     # void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
-    personal_information_set_local_uri = Util.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p], None)
+    personal_information_set_local_uri = Util.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p],
+                                                        None)
 
     # PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
-    personal_information_add_creator = Util.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_creator = Util.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p],
+                                                      ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
     personal_information_add_name = Util.load_func("PersonalInformation_addName", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -521,23 +586,26 @@ class PyOmexMetaAPI:
     personal_information_add_mbox = Util.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
-    personal_information_add_account_name = Util.load_func("PersonalInformation_addAccountName", [ct.c_int64, ct.c_char_p],
-                                              ct.c_int64)
+    personal_information_add_account_name = Util.load_func("PersonalInformation_addAccountName",
+                                                           [ct.c_int64, ct.c_char_p],
+                                                           ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
     personal_information_add_account_service_homepage = Util.load_func("PersonalInformation_addAccountServiceHomepage",
-                                              [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                                       [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
-    personal_information_add_foaf_blank = Util.load_func("PersonalInformation_addFoafBlank", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    personal_information_add_foaf_blank = Util.load_func("PersonalInformation_addFoafBlank",
+                                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
-    personal_information_add_foaf_uri = Util.load_func("PersonalInformation_addFoafUri", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                              ct.c_int64)
+    personal_information_add_foaf_uri = Util.load_func("PersonalInformation_addFoafUri",
+                                                       [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                                       ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,const char *literal_value);
     personal_information_add_foaf_literal = Util.load_func("PersonalInformation_addFoafLiteral",
-                                              [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # char *PersonalInformation_getMetaid(PersonalInformation *information);
     personal_information_get_metaid = Util.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
@@ -549,7 +617,8 @@ class PyOmexMetaAPI:
     personal_information_get_model_uri = Util.load_func("PersonalInformation_getModelUri", [ct.c_int64], ct.c_int64)
 
     # void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
-    personal_information_set_model_uri = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p], None)
+    personal_information_set_model_uri = Util.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p],
+                                                        None)
 
     # void PersonalInformation_delete(PersonalInformation* information);
     personal_information_delete = Util.load_func("PersonalInformation_delete", [ct.c_int64], None)

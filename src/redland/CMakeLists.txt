@@ -442,11 +442,15 @@ if (WIN32)
     target_link_options(${target}-static PUBLIC /NODEFAULTLIB:library)
 endif ()
 
-
+# on linux we get errors when we run tests for c api
+# because libgnutls cannot locate zlib.
+# The easy way to solve this for now is to give it z lib shared
+if (UNIX AND NOT APPLE)
+    set(EXTRA_LIBS "z")
+endif ()
 
 target_link_libraries(
         ${target}-static PUBLIC
-        zlibstatic
         unofficial::sqlite3::sqlite3
         CURL::libcurl
         LibLZMA::LibLZMA
@@ -454,14 +458,15 @@ target_link_libraries(
         LibXml2
         ${YAJL_STATIC_LIBRARY}
         ${PCRE_STATIC_LIBRARY}
+        ${EXTRA_LIBS} #only contains z for linux
 )
+
 add_dependencies(${target}-static LibXml2 LibXslt)
 
 add_custom_target(
         printIncl
         COMMAND ${CMAKE_COMMAND} -E echo "cmd here $<TARGET_FILE:LibXslt>"
 )
-
 
 
 target_include_directories(
