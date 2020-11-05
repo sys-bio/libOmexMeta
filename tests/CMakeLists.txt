@@ -9,7 +9,7 @@ endif ()
 
 add_custom_target(run-ctest
         COMMAND ${CMAKE_CTEST_COMMAND} --verbose --extra-verbose --progress ${CMAKE_BINARY_DIR}
-        DEPENDS ${TEST_EXECUTABLES}
+        DEPENDS redland-wrapper-tests OmexMetaTests OmexMetaCAPITests
         VERBATIM
         )
 

@@ -2,8 +2,8 @@ set(target redland-wrapper-tests)
 
 # set varibale to hold wrapper sources.
 set(REDLAND_WRAPPER_TEST_SOURCES
-        LibrdfWorldTests.cpp
         LibrdfUriTests.cpp
+        LibrdfWorldTests.cpp
         LibrdfNodeTests.cpp
         LibrdfStatementTests.cpp
         LibrdfStorageTests.cpp
@@ -22,9 +22,11 @@ add_executable(${target} ${REDLAND_WRAPPER_TEST_SOURCES})
 target_compile_definitions(${target} PRIVATE REDLAND_STATIC_DEFINE)
 
 # tell cmake about the test so we can run with $ctest or $ make test
-add_test(
-        TARGET ${target}
-)
+#gtest_add_tests(
+#        TARGET ${target}
+#        SOURCES ${REDLAND_WRAPPER_TEST_SOURCES}
+#)
+gtest_discover_tests(${target})
 
 # set the RPATH for both install and docs-build builds
 set_target_properties(${target} PROPERTIES INSTALL_RPATH ${RPATH})

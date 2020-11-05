@@ -1,18 +1,31 @@
-find_package(Python COMPONENTS Interpreter)
+find_package(Python COMPONENTS Interpreter REQUIRED)
 get_filename_component(OMEXMETA_SOURCE_DIR ${PYOMEXMETA_DIR} DIRECTORY)
+
+message(STATUS "Found Python:
+Python_VERSION      ${Python_VERSION}
+Python_EXECUTABLE   ${Python_EXECUTABLE}
+Python_ROOT_DIR     ${Python_ROOT_DIR}
+")
+
+if (NOT ${Python_ROOT_DIR})
+    message(WARNING "-DPython_ROOT_DIR variable is empty. Is is possible that you
+are using a version of Python that you are not intending to use. Please set Python_ROOT_DIR
+as per the docs: https://cmake.org/cmake/help/git-stage/module/FindPython.html")
+endif ()
+
 add_test(NAME
         pyomexmeta-api-tests
         COMMAND
         Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/api_tests.py
         WORKING_DIRECTORY
-        ${CMAKE_BINARY_DIR}/lib
+        ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta
         )
 add_test(NAME
         pyomexmeta-tests
         COMMAND
         Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/tests.py
         WORKING_DIRECTORY
-        ${CMAKE_BINARY_DIR}/lib
+        ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta
         )
 
 set(PYOMEXMETA_API_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/api_tests.py")

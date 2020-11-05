@@ -46,22 +46,15 @@ class Util:
         return False
 
     @staticmethod
-    def find_libomexmeta_c_api():
+    def load_lib():
         omexmeta_capi_location = None
-        CMAKE_SHARED_LIBRARY_PREFIX = ""
-        CMAKE_SHARED_LIBRARY_SUFFIX = ""
 
-        if sys.platform == "linux":
-            CMAKE_SHARED_LIBRARY_PREFIX = "lib"
-            CMAKE_SHARED_LIBRARY_SUFFIX = f"-{get_version()}.so{get_version()}"
-
-        elif sys.platform == "win32" and not Util.wsl_available():
-            CMAKE_SHARED_LIBRARY_SUFFIX = ".dll"
-
-        elif sys.platform == "darwin":
-            raise NotImplementedError("Mac support is not yet implemented.")
-
-        OMEXMETA_CAPI_FILENAME = f"{CMAKE_SHARED_LIBRARY_PREFIX}OmexMetaCAPI-{get_version()}{CMAKE_SHARED_LIBRARY_SUFFIX}"
+        extensions = [
+            f"-{get_version()}.dll",
+            f'-{get_version()}.so.{get_version()}',
+            f'-{get_version()}.dylib'
+        ]
+        prefixes = ["", "lib"]
 
         # when working directory is different from __file__
         current_working_dir = os.getcwd()
@@ -70,66 +63,83 @@ class Util:
         pyomexmeta_init_dir = os.path.abspath(os.path.dirname(__file__))
 
         # when in the build tree we look in ../../lib
-        build_tree_dir = os.path.abspath(
+        build_tree_bin_dir = os.path.abspath(
             os.path.join(
                 os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "bin"
             )
         )
+        build_tree_lib_dir = os.path.abspath(
+            os.path.join(
+                os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "lib"
+            )
+        )
         # Note: when in source tree we cannot locate the binary.
+        search_directories = [current_working_dir, pyomexmeta_init_dir, build_tree_bin_dir, build_tree_lib_dir]
 
-        search_directories = [current_working_dir, pyomexmeta_init_dir, build_tree_dir]
-        search_files = [os.path.join(i, OMEXMETA_CAPI_FILENAME) for i in search_directories]
+        found_library_files = []
+        for direct in search_directories:
+            for ex in extensions:
+                for pre in prefixes:
+                    cand = os.path.join(direct, f"{pre}OmexMetaCAPI{ex}")
+                    if os.path.isfile(cand):
+                        print(cand)
+                        found_library_files.append(cand)
 
-        for proposal in search_files:
-            if os.path.isfile(proposal):
-                omexmeta_capi_location = proposal
-                return omexmeta_capi_location
+        if found_library_files == []:
+            raise FileNotFoundError(f"Cannot locate OmexMeta library in {str(search_directories)}")
 
-        s = ''
-        for i in search_files:
-            s += '\t -' + i + "\n"
-        raise FileNotFoundError(f"Could not locate OmexMeta. Searched paths: \n{s}")
-
-    @staticmethod
-    def load_lib() -> ct.CDLL:
-        lib_path = Util.find_libomexmeta_c_api()
-        if sys.platform == "linux":
-            # lib_path = os.path.join(_WORKING_DIRECTORY, f"libOmexMetaCAPI.so.{__version__}")
+        lib = None
+        for lib_path in found_library_files:
             try:
                 lib = ct.CDLL(lib_path)
-            except OSError as e:
-                if str(e) == "libxml2.so.2: cannot open shared object file: No such file or directory":
-                    raise FileNotFoundError("Dependency library libxml2.so was not found. Run "
-                                            "\"$ sudo apt install -y libxml2 libxml2-dev\"")
-
-                elif str(e) == "libxslt.so.1: cannot open shared object file: No such file or directory":
-                    raise FileNotFoundError("Dependency library libxsl2.so was not found. Run "
-                                            "\"$ sudo apt install -y libxslt1-dev\"")
-
-                elif str(e) == "libpq.so.5: cannot open shared object file: No such file or directory":
-                    raise FileNotFoundError("Dependency library libpq.so was not found. Run "
-                                            "\"$ sudo apt install -y libpq-dev\"")
-
-                elif "libc.so.6:" in str(e):
-                    raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
-                                            "\"$ sudo apt install -y software-properties-common "
-                                            "&& sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test "
-                                            "&& apt-get update "
-                                            "&& sudo apt install -y g++-10\"")
-                else:
-                    raise e
-
-        elif sys.platform == "win32":
-            # windows has to be difficult
-            # lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMetaCAPI.dll")
-            dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
-            lib = ct.WinDLL(lib_path, handle=dll_handle)
-        else:
-            raise ValueError("Currently only implemented for windows or linux systems. Platform is " + sys.platform)
-
+            except Exception:
+                dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
+                lib = ct.WinDLL(lib_path, handle=dll_handle)
+                continue
         if not lib:
-            raise ValueError("libomexmeta.so not found")
+            raise ValueError("Could not load library")
+
         return lib
+    # @staticmethod
+    # def load_lib() -> ct.CDLL:
+    #     lib_path = Util.find_libomexmeta_c_api()
+    #     if sys.platform == "linux":
+    #         # lib_path = os.path.join(_WORKING_DIRECTORY, f"libOmexMetaCAPI.so.{__version__}")
+    #         try:
+    #             lib = ct.CDLL(lib_path)
+    #         except OSError as e:
+    #             if str(e) == "libxml2.so.2: cannot open shared object file: No such file or directory":
+    #                 raise FileNotFoundError("Dependency library libxml2.so was not found. Run "
+    #                                         "\"$ sudo apt install -y libxml2 libxml2-dev\"")
+    #
+    #             elif str(e) == "libxslt.so.1: cannot open shared object file: No such file or directory":
+    #                 raise FileNotFoundError("Dependency library libxsl2.so was not found. Run "
+    #                                         "\"$ sudo apt install -y libxslt1-dev\"")
+    #
+    #             elif str(e) == "libpq.so.5: cannot open shared object file: No such file or directory":
+    #                 raise FileNotFoundError("Dependency library libpq.so was not found. Run "
+    #                                         "\"$ sudo apt install -y libpq-dev\"")
+    #
+    #             elif "libc.so.6:" in str(e):
+    #                 raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
+    #                                         "\"$ sudo apt install -y software-properties-common "
+    #                                         "&& sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test "
+    #                                         "&& apt-get update "
+    #                                         "&& sudo apt install -y g++-10\"")
+    #             else:
+    #                 raise e
+    #
+    #     elif sys.platform == "win32":
+    #         # windows has to be difficult
+    #         # lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMetaCAPI.dll")
+    #         dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
+    #         lib = ct.WinDLL(lib_path, handle=dll_handle)
+    #     else:
+    #         raise ValueError("Currently only implemented for windows or linux systems. Platform is " + sys.platform)
+    #
+    #     if not lib:
+    #         raise ValueError("libomexmeta.so not found")
+    #     return lib
 
     @staticmethod
     def load_func(funcname: str, argtypes: List, restype) -> ct.CDLL._FuncPtr:

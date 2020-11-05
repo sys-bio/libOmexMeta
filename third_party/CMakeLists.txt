@@ -1,3 +1,5 @@
+#Note: googletest is added in the tests cmake lists.
+
 add_subdirectory(zlib)
 set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
 
