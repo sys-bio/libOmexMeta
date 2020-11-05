@@ -11,6 +11,8 @@ set(VERSION_MINOR 1)
 set(VERSION_MICRO 18)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
+configure_file(VERSION.txt.in VERSION.txt)
+configure_file(VERSION.txt.in "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/VERSION.txt")
 
 ############################################################3
 # configure some paths relative to vcpkg root
@@ -190,7 +192,6 @@ option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS 
 option(BUILD_PACKAGING "Package libOmexMeta with CPack" OFF)
 option(BUILD_PYTHON "Build the Python pip package" OFF)
 option(GENERATE_DEPENDENCY_GRAPH "Get CMake to generate the dependency graph" ON)
-
 # docs-build tests?
 option(BUILD_TESTS "build the tests" OFF)
 # only presents BUILD_INTEGRATION_TESTS option when BUILD_TESTS is ON.
@@ -245,35 +246,9 @@ if (${BUILD_PYTHON})
     set(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
 
-    # configure the python __init.py
-    set(PYTHON_INIT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/__init__.py.in")
-    set(PYTHON_INIT_FILE "${CMAKE_CURRENT_BINARY_DIR}/src/pyomexmeta/__init__.py")
-    configure_file(${PYTHON_INIT_CONFIG_FILE} ${PYTHON_INIT_FILE} @ONLY)
-
-    # configure the python pyomexmeta_api.py.in
-    set(PYTHON_API_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/pyomexmeta_api.py.in")
-    set(PYTHON_API_FILE "${CMAKE_CURRENT_BINARY_DIR}/src/pyomexmeta/pyomexmeta_api.py")
-    configure_file(${PYTHON_API_CONFIG_FILE} ${PYTHON_API_FILE} @ONLY)
-
-    install(FILES ${PYTHON_SETUP_FILE} DESTINATION .)
-    install(FILES ${PYTHON_INIT_FILE} ${PYTHON_API_FILE} DESTINATION site-packages/pyomexmeta)
-
 endif ()
 
 
-#add_definitions(-DVCPKG_TARGET_TRIPLET=${VCPKG_TARGET_TRIPLET} -DVCPKG_TOOLCHAIN_FILE=${VCPKG_TOOLCHAIN_FILE})
-
-## The following are from vcpkg
-#find_package(LibXml2 REQUIRED NO_DEFAULT)
-###The package libxml2 is compatible with built-in CMake targets:
-###
-###    target_include_directories(main PRIVATE ${LIBXML2_INCLUDE_DIR})
-###    target_link_libraries(main PRIVATE ${LIBXML2_LIBRARIES})
-##
-#find_package(LibXslt REQUIRED NO_DEFAULT)
-#
-##get_target_property(LibXslt )
-#
 find_package(CURL CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE CURL::libcurl)
 
@@ -316,37 +291,37 @@ if (BUILD_TESTS)
     add_subdirectory(tests)
 
 endif (BUILD_TESTS)
-#
-## docs-build documentation.
-#if (BUILD_DOCS)
-#    message(STATUS "Building the docs")
-#    add_subdirectory(docs)
-#endif ()
-#
-#
-## Best included near the end of the top leve cmakelists.
-#if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
-#    add_subdirectory(packaging)
-#endif ()
-#
-## only enable this option if building as top level package
-#if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-#    #    mkdir graphviz && cd graphviz
-#    #    cmake --graphviz=graph ..
-#    #    dot graph -Tsvg -o graph.svg
-#    add_custom_target(
-#            DependencyGraph
-#            COMMENT "Use CMake to generate dependency graph"
-#            COMMAND ${CMAKE_COMMAND} --graphviz=graph .
-#            COMMAND dot graph -Tsvg -o "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graph.svg"
-#            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-#    )
-#
-#endif ()
-#
-#
-## print out config summary
-#ConfigurationSummary()
+
+# docs-build documentation.
+if (BUILD_DOCS)
+    message(STATUS "Building the docs")
+    add_subdirectory(docs)
+endif ()
+
+
+# Best included near the end of the top leve cmakelists.
+if (${BUILD_PACKAGING} AND ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+    add_subdirectory(packaging)
+endif ()
+
+# only enable this option if building as top level package
+if (${GENERATE_DEPENDENCY_GRAPH} AND ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+    #    mkdir graphviz && cd graphviz
+    #    cmake --graphviz=graph ..
+    #    dot graph -Tsvg -o graph.svg
+    add_custom_target(
+            DependencyGraph
+            COMMENT "Use CMake to generate dependency graph"
+            COMMAND ${CMAKE_COMMAND} --graphviz=graph .
+            COMMAND dot graph -Tsvg -o "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graph.svg"
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
+endif ()
+
+
+# print out config summary
+ConfigurationSummary()
 
 
 

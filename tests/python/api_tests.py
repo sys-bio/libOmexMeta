@@ -3,14 +3,6 @@ import site
 import unittest
 import ctypes as ct
 
-# take care of directories so we can test the pyomexmeta api
-test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-proj_dir = os.path.dirname(test_dir)
-src_dir = os.path.join(proj_dir, "src")
-pyomexmeta_dir = os.path.join(src_dir, "pyomexmeta")
-
-site.addsitedir(src_dir)
-
 from pyomexmeta import PyOmexMetaAPI
 
 

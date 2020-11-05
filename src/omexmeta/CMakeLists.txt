@@ -81,6 +81,7 @@ add_library(${target}-static STATIC ${OMEXMETA_HEADERS} ${OMEXMETA_SOURCES})
 # add redland-combined as dependency
 add_dependencies(${target}-static redland-combined-static)
 
+set_target_properties(${target}-static PROPERTIES OUTPUT_NAME ${target}-static-${LIBOMEXMETA_VERSION})
 
 # links
 target_link_libraries(
@@ -130,11 +131,12 @@ add_library(${target} SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}")
 
 set_target_properties(${target} PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
 
-add_custom_target(printsadadf
-        COMMAND ${CMAKE_COMMAND} -E echo "$<TARGET_PROPERTY:${target}-static,INTERFACE_LINK_LIBRARIES>")
 target_link_libraries(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,LINK_LIBRARIES>)
 target_include_directories(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>)
 add_dependencies(${target} redland-combined-static)
+
+set_target_properties(${target} PROPERTIES OUTPUT_NAME ${target}-${LIBOMEXMETA_VERSION})
+
 #target_compile_definitions()
 
 generate_export_header(${target} BASE_NAME OMEXMETA)
@@ -176,9 +178,12 @@ target_link_libraries(${target}CAPI PUBLIC ${target}-static)
 target_include_directories(
         ${target}CAPI PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-        $<BUILD_INTERFACE:$<TARGET_PROPERTY:${target},INCLUDE_DIRECTORIES>>
+        $<BUILD_INTERFACE:$<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>>
 )
-add_dependencies(${target}CAPI ${target})
+add_dependencies(${target}CAPI ${target}-static)
+
+set_target_properties(${target}CAPI PROPERTIES OUTPUT_NAME ${target}CAPI-${LIBOMEXMETA_VERSION})
+
 generate_export_header(${target}CAPI BASE_NAME OMEXMETA_CAPI)
 target_compile_definitions(${target}CAPI PUBLIC OmexMeta_CAPI_EXPORTS)
 

@@ -446,6 +446,7 @@ endif ()
 
 target_link_libraries(
         ${target}-static PUBLIC
+        zlibstatic
         unofficial::sqlite3::sqlite3
         CURL::libcurl
         LibLZMA::LibLZMA
@@ -453,7 +454,6 @@ target_link_libraries(
         LibXml2
         ${YAJL_STATIC_LIBRARY}
         ${PCRE_STATIC_LIBRARY}
-        zlibstatic
 )
 add_dependencies(${target}-static LibXml2 LibXslt)
 
@@ -542,6 +542,9 @@ if (PLATFORM STREQUAL "windows-msvc")
                 "${lib}" "${PYOMEXMETA_DIR}")
     endforeach ()
 endif ()
+
+add_custom_target(printx
+        COMMAND ${CMAKE_COMMAND} -E echo "cmd: $<TARGET_PROPERTY:redland-combined-static,LINK_LIBRARIES>")
 
 
 # add the shared library

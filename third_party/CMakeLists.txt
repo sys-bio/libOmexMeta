@@ -7,5 +7,7 @@ set(LIBICONV_INCLUDE_DIR "${LIBICONV_INCLUDE_DIR}" "$<TARGET_PROPERTY:libiconv-s
 
 
 add_subdirectory(libxml2)
+add_dependencies(LibXml2 zlibstatic libiconv-static )
 
 add_subdirectory(libxslt)
+add_dependencies(LibXslt LibXml2)

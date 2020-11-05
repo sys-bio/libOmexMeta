@@ -6,6 +6,13 @@ import sys
 from typing import List
 from functools import wraps
 
+def get_version():
+    with open("VERSION.txt", "r") as f:
+        __version__ = f.read().strip()
+    return __version__
+
+__version__ = get_version()
+
 if sys.platform == "win32":
     try:
         import win32api
@@ -16,12 +23,13 @@ if sys.platform == "win32":
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 
+
 class Util:
 
     @staticmethod
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
-            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMetaCAPI.so.1.1.18")
+            lib_path = os.path.join(_WORKING_DIRECTORY, f"libOmexMetaCAPI.so.{__version__}")
             try:
                 lib = ct.CDLL(lib_path)
             except OSError as e:
