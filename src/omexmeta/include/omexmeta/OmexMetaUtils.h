@@ -158,7 +158,7 @@ namespace omexmeta {
         /**
          * @brief read @param file into std::string
          */
-        static std::string readFromFile(const std::string& file);
+        static std::string readFromFile(const std::string &file);
     };
 }// namespace omexmeta
 

@@ -5,9 +5,9 @@ import os
 import sys
 from typing import List
 
-import os
 import shutil
 import subprocess
+
 
 
 def get_version():
@@ -82,7 +82,6 @@ class Util:
                 for pre in prefixes:
                     cand = os.path.join(direct, f"{pre}OmexMetaCAPI{ex}")
                     if os.path.isfile(cand):
-                        print(cand)
                         found_library_files.append(cand)
 
         if found_library_files == []:
@@ -262,6 +261,16 @@ class PyOmexMetaAPI:
 
     # Editor RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
+
+    # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
+    rdf_equals_rdf_vs_string = Util.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_bool)
+
+    # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
+    rdf_equals_rdf_vs_rdf = Util.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_bool)
+
+    # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
+    rdf_equals_string_vs_string = Util.load_func("RDF_equals_string_vs_string", [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_bool)
+
 
     #################################################################
     # Editor methods

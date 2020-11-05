@@ -122,13 +122,24 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
+    @staticmethod
+    def equals_rdf_vs_rdf(first_rdf: RDF, second_rdf: RDF, format: str = "turtle") -> bool:
+        return PyOmexMetaAPI.rdf_equals_rdf_vs_rdf(first_rdf, second_rdf, format)
+
+    @staticmethod
+    def equals_rdf_vs_string(rdf: RDF, string: str, format: str = "turtle") -> bool:
+        return PyOmexMetaAPI.rdf_equals_rdf_vs_string(rdf, string, format)
+
+    @staticmethod
+    def equals_string_vs_string(first_string: str, second_string: str, first_format: str = "turtle", second_format: str = "turtle") -> bool:
+        return PyOmexMetaAPI.rdf_equals_string_vs_string(first_string, second_string, first_format, second_format)
+
     def add_from_file(self, filename: str, format: str) -> None:
         PyOmexMetaAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
 
     def delete(self) -> None:
         """destructor. Delete the dynamically allocated rdf object"""
         PyOmexMetaAPI.rdf_delete(self._obj)
-
 
     def to_string(self, format: str = "turtle") -> str:
         str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode())

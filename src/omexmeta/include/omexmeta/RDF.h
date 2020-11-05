@@ -336,6 +336,32 @@ namespace omexmeta {
          * @brief add a set of Triples to the current model
          */
         void addTriples(const Triples &triples) ;
+
+        /**
+         * @brief test for equality between @param actual and @param expected
+         */
+        static bool equals(RDF *actual, const std::string &expected, const std::string &format = "turtle");
+
+        /**
+         * @brief test for equality between @param actual and @param expected
+         */
+        static bool equals(const Triple &actual, const std::string &expected, const std::string &format = "turtle");
+
+        /**
+         * @brief test for equality between @param actual and @param expected
+         */
+        static bool equals(const Triples &actual, const std::string &expected, const std::string &format = "turtle");
+
+        /**
+         * @brief test for equality between @param actual and @param expected
+         */
+        static bool equals(RDF *actual, RDF *expected, const std::string &format = "turtle");
+
+        /**
+         * @brief test for equality between @param first and @param second
+         */
+        static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle");
+
     };
 }
 

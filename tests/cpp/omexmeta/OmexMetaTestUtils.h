@@ -20,7 +20,7 @@ public:
 
     static bool equals(RDF *actual, RDF *expected, const std::string& format = "turtle");
 
-    bool equals(const std::string &first, const std::string &second, const std::string &first_format="turtle", const std::string &second_format="turtle");
+    static bool equals(const std::string &first, const std::string &second, const std::string &first_format="turtle", const std::string &second_format="turtle");
 };
 
 

@@ -238,6 +238,34 @@ namespace omexmeta {
         }
     }
 
+
+    bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
+        try {
+            return RDF::equals(rdf_ptr, serialized_rdf, format);
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
+        try {
+            return RDF::equals(rdf_ptr1, rdf_ptr2, format);
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
+        try {
+            return RDF::equals(first_rdf_graph, second_rdf_graph, format);
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
     Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
         try {
             return rdf_ptr->toEditorPtr(xml, generate_new_metaids, sbml_semantic_extraction);
@@ -246,6 +274,7 @@ namespace omexmeta {
             exit(1);
         }
     }
+
 
     /*********************************************************************
  * Editor class methods
@@ -259,7 +288,6 @@ namespace omexmeta {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             return -1;
         }
-
     }
 
     int Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
@@ -472,7 +500,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addCreator(Editor *editor_ptr, const char *orcid_id) {
+    Editor *Editor_addCreator(Editor *editor_ptr, const char *orcid_id) {
         try {
             editor_ptr->addCreator(orcid_id);
             return editor_ptr;
@@ -482,7 +510,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addCurator(Editor *editor_ptr, const char *orcid_id) {
+    Editor *Editor_addCurator(Editor *editor_ptr, const char *orcid_id) {
         try {
             editor_ptr->addCurator(orcid_id);
             return editor_ptr;
@@ -492,7 +520,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addTaxon(Editor *editor_ptr, const char *taxon_id) {
+    Editor *Editor_addTaxon(Editor *editor_ptr, const char *taxon_id) {
         try {
             editor_ptr->addTaxon(taxon_id);
             return editor_ptr;
@@ -502,7 +530,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addPubmed(Editor *editor_ptr, const char *pubmedid) {
+    Editor *Editor_addPubmed(Editor *editor_ptr, const char *pubmedid) {
         try {
             editor_ptr->addPubmed(pubmedid);
             return editor_ptr;
@@ -512,7 +540,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addDescription(Editor *editor_ptr, const char *date) {
+    Editor *Editor_addDescription(Editor *editor_ptr, const char *date) {
         try {
             editor_ptr->addDescription(date);
             return editor_ptr;
@@ -522,7 +550,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addDateCreated(Editor *editor_ptr, const char *date) {
+    Editor *Editor_addDateCreated(Editor *editor_ptr, const char *date) {
         try {
             editor_ptr->addDateCreated(date);
             return editor_ptr;
@@ -532,7 +560,7 @@ namespace omexmeta {
         }
     }
 
-    Editor* Editor_addParentModel(Editor *editor_ptr, const char *biomod_id) {
+    Editor *Editor_addParentModel(Editor *editor_ptr, const char *biomod_id) {
         try {
             editor_ptr->addParentModel(biomod_id);
             return editor_ptr;
@@ -621,7 +649,7 @@ namespace omexmeta {
     }
 
     SingularAnnotation *SingularAnnotation_predicateFromUri(
-            SingularAnnotation *singular_annotation, const char *uri){
+            SingularAnnotation *singular_annotation, const char *uri) {
         return SingularAnnotation_setPredicateFromUri(singular_annotation, uri);
     }
 
@@ -637,7 +665,7 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
-    SingularAnnotation_resourceLiteral(SingularAnnotation *singular_annotation, const char *literal){
+    SingularAnnotation_resourceLiteral(SingularAnnotation *singular_annotation, const char *literal) {
         return SingularAnnotation_setResourceLiteral(singular_annotation, literal);
     }
 
@@ -653,7 +681,7 @@ namespace omexmeta {
     }
 
     SingularAnnotation *
-    SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri){
+    SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri) {
         return SingularAnnotation_setResourceUri(singular_annotation, identifiers_uri);
     }
 
@@ -882,8 +910,8 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about){
-        try{
+    PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about) {
+        try {
             physical_entity_ptr->about(about);
             return physical_entity_ptr;
         } catch (std::exception &error) {
@@ -1046,8 +1074,8 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about){
-        try{
+    PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about) {
+        try {
             physical_process_ptr->about(about);
             return physical_process_ptr;
         } catch (std::exception &error) {
@@ -1178,8 +1206,8 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about){
-        try{
+    PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about) {
+        try {
             physical_force_ptr->about(about);
             return physical_force_ptr;
         } catch (std::exception &error) {
