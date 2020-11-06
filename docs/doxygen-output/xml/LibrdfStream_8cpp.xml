@@ -2,47 +2,16 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="LibrdfStream_8cpp" kind="file" language="C++">
     <compoundname>LibrdfStream.cpp</compoundname>
-    <includes refid="LibrdfStream_8h" local="yes">LibrdfStream.h</includes>
+    <includes local="yes">redland/LibrdfStream.h</includes>
     <incdepgraph>
       <node id="2">
-        <label>LibrdfStream.h</label>
-        <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>regex</label>
+        <label>redland/LibrdfStream.h</label>
       </node>
       <node id="1">
         <label>src/redland/RedlandWrapper/src/LibrdfStream.cpp</label>
         <link refid="LibrdfStream_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>iostream</label>
-      </node>
-      <node id="5">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>librdf.h</label>
-      </node>
-      <node id="4">
-        <label>memory</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceredland">redland</innernamespace>
@@ -51,7 +20,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;LibrdfStream.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfStream.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>

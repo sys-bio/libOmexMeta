@@ -34,6 +34,7 @@ set(
         MarkupIdentifierTests.cpp
         ElementExtractorTests.cpp
         SBMLSemanticExtractionTests.cpp
+        CellMLTests.cpp
 )
 
 
