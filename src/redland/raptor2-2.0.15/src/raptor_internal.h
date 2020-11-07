@@ -34,6 +34,8 @@ extern "C" {
 #define RAPTOR_EXTERN_C
 #endif
 
+
+
 #ifdef RAPTOR_INTERNAL
 
 /* for the memory allocation functions */

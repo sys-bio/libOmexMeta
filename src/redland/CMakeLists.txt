@@ -454,7 +454,7 @@ target_link_libraries(
         LibXslt
         LibXml2
         ${YAJL_STATIC_LIBRARY}
-        unofficial::pcre::pcre
+        ${PCRE_STATIC_LIBRARY}
 )
 
 add_dependencies(${target}-static LibXml2 LibXslt)

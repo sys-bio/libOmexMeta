@@ -27,6 +27,8 @@ find_path(VCPKG_ROOT NAMES ports/libxml2/CMakeLists.txt REQUIRED
 
 if (NOT EXISTS ${VCPKG_ROOT})
     message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT})")
+else ()
+    message(STATUS "Found VCPKG_ROOT at ${VCPKG_ROOT}")
 endif ()
 
 find_file(
@@ -40,6 +42,8 @@ find_file(
 if (NOT EXISTS ${VCPKG_TOOLCHAIN_FILE})
     message(FATAL_ERROR "No vcpkg toolchain installed, got \"${CMAKE_TOOLCHAIN_FILE}\".
 Have you passed in the root to vcpkg? i.e. -DVCPKG_ROOT=\"D:/vcpkg\"")
+else ()
+    message(STATUS "Using vcpkg toolchain file \"${VCPKG_TOOLCHAIN_FILE}\"")
 endif ()
 
 if (WIN32)
@@ -47,7 +51,7 @@ if (WIN32)
 elseif (UNIX AND NOT APPLE)
     set(VCPKG_TARGET_TRIPLET x64-linux CACHE STRING "vcpkg triplet to use")
 elseif (APPLE)
-    set(VCPKG_TARGET_TRIPLET x64-osx-static CACHE STRING "vcpkg triplet to use")
+    set(VCPKG_TARGET_TRIPLET x64-osx CACHE STRING "vcpkg triplet to use")
 endif ()
 
 # this needs to be before project() call
@@ -265,7 +269,7 @@ find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(LibLZMA CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE LibLZMA::LibLZMA)
 
-find_package(unofficial-pcre CONFIG REQUIRED)
+#find_package(unofficial-pcre CONFIG REQUIRED)
 ## Note: 1 target(s) were omitted.
 #target_link_libraries(main PRIVATE unofficial::pcre::pcre unofficial::pcre::pcre16 unofficial::pcre::pcre32 unofficial::pcre::pcrecpp)
 
