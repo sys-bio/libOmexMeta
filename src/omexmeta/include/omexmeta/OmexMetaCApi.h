@@ -33,7 +33,7 @@ namespace omexmeta {
  *
  */
 
-    OMEXMETA_CAPI_EXPORT [[maybe_unused]] int free_world(librdf_world *world);
+    [[maybe_unused]] OMEXMETA_CAPI_EXPORT int free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
