@@ -254,6 +254,7 @@ endif ()
 
 find_package(CURL CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE CURL::libcurl)
+# curl INTERFACE_LINK_LIBRARIES has the following contents:
 
 find_library(YAJL_STATIC_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}yajl_s${CMAKE_STATIC_LIBRARY_SUFFIX} REQUIRED)
 find_path(YAJL_INCLUDE_DIR NAMES yajl/yajl_parse.h REQUIRED)
@@ -263,6 +264,10 @@ find_package(unofficial-sqlite3 CONFIG REQUIRED)
 
 find_package(LibLZMA CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE LibLZMA::LibLZMA)
+
+find_package(unofficial-pcre CONFIG REQUIRED)
+## Note: 1 target(s) were omitted.
+#target_link_libraries(main PRIVATE unofficial::pcre::pcre unofficial::pcre::pcre16 unofficial::pcre::pcre32 unofficial::pcre::pcrecpp)
 
 find_library(
         PCRE_STATIC_LIBRARY REQUIRED
