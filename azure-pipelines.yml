@@ -34,7 +34,7 @@ jobs:
         cd $(VCPKG_INSTALL_PREFIX) 
         ./bootstrap-vcpkg.sh  
         vcpkg integrate install 
-        vcpkg install libxml2 libxslt curl libiconv pcre openssl yajl libpq sqlite3
+        vcpkg install curl pcre openssl yajl sqlite3
         echo "gcc $(gcc --version)"
         echo "g++ $(g++ --version)"
       displayName: InstallDependencies
