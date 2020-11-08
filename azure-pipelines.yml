@@ -47,8 +47,8 @@ jobs:
 #        key: 'SetupCache'
 #        path: '$(VCPKG_INSTALL_PREFIX)'
 
-#    - script: |
-##        echo "gcc $(gcc --version)"
+    - script: |
+        echo "gcc $(gcc --version)"
 ##        echo "g++ $(g++ --version)"
 ##        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 ##        sudo apt-get update
