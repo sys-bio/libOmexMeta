@@ -59,21 +59,22 @@ jobs:
 
     - script: |
         echo "gcc $(gcc --version)"
+        echo "g++ $(g++ --version)"
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt-get update
+        sudo apt-get install -y gcc-10 g++-10
+        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10        export CC=/usr/bin/gcc-10
+        export CXX=/usr/bin/g++-10
+        export C=/usr/bin/gcc-10
         mkdir build
         cd build
         cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
         cmake --build . --target install --config Release -j 12
-##        echo "g++ $(g++ --version)"
-##        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-##        sudo apt-get update
-##        sudo apt-get install -y gcc-10 g++-10 gcc-9 g++-9 flex bison doxygen python3-sphinx libldap-dev libltdl-dev git slapd ldap-utils graphviz
-##        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+      #        flex bison doxygen python3-sphinx libldap-dev libltdl-dev git slapd ldap-utils graphviz
 ##        echo "gcc $(gcc --version)"
 ##        echo "g++ $(g++ --version)"
 ##        echo "which g++ $(which g++)"
 ##        echo "which g++-10 $(which g++-10)"
-##        export CC=/usr/bin/gcc-10
-##        export CXX=/usr/bin/g++-10
       displayName: BuildLibOmexMeta
 #    - script: |
 #        echo "cd'ing to agent.BuildDirectory/s/install-azure-release"
