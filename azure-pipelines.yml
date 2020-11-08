@@ -77,9 +77,7 @@ jobs:
 ##        echo "which g++-10 $(which g++-10)"
       displayName: BuildLibOmexMeta
     - script: |
-        echo "cd'ing to agent.BuildDirectory/s/install-azure-release"
-        cd $(Agent.BuildDirectory)/s/install-azure-release
-        ctest --verbose --extra-verbose --progress .
+        ctest --verbose --extra-verbose --progress $(Agent.DefaultWorkingDirectory)/build
       displayName: RunLibOmexMetaTests
         
 
