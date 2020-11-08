@@ -144,6 +144,70 @@ jobs:
         displayName: RunLibOmexMetaTests
 
 
+  # windows
+  - job: BuildWindows
+    timeoutInMinutes: "0"
+    pool:
+      vmImage: 'windows-2019'
+    variables:
+      VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
+      CCACHE_DIR: $(Pipeline.Workspace)/ccache
+    steps:
+      - bash: |
+          sudo apt-get install ccache -y
+          echo "##vso[task.prependpath]/usr/lib/ccache"
+        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
+
+      - task: Cache@2
+        inputs:
+          key: 'ccache | "$(Agent.OS)"'
+          path: $(CCACHE_DIR)
+        displayName: ccache
+      - checkout: self
+        submodules: "recursive"
+
+      - script: |
+          echo "Default directory: $(pwd)"
+          echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
+          echo "Pipeline.Workspace $(Pipeline.Workspace)"
+          echo "System.DefaultWorkingDirectory $(System.DefaultWorkingDirectory)"
+          echo "VCPKG_INSTALL_PREFIX $(VCPKG_INSTALL_PREFIX)"
+          echo "Agent.OS $(Agent.OS)"
+          echo "gcc $(gcc --version)"
+          echo "g++ $(g++ --version)"
+
+        displayName: PrintAzureVariables
+      - task: Cache@2
+        inputs:
+          key: '"$(Agent.Os)"'
+          path: '$(VCPKG_INSTALL_PREFIX)'
+      - script: |
+          echo "cd'ing to agent.BuildDirectory"
+          cd $(Agent.BuildDirectory)
+          echo "ls $(ls -R)"
+          git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
+          cd $(VCPKG_INSTALL_PREFIX)
+          ./bootstrap-vcpkg.sh
+          vcpkg integrate install
+          vcpkg install curl pcre openssl yajl sqlite3 liblzma
+          echo "gcc $(gcc --version)"
+          echo "g++ $(g++ --version)"
+        displayName: InstallDependencies
+
+      - script: |
+          mkdir build
+          cd build
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build . --target install --config Release -j 12
+        displayName: BuildLibOmexMeta
+      - script: |
+          echo "dir $(System.DefaultWorkingDirectory)/build"
+          echo "ls -R $(ls -R)"
+          cd $(System.DefaultWorkingDirectory)/build
+          ctest --verbose --extra-verbose --progress .
+        displayName: RunLibOmexMetaTests
+
+
 
 
 
