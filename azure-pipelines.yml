@@ -138,7 +138,7 @@ jobs:
         displayName: BuildLibOmexMeta
       - script: |
           echo "dir $(System.DefaultWorkingDirectory)/build"
-          echo "ls -R $(ls -R)
+          echo "ls -R $(ls -R)"
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
