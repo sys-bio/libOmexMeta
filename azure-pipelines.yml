@@ -72,8 +72,6 @@ jobs:
           cmake --build . --target install --config Release -j 12
         displayName: BuildLibOmexMeta
       - script: |
-          echo "dir $(System.DefaultWorkingDirectory)/build"
-          echo "ls -R $(ls -R)"
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
@@ -137,11 +135,11 @@ jobs:
           cmake --build . --target install --config Release -j 12
         displayName: BuildLibOmexMeta
       - script: |
-          echo "dir $(System.DefaultWorkingDirectory)/build"
-          echo "ls -R $(ls -R)"
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
+
+
 
 
   # windows
@@ -189,7 +187,7 @@ jobs:
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
-          vcpkg install curl pcre openssl yajl sqlite3 liblzma
+          vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajlx64-windows-static sqlite3x64-windows-static liblzmax64-windows-static
           echo "gcc $(gcc --version)"
           echo "g++ $(g++ --version)"
         displayName: InstallDependencies
@@ -201,8 +199,6 @@ jobs:
           cmake --build . --target install --config Release -j 12
         displayName: BuildLibOmexMeta
       - script: |
-          echo "dir $(System.DefaultWorkingDirectory)/build"
-          echo "ls -R $(ls -R)"
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
