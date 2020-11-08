@@ -22,13 +22,17 @@ jobs:
         echo "Default directory: $(pwd)"
         echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
         echo "Pipeline.Workspace $(Pipeline.Workspace)"
+        echo "System.DefaultWorkingDirectory $(System.DefaultWorkingDirectory)"
         echo "VCPKG_INSTALL_PREFIX $(VCPKG_INSTALL_PREFIX)"
         echo "Agent.OS $(Agent.OS)"
         echo "gcc $(gcc --version)"
         echo "g++ $(g++ --version)"
 
       displayName: PrintAzureVariables
-
+    - task: Cache@2
+      inputs:
+        key: '"$(Agent.Os)"'
+        path: '$(VCPKG_INSTALL_PREFIX)'
     - script: |
         echo "cd'ing to agent.BuildDirectory"
         cd $(Agent.BuildDirectory)
@@ -42,10 +46,7 @@ jobs:
         echo "g++ $(g++ --version)"
       displayName: InstallDependencies
     
-#    - task: Cache@2
-#      inputs:
-#        key: 'SetupCache'
-#        path: '$(VCPKG_INSTALL_PREFIX)'
+
 
     - script: |
         echo "gcc $(gcc --version)"
@@ -64,7 +65,7 @@ jobs:
 #        cd build
 #        cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release ..
 #        cmake --build . --target install --config Release -j 12
-#      displayName: BuildLibOmexMeta
+      displayName: BuildLibOmexMeta
 #    - script: |
 #        echo "cd'ing to agent.BuildDirectory/s/install-azure-release"
 #        cd $(Agent.BuildDirectory)/s/install-azure-release
