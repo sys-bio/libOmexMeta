@@ -74,7 +74,8 @@ jobs:
       - script: |
           echo "dir $(System.DefaultWorkingDirectory)/build"
           echo "ls -R $(ls -R)"
-          ctest --verbose --extra-verbose --progress $(System.DefaultWorkingDirectory)/build
+          cd $(System.DefaultWorkingDirectory)/build
+          ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
 
 
@@ -138,7 +139,8 @@ jobs:
       - script: |
           echo "dir $(System.DefaultWorkingDirectory)/build"
           echo "ls -R $(ls -R)
-          ctest --verbose --extra-verbose --progress $(System.DefaultWorkingDirectory)/build
+          cd $(System.DefaultWorkingDirectory)/build
+          ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
 
 
