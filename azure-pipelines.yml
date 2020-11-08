@@ -78,6 +78,7 @@ jobs:
       displayName: BuildLibOmexMeta
     - script: |
         echo "dir $(System.DefaultWorkingDirectory)/build"
+        echo "ls -R $(ls -R)
         ctest --verbose --extra-verbose --progress $(System.DefaultWorkingDirectory)/build
       displayName: RunLibOmexMetaTests
         
