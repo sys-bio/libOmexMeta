@@ -77,8 +77,8 @@ jobs:
 ##        echo "which g++-10 $(which g++-10)"
       displayName: BuildLibOmexMeta
     - script: |
-        echo "dir $(Agent.DefaultWorkingDirectory)/build"
-        ctest --verbose --extra-verbose --progress $(Agent.DefaultWorkingDirectory)/build
+        echo "dir $(System.DefaultWorkingDirectory)/build"
+        ctest --verbose --extra-verbose --progress $(System.DefaultWorkingDirectory)/build
       displayName: RunLibOmexMetaTests
         
 
