@@ -135,9 +135,10 @@ target_link_libraries(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,LINK_L
 target_include_directories(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>)
 add_dependencies(${target} redland-combined-static)
 
-set_target_properties(${target} PROPERTIES OUTPUT_NAME ${target}-${LIBOMEXMETA_VERSION})
-
-#target_compile_definitions()
+if (WIN32)
+    # mac already does this and linux has so name
+    set_target_properties(${target} PROPERTIES OUTPUT_NAME ${target}-${LIBOMEXMETA_VERSION})
+endif ()
 
 generate_export_header(${target} BASE_NAME OMEXMETA)
 
