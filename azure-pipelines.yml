@@ -187,7 +187,7 @@ jobs:
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
-          vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajlx64-windows-static sqlite3:x64-windows-static liblzmax:64-windows-static
+          vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajlx64-windows-static sqlite3:x64-windows-static liblzma:x64-windows-static
           echo "gcc $(gcc --version)"
           echo "g++ $(g++ --version)"
         displayName: InstallDependencies

@@ -415,7 +415,7 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
 
     Editor_delete(editor_ptr);
     // as opposed to PhysicalEntity_delete which would leave behind un-freed nodes.
-    PhysicalEntity_freeAll(physical_entity_ptr);
+    PhysicalEntity_delete(physical_entity_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
 }
@@ -509,7 +509,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                            "    bqbiol:isPartOf <https://identifiers.org/FMA:8376>, <https://identifiers.org/FMA:8377>, <https://identifiers.org/FMA:8378> .\n"
                            "";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
-    PhysicalEntity_freeAll(physical_entity_ptr);
+    PhysicalEntity_delete(physical_entity_ptr);
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
 }
