@@ -42,7 +42,7 @@ jobs:
         displayName: PrintAzureVariables
       - task: Cache@2
         inputs:
-          key: '"$(Agent.Os)"'
+          key: 'vcpkg_cache | "$(Agent.Os)"'
           path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
@@ -113,7 +113,7 @@ jobs:
         displayName: PrintAzureVariables
       - task: Cache@2
         inputs:
-          key: '"$(Agent.Os)"'
+          key: 'vcpkg_cache | "$(Agent.Os)"'
           path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
@@ -177,7 +177,7 @@ jobs:
         displayName: PrintAzureVariables
       - task: Cache@2
         inputs:
-          key: '"$(Agent.Os)"'
+          key: 'vcpkg_cache |"$(Agent.Os)"'
           path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
