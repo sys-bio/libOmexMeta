@@ -35,6 +35,7 @@ set(
         ElementExtractorTests.cpp
         SBMLSemanticExtractionTests.cpp
         CellMLTests.cpp
+        UrlHandlerTests.cpp
 )
 
 

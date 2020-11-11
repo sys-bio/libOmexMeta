@@ -129,7 +129,7 @@ namespace omexmeta {
         static std::string concatMetaIdAndUri(std::string metaid, std::string uri);
 
         /**
-         * @brief replace a part of a string @string_to_replace from a main @param string
+         * @brief replace a part of a string @param string_to_replace from a main @param string
          * with a replacement string @param replacement
          */
         static std::string

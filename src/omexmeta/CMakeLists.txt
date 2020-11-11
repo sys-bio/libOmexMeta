@@ -41,7 +41,7 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/SBMLSemanticExtraction.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlType.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
-        "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriType.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriHandler.h"
         #    dbg.h
         )
 
@@ -69,7 +69,7 @@ set(OMEXMETA_SOURCES
         "PhysicalForce.cpp"
         "PersonalInformation.cpp"
         "MarkupIdentifier.cpp"
-        "UriType.cpp"
+        "UriHandler.cpp"
         )
 
 

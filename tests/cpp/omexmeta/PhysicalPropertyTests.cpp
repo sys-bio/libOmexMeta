@@ -34,7 +34,7 @@ public:
 
 TEST_F(PhysicalPropertyTests, TestPhysicalPropertySubjectStr) {
     PhysicalProperty physicalProperty(model.get(), model_uri, local_uri);
-    physicalProperty.isPropertyOf("entity0", LOCAL)
+    physicalProperty.isPropertyOf("entity0")
             .isVersionOf("opb/OPB_12345");
 
     std::cout << physicalProperty.toTriples().str() << std::endl;
