@@ -133,13 +133,13 @@ namespace omexmeta {
     }
     std::string UriHandler::uriModifier(std::string uri_to_modify, eUriType type) const {
         switch (type) {
-            case UNKNOWN:
+            case URI_TYPE_UNKNOWN:
                 return uri_to_modify;
-            case LOCAL:
+            case URI_TYPE_LOCAL:
                 return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, getLocal());
-            case MODEL:
+            case URI_TYPE_MODEL:
                 return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, getModel());
-            case IDENTIFIERS:
+            case URI_TYPE_IDENTIFIERS:
                 return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, "https://identifiers.org/");
         }
 

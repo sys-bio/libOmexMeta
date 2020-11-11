@@ -9,10 +9,10 @@
 
 namespace omexmeta{
     enum eUriType {
-        UNKNOWN,
-        LOCAL,
-        MODEL,
-        IDENTIFIERS
+        URI_TYPE_UNKNOWN,
+        URI_TYPE_LOCAL,
+        URI_TYPE_MODEL,
+        URI_TYPE_IDENTIFIERS
     };
 
     class UriHandler {
