@@ -211,7 +211,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     process.setModelUri(model_uri);
     process.setLocalUri(local_uri);
     process.about("process_metaid_0")
-            .hasProperty( "opb:OPB_00592")
+            .isVersionOf("opb:OPB_00592")
             .isVersionOf("GO:12345")
             .addSource(1.0, "species_metaid0")
             .addSource(2.0, "species_metaid1")

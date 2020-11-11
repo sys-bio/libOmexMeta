@@ -588,7 +588,7 @@ we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>
     <span class="n">Shc</span>
             <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Shc&quot;</span><span class="p">)</span>                  <span class="c1">// corresponds to the metaid for Shc in the SBML source code</span>
             <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/P29353&quot;</span><span class="p">)</span>   <span class="c1">// SHC1</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
+            <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">Shc</span><span class="p">);</span>
 
     <span class="c1">// We could optionally annotate where we are modelling Shc, for instance nucleus, cytoplasm, skin, bone, etc. Here</span>
@@ -599,7 +599,7 @@ we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>
     <span class="n">Sos</span>
             <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Sos&quot;</span><span class="p">)</span>                 <span class="c1">// corresponds to the metaid for Sos in the SBML source code</span>
             <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/Q07889&quot;</span><span class="p">)</span>   <span class="c1">// SOS1</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
+            <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">Sos</span><span class="p">);</span>
 
     <span class="c1">// Annotate the Grb2 entity</span>
@@ -607,7 +607,7 @@ we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>
     <span class="n">Grb2</span>
             <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Grb2&quot;</span><span class="p">)</span>                 <span class="c1">// corresponds to the metaid for Grb2 in the SBML source code</span>
             <span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="s">&quot;uniprot/P62993&quot;</span><span class="p">)</span>   <span class="c1">// GRB2</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
+            <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span><span class="c1">// Were modelling the chemical concentration</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">Grb2</span><span class="p">);</span>
 
 
@@ -615,7 +615,7 @@ we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>
     <span class="n">PhysicalEntity</span> <span class="n">shc_sos_grb2</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalEntity</span><span class="p">();</span>
     <span class="n">shc_sos_grb2</span>
             <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Shc_Sos_Grb2&quot;</span><span class="p">)</span>                 <span class="c1">// corresponds to the metaid for Grb2 in the SBML source code</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>        <span class="c1">// Were modelling the chemical concentration</span>
+            <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>        <span class="c1">// Were modelling the chemical concentration</span>
             <span class="p">.</span><span class="n">hasPart</span><span class="p">(</span><span class="s">&quot;uniprot/P29353&quot;</span><span class="p">)</span>                   <span class="c1">// SHC1</span>
             <span class="p">.</span><span class="n">hasPart</span><span class="p">(</span><span class="s">&quot;uniprot/Q07889&quot;</span><span class="p">)</span>                   <span class="c1">// SOS1</span>
             <span class="p">.</span><span class="n">hasPart</span><span class="p">(</span><span class="s">&quot;uniprot/P62993&quot;</span><span class="p">)</span> <span class="p">;</span>            <span class="c1">// GRB2</span>
@@ -624,7 +624,7 @@ we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>
     <span class="c1">// annotate the binding reaction</span>
     <span class="n">PhysicalProcess</span> <span class="n">binding_reaction</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalProcess</span><span class="p">();</span>
     <span class="n">binding_reaction</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Binding&quot;</span><span class="p">)</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Grb2&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Sos&quot;</span><span class="p">)</span>
@@ -634,7 +634,7 @@ we model the binding of <cite>Sos</cite>, <cite>Grb2</cite> and <cite>Shc</cite>
     <span class="c1">// annotate the unbinding reaction</span>
     <span class="n">PhysicalProcess</span> <span class="n">unbinding_reaction</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalProcess</span><span class="p">();</span>
     <span class="n">unbinding_reaction</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;Unbinding&quot;</span><span class="p">)</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span><span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc_Sos_Grb2&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Shc&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Grb2&quot;</span><span class="p">)</span>

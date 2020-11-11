@@ -108,7 +108,7 @@ int main(){
 
     PhysicalForce force = editor.newPhysicalForce();
     force.about("#OmexMetaId0001")
-            .hasProperty( "OPB:OPB_00340")
+            .isVersionOf("OPB:OPB_00340")
             .addSink(1, "#OmexMetaID0001")
             .addSource(1, "#OmexMetaID0002");
 

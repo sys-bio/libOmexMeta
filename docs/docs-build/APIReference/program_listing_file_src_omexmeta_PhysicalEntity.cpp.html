@@ -237,7 +237,7 @@
             <span class="p">);</span>
         <span class="p">}</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">getPhysicalProperty</span><span class="p">().</span><span class="n">getResourceStr</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">getPhysicalProperty</span><span class="p">().</span><span class="n">getIsVersionOfValue</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">AnnotationBuilderException</span><span class="p">(</span>
                     <span class="s">&quot;PhysicalEntity::toTriples(): Cannot create&quot;</span>
                     <span class="s">&quot; triples because the </span><span class="se">\&quot;</span><span class="s">physical_property</span><span class="se">\&quot;</span><span class="s"> information is not set. &quot;</span>

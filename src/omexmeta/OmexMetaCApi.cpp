@@ -882,7 +882,7 @@ namespace omexmeta {
 
     PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *property) {
         try {
-            physical_entity_ptr->hasProperty(property);
+            physical_entity_ptr->isVersionOf(property);
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1056,7 +1056,7 @@ namespace omexmeta {
 
     PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, const char *property) {
         try {
-            physical_process_ptr->hasProperty(property);
+            physical_process_ptr->isVersionOf(property);
             return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1198,7 +1198,7 @@ namespace omexmeta {
 
     PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, const char *property) {
         try {
-            physical_force_ptr->hasProperty(property);
+            physical_force_ptr->isVersionOf(property);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());

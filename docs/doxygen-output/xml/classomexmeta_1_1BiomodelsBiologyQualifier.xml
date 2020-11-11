@@ -20,7 +20,7 @@
                 &quot;isEncodedBy&quot;,
                 &quot;encodes&quot;,
                 &quot;occursIn&quot;,
-                &quot;hasProperty&quot;,
+                &quot;isVersionOf&quot;,
                 &quot;isPropertyOf&quot;,
                 &quot;hasTaxon&quot;
         }</initializer>

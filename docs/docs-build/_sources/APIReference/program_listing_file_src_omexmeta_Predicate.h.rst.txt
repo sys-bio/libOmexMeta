@@ -214,7 +214,7 @@ Program Listing for File Predicate.h
                    "isEncodedBy",
                    "encodes",
                    "occursIn",
-                   "hasProperty",
+                   "isVersionOf",
                    "isPropertyOf",
                    "hasTaxon"
            };

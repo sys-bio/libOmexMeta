@@ -1,0 +1,102 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.cellml>
+    semsim:modelName "annotation_examples" .
+
+<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.MembraneVoltage>
+    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#force_0> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00506> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.ReactionRate>
+    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#process_0> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.Volume>
+    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0>
+    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1>
+    bqbiol:is <http://identifiers.org/fma/FMA:18228> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_10>
+    bqbiol:is <http://identifiers.org/fma/FMA:14515> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_11>
+    bqbiol:is <https://identifiers.org/chebi/CHEBI:15343> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_12>
+    bqbiol:is <http://purl.obolibrary.org/obo/PR_000003767> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_2>
+    bqbiol:is <https://identifiers.org/chebi/CHEBI:24870> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_3> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_3>
+    bqbiol:is <http://identifiers.org/fma/FMA:66836> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_4> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_4>
+    bqbiol:is <http://identifiers.org/fma/FMA:70586> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_5>
+    bqbiol:is <https://identifiers.org/chebi/CHEBI:24870> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_6> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_6>
+    bqbiol:is <http://identifiers.org/fma/FMA:9672> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_7> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_7>
+    bqbiol:is <http://identifiers.org/fma/FMA:16016> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_8>
+    bqbiol:is <https://identifiers.org/chebi/CHEBI:16236> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9>
+    bqbiol:is <http://identifiers.org/fma/FMA:66836> ;
+    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_10> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#force_0>
+    semsim:hasSinkParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_0> ;
+    semsim:hasSourceParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#source_0> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#mediator_0>
+    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_12> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#process_0>
+    semsim:hasMediatorParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#mediator_0> ;
+    semsim:hasSinkParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_1> ;
+    semsim:hasSourceParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#source_1> ;
+    semsim:name "my process" ;
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0004022> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_0>
+    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_5> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_1>
+    semsim:hasMultiplier "1.0" ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_11> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#source_0>
+    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_2> .
+
+<http://omex-library.org/CellMLexamples.omex/examples.rdf#source_1>
+    semsim:hasMultiplier "1.0" ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_8> .
+
+

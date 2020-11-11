@@ -23,7 +23,7 @@ Program Listing for File Editor.cpp
    //    Editor::Editor(const std::string &xml, OmexMetaXmlType type, bool create_ids,
    //                   const LibrdfModel &model, NamespaceMap &nsmap)
    //            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {
-   //        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
+   //        XmlAssistantPtr xmlAssistantPtr = OmexMetaXmlAssistantFactory::generate(xml, type);
    //        std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
    //        xml_ = xml_and_metaids.first;
    //        //todo create a structure mapping metaids to more useful information for the user.
@@ -42,7 +42,7 @@ Program Listing for File Editor.cpp
                  model_uri_(model_uri),
                  model_uri_(local_uri) {
            // hard code the metaid base and number of needed digits for now,
-           XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type, generate_new_metaids, "#OmexMetaId", 4);
+           XmlAssistantPtr xmlAssistantPtr = OmexMetaXmlAssistantFactory::generate(xml, type, generate_new_metaids, "#OmexMetaId", 4);
            std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
            xml_ = xml_and_metaids.first;
            metaids_ = xml_and_metaids.second;
@@ -129,7 +129,7 @@ Program Listing for File Editor.cpp
        }
    
        void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
-           checkValidMetaid(singularAnnotation.getSubjectStr());
+           checkValidMetaid(singularAnnotation.getAbout());
            addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
            model_.addStatement(singularAnnotation);
        }
@@ -188,7 +188,7 @@ Program Listing for File Editor.cpp
        void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
            if (physicalEntity.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalEntity() physicalEntity::isPropertyOfValue (i.e. about) node is empty");
+                       "NullPointerException: Editor::addPhysicalEntity() physicalEntity::is_property_of_value_ (i.e. about) node is empty");
            }
            /*
             * Because we now want to use @prefix local for the
@@ -205,7 +205,7 @@ Program Listing for File Editor.cpp
        void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
            if (physicalProcess.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::isPropertyOfValue (i.e. about) node is empty");
+                       "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::is_property_of_value_ (i.e. about) node is empty");
            }
            checkValidMetaid(physicalProcess.getAbout());
            /*
@@ -223,7 +223,7 @@ Program Listing for File Editor.cpp
        void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
            if (physicalForce.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalForce() PhysicalForce::isPropertyOfValue (i.e. about) node is empty");
+                       "NullPointerException: Editor::addPhysicalForce() PhysicalForce::is_property_of_value_ (i.e. about) node is empty");
            }
            checkValidMetaid(physicalForce.getAbout());
            /*

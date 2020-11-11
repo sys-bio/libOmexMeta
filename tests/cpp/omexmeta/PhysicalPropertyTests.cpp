@@ -25,7 +25,7 @@ public:
         model = LibrdfModel(storage.get());
     }
 
-    ~PhysicalPropertyTests() {
+    ~PhysicalPropertyTests() override {
         model.freeModel();
         storage.freeStorage();
     }
@@ -33,17 +33,18 @@ public:
 
 
 TEST_F(PhysicalPropertyTests, TestPhysicalPropertySubjectStr) {
-    PhysicalProperty property = PhysicalProperty("subject", "OPB:OPB_00154", local_uri);
-    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#subject";
-    std::string actual = property.getSubjectStr();
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    PhysicalProperty physicalProperty(model.get(), model_uri, local_uri);
+    physicalProperty.isPropertyOf("entity0", LOCAL)
+            .isVersionOf("opb/OPB_12345");
+
+    std::cout << physicalProperty.toTriples().str() << std::endl;
+
 }
 
 TEST_F(PhysicalPropertyTests, TestPhysicalPropertyResourceStr) {
     PhysicalProperty property = PhysicalProperty("subject", "OPB:OPB_00154", local_uri);
     std::string expected = "OPB:OPB_00154";
-    std::string actual = property.getResourceStr();
+    std::string actual = property.getIsVersionOfValue();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

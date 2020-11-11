@@ -13,10 +13,10 @@
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/OmexMetaXmlType.h"
 
-#include <vector>
 #include <iostream>
 #include <memory>
 #include <utility>
+#include <vector>
 
 namespace omexmeta {
 
@@ -26,14 +26,22 @@ namespace omexmeta {
         int metaid_num_digits_;
         bool generate_new_metaids_;
 
-        void addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids);
+        void addMetaIdsRecursion(xmlDocPtr doc, xmlNode *a_node, std::vector<std::string> &seen_metaids);
 
         void generateMetaId(
                 std::vector<std::string> &seen_metaids, long count,
                 const MetaID &metaid_gen, std::string &id);
 
     public:
-        const std::string &getMetaidBase() const;
+
+        /**
+         * @brief get the base for the metaid used by the current xml type.
+         * This base is used as a precursor string for generating new metaids
+         * if requested by the user by setting generate_new_metaids=true.
+         * @details the base is given as argument to the OmexMetaXmlAssistant on
+         * instantiation. If base is "metaid" then ids generated will be metaid_0000
+         */
+        [[maybe_unused]] const std::string &getMetaidBase() const;
 
         int getMetaidNumDigits() const;
 
@@ -46,6 +54,8 @@ namespace omexmeta {
         [[nodiscard]] virtual std::vector<std::string> getValidElements() const;
 
         [[nodiscard]] virtual std::string metaIdTagName() const;
+
+        [[nodiscard]] virtual std::string metaIdNamespace() const;
     };
 
 
@@ -58,6 +68,7 @@ namespace omexmeta {
 
         std::string metaIdTagName() const override;
 
+        [[nodiscard]] std::string metaIdNamespace() const override;
     };
 
 
@@ -69,14 +80,14 @@ namespace omexmeta {
 
         std::string metaIdTagName() const override;
 
+        [[nodiscard]] std::string metaIdNamespace() const override;
     };
 
     typedef std::unique_ptr<OmexMetaXmlAssistant> XmlAssistantPtr;
 
-    class SemsimXmlAssistantFactory {
+    class OmexMetaXmlAssistantFactory {
     public:
-
         static XmlAssistantPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "#OmexMetaId", int metaid_num_digits = 4);
     };
-}
-#endif //LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
+}// namespace omexmeta
+#endif//LIBOMEXMETA_OMEXMETAXMLASSISTANT_H

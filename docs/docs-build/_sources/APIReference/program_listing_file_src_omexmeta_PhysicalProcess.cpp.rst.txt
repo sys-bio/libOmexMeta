@@ -48,7 +48,7 @@ Program Listing for File PhysicalProcess.cpp
        }
    
    //    PhysicalProcess &PhysicalProcess::about(std::string metaid) {
-   //        physical_property_.setSubject(metaid);
+   //        physical_property_.about(metaid);
    //        return (*this);
    //    }
    
@@ -147,7 +147,7 @@ Program Listing for File PhysicalProcess.cpp
                        "Use the about() method."
                );
            }
-           if (getPhysicalProperty().getResourceStr().empty()) {
+           if (getPhysicalProperty().getIsVersionOfValue().empty()) {
                throw AnnotationBuilderException(
                        "PhysicalProcess::toTriples(): Cannot create"
                        " triples because the \"physical_property\" information is not set. "

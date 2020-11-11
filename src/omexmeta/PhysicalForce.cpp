@@ -11,9 +11,8 @@ namespace omexmeta {
                                  PhysicalProperty physicalProperty,
                                  Sources sources,
                                  Sinks sinks)
-            : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
-              sources_(std::move(sources)), sinks_(std::move(sinks)) {
-
+        : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
+          sources_(std::move(sources)), sinks_(std::move(sinks)) {
     }
 
     const std::vector<SourceParticipant> &PhysicalForce::getSources() const {
@@ -29,14 +28,11 @@ namespace omexmeta {
     }
 
     Triples PhysicalForce::toTriples() {
-        if (getAbout().empty()) {
-            throw AnnotationBuilderException(
-                    "PhysicalForce::toTriples(): Cannot create"
-                    " triples because the \"about\" information is not set. "
-                    "Use the about() method."
-            );
+        if (getAbout().empty() || getAbout() == model_uri_ + "#") {
+            std::string new_about = generateMetaId("Force");
+            about(OmexMetaUtils::concatMetaIdAndUri(new_about, local_uri_));
         }
-        if (physical_force_property_id_.empty()){
+        if (physical_force_property_id_.empty()) {
             physical_force_property_id_ = generateMetaId("ForceProperty");
         }
         physical_force_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_force_property_id_, getLocalUri());
@@ -71,24 +67,21 @@ namespace omexmeta {
     PhysicalForce &PhysicalForce::addSource(int multiplier, const std::string &physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri()
-                ))
-        );
+                        model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri())));
         return (*this);
     }
 
     PhysicalForce &PhysicalForce::addSink(int multiplier, const std::string &physical_entity_reference) {
         sinks_.push_back(
-                SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri())
-        );
+                SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri(), getLocalUri()));
         return (*this);
     }
 
     PhysicalForce::PhysicalForce(librdf_model *model)
-            : PhysicalPhenomenon(model) {}
+        : PhysicalPhenomenon(model) {}
 
     PhysicalForce::PhysicalForce(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
-            : PhysicalPhenomenon(model, model_uri, local_uri) {}
+        : PhysicalPhenomenon(model, model_uri, local_uri) {}
 
     int PhysicalForce::getNumSources() {
         return sources_.size();
@@ -110,7 +103,7 @@ namespace omexmeta {
 
     bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
         return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
-               static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
+                       static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
                sources_ == rhs.sources_ &&
                sinks_ == rhs.sinks_;
     }
@@ -119,15 +112,18 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    PhysicalForce &PhysicalForce::hasProperty(const std::string &property) {
-        physical_property_.setResource(property);
+    PhysicalForce &PhysicalForce::isVersionOf(const std::string &property) {
+        physical_property_.isVersionOf(property);
         return *this;
     }
 
 
     PhysicalForce &PhysicalForce::about(const std::string &about) {
-        physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
+        if (!OmexMetaUtils::startsWith(about, "http"))
+            physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
+        else
+            physical_property_.about(about);
         return *this;
     }
 
-}
+}// namespace omexmeta

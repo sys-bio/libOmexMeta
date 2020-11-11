@@ -241,7 +241,7 @@ TEST_F(SemsimXmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaid) {
 
 TEST_F(SemsimXmlAssistantTests, TestXmlAssistantFactory) {
     std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
-    auto x = SemsimXmlAssistantFactory::generate(sbml, OMEXMETA_TYPE_SBML);
+    auto x = OmexMetaXmlAssistantFactory::generate(sbml, OMEXMETA_TYPE_SBML);
 
 }
 

@@ -160,14 +160,14 @@ namespace omexmeta {
 		+Participant(librdf_world* world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier, std::string physicalEntityReference)
 		+getPredicatePtr() : PredicatePtr
 		-predicate_ptr_ : PredicatePtr
-		-isVersionOfValue : Resource
+		-is_version_of_value_ : Resource
 		+getResource() : Resource& {query}
 		+getMultiplier() : double {query}
 		-multiplier_ : double
 		+getWorld() : librdf_world* {query}
 		-world_ : librdf_world*
 		-physicalEntityReference_ : std::string
-		-isPropertyOfValue : std::string
+		-is_property_of_value_ : std::string
 		+getPhysicalEntityReference() : std::string& {query}
 		+getSubject() : std::string& {query}
 		+toTriples() : std::vector<Triple> {query}
@@ -498,9 +498,9 @@ namespace omexmeta {
 		+getPredicatePtr() : PredicatePtr {query}
 		-predicate_ptr_ : PredicatePtr
 		+getResource() : Resource {query}
-		-isVersionOfValue : Resource
+		-is_version_of_value_ : Resource
 		+getSubject() : Subject {query}
-		-isPropertyOfValue : Subject
+		-is_property_of_value_ : Subject
 		+toStatement() : librdf_statement*
 		#world_ : librdf_world*
 	}
@@ -557,7 +557,7 @@ namespace omexmeta {
 
 
 
-	class SemsimXmlAssistantFactory {
+	class OmexMetaXmlAssistantFactory {
 		+{static} generate(const std::string& xml, OmexMetaXmlType type) : XmlAssistantPtr
 	}
 
@@ -1099,7 +1099,7 @@ namespace omexmeta {
 
 
 
-	OmexMetaXmlAssistant <.. SemsimXmlAssistantFactory
+	OmexMetaXmlAssistant <.. OmexMetaXmlAssistantFactory
 
 
 }

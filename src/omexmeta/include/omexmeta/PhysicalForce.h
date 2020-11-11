@@ -177,13 +177,13 @@ namespace omexmeta {
         bool operator!=(const PhysicalForce &rhs) const;
 
         /**
-         * @brief set the hasProperty portion of the PhysicalForce composite annotation
+         * @brief set the isVersionOf portion of the PhysicalForce composite annotation
          * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
          * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
          * @details This method will set the Resource resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalForce &hasProperty(const std::string &property);
+        PhysicalForce &isVersionOf(const std::string &property);
 
         /**
          * @brief set the subject (rdf:about) portion of the PhysicalForce composite annotation

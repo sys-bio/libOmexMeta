@@ -199,7 +199,7 @@ namespace omexmeta {
          * @details Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set
          * the Resource resource_ property on the PhysicalProperty associated with this PhysicalEntity.
          */
-        PhysicalEntity& hasProperty(const std::string& property);
+        PhysicalEntity&isVersionOf(const std::string& property);
 
         /**
          * @brief Set the about portion of the PhysicalEntity composite annotation.
@@ -233,6 +233,11 @@ namespace omexmeta {
          * @details used in the case of annotating complexes which have no identity but several parts.
          */
          PhysicalEntity &hasPart(const std::string &part);
+
+         /**
+          * @brief set the metaid of variable such as kinetic parameter
+          */
+          PhysicalEntity &variableMetaId(const std::string& metaid);
     };
 }
 

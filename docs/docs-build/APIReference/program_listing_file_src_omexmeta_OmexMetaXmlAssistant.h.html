@@ -235,7 +235,7 @@
 
     <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">OmexMetaXmlAssistant</span><span class="o">&gt;</span> <span class="n">XmlAssistantPtr</span><span class="p">;</span>
 
-    <span class="k">class</span> <span class="nc">SemsimXmlAssistantFactory</span> <span class="p">{</span>
+    <span class="k">class</span> <span class="nc">OmexMetaXmlAssistantFactory</span> <span class="p">{</span>
     <span class="k">public</span><span class="o">:</span>
 
         <span class="k">static</span> <span class="n">XmlAssistantPtr</span> <span class="n">generate</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">xml</span><span class="p">,</span> <span class="n">OmexMetaXmlType</span> <span class="n">type</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">generate_new_metaids</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metaid_base</span> <span class="o">=</span> <span class="s">&quot;#OmexMetaId&quot;</span><span class="p">,</span> <span class="kt">int</span> <span class="n">metaid_num_digits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">);</span>

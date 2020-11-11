@@ -11,6 +11,7 @@ namespace omexmeta {
                                            PhysicalProperty propertyResource, AnnotationType type)
             : model_(model), physical_property_(std::move(propertyResource)), type_(type),
               model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)){}
+
     librdf_model *PhysicalPhenomenon::getModel() const {
         return model_;
     }
@@ -24,7 +25,7 @@ namespace omexmeta {
         : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
 
     const std::string & PhysicalPhenomenon::getSubjectStr() const {
-        return physical_property_.getSubjectStr();
+        return physical_property_.getAbout();
     }
 
     AnnotationType PhysicalPhenomenon::getType() const {
@@ -46,11 +47,11 @@ namespace omexmeta {
 
 
     const std::string & PhysicalPhenomenon::getAbout() const {
-        return physical_property_.getSubjectStr();
+        return physical_property_.getAbout();
     }
 
     PhysicalPhenomenon& PhysicalPhenomenon::about(const std::string& about) {
-        physical_property_.setSubject(about);
+        physical_property_.about(about);
         return *this;
     }
 

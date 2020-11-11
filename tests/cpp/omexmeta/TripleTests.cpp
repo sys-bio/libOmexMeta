@@ -308,7 +308,7 @@ public:
 //    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
 //    std::vector<Triple> vec;
 //    vec.push_back(triple);
-//    std::string actual = vec[0].getResourceStr();
+//    std::string actual = vec[0].getIsVersionOfValue();
 //    std::string expected = "https://identifiers.org/uniprot/P0DP23";
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //    triple.freeStatement();

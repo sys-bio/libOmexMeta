@@ -46,8 +46,8 @@ Program Listing for File PhysicalProperty.h
         */
        class PhysicalProperty {
    
-           std::string isPropertyOfValue;
-           std::string isVersionOfValue;
+           std::string is_property_of_value_;
+           std::string is_version_of_value_;
            std::string model_uri_;
            void validate();
    
@@ -72,13 +72,13 @@ Program Listing for File PhysicalProperty.h
    
            void setModelUri(const std::string &localUri);
    
-           [[nodiscard]] const std::string &getSubjectStr() const;
+           [[nodiscard]] const std::string &getAbout() const;
    
-           void setSubject(const std::string &subject);
+           void about(const std::string &subject);
    
-           [[nodiscard]] const std::string &getResourceStr() const;
+           [[nodiscard]] const std::string &getIsVersionOfValue() const;
    
-           void setResource(const std::string &resource);
+           void isVersionOf(const std::string &resource);
    
            /*
             * @brief make the triple that has the "isVersionOf" predicate

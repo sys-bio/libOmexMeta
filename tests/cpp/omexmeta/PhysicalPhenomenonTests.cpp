@@ -81,7 +81,7 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
             PHYSICAL_ENTITY
     );
     std::string expected = "OPB:OPB_12345";
-    std::string actual = phenomenon.getPhysicalProperty().getResourceStr();
+    std::string actual = phenomenon.getPhysicalProperty().getIsVersionOfValue();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
 }

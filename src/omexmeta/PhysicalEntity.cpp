@@ -8,8 +8,8 @@ namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
                                    Resource is, Resources is_part_of)
-            : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
-              identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
+        : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
+          identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
     void PhysicalEntity::free() {
         if (identity_resource_.getNode() != nullptr) {
@@ -27,7 +27,7 @@ namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model) : PhysicalPhenomenon(model) {}
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string& model_uri, const std::string& local_uri)
+    PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
         : PhysicalPhenomenon(model, model_uri, local_uri) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
@@ -56,16 +56,13 @@ namespace omexmeta {
 
     PhysicalEntity &PhysicalEntity::addLocation(const std::string &where) {
         location_resources_.push_back(std::move(
-                Resource(LibrdfNode::fromUriString(where))
-                                      )
-        );
+                Resource(LibrdfNode::fromUriString(where))));
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::hasPart(const std::string &where) {
         part_resources_.push_back(std::move(
-                Resource(LibrdfNode::fromUriString(where))
-        ));
+                Resource(LibrdfNode::fromUriString(where))));
         return *this;
     }
 
@@ -82,8 +79,7 @@ namespace omexmeta {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
                     " triples because the \"about\" information is not set. "
-                    "Use the about() method."
-            );
+                    "Use the about() method.");
         }
 
         // location_resources_ is optional
@@ -132,15 +128,17 @@ namespace omexmeta {
             physical_entity_property_id_ = generateMetaId("EntityProperty");
         }
 
-        // entity_id_: for instance "local:EntityProperty0000"
-        physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_entity_property_id_, getLocalUri());
+        // physical_entity_property_id_: for instance "local:EntityProperty0000"
+        if (!OmexMetaUtils::startsWith(physical_entity_property_id_, "http")){
+            physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_entity_property_id_, getLocalUri());
+        }
         // preallocate for efficiency
-        Triples triples((int)getLocationResources().size() + (int)part_resources_.size() + 3);
+        Triples triples((int) getLocationResources().size() + (int) part_resources_.size() + 3);
 
         Triples physical_property_triples = physical_property_.toTriples(physical_entity_property_id_);
 
         for (auto &it : physical_property_triples) {
-            triples.move_back(it); // moves the statement
+            triples.move_back(it);// moves the statement
         }
 
         physical_property_triples.freeTriples();
@@ -186,7 +184,7 @@ namespace omexmeta {
 
     bool PhysicalEntity::operator==(const PhysicalEntity &rhs) const {
         return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
-               static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
+                       static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
                identity_resource_ == rhs.identity_resource_ &&
                location_resources_ == rhs.location_resources_;
     }
@@ -195,13 +193,16 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property) {
-        physical_property_.setResource(property);
+    PhysicalEntity &PhysicalEntity::isVersionOf(const std::string &property) {
+        physical_property_.isVersionOf(property);
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::about(const std::string &about) {
-        physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
+        if (!OmexMetaUtils::startsWith(about, "http"))
+            physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
+        else
+            physical_property_.about(about);
         return *this;
     }
 
@@ -214,21 +215,10 @@ namespace omexmeta {
     }
 
 
-
-}
-
-
-
-
+    PhysicalEntity &PhysicalEntity::variableMetaId(const std::string &metaid){
+        physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(metaid, model_uri_);
+        return *this;
+    }
 
 
-
-
-
-
-
-
-
-
-
-
+}// namespace omexmeta

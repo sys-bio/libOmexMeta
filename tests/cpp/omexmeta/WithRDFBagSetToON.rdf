@@ -128,7 +128,7 @@ local:SourceParticipant0009
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#_7> .
 
 local:_0
-    bqbiol:hasProperty [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/doid/DOID:1287> ;
         a rdf:Bag
     ] ;

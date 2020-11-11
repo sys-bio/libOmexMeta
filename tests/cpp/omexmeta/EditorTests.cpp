@@ -34,10 +34,10 @@ TEST_F(EditorTests, TestMetaIds) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = {"#OmexMetaId0000", "#OmexMetaId0001", "#OmexMetaId0002",
-                                         "#cytosol", "#Meta00001", "#OmexMetaId0003", "#OmexMetaId0004",
-                                         "#OmexMetaId0005", "#OmexMetaId0006", "#OmexMetaId0007",
-                                         "#OmexMetaId0008", "#OmexMetaId0009", "#OmexMetaId0010"};
+    std::vector<std::string> expected = {"model0000", "unit0000", "unit0001", "#cytosol", "#Meta00001",
+                                         "species0000", "species0001", "reaction0000", "kineticLaw0000",
+                                         "localParameter0000", "localParameter0001", "reaction0001",
+                                         "kineticLaw0001"};
     ASSERT_EQ(expected, metaids);
 }
 
@@ -140,7 +140,7 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
     RDF rdf;
     Editor editor = rdf.toEditor("example.sbml", true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
+            Subject(editor.createNodeWithModelUri("Meta00001")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237")));
 
@@ -151,7 +151,7 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#Meta00001>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed:12991237> .";
     std::cout << actual << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
@@ -166,7 +166,7 @@ TEST_F(EditorTests, TestAddAnnotation) {
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("#OmexMetaId0004")),
+            Subject(LibrdfNode::fromUriString("species0000")),
             predicatePtr,
             Resource(LibrdfNode::fromUriString("uniprot/P0DP23")));
     ASSERT_EQ(1, editor.size());
@@ -177,7 +177,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    Triple triple(LibrdfNode::fromUriString("#OmexMetaId0009").get(),
+    Triple triple(LibrdfNode::fromUriString("species0001").get(),
                   BiomodelsBiologyQualifier("is").getNode(),
                   Resource(LibrdfNode::fromUriString("uniprot/P0DP23")).getNode());
     editor.addSingleAnnotation(triple);
@@ -193,9 +193,9 @@ TEST_F(EditorTests, TestEditorCreateUriRelativeToLocalUri) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     rdf.setArchiveUri("MyOmexArchive");
     rdf.setModelUri("mymodel.sbml");
-    LibrdfNode node = editor.createNodeWithModelUri("#OmexMetaId0009");
+    LibrdfNode node = editor.createNodeWithModelUri("species0000");
     std::string actual = node.str();
-    std::string expected = "http://omex-library.org/MyOmexArchive.omex/mymodel.sbml#OmexMetaId0009";
+    std::string expected = "http://omex-library.org/MyOmexArchive.omex/mymodel.sbml#species0000";
     ASSERT_STREQ(actual.c_str(), expected.c_str());
     node.freeNode();
 }
@@ -206,7 +206,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED),
             true,
             false);
-    Subject subject = Subject(editor.createNodeWithModelUri("#OmexMetaId0009"));
+    Subject subject = Subject(editor.createNodeWithModelUri("species0001"));
     BiomodelsBiologyQualifier predicate("is");
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot/P0DP23"));
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
@@ -221,7 +221,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0009>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n";
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
@@ -233,7 +233,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
+            Subject(editor.createNodeWithModelUri("unit0000")),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed/12991237")));
 
@@ -244,7 +244,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#unit0000>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
                            "\n"
                            "";
@@ -257,7 +257,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("#OmexMetaId0008")),
+            Subject(editor.createNodeWithModelUri("species0001")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed/12991237")));
 
@@ -268,7 +268,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n\n";
     std::cout << actual << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
@@ -279,7 +279,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("OmexMetaId0008")),
+            Subject(editor.createNodeWithModelUri("species0001")),
             std::make_unique<Predicate>(DCTerm("description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration")));
 
@@ -290,7 +290,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    dc:description \"Cardiomyocyte cytosolic ATP concentration\"^^rdf:string .\n"
                            "\n";
     std::cout << actual << std::endl;
@@ -305,7 +305,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
 
     singularAnnotation
-            .about("OmexMetaId0001")
+            .about("species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02635");
 
@@ -319,7 +319,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
                            "\n"
                            "";
@@ -335,7 +335,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("OmexMetaId0001")
+            .about("species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02635");
 
@@ -349,7 +349,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
                            "\n"
                            "";
@@ -365,7 +365,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternChebiResource) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("OmexMetaId0001")
+            .about("species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("CHEBI:16253");
 
@@ -379,7 +379,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternChebiResource) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/CHEBI:16253> .\n"
                            "\n"
                            "";
@@ -395,7 +395,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternOPBResource) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("OmexMetaId0001")
+            .about("species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("OPB:16253");
 
@@ -409,7 +409,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternOPBResource) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/OPB:16253> .\n"
                            "\n"
                            "";
@@ -425,14 +425,14 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("#OmexMetaId0001")
+            .about("#species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
     editor.removeSingleAnnotation(singularAnnotation);
 
-    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("#OmexMetaId0001");
+    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("#species0001");
     singularAnnotation2
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02636");
@@ -447,7 +447,7 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02636> .\n"
                            "\n"
                            "";
@@ -457,31 +457,13 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
     singularAnnotation2.freeStatement();
 }
 
-TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), false, false);
-
-    PhysicalProperty ppr("metaid", "OPB:OPB_00154", editor.getModelUri());
-    Resource r(LibrdfNode::fromUriString("fma:FMA:9670"));// is smad3
-    std::vector<Resource> resources;
-    resources.emplace_back(std::move(LibrdfNode::fromUriString("fma/FMA:9697")));
-    PhysicalEntity physicalEntity(
-            rdf.getModel(), editor.getModelUri(), editor.getLocalUri(), ppr, r, resources);
-    //    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
-    editor.addCompositeAnnotation(&physicalEntity);
-    int expected = 4;
-    int actual = editor.size();
-    ASSERT_EQ(expected, actual);
-}
-
 TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#species0001");
     singularAnnotation
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
@@ -502,7 +484,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("#OmexMetaId0001")
+            .about("#species0001")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
@@ -655,63 +637,122 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
 }
 
 TEST_F(EditorTests, TestPhysicalEntityBuilder) {
-
     RDF rdf;
-
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
-
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-
     physicalEntity
-            .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
+            .about("species0000")       // an sbml species
+            .isVersionOf("opb:opb_1234")//isVersionOf predicate
+            .identity("uniprot:PD12345")
+            .variableMetaId("metaid_of_kinetic_parameter")
             .addLocation("fma:1234");
-
-
     editor.addPhysicalEntity(physicalEntity);
 
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_of_kinetic_parameter>\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:opb_1234> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 
-    int expected = 4;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
 }
 
-TEST_F(EditorTests, TestPhysicalForceBuilder) {
+TEST_F(EditorTests, TestPhysicalForceBuilderWithoutAbout) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
-            .setPhysicalProperty("#OmexMetaId0000", "OPB:OPB1234")
+            .isVersionOf("OPB:OPB1234") // change to isVersionOf
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 
+    /*
+     * about for a physical force is optional. If nothing is there I willc reate something appropriate
+     * is not then it will override
+     */
     editor.addPhysicalForce(physicalForce);
-    int expected = 8;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
+    std::cout << rdf.toString() << std::endl;
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:Force0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:ForceProperty0000\n"
+                           "    bqbiol:isPropertyOf local:Force0000 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
-TEST_F(EditorTests, TestPhysicalForceBuilder2) {
+TEST_F(EditorTests, TestPhysicalForceBuilderWithAbout) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
-            .about("#OmexMetaId0000")
-            .hasProperty("OPB:OPB1234")
+            .about("AnExistingMetaid")
+            .isVersionOf("OPB:OPB1234") // change to isVersionOf
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 
+    /*
+     * about for a physical force is optional. If nothing is there I willc reate something appropriate
+     * is not then it will override
+     */
+//    std::cout << rdf.toString() << std::endl;
     editor.addPhysicalForce(physicalForce);
-    int expected = 8;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:Force0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:ForceProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#AnExistingMetaid> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
+
 
 TEST_F(EditorTests, TestPhysicalProcessBuilder) {
     RDF rdf;
@@ -720,18 +761,240 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
-            .about("#OmexMetaId0000")
-            .hasProperty("OPB:OPB1234")
+            .about("reaction0001")
+            .variableMetaId("cmeta:id=...")// point 1
+            .isVersionOf("OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2")
             .addMediator("PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
 
+    std::cout << rdf.toString() << std::endl;
+
+    /*
+     * In cellml, for PhysicalProcess you would not use the local:ProcessProperty id
+     * but instead the metaid to the variable in the cellml source code.
+     *
+variableMetaID:
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#reaction0001> ; // optional id argument. User is expected to provide this by doesn't have to as we'll generate for them if not.
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
+
+     */
+
     int expected = 10;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
+
+TEST_F(EditorTests, TestPhysicalProcessBuilderWithAbout) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalProcess physicalProcess = editor.newPhysicalProcess();
+    physicalProcess
+            .about("reaction0001")
+//            .variableMetaId("cmeta:id=...")// point 1
+            .isVersionOf("OPB:OPB1234")
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2")
+            .addMediator("PhysicalEntity3");
+    editor.addPhysicalProcess(physicalProcess);
+
+    std::cout << rdf.toString() << std::endl;
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity3> .\n"
+                           "\n"
+                           "local:ProcessProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    /*
+     * In cellml, for PhysicalProcess you would not use the local:ProcessProperty id
+     * but instead the metaid to the variable in the cellml source code.
+     *
+variableMetaID:
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#reaction0001> ; // optional id argument. User is expected to provide this by doesn't have to as we'll generate for them if not.
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
+
+     */
+
+}
+
+TEST_F(EditorTests, TestPhysicalProcessBuilderWithoutAbout) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalProcess physicalProcess = editor.newPhysicalProcess();
+    physicalProcess
+//            .about("reaction0001")
+//            .variableMetaId("cmeta:id=...")// point 1
+            .isVersionOf("OPB:OPB1234")
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2")
+            .addMediator("PhysicalEntity3");
+    editor.addPhysicalProcess(physicalProcess);
+
+    std::cout << rdf.toString() << std::endl;
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity3> .\n"
+                           "\n"
+                           "local:ProcessProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#Process0000> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#Process0000>\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    /*
+     * In cellml, for PhysicalProcess you would not use the local:ProcessProperty id
+     * but instead the metaid to the variable in the cellml source code.
+     *
+variableMetaID:
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#reaction0001> ; // optional id argument. User is expected to provide this by doesn't have to as we'll generate for them if not.
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
+
+     */
+
+}
+
+TEST_F(EditorTests, TestPhysicalProcessBuilderWithVariableMetaId) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalProcess physicalProcess = editor.newPhysicalProcess();
+    physicalProcess
+//            .about("reaction0001")
+            .variableMetaId("AnExistingCellMLVariable")// point 1
+            .isVersionOf("OPB:OPB1234")
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2")
+            .addMediator("PhysicalEntity3");
+    editor.addPhysicalProcess(physicalProcess);
+
+    std::cout << rdf.toString() << std::endl;
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity3> .\n"
+                           "\n"
+                           "local:AnExistingCellMLVariable\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#Process0000> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#Process0000>\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    /*
+     * In cellml, for PhysicalProcess you would not use the local:ProcessProperty id
+     * but instead the metaid to the variable in the cellml source code.
+     *
+variableMetaID:
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#reaction0001> ; // optional id argument. User is expected to provide this by doesn't have to as we'll generate for them if not.
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
+
+     */
+
+}
+
+TEST_F(EditorTests, TestPhysicalPropertyBuilder) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalProperty physicalProperty = editor.newPhysicalProperty();
+    physicalProperty
+            .about("property1")
+            .isVersionOf("opb:OPB_12345")
+            .isPropertyOf("entity0");
+    editor.addPhysicalProperty(physicalProperty);
+
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+//    physicalEntity.about()
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#property1>\n"
+                           "    bqbiol:isPropertyOf <entity0> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    /*
+     * In cellml, for PhysicalProcess you would not use the local:ProcessProperty id
+     * but instead the metaid to the variable in the cellml source code.
+     *
+variableMetaID:
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#reaction0001> ; // optional id argument. User is expected to provide this by doesn't have to as we'll generate for them if not.
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
+
+     */
+
+}
+
 
 TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
     RDF rdf;
@@ -764,7 +1027,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#species0001");
     singularAnnotation
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
@@ -1598,7 +1861,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:1234> .
  */
-    PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", local_uri);
+    PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.rdf#species0001", "https://identifiers.org/opb/opb_1234", local_uri);
     Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000");
     std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
@@ -1619,8 +1882,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:1234> .
  */
-    PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", editor.getModelUri());
-    Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001");
+    PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.xml#species0001", "https://identifiers.org/opb/opb_1234", editor.getModelUri());
+    Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#species0001");
     std::cout << rdf.toString() << std::endl;
     for (auto &it : triples) {
         editor.addSingleAnnotation(it);
@@ -1629,7 +1892,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
     ASSERT_EQ(2, rdf.size());
     triples.freeTriples();
 
-    Triples triples2 = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001");
+    Triples triples2 = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#species0001");
     std::cout << triples2.size() << std::endl;
 
     for (auto &it : triples2) {
@@ -1726,9 +1989,9 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("#OmexMetaId0000")
-            .hasProperty("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .isVersionOf("opb:opb_1234")
+            .isVersionOf("uniprot/PD12345")
+            .isVersionOf("fma:1234");
 
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
@@ -1765,9 +2028,9 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("#OmexMetaId0000")
-            .hasProperty("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .isVersionOf("opb:opb_1234")
+            .isVersionOf("uniprot/PD12345")
+            .isVersionOf("fma:1234");
 
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected_before_remove));
@@ -1815,9 +2078,9 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("#OmexMetaId0000")
-            .hasProperty("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .isVersionOf("opb:opb_1234")
+            .isVersionOf("uniprot/PD12345")
+            .isVersionOf("fma:1234");
 
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
@@ -1875,3 +2138,388 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
 
     triple.freeTriple();
 }
+
+
+
+
+class CellMLTests : public ::testing::Test {
+public:
+    std::string cellml_example = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                                 "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+                                 "  <component name=\"main\">\n"
+                                 "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+                                 "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
+                                 "    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />\n"
+                                 "  </component>\n"
+                                 "</model>";
+
+    std::string cellml_example_annotation_xml = "<rdf:RDF\n"
+                                                "    xmlns:semsim=\"http://bime.uw.edu/semsim/\"\n"
+                                                "    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                                "    xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
+                                                "    xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                                                "    xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
+                                                "    xmlns:myOMEX=\"http://omex-library.org/CellMLexamples.omex\"\n"
+                                                "    xmlns:foaf=\"http://xmlns.com/foaf/0.1/\"\n"
+                                                "    xmlns:local=\"http://omex-library.org/CellMLexamples.omex/examples.rdf\">\n"
+                                                "  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.cellml#main.ReactionRate\">\n"
+                                                "    <bqbiol:isPropertyOf>\n"
+                                                "      <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#process_0\">\n"
+                                                "        <semsim:hasMediatorParticipant>\n"
+                                                "          <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#mediator_0\">\n"
+                                                "            <semsim:hasPhysicalEntityReference>\n"
+                                                "              <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_12\">\n"
+                                                "                <bqbiol:isPartOf>\n"
+                                                "                  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9\">\n"
+                                                "                    <bqbiol:isPartOf>\n"
+                                                "                      <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_10\">\n"
+                                                "                        <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:14515\"/>\n"
+                                                "                      </rdf:Description>\n"
+                                                "                    </bqbiol:isPartOf>\n"
+                                                "                    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:66836\"/>\n"
+                                                "                  </rdf:Description>\n"
+                                                "                </bqbiol:isPartOf>\n"
+                                                "                <bqbiol:is rdf:resource=\"http://purl.obolibrary.org/obo/PR_000003767\"/>\n"
+                                                "              </rdf:Description>\n"
+                                                "            </semsim:hasPhysicalEntityReference>\n"
+                                                "          </rdf:Description>\n"
+                                                "        </semsim:hasMediatorParticipant>\n"
+                                                "        <semsim:hasSinkParticipant>\n"
+                                                "          <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_1\"\n"
+                                                "             semsim:hasMultiplier=\"1.0\">\n"
+                                                "            <semsim:hasPhysicalEntityReference>\n"
+                                                "              <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_11\">\n"
+                                                "                <bqbiol:isPartOf rdf:resource=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9\"/>\n"
+                                                "                <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15343\"/>\n"
+                                                "              </rdf:Description>\n"
+                                                "            </semsim:hasPhysicalEntityReference>\n"
+                                                "          </rdf:Description>\n"
+                                                "        </semsim:hasSinkParticipant>\n"
+                                                "        <semsim:hasSourceParticipant>\n"
+                                                "          <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#source_1\"\n"
+                                                "             semsim:hasMultiplier=\"1.0\">\n"
+                                                "            <semsim:hasPhysicalEntityReference>\n"
+                                                "              <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_8\">\n"
+                                                "                <bqbiol:isPartOf rdf:resource=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9\"/>\n"
+                                                "                <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:16236\"/>\n"
+                                                "              </rdf:Description>\n"
+                                                "            </semsim:hasPhysicalEntityReference>\n"
+                                                "          </rdf:Description>\n"
+                                                "        </semsim:hasSourceParticipant>\n"
+                                                "        <semsim:name>my process</semsim:name>\n"
+                                                "        <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/go/GO:0004022\"/>\n"
+                                                "      </rdf:Description>\n"
+                                                "    </bqbiol:isPropertyOf>\n"
+                                                "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
+                                                "  </rdf:Description>\n"
+                                                "  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.cellml#main.Volume\">\n"
+                                                "    <bqbiol:isPropertyOf>\n"
+                                                "      <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0\">\n"
+                                                "        <bqbiol:isPartOf>\n"
+                                                "          <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1\">\n"
+                                                "            <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
+                                                "          </rdf:Description>\n"
+                                                "        </bqbiol:isPartOf>\n"
+                                                "        <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
+                                                "      </rdf:Description>\n"
+                                                "    </bqbiol:isPropertyOf>\n"
+                                                "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00154\"/>\n"
+                                                "  </rdf:Description>\n"
+                                                "  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.cellml\"\n"
+                                                "     semsim:modelName=\"annotation_examples\"/>\n"
+                                                "  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.cellml#main.MembraneVoltage\">\n"
+                                                "    <bqbiol:isPropertyOf>\n"
+                                                "      <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#force_0\">\n"
+                                                "        <semsim:hasSinkParticipant>\n"
+                                                "          <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_0\">\n"
+                                                "            <semsim:hasPhysicalEntityReference>\n"
+                                                "              <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_5\">\n"
+                                                "                <bqbiol:isPartOf>\n"
+                                                "                  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_6\">\n"
+                                                "                    <bqbiol:isPartOf>\n"
+                                                "                      <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_7\">\n"
+                                                "                        <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:16016\"/>\n"
+                                                "                      </rdf:Description>\n"
+                                                "                    </bqbiol:isPartOf>\n"
+                                                "                    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9672\"/>\n"
+                                                "                  </rdf:Description>\n"
+                                                "                </bqbiol:isPartOf>\n"
+                                                "                <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:24870\"/>\n"
+                                                "              </rdf:Description>\n"
+                                                "            </semsim:hasPhysicalEntityReference>\n"
+                                                "          </rdf:Description>\n"
+                                                "        </semsim:hasSinkParticipant>\n"
+                                                "        <semsim:hasSourceParticipant>\n"
+                                                "          <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#source_0\">\n"
+                                                "            <semsim:hasPhysicalEntityReference>\n"
+                                                "              <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_2\">\n"
+                                                "                <bqbiol:isPartOf>\n"
+                                                "                  <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_3\">\n"
+                                                "                    <bqbiol:isPartOf>\n"
+                                                "                      <rdf:Description rdf:about=\"http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_4\">\n"
+                                                "                        <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:70586\"/>\n"
+                                                "                      </rdf:Description>\n"
+                                                "                    </bqbiol:isPartOf>\n"
+                                                "                    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:66836\"/>\n"
+                                                "                  </rdf:Description>\n"
+                                                "                </bqbiol:isPartOf>\n"
+                                                "                <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:24870\"/>\n"
+                                                "              </rdf:Description>\n"
+                                                "            </semsim:hasPhysicalEntityReference>\n"
+                                                "          </rdf:Description>\n"
+                                                "        </semsim:hasSourceParticipant>\n"
+                                                "      </rdf:Description>\n"
+                                                "    </bqbiol:isPropertyOf>\n"
+                                                "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00506\"/>\n"
+                                                "  </rdf:Description>\n"
+                                                "</rdf:RDF>";
+
+    std::string cellml_example_annotation_turtle = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                                   "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                                                   "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
+                                                   "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                                                   "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                                                   "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                                                   "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                                                   "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                                                   "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.cellml>\n"
+                                                   "    semsim:modelName \"annotation_examples\" .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.MembraneVoltage>\n"
+                                                   "    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#force_0> ;\n"
+                                                   "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00506> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.ReactionRate>\n"
+                                                   "    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#process_0> ;\n"
+                                                   "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.Volume>\n"
+                                                   "    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0> ;\n"
+                                                   "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:18228> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_10>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:14515> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_11>\n"
+                                                   "    bqbiol:is <https://identifiers.org/chebi/CHEBI:15343> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_12>\n"
+                                                   "    bqbiol:is <http://purl.obolibrary.org/obo/PR_000003767> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_2>\n"
+                                                   "    bqbiol:is <https://identifiers.org/chebi/CHEBI:24870> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_3> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_3>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:66836> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_4> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_4>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:70586> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_5>\n"
+                                                   "    bqbiol:is <https://identifiers.org/chebi/CHEBI:24870> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_6> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_6>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:9672> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_7> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_7>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:16016> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_8>\n"
+                                                   "    bqbiol:is <https://identifiers.org/chebi/CHEBI:16236> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9>\n"
+                                                   "    bqbiol:is <http://identifiers.org/fma/FMA:66836> ;\n"
+                                                   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_10> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#force_0>\n"
+                                                   "    semsim:hasSinkParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_0> ;\n"
+                                                   "    semsim:hasSourceParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#source_0> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#mediator_0>\n"
+                                                   "    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_12> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#process_0>\n"
+                                                   "    semsim:hasMediatorParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#mediator_0> ;\n"
+                                                   "    semsim:hasSinkParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_1> ;\n"
+                                                   "    semsim:hasSourceParticipant <http://omex-library.org/CellMLexamples.omex/examples.rdf#source_1> ;\n"
+                                                   "    semsim:name \"my process\" ;\n"
+                                                   "    bqbiol:isVersionOf <http://identifiers.org/go/GO:0004022> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_0>\n"
+                                                   "    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_5> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_1>\n"
+                                                   "    semsim:hasMultiplier \"1.0\" ;\n"
+                                                   "    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_11> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#source_0>\n"
+                                                   "    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_2> .\n"
+                                                   "\n"
+                                                   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#source_1>\n"
+                                                   "    semsim:hasMultiplier \"1.0\" ;\n"
+                                                   "    semsim:hasPhysicalEntityReference <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_8> .";
+
+    CellMLTests() = default;
+};
+
+
+TEST_F(CellMLTests, TestThatXMLAndTurtleAreEqual) {
+    ASSERT_TRUE(RDF::equals(cellml_example_annotation_xml, cellml_example_annotation_turtle, "rdfxml", "turtle"));
+}
+
+TEST_F(CellMLTests, CreateEditorWithoutGenerateNewMetaids){
+    RDF rdf;
+    rdf.setModelUri("annotation_examples");
+
+    Editor editor = rdf.toEditor(cellml_example, false, false);
+    auto metaids = editor.getMetaids();
+    bool truth = false;
+    for (auto &it : metaids){
+        if (it == "component0000")
+            truth = true;
+    }
+    ASSERT_FALSE(truth);
+}
+
+TEST_F(CellMLTests, CreateEditorWithGenerateNewMetaids){
+    RDF rdf;
+    rdf.setModelUri("annotation_examples");
+    Editor editor = rdf.toEditor(cellml_example, true, false);
+    auto metaids = editor.getMetaids();
+    bool truth = false;
+    for (auto &it : metaids){
+        if (it == "component0000")
+            truth = true;
+    }
+    ASSERT_TRUE(truth);
+}
+
+TEST_F(CellMLTests, Test){
+    /*
+     *
+     *
+     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+     "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+     "  <component name=\"main\">\n"
+     "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+     "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
+     "    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />\n"
+     "  </component>\n"
+     "</model>";
+
+     What is we pull out the "property" from Physical Entity class, instead requiring the user to
+     Do it themselves.
+
+
+   "<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.Volume>\n"
+   "    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0> ;\n"
+   "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .\n"
+   "\n"
+   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0>\n"
+   "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
+   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1> .\n"
+   "\n"
+   */
+    RDF rdf;
+    rdf.setModelUri("annotation_examples");
+
+    Editor editor = rdf.toEditor(cellml_example, false, false);
+
+//    PhysicalProperty property = editor.newPhysicalProperty();
+//    property
+//        .about("main.Volume")
+//        .isVersionOf("opb/OPB_00154")
+//        .isPropertyOf(editor.getLocalUri() + "entity0");
+//    editor.addPhysicalProperty(property);
+
+    std::cout << rdf.toString() << std::endl;
+
+    PhysicalEntity entity0 = editor.newPhysicalEntity();
+    entity0.about("entity0");
+//            .identity("fma/FMA:9670")
+//            .isPartOf("entity_1");
+    editor.addPhysicalEntity(entity0);
+
+//    http://omex-library.org/NewOmex.omex/annotation_examples.xml##variable1
+//        bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .
+//        bqbiol:isPropertyOf <entity> ;
+//
+//    <entity>
+//        ..is
+//        ...isVErsionOf
+//
+//     */
+
+//    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+////    std::string entity_id = OmexMetaUtils::concatMetaIdAndUri("Entity_0", rdf.getLocalUri());
+//    physicalEntity.about("main.Volume");
+//            .isVersionOf("opb/OPB_00154")
+//            .identity("FMA:9670")
+//            .isPartOf("entity_1");
+
+//
+
+//    editor.addPhysicalEntity(physicalEntity);
+
+    std::cout << rdf.toString() << std::endl;
+}
+
+TEST_F(CellMLTests, TestPhysicalProcess){
+    /*
+     *
+     *
+     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+     "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+     "  <component name=\"main\">\n"
+     "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+     "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
+     "    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />\n"
+     "  </component>\n"
+     "</model>";
+
+
+   "<http://omex-library.org/CellMLexamples.omex/examples.cellml#main.Volume>\n"
+   "    bqbiol:isPropertyOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0> ;\n"
+   "    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .\n"
+   "\n"
+   "<http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0>\n"
+   "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
+   "    bqbiol:isPartOf <http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1> .\n"
+   "\n"
+   */
+    RDF rdf;
+    rdf.setModelUri("annotation_examples");
+
+    Editor editor = rdf.toEditor(cellml_example, false, false);
+
+    PhysicalProcess process = editor.newPhysicalProcess();
+//    std::string entity_id = OmexMetaUtils::concatMetaIdAndUri("Entity_0", rdf.getLocalUri());
+    process.about("main.ReactionRate")
+            .isVersionOf("opb/OPB_00154") // isVerisonOf
+            .addSource(1, "phys")
+            .addSink(1, "2");
+
+    editor.addPhysicalProcess(process);
+
+    std::cout << rdf.toString() << std::endl;
+}
+
+
+
+

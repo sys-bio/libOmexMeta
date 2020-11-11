@@ -104,7 +104,7 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty1) {
             source_participants,
             sink_participants
     );
-    std::string actual = force.getPhysicalProperty().getResourceStr();
+    std::string actual = force.getPhysicalProperty().getIsVersionOfValue();
     std::string expected = "OPB:OPB_00340";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
@@ -134,7 +134,7 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty2) {
             source_participants,
             sink_participants
     );
-    std::string actual = force.getPhysicalProperty().getSubjectStr();
+    std::string actual = force.getPhysicalProperty().getAbout();
     std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
@@ -213,7 +213,7 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     force.setLocalUri(local_uri);
     //todo considering implementing the builder as a composite builder
     force.about("Force5")
-            .hasProperty("OPB:OPB_00340")
+            .isVersionOf("OPB:OPB_00340")
             .addSource(1, "#PhysicalEntityReference1")
             .addSink(2, "PhysicalEntityReference2")
             .addSink(1, "PhysicalEntityReference3");

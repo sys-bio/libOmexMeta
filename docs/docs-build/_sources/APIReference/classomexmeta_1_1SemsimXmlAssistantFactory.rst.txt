@@ -1,6 +1,6 @@
 .. _exhale_class_classomexmeta_1_1SemsimXmlAssistantFactory:
 
-Class SemsimXmlAssistantFactory
+Class OmexMetaXmlAssistantFactory
 ===============================
 
 - Defined in :ref:`file_src_omexmeta_OmexMetaXmlAssistant.h`
@@ -10,7 +10,7 @@ Class Documentation
 -------------------
 
 
-.. doxygenclass:: omexmeta::SemsimXmlAssistantFactory
+.. doxygenclass:: omexmeta::OmexMetaXmlAssistantFactory
    :members:
    :protected-members:
    :undoc-members:

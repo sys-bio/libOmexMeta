@@ -107,7 +107,7 @@ int main(){
 
     PhysicalProcess process = editor.newPhysicalProcess();
     process.about("OmexMetaId0012")
-            .hasProperty("OPB:OPB_00340")
+            .isVersionOf("OPB:OPB_00340")
             .isVersionOf("GO:12345")
             .addSink(1, "OmexMetaId0001")
             .addSource(1, "OmexMetaId0002")

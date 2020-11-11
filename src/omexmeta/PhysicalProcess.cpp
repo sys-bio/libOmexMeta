@@ -118,18 +118,14 @@ namespace omexmeta {
 
 
     Triples PhysicalProcess::toTriples() {
-        if (getAbout().empty()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"about\" information is not set. "
-                    "Use the about() method."
-            );
+        if (getAbout().empty() || getAbout() == model_uri_ + "#") {
+            std::string new_about = generateMetaId("Process");
+            about(OmexMetaUtils::concatMetaIdAndUri(new_about, local_uri_));
         }
-        if (physical_process_property_id_.empty()){
+        if (physical_process_property_id_.empty()) {
             physical_process_property_id_ = generateMetaId("ProcessProperty");
         }
         physical_process_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_process_property_id_, getLocalUri());
-
 
         Triples triples = physical_property_.toTriples(physical_process_property_id_);
 
@@ -159,18 +155,23 @@ namespace omexmeta {
     }
 
 
-    PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property) {
-        physical_property_.setResource(property);
+    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string &property) {
+        physical_property_.isVersionOf(property);
         return *this;
     }
 
     PhysicalProcess &PhysicalProcess::about(const std::string &about) {
-        physical_property_.setSubject(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
+        if (!OmexMetaUtils::startsWith(about, "http"))
+            physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
+        else
+            physical_property_.about(about);
         return *this;
     }
-    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string& version) {
-        is_version_of_ = version;
+
+    PhysicalProcess &PhysicalProcess::variableMetaId(const std::string& metaid) {
+        physical_process_property_id_ = metaid;
         return *this;
     }
+
 
 }

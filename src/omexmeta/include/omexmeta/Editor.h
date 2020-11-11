@@ -168,6 +168,11 @@ namespace omexmeta {
         void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
 
         /**
+         * @brief add a physical process to the rdf graph
+         */
+        void Editor::addPhysicalProperty(PhysicalProperty &physicalProperty);
+
+        /**
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
          * @param physicalEntity An instance of a PhysicalEntity object to add to the rdf graph.
          */
@@ -382,6 +387,7 @@ namespace omexmeta {
          * @details a SingularAnnotation is a typedefed Triple object.
          */
         SingularAnnotation newSingularAnnotation() const;
+        PhysicalProperty newPhysicalProperty();
     };
 
 }

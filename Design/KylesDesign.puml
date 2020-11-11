@@ -225,7 +225,7 @@ namespace omexmeta {
 namespace omexmeta {
 	class IdentityCondition {
 		+IdentityCondition(Resource resource)
-		#isVersionOfValue : Resource
+		#is_version_of_value_ : Resource
 		+matchEntity(const EntityBase& entity) : bool {query}
 		+matches(const Component& component) : bool {query}
 	}
@@ -292,7 +292,7 @@ namespace omexmeta {
 		+PhysicalProperty(Resource&& resource)
 		+PhysicalProperty(const std::string& resource)
 		+PhysicalProperty(std::string&& resource)
-		#isVersionOfValue : Resource
+		#is_version_of_value_ : Resource
 		+getResource() : Resource& {query}
 		+getResource() : Resource&
 		+humanize() : std::string {query}
@@ -596,7 +596,7 @@ namespace omexmeta {
 		+Term(const Relation& relation, const double value)
 		#relation_ : Relation
 		+getRelation() : Relation& {query}
-		#isVersionOfValue : Resource
+		#is_version_of_value_ : Resource
 		+getResource() : Resource& {query}
 		+isValue() : bool {query}
 		#is_value_ : bool
@@ -627,7 +627,7 @@ namespace omexmeta {
 	class bqb {
 		+{static} encodes : const static Relation
 		+{static} hasPart : const static Relation
-		+{static} hasProperty : const static Relation
+		+{static} isVersionOf : const static Relation
 		+{static} hasTaxon : const static Relation
 		+{static} hasVersion : const static Relation
 		+{static} is : const static Relation

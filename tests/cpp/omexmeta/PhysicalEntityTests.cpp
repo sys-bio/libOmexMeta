@@ -64,7 +64,7 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
                     {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:72564").get()),
                      Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma:63877").get())}));
     Resource r(LibrdfNode::fromUriString(
-            physicalEntity.getPhysicalProperty().getResourceStr()));
+            physicalEntity.getPhysicalProperty().getIsVersionOfValue()));
     std::string actual = r.str();
     std::string expected = "https://identifiers.org/OPB:OPB_00340";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -344,9 +344,9 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
             .about("VLV")
-            .hasProperty("OPB:OPB_00154")
-            .identity("fma:9690")
-            .isPartOf("fma:FMA:18228");
+            .isVersionOf("OPB:OPB_00154")
+            .isVersionOf("fma:9690")
+            .isVersionOf("fma:FMA:18228");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -411,7 +411,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder2) {
             .about("glucose_c")
             .identity("CHEBI:17234")
             .isPartOf("GO:0005737")
-            .hasProperty("OPB:00340");
+            .isVersionOf("OPB:00340");
     Triples triples = physicalEntity.toTriples();
 
     std::string expected_string = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -526,9 +526,9 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderHasPart) {
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
             .about("metaid")
-            .hasProperty("OPB:OPB_00340")
-            .hasPart("uniprot/PD12345")
-            .hasPart("uniprot/PD12346");
+            .isVersionOf("OPB:OPB_00340")
+            .isVersionOf("uniprot/PD12345")
+            .isVersionOf("uniprot/PD12346");
 //    std::string actual = physicalEntity.toTriples().str();
 //    std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -588,10 +588,10 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysical
 
     physicalEntity
             .about("metaid")
-            .hasProperty("OPB:OPB_00340")
-            .identity("uniprot/PD12345")
-            .isPartOf("https://identifiers.org/fma:72564")
-            .isPartOf("fma:63877");
+            .isVersionOf("OPB:OPB_00340")
+            .isVersionOf("uniprot/PD12345")
+            .isVersionOf("https://identifiers.org/fma:72564")
+            .isVersionOf("fma:63877");
 
     Triples triples = physicalEntity.toTriples();
 
@@ -624,10 +624,10 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringNoProper
     physicalEntity.setLocalUri(local_uri);
     physicalEntity
             .about("metaid")
-            .hasProperty("obo/OPB12345")
-            .identity("uniprot/PR12345")
-            .isPartOf("https://identifiers.org/fma:72564")
-            .isPartOf("fma:63877");
+            .isVersionOf("obo/OPB12345")
+            .isVersionOf("uniprot/PR12345")
+            .isVersionOf("https://identifiers.org/fma:72564")
+            .isVersionOf("fma:63877");
     Triples triples = physicalEntity.toTriples();
     ASSERT_EQ(5, triples.size());
     std::string actual = triples.str();

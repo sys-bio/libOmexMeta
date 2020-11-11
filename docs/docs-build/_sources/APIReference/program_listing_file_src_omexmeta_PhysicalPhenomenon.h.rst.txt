@@ -137,7 +137,7 @@ Program Listing for File PhysicalPhenomenon.h
    
    //        virtual void free();
    
-           const std::string &getSubjectStr() const;
+           const std::string &getAbout() const;
    
            PhysicalPhenomenon& about(std::string about);
    

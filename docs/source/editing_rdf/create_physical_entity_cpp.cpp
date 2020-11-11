@@ -108,13 +108,13 @@ int main(){
     Editor editor = rdf.toEditor(sbml, true, true);
 
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity.about( "#OmexMetaId0000")
-        .hasProperty( "OPB:OPB_00340")
-        .identity("uniprot/P84022")
-        .isPartOf("fma/FMA:63877")
-        .isPartOf("fma:FMA:70737")
-        .isPartOf("fma/FMA:24178")
-        .isPartOf("fma/FMA_7163");
+    physicalEntity.about("#OmexMetaId0000")
+            .isVersionOf("OPB:OPB_00340")
+            .isVersionOf("uniprot/P84022")
+            .isVersionOf("fma/FMA:63877")
+            .isVersionOf("fma:FMA:70737")
+            .isVersionOf("fma/FMA:24178")
+            .isVersionOf("fma/FMA_7163");
 
     editor.addPhysicalEntity(physicalEntity);
     std::cout << rdf.toString() << std::endl;

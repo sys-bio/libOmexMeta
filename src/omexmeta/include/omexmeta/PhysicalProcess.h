@@ -163,13 +163,13 @@ namespace omexmeta {
         bool operator!=(const PhysicalProcess &rhs) const;
 
         /**
-         * @brief set the hasProperty portion of the PhysicalProcess composite annotation
-         * @param is_version_of the string to be used as the Resource portion of the hasProperty Triple. This
+         * @brief set the isVersionOf portion of the PhysicalProcess composite annotation
+         * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
          * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
          * @details This method will set the Resource resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalProcess &hasProperty(const std::string &property) ;
+        PhysicalProcess &isVersionOf(const std::string &property) ;
 
         /**
          * @brief set the subject (rdf:about) portion of the PhysicalProcess composite annotation
@@ -180,12 +180,7 @@ namespace omexmeta {
          */
         PhysicalProcess& about(const std::string& about) override;
 
-        /**
-         * @brief optionally add the isVersionOf predicate to the PhysicalProcess
-         * you are creating.
-         */
-        PhysicalProcess& isVersionOf(const std::string& version);
-
+        PhysicalProcess& variableMetaId(const std::string& metaid);
     };
 }
 
