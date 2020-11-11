@@ -50,7 +50,6 @@ TEST_F(UriHandlerTests, SetArchive){
     UriHandler handler;
     handler.setArchive("MyAwesomeArchive.omex");
 
-
     const std::string& repository = handler.getRepository();
     const std::string& archive = handler.getArchive();
     const std::string& model = handler.getModel();

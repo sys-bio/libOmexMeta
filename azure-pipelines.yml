@@ -6,6 +6,7 @@
 trigger:
 - master
 - develop
+- support-cellml
 
 jobs:
 - job: BuildLinux
