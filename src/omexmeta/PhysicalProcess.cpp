@@ -124,10 +124,11 @@ namespace omexmeta {
         }
         if (physical_process_property_id_.empty()) {
             physical_process_property_id_ = generateMetaId("ProcessProperty");
+            physical_property_.about(physical_process_property_id_, LOCAL_URI);
         }
-        physical_process_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_process_property_id_, getLocalUri());
 
-        Triples triples = physical_property_.toTriples(physical_process_property_id_);
+
+        Triples triples = physical_property_.toTriples();
 
         if (!is_version_of_.empty()) {
             SingularAnnotation singularAnnotation(
@@ -160,11 +161,11 @@ namespace omexmeta {
         return *this;
     }
 
-    PhysicalProcess &PhysicalProcess::about(const std::string &about) {
+    PhysicalProcess &PhysicalProcess::about(const std::string &about, eUriType type) {
         if (!OmexMetaUtils::startsWith(about, "http"))
             physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         else
-            physical_property_.about(about);
+            physical_property_.about(about, type);
         return *this;
     }
 

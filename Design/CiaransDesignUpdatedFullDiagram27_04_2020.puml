@@ -187,7 +187,7 @@ namespace omexmeta {
 		+what() : Triple {query}
 		+toTriples() : Triples {query}
 		+where() : omexmeta::Triples {query}
-		-{static} metaid_ : static std::vector<MetaID>
+		-{static} about_value_ : static std::vector<MetaID>
 		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
 	}
 

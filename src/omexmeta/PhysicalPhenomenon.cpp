@@ -15,6 +15,7 @@ namespace omexmeta {
     librdf_model *PhysicalPhenomenon::getModel() const {
         return model_;
     }
+
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
 
@@ -47,12 +48,8 @@ namespace omexmeta {
 
 
     const std::string & PhysicalPhenomenon::getAbout() const {
+        // if the about field is empty or equal to model or local uri only, then we generate an about
         return physical_property_.getAbout();
-    }
-
-    PhysicalPhenomenon& PhysicalPhenomenon::about(const std::string& about) {
-        physical_property_.about(about);
-        return *this;
     }
 
 

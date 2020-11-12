@@ -42,7 +42,7 @@ Program Listing for File PersonalInformation.h
            librdf_model *model_;
            Triples triples_;
            std::string model_uri_;
-           std::string metaid_;
+           std::string about_value_;
            std::string model_uri_;
    
        private:

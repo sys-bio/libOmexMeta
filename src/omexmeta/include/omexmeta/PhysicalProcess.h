@@ -178,7 +178,7 @@ namespace omexmeta {
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalProcess& about(const std::string& about) override;
+        PhysicalProcess& about(const std::string& about, eUriType type = NONE);
 
         PhysicalProcess& variableMetaId(const std::string& metaid);
     };

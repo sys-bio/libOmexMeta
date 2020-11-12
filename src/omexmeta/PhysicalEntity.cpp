@@ -3,6 +3,7 @@
 //
 
 #include "omexmeta/PhysicalEntity.h"
+#include "omexmeta/UriHandler.h"
 
 namespace omexmeta {
 
@@ -35,7 +36,7 @@ namespace omexmeta {
         return *this;
     }
 
-    PhysicalEntity &
+    OMEXMETA_DEPRECATED PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
         subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
@@ -74,44 +75,22 @@ namespace omexmeta {
         return location_resources_;
     }
 
-    Triples PhysicalEntity::toTriples() {
-        if (getAbout().empty()) {
-            throw AnnotationBuilderException(
-                    "PhysicalEntity::toTriples(): Cannot create"
-                    " triples because the \"about\" information is not set. "
-                    "Use the about() method.");
+    void PhysicalEntity::autoGenerateAbout(){
+        if (getAbout().empty() ||
+            getAbout() == local_uri_ ||
+            getAbout() == local_uri_ + "#" ||
+            getAbout() == model_uri_ ||
+            getAbout() == model_uri_+ "#"
+            ) {
+            about(OmexMetaUtils::generateUniqueMetaid(model_, "Entity", new_metaid_exclusion_list_), LOCAL_URI);
         }
+    }
 
-        // location_resources_ is optional
-        if (!location_resources_.empty()) {
-            int count = 0;
-            for (auto &i : getLocationResources()) {
-                if (i.getNode() == nullptr) {
-                    std::ostringstream err;
-                    err << "PhysicalEntity::toTriples(): Cannot create"
-                           " triples because item ";
-                    err << count << "of the \"location\" information is not set. ";
-                    err << "Use the addLocation() method.";
-                    throw AnnotationBuilderException(
-                            err.str());
-                }
-            }
-        }
-        // has part resources are optional
-        if (!part_resources_.empty()) {
-            int count = 0;
-            for (auto &i : part_resources_) {
-                if (i.getNode() == nullptr) {
-                    std::ostringstream err;
-                    err << "PhysicalEntity::toTriples(): Cannot create"
-                           " triples because item ";
-                    err << count << "of the \"hasPart\" information is not set. ";
-                    err << "Use the addPart() method.";
-                    throw AnnotationBuilderException(
-                            err.str());
-                }
-            }
-        }
+    Triples PhysicalEntity::toTriples() {
+        // conditionals included within autoGenerateAbout such that only generates when about is empty or local/model uri
+//        autoGenerateAbout();
+
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
         // when physical_property_id_ is empty it means we have not
         // called the toTriples() method before and an ID needs to be generated.
@@ -122,21 +101,24 @@ namespace omexmeta {
         // new id but if its filled then we can generate Triples an arbitrary number
         // of times from the same PhysicalEntity instance and still get the same
         // Triples object. Note, this is important for deleting composites from the rdf model.
-        if (physical_entity_property_id_.empty()) {
+        std::cout << "physical_property_.getIsPropertyOfValue(): " << physical_property_.getIsPropertyOfValue() << std::endl;
+        if (physical_property_.getIsPropertyOfValue().empty()) {
             // no exclusions needed here - we only generate 1 process metaid before comiting the triples
             // to the model.
-            physical_entity_property_id_ = generateMetaId("EntityProperty");
+            physical_property_.isPropertyOf(generateMetaId("EntityProperty"), LOCAL_URI);
         }
+        std::cout << "physical_property_.getIsPropertyOfValue(): " << physical_property_.getIsPropertyOfValue() << std::endl;
 
-        // physical_entity_property_id_: for instance "local:EntityProperty0000"
-        if (!OmexMetaUtils::startsWith(physical_entity_property_id_, "http")){
-            physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_entity_property_id_, getLocalUri());
-        }
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+
         // preallocate for efficiency
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         Triples triples((int) getLocationResources().size() + (int) part_resources_.size() + 3);
 
-        Triples physical_property_triples = physical_property_.toTriples(physical_entity_property_id_);
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+        Triples physical_property_triples = physical_property_.toTriples();
 
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         for (auto &it : physical_property_triples) {
             triples.move_back(it);// moves the statement
         }
@@ -149,7 +131,7 @@ namespace omexmeta {
 
         if (identity_resource_.isSet()) {
             triples.emplace_back(
-                    LibrdfNode::fromUriString(getAbout()).get(),
+                    LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                     BiomodelsBiologyQualifier("is").getNode(),
                     identity_resource_.getNode());
         }
@@ -159,7 +141,7 @@ namespace omexmeta {
             // the "where" part of the physical entity
             for (auto &locationResource : location_resources_) {
                 triples.emplace_back(
-                        LibrdfNode::fromUriString(getAbout()).get(),
+                        LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                         BiomodelsBiologyQualifier("isPartOf").getNode(),
                         locationResource.getNode());
             }
@@ -169,7 +151,7 @@ namespace omexmeta {
             // the "where" part of the physical entity
             for (auto &locationResource : part_resources_) {
                 triples.emplace_back(
-                        LibrdfNode::fromUriString(getAbout()).get(),
+                        LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                         BiomodelsBiologyQualifier("hasPart").getNode(),
                         locationResource.getNode());
             }
@@ -198,11 +180,11 @@ namespace omexmeta {
         return *this;
     }
 
-    PhysicalEntity &PhysicalEntity::about(const std::string &about) {
+    PhysicalEntity &PhysicalEntity::about(const std::string &about, eUriType type) {
         if (!OmexMetaUtils::startsWith(about, "http"))
             physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         else
-            physical_property_.about(about);
+            physical_property_.about(about, type);
         return *this;
     }
 
@@ -215,9 +197,39 @@ namespace omexmeta {
     }
 
 
-    PhysicalEntity &PhysicalEntity::variableMetaId(const std::string &metaid){
+    PhysicalEntity &PhysicalEntity::variableMetaId(const std::string &metaid) {
         physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(metaid, model_uri_);
         return *this;
+    }
+
+    PhysicalEntity &PhysicalEntity::hasProperty(const PhysicalProperty &property) {
+        physical_property_ = property;
+        if (
+
+                physical_property_.getIsPropertyOfValue().empty() ||
+                physical_property_.getIsPropertyOfValue() == local_uri_ ||
+                physical_property_.getIsPropertyOfValue() == local_uri_ + "#" ||
+                physical_property_.getIsPropertyOfValue() == model_uri_ ||
+                physical_property_.getIsPropertyOfValue() == model_uri_ + "#") {
+            // physical property takes care of using EntityProperty for generating ids
+            physical_property_.setPropertyMetaidBase("EntityProperty");
+        }
+
+        return *this;
+    }
+
+
+    PhysicalProperty& PhysicalEntity::hasProperty(const std::string& property_about, eUriType about_uri_type){
+        if (property_about.empty()){
+            std::cout << "about: " << getAbout() << std::endl;
+            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(getAbout(), MODEL_URI);
+            physical_property_.setPropertyMetaidBase("EntityProperty");
+
+        } else {
+            std::cout << "entity prop : " << property_about << std::endl;
+            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
+        }
+        return physical_property_;
     }
 
 

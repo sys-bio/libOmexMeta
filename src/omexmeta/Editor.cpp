@@ -171,7 +171,6 @@ namespace omexmeta {
             // remove a Triple off the front of triples
             Triple triple = triples.pop_front();
 
-            std::cout << "triple: " << triple.str() << std::endl;
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
 

@@ -111,12 +111,6 @@ namespace omexmeta {
         [[nodiscard]] const std::string& getAbout() const;
 
         /**
-         * @brief set the subject portion of the PhysicalPhenomenon
-         * @return the string associated with the subject node
-         */
-        virtual PhysicalPhenomenon& about(const std::string& about);
-
-        /**
          * @brief getter for Type argument
          * @return the AnnotationType currently used (PhysicalEntity, PhysicalForce or PhysicalProcess)
          */
@@ -145,6 +139,8 @@ namespace omexmeta {
         void setType(AnnotationType type);
 
         [[nodiscard]] librdf_model *getModel() const;
+
+
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

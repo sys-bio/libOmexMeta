@@ -36,6 +36,7 @@ set(
         SBMLSemanticExtractionTests.cpp
         CellMLTests.cpp
         UrlHandlerTests.cpp
+        CellMLFactory.h
 )
 
 

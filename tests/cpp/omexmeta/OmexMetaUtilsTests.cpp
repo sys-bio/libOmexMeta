@@ -156,7 +156,7 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaids) {
 
     std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
             rdf.getModel(),
-            "#OmexMetaId", exclusions);
+            "species", exclusions);
     // add annotation to the modelw ith the generated metaid
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation.about(metaid1)

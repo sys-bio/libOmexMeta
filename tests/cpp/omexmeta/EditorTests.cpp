@@ -19,6 +19,16 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
+    std::string cellml_example = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                                 "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+                                 "  <component name=\"main\">\n"
+                                 "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+                                 "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
+                                 "    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />\n"
+                                 "  </component>\n"
+                                 "</model>";
+
+
     EditorTests() {
         model = LibrdfModel(storage.get());
     };
@@ -67,40 +77,19 @@ TEST_F(EditorTests, TestArchiveName) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    std::string expected = "http://omex-library.org/myomex.omex";
-    rdf.setArchiveUri("myomex");
+    std::string expected = "http://omex-library.org/myomex.omex/";
+    rdf.setArchiveUri("myomex.omex");
     std::string actual = editor.getArchiveUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(EditorTests, TestArchiveName2) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
-    std::string expected = "http://omex-library.org/newOmex.omex";
-    rdf.setArchiveUri("newOmex.omex");
-    std::string actual = editor.getArchiveUri();
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
-TEST_F(EditorTests, TestArchiveName3) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
-    std::string expected = "http://omex-library.org/momex.omex";
-    rdf.setArchiveUri("momex.omex");
-    std::string actual = editor.getArchiveUri();
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
 
 TEST_F(EditorTests, TestSetModelName) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    rdf.setArchiveUri("MyOmexArchive");
+    rdf.setArchiveUri("MyOmexArchive.omex");
     rdf.setModelUri("smad.sbml");
 
     std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.sbml#";
@@ -112,7 +101,7 @@ TEST_F(EditorTests, TestSetLocalName) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    rdf.setArchiveUri("MyOmexArchive");
+    rdf.setArchiveUri("MyOmexArchive.omex");
     rdf.setModelUri("smad.sbml");
 
     std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.rdf#";
@@ -124,7 +113,7 @@ TEST_F(EditorTests, TestSetLocalNam) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    rdf.setArchiveUri("MyOmexArchive");
+    rdf.setArchiveUri("MyOmexArchive.omex");
     rdf.setModelUri("smad.sbml");
 
     std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.rdf#";
@@ -191,7 +180,7 @@ TEST_F(EditorTests, TestEditorCreateUriRelativeToLocalUri) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    rdf.setArchiveUri("MyOmexArchive");
+    rdf.setArchiveUri("MyOmexArchive.omex");
     rdf.setModelUri("mymodel.sbml");
     LibrdfNode node = editor.createNodeWithModelUri("species0000");
     std::string actual = node.str();
@@ -636,35 +625,54 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
 }
 
-TEST_F(EditorTests, TestPhysicalEntityBuilder) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity
-            .about("species0000")       // an sbml species
-            .isVersionOf("opb:opb_1234")//isVersionOf predicate
-            .identity("uniprot:PD12345")
-            .variableMetaId("metaid_of_kinetic_parameter")
-            .addLocation("fma:1234");
-    editor.addPhysicalEntity(physicalEntity);
 
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_of_kinetic_parameter>\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:opb_1234> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
-                           "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> .";
-    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 TEST_F(EditorTests, TestPhysicalForceBuilderWithoutAbout) {
     RDF rdf;
@@ -673,7 +681,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilderWithoutAbout) {
 
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
-            .isVersionOf("OPB:OPB1234") // change to isVersionOf
+            .isVersionOf("OPB:OPB1234")// change to isVersionOf
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 
@@ -717,7 +725,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilderWithAbout) {
     PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
             .about("AnExistingMetaid")
-            .isVersionOf("OPB:OPB1234") // change to isVersionOf
+            .isVersionOf("OPB:OPB1234")// change to isVersionOf
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 
@@ -725,7 +733,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilderWithAbout) {
      * about for a physical force is optional. If nothing is there I willc reate something appropriate
      * is not then it will override
      */
-//    std::cout << rdf.toString() << std::endl;
+    //    std::cout << rdf.toString() << std::endl;
     editor.addPhysicalForce(physicalForce);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -795,7 +803,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilderWithAbout) {
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
             .about("reaction0001")
-//            .variableMetaId("cmeta:id=...")// point 1
+            //            .variableMetaId("cmeta:id=...")// point 1
             .isVersionOf("OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2")
@@ -841,7 +849,6 @@ variableMetaID:
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
 
      */
-
 }
 
 TEST_F(EditorTests, TestPhysicalProcessBuilderWithoutAbout) {
@@ -851,8 +858,8 @@ TEST_F(EditorTests, TestPhysicalProcessBuilderWithoutAbout) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
-//            .about("reaction0001")
-//            .variableMetaId("cmeta:id=...")// point 1
+            //            .about("reaction0001")
+            //            .variableMetaId("cmeta:id=...")// point 1
             .isVersionOf("OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2")
@@ -898,7 +905,6 @@ variableMetaID:
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
 
      */
-
 }
 
 TEST_F(EditorTests, TestPhysicalProcessBuilderWithVariableMetaId) {
@@ -908,7 +914,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilderWithVariableMetaId) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
-//            .about("reaction0001")
+            //            .about("reaction0001")
             .variableMetaId("AnExistingCellMLVariable")// point 1
             .isVersionOf("OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
@@ -955,7 +961,6 @@ variableMetaID:
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
 
      */
-
 }
 
 TEST_F(EditorTests, TestPhysicalPropertyBuilder) {
@@ -967,11 +972,11 @@ TEST_F(EditorTests, TestPhysicalPropertyBuilder) {
     physicalProperty
             .about("property1")
             .isVersionOf("opb:OPB_12345")
-            .isPropertyOf("entity0");
+            .isPropertyOf("entity0", MODEL_URI);
     editor.addPhysicalProperty(physicalProperty);
 
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-//    physicalEntity.about()
+    //    physicalEntity.about()
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -992,7 +997,6 @@ variableMetaID:
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
 
      */
-
 }
 
 
@@ -1862,7 +1866,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 4) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:1234> .
  */
     PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.rdf#species0001", "https://identifiers.org/opb/opb_1234", local_uri);
-    Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000");
+    Triples triples = property.toTriples();
     std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
         editor.addSingleAnnotation(it);
@@ -1883,7 +1887,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 4) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:1234> .
  */
     PhysicalProperty property("http://omex-library.org/NewOmex.omex/NewModel.xml#species0001", "https://identifiers.org/opb/opb_1234", editor.getModelUri());
-    Triples triples = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#species0001");
+    Triples triples = property.toTriples();
     std::cout << rdf.toString() << std::endl;
     for (auto &it : triples) {
         editor.addSingleAnnotation(it);
@@ -1892,7 +1896,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
     ASSERT_EQ(2, rdf.size());
     triples.freeTriples();
 
-    Triples triples2 = property.toTriples("http://omex-library.org/NewOmex.omex/NewModel.xml#species0001");
+    Triples triples2 = property.toTriples();
     std::cout << triples2.size() << std::endl;
 
     for (auto &it : triples2) {
@@ -2140,8 +2144,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
 }
 
 
-
-
 class CellMLTests : public ::testing::Test {
 public:
     std::string cellml_example = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -2383,34 +2385,34 @@ TEST_F(CellMLTests, TestThatXMLAndTurtleAreEqual) {
     ASSERT_TRUE(RDF::equals(cellml_example_annotation_xml, cellml_example_annotation_turtle, "rdfxml", "turtle"));
 }
 
-TEST_F(CellMLTests, CreateEditorWithoutGenerateNewMetaids){
+TEST_F(CellMLTests, CreateEditorWithoutGenerateNewMetaids) {
     RDF rdf;
     rdf.setModelUri("annotation_examples");
 
     Editor editor = rdf.toEditor(cellml_example, false, false);
     auto metaids = editor.getMetaids();
     bool truth = false;
-    for (auto &it : metaids){
+    for (auto &it : metaids) {
         if (it == "component0000")
             truth = true;
     }
     ASSERT_FALSE(truth);
 }
 
-TEST_F(CellMLTests, CreateEditorWithGenerateNewMetaids){
+TEST_F(CellMLTests, CreateEditorWithGenerateNewMetaids) {
     RDF rdf;
     rdf.setModelUri("annotation_examples");
     Editor editor = rdf.toEditor(cellml_example, true, false);
     auto metaids = editor.getMetaids();
     bool truth = false;
-    for (auto &it : metaids){
+    for (auto &it : metaids) {
         if (it == "component0000")
             truth = true;
     }
     ASSERT_TRUE(truth);
 }
 
-TEST_F(CellMLTests, Test){
+TEST_F(CellMLTests, Test) {
     /*
      *
      *
@@ -2441,46 +2443,46 @@ TEST_F(CellMLTests, Test){
 
     Editor editor = rdf.toEditor(cellml_example, false, false);
 
-//    PhysicalProperty property = editor.newPhysicalProperty();
-//    property
-//        .about("main.Volume")
-//        .isVersionOf("opb/OPB_00154")
-//        .isPropertyOf(editor.getLocalUri() + "entity0");
-//    editor.addPhysicalProperty(property);
+    //    PhysicalProperty property = editor.newPhysicalProperty();
+    //    property
+    //        .about("main.Volume")
+    //        .isVersionOf("opb/OPB_00154")
+    //        .isPropertyOf(editor.getLocalUri() + "entity0");
+    //    editor.addPhysicalProperty(property);
 
     std::cout << rdf.toString() << std::endl;
 
     PhysicalEntity entity0 = editor.newPhysicalEntity();
     entity0.about("entity0");
-//            .identity("fma/FMA:9670")
-//            .isPartOf("entity_1");
+    //            .identity("fma/FMA:9670")
+    //            .isPartOf("entity_1");
     editor.addPhysicalEntity(entity0);
 
-//    http://omex-library.org/NewOmex.omex/annotation_examples.xml##variable1
-//        bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .
-//        bqbiol:isPropertyOf <entity> ;
-//
-//    <entity>
-//        ..is
-//        ...isVErsionOf
-//
-//     */
+    //    http://omex-library.org/NewOmex.omex/annotation_examples.xml##variable1
+    //        bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00154> .
+    //        bqbiol:isPropertyOf <entity> ;
+    //
+    //    <entity>
+    //        ..is
+    //        ...isVErsionOf
+    //
+    //     */
 
-//    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-////    std::string entity_id = OmexMetaUtils::concatMetaIdAndUri("Entity_0", rdf.getLocalUri());
-//    physicalEntity.about("main.Volume");
-//            .isVersionOf("opb/OPB_00154")
-//            .identity("FMA:9670")
-//            .isPartOf("entity_1");
+    //    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+    ////    std::string entity_id = OmexMetaUtils::concatMetaIdAndUri("Entity_0", rdf.getLocalUri());
+    //    physicalEntity.about("main.Volume");
+    //            .isVersionOf("opb/OPB_00154")
+    //            .identity("FMA:9670")
+    //            .isPartOf("entity_1");
 
-//
+    //
 
-//    editor.addPhysicalEntity(physicalEntity);
+    //    editor.addPhysicalEntity(physicalEntity);
 
     std::cout << rdf.toString() << std::endl;
 }
 
-TEST_F(CellMLTests, TestPhysicalProcess){
+TEST_F(CellMLTests, TestPhysicalProcess) {
     /*
      *
      *
@@ -2509,9 +2511,8 @@ TEST_F(CellMLTests, TestPhysicalProcess){
     Editor editor = rdf.toEditor(cellml_example, false, false);
 
     PhysicalProcess process = editor.newPhysicalProcess();
-//    std::string entity_id = OmexMetaUtils::concatMetaIdAndUri("Entity_0", rdf.getLocalUri());
     process.about("main.ReactionRate")
-            .isVersionOf("opb/OPB_00154") // isVerisonOf
+            .isVersionOf("opb/OPB_00154")// isVerisonOf
             .addSource(1, "phys")
             .addSink(1, "2");
 
@@ -2519,7 +2520,3 @@ TEST_F(CellMLTests, TestPhysicalProcess){
 
     std::cout << rdf.toString() << std::endl;
 }
-
-
-
-

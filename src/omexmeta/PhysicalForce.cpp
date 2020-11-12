@@ -34,10 +34,10 @@ namespace omexmeta {
         }
         if (physical_force_property_id_.empty()) {
             physical_force_property_id_ = generateMetaId("ForceProperty");
+            physical_property_.about(physical_force_property_id_, LOCAL_URI);
         }
-        physical_force_property_id_ = OmexMetaUtils::concatMetaIdAndUri(physical_force_property_id_, getLocalUri());
 
-        Triples triples = physical_property_.toTriples(physical_force_property_id_);
+        Triples triples = physical_property_.toTriples();
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
                 triples.move_back(triple);
@@ -118,11 +118,11 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce &PhysicalForce::about(const std::string &about) {
+    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
         if (!OmexMetaUtils::startsWith(about, "http"))
             physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
         else
-            physical_property_.about(about);
+            physical_property_.about(about, type);
         return *this;
     }
 

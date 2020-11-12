@@ -65,23 +65,23 @@ TEST_F(MetaIDTests, TestMaxNumberFail) {
 }
 
 TEST_F(MetaIDTests, TestGenerate) {
-    omexmeta::MetaID metaId("#metaId", 4, 3);
+    omexmeta::MetaID metaId("metaId", 4, 3);
     std::string actual = metaId.generate();
-    std::string expected = "#metaId004";
+    std::string expected = "metaId004";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(MetaIDTests, TestGenerate5) {
     omexmeta::MetaID metaId("metaId", 4, 3);
     std::string actual = metaId.generate();
-    std::string expected = "#metaId004";
+    std::string expected = "metaId004";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(MetaIDTests, TestGenerate2) {
     omexmeta::MetaID metaId("SemsimID", 1453, 6);
     std::string actual = metaId.generate();
-    std::string expected = "#SemsimID001453";
+    std::string expected = "SemsimID001453";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -95,7 +95,7 @@ TEST_F(MetaIDTests, TestGenerate3) {
 TEST_F(MetaIDTests, TestGenerate4) {
     omexmeta::MetaID metaId("SemsimID", 0, 4);
     std::string actual = metaId.generate();
-    std::string expected = "#SemsimID0000";
+    std::string expected = "SemsimID0000";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -113,7 +113,7 @@ TEST_F(MetaIDTests, TestInequality1) {
 
 TEST_F(MetaIDTests, AnotherTest) {
     omexmeta::MetaID metaId1("EntityProperty", 0, 4);
-    std::string expected = "#EntityProperty0000";
+    std::string expected = "EntityProperty0000";
     std::string actual = metaId1.generate();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

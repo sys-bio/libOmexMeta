@@ -14,6 +14,7 @@
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
 #include "omexmeta_export.h"
+#include "omexmeta/UriHandler.h"
 
 #include <regex>
 #include <utility>
@@ -24,9 +25,12 @@ namespace omexmeta {
 
     class PhysicalProperty {
 
+        std::vector<std::string> new_metaid_exclusion_list_;
         std::string is_property_of_value_;
         std::string is_version_of_value_;
-        std::string metaid_;
+        std::string property_metaid_base_ = "Property"; // which string to use for the base uri. "Property" would use Property0000 as first metaid generated.
+        std::string property_bearer_base_ = "Entity"; // which string to use for the thing that has the property.
+        std::string about_value_;
 
         std::string model_uri_;
         std::string local_uri_;
@@ -44,9 +48,17 @@ namespace omexmeta {
         /**
          * @brief constructor for PhysicalProperty
          * @param physical_property_string is used to create a URI node representing the physical property
+         * @details overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead
          */
         OMEXMETA_DEPRECATED PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri);
-
+        void setPropertyMetaidBase(const std::string &propertyMetaidBase);
+        const std::string &getPropertyBearerBase() const;
+        void setPropertyBearerBase(const std::string &propertyBearerBase);
+        /**
+         * @brief constructor for PhysicalProperty
+         * @param physical_property_string is used to create a URI node representing the physical property
+         * @details overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead
+         */
         OMEXMETA_DEPRECATED PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri, librdf_model* model);
 
         PhysicalProperty(librdf_model *model, const std::string &model_uri, const std::string &local_uri);
@@ -61,7 +73,9 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getAbout() const;
 
-        PhysicalProperty& about(const std::string &about);
+//        OMEXMETA_DEPRECATED PhysicalProperty& about(const std::string &about);
+
+        PhysicalProperty& about(const std::string &about, eUriType type = eUriType::NONE);
 
         [[nodiscard]] const std::string &getIsVersionOfValue() const;
 
@@ -69,15 +83,21 @@ namespace omexmeta {
          * @brief creates a Triples object using the information in the PhysicalProperty
          * @return a Triples object containing the set of Triple object used to represent this PhysicalProperty
          */
-        [[nodiscard]] Triples toTriples(const std::string& property_metaid) const;
+        [[nodiscard]] Triples toTriples();
 
-        [[nodiscard]] Triples toTriples() const;
-
-        PhysicalProperty &isPropertyOf(const std::string &is_property_of);
+        PhysicalProperty &isPropertyOf(const std::string &is_property_of, eUriType type);
 
         PhysicalProperty &isVersionOf(const std::string &resource);
 
-//        PhysicalProperty &propertyMetaId(const std::string &property_metaid);
+        [[nodiscard]] const std::string &getLocalUri() const;
+
+        [[nodiscard]] const std::string &getIsPropertyOfValue() const;
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const;
+
+        [[nodiscard]] const std::string &getAboutValue() const;
+
+        //        PhysicalProperty &propertyMetaId(const std::string &property_metaid);
 
     };
 
