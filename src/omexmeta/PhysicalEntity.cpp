@@ -202,16 +202,10 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::about(const std::string &about, eUriType type) {
-        std::cout << "PhysicalEntity::about: about: " << about << std::endl;
-        std::cout << "PhysicalEntity::about: physical property about: " << physical_property_.getAbout() << std::endl;
         if (OmexMetaUtils::startsWith(about, "http")) {
-            std::cout << "here1" <<std::endl;
             about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, NONE);
-            std::cout << "here2" <<std::endl;
         } else {
-            std::cout << "here3" <<std::endl;
             about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, type);
-            std::cout << "here4" <<std::endl;
         }
         if (physical_property_.getIsPropertyOfValue().empty()){
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);

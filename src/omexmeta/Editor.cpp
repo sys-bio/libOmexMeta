@@ -211,59 +211,17 @@ namespace omexmeta {
         triples.freeTriples();
     }
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
-        //        if (physicalEntity.getAbout().empty()) {
-        //            throw NullPointerException(
-        //                    "NullPointerException: Editor::addPhysicalEntity() "
-        //                    "physicalEntity::subject_ (i.e. about) node is empty");
-        //        }
-        /*
-       * Because we now want to use @prefix local for the
-       * about section, we need to inject it here,
-       * if not already formatted properly.
-       */
-        //        if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")) {
-        //            //            physicalEntity.about(OmexMetaUtils::concatMetaIdAndUri(
-        //                    physicalEntity.getAbout(), getModelUri()));
-        //            //        }
         //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
     }
 
     void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
-        //        if (physicalProcess.getAbout().empty()) {
-        //            throw NullPointerException(
-        //                    "NullPointerException: Editor::addPhysicalProcess() "
-        //                    "PhysicalProcess::subject_ (i.e. about) node is empty");
-        //        }
-        //        checkValidMetaid(physicalProcess.getAbout());
-        /**
-         * Because we now want to use @prefix Omex for the
-         * about section, we need to inject it here,
-         * if not already formatted properly.
-         */
-        if (!OmexMetaUtils::startsWith(physicalProcess.getAbout(), "http")) {
-            physicalProcess.about(OmexMetaUtils::concatMetaIdAndUri(
-                    physicalProcess.getAbout(), getModelUri()));
-        }
+        //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
     }
 
     void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
-        //        if (physicalForce.getAbout().empty()) {
-        //            throw NullPointerException(
-        //                    "NullPointerException: Editor::addPhysicalForce() "
-        //                    "PhysicalForce::subject_ (i.e. about) node is empty");
-        //        }
-        //        checkValidMetaid(physicalForce.getAbout());
-        /*
-         * Because we now want to use @prefix local for the
-         * about section, we need to inject it here,
-         * if not already formatted properly.
-         */
-        if (!OmexMetaUtils::startsWith(physicalForce.getAbout(), "http")) {
-            physicalForce.about(OmexMetaUtils::concatMetaIdAndUri(
-                    physicalForce.getAbout(), getModelUri()));
-        }
+        //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
 
