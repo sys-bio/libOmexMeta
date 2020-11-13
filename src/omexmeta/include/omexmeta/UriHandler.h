@@ -77,9 +77,20 @@ namespace omexmeta {
 
         template<class T>
         static std::string uriModifier(T& cls, std::string uri_to_modify, eUriType type) {
-            // when uri is already http we just return
-            if(OmexMetaUtils::startsWith(uri_to_modify, "http"))
+            // When uri_to_modify equals model or local uri, we throw.
+            if (
+                    uri_to_modify == cls.getLocalUri() ||
+                    uri_to_modify == cls.getLocalUri() +"#" ||
+                    uri_to_modify == cls.getModelUri() ||
+                    uri_to_modify == cls.getModelUri() +"#"
+                ){
+                throw std::logic_error("std::string uriModifier: Cannot modify input string: \""+uri_to_modify+"\"");
+            }
+            // When we already have a uri that is not local or model uri, we just return
+            if(OmexMetaUtils::startsWith(uri_to_modify, "http")) {
+                std::cout << __FILE__<<":"<<__LINE__<<":"<<__FUNCTION__<<": uri starts with http so not modifying: \""+uri_to_modify+"\""<<std::endl;
                 return uri_to_modify;
+                }
             switch (type) {
                 case NONE: {
                     return uri_to_modify;
@@ -96,7 +107,7 @@ namespace omexmeta {
                     return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, cls.getModelUri());
                 }
                 case IDENTIFIERS_URI: {
-                    return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, "https://identifiers.org/");
+                    return "https://identifiers.org/" + uri_to_modify;
                 }
             }
         }

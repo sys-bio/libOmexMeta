@@ -73,8 +73,6 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getAbout() const;
 
-//        OMEXMETA_DEPRECATED PhysicalProperty& about(const std::string &about);
-
         PhysicalProperty& about(const std::string &about, eUriType type = eUriType::NONE);
 
         [[nodiscard]] const std::string &getIsVersionOfValue() const;
@@ -95,9 +93,6 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getPropertyMetaidBase() const;
 
-        [[nodiscard]] const std::string &getAboutValue() const;
-
-        //        PhysicalProperty &propertyMetaId(const std::string &property_metaid);
 
     };
 

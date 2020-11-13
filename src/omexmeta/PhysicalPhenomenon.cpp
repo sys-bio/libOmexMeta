@@ -23,7 +23,9 @@ namespace omexmeta {
             : model_(model) {}
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri)
-        : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
+        : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {
+        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
+    }
 
     const std::string & PhysicalPhenomenon::getSubjectStr() const {
         return physical_property_.getAbout();

@@ -71,11 +71,8 @@ namespace omexmeta {
 
     Triples PhysicalProperty::toTriples() {
         // in sbml the metaid for property needs to be generated
-        std::cout << "about value: " << about_value_ << std::endl;
-        if (OmexMetaUtils::isStringEmpty<PhysicalProperty>(*this, about_value_)){
-            std::cout << "autogenerating physical property metaid" << std::endl;
+        if (OmexMetaUtils::isStringEmpty<PhysicalProperty>(*this, about_value_)) {
             about(OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_), LOCAL_URI);
-
         }
 
         if (!OmexMetaUtils::startsWith(about_value_, "http")) {
@@ -92,7 +89,6 @@ namespace omexmeta {
             is_property_of_value_ = OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_);
         }
 
-        std::cout << "is_property_of_value_:" << is_property_of_value_ << std::endl;
         Triple is_property_of_triple(
                 LibrdfNode::fromUriString(about_value_).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
@@ -114,25 +110,17 @@ namespace omexmeta {
     const std::string &PhysicalProperty::getPropertyMetaidBase() const {
         return property_metaid_base_;
     }
-    const std::string &PhysicalProperty::getAboutValue() const {
-        return about_value_;
-    }
+
 
     const std::string &PhysicalProperty::getAbout() const {
         return about_value_;
     }
-    //
-    //    PhysicalProperty& PhysicalProperty::about(const std::string &about) {
-    //        if (OmexMetaUtils::startsWith(about, "http")) {
-    //            metaid_ = about;
-    //        } else {
-    //            metaid_ = OmexMetaUtils::concatMetaIdAndUri(about, getModelUri());
-    //        }
-    //        return *this;
-    //    }
+
 
     PhysicalProperty &PhysicalProperty::about(const std::string &about, eUriType type) {
-        if (OmexMetaUtils::startsWith(about, "http")) {
+//        std::cout << "PhysicalProperty::about"
+        if (OmexMetaUtils::startsWith(about, "http")){
+            std::cout << __FILE__<<":"<<__LINE__<<":"<<__FUNCTION__ <<": about argument starts with http: \"" << about <<"\" so not using uri modifier" << std::endl;
             about_value_ = about;
         } else {
             about_value_ = UriHandler::uriModifier<PhysicalProperty>(*this, about, type);
@@ -154,21 +142,9 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    //    const std::string &PhysicalProperty::getSubject() const {
-    //        return metaid_;
-    //    }
-    //
-    //    const std::string &PhysicalProperty::getResource() const {
-    //        return is_version_of_value_;
-    //    }
-
     const std::string &PhysicalProperty::getModelUri() const {
         return model_uri_;
     }
-    //
-    //    void PhysicalProperty::setModelUri(const std::string &model_uri) {
-    //        model_uri_ = model_uri;
-    //    }
 
     PhysicalProperty &PhysicalProperty::isVersionOf(const std::string &is_version_of) {
         is_version_of_value_ = is_version_of;
@@ -179,20 +155,19 @@ namespace omexmeta {
         is_property_of_value_ = UriHandler::uriModifier<PhysicalProperty>(*this, is_property_of, type);
         return *this;
     }
+
     void PhysicalProperty::setPropertyMetaidBase(const std::string &propertyMetaidBase) {
         property_metaid_base_ = propertyMetaidBase;
     }
+
     const std::string &PhysicalProperty::getPropertyBearerBase() const {
         return property_bearer_base_;
     }
+
     void PhysicalProperty::setPropertyBearerBase(const std::string &propertyBearerBase) {
         property_bearer_base_ = propertyBearerBase;
     }
 
-    //    PhysicalProperty& PhysicalProperty::propertyMetaId(const std::string &property_metaid) {
-    //        metaid_ = property_metaid;
-    //        return *this;
-    //    }
 
 
 }// namespace omexmeta

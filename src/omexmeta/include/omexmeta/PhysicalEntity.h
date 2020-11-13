@@ -93,7 +93,7 @@ namespace omexmeta {
          * with only the model to allow for a better way of collecting necessary information
          * from the user.
          */
-        explicit PhysicalEntity(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalEntity(librdf_model *model);
 
 
         /**
@@ -146,7 +146,7 @@ namespace omexmeta {
          * The OBP argument requires a string of the form "obp:opbxxx" where "xxx" is the id for the OPB term.
          * An instance of PhysicalProperty is instantiated with @param physicalProperty as its value.
          */
-        PhysicalEntity &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
+        OMEXMETA_DEPRECATED PhysicalEntity &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
         /**
          * @brief sets the physical property for a PhysicalEntity instance
@@ -157,7 +157,7 @@ namespace omexmeta {
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalEntity &setPhysicalProperty(PhysicalProperty physicalProperty);
+        [[maybe_unused]] OMEXMETA_DEPRECATED PhysicalEntity &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief sets the identity portion of the PhysicalEntity (the "What").
@@ -249,9 +249,9 @@ namespace omexmeta {
         /**
           * @brief set the metaid of variable such as kinetic parameter
           */
-        PhysicalEntity &variableMetaId(const std::string &metaid);
+        OMEXMETA_DEPRECATED PhysicalEntity &variableMetaId(const std::string &metaid);
 
-        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
+        [[nodiscard]] OMEXMETA_DEPRECATED const std::string &getPropertyMetaidBase() const override;
 
         PhysicalEntity &hasProperty(const PhysicalProperty &property);
 

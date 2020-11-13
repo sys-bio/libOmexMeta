@@ -85,7 +85,7 @@ namespace omexmeta {
          *
          * Shouldn't be needed by users.
          */
-        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model);
+        [[maybe_unused]] OMEXMETA_DEPRECATED explicit PhysicalPhenomenon(librdf_model *model);
 
         /**
          * @brief Constructor for builder interface.

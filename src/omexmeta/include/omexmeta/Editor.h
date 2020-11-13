@@ -300,7 +300,7 @@ namespace omexmeta {
          */
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
-        void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
+        OMEXMETA_DEPRECATED void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
 
         void addTriples(Triples &triples);
 

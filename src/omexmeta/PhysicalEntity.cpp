@@ -36,7 +36,7 @@ namespace omexmeta {
         return *this;
     }
 
-    OMEXMETA_DEPRECATED PhysicalEntity &
+    PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
         subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
@@ -75,22 +75,36 @@ namespace omexmeta {
         return location_resources_;
     }
 
-    void PhysicalEntity::autoGenerateAbout(){
-        if (getAbout().empty() ||
-            getAbout() == local_uri_ ||
-            getAbout() == local_uri_ + "#" ||
-            getAbout() == model_uri_ ||
-            getAbout() == model_uri_+ "#"
-            ) {
-            about(OmexMetaUtils::generateUniqueMetaid(model_, "Entity", new_metaid_exclusion_list_), LOCAL_URI);
+    PhysicalEntity &PhysicalEntity::hasProperty(const PhysicalProperty &property) {
+        physical_property_ = property;
+        if (OmexMetaUtils::isStringEmpty<PhysicalEntity>(*this, physical_property_.getIsPropertyOfValue())) {
+            // physical property takes care of using EntityProperty for generating ids
+            physical_property_.setPropertyMetaidBase("EntityProperty");
         }
+        return *this;
     }
 
-    Triples PhysicalEntity::toTriples() {
-        // conditionals included within autoGenerateAbout such that only generates when about is empty or local/model uri
-//        autoGenerateAbout();
 
-        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type) {
+        /*
+         * Two scenarios:
+         *  1) User wants to provide their own strings to use for the property about section.
+         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
+         */
+        std::cout << "PhysicalEntity::hasProperty property_about: " << property_about  << std::endl;
+        if (property_about.empty()) {
+            // option 2
+            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
+            physical_property_.setPropertyMetaidBase("EntityProperty");
+        } else {
+            // option 1
+            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
+        }
+        return *this;
+    }
+
+
+    Triples PhysicalEntity::toTriples() {
 
         // when physical_property_id_ is empty it means we have not
         // called the toTriples() method before and an ID needs to be generated.
@@ -102,25 +116,28 @@ namespace omexmeta {
         // of times from the same PhysicalEntity instance and still get the same
         // Triples object. Note, this is important for deleting composites from the rdf model.
         if (physical_property_.getIsPropertyOfValue().empty()) {
-            // no exclusions needed here - we only generate 1 process metaid before comiting the triples
-            // to the model.
-            physical_property_.isPropertyOf(generateMetaId("EntityProperty"), LOCAL_URI);
+            // we do not set the value of the PhysicalProperty objects subject portion of Triple
+            // but instead change the base name for the PhysicalProperty and it'll generate
+            // an appropriate id itself.
+            physical_property_.setPropertyMetaidBase("EntityProperty");
         }
 
-        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+        std::cout << "about_Val:  " << about_value_ << std::endl;
+        if (OmexMetaUtils::isStringEmpty<PhysicalEntity>(*this, about_value_)){
+            std::cout << "dsjfnalsdjnaks.md cawc" << std::endl;
+            about(OmexMetaUtils::generateUniqueMetaid(model_, "Entity", new_metaid_exclusion_list_), LOCAL_URI);
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
 
         // preallocate for efficiency
-        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         Triples triples((int) getLocationResources().size() + (int) part_resources_.size() + 3);
 
-        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+
         Triples physical_property_triples = physical_property_.toTriples();
 
-        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         for (auto &it : physical_property_triples) {
             triples.move_back(it);// moves the statement
         }
-
         physical_property_triples.freeTriples();
         assert(physical_property_triples.size() == 0);
 
@@ -185,10 +202,20 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::about(const std::string &about, eUriType type) {
-        if (!OmexMetaUtils::startsWith(about, "http"))
-            physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
-        else
-            physical_property_.about(about, type);
+        std::cout << "PhysicalEntity::about: about: " << about << std::endl;
+        std::cout << "PhysicalEntity::about: physical property about: " << physical_property_.getAbout() << std::endl;
+        if (OmexMetaUtils::startsWith(about, "http")) {
+            std::cout << "here1" <<std::endl;
+            about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, NONE);
+            std::cout << "here2" <<std::endl;
+        } else {
+            std::cout << "here3" <<std::endl;
+            about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, type);
+            std::cout << "here4" <<std::endl;
+        }
+        if (physical_property_.getIsPropertyOfValue().empty()){
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
         return *this;
     }
 
@@ -209,44 +236,9 @@ namespace omexmeta {
         return property_metaid_base_;
     }
 
-    PhysicalEntity &PhysicalEntity::hasProperty(const PhysicalProperty &property){
-        physical_property_ = property;
-        if (
-                physical_property_.getIsPropertyOfValue().empty() ||
-                physical_property_.getIsPropertyOfValue() == local_uri_ ||
-                physical_property_.getIsPropertyOfValue() == local_uri_ + "#" ||
-                physical_property_.getIsPropertyOfValue() == model_uri_ ||
-                physical_property_.getIsPropertyOfValue() == model_uri_ + "#") {
-            // physical property takes care of using EntityProperty for generating ids
-            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
-        }
-
-        return *this;
-    }
-
-
-    PhysicalEntity& PhysicalEntity::hasProperty(const std::string& property_about, eUriType about_uri_type){
-        /*
-         * Two scenarios:
-         *  1) User wants to provide their own strings to use for the property about section.
-         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
-         */
-        if (property_about.empty()){
-            // option 2
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(getAbout(), MODEL_URI);
-            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
-
-        } else {
-            // option 1
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
-        }
-        return *this;
-    }
-
     const std::string &PhysicalPhenomenon::getPropertyMetaidBase() const {
         return property_metaid_base_;
     }
-
 
 
 }// namespace omexmeta

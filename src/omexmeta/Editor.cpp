@@ -161,11 +161,11 @@ namespace omexmeta {
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
         /**
-     * Implementation note: This method generates triples on the
-   * fly and then frees. This was implemented this way as it helped avoid
-   * memory issues but perhaps a better implementation would be similar to
-   * that in the PersonalInformation class.
-   */
+        * Implementation note: This method generates triples on the
+        * fly and then frees. This was implemented this way as it helped avoid
+        * memory issues but perhaps a better implementation would be similar to
+        * that in the PersonalInformation class.
+        */
         Triples triples = phenomenonPtr->toTriples();
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
@@ -221,10 +221,10 @@ namespace omexmeta {
        * about section, we need to inject it here,
        * if not already formatted properly.
        */
-        if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")) {
-            physicalEntity.about(OmexMetaUtils::concatMetaIdAndUri(
-                    physicalEntity.getAbout(), getModelUri()));
-        }
+        //        if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")) {
+        //            //            physicalEntity.about(OmexMetaUtils::concatMetaIdAndUri(
+        //                    physicalEntity.getAbout(), getModelUri()));
+        //            //        }
         //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
     }
