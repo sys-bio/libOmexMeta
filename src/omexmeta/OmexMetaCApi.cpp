@@ -969,7 +969,7 @@ namespace omexmeta {
     PhysicalProcess_addSource(PhysicalProcess *physical_process, int multiplier,
                               const char *physical_entity_reference) {
         try {
-            physical_process->addSource(multiplier, physical_entity_reference);
+            physical_process->addSource(physical_entity_reference, multiplier);
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -981,7 +981,7 @@ namespace omexmeta {
     PhysicalProcess_addSink(PhysicalProcess *physical_process, int multiplier,
                             const char *physical_entity_reference) {
         try {
-            physical_process->addSink(multiplier, physical_entity_reference);
+            physical_process->addSink(physical_entity_reference, multiplier);
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());

@@ -49,7 +49,7 @@ namespace omexmeta {
 
     const std::string & PhysicalPhenomenon::getAbout() const {
         // if the about field is empty or equal to model or local uri only, then we generate an about
-        return physical_property_.getAbout();
+        return about_value_;
     }
 
 
@@ -117,6 +117,7 @@ namespace omexmeta {
     std::vector<std::string> PhysicalPhenomenon::getNewMetaidExclusionList() {
         return new_metaid_exclusion_list_;
     }
+
 
 
 }

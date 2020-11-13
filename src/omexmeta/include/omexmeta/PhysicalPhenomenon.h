@@ -21,6 +21,7 @@ using namespace redland;
 
 namespace omexmeta {
     class PhysicalPhenomenon {
+
     protected:
 
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
@@ -29,6 +30,8 @@ namespace omexmeta {
         std::string model_uri_;
         std::string local_uri_;
         std::vector<std::string> new_metaid_exclusion_list_;
+        std::string property_metaid_base_; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
+        std::string about_value_;
 
         /**
          * @brief getter for a vector of strings that keeps track of used metaids.
@@ -40,10 +43,11 @@ namespace omexmeta {
          */
         [[nodiscard]] std::vector<std::string> getNewMetaidExclusionList();
 
-    protected:
+
         [[nodiscard]] std::string generateMetaId(const std::string& id_base);
 
     public:
+        [[nodiscard]] virtual const std::string &getPropertyMetaidBase() const;
         PhysicalPhenomenon() = default;
 
         bool operator==(const PhysicalPhenomenon &rhs) const;
@@ -52,7 +56,7 @@ namespace omexmeta {
 
         ~PhysicalPhenomenon();
 
-        const std::string &getLocalUri() const;
+        [[nodiscard]] const std::string &getLocalUri() const;
 
         void setLocalUri(const std::string &localUri);
 
@@ -140,6 +144,10 @@ namespace omexmeta {
 
         [[nodiscard]] librdf_model *getModel() const;
 
+
+//        PhysicalPhenomenon &hasProperty(const PhysicalProperty &property);
+
+//        PhysicalProperty& hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
 
     };
 

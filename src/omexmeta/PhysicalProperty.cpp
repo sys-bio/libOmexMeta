@@ -71,13 +71,9 @@ namespace omexmeta {
 
     Triples PhysicalProperty::toTriples() {
         // in sbml the metaid for property needs to be generated
-        std::cout << "about_value_: " << about_value_ << std::endl;
-        if (about_value_.empty() ||
-            about_value_ == local_uri_ ||
-            about_value_ == local_uri_ +  "#" ||
-            about_value_ == model_uri_ ||
-            about_value_ == model_uri_ + "#"
-            ){
+        std::cout << "about value: " << about_value_ << std::endl;
+        if (OmexMetaUtils::isStringEmpty<PhysicalProperty>(*this, about_value_)){
+            std::cout << "autogenerating physical property metaid" << std::endl;
             about(OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_), LOCAL_URI);
 
         }
@@ -180,9 +176,7 @@ namespace omexmeta {
     }
 
     PhysicalProperty &PhysicalProperty::isPropertyOf(const std::string &is_property_of, eUriType type) {
-        std::cout << "getLocalUri(): " << getLocalUri() << std::endl;
         is_property_of_value_ = UriHandler::uriModifier<PhysicalProperty>(*this, is_property_of, type);
-        std::cout <<  " is_property_of_value_ : " << is_property_of_value_ << std::endl;
         return *this;
     }
     void PhysicalProperty::setPropertyMetaidBase(const std::string &propertyMetaidBase) {

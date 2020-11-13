@@ -188,7 +188,6 @@ if (${BUILD_SHARED_LIBS})
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
 
-option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)

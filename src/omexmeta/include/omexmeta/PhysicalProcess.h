@@ -26,8 +26,8 @@ namespace omexmeta {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
-        std::string physical_process_property_id_;
         std::string is_version_of_ ; // optional class level attribute to store the isVErsionOf under the process ID.
+        std::string property_metaid_base_ = "ProcessProperty";
     public:
 
         /**
@@ -111,7 +111,7 @@ namespace omexmeta {
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
+        OMEXMETA_DEPRECATED PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
         /**
          * @brief setter for the physical property portion of the PhysicalProcess.
@@ -120,19 +120,19 @@ namespace omexmeta {
          * Developers. Consider removing this method in favour of the
          * setPhysicalProperty version that only takes a string as argument
          */
-        PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
+        OMEXMETA_DEPRECATED PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSource(int multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSource(std::string physical_entity_reference, int multiplier);
 
         /**
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSink(int multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSink(std::string physical_entity_reference, int multiplier);
 
         /**
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
@@ -169,7 +169,7 @@ namespace omexmeta {
          * @details This method will set the Resource resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalProcess &isVersionOf(const std::string &property) ;
+//        PhysicalProcess &isVersionOf(const std::string &property) ;
 
         /**
          * @brief set the subject (rdf:about) portion of the PhysicalProcess composite annotation
@@ -180,7 +180,11 @@ namespace omexmeta {
          */
         PhysicalProcess& about(const std::string& about, eUriType type = NONE);
 
-        PhysicalProcess& variableMetaId(const std::string& metaid);
+//        PhysicalProcess& variableMetaId(const std::string& metaid);
+
+        PhysicalProperty &hasProperty(const PhysicalProperty &property);
+
+        PhysicalProperty &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
     };
 }
 

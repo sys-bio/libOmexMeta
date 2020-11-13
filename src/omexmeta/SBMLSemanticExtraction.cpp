@@ -104,7 +104,7 @@ namespace omexmeta {
                     if (reactant_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addSource(std::stoi(reactant_node_stoic), species_node_metaid);
+                        process.addSource(species_node_metaid, std::stoi(reactant_node_stoic));
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace omexmeta {
                     if (product_node_species_ref == species_node_id){
                         // if we have a match, then species_node contains our metaid that will be species ref.
                         std::string species_node_metaid = OmexMetaUtils::getXmlNodeProperty(species_node, "metaid");
-                        process.addSink(std::stoi(product_node_stoic), species_node_metaid);
+                        process.addSink(species_node_metaid, std::stoi(product_node_stoic));
                     }
                 }
             }

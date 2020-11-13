@@ -30,9 +30,6 @@ namespace omexmeta {
 
     Triples Participant::toTriples(const std::string &subject_metaid, std::vector<std::string>& metaid_exclusions) {
 
-        for (auto &it: metaid_exclusions) {
-
-        }
 
         if (local_participant_metaid_.empty()) {
             local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(

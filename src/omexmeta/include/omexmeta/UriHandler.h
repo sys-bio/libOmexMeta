@@ -76,18 +76,18 @@ namespace omexmeta {
         [[nodiscard]] std::string uriModifier(std::string uri_to_modify, eUriType type) const;
 
         template<class T>
-        static std::string uriModifier(T cls, std::string uri_to_modify, eUriType type) {
-            std::cout << "uri_to_modify: " << uri_to_modify << std::endl;
+        static std::string uriModifier(T& cls, std::string uri_to_modify, eUriType type) {
+            // when uri is already http we just return
+            if(OmexMetaUtils::startsWith(uri_to_modify, "http"))
+                return uri_to_modify;
             switch (type) {
                 case NONE: {
                     return uri_to_modify;
                 }
                 case LOCAL_URI: {
-                    std::cout << "cls.getLocalUri(): " << cls.getLocalUri() << "empty?: " << cls.getLocalUri().empty()  << std::endl;
                     if (cls.getLocalUri().empty()) {
                         throw std::logic_error("UriHandler::uriModifier(): Cannot create local uri for string \"" + uri_to_modify + "\"as local uri is empty");
                     }
-                    std::cout << "local uuri: " << cls.getLocalUri() << std::endl;
                     return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, cls.getLocalUri());
                 }
                 case MODEL_URI: {

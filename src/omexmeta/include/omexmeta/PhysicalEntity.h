@@ -33,6 +33,10 @@ namespace omexmeta {
         Resources part_resources_;
         std::string physical_entity_property_id_;
 
+        // When autogenerating metaid for property of a physical entity
+        // this is used as metaid base.
+        std::string property_metaid_base_ = "EntityProperty";
+
         /**
          * @brief when the about field is empty or equal to local/model uri's autogenerate a
          * entity id local to rdf document.
@@ -207,6 +211,8 @@ namespace omexmeta {
          */
         PhysicalEntity &isVersionOf(const std::string &property);
 
+        PhysicalEntity &isPropertyOf(const std::string &is_property_of, eUriType type);
+
         /**
          * @brief Set the about portion of the PhysicalEntity composite annotation.
          * @param about: The string to put in rdf:about
@@ -245,9 +251,11 @@ namespace omexmeta {
           */
         PhysicalEntity &variableMetaId(const std::string &metaid);
 
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
+
         PhysicalEntity &hasProperty(const PhysicalProperty &property);
 
-        PhysicalProperty&hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+        PhysicalEntity &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
     };
 }// namespace omexmeta
 

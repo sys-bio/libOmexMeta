@@ -165,7 +165,7 @@ namespace omexmeta {
          * @param T must implement the methods getModelUri and getLocalUri
          */
         template <class T>
-        static bool isStringEmpty(T cls, const std::string &s){
+        static bool isStringEmpty(T& cls, const std::string &s){
             return s.empty() ||
                 s == cls.getLocalUri() ||
                 s == cls.getLocalUri() + "#"||
