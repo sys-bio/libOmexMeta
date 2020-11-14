@@ -72,7 +72,7 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        explicit PhysicalForce(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalForce(librdf_model *model);
 
         /**
          * @brief constructor for instantiating a PhysicalForce type composite annotation
@@ -124,7 +124,7 @@ namespace omexmeta {
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
+        [[maybe_unused]] OMEXMETA_DEPRECATED PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief sets the physical property of the PhysicalForce
@@ -132,7 +132,7 @@ namespace omexmeta {
          * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this PhysicalForce to enable the builder interface.
          */
-        PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
+        OMEXMETA_DEPRECATED PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
 
         /**
          * @brief add a SourceParticipant to the PhysicalForce.
@@ -144,7 +144,7 @@ namespace omexmeta {
          *
          * See SourceParticipant documentation for more details on arguments.
          */
-        PhysicalForce &addSource(int multiplier, const std::string& physical_entity_reference);
+        PhysicalForce &addSource(const std::string &physical_entity_reference,  eUriType type,int multiplier);
 
         /**
          * @brief add a SinkParticipant to the PhysicalForce.
@@ -156,7 +156,7 @@ namespace omexmeta {
          *
          * See SinkParticipant documentation for more details on arguments.
          */
-        PhysicalForce & addSink(int multiplier, const std::string& physical_entity_reference);
+        PhysicalForce &addSink(const std::string &physical_entity_reference,  eUriType type, int multiplier);
 
         /**
          * @brief returns the number of sources associated with the
@@ -193,6 +193,10 @@ namespace omexmeta {
          * associated with the PhysicalProcess.
          */
         PhysicalForce &about(const std::string &about, eUriType type = NONE);
+
+        PhysicalProperty &hasProperty(const PhysicalProperty &property);
+
+        PhysicalProperty &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
     };
 }
 

@@ -27,7 +27,7 @@ namespace omexmeta {
         Sinks sinks_;
         Mediators mediators_;
         std::string is_version_of_ ; // optional class level attribute to store the isVErsionOf under the process ID.
-        std::string property_metaid_base_ = "ProcessProperty";
+        OMEXMETA_DEPRECATED std::string property_metaid_base_ = "ProcessProperty";
     public:
 
         /**
@@ -70,7 +70,7 @@ namespace omexmeta {
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          */
-        explicit PhysicalProcess(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalProcess(librdf_model *model);
 
         /**
          * @brief constructor for the builder interface of PhysicalProcess instantiation
@@ -126,19 +126,19 @@ namespace omexmeta {
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSource(std::string physical_entity_reference, int multiplier);
+        PhysicalProcess &addSource(std::string physical_entity_reference, eUriType type, int multiplier = 1);
 
         /**
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSink(std::string physical_entity_reference, int multiplier);
+        PhysicalProcess &addSink(std::string physical_entity_reference, eUriType type, int multiplier = 1);
 
         /**
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addMediator(std::string physical_entity_reference);
+        PhysicalProcess &addMediator(std::string physical_entity_reference, eUriType type);
 
         /**
          * @brief returns the number of sources assocaited with the PhysicalProcess
@@ -179,8 +179,6 @@ namespace omexmeta {
          * associated with the PhysicalProcess.
          */
         PhysicalProcess& about(const std::string& about, eUriType type = NONE);
-
-//        PhysicalProcess& variableMetaId(const std::string& metaid);
 
         PhysicalProperty &hasProperty(const PhysicalProperty &property);
 

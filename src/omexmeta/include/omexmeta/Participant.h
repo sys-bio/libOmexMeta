@@ -8,6 +8,7 @@
 #include "redland/librdf.h"
 #include "redland/RedlandAPI.h"
 
+#include "UriHandler.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
@@ -35,6 +36,8 @@ namespace omexmeta {
 
         std::string model_uri_;
         std::string local_uri_;
+
+        eUriType type_;
 
 
     public:
@@ -107,7 +110,7 @@ namespace omexmeta {
         Participant(librdf_model *model, std::string base_metaid, const std::string &model_uri,
                     const std::string &local_uri,
                     std::string semsim_predicate_term, int multiplier,
-                    std::string physicalEntityReference);
+                    std::string physicalEntityReference, eUriType type);
 
         ~Participant() = default;
 
@@ -122,7 +125,7 @@ namespace omexmeta {
          *
          * The same toTriples method is used for all participants.
          */
-        [[nodiscard]] Triples toTriples(const std::string &subject_metaid,
+        [[nodiscard]] Triples toTriples(std::string subject_metaid,
                                         std::vector<std::string> &metaid_exclusions);
 
         /**
@@ -188,7 +191,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process/force energetic source.
          */
-        SourceParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference,
+        SourceParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference, eUriType type,
                           const std::string &model_uri, const std::string &local_uri);
     };
 
@@ -203,7 +206,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process/force energetic sinks.
          */
-        SinkParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference,
+        SinkParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference, eUriType type,
                         const std::string &model_uri, const std::string &local_uri);
 
     };
@@ -219,7 +222,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, const std::string &model_uri,
+        MediatorParticipant(librdf_model *model, std::string physicalEntityReference,   eUriType type, const std::string &model_uri,
                             const std::string &local_uri);
 
     };

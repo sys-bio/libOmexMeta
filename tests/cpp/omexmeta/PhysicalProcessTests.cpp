@@ -36,9 +36,9 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSBML1) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess.about("reaction0000", MODEL_URI)
-            .addSource("species0000", 1)
-            .addSink("species0001", 1)
-            .addMediator("species0002")
+            .addSource("species0000", MODEL_URI, 1)
+            .addSink("species0001", MODEL_URI, 1)
+            .addMediator("species0002", MODEL_URI )
             .hasProperty("ReactionProperty", LOCAL_URI)
                 .isVersionOf("opb:OPB_00592")
                 .isPropertyOf("reaction0000", MODEL_URI);
@@ -88,9 +88,9 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSBML2) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess.about("reaction0000", MODEL_URI)
-            .addSource("species0000", 1)
-            .addSink("species0001", 1)
-            .addMediator("species0002")
+            .addSource("species0000",MODEL_URI,  1)
+            .addSink("species0001", MODEL_URI, 1)
+            .addMediator("species0002", MODEL_URI)
             .hasProperty()
                 .isVersionOf("opb:OPB_00592");
 //                .isPropertyOf("reaction0000", MODEL_URI);
@@ -141,9 +141,9 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML1) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess.about("main.ReactionRate", MODEL_URI)
-            .addSource("main.entity1", 1)
-            .addSink("main.entity2", 1)
-            .addMediator("main.entity3")
+            .addSource("entity1", LOCAL_URI, 1)
+            .addSink("entity2", LOCAL_URI, 1)
+            .addMediator("entity3", LOCAL_URI)
             .hasProperty("main.Volume", MODEL_URI)
                 .isVersionOf("opb:OPB_00592")
                 .isPropertyOf("main.ReactionRate", MODEL_URI);
@@ -157,15 +157,15 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML1) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#main.entity3> .\n"
+                           "    semsim:hasPhysicalEntityReference local:entity3 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#main.entity2> .\n"
+                           "    semsim:hasPhysicalEntityReference local:entity2 .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#main.entity1> .\n"
+                           "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
@@ -191,9 +191,9 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML2) {
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
-            .addSource("main.entity1", 1)
-            .addSink("main.entity2", 1)
-            .addMediator("main.entity3")
+            .addSource("entity1",LOCAL_URI,  1)
+            .addSink("entity2", LOCAL_URI, 1)
+            .addMediator("entity3", LOCAL_URI )
             .hasProperty("main.Volume", MODEL_URI)
                 .isVersionOf("opb:OPB_00592");
     editor.addPhysicalProcess(physicalProcess);
@@ -206,7 +206,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML2) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#main.entity3> .\n"
+                           "    semsim:hasPhysicalEntityReference local:entity3 .\n"
                            "\n"
                            "local:Process0000\n"
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
@@ -215,11 +215,11 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML2) {
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#main.entity2> .\n"
+                           "    semsim:hasPhysicalEntityReference local:entity2 .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#main.entity1> .\n"
+                           "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>\n"
                            "    bqbiol:isPropertyOf local:Process0000 ;\n"

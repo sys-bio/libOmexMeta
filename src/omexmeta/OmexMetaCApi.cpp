@@ -1121,7 +1121,7 @@ namespace omexmeta {
     PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, int multiplier,
                                            const char *physical_entity_reference) {
         try {
-            physical_force_ptr->addSource(multiplier, physical_entity_reference);
+            physical_force_ptr->addSource(physical_entity_reference, multiplier);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1132,7 +1132,7 @@ namespace omexmeta {
     PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, int multiplier,
                                          const char *physical_entity_reference) {
         try {
-            physical_force_ptr->addSink(multiplier, physical_entity_reference);
+            physical_force_ptr->addSink(physical_entity_reference, multiplier);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());

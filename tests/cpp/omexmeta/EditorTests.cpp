@@ -674,129 +674,6 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
 
 
 
-TEST_F(EditorTests, TestPhysicalForceBuilderWithoutAbout) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
-    PhysicalForce physicalForce = editor.newPhysicalForce();
-    physicalForce
-            .isVersionOf("OPB:OPB1234")// change to isVersionOf
-            .addSource(1.0, "PhysicalEntity1")
-            .addSink(1.0, "PhysicalEntity2");
-
-    /*
-     * about for a physical force is optional. If nothing is there I willc reate something appropriate
-     * is not then it will override
-     */
-    editor.addPhysicalForce(physicalForce);
-    std::cout << rdf.toString() << std::endl;
-
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "local:Force0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
-                           "\n"
-                           "local:ForceProperty0000\n"
-                           "    bqbiol:isPropertyOf local:Force0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
-                           "\n"
-                           "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .";
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
-
-TEST_F(EditorTests, TestPhysicalForceBuilderWithAbout) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
-    PhysicalForce physicalForce = editor.newPhysicalForce();
-    physicalForce
-            .about("AnExistingMetaid")
-            .isVersionOf("OPB:OPB1234")// change to isVersionOf
-            .addSource(1.0, "PhysicalEntity1")
-            .addSink(1.0, "PhysicalEntity2");
-
-    /*
-     * about for a physical force is optional. If nothing is there I willc reate something appropriate
-     * is not then it will override
-     */
-    //    std::cout << rdf.toString() << std::endl;
-    editor.addPhysicalForce(physicalForce);
-
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "local:Force0000\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
-                           "\n"
-                           "local:ForceProperty0000\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#AnExistingMetaid> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity2> .\n"
-                           "\n"
-                           "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#PhysicalEntity1> .";
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
-
-TEST_F(EditorTests, TestPhysicalPropertyBuilder) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
-    PhysicalProperty physicalProperty = editor.newPhysicalProperty();
-    physicalProperty
-            .about("property1")
-            .isVersionOf("opb:OPB_12345")
-            .isPropertyOf("entity0", MODEL_URI);
-    editor.addPhysicalProperty(physicalProperty);
-
-    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    //    physicalEntity.about()
-
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#property1>\n"
-                           "    bqbiol:isPropertyOf <entity0> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .";
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-    /*
-     * In cellml, for PhysicalProcess you would not use the local:ProcessProperty id
-     * but instead the metaid to the variable in the cellml source code.
-     *
-variableMetaID:
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.rdf#reaction0001> ; // optional id argument. User is expected to provide this by doesn't have to as we'll generate for them if not.
-    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .
-
-     */
-}
-
 
 TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
     RDF rdf;
@@ -845,23 +722,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     singularAnnotation.freeStatement();
 }
 
-TEST_F(EditorTests, TestRemovePhysicalForce) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    PhysicalForce physicalForce = editor.newPhysicalForce();
-    physicalForce
-            .setPhysicalProperty("#OmexMetaId0002", "OPB:OPB1234")
-            .addSource(1.0, "PhysicalEntity1")
-            .addSink(1.0, "PhysicalEntity2");
-    editor.addPhysicalForce(physicalForce);
-    ASSERT_EQ(8, rdf.size());
-    editor.removePhysicalForce(physicalForce);
-    int expected = 0;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-}
 
 TEST_F(EditorTests, TestRemovePersonalInformation) {
     RDF rdf;
@@ -885,9 +746,9 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
             .setPhysicalProperty("#OmexMetaId0004", "OPB:OPB1234")
-            .addSource("PhysicalEntity1", 1.0)
-            .addMediator("PhysicalEntity1")
-            .addSink("PhysicalEntity2", 1);
+            .addSource("PhysicalEntity1", MODEL_URI, 1.0)
+            .addMediator("PhysicalEntity1", MODEL_URI)
+            .addSink("PhysicalEntity2", MODEL_URI, 1);
     editor.addPhysicalProcess(physicalProcess);
     ASSERT_EQ(10, rdf.size());
     editor.removePhysicalProcess(physicalProcess);
@@ -941,15 +802,15 @@ TEST_F(EditorTests, TestAddTwoDifferentPhysicalEntities) {
 
     PhysicalProcess r1 = editor.newPhysicalProcess();
     r1.setPhysicalProperty(r1_metaid, "OPB:OPB1234")
-            .addSource("#Meta00001", 1.0)
-            .addSink("#OmexMetaId0003", 1);
+            .addSource("#Meta00001",MODEL_URI,  1.0)
+            .addSink("#OmexMetaId0003",MODEL_URI,  1);
     editor.addPhysicalProcess(r1);
 
     PhysicalProcess r2 = editor.newPhysicalProcess();
     r2.setPhysicalProperty(r2_metaid, "OPB:OPB1234")
-            .addSource("#OmexMetaId0003", 1.0)
-            .addSink("#OmexMetaId0004", 1)
-            .addMediator("#Meta00001");
+            .addSource("#OmexMetaId0003", MODEL_URI, 1.0)
+            .addSink("#OmexMetaId0004", MODEL_URI, 1)
+            .addMediator("#Meta00001", MODEL_URI);
     editor.addPhysicalProcess(r2);
 
     std::cout << rdf.toString("turtle") << std::endl;
@@ -966,15 +827,15 @@ TEST_F(EditorTests, TestEditorWithoutGivingTypeInformation) {
 
     PhysicalProcess r1 = editor.newPhysicalProcess();
     r1.setPhysicalProperty(r1_metaid, "OPB:OPB1234")
-            .addSource("#Meta00001", 1.0)
-            .addSink("#OmexMetaId0003", 1);
+            .addSource("#Meta00001", MODEL_URI, 1.0)
+            .addSink("#OmexMetaId0003", MODEL_URI, 1);
     editor.addPhysicalProcess(r1);
 
     PhysicalProcess r2 = editor.newPhysicalProcess();
     r2.setPhysicalProperty(r2_metaid, "OPB:OPB1234")
-            .addSource("#OmexMetaId0003", 1.0)
-            .addSink("#OmexMetaId0004", 1)
-            .addMediator("#Meta00001");
+            .addSource("#OmexMetaId0003",MODEL_URI,  1.0)
+            .addSink("#OmexMetaId0004", MODEL_URI, 1)
+            .addMediator("#Meta00001", MODEL_URI);
     editor.addPhysicalProcess(r2);
 
     std::cout << rdf.toString("turtle") << std::endl;

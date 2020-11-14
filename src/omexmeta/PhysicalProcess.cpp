@@ -44,30 +44,30 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSource(std::string physical_entity_reference, int multiplier) {
+    PhysicalProcess &PhysicalProcess::addSource(std::string physical_entity_reference, eUriType type, int multiplier) {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
                                             multiplier,
-                                            std::move(physical_entity_reference),
+                                            std::move(physical_entity_reference), type,
                                             getModelUri(), getLocalUri())));
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSink(std::string physical_entity_reference, int multiplier) {
+    PhysicalProcess &PhysicalProcess::addSink(std::string physical_entity_reference, eUriType type, int multiplier) {
         sinks_.push_back(
                 std::move(SinkParticipant(
                         model_,
-                        multiplier, std::move(physical_entity_reference),
+                        multiplier, std::move(physical_entity_reference),type,
                         getModelUri(), getLocalUri())));
 
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addMediator(std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addMediator(std::string physical_entity_reference, eUriType type) {
         mediators_.push_back(
                 std::move(MediatorParticipant(
                         model_,
-                        std::move(physical_entity_reference),
+                        std::move(physical_entity_reference),type,
                         getModelUri(), getLocalUri())));
 
         return (*this);
@@ -111,15 +111,10 @@ namespace omexmeta {
 
 
     Triples PhysicalProcess::toTriples() {
-        std::cout<<"prop about:"  << physical_property_.getAbout() << std::endl;
-
         // check PhysicalProcess::getAbout for being empty. Autogenerate id if true.
         if (OmexMetaUtils::isStringEmpty<PhysicalProcess>(*this, getAbout())) {
-            std::cout << "autogenerating about for physical process property" << std::endl;
             std::string new_process_about_value = generateMetaId("Process");
             about(new_process_about_value, LOCAL_URI);
-
-
         }
 
         if (OmexMetaUtils::isStringEmpty<PhysicalProcess>(*this, physical_property_.getAbout())) {
@@ -158,26 +153,18 @@ namespace omexmeta {
     }
 
 
-//    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string &property) {
-//        physical_property_.isVersionOf(property);
-//        return *this;
-//    }
-
     PhysicalProcess &PhysicalProcess::about(const std::string &about, eUriType type) {
-        std::cout<<"about " << about << std::endl;
-        about_value_ = UriHandler::uriModifier<PhysicalProcess>(*this, about, type);
-        std::cout<<"about_value_:"  << about_value_ << std::endl;
-//        if (!OmexMetaUtils::startsWith(about, "http"))
-//            physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about, model_uri_));
-//        else
-//            physical_property_.about(about, type);
+        if (OmexMetaUtils::startsWith(about, "http")) {
+            about_value_ = UriHandler::uriModifier<PhysicalProcess>(*this, about, NONE);
+        } else {
+            about_value_ = UriHandler::uriModifier<PhysicalProcess>(*this, about, type);
+        }
+        if (physical_property_.getIsPropertyOfValue().empty()){
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
         return *this;
     }
 
-//    PhysicalProcess &PhysicalProcess::variableMetaId(const std::string &metaid) {
-//        physical_process_property_id_ = metaid;
-//        return *this;
-//    }
 
     PhysicalProperty &PhysicalProcess::hasProperty(const PhysicalProperty &property) {
         physical_property_ = property;
@@ -194,8 +181,6 @@ namespace omexmeta {
          *  1) User wants to provide their own strings to use for the property about section.
          *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
          */
-                std::cout<<"prop about:2"  << physical_property_.getAbout() << std::endl;
-
         if (property_about.empty()){
             // option 2
             physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
@@ -205,7 +190,6 @@ namespace omexmeta {
             // option 1
             physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
         }
-                std::cout<<"prop about:3"  << physical_property_.getAbout() << std::endl;
         return physical_property_;
     }
 }// namespace omexmeta
