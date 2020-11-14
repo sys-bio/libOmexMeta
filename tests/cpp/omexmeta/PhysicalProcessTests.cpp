@@ -230,6 +230,55 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML2) {
 }
 
 
+TEST_F(PhysicalProcessTests, TestRemovePhysicalProcess) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalProcess physicalProcess = editor.newPhysicalProcess();
+    physicalProcess
+            .addSource("PhysicalEntity1", MODEL_URI, 1.0)
+            .addMediator("PhysicalEntity1", MODEL_URI)
+            .addSink("PhysicalEntity2", MODEL_URI, 1)
+            .hasProperty("OmexMetaId0004", MODEL_URI)
+                .isVersionOf("OPB:OPB1234");
+
+    editor.addPhysicalProcess(physicalProcess);
+    ASSERT_EQ(10, rdf.size());
+    editor.removePhysicalProcess(physicalProcess);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+    physicalProcess.free();
+}
+
+TEST_F(PhysicalProcessTests, TestAddTwoDifferentPhysicalProcesses) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true);
+
+    std::cout << editor.getXml() << std::endl;
+    std::string r1_metaid = "OmexMetaId0005";
+    std::string r2_metaid = "OmexMetaId0009";
+
+    PhysicalProcess r1 = editor.newPhysicalProcess();
+    r1.addSource("Meta00001",MODEL_URI,  1.0)
+            .addSink("OmexMetaId0003",MODEL_URI,  1)
+            .hasProperty(r1_metaid, LOCAL_URI).isVersionOf("OPB:OPB1234");
+    editor.addPhysicalProcess(r1);
+
+    PhysicalProcess r2 = editor.newPhysicalProcess();
+    r2
+            .addSource("OmexMetaId0003", MODEL_URI, 1.0)
+            .addSink("OmexMetaId0004", MODEL_URI, 1)
+            .addMediator("Meta00001", MODEL_URI)
+            .hasProperty(r2_metaid, LOCAL_URI).isVersionOf("OPB:OPB1234");
+
+    editor.addPhysicalProcess(r2);
+
+    std::cout << rdf.toString("turtle") << std::endl;
+}
+
 //
 //TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder2) {
 //    RDF rdf;

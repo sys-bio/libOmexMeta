@@ -45,7 +45,7 @@ namespace omexmeta {
                      * to account for both so we can collect the ids from models that use both strategies.
                      */
                     const std::string& metaid_name = metaIdTagName();
-                    const std::string metaid_namespace = metaIdNamespace();
+                    const std::string  metaid_namespace = metaIdNamespace();
 
                     // creates an indicator to check whether we need a namespace or not for the metaid that we generate
                     bool needs_namespace = true;
@@ -74,8 +74,6 @@ namespace omexmeta {
                             } else {
                                 // look through the existing list of xml namespaces.
                                 // if its there we grab a pointer to it. if not we create it.
-//                                xmlNsPtr ns_ptr = xmlNewGlobalNs
-//                                xmlNewNsProp()
                                 std::string cellml_metaid_namespace = "http://www.cellml.org/metadata/1.0#";
                                 xmlNsPtr* ns_list_ptr = xmlGetNsList(doc, cur_node);
                                 xmlNsPtr ns = ns_list_ptr[0];

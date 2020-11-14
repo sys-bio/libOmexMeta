@@ -88,7 +88,7 @@ TEST_F(MetaIDTests, TestGenerate2) {
 TEST_F(MetaIDTests, TestGenerate3) {
     omexmeta::MetaID metaId("SemsimID", 1453, 6);
     std::string actual = metaId.generate(9);
-    std::string expected = "#SemsimID000009";
+    std::string expected = "SemsimID000009";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

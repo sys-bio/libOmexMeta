@@ -62,11 +62,11 @@ namespace omexmeta {
     class SBMLAssistant : public OmexMetaXmlAssistant {
 
     public:
-        std::vector<std::string> getValidElements() const override;
+        [[nodiscard]] std::vector<std::string> getValidElements() const override;
 
         using OmexMetaXmlAssistant::OmexMetaXmlAssistant;
 
-        std::string metaIdTagName() const override;
+        [[nodiscard]] std::string metaIdTagName() const override;
 
         [[nodiscard]] std::string metaIdNamespace() const override;
     };

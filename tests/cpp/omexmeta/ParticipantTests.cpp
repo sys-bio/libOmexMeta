@@ -64,7 +64,7 @@ TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
     std::string actual = sink.createMetaid("SinkParticipant", exclusions);
     std::cout << actual << std::endl;
-    std::string expected = "#SinkParticipant0000";
+    std::string expected = "SinkParticipant0000";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
 }

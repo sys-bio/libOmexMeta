@@ -206,29 +206,6 @@ TEST_F(RDFTests, TestParseFromFile) {
 
 }
 
-TEST_F(RDFTests, TestParseFromFileCollectedFromBiomodels) {
-    std::string fname = std::filesystem::current_path().string() += "TestParseFromFile.rdf";
-    std::cout << fname << std::endl;
-    std::ofstream f(fname);
-    if (f.is_open()) {
-        f << SBMLFactory::getSBML(SBML_BIOMD204) << std::endl;
-        f.flush();
-        f.close();
-    } else {
-        throw std::logic_error("No file was opened for test");
-    }
-    std::cout << __FILE__ << ":" << __LINE__ <<std::endl;
-    RDF rdf = RDF::fromFile(fname, "rdfxml");
-    std::cout << __FILE__ << ":" << __LINE__ <<std::endl;
-    int actual = rdf.size();
-    std::cout << __FILE__ << ":" << __LINE__ <<std::endl;
-    ASSERT_EQ(220, actual);
-    std::cout << __FILE__ << ":" << __LINE__ <<std::endl;
-    // clear up file we wrote
-    std::remove(fname.c_str());
-    std::cout << __FILE__ << ":" << __LINE__ <<std::endl;
-
-}
 
 TEST_F(RDFTests, TestParseFromFileNonStatic) {
     // first create a file containing annotations
