@@ -88,7 +88,6 @@ namespace omexmeta {
             }
             // When we already have a uri that is not local or model uri, we just return
             if(OmexMetaUtils::startsWith(uri_to_modify, "http")) {
-                std::cout << __FILE__<<":"<<__LINE__<<":"<<__FUNCTION__<<": uri starts with http so not modifying: \""+uri_to_modify+"\""<<std::endl;
                 return uri_to_modify;
                 }
             switch (type) {

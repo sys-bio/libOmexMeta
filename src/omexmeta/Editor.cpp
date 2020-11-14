@@ -19,6 +19,8 @@ namespace omexmeta {
           sbml_semantic_extraction_(sbml_semantic_extraction),
           repository_uri_(repository_uri), archive_uri_(archive_uri),
           model_uri_(model_uri), local_uri_(local_uri) {
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
+
 
 
         // sometimes in the python api users can accidently start the sbml
@@ -28,6 +30,7 @@ namespace omexmeta {
                                         "xml input string starts with a newline character. "
                                         "Please remove the newline.");
         }
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
         // if xml_does not start with < and exists on disk, read it. The first condition is not included we get a filename too long error from exists
         if (xml_.find("<", 0) != 0) {// != 0 means not found
             if (std::filesystem::exists(xml_)) {
@@ -35,7 +38,9 @@ namespace omexmeta {
                 xml_ = OmexMetaUtils::readFromFile(xml_);
             }
         }
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
         MarkupIdentifier identifier(xml_);
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
         if (identifier.isSBML()) {
             type_ = OMEXMETA_TYPE_SBML;
         } else if (identifier.isCellML()) {
@@ -46,16 +51,23 @@ namespace omexmeta {
                     " be either SBML or CellML. ");
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET);// this should never happen
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
         XmlAssistantPtr xmlAssistantPtr = OmexMetaXmlAssistantFactory::generate(
                 xml_, getType(), generate_new_metaids, "OmexMetaId", 4);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
         xml_ = xml_and_metaids.first;
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
         metaids_ = xml_and_metaids.second;
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
 
         if (getType() == OMEXMETA_TYPE_SBML && sbml_semantic_extraction) {
             // with sbml models we extract some information directly from the sbml
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
             SBMLSemanticExtraction extraction(this);
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
             extraction.extractSpeciesCompartmentSemantics();
+        std::cout << __FILE__<<":"<<__LINE__<<std::endl;
             extraction.extractProcessesFromReactions();
         }
     }

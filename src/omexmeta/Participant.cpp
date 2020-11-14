@@ -4,8 +4,6 @@
 
 #include "omexmeta/Participant.h"
 
-#include "omexmeta/UriHandler.h"
-
 namespace omexmeta {
 
 
@@ -52,8 +50,6 @@ namespace omexmeta {
         metaid_exclusions.push_back(local_participant_metaid_);
 
         local_participant_metaid_ = UriHandler::uriModifier<Participant>(*this, local_participant_metaid_, LOCAL_URI);
-
-//        local_participant_metaid_ = OmexMetaUtils::concatMetaIdAndUri(local_participant_metaid_, getLocalUri());
 
         Triples triples;
         // have source participant triple
