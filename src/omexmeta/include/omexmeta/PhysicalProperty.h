@@ -51,8 +51,11 @@ namespace omexmeta {
          * @details overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead
          */
         OMEXMETA_DEPRECATED PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri);
+
         void setPropertyMetaidBase(const std::string &propertyMetaidBase);
-        const std::string &getPropertyBearerBase() const;
+
+        [[nodiscard]] const std::string &getPropertyBearerBase() const;
+
         void setPropertyBearerBase(const std::string &propertyBearerBase);
         /**
          * @brief constructor for PhysicalProperty

@@ -23,18 +23,6 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int free_c_char_star(char *c);
 
-    OMEXMETA_CAPI_EXPORT int free_c_char_star_star(char **c, int size);
-
-/***************************************************
- * librdf_world methods
- *
- * note: Really I do not want users to have to deal with this
- * todo take steps to ensure users do not need to interact with the librdf_world*
- *
- */
-
-    OMEXMETA_CAPI_EXPORT [[maybe_unused]] int free_world(librdf_world *world);
-
 /***************************************************
  * RDF class methods
  */
@@ -113,6 +101,19 @@ namespace omexmeta {
  *  Editor class methods
  */
 
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *Editor_newPhysicalEntity(Editor *editor_ptr);
+
+    OMEXMETA_CAPI_EXPORT PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr);
+
+    OMEXMETA_CAPI_EXPORT PhysicalForce *Editor_newPhysicalForce(Editor *editor_ptr);
+
+    OMEXMETA_CAPI_EXPORT SingularAnnotation *Editor_newSingularAnnotation(Editor *editor_ptr);
+
+    OMEXMETA_CAPI_EXPORT PhysicalProperty *Editor_newPhysicalProperty(Editor *editor_ptr);
+
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *Editor_newPhysicalProcess(Editor *editor_ptr);
+
+
     OMEXMETA_CAPI_EXPORT int Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
 
     OMEXMETA_CAPI_EXPORT int Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
@@ -120,6 +121,8 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT int Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
     OMEXMETA_CAPI_EXPORT int Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+
+    OMEXMETA_CAPI_EXPORT int Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty);
 
     OMEXMETA_CAPI_EXPORT int Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
@@ -170,7 +173,6 @@ namespace omexmeta {
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    OMEXMETA_CAPI_EXPORT SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
 
     OMEXMETA_CAPI_EXPORT int SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
@@ -217,9 +219,26 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
 /*********************************************************************
+ * PhysicalProperty class methods
+ */
+
+        char* PhysicalProperty_getAbout(PhysicalProperty* property) ;
+
+        PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
+
+        char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
+
+        PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
+
+        PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
+
+        char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
+
+        char* PhysicalProperty_getPropertyMetaidBase(PhysicalProperty* property);
+
+/*********************************************************************
  * PhysicalEntity class methods
  */
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
 
     OMEXMETA_CAPI_EXPORT int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
@@ -247,7 +266,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *property);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
 
@@ -258,7 +277,6 @@ namespace omexmeta {
 /*********************************************************************
  * PhysicalProcess class methods
  */
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
 
     OMEXMETA_CAPI_EXPORT int PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
@@ -269,14 +287,14 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSource(
             PhysicalProcess *physical_process, int multiplier,
-            const char *physical_entity_reference);
+            const char *physical_entity_reference, eUriType type);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSink(
             PhysicalProcess *physical_process, int multiplier,
-            const char *physical_entity_reference);
+            const char *physical_entity_reference, eUriType type);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addMediator(
-            PhysicalProcess *physical_process, const char *physical_entity_reference);
+            PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type);
 
     OMEXMETA_CAPI_EXPORT char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
@@ -290,7 +308,6 @@ namespace omexmeta {
 /*********************************************************************
  * PhysicalForce class methods
  */
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
 
 
     /**
@@ -307,13 +324,13 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_addSource(
             PhysicalForce *physical_force_ptr, int multiplier,
-            const char *physical_entity_reference);
+            const char *physical_entity_reference, eUriType type);
 
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_addSink(
             PhysicalForce *physical_force_ptr, int multiplier,
-            const char *physical_entity_reference);
+            const char *physical_entity_reference, eUriType type);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_setPhysicalProperty(
+    OMEXMETA_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_setPhysicalProperty(
             PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
 
     OMEXMETA_CAPI_EXPORT int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
@@ -332,7 +349,6 @@ namespace omexmeta {
  * PersonalInformation class methods
  */
 
-    OMEXMETA_CAPI_EXPORT PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
 
     OMEXMETA_CAPI_EXPORT int PersonalInformation_delete(PersonalInformation *information);
 

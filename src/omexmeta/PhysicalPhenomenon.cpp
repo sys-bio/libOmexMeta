@@ -9,8 +9,8 @@ namespace omexmeta {
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri,
                                            PhysicalProperty propertyResource, AnnotationType type)
-            : model_(model), physical_property_(std::move(propertyResource)), type_(type),
-              model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)){}
+        : model_(model), physical_property_(std::move(propertyResource)), type_(type),
+          model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
 
     librdf_model *PhysicalPhenomenon::getModel() const {
         return model_;
@@ -20,14 +20,14 @@ namespace omexmeta {
 
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model)
-            : model_(model) {}
+        : model_(model) {}
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri)
         : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {
         physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
     }
 
-    const std::string & PhysicalPhenomenon::getSubjectStr() const {
+    const std::string &PhysicalPhenomenon::getSubjectStr() const {
         return physical_property_.getAbout();
     }
 
@@ -35,7 +35,7 @@ namespace omexmeta {
         return type_;
     }
 
-    std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) {
+    std::string PhysicalPhenomenon::generateMetaId(const std::string &id_base) {
         return OmexMetaUtils::generateUniqueMetaid(model_, id_base, new_metaid_exclusion_list_);
     }
 
@@ -49,7 +49,7 @@ namespace omexmeta {
     }
 
 
-    const std::string & PhysicalPhenomenon::getAbout() const {
+    const std::string &PhysicalPhenomenon::getAbout() const {
         // if the about field is empty or equal to model or local uri only, then we generate an about
         return about_value_;
     }
@@ -57,7 +57,7 @@ namespace omexmeta {
 
     PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
         model_ = phenomenon.model_;
-        phenomenon.model_ = nullptr; // not sure if this is right.
+        phenomenon.model_ = nullptr;// not sure if this is right.
         physical_property_ = std::move(phenomenon.physical_property_);
         type_ = phenomenon.type_;
         model_uri_ = phenomenon.model_uri_;
@@ -66,7 +66,7 @@ namespace omexmeta {
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
         if (this != &phenomenon) {
             model_ = phenomenon.model_;
-            phenomenon.model_ = nullptr; // not sure if this is right.
+            phenomenon.model_ = nullptr;// not sure if this is right.
             physical_property_ = std::move(phenomenon.physical_property_);
             type_ = phenomenon.type_;
             model_uri_ = phenomenon.model_uri_;
@@ -91,7 +91,7 @@ namespace omexmeta {
     }
 
     const std::string &PhysicalPhenomenon::getModelUri() const {
-        if (model_uri_.empty()){
+        if (model_uri_.empty()) {
             throw std::invalid_argument("std::invalid_argument: model_uri_ is empty. "
                                         "Please use setModelUri or pass to the constructor a "
                                         "model uri. ");
@@ -104,7 +104,7 @@ namespace omexmeta {
     }
 
     const std::string &PhysicalPhenomenon::getLocalUri() const {
-        if (local_uri_.empty()){
+        if (local_uri_.empty()) {
             throw std::invalid_argument("std::invalid_argument: local_uri_ is empty. "
                                         "Please use setLocalUri or pass to the constructor a "
                                         "local uri. ");
@@ -120,11 +120,13 @@ namespace omexmeta {
         return new_metaid_exclusion_list_;
     }
 
+    PhysicalPhenomenon &PhysicalPhenomenon::isPropertyOf(const std::string &is_property_of, eUriType type) {
+        physical_property_.isPropertyOf(is_property_of, type);
+        return *this;
+    }
 
-
-}
-
-
-
-
-
+    PhysicalPhenomenon &PhysicalPhenomenon::propertyIsVersionOf(const std::string &is_version_of, eUriType type) {
+        physical_property_.isPropertyOf(is_version_of, type);
+        return *this;
+    }
+}// namespace omexmeta

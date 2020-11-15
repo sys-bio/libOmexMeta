@@ -153,16 +153,16 @@ namespace omexmeta {
 
 
 
-    PhysicalProperty &PhysicalForce::hasProperty(const PhysicalProperty &property) {
+    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
         physical_property_ = property;
         if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getIsPropertyOfValue())) {
             // physical property takes care of generating ids
             physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
         }
-        return physical_property_;
+        return *this;
     }
 
-    PhysicalProperty &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type) {
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type) {
         /*
          * Two scenarios:
          *  1) User wants to provide their own strings to use for the property about section.
@@ -171,13 +171,25 @@ namespace omexmeta {
         if (property_about.empty()) {
             // option 2
             physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
-            physical_property_.setPropertyMetaidBase("ProcessProperty");
+            physical_property_.setPropertyMetaidBase("ForceProperty");
 
         } else {
             // option 1
             physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
         }
-        return physical_property_;
+        return *this;
     }
+
+    PhysicalForce &PhysicalForce::isPropertyOf(const std::string &is_property_of, eUriType type) {
+        physical_property_.isPropertyOf(is_property_of, type);
+        return *this;
+    }
+
+    PhysicalForce &PhysicalForce::propertyIsVersionOf(const std::string &is_version_of) {
+        physical_property_.isVersionOf(is_version_of);
+        return *this;
+    }
+
+
 
 }// namespace omexmeta

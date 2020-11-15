@@ -194,9 +194,13 @@ namespace omexmeta {
          */
         PhysicalForce &about(const std::string &about, eUriType type = NONE);
 
-        PhysicalProperty &hasProperty(const PhysicalProperty &property);
+        PhysicalForce &hasProperty(const PhysicalProperty &property);
 
-        PhysicalProperty &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+        PhysicalForce &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+
+        PhysicalForce &isPropertyOf(const std::string &is_property_of, eUriType type);
+
+        PhysicalForce &propertyIsVersionOf(const std::string &is_version_of);
     };
 }
 

@@ -7,16 +7,14 @@
 
 #include "redland/RedlandAPI.h"
 
-#include "omexmeta/PhysicalPhenomenon.h"
-#include "omexmeta/Participant.h"
-#include "omexmeta/Participant.h"
-#include "omexmeta/PhysicalProperty.h"
-#include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/Participant.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/PhysicalProperty.h"
 #include "omexmeta_export.h"
 
-#include <vector>
 #include <utility>
+#include <vector>
 
 using namespace redland;
 
@@ -26,10 +24,10 @@ namespace omexmeta {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
-        std::string is_version_of_ ; // optional class level attribute to store the isVErsionOf under the process ID.
+        std::string is_version_of_;// optional class level attribute to store the isVErsionOf under the process ID.
         OMEXMETA_DEPRECATED std::string property_metaid_base_ = "ProcessProperty";
-    public:
 
+    public:
         /**
          * @brief default constructor for PhysicalProcess
          * @details deliberately deleted. If you try using the
@@ -52,7 +50,7 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model, std::string model_uri,std::string local_uri, const PhysicalProperty &physicalProperty,
+        PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri, const PhysicalProperty &physicalProperty,
                         Sources sources, Sinks sinks, Mediators mediators);
 
         /**
@@ -169,7 +167,7 @@ namespace omexmeta {
          * @details This method will set the Resource resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-//        PhysicalProcess &isVersionOf(const std::string &property) ;
+        //        PhysicalProcess &isVersionOf(const std::string &property) ;
 
         /**
          * @brief set the subject (rdf:about) portion of the PhysicalProcess composite annotation
@@ -178,12 +176,16 @@ namespace omexmeta {
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalProcess& about(const std::string& about, eUriType type = NONE);
+        PhysicalProcess &about(const std::string &about, eUriType type = NONE);
 
-        PhysicalProperty &hasProperty(const PhysicalProperty &property);
+        PhysicalProcess &hasProperty(const PhysicalProperty &property);
 
-        PhysicalProperty &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+        PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+
+        PhysicalProcess &isPropertyOf(const std::string &is_property_of, eUriType type);
+
+        PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
     };
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_PHYSICALPROCESS_H
+#endif//LIBOMEXMETA_PHYSICALPROCESS_H

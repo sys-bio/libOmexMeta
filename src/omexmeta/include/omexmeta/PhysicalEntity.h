@@ -209,7 +209,7 @@ namespace omexmeta {
          * @details Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set
          * the Resource resource_ property on the PhysicalProperty associated with this PhysicalEntity.
          */
-        PhysicalEntity &isVersionOf(const std::string &property);
+        PhysicalEntity &propertyIsVersionOf(const std::string &property);
 
         PhysicalEntity &isPropertyOf(const std::string &is_property_of, eUriType type);
 

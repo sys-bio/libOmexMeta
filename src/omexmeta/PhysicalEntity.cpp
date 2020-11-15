@@ -85,13 +85,12 @@ namespace omexmeta {
     }
 
 
-    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type) {
+    PhysicalEntity  &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type) {
         /*
          * Two scenarios:
          *  1) User wants to provide their own strings to use for the property about section.
          *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
          */
-        std::cout << "PhysicalEntity::hasProperty property_about: " << property_about  << std::endl;
         if (property_about.empty()) {
             // option 2
             physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
@@ -190,17 +189,16 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    PhysicalEntity &PhysicalEntity::isVersionOf(const std::string &version) {
-        physical_property_.isVersionOf(version);
-        return *this;
-    }
-
 
     PhysicalEntity &PhysicalEntity::isPropertyOf(const std::string &is_property_of, eUriType type) {
         physical_property_.isPropertyOf(is_property_of, type);
         return *this;
     }
 
+    PhysicalEntity &PhysicalEntity::propertyIsVersionOf(const std::string &is_version_of) {
+        physical_property_.isVersionOf(is_version_of);
+        return *this;
+    }
     PhysicalEntity &PhysicalEntity::about(const std::string &about, eUriType type) {
         if (OmexMetaUtils::startsWith(about, "http")) {
             about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, NONE);

@@ -144,11 +144,6 @@ namespace omexmeta {
 
         [[nodiscard]] librdf_model *getModel() const;
 
-
-//        PhysicalPhenomenon &hasProperty(const PhysicalProperty &property);
-
-//        PhysicalProperty& hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
-
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

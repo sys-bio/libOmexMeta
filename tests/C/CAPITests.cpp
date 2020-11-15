@@ -190,7 +190,7 @@ TEST_F(CAPITests, TestGetMetaID) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     char *actual = Editor_getMetaId(editor_ptr, 0);
     std::cout << actual << std::endl;
-    const char *expected = "#OmexMetaId0000";
+    const char *expected = "model0000";
     ASSERT_STREQ(expected, actual);
 
     free(actual);
@@ -217,7 +217,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_about(singularAnnotation, "metaid6");
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid6";
@@ -235,7 +235,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_setPredicate(singularAnnotation,
                                     "bqbiol", "is");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
@@ -255,7 +255,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
     const char *expected = "http://predicate.com/from/uri";
@@ -273,7 +273,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_about(singularAnnotation, "cytosol");
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
     SingularAnnotation_setResourceLiteral(singularAnnotation, "Cheese");
@@ -308,13 +308,24 @@ TEST_F(CAPITests, TestEditorPtrMem) {
     delete editor_ptr;
 }
 
+TEST_F(CAPITests, TestPhysicalProperty) {
+    // verified with valgrind, not sure how to gtest
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
+
+    RDF_delete(rdf_ptr);
+    delete editor_ptr;
+}
+
 TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
     RDF *rdf_ptr = RDF_new();
 
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_setResourceLiteral(singularAnnotation,
                                           "LiterallyAString");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
@@ -334,7 +345,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_setResourceUri(singularAnnotation,
                                       "uniprot:PD98723");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
@@ -353,7 +364,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
     SingularAnnotation_setResourceBlank(singularAnnotation, "Nothing");
     char *actual = SingularAnnotation_getResource(singularAnnotation);
     const char *expected = "Nothing";
@@ -371,11 +382,11 @@ TEST_F(CAPITests, TestPhysicalEntity) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "#OmexMetaId0000");
-    physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb:opb__1234");
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD58736");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8764");
+    PhysicalProperty* property_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb:opb__1234");
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
 
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -401,7 +412,7 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "#OmexMetaId0000");
     physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb:opb__1234");
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD58736");
@@ -426,7 +437,7 @@ TEST_F(CAPITests, TestPhysicalEntityOptionalProperty) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "#OmexMetaId0000");
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "opb:opb__12345");
     physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "uniprot:PD58736");
@@ -459,7 +470,7 @@ TEST_F(CAPITests, TestPhysicalEntityOptionalLocation) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "#OmexMetaId0000");
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD58736");
     physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb:opb_12345");
@@ -489,7 +500,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "OmexMetaId0000");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8376");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8377");
@@ -518,21 +529,21 @@ TEST_F(CAPITests, TestPhysicalProcess) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
+    PhysicalProcess *physical_process_ptr = Editor_newPhysicalProcess(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "#OmexMetaId0000");
-//    physical_process_ptr = PhysicalProcess_isVersionOf(physical_process_ptr, "opb:opb_93864");
-    physical_process_ptr = PhysicalProcess_hasProperty(physical_process_ptr, "GO:GO12345");
-    physical_process_ptr = PhysicalProcess_addSink(
-            physical_process_ptr, 1, "Entity8");
-    physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, 1, "Entity8");
-    physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, "Entity8");
-
-    Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
-
-    printf(RDF_toString(rdf_ptr, "turtle"), stdout);
+//    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "#OmexMetaId0000");
+////    physical_process_ptr = PhysicalProcess_isVersionOf(physical_process_ptr, "opb:opb_93864");
+//    physical_process_ptr = PhysicalProcess_hasProperty(physical_process_ptr, "GO:GO12345");
+//    physical_process_ptr = PhysicalProcess_addSink(
+//            physical_process_ptr, 1, "Entity8", MODEL_URI);
+//    physical_process_ptr = PhysicalProcess_addSource(
+//            physical_process_ptr, 1, "Entity8", MODEL_URI);
+//    physical_process_ptr = PhysicalProcess_addMediator(
+//            physical_process_ptr, "Entity8", MODEL_URI);
+//
+//    Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
+//
+//    printf(RDF_toString(rdf_ptr, "turtle"), stdout);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -572,17 +583,17 @@ TEST_F(CAPITests, TestPhysicalProcess2) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
+    PhysicalProcess *physical_process_ptr = Editor_newPhysicalProcess(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "#OmexMetaId0000");
-    physical_process_ptr = PhysicalProcess_hasProperty(physical_process_ptr, "opb:opb_93864");
-    physical_process_ptr = PhysicalProcess_isVersionOf(physical_process_ptr, "GO:12345");
-    physical_process_ptr = PhysicalProcess_addSink(
-            physical_process_ptr, 1, "Entity8");
-    physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, 1, "Entity8");
-    physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, "Entity8");
+//    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "#OmexMetaId0000");
+//    physical_process_ptr = PhysicalProcess_hasProperty(physical_process_ptr, "opb:opb_93864");
+//    physical_process_ptr = PhysicalProcess_isVersionOf(physical_process_ptr, "GO:12345");
+//    physical_process_ptr = PhysicalProcess_addSink(
+//            physical_process_ptr, 1, "Entity8", MODEL_URI);
+//    physical_process_ptr = PhysicalProcess_addSource(
+//            physical_process_ptr, 1, "Entity8", MODEL_URI);
+//    physical_process_ptr = PhysicalProcess_addMediator(
+//            physical_process_ptr, "Entity8", MODEL_URI);
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -623,13 +634,13 @@ TEST_F(CAPITests, TestPhysicalForce) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
+    PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
 
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "#OmexMetaId0000", "opb:opb_93864");
     physical_force_ptr = PhysicalForce_addSink(
-            physical_force_ptr, 1, "Entity8");
+            physical_force_ptr, 1, "Entity8", MODEL_URI);
     physical_force_ptr = PhysicalForce_addSource(
-            physical_force_ptr, 1, "Entity9");
+            physical_force_ptr, 1, "Entity9", MODEL_URI);
     Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
 
     char *actual = PhysicalForce_str(physical_force_ptr, "turtle", "./Annot.rdf");
@@ -669,19 +680,19 @@ TEST_F(CAPITests, TestEditorToRDF) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
+    PhysicalProcess *physical_process_ptr = Editor_newPhysicalProcess(editor_ptr);
 
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "#OmexMetaId0006",
                                                                "opb:opb_93864");
     physical_process_ptr = PhysicalProcess_addSink(
-            physical_process_ptr, 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8", MODEL_URI);
     physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, 1, "Entity8");
+            physical_process_ptr, 1, "Entity8", MODEL_URI);
     physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, "Entity8");
+            physical_process_ptr, "Entity8", MODEL_URI);
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "#OmexMetaId0007");
     physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, "opb:opb__465");
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD7363");
@@ -689,13 +700,13 @@ TEST_F(CAPITests, TestEditorToRDF) {
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8377");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8378");
 
-    PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
+    PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
 
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "#OmexMetaId0008", "opb:opb_93864");
     physical_force_ptr = PhysicalForce_addSink(
-            physical_force_ptr, 1, "Entity8");
+            physical_force_ptr, 1, "Entity8", MODEL_URI);
     physical_force_ptr = PhysicalForce_addSource(
-            physical_force_ptr, 1, "Entity9");
+            physical_force_ptr, 1, "Entity9", MODEL_URI);
 
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
@@ -1131,7 +1142,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addCreator(information, "2134-1234-1234-1234");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1160,7 +1171,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
 //            SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(),
 //            OMEXMETA_TYPE_SBML
 //    );
-//    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+//    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
 //    PersonalInformation_addCurator(information, "2134-1234-1234-1234");
 //    char *actual = RDF_toString(rdf_ptr, "turtle");
 //    const char *expected = "https://identifiers.org/uniprot:PD7363";
@@ -1177,7 +1188,7 @@ TEST_F(CAPITests, PersonalInformationaddName) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addName(information, "Ciaran Welsh");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1207,7 +1218,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addMbox(information, "cwelsh2@ue.edu");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1237,7 +1248,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addAccountName(information, "2134-1234-1234-1234");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1266,7 +1277,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addAccountServiceHomepage(information, "https://github.com/sys-bio/libOmexMeta");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1296,7 +1307,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addFoafLiteral(information, "accountServiceHomepage", "https://github.com/sys-bio/libOmexMeta");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1326,7 +1337,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     PersonalInformation_addFoafLiteral(information, "name", "Ciaran Welsh");
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1355,7 +1366,7 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation *information = Editor_newPersonalInformation(editor_ptr);
     char *actual = PersonalInformation_getMetaid(information);
     Editor_addPersonalInformation(editor_ptr, information);
     editor_ptr->addPersonalInformation(information);
