@@ -8,10 +8,20 @@ from typing import List
 import shutil
 import subprocess
 
+_THIS_DIR = os.path.dirname(__file__)
 
+_EXTRA_SEARCH_DIR_FILE = os.path.join(_THIS_DIR, "ExtraSearchDirectories.txt")
+
+extra_search_paths = []
+if (os.path.isfile(_EXTRA_SEARCH_DIR_FILE)):
+    with open(_EXTRA_SEARCH_DIR_FILE, "r") as f:
+        extra_search_paths = f.read().split("\n")
+
+if sys.platform == "win32":
+    extra_search_paths = [i.replace("/", "\\") for i in extra_search_paths]
 
 def get_version():
-    with open("VERSION.txt", "r") as f:
+    with open(os.path.join(_THIS_DIR, "VERSION.txt"), "r") as f:
         __version__ = f.read().strip()
     return __version__
 
@@ -74,7 +84,7 @@ class Util:
             )
         )
         # Note: when in source tree we cannot locate the binary.
-        search_directories = [current_working_dir, pyomexmeta_init_dir, build_tree_bin_dir, build_tree_lib_dir]
+        search_directories = [current_working_dir, pyomexmeta_init_dir, build_tree_bin_dir, build_tree_lib_dir] + extra_search_paths
 
         found_library_files = []
         for direct in search_directories:
@@ -85,7 +95,7 @@ class Util:
                         found_library_files.append(cand)
 
         if found_library_files == []:
-            raise FileNotFoundError(f"Cannot locate OmexMeta library in {str(search_directories)}")
+            raise FileNotFoundError(f"Cannot locate libOmexMeta library in {str(search_directories)}")
 
         lib = None
         for lib_path in found_library_files:
@@ -118,6 +128,11 @@ class PyOmexMetaAPI:
 
     Explain decision to only set self uri's from RDF not editor.
     """
+
+    NONE = 0
+    LOCAL_URI = 1
+    MODEL_URI = 2
+    IDENTIFIERS_URI = 3
 
     # RDF methods
     @staticmethod
@@ -221,13 +236,13 @@ class PyOmexMetaAPI:
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
 
     # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
-    rdf_compare_rdf_vs_string = Util.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_bool)
+    rdf_equals_rdf_vs_string = Util.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_bool)
 
     # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
-    rdf_compare_rdf_vs_rdf = Util.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_bool)
+    rdf_equals_rdf_vs_rdf = Util.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_bool)
 
     # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
-    rdf_compare_string_vs_string = Util.load_func("RDF_equals_string_vs_string", [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_bool)
+    rdf_equals_string_vs_string = Util.load_func("RDF_equals_string_vs_string", [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_bool)
 
 
     #################################################################
@@ -284,17 +299,17 @@ class PyOmexMetaAPI:
     # char *Editor_getXml(Editor *editor_ptr);
     editor_get_xml = Util.load_func("Editor_getXml", [ct.c_int64], ct.c_int64)
 
-    # SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
-    editor_new_singular_annotation = Util.load_func("SingularAnnotation_new", [ct.c_int64], ct.c_int64)
+    # SingularAnnotation *Editor_newSingularAnnotation(Editor *editor_ptr);
+    editor_new_singular_annotation = Util.load_func("Editor_newSingularAnnotation", [ct.c_int64], ct.c_int64)
 
-    # PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
-    editor_new_physical_entity = Util.load_func("PhysicalEntity_new", [ct.c_int64], ct.c_int64)
+    # PhysicalEntity *Editor_newPhysicalEntity(Editor *editor_ptr);
+    editor_new_physical_entity = Util.load_func("Editor_newPhysicalEntity", [ct.c_int64], ct.c_int64)
 
-    # PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
-    editor_new_physical_process = Util.load_func("PhysicalProcess_new", [ct.c_int64], ct.c_int64)
+    # PhysicalProcess *Editor_newPhysicalProcess(Editor *editor_ptr);
+    editor_new_physical_process = Util.load_func("Editor_newPhysicalProcess", [ct.c_int64], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
-    editor_new_physical_force = Util.load_func("PhysicalForce_new", [ct.c_int64], ct.c_int64)
+    # PhysicalForce *Editor_newPhysicalForce(Editor *editor_ptr);
+    editor_new_physical_force = Util.load_func("Editor_newPhysicalForce", [ct.c_int64], ct.c_int64)
 
     # void Editor_delete(Editor *editor_ptr);
     editor_delete = Util.load_func("Editor_delete", [ct.c_int64], None)
@@ -411,6 +426,9 @@ class PyOmexMetaAPI:
     # PhysicalProperty methods
     #
 
+    #    PhysicalProperty *Editor_newPhysicalProperty(Editor *editor_ptr) {
+    editor_new_physical_property = Util.load_func("Editor_newPhysicalProperty", [ct.c_int64], ct.c_int64)
+
     # char* PhysicalProperty_getAbout(PhysicalProperty* property) ;
     physical_property_get_about = Util.load_func("PhysicalProperty_getAbout", [ct.c_int64], ct.c_int64)
 
@@ -421,10 +439,10 @@ class PyOmexMetaAPI:
     physical_property_get_is_version_of_value = Util.load_func("PhysicalProperty_getIsVersionOfValue", [ct.c_int64], ct.c_int64 )
 
     # PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
-    physical_property_is_property_of = Util.load_func("PhysicalProperty_isPropertyOf", [ct.c_int64, ct.c_int64, ct.c_int64], ct.c_int64 )
+    physical_property_is_property_of = Util.load_func("PhysicalProperty_isPropertyOf", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64 )
 
     # PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
-    physical_property_is_version_of = Util.load_func("PhysicalProperty_isVersionOf", [ct.c_int64, ct.c_int64], ct.c_int64 )
+    physical_property_is_version_of = Util.load_func("PhysicalProperty_isVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64 )
 
     # char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
     physical_property_get_is_property_of_value = Util.load_func("PhysicalProperty_getIsPropertyOfValue", [ct.c_int64], ct.c_int64 )
@@ -463,7 +481,7 @@ class PyOmexMetaAPI:
                                          ct.c_int64)
 
     # OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property);
-    physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64], ct.c_int64)
+    physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_int64], ct.c_int64)
 
     # OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
     physical_entity_has_property_is_version_of = Util.load_func("PhysicalEntity_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -483,6 +501,9 @@ class PyOmexMetaAPI:
     # PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
     physical_entity_about = Util.load_func("PhysicalEntity_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
+    # PhysicalEntity *PhysicalEntity_aboutWithUriType(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type) {
+    physical_entity_about_with_uri_type = Util.load_func("PhysicalEntity_aboutWithUriType", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+
     # PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
     physical_entity_is_part_of = Util.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
@@ -498,22 +519,24 @@ class PyOmexMetaAPI:
     physical_process_set_physical_property = Util.load_func("PhysicalProcess_setPhysicalProperty",
                                                             [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
-    # PhysicalProcess *PhysicalProcess_addSource(
-    #         PhysicalProcess *physical_process, int multiplier,
-    #         const char *physical_entity_reference);
+
+    # PhysicalProcess *
+    # PhysicalProcess_addSource(PhysicalProcess *physical_process,
+    #                          const char *physical_entity_reference, eUriType type, int multiplier)
     physical_process_add_source = Util.load_func("PhysicalProcess_addSource",
-                                                 [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                 [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
-    # PhysicalProcess *PhysicalProcess_addSink(
-    #         PhysicalProcess *physical_process, int multiplier,
-    #         const char *physical_entity_reference);
+    # PhysicalProcess *
+    # PhysicalProcess_addSink(PhysicalProcess *physical_process,
+    #                        const char *physical_entity_reference, eUriType type, int multiplier)
     physical_process_add_sink = Util.load_func("PhysicalProcess_addSink",
-                                               [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                               [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
-    # PhysicalProcess *PhysicalProcess_addMediator(
-    #         PhysicalProcess *physical_process, const char *physical_entity_reference);
+    #     PhysicalProcess *
+    #     PhysicalProcess_addMediator(PhysicalProcess *physical_process,
+    #                                 const char *physical_entity_reference, eUriType type)
     physical_process_add_mediator = Util.load_func("PhysicalProcess_addMediator",
-                                                   [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                   [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
     physical_process_str = Util.load_func("PhysicalProcess_str",
@@ -544,10 +567,6 @@ class PyOmexMetaAPI:
     physical_process_about_with_uri_type = Util.load_func("PhysicalProcess_aboutWithUriType", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
 
-    # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_entity_ptr, const char *version);
-    physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf", [ct.c_int64, ct.c_char_p],
-                                                    ct.c_int64)
-
     #################################################################
     # PhysicalForce Methods
     #
@@ -557,17 +576,15 @@ class PyOmexMetaAPI:
     physical_force_set_physical_property = Util.load_func("PhysicalForce_setPhysicalProperty",
                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_addSource(
-    #         PhysicalForce *physical_force_ptr, lint multiplier,
-    #         const char *physical_entity_reference);
+    #    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr,
+    #                                        const char *physical_entity_reference, eUriType type, int multiplier)
     physical_force_add_source = Util.load_func("PhysicalForce_addSource",
-                                               [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                               [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_addSink(
-    #         PhysicalForce *physical_force_ptr, int multiplier,
-    #         const char *physical_entity_reference);
+    #    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr,
+    #                                      const char *physical_entity_reference, eUriType type, int multiplier) {
     physical_force_add_sink = Util.load_func("PhysicalForce_addSink",
-                                             [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                             [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
     # char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
     physical_force_str = Util.load_func("PhysicalForce_str",
@@ -602,8 +619,8 @@ class PyOmexMetaAPI:
     # PersonalInformation Methods
     #
 
-    # PersonalInformation *PersonalInformation_new(Editor *editor_ptr);
-    editor_new_personal_information = Util.load_func("PersonalInformation_new", [ct.c_int64], ct.c_int64)
+    # PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr);
+    editor_new_personal_information = Util.load_func("Editor_newPersonalInformation", [ct.c_int64], ct.c_int64)
 
     # char *PersonalInformation_getLocalUri(PersonalInformation *information);
     personal_information_get_local_uri = Util.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)

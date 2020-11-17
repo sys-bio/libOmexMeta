@@ -291,6 +291,7 @@ namespace omexmeta {
             exit(1);
         }
     }
+
     PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr) {
         try {
             return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(),
@@ -1127,7 +1128,7 @@ namespace omexmeta {
 
     PhysicalProcess *
     PhysicalProcess_addSource(PhysicalProcess *physical_process,
-                              const char *physical_entity_reference, eUriType type,int multiplier) {
+                              const char *physical_entity_reference, eUriType type, int multiplier) {
         try {
             physical_process->addSource(physical_entity_reference, type, multiplier);
             return physical_process;
@@ -1617,6 +1618,7 @@ namespace omexmeta {
             return -1;
         }
     }
+
 
 
 }// namespace omexmeta

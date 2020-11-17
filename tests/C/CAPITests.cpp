@@ -309,17 +309,6 @@ TEST_F(CAPITests, TestEditorPtrMem) {
     delete editor_ptr;
 }
 
-TEST_F(CAPITests, TestPhysicalProperty) {
-    // verified with valgrind, not sure how to gtest
-    RDF *rdf_ptr = RDF_new();
-
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
-                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-
-    RDF_delete(rdf_ptr);
-    delete editor_ptr;
-}
-
 TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
     RDF *rdf_ptr = RDF_new();
 
