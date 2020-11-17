@@ -222,21 +222,21 @@ namespace omexmeta {
  * PhysicalProperty class methods
  */
 
-        char* PhysicalProperty_getAbout(PhysicalProperty* property) ;
+    OMEXMETA_CAPI_EXPORT char* PhysicalProperty_getAbout(PhysicalProperty* property) ;
 
-        PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
 
-        char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
 
-        PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
 
-        PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
 
-        char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
 
-        char* PhysicalProperty_getPropertyMetaidBase(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT char* PhysicalProperty_getPropertyMetaidBase(PhysicalProperty* property);
 
-        int PhysicalProperty_delete(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT int PhysicalProperty_delete(PhysicalProperty* property);
 
 /*********************************************************************
  * PhysicalEntity class methods
@@ -246,16 +246,16 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(
+    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(
             PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property=nullptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(
+    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_identity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(
+    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(
             PhysicalEntity *physical_entity_ptr, const char *location_resource);
 
     OMEXMETA_CAPI_EXPORT char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);

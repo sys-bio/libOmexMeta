@@ -99,46 +99,6 @@ class Util:
             raise ValueError("Could not load library")
 
         return lib
-    # @staticmethod
-    # def load_lib() -> ct.CDLL:
-    #     lib_path = Util.find_libomexmeta_c_api()
-    #     if sys.platform == "linux":
-    #         # lib_path = os.path.join(_WORKING_DIRECTORY, f"libOmexMetaCAPI.so.{__version__}")
-    #         try:
-    #             lib = ct.CDLL(lib_path)
-    #         except OSError as e:
-    #             if str(e) == "libxml2.so.2: cannot open shared object file: No such file or directory":
-    #                 raise FileNotFoundError("Dependency library libxml2.so was not found. Run "
-    #                                         "\"$ sudo apt install -y libxml2 libxml2-dev\"")
-    #
-    #             elif str(e) == "libxslt.so.1: cannot open shared object file: No such file or directory":
-    #                 raise FileNotFoundError("Dependency library libxsl2.so was not found. Run "
-    #                                         "\"$ sudo apt install -y libxslt1-dev\"")
-    #
-    #             elif str(e) == "libpq.so.5: cannot open shared object file: No such file or directory":
-    #                 raise FileNotFoundError("Dependency library libpq.so was not found. Run "
-    #                                         "\"$ sudo apt install -y libpq-dev\"")
-    #
-    #             elif "libc.so.6:" in str(e):
-    #                 raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
-    #                                         "\"$ sudo apt install -y software-properties-common "
-    #                                         "&& sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test "
-    #                                         "&& apt-get update "
-    #                                         "&& sudo apt install -y g++-10\"")
-    #             else:
-    #                 raise e
-    #
-    #     elif sys.platform == "win32":
-    #         # windows has to be difficult
-    #         # lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMetaCAPI.dll")
-    #         dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
-    #         lib = ct.WinDLL(lib_path, handle=dll_handle)
-    #     else:
-    #         raise ValueError("Currently only implemented for windows or linux systems. Platform is " + sys.platform)
-    #
-    #     if not lib:
-    #         raise ValueError("libomexmeta.so not found")
-    #     return lib
 
     @staticmethod
     def load_func(funcname: str, argtypes: List, restype) -> ct.CDLL._FuncPtr:
@@ -153,8 +113,6 @@ libomexmeta = Util.load_lib()
 
 class PyOmexMetaAPI:
     """
-    todo: Explain why we use return int64 type for functions that return char*:
-
     Encourage developers to mainain the order of functions loaded here
     to be as close as possible as that in OmexMetaCApi.h as it facilitates development
 
@@ -381,6 +339,9 @@ class PyOmexMetaAPI:
     # SingularAnnotation *SingularAnnotation_about(SingularAnnotation *singular_annotation, const char *about);
     singular_annotation_about = Util.load_func("SingularAnnotation_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
+    # PhysicalEntity *PhysicalEntity_aboutWithUriType(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type);
+    singular_annotation_about_with_uri_type = Util.load_func("PhysicalEntity_aboutWithUriType", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+
     # SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
     singular_annotation_set_predicate = Util.load_func("SingularAnnotation_setPredicate",
                                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
@@ -447,13 +408,34 @@ class PyOmexMetaAPI:
     singular_annotation_delete = Util.load_func("SingularAnnotation_delete", [ct.c_int64], None)
 
     #################################################################
+    # PhysicalProperty methods
+    #
+
+    # char* PhysicalProperty_getAbout(PhysicalProperty* property) ;
+    physical_property_get_about = Util.load_func("PhysicalProperty_getAbout", [ct.c_int64], ct.c_int64)
+
+    # PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
+    physical_property_about = Util.load_func("PhysicalProperty_about", [ct.c_int64], ct.c_int64)
+
+    # char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
+    physical_property_get_is_version_of_value = Util.load_func("PhysicalProperty_getIsVersionOfValue", [ct.c_int64], ct.c_int64 )
+
+    # PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
+    physical_property_is_property_of = Util.load_func("PhysicalProperty_isPropertyOf", [ct.c_int64, ct.c_int64, ct.c_int64], ct.c_int64 )
+
+    # PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
+    physical_property_is_version_of = Util.load_func("PhysicalProperty_isVersionOf", [ct.c_int64, ct.c_int64], ct.c_int64 )
+
+    # char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
+    physical_property_get_is_property_of_value = Util.load_func("PhysicalProperty_getIsPropertyOfValue", [ct.c_int64], ct.c_int64 )
+
+    # int PhysicalProperty_delete(PhysicalProperty* property);
+    physical_property_delete = Util.load_func("PhysicalProperty_delete", [ct.c_int64], ct.c_int64 )
+
+    #################################################################
     # PhysicalEntity methods
     #
 
-    # PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-    #      PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
-    physical_entity_set_physical_property = Util.load_func("PhysicalEntity_setPhysicalProperty",
-                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
     # PhysicalEntity *PhysicalEntity_setIdentity(
     #         PhysicalEntity *physical_entity_ptr, const char *identity_resource);
     physical_entity_set_identity = Util.load_func("PhysicalEntity_setIdentity", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -479,6 +461,19 @@ class PyOmexMetaAPI:
     # char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
     physical_entity_str = Util.load_func("PhysicalEntity_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
                                          ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property);
+    physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64], ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
+    physical_entity_has_property_is_version_of = Util.load_func("PhysicalEntity_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
+    physical_entity_has_property_full = Util.load_func("PhysicalEntity_hasPropertyFull", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_int64], ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyAutoGeneratePropertyId(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    physical_entity_has_property_auto_generate_property_id = Util.load_func("PhysicalEntity_hasPropertyAutoGeneratePropertyId", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+
     # void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
     physical_entity_delete = Util.load_func("PhysicalEntity_delete", [ct.c_int64], None)
 
@@ -487,9 +482,6 @@ class PyOmexMetaAPI:
 
     # PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
     physical_entity_about = Util.load_func("PhysicalEntity_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
-    # PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *is_version_of);
-    physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
     physical_entity_is_part_of = Util.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -527,6 +519,18 @@ class PyOmexMetaAPI:
     physical_process_str = Util.load_func("PhysicalProcess_str",
                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
+    # OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_entity_ptr, PhysicalProperty* property);
+    physical_process_has_property = Util.load_func("PhysicalProcess_hasProperty", [ct.c_int64], ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) ;
+    physical_process_has_property_is_version_of = Util.load_func("PhysicalProcess_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
+    physical_process_has_property_full = Util.load_func("PhysicalProcess_hasPropertyFull", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_int64], ct.c_int64)
+
+    # OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyAutoGeneratePropertyId(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    physical_process_has_property_auto_generate_property_id = Util.load_func("PhysicalProcess_hasPropertyAutoGeneratePropertyId", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+
     # void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
     physical_process_delete = Util.load_func("PhysicalProcess_delete", [ct.c_int64], None)
 
@@ -536,8 +540,9 @@ class PyOmexMetaAPI:
     # PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_entity_ptr, const char *about);
     physical_process_about = Util.load_func("PhysicalProcess_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_entity_ptr, const char *property);
-    physical_process_has_property = Util.load_func("PhysicalProcess_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalProcess *PhysicalProcess_aboutWithUriType(PhysicalProcess *physical_process_ptr, const char *about, eUriType type);
+    physical_process_about_with_uri_type = Util.load_func("PhysicalProcess_aboutWithUriType", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+
 
     # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_entity_ptr, const char *version);
     physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf", [ct.c_int64, ct.c_char_p],
@@ -568,6 +573,18 @@ class PyOmexMetaAPI:
     physical_force_str = Util.load_func("PhysicalForce_str",
                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
+    # PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_entity_ptr, PhysicalProperty* property);
+    physical_force_has_property = Util.load_func("PhysicalForce_hasProperty", [ct.c_int64], ct.c_int64)
+
+    # PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_process_ptr, const char* isVersionOf) ;
+    physical_force_has_property_is_version_of = Util.load_func("PhysicalForce_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
+    physical_force_has_property_full = Util.load_func("PhysicalForce_hasPropertyFull", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_int64], ct.c_int64)
+
+    # PhysicalForce *PhysicalForce_hasPropertyAutoGeneratePropertyId(PhysicalForce *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    physical_force_has_property_auto_generate_property_id = Util.load_func("PhysicalForce_hasPropertyAutoGeneratePropertyId", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+
     # void PhysicalForce_delete(PhysicalForce *physicalForce);
     physical_force_delete = Util.load_func("PhysicalForce_delete", [ct.c_int64], None)
 
@@ -577,8 +594,9 @@ class PyOmexMetaAPI:
     # PhysicalForce *PhysicalForce_about(PhysicalForce *physical_entity_ptr, const char *about);
     physical_force_about = Util.load_func("PhysicalForce_about", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_entity_ptr, const char *property);
-    physical_force_has_property = Util.load_func("PhysicalForce_hasProperty", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalForce *PhysicalForce_aboutWithUriType(PhysicalForce *physical_force_ptr, const char *about, eUriType type);
+    physical_force_about_with_uri_type = Util.load_func("PhysicalForce_aboutWithUriType",
+                                                          [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     #################################################################
     # PersonalInformation Methods
