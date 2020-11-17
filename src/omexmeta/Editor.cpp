@@ -279,6 +279,11 @@ namespace omexmeta {
         return PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
     }
 
+    PhysicalProperty* Editor::newPhysicalPropertyPtr() {
+        auto* property = new PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+        return property;
+    }
+
     PhysicalEntity Editor::newPhysicalEntity() {
         return PhysicalEntity(model_.get(), getModelUri(), getLocalUri());
     }
@@ -433,5 +438,6 @@ namespace omexmeta {
     OmexMetaXmlType Editor::getType() const { return type_; }
 
     void Editor::setType(OmexMetaXmlType type) { type_ = type; }
+
 
 }// namespace omexmeta

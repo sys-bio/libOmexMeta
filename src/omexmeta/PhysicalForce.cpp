@@ -28,25 +28,10 @@ namespace omexmeta {
     }
 
     Triples PhysicalForce::toTriples() {
-        //        if (getAbout().empty() || getAbout() == model_uri_ + "#") {
-        //            std::string new_about = generateMetaId("Force");
-        //            about(OmexMetaUtils::concatMetaIdAndUri(new_about, local_uri_));
-        //        }
-        //        if (physical_force_property_id_.empty()) {
-        //            physical_force_property_id_ = generateMetaId("ForceProperty");
-        //            physical_property_.about(physical_force_property_id_, LOCAL_URI);
-        //        }
-        // check PhysicalForce::getAbout for being empty. Autogenerate id if true.
-
-        std::cout << "getAbout(): " << getAbout() << std::endl;
         if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, getAbout())) {
-            std::cout << "getAbout(): " << getAbout() << std::endl;
             std::string new_force_about_value = generateMetaId("Force");
-            std::cout << "getAbout(): " << getAbout() << std::endl;
             about(new_force_about_value, LOCAL_URI);
-            std::cout << "getAbout(): " << getAbout() << std::endl;
         }
-        std::cout << "getAbout(): " << getAbout() << std::endl;
 
         if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getAbout())) {
             // the PhysicalProperty will autogenerate its own about metaid. We set this base to something more approprioate for a PhysicalProcess
@@ -88,11 +73,11 @@ namespace omexmeta {
     PhysicalForce &PhysicalForce::addSource(const std::string &physical_entity_reference, eUriType type, int multiplier) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_, multiplier, physical_entity_reference, type,  getModelUri(), getLocalUri())));
+                        model_, multiplier, physical_entity_reference, type, getModelUri(), getLocalUri())));
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::addSink(const std::string &physical_entity_reference,  eUriType type, int multiplier) {
+    PhysicalForce &PhysicalForce::addSink(const std::string &physical_entity_reference, eUriType type, int multiplier) {
         sinks_.push_back(
                 SinkParticipant(model_, multiplier, physical_entity_reference, type, getModelUri(), getLocalUri()));
         return (*this);
@@ -139,46 +124,45 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
-        if (OmexMetaUtils::startsWith(about, "http")) {
-            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, NONE);
-        } else {
-            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, type);
-        }
-        if (physical_property_.getIsPropertyOfValue().empty()){
-            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
-        }
-        return *this;
-    }
+//    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
+//        if (OmexMetaUtils::startsWith(about, "http")) {
+//            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, NONE);
+//        } else {
+//            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, type);
+//        }
+//        if (physical_property_.getIsPropertyOfValue().empty()) {
+//            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+//        }
+//        return *this;
+//    }
 
-
-
-    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
-        physical_property_ = property;
-        if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getIsPropertyOfValue())) {
-            // physical property takes care of generating ids
-            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
-        }
-        return *this;
-    }
-
-    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type) {
-        /*
-         * Two scenarios:
-         *  1) User wants to provide their own strings to use for the property about section.
-         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
-         */
-        if (property_about.empty()) {
-            // option 2
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
-            physical_property_.setPropertyMetaidBase("ForceProperty");
-
-        } else {
-            // option 1
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
-        }
-        return *this;
-    }
+//
+//    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
+//        physical_property_ = property;
+//        if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getIsPropertyOfValue())) {
+//            // physical property takes care of generating ids
+//            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
+//        }
+//        return *this;
+//    }
+//
+//    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type) {
+//        /*
+//         * Two scenarios:
+//         *  1) User wants to provide their own strings to use for the property about section.
+//         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
+//         */
+//        if (property_about.empty()) {
+//            // option 2
+//            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
+//            physical_property_.setPropertyMetaidBase("ForceProperty");
+//
+//        } else {
+//            // option 1
+//            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
+//        }
+//        return *this;
+//    }
 
     PhysicalForce &PhysicalForce::isPropertyOf(const std::string &is_property_of, eUriType type) {
         physical_property_.isPropertyOf(is_property_of, type);
@@ -190,6 +174,35 @@ namespace omexmeta {
         return *this;
     }
 
+    const std::string &PhysicalForce::getPropertyMetaidBase() const {
+        return property_metaid_base_;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
+        PhysicalPhenomenon::hasProperty(property);
+        return *this;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+        return *this;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(is_version_of);
+        return *this;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        return *this;
+    }
+
+    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
+        PhysicalPhenomenon::about(about, type);
+        return *this;
+    }
+
+    PhysicalForce &PhysicalForce::about(const std::string &about) {
+        PhysicalPhenomenon::about(about);
+        return *this;
+    }
 
 
 }// namespace omexmeta

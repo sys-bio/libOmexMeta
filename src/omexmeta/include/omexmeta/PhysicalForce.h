@@ -29,7 +29,7 @@ namespace omexmeta {
 
         Sources sources_;
         Sinks sinks_;
-        std::string physical_force_property_id_;
+        std::string property_metaid_base_ = "ForceProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
 
     public:
 
@@ -192,15 +192,25 @@ namespace omexmeta {
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalForce &about(const std::string &about, eUriType type = NONE);
+        PhysicalForce &about(const std::string &about, eUriType type) override;
 
-        PhysicalForce &hasProperty(const PhysicalProperty &property);
-
-        PhysicalForce &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+        PhysicalForce &about(const std::string &about) override;
 
         PhysicalForce &isPropertyOf(const std::string &is_property_of, eUriType type);
 
         PhysicalForce &propertyIsVersionOf(const std::string &is_version_of);
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
+
+
+        PhysicalForce &hasProperty(const PhysicalProperty &property) override;
+
+        PhysicalForce &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
+
+        PhysicalForce &hasProperty(const std::string &is_version_of) override;
+
+        PhysicalForce &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+
     };
 }
 

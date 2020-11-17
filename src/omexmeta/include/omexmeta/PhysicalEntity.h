@@ -37,15 +37,9 @@ namespace omexmeta {
         // this is used as metaid base.
         std::string property_metaid_base_ = "EntityProperty";
 
-        /**
-         * @brief when the about field is empty or equal to local/model uri's autogenerate a
-         * entity id local to rdf document.
-         * @details will do nothing if about field is set
-         */
-        void autoGenerateAbout();
-
 
     public:
+
         /**
          * @brief default constructor for PhysicalEntity
          * @details deliberately deleted. If you try using the
@@ -190,8 +184,10 @@ namespace omexmeta {
          * being cytosol<isPartOf>fibroblast<isPartOf>dermis<isPartOf>skin.
          *
          * See Resource documentation for more details of valid input strings.
+         *
+         * Deprecated in favour of PhysicalEntity::isPartOf
          */
-        PhysicalEntity &addLocation(const std::string &where);
+        OMEXMETA_DEPRECATED PhysicalEntity &addLocation(const std::string &where);
 
         /**
          * @brief returns the number of locations used by PhysicalEntity
@@ -219,7 +215,9 @@ namespace omexmeta {
          * @details This function will set the Subject subject_ property on the
          * PhysicalProperty associated with this PhysicalEntity
          */
-        PhysicalEntity &about(const std::string &about, eUriType type = NONE);
+        PhysicalEntity &about(const std::string &about, eUriType type) override;
+
+        PhysicalEntity &about(const std::string &about) override;
 
         /**
          * @brief Set the `is` portion of the PhysicalEntity composite annotation.
@@ -253,9 +251,14 @@ namespace omexmeta {
 
         [[nodiscard]] OMEXMETA_DEPRECATED const std::string &getPropertyMetaidBase() const override;
 
-        PhysicalEntity &hasProperty(const PhysicalProperty &property);
+        PhysicalEntity &hasProperty(const PhysicalProperty &property) override;
 
-        PhysicalEntity &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
+
+        PhysicalEntity &hasProperty(const std::string &is_version_of) override;
+
+        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+
     };
 }// namespace omexmeta
 

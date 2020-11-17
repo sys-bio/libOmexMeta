@@ -154,42 +154,12 @@ namespace omexmeta {
 
 
     PhysicalProcess &PhysicalProcess::about(const std::string &about, eUriType type) {
-        if (OmexMetaUtils::startsWith(about, "http")) {
-            about_value_ = UriHandler::uriModifier<PhysicalProcess>(*this, about, NONE);
-        } else {
-            about_value_ = UriHandler::uriModifier<PhysicalProcess>(*this, about, type);
-        }
-        if (physical_property_.getIsPropertyOfValue().empty()){
-            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
-        }
+        PhysicalPhenomenon::about(about, type);
         return *this;
     }
 
-
-    PhysicalProcess &PhysicalProcess::hasProperty(const PhysicalProperty &property) {
-        physical_property_ = property;
-        if (OmexMetaUtils::isStringEmpty<PhysicalProcess>(*this, physical_property_.getIsPropertyOfValue())){
-            // physical property takes care of generating ids
-            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
-        }
-        return *this;
-    }
-
-    PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property_about, eUriType about_uri_type) {
-        /*
-         * Two scenarios:
-         *  1) User wants to provide their own strings to use for the property about section.
-         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
-         */
-        if (property_about.empty()){
-            // option 2
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
-            physical_property_.setPropertyMetaidBase("ProcessProperty");
-
-        } else {
-            // option 1
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
-        }
+    PhysicalProcess &PhysicalProcess::about(const std::string &about) {
+        PhysicalPhenomenon::about(about);
         return *this;
     }
 
@@ -203,5 +173,29 @@ namespace omexmeta {
         return *this;
     }
 
+
+    const std::string &PhysicalProcess::getPropertyMetaidBase() const {
+        return property_metaid_base_;
+    }
+
+    PhysicalProcess &PhysicalProcess::hasProperty(const PhysicalProperty &property) {
+        PhysicalPhenomenon::hasProperty(property);
+        return *this;
+    }
+
+    PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+        return *this;
+    }
+
+    PhysicalProcess &PhysicalProcess::hasProperty(const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(is_version_of);
+        return *this;
+    }
+
+    PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        return *this;
+    }
 
 }// namespace omexmeta

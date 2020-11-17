@@ -54,6 +54,12 @@ namespace omexmeta {
         return about_value_;
     }
 
+    eUriType PhysicalPhenomenon::getAboutUriType() const {
+        return about_uri_type_;
+    }
+    void PhysicalPhenomenon::setAboutUriType(eUriType aboutUriType) {
+        about_uri_type_ = aboutUriType;
+    }
 
     PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
         model_ = phenomenon.model_;
@@ -120,5 +126,94 @@ namespace omexmeta {
         return new_metaid_exclusion_list_;
     }
 
+    const std::string &PhysicalPhenomenon::getPropertyMetaidBase() const {
+        return property_metaid_base_;
+    }
+
+    PhysicalPhenomenon &PhysicalPhenomenon::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+        /*
+         * Two scenarios:
+         *  1) User wants to provide their own strings to use for the property about section.
+         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
+         */
+        // option 1
+        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
+                                     .about(property_about, about_uri_type)
+                                     .isVersionOf(is_version_of)
+                                     .isPropertyOf(is_property_of, is_property_of_uri_type);
+        return *this;
+    }
+
+    PhysicalPhenomenon &PhysicalPhenomenon::hasProperty(const std::string &is_version_of) {
+        /*
+         * Two scenarios:
+         *  1) User wants to provide their own strings to use for the property about section.
+         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
+         */
+        // option 2
+        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
+            .isVersionOf(is_version_of)
+            .isPropertyOf(getAbout(), getAboutUriType());
+        physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
+
+        return *this;
+    }
+
+    PhysicalPhenomenon &PhysicalPhenomenon::hasProperty(const PhysicalProperty &property) {
+        physical_property_ = property;
+        if (OmexMetaUtils::isStringEmpty<PhysicalPhenomenon>(*this, physical_property_.getIsPropertyOfValue())){
+            // physical property takes care of generating ids, we just set the base polymorphically.
+            // subclasses override the getPropertyMetaidBase method to return their own version of base.
+            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
+        }
+        return *this;
+    }
+
+    PhysicalPhenomenon &PhysicalPhenomenon::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
+        /*
+         * Two scenarios:
+         *  1) User wants to provide their own strings to use for the property about section.
+         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
+         */
+        // option 1
+        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
+                                     .about(property_about, about_uri_type)
+                                     .isVersionOf(is_version_of)
+                                     .isPropertyOf(getAbout(), getAboutUriType());
+        return *this;
+    }
+
+    PhysicalPhenomenon &PhysicalPhenomenon::about(const std::string &about, eUriType type) {
+        setAboutUriType(type);
+        if (OmexMetaUtils::startsWith(about, "http")) {
+            about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, NONE);
+        } else {
+            about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, type);
+        }
+        if (physical_property_.getIsPropertyOfValue().empty()){
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
+        return *this;
+    }
+
+    /**
+     * Since we can't have default arguments on a virutal member function we
+     * instead have an overload where the absent eUriType parameter is
+     * assumed to be the default value of NONE. Note, it may be prudent to figure out which
+     * of LOCAL or MODEL uri would be a better default.
+     */
+    PhysicalPhenomenon &PhysicalPhenomenon::about(const std::string &about) {
+
+        setAboutUriType(NONE);
+        about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, NONE);
+        if (OmexMetaUtils::startsWith(about, "http")) {
+        } else {
+            about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, NONE);
+        }
+        if (physical_property_.getIsPropertyOfValue().empty()){
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
+        return *this;
+    }
 
 }// namespace omexmeta

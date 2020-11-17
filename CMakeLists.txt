@@ -254,6 +254,14 @@ if (${BUILD_PYTHON})
 
 endif ()
 
+# we write a file called extra_search_directories for storing locations of places python can search for
+# the shared library it needs for loading libOmexMeta into Python.
+file(WRITE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/ExtraSearchDirectories.txt"
+        "${CMAKE_INSTALL_PREFIX}\n"
+        "${CMAKE_INSTALL_PREFIX}/lib\n"
+        "${CMAKE_INSTALL_PREFIX}/bin\n"
+        )
+
 
 find_package(CURL CONFIG REQUIRED)
 #target_link_libraries(main PRIVATE CURL::libcurl)

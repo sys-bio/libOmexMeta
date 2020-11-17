@@ -25,7 +25,7 @@ namespace omexmeta {
         Sinks sinks_;
         Mediators mediators_;
         std::string is_version_of_;// optional class level attribute to store the isVErsionOf under the process ID.
-        OMEXMETA_DEPRECATED std::string property_metaid_base_ = "ProcessProperty";
+        std::string property_metaid_base_ = "ProcessProperty";
 
     public:
         /**
@@ -161,30 +161,34 @@ namespace omexmeta {
         bool operator!=(const PhysicalProcess &rhs) const;
 
         /**
-         * @brief set the isVersionOf portion of the PhysicalProcess composite annotation
-         * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
-         * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
-         * @details This method will set the Resource resource_ attribute of the PhysicalProperty
-         * associated with the PhysicalProcess.
-         */
-        //        PhysicalProcess &isVersionOf(const std::string &property) ;
-
-        /**
          * @brief set the subject (rdf:about) portion of the PhysicalProcess composite annotation
          * @param about the string to be used as the Subject portion of the isVersionOf Triple. This
          * should be an existing metaid on the model you are annotating. Will error when metaid does not exist.
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalProcess &about(const std::string &about, eUriType type = NONE);
+        PhysicalProcess &about(const std::string &about, eUriType type) override;
 
-        PhysicalProcess &hasProperty(const PhysicalProperty &property);
+        PhysicalProcess &about(const std::string &about) override;
 
-        PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+//        OMEXMETA_DEPRECATED PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+
 
         PhysicalProcess &isPropertyOf(const std::string &is_property_of, eUriType type);
 
         PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
+
+
+        PhysicalProcess &hasProperty(const PhysicalProperty &property) override;
+
+        PhysicalProcess &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
+
+        PhysicalProcess &hasProperty(const std::string &is_version_of) override;
+
+        PhysicalProcess &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+
     };
 }// namespace omexmeta
 
