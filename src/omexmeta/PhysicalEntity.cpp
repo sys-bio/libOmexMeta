@@ -142,9 +142,7 @@ namespace omexmeta {
             physical_property_.setPropertyMetaidBase("EntityProperty");
         }
 
-        std::cout << "about_Val:  " << about_value_ << std::endl;
         if (OmexMetaUtils::isStringEmpty<PhysicalEntity>(*this, about_value_)){
-            std::cout << "dsjfnalsdjnaks.md cawc" << std::endl;
             about(OmexMetaUtils::generateUniqueMetaid(model_, "Entity", new_metaid_exclusion_list_), LOCAL_URI);
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }

@@ -387,7 +387,20 @@ namespace omexmeta {
          * @details a SingularAnnotation is a typedefed Triple object.
          */
         SingularAnnotation newSingularAnnotation() const;
+
+        /**
+         * @brief instantiate a new PhysicalProperty instance and return
+         */
         PhysicalProperty newPhysicalProperty();
+
+        /**
+         * @brief instantiate a pointer to a new PhysicalProperty instance and return
+         * @details the caller is responsible for deleting the returned PhysicalProperty
+         * using deletePhysicalProperty
+         */
+        PhysicalProperty* newPhysicalPropertyPtr();
+
+
     };
 
 }

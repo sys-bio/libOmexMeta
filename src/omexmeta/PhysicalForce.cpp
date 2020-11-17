@@ -28,25 +28,10 @@ namespace omexmeta {
     }
 
     Triples PhysicalForce::toTriples() {
-        //        if (getAbout().empty() || getAbout() == model_uri_ + "#") {
-        //            std::string new_about = generateMetaId("Force");
-        //            about(OmexMetaUtils::concatMetaIdAndUri(new_about, local_uri_));
-        //        }
-        //        if (physical_force_property_id_.empty()) {
-        //            physical_force_property_id_ = generateMetaId("ForceProperty");
-        //            physical_property_.about(physical_force_property_id_, LOCAL_URI);
-        //        }
-        // check PhysicalForce::getAbout for being empty. Autogenerate id if true.
-
-        std::cout << "getAbout(): " << getAbout() << std::endl;
         if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, getAbout())) {
-            std::cout << "getAbout(): " << getAbout() << std::endl;
             std::string new_force_about_value = generateMetaId("Force");
-            std::cout << "getAbout(): " << getAbout() << std::endl;
             about(new_force_about_value, LOCAL_URI);
-            std::cout << "getAbout(): " << getAbout() << std::endl;
         }
-        std::cout << "getAbout(): " << getAbout() << std::endl;
 
         if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getAbout())) {
             // the PhysicalProperty will autogenerate its own about metaid. We set this base to something more approprioate for a PhysicalProcess

@@ -126,8 +126,6 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML3) {
             .identity("uniprot:PD12345")
             .isPartOf("fma:1234")
             .hasProperty("opb:OPB_12345");
-//            .isVersionOf()
-//            .isPropertyOf("species0001", MODEL_URI);
 
     editor.addPhysicalEntity(physicalEntity);
 

@@ -236,6 +236,8 @@ namespace omexmeta {
 
         char* PhysicalProperty_getPropertyMetaidBase(PhysicalProperty* property);
 
+        int PhysicalProperty_delete(PhysicalProperty* property);
+
 /*********************************************************************
  * PhysicalEntity class methods
  */
@@ -266,13 +268,21 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type);
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property);
+
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
+
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
+
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyAutoGeneratePropertyId(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
+
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_aboutWithUriType(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type);
 
 /*********************************************************************
  * PhysicalProcess class methods
@@ -286,12 +296,12 @@ namespace omexmeta {
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSource(
-            PhysicalProcess *physical_process, int multiplier,
-            const char *physical_entity_reference, eUriType type);
+            PhysicalProcess *physical_process,
+            const char *physical_entity_reference, eUriType type,int multiplier);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSink(
-            PhysicalProcess *physical_process, int multiplier,
-            const char *physical_entity_reference, eUriType type);
+            PhysicalProcess *physical_process,
+            const char *physical_entity_reference, eUriType type, int multiplier);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addMediator(
             PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type);
@@ -299,11 +309,20 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, const char *property);
-
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version);
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_aboutWithUriType(PhysicalProcess *physical_process_ptr, const char *about, eUriType type);
+
+    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version);
+
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty* property);
+
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) ;
+
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
+
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyAutoGeneratePropertyId(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+
 
 /*********************************************************************
  * PhysicalForce class methods
@@ -323,12 +342,12 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
 
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_addSource(
-            PhysicalForce *physical_force_ptr, int multiplier,
-            const char *physical_entity_reference, eUriType type);
+            PhysicalForce *physical_force_ptr,
+            const char *physical_entity_reference, eUriType type, int multiplier);
 
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_addSink(
-            PhysicalForce *physical_force_ptr, int multiplier,
-            const char *physical_entity_reference, eUriType type);
+            PhysicalForce *physical_force_ptr,
+            const char *physical_entity_reference, eUriType type, int multiplier);
 
     OMEXMETA_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_setPhysicalProperty(
             PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
@@ -341,9 +360,18 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, const char *is_version_of);
-
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about);
+
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_aboutWithUriType(PhysicalForce *physical_force_ptr, const char *about, eUriType type);
+
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, PhysicalProperty* property);
+
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_force_ptr, const char* isVersionOf) ;
+
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
+
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyAutoGeneratePropertyId(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+
 
 /*********************************************************************
  * PersonalInformation class methods
