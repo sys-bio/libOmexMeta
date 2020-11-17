@@ -87,7 +87,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML2) {
             .identity("uniprot:PD12345")
             .addLocation("fma:1234")
             .hasProperty("EntityProperty", LOCAL_URI)
-            .isVersionOf("opb:OPB_12345")
+            .propertyIsVersionOf("opb:OPB_12345")
             .isPropertyOf("species0001", MODEL_URI);
 
     editor.addPhysicalEntity(physicalEntity);

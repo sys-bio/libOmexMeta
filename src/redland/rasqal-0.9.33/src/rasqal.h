@@ -21,8 +21,8 @@
  * 
  */
 
-
-
+// note we change this to a different include guard name because
+// my ide thinks that RASQAL already exists
 #ifndef RASQAL_H
 #define RASQAL_H
 
@@ -78,7 +78,7 @@ extern "C" {
 #include "Redland/raptor.h"
 #endif
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #include <sys/time.h>
 #elif defined(WIN32)
 #include <time.h>

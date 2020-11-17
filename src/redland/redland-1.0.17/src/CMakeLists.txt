@@ -1,5 +1,8 @@
 
 set(SOURCES
+        rdf_config.h
+        rdf_config_linux.h
+        rdf_config_mac.h
         rdf_init.c
         rdf_raptor.c
         rdf_uri.c

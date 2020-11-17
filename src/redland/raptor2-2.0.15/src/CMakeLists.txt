@@ -172,6 +172,9 @@ configure_file(raptor2.h.in raptor2.h @ONLY)
 
 add_library(raptor2
         raptor_config.h
+        raptor_config_linux.h
+        raptor_config_windows.h
+        raptor_config_mac.h
         raptor_avltree.c
         raptor_concepts.c
         raptor_general.c

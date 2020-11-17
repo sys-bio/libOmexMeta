@@ -445,9 +445,6 @@ endif ()
 # on linux we get errors when we run tests for c api
 # because libgnutls cannot locate zlib.
 # The easy way to solve this for now is to give it z lib shared
-if (UNIX AND NOT APPLE)
-    set(EXTRA_LIBS "z")
-endif ()
 
 target_link_libraries(
         ${target}-static PUBLIC
@@ -458,10 +455,15 @@ target_link_libraries(
         LibXml2
         ${YAJL_STATIC_LIBRARY}
         ${PCRE_STATIC_LIBRARY}
-        ${EXTRA_LIBS} #only contains z for linux
 )
 
 add_dependencies(${target}-static LibXml2 LibXslt)
+
+message(STATUS "
+LINK_FLAGS ${CMAKE_SHARED_LINKER_FLAGS}
+
+")
+
 
 add_custom_target(
         printIncl
@@ -567,6 +569,14 @@ target_include_directories(
 )
 add_dependencies(${target} LibXml2 LibXslt)
 
+get_target_property(v ${target} LINK_OPTIONS)
+MESSAGE(STATUS "FLGS ${v}")
+
+#unofficial::sqlite3::sqlite3;CURL::libcurl;LibLZMA::LibLZMA
+#OpenSSL::SSL;OpenSSL::Crypto;ZLIB::ZLIB
+#unofficial::pcre::pcre unofficial::pcre::pcre16 unofficial::pcre::pcre32 unofficial::pcre::pcrecpp
+#get_target_property(var CURL::libcurl INTERFACE_LINK_LIBRARIES )
+#MESSAGE(STATUS "var ${var}")
 include(GenerateExportHeader)
 generate_export_header(${target} BASE_NAME REDLAND)
 

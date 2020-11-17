@@ -170,7 +170,7 @@ namespace omexmeta {
         /**
          * @brief add a physical process to the rdf graph
          */
-        void Editor::addPhysicalProperty(PhysicalProperty &physicalProperty);
+        void addPhysicalProperty(PhysicalProperty &physicalProperty);
 
         /**
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph

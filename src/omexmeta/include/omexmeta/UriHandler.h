@@ -6,6 +6,7 @@
 #define LIBOMEXMETA_URIHANDLER_H
 
 #include <iostream>
+#include "OmexMetaUtils.h"
 
 namespace omexmeta {
     enum eUriType {

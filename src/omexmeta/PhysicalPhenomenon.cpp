@@ -120,13 +120,5 @@ namespace omexmeta {
         return new_metaid_exclusion_list_;
     }
 
-    PhysicalPhenomenon &PhysicalPhenomenon::isPropertyOf(const std::string &is_property_of, eUriType type) {
-        physical_property_.isPropertyOf(is_property_of, type);
-        return *this;
-    }
 
-    PhysicalPhenomenon &PhysicalPhenomenon::propertyIsVersionOf(const std::string &is_version_of, eUriType type) {
-        physical_property_.isPropertyOf(is_version_of, type);
-        return *this;
-    }
 }// namespace omexmeta
