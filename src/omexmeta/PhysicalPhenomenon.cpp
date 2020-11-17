@@ -183,5 +183,37 @@ namespace omexmeta {
         return *this;
     }
 
+    PhysicalPhenomenon &PhysicalPhenomenon::about(const std::string &about, eUriType type) {
+        setAboutUriType(type);
+        if (OmexMetaUtils::startsWith(about, "http")) {
+            about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, NONE);
+        } else {
+            about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, type);
+        }
+        if (physical_property_.getIsPropertyOfValue().empty()){
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
+        return *this;
+    }
+
+    /**
+     * Since we can't have default arguments on a virutal member function we
+     * instead have an overload where the absent eUriType parameter is
+     * assumed to be the default value of NONE. Note, it may be prudent to figure out which
+     * of LOCAL or MODEL uri would be a better default.
+     */
+    PhysicalPhenomenon &PhysicalPhenomenon::about(const std::string &about) {
+
+        setAboutUriType(NONE);
+        about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, NONE);
+        if (OmexMetaUtils::startsWith(about, "http")) {
+        } else {
+            about_value_ = UriHandler::uriModifier<PhysicalPhenomenon>(*this, about, NONE);
+        }
+        if (physical_property_.getIsPropertyOfValue().empty()){
+            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+        }
+        return *this;
+    }
 
 }// namespace omexmeta

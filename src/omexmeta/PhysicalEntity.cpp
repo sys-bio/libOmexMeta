@@ -222,15 +222,12 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::about(const std::string &about, eUriType type) {
-        setAboutUriType(type);
-        if (OmexMetaUtils::startsWith(about, "http")) {
-            about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, NONE);
-        } else {
-            about_value_ = UriHandler::uriModifier<PhysicalEntity>(*this, about, type);
-        }
-        if (physical_property_.getIsPropertyOfValue().empty()){
-            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
-        }
+        PhysicalPhenomenon::about(about, type);
+        return *this;
+    }
+
+    PhysicalEntity &PhysicalEntity::about(const std::string &about) {
+        PhysicalPhenomenon::about(about);
         return *this;
     }
 
@@ -250,6 +247,22 @@ namespace omexmeta {
 
     const std::string &PhysicalEntity::getPropertyMetaidBase() const {
         return property_metaid_base_;
+    }
+    PhysicalEntity &PhysicalEntity::hasProperty(const PhysicalProperty &property) {
+        PhysicalPhenomenon::hasProperty(property);
+        return *this;
+    }
+    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+        return *this;
+    }
+    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(is_version_of);
+        return *this;
+    }
+    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        return *this;
     }
 
 

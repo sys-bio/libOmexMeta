@@ -159,6 +159,11 @@ namespace omexmeta {
         virtual PhysicalPhenomenon &hasProperty(const std::string &is_version_of);
 
         virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of);
+
+        virtual PhysicalPhenomenon &about(const std::string &about, eUriType type);
+
+        virtual PhysicalPhenomenon &about(const std::string &about);
+
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

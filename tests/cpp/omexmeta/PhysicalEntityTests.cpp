@@ -47,7 +47,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML1) {
     physicalEntity
             .about("species0001", MODEL_URI)
             .identity("uniprot:PD12345")
-            .addLocation("fma:1234")
+            .isPartOf("fma:1234")
             .hasProperty(entity_property);
 
     editor.addPhysicalEntity(physicalEntity);
@@ -85,7 +85,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML2) {
     physicalEntity
             .about("species0001", MODEL_URI)
             .identity("uniprot:PD12345")
-            .addLocation("fma:1234")
+            .isPartOf("fma:1234")
             .hasProperty("EntityProperty", LOCAL_URI, "opb:OPB_12345", "species0001", MODEL_URI);
 
     editor.addPhysicalEntity(physicalEntity);
@@ -124,7 +124,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML3) {
     physicalEntity
             .about("species0001", MODEL_URI)
             .identity("uniprot:PD12345")
-            .addLocation("fma:1234")
+            .isPartOf("fma:1234")
             .hasProperty("opb:OPB_12345");
 //            .isVersionOf()
 //            .isPropertyOf("species0001", MODEL_URI);
@@ -164,7 +164,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML1) {
     physicalEntity
             .about("entity0")
             .identity("fma:9670")
-            .addLocation("fma:18228")
+            .isPartOf("fma:18228")
             .hasProperty(entity_property);
 
     editor.addPhysicalEntity(physicalEntity);
@@ -204,7 +204,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML2) {
     physicalEntity
             .about("entity0", LOCAL_URI)
             .identity("fma:9670")
-            .addLocation("fma:18228")
+            .isPartOf("fma:18228")
             .hasProperty("main.Volume", MODEL_URI, "opb:OPB_00154", "entity0", LOCAL_URI);
 
     editor.addPhysicalEntity(physicalEntity);
@@ -243,7 +243,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML3) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .identity("fma:9670")
-            .addLocation("fma:18228")
+            .isPartOf("fma:18228")
             .hasProperty("main.Volume", MODEL_URI, "opb:OPB_00154");
 
     editor.addPhysicalEntity(physicalEntity);
@@ -281,9 +281,9 @@ public:
     PhysicalEntityMemory() {
         physicalEntity
                 .about("ookm")
-//                .isVersionOf("opb:opb_1234")
-                .setIdentity("uniprot/PD12345")
-                .addLocation("fma:1234");
+                .identity("uniprot/PD12345")
+                .isPartOf("fma:1234")
+                .hasProperty("opb:opb_1234");
     };
 };
 
@@ -378,9 +378,9 @@ TEST_F(DeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("species0000")
-//            .isVersionOf("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .hasProperty("opb:opb_1234")
+            .identity("uniprot/PD12345")
+            .isPartOf("fma:1234");
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
     //    editor.removePhysicalEntity(physicalEntity);
@@ -840,9 +840,9 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-//            .isVersionOf("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .hasProperty("opb:opb_1234")
+            .identity("uniprot/PD12345")
+            .isPartOf("fma:1234");
     Triples triples = physicalEntity.toTriples();
     std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
@@ -861,9 +861,9 @@ TEST_F(DeletePhysicalEntity,
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-//            .isVersionOf("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .hasProperty("opb:opb_1234")
+            .identity("uniprot/PD12345")
+            .isPartOf("fma:1234");
     Triples triples = physicalEntity.toTriples();
     std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
@@ -882,9 +882,9 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-//            .isVersionOf("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .hasProperty("opb:opb_1234")
+            .identity("uniprot/PD12345")
+            .isPartOf("fma:1234");
     Triples triples = physicalEntity.toTriples();
     for (auto &it : triples) {
         editor.addSingleAnnotationNoValidation(it);
@@ -905,9 +905,9 @@ TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-//            .isVersionOf("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .hasProperty("opb:opb_1234")
+            .identity("uniprot/PD12345")
+            .isPartOf("fma:1234");
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
     editor.removePhysicalEntity(physicalEntity);
@@ -919,9 +919,9 @@ TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-//            .isVersionOf("opb:opb_1234")
-            .setIdentity("uniprot/PD12345")
-            .addLocation("fma:1234");
+            .hasProperty("opb:opb_1234")
+            .identity("uniprot/PD12345")
+            .isPartOf("fma:1234");
     editor.addPhysicalEntity(physicalEntity);
 
     /* Take and delete triple number 1

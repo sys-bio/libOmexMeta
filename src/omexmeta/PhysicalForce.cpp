@@ -139,17 +139,17 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
-        if (OmexMetaUtils::startsWith(about, "http")) {
-            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, NONE);
-        } else {
-            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, type);
-        }
-        if (physical_property_.getIsPropertyOfValue().empty()) {
-            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
-        }
-        return *this;
-    }
+//    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
+//        if (OmexMetaUtils::startsWith(about, "http")) {
+//            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, NONE);
+//        } else {
+//            about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, type);
+//        }
+//        if (physical_property_.getIsPropertyOfValue().empty()) {
+//            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
+//        }
+//        return *this;
+//    }
 
 //
 //    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
@@ -191,6 +191,32 @@ namespace omexmeta {
 
     const std::string &PhysicalForce::getPropertyMetaidBase() const {
         return property_metaid_base_;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
+        PhysicalPhenomenon::hasProperty(property);
+        return *this;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+        return *this;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(is_version_of);
+        return *this;
+    }
+    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
+        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        return *this;
+    }
+
+    PhysicalForce &PhysicalForce::about(const std::string &about, eUriType type) {
+        PhysicalPhenomenon::about(about, type);
+        return *this;
+    }
+
+    PhysicalForce &PhysicalForce::about(const std::string &about) {
+        PhysicalPhenomenon::about(about);
+        return *this;
     }
 
 
