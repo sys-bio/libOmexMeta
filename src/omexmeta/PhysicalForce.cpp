@@ -88,11 +88,11 @@ namespace omexmeta {
     PhysicalForce &PhysicalForce::addSource(const std::string &physical_entity_reference, eUriType type, int multiplier) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_, multiplier, physical_entity_reference, type,  getModelUri(), getLocalUri())));
+                        model_, multiplier, physical_entity_reference, type, getModelUri(), getLocalUri())));
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::addSink(const std::string &physical_entity_reference,  eUriType type, int multiplier) {
+    PhysicalForce &PhysicalForce::addSink(const std::string &physical_entity_reference, eUriType type, int multiplier) {
         sinks_.push_back(
                 SinkParticipant(model_, multiplier, physical_entity_reference, type, getModelUri(), getLocalUri()));
         return (*this);
@@ -145,40 +145,39 @@ namespace omexmeta {
         } else {
             about_value_ = UriHandler::uriModifier<PhysicalForce>(*this, about, type);
         }
-        if (physical_property_.getIsPropertyOfValue().empty()){
+        if (physical_property_.getIsPropertyOfValue().empty()) {
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
         return *this;
     }
 
-
-
-    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
-        physical_property_ = property;
-        if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getIsPropertyOfValue())) {
-            // physical property takes care of generating ids
-            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
-        }
-        return *this;
-    }
-
-    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type) {
-        /*
-         * Two scenarios:
-         *  1) User wants to provide their own strings to use for the property about section.
-         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
-         */
-        if (property_about.empty()) {
-            // option 2
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
-            physical_property_.setPropertyMetaidBase("ForceProperty");
-
-        } else {
-            // option 1
-            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
-        }
-        return *this;
-    }
+//
+//    PhysicalForce &PhysicalForce::hasProperty(const PhysicalProperty &property) {
+//        physical_property_ = property;
+//        if (OmexMetaUtils::isStringEmpty<PhysicalForce>(*this, physical_property_.getIsPropertyOfValue())) {
+//            // physical property takes care of generating ids
+//            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
+//        }
+//        return *this;
+//    }
+//
+//    PhysicalForce &PhysicalForce::hasProperty(const std::string &property_about, eUriType about_uri_type) {
+//        /*
+//         * Two scenarios:
+//         *  1) User wants to provide their own strings to use for the property about section.
+//         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
+//         */
+//        if (property_about.empty()) {
+//            // option 2
+//            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
+//            physical_property_.setPropertyMetaidBase("ForceProperty");
+//
+//        } else {
+//            // option 1
+//            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
+//        }
+//        return *this;
+//    }
 
     PhysicalForce &PhysicalForce::isPropertyOf(const std::string &is_property_of, eUriType type) {
         physical_property_.isPropertyOf(is_property_of, type);
@@ -190,6 +189,9 @@ namespace omexmeta {
         return *this;
     }
 
+    const std::string &PhysicalForce::getPropertyMetaidBase() const {
+        return property_metaid_base_;
+    }
 
 
 }// namespace omexmeta

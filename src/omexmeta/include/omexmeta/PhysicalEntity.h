@@ -37,13 +37,6 @@ namespace omexmeta {
         // this is used as metaid base.
         std::string property_metaid_base_ = "EntityProperty";
 
-        /**
-         * @brief when the about field is empty or equal to local/model uri's autogenerate a
-         * entity id local to rdf document.
-         * @details will do nothing if about field is set
-         */
-        void autoGenerateAbout();
-
 
     public:
         /**
@@ -253,9 +246,12 @@ namespace omexmeta {
 
         [[nodiscard]] OMEXMETA_DEPRECATED const std::string &getPropertyMetaidBase() const override;
 
-        PhysicalEntity &hasProperty(const PhysicalProperty &property);
+//        PhysicalEntity &hasProperty(const PhysicalProperty &property);
+//
+//        OMEXMETA_DEPRECATED PhysicalEntity &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+//
+//        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
 
-        PhysicalEntity &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
     };
 }// namespace omexmeta
 

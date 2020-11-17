@@ -25,7 +25,7 @@ namespace omexmeta {
         Sinks sinks_;
         Mediators mediators_;
         std::string is_version_of_;// optional class level attribute to store the isVErsionOf under the process ID.
-        OMEXMETA_DEPRECATED std::string property_metaid_base_ = "ProcessProperty";
+        std::string property_metaid_base_ = "ProcessProperty";
 
     public:
         /**
@@ -175,16 +175,25 @@ namespace omexmeta {
          * should be an existing metaid on the model you are annotating. Will error when metaid does not exist.
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
+         *
+         * Further, it would be better to put this about method in the superclass so that we
+         * do not need to individually define methods for each of PhysicalProcess, PhysicalEntity
+         * and PhysicalForce classes. However, the return type needs to be references to this
+         * and we can't cast down from superclass to subclass (only casting up is possible due to
+         * object slicing) and we can't make about a template in the superclass either since we
+         * can't make templates virutal and we don't want the user to have to use templates. Thus
+         * we have an identical about method per composite annotation type.
          */
         PhysicalProcess &about(const std::string &about, eUriType type = NONE);
 
-        PhysicalProcess &hasProperty(const PhysicalProperty &property);
+//        OMEXMETA_DEPRECATED PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
 
-        PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
 
         PhysicalProcess &isPropertyOf(const std::string &is_property_of, eUriType type);
 
         PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
     };
 }// namespace omexmeta
 

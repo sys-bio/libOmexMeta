@@ -86,9 +86,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML2) {
             .about("species0001", MODEL_URI)
             .identity("uniprot:PD12345")
             .addLocation("fma:1234")
-            .hasProperty("EntityProperty", LOCAL_URI)
-            .isVersionOf("opb:OPB_12345")
-            .isPropertyOf("species0001", MODEL_URI);
+            .hasProperty("EntityProperty", LOCAL_URI, "opb:OPB_12345", "species0001", MODEL_URI);
 
     editor.addPhysicalEntity(physicalEntity);
 
@@ -127,9 +125,9 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML3) {
             .about("species0001", MODEL_URI)
             .identity("uniprot:PD12345")
             .addLocation("fma:1234")
-            .hasProperty()
-            .isVersionOf("opb:OPB_12345")
-            .isPropertyOf("species0001", MODEL_URI);
+            .hasProperty("opb:OPB_12345");
+//            .isVersionOf()
+//            .isPropertyOf("species0001", MODEL_URI);
 
     editor.addPhysicalEntity(physicalEntity);
 
@@ -207,9 +205,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML2) {
             .about("entity0", LOCAL_URI)
             .identity("fma:9670")
             .addLocation("fma:18228")
-            .hasProperty("main.Volume", MODEL_URI)
-            .isVersionOf("opb:OPB_00154")
-            .isPropertyOf("entity0", LOCAL_URI);
+            .hasProperty("main.Volume", MODEL_URI, "opb:OPB_00154", "entity0", LOCAL_URI);
 
     editor.addPhysicalEntity(physicalEntity);
 
@@ -248,8 +244,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML3) {
     physicalEntity
             .identity("fma:9670")
             .addLocation("fma:18228")
-            .hasProperty("main.Volume", MODEL_URI)
-            .isVersionOf("opb:OPB_00154");
+            .hasProperty("main.Volume", MODEL_URI, "opb:OPB_00154");
 
     editor.addPhysicalEntity(physicalEntity);
 
@@ -286,7 +281,7 @@ public:
     PhysicalEntityMemory() {
         physicalEntity
                 .about("ookm")
-                .isVersionOf("opb:opb_1234")
+//                .isVersionOf("opb:opb_1234")
                 .setIdentity("uniprot/PD12345")
                 .addLocation("fma:1234");
     };
@@ -383,7 +378,7 @@ TEST_F(DeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("species0000")
-            .isVersionOf("opb:opb_1234")
+//            .isVersionOf("opb:opb_1234")
             .setIdentity("uniprot/PD12345")
             .addLocation("fma:1234");
     editor.addPhysicalEntity(physicalEntity);
@@ -845,7 +840,7 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-            .isVersionOf("opb:opb_1234")
+//            .isVersionOf("opb:opb_1234")
             .setIdentity("uniprot/PD12345")
             .addLocation("fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -866,7 +861,7 @@ TEST_F(DeletePhysicalEntity,
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-            .isVersionOf("opb:opb_1234")
+//            .isVersionOf("opb:opb_1234")
             .setIdentity("uniprot/PD12345")
             .addLocation("fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -887,7 +882,7 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-            .isVersionOf("opb:opb_1234")
+//            .isVersionOf("opb:opb_1234")
             .setIdentity("uniprot/PD12345")
             .addLocation("fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -910,7 +905,7 @@ TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-            .isVersionOf("opb:opb_1234")
+//            .isVersionOf("opb:opb_1234")
             .setIdentity("uniprot/PD12345")
             .addLocation("fma:1234");
     editor.addPhysicalEntity(physicalEntity);
@@ -924,7 +919,7 @@ TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
-            .isVersionOf("opb:opb_1234")
+//            .isVersionOf("opb:opb_1234")
             .setIdentity("uniprot/PD12345")
             .addLocation("fma:1234");
     editor.addPhysicalEntity(physicalEntity);

@@ -29,7 +29,7 @@ namespace omexmeta {
 
         Sources sources_;
         Sinks sinks_;
-        std::string physical_force_property_id_;
+        std::string property_metaid_base_ = "ForceProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
 
     public:
 
@@ -194,13 +194,15 @@ namespace omexmeta {
          */
         PhysicalForce &about(const std::string &about, eUriType type = NONE);
 
-        PhysicalForce &hasProperty(const PhysicalProperty &property);
-
-        PhysicalForce &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+//        PhysicalForce &hasProperty(const PhysicalProperty &property);
+//
+//        PhysicalForce &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
 
         PhysicalForce &isPropertyOf(const std::string &is_property_of, eUriType type);
 
         PhysicalForce &propertyIsVersionOf(const std::string &is_version_of);
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
     };
 }
 
