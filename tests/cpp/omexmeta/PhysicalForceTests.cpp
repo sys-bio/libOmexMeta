@@ -34,6 +34,10 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSBML1) {
             .hasProperty("parameter_metaid_0", MODEL_URI, "opb:OPB_01058");//, "EnergyDiff_0", MODEL_URI);
     editor.addPhysicalForce(PhysicalForce);
 
+    // participants in a force do not have stoic
+
+    std::cout << rdf.toString()<<std::endl;
+
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -117,11 +121,13 @@ TEST_F(PhysicalForceTests, TestPhysicalForceCellML1) {
             CellMLFactory::getCellML(CELLML_TOY_EXTENDED), false, false);
 
     PhysicalForce PhysicalForce = editor.newPhysicalForce();
-    PhysicalForce.about("main.MembraneVoltage", MODEL_URI)
+    PhysicalForce.about("Force", LOCAL_URI)
             .addSource("entity1", LOCAL_URI, 1)
             .addSink("entity2", LOCAL_URI, 1)
-            .hasProperty("ForceProperty", MODEL_URI, "opb:OPB_00592", "main.MembraneVoltage", MODEL_URI);
+            .hasProperty("main.MembraneVoltage", MODEL_URI, "opb:OPB_00592");
     editor.addPhysicalForce(PhysicalForce);
+    // force --> No stoic
+    std::cout << rdf.toString()<<std::endl;
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -158,9 +164,9 @@ TEST_F(PhysicalForceTests, TestPhysicalForceCellML2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             CellMLFactory::getCellML(CELLML_TOY_EXTENDED), false, false);
-
+    // todo change ForceProperty0000 to EnergyDiffProperty0000
     PhysicalForce PhysicalForce = editor.newPhysicalForce();
-    PhysicalForce.about("main.MembraneVoltage", MODEL_URI)
+    PhysicalForce
             .addSource("entity1", LOCAL_URI, 1)
             .addSink("entity2", LOCAL_URI, 1)
             .hasProperty("opb:OPB_00592");

@@ -154,7 +154,7 @@ namespace omexmeta {
 
         virtual PhysicalPhenomenon &hasProperty(const PhysicalProperty &property);
 
-        virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
+        OMEXMETA_DEPRECATED virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
 
         virtual PhysicalPhenomenon &hasProperty(const std::string &is_version_of);
 

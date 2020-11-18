@@ -42,6 +42,8 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSBML1) {
             .hasProperty("ReactionProperty", LOCAL_URI, "opb:OPB_00592");//, "reaction0000", MODEL_URI);
     editor.addPhysicalProcess(physicalProcess);
 
+    std::cout << rdf.toString() << std::endl;
+
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
@@ -140,8 +142,10 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML1) {
             .addSource("entity1", LOCAL_URI, 1)
             .addSink("entity2", LOCAL_URI, 1)
             .addMediator("entity3", LOCAL_URI)
-            .hasProperty("main.ReactionRate", MODEL_URI, "opb:OPB_00592", "Process", LOCAL_URI);
+            .hasProperty("main.ReactionRate", MODEL_URI, "opb:OPB_00592");
     editor.addPhysicalProcess(physicalProcess);
+
+    std::cout << rdf.toString() << std::endl;
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
