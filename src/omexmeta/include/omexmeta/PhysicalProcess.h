@@ -176,10 +176,11 @@ namespace omexmeta {
 
         PhysicalProcess &isPropertyOf(const std::string &is_property_of, eUriType type);
 
-        PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
+        OMEXMETA_DEPRECATED PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
 
         [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
 
+        PhysicalProcess& isVersionOf(const std::string & is_version_of, eUriType type = NONE);
 
         PhysicalProcess &hasProperty(const PhysicalProperty &property) override;
 

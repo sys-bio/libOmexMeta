@@ -152,7 +152,6 @@ namespace omexmeta {
         return triples;
     }
 
-
     PhysicalProcess &PhysicalProcess::about(const std::string &about, eUriType type) {
         PhysicalPhenomenon::about(about, type);
         return *this;
@@ -162,17 +161,6 @@ namespace omexmeta {
         PhysicalPhenomenon::about(about);
         return *this;
     }
-
-    PhysicalProcess &PhysicalProcess::isPropertyOf(const std::string &is_property_of, eUriType type) {
-        physical_property_.isPropertyOf(is_property_of, type);
-        return *this;
-    }
-
-    PhysicalProcess &PhysicalProcess::propertyIsVersionOf(const std::string &is_version_of) {
-        physical_property_.isVersionOf(is_version_of);
-        return *this;
-    }
-
 
     const std::string &PhysicalProcess::getPropertyMetaidBase() const {
         return property_metaid_base_;
@@ -195,6 +183,11 @@ namespace omexmeta {
 
     PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
         PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        return *this;
+    }
+
+    PhysicalProcess &PhysicalProcess::isVersionOf(const std::string &is_version_of, eUriType type) {
+        is_version_of_ = UriHandler::uriModifier<PhysicalProcess>(*this, is_version_of, type);
         return *this;
     }
 

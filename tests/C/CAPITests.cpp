@@ -412,10 +412,10 @@ TEST_F(CAPITests, TestPhysicalEntitySBML2) {
 
 
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "species0001");
+    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "species0001", MODEL_URI);
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD12345");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234");
-    physical_entity_ptr = PhysicalEntity_hasPropertyFull(physical_entity_ptr, "EntityProperty", LOCAL_URI, "opb:OPB_12345", "species0001", MODEL_URI);
+    physical_entity_ptr = PhysicalEntity_hasPropertyFull(physical_entity_ptr, "EntityProperty", LOCAL_URI, "opb:OPB_12345");
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
 
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -446,7 +446,7 @@ TEST_F(CAPITests, TestPhysicalEntitySBML3) {
 
 
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_aboutWithUriType(physical_entity_ptr, "species0001", MODEL_URI);
+    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "species0001", MODEL_URI);
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD12345");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234");
     physical_entity_ptr = PhysicalEntity_hasPropertyisVersionOf(physical_entity_ptr, "opb:OPB_12345");
@@ -518,10 +518,10 @@ TEST_F(CAPITests, TestPhysicalEntityCellML2) {
             CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
 
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
-    entity = PhysicalEntity_about(entity, "entity0");
+    entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
     entity = PhysicalEntity_isPartOf(entity, "fma:18228");
-    entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154", "entity0", LOCAL_URI);
+    entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
 
     Editor_addPhysicalEntity(editor_ptr, entity);
 
@@ -555,7 +555,7 @@ TEST_F(CAPITests, TestPhysicalEntityCellML3) {
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_identity(entity, "fma:9670");
     entity = PhysicalEntity_isPartOf(entity, "fma:18228");
-    entity = PhysicalEntity_hasPropertyAutoGeneratePropertyId(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
+    entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
 
     Editor_addPhysicalEntity(editor_ptr, entity);
 
@@ -585,12 +585,11 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "EntityProperty0000");
+    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "EntityProperty0000", LOCAL_URI);
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8376");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8377");
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8378");
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
-
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -603,7 +602,6 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                            "local:Property0000\n"
                            "    bqbiol:isPropertyOf local:EntityProperty0000 .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
-    PhysicalEntity_freeAll(physical_entity_ptr);
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
 }
@@ -614,11 +612,11 @@ TEST_F(CAPITests, TestPhysicalProcessSBML1) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalProcess *physical_process_ptr = Editor_newPhysicalProcess(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_aboutWithUriType(physical_process_ptr, "reaction0000", MODEL_URI);
+    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "reaction0000", MODEL_URI);
     physical_process_ptr = PhysicalProcess_addSource(physical_process_ptr, "species0000", MODEL_URI, 1);
     physical_process_ptr = PhysicalProcess_addSink(physical_process_ptr, "species0001", MODEL_URI, 1);
     physical_process_ptr = PhysicalProcess_addMediator(physical_process_ptr, "species0002", MODEL_URI);
-    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "ReactionProperty", LOCAL_URI, "opb:OPB_00592", "reaction0000", MODEL_URI);
+    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "ReactionProperty", LOCAL_URI, "opb:OPB_00592");
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
@@ -662,7 +660,7 @@ TEST_F(CAPITests, TestPhysicalProcessSBML2) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalProcess *physical_process_ptr = Editor_newPhysicalProcess(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_aboutWithUriType(physical_process_ptr, "reaction0000", MODEL_URI);
+    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "reaction0000", MODEL_URI);
     physical_process_ptr = PhysicalProcess_addSource(physical_process_ptr, "species0000", MODEL_URI, 1);
     physical_process_ptr = PhysicalProcess_addSink(physical_process_ptr, "species0001", MODEL_URI, 1);
     physical_process_ptr = PhysicalProcess_addMediator(physical_process_ptr, "species0002", MODEL_URI);
@@ -711,23 +709,28 @@ TEST_F(CAPITests, TestPhysicalProcessCellML1) {
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
     PhysicalProcess *physical_process_ptr = Editor_newPhysicalProcess(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_aboutWithUriType(physical_process_ptr, "main.ReactionRate", MODEL_URI);
+    physical_process_ptr = PhysicalProcess_about(physical_process_ptr, "Process", LOCAL_URI);
     physical_process_ptr = PhysicalProcess_addSource(physical_process_ptr, "entity1", LOCAL_URI, 1);
     physical_process_ptr = PhysicalProcess_addSink(physical_process_ptr, "entity2", LOCAL_URI, 1);
     physical_process_ptr = PhysicalProcess_addMediator(physical_process_ptr, "entity3", LOCAL_URI);
-    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "main.Volume",MODEL_URI, "opb:OPB_00592", "main.ReactionRate", MODEL_URI);
+    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "main.ReactionRate",MODEL_URI, "opb:OPB_00592");
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
     const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:MediatorParticipant0000\n"
                            "    semsim:hasPhysicalEntityReference local:entity3 .\n"
+                           "\n"
+                           "local:Process\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
@@ -738,12 +741,7 @@ TEST_F(CAPITests, TestPhysicalProcessCellML1) {
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
-                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate> ;\n"
+                           "    bqbiol:isPropertyOf local:Process ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
 
@@ -762,13 +760,13 @@ TEST_F(CAPITests, TestPhysicalProcessCellML2) {
     physical_process_ptr = PhysicalProcess_addSource(physical_process_ptr, "entity1", LOCAL_URI, 1);
     physical_process_ptr = PhysicalProcess_addSink(physical_process_ptr, "entity2", LOCAL_URI, 1);
     physical_process_ptr = PhysicalProcess_addMediator(physical_process_ptr, "entity3", LOCAL_URI);
-    physical_process_ptr = PhysicalProcess_hasPropertyAutoGeneratePropertyId(physical_process_ptr, "main.Volume", MODEL_URI, "opb:OPB_00592");
+    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "main.ReactionRate", MODEL_URI, "opb:OPB_00592");
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
     const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -789,10 +787,9 @@ TEST_F(CAPITests, TestPhysicalProcessCellML2) {
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
                            "    bqbiol:isPropertyOf local:Process0000 ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
-                           "";
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
@@ -807,10 +804,10 @@ TEST_F(CAPITests, TestPhysicalForceSBML1) {
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
     PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_aboutWithUriType(physical_force_ptr, "EnergyDiff_0", MODEL_URI);
+    physical_force_ptr = PhysicalForce_about(physical_force_ptr, "EnergyDiff_0", MODEL_URI);
     physical_force_ptr = PhysicalForce_addSource(physical_force_ptr, "source_23", MODEL_URI, 1);
     physical_force_ptr = PhysicalForce_addSink(physical_force_ptr, "sink_12", MODEL_URI, 1);
-    physical_force_ptr  = PhysicalForce_hasPropertyFull(physical_force_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058", "EnergyDiff_0", MODEL_URI);
+    physical_force_ptr  = PhysicalForce_hasPropertyFull(physical_force_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058");
 
     Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
 
@@ -849,7 +846,7 @@ TEST_F(CAPITests, TestPhysicalForceSBML2) {
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
     PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_aboutWithUriType(physical_force_ptr, "EnergyDiff_0", MODEL_URI);
+    physical_force_ptr = PhysicalForce_about(physical_force_ptr, "EnergyDiff_0", MODEL_URI);
     physical_force_ptr = PhysicalForce_addSource(physical_force_ptr, "source_23", MODEL_URI, 1);
     physical_force_ptr = PhysicalForce_addSink(physical_force_ptr, "sink_12", MODEL_URI, 1);
     physical_force_ptr  = PhysicalForce_hasPropertyisVersionOf(physical_force_ptr, "opb:OPB_01058");
@@ -892,10 +889,10 @@ TEST_F(CAPITests, TestPhysicalForceCellML1) {
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
     PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_aboutWithUriType(physical_force_ptr, "main.MembraneVoltage", MODEL_URI);
+    physical_force_ptr = PhysicalForce_about(physical_force_ptr, "main.MembraneVoltage", MODEL_URI);
     physical_force_ptr = PhysicalForce_addSource(physical_force_ptr, "entity1", LOCAL_URI, 1);
     physical_force_ptr = PhysicalForce_addSink(physical_force_ptr, "entity2", LOCAL_URI, 1);
-    physical_force_ptr = PhysicalForce_hasPropertyFull(physical_force_ptr, "ForceProperty",MODEL_URI, "opb:OPB_00592", "main.MembraneVoltage", MODEL_URI);
+    physical_force_ptr = PhysicalForce_hasPropertyFull(physical_force_ptr, "ForceProperty",MODEL_URI, "opb:OPB_00592");
 
     Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
 

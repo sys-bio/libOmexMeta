@@ -39,7 +39,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSBML1) {
             .addSource("species0000", MODEL_URI, 1)
             .addSink("species0001", MODEL_URI, 1)
             .addMediator("species0002", MODEL_URI )
-            .hasProperty("ReactionProperty", LOCAL_URI, "opb:OPB_00592", "reaction0000", MODEL_URI);
+            .hasProperty("ReactionProperty", LOCAL_URI, "opb:OPB_00592");//, "reaction0000", MODEL_URI);
     editor.addPhysicalProcess(physicalProcess);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -90,7 +90,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSBML2) {
             .addSink("species0001", MODEL_URI, 1)
             .addMediator("species0002", MODEL_URI)
             .hasProperty("opb:OPB_00592");
-//                .isPropertyOf("reaction0000", MODEL_URI);
     editor.addPhysicalProcess(physicalProcess);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -137,22 +136,27 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML1) {
             CellMLFactory::getCellML(CELLML_TOY_EXTENDED), false, false);
 
     PhysicalProcess physicalProcess = editor.newPhysicalProcess();
-    physicalProcess.about("main.ReactionRate", MODEL_URI)
+    physicalProcess.about("Process", LOCAL_URI)
             .addSource("entity1", LOCAL_URI, 1)
             .addSink("entity2", LOCAL_URI, 1)
             .addMediator("entity3", LOCAL_URI)
-            .hasProperty("main.Volume", MODEL_URI, "opb:OPB_00592", "main.ReactionRate", MODEL_URI);
+            .hasProperty("main.ReactionRate", MODEL_URI, "opb:OPB_00592", "Process", LOCAL_URI);
     editor.addPhysicalProcess(physicalProcess);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:MediatorParticipant0000\n"
                            "    semsim:hasPhysicalEntityReference local:entity3 .\n"
+                           "\n"
+                           "local:Process\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
@@ -163,12 +167,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML1) {
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
-                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate> ;\n"
+                           "    bqbiol:isPropertyOf local:Process ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 
@@ -189,7 +188,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML2) {
             .addSource("entity1",LOCAL_URI,  1)
             .addSink("entity2", LOCAL_URI, 1)
             .addMediator("entity3", LOCAL_URI )
-            .hasProperty("main.Volume", MODEL_URI, "opb:OPB_00592");
+            .hasProperty("main.ReactionRate", MODEL_URI, "opb:OPB_00592");
     editor.addPhysicalProcess(physicalProcess);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -215,7 +214,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessCellML2) {
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
                            "    bqbiol:isPropertyOf local:Process0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "";

@@ -272,17 +272,13 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
-
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyAutoGeneratePropertyId(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about);
-
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_aboutWithUriType(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type);
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type = eUriType::NONE);
 
 /*********************************************************************
  * PhysicalProcess class methods
@@ -309,19 +305,15 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT char *
     PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about);
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about, eUriType type = eUriType::NONE);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_aboutWithUriType(PhysicalProcess *physical_process_ptr, const char *about, eUriType type);
-
-    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version);
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty* property);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) ;
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
-
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyAutoGeneratePropertyId(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
 
 
 /*********************************************************************
@@ -360,17 +352,13 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about);
-
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_aboutWithUriType(PhysicalForce *physical_force_ptr, const char *about, eUriType type);
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about, eUriType type = eUriType::NONE);
 
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, PhysicalProperty* property);
 
     OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_force_ptr, const char* isVersionOf) ;
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of, const char* is_property_of, eUriType is_property_of_uri_type) ;
-
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyAutoGeneratePropertyId(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
 
 
 /*********************************************************************

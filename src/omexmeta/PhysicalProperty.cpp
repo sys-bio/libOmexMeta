@@ -118,7 +118,6 @@ namespace omexmeta {
 
 
     PhysicalProperty &PhysicalProperty::about(const std::string &about, eUriType type) {
-//        std::cout << "PhysicalProperty::about"
         if (OmexMetaUtils::startsWith(about, "http")){
             std::cout << __FILE__<<":"<<__LINE__<<":"<<__FUNCTION__ <<": about argument starts with http: \"" << about <<"\" so not using uri modifier" << std::endl;
             about_value_ = about;

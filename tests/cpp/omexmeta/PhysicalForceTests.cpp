@@ -28,15 +28,15 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSBML1) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce PhysicalForce = editor.newPhysicalForce();
-    PhysicalForce.about("EnergyDiff_0", MODEL_URI)
+    PhysicalForce.about("EnergyDiff_0", LOCAL_URI)
             .addSource("source_23", MODEL_URI, 1)
             .addSink("sink_12",MODEL_URI,  1)
-            .hasProperty("parameter_metaid_0", LOCAL_URI, "opb:OPB_01058", "EnergyDiff_0", MODEL_URI);
+            .hasProperty("parameter_metaid_0", MODEL_URI, "opb:OPB_01058");//, "EnergyDiff_0", MODEL_URI);
     editor.addPhysicalForce(PhysicalForce);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -49,13 +49,13 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSBML1) {
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .\n"
                            "\n"
-                           "local:parameter_metaid_0\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>\n"
+                           "local:EnergyDiff_0\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#parameter_metaid_0>\n"
+                           "    bqbiol:isPropertyOf local:EnergyDiff_0 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 
 }
@@ -72,22 +72,18 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSBML2) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
     PhysicalForce PhysicalForce = editor.newPhysicalForce();
-    PhysicalForce.about("EnergyDiff_0", MODEL_URI)
+    PhysicalForce.about("EnergyDiff_0", LOCAL_URI)
             .addSource("source_23", MODEL_URI, 1)
             .addSink("sink_12", MODEL_URI, 1)
-            .hasProperty("opb:OPB_01058");
+            .hasProperty("parameter_metaid_0", MODEL_URI, "opb:OPB_01058");
     editor.addPhysicalForce(PhysicalForce);
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "local:ForceProperty0000\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
@@ -97,9 +93,13 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSBML2) {
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>\n"
+                           "local:EnergyDiff_0\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#parameter_metaid_0>\n"
+                           "    bqbiol:isPropertyOf local:EnergyDiff_0 ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 
 }

@@ -4,17 +4,17 @@ import ctypes as ct
 import os
 from contextlib import contextmanager
 from typing import List
+from inspect import signature
 
 try:
     # for use from outside the package, as a python package
-    from .pyomexmeta_api import PyOmexMetaAPI
+    from .pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType
 except ImportError:
     try:  # for internal use
-        from pyomexmeta_api import PyOmexMetaAPI
+        from pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType
     except ImportError:
         # for internal use
-        from . import pyomexmeta_api
-
+        from . import pyomexmeta_api, eUriType, eXmlType
 
 def _xml_type_factory(xml_type: str):
     """
@@ -255,6 +255,9 @@ class Editor:
     def add_personal_information(self, personal_information: PersonalInformation) -> None:
         PyOmexMetaAPI.editor_add_personal_information(self._obj, personal_information.get_ptr())
 
+    def add_physical_property(self, property: PhysicalProperty) -> None:
+        PyOmexMetaAPI.editor_add_physical_property(self._obj, property.get_ptr())
+
     def check_valid_metaid(self, id: str) -> None:
         PyOmexMetaAPI.editor_check_valid_metaid(self._obj, id)
 
@@ -323,6 +326,9 @@ class Editor:
             yield physical_force
         finally:
             self.add_physical_force(physical_force)
+
+    def new_physical_property(self) -> PhysicalProperty:
+        return  PhysicalProperty(PyOmexMetaAPI.editor_new_physical_property(self._obj))
 
     def delete(self):
         PyOmexMetaAPI.editor_delete(self._obj)
@@ -437,29 +443,145 @@ class SingularAnnotation:
         PyOmexMetaAPI.singular_annotation_delete(self._obj)
 
 
-class PhysicalEntity:
+class PhysicalProperty:
+
+    def __init__(self, physical_property_ptr: ct.c_int64):
+        self._obj = physical_property_ptr
+
+    def get_ptr(self):
+        return self._obj
+
+    def get_about(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.physical_property_get_about(self._obj)
+        )
+
+    def about(self, about:str, uri_type: eUriType) -> PhysicalProperty:
+        PyOmexMetaAPI.physical_property_about(self._obj, about.encode(), uri_type)
+        return self
+
+    def get_is_version_of_value(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.physical_property_get_is_version_of_value(self._obj)
+        )
+
+    def is_property_of(self, is_property_of_value: str, uri_type : eUriType = eUriType.NONE ) -> PhysicalProperty:
+        PyOmexMetaAPI.physical_property_is_property_of(self._obj, is_property_of_value.encode(), uri_type)
+        return self
+
+    def is_version_of(self, is_version_of_value: str) -> PhysicalProperty:
+        PyOmexMetaAPI.physical_property_is_version_of(self._obj, is_version_of_value.encode())
+        return self
+
+    def get_is_property_of_value(self) -> str:
+        return PyOmexMetaAPI.get_and_free_c_str(
+            PyOmexMetaAPI.physical_property_get_is_property_of_value(self._obj)
+        )
+
+    def delete(self) -> None:
+        PyOmexMetaAPI.physical_property_delete(self._obj)
+
+class _PropertyBearer:
+    """
+    We only want to write this function once for all CompositeAnnotations
+    """
+
+    def __init__(self, name: str, obj: ct.c_int64):
+        self._obj = obj
+        self.name = name
+
+    def has_property(self, property_about: str = None, about_uri_type: eUriType = None,
+                     is_version_of: str = None, property: PhysicalProperty = None) -> _PropertyBearer:
+        """
+        Create a PhysicalProperty associated with a PhysicalEntity, PhysicalForce or PhysicalProcess.
+
+        This method has 4 signatures which can be used in different circumstances.
+        In the full signature the user provides all the information needed
+
+            -  PhysicalEntity *PhysicalEntity_hasPropertyFull(
+                    PhysicalEntity *physical_entity_ptr,
+                    const char* property_about, eUriType about_uri_type,
+                    const char* is_version_of
+                ) ;
+            -  PhysicalEntity *PhysicalEntity_hasProperty(
+                    PhysicalEntity *physical_entity_ptr,
+                    PhysicalProperty* property
+                );
+            -  PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(
+                    PhysicalEntity *physical_entity_ptr, const char* isVersionOf
+                ) ;
+        :param property_about:
+        :param about_uri_type:
+        :param is_version_of:
+        :param is_property_of:
+        :param is_property_of_uri_type:
+        :return:
+        """
+        _valid = ["physical_entity", "physical_process", "physical_force"]
+        if self.name not in _valid:
+            raise ValueError(f"name argument must be one of {_valid}")
+
+        has_property = getattr(PyOmexMetaAPI, self.name + "_has_property")
+        has_property_is_version_of = getattr(PyOmexMetaAPI, self.name + "_has_property_is_version_of")
+        has_property_full = getattr(PyOmexMetaAPI, self.name + "_has_property_full")
+
+        # When the user provides None of the arguments we error
+        if (not property_about
+                and not is_version_of
+                and not about_uri_type
+                and not property
+        ):
+            raise ValueError(f"No arguments given to \"{self.__class__.__name__}\" method \"has_property\"")
+
+        # when the user provides the property argument in addition to any of the other arguments we error
+        if  (
+                (property and property_about)
+                or (property and about_uri_type)
+                or (property and is_version_of)
+        ):
+            raise ValueError("When using the \"property\" argument you must not provide "
+                             "values to any of the other arguments")
+
+        # When the user provides the property argument and none of the others we use the addProperty signature
+        if  (
+                (property and not property_about)
+                or (property and not about_uri_type)
+                or (property and not is_version_of)
+        ):
+            has_property(self._obj, property.get_ptr())
+            return self
+
+        # When the user provices all of the arguments we can use the "full" signature
+        if (property_about
+                and is_version_of
+                and about_uri_type
+        ):
+            has_property_full(
+                self._obj, property_about.encode(), about_uri_type, is_version_of.encode())
+            return self
+
+        # When the user only provices argument to is_version_of we use the  hasPropertyIsVersionOf version
+        if (is_version_of and not property_about
+                and not about_uri_type
+        ):
+            has_property_is_version_of(self._obj, is_version_of.encode())
+            return self
+
+        # if we get this far then the user has made an error
+        raise ValueError(f'Argument combination to "{self.__class__.__name__}" is invalid')
+
+
+class PhysicalEntity(_PropertyBearer):
 
     def __init__(self, physical_entity_ptr: ct.c_int64):
         self._obj = physical_entity_ptr
+        super().__init__("physical_entity", self._obj)
 
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def set_physical_property(self, about: str, property: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_set_physical_property(self.get_ptr(), about.encode(),
-                                                                        property.encode())
-        return self
-
-    def set_identity(self, identity: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_set_identity(self.get_ptr(), identity.encode())
-        return self
-
     def identity(self, identity: str) -> PhysicalEntity:
         self._obj = PyOmexMetaAPI.physical_entity_identity(self.get_ptr(), identity.encode())
-        return self
-
-    def add_location(self, location: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_add_location(self.get_ptr(), location.encode())
         return self
 
     def get_identity(self) -> str:
@@ -484,12 +606,8 @@ class PhysicalEntity:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_entity_delete(self._obj)
 
-    def about(self, about: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_about(self.get_ptr(), about.encode())
-        return self
-
-    def has_property(self, property: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_has_property(self.get_ptr(), property.encode())
+    def about(self, about: str, type: eUriType) -> PhysicalEntity:
+        self._obj = PyOmexMetaAPI.physical_entity_about(self.get_ptr(), about.encode(), type)
         return self
 
     def is_part_of(self, is_part_of: str) -> PhysicalEntity:
@@ -501,30 +619,29 @@ class PhysicalEntity:
         return self
 
 
-class PhysicalProcess:
+class PhysicalProcess(_PropertyBearer):
 
     def __init__(self, physical_process_ptr: ct.c_int64):
         self._obj = physical_process_ptr
+        super().__init__("physical_process", self._obj)
 
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def set_physical_property(self, about: str, property: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_set_physical_property(self._obj, about.encode(), property.encode())
+    def add_source(self,physical_entity_reference: str,  uri_type: eUriType, multiplier: int) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_process_add_source(
+            self._obj, physical_entity_reference.encode(), uri_type, multiplier
+        )
         return self
 
-    def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_source(self._obj, int(multiplier),
-                                                              physical_entity_reference.encode())
+    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_process_add_sink(
+            self._obj, physical_entity_reference.encode(), uri_type, multiplier
+        )
         return self
 
-    def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_sink(self._obj, int(multiplier),
-                                                            physical_entity_reference.encode())
-        return self
-
-    def add_mediator(self, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_mediator(self._obj, physical_entity_reference.encode())
+    def add_mediator(self, physical_entity_reference: str, uri_type: eUriType) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_process_add_mediator(self._obj, physical_entity_reference.encode(), uri_type)
         return self
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
@@ -537,12 +654,8 @@ class PhysicalProcess:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_process_delete(self._obj)
 
-    def about(self, about: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_about(self.get_ptr(), about.encode())
-        return self
-
-    def has_property(self, property: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_has_property(self.get_ptr(), property.encode())
+    def about(self, about: str, uri_type: eUriType) -> PhysicalProcess:
+        self._obj = PyOmexMetaAPI.physical_process_about(self.get_ptr(), about.encode(), uri_type)
         return self
 
     def is_version_of(self, version: str) -> PhysicalProcess:
@@ -550,26 +663,25 @@ class PhysicalProcess:
         return self
 
 
-class PhysicalForce:
+class PhysicalForce(_PropertyBearer):
 
     def __init__(self, physical_force_ptr: ct.c_int64):
         self._obj = physical_force_ptr
+        super().__init__("physical_force", self._obj)
 
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def set_physical_property(self, about: str, property: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_set_physical_property(self._obj, about.encode(), property.encode())
+    def add_source(self,  physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_force_add_source(
+            self._obj, physical_entity_reference.encode(), uri_type, multiplier
+        )
         return self
 
-    def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_add_source(self._obj, int(multiplier),
-                                                            physical_entity_reference.encode())
-        return self
-
-    def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_add_sink(self._obj, int(multiplier),
-                                                          physical_entity_reference.encode())
+    def add_sink(self,  physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_force_add_sink(
+            self._obj, physical_entity_reference.encode(), uri_type, multiplier
+        )
         return self
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
@@ -582,12 +694,8 @@ class PhysicalForce:
     def delete(self) -> None:
         PyOmexMetaAPI.physical_force_delete(self._obj)
 
-    def about(self, about: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_about(self.get_ptr(), about.encode())
-        return self
-
-    def has_property(self, property: str) -> PhysicalForce:
-        self._obj = PyOmexMetaAPI.physical_force_has_property(self.get_ptr(), property.encode())
+    def about(self, about: str, uri_type: eUriType) -> PhysicalForce:
+        self._obj = PyOmexMetaAPI.physical_force_about(self.get_ptr(), about.encode(), uri_type)
         return self
 
 

@@ -16,6 +16,8 @@ jobs:
   variables:
     VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
   steps:
+    - checkout: "self"
+      submodules: "recursive"
     - script: |
         echo "Default directory: $(pwd)"
         echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
