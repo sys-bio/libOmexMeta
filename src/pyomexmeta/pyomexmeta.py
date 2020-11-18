@@ -123,21 +123,21 @@ class RDF:
         return rdf
 
     @staticmethod
-    def compare_rdf_vs_rdf(first_rdf: RDF, second_rdf: RDF, format: str = "turtle") -> bool:
-        return PyOmexMetaAPI.rdf_compare_rdf_vs_rdf(first_rdf._obj, second_rdf._obj, format.encode())
+    def equals_rdf_vs_rdf(first_rdf: RDF, second_rdf: RDF, format: str = "turtle") -> bool:
+        return PyOmexMetaAPI.rdf_equals_rdf_vs_rdf(first_rdf._obj, second_rdf._obj, format.encode())
 
     @staticmethod
-    def compare_rdf_vs_string(rdf: RDF, string: str, format: str = "turtle") -> bool:
-        return PyOmexMetaAPI.rdf_compare_rdf_vs_string(rdf._obj, string.encode(), format.encode())
+    def equals_rdf_vs_string(rdf: RDF, string: str, format: str = "turtle") -> bool:
+        return PyOmexMetaAPI.rdf_equals_rdf_vs_string(rdf._obj, string.encode(), format.encode())
 
     @staticmethod
-    def compare_string_vs_string(first_string: str, second_string: str, first_format: str = "turtle",
+    def equals_string_vs_string(first_string: str, second_string: str, first_format: str = "turtle",
                                  second_format: str = "turtle") -> bool:
-        return PyOmexMetaAPI.rdf_compare_string_vs_string(first_string.encode(), second_string.encode(), first_format,
+        return PyOmexMetaAPI.rdf_equals_string_vs_string(first_string.encode(), second_string.encode(), first_format,
                                                           second_format.encode())
 
     def __eq__(self, other: RDF):
-        return self.compare_rdf_vs_rdf(self, other)
+        return self.equals_rdf_vs_rdf(self, other)
 
     def add_from_file(self, filename: str, format: str) -> None:
         PyOmexMetaAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
