@@ -34,6 +34,9 @@ set(
         MarkupIdentifierTests.cpp
         ElementExtractorTests.cpp
         SBMLSemanticExtractionTests.cpp
+        CellMLTests.cpp
+        UrlHandlerTests.cpp
+        CellMLFactory.h
 )
 
 

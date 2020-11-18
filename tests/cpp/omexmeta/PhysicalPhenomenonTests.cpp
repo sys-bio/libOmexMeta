@@ -37,7 +37,8 @@ public:
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", model_uri);
+    PhysicalProperty resource = PhysicalProperty(model.get(), model_uri, local_uri).about("metaid004")
+            .isVersionOf("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
             model_uri,
@@ -45,7 +46,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid004";
+    std::string expected = "metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
@@ -53,7 +54,8 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", local_uri);
+    PhysicalProperty resource = PhysicalProperty(model.get(), model_uri, local_uri).about("metaid004")
+            .isVersionOf("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
             model_uri,
@@ -61,7 +63,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#metaid004";
+    std::string expected = "metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
@@ -81,7 +83,7 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
             PHYSICAL_ENTITY
     );
     std::string expected = "OPB:OPB_12345";
-    std::string actual = phenomenon.getPhysicalProperty().getResourceStr();
+    std::string actual = phenomenon.getPhysicalProperty().getIsVersionOfValue();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
 }

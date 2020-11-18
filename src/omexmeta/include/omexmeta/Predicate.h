@@ -203,7 +203,7 @@ namespace omexmeta {
                 "isEncodedBy",
                 "encodes",
                 "occursIn",
-                "hasProperty",
+                "isVersionOf",
                 "isPropertyOf",
                 "hasTaxon"
         };

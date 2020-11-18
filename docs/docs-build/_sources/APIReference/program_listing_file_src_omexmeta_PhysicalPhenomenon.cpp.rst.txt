@@ -58,11 +58,11 @@ Program Listing for File PhysicalPhenomenon.cpp
    
    
        const std::string & PhysicalPhenomenon::getAbout() const {
-           return physical_property_.getSubjectStr();
+           return physical_property_.getAbout();
        }
    
        PhysicalPhenomenon& PhysicalPhenomenon::about(std::string about) {
-           physical_property_.setSubject(about);
+           physical_property_.about(about);
            return *this;
        }
    

@@ -21,15 +21,25 @@ using namespace redland;
 
 namespace omexmeta {
     class PhysicalPhenomenon {
+
     protected:
 
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
+
+        // todo replace model_uri_ and local_uri_ with instnce if UriHandler
         std::string model_uri_;
         std::string local_uri_;
         std::vector<std::string> new_metaid_exclusion_list_;
+        std::string property_metaid_base_; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
+        std::string about_value_;
+        eUriType about_uri_type_ = NONE;
 
+    public:
+        eUriType getAboutUriType() const;
+        void setAboutUriType(eUriType aboutUriType);
+    protected:
         /**
          * @brief getter for a vector of strings that keeps track of used metaids.
          * @details this mechanism is necessary in order to ensure unique metaids in
@@ -40,10 +50,12 @@ namespace omexmeta {
          */
         [[nodiscard]] std::vector<std::string> getNewMetaidExclusionList();
 
-    protected:
+
         [[nodiscard]] std::string generateMetaId(const std::string& id_base);
 
     public:
+        [[nodiscard]] virtual const std::string &getPropertyMetaidBase() const;
+
         PhysicalPhenomenon() = default;
 
         bool operator==(const PhysicalPhenomenon &rhs) const;
@@ -52,7 +64,7 @@ namespace omexmeta {
 
         ~PhysicalPhenomenon();
 
-        const std::string &getLocalUri() const;
+        [[nodiscard]] const std::string &getLocalUri() const;
 
         void setLocalUri(const std::string &localUri);
 
@@ -81,7 +93,7 @@ namespace omexmeta {
          *
          * Shouldn't be needed by users.
          */
-        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model);
+        [[maybe_unused]] OMEXMETA_DEPRECATED explicit PhysicalPhenomenon(librdf_model *model);
 
         /**
          * @brief Constructor for builder interface.
@@ -111,12 +123,6 @@ namespace omexmeta {
         [[nodiscard]] const std::string& getAbout() const;
 
         /**
-         * @brief set the subject portion of the PhysicalPhenomenon
-         * @return the string associated with the subject node
-         */
-        [[nodiscard]] const std::string& about() const;
-
-        /**
          * @brief getter for Type argument
          * @return the AnnotationType currently used (PhysicalEntity, PhysicalForce or PhysicalProcess)
          */
@@ -138,16 +144,26 @@ namespace omexmeta {
          */
         [[nodiscard]] virtual Triples toTriples();
 
-        [[nodiscard]] const std::string &getSubjectStr() const;
+        [[nodiscard]] OMEXMETA_DEPRECATED const std::string &getSubjectStr() const;
 
-        virtual PhysicalPhenomenon& about(const std::string& about);
+        OMEXMETA_DEPRECATED void setPhysicalProperty(const PhysicalProperty &physicalProperty);
 
-        void setPhysicalProperty(const PhysicalProperty &physicalProperty);
+        OMEXMETA_DEPRECATED void setType(AnnotationType type);
 
-        void setType(AnnotationType type);
+        [[nodiscard]] librdf_model *getModel() const;
 
-        [[nodiscard]] const std::string &getPhysicalPropertyId() const;
-        librdf_model *getModel() const;
+        virtual PhysicalPhenomenon &hasProperty(const PhysicalProperty &property);
+
+        virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
+
+        virtual PhysicalPhenomenon &hasProperty(const std::string &is_version_of);
+
+        virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of);
+
+        virtual PhysicalPhenomenon &about(const std::string &about, eUriType type);
+
+        virtual PhysicalPhenomenon &about(const std::string &about);
+
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

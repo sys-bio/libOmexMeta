@@ -87,7 +87,7 @@ Program Listing for File OmexMetaXmlAssistant.h
    
        typedef std::unique_ptr<OmexMetaXmlAssistant> XmlAssistantPtr;
    
-       class SemsimXmlAssistantFactory {
+       class OmexMetaXmlAssistantFactory {
        public:
    
            static XmlAssistantPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "#OmexMetaId", int metaid_num_digits = 4);

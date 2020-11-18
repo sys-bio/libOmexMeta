@@ -168,6 +168,11 @@ namespace omexmeta {
         void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
 
         /**
+         * @brief add a physical process to the rdf graph
+         */
+        void addPhysicalProperty(PhysicalProperty &physicalProperty);
+
+        /**
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
          * @param physicalEntity An instance of a PhysicalEntity object to add to the rdf graph.
          */
@@ -295,7 +300,7 @@ namespace omexmeta {
          */
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
-        void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
+        OMEXMETA_DEPRECATED void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
 
         void addTriples(Triples &triples);
 
@@ -382,6 +387,20 @@ namespace omexmeta {
          * @details a SingularAnnotation is a typedefed Triple object.
          */
         SingularAnnotation newSingularAnnotation() const;
+
+        /**
+         * @brief instantiate a new PhysicalProperty instance and return
+         */
+        PhysicalProperty newPhysicalProperty();
+
+        /**
+         * @brief instantiate a pointer to a new PhysicalProperty instance and return
+         * @details the caller is responsible for deleting the returned PhysicalProperty
+         * using deletePhysicalProperty
+         */
+        PhysicalProperty* newPhysicalPropertyPtr();
+
+
     };
 
 }

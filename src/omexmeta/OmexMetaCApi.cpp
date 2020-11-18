@@ -280,6 +280,65 @@ namespace omexmeta {
  * Editor class methods
  */
 
+    SingularAnnotation *Editor_newSingularAnnotation(Editor *editor_ptr) {
+        try {
+            auto *singularAnnotation = new SingularAnnotation();
+            singularAnnotation->setLocalUri(editor_ptr->getLocalUri());
+            singularAnnotation->setModelUri(editor_ptr->getModelUri());
+            return singularAnnotation;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr) {
+        try {
+            return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(),
+                                           editor_ptr->getLocalUri());
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalEntity *Editor_newPhysicalEntity(Editor *editor_ptr) {
+        try {
+            return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalForce *Editor_newPhysicalForce(Editor *editor_ptr) {
+        try {
+            return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+    PhysicalProcess *Editor_newPhysicalProcess(Editor *editor_ptr) {
+        try {
+            return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalProperty *Editor_newPhysicalProperty(Editor *editor_ptr) {
+        try {
+            auto* property = new PhysicalProperty(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            return property;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+
     int Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix) {
         try {
             editor_ptr->addNamespace(namespace_, prefix);
@@ -314,6 +373,16 @@ namespace omexmeta {
     int Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
         try {
             editor_ptr->addPhysicalProcess(*physicalProcess);
+            return 0;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            return -1;
+        }
+    }
+
+    int Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty) {
+        try {
+            editor_ptr->addPhysicalProperty(*physicalProperty);
             return 0;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -571,21 +640,6 @@ namespace omexmeta {
     }
 
 
-    /*********************************************************************
-     * SingularAnnotation class methods
-     */
-    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr) {
-        try {
-            auto *singularAnnotation = new SingularAnnotation();
-            singularAnnotation->setLocalUri(editor_ptr->getLocalUri());
-            singularAnnotation->setModelUri(editor_ptr->getModelUri());
-            return singularAnnotation;
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
-
     int SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
         try {
             if (singularAnnotation != nullptr) {
@@ -748,17 +802,91 @@ namespace omexmeta {
         }
     }
 
-    /*********************************************************************
- * PhysicalEntity class methods
+/*********************************************************************
+ * PhysicalProperty class methods
  */
-    PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr) {
+    char *PhysicalProperty_getAbout(PhysicalProperty *property){
         try {
-            return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            const std::string& str = property->getAbout();
+            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
+            strcpy(cstr, str.c_str());
+            return cstr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
     }
+
+    PhysicalProperty *PhysicalProperty_about(PhysicalProperty *property, const char *about, eUriType type){
+        try {
+            property->about(about, type);
+            return property;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    char *PhysicalProperty_getIsVersionOfValue(PhysicalProperty *property){
+        try {
+            const std::string& str = property->getIsVersionOfValue();
+            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
+            strcpy(cstr, str.c_str());
+            return cstr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalProperty *PhysicalProperty_isPropertyOf(PhysicalProperty *property, const char *is_property_of, eUriType type) {
+        try {
+            property->isPropertyOf(is_property_of, type);
+            return property;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalProperty *PhysicalProperty_isVersionOf(PhysicalProperty *property, const char *is_version_of){
+        try {
+            property->isVersionOf(is_version_of);
+            return property;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+
+    char *PhysicalProperty_getIsPropertyOfValue(PhysicalProperty *property){
+        try {
+            const std::string& str = property->getIsPropertyOfValue();
+            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
+            strcpy(cstr, str.c_str());
+            return cstr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    int PhysicalProperty_delete(PhysicalProperty* property){
+        try {
+            delete property;
+            return 0;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            return -1;
+        }
+    }
+
+
+/*********************************************************************
+ * PhysicalEntity class methods
+ */
+
 
     int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr) {
         try {
@@ -880,9 +1008,32 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, const char *property) {
+    PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property) {
         try {
-            physical_entity_ptr->hasProperty(property);
+
+            physical_entity_ptr->hasProperty(*property);
+            return physical_entity_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) {
+        try {
+
+            physical_entity_ptr->hasProperty(isVersionOf);
+            return physical_entity_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+        try {
+
+            physical_entity_ptr->hasProperty(property_about, about_uri_type, is_version_of);
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -910,9 +1061,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about) {
+    PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type) {
         try {
-            physical_entity_ptr->about(about);
+            physical_entity_ptr->about(about, type);
             return physical_entity_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -920,17 +1071,6 @@ namespace omexmeta {
         }
     }
 
-    /*********************************************************************
-     * PhysicalProcess class methods
-     */
-    PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr) {
-        try {
-            return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
 
     int PhysicalProcess_delete(PhysicalProcess *physicalProcess) {
         try {
@@ -954,10 +1094,10 @@ namespace omexmeta {
     }
 
     PhysicalProcess *
-    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid,
-                                        const char *physical_property) {
+    PhysicalProcess_addSource(PhysicalProcess *physical_process,
+                              const char *physical_entity_reference, eUriType type, int multiplier) {
         try {
-            physical_process->setPhysicalProperty(subject_metaid, physical_property);
+            physical_process->addSource(physical_entity_reference, type, multiplier);
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -966,22 +1106,10 @@ namespace omexmeta {
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSource(PhysicalProcess *physical_process, int multiplier,
-                              const char *physical_entity_reference) {
+    PhysicalProcess_addSink(PhysicalProcess *physical_process,
+                            const char *physical_entity_reference, eUriType type, int multiplier) {
         try {
-            physical_process->addSource(multiplier, physical_entity_reference);
-            return physical_process;
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
-
-    PhysicalProcess *
-    PhysicalProcess_addSink(PhysicalProcess *physical_process, int multiplier,
-                            const char *physical_entity_reference) {
-        try {
-            physical_process->addSink(multiplier, physical_entity_reference);
+            physical_process->addSink(physical_entity_reference, type, multiplier);
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -991,9 +1119,9 @@ namespace omexmeta {
 
     PhysicalProcess *
     PhysicalProcess_addMediator(PhysicalProcess *physical_process,
-                                const char *physical_entity_reference) {
+                                const char *physical_entity_reference, eUriType type) {
         try {
-            physical_process->addMediator(physical_entity_reference);
+            physical_process->addMediator(physical_entity_reference, type);
             return physical_process;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1009,6 +1137,40 @@ namespace omexmeta {
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
             strcpy(cstr, str.c_str());
             return cstr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+
+    PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty* property) {
+        try {
+
+            physical_process_ptr->hasProperty(*property);
+            return physical_process_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) {
+        try {
+
+            physical_process_ptr->hasProperty(isVersionOf);
+            return physical_process_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+        try {
+
+            physical_process_ptr->hasProperty(property_about, about_uri_type, is_version_of);
+            return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
@@ -1054,9 +1216,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, const char *property) {
+    PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about, eUriType type) {
         try {
-            physical_process_ptr->hasProperty(property);
+            physical_process_ptr->about(about, type);
             return physical_process_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1064,32 +1226,10 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version) {
+    PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type){
         try {
-            physical_process_ptr->isVersionOf(version);
+            physical_process_ptr->isVersionOf(version, type);
             return physical_process_ptr;
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
-
-    PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about) {
-        try {
-            physical_process_ptr->about(about);
-            return physical_process_ptr;
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
-
-    /*********************************************************************
-     * PhysicalForce class methods
-     */
-    PhysicalForce *PhysicalForce_new(Editor *editor_ptr) {
-        try {
-            return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
@@ -1118,10 +1258,10 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, int multiplier,
-                                           const char *physical_entity_reference) {
+    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr,
+                                           const char *physical_entity_reference, eUriType type, int multiplier) {
         try {
-            physical_force_ptr->addSource(multiplier, physical_entity_reference);
+            physical_force_ptr->addSource(physical_entity_reference, type, multiplier);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1129,10 +1269,10 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, int multiplier,
-                                         const char *physical_entity_reference) {
+    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr,
+                                         const char *physical_entity_reference, eUriType type, int multiplier) {
         try {
-            physical_force_ptr->addSink(multiplier, physical_entity_reference);
+            physical_force_ptr->addSink(physical_entity_reference, type, multiplier);
             return physical_force_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1184,9 +1324,43 @@ namespace omexmeta {
     }
 
 
+    PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, PhysicalProperty* property) {
+        try {
+
+            physical_force_ptr->hasProperty(*property);
+            return physical_force_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_force_ptr, const char* isVersionOf) {
+        try {
+
+            physical_force_ptr->hasProperty(isVersionOf);
+            return physical_force_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+    PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+        try {
+
+            physical_force_ptr->hasProperty(property_about, about_uri_type, is_version_of);
+            return physical_force_ptr;
+        } catch (std::exception &error) {
+            fprintf(stderr, "OmexMetaException: %s", error.what());
+            exit(1);
+        }
+    }
+
+
     char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr) {
         try {
-            std::string about = physical_force_ptr->getAbout();
+            const std::string& about = physical_force_ptr->getAbout();
             char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
             strcpy(cstr, about.c_str());
             return cstr;
@@ -1196,34 +1370,10 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, const char *property) {
+    PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about, eUriType type) {
         try {
-            physical_force_ptr->hasProperty(property);
+            physical_force_ptr->about(about, type);
             return physical_force_ptr;
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
-
-    PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about) {
-        try {
-            physical_force_ptr->about(about);
-            return physical_force_ptr;
-        } catch (std::exception &error) {
-            fprintf(stderr, "OmexMetaException: %s", error.what());
-            exit(1);
-        }
-    }
-
-
-    /*********************************************************************
- * PersonalInformation class methods
- */
-    PersonalInformation *PersonalInformation_new(Editor *editor_ptr) {
-        try {
-            return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(),
-                                           editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
@@ -1401,6 +1551,7 @@ namespace omexmeta {
             return -1;
         }
     }
+
 
 
 }// namespace omexmeta

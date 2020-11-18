@@ -171,7 +171,7 @@
 <span class="c1">//    Editor::Editor(const std::string &amp;xml, OmexMetaXmlType type, bool create_ids,</span>
 <span class="c1">//                   const LibrdfModel &amp;model, NamespaceMap &amp;nsmap)</span>
 <span class="c1">//            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {</span>
-<span class="c1">//        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);</span>
+<span class="c1">//        XmlAssistantPtr xmlAssistantPtr = OmexMetaXmlAssistantFactory::generate(xml, type);</span>
 <span class="c1">//        std::pair&lt;std::string, std::vector&lt;std::string&gt;&gt; xml_and_metaids = xmlAssistantPtr-&gt;addMetaIds();</span>
 <span class="c1">//        xml_ = xml_and_metaids.first;</span>
 <span class="c1">//        //todo create a structure mapping metaids to more useful information for the user.</span>
@@ -190,7 +190,7 @@
               <span class="n">model_uri_</span><span class="p">(</span><span class="n">model_uri</span><span class="p">),</span>
               <span class="n">model_uri_</span><span class="p">(</span><span class="n">local_uri</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// hard code the metaid base and number of needed digits for now,</span>
-        <span class="n">XmlAssistantPtr</span> <span class="n">xmlAssistantPtr</span> <span class="o">=</span> <span class="n">SemsimXmlAssistantFactory</span><span class="o">::</span><span class="n">generate</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="p">,</span> <span class="s">&quot;#OmexMetaId&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="n">XmlAssistantPtr</span> <span class="n">xmlAssistantPtr</span> <span class="o">=</span> <span class="n">OmexMetaXmlAssistantFactory</span><span class="o">::</span><span class="n">generate</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="p">,</span> <span class="s">&quot;#OmexMetaId&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
         <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">xml_and_metaids</span> <span class="o">=</span> <span class="n">xmlAssistantPtr</span><span class="o">-&gt;</span><span class="n">addMetaIds</span><span class="p">();</span>
         <span class="n">xml_</span> <span class="o">=</span> <span class="n">xml_and_metaids</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
         <span class="n">metaids_</span> <span class="o">=</span> <span class="n">xml_and_metaids</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
@@ -277,7 +277,7 @@
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">SingularAnnotation</span> <span class="o">&amp;</span><span class="n">singularAnnotation</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">checkValidMetaid</span><span class="p">(</span><span class="n">singularAnnotation</span><span class="p">.</span><span class="n">getSubjectStr</span><span class="p">());</span>
+        <span class="n">checkValidMetaid</span><span class="p">(</span><span class="n">singularAnnotation</span><span class="p">.</span><span class="n">getAbout</span><span class="p">());</span>
         <span class="n">addNamespaceFromAnnotation</span><span class="p">(</span><span class="n">singularAnnotation</span><span class="p">.</span><span class="n">getPredicateStr</span><span class="p">());</span>
         <span class="n">model_</span><span class="p">.</span><span class="n">addStatement</span><span class="p">(</span><span class="n">singularAnnotation</span><span class="p">);</span>
     <span class="p">}</span>
@@ -336,7 +336,7 @@
     <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">addPhysicalEntity</span><span class="p">(</span><span class="n">PhysicalEntity</span> <span class="o">&amp;</span><span class="n">physicalEntity</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">physicalEntity</span><span class="p">.</span><span class="n">getAbout</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;NullPointerException: Editor::addPhysicalEntity() physicalEntity::isPropertyOfValue (i.e. about) node is empty&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;NullPointerException: Editor::addPhysicalEntity() physicalEntity::is_property_of_value_ (i.e. about) node is empty&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="cm">/*</span>
 <span class="cm">         * Because we now want to use @prefix local for the</span>
@@ -353,7 +353,7 @@
     <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">addPhysicalProcess</span><span class="p">(</span><span class="n">PhysicalProcess</span> <span class="o">&amp;</span><span class="n">physicalProcess</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">physicalProcess</span><span class="p">.</span><span class="n">getAbout</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::isPropertyOfValue (i.e. about) node is empty&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::is_property_of_value_ (i.e. about) node is empty&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="n">checkValidMetaid</span><span class="p">(</span><span class="n">physicalProcess</span><span class="p">.</span><span class="n">getAbout</span><span class="p">());</span>
         <span class="cm">/*</span>
@@ -371,7 +371,7 @@
     <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">addPhysicalForce</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">physicalForce</span><span class="p">.</span><span class="n">getAbout</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;NullPointerException: Editor::addPhysicalForce() PhysicalForce::isPropertyOfValue (i.e. about) node is empty&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;NullPointerException: Editor::addPhysicalForce() PhysicalForce::is_property_of_value_ (i.e. about) node is empty&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="n">checkValidMetaid</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">.</span><span class="n">getAbout</span><span class="p">());</span>
         <span class="cm">/*</span>

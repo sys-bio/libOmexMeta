@@ -75,14 +75,14 @@ namespace redland {
     std::string LibrdfStatement::getResourceStr() const {
         if (!getResource())
             throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfStatement::getResourceStr(): resource_ is nullptr");
+                    "RedlandNullPointerException: LibrdfStatement::getIsVersionOfValue(): resource_ is nullptr");
         return LibrdfNode::str(getResource());
     }
 
     std::string LibrdfStatement::getSubjectStr() const {
         if (getSubject() == nullptr)
             throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfStatement::getSubjectStr(): subject_ is nullptr");
+                    "RedlandNullPointerException: LibrdfStatement::getAbout(): subject_ is nullptr");
         return LibrdfNode::str(getSubject());
     }
 

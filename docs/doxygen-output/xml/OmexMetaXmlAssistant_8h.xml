@@ -233,7 +233,7 @@
     <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistant" prot="public">omexmeta::OmexMetaXmlAssistant</innerclass>
     <innerclass refid="classomexmeta_1_1SBMLAssistant" prot="public">omexmeta::SBMLAssistant</innerclass>
     <innerclass refid="classomexmeta_1_1CellMLAssistant" prot="public">omexmeta::CellMLAssistant</innerclass>
-    <innerclass refid="classomexmeta_1_1SemsimXmlAssistantFactory" prot="public">omexmeta::SemsimXmlAssistantFactory</innerclass>
+    <innerclass refid="classomexmeta_1_1SemsimXmlAssistantFactory" prot="public">omexmeta::OmexMetaXmlAssistantFactory</innerclass>
     <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -315,7 +315,7 @@
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;OmexMetaXmlAssistant&gt;<sp/>XmlAssistantPtr;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="classomexmeta_1_1SemsimXmlAssistantFactory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SemsimXmlAssistantFactory" kindref="compound">SemsimXmlAssistantFactory</ref><sp/>{</highlight></codeline>
+<codeline lineno="76" refid="classomexmeta_1_1SemsimXmlAssistantFactory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SemsimXmlAssistantFactory" kindref="compound">OmexMetaXmlAssistantFactory</ref><sp/>{</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>XmlAssistantPtr<sp/>generate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml,<sp/>OmexMetaXmlType<sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#OmexMetaId&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4);</highlight></codeline>

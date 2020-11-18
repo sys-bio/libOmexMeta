@@ -267,7 +267,7 @@
         <span class="k">if</span> <span class="p">(</span><span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">startsWith</span><span class="p">(</span><span class="n">metaid</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">))</span>
             <span class="n">metaid</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">metaid</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
 
-        <span class="n">setSubject</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span>
+        <span class="n">about</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span>
                 <span class="n">omex_name</span> <span class="o">+</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s">&quot;#&quot;</span> <span class="o">+</span> <span class="n">metaid</span>
         <span class="p">).</span><span class="n">get</span><span class="p">());</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
@@ -290,7 +290,7 @@
         <span class="p">}</span>
 
 
-        <span class="n">setSubject</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">metaid</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">about</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">metaid</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
 
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
@@ -302,7 +302,7 @@
 <span class="c1">//                                        &quot;formatted. Metaid&#39;s should look like: &quot;</span>
 <span class="c1">//                                        &quot;\&quot;http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\&quot;&quot;);</span>
 <span class="c1">//        }</span>
-<span class="c1">//        setSubject(LibrdfNode::fromUriString(metaid).get());</span>
+<span class="c1">//        about(LibrdfNode::fromUriString(metaid).get());</span>
 <span class="c1">//</span>
 <span class="c1">//        return *this;</span>
 <span class="c1">//    }</span>
@@ -333,21 +333,21 @@
         <span class="c1">// if getResource() node alredy exists, free before resetting</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getResource</span><span class="p">()</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
             <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">freeNode</span><span class="p">(</span><span class="n">getResource</span><span class="p">());</span>
-        <span class="n">setResource</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromLiteral</span><span class="p">(</span><span class="n">literal</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">isVersionOf</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromLiteral</span><span class="p">(</span><span class="n">literal</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="n">Triple</span> <span class="o">&amp;</span><span class="n">Triple</span><span class="o">::</span><span class="n">setResourceUri</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">identifiers_uri</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getResource</span><span class="p">()</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
             <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">freeNode</span><span class="p">(</span><span class="n">getResource</span><span class="p">());</span>
-        <span class="n">setResource</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">identifiers_uri</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">isVersionOf</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="n">identifiers_uri</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="n">Triple</span> <span class="o">&amp;</span><span class="n">Triple</span><span class="o">::</span><span class="n">setResourceBlank</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">blank_id</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getResource</span><span class="p">()</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
             <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">freeNode</span><span class="p">(</span><span class="n">getResource</span><span class="p">());</span>
-        <span class="n">setResource</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromBlank</span><span class="p">(</span><span class="n">blank_id</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
+        <span class="n">isVersionOf</span><span class="p">(</span><span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromBlank</span><span class="p">(</span><span class="n">blank_id</span><span class="p">).</span><span class="n">get</span><span class="p">());</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 

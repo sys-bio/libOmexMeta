@@ -7,16 +7,14 @@
 
 #include "redland/RedlandAPI.h"
 
-#include "omexmeta/PhysicalPhenomenon.h"
-#include "omexmeta/Participant.h"
-#include "omexmeta/Participant.h"
-#include "omexmeta/PhysicalProperty.h"
-#include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/Participant.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/PhysicalProperty.h"
 #include "omexmeta_export.h"
 
-#include <vector>
 #include <utility>
+#include <vector>
 
 using namespace redland;
 
@@ -26,10 +24,10 @@ namespace omexmeta {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
-        std::string physical_process_property_id_;
-        std::string is_version_of_ ; // optional class level attribute to store the isVErsionOf under the process ID.
-    public:
+        std::string is_version_of_;// optional class level attribute to store the isVErsionOf under the process ID.
+        std::string property_metaid_base_ = "ProcessProperty";
 
+    public:
         /**
          * @brief default constructor for PhysicalProcess
          * @details deliberately deleted. If you try using the
@@ -52,7 +50,7 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model, std::string model_uri,std::string local_uri, const PhysicalProperty &physicalProperty,
+        PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri, const PhysicalProperty &physicalProperty,
                         Sources sources, Sinks sinks, Mediators mediators);
 
         /**
@@ -70,7 +68,7 @@ namespace omexmeta {
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          */
-        explicit PhysicalProcess(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalProcess(librdf_model *model);
 
         /**
          * @brief constructor for the builder interface of PhysicalProcess instantiation
@@ -111,7 +109,7 @@ namespace omexmeta {
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
+        OMEXMETA_DEPRECATED PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
         /**
          * @brief setter for the physical property portion of the PhysicalProcess.
@@ -120,25 +118,25 @@ namespace omexmeta {
          * Developers. Consider removing this method in favour of the
          * setPhysicalProperty version that only takes a string as argument
          */
-        PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
+        OMEXMETA_DEPRECATED PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSource(int multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSource(std::string physical_entity_reference, eUriType type, int multiplier = 1);
 
         /**
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSink(int multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSink(std::string physical_entity_reference, eUriType type, int multiplier = 1);
 
         /**
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addMediator(std::string physical_entity_reference);
+        PhysicalProcess &addMediator(std::string physical_entity_reference, eUriType type);
 
         /**
          * @brief returns the number of sources assocaited with the PhysicalProcess
@@ -163,30 +161,36 @@ namespace omexmeta {
         bool operator!=(const PhysicalProcess &rhs) const;
 
         /**
-         * @brief set the hasProperty portion of the PhysicalProcess composite annotation
-         * @param is_version_of the string to be used as the Resource portion of the hasProperty Triple. This
-         * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
-         * @details This method will set the Resource resource_ attribute of the PhysicalProperty
-         * associated with the PhysicalProcess.
-         */
-        PhysicalProcess &hasProperty(const std::string &property) ;
-
-        /**
          * @brief set the subject (rdf:about) portion of the PhysicalProcess composite annotation
          * @param about the string to be used as the Subject portion of the isVersionOf Triple. This
          * should be an existing metaid on the model you are annotating. Will error when metaid does not exist.
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalProcess& about(const std::string& about) override;
+        PhysicalProcess &about(const std::string &about, eUriType type) override;
 
-        /**
-         * @brief optionally add the isVersionOf predicate to the PhysicalProcess
-         * you are creating.
-         */
-        PhysicalProcess& isVersionOf(const std::string& version);
+        PhysicalProcess &about(const std::string &about) override;
+
+//        OMEXMETA_DEPRECATED PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
+
+
+        PhysicalProcess &isPropertyOf(const std::string &is_property_of, eUriType type);
+
+        OMEXMETA_DEPRECATED PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
+
+        PhysicalProcess& isVersionOf(const std::string & is_version_of, eUriType type = NONE);
+
+        PhysicalProcess &hasProperty(const PhysicalProperty &property) override;
+
+        PhysicalProcess &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
+
+        PhysicalProcess &hasProperty(const std::string &is_version_of) override;
+
+        PhysicalProcess &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
 
     };
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_PHYSICALPROCESS_H
+#endif//LIBOMEXMETA_PHYSICALPROCESS_H

@@ -154,7 +154,7 @@ Program Listing for File OmexMetaXmlAssistant.cpp
        }
    
        XmlAssistantPtr
-       SemsimXmlAssistantFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,
+       OmexMetaXmlAssistantFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,
                                            std::string metaid_base, int metaid_num_digits) {
            switch (type) {
                case OMEXMETA_TYPE_SBML: {

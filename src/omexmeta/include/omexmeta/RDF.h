@@ -21,6 +21,7 @@
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/logger.h"
+#include "omexmeta/UriHandler.h"
 
 
 using namespace redland;
@@ -43,10 +44,12 @@ namespace omexmeta {
 
         typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-        std::string repository_uri_ = "http://omex-library.org/";
-        std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
-        std::string model_uri_ = archive_uri_ + "NewModel.xml";
-        std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
+        UriHandler uriHandler_;
+
+//        std::string repository_uri_ = "http://omex-library.org/";
+//        std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
+//        std::string model_uri_ = archive_uri_ + "NewModel.xml";
+//        std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
 
         /**
          * @brief autoset the xmlType variable based on xml content.
@@ -104,7 +107,7 @@ namespace omexmeta {
          * defaults to "http://omex-library.org/".
          * @param repositoryName the repository uri.
          */
-        void setRepositoryUri(std::string repositoryName);
+        void setRepositoryUri(const std::string& repositoryName);
 
         /**
          * @brief getter for archiveUri attribute.
@@ -117,7 +120,7 @@ namespace omexmeta {
          * @param archiveName the new name for archive uri attribute
          * @details default to http://omex-library.org/NewOmex.omex/
          */
-        void setArchiveUri(std::string archiveName);
+        void setArchiveUri(const std::string& archiveName);
 
         /**
          * @brief getter for model uri.

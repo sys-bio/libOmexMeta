@@ -59,7 +59,7 @@ namespace omexmeta {
     }
 
     std::string OmexMetaUtils::generateUniqueMetaid(librdf_model *model, const std::string &metaid_base,
-                                                    std::vector<std::string> &exclusions) {
+                                                    const std::vector<std::string>& exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
