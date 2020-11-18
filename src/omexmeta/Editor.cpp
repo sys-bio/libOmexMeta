@@ -19,7 +19,7 @@ namespace omexmeta {
           sbml_semantic_extraction_(sbml_semantic_extraction),
           repository_uri_(repository_uri), archive_uri_(archive_uri),
           model_uri_(model_uri), local_uri_(local_uri) {
-        // sometimes in the python api users can accidently start the sbml
+        // sometimes in the python api users can accidentally start the sbml
         // string with a new line character. Catch this and error.
         if (OmexMetaUtils::startsWith(xml_, "\n")) {
             throw std::invalid_argument("std::invalid_argument: Editor::Editor() "
