@@ -30,6 +30,7 @@ add_test(NAME
 
 set(PYOMEXMETA_API_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/api_tests.py")
 set(PYOMEXMETA_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/tests.py")
+set(PYOMEXMETA_TEST_STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/test_strings.py")
 
 configure_file(${PYOMEXMETA_API_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/api_tests.py COPYONLY)
 configure_file(${PYOMEXMETA_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/tests.py COPYONLY)
@@ -38,6 +39,7 @@ configure_file(${PYOMEXMETA_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexme
 install(FILES
         ${PYOMEXMETA_API_TESTS_PY}
         ${PYOMEXMETA_TESTS_PY}
+        ${PYOMEXMETA_TEST_STRINGS}
         DESTINATION
         site-packages/pyomexmeta
         )

@@ -31,7 +31,7 @@ jobs:
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
-          vcpkg install  curl libiconv pcre openssl yajl  sqlite3
+          vcpkg install  curl pcre openssl yajl  sqlite3 liblzma
           echo "gcc $(gcc --version)"
           echo "g++ $(g++ --version)"
         displayName: InstallDependencies
@@ -94,7 +94,7 @@ jobs:
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
-          vcpkg install  curl libiconv pcre openssl yajl  sqlite3
+          vcpkg install  curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajl:x64-windows-static  sqlite3:x64-windows-static liblzma:x64-windows-static
           echo "gcc $(gcc --version)"
           echo "g++ $(g++ --version)"
         displayName: InstallDependencies
@@ -141,7 +141,7 @@ jobs:
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
-          vcpkg install  curl libiconv pcre openssl yajl  sqlite3
+          vcpkg install  curl pcre openssl yajl sqlite3 liblzma
           echo "gcc $(gcc --version)"
           echo "g++ $(g++ --version)"
         displayName: InstallDependencies
