@@ -136,6 +136,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # location of pyomexmeta development package.
 set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
+set(THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+
 # location of googletesting framework
 set(GOOGLETEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/googletest)
 
