@@ -12,6 +12,7 @@ jobs:
     steps:
       - checkout: self
         submodules: recursive
+        branch: develop
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
@@ -76,6 +77,7 @@ jobs:
     steps:
       - checkout: self
         submodules: recursive
+        branch: develop
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
@@ -121,6 +123,7 @@ jobs:
     steps:
       - checkout: self
         submodules: recursive
+        branch: develop
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
