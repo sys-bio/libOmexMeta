@@ -53,7 +53,7 @@ target_include_directories(OmexMetaTests PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}"
         "${GOOGLETEST_SOURCE_DIR}/googletest/include"
         )
-
+gtest_discover_tests(OmexMetaTests)
 
 
 

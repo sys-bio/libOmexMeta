@@ -29,16 +29,6 @@ target_include_directories(
         $<INSTALL_INTERFACE:include>
 )
 
-gtest_add_tests(TARGET ${target} SOURCES ${CAPI_TEST_SOURCES})
+gtest_discover_tests(${target})
 
-
-# links
-
-
-# install
-install(
-        TARGETS ${target}
-        EXPORT ${target}
-        RUNTIME DESTINATION bin
-)
 

@@ -22,10 +22,6 @@ add_executable(${target} ${REDLAND_WRAPPER_TEST_SOURCES})
 target_compile_definitions(${target} PRIVATE REDLAND_STATIC_DEFINE)
 
 # tell cmake about the test so we can run with $ctest or $ make test
-#gtest_add_tests(
-#        TARGET ${target}
-#        SOURCES ${REDLAND_WRAPPER_TEST_SOURCES}
-#)
 gtest_discover_tests(${target})
 
 # set the RPATH for both install and docs-build builds
@@ -53,26 +49,6 @@ target_link_libraries(${target} PUBLIC
 if (WIN32)
     target_link_options(${target} PRIVATE "/NODEFAULTLIB:library")
 endif ()
-# install tests.
-install(
-        TARGETS ${target}
-        EXPORT ${target}
-        RUNTIME DESTINATION bin
-)
-
-#gtest_discover_tests(${target})
-
-
-# copies dependencies into docs-build directory. Commented out for now, delete in future if definately not needed.
-#foreach (lib ${LIBRARIES})
-#    message(STATUS "copying ${lib} to ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-#    add_custom_command(TARGET ${target} POST_BUILD        # Adds a post-docs-build event to MyTest
-#            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#            "${lib}"      # <--this is in-file
-#            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-#endforeach ()
-
-
 
 
 

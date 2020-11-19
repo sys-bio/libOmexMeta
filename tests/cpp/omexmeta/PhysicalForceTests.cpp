@@ -136,9 +136,9 @@ TEST_F(PhysicalForceTests, TestPhysicalForceCellML1) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#ForceProperty>\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
+                           "local:Force\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
@@ -149,8 +149,8 @@ TEST_F(PhysicalForceTests, TestPhysicalForceCellML1) {
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
+                           "    bqbiol:isPropertyOf local:Force ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 
 }
@@ -178,8 +178,12 @@ TEST_F(PhysicalForceTests, TestPhysicalForceCellML2) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
+                           "local:Force0000\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
                            "local:ForceProperty0000\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;\n"
+                           "    bqbiol:isPropertyOf local:Force0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
@@ -188,11 +192,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceCellML2) {
                            "\n"
                            "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
-                           "    semsim:hasPhysicalEntityReference local:entity1 .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
+                           "    semsim:hasPhysicalEntityReference local:entity1 .\n";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 
 }
