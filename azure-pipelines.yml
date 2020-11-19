@@ -84,7 +84,7 @@ jobs:
         displayName: RunLibOmexMetaTests
       - script: |
           conda create -y --name pyomexmeta python=3.8
-          conda install  -y -q --name pyomexmeta -c conda-forge --file requirements.txt
+          pip install  -y  breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest
         displayName: Create Anaconda environment
       - script: |
           conda activate pyomexmeta
@@ -166,7 +166,7 @@ jobs:
         displayName: RunLibOmexMetaTests
       - script: |
           conda create -y --name pyomexmeta python=3.8
-          conda install  -y -q --name pyomexmeta -c conda-forge --file requirements.txt
+          pip install  -y  breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest
         displayName: Create Anaconda environment
       - script: |
           conda activate pyomexmeta
@@ -240,7 +240,7 @@ jobs:
         displayName: RunLibOmexMetaTests
       - script: |
           conda create -y --name pyomexmeta python=3.8
-          conda install  -y -q --name pyomexmeta -c conda-forge --file requirements.txt
+          pip install  -y  breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest win32api
         displayName: Create Anaconda environment
       - bash: |
           conda activate pyomexmeta
