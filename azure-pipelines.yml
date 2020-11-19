@@ -217,6 +217,7 @@ jobs:
         inputs:
           key: 'vcpkg_cache |"$(Agent.Os)"'
           path: '$(VCPKG_INSTALL_PREFIX)'
+      - script:
           git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
