@@ -89,7 +89,7 @@ jobs:
           conda activate pyomexmeta
           python_dir=$(dirname $(which python))
           cd build
-          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON -DPython_ROOT_DIR=$(python_dir) ..
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
           cmake --build . --target run-ctest --config Release
         displayName: Run Tests With Python
 
@@ -170,7 +170,7 @@ jobs:
           conda activate pyomexmeta
           python_dir=$(dirname $(which python))
           cd build
-          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON -DPython_ROOT_DIR=$(python_dir) ..
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
           cmake --build . --target run-ctest --config Release
         displayName: Run Tests With Python
 
@@ -244,7 +244,7 @@ jobs:
           conda activate pyomexmeta
           python_dir=$(dirname $(which python))
           cd build
-          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON -DPython_ROOT_DIR=$(python_dir) ..
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
           cmake --build . --target run-ctest --config Release
         displayName: Run Tests With Python
         # publish python packages in azure:
