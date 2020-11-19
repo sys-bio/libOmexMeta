@@ -25,11 +25,11 @@ jobs:
           echo "##vso[task.prependpath]/usr/lib/ccache"
         displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
-      - task: Cache@2
-        inputs:
-          key: 'ccache | "$(Agent.OS)"'
-          path: $(CCACHE_DIR)
-        displayName: ccache
+#      - task: Cache@2
+#        inputs:
+#          key: 'ccache | "$(Agent.OS)"'
+#          path: $(CCACHE_DIR)
+#        displayName: ccache
       - checkout: self
         submodules: recursive
 
@@ -96,11 +96,11 @@ jobs:
           echo "##vso[task.prependpath]/usr/lib/ccache"
         displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
-      - task: Cache@2
-        inputs:
-          key: 'ccache | "$(Agent.OS)"'
-          path: $(CCACHE_DIR)
-        displayName: ccache
+#      - task: Cache@2
+#        inputs:
+#          key: 'ccache | "$(Agent.OS)"'
+#          path: $(CCACHE_DIR)
+#        displayName: ccache
       - checkout: self
         submodules: recursive
 
@@ -160,11 +160,11 @@ jobs:
           echo "##vso[task.prependpath]/usr/lib/ccache"
         displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
-      - task: Cache@2
-        inputs:
-          key: 'ccache | "$(Agent.OS)"'
-          path: $(CCACHE_DIR)
-        displayName: ccache
+#      - task: Cache@2
+#        inputs:
+#          key: 'ccache | "$(Agent.OS)"'
+#          path: $(CCACHE_DIR)
+#        displayName: ccache
       - checkout: self
         submodules: recursive
 
