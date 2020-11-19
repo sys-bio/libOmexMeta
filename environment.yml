@@ -1,6 +1,6 @@
 name: pyomexmeta
 dependencies:
-  - win32api; platform_system=="Windows"
+  - win32api [platform startswith win]
   - breathe
   - sphinx-tabs
   - recommonmark
