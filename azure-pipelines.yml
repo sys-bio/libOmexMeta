@@ -144,6 +144,7 @@ jobs:
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
           echo "ls $(ls -R)"
+          brew install graphviz
           git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
