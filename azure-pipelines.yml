@@ -31,7 +31,7 @@ jobs:
           path: $(CCACHE_DIR)
         displayName: ccache
       - checkout: self
-        submodules: "recursive"
+        submodules: 'recursive'
 
       - script: |
           echo "Default directory: $(pwd)"
@@ -102,7 +102,7 @@ jobs:
           path: $(CCACHE_DIR)
         displayName: ccache
       - checkout: self
-        submodules: "recursive"
+        submodules: 'recursive'
 
       - script: |
           echo "Default directory: $(pwd)"
@@ -166,7 +166,7 @@ jobs:
           path: $(CCACHE_DIR)
         displayName: ccache
       - checkout: self
-        submodules: "recursive"
+        submodules: 'recursive'
 
       - script: |
           echo "Default directory: $(pwd)"
