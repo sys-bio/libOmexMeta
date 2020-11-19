@@ -83,10 +83,9 @@ jobs:
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
       - script: |
+          eval "$(conda shell.bash hook)"
           conda create -y --name pyomexmeta python=3.8
           pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest
-        displayName: Create Anaconda environment
-      - script: |
           conda activate pyomexmeta
           python_dir=$(dirname $(which python))
           cd build
@@ -165,10 +164,9 @@ jobs:
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
       - script: |
+          eval "$(conda shell.bash hook)"
           conda create -y --name pyomexmeta python=3.8
           pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest
-        displayName: Create Anaconda environment
-      - script: |
           conda activate pyomexmeta
           python_dir=$(dirname $(which python))
           cd build
@@ -239,13 +237,10 @@ jobs:
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
       - script: |
+        displayName: Create Anaconda environment
+      - script: |
           conda create -y --name pyomexmeta python=3.8
           pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest win32api
-        displayName: Create Anaconda environment
-      - bash: |
-          conda activate pyomexmeta
-          python_dir=$(dirname $(which python))
-      - script: |
           conda activate pyomexmeta
           python_dir=$(dirname $(which python))
           cd build
