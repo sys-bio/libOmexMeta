@@ -218,8 +218,8 @@ jobs:
           key: 'vcpkg_cache |"$(Agent.Os)"'
           path: '$(VCPKG_INSTALL_PREFIX)'
       - script:
-          git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
-          cd $(VCPKG_INSTALL_PREFIX)
+          git clone https://github.com/microsoft/vcpkg.git "$(VCPKG_INSTALL_PREFIX)"
+          cd "$(VCPKG_INSTALL_PREFIX)"
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
           vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajl:x64-windows-static sqlite3:x64-windows-static liblzma:x64-windows-static
@@ -230,11 +230,11 @@ jobs:
           echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
           mkdir "$(BUILD_DIRECTORY)"
           cd "$(BUILD_DIRECTORY)"
-          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="../install-azure-release" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
           cmake --build . --target install --config Release -j 12
         displayName: BuildLibOmexMeta
       - script: |
-          cd $(BUILD_DIRECTORY)
+          cd "$(BUILD_DIRECTORY)"
           cmake --build . --target run-ctest --config Release -j 12
         displayName: RunLibOmexMetaTests
       - script: |
@@ -246,7 +246,7 @@ jobs:
             conda activate pyomexmeta
             pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz win32api
             cd build
-            cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=(get-item (where.exe python | Select-Object -first 1)).Directory ..
+            cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="../install-azure-release" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=(get-item (where.exe python | Select-Object -first 1)).Directory ..
             cmake --build . --target run-ctest --config Release -j 12
         displayName: Run Tests With Python
         # publish python packages in azure:
