@@ -47,10 +47,10 @@ jobs:
           echo "g++ $(g++ --version)"
 
         displayName: PrintAzureVariables
-#      - task: Cache@2
-#        inputs:
-#          key: 'vcpkg_cache | "$(Agent.Os)"'
-#          path: '$(VCPKG_INSTALL_PREFIX)'
+      - task: Cache@2
+        inputs:
+          key: 'vcpkg_cache | "$(Agent.Os)"'
+          path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
@@ -136,10 +136,10 @@ jobs:
           echo "g++ $(g++ --version)"
 
         displayName: PrintAzureVariables
-#      - task: Cache@2
-#        inputs:
-#          key: 'vcpkg_cache | "$(Agent.Os)"'
-#          path: '$(VCPKG_INSTALL_PREFIX)'
+      - task: Cache@2
+        inputs:
+          key: 'vcpkg_cache | "$(Agent.Os)"'
+          path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
@@ -212,10 +212,10 @@ jobs:
           echo "g++ $(g++ --version)"
 
         displayName: PrintAzureVariables
-#      - task: Cache@2
-#        inputs:
-#          key: 'vcpkg_cache |"$(Agent.Os)"'
-#          path: '$(VCPKG_INSTALL_PREFIX)'
+      - task: Cache@2
+        inputs:
+          key: 'vcpkg_cache |"$(Agent.Os)"'
+          path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
