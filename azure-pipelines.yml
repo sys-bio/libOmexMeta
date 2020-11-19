@@ -20,10 +20,10 @@ jobs:
       VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
       CCACHE_DIR: $(Pipeline.Workspace)/ccache
     steps:
-      - bash: |
-          sudo apt-get install ccache -y
-          echo "##vso[task.prependpath]/usr/lib/ccache"
-        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
+#      - bash: |
+#          sudo apt-get install ccache -y
+#          echo "##vso[task.prependpath]/usr/lib/ccache"
+#        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
 #      - task: Cache@2
 #        inputs:
@@ -44,14 +44,13 @@ jobs:
           echo "g++ $(g++ --version)"
 
         displayName: PrintAzureVariables
-      - task: Cache@2
-        inputs:
-          key: 'vcpkg_cache | "$(Agent.Os)"'
-          path: '$(VCPKG_INSTALL_PREFIX)'
+#      - task: Cache@2
+#        inputs:
+#          key: 'vcpkg_cache | "$(Agent.Os)"'
+#          path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
-          echo "ls $(ls -R)"
           git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
@@ -91,10 +90,10 @@ jobs:
       VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
       CCACHE_DIR: $(Pipeline.Workspace)/ccache
     steps:
-      - bash: |
-          sudo apt-get install ccache -y
-          echo "##vso[task.prependpath]/usr/lib/ccache"
-        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
+#      - bash: |
+#          sudo apt-get install ccache -y
+#          echo "##vso[task.prependpath]/usr/lib/ccache"
+#        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
 #      - task: Cache@2
 #        inputs:
@@ -115,10 +114,10 @@ jobs:
           echo "g++ $(g++ --version)"
 
         displayName: PrintAzureVariables
-      - task: Cache@2
-        inputs:
-          key: 'vcpkg_cache | "$(Agent.Os)"'
-          path: '$(VCPKG_INSTALL_PREFIX)'
+#      - task: Cache@2
+#        inputs:
+#          key: 'vcpkg_cache | "$(Agent.Os)"'
+#          path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
@@ -155,10 +154,10 @@ jobs:
       VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
       CCACHE_DIR: $(Pipeline.Workspace)/ccache
     steps:
-      - bash: |
-          sudo apt-get install ccache -y
-          echo "##vso[task.prependpath]/usr/lib/ccache"
-        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
+#      - bash: |
+#          sudo apt-get install ccache -y
+#          echo "##vso[task.prependpath]/usr/lib/ccache"
+#        displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
 #      - task: Cache@2
 #        inputs:
@@ -179,10 +178,10 @@ jobs:
           echo "g++ $(g++ --version)"
 
         displayName: PrintAzureVariables
-      - task: Cache@2
-        inputs:
-          key: 'vcpkg_cache |"$(Agent.Os)"'
-          path: '$(VCPKG_INSTALL_PREFIX)'
+#      - task: Cache@2
+#        inputs:
+#          key: 'vcpkg_cache |"$(Agent.Os)"'
+#          path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
