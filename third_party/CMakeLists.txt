@@ -20,6 +20,7 @@ set_target_properties(LibXml2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES
 set(
         LIBXML2_INCLUDE_DIR
         "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include"
+        "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include"
         "${CMAKE_BINARY_DIR}/third_party/libxml2"
 )
 
