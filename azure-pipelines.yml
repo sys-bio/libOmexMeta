@@ -33,6 +33,9 @@ jobs:
       - checkout: self
         submodules: recursive
 
+      - bash: echo "##vso[task.prependpath]$CONDA/bin"
+        displayName: Add conda to PATH
+
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
@@ -66,7 +69,8 @@ jobs:
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
           sudo apt-get update
           sudo apt-get install -y gcc-10 g++-10
-          update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10        export CC=/usr/bin/gcc-10
+          update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10
+          export CC=/usr/bin/gcc-10
           export CXX=/usr/bin/g++-10
           export C=/usr/bin/gcc-10
           mkdir build
@@ -78,6 +82,15 @@ jobs:
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
+      - script: conda env create --quiet --file environment.yml
+        displayName: Create Anaconda environment
+      - script: |
+          conda activate pyomexmeta
+          python_dir=$(dirname $(which python))
+          cd build
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON -DPython_ROOT_DIR=$(python_dir) ..
+          cmake --build . --target run-ctest
+        displayName: Run Tests With Python
 
 
 
@@ -102,6 +115,14 @@ jobs:
 #        displayName: ccache
       - checkout: self
         submodules: recursive
+
+      - bash: echo "##vso[task.prependpath]$CONDA/bin"
+        displayName: Add conda to PATH
+
+      # On Hosted macOS, the agent user doesn't have ownership of Miniconda's installation directory/
+      # We need to take ownership if we want to update conda or install packages globally
+      - bash: sudo chown -R $USER $CONDA
+        displayName: Take ownership of conda installation
 
       - script: |
           echo "Default directory: $(pwd)"
@@ -141,8 +162,15 @@ jobs:
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
-
-
+      - script: conda env create --quiet --file environment.yml
+        displayName: Create Anaconda environment
+      - script: |
+          conda activate pyomexmeta
+          python_dir=$(dirname $(which python))
+          cd build
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON -DPython_ROOT_DIR=$(python_dir) ..
+          cmake --build . --target run-ctest
+        displayName: Run Tests With Python
 
 
   # windows
@@ -167,6 +195,9 @@ jobs:
       - checkout: self
         submodules: recursive
 
+      - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
+        displayName: Add conda to PATH
+
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
@@ -185,14 +216,12 @@ jobs:
       - script: |
           echo "cd'ing to agent.BuildDirectory"
           cd $(Agent.BuildDirectory)
-          echo "ls $(ls -R)"
           git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
           vcpkg integrate install
           vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajl:x64-windows-static sqlite3:x64-windows-static liblzma:x64-windows-static
-          echo "gcc $(gcc --version)"
-          echo "g++ $(g++ --version)"
+
         displayName: InstallDependencies
 
       - script: |
@@ -205,6 +234,19 @@ jobs:
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
+      - script: conda env create --quiet --file environment.yml
+        displayName: Create Anaconda environment
+      - bash: |
+          conda activate pyomexmeta
+          python_dir=$(dirname $(which python))
+      - script: |
+          conda activate pyomexmeta
+          python_dir=$(dirname $(which python))
+          cd build
+          cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON -DPython_ROOT_DIR=$(python_dir) ..
+          cmake --build . --target run-ctest
+        displayName: Run Tests With Python
+
 
 
 
