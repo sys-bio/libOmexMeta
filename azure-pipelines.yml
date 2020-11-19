@@ -82,7 +82,9 @@ jobs:
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
-      - script: conda env create --quiet --file environment.yml
+      - script: |
+          conda create -y --name pyomexmeta python=3.8
+          conda install  -y -q --name pyomexmeta -c conda-forge --file requirements.txt
         displayName: Create Anaconda environment
       - script: |
           conda activate pyomexmeta
@@ -162,7 +164,9 @@ jobs:
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
-      - script: conda env create --quiet --file environment.yml
+      - script: |
+          conda create -y --name pyomexmeta python=3.8
+          conda install  -y -q --name pyomexmeta -c conda-forge --file requirements.txt
         displayName: Create Anaconda environment
       - script: |
           conda activate pyomexmeta
@@ -234,7 +238,9 @@ jobs:
           cd $(System.DefaultWorkingDirectory)/build
           ctest --verbose --extra-verbose --progress .
         displayName: RunLibOmexMetaTests
-      - script: conda env create --quiet --file environment.yml
+      - script: |
+          conda create -y --name pyomexmeta python=3.8
+          conda install  -y -q --name pyomexmeta -c conda-forge --file requirements.txt
         displayName: Create Anaconda environment
       - bash: |
           conda activate pyomexmeta
