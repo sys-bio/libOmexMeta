@@ -245,7 +245,7 @@ jobs:
           python_dir=$(dirname $(which python))
           cd build
           cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=../install-azure-release -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
-          cmake --build . --target run-ctest --config Release
+          ctest --verbose --extra-verbose -C Release .
         displayName: Run Tests With Python
         # publish python packages in azure:
         #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
