@@ -8,7 +8,7 @@ if (${BUILD_PYTHON})
 endif ()
 
 add_custom_target(run-ctest
-        COMMAND ${CMAKE_CTEST_COMMAND} --verbose --extra-verbose --progress ${CMAKE_BINARY_DIR}
+        COMMAND ${CMAKE_CTEST_COMMAND} --verbose --extra-verbose --progress -C ${CMAKE_BUILD_TYPE} ${CMAKE_BINARY_DIR}
         DEPENDS redland-wrapper-tests OmexMetaTests OmexMetaCAPITests
         VERBATIM
         )
