@@ -89,7 +89,7 @@ Program Listing for File PhysicalEntity.cpp
                );
            }
    
-           if (getPhysicalProperty().getResourceStr().empty()) {
+           if (getPhysicalProperty().getIsVersionOfValue().empty()) {
                throw AnnotationBuilderException(
                        "PhysicalEntity::toTriples(): Cannot create"
                        " triples because the \"physical_property\" information is not set. "

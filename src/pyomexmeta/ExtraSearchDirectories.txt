@@ -1,0 +1,3 @@
+D:/libOmexMeta/install-msvc
+D:/libOmexMeta/install-msvc/lib
+D:/libOmexMeta/install-msvc/bin

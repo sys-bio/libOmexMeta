@@ -543,15 +543,15 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac09599ba82cb3cb9d58b0c171090ba44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
-        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::hasProperty</definition>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::isVersionOf</definition>
         <argsstring>(const std::string &amp;property)</argsstring>
-        <name>hasProperty</name>
+        <name>isVersionOf</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>property</declname>
         </param>
         <briefdescription>
-<para>set the hasProperty portion of the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> composite annotation </para>
+<para>set the isVersionOf portion of the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> composite annotation </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -559,7 +559,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
 <parametername>is_version_of</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used as the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> portion of the hasProperty <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_12345 or OPB/OPB_12345.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> isVersionOfValue attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
+<para>the string to be used as the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_12345 or OPB/OPB_12345.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> is_version_of_value_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -588,7 +588,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used as the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> isPropertyOfValue attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
+<para>the string to be used as the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> is_property_of_value_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -673,9 +673,9 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getPhysicalPropertyId</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSinks</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSources</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSubjectStr</name></member>
+      <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getType</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1ac09599ba82cb3cb9d58b0c171090ba44" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1ac09599ba82cb3cb9d58b0c171090ba44" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a53e690a73469f891d5b6c3ab92fe31ff" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>is_version_of_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a79d2b794d0a10a180a05d32cd04ac353" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>local_uri_</name></member>

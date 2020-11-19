@@ -5,19 +5,19 @@
 #ifndef LIBOMEXMETA_PHYSICALENTITY_H
 #define LIBOMEXMETA_PHYSICALENTITY_H
 
+#include "omexmeta/MetaID.h"
+#include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/Query.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Subject.h"
-#include "omexmeta/PhysicalPhenomenon.h"
-#include "omexmeta/MetaID.h"
-#include "redland/RedlandAPI.h"
 #include "omexmeta/Triple.h"
-#include "omexmeta/Query.h"
-#include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta_export.h"
+#include "redland/RedlandAPI.h"
 
+#include <cassert> /* assert */
 #include <memory>
-#include <cassert>     /* assert */
 #include <utility>
 
 using namespace redland;
@@ -32,6 +32,11 @@ namespace omexmeta {
         Resources location_resources_;
         Resources part_resources_;
         std::string physical_entity_property_id_;
+
+        // When autogenerating metaid for property of a physical entity
+        // this is used as metaid base.
+        std::string property_metaid_base_ = "EntityProperty";
+
 
     public:
 
@@ -63,7 +68,7 @@ namespace omexmeta {
 
         ~PhysicalEntity() = default;
 
-                /**
+        /**
          * @brief free resources uses by PhysicalEntity
          *
          * PhysicalEntity objects are owned either by the caller or by a Triples
@@ -82,7 +87,7 @@ namespace omexmeta {
          * with only the model to allow for a better way of collecting necessary information
          * from the user.
          */
-        explicit PhysicalEntity(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalEntity(librdf_model *model);
 
 
         /**
@@ -97,8 +102,7 @@ namespace omexmeta {
          * from the user. The PhysicalEntity also needs access to the model_uri, which we pass
          * here.
          */
-        explicit PhysicalEntity(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
-
+        explicit PhysicalEntity(librdf_model *model, const std::string &model_uri, const std::string &local_uri);
 
 
         /**
@@ -136,7 +140,7 @@ namespace omexmeta {
          * The OBP argument requires a string of the form "obp:opbxxx" where "xxx" is the id for the OPB term.
          * An instance of PhysicalProperty is instantiated with @param physicalProperty as its value.
          */
-        PhysicalEntity &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
+        OMEXMETA_DEPRECATED PhysicalEntity &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
         /**
          * @brief sets the physical property for a PhysicalEntity instance
@@ -147,7 +151,7 @@ namespace omexmeta {
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalEntity &setPhysicalProperty(PhysicalProperty physicalProperty);
+        [[maybe_unused]] OMEXMETA_DEPRECATED PhysicalEntity &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief sets the identity portion of the PhysicalEntity (the "What").
@@ -158,12 +162,12 @@ namespace omexmeta {
          *
          * See Resource documentation for more details of valid input strings.
          */
-        PhysicalEntity &setIdentity(const std::string& resource);
+        PhysicalEntity &setIdentity(const std::string &resource);
 
         /**
          * @brief alias for setIdentity
          */
-        PhysicalEntity &identity(const std::string& resource);
+        PhysicalEntity &identity(const std::string &resource);
 
         /**
          * @brief add a location to the PhysicalEntity.
@@ -180,8 +184,10 @@ namespace omexmeta {
          * being cytosol<isPartOf>fibroblast<isPartOf>dermis<isPartOf>skin.
          *
          * See Resource documentation for more details of valid input strings.
+         *
+         * Deprecated in favour of PhysicalEntity::isPartOf
          */
-        PhysicalEntity &addLocation(const std::string& where);
+        OMEXMETA_DEPRECATED PhysicalEntity &addLocation(const std::string &where);
 
         /**
          * @brief returns the number of locations used by PhysicalEntity
@@ -199,7 +205,9 @@ namespace omexmeta {
          * @details Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set
          * the Resource resource_ property on the PhysicalProperty associated with this PhysicalEntity.
          */
-        PhysicalEntity& hasProperty(const std::string& property);
+        PhysicalEntity &propertyIsVersionOf(const std::string &property);
+
+        PhysicalEntity &isPropertyOf(const std::string &is_property_of, eUriType type);
 
         /**
          * @brief Set the about portion of the PhysicalEntity composite annotation.
@@ -207,7 +215,9 @@ namespace omexmeta {
          * @details This function will set the Subject subject_ property on the
          * PhysicalProperty associated with this PhysicalEntity
          */
-        PhysicalEntity& about(const std::string& about) override;
+        PhysicalEntity &about(const std::string &about, eUriType type) override;
+
+        PhysicalEntity &about(const std::string &about) override;
 
         /**
          * @brief Set the `is` portion of the PhysicalEntity composite annotation.
@@ -216,7 +226,7 @@ namespace omexmeta {
          * as an alternative. For developers, consider which (or both? )sets of methods to keep,
          * `is` or `setIdentity`
          */
-        PhysicalEntity& is(const std::string& is);
+        PhysicalEntity &is(const std::string &is);
 
         /**
          * @brief Set the location (`isPartOf`) portion of the PhysicalEntity composite annotation.
@@ -225,15 +235,31 @@ namespace omexmeta {
          * as an alternative. For developers, consider which (or both? )sets of methods to keep,
          * `addLocation` or `isPartOf`
          */
-        PhysicalEntity& isPartOf(const std::string& is);
+        PhysicalEntity &isPartOf(const std::string &is);
 
         /**
          * @brief Add item to an "hasPart" triple on the PhysicalEntity composite annotation.
          * @param part: the string to be used for hasPart predicate.
          * @details used in the case of annotating complexes which have no identity but several parts.
          */
-         PhysicalEntity &hasPart(const std::string &part);
-    };
-}
+        PhysicalEntity &hasPart(const std::string &part);
 
-#endif //LIBOMEXMETA_PHYSICALENTITY_H
+        /**
+          * @brief set the metaid of variable such as kinetic parameter
+          */
+        OMEXMETA_DEPRECATED PhysicalEntity &variableMetaId(const std::string &metaid);
+
+        [[nodiscard]] OMEXMETA_DEPRECATED const std::string &getPropertyMetaidBase() const override;
+
+        PhysicalEntity &hasProperty(const PhysicalProperty &property) override;
+
+        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
+
+        PhysicalEntity &hasProperty(const std::string &is_version_of) override;
+
+        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+
+    };
+}// namespace omexmeta
+
+#endif//LIBOMEXMETA_PHYSICALENTITY_H

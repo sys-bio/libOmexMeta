@@ -4,6 +4,8 @@
 
 #include "omexmeta/RDF.h"
 
+#include <utility>
+
 
 namespace omexmeta {
 
@@ -329,109 +331,31 @@ namespace omexmeta {
     }
 
     const std::string &RDF::getRepositoryUri() const {
-        return repository_uri_;
+        return uriHandler_.getRepository();
     }
 
-    void RDF::setRepositoryUri(std::string repositoryName) {
-        if (!OmexMetaUtils::startsWith(repositoryName, "http")) {
-            throw std::invalid_argument("std::invalid_argument: RDF::setRepositoryUri: "
-                                        "Specified \"repositoryName\" argument \"" +
-                                        repositoryName + "\" does not begin with \"http\". Example: \"http://MyOmexRepository.org\"");
-        }
-        if (!OmexMetaUtils::endsWith(repositoryName, "/")) {
-            repositoryName += "/";
-        }
-        repository_uri_ = repositoryName;
+    void RDF::setRepositoryUri(const std::string& repositoryName) {
+        uriHandler_.setRepository(repositoryName);
     }
 
     const std::string &RDF::getArchiveUri() const {
-        return archive_uri_;
+        return uriHandler_.getArchive();
     }
 
-    void RDF::setArchiveUri(std::string archiveName) {
-        if (OmexMetaUtils::startsWith(archiveName, "http")) {
-            throw std::invalid_argument("std::invalid_argument: RDF::setArchiveUri: "
-                                        "Specified \"archiveName\" argument \"" +
-                                        archiveName + "\" begins with \"http\". Since the archive url is built "
-                                                      "using the repositoryName argument, please only specify "
-                                                      "the name of the omex archive. Like \"myOmexFile.omex\"");
-        }
-        if (!OmexMetaUtils::endsWith(archiveName, ".omex")) {
-            archiveName = archiveName + ".omex";
-        }
-        archive_uri_ = getRepositoryUri() + archiveName;
+    void RDF::setArchiveUri(const std::string& archiveName) {
+        uriHandler_.setArchive(archiveName);
     }
 
     const std::string &RDF::getModelUri() const {
-        return model_uri_;
+        return uriHandler_.getModel();
     }
 
-    void RDF::setModelUri(std::string modelName) {
-        if (OmexMetaUtils::startsWith(modelName, "http")) {
-            throw std::invalid_argument("std::invalid_argument: RDF::setModelUri: "
-                                        "Specified \"modelName\" argument \"" +
-                                        modelName + "\" begins with \"http\". Since the model url is built "
-                                                    "using the repositoryName argument, please only specify "
-                                                    "the name of the model. Like \"NewModel.sbml\"");
-        }
-        // first we make sure the suffix ends with a "#"
-        if (!OmexMetaUtils::endsWith(modelName, "#")) {
-            modelName += "#";
-        }
-
-        // Now we check for file extension
-        std::vector<std::string> suffexes = {".xml#", ".sbml#", ".cellml#"};
-        bool good = false;
-        for (auto &it : suffexes) {
-            if (OmexMetaUtils::endsWith(modelName, it)) {
-                good = true;
-            }
-        }
-        // automaticall add .xml if one of the above suffixes was not detected
-        if (!good) {
-            // remember to remove the trailing "#"
-            modelName.pop_back();
-            modelName += ".xml#";
-        }
-
-        // concatonate archive and model, being sensitive to ending "/"
-        if (OmexMetaUtils::endsWith(getArchiveUri(), "/")) {
-            model_uri_ = getArchiveUri() + modelName;
-        } else {
-            model_uri_ = getArchiveUri() + "/" + modelName;
-        }
-
-        // Since the model name is also used for the local name we
-        // figure that out here. We know modelName definitely contains
-        // a suffux like .xml.
-        // we need to remove it so we can add .rdf.
-        // We do this in a way that enables multiple "." in a model_name
-        std::vector<std::string> split = OmexMetaUtils::splitStringBy(modelName, '.');
-        if (split.size() <= 1) {
-            throw std::logic_error("std::logic_error: RDF::setModelUri: You should never get a "
-                                   "a value less than 2 here because you are splitting a string. "
-                                   "If you are seeing this message this is a bug. Please report "
-                                   "it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)");
-        }
-        // remove the last element which should contain the extension.
-        split.pop_back();
-
-        // docs-build up the string again with any dots that appeared before the final
-        std::ostringstream os;
-        for (auto &it : split) {
-            os << it << ".";
-        }
-        // Now we can docs-build up the local string
-        if (OmexMetaUtils::endsWith(getArchiveUri(), "/")) {
-            local_uri_ = getArchiveUri() + os.str() + "rdf#";
-        } else {
-            local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
-        }
+    void RDF::setModelUri(std::string modelName){
+        uriHandler_.setModel(std::move(modelName));
     }
-
 
     const std::string &RDF::getLocalUri() const {
-        return local_uri_;
+        return uriHandler_.getLocal();
     }
 
     OmexMetaXmlType RDF::getXmlType() const {

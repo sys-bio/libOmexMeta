@@ -47,11 +47,11 @@
                             <rdf:li rdf:resource="http://identifiers.org/reactome/R-HSA-69206"/>
                         </rdf:Bag>
                     </bqbiol:isPartOf>
-                    <bqbiol:hasProperty>
+                    <bqbiol:isVersionOf>
                         <rdf:Bag>
                             <rdf:li rdf:resource="http://identifiers.org/mamo/MAMO_0000046"/>
                         </rdf:Bag>
-                    </bqbiol:hasProperty>
+                    </bqbiol:isVersionOf>
                     <bqbiol:hasTaxon>
                         <rdf:Bag>
                             <rdf:li rdf:resource="http://identifiers.org/taxonomy/40674"/>
@@ -86,7 +86,7 @@
                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                          xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
                     <rdf:Description rdf:about="#COPASI0">
-                        <bqbiol:hasProperty rdf:resource="urn:miriam:mamo:MAMO_0000046"/>
+                        <bqbiol:isVersionOf rdf:resource="urn:miriam:mamo:MAMO_0000046"/>
                         <bqbiol:hasTaxon rdf:resource="urn:miriam:taxonomy:40674"/>
                         <bqmodel:isDerivedFrom rdf:resource="urn:miriam:biomodels.db:BIOMD0000000318"/>
                         <dcterms:bibliographicCitation>
@@ -642,11 +642,11 @@
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
                              xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
                         <rdf:Description rdf:about="#COPASI9">
-                            <bqbiol:hasProperty>
+                            <bqbiol:isVersionOf>
                                 <rdf:Bag>
                                     <rdf:li rdf:resource="http://identifiers.org/ncit/C20424"/>
                                 </rdf:Bag>
-                            </bqbiol:hasProperty>
+                            </bqbiol:isVersionOf>
                         </rdf:Description>
 
 
@@ -656,7 +656,7 @@
                                  xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI9">
-                                <bqbiol:hasProperty rdf:resource="urn:miriam:ncit:C20424"/>
+                                <bqbiol:isVersionOf rdf:resource="urn:miriam:ncit:C20424"/>
                                 <dcterms:created>
                                     <rdf:Description>
                                         <dcterms:W3CDTF>2018-09-27T16:45:50Z</dcterms:W3CDTF>
@@ -682,11 +682,11 @@
                                 </rdf:Bag>
                             </bqbiol:isVersionOf>
 
-                            <bqbiol:hasProperty>
+                            <bqbiol:isVersionOf>
                                 <rdf:Bag>
                                     <rdf:li rdf:resource="http://identifiers.org/ncit/C1897"/>
                                 </rdf:Bag>
-                            </bqbiol:hasProperty>
+                            </bqbiol:isVersionOf>
                         </rdf:Description>
 
 
@@ -697,7 +697,7 @@
                                  xmlns:dcterms="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
                                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
                             <rdf:Description rdf:about="#COPASI10">
-                                <bqbiol:hasProperty rdf:resource="urn:miriam:ncit:C1897"/>
+                                <bqbiol:isVersionOf rdf:resource="urn:miriam:ncit:C1897"/>
                                 <dcterms:created>
                                     <rdf:Description>
                                         <dcterms:W3CDTF>2018-09-27T16:45:48Z</dcterms:W3CDTF>

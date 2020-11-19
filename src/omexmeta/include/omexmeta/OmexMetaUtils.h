@@ -67,7 +67,7 @@ namespace omexmeta {
          */
         static std::string generateUniqueMetaid(
                 librdf_model *model, const std::string &metaid_base,
-                std::vector<std::string> &exclusions);
+                const std::vector<std::string> &exclusions);
 
         /**
          * @brief process a string intended to be a base uri.
@@ -129,7 +129,7 @@ namespace omexmeta {
         static std::string concatMetaIdAndUri(std::string metaid, std::string uri);
 
         /**
-         * @brief replace a part of a string @string_to_replace from a main @param string
+         * @brief replace a part of a string @param string_to_replace from a main @param string
          * with a replacement string @param replacement
          */
         static std::string
@@ -159,6 +159,19 @@ namespace omexmeta {
          * @brief read @param file into std::string
          */
         static std::string readFromFile(const std::string &file);
+
+        /**
+         * @brief return true when @param s is empty OR equal to model or local uri's
+         * @param T must implement the methods getModelUri and getLocalUri
+         */
+        template <class T>
+        static bool isStringEmpty(T& cls, const std::string &s){
+            return s.empty() ||
+                s == cls.getLocalUri() ||
+                s == cls.getLocalUri() + "#"||
+                s == cls.getModelUri() ||
+                s == cls.getModelUri() + "#";
+        }
     };
 }// namespace omexmeta
 

@@ -110,6 +110,7 @@ namespace omexmeta {
                 {"opb",                             "https://identifiers.org/opb:"},
                 {"fma",                             "https://identifiers.org/fma:"},
                 {"OMEXlib",                         "http://OMEXlibrary.org/"},
+                {"cmeta",                           "http://www.cellml.org/metadata/1.0#"},
 
         };
     }

@@ -22,8 +22,8 @@ Program Listing for File PhysicalProperty.cpp
    namespace omexmeta {
    
        PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri)
-               : isPropertyOfValue(std::move(OmexMetaUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
-                 isVersionOfValue(std::move(resource_str)),
+               : is_property_of_value_(std::move(OmexMetaUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
+                 is_version_of_value_(std::move(resource_str)),
                  model_uri_(local_uri){
            validate();
        }
@@ -33,7 +33,7 @@ Program Listing for File PhysicalProperty.cpp
            std::string expected_prefix2 = "https://identifiers.org/opb";
    
            // create a temporary resource obj for checking only.
-           Resource r(LibrdfNode::fromUriString(isVersionOfValue));
+           Resource r(LibrdfNode::fromUriString(is_version_of_value_));
            std::string uri = r.str();
            r.free();
            if ((uri.rfind(expected_prefix1, 0) != 0) && (uri.rfind(expected_prefix2, 0) != 0)) {
@@ -49,12 +49,12 @@ Program Listing for File PhysicalProperty.cpp
        Triples PhysicalProperty::toTriples(std::string property_metaid) const {
            property_metaid = OmexMetaUtils::addLocalPrefixToMetaid(property_metaid, getLocalUri());
            Triple is_version_of_triple(
-                   LibrdfNode::fromUriString(isPropertyOfValue).get(),
+                   LibrdfNode::fromUriString(is_property_of_value_).get(),
                    BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                   Resource(LibrdfNode::fromUriString(isVersionOfValue)).getNode()
+                   Resource(LibrdfNode::fromUriString(is_version_of_value_)).getNode()
            );
            Triple is_property_of_triple(
-                   LibrdfNode::fromUriString(isPropertyOfValue).get(),
+                   LibrdfNode::fromUriString(is_property_of_value_).get(),
                    BiomodelsBiologyQualifier("isPropertyOf").getNode(),
                    LibrdfNode::fromUriString(property_metaid).get()
            );
@@ -64,25 +64,25 @@ Program Listing for File PhysicalProperty.cpp
            return triples;
        }
    
-       const std::string &PhysicalProperty::getSubjectStr() const {
-           return isPropertyOfValue;
+       const std::string &PhysicalProperty::getAbout() const {
+           return is_property_of_value_;
        }
    
-       void PhysicalProperty::setSubject(const std::string &subject) {
-           isPropertyOfValue = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
+       void PhysicalProperty::about(const std::string &subject) {
+           is_property_of_value_ = OmexMetaUtils::concatMetaIdAndUri(subject, getModelUri());
        }
    
-       const std::string &PhysicalProperty::getResourceStr() const {
-           return isVersionOfValue;
+       const std::string &PhysicalProperty::getIsVersionOfValue() const {
+           return is_version_of_value_;
        }
    
-       void PhysicalProperty::setResource(const std::string &resource) {
-           isVersionOfValue = resource;
+       void PhysicalProperty::isVersionOf(const std::string &resource) {
+           is_version_of_value_ = resource;
        }
    
        bool PhysicalProperty::operator==(const PhysicalProperty &rhs) const {
-           return isPropertyOfValue == rhs.isPropertyOfValue &&
-                  isVersionOfValue == rhs.isVersionOfValue;
+           return is_property_of_value_ == rhs.is_property_of_value_ &&
+                  is_version_of_value_ == rhs.is_version_of_value_;
        }
    
        bool PhysicalProperty::operator!=(const PhysicalProperty &rhs) const {
@@ -90,11 +90,11 @@ Program Listing for File PhysicalProperty.cpp
        }
    
        const std::string &PhysicalProperty::getSubject() const {
-           return isPropertyOfValue;
+           return is_property_of_value_;
        }
    
        const std::string &PhysicalProperty::getResource() const {
-           return isVersionOfValue;
+           return is_version_of_value_;
        }
    
        const std::string &PhysicalProperty::getModelUri() const {

@@ -43,7 +43,7 @@ Program Listing for File LibrdfStatement.cpp
        void LibrdfStatement::checkForNull() {
            if (!getSubject())
                throw RedlandNullPointerException(
-                       "RedlandNullPointerException: LibrdfStatement::checkForNull(): isPropertyOfValue node is null");
+                       "RedlandNullPointerException: LibrdfStatement::checkForNull(): is_property_of_value_ node is null");
    
            if (!getPredicate()) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
                throw RedlandNullPointerException(
@@ -51,7 +51,7 @@ Program Listing for File LibrdfStatement.cpp
    
            if (!getResource())
                throw RedlandNullPointerException(
-                       "RedlandNullPointerException: LibrdfStatement::checkForNull(): isVersionOfValue node is null");
+                       "RedlandNullPointerException: LibrdfStatement::checkForNull(): is_version_of_value_ node is null");
    
            if (!statement_)
                throw RedlandNullPointerException(
@@ -70,11 +70,11 @@ Program Listing for File LibrdfStatement.cpp
            return librdf_statement_get_predicate(statement_);
        }
    
-       void LibrdfStatement::setSubject(librdf_node *node) {
+       void LibrdfStatement::about(librdf_node *node) {
            librdf_statement_set_subject(statement_, node);
        }
    
-       void LibrdfStatement::setResource(librdf_node *node) {
+       void LibrdfStatement::isVersionOf(librdf_node *node) {
            librdf_statement_set_object(statement_, node);
        }
    
@@ -89,14 +89,14 @@ Program Listing for File LibrdfStatement.cpp
        std::string LibrdfStatement::getResourceStr() const {
            if (!getResource())
                throw RedlandNullPointerException(
-                       "RedlandNullPointerException: LibrdfStatement::getResourceStr(): isVersionOfValue is nullptr");
+                       "RedlandNullPointerException: LibrdfStatement::getIsVersionOfValue(): is_version_of_value_ is nullptr");
            return LibrdfNode::str(getResource());
        }
    
        std::string LibrdfStatement::getSubjectStr() const {
            if (getSubject() == nullptr)
                throw RedlandNullPointerException(
-                       "RedlandNullPointerException: LibrdfStatement::getSubjectStr(): isPropertyOfValue is nullptr");
+                       "RedlandNullPointerException: LibrdfStatement::getAbout(): is_property_of_value_ is nullptr");
            return LibrdfNode::str(getSubject());
        }
    

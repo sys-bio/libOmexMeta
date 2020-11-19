@@ -29,7 +29,7 @@ namespace omexmeta {
 
         Sources sources_;
         Sinks sinks_;
-        std::string physical_force_property_id_;
+        std::string property_metaid_base_ = "ForceProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
 
     public:
 
@@ -72,7 +72,7 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        explicit PhysicalForce(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalForce(librdf_model *model);
 
         /**
          * @brief constructor for instantiating a PhysicalForce type composite annotation
@@ -124,7 +124,7 @@ namespace omexmeta {
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
+        [[maybe_unused]] OMEXMETA_DEPRECATED PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief sets the physical property of the PhysicalForce
@@ -132,7 +132,7 @@ namespace omexmeta {
          * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this PhysicalForce to enable the builder interface.
          */
-        PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
+        OMEXMETA_DEPRECATED PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
 
         /**
          * @brief add a SourceParticipant to the PhysicalForce.
@@ -144,7 +144,7 @@ namespace omexmeta {
          *
          * See SourceParticipant documentation for more details on arguments.
          */
-        PhysicalForce &addSource(int multiplier, const std::string& physical_entity_reference);
+        PhysicalForce &addSource(const std::string &physical_entity_reference,  eUriType type,int multiplier);
 
         /**
          * @brief add a SinkParticipant to the PhysicalForce.
@@ -156,7 +156,7 @@ namespace omexmeta {
          *
          * See SinkParticipant documentation for more details on arguments.
          */
-        PhysicalForce & addSink(int multiplier, const std::string& physical_entity_reference);
+        PhysicalForce &addSink(const std::string &physical_entity_reference,  eUriType type, int multiplier);
 
         /**
          * @brief returns the number of sources associated with the
@@ -177,13 +177,13 @@ namespace omexmeta {
         bool operator!=(const PhysicalForce &rhs) const;
 
         /**
-         * @brief set the hasProperty portion of the PhysicalForce composite annotation
+         * @brief set the isVersionOf portion of the PhysicalForce composite annotation
          * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
          * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
          * @details This method will set the Resource resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
-        PhysicalForce &hasProperty(const std::string &property);
+        PhysicalForce &isVersionOf(const std::string &property);
 
         /**
          * @brief set the subject (rdf:about) portion of the PhysicalForce composite annotation
@@ -192,7 +192,25 @@ namespace omexmeta {
          * @details This method will set the Subject subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
+        PhysicalForce &about(const std::string &about, eUriType type) override;
+
         PhysicalForce &about(const std::string &about) override;
+
+        PhysicalForce &isPropertyOf(const std::string &is_property_of, eUriType type);
+
+        PhysicalForce &propertyIsVersionOf(const std::string &is_version_of);
+
+        [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
+
+
+        PhysicalForce &hasProperty(const PhysicalProperty &property) override;
+
+        PhysicalForce &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
+
+        PhysicalForce &hasProperty(const std::string &is_version_of) override;
+
+        PhysicalForce &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+
     };
 }
 

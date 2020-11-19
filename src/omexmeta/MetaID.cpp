@@ -21,9 +21,9 @@ omexmeta::MetaID::MetaID(std::string base, long start_number, int num_digits) :
     // Uri's relative to base uri, like the ones were generating with these
     // metaids should start with a hash symbol #. Raptor then interprets them
     // as relative to the base uri.
-    if (base_.at(0) != '#'){
-        base_ = "#" + base_;
-    }
+//    if (base_.at(0) != '#'){
+//        base_ = "#" + base_;
+//    }
 }
 
 bool omexmeta::MetaID::operator==(const omexmeta::MetaID &rhs) const {

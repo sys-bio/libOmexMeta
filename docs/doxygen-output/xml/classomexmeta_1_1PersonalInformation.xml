@@ -45,9 +45,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::PersonalInformation::metaid_</definition>
+        <definition>std::string omexmeta::PersonalInformation::about_value_</definition>
         <argsstring></argsstring>
-        <name>metaid_</name>
+        <name>about_value_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -674,7 +674,7 @@
       <member refid="classomexmeta_1_1PersonalInformation_1a6b2ce3a6c724b67afe3d0c2df00bb484" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aecc5783753b41ed88a49c5b3bce82ba4" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>getTriples</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>local_uri_</name></member>
-      <member refid="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>metaid_</name></member>
+      <member refid="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>about_value_</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aa7926298a95c2e0418e360afaa9036d7" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1aa4dcccf20c51c9e4e3f120e95de76963" prot="private" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PersonalInformation_1abb71bc363efd7466c71733709aa50394" prot="public" virt="non-virtual"><scope>omexmeta::PersonalInformation</scope><name>operator!=</name></member>

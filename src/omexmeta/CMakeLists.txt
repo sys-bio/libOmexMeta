@@ -41,6 +41,7 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/SBMLSemanticExtraction.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlType.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriHandler.h"
         #    dbg.h
         )
 
@@ -68,6 +69,7 @@ set(OMEXMETA_SOURCES
         "PhysicalForce.cpp"
         "PersonalInformation.cpp"
         "MarkupIdentifier.cpp"
+        "UriHandler.cpp"
         )
 
 
@@ -183,10 +185,28 @@ target_include_directories(
 )
 add_dependencies(${target}CAPI ${target}-static)
 
-set_target_properties(${target}CAPI PROPERTIES OUTPUT_NAME ${target}CAPI-${LIBOMEXMETA_VERSION})
+set_target_properties(${target}CAPI PROPERTIES OUTPUT_NAME "${target}CAPI-${LIBOMEXMETA_VERSION}")
 
 generate_export_header(${target}CAPI BASE_NAME OMEXMETA_CAPI)
 target_compile_definitions(${target}CAPI PUBLIC OmexMeta_CAPI_EXPORTS)
+
+install(TARGETS ${target}CAPI
+        EXPORT ${target}CAPI
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
+        )
+
+# install the export info
+install(
+        EXPORT ${target}CAPI
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE ${target}CAPI.cmake
+)
+
+
 
 
 #

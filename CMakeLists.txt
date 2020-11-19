@@ -136,6 +136,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # location of pyomexmeta development package.
 set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
+set(THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+
 # location of googletesting framework
 set(GOOGLETEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/googletest)
 
@@ -192,7 +194,6 @@ if (${BUILD_SHARED_LIBS})
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
 
-option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
 
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
@@ -247,6 +248,14 @@ if (${BUILD_PYTHON})
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
 
 endif ()
+
+# we write a file called extra_search_directories for storing locations of places python can search for
+# the shared library it needs for loading libOmexMeta into Python.
+file(WRITE "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/ExtraSearchDirectories.txt"
+        "${CMAKE_INSTALL_PREFIX}\n"
+        "${CMAKE_INSTALL_PREFIX}/lib\n"
+        "${CMAKE_INSTALL_PREFIX}/bin\n"
+        )
 
 
 find_package(CURL CONFIG REQUIRED)

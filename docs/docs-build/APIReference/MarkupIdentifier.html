@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MarkupIdentifier &mdash; libomexmeta 1.1.17 documentation</title>
+  <title>MarkupIdentifier &mdash; libomexmeta 1.1.18 documentation</title>
   
 
   
@@ -182,94 +182,10 @@
             
   <div class="section" id="markupidentifier">
 <h1>MarkupIdentifier<a class="headerlink" href="#markupidentifier" title="Permalink to this headline">¶</a></h1>
-<dl class="cpp class">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifierE">
-<span id="_CPPv3N8omexmeta16MarkupIdentifierE"></span><span id="_CPPv2N8omexmeta16MarkupIdentifierE"></span><span id="omexmeta::MarkupIdentifier"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">MarkupIdentifier</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifierE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>determines whether input language is sbml, cellml or unknown </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE"></span><span id="omexmeta::MarkupIdentifier::MarkupIdentifier__ss"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a0bb73ce6d5c94efcd97471059a378058"></span><code class="sig-name descname">MarkupIdentifier</code><span class="sig-paren">(</span>std::string <em>markup</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier16MarkupIdentifierENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1MarkupIdentifier"><span class="std std-ref">MarkupIdentifier</span></a> </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markup</span></code>: a string of your xml. </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifierD0Ev">
-<span id="_CPPv3N8omexmeta16MarkupIdentifierD0Ev"></span><span id="_CPPv2N8omexmeta16MarkupIdentifierD0Ev"></span><span id="omexmeta::MarkupIdentifier::~MarkupIdentifier"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a155b2867eddc685ae4eb0eebc0fd0e27"></span><code class="sig-name descname">~MarkupIdentifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifierD0Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier6isSBMLEv">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier6isSBMLEv"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier6isSBMLEv"></span><span id="omexmeta::MarkupIdentifier::isSBML"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a541ffd197ce109e20112923d7fc0641b"></span>bool <code class="sig-name descname">isSBML</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier6isSBMLEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>test to see whether the xml passed to constructor is SBML </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if xml passed to constructor is SBML </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier8isCellMLEv">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier8isCellMLEv"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier8isCellMLEv"></span><span id="omexmeta::MarkupIdentifier::isCellML"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a2fd631a49a8a3d06e668cdbf130d5cb3"></span>bool <code class="sig-name descname">isCellML</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier8isCellMLEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>test to see whether the xml passed to constructor is CellML </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if xml passed to constructor is CellML </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta16MarkupIdentifier15getElementNamesEv">
-<span id="_CPPv3NK8omexmeta16MarkupIdentifier15getElementNamesEv"></span><span id="_CPPv2NK8omexmeta16MarkupIdentifier15getElementNamesEv"></span><span id="omexmeta::MarkupIdentifier::getElementNamesC"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1ab1736abf0d275bcb6eefcb7f08dcbd4f"></span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<code class="sig-name descname">getElementNames</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta16MarkupIdentifier15getElementNamesEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “omexmeta::MarkupIdentifier” in doxygen xml output for project “libomexmeta” from directory: D:/libOmexMeta/docs/doxygen-output/xml</p>
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Private Functions</p>
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier7parseMLEv">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier7parseMLEv"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier7parseMLEv"></span><span id="omexmeta::MarkupIdentifier::parseML"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a094ee06deb08f70c4f481e6bcb52f172"></span>xmlDoc *<code class="sig-name descname">parseML</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier7parseMLEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>read an xml document using libxml2. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode"></span><span id="omexmeta::MarkupIdentifier::collectElementNames__xmlNodeP"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1ada1ee4ccb99e393415f63e5dcafa68a6"></span>void <code class="sig-name descname">collectElementNames</code><span class="sig-paren">(</span>xmlNode *<em>a_node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier19collectElementNamesEP7xmlNode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>collect the name of the element pointed to by a_node </p>
-<p>*a_node pointer to an xmlNode </p>
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Private Members</p>
-<dl class="cpp var">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier4doc_E">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier4doc_E"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier4doc_E"></span><span id="omexmeta::MarkupIdentifier::doc___xmlDocPtr"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1aee48438435455b27c7e709e5b4ecf57e"></span>xmlDocPtr <code class="sig-name descname">doc_</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier4doc_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier7markup_E">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier7markup_E"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier7markup_E"></span><span id="omexmeta::MarkupIdentifier::markup___ss"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1a26b50e531faca03c318f4b44da1b9e4a"></span>std::string <code class="sig-name descname">markup_</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier7markup_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt id="_CPPv4N8omexmeta16MarkupIdentifier14element_names_E">
-<span id="_CPPv3N8omexmeta16MarkupIdentifier14element_names_E"></span><span id="_CPPv2N8omexmeta16MarkupIdentifier14element_names_E"></span><span id="omexmeta::MarkupIdentifier::element_names___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1MarkupIdentifier_1ac054a63ecc73555135bd82979ba46b59"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">element_names_</code><a class="headerlink" href="#_CPPv4N8omexmeta16MarkupIdentifier14element_names_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
 </div>
 
 

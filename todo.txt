@@ -1,26 +1,29 @@
 todo
 -----
-- Add cellml to list of examples
-- build system on mac
-- build system in general - dependency package?
 - write script for scraping biomodels annotations
 - identity is optional, for use with complexes.
 - pdf copy of jupyter notebook
-- Add some docs on hasPart for physical entity
-- change example to be the one used in the paper
 - Add a description tab to all things that need them
-- When loading model in eitor, we need to update
-- Change buildsystem to have proper debug and release versions. Currently we just manually change the flags we need to use debugger
 - Try using double pointers in redland wrapper stuff. Does this bypass the pointer ownership problem?
 - remove the curl dependency and downloading features. They are not used. 
-- 
+
+- implement "variableMetaId" method on physical property
+- Make the "about" field optional. When given by user, use it. When absent, 
+	generate a new metaid to use. 
+
 
 started
 --------
-
+- build system in general - dependency package?
+- support for cellml
+	- Add cellml to list of examples
+	- update the identifier to correctly identify a cellml model based on the elements it has
+		- Cellml uses a namespace cmeta:id="name" for the metaid while sbml has a metaid attribute which is a part of sbml itself. Therefore we need a slightly broader mechanism for collecting valid ids from cellml (and potentially other languages). libxml2 has two methods xmlGetProp and xmlNsGetProp. We currently only implement xmlGetProp but we need to also implement the Ns version
 
 done
 -----
+- change example to be the one used in the paper
+- Add some docs on hasPart for physical entity
 - modify setAbout methods to auto add model uri if not already have.
 - make some fields optional
 - Add a hasPart method on PhysicalEntity
@@ -30,9 +33,12 @@ done
 	- Complication: blank nodes cannot be compared when they are read from a string/file because they are given a random ID. Therefore, I implemented my own equality operators which do comparisons whilst ignoring blank identifiers in librdf_statements.
     - Memory problem when comparing models that have statements which use blank nodes. Issue resolved. 
 - consolidate "Python" and "english" version of supplementary content into jupyter
+- Change buildsystem to have proper debug and release versions. Currently we just manually change the flags we need to use debugger
+- build system on mac
+- Get tests running on CI (Azure)
 
 
-
+To comment out the Editor::check valid ids, comment out line 100 in Editor.cpp
 
 
 

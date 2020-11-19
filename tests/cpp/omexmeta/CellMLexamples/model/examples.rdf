@@ -1,0 +1,120 @@
+<rdf:RDF
+    xmlns:semsim="http://www.bhi.washington.edu/SemSim#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+    xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+    xmlns:dc="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
+    xmlns:myOMEX="http://omex-library.org/CellMLexamples.omex"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:local="http://omex-library.org/CellMLexamples.omex/examples.rdf">
+  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.cellml#main.ReactionRate">
+    <bqbiol:isPropertyOf>
+      <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#process_0">
+        <semsim:hasMediatorParticipant>
+          <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#mediator_0">
+            <semsim:hasPhysicalEntityReference>
+              <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_12">
+                <bqbiol:isPartOf>
+                  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9">
+                    <bqbiol:isPartOf>
+                      <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_10">
+                        <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:14515"/>
+                      </rdf:Description>
+                    </bqbiol:isPartOf>
+                    <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:66836"/>
+                  </rdf:Description>
+                </bqbiol:isPartOf>
+                <bqbiol:is rdf:resource="http://purl.obolibrary.org/obo/PR_000003767"/>
+              </rdf:Description>
+            </semsim:hasPhysicalEntityReference>
+          </rdf:Description>
+        </semsim:hasMediatorParticipant>
+        <semsim:hasSinkParticipant>
+          <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_1"
+             semsim:hasMultiplier="1.0">
+            <semsim:hasPhysicalEntityReference>
+              <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_11">
+                <bqbiol:isPartOf rdf:resource="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9"/>
+                <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:15343"/>
+              </rdf:Description>
+            </semsim:hasPhysicalEntityReference>
+          </rdf:Description>
+        </semsim:hasSinkParticipant>
+        <semsim:hasSourceParticipant>
+          <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#source_1"
+             semsim:hasMultiplier="1.0">
+            <semsim:hasPhysicalEntityReference>
+              <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_8">
+                <bqbiol:isPartOf rdf:resource="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_9"/>
+                <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:16236"/>
+              </rdf:Description>
+            </semsim:hasPhysicalEntityReference>
+          </rdf:Description>
+        </semsim:hasSourceParticipant>
+        <semsim:name>my process</semsim:name>
+        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/go/GO:0004022"/>
+      </rdf:Description>
+    </bqbiol:isPropertyOf>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.cellml#main.Volume">
+    <bqbiol:isPropertyOf>
+      <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_0">
+        <bqbiol:isPartOf>
+          <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_1">
+            <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:18228"/>
+          </rdf:Description>
+        </bqbiol:isPartOf>
+        <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:9670"/>
+      </rdf:Description>
+    </bqbiol:isPropertyOf>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00154"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.cellml"
+     semsim:modelName="annotation_examples"/>
+  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.cellml#main.MembraneVoltage">
+    <bqbiol:isPropertyOf>
+      <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#force_0">
+        <semsim:hasSinkParticipant>
+          <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#sink_0">
+            <semsim:hasPhysicalEntityReference>
+              <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_5">
+                <bqbiol:isPartOf>
+                  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_6">
+                    <bqbiol:isPartOf>
+                      <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_7">
+                        <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:16016"/>
+                      </rdf:Description>
+                    </bqbiol:isPartOf>
+                    <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:9672"/>
+                  </rdf:Description>
+                </bqbiol:isPartOf>
+                <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:24870"/>
+              </rdf:Description>
+            </semsim:hasPhysicalEntityReference>
+          </rdf:Description>
+        </semsim:hasSinkParticipant>
+        <semsim:hasSourceParticipant>
+          <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#source_0">
+            <semsim:hasPhysicalEntityReference>
+              <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_2">
+                <bqbiol:isPartOf>
+                  <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_3">
+                    <bqbiol:isPartOf>
+                      <rdf:Description rdf:about="http://omex-library.org/CellMLexamples.omex/examples.rdf#entity_4">
+                        <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:70586"/>
+                      </rdf:Description>
+                    </bqbiol:isPartOf>
+                    <bqbiol:is rdf:resource="http://identifiers.org/fma/FMA:66836"/>
+                  </rdf:Description>
+                </bqbiol:isPartOf>
+                <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:24870"/>
+              </rdf:Description>
+            </semsim:hasPhysicalEntityReference>
+          </rdf:Description>
+        </semsim:hasSourceParticipant>
+      </rdf:Description>
+    </bqbiol:isPropertyOf>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00506"/>
+  </rdf:Description>
+</rdf:RDF>

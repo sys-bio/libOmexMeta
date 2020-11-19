@@ -15,7 +15,7 @@ The tyon2003 model annotations in turtle syntax is
         rdf:_1 <http://identifiers.org/go/GO:0007243> ;
         a rdf:Bag
     ] ;
-    bqbiol:hasProperty [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/mamo/MAMO_0000046> ;
         a rdf:Bag
     ] ;
@@ -91,7 +91,7 @@ The tyon2003 model annotations in turtle syntax is
     ] .
 
 <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242>
-    bqbiol:hasProperty [
+    bqbiol:isVersionOf [
         rdf:_1 <http://identifiers.org/go/GO:0016301> ;
         a rdf:Bag
     ] ;

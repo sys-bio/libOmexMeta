@@ -85,7 +85,7 @@ Program Listing for File Triples.cpp
        std::vector<std::string> Triples::getSubjectsStr() {
            std::vector<std::string> vec;
            for (auto &triple : triples_) {
-               vec.push_back(triple.getSubjectStr());
+               vec.push_back(triple.getAbout());
            }
            return vec;
        }
@@ -101,7 +101,7 @@ Program Listing for File Triples.cpp
        std::vector<std::string> Triples::getResources() {
            std::vector<std::string> vec;
            for (auto &triple: triples_) {
-               vec.push_back(triple.getResourceStr());
+               vec.push_back(triple.getIsVersionOfValue());
            }
            return vec;
        }

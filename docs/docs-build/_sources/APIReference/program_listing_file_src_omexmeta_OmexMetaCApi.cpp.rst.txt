@@ -405,7 +405,7 @@ Program Listing for File OmexMetaCApi.cpp
        }
    
        char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation) {
-           std::string resource = singular_annotation->getResourceStr();
+           std::string resource = singular_annotation->getIsVersionOfValue();
            char *cstr = (char *) malloc((resource.size() + 1) * sizeof(char));
            strcpy(cstr, resource.c_str());
            return cstr;

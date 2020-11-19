@@ -21,7 +21,7 @@ Program Listing for File PersonalInformation.cpp
    
        PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri, std::string model_uri)
                : model_(model), model_uri_(local_uri), model_uri_(model_uri) {
-           metaid_ = generateMetaId();
+           about_value_ = generateMetaId();
            createSubject();
        }
    
@@ -70,7 +70,7 @@ Program Listing for File PersonalInformation.cpp
    
        PersonalInformation &
        PersonalInformation::addFoaf(const std::string &predicate, const LibrdfNode& value_node) {
-           LibrdfNode subject = LibrdfNode::fromUriString(metaid_);
+           LibrdfNode subject = LibrdfNode::fromUriString(about_value_);
            Foaf foaf(predicate);
            Triple triple(subject.get(), foaf.getNode(), value_node.get());
            triples_.move_back(triple);
@@ -79,7 +79,7 @@ Program Listing for File PersonalInformation.cpp
    
        PersonalInformation &
        PersonalInformation::addDC(const std::string &predicate, const LibrdfNode& value_node) {
-           LibrdfNode subject = LibrdfNode::fromUriString(metaid_);
+           LibrdfNode subject = LibrdfNode::fromUriString(about_value_);
            DCTerm dc(predicate);
            Triple triple(subject.get(), dc.getNode(), value_node.get());
            triples_.move_back(triple);
@@ -181,13 +181,13 @@ Program Listing for File PersonalInformation.cpp
            }
            LibrdfNode n = LibrdfNode::fromUriString(model_uri_);
            DCTerm creator("creator");
-           LibrdfNode r = LibrdfNode::fromUriString(metaid_);
+           LibrdfNode r = LibrdfNode::fromUriString(about_value_);
            Triple triple(n.get(), creator.getNode(), r.get());
            triples_.move_back(triple);
        }
    
        const std::string &PersonalInformation::getMetaid() const {
-           return metaid_;
+           return about_value_;
        }
    
        Triples PersonalInformation::getTriples() {
@@ -195,7 +195,7 @@ Program Listing for File PersonalInformation.cpp
        }
    
        void PersonalInformation::setMetaid(const std::string &metaid) {
-           metaid_ = metaid;
+           about_value_ = metaid;
        }
    
        const std::string &PersonalInformation::getModelUri() const {

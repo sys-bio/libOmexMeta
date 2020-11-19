@@ -19,9 +19,7 @@ namespace omexmeta {
           sbml_semantic_extraction_(sbml_semantic_extraction),
           repository_uri_(repository_uri), archive_uri_(archive_uri),
           model_uri_(model_uri), local_uri_(local_uri) {
-
-
-        // sometimes in the python api users can accidently start the sbml
+        // sometimes in the python api users can accidentally start the sbml
         // string with a new line character. Catch this and error.
         if (OmexMetaUtils::startsWith(xml_, "\n")) {
             throw std::invalid_argument("std::invalid_argument: Editor::Editor() "
@@ -46,18 +44,16 @@ namespace omexmeta {
                     " be either SBML or CellML. ");
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET);// this should never happen
-        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(
-                xml_, getType(), generate_new_metaids, "#OmexMetaId", 4);
-        std::pair<std::string, std::vector<std::string>> xml_and_metaids =
-                xmlAssistantPtr->addMetaIds();
+        XmlAssistantPtr xmlAssistantPtr = OmexMetaXmlAssistantFactory::generate(
+                xml_, getType(), generate_new_metaids, "OmexMetaId", 4);
+        std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
-
         if (getType() == OMEXMETA_TYPE_SBML && sbml_semantic_extraction) {
             // with sbml models we extract some information directly from the sbml
-            SBMLSemanticExtraction extraction(this);
-            extraction.extractSpeciesCompartmentSemantics();
-            extraction.extractProcessesFromReactions();
+        SBMLSemanticExtraction extraction(this);
+        extraction.extractSpeciesCompartmentSemantics();
+        extraction.extractProcessesFromReactions();
         }
     }
 
@@ -162,17 +158,21 @@ namespace omexmeta {
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
         /**
-     * Implementation note: This method generates triples on the
-   * fly and then frees. This was implemented this way as it helped avoid
-   * memory issues but perhaps a better implementation would be similar to
-   * that in the PersonalInformation class.
-   */
+        * Implementation note: This method generates triples on the
+        * fly and then frees. This was implemented this way as it helped avoid
+        * memory issues but perhaps a better implementation would be similar to
+        * that in the PersonalInformation class.
+        */
         Triples triples = phenomenonPtr->toTriples();
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
             Triple triple = triples.pop_front();
+
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
+
+            //todo consider whether to also call AddNamespaceFromAnnotation(triple.getResourseStr())
+
             // add to the model
             model_.addStatement(triple.getStatement());
             // remember to free it.
@@ -198,60 +198,27 @@ namespace omexmeta {
         }
     }
 
+    void Editor::addPhysicalProperty(PhysicalProperty &physicalProperty) {
+        Triples triples = physicalProperty.toTriples();
+        for (auto &triple : triples) {
+            // collect the namespace from the triple
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addSingleAnnotationNoValidation(triple);
+        }
+        triples.freeTriples();
+    }
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
-        if (physicalEntity.getAbout().empty()) {
-            throw NullPointerException(
-                    "NullPointerException: Editor::addPhysicalEntity() "
-                    "physicalEntity::subject_ (i.e. about) node is empty");
-        }
-        /*
-       * Because we now want to use @prefix local for the
-       * about section, we need to inject it here,
-       * if not already formatted properly.
-       */
-        if (!OmexMetaUtils::startsWith(physicalEntity.getAbout(), "http")) {
-            physicalEntity.about(OmexMetaUtils::concatMetaIdAndUri(
-                    physicalEntity.getAbout(), getModelUri()));
-        }
-        checkValidMetaid(physicalEntity.getAbout());
+        //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
     }
 
     void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
-        if (physicalProcess.getAbout().empty()) {
-            throw NullPointerException(
-                    "NullPointerException: Editor::addPhysicalProcess() "
-                    "PhysicalProcess::subject_ (i.e. about) node is empty");
-        }
-        checkValidMetaid(physicalProcess.getAbout());
-        /**
-     * Because we now want to use @prefix Omex for the
-   * about section, we need to inject it here,
-   * if not already formatted properly.
-   */
-        if (!OmexMetaUtils::startsWith(physicalProcess.getAbout(), "http")) {
-            physicalProcess.about(OmexMetaUtils::concatMetaIdAndUri(
-                    physicalProcess.getAbout(), getModelUri()));
-        }
+        //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
     }
 
     void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
-        if (physicalForce.getAbout().empty()) {
-            throw NullPointerException(
-                    "NullPointerException: Editor::addPhysicalForce() "
-                    "PhysicalForce::subject_ (i.e. about) node is empty");
-        }
-        checkValidMetaid(physicalForce.getAbout());
-        /*
-         * Because we now want to use @prefix local for the
-         * about section, we need to inject it here,
-         * if not already formatted properly.
-         */
-        if (!OmexMetaUtils::startsWith(physicalForce.getAbout(), "http")) {
-            physicalForce.about(OmexMetaUtils::concatMetaIdAndUri(
-                    physicalForce.getAbout(), getModelUri()));
-        }
+        //        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
 
@@ -306,6 +273,15 @@ namespace omexmeta {
 
     void Editor::removePhysicalProcess(PhysicalProcess &physicalProcess) const {
         removePhysicalPhenomenon(&physicalProcess);
+    }
+
+    PhysicalProperty Editor::newPhysicalProperty() {
+        return PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+    }
+
+    PhysicalProperty* Editor::newPhysicalPropertyPtr() {
+        auto* property = new PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+        return property;
     }
 
     PhysicalEntity Editor::newPhysicalEntity() {
@@ -462,5 +438,6 @@ namespace omexmeta {
     OmexMetaXmlType Editor::getType() const { return type_; }
 
     void Editor::setType(OmexMetaXmlType type) { type_ = type; }
+
 
 }// namespace omexmeta

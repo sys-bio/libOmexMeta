@@ -80,17 +80,17 @@ Program Listing for File LibrdfStatement.h
    
            [[nodiscard]] librdf_node *getResource() const;
    
-           [[nodiscard]] std::string getSubjectStr() const;
+           [[nodiscard]] std::string getAbout() const;
    
            [[nodiscard]] std::string getPredicateStr() const;
    
-           [[nodiscard]] std::string getResourceStr() const;
+           [[nodiscard]] std::string getIsVersionOfValue() const;
    
            void checkForNull();
    
-           void setSubject(librdf_node *node);
+           void about(librdf_node *node);
    
-           void setResource(librdf_node *node);
+           void isVersionOf(librdf_node *node);
    
            void setPredicate(librdf_node *node);
    
