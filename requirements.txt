@@ -8,3 +8,5 @@ sphinxcontrib-programoutput
 tellurium
 python-libcombine
 pytest
+graphviz
+pydot

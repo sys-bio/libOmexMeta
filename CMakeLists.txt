@@ -15,7 +15,12 @@ configure_file(VERSION.txt.in VERSION.txt)
 configure_file(VERSION.txt.in "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/VERSION.txt")
 
 
-install(FILES requirements.txt DESTINATION .)
+install(FILES
+        requirements.txt
+        LICENCE.txt
+        banner.txt
+        environment.yml
+        DESTINATION .)
 
 ############################################################3
 # configure some paths relative to vcpkg root

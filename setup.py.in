@@ -7,10 +7,6 @@ import os
 import glob
 import sys
 
-if sys.platform != "linux":
-    raise NotImplementedError("Please build the python package on linux as windows does not include the binaries")
-
-
 # get source directory
 PYOMEXMETA_DIR = "@PYOMEXMETA_DIR@"
 
@@ -36,10 +32,10 @@ Programming Language :: Python :: Implementation :: CPython
 Topic :: Software Development
 Topic :: Scientific/Engineering
 Operating System :: Microsoft :: Windows
+Operating System :: MacOS
 Operating System :: POSIX
 Operating System :: Unix
 """
-# Operating System :: MacOS // macos not yet supported
 
 
 binaries = [
@@ -86,8 +82,8 @@ binaries = [
 
 for i in binaries:
     print(f"Looking for binary \"{i}\"")
-    if not os.path.isfile(i):
-        raise FileNotFoundError(f"Dependency \"{i}\" not found.")
+    # if not os.path.isfile(i):
+    #     raise FileNotFoundError(f"Dependency \"{i}\" not found.")
 
 setup(
     name='pyomexmeta',
@@ -99,12 +95,12 @@ setup(
     author_email='cwelsh2@uw.edu',
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
-    install_requires=["graphviz", "pydot", 'pywin32; platform_system=="Windows"'],
+    install_requires=open("requirements.txt").read().split("\n")
     packages=['pyomexmeta'],
-    package_dir={'pyomexmeta': 'src/pyomexmeta'},
+    package_dir={'pyomexmeta': 'site-packages/pyomexmeta'},
     package_data={'pyomexmeta': [
-        'LICENCE.txt',
-    ] + binaries},
+        'LICENCE.txt', 'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@.@CMAKE_SHARED_LIBRARY_SUFFIX@'
+    ], # + binaries},
     include_package_data=True,
     classifiers=[_f for _f in CLASSIFIERS.split('\n') if _f],
     platforms=["Windows", "Linux", "Unix"],  # "Mac OS-X", - not yet supported.
