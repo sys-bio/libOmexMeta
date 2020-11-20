@@ -12,13 +12,13 @@ _THIS_DIR = os.path.dirname(__file__)
 
 _EXTRA_SEARCH_DIR_FILE = os.path.join(_THIS_DIR, "ExtraSearchDirectories.txt")
 
-extra_search_paths = []
+_EXTRA_SEARCH_PATHS = []
 if (os.path.isfile(_EXTRA_SEARCH_DIR_FILE)):
     with open(_EXTRA_SEARCH_DIR_FILE, "r") as f:
-        extra_search_paths = f.read().split("\n")
+        _EXTRA_SEARCH_PATHS = f.read().split("\n")
 
 if sys.platform == "win32":
-    extra_search_paths = [i.replace("/", "\\") for i in extra_search_paths]
+    _EXTRA_SEARCH_PATHS = [i.replace("/", "\\") for i in _EXTRA_SEARCH_PATHS]
 
 
 def get_version():
@@ -32,7 +32,10 @@ def get_version():
         current_dir = os.path.abspath(os.path.dirname(__file__))
         files_in_current_dir = glob.glob(os.path.join(current_dir, "*"))
         results = [
-            re.findall("OmexMetaCAPI-(\d*.\d*.\d*).dll|libOmexMetaCAPI.so.(\d*.\d*.\d*)|libOmexMetaCAPI-(\d*.\d*.\d*).dylib",
+            re.findall("OmexMetaCAPI-(\d*.\d*.\d*).dll|"
+                       "libOmexMetaCAPI.so.(\d*.\d*.\d*)|"
+                       "libOmexMetaCAPI.(\d*.\d*.\d*).dylib|"
+                       "libOmexMetaCAPI-(\d*.\d*.\d*).dylib",
                        i) for i in files_in_current_dir]
         results = [i for i in results if i != []]
 
@@ -85,11 +88,14 @@ class Util:
         Returns:
 
         """
+
+        # todo note that we are currently using two different strategies for locating the library (see get_version())
+        #    consolidate this code
         extensions = [
             f"-{get_version()}.dll",
             f'-{get_version()}.so.{get_version()}',
             f'.so.{get_version()}',
-            f'.{get_version()}.dylib'
+            f'.{get_version()}.dylib',
             f'-{get_version()}.dylib'
         ]
         # "" for windows, lib for linux
@@ -114,7 +120,7 @@ class Util:
         )
 
         search_directories = [current_working_dir, pyomexmeta_init_dir,
-                              build_tree_bin_dir, build_tree_lib_dir] + extra_search_paths
+                              build_tree_bin_dir, build_tree_lib_dir] + _EXTRA_SEARCH_PATHS
 
         found_library_files = []
         candidates = []
