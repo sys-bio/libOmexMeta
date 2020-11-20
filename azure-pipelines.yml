@@ -281,7 +281,8 @@ jobs:
           conda activate pyomexmeta
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
-          Set-Variable -name wheel -value (Resolve-Path -LiteralPath (get-item (ls dist | Select-Object -first 1)).Directory)
+          wheel = Get-ChildItem -LiteralPath . -Recurse -File |% FullName
+          pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
 
