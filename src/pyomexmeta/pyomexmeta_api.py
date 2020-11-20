@@ -32,7 +32,7 @@ def get_version():
         current_dir = os.path.abspath(os.path.dirname(__file__))
         files_in_current_dir = glob.glob(os.path.join(current_dir, "*"))
         results = [
-            re.findall("OmexMetaCAPI-(\d*.\d*.\d*).dll|OmexMetaCAPI-(\d*.\d*.\d*).so|OmexMetaCAPI-(\d*.\d*.\d*).dylib",
+            re.findall("OmexMetaCAPI-(\d*.\d*.\d*).dll|libOmexMetaCAPI.so.(\d*.\d*.\d*)|libOmexMetaCAPI-(\d*.\d*.\d*).dylib",
                        i) for i in files_in_current_dir]
         results = [i for i in results if i != []]
 
