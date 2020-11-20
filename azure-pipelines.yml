@@ -243,8 +243,9 @@ jobs:
           conda create -y --name pyomexmeta python=3.8
           conda activate pyomexmeta
           pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz win32api
+          Set-Variable -name python_dir -value (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
-          cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="../install-azure-release" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=(get-item (where.exe python | Select-Object -first 1)).Directory ..
+          cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="../install-azure-release" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
           cmake --build . --target run-ctest --config Release -j 12
         displayName: Run Tests With Python
         # publish python packages in azure:

@@ -38,11 +38,16 @@ def get_version():
         results = [i for i in results if i != [] ]
 
         assert len(results) == 1, f"length of results == {len(results)}"
-        results = results[0] # a list of tuples : [('1.1.18', '', '')]
+        results = results[0]  # a list of tuples : [('1.1.18', '', '')]
+        print(results)
         results = [i for i in results[0] if i != '']
-        assert len(results) == 1, f"length of results == {len(results)}"
+        print(results)
+        assert len(results) == 1, f"length of results == {len(results)}, HERE"
+        print(results)
         results = results[0]
+        print(results)
         assert isinstance(results, str), f"type is: {type(results)}"
+        print(results)
         return results
 
 

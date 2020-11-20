@@ -84,7 +84,7 @@ for i in binaries:
     #     raise FileNotFoundError(f"Dependency \"{i}\" not found.")
 
 libomexmeta = os.path.join(os.path.dirname(__file__), 'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@')
-
+print(libomexmeta, "exists: ", os.path.isfile(libomexmeta))
 if not os.path.isfile(libomexmeta):
     raise FileNotFoundError(libomexmeta)
 
