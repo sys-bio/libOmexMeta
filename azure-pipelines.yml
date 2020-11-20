@@ -101,7 +101,7 @@ jobs:
           python setup.py bdist_wheel
           cd dist
           ls
-          pip install .\dist\*
+          pip install $(ls)
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
 
@@ -193,7 +193,9 @@ jobs:
           conda activate pyomexmeta
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
-          pip install .\dist\*
+          cd dist
+          ls
+          pip install $(ls)
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
 
@@ -279,7 +281,7 @@ jobs:
           conda activate pyomexmeta
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
-          pip install .\dist\*
+          Set-Variable -name wheel -value (Resolve-Path -LiteralPath (get-item (ls dist | Select-Object -first 1)).Directory)
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
 
