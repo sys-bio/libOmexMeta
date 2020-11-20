@@ -15,11 +15,11 @@ local:ProcessProperty0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMeta0002> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMeta0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>

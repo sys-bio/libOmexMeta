@@ -6,7 +6,7 @@
     <includes refid="Editor_8h" local="yes">omexmeta/Editor.h</includes>
     <includes refid="Triple_8h" local="yes">omexmeta/Triple.h</includes>
     <includes refid="Triples_8h" local="yes">omexmeta/Triples.h</includes>
-    <includes refid="PhysicalForce_8h" local="yes">omexmeta/PhysicalForce.h</includes>
+    <includes refid="EnergyDiff_8h" local="yes">omexmeta/EnergyDiff.h</includes>
     <includes refid="PhysicalEntity_8h" local="yes">omexmeta/PhysicalEntity.h</includes>
     <includes refid="PhysicalProcess_8h" local="yes">omexmeta/PhysicalProcess.h</includes>
     <includes refid="PersonalInformation_8h" local="yes">omexmeta/PersonalInformation.h</includes>
@@ -351,8 +351,8 @@
         </childnode>
       </node>
       <node id="52">
-        <label>omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
+        <label>omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -628,7 +628,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Editor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triple.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Triples.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalForce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/EnergyDiff.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalEntity.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalProcess.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PersonalInformation.h&quot;</highlight><highlight class="normal"></highlight></codeline>

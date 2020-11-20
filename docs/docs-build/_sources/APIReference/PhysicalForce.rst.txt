@@ -1,7 +1,7 @@
-PhysicalForce
+EnergyDiff
 ==============
 
-.. doxygenclass:: omexmeta::PhysicalForce
+.. doxygenclass:: omexmeta::EnergyDiff
    :members:
    :protected-members:
    :private-members:

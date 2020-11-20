@@ -307,8 +307,8 @@ class PyOmexMetaAPI:
     editor_add_physical_process = utils.load_func("Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64],
                                                   ct.c_void_p)
 
-    # void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
-    editor_add_physical_force = utils.load_func("Editor_addPhysicalForce", [ct.c_int64, ct.c_int64],
+    # void Editor_addEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
+    editor_add_energy_diff = utils.load_func("Editor_addEnergyDiff", [ct.c_int64, ct.c_int64],
                                                 ct.c_void_p)
 
     # void Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty);
@@ -328,8 +328,8 @@ class PyOmexMetaAPI:
     # void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
     editor_remove_physical_process = utils.load_func("Editor_removePhysicalProcess", [ct.c_int64], None)
 
-    # void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
-    editor_remove_physical_force = utils.load_func("Editor_removePhysicalForce", [ct.c_int64], None)
+    # void Editor_removeEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
+    editor_remove_energy_diff = utils.load_func("Editor_removeEnergyDiff", [ct.c_int64], None)
 
     # void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
     editor_remove_personal_information = utils.load_func("Editor_removePersonalInformation", [ct.c_int64], None)
@@ -355,8 +355,8 @@ class PyOmexMetaAPI:
     # PhysicalProcess *Editor_newPhysicalProcess(Editor *editor_ptr);
     editor_new_physical_process = utils.load_func("Editor_newPhysicalProcess", [ct.c_int64], ct.c_int64)
 
-    # PhysicalForce *Editor_newPhysicalForce(Editor *editor_ptr);
-    editor_new_physical_force = utils.load_func("Editor_newPhysicalForce", [ct.c_int64], ct.c_int64)
+    # EnergyDiff *Editor_newEnergyDiff(Editor *editor_ptr);
+    editor_new_energy_diff = utils.load_func("Editor_newEnergyDiff", [ct.c_int64], ct.c_int64)
 
     # void Editor_delete(Editor *editor_ptr);
     editor_delete = utils.load_func("Editor_delete", [ct.c_int64], None)
@@ -606,47 +606,47 @@ class PyOmexMetaAPI:
     physical_process_about = utils.load_func("PhysicalProcess_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     #################################################################
-    # PhysicalForce Methods
+    # EnergyDiff Methods
     #
 
-    # PhysicalForce *PhysicalForce_setPhysicalProperty(
-    #         PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
-    physical_force_set_physical_property = utils.load_func("PhysicalForce_setPhysicalProperty",
+    # EnergyDiff *EnergyDiff_setPhysicalProperty(
+    #         EnergyDiff *energy_diff_ptr, const char *subject_metaid, const char *physical_property);
+    energy_diff_set_physical_property = utils.load_func("EnergyDiff_setPhysicalProperty",
                                                            [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
-    #    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr,
-    #                                        const char *physical_entity_reference, eUriType type, int multiplier)
-    physical_force_add_source = utils.load_func("PhysicalForce_addSource",
-                                                [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+    #    EnergyDiff *EnergyDiff_addSource(EnergyDiff *energy_diff_ptr,
+    #                                        const char *physical_entity_reference, eUriType type)
+    energy_diff_add_source = utils.load_func("EnergyDiff_addSource",
+                                                [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
-    #    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr,
-    #                                      const char *physical_entity_reference, eUriType type, int multiplier) {
-    physical_force_add_sink = utils.load_func("PhysicalForce_addSink",
-                                              [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+    #    EnergyDiff *EnergyDiff_addSink(EnergyDiff *energy_diff_ptr,
+    #                                      const char *physical_entity_reference, eUriType type) {
+    energy_diff_add_sink = utils.load_func("EnergyDiff_addSink",
+                                              [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
-    # char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
-    physical_force_str = utils.load_func("PhysicalForce_str",
+    # char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri);
+    energy_diff_str = utils.load_func("EnergyDiff_str",
                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_entity_ptr, PhysicalProperty* property);
-    physical_force_has_property = utils.load_func("PhysicalForce_hasProperty", [ct.c_int64], ct.c_int64)
+    # EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *physical_entity_ptr, PhysicalProperty* property);
+    energy_diff_has_property = utils.load_func("EnergyDiff_hasProperty", [ct.c_int64], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_process_ptr, const char* isVersionOf) ;
-    physical_force_has_property_is_version_of = utils.load_func("PhysicalForce_hasPropertyisVersionOf",
+    # EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *physical_process_ptr, const char* isVersionOf) ;
+    energy_diff_has_property_is_version_of = utils.load_func("EnergyDiff_hasPropertyisVersionOf",
                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
-    physical_force_has_property_full = utils.load_func("PhysicalForce_hasPropertyFull",
+    # EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    energy_diff_has_property_full = utils.load_func("EnergyDiff_hasPropertyFull",
                                                        [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
-    # void PhysicalForce_delete(PhysicalForce *physicalForce);
-    physical_force_delete = utils.load_func("PhysicalForce_delete", [ct.c_int64], None)
+    # void EnergyDiff_delete(EnergyDiff *physicalForce);
+    energy_diff_delete = utils.load_func("EnergyDiff_delete", [ct.c_int64], None)
 
-    # void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
-    physical_force_free_all = utils.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
+    # void EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr);
+    energy_diff_free_all = utils.load_func("EnergyDiff_freeAll", [ct.c_int64], None)
 
-    # PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about, eUriType type);
-    physical_force_about = utils.load_func("PhysicalForce_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+    # EnergyDiff *EnergyDiff_about(EnergyDiff *energy_diff_ptr, const char *about, eUriType type);
+    energy_diff_about = utils.load_func("EnergyDiff_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     #################################################################
     # PersonalInformation Methods

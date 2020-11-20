@@ -314,8 +314,8 @@ TEST(TriplesTestsNoFixture, TestEquality) {
     triples2.freeTriples();
 }
 
-TEST(TriplesTestsNoFixture, TestUsagesPhysicalForce) {
-    // replicate physical force without actually using physical force
+TEST(TriplesTestsNoFixture, TestUsagesEnergyDiff) {
+    // replicate energy differential without actually using energy differential
     Triples triples1(6);
     triples1.emplace_back(
             LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0").get(),

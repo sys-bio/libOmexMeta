@@ -7,8 +7,8 @@
 
 #include "omexmeta/MetaID.h"
 #include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/PropertyBearer.h"
 #include "omexmeta/Query.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Subject.h"
@@ -26,7 +26,7 @@ namespace omexmeta {
     /**
      * The PhysicalEntity type of PhysicalPhenomenon
      */
-    class PhysicalEntity : public PhysicalPhenomenon {
+    class PhysicalEntity : public PropertyBearer {
     private:
         Resource identity_resource_;
         Resources location_resources_;

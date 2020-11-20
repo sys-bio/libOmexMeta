@@ -55,7 +55,7 @@ Included By
 
 - :ref:`file_src_omexmeta_Participant.cpp`
 
-- :ref:`file_src_omexmeta_PhysicalForce.h`
+- :ref:`file_src_omexmeta_EnergyDiff.h`
 
 - :ref:`file_src_omexmeta_PhysicalProcess.h`
 

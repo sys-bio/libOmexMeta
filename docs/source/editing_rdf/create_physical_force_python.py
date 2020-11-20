@@ -41,8 +41,8 @@ sbml_with_metaids = editor.get_xml()
 print(sbml_with_metaids)
 
 # Property: Osmotic Pressure
-with editor.new_physical_force() as physical_force:
-    physical_force \
+with editor.new_energy_diff() as energy_diff:
+    energy_diff \
         .about("#OmexMetaId0005") \
         .has_property("OPB:OPB_01012") \
         .add_source(multiplier=1, physical_entity_reference="#OmexMetaId0001") \

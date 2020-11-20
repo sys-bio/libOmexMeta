@@ -471,11 +471,11 @@ class OmexMetaSpec1_1:
 
         return fname
 
-    def section2_3_7_3_physical_force(self):
-        """Example of how to create PhysicalForce type composite annotations"""
+    def section2_3_7_3_energy_diff(self):
+        """Example of how to create EnergyDiff type composite annotations"""
 
         # Create a combine archive called MichaelisMenten1.omex that contains a MichaelisMenten1.sbml file
-        combine_archive_filename = create_combine_archive(SBML_STRING, name="PhysicalForce")
+        combine_archive_filename = create_combine_archive(SBML_STRING, name="EnergyDiff")
 
         # we extract the sbml from the combine archive
         sbml = extract_sbml_from_combine_archive(combine_archive_filename)
@@ -488,20 +488,20 @@ class OmexMetaSpec1_1:
 
         # create an RDF object. Its empty.
         rdf = RDF()
-        rdf.set_model_uri("PhysicalForce")
+        rdf.set_model_uri("EnergyDiff")
 
         # sbml semantic extraction will automatically create these physical entities for us.
         # here, we turn it off so we can create them manually
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=False)
 
         # OPB:OPB_00378 = chemical potential
-        with editor.new_physical_force() as physcial_force:
+        with editor.new_energy_diff() as physcial_force:
             physcial_force.about("S") \
                 .has_property("OPB:OPB_00378") \
                 .add_source(1.0, "EntityProperty0002") \
                 .add_sink(1.0, "EntityProperty0001")
 
-        fname = create_combine_archive(sbml, "PhysicalForce", str(rdf))
+        fname = create_combine_archive(sbml, "EnergyDiff", str(rdf))
 
         return fname
 
@@ -517,7 +517,7 @@ if __name__ == "__main__":
     spec_examples.section2_3_6_singular_annotations()
     spec_examples.section2_3_7_1_physical_entity()
     spec_examples.section2_3_7_2_physical_process()
-    spec_examples.section2_3_7_3_physical_force()
+    spec_examples.section2_3_7_3_energy_diff()
 
     directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "*.omex")
     omex_files = glob.glob(directory)

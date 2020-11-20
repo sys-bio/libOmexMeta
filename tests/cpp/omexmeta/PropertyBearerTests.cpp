@@ -39,7 +39,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
     PhysicalProperty resource = PhysicalProperty(model.get(), model_uri, local_uri).about("metaid004")
             .isVersionOf("OPB:OPB_12345");
-    PhysicalPhenomenon phenomenon(
+    PropertyBearer phenomenon(
             model.get(),
             model_uri,
             local_uri,
@@ -56,7 +56,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
     PhysicalProperty resource = PhysicalProperty(model.get(), model_uri, local_uri).about("metaid004")
             .isVersionOf("OPB:OPB_12345");
-    PhysicalPhenomenon phenomenon(
+    PropertyBearer phenomenon(
             model.get(),
             model_uri,
             local_uri,
@@ -75,7 +75,7 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
      */
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
     PhysicalProperty resource = PhysicalProperty("metaid", "OPB:OPB_12345", local_uri);
-    PhysicalPhenomenon phenomenon(
+    PropertyBearer phenomenon(
             model.get(),
             model_uri,
             local_uri,

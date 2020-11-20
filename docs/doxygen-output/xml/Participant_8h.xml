@@ -12,7 +12,7 @@
     <includes local="no">utility</includes>
     <includedby refid="Editor_8h" local="yes">src/omexmeta/Editor.h</includedby>
     <includedby refid="Participant_8cpp" local="yes">src/omexmeta/Participant.cpp</includedby>
-    <includedby refid="PhysicalForce_8h" local="yes">src/omexmeta/PhysicalForce.h</includedby>
+    <includedby refid="EnergyDiff_8h" local="yes">src/omexmeta/EnergyDiff.h</includedby>
     <includedby refid="PhysicalProcess_8h" local="yes">src/omexmeta/PhysicalProcess.h</includedby>
     <incdepgraph>
       <node id="30">
@@ -315,8 +315,8 @@
         </childnode>
       </node>
       <node id="7">
-        <label>src/omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
+        <label>src/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">

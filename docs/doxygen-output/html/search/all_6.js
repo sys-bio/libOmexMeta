@@ -1,7 +1,7 @@
 var searchData=
 [
   ['foaf_57',['Foaf',['../classomexmeta_1_1Foaf.html',1,'omexmeta']]],
-  ['free_58',['free',['../classomexmeta_1_1Participant.html#a395bc8d2561149a77371ed80e2ed1517',1,'omexmeta::Participant::free()'],['../classomexmeta_1_1PhysicalEntity.html#a6fd4acd7255a01322c4a53d3e84df0ba',1,'omexmeta::PhysicalEntity::free()'],['../classomexmeta_1_1PhysicalForce.html#a41cd6c9904f3287bb8cbbab2b9d2ada3',1,'omexmeta::PhysicalForce::free()'],['../classomexmeta_1_1PhysicalProcess.html#a8dfcffe80f264ad24e70de9d7b71c73b',1,'omexmeta::PhysicalProcess::free()']]],
+  ['free_58',['free',['../classomexmeta_1_1Participant.html#a395bc8d2561149a77371ed80e2ed1517',1,'omexmeta::Participant::free()'],['../classomexmeta_1_1PhysicalEntity.html#a6fd4acd7255a01322c4a53d3e84df0ba',1,'omexmeta::PhysicalEntity::free()'],['../classomexmeta_1_1EnergyDiff.html#a41cd6c9904f3287bb8cbbab2b9d2ada3',1,'omexmeta::EnergyDiff::free()'],['../classomexmeta_1_1PhysicalProcess.html#a8dfcffe80f264ad24e70de9d7b71c73b',1,'omexmeta::PhysicalProcess::free()']]],
   ['free_5fworld_59',['free_world',['../namespaceomexmeta.html#ab666d5ff29f6e475cd802828097498cf',1,'omexmeta']]],
   ['freenode_60',['freeNode',['../classomexmeta_1_1Predicate.html#a718a37ff90ac0f2d7cc129e8351a2c7b',1,'omexmeta::Predicate']]],
   ['freequery_61',['freeQuery',['../classomexmeta_1_1Query.html#a0b9e4ef7fb6c3d0e79a51ed327639ac0',1,'omexmeta::Query']]],

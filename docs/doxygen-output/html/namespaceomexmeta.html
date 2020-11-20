@@ -126,7 +126,7 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html">PhysicalPhenomenon</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,7 +219,7 @@ Enumerations</h2></td></tr>
 <tr class="memitem:a1129ebb8a92218ebb27b9c76ac8462f7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a1129ebb8a92218ebb27b9c76ac8462f7">AnnotationType</a> { <br />
 &#160;&#160;<b>PHYSICAL_ENTITY</b>, 
 <b>PHYSICAL_PROCESS</b>, 
-<b>PHYSICAL_FORCE</b>, 
+<b>energy_diff</b>,
 <b>SINGULAR</b>, 
 <br />
 &#160;&#160;<b>UNKNOWN</b>
@@ -311,7 +311,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_addPhysicalEnti
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_addPhysicalProcess</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> *physicalProcess)</td></tr>
 <tr class="separator:a26a63ff240f5400dc1f05c2c449f6e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25c470e9dd1cd508e103c687d08fea07"><td class="memItemLeft" align="right" valign="top"><a id="a25c470e9dd1cd508e103c687d08fea07"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_addPhysicalForce</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physicalForce)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_addEnergyDiff</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *physicalForce)</td></tr>
 <tr class="separator:a25c470e9dd1cd508e103c687d08fea07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da4e46f21b19e38fad07c06ad668efd"><td class="memItemLeft" align="right" valign="top"><a id="a5da4e46f21b19e38fad07c06ad668efd"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_addPersonalInformation</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a> *personalInformation)</td></tr>
@@ -326,7 +326,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_removePhysicalE
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_removePhysicalProcess</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> *physicalProcess)</td></tr>
 <tr class="separator:a8b8f9382a445fca997eb8db8963cce4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d9f7c0c294472359ce3d70db5cb1035"><td class="memItemLeft" align="right" valign="top"><a id="a5d9f7c0c294472359ce3d70db5cb1035"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_removePhysicalForce</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physicalForce)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_removeEnergyDiff</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *physicalForce)</td></tr>
 <tr class="separator:a5d9f7c0c294472359ce3d70db5cb1035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac121eb946b9380ca162061ab725dad0"><td class="memItemLeft" align="right" valign="top"><a id="aac121eb946b9380ca162061ab725dad0"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Editor_removePersonalInformation</b> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr, <a class="el" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a> *information)</td></tr>
@@ -522,38 +522,38 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProcess_getNum
 <tr class="memitem:a26a3610a8028b795ffdaf9e54b6ee2c0"><td class="memItemLeft" align="right" valign="top"><a id="a26a3610a8028b795ffdaf9e54b6ee2c0"></a>
 <a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProcess_about</b> (<a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> *physical_process_ptr, const char *about)</td></tr>
 <tr class="separator:a26a3610a8028b795ffdaf9e54b6ee2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20e720c23e2368bf19c316971ebeafd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a20e720c23e2368bf19c316971ebeafd7">PhysicalForce_new</a> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr)</td></tr>
+<tr class="memitem:a20e720c23e2368bf19c316971ebeafd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a20e720c23e2368bf19c316971ebeafd7">EnergyDiff_new</a> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr)</td></tr>
 <tr class="separator:a20e720c23e2368bf19c316971ebeafd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad5757f8832cf5fcaf546cec1f97af82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#aad5757f8832cf5fcaf546cec1f97af82">PhysicalForce_delete</a> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physicalForce)</td></tr>
+<tr class="memitem:aad5757f8832cf5fcaf546cec1f97af82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#aad5757f8832cf5fcaf546cec1f97af82">EnergyDiff_delete</a> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *physicalForce)</td></tr>
 <tr class="separator:aad5757f8832cf5fcaf546cec1f97af82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9903c88bb127f778476bdffe075ed8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#ac9903c88bb127f778476bdffe075ed8a">PhysicalForce_freeAll</a> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr)</td></tr>
+<tr class="memitem:ac9903c88bb127f778476bdffe075ed8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#ac9903c88bb127f778476bdffe075ed8a">EnergyDiff_freeAll</a> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr)</td></tr>
 <tr class="separator:ac9903c88bb127f778476bdffe075ed8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66097c6bfe2f6370bcb614a3d384a41"><td class="memItemLeft" align="right" valign="top"><a id="ae66097c6bfe2f6370bcb614a3d384a41"></a>
-<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_addSource</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr, int multiplier, const char *physical_entity_reference)</td></tr>
+<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_addSource</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr, int multiplier, const char *physical_entity_reference)</td></tr>
 <tr class="separator:ae66097c6bfe2f6370bcb614a3d384a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75abc8bc74d8bacefd65935f49210343"><td class="memItemLeft" align="right" valign="top"><a id="a75abc8bc74d8bacefd65935f49210343"></a>
-<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_addSink</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr, int multiplier, const char *physical_entity_reference)</td></tr>
+<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_addSink</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr, int multiplier, const char *physical_entity_reference)</td></tr>
 <tr class="separator:a75abc8bc74d8bacefd65935f49210343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3942ac5b5d7393eea5f0644c2f31cbc5"><td class="memItemLeft" align="right" valign="top"><a id="a3942ac5b5d7393eea5f0644c2f31cbc5"></a>
-<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_setPhysicalProperty</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr, const char *subject_metaid, const char *physical_property)</td></tr>
+<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_setPhysicalProperty</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr, const char *subject_metaid, const char *physical_property)</td></tr>
 <tr class="separator:a3942ac5b5d7393eea5f0644c2f31cbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae66100eb98adbc738a6476dcb018e8f"><td class="memItemLeft" align="right" valign="top"><a id="aae66100eb98adbc738a6476dcb018e8f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_getNumSources</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physicalForce)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_getNumSources</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *physicalForce)</td></tr>
 <tr class="separator:aae66100eb98adbc738a6476dcb018e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bec2b6579c0eba8a719f68d39b09c2e"><td class="memItemLeft" align="right" valign="top"><a id="a1bec2b6579c0eba8a719f68d39b09c2e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_getNumSinks</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physicalForce)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_getNumSinks</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *physicalForce)</td></tr>
 <tr class="separator:a1bec2b6579c0eba8a719f68d39b09c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a3f3cf23e3c5253f0a92f6374a2059b"><td class="memItemLeft" align="right" valign="top"><a id="a8a3f3cf23e3c5253f0a92f6374a2059b"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_str</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr, const char *format, const char *base_uri)</td></tr>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_str</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr, const char *format, const char *base_uri)</td></tr>
 <tr class="separator:a8a3f3cf23e3c5253f0a92f6374a2059b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4428467ced5ab11c48a3b16284048a36"><td class="memItemLeft" align="right" valign="top"><a id="a4428467ced5ab11c48a3b16284048a36"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_getAbout</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr)</td></tr>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_getAbout</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr)</td></tr>
 <tr class="separator:a4428467ced5ab11c48a3b16284048a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a016cac89803483ca6afdf30a111839c8"><td class="memItemLeft" align="right" valign="top"><a id="a016cac89803483ca6afdf30a111839c8"></a>
-<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_hasProperty</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr, const char *property)</td></tr>
+<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_hasProperty</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr, const char *property)</td></tr>
 <tr class="separator:a016cac89803483ca6afdf30a111839c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a046f8a2e1bf9b4374f012480ad026445"><td class="memItemLeft" align="right" valign="top"><a id="a046f8a2e1bf9b4374f012480ad026445"></a>
-<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalForce_about</b> (<a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *physical_force_ptr, const char *about)</td></tr>
+<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyDiff_about</b> (<a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *energy_diff_ptr, const char *about)</td></tr>
 <tr class="separator:a046f8a2e1bf9b4374f012480ad026445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a119fbc0317a5af631e7f68caece8c70b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a119fbc0317a5af631e7f68caece8c70b">PersonalInformation_new</a> (<a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *editor_ptr)</td></tr>
 <tr class="separator:a119fbc0317a5af631e7f68caece8c70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -795,21 +795,21 @@ OMEXMETACAPI_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>RD
 </div>
 </div>
 <a id="aad5757f8832cf5fcaf546cec1f97af82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad5757f8832cf5fcaf546cec1f97af82">&#9670;&nbsp;</a></span>PhysicalForce_delete()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aad5757f8832cf5fcaf546cec1f97af82">&#9670;&nbsp;</a></span>EnergyDiff_delete()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">OMEXMETACAPI_EXPORT int omexmeta::PhysicalForce_delete </td>
+          <td class="memname">OMEXMETACAPI_EXPORT int omexmeta::EnergyDiff_delete </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td>
           <td class="paramname"><em>physicalForce</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief deletes physical force excluding all
+<pre class="fragment">@brief deletes energy differential excluding all
 </pre><p> nodes associated with it. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example.html#a9">D:/libOmexMeta/src/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
@@ -817,21 +817,21 @@ OMEXMETACAPI_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>RD
 </div>
 </div>
 <a id="ac9903c88bb127f778476bdffe075ed8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9903c88bb127f778476bdffe075ed8a">&#9670;&nbsp;</a></span>PhysicalForce_freeAll()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9903c88bb127f778476bdffe075ed8a">&#9670;&nbsp;</a></span>EnergyDiff_freeAll()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">OMEXMETACAPI_EXPORT int omexmeta::PhysicalForce_freeAll </td>
+          <td class="memname">OMEXMETACAPI_EXPORT int omexmeta::EnergyDiff_freeAll </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> *&#160;</td>
-          <td class="paramname"><em>physical_force_ptr</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> *&#160;</td>
+          <td class="paramname"><em>energy_diff_ptr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief deletes physical force including all
+<pre class="fragment">@brief deletes energy differential including all
 </pre><p> nodes associated with it. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example.html#a10">D:/libOmexMeta/src/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
@@ -839,13 +839,13 @@ OMEXMETACAPI_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>RD
 </div>
 </div>
 <a id="a20e720c23e2368bf19c316971ebeafd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20e720c23e2368bf19c316971ebeafd7">&#9670;&nbsp;</a></span>PhysicalForce_new()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a20e720c23e2368bf19c316971ebeafd7">&#9670;&nbsp;</a></span>EnergyDiff_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">OMEXMETACAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> * omexmeta::PhysicalForce_new </td>
+          <td class="memname">OMEXMETACAPI_EXPORT <a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> * omexmeta::EnergyDiff_new </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classomexmeta_1_1Editor.html">Editor</a> *&#160;</td>
           <td class="paramname"><em>editor_ptr</em></td><td>)</td>
@@ -853,7 +853,7 @@ OMEXMETACAPI_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>RD
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> class methods </p>
+<p><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> class methods </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example.html#a8">D:/libOmexMeta/src/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 

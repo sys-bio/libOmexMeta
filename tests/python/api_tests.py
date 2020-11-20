@@ -266,12 +266,12 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_process_delete(physical_process)
 
-    def test_editor_new_physical_force(self):
+    def test_editor_new_energy_diff(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        physical_force = self.pyom.editor_new_physical_force(editor_ptr)
-        self.assertIsInstance(physical_force, int)
+        energy_diff = self.pyom.editor_new_energy_diff(editor_ptr)
+        self.assertIsInstance(energy_diff, int)
         self.pyom.editor_delete(editor_ptr)
-        self.pyom.physical_force_delete(physical_force)
+        self.pyom.energy_diff_delete(energy_diff)
 
     def test_editor_get_metaid(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
@@ -899,11 +899,11 @@ local:ReactionProperty
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
@@ -939,11 +939,11 @@ local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
@@ -982,11 +982,11 @@ local:Process
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>
@@ -1023,11 +1023,11 @@ local:Process0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>
@@ -1038,15 +1038,15 @@ local:SourceParticipant0000
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_process_delete(physical_process)
 
-    def test_physical_force_sbml1(self):
+    def test_energy_diff_sbml1(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        physical_force = self.pyom.editor_new_physical_force(editor_ptr)
-        physical_force = self.pyom.physical_force_about(physical_force, "EnergyDiff_0".encode(), eUriType.MODEL_URI)
-        physical_force = self.pyom.physical_force_add_source(physical_force, "source_23".encode(), eUriType.MODEL_URI, 1)
-        physical_force = self.pyom.physical_force_add_sink(physical_force, "sink_12".encode(), eUriType.MODEL_URI, 1)
-        physical_force = self.pyom.physical_force_has_property_full(
-            physical_force, "parameter_metaid_0".encode(), eUriType.LOCAL_URI, "opb:OPB_01058".encode(), "EnergyDiff_0".encode(), eUriType.MODEL_URI)
-        self.pyom.editor_add_physical_force(editor_ptr, physical_force)
+        energy_diff = self.pyom.editor_new_energy_diff(editor_ptr)
+        energy_diff = self.pyom.energy_diff_about(energy_diff, "EnergyDiff_0".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "source_23".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "sink_12".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_has_property_full(
+            energy_diff, "parameter_metaid_0".encode(), eUriType.LOCAL_URI, "opb:OPB_01058".encode(), "EnergyDiff_0".encode(), eUriType.MODEL_URI)
+        self.pyom.editor_add_energy_diff(editor_ptr, energy_diff)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -1055,11 +1055,9 @@ local:SourceParticipant0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
 
 local:parameter_metaid_0
@@ -1072,18 +1070,18 @@ local:parameter_metaid_0
 """.encode()
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
         self.pyom.editor_delete(editor_ptr)
-        self.pyom.physical_force_delete(physical_force)
+        self.pyom.energy_diff_delete(energy_diff)
 
-    def test_physical_force_sbml2(self):
+    def test_energy_diff_sbml2(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        physical_force = self.pyom.editor_new_physical_force(editor_ptr)
-        physical_force = self.pyom.physical_force_about(physical_force, "EnergyDiff_0".encode(), eUriType.MODEL_URI)
-        physical_force = self.pyom.physical_force_add_source(physical_force, "source_23".encode(), eUriType.MODEL_URI, 1)
-        physical_force = self.pyom.physical_force_add_sink(physical_force, "sink_12".encode(), eUriType.MODEL_URI, 1)
-        physical_force = self.pyom.physical_force_has_property_is_version_of(
-            physical_force, "opb:OPB_01058".encode()
+        energy_diff = self.pyom.editor_new_energy_diff(editor_ptr)
+        energy_diff = self.pyom.energy_diff_about(energy_diff, "EnergyDiff_0".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "source_23".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "sink_12".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_has_property_is_version_of(
+            energy_diff, "opb:OPB_01058".encode()
         )
-        self.pyom.editor_add_physical_force(editor_ptr, physical_force)
+        self.pyom.editor_add_energy_diff(editor_ptr, energy_diff)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -1091,16 +1089,14 @@ local:parameter_metaid_0
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:ForceProperty0000
+local:EnergyDiffProperty0000
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>
@@ -1109,20 +1105,20 @@ local:SourceParticipant0000
 """.encode()
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
         self.pyom.editor_delete(editor_ptr)
-        self.pyom.physical_force_delete(physical_force)
+        self.pyom.energy_diff_delete(energy_diff)
 
-    def test_physical_force_cellml1(self):
+    def test_energy_diff_cellml1(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.cellml.encode(), True, False)
-        physical_force = self.pyom.editor_new_physical_force(editor_ptr)
-        physical_force = self.pyom.physical_force_about(physical_force, "main.MembraneVoltage".encode(),
+        energy_diff = self.pyom.editor_new_energy_diff(editor_ptr)
+        energy_diff = self.pyom.energy_diff_about(energy_diff, "main.MembraneVoltage".encode(),
                                                                           eUriType.MODEL_URI)
-        physical_force = self.pyom.physical_force_add_source(physical_force, "entity1".encode(),
-                                                                 eUriType.MODEL_URI, 1)
-        physical_force = self.pyom.physical_force_add_sink(physical_force, "entity2".encode(),
-                                                               eUriType.MODEL_URI, 1)
-        physical_force = self.pyom.physical_force_has_property_full(
-            physical_force, "ForceProperty".encode(), eUriType.MODEL_URI, "opb:OPB_00592".encode(), "main.MembraneVoltage".encode(), eUriType.MODEL_URI)
-        self.pyom.editor_add_physical_force(editor_ptr, physical_force)
+        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "entity1".encode(),
+                                                                 eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "entity2".encode(),
+                                                               eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_has_property_full(
+            energy_diff, "EnergyDiffProperty".encode(), eUriType.MODEL_URI, "opb:OPB_00592".encode(), "main.MembraneVoltage".encode(), eUriType.MODEL_URI)
+        self.pyom.editor_add_energy_diff(editor_ptr, energy_diff)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -1131,14 +1127,12 @@ local:SourceParticipant0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#entity2> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#entity1> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#ForceProperty>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiffProperty>
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
@@ -1149,7 +1143,7 @@ local:SourceParticipant0000
 """.encode()
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
         self.pyom.editor_delete(editor_ptr)
-        self.pyom.physical_force_delete(physical_force)
+        self.pyom.energy_diff_delete(energy_diff)
 
     def test_personal_information_new(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)

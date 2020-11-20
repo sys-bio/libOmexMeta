@@ -188,7 +188,7 @@ Triple <-- PhysicalProperty
 Triple <-- PropertyBearer
 PropertyBearer <|-- PhysicalEntity
 PropertyBearer <|-- PhysicalProcess
-PropertyBearer <|-- PhysicalForce
+PropertyBearer <|-- EnergyDiff
 PropertyBearer <|-- PhysicalDependency
 
 SingularAnnotation --|> Annotation

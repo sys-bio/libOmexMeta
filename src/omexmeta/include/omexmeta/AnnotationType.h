@@ -16,7 +16,7 @@ namespace omexmeta {
     enum AnnotationType {
         PHYSICAL_ENTITY,
         PHYSICAL_PROCESS,
-        PHYSICAL_FORCE,
+        energy_diff,
         SINGULAR,
         UNKNOWN
     };

@@ -19,7 +19,7 @@
     <includedby refid="Participant_8h" local="yes">src/omexmeta/Participant.h</includedby>
     <includedby refid="PhysicalEntity_8h" local="yes">src/omexmeta/PhysicalEntity.h</includedby>
     <includedby refid="PhysicalPhenomenon_8h" local="yes">src/omexmeta/PhysicalPhenomenon.h</includedby>
-    <includedby refid="PhysicalForce_8h" local="yes">src/omexmeta/PhysicalForce.h</includedby>
+    <includedby refid="EnergyDiff_8h" local="yes">src/omexmeta/EnergyDiff.h</includedby>
     <includedby refid="PhysicalProperty_8h" local="yes">src/omexmeta/PhysicalProperty.h</includedby>
     <includedby refid="PhysicalProcess_8h" local="yes">src/omexmeta/PhysicalProcess.h</includedby>
     <includedby refid="Query_8h" local="yes">src/omexmeta/Query.h</includedby>
@@ -345,8 +345,8 @@
         </childnode>
       </node>
       <node id="2756">
-        <label>src/omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
+        <label>src/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="2747" relation="include">
         </childnode>
         <childnode refid="2748" relation="include">

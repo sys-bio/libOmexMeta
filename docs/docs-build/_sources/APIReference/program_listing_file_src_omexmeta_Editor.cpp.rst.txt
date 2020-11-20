@@ -220,10 +220,10 @@ Program Listing for File Editor.cpp
    
        }
    
-       void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
+       void Editor::addEnergyDiff(EnergyDiff &physicalForce) {
            if (physicalForce.getAbout().empty()) {
                throw NullPointerException(
-                       "NullPointerException: Editor::addPhysicalForce() PhysicalForce::is_property_of_value_ (i.e. about) node is empty");
+                       "NullPointerException: Editor::addEnergyDiff() EnergyDiff::is_property_of_value_ (i.e. about) node is empty");
            }
            checkValidMetaid(physicalForce.getAbout());
            /*
@@ -279,7 +279,7 @@ Program Listing for File Editor.cpp
            }
        }
    
-       void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
+       void Editor::removeEnergyDiff(EnergyDiff &physicalForce) const {
            removePhysicalPhenomenon(&physicalForce);
        }
    
@@ -291,8 +291,8 @@ Program Listing for File Editor.cpp
            return PhysicalEntity(model_.get(), getLocalUri());
        }
    
-       PhysicalForce Editor::newPhysicalForce() {
-           return PhysicalForce(model_.get(), getLocalUri());
+       EnergyDiff Editor::newEnergyDiff() {
+           return EnergyDiff(model_.get(), getLocalUri());
        }
    
        PhysicalProcess Editor::newPhysicalProcess() {

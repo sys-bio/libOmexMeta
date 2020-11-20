@@ -9,8 +9,8 @@
 
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/Participant.h"
-#include "omexmeta/PhysicalPhenomenon.h"
 #include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/PropertyBearer.h"
 #include "omexmeta_export.h"
 
 #include <utility>
@@ -19,7 +19,7 @@
 using namespace redland;
 
 namespace omexmeta {
-    class OMEXMETA_EXPORT PhysicalProcess : public PhysicalPhenomenon {
+    class OMEXMETA_EXPORT PhysicalProcess : public PropertyBearer {
     private:
         Sources sources_;
         Sinks sinks_;
@@ -124,13 +124,13 @@ namespace omexmeta {
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSource(std::string physical_entity_reference, eUriType type, int multiplier = 1);
+        PhysicalProcess &addSource(std::string physical_entity_reference, eUriType type, double multiplier = 1.0);
 
         /**
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSink(std::string physical_entity_reference, eUriType type, int multiplier = 1);
+        PhysicalProcess &addSink(std::string physical_entity_reference, eUriType type, double multiplier = 1.0);
 
         /**
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
@@ -171,12 +171,6 @@ namespace omexmeta {
 
         PhysicalProcess &about(const std::string &about) override;
 
-//        OMEXMETA_DEPRECATED PhysicalProcess &hasProperty(const std::string &property_about = "", eUriType about_uri_type = NONE);
-
-
-        PhysicalProcess &isPropertyOf(const std::string &is_property_of, eUriType type);
-
-        OMEXMETA_DEPRECATED PhysicalProcess &propertyIsVersionOf(const std::string &is_version_of);
 
         [[nodiscard]] const std::string &getPropertyMetaidBase() const override;
 

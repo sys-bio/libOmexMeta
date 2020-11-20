@@ -267,67 +267,67 @@ local:ProcessProperty0007
     semsim:hasSourceParticipant local:SourceParticipant0007 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
 
 local:SinkParticipant0001
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SinkParticipant0002
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 local:SinkParticipant0003
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SinkParticipant0004
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
 
 local:SinkParticipant0005
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SinkParticipant0006
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 local:SinkParticipant0007
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SourceParticipant0001
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
 
 local:SourceParticipant0002
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
 
 local:SourceParticipant0003
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 local:SourceParticipant0004
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SourceParticipant0005
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
 
 local:SourceParticipant0006
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
 
 local:SourceParticipant0007
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
@@ -400,35 +400,35 @@ local:ProcessProperty0003
     semsim:hasSourceParticipant local:SourceParticipant0003 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
 
 local:SinkParticipant0001
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SinkParticipant0002
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 local:SinkParticipant0003
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
 
 local:SourceParticipant0001
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
 
 local:SourceParticipant0002
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
 
 local:SourceParticipant0003
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
@@ -680,11 +680,11 @@ local:ReactionProperty
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
@@ -717,11 +717,11 @@ local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
@@ -755,11 +755,11 @@ local:Process
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>
@@ -792,11 +792,11 @@ local:Process0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>
@@ -806,12 +806,12 @@ local:SourceParticipant0000
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
-    def test_physical_force_sbml1(self):
+    def test_energy_diff_sbml1(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
-        with editor.new_physical_force() as physical_force:
-            physical_force.about("EnergyDiff_0", eUriType.MODEL_URI) \
-                .add_source("source_23", eUriType.MODEL_URI, 1) \
-                .add_sink("sink_12", eUriType.MODEL_URI, 1) \
+        with editor.new_energy_diff() as energy_diff:
+            energy_diff.about("EnergyDiff_0", eUriType.MODEL_URI) \
+                .add_source("source_23", eUriType.MODEL_URI) \
+                .add_sink("sink_12", eUriType.MODEL_URI) \
                 .has_property("parameter_metaid_0", eUriType.LOCAL_URI, "opb:OPB_01058")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -821,11 +821,9 @@ local:SourceParticipant0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
 
 local:parameter_metaid_0
@@ -838,12 +836,12 @@ local:parameter_metaid_0
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
-    def test_physical_force_sbml2(self):
+    def test_energy_diff_sbml2(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
-        with editor.new_physical_force() as physical_force:
-            physical_force.about("EnergyDiff_0", eUriType.MODEL_URI) \
-                .add_source("source_23", eUriType.MODEL_URI, 1) \
-                .add_sink("sink_12", eUriType.MODEL_URI, 1) \
+        with editor.new_energy_diff() as energy_diff:
+            energy_diff.about("EnergyDiff_0", eUriType.MODEL_URI) \
+                .add_source("source_23", eUriType.MODEL_URI) \
+                .add_sink("sink_12", eUriType.MODEL_URI) \
                 .has_property(is_version_of="opb:OPB_01058")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -853,14 +851,12 @@ local:parameter_metaid_0
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
 
-local:ForceProperty0000
+local:EnergyDiffProperty0000
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
@@ -870,13 +866,13 @@ local:ForceProperty0000
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
-    def test_physical_force_cellml1(self):
+    def test_energy_diff_cellml1(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
-        with editor.new_physical_force() as physical_force:
-            physical_force.about("main.MembraneVoltage", eUriType.MODEL_URI) \
-                .add_source("entity1", eUriType.LOCAL_URI, 1) \
-                .add_sink("entity2", eUriType.LOCAL_URI, 1) \
-                .has_property("ForceProperty", eUriType.MODEL_URI, "opb:OPB_00592")
+        with editor.new_energy_diff() as energy_diff:
+            energy_diff.about("main.MembraneVoltage", eUriType.MODEL_URI) \
+                .add_source("entity1", eUriType.LOCAL_URI) \
+                .add_sink("entity2", eUriType.LOCAL_URI) \
+                .has_property("EnergyDiffProperty", eUriType.MODEL_URI, "opb:OPB_00592")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -885,14 +881,12 @@ local:ForceProperty0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#ForceProperty>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiffProperty>
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
@@ -902,13 +896,13 @@ local:SourceParticipant0000
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
-    def test_physical_force_cellml2(self):
+    def test_energy_diff_cellml2(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
-        with editor.new_physical_force() as physical_force:
-            physical_force.about("main.MembraneVoltage", eUriType.MODEL_URI) \
-                .add_source("entity1", eUriType.LOCAL_URI, 1) \
-                .add_sink("entity2", eUriType.LOCAL_URI, 1) \
-                .has_property("ForceProperty", eUriType.MODEL_URI, "opb:OPB_00592")
+        with editor.new_energy_diff() as energy_diff:
+            energy_diff.about("main.MembraneVoltage", eUriType.MODEL_URI) \
+                .add_source("entity1", eUriType.LOCAL_URI) \
+                .add_sink("entity2", eUriType.LOCAL_URI) \
+                .has_property("EnergyDiffProperty", eUriType.MODEL_URI, "opb:OPB_00592")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -917,14 +911,12 @@ local:SourceParticipant0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#ForceProperty>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiffProperty>
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
@@ -1156,11 +1148,11 @@ local:Process0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>

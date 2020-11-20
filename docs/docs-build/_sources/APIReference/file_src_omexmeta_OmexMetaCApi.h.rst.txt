@@ -39,7 +39,7 @@ Includes
 
 - ``omexmeta/PhysicalEntity.h`` (:ref:`file_src_omexmeta_PhysicalEntity.h`)
 
-- ``omexmeta/PhysicalForce.h`` (:ref:`file_src_omexmeta_PhysicalForce.h`)
+- ``omexmeta/EnergyDiff.h`` (:ref:`file_src_omexmeta_EnergyDiff.h`)
 
 - ``omexmeta/PhysicalProcess.h`` (:ref:`file_src_omexmeta_PhysicalProcess.h`)
 

@@ -311,9 +311,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *Editor_newPhysicalForce(Editor *editor_ptr) {
+    EnergyDiff *Editor_newEnergyDiff(Editor *editor_ptr) {
         try {
-            return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            return new EnergyDiff(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
@@ -390,9 +390,9 @@ namespace omexmeta {
         }
     }
 
-    int Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
+    int Editor_addEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce) {
         try {
-            editor_ptr->addPhysicalForce(*physicalForce);
+            editor_ptr->addEnergyDiff(*physicalForce);
             return 0;
 
         } catch (std::exception &error) {
@@ -441,9 +441,9 @@ namespace omexmeta {
         }
     }
 
-    int Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
+    int Editor_removeEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce) {
         try {
-            editor_ptr->removePhysicalForce(*physicalForce);
+            editor_ptr->removeEnergyDiff(*physicalForce);
             return 0;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1236,7 +1236,7 @@ namespace omexmeta {
         }
     }
 
-    int PhysicalForce_delete(PhysicalForce *physicalForce) {
+    int EnergyDiff_delete(EnergyDiff *physicalForce) {
         try {
             delete physicalForce;
             return 0;
@@ -1246,10 +1246,10 @@ namespace omexmeta {
         }
     }
 
-    int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr) {
+    int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr) {
         try {
-            physical_force_ptr->free();
-            delete physical_force_ptr;
+            energy_diff_ptr->free();
+            delete energy_diff_ptr;
             return 0;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
@@ -1258,40 +1258,40 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr,
-                                           const char *physical_entity_reference, eUriType type, int multiplier) {
+    EnergyDiff *EnergyDiff_addSource(EnergyDiff *energy_diff_ptr,
+                                           const char *physical_entity_reference, eUriType type) {
         try {
-            physical_force_ptr->addSource(physical_entity_reference, type, multiplier);
-            return physical_force_ptr;
+            energy_diff_ptr->addSource(physical_entity_reference, type);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
     }
 
-    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr,
-                                         const char *physical_entity_reference, eUriType type, int multiplier) {
+    EnergyDiff *EnergyDiff_addSink(EnergyDiff *energy_diff_ptr,
+                                         const char *physical_entity_reference, eUriType type) {
         try {
-            physical_force_ptr->addSink(physical_entity_reference, type, multiplier);
-            return physical_force_ptr;
+            energy_diff_ptr->addSink(physical_entity_reference, type);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
     }
 
-    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *subject_metaid,
+    EnergyDiff *EnergyDiff_setPhysicalProperty(EnergyDiff *energy_diff_ptr, const char *subject_metaid,
                                                      const char *physical_property) {
         try {
-            physical_force_ptr->setPhysicalProperty(subject_metaid, physical_property);
-            return physical_force_ptr;
+            energy_diff_ptr->setPhysicalProperty(subject_metaid, physical_property);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
     }
 
-    int PhysicalForce_getNumSources(PhysicalForce *physicalForce) {
+    int EnergyDiff_getNumSources(EnergyDiff *physicalForce) {
         try {
             return physicalForce->getNumSources();
         } catch (std::exception &error) {
@@ -1300,7 +1300,7 @@ namespace omexmeta {
         }
     }
 
-    int PhysicalForce_getNumSinks(PhysicalForce *physicalForce) {
+    int EnergyDiff_getNumSinks(EnergyDiff *physicalForce) {
         try {
             return physicalForce->getNumSinks();
         } catch (std::exception &error) {
@@ -1309,9 +1309,9 @@ namespace omexmeta {
         }
     }
 
-    char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri) {
+    char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri) {
         try {
-            Triples triples = physical_force_ptr->toTriples();
+            Triples triples = energy_diff_ptr->toTriples();
             std::string str = triples.str(format, base_uri);
             triples.freeTriples();
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
@@ -1324,33 +1324,33 @@ namespace omexmeta {
     }
 
 
-    PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, PhysicalProperty* property) {
+    EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *energy_diff_ptr, PhysicalProperty* property) {
         try {
 
-            physical_force_ptr->hasProperty(*property);
-            return physical_force_ptr;
+            energy_diff_ptr->hasProperty(*property);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
     }
 
-    PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_force_ptr, const char* isVersionOf) {
+    EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *energy_diff_ptr, const char* isVersionOf) {
         try {
 
-            physical_force_ptr->hasProperty(isVersionOf);
-            return physical_force_ptr;
+            energy_diff_ptr->hasProperty(isVersionOf);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
         }
     }
 
-    PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+    EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *energy_diff_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
         try {
 
-            physical_force_ptr->hasProperty(property_about, about_uri_type, is_version_of);
-            return physical_force_ptr;
+            energy_diff_ptr->hasProperty(property_about, about_uri_type, is_version_of);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);
@@ -1358,9 +1358,9 @@ namespace omexmeta {
     }
 
 
-    char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr) {
+    char *EnergyDiff_getAbout(EnergyDiff *energy_diff_ptr) {
         try {
-            const std::string& about = physical_force_ptr->getAbout();
+            const std::string& about = energy_diff_ptr->getAbout();
             char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
             strcpy(cstr, about.c_str());
             return cstr;
@@ -1370,10 +1370,10 @@ namespace omexmeta {
         }
     }
 
-    PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about, eUriType type) {
+    EnergyDiff *EnergyDiff_about(EnergyDiff *energy_diff_ptr, const char *about, eUriType type) {
         try {
-            physical_force_ptr->about(about, type);
-            return physical_force_ptr;
+            energy_diff_ptr->about(about, type);
+            return energy_diff_ptr;
         } catch (std::exception &error) {
             fprintf(stderr, "OmexMetaException: %s", error.what());
             exit(1);

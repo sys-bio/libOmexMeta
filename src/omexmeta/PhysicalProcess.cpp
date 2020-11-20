@@ -9,14 +9,14 @@ namespace omexmeta {
     PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators)
-        : PhysicalPhenomenon(model, model_uri, local_uri, physicalProperty, PHYSICAL_PROCESS),
+        : PropertyBearer(model, model_uri, local_uri, physicalProperty, PHYSICAL_PROCESS),
           sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
     }
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model) : PhysicalPhenomenon(model) {}
+    PhysicalProcess::PhysicalProcess(librdf_model *model) : PropertyBearer(model) {}
 
     PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri)
-        : PhysicalPhenomenon(model, model_uri, local_uri) {}
+        : PropertyBearer(model, model_uri, local_uri) {}
 
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {
         return sources_;
@@ -44,7 +44,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSource(std::string physical_entity_reference, eUriType type, int multiplier) {
+    PhysicalProcess &PhysicalProcess::addSource(std::string physical_entity_reference, eUriType type, double multiplier) {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
                                             multiplier,
@@ -53,7 +53,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSink(std::string physical_entity_reference, eUriType type, int multiplier) {
+    PhysicalProcess &PhysicalProcess::addSink(std::string physical_entity_reference, eUriType type, double multiplier) {
         sinks_.push_back(
                 std::move(SinkParticipant(
                         model_,
@@ -98,8 +98,8 @@ namespace omexmeta {
     }
 
     bool PhysicalProcess::operator==(const PhysicalProcess &rhs) const {
-        return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
-                       static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
+        return static_cast<const omexmeta::PropertyBearer &>(*this) ==
+                       static_cast<const omexmeta::PropertyBearer &>(rhs) &&
                sources_ == rhs.sources_ &&
                sinks_ == rhs.sinks_ &&
                mediators_ == rhs.mediators_;
@@ -153,12 +153,12 @@ namespace omexmeta {
     }
 
     PhysicalProcess &PhysicalProcess::about(const std::string &about, eUriType type) {
-        PhysicalPhenomenon::about(about, type);
+        PropertyBearer::about(about, type);
         return *this;
     }
 
     PhysicalProcess &PhysicalProcess::about(const std::string &about) {
-        PhysicalPhenomenon::about(about);
+        PropertyBearer::about(about);
         return *this;
     }
 
@@ -167,22 +167,22 @@ namespace omexmeta {
     }
 
     PhysicalProcess &PhysicalProcess::hasProperty(const PhysicalProperty &property) {
-        PhysicalPhenomenon::hasProperty(property);
+        PropertyBearer::hasProperty(property);
         return *this;
     }
 
     PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
-        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
         return *this;
     }
 
     PhysicalProcess &PhysicalProcess::hasProperty(const std::string &is_version_of) {
-        PhysicalPhenomenon::hasProperty(is_version_of);
+        PropertyBearer::hasProperty(is_version_of);
         return *this;
     }
 
     PhysicalProcess &PhysicalProcess::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
-        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of);
         return *this;
     }
 

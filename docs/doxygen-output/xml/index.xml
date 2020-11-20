@@ -30,12 +30,12 @@
     <member refid="OmexMetaCApi_8cpp_1a01928b6a6aec68a724d5e14ca6c16c90" kind="function"><name>Editor_addSingleAnnotation</name></member>
     <member refid="OmexMetaCApi_8cpp_1a6177a0dc51332c3d863b882e7611a170" kind="function"><name>Editor_addPhysicalEntity</name></member>
     <member refid="OmexMetaCApi_8cpp_1a57e72a250f9e6f0bf4c24bbd4215c68a" kind="function"><name>Editor_addPhysicalProcess</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a64960f91145ebc2f6d8bf0b3ef78a1bc" kind="function"><name>Editor_addPhysicalForce</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a64960f91145ebc2f6d8bf0b3ef78a1bc" kind="function"><name>Editor_addEnergyDiff</name></member>
     <member refid="OmexMetaCApi_8cpp_1a64c4520c0b30d05e1340ded11c8cf4b8" kind="function"><name>Editor_addPersonalInformation</name></member>
     <member refid="OmexMetaCApi_8cpp_1a5e464e25315e6244257bc8516200c356" kind="function"><name>Editor_removeSingleAnnotation</name></member>
     <member refid="OmexMetaCApi_8cpp_1a16c552160b83ac9d9237b8ab7bb841c1" kind="function"><name>Editor_removePhysicalEntity</name></member>
     <member refid="OmexMetaCApi_8cpp_1a3d87f5142d1e834f34a1ef2d5f265486" kind="function"><name>Editor_removePhysicalProcess</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5b71ea56e01daf9312b09c24788cdcb2" kind="function"><name>Editor_removePhysicalForce</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a5b71ea56e01daf9312b09c24788cdcb2" kind="function"><name>Editor_removeEnergyDiff</name></member>
     <member refid="OmexMetaCApi_8cpp_1a6899bbb84ea32f2eb2223de4566c1ef7" kind="function"><name>Editor_removePersonalInformation</name></member>
     <member refid="OmexMetaCApi_8cpp_1adbb4d4e7ed33ca7e477d5d1a12a758dd" kind="function"><name>Editor_checkValidMetaid</name></member>
     <member refid="OmexMetaCApi_8cpp_1a90fd67f46163bcb3e191842166b2e504" kind="function"><name>Editor_getMetaId</name></member>
@@ -102,18 +102,18 @@
     <member refid="OmexMetaCApi_8cpp_1aeb1eb1bf23cceb59a2d4b14ba66c1325" kind="function"><name>PhysicalProcess_hasProperty</name></member>
     <member refid="OmexMetaCApi_8cpp_1a2b17b2b6663cc68866ef6cb0a44f31a7" kind="function"><name>PhysicalProcess_isVersionOf</name></member>
     <member refid="OmexMetaCApi_8cpp_1ac8e42ef86f1e51361482ffa3cfcdcd51" kind="function"><name>PhysicalProcess_about</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a19d8061b433441b36c068b84742db6e4" kind="function"><name>PhysicalForce_new</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a29bd8f837c7a82a04ec64fb46173fe96" kind="function"><name>PhysicalForce_delete</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a6c28143e869aa261d5520ed332c35b08" kind="function"><name>PhysicalForce_freeAll</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a2d110512d0016169a30f74bd015bbe63" kind="function"><name>PhysicalForce_addSource</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae83c6ea858ee507ca5ab676c345da794" kind="function"><name>PhysicalForce_addSink</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a5b50ca96bd9545a04bfd475ab653bc0b" kind="function"><name>PhysicalForce_setPhysicalProperty</name></member>
-    <member refid="OmexMetaCApi_8cpp_1af2dafea3e160b1cfd24a265889f86b0e" kind="function"><name>PhysicalForce_getNumSources</name></member>
-    <member refid="OmexMetaCApi_8cpp_1aa48a635eb6bce1c5cd81c5c6fedeed7b" kind="function"><name>PhysicalForce_getNumSinks</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae36ddd4b6b59256dd4e2d81a091b1753" kind="function"><name>PhysicalForce_str</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ac1173b1e32e72a649ed8bd948061b10d" kind="function"><name>PhysicalForce_getAbout</name></member>
-    <member refid="OmexMetaCApi_8cpp_1ae5281aad78376f2490dcbe58dace1f7e" kind="function"><name>PhysicalForce_hasProperty</name></member>
-    <member refid="OmexMetaCApi_8cpp_1a29bb7bbad59f073be1abbe8ff14a19ed" kind="function"><name>PhysicalForce_about</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a19d8061b433441b36c068b84742db6e4" kind="function"><name>EnergyDiff_new</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a29bd8f837c7a82a04ec64fb46173fe96" kind="function"><name>EnergyDiff_delete</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a6c28143e869aa261d5520ed332c35b08" kind="function"><name>EnergyDiff_freeAll</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a2d110512d0016169a30f74bd015bbe63" kind="function"><name>EnergyDiff_addSource</name></member>
+    <member refid="OmexMetaCApi_8cpp_1ae83c6ea858ee507ca5ab676c345da794" kind="function"><name>EnergyDiff_addSink</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a5b50ca96bd9545a04bfd475ab653bc0b" kind="function"><name>EnergyDiff_setPhysicalProperty</name></member>
+    <member refid="OmexMetaCApi_8cpp_1af2dafea3e160b1cfd24a265889f86b0e" kind="function"><name>EnergyDiff_getNumSources</name></member>
+    <member refid="OmexMetaCApi_8cpp_1aa48a635eb6bce1c5cd81c5c6fedeed7b" kind="function"><name>EnergyDiff_getNumSinks</name></member>
+    <member refid="OmexMetaCApi_8cpp_1ae36ddd4b6b59256dd4e2d81a091b1753" kind="function"><name>EnergyDiff_str</name></member>
+    <member refid="OmexMetaCApi_8cpp_1ac1173b1e32e72a649ed8bd948061b10d" kind="function"><name>EnergyDiff_getAbout</name></member>
+    <member refid="OmexMetaCApi_8cpp_1ae5281aad78376f2490dcbe58dace1f7e" kind="function"><name>EnergyDiff_hasProperty</name></member>
+    <member refid="OmexMetaCApi_8cpp_1a29bb7bbad59f073be1abbe8ff14a19ed" kind="function"><name>EnergyDiff_about</name></member>
     <member refid="OmexMetaCApi_8cpp_1a89a3930466c43f724a2845183257e462" kind="function"><name>PersonalInformation_new</name></member>
     <member refid="OmexMetaCApi_8cpp_1a2878903d3aff0dbd17b9dd95f2a9f03b" kind="function"><name>PersonalInformation_delete</name></member>
     <member refid="OmexMetaCApi_8cpp_1a740f6519d277c76db12be0a21f0f8c43" kind="function"><name>PersonalInformation_getLocalUri</name></member>
@@ -165,7 +165,7 @@
   </compound>
   <compound refid="PhysicalEntity_8cpp" kind="file"><name>PhysicalEntity.cpp</name>
   </compound>
-  <compound refid="PhysicalForce_8cpp" kind="file"><name>PhysicalForce.cpp</name>
+  <compound refid="EnergyDiff_8cpp" kind="file"><name>EnergyDiff.cpp</name>
   </compound>
   <compound refid="PhysicalPhenomenon_8cpp" kind="file"><name>PhysicalPhenomenon.cpp</name>
   </compound>

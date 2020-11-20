@@ -23,8 +23,8 @@
         </childnode>
       </node>
       <node id="9">
-        <label>src/omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
+        <label>src/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -108,7 +108,7 @@
 <codeline lineno="16" refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref><sp/>{</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PHYSICAL_ENTITY,</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PHYSICAL_PROCESS,</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PHYSICAL_FORCE,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>energy_diff,</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SINGULAR,</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNKNOWN</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>

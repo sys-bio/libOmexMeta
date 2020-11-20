@@ -10,13 +10,13 @@
  * other headers that are needed to use libOmexMeta.
  */
 
-#include "omexmeta/RDF.h"
 #include "omexmeta/Editor.h"
-#include "omexmeta/Triple.h"
-#include "omexmeta/Triples.h"
-#include "omexmeta/PhysicalForce.h"
+#include "omexmeta/EnergyDiff.h"
+#include "omexmeta/PersonalInformation.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
-#include "omexmeta/PersonalInformation.h"
+#include "omexmeta/RDF.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Triples.h"
 
 #endif //LIBOMEXMETA_OMEXMETA_H

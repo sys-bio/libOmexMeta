@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
-  <compounddef id="PhysicalForce_8cpp" kind="file" language="C++">
-    <compoundname>PhysicalForce.cpp</compoundname>
-    <includes local="yes">omexmeta/PhysicalForce.h</includes>
+  <compounddef id="EnergyDiff_8cpp" kind="file" language="C++">
+    <compoundname>EnergyDiff.cpp</compoundname>
+    <includes local="yes">omexmeta/EnergyDiff.h</includes>
     <incdepgraph>
       <node id="2">
-        <label>omexmeta/PhysicalForce.h</label>
+        <label>omexmeta/EnergyDiff.h</label>
       </node>
       <node id="1">
-        <label>src/omexmeta/PhysicalForce.cpp</label>
-        <link refid="PhysicalForce_8cpp"/>
+        <label>src/omexmeta/EnergyDiff.cpp</label>
+        <link refid="EnergyDiff_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
@@ -24,12 +24,12 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>4/22/2020.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalForce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/EnergyDiff.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">omexmeta<sp/>{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce::PhysicalForce(librdf_model<sp/>*model,<sp/>std::string<sp/>model_uri,<sp/>std::string<sp/>local_uri,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff::EnergyDiff(librdf_model<sp/>*model,<sp/>std::string<sp/>model_uri,<sp/>std::string<sp/>local_uri,</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PhysicalProperty<sp/>physicalProperty,</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sources<sp/>sources,</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sinks<sp/>sinks)</highlight></codeline>
@@ -38,32 +38,32 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;SourceParticipant&gt;<sp/>&amp;PhysicalForce::getSources()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;SourceParticipant&gt;<sp/>&amp;EnergyDiff::getSources()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sources_;</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;SinkParticipant&gt;<sp/>&amp;PhysicalForce::getSinks()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;SinkParticipant&gt;<sp/>&amp;EnergyDiff::getSinks()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sinks_;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>PhysicalForce::createMetaId()<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>generateMetaId(</highlight><highlight class="stringliteral">&quot;PhysicalForce&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>EnergyDiff::createMetaId()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>generateMetaId(</highlight><highlight class="stringliteral">&quot;EnergyDiff&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/>PhysicalForce::toTriples()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/>EnergyDiff::toTriples()<sp/>{</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(getAbout().empty())<sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>AnnotationBuilderException(</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalForce::toTriples():<sp/>Cannot<sp/>create&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;EnergyDiff::toTriples():<sp/>Cannot<sp/>create&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>triples<sp/>because<sp/>the<sp/>\&quot;about\&quot;<sp/>information<sp/>is<sp/>not<sp/>set.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Use<sp/>the<sp/>about()<sp/>method.&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(physical_force_property_id_.empty()){</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_force_property_id_<sp/>=<sp/>generateMetaId(</highlight><highlight class="stringliteral">&quot;ForceProperty&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(energy_diff_property_id_.empty()){</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>energy_diff_property_id_<sp/>=<sp/>generateMetaId(</highlight><highlight class="stringliteral">&quot;EnergyDiffProperty&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_force_property_id_<sp/>=<sp/>OmexMetaUtils::concatMetaIdAndUri(physical_force_property_id_,<sp/>getLocalUri());</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>energy_diff_property_id_<sp/>=<sp/>OmexMetaUtils::concatMetaIdAndUri(energy_diff_property_id_,<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples<sp/>=<sp/>physical_property_.toTriples(physical_force_property_id_);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples<sp/>=<sp/>physical_property_.toTriples(energy_diff_property_id_);</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;source<sp/>:<sp/>sources_)<sp/>{</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;triple<sp/>:<sp/>source.toTriples(getAbout(),<sp/>new_metaid_exclusion_list_))<sp/>{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.move_back(triple);</highlight></codeline>
@@ -77,12 +77,12 @@
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>triples;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::setPhysicalProperty(PhysicalProperty<sp/>physicalProperty)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>&amp;EnergyDiff::setPhysicalProperty(PhysicalProperty<sp/>physicalProperty)<sp/>{</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_<sp/>=<sp/>std::move(physicalProperty);</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::setPhysicalProperty(std::string<sp/>subject_metaid,<sp/>std::string<sp/>physical_property)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>&amp;EnergyDiff::setPhysicalProperty(std::string<sp/>subject_metaid,<sp/>std::string<sp/>physical_property)<sp/>{</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!OmexMetaUtils::startsWith(subject_metaid,<sp/></highlight><highlight class="stringliteral">&quot;http&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subject_metaid<sp/>=<sp/>OmexMetaUtils::concatMetaIdAndUri(subject_metaid,<sp/>getModelUri());</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -90,7 +90,7 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::addSource(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;physical_entity_reference)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>&amp;EnergyDiff::addSource(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;physical_entity_reference)<sp/>{</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sources_.push_back(</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(SourceParticipant(</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_,<sp/>multiplier,<sp/>physical_entity_reference,<sp/>getModelUri(),<sp/>getLocalUri()</highlight></codeline>
@@ -99,28 +99,28 @@
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::addSink(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;physical_entity_reference)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>&amp;EnergyDiff::addSink(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;physical_entity_reference)<sp/>{</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sinks_.push_back(</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SinkParticipant(model_,<sp/>multiplier,<sp/>physical_entity_reference,<sp/>getModelUri(),<sp/>getLocalUri())</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce::PhysicalForce(librdf_model<sp/>*model)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff::EnergyDiff(librdf_model<sp/>*model)</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>PhysicalPhenomenon(model)<sp/>{}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce::PhysicalForce(librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;model_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;local_uri)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff::EnergyDiff(librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;model_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;local_uri)</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>PhysicalPhenomenon(model,<sp/>model_uri,<sp/>local_uri)<sp/>{}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>PhysicalForce::getNumSources()<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>EnergyDiff::getNumSources()<sp/>{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sources_.size();</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>PhysicalForce::getNumSinks()<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>EnergyDiff::getNumSinks()<sp/>{</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sinks_.size();</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PhysicalForce::free()<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>EnergyDiff::free()<sp/>{</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/>sources_)<sp/>{</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i.free();</highlight></codeline>
@@ -130,30 +130,30 @@
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PhysicalForce::operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalForce<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EnergyDiff::operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>EnergyDiff<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">omexmeta::PhysicalPhenomenon<sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(*this)<sp/>==</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">omexmeta::PhysicalPhenomenon<sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(rhs)<sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sources_<sp/>==<sp/>rhs.sources_<sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sinks_<sp/>==<sp/>rhs.sinks_;</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PhysicalForce::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalForce<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EnergyDiff::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>EnergyDiff<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(rhs<sp/>==<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::isVersionOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>&amp;EnergyDiff::isVersionOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property)<sp/>{</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isVersionOf(property);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>&amp;PhysicalForce::about(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>&amp;EnergyDiff::about(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/>{</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.about(OmexMetaUtils::concatMetaIdAndUri(about,<sp/>model_uri_));</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
 <codeline lineno="133"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="src/omexmeta/PhysicalForce.cpp"/>
+    <location file="src/omexmeta/EnergyDiff.cpp"/>
   </compounddef>
 </doxygen>

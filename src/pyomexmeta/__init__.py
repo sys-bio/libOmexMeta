@@ -1,5 +1,5 @@
 from .pyomexmeta import PersonalInformation
-from .pyomexmeta import PhysicalForce
+from .pyomexmeta import EnergyDiff
 from .pyomexmeta import PhysicalProcess
 from .pyomexmeta import RDF, Editor, PhysicalEntity
 from .pyomexmeta import SingularAnnotation

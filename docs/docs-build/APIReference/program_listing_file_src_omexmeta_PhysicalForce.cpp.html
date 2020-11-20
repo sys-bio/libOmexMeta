@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Program Listing for File PhysicalForce.cpp &mdash; libomexmeta 0.0.1 documentation</title>
+  <title>Program Listing for File EnergyDiff.cpp &mdash; libomexmeta 0.0.1 documentation</title>
   
 
   
@@ -136,13 +136,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Program Listing for File PhysicalForce.cpp</li>
+      <li>Program Listing for File EnergyDiff.cpp</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_PhysicalForce.cpp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_EnergyDiff.cpp.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,13 +156,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="program-listing-for-file-physicalforce-cpp">
-<span id="program-listing-file-src-omexmeta-physicalforce-cpp"></span><h1>Program Listing for File PhysicalForce.cpp<a class="headerlink" href="#program-listing-for-file-physicalforce-cpp" title="Permalink to this headline">¶</a></h1>
-<p>↰ <a class="reference internal" href="file_src_omexmeta_PhysicalForce.cpp.html#file-src-omexmeta-physicalforce-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/PhysicalForce.cpp</span></code>)</p>
+<span id="program-listing-file-src-omexmeta-physicalforce-cpp"></span><h1>Program Listing for File EnergyDiff.cpp<a class="headerlink" href="#program-listing-for-file-physicalforce-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_EnergyDiff.cpp.html#file-src-omexmeta-physicalforce-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/EnergyDiff.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 <span class="c1">// Created by Ciaran on 4/22/2020.</span>
 <span class="c1">//</span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalForce.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/EnergyDiff.h&quot;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
@@ -171,7 +171,7 @@
 
 <span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
 
-    <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">PhysicalForce</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span> <span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">,</span>
+    <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">EnergyDiff</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span> <span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">,</span>
                                  <span class="n">Sources</span> <span class="n">sources</span><span class="p">,</span>
                                  <span class="n">Sinks</span> <span class="n">sinks</span><span class="p">)</span>
             <span class="o">:</span> <span class="n">PhysicalPhenomenon</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">local_uri</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">physicalProperty</span><span class="p">),</span> <span class="n">PHYSICAL_PROCESS</span><span class="p">),</span>
@@ -179,29 +179,29 @@
 
     <span class="p">}</span>
 
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SourceParticipant</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">PhysicalForce</span><span class="o">::</span><span class="n">getSources</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SourceParticipant</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">EnergyDiff</span><span class="o">::</span><span class="n">getSources</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">sources_</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SinkParticipant</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">PhysicalForce</span><span class="o">::</span><span class="n">getSinks</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SinkParticipant</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">EnergyDiff</span><span class="o">::</span><span class="n">getSinks</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">sinks_</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">createMetaId</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">generateMetaId</span><span class="p">(</span><span class="s">&quot;PhysicalForce&quot;</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">createMetaId</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">generateMetaId</span><span class="p">(</span><span class="s">&quot;EnergyDiff&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">Triples</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">toTriples</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Triples</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">toTriples</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getAbout</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">AnnotationBuilderException</span><span class="p">(</span>
-                    <span class="s">&quot;PhysicalForce::toTriples(): Cannot create&quot;</span>
+                    <span class="s">&quot;EnergyDiff::toTriples(): Cannot create&quot;</span>
                     <span class="s">&quot; triples because the </span><span class="se">\&quot;</span><span class="s">about</span><span class="se">\&quot;</span><span class="s"> information is not set. &quot;</span>
                     <span class="s">&quot;Use the about() method.&quot;</span>
             <span class="p">);</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getPhysicalProperty</span><span class="p">().</span><span class="n">getIsVersionOfValue</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">AnnotationBuilderException</span><span class="p">(</span>
-                    <span class="s">&quot;PhysicalForce::toTriples(): Cannot create&quot;</span>
+                    <span class="s">&quot;EnergyDiff::toTriples(): Cannot create&quot;</span>
                     <span class="s">&quot; triples because the </span><span class="se">\&quot;</span><span class="s">physical_property resource</span><span class="se">\&quot;</span><span class="s"> information is not set. &quot;</span>
                     <span class="s">&quot;Use the setPhysicalProperty() method.&quot;</span>
             <span class="p">);</span>
@@ -209,7 +209,7 @@
 
         <span class="k">if</span> <span class="p">(</span><span class="n">physical_property_id_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="n">physical_property_id_</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">generateUniqueMetaid</span><span class="p">(</span>
-                    <span class="n">model_</span><span class="p">,</span> <span class="s">&quot;PhysicalForce&quot;</span><span class="p">,</span>
+                    <span class="n">model_</span><span class="p">,</span> <span class="s">&quot;EnergyDiff&quot;</span><span class="p">,</span>
                     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">());</span>
 
         <span class="p">}</span>
@@ -233,23 +233,23 @@
         <span class="k">return</span> <span class="n">triples</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="c1">//    PhysicalForce &amp;PhysicalForce::about(std::string metaid) {</span>
+<span class="c1">//    EnergyDiff &amp;EnergyDiff::about(std::string metaid) {</span>
 <span class="c1">//        physical_property_.about(metaid);</span>
 <span class="c1">//        return (*this);</span>
 <span class="c1">//    }</span>
 
-    <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">PhysicalForce</span><span class="o">::</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">EnergyDiff</span><span class="o">::</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">physical_property_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">physicalProperty</span><span class="p">);</span>
         <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">PhysicalForce</span><span class="o">::</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">subject_metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physical_property</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">EnergyDiff</span><span class="o">::</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">subject_metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physical_property</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">subject_metaid</span> <span class="o">=</span> <span class="n">OmexMetaUtils</span><span class="o">::</span><span class="n">concatMetaIdAndUri</span><span class="p">(</span><span class="n">subject_metaid</span><span class="p">,</span> <span class="n">getModelUri</span><span class="p">());</span>
         <span class="n">physical_property_</span> <span class="o">=</span> <span class="n">PhysicalProperty</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">subject_metaid</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">physical_property</span><span class="p">),</span> <span class="n">getModelUri</span><span class="p">());</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">PhysicalForce</span><span class="o">::</span><span class="n">addSource</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">physical_entity_reference</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">EnergyDiff</span><span class="o">::</span><span class="n">addSource</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">physical_entity_reference</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">sources_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span>
                 <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">SourceParticipant</span><span class="p">(</span>
                         <span class="n">model_</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="p">,</span> <span class="n">getModelUri</span><span class="p">()</span>
@@ -258,7 +258,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">PhysicalForce</span><span class="o">::</span><span class="n">addSink</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">physical_entity_reference</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">EnergyDiff</span><span class="o">::</span><span class="n">addSink</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">physical_entity_reference</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">sinks_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span>
                 <span class="n">SinkParticipant</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="p">,</span> <span class="n">getModelUri</span><span class="p">())</span>
         <span class="p">);</span>
@@ -266,21 +266,21 @@
         <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">PhysicalForce</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">EnergyDiff</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">)</span>
             <span class="o">:</span> <span class="n">PhysicalPhenomenon</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="p">{}</span>
 
-    <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">PhysicalForce</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">local_uri</span><span class="p">)</span>
+    <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">EnergyDiff</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">local_uri</span><span class="p">)</span>
             <span class="o">:</span> <span class="n">PhysicalPhenomenon</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">local_uri</span><span class="p">)</span> <span class="p">{}</span>
 
-    <span class="kt">int</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">getNumSources</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">getNumSources</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">sources_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">getNumSinks</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">getNumSinks</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">sinks_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="n">free</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="n">free</span><span class="p">()</span> <span class="p">{</span>
 
         <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">sources_</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">i</span><span class="p">.</span><span class="n">free</span><span class="p">();</span>
@@ -290,14 +290,14 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kt">bool</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">omexmeta</span><span class="o">::</span><span class="n">PhysicalPhenomenon</span> <span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)</span> <span class="o">==</span>
                <span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">omexmeta</span><span class="o">::</span><span class="n">PhysicalPhenomenon</span> <span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">rhs</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
                <span class="n">sources_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">sources_</span> <span class="o">&amp;&amp;</span>
                <span class="n">sinks_</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">sinks_</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kt">bool</span> <span class="n">PhysicalForce</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">EnergyDiff</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
         <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">rhs</span> <span class="o">==</span> <span class="o">*</span><span class="k">this</span><span class="p">);</span>
     <span class="p">}</span>
 

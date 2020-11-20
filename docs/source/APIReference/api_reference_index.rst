@@ -8,7 +8,7 @@ libOmexMeta API Reference
     RDF.rst
     Editor.rst
     PhysicalEntity.rst
-    PhysicalForce.rst
+    EnergyDiff.rst
     PhysicalProcess.rst
     PhysicalPropery.rst
     PhysicalPhenomenon.rst

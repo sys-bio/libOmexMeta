@@ -106,13 +106,13 @@ int main(){
 
     Editor editor = rdf.toEditor(sbml, true);
 
-    PhysicalForce force = editor.newPhysicalForce();
+    EnergyDiff force = editor.newEnergyDiff();
     force.about("#OmexMetaId0001")
             .isVersionOf("OPB:OPB_00340")
             .addSink(1, "#OmexMetaID0001")
             .addSource(1, "#OmexMetaID0002");
 
-    editor.addPhysicalForce(force);
+    editor.addEnergyDiff(force);
 
     std::cout << rdf.toString() << std::endl; // turtle default
 

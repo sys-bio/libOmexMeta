@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
-  <compounddef id="PhysicalForce_8h" kind="file" language="C++">
-    <compoundname>PhysicalForce.h</compoundname>
+  <compounddef id="EnergyDiff_8h" kind="file" language="C++">
+    <compoundname>EnergyDiff.h</compoundname>
     <includes local="yes">redland/librdf.h</includes>
     <includes local="yes">redland/RedlandAPI.h</includes>
     <includes refid="PhysicalPhenomenon_8h" local="yes">omexmeta/PhysicalPhenomenon.h</includes>
@@ -14,7 +14,7 @@
     <includedby refid="Editor_8h" local="yes">src/omexmeta/Editor.h</includedby>
     <includedby refid="OmexMeta_8h" local="yes">src/omexmeta/OmexMeta.h</includedby>
     <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/OmexMetaCApi.h</includedby>
-    <includedby refid="PhysicalForce_8cpp" local="yes">src/omexmeta/PhysicalForce.cpp</includedby>
+    <includedby refid="EnergyDiff_8cpp" local="yes">src/omexmeta/EnergyDiff.cpp</includedby>
     <incdepgraph>
       <node id="32">
         <label>sys/stat.h</label>
@@ -266,8 +266,8 @@
         </childnode>
       </node>
       <node id="1">
-        <label>src/omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h"/>
+        <label>src/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -390,8 +390,8 @@
         </childnode>
       </node>
       <node id="1">
-        <label>src/omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h"/>
+        <label>src/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -420,7 +420,7 @@
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
     </invincdepgraph>
-    <innerclass refid="classomexmeta_1_1PhysicalForce" prot="public">omexmeta::PhysicalForce</innerclass>
+    <innerclass refid="classomexmeta_1_1EnergyDiff" prot="public">omexmeta::EnergyDiff</innerclass>
     <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -454,27 +454,27 @@
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">redland;</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
-<codeline lineno="28" refid="classomexmeta_1_1PhysicalForce" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">OMEXMETA_EXPORT<sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="classomexmeta_1_1EnergyDiff" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">OMEXMETA_EXPORT<sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref><sp/>{</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sources<sp/>sources_;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sinks<sp/>sinks_;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>physical_force_property_id_;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>energy_diff_property_id_;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classomexmeta_1_1PhysicalForce_1ad5b43ea5489891c45f5ebc4c9b62e44e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce_1ad5b43ea5489891c45f5ebc4c9b62e44e" kindref="member">PhysicalForce</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44" refid="classomexmeta_1_1EnergyDiff_1ad5b43ea5489891c45f5ebc4c9b62e44e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff_1ad5b43ea5489891c45f5ebc4c9b62e44e" kindref="member">EnergyDiff</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~<ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~<ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>(librdf_model<sp/>*model,<sp/>std::string<sp/>model_uri,<sp/>std::string<sp/>local_uri,<sp/><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref><sp/>physicalProperty,<sp/>Sources<sp/>sources,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref>(librdf_model<sp/>*model,<sp/>std::string<sp/>model_uri,<sp/>std::string<sp/>local_uri,<sp/><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref><sp/>physicalProperty,<sp/>Sources<sp/>sources,</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sinks<sp/>sinks);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free();</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>(librdf_model<sp/>*model);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref>(librdf_model<sp/>*model);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>(librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>model_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>local_uri);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref>(librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>model_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>local_uri);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[maybe_unused]]<sp/>[[nodiscard]]<sp/>std::string<sp/>createMetaId();</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
@@ -484,30 +484,30 @@
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref><sp/>toTriples()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[maybe_unused]]<sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;setPhysicalProperty(<ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref><sp/>physicalProperty);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[maybe_unused]]<sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;setPhysicalProperty(<ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref><sp/>physicalProperty);</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;setPhysicalProperty(std::string<sp/>subject_metaid,<sp/>std::string<sp/>physical_property);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;setPhysicalProperty(std::string<sp/>subject_metaid,<sp/>std::string<sp/>physical_property);</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;addSource(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>physical_entity_reference);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;addSource(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>physical_entity_reference);</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;<sp/>addSink(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>physical_entity_reference);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;<sp/>addSink(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>multiplier,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>physical_entity_reference);</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getNumSources();</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getNumSinks();</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;rhs)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;rhs)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;rhs)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;rhs)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;isVersionOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;isVersionOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property);</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;about(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;about(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="197"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LIBOMEXMETA_PHYSICALFORCE_H</highlight></codeline>
     </programlisting>
-    <location file="src/omexmeta/PhysicalForce.h"/>
+    <location file="src/omexmeta/EnergyDiff.h"/>
   </compounddef>
 </doxygen>

@@ -20,7 +20,7 @@
 using namespace redland;
 
 namespace omexmeta {
-    class PhysicalPhenomenon {
+    class PropertyBearer {
 
     protected:
 
@@ -56,13 +56,13 @@ namespace omexmeta {
     public:
         [[nodiscard]] virtual const std::string &getPropertyMetaidBase() const;
 
-        PhysicalPhenomenon() = default;
+        PropertyBearer() = default;
 
-        bool operator==(const PhysicalPhenomenon &rhs) const;
+        bool operator==(const PropertyBearer &rhs) const;
 
-        bool operator!=(const PhysicalPhenomenon &rhs) const;
+        bool operator!=(const PropertyBearer &rhs) const;
 
-        ~PhysicalPhenomenon();
+        ~PropertyBearer();
 
         [[nodiscard]] const std::string &getLocalUri() const;
 
@@ -71,36 +71,36 @@ namespace omexmeta {
         /**
          * @brief Copy constructor for PhysicalPhenomenon
          */
-        PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) = delete;
+        PropertyBearer(const PropertyBearer &phenomenon) = delete;
 
         /**
          * @brief Move constructor for PhysicalPhenomenon
          */
-        PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept;
+        PropertyBearer(PropertyBearer &&phenomenon) noexcept;
 
         /**
          * @brief assignment operator for PhysicalPhenomenon
          */
-        PhysicalPhenomenon &operator=(const PhysicalPhenomenon &phenomenon) = delete;
+        PropertyBearer &operator=(const PropertyBearer &phenomenon) = delete;
 
         /**
          * @brief move assignment operator for PhysicalPhenomenon
          */
-        PhysicalPhenomenon &operator=(PhysicalPhenomenon &&phenomenon) noexcept;
+        PropertyBearer &operator=(PropertyBearer &&phenomenon) noexcept;
 
         /**
          * @brief Constructor for builder interface.
          *
          * Shouldn't be needed by users.
          */
-        [[maybe_unused]] OMEXMETA_DEPRECATED explicit PhysicalPhenomenon(librdf_model *model);
+        [[maybe_unused]] OMEXMETA_DEPRECATED explicit PropertyBearer(librdf_model *model);
 
         /**
          * @brief Constructor for builder interface.
          *
          * Shouldn't be needed by users directly.
          */
-        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri);
+        [[maybe_unused]] explicit PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri);
 
         /**
          * @brief constructor for PhysicalPhenomenon object.
@@ -109,7 +109,7 @@ namespace omexmeta {
          * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PhysicalPhenomenon(librdf_model *model, std::string model_uri, std::string local_uri,
+        PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri,
                            PhysicalProperty propertyResource, AnnotationType type);
 
         [[nodiscard]] const std::string &getModelUri() const;
@@ -124,7 +124,7 @@ namespace omexmeta {
 
         /**
          * @brief getter for Type argument
-         * @return the AnnotationType currently used (PhysicalEntity, PhysicalForce or PhysicalProcess)
+         * @return the AnnotationType currently used (PhysicalEntity, EnergyDiff or PhysicalProcess)
          */
         [[nodiscard]] AnnotationType getType() const;
 
@@ -152,21 +152,21 @@ namespace omexmeta {
 
         [[nodiscard]] librdf_model *getModel() const;
 
-        virtual PhysicalPhenomenon &hasProperty(const PhysicalProperty &property);
+        virtual PropertyBearer &hasProperty(const PhysicalProperty &property);
 
-        OMEXMETA_DEPRECATED virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
+        OMEXMETA_DEPRECATED virtual PropertyBearer &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
 
-        virtual PhysicalPhenomenon &hasProperty(const std::string &is_version_of);
+        virtual PropertyBearer &hasProperty(const std::string &is_version_of);
 
-        virtual PhysicalPhenomenon &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of);
+        virtual PropertyBearer &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of);
 
-        virtual PhysicalPhenomenon &about(const std::string &about, eUriType type);
+        virtual PropertyBearer &about(const std::string &about, eUriType type);
 
-        virtual PhysicalPhenomenon &about(const std::string &about);
+        virtual PropertyBearer &about(const std::string &about);
 
     };
 
-    typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;
+    typedef std::shared_ptr<PropertyBearer> PhysicalPhenomenonPtr;
 
 
 }

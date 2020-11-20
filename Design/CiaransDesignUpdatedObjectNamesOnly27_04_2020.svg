@@ -89,13 +89,13 @@ class Legend.LargerObject-->
         <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="69"
               x="44.5" y="119.6982">with Parent.
         </text><!--MD5=[7891b59bb27f0174c8b8c465458d50ca]
-class PhysicalForce-->
-        <rect fill="#FEFECE" filter="url(#frjytxw4cbx1u)" height="61.8359" id="PhysicalForce"
+class EnergyDiff-->
+        <rect fill="#FEFECE" filter="url(#frjytxw4cbx1u)" height="61.8359" id="EnergyDiff"
               style="stroke: #A80036; stroke-width: 1.5;" width="152" x="602" y="988"/>
         <ellipse cx="636.35" cy="1004" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M639.1156,999.875 Q639.2719,999.6563 639.4594,999.5469 Q639.6469,999.4375 639.8656,999.4375 Q640.2406,999.4375 640.475,999.6953 Q640.7094,999.9531 640.7094,1000.5625 L640.7094,1002.0156 Q640.7094,1002.625 640.475,1002.8906 Q640.2406,1003.1563 639.8656,1003.1563 Q639.5219,1003.1563 639.3188,1002.9531 Q639.1156,1002.7656 639.0063,1002.25 Q638.9594,1001.8906 638.7719,1001.7031 Q638.4438,1001.3281 637.8344,1001.1094 Q637.225,1000.8906 636.6,1000.8906 Q635.8344,1000.8906 635.2016,1001.2188 Q634.5688,1001.5469 634.0766,1002.2969 Q633.5844,1003.0469 633.5844,1004.0781 L633.5844,1005.1719 Q633.5844,1006.4063 634.475,1007.2266 Q635.3656,1008.0469 636.9594,1008.0469 Q637.8969,1008.0469 638.5531,1007.7969 Q638.9438,1007.6406 639.3656,1007.2031 Q639.6313,1006.9375 639.7797,1006.8594 Q639.9281,1006.7813 640.1313,1006.7813 Q640.4594,1006.7813 640.7172,1007.0391 Q640.975,1007.2969 640.975,1007.6406 Q640.975,1007.9844 640.6313,1008.3906 Q640.1313,1008.9688 639.3344,1009.2969 Q638.2563,1009.75 636.9594,1009.75 Q635.4438,1009.75 634.2406,1009.125 Q633.2563,1008.625 632.5688,1007.5547 Q631.8813,1006.4844 631.8813,1005.2031 L631.8813,1004.0469 Q631.8813,1002.7188 632.4984,1001.5703 Q633.1156,1000.4219 634.2094,999.8047 Q635.3031,999.1875 636.5375,999.1875 Q637.2719,999.1875 637.9203,999.3516 Q638.5688,999.5156 639.1156,999.875 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="77"
-              x="654.65" y="1008.9102">PhysicalForce
+              x="654.65" y="1008.9102">EnergyDiff
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="603" x2="753" y1="1020" y2="1020"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="140"
@@ -523,7 +523,7 @@ reverse link Predicate to PredicatePtr--><path d="M1321.15,396.933 C1304.01,415.
 reverse link Resource to PhysicalProperty--><path d="M790.923,490.574 C722.308,498.681 629.423,520.287 570,577 C448.71,692.758 458.019,921.672 464.511,994.898 " fill="none" id="Resource&lt;-PhysicalProperty" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="790.312,483.6,810.926,488.507,791.751,497.526,790.312,483.6" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6acb0d390a72979d2c85f7a45be3008d]
 reverse link PhysicalPhenomenon to PhysicalEntity--><path d="M865,919.236 C865,942.024 865,968.211 865,987.892 " fill="none" id="PhysicalPhenomenon&lt;-PhysicalEntity" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="858,919.152,865,899.152,872,919.152,858,919.152" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[27ffbe9cf4419a870d7aa742f861a565]
 reverse link PhysicalPhenomenon to PhysicalProcess--><path d="M918.549,911.668 C949.127,936.032 986.727,965.991 1014.21,987.892 " fill="none" id="PhysicalPhenomenon&lt;-PhysicalProcess" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="914.122,917.09,902.842,899.152,922.846,906.141,914.122,917.09" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[1e9c85c4708560e79c4f56368807b117]
-reverse link PhysicalPhenomenon to PhysicalForce--><path d="M811.451,911.668 C780.873,936.032 743.273,965.991 715.786,987.892 " fill="none" id="PhysicalPhenomenon&lt;-PhysicalForce" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="807.154,906.141,827.158,899.152,815.878,917.09,807.154,906.141" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[fb0600ef452f5bb18d57df23844ac967]
+reverse link PhysicalPhenomenon to EnergyDiff--><path d="M811.451,911.668 C780.873,936.032 743.273,965.991 715.786,987.892 " fill="none" id="PhysicalPhenomenon&lt;-EnergyDiff" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="807.154,906.141,827.158,899.152,815.878,917.09,807.154,906.141" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[fb0600ef452f5bb18d57df23844ac967]
 reverse link PhysicalEntity to Participant--><path d="M851.213,1063.098 C848.821,1074.995 847.516,1087.948 849,1100 C850.207,1109.804 852.484,1120.311 854.905,1129.748 " fill="none" id="PhysicalEntity&lt;-Participant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="854.284,1050.217,849.0013,1055.1254,851.5003,1061.8897,856.7831,1056.9812,854.284,1050.217" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="116" x="850" y="1096.4951">inheritance instead?</text><!--MD5=[0de1e465155d0269b530664bae623ecd]
 reverse link Participant to SourceParticipant--><path d="M867.732,1212.18 C868.757,1225.9564 869.837,1240.4688 870.75,1252.7446 " fill="none" id="Participant&lt;-SourceParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="860.751,1212.685,866.248,1192.221,874.712,1211.647,860.751,1212.685" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[73496b83a351f349c3d89f6f370215af]
 reverse link Participant to SinkParticipant--><path d="M802.804,1203.599 C778.944,1219.8192 752.119,1238.0539 730.199,1252.9545 " fill="none" id="Participant&lt;-SinkParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="799.067,1197.676,819.542,1192.221,806.937,1209.254,799.067,1197.676" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[8661421b05681e24eaf36a10529ebdda]
@@ -531,8 +531,8 @@ reverse link Participant to MediatorParticipant--><path d="M939.738,1201.332 C97
 reverse link PhysicalProcess to SourceParticipant--><path d="M1054.6,1063.344 C1054.9,1108.859 1048.07,1179.709 1008,1223 C992.146,1240.1286 970.505,1252.6614 949.194,1261.7013 " fill="none" id="PhysicalProcess&lt;-SourceParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1054.31,1050.091,1050.4421,1056.177,1054.5724,1062.0881,1058.4402,1056.0021,1054.31,1050.091" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[847311b4150d724fe9434874e2bbc24e]
 reverse link PhysicalProcess to SinkParticipant--><path d="M1038.51,1062.721 C1024.17,1101.591 997.839,1157.945 957,1192 C953.057,1195.288 840.95,1232.3573 762.18,1258.1557 " fill="none" id="PhysicalProcess&lt;-SinkParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1042.92,1050.266,1037.1472,1054.5874,1038.9159,1061.5783,1044.6887,1057.2568,1042.92,1050.266" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[49e23dd665dcca4ac7c8c96dcc59713e]
 reverse link PhysicalProcess to MediatorParticipant--><path d="M1081.34,1061.484 C1084.84,1068.092 1087.91,1075.049 1090,1082 C1107.61,1140.512 1104.41,1212.955 1100.63,1252.9393 " fill="none" id="PhysicalProcess&lt;-MediatorParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1074.68,1050.04,1074.2366,1057.2375,1080.7099,1060.415,1081.1533,1053.2175,1074.68,1050.04" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[46a52e7639aacc2ab3c041b3cb24e721]
-reverse link PhysicalForce to SourceParticipant--><path d="M698.361,1062.094 C719.79,1105.615 752.755,1170.196 770,1192 C787.984,1214.739 812.099,1236.3919 832.474,1252.8675 " fill="none" id="PhysicalForce&lt;-SourceParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="692.512,1050.156,691.5599,1057.304,697.7919,1060.932,698.744,1053.7841,692.512,1050.156" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[df4772e5c1e3d42a7c4cd543c2172460]
-reverse link PhysicalForce to SinkParticipant--><path d="M679.316,1063.249 C680.941,1116.678 683.664,1206.201 685.081,1252.7784 " fill="none" id="PhysicalForce&lt;-SinkParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="678.918,1050.169,675.1025,1056.288,679.2833,1062.1634,683.0988,1056.0445,678.918,1050.169" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[900fe02fcbbffcd0852a468e2d78a834]
+reverse link EnergyDiff to SourceParticipant--><path d="M698.361,1062.094 C719.79,1105.615 752.755,1170.196 770,1192 C787.984,1214.739 812.099,1236.3919 832.474,1252.8675 " fill="none" id="EnergyDiff&lt;-SourceParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="692.512,1050.156,691.5599,1057.304,697.7919,1060.932,698.744,1053.7841,692.512,1050.156" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[df4772e5c1e3d42a7c4cd543c2172460]
+reverse link EnergyDiff to SinkParticipant--><path d="M679.316,1063.249 C680.941,1116.678 683.664,1206.201 685.081,1252.7784 " fill="none" id="EnergyDiff&lt;-SinkParticipant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="678.918,1050.169,675.1025,1056.288,679.2833,1062.1634,683.0988,1056.0445,678.918,1050.169" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[900fe02fcbbffcd0852a468e2d78a834]
 reverse link RDF to Editor--><path d="M1404.37,758.282 C1372.58,783.622 1340.01,809.59 1314.67,829.789 " fill="none" id="RDF&lt;-Editor" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1414.65,750.085,1407.4648,750.6961,1405.2654,757.5636,1412.4506,756.9525,1414.65,750.085" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[3e75a076fba04e7781cd357ff71a17d8]
 reverse link RDF to Reader--><path d="M1544.37,762.959 C1551.22,793.118 1558.14,823.608 1562.71,843.714 " fill="none" id="RDF&lt;-Reader" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1541.44,750.085,1538.8676,756.8217,1544.0967,761.7872,1546.6691,755.0505,1541.44,750.085" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[02b4a288ce6e548d39df82d7def6848e]
 reverse link RDF to Writer--><path d="M1493.8,762.959 C1485.16,793.118 1476.43,823.608 1470.67,843.714 " fill="none" id="RDF&lt;-Writer" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1497.49,750.085,1491.9926,754.7518,1494.186,761.6212,1499.6834,756.9544,1497.49,750.085" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e9235de7c1dbccc90444534172bf2caa]
@@ -580,7 +580,7 @@ namespace Legend {
 }
 
     together {
-        class PhysicalForce
+        class EnergyDiff
         class PhysicalEntity
         class PhysicalProcess
     }
@@ -674,7 +674,7 @@ namespace Legend {
 	    toTriples : std::vector<Triple>
 	}
 
-	class PhysicalForce {
+	class EnergyDiff {
 	    toTriples : std::vector<Triple>
     }
 
@@ -763,7 +763,7 @@ namespace Legend {
 
     PhysicalPhenomenon <|- - PhysicalEntity
     PhysicalPhenomenon <|- - PhysicalProcess
-    PhysicalPhenomenon <|- - PhysicalForce
+    PhysicalPhenomenon <|- - EnergyDiff
 
     PhysicalEntity *- -Participant : inheritance instead?
     Participant <|- - SourceParticipant
@@ -774,8 +774,8 @@ namespace Legend {
     PhysicalProcess *- - SinkParticipant
     PhysicalProcess *- - MediatorParticipant
 
-    PhysicalForce *- - SourceParticipant
-    PhysicalForce *- - SinkParticipant
+    EnergyDiff *- - SourceParticipant
+    EnergyDiff *- - SinkParticipant
 
 
     RDF *- - Editor

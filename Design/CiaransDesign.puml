@@ -96,7 +96,7 @@ interface Entity<<NotYetImplemented>> {
 
 class PhysicalEntity <<NotYetImplemented>>{}
 class PhysicalProcess<<NotYetImplemented>> {}
-class PhysicalForce <<NotYetImplemented>>{}
+class EnergyDiff <<NotYetImplemented>>{}
 class PhysicalDependency <<NotYetImplemented>>{}
 
 'Base class for all annotations
@@ -199,7 +199,7 @@ Triple <-- PhysicalProperty
 Triple <-- Entity
 Entity <|-- PhysicalEntity
 Entity <|-- PhysicalProcess
-Entity <|-- PhysicalForce
+Entity <|-- EnergyDiff
 Entity <|-- PhysicalDependency
 
 SingularAnnotation --|> Annotation

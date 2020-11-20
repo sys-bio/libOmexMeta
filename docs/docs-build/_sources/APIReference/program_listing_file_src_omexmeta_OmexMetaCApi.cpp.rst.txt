@@ -206,8 +206,8 @@ Program Listing for File OmexMetaCApi.cpp
            editor_ptr->addPhysicalProcess(*physicalProcess);
        }
    
-       void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
-           editor_ptr->addPhysicalForce(*physicalForce);
+       void Editor_addEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce) {
+           editor_ptr->addEnergyDiff(*physicalForce);
        }
    
        void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation) {
@@ -226,8 +226,8 @@ Program Listing for File OmexMetaCApi.cpp
            editor_ptr->removePhysicalProcess(*physicalProcess);
        }
    
-       void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
-           editor_ptr->removePhysicalForce(*physicalForce);
+       void Editor_removeEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce) {
+           editor_ptr->removeEnergyDiff(*physicalForce);
        }
    
        void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information) {
@@ -577,52 +577,52 @@ Program Listing for File OmexMetaCApi.cpp
    
    
    /*********************************************************************
-    * PhysicalForce class methods
+    * EnergyDiff class methods
     */
-       PhysicalForce *PhysicalForce_new(Editor *editor_ptr) {
-           return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getLocalUri());
+       EnergyDiff *EnergyDiff_new(Editor *editor_ptr) {
+           return new EnergyDiff(editor_ptr->getModel(), editor_ptr->getLocalUri());
        }
    
-       void PhysicalForce_delete(PhysicalForce *physicalForce) {
+       void EnergyDiff_delete(EnergyDiff *physicalForce) {
            delete physicalForce;
    
        }
    
-       void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr) {
-           physical_force_ptr->free();
-           delete physical_force_ptr;
+       void EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr) {
+           energy_diff_ptr->free();
+           delete energy_diff_ptr;
        }
    
    
-       PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, double multiplier,
+       EnergyDiff *EnergyDiff_addSource(EnergyDiff *energy_diff_ptr, double multiplier,
                                               const char *physical_entity_reference) {
-           physical_force_ptr->addSource(multiplier, physical_entity_reference);
-           return physical_force_ptr;
+           energy_diff_ptr->addSource(multiplier, physical_entity_reference);
+           return energy_diff_ptr;
    
        }
    
-       PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, double multiplier,
+       EnergyDiff *EnergyDiff_addSink(EnergyDiff *energy_diff_ptr, double multiplier,
                                             const char *physical_entity_reference) {
-           physical_force_ptr->addSink(multiplier, physical_entity_reference);
-           return physical_force_ptr;
+           energy_diff_ptr->addSink(multiplier, physical_entity_reference);
+           return energy_diff_ptr;
        }
    
-       PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *subject_metaid,
+       EnergyDiff *EnergyDiff_setPhysicalProperty(EnergyDiff *energy_diff_ptr, const char *subject_metaid,
                                                         const char *physical_property) {
-           physical_force_ptr->setPhysicalProperty(subject_metaid, physical_property);
-           return physical_force_ptr;
+           energy_diff_ptr->setPhysicalProperty(subject_metaid, physical_property);
+           return energy_diff_ptr;
        }
    
-       int PhysicalForce_getNumSources(PhysicalForce *physicalForce) {
+       int EnergyDiff_getNumSources(EnergyDiff *physicalForce) {
            return physicalForce->getNumSources();
        }
    
-       int PhysicalForce_getNumSinks(PhysicalForce *physicalForce) {
+       int EnergyDiff_getNumSinks(EnergyDiff *physicalForce) {
            return physicalForce->getNumSinks();
        }
    
-       char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri) {
-           Triples triples = physical_force_ptr->toTriples();
+       char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri) {
+           Triples triples = energy_diff_ptr->toTriples();
            std::string str = triples.str(format, base_uri);
            triples.freeTriples();
            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
@@ -631,8 +631,8 @@ Program Listing for File OmexMetaCApi.cpp
        }
    
    
-       char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr) {
-           std::string about = physical_force_ptr->getAbout();
+       char *EnergyDiff_getAbout(EnergyDiff *energy_diff_ptr) {
+           std::string about = energy_diff_ptr->getAbout();
            char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
            strcpy(cstr, about.c_str());
            return cstr;

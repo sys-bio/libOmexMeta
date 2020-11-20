@@ -28,7 +28,7 @@ namespace Legend {
 }
 
     together {
-        class PhysicalForce
+        class EnergyDiff
         class PhysicalEntity
         class PhysicalProcess
     }
@@ -122,7 +122,7 @@ namespace Legend {
 	    toTriples : std::vector<Triple>
 	}
 
-	class PhysicalForce {
+	class EnergyDiff {
 	    toTriples : std::vector<Triple>
     }
 
@@ -212,7 +212,7 @@ namespace Legend {
 
     PhysicalPhenomenon <|-- PhysicalEntity
     PhysicalPhenomenon <|-- PhysicalProcess
-    PhysicalPhenomenon <|-- PhysicalForce
+    PhysicalPhenomenon <|-- EnergyDiff
 
     PhysicalEntity *--Participant : inheritance instead?
     Participant <|-- SourceParticipant
@@ -223,8 +223,8 @@ namespace Legend {
     PhysicalProcess *-- SinkParticipant
     PhysicalProcess *-- MediatorParticipant
 
-    PhysicalForce *-- SourceParticipant
-    PhysicalForce *-- SinkParticipant
+    EnergyDiff *-- SourceParticipant
+    EnergyDiff *-- SinkParticipant
 
 
     RDF *-- Editor
@@ -259,7 +259,7 @@ namespace Legend {
 '    PhysicalProperty "1" *-- "many" Triple
 '    PhysicalEntity "1" *-- "many" Triple
 '    PhysicalProcess "1" *-- "many" Triple
-'    PhysicalForce "1" *-- "many" Triple
+'    EnergyDiff "1" *-- "many" Triple
 '    Participant "1" *-- "many" Triple
 
     note left of PhysicalPhenomenon {

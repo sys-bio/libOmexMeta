@@ -170,7 +170,7 @@
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaXmlAssistant.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalEntity.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalProcess.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalForce.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/EnergyDiff.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaUtils.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/Preproc.h&quot;</span><span class="cp"></span>
@@ -281,7 +281,7 @@
 
     <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_addPhysicalProcess</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PhysicalProcess</span> <span class="o">*</span><span class="n">physicalProcess</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_addPhysicalForce</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_addEnergyDiff</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
 
     <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_addPersonalInformation</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">personalInformation</span><span class="p">);</span>
 
@@ -291,7 +291,7 @@
 
     <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_removePhysicalProcess</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PhysicalProcess</span> <span class="o">*</span><span class="n">physicalProcess</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_removePhysicalForce</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_removeEnergyDiff</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
 
     <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">Editor_removePersonalInformation</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">information</span><span class="p">);</span>
 
@@ -409,41 +409,41 @@
 
 
 <span class="cm">/*********************************************************************</span>
-<span class="cm"> * PhysicalForce class methods</span>
+<span class="cm"> * EnergyDiff class methods</span>
 <span class="cm"> */</span>
-    <span class="n">SEMSIM_API</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">);</span>
 
 
     <span class="cm">/*</span>
-<span class="cm">     * @brief deletes physical force excluding all</span>
+<span class="cm">     * @brief deletes energy differential excluding all</span>
 <span class="cm">     * nodes associated with it.</span>
 <span class="cm">     */</span>
-    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">PhysicalForce_delete</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">EnergyDiff_delete</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
 
     <span class="cm">/*</span>
-<span class="cm">     * @brief deletes physical force including all</span>
+<span class="cm">     * @brief deletes energy differential including all</span>
 <span class="cm">     * nodes associated with it.</span>
 <span class="cm">     */</span>
-    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">PhysicalForce_freeAll</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">void</span> <span class="nf">EnergyDiff_freeAll</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_addSource</span><span class="p">(</span>
-            <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
+    <span class="n">SEMSIM_API</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_addSource</span><span class="p">(</span>
+            <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
             <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_entity_reference</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_addSink</span><span class="p">(</span>
-            <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
+    <span class="n">SEMSIM_API</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_addSink</span><span class="p">(</span>
+            <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
             <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_entity_reference</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_setPhysicalProperty</span><span class="p">(</span>
-            <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">subject_metaid</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_property</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_setPhysicalProperty</span><span class="p">(</span>
+            <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">subject_metaid</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_property</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="kt">int</span> <span class="nf">PhysicalForce_getNumSources</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">int</span> <span class="nf">EnergyDiff_getNumSources</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="kt">int</span> <span class="nf">PhysicalForce_getNumSinks</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">int</span> <span class="nf">EnergyDiff_getNumSinks</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">PhysicalForce_str</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">base_uri</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">EnergyDiff_str</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">base_uri</span><span class="p">);</span>
 
-    <span class="n">SEMSIM_API</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">PhysicalForce_getAbout</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">);</span>
+    <span class="n">SEMSIM_API</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">EnergyDiff_getAbout</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">);</span>
 
 <span class="cm">/*********************************************************************</span>
 <span class="cm"> * PersonalInformation class methods</span>

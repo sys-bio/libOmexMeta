@@ -1,10 +1,10 @@
 
-.. _program_listing_file_src_omexmeta_PhysicalForce.cpp:
+.. _program_listing_file_src_omexmeta_EnergyDiff.cpp:
 
-Program Listing for File PhysicalForce.cpp
+Program Listing for File EnergyDiff.cpp
 ==========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_src_omexmeta_PhysicalForce.cpp>` (``src/omexmeta/PhysicalForce.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_src_omexmeta_EnergyDiff.cpp>` (``src/omexmeta/EnergyDiff.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -14,7 +14,7 @@ Program Listing for File PhysicalForce.cpp
    // Created by Ciaran on 4/22/2020.
    //
    
-   #include "omexmeta/PhysicalForce.h"
+   #include "omexmeta/EnergyDiff.h"
    
    #include <utility>
    
@@ -23,7 +23,7 @@ Program Listing for File PhysicalForce.cpp
    
    namespace omexmeta {
    
-       PhysicalForce::PhysicalForce(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
+       EnergyDiff::EnergyDiff(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
                                     Sources sources,
                                     Sinks sinks)
                : PhysicalPhenomenon(model, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
@@ -31,29 +31,29 @@ Program Listing for File PhysicalForce.cpp
    
        }
    
-       const std::vector<SourceParticipant> &PhysicalForce::getSources() const {
+       const std::vector<SourceParticipant> &EnergyDiff::getSources() const {
            return sources_;
        }
    
-       const std::vector<SinkParticipant> &PhysicalForce::getSinks() const {
+       const std::vector<SinkParticipant> &EnergyDiff::getSinks() const {
            return sinks_;
        }
    
-       std::string PhysicalForce::createMetaId() const {
-           return generateMetaId("PhysicalForce");
+       std::string EnergyDiff::createMetaId() const {
+           return generateMetaId("EnergyDiff");
        }
    
-       Triples PhysicalForce::toTriples() {
+       Triples EnergyDiff::toTriples() {
            if (getAbout().empty()) {
                throw AnnotationBuilderException(
-                       "PhysicalForce::toTriples(): Cannot create"
+                       "EnergyDiff::toTriples(): Cannot create"
                        " triples because the \"about\" information is not set. "
                        "Use the about() method."
                );
            }
            if (getPhysicalProperty().getIsVersionOfValue().empty()) {
                throw AnnotationBuilderException(
-                       "PhysicalForce::toTriples(): Cannot create"
+                       "EnergyDiff::toTriples(): Cannot create"
                        " triples because the \"physical_property resource\" information is not set. "
                        "Use the setPhysicalProperty() method."
                );
@@ -61,7 +61,7 @@ Program Listing for File PhysicalForce.cpp
    
            if (physical_property_id_.empty()) {
                physical_property_id_ = OmexMetaUtils::generateUniqueMetaid(
-                       model_, "PhysicalForce",
+                       model_, "EnergyDiff",
                        std::vector<std::string>());
    
            }
@@ -85,23 +85,23 @@ Program Listing for File PhysicalForce.cpp
            return triples;
        }
    
-   //    PhysicalForce &PhysicalForce::about(std::string metaid) {
+   //    EnergyDiff &EnergyDiff::about(std::string metaid) {
    //        physical_property_.about(metaid);
    //        return (*this);
    //    }
    
-       PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalProperty physicalProperty) {
+       EnergyDiff &EnergyDiff::setPhysicalProperty(PhysicalProperty physicalProperty) {
            physical_property_ = std::move(physicalProperty);
            return (*this);
        }
    
-       PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
+       EnergyDiff &EnergyDiff::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
            subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getLocalUri());
            physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getLocalUri());
            return *this;
        }
    
-       PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
+       EnergyDiff &EnergyDiff::addSource(double multiplier, const std::string &physical_entity_reference) {
            sources_.push_back(
                    std::move(SourceParticipant(
                            model_, multiplier, physical_entity_reference, getModelUri()
@@ -110,7 +110,7 @@ Program Listing for File PhysicalForce.cpp
            return (*this);
        }
    
-       PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
+       EnergyDiff &EnergyDiff::addSink(double multiplier, const std::string &physical_entity_reference) {
            sinks_.push_back(
                    SinkParticipant(model_, multiplier, physical_entity_reference, getModelUri())
            );
@@ -118,21 +118,21 @@ Program Listing for File PhysicalForce.cpp
            return (*this);
        }
    
-       PhysicalForce::PhysicalForce(librdf_model *model)
+       EnergyDiff::EnergyDiff(librdf_model *model)
                : PhysicalPhenomenon(model) {}
    
-       PhysicalForce::PhysicalForce(librdf_model *model, const std::string& local_uri)
+       EnergyDiff::EnergyDiff(librdf_model *model, const std::string& local_uri)
                : PhysicalPhenomenon(model, local_uri) {}
    
-       int PhysicalForce::getNumSources() {
+       int EnergyDiff::getNumSources() {
            return sources_.size();
        }
    
-       int PhysicalForce::getNumSinks() {
+       int EnergyDiff::getNumSinks() {
            return sinks_.size();
        }
    
-       void PhysicalForce::free() {
+       void EnergyDiff::free() {
    
            for (auto &i : sources_) {
                i.free();
@@ -142,14 +142,14 @@ Program Listing for File PhysicalForce.cpp
            }
        }
    
-       bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
+       bool EnergyDiff::operator==(const EnergyDiff &rhs) const {
            return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
                   static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
                   sources_ == rhs.sources_ &&
                   sinks_ == rhs.sinks_;
        }
    
-       bool PhysicalForce::operator!=(const PhysicalForce &rhs) const {
+       bool EnergyDiff::operator!=(const EnergyDiff &rhs) const {
            return !(rhs == *this);
        }
    

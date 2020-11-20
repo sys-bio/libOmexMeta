@@ -5,13 +5,13 @@
 #ifndef LIBOMEXMETA_OMEXMETACAPI_H
 #define LIBOMEXMETA_OMEXMETACAPI_H
 
-#include "omexmeta/RDF.h"
 #include "omexmeta/Editor.h"
+#include "omexmeta/EnergyDiff.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/OmexMetaXmlAssistant.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
-#include "omexmeta/PhysicalForce.h"
-#include "omexmeta/OmexMetaUtils.h"
+#include "omexmeta/RDF.h"
 #include "omexmeta_capi_export.h"
 #include <cstring>
 
@@ -105,7 +105,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *Editor_newPhysicalForce(Editor *editor_ptr);
+    OMEXMETA_CAPI_EXPORT EnergyDiff *Editor_newEnergyDiff(Editor *editor_ptr);
 
     OMEXMETA_CAPI_EXPORT SingularAnnotation *Editor_newSingularAnnotation(Editor *editor_ptr);
 
@@ -124,7 +124,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty);
 
-    OMEXMETA_CAPI_EXPORT int Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    OMEXMETA_CAPI_EXPORT int Editor_addEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
 
     OMEXMETA_CAPI_EXPORT int Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
 
@@ -134,7 +134,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
-    OMEXMETA_CAPI_EXPORT int Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    OMEXMETA_CAPI_EXPORT int Editor_removeEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
 
     OMEXMETA_CAPI_EXPORT int Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
 
@@ -317,48 +317,48 @@ namespace omexmeta {
 
 
 /*********************************************************************
- * PhysicalForce class methods
+ * EnergyDiff class methods
  */
 
 
     /**
-         * @brief deletes physical force excluding all
+         * @brief deletes energy differential excluding all
      * nodes associated with it.
      */
-    OMEXMETA_CAPI_EXPORT int PhysicalForce_delete(PhysicalForce *physicalForce);
+    OMEXMETA_CAPI_EXPORT int EnergyDiff_delete(EnergyDiff *physicalForce);
 
     /**
-         * @brief deletes physical force including all
+         * @brief deletes energy differential including all
      * nodes associated with it.
      */
-    OMEXMETA_CAPI_EXPORT int PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
+    OMEXMETA_CAPI_EXPORT int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_addSource(
-            PhysicalForce *physical_force_ptr,
-            const char *physical_entity_reference, eUriType type, int multiplier);
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_addSource(
+            EnergyDiff *energy_diff_ptr,
+            const char *physical_entity_reference, eUriType type);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_addSink(
-            PhysicalForce *physical_force_ptr,
-            const char *physical_entity_reference, eUriType type, int multiplier);
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_addSink(
+            EnergyDiff *energy_diff_ptr,
+            const char *physical_entity_reference, eUriType type);
 
-    OMEXMETA_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_setPhysicalProperty(
-            PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
+    OMEXMETA_DEPRECATED OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_setPhysicalProperty(
+            EnergyDiff *energy_diff_ptr, const char *subject_metaid, const char *physical_property);
 
-    OMEXMETA_CAPI_EXPORT int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
+    OMEXMETA_CAPI_EXPORT int EnergyDiff_getNumSources(EnergyDiff *physicalForce);
 
-    OMEXMETA_CAPI_EXPORT int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
+    OMEXMETA_CAPI_EXPORT int EnergyDiff_getNumSinks(EnergyDiff *physicalForce);
 
-    OMEXMETA_CAPI_EXPORT char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
+    OMEXMETA_CAPI_EXPORT char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri);
 
-    OMEXMETA_CAPI_EXPORT char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+    OMEXMETA_CAPI_EXPORT char *EnergyDiff_getAbout(EnergyDiff *energy_diff_ptr);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_about(PhysicalForce *physical_force_ptr, const char *about, eUriType type = eUriType::NONE);
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_about(EnergyDiff *energy_diff_ptr, const char *about, eUriType type = eUriType::NONE);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_force_ptr, PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *energy_diff_ptr, PhysicalProperty* property);
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_force_ptr, const char* isVersionOf) ;
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *energy_diff_ptr, const char* isVersionOf) ;
 
-    OMEXMETA_CAPI_EXPORT PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_force_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *energy_diff_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
 
 
 /*********************************************************************

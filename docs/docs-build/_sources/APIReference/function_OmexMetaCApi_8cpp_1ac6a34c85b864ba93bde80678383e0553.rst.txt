@@ -1,6 +1,6 @@
 .. _exhale_function_OmexMetaCApi_8cpp_1ac6a34c85b864ba93bde80678383e0553:
 
-Function omexmeta::PhysicalForce_str
+Function omexmeta::EnergyDiff_str
 ====================================
 
 - Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
@@ -10,4 +10,4 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: omexmeta::PhysicalForce_str(PhysicalForce *, const char *, const char *)
+.. doxygenfunction:: omexmeta::EnergyDiff_str(EnergyDiff *, const char *, const char *)

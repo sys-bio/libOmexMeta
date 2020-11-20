@@ -683,13 +683,13 @@ class PhysicalProcess-->
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="4851" x2="4973" y1="1783" y2="1783"/>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="4851" x2="4973" y1="1791" y2="1791"/><!--MD5=[7891b59bb27f0174c8b8c465458d50ca]
-class PhysicalForce-->
-        <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="48" id="PhysicalForce"
+class EnergyDiff-->
+        <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="48" id="EnergyDiff"
               style="stroke: #A80036; stroke-width: 1.5;" width="109" x="4381.5" y="1751"/>
         <ellipse cx="4396.5" cy="1767" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M4399.2656,1762.875 Q4399.4219,1762.6563 4399.6094,1762.5469 Q4399.7969,1762.4375 4400.0156,1762.4375 Q4400.3906,1762.4375 4400.625,1762.6953 Q4400.8594,1762.9531 4400.8594,1763.5625 L4400.8594,1765.0156 Q4400.8594,1765.625 4400.625,1765.8906 Q4400.3906,1766.1563 4400.0156,1766.1563 Q4399.6719,1766.1563 4399.4688,1765.9531 Q4399.2656,1765.7656 4399.1563,1765.25 Q4399.1094,1764.8906 4398.9219,1764.7031 Q4398.5938,1764.3281 4397.9844,1764.1094 Q4397.375,1763.8906 4396.75,1763.8906 Q4395.9844,1763.8906 4395.3516,1764.2188 Q4394.7188,1764.5469 4394.2266,1765.2969 Q4393.7344,1766.0469 4393.7344,1767.0781 L4393.7344,1768.1719 Q4393.7344,1769.4063 4394.625,1770.2266 Q4395.5156,1771.0469 4397.1094,1771.0469 Q4398.0469,1771.0469 4398.7031,1770.7969 Q4399.0938,1770.6406 4399.5156,1770.2031 Q4399.7813,1769.9375 4399.9297,1769.8594 Q4400.0781,1769.7813 4400.2813,1769.7813 Q4400.6094,1769.7813 4400.8672,1770.0391 Q4401.125,1770.2969 4401.125,1770.6406 Q4401.125,1770.9844 4400.7813,1771.3906 Q4400.2813,1771.9688 4399.4844,1772.2969 Q4398.4063,1772.75 4397.1094,1772.75 Q4395.5938,1772.75 4394.3906,1772.125 Q4393.4063,1771.625 4392.7188,1770.5547 Q4392.0313,1769.4844 4392.0313,1768.2031 L4392.0313,1767.0469 Q4392.0313,1765.7188 4392.6484,1764.5703 Q4393.2656,1763.4219 4394.3594,1762.8047 Q4395.4531,1762.1875 4396.6875,1762.1875 Q4397.4219,1762.1875 4398.0703,1762.3516 Q4398.7188,1762.5156 4399.2656,1762.875 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="77"
-              x="4410.5" y="1771.9102">PhysicalForce
+              x="4410.5" y="1771.9102">EnergyDiff
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="4382.5" x2="4489.5" y1="1783" y2="1783"/>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="4382.5" x2="4489.5" y1="1791" y2="1791"/><!--MD5=[e514f18440047e307342ce332512f54c]
@@ -1317,7 +1317,7 @@ reverse link Triple to PhysicalProperty--><path d="M4913.62,1585.096 C4934.43,16
 reverse link Triple to PropertyBearer--><path d="M4761.99,1586.461 C4761.72,1607.976 4761.47,1627.483 4761.29,1641.674 " fill="none" id="Triple&lt;-PropertyBearer" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="4762.05,1581.249,4757.9372,1590.198,4761.9871,1586.2486,4765.9366,1590.2986,4762.05,1581.249" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[4adce2440d7652f159decf9b01f1fc86]
 reverse link PropertyBearer to PhysicalEntity--><path d="M4761,1710.578 C4761,1724.362 4761,1739.057 4761,1750.828 " fill="none" id="PropertyBearer&lt;-PhysicalEntity" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4754,1710.217,4761,1690.217,4768,1710.217,4754,1710.217" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[7dca2b3106ae71f2237057a7746b8189]
 reverse link PropertyBearer to PhysicalProcess--><path d="M4810.22,1701.88 C4832.87,1717.93 4859.13,1736.535 4879.3,1750.828 " fill="none" id="PropertyBearer&lt;-PhysicalProcess" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4806.04,1707.492,4793.76,1690.217,4814.13,1696.069,4806.04,1707.492" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[3667d7479206c11e3e0291397464a5e6]
-reverse link PropertyBearer to PhysicalForce--><path d="M4684.35,1692.235 C4624.81,1711.837 4543.71,1738.54 4490.62,1756.018 " fill="none" id="PropertyBearer&lt;-PhysicalForce" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4682.46,1685.489,4703.64,1685.883,4686.84,1698.787,4682.46,1685.489" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[37dd7075e4eea84115a04dfaaa8b9804]
+reverse link PropertyBearer to EnergyDiff--><path d="M4684.35,1692.235 C4624.81,1711.837 4543.71,1738.54 4490.62,1756.018 " fill="none" id="PropertyBearer&lt;-EnergyDiff" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4682.46,1685.489,4703.64,1685.883,4686.84,1698.787,4682.46,1685.489" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[37dd7075e4eea84115a04dfaaa8b9804]
 reverse link PropertyBearer to PhysicalDependency--><path d="M4708.91,1701.408 C4684.44,1717.565 4655.93,1736.395 4634.08,1750.828 " fill="none" id="PropertyBearer&lt;-PhysicalDependency" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4705.3,1695.399,4725.85,1690.217,4713.02,1707.081,4705.3,1695.399" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[d14c96fd2506c0979f1476f48aa34f9b]
 link SingularAnnotation to Annotation--><path d="M4328.78,1690.053 C4330.88,1718.575 4338.29,1767.247 4364,1799 C4389.12,1830.024 4428.74,1850.809 4462.62,1863.942 " fill="none" id="SingularAnnotation-&gt;Annotation" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4465.3,1857.466,4481.76,1870.81,4460.57,1870.643,4465.3,1857.466" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e1ddfe6ef85240fcb09b546a7aadca5c]
 link CompositeAnnotation to Annotation--><path d="M5009.47,1795.107 C5003.57,1796.469 4997.69,1797.783 4992,1799 C4850,1829.354 4682.05,1857.892 4591.93,1872.613 " fill="none" id="CompositeAnnotation-&gt;Annotation" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4592.94,1879.541,4572.08,1875.838,4590.69,1865.722,4592.94,1879.541" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[36279575142f99ec0a74e3b418bc6072]
@@ -1525,7 +1525,7 @@ Triple <- - PhysicalProperty
 Triple <- - PropertyBearer
 PropertyBearer <|- - PhysicalEntity
 PropertyBearer <|- - PhysicalProcess
-PropertyBearer <|- - PhysicalForce
+PropertyBearer <|- - EnergyDiff
 PropertyBearer <|- - PhysicalDependency
 
 SingularAnnotation - -|> Annotation

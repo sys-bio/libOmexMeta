@@ -79,7 +79,7 @@ namespace omexmeta {
 		+addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr) : void
 		+addNamespace(std::string ns, std::string prefix) : void
 		+addPhysicalEntityAnnotation(const std::string& subject, std::string isVersionOf, const std::string& isPropertyOf, Resource is, Resource isPartOf) : void
-		+addPhysicalForceAnnotation(std::string subject, std::string isVersionOf, std::string isPropertyOf) : void
+		+addEnergyDiffAnnotation(std::string subject, std::string isVersionOf, std::string isPropertyOf) : void
 		+addPhysicalProcessAnnotation(std::string subject, std::string isVersionOf, std::string isPropertyOf, std::vector<ParticipantPtr> participants) : void
 		+addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource) : void
 		+addSingleAnnotation(Triple triple) : void
@@ -194,9 +194,9 @@ namespace omexmeta {
 
 
 
-	class PhysicalForce {
-		+PhysicalForce()
-		+PhysicalForce(librdf_world* world, Subject metaid, PhysicalProperty physicalProperty, Sources sources, Sinks sinks)
+	class EnergyDiff {
+		+EnergyDiff()
+		+EnergyDiff(librdf_world* world, Subject metaid, PhysicalProperty physicalProperty, Sources sources, Sinks sinks)
 		-sinks_ : Sinks
 		+getSinks() : Sinks& {query}
 		-sources_ : Sources
@@ -566,7 +566,7 @@ namespace omexmeta {
 
 	enum AnnotationType {
 		PHYSICAL_ENTITY
-		PHYSICAL_FORCE
+		energy_diff
 		PHYSICAL_PROCESS
 		SINGULAR
 	}
@@ -628,7 +628,7 @@ namespace omexmeta {
 
 
 
-	PhysicalPhenomenon <|-- PhysicalForce
+	PhysicalPhenomenon <|-- EnergyDiff
 
 
 
@@ -839,7 +839,7 @@ namespace omexmeta {
 
 
 
-	PhysicalProperty <.. PhysicalForce
+	PhysicalProperty <.. EnergyDiff
 
 
 
@@ -1014,7 +1014,7 @@ namespace omexmeta {
 
 
 
-	Subject <.. PhysicalForce
+	Subject <.. EnergyDiff
 
 
 

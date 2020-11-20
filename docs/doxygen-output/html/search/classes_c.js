@@ -4,7 +4,7 @@ var searchData=
   ['participant_287',['Participant',['../classomexmeta_1_1Participant.html',1,'omexmeta']]],
   ['personalinformation_288',['PersonalInformation',['../classomexmeta_1_1PersonalInformation.html',1,'omexmeta']]],
   ['physicalentity_289',['PhysicalEntity',['../classomexmeta_1_1PhysicalEntity.html',1,'omexmeta']]],
-  ['physicalforce_290',['PhysicalForce',['../classomexmeta_1_1PhysicalForce.html',1,'omexmeta']]],
+  ['physicalforce_290',['EnergyDiff',['../classomexmeta_1_1EnergyDiff.html',1,'omexmeta']]],
   ['physicalphenomenon_291',['PhysicalPhenomenon',['../classomexmeta_1_1PhysicalPhenomenon.html',1,'omexmeta']]],
   ['physicalprocess_292',['PhysicalProcess',['../classomexmeta_1_1PhysicalProcess.html',1,'omexmeta']]],
   ['physicalproperty_293',['PhysicalProperty',['../classomexmeta_1_1PhysicalProperty.html',1,'omexmeta']]],

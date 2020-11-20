@@ -174,7 +174,7 @@
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalPhenomenon.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalEntity.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalProcess.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/PhysicalForce.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/EnergyDiff.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;RedlandWrapper.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/Error.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaUtils.h&quot;</span><span class="cp"></span>
@@ -338,7 +338,7 @@
 <span class="cm">         * the composite annotations.</span>
 <span class="cm">         *</span>
 <span class="cm">         * Composite annotations currently supported are PhysicalEntity,</span>
-<span class="cm">         * PhysicalProcess and PhysicalForce. The PhysicalDependency</span>
+<span class="cm">         * PhysicalProcess and EnergyDiff. The PhysicalDependency</span>
 <span class="cm">         * type will be supported in future releases.</span>
 <span class="cm">         *</span>
 <span class="cm">         * For developers. Consider removing this function in favour of using the</span>
@@ -379,10 +379,10 @@
         <span class="kt">void</span> <span class="nf">removePhysicalProcess</span><span class="p">(</span><span class="n">PhysicalProcess</span> <span class="o">&amp;</span><span class="n">physicalProcess</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief add a composite annotation of type PhysicalForce to the rdf graph</span>
-<span class="cm">         * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.</span>
+<span class="cm">         * @brief add a composite annotation of type EnergyDiff to the rdf graph</span>
+<span class="cm">         * @param physicalForce An instance of a EnergyDiff objec to add to the rdf graph.</span>
 <span class="cm">         */</span>
-        <span class="kt">void</span> <span class="nf">addPhysicalForce</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">addEnergyDiff</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">);</span>
 
         <span class="cm">/*</span>
 <span class="cm">         * @brief add a PersonalInformation class to the rdf model</span>
@@ -391,10 +391,10 @@
         <span class="kt">void</span> <span class="nf">addPersonalInformation</span><span class="p">(</span><span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">personalInformation</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief remove triples associated with a a PhysicalForce object from the rdf graph</span>
-<span class="cm">         * @param physicalForce the PhysicalForce to remove</span>
+<span class="cm">         * @brief remove triples associated with a a EnergyDiff object from the rdf graph</span>
+<span class="cm">         * @param physicalForce the EnergyDiff to remove</span>
 <span class="cm">         */</span>
-        <span class="kt">void</span> <span class="nf">removePhysicalForce</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">removeEnergyDiff</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
 
         <span class="cm">/*</span>
@@ -411,7 +411,7 @@
 
         <span class="n">PhysicalEntity</span> <span class="nf">newPhysicalEntity</span><span class="p">();</span>
 
-        <span class="n">PhysicalForce</span> <span class="nf">newPhysicalForce</span><span class="p">();</span>
+        <span class="n">EnergyDiff</span> <span class="nf">newEnergyDiff</span><span class="p">();</span>
 
         <span class="n">PhysicalProcess</span> <span class="nf">newPhysicalProcess</span><span class="p">();</span>
 

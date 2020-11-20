@@ -10,7 +10,7 @@
     <includes refid="PhysicalPhenomenon_8h" local="yes">omexmeta/PhysicalPhenomenon.h</includes>
     <includes refid="PhysicalEntity_8h" local="yes">omexmeta/PhysicalEntity.h</includes>
     <includes refid="PhysicalProcess_8h" local="yes">omexmeta/PhysicalProcess.h</includes>
-    <includes refid="PhysicalForce_8h" local="yes">omexmeta/PhysicalForce.h</includes>
+    <includes refid="EnergyDiff_8h" local="yes">omexmeta/EnergyDiff.h</includes>
     <includes local="yes">redland/RedlandAPI.h</includes>
     <includes refid="Error_8h" local="yes">omexmeta/Error.h</includes>
     <includes refid="OmexMetaUtils_8h" local="yes">omexmeta/OmexMetaUtils.h</includes>
@@ -367,8 +367,8 @@
         </childnode>
       </node>
       <node id="48">
-        <label>omexmeta/PhysicalForce.h</label>
-        <link refid="PhysicalForce_8h_source"/>
+        <label>omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -671,7 +671,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalPhenomenon.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalEntity.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalProcess.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/PhysicalForce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/EnergyDiff.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/RedlandAPI.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omexmeta/OmexMetaUtils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -755,11 +755,11 @@
 <codeline lineno="193"><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removePhysicalProcess(<ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref><sp/>&amp;physicalProcess)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addPhysicalForce(<ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;physicalForce);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addEnergyDiff(<ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;physicalForce);</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addPersonalInformation(<ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref><sp/>*personalInformation);</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removePhysicalForce(<ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>&amp;physicalForce)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removeEnergyDiff(<ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;physicalForce)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="217"><highlight class="normal"></highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>checkValidMetaid(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid);</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"></highlight></codeline>
@@ -775,7 +775,7 @@
 <codeline lineno="260"><highlight class="normal"></highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref><sp/>newPhysicalEntity();</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref><sp/>newPhysicalForce();</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>newEnergyDiff();</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"></highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref><sp/>newPhysicalProcess();</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"></highlight></codeline>

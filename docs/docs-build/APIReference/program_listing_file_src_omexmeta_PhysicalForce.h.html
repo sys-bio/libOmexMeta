@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Program Listing for File PhysicalForce.h &mdash; libomexmeta 0.0.1 documentation</title>
+  <title>Program Listing for File EnergyDiff.h &mdash; libomexmeta 0.0.1 documentation</title>
   
 
   
@@ -136,13 +136,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Program Listing for File PhysicalForce.h</li>
+      <li>Program Listing for File EnergyDiff.h</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_PhysicalForce.h.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/APIReference/program_listing_file_src_omexmeta_EnergyDiff.h.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,8 +156,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="program-listing-for-file-physicalforce-h">
-<span id="program-listing-file-src-omexmeta-physicalforce-h"></span><h1>Program Listing for File PhysicalForce.h<a class="headerlink" href="#program-listing-for-file-physicalforce-h" title="Permalink to this headline">¶</a></h1>
-<p>↰ <a class="reference internal" href="file_src_omexmeta_PhysicalForce.h.html#file-src-omexmeta-physicalforce-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/PhysicalForce.h</span></code>)</p>
+<span id="program-listing-file-src-omexmeta-physicalforce-h"></span><h1>Program Listing for File EnergyDiff.h<a class="headerlink" href="#program-listing-for-file-physicalforce-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_omexmeta_EnergyDiff.h.html#file-src-omexmeta-physicalforce-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/omexmeta/EnergyDiff.h</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 <span class="c1">// Created by Ciaran on 4/22/2020.</span>
 <span class="c1">//</span>
@@ -183,7 +183,7 @@
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">redland</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="n">omexmeta</span> <span class="p">{</span>
-    <span class="k">class</span> <span class="nc">PhysicalForce</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PhysicalPhenomenon</span> <span class="p">{</span>
+    <span class="k">class</span> <span class="nc">EnergyDiff</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PhysicalPhenomenon</span> <span class="p">{</span>
 
         <span class="n">Sources</span> <span class="n">sources_</span><span class="p">;</span>
         <span class="n">Sinks</span> <span class="n">sinks_</span><span class="p">;</span>
@@ -191,79 +191,79 @@
     <span class="k">public</span><span class="o">:</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief default constructor for PhysicalForce</span>
+<span class="cm">         * @brief default constructor for EnergyDiff</span>
 <span class="cm">         * @details deliberately deleted. If you try using the</span>
 <span class="cm">         * builder interface (chaining setter methods) from a default</span>
-<span class="cm">         * instantiated PhysicalForce you will get an error, because there</span>
-<span class="cm">         * will be no model assicated with PhysicalForce. Instead, always</span>
-<span class="cm">         * instantiate a PhysicalForce from the Editor::addPhysicalForce() method.</span>
+<span class="cm">         * instantiated EnergyDiff you will get an error, because there</span>
+<span class="cm">         * will be no model assicated with EnergyDiff. Instead, always</span>
+<span class="cm">         * instantiate a EnergyDiff from the Editor::addEnergyDiff() method.</span>
 <span class="cm">         */</span>
-        <span class="n">PhysicalForce</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+        <span class="n">EnergyDiff</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
 
-        <span class="o">~</span><span class="n">PhysicalForce</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+        <span class="o">~</span><span class="n">EnergyDiff</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
 
 
-        <span class="n">PhysicalForce</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span> <span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">,</span> <span class="n">Sources</span> <span class="n">sources</span><span class="p">,</span>
+        <span class="n">EnergyDiff</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_uri</span><span class="p">,</span> <span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">,</span> <span class="n">Sources</span> <span class="n">sources</span><span class="p">,</span>
                       <span class="n">Sinks</span> <span class="n">sinks</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief Free nodes associated with PhysicalForce.</span>
+<span class="cm">         * @brief Free nodes associated with EnergyDiff.</span>
 <span class="cm">         *</span>
-<span class="cm">         * The PhysicalForce is</span>
-<span class="cm">         * owned by the caller if the PhysicalForce::toTriples method is NOT used.</span>
-<span class="cm">         * When toTriples() is used, the nodes that create the PhysicalForce are &quot;given&quot;</span>
+<span class="cm">         * The EnergyDiff is</span>
+<span class="cm">         * owned by the caller if the EnergyDiff::toTriples method is NOT used.</span>
+<span class="cm">         * When toTriples() is used, the nodes that create the EnergyDiff are &quot;given&quot;</span>
 <span class="cm">         * to the Triples object, which automatically destroys them at the right time.</span>
 <span class="cm">         *</span>
-<span class="cm">         * Most of the time, users will not have to remember to free the PhysicalForce themselves</span>
+<span class="cm">         * Most of the time, users will not have to remember to free the EnergyDiff themselves</span>
 <span class="cm">         * as the toTriples method is always used.</span>
 <span class="cm">         *</span>
 <span class="cm">         */</span>
         <span class="kt">void</span> <span class="nf">free</span><span class="p">();</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief constructor for instantiating a PhysicalForce type composite annotation</span>
+<span class="cm">         * @brief constructor for instantiating a EnergyDiff type composite annotation</span>
 <span class="cm">         * @param model. A librdf_model pass down by Editor.</span>
 <span class="cm">         *</span>
-<span class="cm">         * Users do not need to instantiate PhysicalForce manually, since it is done</span>
-<span class="cm">         * by Editor. This constructor instantiates an empty PhysicalForce</span>
+<span class="cm">         * Users do not need to instantiate EnergyDiff manually, since it is done</span>
+<span class="cm">         * by Editor. This constructor instantiates an empty EnergyDiff</span>
 <span class="cm">         * object which is filled by</span>
 <span class="cm">         *</span>
 <span class="cm">         */</span>
-        <span class="k">explicit</span> <span class="nf">PhysicalForce</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">);</span>
+        <span class="k">explicit</span> <span class="nf">EnergyDiff</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief constructor for instantiating a PhysicalForce type composite annotation</span>
+<span class="cm">         * @brief constructor for instantiating a EnergyDiff type composite annotation</span>
 <span class="cm">         * @param model. A librdf_model pass down by Editor.</span>
 <span class="cm">         * @param local_uri. String passed down by Editor. The local uri to use for metaids</span>
 <span class="cm">         *</span>
-<span class="cm">         * Users do not need to instantiate PhysicalForce manually, since it is done</span>
-<span class="cm">         * by Editor. This constructor instantiates an empty PhysicalForce</span>
+<span class="cm">         * Users do not need to instantiate EnergyDiff manually, since it is done</span>
+<span class="cm">         * by Editor. This constructor instantiates an empty EnergyDiff</span>
 <span class="cm">         * object which is filled by</span>
 <span class="cm">         *</span>
 <span class="cm">         */</span>
-        <span class="k">explicit</span> <span class="nf">PhysicalForce</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">local_uri</span><span class="p">);</span>
+        <span class="k">explicit</span> <span class="nf">EnergyDiff</span><span class="p">(</span><span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">local_uri</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief create a metaid for the physical force annotation</span>
-<span class="cm">         * @brief a new metaid for PhysicalForce</span>
+<span class="cm">         * @brief create a metaid for the energy differential annotation</span>
+<span class="cm">         * @brief a new metaid for EnergyDiff</span>
 <span class="cm">         */</span>
         <span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">createMetaId</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief return vector of Source objects assocated with PhysicalForce</span>
+<span class="cm">         * @brief return vector of Source objects assocated with EnergyDiff</span>
 <span class="cm">         * @return a vector of SourceParticipants</span>
 <span class="cm">         */</span>
         <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">Sources</span> <span class="o">&amp;</span><span class="n">getSources</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief return vector of Sink objects assocated with PhysicalForce</span>
+<span class="cm">         * @brief return vector of Sink objects assocated with EnergyDiff</span>
 <span class="cm">         * @return a vector of SinkParticipants</span>
 <span class="cm">         */</span>
         <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="k">const</span> <span class="n">Sinks</span> <span class="o">&amp;</span><span class="n">getSinks</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
         <span class="cm">/*</span>
 <span class="cm">         * @brief converts the PhyicalForce object into a Triples object.</span>
-<span class="cm">         * @return a Triples object containing the individual Triple objects of a PhysicalForce.</span>
+<span class="cm">         * @return a Triples object containing the individual Triple objects of a EnergyDiff.</span>
 <span class="cm">         *</span>
 <span class="cm">         * When this method is called ownership of all RDF nodes gets transferred from</span>
 <span class="cm">         * the caller to the returned Triples object.</span>
@@ -271,83 +271,83 @@
         <span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">Triples</span> <span class="n">toTriples</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief sets the about field of the PhysicalForce</span>
-<span class="cm">         * @param metaid id for the physical force. Result is relative to base_uri.</span>
-<span class="cm">         * @return a reference to this PhysicalForce to enable the builder interface.</span>
+<span class="cm">         * @brief sets the about field of the EnergyDiff</span>
+<span class="cm">         * @param metaid id for the energy differential. Result is relative to base_uri.</span>
+<span class="cm">         * @return a reference to this EnergyDiff to enable the builder interface.</span>
 <span class="cm">         *</span>
 <span class="cm">         * A Resource object with a URI node is instantiated using the</span>
 <span class="cm">         * the @param metaid.</span>
 <span class="cm">         *</span>
 <span class="cm">         * See Resource for more information about input format for @param metaid</span>
 <span class="cm">         */</span>
-<span class="c1">//        PhysicalForce &amp;about(std::string metaid);</span>
+<span class="c1">//        EnergyDiff &amp;about(std::string metaid);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief sets the physical property of the PhysicalForce</span>
+<span class="cm">         * @brief sets the physical property of the EnergyDiff</span>
 <span class="cm">         * @parameter physicalProperty An instance of PhysicalProperty representing the</span>
-<span class="cm">         * physical property term for the PhysicalForce.</span>
-<span class="cm">         * @return a reference to this PhysicalForce to enable the builder interface.</span>
+<span class="cm">         * physical property term for the EnergyDiff.</span>
+<span class="cm">         * @return a reference to this EnergyDiff to enable the builder interface.</span>
 <span class="cm">         *</span>
 <span class="cm">         * Prefer the other setPhysicalProperty method since it only requires a</span>
 <span class="cm">         * string input and instantiates the PhysicalProperty for you.</span>
 <span class="cm">         *</span>
 <span class="cm">         * For developers. Consider removing.</span>
 <span class="cm">         */</span>
-        <span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">);</span>
+        <span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">PhysicalProperty</span> <span class="n">physicalProperty</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief sets the physical property of the PhysicalForce</span>
+<span class="cm">         * @brief sets the physical property of the EnergyDiff</span>
 <span class="cm">         * @param subject_metaid. The subject portion of the two triples produced by PhysicalProperty. Metaid of a model element.</span>
 <span class="cm">         * @param A string representing the OPB term to use as the physical property. Like &quot;OPB:OPB_1234&quot;</span>
-<span class="cm">         * @return a reference to this PhysicalForce to enable the builder interface.</span>
+<span class="cm">         * @return a reference to this EnergyDiff to enable the builder interface.</span>
 <span class="cm">         */</span>
-        <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">subject_metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physical_property</span><span class="p">);</span>
+        <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">subject_metaid</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">physical_property</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief add a SourceParticipant to the PhysicalForce.</span>
+<span class="cm">         * @brief add a SourceParticipant to the EnergyDiff.</span>
 <span class="cm">         * @param metaid the ID for the SourceParticipant.</span>
 <span class="cm">         * @param multiplier The multiplier argument for SourceParticipant</span>
 <span class="cm">         * @param physical_entity_reference The physicalEntityReference argument for</span>
 <span class="cm">         * the SourceParticipant.</span>
-<span class="cm">         * @return a reference to this PhysicalForce to enable the builder interface.</span>
+<span class="cm">         * @return a reference to this EnergyDiff to enable the builder interface.</span>
 <span class="cm">         *</span>
 <span class="cm">         * See SourceParticipant documentation for more details on arguments.</span>
 <span class="cm">         */</span>
-        <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">addSource</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
+        <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">addSource</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
 
         <span class="cm">/*</span>
-<span class="cm">         * @brief add a SinkParticipant to the PhysicalForce.</span>
+<span class="cm">         * @brief add a SinkParticipant to the EnergyDiff.</span>
 <span class="cm">         * @param sink_metaid the ID for the SinkParticipant.</span>
 <span class="cm">         * @param multiplier The multiplier argument for SinkParticipant</span>
 <span class="cm">         * @param physical_entity_reference The physicalEntityReference argument for</span>
 <span class="cm">         * the SinkParticipant.</span>
-<span class="cm">         * @return a reference to this PhysicalForce to enable the builder interface.</span>
+<span class="cm">         * @return a reference to this EnergyDiff to enable the builder interface.</span>
 <span class="cm">         *</span>
 <span class="cm">         * See SinkParticipant documentation for more details on arguments.</span>
 <span class="cm">         */</span>
-        <span class="n">PhysicalForce</span> <span class="o">&amp;</span> <span class="n">addSink</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
+        <span class="n">EnergyDiff</span> <span class="o">&amp;</span> <span class="n">addSink</span><span class="p">(</span><span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
 
-<span class="c1">//        bool operator==(const PhysicalForce &amp;rhs) const;</span>
+<span class="c1">//        bool operator==(const EnergyDiff &amp;rhs) const;</span>
 <span class="c1">//</span>
-<span class="c1">//        bool operator!=(const PhysicalForce &amp;rhs) const;</span>
+<span class="c1">//        bool operator!=(const EnergyDiff &amp;rhs) const;</span>
 
         <span class="cm">/*</span>
 <span class="cm">         * @brief returns the number of sources associated with the</span>
-<span class="cm">         * PhysicalForce</span>
+<span class="cm">         * EnergyDiff</span>
 <span class="cm">         * @return the integer number of sources</span>
 <span class="cm">         */</span>
         <span class="kt">int</span> <span class="nf">getNumSources</span><span class="p">();</span>
 
         <span class="cm">/*</span>
 <span class="cm">         * @brief returns the number of sinks associated with the</span>
-<span class="cm">         * PhysicalForce</span>
+<span class="cm">         * EnergyDiff</span>
 <span class="cm">         * @return the integer number of sinks</span>
 <span class="cm">         */</span>
         <span class="kt">int</span> <span class="nf">getNumSinks</span><span class="p">();</span>
 
-        <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
-        <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
     <span class="p">};</span>
 <span class="p">}</span>
 

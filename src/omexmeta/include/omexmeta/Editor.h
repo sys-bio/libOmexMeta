@@ -6,23 +6,22 @@
 #define LIBOMEXMETA_EDITOR_H
 
 
+#include "omexmeta/EnergyDiff.h"
+#include "omexmeta/Error.h"
+#include "omexmeta/MarkupIdentifier.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/OmexMetaXmlAssistant.h"
-#include "omexmeta/Predicate.h"
-#include "omexmeta/Resource.h"
-#include "omexmeta/Triple.h"
 #include "omexmeta/Participant.h"
-#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/PersonalInformation.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
-#include "omexmeta/PhysicalForce.h"
-#include "redland/RedlandAPI.h"
-#include "omexmeta/Error.h"
-#include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/PersonalInformation.h"
-#include "omexmeta/MarkupIdentifier.h"
+#include "omexmeta/Predicate.h"
+#include "omexmeta/PropertyBearer.h"
+#include "omexmeta/Resource.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
+#include "omexmeta/Triple.h"
 #include "omexmeta_export.h"
-#include "omexmeta/SBMLSemanticExtraction.h"
+#include "redland/RedlandAPI.h"
 
 #include "redland/librdf.h"
 
@@ -57,7 +56,7 @@ namespace omexmeta {
         const std::string& model_uri_ ;
         const std::string& local_uri_ ;
 
-        void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
+        void extractNamespacesFromTriplesVector(PropertyBearer *pp);
 
     public:
 
@@ -159,13 +158,13 @@ namespace omexmeta {
          * the composite annotations.
          *
          * Composite annotations currently supported are PhysicalEntity,
-         * PhysicalProcess and PhysicalForce. The PhysicalDependency
+         * PhysicalProcess and EnergyDiff. The PhysicalDependency
          * type will be supported in future releases.
          *
          * For developers. Consider removing this function in favour of using the
          * add* functions.
          */
-        void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
+        void addCompositeAnnotation(PropertyBearer *phenomenonPtr);
 
         /**
          * @brief add a physical process to the rdf graph
@@ -203,10 +202,10 @@ namespace omexmeta {
         void removePhysicalProcess(PhysicalProcess &physicalProcess) const;
 
         /**
-         * @brief add a composite annotation of type PhysicalForce to the rdf graph
-         * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.
+         * @brief add a composite annotation of type EnergyDiff to the rdf graph
+         * @param physicalForce An instance of a EnergyDiff objec to add to the rdf graph.
          */
-        void addPhysicalForce(PhysicalForce &physicalForce);
+        void addEnergyDiff(EnergyDiff &physicalForce);
 
         /**
          * @brief add a PersonalInformation class to the rdf model
@@ -215,10 +214,10 @@ namespace omexmeta {
         void addPersonalInformation(PersonalInformation *personalInformation);
 
         /**
-         * @brief remove triples associated with a a PhysicalForce object from the rdf graph
-         * @param physicalForce the PhysicalForce to remove
+         * @brief remove triples associated with a a EnergyDiff object from the rdf graph
+         * @param physicalForce the EnergyDiff to remove
          */
-        void removePhysicalForce(PhysicalForce &physicalForce) const;
+        void removeEnergyDiff(EnergyDiff &physicalForce) const;
 
         /**
          * @brief check that a metaid is valid by comparing
@@ -272,12 +271,12 @@ namespace omexmeta {
         PhysicalEntity newPhysicalEntity();
 
         /**
-         * @brief create a new PhysicalForce object.
-         * @details PhysicalForce objects should only be instantiated
+         * @brief create a new EnergyDiff object.
+         * @details EnergyDiff objects should only be instantiated
          * via the Editor because this enables the passing of necessary information
          * behind the scenes, rather than needing to be provided by the user.
          */
-        PhysicalForce newPhysicalForce();
+        EnergyDiff newEnergyDiff();
 
         /**
          * @brief create a new PhysicalProcess object.
@@ -300,11 +299,11 @@ namespace omexmeta {
          */
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
-        OMEXMETA_DEPRECATED void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
+        OMEXMETA_DEPRECATED void addCompositeAnnotation2(PropertyBearer *phenomenonPtr);
 
         void addTriples(Triples &triples);
 
-        void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
+        void removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const;
 
         /**
          * @brief get the current value of archive_uri_

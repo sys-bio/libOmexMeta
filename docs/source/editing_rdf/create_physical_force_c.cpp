@@ -106,18 +106,18 @@ int main(){
 
     Editor* editor = RDF_toEditor(rdf, sbml, true, false);
 
-    PhysicalForce* physicalForce = PhysicalForce_new(editor);
-    PhysicalForce_about(physicalForce,"#OmexMetaId0001");
-    PhysicalForce_hasProperty(physicalForce, "OPB:OPB_00340");
-    PhysicalForce_addSink(physicalForce, 1, "OmexMetaID0001");
-    PhysicalForce_addSource(physicalForce, 1, "OmexMetaID0002");
+    EnergyDiff* physicalForce = EnergyDiff_new(editor);
+    EnergyDiff_about(physicalForce,"#OmexMetaId0001");
+    EnergyDiff_hasProperty(physicalForce, "OPB:OPB_00340");
+    EnergyDiff_addSink(physicalForce, 1, "OmexMetaID0001");
+    EnergyDiff_addSource(physicalForce, 1, "OmexMetaID0002");
 
-    Editor_addPhysicalForce(editor, physicalForce);
+    Editor_addEnergyDiff(editor, physicalForce);
     char* rdf_string = RDF_toString(rdf, "turtle");
     printf("%s\n", rdf_string);
 
     free(rdf_string);
-    PhysicalForce_delete(physicalForce);
+    EnergyDiff_delete(physicalForce);
     Editor_delete(editor);
     RDF_delete(rdf);
     return 0;

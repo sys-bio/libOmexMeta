@@ -47,7 +47,7 @@ class \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Informati
 \begin{DoxyCompactList}\small\item\em add personal information to the model as a composite annotation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}
 \item 
-class \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}}
+class \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}}
 \item 
@@ -232,7 +232,7 @@ int {\bfseries Editor\+\_\+add\+Physical\+Entity} (\mbox{\hyperlink{classomexmet
 int {\bfseries Editor\+\_\+add\+Physical\+Process} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a25c470e9dd1cd508e103c687d08fea07}\label{namespaceomexmeta_a25c470e9dd1cd508e103c687d08fea07}} 
-int {\bfseries Editor\+\_\+add\+Physical\+Force} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+Force)
+int {\bfseries Editor\+\_\+add\+Physical\+Force} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a5da4e46f21b19e38fad07c06ad668efd}\label{namespaceomexmeta_a5da4e46f21b19e38fad07c06ad668efd}} 
 int {\bfseries Editor\+\_\+add\+Personal\+Information} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$personal\+Information)
@@ -247,7 +247,7 @@ int {\bfseries Editor\+\_\+remove\+Physical\+Entity} (\mbox{\hyperlink{classomex
 int {\bfseries Editor\+\_\+remove\+Physical\+Process} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a5d9f7c0c294472359ce3d70db5cb1035}\label{namespaceomexmeta_a5d9f7c0c294472359ce3d70db5cb1035}} 
-int {\bfseries Editor\+\_\+remove\+Physical\+Force} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+Force)
+int {\bfseries Editor\+\_\+remove\+Physical\+Force} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_aac121eb946b9380ca162061ab725dad0}\label{namespaceomexmeta_aac121eb946b9380ca162061ab725dad0}} 
 int {\bfseries Editor\+\_\+remove\+Personal\+Information} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
@@ -443,38 +443,38 @@ int {\bfseries Physical\+Process\+\_\+get\+Num\+Mediators} (\mbox{\hyperlink{cla
 \mbox{\Hypertarget{namespaceomexmeta_a26a3610a8028b795ffdaf9e54b6ee2c0}\label{namespaceomexmeta_a26a3610a8028b795ffdaf9e54b6ee2c0}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$about)
 \item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}{Physical\+Force\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}{Physical\+Force\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-int \mbox{\hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{Physical\+Force\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+Force)
+int \mbox{\hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{Physical\+Force\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
 \item 
-int \mbox{\hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{Physical\+Force\+\_\+free\+All}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr)
+int \mbox{\hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{Physical\+Force\+\_\+free\+All}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_ae66097c6bfe2f6370bcb614a3d384a41}\label{namespaceomexmeta_ae66097c6bfe2f6370bcb614a3d384a41}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Source} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Source} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a75abc8bc74d8bacefd65935f49210343}\label{namespaceomexmeta_a75abc8bc74d8bacefd65935f49210343}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Sink} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Sink} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a3942ac5b5d7393eea5f0644c2f31cbc5}\label{namespaceomexmeta_a3942ac5b5d7393eea5f0644c2f31cbc5}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_aae66100eb98adbc738a6476dcb018e8f}\label{namespaceomexmeta_aae66100eb98adbc738a6476dcb018e8f}} 
-int {\bfseries Physical\+Force\+\_\+get\+Num\+Sources} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+Force)
+int {\bfseries Physical\+Force\+\_\+get\+Num\+Sources} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a1bec2b6579c0eba8a719f68d39b09c2e}\label{namespaceomexmeta_a1bec2b6579c0eba8a719f68d39b09c2e}} 
-int {\bfseries Physical\+Force\+\_\+get\+Num\+Sinks} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+Force)
+int {\bfseries Physical\+Force\+\_\+get\+Num\+Sinks} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a8a3f3cf23e3c5253f0a92f6374a2059b}\label{namespaceomexmeta_a8a3f3cf23e3c5253f0a92f6374a2059b}} 
-char $\ast$ {\bfseries Physical\+Force\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$format, const char $\ast$base\+\_\+uri)
+char $\ast$ {\bfseries Physical\+Force\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$format, const char $\ast$base\+\_\+uri)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a4428467ced5ab11c48a3b16284048a36}\label{namespaceomexmeta_a4428467ced5ab11c48a3b16284048a36}} 
-char $\ast$ {\bfseries Physical\+Force\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr)
+char $\ast$ {\bfseries Physical\+Force\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a016cac89803483ca6afdf30a111839c8}\label{namespaceomexmeta_a016cac89803483ca6afdf30a111839c8}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$property)
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$property)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a046f8a2e1bf9b4374f012480ad026445}\label{namespaceomexmeta_a046f8a2e1bf9b4374f012480ad026445}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$about)
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$about)
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a119fbc0317a5af631e7f68caece8c70b}{Personal\+Information\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
@@ -638,34 +638,34 @@ note\+: Really I do not want users to have to deal with this todo take steps to 
 \item[Examples]\par
 \mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}\label{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}} 
-\index{omexmeta@{omexmeta}!PhysicalForce\_delete@{PhysicalForce\_delete}}
-\index{PhysicalForce\_delete@{PhysicalForce\_delete}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{PhysicalForce\_delete()}{PhysicalForce\_delete()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Force\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$}]{physical\+Force }\end{DoxyParamCaption})}
+\index{omexmeta@{omexmeta}!EnergyDiff\_delete@{EnergyDiff\_delete}}
+\index{EnergyDiff\_delete@{EnergyDiff\_delete}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{EnergyDiff\_delete()}{EnergyDiff\_delete()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Force\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$}]{physical\+Force }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief deletes physical force excluding all
+\begin{DoxyVerb}@brief deletes energy differential excluding all
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}\label{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}} 
-\index{omexmeta@{omexmeta}!PhysicalForce\_freeAll@{PhysicalForce\_freeAll}}
-\index{PhysicalForce\_freeAll@{PhysicalForce\_freeAll}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{PhysicalForce\_freeAll()}{PhysicalForce\_freeAll()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Force\+\_\+free\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$}]{physical\+\_\+force\+\_\+ptr }\end{DoxyParamCaption})}
+\index{omexmeta@{omexmeta}!EnergyDiff\_freeAll@{EnergyDiff\_freeAll}}
+\index{EnergyDiff\_freeAll@{EnergyDiff\_freeAll}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{EnergyDiff\_freeAll()}{EnergyDiff\_freeAll()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Force\+\_\+free\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$}]{physical\+\_\+force\+\_\+ptr }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief deletes physical force including all
+\begin{DoxyVerb}@brief deletes energy differential including all
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}\label{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}} 
-\index{omexmeta@{omexmeta}!PhysicalForce\_new@{PhysicalForce\_new}}
-\index{PhysicalForce\_new@{PhysicalForce\_new}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{PhysicalForce\_new()}{PhysicalForce\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} $\ast$ omexmeta\+::\+Physical\+Force\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+\index{omexmeta@{omexmeta}!EnergyDiff\_new@{EnergyDiff\_new}}
+\index{EnergyDiff\_new@{EnergyDiff\_new}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{EnergyDiff\_new()}{EnergyDiff\_new()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ omexmeta\+::\+Physical\+Force\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} class methods \begin{Desc}
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} class methods \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a4b7cef4fcdbd4502c94b18da2f85470f}\label{namespaceomexmeta_a4b7cef4fcdbd4502c94b18da2f85470f}} 

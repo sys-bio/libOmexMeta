@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/omexmeta/PhysicalForce.h Source File</title>
+<title>libomexmeta: src/omexmeta/EnergyDiff.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,7 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">PhysicalForce.h</div>  </div>
+<div class="title">EnergyDiff.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
@@ -98,27 +98,27 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span>redland;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalForce.html">   28</a></span>&#160;    <span class="keyword">class </span>OMEXMETA_EXPORT <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1PhysicalPhenomenon.html">PhysicalPhenomenon</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classomexmeta_1_1EnergyDiff.html">   28</a></span>&#160;    <span class="keyword">class </span>OMEXMETA_EXPORT <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1PhysicalPhenomenon.html">PhysicalPhenomenon</a> {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        Sources sources_;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        Sinks sinks_;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::string physical_force_property_id_;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::string energy_diff_property_id_;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalForce.html#ad5b43ea5489891c45f5ebc4c9b62e44e">   44</a></span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html#ad5b43ea5489891c45f5ebc4c9b62e44e">PhysicalForce</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classomexmeta_1_1EnergyDiff.html#ad5b43ea5489891c45f5ebc4c9b62e44e">   44</a></span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html#ad5b43ea5489891c45f5ebc4c9b62e44e">EnergyDiff</a>() = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ~<a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ~<a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a>(librdf_model *model, std::string model_uri, std::string local_uri, <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty, Sources sources,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a>(librdf_model *model, std::string model_uri, std::string local_uri, <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty, Sources sources,</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                      Sinks sinks);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> free();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a>(librdf_model *model);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a>(librdf_model *model);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a>(librdf_model *model, <span class="keyword">const</span> std::string&amp; model_uri, <span class="keyword">const</span> std::string&amp; local_uri);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a>(librdf_model *model, <span class="keyword">const</span> std::string&amp; model_uri, <span class="keyword">const</span> std::string&amp; local_uri);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        [[maybe_unused]] [[nodiscard]] std::string createMetaId();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
@@ -128,25 +128,25 @@ $(function() {
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        [[nodiscard]] <a class="code" href="classomexmeta_1_1Triples.html">Triples</a> toTriples() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        [[maybe_unused]] <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;setPhysicalProperty(<a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        [[maybe_unused]] <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;setPhysicalProperty(<a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;setPhysicalProperty(std::string subject_metaid, std::string physical_property);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;setPhysicalProperty(std::string subject_metaid, std::string physical_property);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;addSource(<span class="keywordtype">int</span> multiplier, <span class="keyword">const</span> std::string&amp; physical_entity_reference);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;addSource(<span class="keywordtype">int</span> multiplier, <span class="keyword">const</span> std::string&amp; physical_entity_reference);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp; addSink(<span class="keywordtype">int</span> multiplier, <span class="keyword">const</span> std::string&amp; physical_entity_reference);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp; addSink(<span class="keywordtype">int</span> multiplier, <span class="keyword">const</span> std::string&amp; physical_entity_reference);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordtype">int</span> getNumSources();</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordtype">int</span> getNumSinks();</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;rhs) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;rhs) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;isVersionOf(<span class="keyword">const</span> std::string &amp;property);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;isVersionOf(<span class="keyword">const</span> std::string &amp;property);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalForce.html">PhysicalForce</a> &amp;about(<span class="keyword">const</span> std::string &amp;about) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <a class="code" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> &amp;about(<span class="keyword">const</span> std::string &amp;about) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    };</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
@@ -156,8 +156,8 @@ $(function() {
 <div class="ttc" id="aclassomexmeta_1_1Triples_html"><div class="ttname"><a href="classomexmeta_1_1Triples.html">omexmeta::Triples</a></div><div class="ttdef"><b>Definition:</b> Triples.h:37</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PhysicalProperty_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalProperty.html">omexmeta::PhysicalProperty</a></div><div class="ttdef"><b>Definition:</b> PhysicalProperty.h:24</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PhysicalPhenomenon_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalPhenomenon.html">omexmeta::PhysicalPhenomenon</a></div><div class="ttdef"><b>Definition:</b> PhysicalPhenomenon.h:23</div></div>
-<div class="ttc" id="aclassomexmeta_1_1PhysicalForce_html_ad5b43ea5489891c45f5ebc4c9b62e44e"><div class="ttname"><a href="classomexmeta_1_1PhysicalForce.html#ad5b43ea5489891c45f5ebc4c9b62e44e">omexmeta::PhysicalForce::PhysicalForce</a></div><div class="ttdeci">PhysicalForce()=delete</div><div class="ttdoc">default constructor for PhysicalForce</div></div>
-<div class="ttc" id="aclassomexmeta_1_1PhysicalForce_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalForce.html">omexmeta::PhysicalForce</a></div><div class="ttdef"><b>Definition:</b> PhysicalForce.h:28</div></div>
+<div class="ttc" id="aclassomexmeta_1_1EnergyDiff_html_ad5b43ea5489891c45f5ebc4c9b62e44e"><div class="ttname"><a href="classomexmeta_1_1EnergyDiff.html#ad5b43ea5489891c45f5ebc4c9b62e44e">omexmeta::EnergyDiff::EnergyDiff</a></div><div class="ttdeci">EnergyDiff()=delete</div><div class="ttdoc">default constructor for EnergyDiff</div></div>
+<div class="ttc" id="aclassomexmeta_1_1EnergyDiff_html"><div class="ttname"><a href="classomexmeta_1_1EnergyDiff.html">omexmeta::EnergyDiff</a></div><div class="ttdef"><b>Definition:</b> EnergyDiff.h:28</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

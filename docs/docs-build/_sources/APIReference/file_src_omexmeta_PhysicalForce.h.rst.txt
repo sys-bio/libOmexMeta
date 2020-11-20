@@ -1,7 +1,7 @@
 
-.. _file_src_omexmeta_PhysicalForce.h:
+.. _file_src_omexmeta_EnergyDiff.h:
 
-File PhysicalForce.h
+File EnergyDiff.h
 ====================
 
 |exhale_lsh| :ref:`Parent directory <dir_src_omexmeta>` (``src/omexmeta``)
@@ -12,14 +12,14 @@ File PhysicalForce.h
    :local:
    :backlinks: none
 
-Definition (``src/omexmeta/PhysicalForce.h``)
+Definition (``src/omexmeta/EnergyDiff.h``)
 ---------------------------------------------
 
 
 .. toctree::
    :maxdepth: 1
 
-   program_listing_file_src_omexmeta_PhysicalForce.h.rst
+   program_listing_file_src_omexmeta_EnergyDiff.h.rst
 
 
 
@@ -55,7 +55,7 @@ Included By
 
 - :ref:`file_src_omexmeta_OmexMetaCApi.h`
 
-- :ref:`file_src_omexmeta_PhysicalForce.cpp`
+- :ref:`file_src_omexmeta_EnergyDiff.cpp`
 
 
 
@@ -71,5 +71,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classomexmeta_1_1PhysicalForce`
+- :ref:`exhale_class_classomexmeta_1_1EnergyDiff`
 

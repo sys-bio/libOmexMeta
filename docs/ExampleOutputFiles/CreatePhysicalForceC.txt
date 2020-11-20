@@ -5,20 +5,20 @@
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:ForceProperty0000
+local:EnergyDiffProperty0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaID0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:int ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaID0002> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001>
-    bqbiol:isPropertyOf local:ForceProperty0000 ;
+    bqbiol:isPropertyOf local:EnergyDiffProperty0000 ;
     bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
 
 

@@ -635,11 +635,11 @@ TEST_F(CAPITests, TestPhysicalProcessSBML1) {
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>\n"
@@ -683,11 +683,11 @@ TEST_F(CAPITests, TestPhysicalProcessSBML2) {
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>\n"
@@ -733,11 +733,11 @@ TEST_F(CAPITests, TestPhysicalProcessCellML1) {
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity2 .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
@@ -780,11 +780,11 @@ TEST_F(CAPITests, TestPhysicalProcessCellML2) {
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity2 .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
@@ -798,18 +798,18 @@ TEST_F(CAPITests, TestPhysicalProcessCellML2) {
 }
 
 
-TEST_F(CAPITests, TestPhysicalForceSBML1) {
+TEST_F(CAPITests, TestEnergyDiffSBML1) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
-    PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
+    EnergyDiff *energy_diff_ptr = Editor_newEnergyDiff(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_about(physical_force_ptr, "EnergyDiff_0", MODEL_URI);
-    physical_force_ptr = PhysicalForce_addSource(physical_force_ptr, "source_23", MODEL_URI, 1);
-    physical_force_ptr = PhysicalForce_addSink(physical_force_ptr, "sink_12", MODEL_URI, 1);
-    physical_force_ptr  = PhysicalForce_hasPropertyFull(physical_force_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058");
+    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "EnergyDiff_0", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "source_23", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "sink_12", MODEL_URI);
+    energy_diff_ptr  = EnergyDiff_hasPropertyFull(energy_diff_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058");
 
-    Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
+    Editor_addEnergyDiff(editor_ptr, energy_diff_ptr);
 
     const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -819,11 +819,9 @@ TEST_F(CAPITests, TestPhysicalForceSBML1) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .\n"
                            "\n"
                            "local:parameter_metaid_0\n"
@@ -836,22 +834,22 @@ TEST_F(CAPITests, TestPhysicalForceSBML1) {
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
-    PhysicalForce_delete(physical_force_ptr);
+    EnergyDiff_delete(energy_diff_ptr);
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, TestPhysicalForceSBML2) {
+TEST_F(CAPITests, TestEnergyDiffSBML2) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
-    PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
+    EnergyDiff *energy_diff_ptr = Editor_newEnergyDiff(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_about(physical_force_ptr, "EnergyDiff_0", MODEL_URI);
-    physical_force_ptr = PhysicalForce_addSource(physical_force_ptr, "source_23", MODEL_URI, 1);
-    physical_force_ptr = PhysicalForce_addSink(physical_force_ptr, "sink_12", MODEL_URI, 1);
-    physical_force_ptr  = PhysicalForce_hasPropertyisVersionOf(physical_force_ptr, "opb:OPB_01058");
+    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "EnergyDiff_0", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "source_23", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "sink_12", MODEL_URI);
+    energy_diff_ptr  = EnergyDiff_hasPropertyisVersionOf(energy_diff_ptr, "opb:OPB_01058");
 
-    Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
+    Editor_addEnergyDiff(editor_ptr, energy_diff_ptr);
 
     const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -860,16 +858,14 @@ TEST_F(CAPITests, TestPhysicalForceSBML2) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:ForceProperty0000\n"
+                           "local:EnergyDiffProperty0000\n"
                            "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>\n"
@@ -878,23 +874,23 @@ TEST_F(CAPITests, TestPhysicalForceSBML2) {
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
-    PhysicalForce_delete(physical_force_ptr);
+    EnergyDiff_delete(energy_diff_ptr);
     RDF_delete(rdf_ptr);
 }
 
 
-TEST_F(CAPITests, TestPhysicalForceCellML1) {
+TEST_F(CAPITests, TestEnergyDiffCellML1) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
-    PhysicalForce *physical_force_ptr = Editor_newPhysicalForce(editor_ptr);
+    EnergyDiff *energy_diff_ptr = Editor_newEnergyDiff(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_about(physical_force_ptr, "main.MembraneVoltage", MODEL_URI);
-    physical_force_ptr = PhysicalForce_addSource(physical_force_ptr, "entity1", LOCAL_URI, 1);
-    physical_force_ptr = PhysicalForce_addSink(physical_force_ptr, "entity2", LOCAL_URI, 1);
-    physical_force_ptr = PhysicalForce_hasPropertyFull(physical_force_ptr, "ForceProperty",MODEL_URI, "opb:OPB_00592");
+    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "main.MembraneVoltage", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "entity1", LOCAL_URI);
+    energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "entity2", LOCAL_URI);
+    energy_diff_ptr = EnergyDiff_hasPropertyFull(energy_diff_ptr, "EnergyDiffProperty",MODEL_URI, "opb:OPB_00592");
 
-    Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
+    Editor_addEnergyDiff(editor_ptr, energy_diff_ptr);
 
     const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -903,16 +899,14 @@ TEST_F(CAPITests, TestPhysicalForceCellML1) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#ForceProperty>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiffProperty>\n"
                            "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity2 .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
                            "    semsim:hasPhysicalEntityReference local:entity1 .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
@@ -921,7 +915,7 @@ TEST_F(CAPITests, TestPhysicalForceCellML1) {
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
-    PhysicalForce_delete(physical_force_ptr);
+    EnergyDiff_delete(energy_diff_ptr);
     RDF_delete(rdf_ptr);
 }
 
@@ -1559,15 +1553,15 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
                            "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1>, <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2>, <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3> .\n"
                            "\n"
                            "local:SourceParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:int ;\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#react1>\n"

@@ -236,8 +236,8 @@ class Editor:
     def add_physical_process(self, physical_process: PhysicalProcess) -> None:
         _pyom.editor_add_physical_process(self._obj, physical_process.get_ptr())
 
-    def add_physical_force(self, physical_force: PhysicalForce) -> None:
-        _pyom.editor_add_physical_force(self._obj, physical_force.get_ptr())
+    def add_energy_diff(self, energy_diff: EnergyDiff) -> None:
+        _pyom.editor_add_energy_diff(self._obj, energy_diff.get_ptr())
 
     def add_personal_information(self, personal_information: PersonalInformation) -> None:
         _pyom.editor_add_personal_information(self._obj, personal_information.get_ptr())
@@ -263,8 +263,8 @@ class Editor:
     def remove_physical_process(self, physical_process_ptr: ct.c_int64) -> None:
         _pyom.editor_remove_physical_process(self._obj, physical_process_ptr)
 
-    def remove_physical_force(self, physical_force_ptr: ct.c_int64) -> None:
-        _pyom.editor_remove_physical_force(self._obj, physical_force_ptr)
+    def remove_energy_diff(self, energy_diff_ptr: ct.c_int64) -> None:
+        _pyom.editor_remove_energy_diff(self._obj, energy_diff_ptr)
 
     def remove_personal_information(self, personal_information_ptr: ct.c_int64) -> None:
         _pyom.editor_remove_personal_information(self._obj, personal_information_ptr)
@@ -307,12 +307,12 @@ class Editor:
             self.add_physical_process(physical_process)
 
     @contextmanager
-    def new_physical_force(self) -> PhysicalForce:
-        physical_force = PhysicalForce(_pyom.editor_new_physical_force(self._obj))
+    def new_energy_diff(self) -> EnergyDiff:
+        energy_diff = EnergyDiff(_pyom.editor_new_energy_diff(self._obj))
         try:
-            yield physical_force
+            yield energy_diff
         finally:
-            self.add_physical_force(physical_force)
+            self.add_energy_diff(energy_diff)
 
     def new_physical_property(self) -> PhysicalProperty:
         return PhysicalProperty(_pyom.editor_new_physical_property(self._obj))
@@ -481,7 +481,7 @@ class _PropertyBearer:
     def has_property(self, property_about: str = None, about_uri_type: eUriType = None,
                      is_version_of: str = None, property: PhysicalProperty = None) -> _PropertyBearer:
         """
-        Create a PhysicalProperty associated with a PhysicalEntity, PhysicalForce or PhysicalProcess.
+        Create a PhysicalProperty associated with a PhysicalEntity, EnergyDiff or PhysicalProcess.
 
         This method has 4 signatures which can be used in different circumstances.
         In the full signature the user provides all the information needed
@@ -505,7 +505,7 @@ class _PropertyBearer:
         :param is_property_of_uri_type:
         :return:
         """
-        _valid = ["physical_entity", "physical_process", "physical_force"]
+        _valid = ["physical_entity", "physical_process", "energy_diff"]
         if self.name not in _valid:
             raise ValueError(f"name argument must be one of {_valid}")
 
@@ -651,39 +651,39 @@ class PhysicalProcess(_PropertyBearer):
         return self
 
 
-class PhysicalForce(_PropertyBearer):
+class EnergyDiff(_PropertyBearer):
 
-    def __init__(self, physical_force_ptr: ct.c_int64):
-        self._obj = physical_force_ptr
-        super().__init__("physical_force", self._obj)
+    def __init__(self, energy_diff_ptr: ct.c_int64):
+        self._obj = energy_diff_ptr
+        super().__init__("energy_diff", self._obj)
 
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
-        self._obj = _pyom.physical_force_add_source(
-            self._obj, physical_entity_reference.encode(), uri_type, multiplier
+    def add_source(self, physical_entity_reference: str, uri_type: eUriType) -> EnergyDiff:
+        self._obj = _pyom.energy_diff_add_source(
+            self._obj, physical_entity_reference.encode(), uri_type
         )
         return self
 
-    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
-        self._obj = _pyom.physical_force_add_sink(
-            self._obj, physical_entity_reference.encode(), uri_type, multiplier
+    def add_sink(self, physical_entity_reference: str, uri_type: eUriType) -> EnergyDiff:
+        self._obj = _pyom.energy_diff_add_sink(
+            self._obj, physical_entity_reference.encode(), uri_type
         )
         return self
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
         return _pyom.get_and_free_c_str(
-            _pyom.physical_force_str(self._obj, format.encode(), base_uri.encode()))
+            _pyom.energy_diff_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
         return self.to_string("turtle")
 
     def delete(self) -> None:
-        _pyom.physical_force_delete(self._obj)
+        _pyom.energy_diff_delete(self._obj)
 
-    def about(self, about: str, uri_type: eUriType) -> PhysicalForce:
-        self._obj = _pyom.physical_force_about(self.get_ptr(), about.encode(), uri_type)
+    def about(self, about: str, uri_type: eUriType) -> EnergyDiff:
+        self._obj = _pyom.energy_diff_about(self.get_ptr(), about.encode(), uri_type)
         return self
 
 
@@ -697,7 +697,7 @@ class PersonalInformation:
 
     def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
         return _pyom.get_and_free_c_str(
-            _pyom.physical_force_str(self._obj, format.encode(), base_uri.encode()))
+            _pyom.energy_diff_str(self._obj, format.encode(), base_uri.encode()))
 
     def get_local_uri(self) -> str:
         return _pyom.get_and_free_c_str(

@@ -98,7 +98,7 @@ namespace omexmeta {
         }
     }
 
-    void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp) {
+    void Editor::extractNamespacesFromTriplesVector(PropertyBearer *pp) {
         // here we create our own localized Triples object
         // and deplete it during the while loop. This
         // is preferable to passing in a Triples object
@@ -156,7 +156,7 @@ namespace omexmeta {
         };
     }
 
-    void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
+    void Editor::addCompositeAnnotation(PropertyBearer *phenomenonPtr) {
         /**
         * Implementation note: This method generates triples on the
         * fly and then frees. This was implemented this way as it helped avoid
@@ -180,7 +180,7 @@ namespace omexmeta {
         }
     }
 
-    void Editor::addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr) {
+    void Editor::addCompositeAnnotation2(PropertyBearer *phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
@@ -209,17 +209,17 @@ namespace omexmeta {
     }
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
         //        checkValidMetaid(physicalEntity.getAbout());
-        addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
+        addCompositeAnnotation((PropertyBearer *) &physicalEntity);
     }
 
     void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
         //        checkValidMetaid(physicalEntity.getAbout());
-        addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
+        addCompositeAnnotation((PropertyBearer *) &physicalProcess);
     }
 
-    void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
+    void Editor::addEnergyDiff(EnergyDiff &physicalForce) {
         //        checkValidMetaid(physicalEntity.getAbout());
-        addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
+        addCompositeAnnotation((PropertyBearer *) &physicalForce);
     }
 
     void Editor::addPersonalInformation(PersonalInformation *personalInformation) {
@@ -245,7 +245,7 @@ namespace omexmeta {
         model_.removeStatement(stmt);
     }
 
-    void Editor::removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const {
+    void Editor::removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const {
         Triples triples = physicalPhenomenon->toTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
@@ -267,7 +267,7 @@ namespace omexmeta {
         }
     }
 
-    void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
+    void Editor::removeEnergyDiff(EnergyDiff &physicalForce) const {
         removePhysicalPhenomenon(&physicalForce);
     }
 
@@ -288,8 +288,8 @@ namespace omexmeta {
         return PhysicalEntity(model_.get(), getModelUri(), getLocalUri());
     }
 
-    PhysicalForce Editor::newPhysicalForce() {
-        return PhysicalForce(model_.get(), getModelUri(), getLocalUri());
+    EnergyDiff Editor::newEnergyDiff() {
+        return EnergyDiff(model_.get(), getModelUri(), getLocalUri());
     }
 
     PhysicalProcess Editor::newPhysicalProcess() {

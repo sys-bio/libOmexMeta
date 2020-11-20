@@ -25,8 +25,8 @@ set(
 
         PhysicalEntityTests.cpp
         PhysicalPropertyTests.cpp
-        PhysicalPhenomenonTests.cpp
-        PhysicalForceTests.cpp
+        PropertyBearerTests.cpp
+        EnergyDiffTests.cpp
         PhysicalProcessTests.cpp
         QueryTests.cpp
         EditorTests.cpp

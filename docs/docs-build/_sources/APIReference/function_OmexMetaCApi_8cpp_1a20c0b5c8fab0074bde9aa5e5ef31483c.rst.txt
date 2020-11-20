@@ -1,6 +1,6 @@
 .. _exhale_function_OmexMetaCApi_8cpp_1a20c0b5c8fab0074bde9aa5e5ef31483c:
 
-Function omexmeta::PhysicalForce_getAbout
+Function omexmeta::EnergyDiff_getAbout
 =========================================
 
 - Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
@@ -10,4 +10,4 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: omexmeta::PhysicalForce_getAbout(PhysicalForce *)
+.. doxygenfunction:: omexmeta::EnergyDiff_getAbout(EnergyDiff *)

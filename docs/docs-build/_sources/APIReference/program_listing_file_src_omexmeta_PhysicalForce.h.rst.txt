@@ -1,10 +1,10 @@
 
-.. _program_listing_file_src_omexmeta_PhysicalForce.h:
+.. _program_listing_file_src_omexmeta_EnergyDiff.h:
 
-Program Listing for File PhysicalForce.h
+Program Listing for File EnergyDiff.h
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_src_omexmeta_PhysicalForce.h>` (``src/omexmeta/PhysicalForce.h``)
+|exhale_lsh| :ref:`Return to documentation for file <file_src_omexmeta_EnergyDiff.h>` (``src/omexmeta/EnergyDiff.h``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -35,7 +35,7 @@ Program Listing for File PhysicalForce.h
    using namespace redland;
    
    namespace omexmeta {
-       class PhysicalForce : public PhysicalPhenomenon {
+       class EnergyDiff : public PhysicalPhenomenon {
    
            Sources sources_;
            Sinks sinks_;
@@ -43,79 +43,79 @@ Program Listing for File PhysicalForce.h
        public:
    
            /*
-            * @brief default constructor for PhysicalForce
+            * @brief default constructor for EnergyDiff
             * @details deliberately deleted. If you try using the
             * builder interface (chaining setter methods) from a default
-            * instantiated PhysicalForce you will get an error, because there
-            * will be no model assicated with PhysicalForce. Instead, always
-            * instantiate a PhysicalForce from the Editor::addPhysicalForce() method.
+            * instantiated EnergyDiff you will get an error, because there
+            * will be no model assicated with EnergyDiff. Instead, always
+            * instantiate a EnergyDiff from the Editor::addEnergyDiff() method.
             */
-           PhysicalForce() = delete;
+           EnergyDiff() = delete;
    
-           ~PhysicalForce() = default;
+           ~EnergyDiff() = default;
    
    
-           PhysicalForce(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
+           EnergyDiff(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
                          Sinks sinks);
    
            /*
-            * @brief Free nodes associated with PhysicalForce.
+            * @brief Free nodes associated with EnergyDiff.
             *
-            * The PhysicalForce is
-            * owned by the caller if the PhysicalForce::toTriples method is NOT used.
-            * When toTriples() is used, the nodes that create the PhysicalForce are "given"
+            * The EnergyDiff is
+            * owned by the caller if the EnergyDiff::toTriples method is NOT used.
+            * When toTriples() is used, the nodes that create the EnergyDiff are "given"
             * to the Triples object, which automatically destroys them at the right time.
             *
-            * Most of the time, users will not have to remember to free the PhysicalForce themselves
+            * Most of the time, users will not have to remember to free the EnergyDiff themselves
             * as the toTriples method is always used.
             *
             */
            void free();
    
            /*
-            * @brief constructor for instantiating a PhysicalForce type composite annotation
+            * @brief constructor for instantiating a EnergyDiff type composite annotation
             * @param model. A librdf_model pass down by Editor.
             *
-            * Users do not need to instantiate PhysicalForce manually, since it is done
-            * by Editor. This constructor instantiates an empty PhysicalForce
+            * Users do not need to instantiate EnergyDiff manually, since it is done
+            * by Editor. This constructor instantiates an empty EnergyDiff
             * object which is filled by
             *
             */
-           explicit PhysicalForce(librdf_model *model);
+           explicit EnergyDiff(librdf_model *model);
    
            /*
-            * @brief constructor for instantiating a PhysicalForce type composite annotation
+            * @brief constructor for instantiating a EnergyDiff type composite annotation
             * @param model. A librdf_model pass down by Editor.
             * @param local_uri. String passed down by Editor. The local uri to use for metaids
             *
-            * Users do not need to instantiate PhysicalForce manually, since it is done
-            * by Editor. This constructor instantiates an empty PhysicalForce
+            * Users do not need to instantiate EnergyDiff manually, since it is done
+            * by Editor. This constructor instantiates an empty EnergyDiff
             * object which is filled by
             *
             */
-           explicit PhysicalForce(librdf_model *model, const std::string& local_uri);
+           explicit EnergyDiff(librdf_model *model, const std::string& local_uri);
    
            /*
-            * @brief create a metaid for the physical force annotation
-            * @brief a new metaid for PhysicalForce
+            * @brief create a metaid for the energy differential annotation
+            * @brief a new metaid for EnergyDiff
             */
            [[maybe_unused]] [[nodiscard]] std::string createMetaId() const;
    
            /*
-            * @brief return vector of Source objects assocated with PhysicalForce
+            * @brief return vector of Source objects assocated with EnergyDiff
             * @return a vector of SourceParticipants
             */
            [[nodiscard]] const Sources &getSources() const;
    
            /*
-            * @brief return vector of Sink objects assocated with PhysicalForce
+            * @brief return vector of Sink objects assocated with EnergyDiff
             * @return a vector of SinkParticipants
             */
            [[nodiscard]] const Sinks &getSinks() const;
    
            /*
             * @brief converts the PhyicalForce object into a Triples object.
-            * @return a Triples object containing the individual Triple objects of a PhysicalForce.
+            * @return a Triples object containing the individual Triple objects of a EnergyDiff.
             *
             * When this method is called ownership of all RDF nodes gets transferred from
             * the caller to the returned Triples object.
@@ -123,83 +123,83 @@ Program Listing for File PhysicalForce.h
            [[nodiscard]] Triples toTriples() override;
    
            /*
-            * @brief sets the about field of the PhysicalForce
-            * @param metaid id for the physical force. Result is relative to base_uri.
-            * @return a reference to this PhysicalForce to enable the builder interface.
+            * @brief sets the about field of the EnergyDiff
+            * @param metaid id for the energy differential. Result is relative to base_uri.
+            * @return a reference to this EnergyDiff to enable the builder interface.
             *
             * A Resource object with a URI node is instantiated using the
             * the @param metaid.
             *
             * See Resource for more information about input format for @param metaid
             */
-   //        PhysicalForce &about(std::string metaid);
+   //        EnergyDiff &about(std::string metaid);
    
            /*
-            * @brief sets the physical property of the PhysicalForce
+            * @brief sets the physical property of the EnergyDiff
             * @parameter physicalProperty An instance of PhysicalProperty representing the
-            * physical property term for the PhysicalForce.
-            * @return a reference to this PhysicalForce to enable the builder interface.
+            * physical property term for the EnergyDiff.
+            * @return a reference to this EnergyDiff to enable the builder interface.
             *
             * Prefer the other setPhysicalProperty method since it only requires a
             * string input and instantiates the PhysicalProperty for you.
             *
             * For developers. Consider removing.
             */
-           [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
+           [[maybe_unused]] EnergyDiff &setPhysicalProperty(PhysicalProperty physicalProperty);
    
            /*
-            * @brief sets the physical property of the PhysicalForce
+            * @brief sets the physical property of the EnergyDiff
             * @param subject_metaid. The subject portion of the two triples produced by PhysicalProperty. Metaid of a model element.
             * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
-            * @return a reference to this PhysicalForce to enable the builder interface.
+            * @return a reference to this EnergyDiff to enable the builder interface.
             */
-           PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
+           EnergyDiff &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
    
            /*
-            * @brief add a SourceParticipant to the PhysicalForce.
+            * @brief add a SourceParticipant to the EnergyDiff.
             * @param metaid the ID for the SourceParticipant.
             * @param multiplier The multiplier argument for SourceParticipant
             * @param physical_entity_reference The physicalEntityReference argument for
             * the SourceParticipant.
-            * @return a reference to this PhysicalForce to enable the builder interface.
+            * @return a reference to this EnergyDiff to enable the builder interface.
             *
             * See SourceParticipant documentation for more details on arguments.
             */
-           PhysicalForce &addSource(double multiplier, const std::string& physical_entity_reference);
+           EnergyDiff &addSource(double multiplier, const std::string& physical_entity_reference);
    
            /*
-            * @brief add a SinkParticipant to the PhysicalForce.
+            * @brief add a SinkParticipant to the EnergyDiff.
             * @param sink_metaid the ID for the SinkParticipant.
             * @param multiplier The multiplier argument for SinkParticipant
             * @param physical_entity_reference The physicalEntityReference argument for
             * the SinkParticipant.
-            * @return a reference to this PhysicalForce to enable the builder interface.
+            * @return a reference to this EnergyDiff to enable the builder interface.
             *
             * See SinkParticipant documentation for more details on arguments.
             */
-           PhysicalForce & addSink(double multiplier, const std::string& physical_entity_reference);
+           EnergyDiff & addSink(double multiplier, const std::string& physical_entity_reference);
    
-   //        bool operator==(const PhysicalForce &rhs) const;
+   //        bool operator==(const EnergyDiff &rhs) const;
    //
-   //        bool operator!=(const PhysicalForce &rhs) const;
+   //        bool operator!=(const EnergyDiff &rhs) const;
    
            /*
             * @brief returns the number of sources associated with the
-            * PhysicalForce
+            * EnergyDiff
             * @return the integer number of sources
             */
            int getNumSources();
    
            /*
             * @brief returns the number of sinks associated with the
-            * PhysicalForce
+            * EnergyDiff
             * @return the integer number of sinks
             */
            int getNumSinks();
    
-           bool operator==(const PhysicalForce &rhs) const;
+           bool operator==(const EnergyDiff &rhs) const;
    
-           bool operator!=(const PhysicalForce &rhs) const;
+           bool operator!=(const EnergyDiff &rhs) const;
        };
    }
    

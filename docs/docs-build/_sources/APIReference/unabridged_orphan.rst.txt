@@ -270,12 +270,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_src_omexmeta_PhysicalForce.cpp.rst
+   file_src_omexmeta_EnergyDiff.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_src_omexmeta_PhysicalForce.h.rst
+   file_src_omexmeta_EnergyDiff.h.rst
 
 .. toctree::
    :maxdepth: 5

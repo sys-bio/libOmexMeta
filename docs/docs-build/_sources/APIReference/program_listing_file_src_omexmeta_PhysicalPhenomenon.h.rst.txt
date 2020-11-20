@@ -115,7 +115,7 @@ Program Listing for File PhysicalPhenomenon.h
    
            /*
             * @brief getter for Type argument
-            * @return the AnnotationType currently used (PhysicalEntity, PhysicalForce or PhysicalProcess)
+            * @return the AnnotationType currently used (PhysicalEntity, EnergyDiff or PhysicalProcess)
             */
            [[nodiscard]] AnnotationType getType() const;
    

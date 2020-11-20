@@ -5,7 +5,7 @@ Editing Annotations
 There's a little more to creating new annotations compared to
 reading and writing them. There are a few additional classes that need
 to be introduced: `Editor`, `SingleAnnotation`, `PersonalInformation`,
-`PhysicalEntity`, `PhysicalProcess` and `PhysicalForce`. This document
+`PhysicalEntity`, `PhysicalProcess` and `EnergyDiff`. This document
 assumes background knowledge in what these different types of annotations are.
 
 To demonstrate libOmexMeta we first generate a sbml document using
@@ -618,41 +618,41 @@ Annotations on a Property of a Physical Process
 
 
 
-Annotations on a Property of a Physical Force
+Annotations on a Property of a energy differential
 -----------------------------------------------
 
 .. tabs::
 
     .. tab:: Python
 
-        .. literalinclude:: create_physical_force_python.py
+        .. literalinclude:: create_energy_diff_python.py
             :linenos:
             :language: python
-            :caption: Demonstrate the creation of a physical force composite annotation in Python
+            :caption: Demonstrate the creation of a energy differential composite annotation in Python
 
-        .. literalinclude:: ../../ExampleOutputFiles/create_physical_force_python.txt
+        .. literalinclude:: ../../ExampleOutputFiles/create_energy_diff_python.txt
             :linenos:
             :caption: Output
 
     .. tab:: C++
 
-        .. literalinclude:: create_physical_force_cpp.cpp
+        .. literalinclude:: create_energy_diff_cpp.cpp
             :linenos:
             :language: C++
-            :caption: Demonstrate the creation of a physical force composite annotation in C++
+            :caption: Demonstrate the creation of a energy differential composite annotation in C++
 
-        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalForceCpp.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateEnergyDiffCpp.txt
             :linenos:
             :caption: Output
 
     .. tab:: C
 
-        .. literalinclude:: create_physical_force_c.cpp
+        .. literalinclude:: create_energy_diff_c.cpp
             :linenos:
             :language: C
-            :caption: Demonstrate the creation of a physical force composite annotation in C
+            :caption: Demonstrate the creation of a energy differential composite annotation in C
 
-        .. literalinclude:: ../../ExampleOutputFiles/CreatePhysicalForceC.txt
+        .. literalinclude:: ../../ExampleOutputFiles/CreateEnergyDiffC.txt
             :linenos:
             :caption: Output
 

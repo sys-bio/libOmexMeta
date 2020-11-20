@@ -1,9 +1,9 @@
-.. _exhale_class_classomexmeta_1_1PhysicalForce:
+.. _exhale_class_classomexmeta_1_1EnergyDiff:
 
-Class PhysicalForce
+Class EnergyDiff
 ===================
 
-- Defined in :ref:`file_src_omexmeta_PhysicalForce.h`
+- Defined in :ref:`file_src_omexmeta_EnergyDiff.h`
 
 
 Inheritance Relationships
@@ -19,7 +19,7 @@ Class Documentation
 -------------------
 
 
-.. doxygenclass:: omexmeta::PhysicalForce
+.. doxygenclass:: omexmeta::EnergyDiff
    :members:
    :protected-members:
    :undoc-members:

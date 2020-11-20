@@ -26,7 +26,7 @@ Program Listing for File Editor.h
    #include "omexmeta/PhysicalPhenomenon.h"
    #include "omexmeta/PhysicalEntity.h"
    #include "omexmeta/PhysicalProcess.h"
-   #include "omexmeta/PhysicalForce.h"
+   #include "omexmeta/EnergyDiff.h"
    #include "redland/RedlandAPI.h"
    #include "omexmeta/Error.h"
    #include "omexmeta/OmexMetaUtils.h"
@@ -190,7 +190,7 @@ Program Listing for File Editor.h
             * the composite annotations.
             *
             * Composite annotations currently supported are PhysicalEntity,
-            * PhysicalProcess and PhysicalForce. The PhysicalDependency
+            * PhysicalProcess and EnergyDiff. The PhysicalDependency
             * type will be supported in future releases.
             *
             * For developers. Consider removing this function in favour of using the
@@ -231,10 +231,10 @@ Program Listing for File Editor.h
            void removePhysicalProcess(PhysicalProcess &physicalProcess) const;
    
            /*
-            * @brief add a composite annotation of type PhysicalForce to the rdf graph
-            * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.
+            * @brief add a composite annotation of type EnergyDiff to the rdf graph
+            * @param physicalForce An instance of a EnergyDiff objec to add to the rdf graph.
             */
-           void addPhysicalForce(PhysicalForce &physicalForce);
+           void addEnergyDiff(EnergyDiff &physicalForce);
    
            /*
             * @brief add a PersonalInformation class to the rdf model
@@ -243,10 +243,10 @@ Program Listing for File Editor.h
            void addPersonalInformation(PersonalInformation *personalInformation);
    
            /*
-            * @brief remove triples associated with a a PhysicalForce object from the rdf graph
-            * @param physicalForce the PhysicalForce to remove
+            * @brief remove triples associated with a a EnergyDiff object from the rdf graph
+            * @param physicalForce the EnergyDiff to remove
             */
-           void removePhysicalForce(PhysicalForce &physicalForce) const;
+           void removeEnergyDiff(EnergyDiff &physicalForce) const;
    
    
            /*
@@ -263,7 +263,7 @@ Program Listing for File Editor.h
    
            PhysicalEntity newPhysicalEntity();
    
-           PhysicalForce newPhysicalForce();
+           EnergyDiff newEnergyDiff();
    
            PhysicalProcess newPhysicalProcess();
    

@@ -1,6 +1,6 @@
 .. _exhale_function_OmexMetaCApi_8cpp_1a8f6bb001fdb6907eb05c7a1450d89c4b:
 
-Function omexmeta::PhysicalForce_addSink
+Function omexmeta::EnergyDiff_addSink
 ========================================
 
 - Defined in :ref:`file_src_omexmeta_OmexMetaCApi.cpp`
@@ -10,4 +10,4 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: omexmeta::PhysicalForce_addSink(PhysicalForce *, double, const char *)
+.. doxygenfunction:: omexmeta::EnergyDiff_addSink(EnergyDiff *, double, const char *)

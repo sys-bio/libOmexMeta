@@ -37,7 +37,7 @@ class PhysicalProcess {
 
 }
 
-class PhysicalForce{
+class EnergyDiff{
     + sources : vector<SourceParticipant>
     + sinks : vector<SinkParticipant>
 }
@@ -62,13 +62,13 @@ end note
 note bottom of SinkParticipant
     multiplier = 0.0
     when used in
-    physical force
+    energy differential
 end note
 
 note bottom of SourceParticipant
     multiplier = 0.0
     when used in
-    physical force
+    energy differential
 end note
 
 }
@@ -85,7 +85,7 @@ CompositeAnnotation *-- PhysicalPhenomenon
 
 PhysicalPhenomenon <|-- PhysicalEntity
 PhysicalPhenomenon <|-- PhysicalProcess
-PhysicalPhenomenon <|-- PhysicalForce
+PhysicalPhenomenon <|-- EnergyDiff
 
 PhysicalEntity *--Participant : inheritance instead?
 Participant <|-- SourceParticipant
@@ -96,8 +96,8 @@ PhysicalProcess *-- SourceParticipant
 PhysicalProcess *-- SinkParticipant
 PhysicalProcess *-- MediatorParticipant
 
-PhysicalForce *-- SourceParticipant
-PhysicalForce *-- SinkParticipant
+EnergyDiff *-- SourceParticipant
+EnergyDiff *-- SinkParticipant
 
 note right of Triple
     Most objects construct
@@ -105,7 +105,7 @@ note right of Triple
 end note
 'Triple *-- PhysicalEntity : constructs
 'Triple *-- PhysicalProcess : constructs
-'Triple *-- PhysicalForce : constructs
+'Triple *-- EnergyDiff : constructs
 'Triple *-- MediatorParticipant : constructs
 'Triple *-- SourceParticipant : constructs
 'Triple *-- SinkParticipant : constructs
@@ -124,7 +124,7 @@ end note
 
 'PhysicalProperty -[hidden]> PhysicalPhenomenon
 'PhysicalEntity -[hidden]> PhysicalProcess
-'PhysicalForce -[hidden]> PhysicalProcess
+'EnergyDiff -[hidden]> PhysicalProcess
 
 
 

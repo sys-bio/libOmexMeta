@@ -57,7 +57,7 @@ Classes
 
 - :ref:`exhale_class_classomexmeta_1_1PhysicalEntity`
 
-- :ref:`exhale_class_classomexmeta_1_1PhysicalForce`
+- :ref:`exhale_class_classomexmeta_1_1EnergyDiff`
 
 - :ref:`exhale_class_classomexmeta_1_1PhysicalPhenomenon`
 

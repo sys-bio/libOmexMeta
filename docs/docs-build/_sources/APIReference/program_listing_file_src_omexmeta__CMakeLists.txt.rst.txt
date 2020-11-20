@@ -30,7 +30,7 @@ Program Listing for File _CMakeLists.txt
            "PhysicalPhenomenon.h"
            "PhysicalEntity.h"
            "PhysicalProcess.h"
-           "PhysicalForce.h"
+           "EnergyDiff.h"
            "AnnotationType.h"
            "Editor.h"
            #        "TripleWriter.h"
@@ -63,7 +63,7 @@ Program Listing for File _CMakeLists.txt
            "PhysicalPhenomenon.cpp"
            "Editor.cpp"
            "PhysicalProcess.cpp"
-           "PhysicalForce.cpp"
+           "EnergyDiff.cpp"
            "SemsimCApi.cpp"
            )
    

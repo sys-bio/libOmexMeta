@@ -368,10 +368,10 @@
 
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">addPhysicalForce</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">addEnergyDiff</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">physicalForce</span><span class="p">.</span><span class="n">getAbout</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="n">NullPointerException</span><span class="p">(</span>
-                    <span class="s">&quot;NullPointerException: Editor::addPhysicalForce() PhysicalForce::is_property_of_value_ (i.e. about) node is empty&quot;</span><span class="p">);</span>
+                    <span class="s">&quot;NullPointerException: Editor::addEnergyDiff() EnergyDiff::is_property_of_value_ (i.e. about) node is empty&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="n">checkValidMetaid</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">.</span><span class="n">getAbout</span><span class="p">());</span>
         <span class="cm">/*</span>
@@ -427,7 +427,7 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">removePhysicalForce</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">Editor</span><span class="o">::</span><span class="n">removeEnergyDiff</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
         <span class="n">removePhysicalPhenomenon</span><span class="p">(</span><span class="o">&amp;</span><span class="n">physicalForce</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -439,8 +439,8 @@
         <span class="k">return</span> <span class="n">PhysicalEntity</span><span class="p">(</span><span class="n">model_</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span> <span class="n">Editor</span><span class="o">::</span><span class="n">newPhysicalForce</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">PhysicalForce</span><span class="p">(</span><span class="n">model_</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
+    <span class="n">EnergyDiff</span> <span class="n">Editor</span><span class="o">::</span><span class="n">newEnergyDiff</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">EnergyDiff</span><span class="p">(</span><span class="n">model_</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
     <span class="n">PhysicalProcess</span> <span class="n">Editor</span><span class="o">::</span><span class="n">newPhysicalProcess</span><span class="p">()</span> <span class="p">{</span>

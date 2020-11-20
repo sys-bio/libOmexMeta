@@ -614,7 +614,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-Composite annotations currently supported are <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> and <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref>. The PhysicalDependency type will be supported in future releases.</para>
+Composite annotations currently supported are <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> and <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref>. The PhysicalDependency type will be supported in future releases.</para>
 <para>For developers. Consider removing this function in favour of using the add* functions. </para>
         </detaileddescription>
         <inbodydescription>
@@ -765,15 +765,15 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::Editor::addPhysicalForce</definition>
-        <argsstring>(PhysicalForce &amp;physicalForce)</argsstring>
-        <name>addPhysicalForce</name>
+        <definition>void omexmeta::Editor::addEnergyDiff</definition>
+        <argsstring>(EnergyDiff &amp;physicalForce)</argsstring>
+        <name>addEnergyDiff</name>
         <param>
-          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+          <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> &amp;</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
-<para>add a composite annotation of type <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to the rdf graph </para>
+<para>add a composite annotation of type <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> to the rdf graph </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -781,7 +781,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 <parametername>physicalForce</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An instance of a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> objec to add to the rdf graph. </para>
+<para>An instance of a <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> objec to add to the rdf graph. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -821,15 +821,15 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::Editor::removePhysicalForce</definition>
-        <argsstring>(PhysicalForce &amp;physicalForce) const</argsstring>
-        <name>removePhysicalForce</name>
+        <definition>void omexmeta::Editor::removeEnergyDiff</definition>
+        <argsstring>(EnergyDiff &amp;physicalForce) const</argsstring>
+        <name>removeEnergyDiff</name>
         <param>
-          <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+          <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> &amp;</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
-<para>remove triples associated with a a <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> object from the rdf graph </para>
+<para>remove triples associated with a a <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> object from the rdf graph </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -837,7 +837,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 <parametername>physicalForce</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> to remove </para>
+<para>the <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> to remove </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -984,15 +984,15 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         <location file="src/omexmeta/Editor.h" line="267" column="24" bodyfile="src/omexmeta/Editor.cpp" bodystart="306" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref></type>
-        <definition>PhysicalForce omexmeta::Editor::newPhysicalForce</definition>
+        <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref></type>
+        <definition>EnergyDiff omexmeta::Editor::newEnergyDiff</definition>
         <argsstring>()</argsstring>
-        <name>newPhysicalForce</name>
+        <name>newEnergyDiff</name>
         <briefdescription>
-<para>create a new <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> object. </para>
+<para>create a new <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> object. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> objects should only be instantiated via the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. </para>
+<para><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> objects should only be instantiated via the <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1433,7 +1433,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1a904a1beb0ba56ccfc1aca70d512030ed" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addParentModel</name></member>
       <member refid="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalForce</name></member>
+      <member refid="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalProcess</name></member>
       <member refid="classomexmeta_1_1Editor_1a9eeaa4cfeeb9bae8b5d5f7705e170de4" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPubmed</name></member>
       <member refid="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addSingleAnnotation</name></member>
@@ -1466,13 +1466,13 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>namespaces_</name></member>
       <member refid="classomexmeta_1_1Editor_1a1943079ddbc4a4c6d896f51f360a11df" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a245b2105c175892d1fddaf693fa9d636" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalForce</name></member>
+      <member refid="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalProcess</name></member>
       <member refid="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newSingularAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newSingularAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalForce</name></member>
+      <member refid="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1af00f00108238acbf2b2974cedc07b454" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalProcess</name></member>
       <member refid="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeSingleAnnotation</name></member>

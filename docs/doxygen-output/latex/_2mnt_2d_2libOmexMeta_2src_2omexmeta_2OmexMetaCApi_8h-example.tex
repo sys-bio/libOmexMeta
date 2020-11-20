@@ -26,7 +26,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \textcolor{preprocessor}{#include "omexmeta/OmexMetaXmlAssistant.h"}
 \textcolor{preprocessor}{#include "omexmeta/PhysicalEntity.h"}
 \textcolor{preprocessor}{#include "omexmeta/PhysicalProcess.h"}
-\textcolor{preprocessor}{#include "omexmeta/PhysicalForce.h"}
+\textcolor{preprocessor}{#include "omexmeta/EnergyDiff.h"}
 \textcolor{preprocessor}{#include "omexmeta/OmexMetaUtils.h"}
 \textcolor{preprocessor}{#include "omexmetacapi\_export.h"}
 \textcolor{preprocessor}{#include <cstring>}
@@ -133,7 +133,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalProcess(Editor *editor\_ptr, PhysicalProcess *physicalProcess)
       ;
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalForce(Editor *editor\_ptr, PhysicalForce *physicalForce);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addEnergyDiff(Editor *editor\_ptr, EnergyDiff *physicalForce);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPersonalInformation(Editor *editor\_ptr, PersonalInformation *
       personalInformation);
@@ -147,7 +147,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalProcess(Editor *editor\_ptr, PhysicalProcess *
       physicalProcess);
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalForce(Editor *editor\_ptr, PhysicalForce *physicalForce);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removeEnergyDiff(Editor *editor\_ptr, EnergyDiff *physicalForce);
 
     OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePersonalInformation(Editor *editor\_ptr, PersonalInformation *
       information);
@@ -295,39 +295,39 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
        \textcolor{keyword}{const} \textcolor{keywordtype}{char} *version);
 
 \textcolor{comment}{/*********************************************************************}
-\textcolor{comment}{ * PhysicalForce class methods}
+\textcolor{comment}{ * EnergyDiff class methods}
 \textcolor{comment}{ */}
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_new(Editor *editor\_ptr);
+    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_new(Editor *editor\_ptr);
 
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{PhysicalForce\_delete}(PhysicalForce *physicalForce);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{EnergyDiff\_delete}(EnergyDiff *physicalForce);
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{PhysicalForce\_freeAll}(PhysicalForce *physical\_force\_ptr);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{EnergyDiff\_freeAll}(EnergyDiff *physical\_force\_ptr);
 
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_addSource(
-            PhysicalForce *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,
+    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_addSource(
+            EnergyDiff *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,
             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
 
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_addSink(
-            PhysicalForce *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,
+    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_addSink(
+            EnergyDiff *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,
             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);
 
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_setPhysicalProperty(
-            PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);
+    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_setPhysicalProperty(
+            EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalForce\_getNumSources(PhysicalForce *physicalForce);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} EnergyDiff\_getNumSources(EnergyDiff *physicalForce);
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalForce\_getNumSinks(PhysicalForce *physicalForce);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} EnergyDiff\_getNumSinks(EnergyDiff *physicalForce);
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_str(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *EnergyDiff\_str(EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{
       const} \textcolor{keywordtype}{char} *base\_uri);
 
-    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_getAbout(PhysicalForce *physical\_force\_ptr);
+    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *EnergyDiff\_getAbout(EnergyDiff *physical\_force\_ptr);
 
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_hasProperty(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
+    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_hasProperty(EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{
       char} *is\_version\_of);
 
-    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_about(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}
+    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_about(EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}
        *about);
 
 \textcolor{comment}{/*********************************************************************}

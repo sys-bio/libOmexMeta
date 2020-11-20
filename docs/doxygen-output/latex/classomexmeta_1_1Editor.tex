@@ -50,12 +50,12 @@ void \mbox{\hyperlink{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}
 \begin{DoxyCompactList}\small\item\em add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} to the rdf graph \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}{remove\+Physical\+Process}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \&physical\+Process) const
 \begin{DoxyCompactList}\small\item\em remove triples associated with a \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} object from the rdf graph \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}{add\+Physical\+Force}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} \&physical\+Force)
-\begin{DoxyCompactList}\small\item\em add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} to the rdf graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}{add\+Physical\+Force}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} \&physical\+Force)
+\begin{DoxyCompactList}\small\item\em add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} to the rdf graph \end{DoxyCompactList}\item
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a1b2e0f5859fe2e2784ecff2a78f7f1f8}{add\+Personal\+Information}} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$personal\+Information)
 \begin{DoxyCompactList}\small\item\em add a \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class to the rdf model \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}{remove\+Physical\+Force}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} \&physical\+Force) const
-\begin{DoxyCompactList}\small\item\em remove triples associated with a a \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} object from the rdf graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}{remove\+Physical\+Force}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} \&physical\+Force) const
+\begin{DoxyCompactList}\small\item\em remove triples associated with a a \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} object from the rdf graph \end{DoxyCompactList}\item
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a790458ef32f01ce0a6fd87bf14bed81a}\label{classomexmeta_1_1Editor_a790458ef32f01ce0a6fd87bf14bed81a}} 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a790458ef32f01ce0a6fd87bf14bed81a}{check\+Valid\+Metaid}} (const std\+::string \&metaid)
 \begin{DoxyCompactList}\small\item\em check that a metaid is valid by comparing with the output from Editor\+::get\+Meta\+Ids() \end{DoxyCompactList}\item 
@@ -72,8 +72,8 @@ void \mbox{\hyperlink{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}
 \begin{DoxyCompactList}\small\item\em setter for the current xml type identification variable. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \mbox{\hyperlink{classomexmeta_1_1Editor_a245b2105c175892d1fddaf693fa9d636}{new\+Physical\+Entity}} ()
 \begin{DoxyCompactList}\small\item\em create a new \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} \mbox{\hyperlink{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}{new\+Physical\+Force}} ()
-\begin{DoxyCompactList}\small\item\em create a new \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} \mbox{\hyperlink{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}{new\+Physical\+Force}} ()
+\begin{DoxyCompactList}\small\item\em create a new \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} object. \end{DoxyCompactList}\item
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \mbox{\hyperlink{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}{new\+Physical\+Process}} ()
 \begin{DoxyCompactList}\small\item\em create a new \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} \mbox{\hyperlink{classomexmeta_1_1Editor_a1943079ddbc4a4c6d896f51f360a11df}{new\+Personal\+Information}} ()
@@ -187,7 +187,7 @@ add a composite annotation to the rdf graph.
 {\em phenomenon\+Ptr} & A pointer to an object of type \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}}, the superclass of the composite annotations.\\
 \hline
 \end{DoxyParams}
-Composite annotations currently supported are \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} and \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}}. The Physical\+Dependency type will be supported in future releases.
+Composite annotations currently supported are \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} and \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}}. The Physical\+Dependency type will be supported in future releases.
 
 For developers. Consider removing this function in favour of using the add$\ast$ functions. Implementation note\+: \mbox{\hyperlink{classThis}{This}} method generates triples on the fly and then frees. \mbox{\hyperlink{classThis}{This}} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}\label{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addCreator@{addCreator}}
@@ -312,18 +312,18 @@ add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1PhysicalEnt
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}\label{classomexmeta_1_1Editor_a7833e03995f6323109c2db8d59104f6c}} 
-\index{omexmeta::Editor@{omexmeta::Editor}!addPhysicalForce@{addPhysicalForce}}
-\index{addPhysicalForce@{addPhysicalForce}!omexmeta::Editor@{omexmeta::Editor}}
-\doxysubsubsection{\texorpdfstring{addPhysicalForce()}{addPhysicalForce()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Physical\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} \&}]{physical\+Force }\end{DoxyParamCaption})}
+\index{omexmeta::Editor@{omexmeta::Editor}!addEnergyDiff@{addEnergyDiff}}
+\index{addEnergyDiff@{addEnergyDiff}!omexmeta::Editor@{omexmeta::Editor}}
+\doxysubsubsection{\texorpdfstring{addEnergyDiff()}{addEnergyDiff()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Physical\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} \&}]{physical\+Force }\end{DoxyParamCaption})}
 
 
 
-add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} to the rdf graph 
+add a composite annotation of type \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} to the rdf graph
 
 
 \begin{DoxyParams}{Parameters}
-{\em physical\+Force} & An instance of a \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} objec to add to the rdf graph. \\
+{\em physical\+Force} & An instance of a \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} objec to add to the rdf graph. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}\label{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}} 
@@ -504,16 +504,16 @@ create a new \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+In
 create a new \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object. 
 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} objects should only be instantiated via the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}\label{classomexmeta_1_1Editor_a58d21ef09f3dc5a6a66dbafe34150695}} 
-\index{omexmeta::Editor@{omexmeta::Editor}!newPhysicalForce@{newPhysicalForce}}
-\index{newPhysicalForce@{newPhysicalForce}!omexmeta::Editor@{omexmeta::Editor}}
-\doxysubsubsection{\texorpdfstring{newPhysicalForce()}{newPhysicalForce()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} omexmeta\+::\+Editor\+::new\+Physical\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\index{omexmeta::Editor@{omexmeta::Editor}!newEnergyDiff@{newEnergyDiff}}
+\index{newEnergyDiff@{newEnergyDiff}!omexmeta::Editor@{omexmeta::Editor}}
+\doxysubsubsection{\texorpdfstring{newEnergyDiff()}{newEnergyDiff()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} omexmeta\+::\+Editor\+::new\+Physical\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-create a new \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} object. 
+create a new \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} object.
 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} objects should only be instantiated via the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}\label{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} objects should only be instantiated via the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} because this enables the passing of necessary information behind the scenes, rather than needing to be provided by the user. \mbox{\Hypertarget{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}\label{classomexmeta_1_1Editor_a2815d918736ee17d07306c5cf07c8ebf}}
 \index{omexmeta::Editor@{omexmeta::Editor}!newPhysicalProcess@{newPhysicalProcess}}
 \index{newPhysicalProcess@{newPhysicalProcess}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{newPhysicalProcess()}{newPhysicalProcess()}}
@@ -585,18 +585,18 @@ remove triples associated with a a \mbox{\hyperlink{classomexmeta_1_1PhysicalEnt
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}\label{classomexmeta_1_1Editor_ad99187ec52bef1af440af5d9560f32c5}} 
-\index{omexmeta::Editor@{omexmeta::Editor}!removePhysicalForce@{removePhysicalForce}}
-\index{removePhysicalForce@{removePhysicalForce}!omexmeta::Editor@{omexmeta::Editor}}
-\doxysubsubsection{\texorpdfstring{removePhysicalForce()}{removePhysicalForce()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Physical\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} \&}]{physical\+Force }\end{DoxyParamCaption}) const}
+\index{omexmeta::Editor@{omexmeta::Editor}!removeEnergyDiff@{removeEnergyDiff}}
+\index{removeEnergyDiff@{removeEnergyDiff}!omexmeta::Editor@{omexmeta::Editor}}
+\doxysubsubsection{\texorpdfstring{removeEnergyDiff()}{removeEnergyDiff()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::remove\+Physical\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} \&}]{physical\+Force }\end{DoxyParamCaption}) const}
 
 
 
-remove triples associated with a a \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} object from the rdf graph 
+remove triples associated with a a \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} object from the rdf graph
 
 
 \begin{DoxyParams}{Parameters}
-{\em physical\+Force} & the \mbox{\hyperlink{classomexmeta_1_1PhysicalForce}{Physical\+Force}} to remove \\
+{\em physical\+Force} & the \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} to remove \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}\label{classomexmeta_1_1Editor_a42640d74c6afe780738c906bdf346a78}} 

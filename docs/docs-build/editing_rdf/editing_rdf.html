@@ -109,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#creating-composite-annotations">Creating Composite Annotations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#annotations-on-a-property-of-a-physical-entity">Annotations on a Property of a Physical Entity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#annotations-on-a-property-of-a-physical-process">Annotations on a Property of a Physical Process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#annotations-on-a-property-of-a-physical-force">Annotations on a Property of a Physical Force</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations-on-a-property-of-a-physical-force">Annotations on a Property of a energy differential</a></li>
 </ul>
 </li>
 </ul>
@@ -188,7 +188,7 @@
 <p>There’s a little more to creating new annotations compared to
 reading and writing them. There are a few additional classes that need
 to be introduced: <cite>Editor</cite>, <cite>SingleAnnotation</cite>, <cite>PersonalInformation</cite>,
-<cite>PhysicalEntity</cite>, <cite>PhysicalProcess</cite> and <cite>PhysicalForce</cite>. This document
+<cite>PhysicalEntity</cite>, <cite>PhysicalProcess</cite> and <cite>EnergyDiff</cite>. This document
 assumes background knowledge in what these different types of annotations are.</p>
 <p>To demonstrate libOmexMeta we first generate a sbml document using
 tellurium and antimony.</p>
@@ -1133,11 +1133,11 @@ local:ProcessProperty0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier &quot;1&quot;^^rdf:int ;
+    semsim:hasMultiplier &quot;1&quot;^^rdf:double ;
     semsim:hasPhysicalEntityReference &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&gt; .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier &quot;1&quot;^^rdf:int ;
+    semsim:hasMultiplier &quot;1&quot;^^rdf:double ;
     semsim:hasPhysicalEntityReference &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002&gt; .
 
 &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&gt;
@@ -5678,7 +5678,7 @@ local:EntityProperty0000
 </div>
 </div>
 <div class="section" id="annotations-on-a-property-of-a-physical-force">
-<h3>Annotations on a Property of a Physical Force<a class="headerlink" href="#annotations-on-a-property-of-a-physical-force" title="Permalink to this headline">¶</a></h3>
+<h3>Annotations on a Property of a energy differential<a class="headerlink" href="#annotations-on-a-property-of-a-physical-force" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-9-0 docutils container">
@@ -5699,7 +5699,7 @@ local:EntityProperty0000
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9-0 active docutils container">
 <div class="literal-block-wrapper docutils container" id="id50">
-<div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a physical force composite annotation in Python</span><a class="headerlink" href="#id50" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a energy differential composite annotation in Python</span><a class="headerlink" href="#id50" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -5794,8 +5794,8 @@ local:EntityProperty0000
 <span class="nb">print</span><span class="p">(</span><span class="n">sbml_with_metaids</span><span class="p">)</span>
 
 <span class="c1"># Property: Osmotic Pressure</span>
-<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_force</span><span class="p">()</span> <span class="k">as</span> <span class="n">physical_force</span><span class="p">:</span>
-    <span class="n">physical_force</span> \
+<span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_energy_diff</span><span class="p">()</span> <span class="k">as</span> <span class="n">energy_diff</span><span class="p">:</span>
+    <span class="n">energy_diff</span> \
         <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;#OmexMetaId0005&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;OPB:OPB_01012&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="o">=</span><span class="s2">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span> \
@@ -6034,20 +6034,20 @@ local:EntityProperty0000
 @prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
-local:ForceProperty0000
+local:EnergyDiffProperty0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier &quot;1&quot;^^rdf:int ;
+    semsim:hasMultiplier &quot;1&quot;^^rdf:double ;
     semsim:hasPhysicalEntityReference &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002&gt; .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier &quot;1&quot;^^rdf:int ;
+    semsim:hasMultiplier &quot;1&quot;^^rdf:double ;
     semsim:hasPhysicalEntityReference &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&gt; .
 
 &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005&gt;
-    bqbiol:isPropertyOf local:ForceProperty0000 ;
+    bqbiol:isPropertyOf local:EnergyDiffProperty0000 ;
     bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_01012&gt; .
 
 
@@ -6057,7 +6057,7 @@ local:SourceParticipant0000
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9-1 docutils container">
 <div class="literal-block-wrapper docutils container" id="id52">
-<div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a physical force composite annotation in C++</span><a class="headerlink" href="#id52" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a energy differential composite annotation in C++</span><a class="headerlink" href="#id52" title="Permalink to this code">¶</a></div>
 <div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
   3
@@ -6285,13 +6285,13 @@ local:SourceParticipant0000
 
     <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toEditor</span><span class="p">(</span><span class="n">sbml</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
-    <span class="n">PhysicalForce</span> <span class="n">force</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newPhysicalForce</span><span class="p">();</span>
+    <span class="n">EnergyDiff</span> <span class="n">force</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newEnergyDiff</span><span class="p">();</span>
     <span class="n">force</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">isVersionOf</span><span class="p">(</span> <span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;#OmexMetaID0001&quot;</span><span class="p">)</span>
             <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;#OmexMetaID0002&quot;</span><span class="p">);</span>
 
-    <span class="n">editor</span><span class="p">.</span><span class="n">addPhysicalForce</span><span class="p">(</span><span class="n">force</span><span class="p">);</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addEnergyDiff</span><span class="p">(</span><span class="n">force</span><span class="p">);</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// turtle default</span>
 
@@ -6403,7 +6403,7 @@ local:SourceParticipant0000
 <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0002&gt; .</span>
 
-<span class="n">local</span><span class="p">:</span><span class="n">ForceProperty0000</span>
+<span class="n">local</span><span class="p">:</span><span class="n">EnergyDiffProperty0000</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0004</span> <span class="p">;</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0004</span> <span class="o">.</span>
 
@@ -6465,7 +6465,7 @@ local:SourceParticipant0000
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaID0002&gt; .</span>
 
 <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt;</span>
-    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">ForceProperty0000</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">EnergyDiffProperty0000</span> <span class="p">;</span>
     <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="o">/</span><span class="n">OPB_00340</span><span class="o">&gt;</span> <span class="o">.</span>
 
 <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0005&gt;</span>
@@ -6491,7 +6491,7 @@ local:SourceParticipant0000
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id54">
-<div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a physical force composite annotation in C</span><a class="headerlink" href="#id54" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a energy differential composite annotation in C</span><a class="headerlink" href="#id54" title="Permalink to this code">¶</a></div>
 <div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
   3
@@ -6723,18 +6723,18 @@ local:SourceParticipant0000
 
     <span class="n">Editor</span><span class="o">*</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">RDF_toEditor</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">sbml</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
 
-    <span class="n">PhysicalForce</span><span class="o">*</span> <span class="n">physicalForce</span> <span class="o">=</span> <span class="n">PhysicalForce_new</span><span class="p">(</span><span class="n">editor</span><span class="p">);</span>
-    <span class="n">PhysicalForce_about</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">);</span>
-    <span class="n">PhysicalForce_hasProperty</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span> <span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span>
-    <span class="n">PhysicalForce_addSink</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;OmexMetaID0001&quot;</span><span class="p">);</span>
-    <span class="n">PhysicalForce_addSource</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;OmexMetaID0002&quot;</span><span class="p">);</span>
+    <span class="n">EnergyDiff</span><span class="o">*</span> <span class="n">physicalForce</span> <span class="o">=</span> <span class="n">EnergyDiff_new</span><span class="p">(</span><span class="n">editor</span><span class="p">);</span>
+    <span class="n">EnergyDiff_about</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span><span class="s">&quot;#OmexMetaId0001&quot;</span><span class="p">);</span>
+    <span class="n">EnergyDiff_hasProperty</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span> <span class="s">&quot;OPB:OPB_00340&quot;</span><span class="p">);</span>
+    <span class="n">EnergyDiff_addSink</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;OmexMetaID0001&quot;</span><span class="p">);</span>
+    <span class="n">EnergyDiff_addSource</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;OmexMetaID0002&quot;</span><span class="p">);</span>
 
-    <span class="n">Editor_addPhysicalForce</span><span class="p">(</span><span class="n">editor</span><span class="p">,</span> <span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">Editor_addEnergyDiff</span><span class="p">(</span><span class="n">editor</span><span class="p">,</span> <span class="n">physicalForce</span><span class="p">);</span>
     <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">rdf_string</span><span class="p">);</span>
 
     <span class="n">free</span><span class="p">(</span><span class="n">rdf_string</span><span class="p">);</span>
-    <span class="n">PhysicalForce_delete</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="n">EnergyDiff_delete</span><span class="p">(</span><span class="n">physicalForce</span><span class="p">);</span>
     <span class="n">Editor_delete</span><span class="p">(</span><span class="n">editor</span><span class="p">);</span>
     <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf</span><span class="p">);</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -6774,7 +6774,7 @@ local:SourceParticipant0000
 <span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
-<span class="n">local</span><span class="p">:</span><span class="n">ForceProperty0000</span>
+<span class="n">local</span><span class="p">:</span><span class="n">EnergyDiffProperty0000</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
 
@@ -6787,7 +6787,7 @@ local:SourceParticipant0000
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaID0002&gt; .</span>
 
 <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#OmexMetaId0001&gt;</span>
-    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">ForceProperty0000</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">EnergyDiffProperty0000</span> <span class="p">;</span>
     <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="o">/</span><span class="n">OPB_00340</span><span class="o">&gt;</span> <span class="o">.</span>
 
 

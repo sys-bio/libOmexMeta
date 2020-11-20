@@ -7,7 +7,7 @@ var searchData=
   ['removeifexists_465',['removeIfExists',['../classomexmeta_1_1OmexMetaUtils.html#a8e629136cb2685ed839ea3a0e88094e6',1,'omexmeta::OmexMetaUtils']]],
   ['removepersonalinformation_466',['removePersonalInformation',['../classomexmeta_1_1Editor.html#a8be7fa01bef49ff1c93965781797c9bc',1,'omexmeta::Editor']]],
   ['removephysicalentity_467',['removePhysicalEntity',['../classomexmeta_1_1Editor.html#a0acf94314252b70a4db89f83e6047e8f',1,'omexmeta::Editor']]],
-  ['removephysicalforce_468',['removePhysicalForce',['../classomexmeta_1_1Editor.html#ad99187ec52bef1af440af5d9560f32c5',1,'omexmeta::Editor']]],
+  ['removephysicalforce_468',['removeEnergyDiff',['../classomexmeta_1_1Editor.html#ad99187ec52bef1af440af5d9560f32c5',1,'omexmeta::Editor']]],
   ['removephysicalprocess_469',['removePhysicalProcess',['../classomexmeta_1_1Editor.html#a42640d74c6afe780738c906bdf346a78',1,'omexmeta::Editor']]],
   ['removesingleannotation_470',['removeSingleAnnotation',['../classomexmeta_1_1Editor.html#afcb5ce7397aab23fabd3b4b4b89d3a54',1,'omexmeta::Editor']]],
   ['resultsaslibrdfstream_471',['resultsAsLibRdfStream',['../classomexmeta_1_1Query.html#a0dda4502056d712d351f7057329c7688',1,'omexmeta::Query']]],

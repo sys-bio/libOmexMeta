@@ -3,7 +3,7 @@
   <compounddef id="classomexmeta_1_1PhysicalPhenomenon" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalPhenomenon</compoundname>
     <derivedcompoundref refid="classomexmeta_1_1PhysicalEntity" prot="public" virt="non-virtual">omexmeta::PhysicalEntity</derivedcompoundref>
-    <derivedcompoundref refid="classomexmeta_1_1PhysicalForce" prot="public" virt="non-virtual">omexmeta::PhysicalForce</derivedcompoundref>
+    <derivedcompoundref refid="classomexmeta_1_1EnergyDiff" prot="public" virt="non-virtual">omexmeta::EnergyDiff</derivedcompoundref>
     <derivedcompoundref refid="classomexmeta_1_1PhysicalProcess" prot="public" virt="non-virtual">omexmeta::PhysicalProcess</derivedcompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" prot="protected" static="no" mutable="no">
@@ -471,7 +471,7 @@
 <para>getter for Type argument </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the AnnotationType currently used (<ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> or <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>) </para>
+<para><simplesect kind="return"><para>the AnnotationType currently used (<ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>, <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> or <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>) </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -502,7 +502,7 @@
         <argsstring>()</argsstring>
         <name>toTriples</name>
         <reimplementedby refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba">toTriples</reimplementedby>
-        <reimplementedby refid="classomexmeta_1_1PhysicalForce_1a39dd511aee85130d07cb6ffb3f8e87f0">toTriples</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1EnergyDiff_1a39dd511aee85130d07cb6ffb3f8e87f0">toTriples</reimplementedby>
         <reimplementedby refid="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a">toTriples</reimplementedby>
         <briefdescription>
 <para>create a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object using the information contained in the <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. Overridden by subclasses. </para>
@@ -535,7 +535,7 @@ Refer to subclasses for more documentation. </para>
         <argsstring>(const std::string &amp;about)</argsstring>
         <name>about</name>
         <reimplementedby refid="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c">about</reimplementedby>
-        <reimplementedby refid="classomexmeta_1_1PhysicalForce_1aa7c920c063c432ed198e467bb00147d6">about</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1EnergyDiff_1aa7c920c063c432ed198e467bb00147d6">about</reimplementedby>
         <reimplementedby refid="classomexmeta_1_1PhysicalProcess_1a5d4e730b52c01ceea8868fb6e2372ef5">about</reimplementedby>
         <param>
           <type>const std::string &amp;</type>
@@ -613,8 +613,8 @@ Refer to subclasses for more documentation. </para>
         <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
       </node>
       <node id="3">
-        <label>omexmeta::PhysicalForce</label>
-        <link refid="classomexmeta_1_1PhysicalForce"/>
+        <label>omexmeta::EnergyDiff</label>
+        <link refid="classomexmeta_1_1EnergyDiff"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

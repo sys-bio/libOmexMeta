@@ -681,15 +681,15 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a64960f91145ebc2f6d8bf0b3ef78a1bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::Editor_addPhysicalForce</definition>
-        <argsstring>(Editor *editor_ptr, PhysicalForce *physicalForce)</argsstring>
-        <name>Editor_addPhysicalForce</name>
+        <definition>int omexmeta::Editor_addEnergyDiff</definition>
+        <argsstring>(Editor *editor_ptr, EnergyDiff *physicalForce)</argsstring>
+        <name>Editor_addEnergyDiff</name>
         <param>
           <type>Editor *</type>
           <declname>editor_ptr</declname>
         </param>
         <param>
-          <type>PhysicalForce *</type>
+          <type>EnergyDiff *</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
@@ -786,15 +786,15 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a5b71ea56e01daf9312b09c24788cdcb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::Editor_removePhysicalForce</definition>
-        <argsstring>(Editor *editor_ptr, PhysicalForce *physicalForce)</argsstring>
-        <name>Editor_removePhysicalForce</name>
+        <definition>int omexmeta::Editor_removeEnergyDiff</definition>
+        <argsstring>(Editor *editor_ptr, EnergyDiff *physicalForce)</argsstring>
+        <name>Editor_removeEnergyDiff</name>
         <param>
           <type>Editor *</type>
           <declname>editor_ptr</declname>
         </param>
         <param>
-          <type>PhysicalForce *</type>
+          <type>EnergyDiff *</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
@@ -2126,10 +2126,10 @@
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1077" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1077" bodyend="1085"/>
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a19d8061b433441b36c068b84742db6e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>PhysicalForce *</type>
-        <definition>PhysicalForce* omexmeta::PhysicalForce_new</definition>
+        <type>EnergyDiff *</type>
+        <definition>EnergyDiff* omexmeta::EnergyDiff_new</definition>
         <argsstring>(Editor *editor_ptr)</argsstring>
-        <name>PhysicalForce_new</name>
+        <name>EnergyDiff_new</name>
         <param>
           <type>Editor *</type>
           <declname>editor_ptr</declname>
@@ -2137,7 +2137,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>PhysicalForce class methods </para>
+<para>EnergyDiff class methods </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -2145,11 +2145,11 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a29bd8f837c7a82a04ec64fb46173fe96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::PhysicalForce_delete</definition>
-        <argsstring>(PhysicalForce *physicalForce)</argsstring>
-        <name>PhysicalForce_delete</name>
+        <definition>int omexmeta::EnergyDiff_delete</definition>
+        <argsstring>(EnergyDiff *physicalForce)</argsstring>
+        <name>EnergyDiff_delete</name>
         <param>
-          <type>PhysicalForce *</type>
+          <type>EnergyDiff *</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
@@ -2162,12 +2162,12 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a6c28143e869aa261d5520ed332c35b08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::PhysicalForce_freeAll</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
-        <name>PhysicalForce_freeAll</name>
+        <definition>int omexmeta::EnergyDiff_freeAll</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr)</argsstring>
+        <name>EnergyDiff_freeAll</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -2178,13 +2178,13 @@
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1109" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1109" bodyend="1118"/>
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a2d110512d0016169a30f74bd015bbe63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>PhysicalForce *</type>
-        <definition>PhysicalForce* omexmeta::PhysicalForce_addSource</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr, int multiplier, const char *physical_entity_reference)</argsstring>
-        <name>PhysicalForce_addSource</name>
+        <type>EnergyDiff *</type>
+        <definition>EnergyDiff* omexmeta::EnergyDiff_addSource</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr, int multiplier, const char *physical_entity_reference)</argsstring>
+        <name>EnergyDiff_addSource</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <param>
           <type>int</type>
@@ -2203,13 +2203,13 @@
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1121" column="19" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1121" bodyend="1130"/>
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae83c6ea858ee507ca5ab676c345da794" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>PhysicalForce *</type>
-        <definition>PhysicalForce* omexmeta::PhysicalForce_addSink</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr, int multiplier, const char *physical_entity_reference)</argsstring>
-        <name>PhysicalForce_addSink</name>
+        <type>EnergyDiff *</type>
+        <definition>EnergyDiff* omexmeta::EnergyDiff_addSink</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr, int multiplier, const char *physical_entity_reference)</argsstring>
+        <name>EnergyDiff_addSink</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <param>
           <type>int</type>
@@ -2228,13 +2228,13 @@
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1132" column="19" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1132" bodyend="1141"/>
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a5b50ca96bd9545a04bfd475ab653bc0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>PhysicalForce *</type>
-        <definition>PhysicalForce* omexmeta::PhysicalForce_setPhysicalProperty</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property)</argsstring>
-        <name>PhysicalForce_setPhysicalProperty</name>
+        <type>EnergyDiff *</type>
+        <definition>EnergyDiff* omexmeta::EnergyDiff_setPhysicalProperty</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr, const char *subject_metaid, const char *physical_property)</argsstring>
+        <name>EnergyDiff_setPhysicalProperty</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <param>
           <type>const char *</type>
@@ -2254,11 +2254,11 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1af2dafea3e160b1cfd24a265889f86b0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::PhysicalForce_getNumSources</definition>
-        <argsstring>(PhysicalForce *physicalForce)</argsstring>
-        <name>PhysicalForce_getNumSources</name>
+        <definition>int omexmeta::EnergyDiff_getNumSources</definition>
+        <argsstring>(EnergyDiff *physicalForce)</argsstring>
+        <name>EnergyDiff_getNumSources</name>
         <param>
-          <type>PhysicalForce *</type>
+          <type>EnergyDiff *</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
@@ -2271,11 +2271,11 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1aa48a635eb6bce1c5cd81c5c6fedeed7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::PhysicalForce_getNumSinks</definition>
-        <argsstring>(PhysicalForce *physicalForce)</argsstring>
-        <name>PhysicalForce_getNumSinks</name>
+        <definition>int omexmeta::EnergyDiff_getNumSinks</definition>
+        <argsstring>(EnergyDiff *physicalForce)</argsstring>
+        <name>EnergyDiff_getNumSinks</name>
         <param>
-          <type>PhysicalForce *</type>
+          <type>EnergyDiff *</type>
           <declname>physicalForce</declname>
         </param>
         <briefdescription>
@@ -2288,12 +2288,12 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae36ddd4b6b59256dd4e2d81a091b1753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
-        <definition>char* omexmeta::PhysicalForce_str</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri)</argsstring>
-        <name>PhysicalForce_str</name>
+        <definition>char* omexmeta::EnergyDiff_str</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>EnergyDiff_str</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <param>
           <type>const char *</type>
@@ -2313,12 +2313,12 @@
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1ac1173b1e32e72a649ed8bd948061b10d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
-        <definition>char* omexmeta::PhysicalForce_getAbout</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
-        <name>PhysicalForce_getAbout</name>
+        <definition>char* omexmeta::EnergyDiff_getAbout</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr)</argsstring>
+        <name>EnergyDiff_getAbout</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -2329,13 +2329,13 @@
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1187" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1187" bodyend="1197"/>
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1ae5281aad78376f2490dcbe58dace1f7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>PhysicalForce *</type>
-        <definition>PhysicalForce* omexmeta::PhysicalForce_hasProperty</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr, const char *property)</argsstring>
-        <name>PhysicalForce_hasProperty</name>
+        <type>EnergyDiff *</type>
+        <definition>EnergyDiff* omexmeta::EnergyDiff_hasProperty</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr, const char *property)</argsstring>
+        <name>EnergyDiff_hasProperty</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <param>
           <type>const char *</type>
@@ -2350,13 +2350,13 @@
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1199" column="19" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1199" bodyend="1207"/>
       </memberdef>
       <memberdef kind="function" id="OmexMetaCApi_8cpp_1a29bb7bbad59f073be1abbe8ff14a19ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>PhysicalForce *</type>
-        <definition>PhysicalForce* omexmeta::PhysicalForce_about</definition>
-        <argsstring>(PhysicalForce *physical_force_ptr, const char *about)</argsstring>
-        <name>PhysicalForce_about</name>
+        <type>EnergyDiff *</type>
+        <definition>EnergyDiff* omexmeta::EnergyDiff_about</definition>
+        <argsstring>(EnergyDiff *energy_diff_ptr, const char *about)</argsstring>
+        <name>EnergyDiff_about</name>
         <param>
-          <type>PhysicalForce *</type>
-          <declname>physical_force_ptr</declname>
+          <type>EnergyDiff *</type>
+          <declname>energy_diff_ptr</declname>
         </param>
         <param>
           <type>const char *</type>

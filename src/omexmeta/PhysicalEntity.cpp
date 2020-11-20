@@ -9,7 +9,7 @@ namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
                                    Resource is, Resources is_part_of)
-        : PhysicalPhenomenon(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
+        : PropertyBearer(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
           identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
     void PhysicalEntity::free() {
@@ -26,10 +26,10 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model) : PhysicalPhenomenon(model) {}
+    PhysicalEntity::PhysicalEntity(librdf_model *model) : PropertyBearer(model) {}
 
     PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
-        : PhysicalPhenomenon(model, model_uri, local_uri) {}
+        : PropertyBearer(model, model_uri, local_uri) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -149,8 +149,8 @@ namespace omexmeta {
 
 
     bool PhysicalEntity::operator==(const PhysicalEntity &rhs) const {
-        return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
-                       static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
+        return static_cast<const omexmeta::PropertyBearer &>(*this) ==
+                       static_cast<const omexmeta::PropertyBearer &>(rhs) &&
                identity_resource_ == rhs.identity_resource_ &&
                location_resources_ == rhs.location_resources_;
     }
@@ -171,12 +171,12 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::about(const std::string &about, eUriType type) {
-        PhysicalPhenomenon::about(about, type);
+        PropertyBearer::about(about, type);
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::about(const std::string &about) {
-        PhysicalPhenomenon::about(about);
+        PropertyBearer::about(about);
         return *this;
     }
 
@@ -198,19 +198,19 @@ namespace omexmeta {
         return property_metaid_base_;
     }
     PhysicalEntity &PhysicalEntity::hasProperty(const PhysicalProperty &property) {
-        PhysicalPhenomenon::hasProperty(property);
+        PropertyBearer::hasProperty(property);
         return *this;
     }
     PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
-        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
         return *this;
     }
     PhysicalEntity &PhysicalEntity::hasProperty(const std::string &is_version_of) {
-        PhysicalPhenomenon::hasProperty(is_version_of);
+        PropertyBearer::hasProperty(is_version_of);
         return *this;
     }
     PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) {
-        PhysicalPhenomenon::hasProperty(property_about, about_uri_type, is_version_of);
+        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of);
         return *this;
     }
 

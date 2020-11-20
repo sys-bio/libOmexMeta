@@ -354,8 +354,8 @@
         <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">addPhysicalProcess</span><span class="p">(</span><span class="o">*</span><span class="n">physicalProcess</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="n">Editor_addPhysicalForce</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">addPhysicalForce</span><span class="p">(</span><span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="n">Editor_addEnergyDiff</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">addEnergyDiff</span><span class="p">(</span><span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">Editor_addPersonalInformation</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">personalInformation</span><span class="p">)</span> <span class="p">{</span>
@@ -374,8 +374,8 @@
         <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">removePhysicalProcess</span><span class="p">(</span><span class="o">*</span><span class="n">physicalProcess</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="n">Editor_removePhysicalForce</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">removePhysicalForce</span><span class="p">(</span><span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="n">Editor_removeEnergyDiff</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">removeEnergyDiff</span><span class="p">(</span><span class="o">*</span><span class="n">physicalForce</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">Editor_removePersonalInformation</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">PersonalInformation</span> <span class="o">*</span><span class="n">information</span><span class="p">)</span> <span class="p">{</span>
@@ -725,52 +725,52 @@
 
 
 <span class="cm">/*********************************************************************</span>
-<span class="cm"> * PhysicalForce class methods</span>
+<span class="cm"> * EnergyDiff class methods</span>
 <span class="cm"> */</span>
-    <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">PhysicalForce</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
+    <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_new</span><span class="p">(</span><span class="n">Editor</span> <span class="o">*</span><span class="n">editor_ptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">EnergyDiff</span><span class="p">(</span><span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModel</span><span class="p">(),</span> <span class="n">editor_ptr</span><span class="o">-&gt;</span><span class="n">getModelUri</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="nf">PhysicalForce_delete</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="nf">EnergyDiff_delete</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">delete</span> <span class="n">physicalForce</span><span class="p">;</span>
 
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="nf">PhysicalForce_freeAll</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">physical_force_ptr</span><span class="o">-&gt;</span><span class="n">free</span><span class="p">();</span>
-        <span class="k">delete</span> <span class="n">physical_force_ptr</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">EnergyDiff_freeAll</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">energy_diff_ptr</span><span class="o">-&gt;</span><span class="n">free</span><span class="p">();</span>
+        <span class="k">delete</span> <span class="n">energy_diff_ptr</span><span class="p">;</span>
     <span class="p">}</span>
 
 
-    <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_addSource</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
+    <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_addSource</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
                                            <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_entity_reference</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">physical_force_ptr</span><span class="o">-&gt;</span><span class="n">addSource</span><span class="p">(</span><span class="n">multiplier</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">physical_force_ptr</span><span class="p">;</span>
+        <span class="n">energy_diff_ptr</span><span class="o">-&gt;</span><span class="n">addSource</span><span class="p">(</span><span class="n">multiplier</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">energy_diff_ptr</span><span class="p">;</span>
 
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_addSink</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
+    <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_addSink</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="kt">double</span> <span class="n">multiplier</span><span class="p">,</span>
                                          <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_entity_reference</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">physical_force_ptr</span><span class="o">-&gt;</span><span class="n">addSink</span><span class="p">(</span><span class="n">multiplier</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">physical_force_ptr</span><span class="p">;</span>
+        <span class="n">energy_diff_ptr</span><span class="o">-&gt;</span><span class="n">addSink</span><span class="p">(</span><span class="n">multiplier</span><span class="p">,</span> <span class="n">physical_entity_reference</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">energy_diff_ptr</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">PhysicalForce</span> <span class="o">*</span><span class="nf">PhysicalForce_setPhysicalProperty</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">subject_metaid</span><span class="p">,</span>
+    <span class="n">EnergyDiff</span> <span class="o">*</span><span class="nf">EnergyDiff_setPhysicalProperty</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">subject_metaid</span><span class="p">,</span>
                                                      <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">physical_property</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">physical_force_ptr</span><span class="o">-&gt;</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">subject_metaid</span><span class="p">,</span> <span class="n">physical_property</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">physical_force_ptr</span><span class="p">;</span>
+        <span class="n">energy_diff_ptr</span><span class="o">-&gt;</span><span class="n">setPhysicalProperty</span><span class="p">(</span><span class="n">subject_metaid</span><span class="p">,</span> <span class="n">physical_property</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">energy_diff_ptr</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="nf">PhysicalForce_getNumSources</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nf">EnergyDiff_getNumSources</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">physicalForce</span><span class="o">-&gt;</span><span class="n">getNumSources</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="nf">PhysicalForce_getNumSinks</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nf">EnergyDiff_getNumSinks</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">physicalForce</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">physicalForce</span><span class="o">-&gt;</span><span class="n">getNumSinks</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kt">char</span> <span class="o">*</span><span class="nf">PhysicalForce_str</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">base_uri</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Triples</span> <span class="n">triples</span> <span class="o">=</span> <span class="n">physical_force_ptr</span><span class="o">-&gt;</span><span class="n">toTriples</span><span class="p">();</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="nf">EnergyDiff_str</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">base_uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Triples</span> <span class="n">triples</span> <span class="o">=</span> <span class="n">energy_diff_ptr</span><span class="o">-&gt;</span><span class="n">toTriples</span><span class="p">();</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="n">triples</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">);</span>
         <span class="n">triples</span><span class="p">.</span><span class="n">freeTriples</span><span class="p">();</span>
         <span class="kt">char</span> <span class="o">*</span><span class="n">cstr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">((</span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
@@ -779,8 +779,8 @@
     <span class="p">}</span>
 
 
-    <span class="kt">char</span> <span class="o">*</span><span class="nf">PhysicalForce_getAbout</span><span class="p">(</span><span class="n">PhysicalForce</span> <span class="o">*</span><span class="n">physical_force_ptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">about</span> <span class="o">=</span> <span class="n">physical_force_ptr</span><span class="o">-&gt;</span><span class="n">getAbout</span><span class="p">();</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="nf">EnergyDiff_getAbout</span><span class="p">(</span><span class="n">EnergyDiff</span> <span class="o">*</span><span class="n">energy_diff_ptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">about</span> <span class="o">=</span> <span class="n">energy_diff_ptr</span><span class="o">-&gt;</span><span class="n">getAbout</span><span class="p">();</span>
         <span class="kt">char</span> <span class="o">*</span><span class="n">cstr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">((</span><span class="n">about</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
         <span class="n">strcpy</span><span class="p">(</span><span class="n">cstr</span><span class="p">,</span> <span class="n">about</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">cstr</span><span class="p">;</span>

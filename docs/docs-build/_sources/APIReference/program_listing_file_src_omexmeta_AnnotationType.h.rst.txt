@@ -28,7 +28,7 @@ Program Listing for File AnnotationType.h
        enum AnnotationType {
            PHYSICAL_ENTITY,
            PHYSICAL_PROCESS,
-           PHYSICAL_FORCE,
+           energy_diff,
            SINGULAR,
            UNKNOWN
        };

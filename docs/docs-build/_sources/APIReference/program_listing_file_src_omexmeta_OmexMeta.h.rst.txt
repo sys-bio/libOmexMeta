@@ -21,7 +21,7 @@ Program Listing for File OmexMeta.h
    #include "omexmeta/Editor.h"
    #include "omexmeta/Triple.h"
    #include "omexmeta/Triples.h"
-   #include "omexmeta/PhysicalForce.h"
+   #include "omexmeta/EnergyDiff.h"
    #include "omexmeta/PhysicalEntity.h"
    #include "omexmeta/PhysicalProcess.h"
    #include "omexmeta/PersonalInformation.h"

@@ -10,7 +10,7 @@ namespace omexmeta {
     Participant::Participant(librdf_model *model, std::string base_metaid,
                              const std::string &model_uri, const std::string &local_uri,
                              std::string semsim_predicate_term,
-                             int multiplier,
+                             double multiplier,
                              std::string physicalEntityReference, eUriType type)
         : model_(model),
           metaid_template_str_(std::move(base_metaid)),
@@ -28,7 +28,6 @@ namespace omexmeta {
     }
 
     Triples Participant::toTriples(std::string subject_metaid, std::vector<std::string> &metaid_exclusions) {
-
         subject_metaid = UriHandler::uriModifier<Participant>(*this, subject_metaid, type_);
         if (local_participant_metaid_.empty()) {
             local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(
@@ -72,7 +71,7 @@ namespace omexmeta {
             librdf_node *pred3 = SemSim("hasMultiplier").getNode();
             librdf_node *res3 = LibrdfNode::fromLiteral(
                                         multiplier_os.str(),
-                                        "int")
+                                        "double")
                                         .get();
             triples.emplace_back(sub3, pred3, res3);
         }
@@ -91,7 +90,7 @@ namespace omexmeta {
         return metaid_template_str_;
     }
 
-    int Participant::getMultiplier() const {
+    double Participant::getMultiplier() const {
         return multiplier_;
     }
 
@@ -113,7 +112,7 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    void Participant::setMultiplier(int multiplier) {
+    void Participant::setMultiplier(double multiplier) {
         multiplier_ = multiplier;
     }
 
@@ -145,12 +144,12 @@ namespace omexmeta {
         model_uri_ = model_uri;
     }
 
-    SourceParticipant::SourceParticipant(librdf_model *model, int multiplier, std::string physicalEntityReference, eUriType type,
+    SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
                                          const std::string &model_uri, const std::string &local_uri)
         : Participant(model, "SourceParticipant", model_uri, local_uri, "hasSourceParticipant",
                       multiplier, std::move(physicalEntityReference), type) {}
 
-    SinkParticipant::SinkParticipant(librdf_model *model, int multiplier,
+    SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
                                      std::string physicalEntityReference, eUriType type, const std::string &model_uri,
                                      const std::string &local_uri)
         : Participant(model, "SinkParticipant", model_uri, local_uri,

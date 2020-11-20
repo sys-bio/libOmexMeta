@@ -26,7 +26,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/OmexMetaXmlAssistant.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/PhysicalEntity.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/PhysicalProcess.h"{}}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/PhysicalForce.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/EnergyDiff.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/OmexMetaUtils.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmetacapi\_export.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <cstring>}}
@@ -110,7 +110,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalProcess(Editor *editor\_ptr, PhysicalProcess *physicalProcess);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPhysicalForce(Editor *editor\_ptr, PhysicalForce *physicalForce);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addEnergyDiff(Editor *editor\_ptr, EnergyDiff *physicalForce);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_addPersonalInformation(Editor *editor\_ptr, PersonalInformation *personalInformation);}
 \DoxyCodeLine{}
@@ -120,7 +120,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalProcess(Editor *editor\_ptr, PhysicalProcess *physicalProcess);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePhysicalForce(Editor *editor\_ptr, PhysicalForce *physicalForce);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removeEnergyDiff(Editor *editor\_ptr, EnergyDiff *physicalForce);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} Editor\_removePersonalInformation(Editor *editor\_ptr, PersonalInformation *information);}
 \DoxyCodeLine{}
@@ -271,35 +271,35 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalProcess *PhysicalProcess\_isVersionOf(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *version);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *\mbox{\hyperlink{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}{PhysicalForce\_new}}(Editor *editor\_ptr);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT EnergyDiff *\mbox{\hyperlink{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}{EnergyDiff\_new}}(Editor *editor\_ptr);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \mbox{\hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{PhysicalForce\_delete}}(PhysicalForce *physicalForce);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \mbox{\hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{EnergyDiff\_delete}}(EnergyDiff *physicalForce);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \mbox{\hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{PhysicalForce\_freeAll}}(PhysicalForce *physical\_force\_ptr);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} \mbox{\hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{EnergyDiff\_freeAll}}(EnergyDiff *physical\_force\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_addSource(}
-\DoxyCodeLine{            PhysicalForce *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_addSource(}
+\DoxyCodeLine{            EnergyDiff *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,}
 \DoxyCodeLine{            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_addSink(}
-\DoxyCodeLine{            PhysicalForce *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_addSink(}
+\DoxyCodeLine{            EnergyDiff *physical\_force\_ptr, \textcolor{keywordtype}{int} multiplier,}
 \DoxyCodeLine{            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_setPhysicalProperty(}
-\DoxyCodeLine{            PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_setPhysicalProperty(}
+\DoxyCodeLine{            EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalForce\_getNumSources(PhysicalForce *physicalForce);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} EnergyDiff\_getNumSources(EnergyDiff *physicalForce);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalForce\_getNumSinks(PhysicalForce *physicalForce);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{int} EnergyDiff\_getNumSinks(EnergyDiff *physicalForce);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_str(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *base\_uri);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *EnergyDiff\_str(EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *base\_uri);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalForce\_getAbout(PhysicalForce *physical\_force\_ptr);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT \textcolor{keywordtype}{char} *EnergyDiff\_getAbout(EnergyDiff *physical\_force\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_hasProperty(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_hasProperty(EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETACAPI\_EXPORT PhysicalForce *PhysicalForce\_about(PhysicalForce *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
+\DoxyCodeLine{    OMEXMETACAPI\_EXPORT EnergyDiff *EnergyDiff\_about(EnergyDiff *physical\_force\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETACAPI\_EXPORT PersonalInformation *\mbox{\hyperlink{namespaceomexmeta_a119fbc0317a5af631e7f68caece8c70b}{PersonalInformation\_new}}(Editor *editor\_ptr);}

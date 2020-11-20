@@ -13,7 +13,7 @@
     <innerfile refid="Participant_8cpp">Participant.cpp</innerfile>
     <innerfile refid="PersonalInformation_8cpp">PersonalInformation.cpp</innerfile>
     <innerfile refid="PhysicalEntity_8cpp">PhysicalEntity.cpp</innerfile>
-    <innerfile refid="PhysicalForce_8cpp">PhysicalForce.cpp</innerfile>
+    <innerfile refid="EnergyDiff_8cpp">EnergyDiff.cpp</innerfile>
     <innerfile refid="PhysicalPhenomenon_8cpp">PhysicalPhenomenon.cpp</innerfile>
     <innerfile refid="PhysicalProcess_8cpp">PhysicalProcess.cpp</innerfile>
     <innerfile refid="PhysicalProperty_8cpp">PhysicalProperty.cpp</innerfile>

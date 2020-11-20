@@ -259,11 +259,11 @@
 <codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addCompositeAnnotation((PhysicalPhenomenon<sp/>*)<sp/>&amp;physicalProcess);</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Editor::addPhysicalForce(PhysicalForce<sp/>&amp;physicalForce)<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Editor::addEnergyDiff(EnergyDiff<sp/>&amp;physicalForce)<sp/>{</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(physicalForce.getAbout().empty())<sp/>{</highlight></codeline>
 <codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>NullPointerException(</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NullPointerException:<sp/>Editor::addPhysicalForce()<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PhysicalForce::subject_<sp/>(i.e.<sp/>about)<sp/>node<sp/>is<sp/>empty&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NullPointerException:<sp/>Editor::addEnergyDiff()<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;EnergyDiff::subject_<sp/>(i.e.<sp/>about)<sp/>node<sp/>is<sp/>empty&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checkValidMetaid(physicalForce.getAbout());</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
@@ -323,7 +323,7 @@
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Editor::removePhysicalForce(PhysicalForce<sp/>&amp;physicalForce)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Editor::removeEnergyDiff(EnergyDiff<sp/>&amp;physicalForce)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePhysicalPhenomenon(&amp;physicalForce);</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"></highlight></codeline>
@@ -335,8 +335,8 @@
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PhysicalEntity(model_.get(),<sp/>getModelUri(),<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"></highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalForce<sp/>Editor::newPhysicalForce()<sp/>{</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PhysicalForce(model_.get(),<sp/>getModelUri(),<sp/>getLocalUri());</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>EnergyDiff<sp/>Editor::newEnergyDiff()<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EnergyDiff(model_.get(),<sp/>getModelUri(),<sp/>getLocalUri());</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"></highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalProcess<sp/>Editor::newPhysicalProcess()<sp/>{</highlight></codeline>

@@ -22,7 +22,7 @@ Program Listing for File OmexMetaCApi.h
    #include "omexmeta/OmexMetaXmlAssistant.h"
    #include "omexmeta/PhysicalEntity.h"
    #include "omexmeta/PhysicalProcess.h"
-   #include "omexmeta/PhysicalForce.h"
+   #include "omexmeta/EnergyDiff.h"
    #include <cstring>
    #include "omexmeta/OmexMetaUtils.h"
    #include "omexmeta/Preproc.h"
@@ -133,7 +133,7 @@ Program Listing for File OmexMetaCApi.h
    
        SEMSIM_API void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
    
-       SEMSIM_API void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+       SEMSIM_API void Editor_addEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
    
        SEMSIM_API void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
    
@@ -143,7 +143,7 @@ Program Listing for File OmexMetaCApi.h
    
        SEMSIM_API void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
    
-       SEMSIM_API void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+       SEMSIM_API void Editor_removeEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
    
        SEMSIM_API void Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
    
@@ -261,41 +261,41 @@ Program Listing for File OmexMetaCApi.h
    
    
    /*********************************************************************
-    * PhysicalForce class methods
+    * EnergyDiff class methods
     */
-       SEMSIM_API PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
+       SEMSIM_API EnergyDiff *EnergyDiff_new(Editor *editor_ptr);
    
    
        /*
-        * @brief deletes physical force excluding all
+        * @brief deletes energy differential excluding all
         * nodes associated with it.
         */
-       SEMSIM_API void PhysicalForce_delete(PhysicalForce *physicalForce);
+       SEMSIM_API void EnergyDiff_delete(EnergyDiff *physicalForce);
    
        /*
-        * @brief deletes physical force including all
+        * @brief deletes energy differential including all
         * nodes associated with it.
         */
-       SEMSIM_API void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
+       SEMSIM_API void EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr);
    
-       SEMSIM_API PhysicalForce *PhysicalForce_addSource(
-               PhysicalForce *physical_force_ptr, double multiplier,
+       SEMSIM_API EnergyDiff *EnergyDiff_addSource(
+               EnergyDiff *energy_diff_ptr, double multiplier,
                const char *physical_entity_reference);
    
-       SEMSIM_API PhysicalForce *PhysicalForce_addSink(
-               PhysicalForce *physical_force_ptr, double multiplier,
+       SEMSIM_API EnergyDiff *EnergyDiff_addSink(
+               EnergyDiff *energy_diff_ptr, double multiplier,
                const char *physical_entity_reference);
    
-       SEMSIM_API PhysicalForce *PhysicalForce_setPhysicalProperty(
-               PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
+       SEMSIM_API EnergyDiff *EnergyDiff_setPhysicalProperty(
+               EnergyDiff *energy_diff_ptr, const char *subject_metaid, const char *physical_property);
    
-       SEMSIM_API int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
+       SEMSIM_API int EnergyDiff_getNumSources(EnergyDiff *physicalForce);
    
-       SEMSIM_API int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
+       SEMSIM_API int EnergyDiff_getNumSinks(EnergyDiff *physicalForce);
    
-       SEMSIM_API char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
+       SEMSIM_API char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri);
    
-       SEMSIM_API char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+       SEMSIM_API char *EnergyDiff_getAbout(EnergyDiff *energy_diff_ptr);
    
    /*********************************************************************
     * PersonalInformation class methods
