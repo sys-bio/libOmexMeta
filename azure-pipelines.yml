@@ -109,7 +109,7 @@ jobs:
       - task: CopyFiles@2
         inputs:
           sourceFolder: '$(INSTALL_DIRECTORY)'
-          contents: '$(INSTALL_DIRECTORY)/*'
+          contents: '**'
           targetFolder: '$(Build.ArtifactStagingDirectory)'
         displayName: Copy install to artifact staging area
       - task: PublishPipelineArtifact@1
@@ -212,7 +212,7 @@ jobs:
       - task: CopyFiles@2
         inputs:
           sourceFolder: '$(INSTALL_DIRECTORY)'
-          contents: '$(INSTALL_DIRECTORY)/*'
+          contents: '**'
           targetFolder: '$(Build.ArtifactStagingDirectory)'
         displayName: Copy install to artifact staging area
       - task: PublishPipelineArtifact@1
@@ -310,7 +310,7 @@ jobs:
       - task: CopyFiles@2
         inputs:
           sourceFolder: '$(INSTALL_DIRECTORY)'
-          contents: '$(INSTALL_DIRECTORY)/*'
+          contents: '**'
           targetFolder: '$(Build.ArtifactStagingDirectory)'
         displayName: Copy install to artifact staging area
       - task: PublishPipelineArtifact@1
