@@ -1,3 +1,3 @@
-D:/libOmexMeta/install-msvc
-D:/libOmexMeta/install-msvc/lib
-D:/libOmexMeta/install-msvc/bin
+/Users/ciaranwelsh/Documents/libOmexMeta/install-mac
+/Users/ciaranwelsh/Documents/libOmexMeta/install-mac/lib
+/Users/ciaranwelsh/Documents/libOmexMeta/install-mac/bin
