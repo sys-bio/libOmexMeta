@@ -184,9 +184,11 @@ target_include_directories(
         $<BUILD_INTERFACE:$<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>>
 )
 add_dependencies(${target}CAPI ${target}-static)
-
-set_target_properties(${target}CAPI PROPERTIES OUTPUT_NAME "${target}CAPI-${LIBOMEXMETA_VERSION}")
-
+if (WIN32)
+    # Apple does this already and would result in a ${target}CAPI-version.version.dylib
+    # Linux has the soname so would result in ${target}CAPI-version.so.version
+    set_target_properties(${target}CAPI PROPERTIES OUTPUT_NAME "${target}CAPI-${LIBOMEXMETA_VERSION}")
+endif()
 generate_export_header(${target}CAPI BASE_NAME OMEXMETA_CAPI)
 target_compile_definitions(${target}CAPI PUBLIC OmexMeta_CAPI_EXPORTS)
 

@@ -85,7 +85,7 @@ for i in binaries:
 
 libomexmeta = os.path.join(
     os.path.abspath(os.path.dirname(__file__)),
-    'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@'
+    'site-packages/pyomexmeta/@CMAKE_SHARED_LIBRARY_PREFIX@OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@'
 )
 print(libomexmeta, "exists: ", os.path.isfile(libomexmeta))
 if not os.path.isfile(libomexmeta):
