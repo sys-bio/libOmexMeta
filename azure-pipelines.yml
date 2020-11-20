@@ -292,7 +292,7 @@ jobs:
         displayName: Create Anaconda environment
       - powershell: |
           conda create -y --name pyomexmeta python=3.8
-          conda activate pyomexmeta
+          call activate pyomexmeta
           pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32
           $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
@@ -303,8 +303,7 @@ jobs:
         # publish python packages in azure:
         #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
       - script: |
-          conda shell.powershell hook
-          conda activate pyomexmeta
+          call activate pyomexmeta
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
           $wheel = Get-ChildItem -LiteralPath . -Recurse -File |% FullName
