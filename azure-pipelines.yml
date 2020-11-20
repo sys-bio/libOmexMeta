@@ -304,6 +304,7 @@ jobs:
         # publish python packages in azure:
         #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
       - script: |
+          conda init powershell
           conda activate pyomexmeta
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
