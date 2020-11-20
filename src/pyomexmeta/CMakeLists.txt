@@ -21,13 +21,13 @@ configure_file(${PYOMEXMETA_PY} ${BUILD_TREE_SITE_PACKAGES}/pyomexmeta/pyomexmet
 
 
 install(FILES ${PYTHON_SETUP_FILE} DESTINATION .)
-install(TARGETS OmexMetaCAPI DESTINATION site-packages/pyomexmeta)
 install(
         FILES
         ${PYTHON_INIT_FILE}
         ${PYTHON_API_FILE}
         ${PYOMEXMETA_PY}
         "${CMAKE_CURRENT_SOURCE_DIR}/VERSION.txt"
+        "$<TARGET_FILE:OmexMetaCAPI>"
         DESTINATION
         site-packages/pyomexmeta
 )

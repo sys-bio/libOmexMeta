@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import ctypes as ct
+import glob
 import os
+import re
+import shutil
 import sys
 from typing import List
-import glob
-import shutil
-import re
-import subprocess
 
 _THIS_DIR = os.path.dirname(__file__)
 
@@ -35,19 +34,14 @@ def get_version():
         results = [
             re.findall("OmexMetaCAPI-(\d*.\d*.\d*).dll|OmexMetaCAPI-(\d*.\d*.\d*).so|OmexMetaCAPI-(\d*.\d*.\d*).dylib",
                        i) for i in files_in_current_dir]
-        results = [i for i in results if i != [] ]
+        results = [i for i in results if i != []]
 
         assert len(results) == 1, f"length of results == {len(results)}"
         results = results[0]  # a list of tuples : [('1.1.18', '', '')]
-        print(results)
         results = [i for i in results[0] if i != '']
-        print(results)
-        assert len(results) == 1, f"length of results == {len(results)}, HERE"
-        print(results)
+        assert len(results) == 1, f"length of results == {len(results)}"
         results = results[0]
-        print(results)
         assert isinstance(results, str), f"type is: {type(results)}"
-        print(results)
         return results
 
 
@@ -64,7 +58,7 @@ _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 
 class Util:
-    
+
     def __init__(self):
         self._lib = self.load_lib()
 
@@ -84,6 +78,13 @@ class Util:
         return False
 
     def load_lib(self):
+        """
+        Load the libOmexMeta C API binary. This methods incorporates
+        flexibility to load libOmexMeta from multiple locations and works
+        from the source, binary and install trees and under site-pacakges.
+        Returns:
+
+        """
         extensions = [
             f"-{get_version()}.dll",
             f'-{get_version()}.so.{get_version()}',
@@ -172,7 +173,7 @@ class PyOmexMetaAPI:
 
     Explain decision to only set self uri's from RDF not editor.
     """
-    
+
     utils = Util()
 
     # RDF methods
@@ -208,20 +209,20 @@ class PyOmexMetaAPI:
     #                         const char *storage_type = "memory", const char *storage_name = "semsim_store",
     #                         const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_string = utils.load_func("RDF_fromString",
-                                     [ct.c_char_p, ct.c_char_p, ct.c_char_p,
-                                      ct.c_char_p, ct.c_char_p, ct.c_void_p, ct.c_void_p], ct.c_int64)
+                                      [ct.c_char_p, ct.c_char_p, ct.c_char_p,
+                                       ct.c_char_p, ct.c_char_p, ct.c_void_p, ct.c_void_p], ct.c_int64)
 
     # void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
     rdf_add_from_string = utils.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p],
-                                         ct.c_void_p)
+                                          ct.c_void_p)
 
     # RDF *RDF_fromUri(const char *uri_string, const char *format,
     #                  const char *storage_type = "memory", const char *storage_name = "semsim_store",
     #                  const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_uri = utils.load_func("RDF_fromUri",
-                                  [ct.c_char_p, ct.c_char_p,
-                                   ct.c_char_p, ct.c_char_p,
-                                   ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                   [ct.c_char_p, ct.c_char_p,
+                                    ct.c_char_p, ct.c_char_p,
+                                    ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
     rdf_add_from_uri = utils.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
@@ -230,8 +231,8 @@ class PyOmexMetaAPI:
     #                   const char *storage_name = "semsim_store",
     #                   const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_file = utils.load_func("RDF_fromFile", [ct.c_char_p, ct.c_char_p,
-                                                    ct.c_char_p, ct.c_char_p,
-                                                    ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                     ct.c_char_p, ct.c_char_p,
+                                                     ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
     rdf_add_from_file = utils.load_func("RDF_addFromFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
@@ -247,7 +248,7 @@ class PyOmexMetaAPI:
 
     # char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
     rdf_query_results_as_str = utils.load_func("RDF_query", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                              ct.c_int64)
+                                               ct.c_int64)
 
     # void RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
     rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], None)
@@ -277,14 +278,15 @@ class PyOmexMetaAPI:
 
     # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
     rdf_equals_rdf_vs_string = utils.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                              ct.c_bool)
+                                               ct.c_bool)
 
     # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
     rdf_equals_rdf_vs_rdf = utils.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_bool)
 
     # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
-    rdf_equals_string_vs_string = utils.load_func("RDF_equals_string_vs_string", [ct.c_char_p, ct.c_char_p, ct.c_char_p],
-                                                 ct.c_bool)
+    rdf_equals_string_vs_string = utils.load_func("RDF_equals_string_vs_string",
+                                                  [ct.c_char_p, ct.c_char_p, ct.c_char_p],
+                                                  ct.c_bool)
 
     #################################################################
     # Editor methods
@@ -295,27 +297,27 @@ class PyOmexMetaAPI:
 
     # void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
     editor_add_single_annotation = utils.load_func("Editor_addSingleAnnotation",
-                                                  [ct.c_int64, ct.c_int64], ct.c_void_p)
+                                                   [ct.c_int64, ct.c_int64], ct.c_void_p)
 
     # void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
     editor_add_physical_entity = utils.load_func("Editor_addPhysicalEntity", [ct.c_int64, ct.c_int64],
-                                                ct.c_void_p)
+                                                 ct.c_void_p)
 
     # void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
     editor_add_physical_process = utils.load_func("Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64],
-                                                 ct.c_void_p)
+                                                  ct.c_void_p)
 
     # void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
     editor_add_physical_force = utils.load_func("Editor_addPhysicalForce", [ct.c_int64, ct.c_int64],
-                                               ct.c_void_p)
+                                                ct.c_void_p)
 
     # void Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty);
     editor_add_physical_property = utils.load_func("Editor_addPhysicalProperty", [ct.c_int64, ct.c_int64],
-                                                  ct.c_void_p)
+                                                   ct.c_void_p)
 
     # void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
     editor_check_valid_metaid = utils.load_func("Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
-                                               ct.c_void_p)
+                                                ct.c_void_p)
 
     # void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
     editor_remove_single_annotation = utils.load_func("Editor_removeSingleAnnotation", [ct.c_int64], None)
@@ -401,53 +403,53 @@ class PyOmexMetaAPI:
 
     # SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
     singular_annotation_set_predicate = utils.load_func("SingularAnnotation_setPredicate",
-                                                       [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *
     #   SingularAnnotation_predicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
     singular_annotation_predicate = utils.load_func("SingularAnnotation_predicate",
-                                                   [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                    [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_setPredicateFromUri(
     #         SingularAnnotation *singular_annotation, const char *uri);
     singular_annotation_set_predicate_from_uri = utils.load_func("SingularAnnotation_setPredicateFromUri",
-                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_predicateFromUri(
     #         SingularAnnotation *singular_annotation, const char *uri);
     singular_annotation_predicate_from_uri = utils.load_func("SingularAnnotation_predicateFromUri",
-                                                            [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                             [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_setResourceLiteral(
     #         SingularAnnotation *singular_annotation, const char *literal);
     singular_annotation_set_resource_literal = utils.load_func("SingularAnnotation_setResourceLiteral",
-                                                              [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                               [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *SingularAnnotation_resourceLiteral(
     #         SingularAnnotation *singular_annotation, const char *literal);
     singular_annotation_resource_literal = utils.load_func("SingularAnnotation_resourceLiteral",
-                                                          [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                           [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *
     # SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
     singular_annotation_set_resource_uri = utils.load_func("SingularAnnotation_setResourceUri",
-                                                          [ct.c_int64, ct.c_char_p],
-                                                          ct.c_int64)
+                                                           [ct.c_int64, ct.c_char_p],
+                                                           ct.c_int64)
     # SingularAnnotation *
     # SingularAnnotation_resourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
     singular_annotation_resource_uri = utils.load_func("SingularAnnotation_resourceUri",
-                                                      [ct.c_int64, ct.c_char_p],
-                                                      ct.c_int64)
+                                                       [ct.c_int64, ct.c_char_p],
+                                                       ct.c_int64)
 
     # SingularAnnotation *
     # SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
     singular_annotation_set_resource_blank = utils.load_func("SingularAnnotation_setResourceBlank",
-                                                            [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                             [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # SingularAnnotation *
     # SingularAnnotation_resourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
     singular_annotation_resource_blank = utils.load_func("SingularAnnotation_resourceBlank",
-                                                        [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                         [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
     singular_annotation_get_about = utils.load_func("SingularAnnotation_getAbout", [ct.c_int64], ct.c_int64)
@@ -476,23 +478,23 @@ class PyOmexMetaAPI:
 
     # PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
     physical_property_about = utils.load_func("PhysicalProperty_about", [ct.c_int64, ct.c_char_p, ct.c_int64],
-                                             ct.c_int64)
+                                              ct.c_int64)
 
     # char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
     physical_property_get_is_version_of_value = utils.load_func("PhysicalProperty_getIsVersionOfValue", [ct.c_int64],
-                                                               ct.c_int64)
+                                                                ct.c_int64)
 
     # PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
     physical_property_is_property_of = utils.load_func("PhysicalProperty_isPropertyOf",
-                                                      [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+                                                       [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
     physical_property_is_version_of = utils.load_func("PhysicalProperty_isVersionOf", [ct.c_int64, ct.c_char_p],
-                                                     ct.c_int64)
+                                                      ct.c_int64)
 
     # char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
     physical_property_get_is_property_of_value = utils.load_func("PhysicalProperty_getIsPropertyOfValue", [ct.c_int64],
-                                                                ct.c_int64)
+                                                                 ct.c_int64)
 
     # int PhysicalProperty_delete(PhysicalProperty* property);
     physical_property_delete = utils.load_func("PhysicalProperty_delete", [ct.c_int64], ct.c_int64)
@@ -518,25 +520,25 @@ class PyOmexMetaAPI:
 
     # int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
     physical_entity_get_num_locations = utils.load_func("PhysicalEntity_getNumLocations", [ct.c_int64],
-                                                       ct.c_int)
+                                                        ct.c_int)
 
     # char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
     physical_entity_get_location = utils.load_func("PhysicalEntity_getLocation", [ct.c_int64, ct.c_int64], ct.c_int64)
 
     # char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
     physical_entity_str = utils.load_func("PhysicalEntity_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                         ct.c_int64)
+                                          ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property);
     physical_entity_has_property = utils.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_int64], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
     physical_entity_has_property_is_version_of = utils.load_func("PhysicalEntity_hasPropertyisVersionOf",
-                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
     physical_entity_has_property_full = utils.load_func("PhysicalEntity_hasPropertyFull",
-                                                       [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                        [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
     physical_entity_delete = utils.load_func("PhysicalEntity_delete", [ct.c_int64], None)
@@ -561,38 +563,38 @@ class PyOmexMetaAPI:
     # PhysicalProcess_addSource(PhysicalProcess *physical_process,
     #                          const char *physical_entity_reference, eUriType type, int multiplier)
     physical_process_add_source = utils.load_func("PhysicalProcess_addSource",
-                                                 [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+                                                  [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
     # PhysicalProcess *
     # PhysicalProcess_addSink(PhysicalProcess *physical_process,
     #                        const char *physical_entity_reference, eUriType type, int multiplier)
     physical_process_add_sink = utils.load_func("PhysicalProcess_addSink",
-                                               [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+                                                [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
     #     PhysicalProcess *
     #     PhysicalProcess_addMediator(PhysicalProcess *physical_process,
     #                                 const char *physical_entity_reference, eUriType type)
     physical_process_add_mediator = utils.load_func("PhysicalProcess_addMediator",
-                                                   [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+                                                    [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
     physical_process_str = utils.load_func("PhysicalProcess_str",
-                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type){
     physical_process_is_version_of = utils.load_func("PhysicalProcess_isVersionOf",
-                                                    [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+                                                     [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_entity_ptr, PhysicalProperty* property);
     physical_process_has_property = utils.load_func("PhysicalProcess_hasProperty", [ct.c_int64], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) ;
     physical_process_has_property_is_version_of = utils.load_func("PhysicalProcess_hasPropertyisVersionOf",
-                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                                  [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
     physical_process_has_property_full = utils.load_func("PhysicalProcess_hasPropertyFull",
-                                                        [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                         [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
     physical_process_delete = utils.load_func("PhysicalProcess_delete", [ct.c_int64], None)
@@ -610,32 +612,32 @@ class PyOmexMetaAPI:
     # PhysicalForce *PhysicalForce_setPhysicalProperty(
     #         PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
     physical_force_set_physical_property = utils.load_func("PhysicalForce_setPhysicalProperty",
-                                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     #    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr,
     #                                        const char *physical_entity_reference, eUriType type, int multiplier)
     physical_force_add_source = utils.load_func("PhysicalForce_addSource",
-                                               [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+                                                [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
     #    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr,
     #                                      const char *physical_entity_reference, eUriType type, int multiplier) {
     physical_force_add_sink = utils.load_func("PhysicalForce_addSink",
-                                             [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+                                              [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
 
     # char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
     physical_force_str = utils.load_func("PhysicalForce_str",
-                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_hasProperty(PhysicalForce *physical_entity_ptr, PhysicalProperty* property);
     physical_force_has_property = utils.load_func("PhysicalForce_hasProperty", [ct.c_int64], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_process_ptr, const char* isVersionOf) ;
     physical_force_has_property_is_version_of = utils.load_func("PhysicalForce_hasPropertyisVersionOf",
-                                                               [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
     physical_force_has_property_full = utils.load_func("PhysicalForce_hasPropertyFull",
-                                                      [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                       [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # void PhysicalForce_delete(PhysicalForce *physicalForce);
     physical_force_delete = utils.load_func("PhysicalForce_delete", [ct.c_int64], None)
@@ -658,39 +660,41 @@ class PyOmexMetaAPI:
 
     # void PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
     personal_information_set_local_uri = utils.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p],
-                                                        None)
+                                                         None)
 
     # PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
     personal_information_add_creator = utils.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p],
-                                                      ct.c_int64)
+                                                       ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const char *value);
-    personal_information_add_name = utils.load_func("PersonalInformation_addName", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_name = utils.load_func("PersonalInformation_addName", [ct.c_int64, ct.c_char_p],
+                                                    ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const char *value);
-    personal_information_add_mbox = utils.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_add_mbox = utils.load_func("PersonalInformation_addMbox", [ct.c_int64, ct.c_char_p],
+                                                    ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const char *value);
     personal_information_add_account_name = utils.load_func("PersonalInformation_addAccountName",
-                                                           [ct.c_int64, ct.c_char_p],
-                                                           ct.c_int64)
+                                                            [ct.c_int64, ct.c_char_p],
+                                                            ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const char *value);
     personal_information_add_account_service_homepage = utils.load_func("PersonalInformation_addAccountServiceHomepage",
-                                                                       [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                                        [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafBlank(PersonalInformation *information, const char *predicate, const char *blank_value);
     personal_information_add_foaf_blank = utils.load_func("PersonalInformation_addFoafBlank",
-                                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafUri(PersonalInformation *information, const char *predicate, const char *uri_value);
     personal_information_add_foaf_uri = utils.load_func("PersonalInformation_addFoafUri",
-                                                       [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                                       ct.c_int64)
+                                                        [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                                        ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addFoafLiteral(PersonalInformation *information, const char *predicate,const char *literal_value);
     personal_information_add_foaf_literal = utils.load_func("PersonalInformation_addFoafLiteral",
-                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                            [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # char *PersonalInformation_getMetaid(PersonalInformation *information);
     personal_information_get_metaid = utils.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
@@ -703,7 +707,7 @@ class PyOmexMetaAPI:
 
     # void PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
     personal_information_set_model_uri = utils.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p],
-                                                        None)
+                                                         None)
 
     # void PersonalInformation_delete(PersonalInformation* information);
     personal_information_delete = utils.load_func("PersonalInformation_delete", [ct.c_int64], None)

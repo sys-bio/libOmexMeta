@@ -4,7 +4,6 @@ import ctypes as ct
 import os
 from contextlib import contextmanager
 from typing import List
-from inspect import signature
 
 try:
     # for use from outside the package, as a python package
@@ -15,8 +14,9 @@ except ImportError:
     except ImportError:
         # for internal use
         from . import pyomexmeta_api, eUriType, eXmlType
-        
+
 _pyom = PyOmexMetaAPI()
+
 
 def _xml_type_factory(xml_type: str):
     """
@@ -134,9 +134,9 @@ class RDF:
 
     @staticmethod
     def equals_string_vs_string(first_string: str, second_string: str, first_format: str = "turtle",
-                                 second_format: str = "turtle") -> bool:
+                                second_format: str = "turtle") -> bool:
         return _pyom.rdf_equals_string_vs_string(first_string.encode(), second_string.encode(), first_format,
-                                                          second_format.encode())
+                                                 second_format.encode())
 
     def __eq__(self, other: RDF):
         return self.equals_rdf_vs_rdf(self, other)
@@ -330,7 +330,7 @@ class Editor:
             self.add_physical_force(physical_force)
 
     def new_physical_property(self) -> PhysicalProperty:
-        return  PhysicalProperty(_pyom.editor_new_physical_property(self._obj))
+        return PhysicalProperty(_pyom.editor_new_physical_property(self._obj))
 
     def delete(self):
         _pyom.editor_delete(self._obj)
@@ -458,7 +458,7 @@ class PhysicalProperty:
             _pyom.physical_property_get_about(self._obj)
         )
 
-    def about(self, about:str, uri_type: eUriType) -> PhysicalProperty:
+    def about(self, about: str, uri_type: eUriType) -> PhysicalProperty:
         _pyom.physical_property_about(self._obj, about.encode(), uri_type)
         return self
 
@@ -467,7 +467,7 @@ class PhysicalProperty:
             _pyom.physical_property_get_is_version_of_value(self._obj)
         )
 
-    def is_property_of(self, is_property_of_value: str, uri_type : eUriType = eUriType.NONE ) -> PhysicalProperty:
+    def is_property_of(self, is_property_of_value: str, uri_type: eUriType = eUriType.NONE) -> PhysicalProperty:
         _pyom.physical_property_is_property_of(self._obj, is_property_of_value.encode(), uri_type)
         return self
 
@@ -482,6 +482,7 @@ class PhysicalProperty:
 
     def delete(self) -> None:
         _pyom.physical_property_delete(self._obj)
+
 
 class _PropertyBearer:
     """
@@ -536,7 +537,7 @@ class _PropertyBearer:
             raise ValueError(f"No arguments given to \"{self.__class__.__name__}\" method \"has_property\"")
 
         # when the user provides the property argument in addition to any of the other arguments we error
-        if  (
+        if (
                 (property and property_about)
                 or (property and about_uri_type)
                 or (property and is_version_of)
@@ -545,7 +546,7 @@ class _PropertyBearer:
                              "values to any of the other arguments")
 
         # When the user provides the property argument and none of the others we use the addProperty signature
-        if  (
+        if (
                 (property and not property_about)
                 or (property and not about_uri_type)
                 or (property and not is_version_of)
@@ -630,7 +631,7 @@ class PhysicalProcess(_PropertyBearer):
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def add_source(self,physical_entity_reference: str,  uri_type: eUriType, multiplier: int) -> PhysicalProcess:
+    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalProcess:
         self._obj = _pyom.physical_process_add_source(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )
@@ -674,13 +675,13 @@ class PhysicalForce(_PropertyBearer):
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def add_source(self,  physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
+    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
         self._obj = _pyom.physical_force_add_source(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )
         return self
 
-    def add_sink(self,  physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
+    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalForce:
         self._obj = _pyom.physical_force_add_sink(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )
