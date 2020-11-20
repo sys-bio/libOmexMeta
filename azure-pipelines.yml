@@ -112,7 +112,7 @@ jobs:
 #          contents: '**'
 #          targetFolder: '$(Build.ArtifactStagingDirectory)'
 #        displayName: Copy install to artifact staging area
-      - task: PublishPipelineArtifact@1
+      - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: '$(INSTALL_DIRECTORY)'
           artifactName: libOmexMeta$(Agent.OS)
@@ -215,7 +215,7 @@ jobs:
 #          contents: '**'
 #          targetFolder: '$(Build.ArtifactStagingDirectory)'
 #        displayName: Copy install to artifact staging area
-      - task: PublishPipelineArtifact@1
+      - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: '$(INSTALL_DIRECTORY)'
           artifactName: libOmexMeta$(Agent.OS)
@@ -313,7 +313,7 @@ jobs:
 #          contents: '**'
 #          targetFolder: '$(Build.ArtifactStagingDirectory)'
 #        displayName: Copy install to artifact staging area
-      - task: PublishPipelineArtifact@1
+      - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: '$(INSTALL_DIRECTORY)'
           artifactName: libOmexMeta$(Agent.OS)
