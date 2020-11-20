@@ -18,21 +18,6 @@ except ImportError:
 _pyom = PyOmexMetaAPI()
 
 
-def _xml_type_factory(xml_type: str):
-    """
-    Helper function used internally for directing the underlying c++
-    code to work with cellml or sbml.
-    """
-    type = None
-    if xml_type == "sbml":
-        type = 0
-    elif xml_type == "cellml":
-        type = 1
-    else:
-        raise ValueError("\"xml_type\" arg must be either \"sbml\" or \"cellml\"")
-    return type
-
-
 class RDF:
 
     def __init__(self, storage_type: str = "memory", storage_name: str = "libOmexMetaStore",
