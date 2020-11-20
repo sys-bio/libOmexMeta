@@ -216,7 +216,7 @@ class EditorTests(unittest.TestCase):
         editor = self.rdf.to_editor(SBML, generate_new_metaids=True, sbml_semantic_extraction=True)
         with editor.new_singular_annotation() as singular_annotation:
             singular_annotation \
-                .about("OmexMetaId0000") \
+                .about("species0000") \
                 .predicate("bqbiol", "is") \
                 .resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -330,7 +330,7 @@ local:SourceParticipant0007
     semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot/PD88776> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
@@ -369,7 +369,7 @@ local:SourceParticipant0007
         editor = self.rdf.to_editor(SBML, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_singular_annotation() as singular_annotation:
             singular_annotation \
-                .about("#OmexMetaId0000") \
+                .about("#species0000") \
                 .predicate("bqbiol", "is") \
                 .resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -431,7 +431,7 @@ local:SourceParticipant0003
     semsim:hasMultiplier "1"^^rdf:int ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot/PD88776> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
@@ -469,7 +469,7 @@ local:SourceParticipant0003
     def test_context_manager_single_annotation_simple(self):
         editor = self.rdf.to_editor(SBML, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_singular_annotation() as example01_singular_annotation:
-            example01_singular_annotation.about("EtOH") \
+            example01_singular_annotation.about("species0000") \
                 .predicate("bqbiol", "is") \
                 .resource_uri("CHEBI:16236")
         actual = self.rdf.to_string()
@@ -981,7 +981,7 @@ class AnnotateAModelTest(unittest.TestCase):
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model metaid="SmadNuclearTransport" id="SmadNuclearTransport">
     <listOfCompartments>
-      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="#OmexMetaId0000"/>
+      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="#species0000"/>
       <compartment id="nucleus" spatialDimensions="3" constant="true" metaid="#OmexMetaId0001"/>
     </listOfCompartments>
     <listOfSpecies>
@@ -1328,47 +1328,6 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         results_rdf.add_from_string(results)
         self.assertEqual(234, len(results_rdf))
 
-    def test(self):
-        ant1 = """
-            model SBML1
-                compartment cytosol = 1.0;
-                A in cytosol;
-                B in cytosol
-                A = 10; 
-                B = 0;
-                k1 = 0.1;
-                k2 = 0.1;
-                r1: A => B; k1*A
-                r1: B => A; k2*B
-            end
-            """
-
-        ant2 = """
-            model SBML1
-                compartment cytosol = 1.0;
-                C in cytosol;
-                D in cytosol
-                C = 10; 
-                D = 0;
-                k1 = 0.1;
-                k2 = 0.1;
-                r1: C => D; k1*C
-                r1: D => C; k2*D
-            end
-            """
-        sbml1 = te.antimonyToSBML(ant1)
-        sbml2 = te.antimonyToSBML(ant2)
-
-        rdf = RDF()
-        with rdf.to_editor(sbml1, True) as editor:
-            print(editor.get_xml())
-            with editor.new_singular_annotation() as singular_annotation:
-                singular_annotation.about("OmexMetaId0000") \
-                    .predicate("bqbiol", "is") \
-                    .resource_uri("fma/FMA_66835")
-
-        print(rdf)
-
 
 class DrawTests(unittest.TestCase):
     def setUp(self) -> None:
@@ -1394,7 +1353,7 @@ class DrawTests(unittest.TestCase):
         rdf = RDF()
         with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
             with editor.new_singular_annotation() as s:
-                s.about("OmexMetaId0000") \
+                s.about("species0000") \
                     .predicate("bqbiol", "is") \
                     .resource_uri("fma/FMA_66835")
         fname = os.path.join(os.path.realpath("."), "test_draw.png")

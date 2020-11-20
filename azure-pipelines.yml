@@ -216,7 +216,7 @@ jobs:
       - task: Cache@2
         inputs:
           key: 'vcpkg_cache |"$(Agent.Os)"'
-          path: '$(VCPKG_INSTALL_PREFIX)'
+          path: '"$(VCPKG_INSTALL_PREFIX)"'
       - powershell: |
           git clone https://github.com/microsoft/vcpkg.git "$(VCPKG_INSTALL_PREFIX)"
           cd "$(VCPKG_INSTALL_PREFIX)"
