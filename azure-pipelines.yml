@@ -289,7 +289,7 @@ jobs:
       - powershell: |
           conda create -y --name pyomexmeta python=3.8
           conda activate pyomexmeta
-          pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz win32api
+          pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32
           Set-Variable -name python_dir -value (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
           cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
@@ -317,34 +317,4 @@ jobs:
         inputs:
           pathToPublish: '$(Build.ArtifactStagingDirectory)'
           artifactName: libOmexMeta$(Agent.OS)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
