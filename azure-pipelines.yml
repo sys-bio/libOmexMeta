@@ -106,16 +106,19 @@ jobs:
         displayName: Build and install pip wheel then run tests from within Python
       - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
-#      - task: CopyFiles@2
-#        inputs:
-#          sourceFolder: '$(INSTALL_DIRECTORY)'
-#          contents: '**'
-#          targetFolder: '$(Build.ArtifactStagingDirectory)'
-#        displayName: Copy install to artifact staging area
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: '$(INSTALL_DIRECTORY)'
+          contents: '**'
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+        displayName: Copy install to artifact staging area
       - task: PublishBuildArtifacts@1
         inputs:
-          pathToPublish: '$(INSTALL_DIRECTORY)'
+          pathToPublish: '$(Build.ArtifactStagingDirectory)'
           artifactName: libOmexMeta$(Agent.OS)
+          Parallel: true
+          ParallelCount: 8
+
 
 
   # macos
@@ -209,17 +212,18 @@ jobs:
           pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
-#      - task: CopyFiles@2
-#        inputs:
-#          sourceFolder: '$(INSTALL_DIRECTORY)'
-#          contents: '**'
-#          targetFolder: '$(Build.ArtifactStagingDirectory)'
-#        displayName: Copy install to artifact staging area
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: '$(INSTALL_DIRECTORY)'
+          contents: '**'
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+        displayName: Copy install to artifact staging area
       - task: PublishBuildArtifacts@1
         inputs:
-          pathToPublish: '$(INSTALL_DIRECTORY)'
+          pathToPublish: '$(Build.ArtifactStagingDirectory)'
           artifactName: libOmexMeta$(Agent.OS)
-
+          Parallel: true
+          ParallelCount: 8
 
   # windows
   - job: BuildWindows
@@ -299,7 +303,7 @@ jobs:
         # publish python packages in azure:
         #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
       - script: |
-          eval "$(conda shell.bash hook)"
+          conda shell.powershell hook
           conda activate pyomexmeta
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
@@ -307,14 +311,15 @@ jobs:
           pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
-#      - task: CopyFiles@2
-#        inputs:
-#          sourceFolder: '$(INSTALL_DIRECTORY)'
-#          contents: '**'
-#          targetFolder: '$(Build.ArtifactStagingDirectory)'
-#        displayName: Copy install to artifact staging area
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: '$(INSTALL_DIRECTORY)'
+          contents: '**'
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+        displayName: Copy install to artifact staging area
       - task: PublishBuildArtifacts@1
         inputs:
-          pathToPublish: '$(INSTALL_DIRECTORY)'
+          pathToPublish: '$(Build.ArtifactStagingDirectory)'
           artifactName: libOmexMeta$(Agent.OS)
-
+          Parallel: true
+          ParallelCount: 8
