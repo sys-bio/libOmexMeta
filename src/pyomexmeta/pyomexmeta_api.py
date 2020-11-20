@@ -88,6 +88,8 @@ class Util:
         extensions = [
             f"-{get_version()}.dll",
             f'-{get_version()}.so.{get_version()}',
+            f'.so.{get_version()}',
+            f'.{get_version()}.dylib'
             f'-{get_version()}.dylib'
         ]
         # "" for windows, lib for linux
