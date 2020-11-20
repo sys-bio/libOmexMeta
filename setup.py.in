@@ -84,20 +84,29 @@ binaries = [
     #     raise FileNotFoundError(f"Dependency \"{i}\" not found.")
 
 def find_libomexmeta():
+    paths = []
     libomexmeta = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
         'site-packages/pyomexmeta/@CMAKE_SHARED_LIBRARY_PREFIX@OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@'
     )
     if os.path.isfile(libomexmeta):
         return libomexmeta
-    if not os.path.isfile(libomexmeta):
-        print(libomexmeta, "exists: ", os.path.isfile(libomexmeta))
-        libomexmeta = os.path.join(
-            os.path.abspath(os.path.dirname(__file__)),
-            'site-packages/pyomexmeta/@CMAKE_SHARED_LIBRARY_PREFIX@OmexMetaCAPI.@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@'
-        )
-        if not(os.path.isfile(libomexmeta)):
-            raise FileNotFoundError(libomexmeta)
+    paths.append(libomexmeta)
+    print("Searched", libomexmeta, "for libomexmeta: exists = ", os.path.isfile(libomexmeta))
+    libomexmeta = os.path.join(
+        os.path.abspath(os.path.dirname(__file__)),
+        'site-packages/pyomexmeta/@CMAKE_SHARED_LIBRARY_PREFIX@OmexMetaCAPI.@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@'
+    )
+    if os.path.isfile(libomexmeta):
+        return libomexmeta
+    paths.append(libomexmeta)
+    print("Searched", libomexmeta, "for libomexmeta: exists = ", os.path.isfile(libomexmeta))
+    libomexmeta = os.path.join(
+                os.path.abspath(os.path.dirname(__file__)),
+                'site-packages/pyomexmeta/@CMAKE_SHARED_LIBRARY_PREFIX@OmexMetaCAPI@CMAKE_SHARED_LIBRARY_SUFFIX@.@LIBOMEXMETA_VERSION@'
+            )
+    if not(os.path.isfile(libomexmeta)):
+        raise FileNotFoundError(libomexmeta)
     return libomexmeta
 
 setup(
