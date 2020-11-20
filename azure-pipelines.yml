@@ -100,8 +100,8 @@ jobs:
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
           cd dist
-          ls
-          pip install $(ls)
+          wheel=$(realpath $ls))
+          pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
 
@@ -157,7 +157,7 @@ jobs:
           key: 'vcpkg_cache | "$(Agent.Os)"'
           path: '$(VCPKG_INSTALL_PREFIX)'
       - script: |
-          brew install graphviz
+          brew install graphviz coreutils
           git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
           cd $(VCPKG_INSTALL_PREFIX)
           ./bootstrap-vcpkg.sh
@@ -194,8 +194,8 @@ jobs:
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
           cd dist
-          ls
-          pip install $(ls)
+          wheel=$(realpath $ls))
+          pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
 
