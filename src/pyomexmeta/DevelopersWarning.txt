@@ -1,3 +1,0 @@
-The pyomexmeta_api.py file is configured by cmake to include the version information. Therefore, you should modify pyomexmeta_api.py.in and then rerun cmake, rather than editing pyomexmeta_api.py itself.
-
-Also if you make changes to the C/C++ version, make sure you have installed libOmexMeta by building the libOmexMetaInstall target BEFORE you make changes to python. This is because the install target will copy the relevant binaries into the pyomexmeta source directory.
