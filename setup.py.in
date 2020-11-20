@@ -4,8 +4,6 @@
 # you may run python setup.py from the binary tree after you have ran cmake
 from setuptools import setup
 import os
-import glob
-import sys
 
 # get source directory
 PYOMEXMETA_DIR = "@PYOMEXMETA_DIR@"
@@ -95,13 +93,15 @@ setup(
     author_email='cwelsh2@uw.edu',
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
-    install_requires=open("requirements.txt").read().split("\n")
+    install_requires=open("requirements.txt").read().split("\n"),
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'site-packages/pyomexmeta'},
     package_data={'pyomexmeta': [
-        'LICENCE.txt', 'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@.@CMAKE_SHARED_LIBRARY_SUFFIX@'
-    ], # + binaries},
+        'LICENCE.txt', 'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@',
+    ]}, # + binaries},
     include_package_data=True,
     classifiers=[_f for _f in CLASSIFIERS.split('\n') if _f],
-    platforms=["Windows", "Linux", "Unix"],  # "Mac OS-X", - not yet supported.
+    platforms=["Windows", "Linux", "Unix", "Mac OS-X"],
+    has_ext_modules=lambda: True,
+
 )
