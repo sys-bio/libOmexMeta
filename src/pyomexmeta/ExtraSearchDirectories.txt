@@ -1,3 +1,0 @@
-/Users/ciaranwelsh/Documents/libOmexMeta/install-mac
-/Users/ciaranwelsh/Documents/libOmexMeta/install-mac/lib
-/Users/ciaranwelsh/Documents/libOmexMeta/install-mac/bin
