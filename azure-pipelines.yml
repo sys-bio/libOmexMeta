@@ -100,7 +100,7 @@ jobs:
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
           cd dist
-          wheel=$(realpath $ls))
+          wheel=$(realpath $(ls))
           pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
@@ -194,7 +194,7 @@ jobs:
           cd $(INSTALL_DIRECTORY)
           python setup.py bdist_wheel
           cd dist
-          wheel=$(realpath $ls))
+          wheel=$(realpath $(ls))
           pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
