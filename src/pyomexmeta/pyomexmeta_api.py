@@ -4,8 +4,9 @@ import ctypes as ct
 import os
 import sys
 from typing import List
-
+import glob
 import shutil
+import re
 import subprocess
 
 _THIS_DIR = os.path.dirname(__file__)
@@ -20,10 +21,29 @@ if (os.path.isfile(_EXTRA_SEARCH_DIR_FILE)):
 if sys.platform == "win32":
     extra_search_paths = [i.replace("/", "\\") for i in extra_search_paths]
 
+
 def get_version():
-    with open(os.path.join(_THIS_DIR, "VERSION.txt"), "r") as f:
-        __version__ = f.read().strip()
-    return __version__
+    try:
+        # read version from VERSION.txt
+        with open(os.path.join(_THIS_DIR, "VERSION.txt"), "r") as f:
+            version = f.read().strip()
+        return version
+    except FileNotFoundError:
+        # fall back on extracting version from the OmexMetaCAPI filename
+        current_dir = os.path.abspath(os.path.dirname(__file__))
+        files_in_current_dir = glob.glob(os.path.join(current_dir, "*"))
+        results = [
+            re.findall("OmexMetaCAPI-(\d*.\d*.\d*).dll|OmexMetaCAPI-(\d*.\d*.\d*).so|OmexMetaCAPI-(\d*.\d*.\d*).dylib",
+                       i) for i in files_in_current_dir]
+        results = [i for i in results if i != [] ]
+
+        assert len(results) == 1, f"length of results == {len(results)}"
+        results = results[0] # a list of tuples : [('1.1.18', '', '')]
+        results = [i for i in results[0] if i != '']
+        assert len(results) == 1, f"length of results == {len(results)}"
+        results = results[0]
+        assert isinstance(results, str), f"type is: {type(results)}"
+        return results
 
 
 __version__ = get_version()
@@ -57,14 +77,13 @@ class Util:
 
     @staticmethod
     def load_lib():
-        omexmeta_capi_location = None
-
+        print("get_version()", get_version())
         extensions = [
             f"-{get_version()}.dll",
             f'-{get_version()}.so.{get_version()}',
             f'-{get_version()}.dylib'
         ]
-        prefixes = ["", "lib"]
+        prefixes = ["lib"]
 
         # when working directory is different from __file__
         current_working_dir = os.getcwd()
@@ -88,16 +107,22 @@ class Util:
                               build_tree_bin_dir, build_tree_lib_dir] + extra_search_paths
 
         found_library_files = []
+        candidates = []
         for direct in search_directories:
             for ex in extensions:
                 for pre in prefixes:
                     cand = os.path.join(direct, f"{pre}OmexMetaCAPI{ex}")
+                    print(cand)
+                    candidates.append(cand)
                     if os.path.isfile(cand):
                         # print(f"Found library at {cand}")
                         found_library_files.append(cand)
 
-        if found_library_files == []:
-            raise FileNotFoundError(f"Cannot locate libOmexMeta library in {str(search_directories)}")
+        if not found_library_files:
+            err = 'Cannot locate libOmexMeta library in any of the search locations:\n'
+            for c in candidates:
+                err += "\t" + c + "\n"
+            raise FileNotFoundError(err)
 
         lib = None
         for lib_path in found_library_files:
@@ -119,7 +144,9 @@ class Util:
         func.argtypes = argtypes
         return func
 
+
 libomexmeta = Util.load_lib()
+
 
 class eUriType:
     NONE = 0
@@ -127,9 +154,11 @@ class eUriType:
     MODEL_URI = 2
     IDENTIFIERS_URI = 3
 
+
 class eXmlType:
     SBML = 0
     CELLML = 1
+
 
 class PyOmexMetaAPI:
     """
@@ -241,14 +270,15 @@ class PyOmexMetaAPI:
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
 
     # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
-    rdf_equals_rdf_vs_string = Util.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_bool)
+    rdf_equals_rdf_vs_string = Util.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                              ct.c_bool)
 
     # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
     rdf_equals_rdf_vs_rdf = Util.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_bool)
 
     # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
-    rdf_equals_string_vs_string = Util.load_func("RDF_equals_string_vs_string", [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_bool)
-
+    rdf_equals_string_vs_string = Util.load_func("RDF_equals_string_vs_string", [ct.c_char_p, ct.c_char_p, ct.c_char_p],
+                                                 ct.c_bool)
 
     #################################################################
     # Editor methods
@@ -275,7 +305,7 @@ class PyOmexMetaAPI:
 
     # void Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty);
     editor_add_physical_property = Util.load_func("Editor_addPhysicalProperty", [ct.c_int64, ct.c_int64],
-                                               ct.c_void_p)
+                                                  ct.c_void_p)
 
     # void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
     editor_check_valid_metaid = Util.load_func("Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
@@ -439,22 +469,27 @@ class PyOmexMetaAPI:
     physical_property_get_about = Util.load_func("PhysicalProperty_getAbout", [ct.c_int64], ct.c_int64)
 
     # PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
-    physical_property_about = Util.load_func("PhysicalProperty_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+    physical_property_about = Util.load_func("PhysicalProperty_about", [ct.c_int64, ct.c_char_p, ct.c_int64],
+                                             ct.c_int64)
 
     # char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
-    physical_property_get_is_version_of_value = Util.load_func("PhysicalProperty_getIsVersionOfValue", [ct.c_int64], ct.c_int64 )
+    physical_property_get_is_version_of_value = Util.load_func("PhysicalProperty_getIsVersionOfValue", [ct.c_int64],
+                                                               ct.c_int64)
 
     # PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
-    physical_property_is_property_of = Util.load_func("PhysicalProperty_isPropertyOf", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64 )
+    physical_property_is_property_of = Util.load_func("PhysicalProperty_isPropertyOf",
+                                                      [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
-    physical_property_is_version_of = Util.load_func("PhysicalProperty_isVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64 )
+    physical_property_is_version_of = Util.load_func("PhysicalProperty_isVersionOf", [ct.c_int64, ct.c_char_p],
+                                                     ct.c_int64)
 
     # char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
-    physical_property_get_is_property_of_value = Util.load_func("PhysicalProperty_getIsPropertyOfValue", [ct.c_int64], ct.c_int64 )
+    physical_property_get_is_property_of_value = Util.load_func("PhysicalProperty_getIsPropertyOfValue", [ct.c_int64],
+                                                                ct.c_int64)
 
     # int PhysicalProperty_delete(PhysicalProperty* property);
-    physical_property_delete = Util.load_func("PhysicalProperty_delete", [ct.c_int64], ct.c_int64 )
+    physical_property_delete = Util.load_func("PhysicalProperty_delete", [ct.c_int64], ct.c_int64)
 
     #################################################################
     # PhysicalEntity methods
@@ -490,10 +525,12 @@ class PyOmexMetaAPI:
     physical_entity_has_property = Util.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_int64], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
-    physical_entity_has_property_is_version_of = Util.load_func("PhysicalEntity_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    physical_entity_has_property_is_version_of = Util.load_func("PhysicalEntity_hasPropertyisVersionOf",
+                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
-    physical_entity_has_property_full = Util.load_func("PhysicalEntity_hasPropertyFull", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+    physical_entity_has_property_full = Util.load_func("PhysicalEntity_hasPropertyFull",
+                                                       [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
     physical_entity_delete = Util.load_func("PhysicalEntity_delete", [ct.c_int64], None)
@@ -537,16 +574,19 @@ class PyOmexMetaAPI:
                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type){
-    physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+    physical_process_is_version_of = Util.load_func("PhysicalProcess_isVersionOf",
+                                                    [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_entity_ptr, PhysicalProperty* property);
     physical_process_has_property = Util.load_func("PhysicalProcess_hasProperty", [ct.c_int64], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) ;
-    physical_process_has_property_is_version_of = Util.load_func("PhysicalProcess_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    physical_process_has_property_is_version_of = Util.load_func("PhysicalProcess_hasPropertyisVersionOf",
+                                                                 [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
-    physical_process_has_property_full = Util.load_func("PhysicalProcess_hasPropertyFull", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+    physical_process_has_property_full = Util.load_func("PhysicalProcess_hasPropertyFull",
+                                                        [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
     physical_process_delete = Util.load_func("PhysicalProcess_delete", [ct.c_int64], None)
@@ -556,7 +596,6 @@ class PyOmexMetaAPI:
 
     # PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about, eUriType type);
     physical_process_about = Util.load_func("PhysicalProcess_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
-
 
     #################################################################
     # PhysicalForce Methods
@@ -585,10 +624,12 @@ class PyOmexMetaAPI:
     physical_force_has_property = Util.load_func("PhysicalForce_hasProperty", [ct.c_int64], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_hasPropertyisVersionOf(PhysicalForce *physical_process_ptr, const char* isVersionOf) ;
-    physical_force_has_property_is_version_of = Util.load_func("PhysicalForce_hasPropertyisVersionOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    physical_force_has_property_is_version_of = Util.load_func("PhysicalForce_hasPropertyisVersionOf",
+                                                               [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_hasPropertyFull(PhysicalForce *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
-    physical_force_has_property_full = Util.load_func("PhysicalForce_hasPropertyFull", [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+    physical_force_has_property_full = Util.load_func("PhysicalForce_hasPropertyFull",
+                                                      [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # void PhysicalForce_delete(PhysicalForce *physicalForce);
     physical_force_delete = Util.load_func("PhysicalForce_delete", [ct.c_int64], None)

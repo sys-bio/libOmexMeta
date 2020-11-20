@@ -83,6 +83,11 @@ for i in binaries:
     # if not os.path.isfile(i):
     #     raise FileNotFoundError(f"Dependency \"{i}\" not found.")
 
+libomexmeta = os.path.join(os.path.dirname(__file__), 'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@')
+
+if not os.path.isfile(libomexmeta):
+    raise FileNotFoundError(libomexmeta)
+
 setup(
     name='pyomexmeta',
     version='@LIBOMEXMETA_VERSION@',
@@ -97,7 +102,7 @@ setup(
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'site-packages/pyomexmeta'},
     package_data={'pyomexmeta': [
-        'LICENCE.txt', 'site-packages/pyomexmeta/OmexMetaCAPI-@LIBOMEXMETA_VERSION@@CMAKE_SHARED_LIBRARY_SUFFIX@',
+        'LICENCE.txt', libomexmeta,
     ]}, # + binaries},
     include_package_data=True,
     classifiers=[_f for _f in CLASSIFIERS.split('\n') if _f],

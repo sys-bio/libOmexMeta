@@ -1,4 +1,4 @@
-win32api; platform_system=="Windows"
+win32api; sys_platform=="Windows"
 breathe
 sphinx-tabs
 recommonmark
