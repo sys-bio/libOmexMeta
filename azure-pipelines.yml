@@ -296,6 +296,7 @@ jobs:
           echo "Where.exe pip: "
           where.exe pip
           conda shell.powershell hook
+          . $profile
           conda create -y --name pyomexmeta python=3.8
           conda activate pyomexmeta
           pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
@@ -313,6 +314,7 @@ jobs:
           echo "Where.exe pip: "
           where.exe pip
           conda shell.powershell hook
+          . $profile
           conda activate pyomexmeta
           echo "Cding to install directory $INSTALL_DIRECTORY"
           cd $(INSTALL_DIRECTORY)
