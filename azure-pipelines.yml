@@ -291,9 +291,13 @@ jobs:
       - script: |
         displayName: Create Anaconda environment
       - powershell: |
-          # conda shell.powershell hook
-          # conda create -y --name pyomexmeta python=3.8
-          # conda activate pyomexmeta_dir
+          echo "Where.exe conda: "
+          where.exe conda
+          echo "Where.exe pip: "
+          where.exe pip
+          conda shell.powershell hook
+          conda create -y --name pyomexmeta python=3.8
+          conda activate pyomexmeta
           pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
           $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
@@ -309,7 +313,7 @@ jobs:
           echo "Where.exe pip: "
           where.exe pip
           conda shell.powershell hook
-          # call activate pyomexmeta
+          conda activate pyomexmeta
           echo "Cding to install directory $INSTALL_DIRECTORY"
           cd $(INSTALL_DIRECTORY)
           echo "ls ing"
