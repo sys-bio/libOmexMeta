@@ -299,7 +299,6 @@ jobs:
           echo "Where.exe pip: "
           where.exe pip
           conda shell.powershell hook
-#          conda create -y --name pyomexmeta python=3.8
           $(PIP) install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
           $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
