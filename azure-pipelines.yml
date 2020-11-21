@@ -258,7 +258,6 @@ jobs:
           echo "Where.exe pip: "
           where.exe pip
           conda shell.powershell hook
-          & "$profile"
           conda create -y --name pyomexmeta python=3.8
           conda activate pyomexmeta
         displayName: test Python on windows
