@@ -238,7 +238,7 @@ jobs:
       INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
       CONDA_ACTIVATE: C:\Miniconda\bin\activate.exe
       PYTHON: C:\Miniconda\envs\pyomexmeta\python.exe
-      PIP: C:\Miniconda\envs\pyomexmeta\pip.exe
+      PIP: C:\Miniconda\envs\pyomexmeta\bin\pip.exe
 
     steps:
 #      - bash: |
