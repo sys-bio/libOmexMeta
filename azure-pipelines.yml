@@ -305,10 +305,17 @@ jobs:
         #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
       - powershell: |
           # conda shell.powershell hook
-          # conda activate pyomexmeta
+          # call activate pyomexmeta
+          echo "Cding to install directory $INSTALL_DIRECTORY"
           cd $(INSTALL_DIRECTORY)
+          echo "ls ing"
+          ls
+          echo "where.exe"
+          where.exe python
+          echo "running setup.py bdist_wheel"
           python setup.py bdist_wheel
           $wheel = Get-ChildItem -LiteralPath . -Recurse -File |% FullName
+          echo "$wheel"
           pip install $wheel
           ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
