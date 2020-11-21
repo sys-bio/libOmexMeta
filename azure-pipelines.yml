@@ -236,7 +236,9 @@ jobs:
       BUILD_DIRECTORY: $(System.DefaultWorkingDirectory)/build
       SOURCE_DIRECTORY: $(System.DefaultWorkingDirectory)
       INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
-      CONDA_ACTIVATE: C:\Miniconda\bin\activateexe
+      CONDA_ACTIVATE: C:\Miniconda\bin\activate.exe
+      PYTHON: C:\Miniconda\envs\pyomexmeta\python.exe
+
     steps:
 #      - bash: |
 #          sudo apt-get install ccache -y
@@ -263,6 +265,7 @@ jobs:
           $(CONDA_ACTIVATE) base
           conda create -y --name pyomexmeta python=3.8
           $(CONDA_ACTIVATE) pyomexmeta
+          $(PYTHON) -c "print('test')"
         displayName: test Python on windows
       - script: |
           echo "Default directory: $(pwd)"
