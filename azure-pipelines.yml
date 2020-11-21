@@ -238,6 +238,7 @@ jobs:
       INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
       CONDA_ACTIVATE: C:\Miniconda\bin\activate.exe
       PYTHON: C:\Miniconda\envs\pyomexmeta\python.exe
+      PIP: C:\Miniconda\envs\pyomexmeta\pip.exe
 
     steps:
 #      - bash: |
@@ -255,18 +256,6 @@ jobs:
 
       - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
         displayName: Add conda to PATH
-      - script: |
-          echo "Where.exe conda: "
-          where.exe conda
-          echo "Where.exe pip: "
-          where.exe pip
-
-          conda shell.powershell hook
-          $(CONDA_ACTIVATE) base
-          conda create -y --name pyomexmeta python=3.8
-          $(CONDA_ACTIVATE) pyomexmeta
-          $(PYTHON) -c "print('test')"
-        displayName: test Python on windows
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
@@ -310,10 +299,9 @@ jobs:
           echo "Where.exe pip: "
           where.exe pip
           conda shell.powershell hook
-          . $profile
           conda create -y --name pyomexmeta python=3.8
           conda activate pyomexmeta
-          pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
+          $(PIP) install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
           $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
           cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$python_dir ..
@@ -327,22 +315,19 @@ jobs:
           where.exe conda
           echo "Where.exe pip: "
           where.exe pip
-          conda shell.powershell hook
-          . $profile
-          conda activate pyomexmeta
           echo "Cding to install directory $INSTALL_DIRECTORY"
           cd $(INSTALL_DIRECTORY)
           echo "ls ing"
           ls
           echo "where.exe"
           where.exe python
-          pip install wheel
+          $(PIP) install wheel
           echo "running setup.py bdist_wheel"
-          python setup.py bdist_wheel
+          $(PYTHON) setup.py bdist_wheel
           $wheel = Get-ChildItem -LiteralPath . -Recurse -File |% FullName
           echo "$wheel"
-          pip install $wheel
-          ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
+          $(PIP) install $wheel
+          $(PYTHON) -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
       - task: CopyFiles@2
         inputs:
