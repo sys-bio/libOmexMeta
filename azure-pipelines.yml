@@ -306,7 +306,9 @@ jobs:
       - powershell: |
           echo "Where.exe conda: "
           where.exe conda
-          # conda shell.powershell hook
+          echo "Where.exe pip: "
+          where.exe pip
+          conda shell.powershell hook
           # call activate pyomexmeta
           echo "Cding to install directory $INSTALL_DIRECTORY"
           cd $(INSTALL_DIRECTORY)
@@ -314,7 +316,7 @@ jobs:
           ls
           echo "where.exe"
           where.exe python
-
+          pip install wheel
           echo "running setup.py bdist_wheel"
           python setup.py bdist_wheel
           $wheel = Get-ChildItem -LiteralPath . -Recurse -File |% FullName
