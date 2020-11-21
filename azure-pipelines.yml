@@ -252,7 +252,16 @@ jobs:
 
       - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
         displayName: Add conda to PATH
-
+      - powershell: |
+          echo "Where.exe conda: "
+          where.exe conda
+          echo "Where.exe pip: "
+          where.exe pip
+          conda shell.powershell hook
+          . $profile
+          conda create -y --name pyomexmeta python=3.8
+          conda activate pyomexmeta
+        displayName: test Python on windows
       - script: |
           echo "Default directory: $(pwd)"
           echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
