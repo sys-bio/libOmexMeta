@@ -322,8 +322,9 @@ jobs:
           $(PIP) install wheel
           echo "running setup.py bdist_wheel"
           $(PYTHON) setup.py bdist_wheel
-          $wheel = Get-ChildItem -LiteralPath . -Recurse -File |% FullName
-          echo "$wheel"
+          $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
+          echo "Wheel is: $wheel"
+          echo "running pip install wheel"
           $(PIP) install $wheel
           $(PYTHON) -c "import pyomexmeta;pyomexmeta.run_tests()"
         displayName: Build and install pip wheel then run tests from within Python
