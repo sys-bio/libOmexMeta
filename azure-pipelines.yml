@@ -294,7 +294,7 @@ jobs:
           # conda shell.powershell hook
           # conda create -y --name pyomexmeta python=3.8
           # conda activate pyomexmeta_dir
-          pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32
+          pip install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
           $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
           cd build
           cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$python_dir ..
