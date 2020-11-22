@@ -1,5 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/pyomexmeta.svg)](https://badge.fury.io/py/pyomexmeta)
-[![Build Status](https://dev.azure.com/libOmexMeta/libOmexMeta/_apis/build/status/sys-bio.libOmexMeta?branchName=develop)](https://dev.azure.com/libOmexMeta/libOmexMeta/_build/latest?definitionId=1&branchName=develop)
+[![Build Status](https://dev.azure.com/libOmexMeta/libOmexMeta/_apis/build/status/sys-bio.libOmexMeta?branchName=master)](https://dev.azure.com/libOmexMeta/libOmexMeta/_build/latest?definitionId=1&branchName=master)
 # libOmexMeta
 LibOMEXmeta is a library aimed at providing developer-level support for reading, writing, editing and managing semantic annotations for biosimulation models.  The [COMBINE modeling community](http://co.mbine.org/)  has developed consensus around how best to annotate models and how to package these models into archives (OMEX files) that include the modeling source code, the annotations, files that describe parameters and settings needed for simulations (in a SEDML file), and potentially the data used for these modeling efforts. This consensus was initially described in the  publication ["Harmonizing semantic annotations for computational models in biology" (Briefings in Bioinformatics, 2018)](https://academic.oup.com/bib/article/20/2/540/5164345).
 
