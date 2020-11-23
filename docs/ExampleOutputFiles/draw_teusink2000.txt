@@ -1,2 +1,2 @@
-RDF graph saved to "D:/libOmexMeta/docs\source\diagrams\TeusinkDiagram.png"
-file saved to D:/libOmexMeta/docs\source\diagrams\TeusinkDiagram.png
+RDF graph saved to "/Users/ciaranwelsh/Documents/libOmexMeta/docs/source/diagrams/TeusinkDiagram.png"
+file saved to /Users/ciaranwelsh/Documents/libOmexMeta/docs/source/diagrams/TeusinkDiagram.png

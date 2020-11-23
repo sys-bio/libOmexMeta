@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="50" column="5" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="19" bodyend="21"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="50" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classRedlandNullPointerException_1a0b1693d4d5007815322070c907ee5cc2" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="50" column="5" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="26" bodyend="27"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="50" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="26" bodyend="27"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,14 +70,14 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="3">
+        <label>exception</label>
+      </node>
       <node id="2">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -87,17 +87,17 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="3">
+        <label>exception</label>
+      </node>
       <node id="2">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>std::exception</label>
-      </node>
     </collaborationgraph>
-    <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="49" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="49" bodyend="51"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="49" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="49" bodyend="51"/>
     <listofallmembers>
       <member refid="classRedlandNullPointerException_1ac541ead5c20548813d7dea73c28c7fab" prot="private" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>Exception</name></member>
       <member refid="classRedlandNullPointerException_1a0b1693d4d5007815322070c907ee5cc2" prot="private" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>Exception</name></member>

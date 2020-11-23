@@ -1,0 +1,37 @@
+\hypertarget{structrasqal__triple__meta}{}\doxysection{rasqal\+\_\+triple\+\_\+meta Struct Reference}
+\label{structrasqal__triple__meta}\index{rasqal\_triple\_meta@{rasqal\_triple\_meta}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__triple__meta_a22fb0bbf7ed1a05609122c667a696e92}\label{structrasqal__triple__meta_a22fb0bbf7ed1a05609122c667a696e92}} 
+\mbox{\hyperlink{structrasqal__variable}{rasqal\+\_\+variable}} $\ast$ {\bfseries bindings} \mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{structrasqal__triple__meta_ac57b3a83b03dad91dd4adb3fb5faca3a}\label{structrasqal__triple__meta_ac57b3a83b03dad91dd4adb3fb5faca3a}} 
+\mbox{\hyperlink{structrasqal__triples__match__s}{rasqal\+\_\+triples\+\_\+match}} $\ast$ {\bfseries triples\+\_\+match}
+\item 
+\mbox{\Hypertarget{structrasqal__triple__meta_ae2a155c8c44f6203a12fa0eb31f2a24f}\label{structrasqal__triple__meta_ae2a155c8c44f6203a12fa0eb31f2a24f}} 
+void $\ast$ {\bfseries context}
+\item 
+\mbox{\Hypertarget{structrasqal__triple__meta_a252cd59d93b9ae796a2a21109fc5ceb9}\label{structrasqal__triple__meta_a252cd59d93b9ae796a2a21109fc5ceb9}} 
+rasqal\+\_\+triple\+\_\+parts {\bfseries parts}
+\item 
+\mbox{\Hypertarget{structrasqal__triple__meta_a8e9397b66dd7b12b324aca7c8d4b49e3}\label{structrasqal__triple__meta_a8e9397b66dd7b12b324aca7c8d4b49e3}} 
+int {\bfseries is\+\_\+exact}
+\item 
+\mbox{\Hypertarget{structrasqal__triple__meta_a69877f4374d3522fee415df0504f6c87}\label{structrasqal__triple__meta_a69877f4374d3522fee415df0504f6c87}} 
+int {\bfseries executed}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structrasqal__triple__meta}{rasqal\+\_\+triple\+\_\+meta}}\+: @bindings\+: Variable bindings for this triple+origin to set. @triples\+\_\+match\+: The matcher that is setting these bindings. @context\+: Context data used by the matcher. @parts\+: Bitmask of \#rasqal\+\_\+triple\+\_\+parts flags describing the parts of the triple pattern that will bind to variables. There may also be variables mentioned that are bound in other triple patterns even if @parts is 0. @is\+\_\+exact\+: unused @executed\+: unused
+
+Metadata for triple pattern matching for one triple pattern. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

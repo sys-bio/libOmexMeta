@@ -1,0 +1,116 @@
+it: SimpleRegulation
+it: compartment0000
+it: SpeciesA
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model metaid="SimpleRegulation" id="SimpleRegulation">
+    <listOfCompartments>
+      <compartment id="cell" spatialDimensions="3" size="1" constant="true" metaid="compartment0000"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="A" metaid="SpeciesA" compartment="cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="B" metaid="SpeciesB" compartment="cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C" metaid="SpeciesC" compartment="cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="D" metaid="SpeciesD" compartment="cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="S" metaid="S" value="0" constant="true"/>
+      <parameter id="k1" metaid="k1" value="0.1" constant="true"/>
+      <parameter id="k2" metaid="k2" value="0.1" constant="true"/>
+      <parameter id="k3" metaid="k3" value="0.1" constant="true"/>
+      <parameter id="k4" metaid="k4" value="0.1" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="R1" metaid="R1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="B" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="KineticLawForReaction1">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> A </ci>
+              <ci> S </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R2" metaid="R2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="A" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="KineticLawForReaction2">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> B </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R3" reversible="false" fast="false" metaid="reaction0000">
+        <listOfReactants>
+          <speciesReference species="C" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="D" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="B"/>
+        </listOfModifiers>
+        <kineticLaw metaid="kineticLaw0000">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <ci> C </ci>
+              <ci> B </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R4" reversible="false" fast="false" metaid="reaction0001">
+        <listOfReactants>
+          <speciesReference species="D" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="C" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="kineticLaw0001">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> D </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:EntityProperty
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA>
+    bqbiol:is <https://identifiers.org/uniprot/PD12345> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:1234> .
+
+

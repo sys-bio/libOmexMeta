@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -83,43 +83,61 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a1a85ba2c50f5b79e49e8a01b96756f0a"><td class="memItemLeft" align="right" valign="top"><a id="a1a85ba2c50f5b79e49e8a01b96756f0a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;rhs) const</td></tr>
 <tr class="separator:a1a85ba2c50f5b79e49e8a01b96756f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#a76d1ffd15ea6aad76c322bdd8991a111">PhysicalProperty</a> (std::string subject_str, std::string resource_str, std::string model_uri)</td></tr>
-<tr class="memdesc:a76d1ffd15ea6aad76c322bdd8991a111"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="classomexmeta_1_1PhysicalProperty.html#a76d1ffd15ea6aad76c322bdd8991a111">More...</a><br /></td></tr>
-<tr class="separator:a76d1ffd15ea6aad76c322bdd8991a111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa973322a7a26249187a82bb878ad3790"><td class="memItemLeft" align="right" valign="top">OMEXMETA_DEPRECATED&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#aa973322a7a26249187a82bb878ad3790">PhysicalProperty</a> (std::string is_version_of, std::string is_version_of_value, std::string model_uri)</td></tr>
+<tr class="memdesc:aa973322a7a26249187a82bb878ad3790"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="classomexmeta_1_1PhysicalProperty.html#aa973322a7a26249187a82bb878ad3790">More...</a><br /></td></tr>
+<tr class="separator:aa973322a7a26249187a82bb878ad3790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101d24ba21354367e13406d1f68c9248"><td class="memItemLeft" align="right" valign="top"><a id="a101d24ba21354367e13406d1f68c9248"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setPropertyMetaidBase</b> (const std::string &amp;propertyMetaidBase)</td></tr>
+<tr class="separator:a101d24ba21354367e13406d1f68c9248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f55839baebd3594e859d4ad8d080a2"><td class="memItemLeft" align="right" valign="top"><a id="aa9f55839baebd3594e859d4ad8d080a2"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPropertyBearerBase</b> () const</td></tr>
+<tr class="separator:aa9f55839baebd3594e859d4ad8d080a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b521c8ed4752a27b0e667c766b9e304"><td class="memItemLeft" align="right" valign="top"><a id="a1b521c8ed4752a27b0e667c766b9e304"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setPropertyBearerBase</b> (const std::string &amp;propertyBearerBase)</td></tr>
+<tr class="separator:a1b521c8ed4752a27b0e667c766b9e304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1661cc749bd68c04ad47cdc0b7260d5"><td class="memItemLeft" align="right" valign="top">OMEXMETA_DEPRECATED&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#ae1661cc749bd68c04ad47cdc0b7260d5">PhysicalProperty</a> (std::string is_version_of, std::string is_version_of_value, std::string model_uri, librdf_model *model)</td></tr>
+<tr class="memdesc:ae1661cc749bd68c04ad47cdc0b7260d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="classomexmeta_1_1PhysicalProperty.html#ae1661cc749bd68c04ad47cdc0b7260d5">More...</a><br /></td></tr>
+<tr class="separator:ae1661cc749bd68c04ad47cdc0b7260d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f0c5a2374e80b71aa74184e29780e28"><td class="memItemLeft" align="right" valign="top"><a id="a3f0c5a2374e80b71aa74184e29780e28"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProperty</b> (librdf_model *model, const std::string &amp;model_uri, const std::string &amp;local_uri)</td></tr>
+<tr class="separator:a3f0c5a2374e80b71aa74184e29780e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a8b291c9516decaa67afa1b15ac7c2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#a9a8b291c9516decaa67afa1b15ac7c2d">PhysicalProperty</a> (std::string subject_str, std::string model_uri)</td></tr>
 <tr class="memdesc:a9a8b291c9516decaa67afa1b15ac7c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="classomexmeta_1_1PhysicalProperty.html#a9a8b291c9516decaa67afa1b15ac7c2d">More...</a><br /></td></tr>
 <tr class="separator:a9a8b291c9516decaa67afa1b15ac7c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf399e14fd579efc6384ebc677341ead"><td class="memItemLeft" align="right" valign="top"><a id="acf399e14fd579efc6384ebc677341ead"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getSubject</b> () const</td></tr>
-<tr class="separator:acf399e14fd579efc6384ebc677341ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d60b90270a6ba73646707b8c475fbb1"><td class="memItemLeft" align="right" valign="top"><a id="a2d60b90270a6ba73646707b8c475fbb1"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getResource</b> () const</td></tr>
-<tr class="separator:a2d60b90270a6ba73646707b8c475fbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f27071bfef5a9de4eb89fb21461ba76"><td class="memItemLeft" align="right" valign="top"><a id="a0f27071bfef5a9de4eb89fb21461ba76"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
 <tr class="separator:a0f27071bfef5a9de4eb89fb21461ba76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd367b237fc93654c59c3b0c203b4640"><td class="memItemLeft" align="right" valign="top"><a id="afd367b237fc93654c59c3b0c203b4640"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;model_uri)</td></tr>
-<tr class="separator:afd367b237fc93654c59c3b0c203b4640"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b9ad0a7fe22a3476d7e2f08834bbd74"><td class="memItemLeft" align="right" valign="top"><a id="a4b9ad0a7fe22a3476d7e2f08834bbd74"></a>
+<tr class="memitem:a9810bdd4b71d035e6187347b640ce83f"><td class="memItemLeft" align="right" valign="top"><a id="a9810bdd4b71d035e6187347b640ce83f"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAbout</b> () const</td></tr>
-<tr class="separator:a4b9ad0a7fe22a3476d7e2f08834bbd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bb7c912a21e0e318a9e16d2af1801e5"><td class="memItemLeft" align="right" valign="top"><a id="a8bb7c912a21e0e318a9e16d2af1801e5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>about</b> (const std::string &amp;subject)</td></tr>
-<tr class="separator:a8bb7c912a21e0e318a9e16d2af1801e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9177d21e829cbd872217ba6f9619d427"><td class="memItemLeft" align="right" valign="top"><a id="a9177d21e829cbd872217ba6f9619d427"></a>
+<tr class="separator:a9810bdd4b71d035e6187347b640ce83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8065f6509c81feb045a13bcfe43c11b5"><td class="memItemLeft" align="right" valign="top"><a id="a8065f6509c81feb045a13bcfe43c11b5"></a>
+<a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>about</b> (const std::string &amp;about, eUriType type=eUriType::NONE)</td></tr>
+<tr class="separator:a8065f6509c81feb045a13bcfe43c11b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182ba6fca7c913219ccd50e006cfbb61"><td class="memItemLeft" align="right" valign="top"><a id="a182ba6fca7c913219ccd50e006cfbb61"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getIsVersionOfValue</b> () const</td></tr>
-<tr class="separator:a9177d21e829cbd872217ba6f9619d427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a420dab52a424d1be5a8610e19407980c"><td class="memItemLeft" align="right" valign="top"><a id="a420dab52a424d1be5a8610e19407980c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (const std::string &amp;resource)</td></tr>
-<tr class="separator:a420dab52a424d1be5a8610e19407980c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03056210a70ea8446b44de250646eeb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#a03056210a70ea8446b44de250646eeb5">toTriples</a> (const std::string &amp;property_metaid) const</td></tr>
-<tr class="memdesc:a03056210a70ea8446b44de250646eeb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object using the information in the <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="classomexmeta_1_1PhysicalProperty.html#a03056210a70ea8446b44de250646eeb5">More...</a><br /></td></tr>
-<tr class="separator:a03056210a70ea8446b44de250646eeb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a182ba6fca7c913219ccd50e006cfbb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2e63778f1281f871a99e216bfcbaf88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalProperty.html#af2e63778f1281f871a99e216bfcbaf88">toTriples</a> ()</td></tr>
+<tr class="memdesc:af2e63778f1281f871a99e216bfcbaf88"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object using the information in the <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a>  <a href="classomexmeta_1_1PhysicalProperty.html#af2e63778f1281f871a99e216bfcbaf88">More...</a><br /></td></tr>
+<tr class="separator:af2e63778f1281f871a99e216bfcbaf88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57779b9711e41a3e70213190759b3d32"><td class="memItemLeft" align="right" valign="top"><a id="a57779b9711e41a3e70213190759b3d32"></a>
+<a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>isPropertyOf</b> (const std::string &amp;is_property_of, eUriType type)</td></tr>
+<tr class="separator:a57779b9711e41a3e70213190759b3d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ca01ca75b8ccb6293f515439b00e06"><td class="memItemLeft" align="right" valign="top"><a id="a30ca01ca75b8ccb6293f515439b00e06"></a>
+<a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (const std::string &amp;resource)</td></tr>
+<tr class="separator:a30ca01ca75b8ccb6293f515439b00e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab498df5bb21e010614ae43c0c8e70bb7"><td class="memItemLeft" align="right" valign="top"><a id="ab498df5bb21e010614ae43c0c8e70bb7"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
+<tr class="separator:ab498df5bb21e010614ae43c0c8e70bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6981edb407fb11b81eebccbc8f7aa94a"><td class="memItemLeft" align="right" valign="top"><a id="a6981edb407fb11b81eebccbc8f7aa94a"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getIsPropertyOfValue</b> () const</td></tr>
+<tr class="separator:a6981edb407fb11b81eebccbc8f7aa94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd67e442b842ba57daf0653467b8a682"><td class="memItemLeft" align="right" valign="top"><a id="acd67e442b842ba57daf0653467b8a682"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPropertyMetaidBase</b> () const</td></tr>
+<tr class="separator:acd67e442b842ba57daf0653467b8a682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a76d1ffd15ea6aad76c322bdd8991a111"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76d1ffd15ea6aad76c322bdd8991a111">&#9670;&nbsp;</a></span>PhysicalProperty() <span class="overload">[1/2]</span></h2>
+<a id="aa973322a7a26249187a82bb878ad3790"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa973322a7a26249187a82bb878ad3790">&#9670;&nbsp;</a></span>PhysicalProperty() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -128,13 +146,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (cons
           <td class="memname">omexmeta::PhysicalProperty::PhysicalProperty </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>subject_str</em>, </td>
+          <td class="paramname"><em>is_version_of</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>resource_str</em>, </td>
+          <td class="paramname"><em>is_version_of_value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -153,7 +171,55 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (cons
 <p>constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">physical_property_string</td><td>is used to create a URI node representing the physical property </td></tr>
+    <tr><td class="paramname">physical_property_string</td><td>is used to create a URI node representing the physical property  overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae1661cc749bd68c04ad47cdc0b7260d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1661cc749bd68c04ad47cdc0b7260d5">&#9670;&nbsp;</a></span>PhysicalProperty() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">omexmeta::PhysicalProperty::PhysicalProperty </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>is_version_of</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>is_version_of_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>model_uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">librdf_model *&#160;</td>
+          <td class="paramname"><em>model</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constructor for <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">physical_property_string</td><td>is used to create a URI node representing the physical property  overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead </td></tr>
   </table>
   </dd>
 </dl>
@@ -161,7 +227,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (cons
 </div>
 </div>
 <a id="a9a8b291c9516decaa67afa1b15ac7c2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a8b291c9516decaa67afa1b15ac7c2d">&#9670;&nbsp;</a></span>PhysicalProperty() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a8b291c9516decaa67afa1b15ac7c2d">&#9670;&nbsp;</a></span>PhysicalProperty() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,8 +263,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (cons
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03056210a70ea8446b44de250646eeb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03056210a70ea8446b44de250646eeb5">&#9670;&nbsp;</a></span>toTriples()</h2>
+<a id="af2e63778f1281f871a99e216bfcbaf88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2e63778f1281f871a99e216bfcbaf88">&#9670;&nbsp;</a></span>toTriples()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,9 +272,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (cons
         <tr>
           <td class="memname"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a> omexmeta::PhysicalProperty::toTriples </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>property_metaid</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -219,7 +284,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (cons
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/omexmeta/<a class="el" href="PhysicalProperty_8h_source.html">PhysicalProperty.h</a></li>
+<li>src/omexmeta/include/omexmeta/<a class="el" href="PhysicalProperty_8h_source.html">PhysicalProperty.h</a></li>
 <li>src/omexmeta/PhysicalProperty.cpp</li>
 </ul>
 </div><!-- contents -->

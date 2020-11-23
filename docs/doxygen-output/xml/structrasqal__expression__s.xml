@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__expression__s" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_expression_s</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__expression__s_1af76f93e7520629d39a36f37e90012670" prot="public" static="no" mutable="no">
+        <type>rasqal_world *</type>
+        <definition>rasqal_world* rasqal_expression_s::world</definition>
+        <argsstring></argsstring>
+        <name>world</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="830" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="830" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a002bd58b69b65586b7f51b380e5dbdb9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_expression_s::usage</definition>
+        <argsstring></argsstring>
+        <name>usage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="832" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="832" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a212497f75b4ab9cf0c07d96853a38ec3" prot="public" static="no" mutable="no">
+        <type>rasqal_op</type>
+        <definition>rasqal_op rasqal_expression_s::op</definition>
+        <argsstring></argsstring>
+        <name>op</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="834" column="15" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="834" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a5f074e15bb7de3f1f8033d459b229e0d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression_s</ref> *</type>
+        <definition>struct rasqal_expression_s* rasqal_expression_s::arg1</definition>
+        <argsstring></argsstring>
+        <name>arg1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="836" column="30" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="836" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a97f410d43fed2a151c62de75c9799d8b" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression_s</ref> *</type>
+        <definition>struct rasqal_expression_s* rasqal_expression_s::arg2</definition>
+        <argsstring></argsstring>
+        <name>arg2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="837" column="30" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="837" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a150f5d454f829bb61dd21ea98dd08f7e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression_s</ref> *</type>
+        <definition>struct rasqal_expression_s* rasqal_expression_s::arg3</definition>
+        <argsstring></argsstring>
+        <name>arg3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="838" column="30" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1ad0031d060b889e43233259855e5000be" prot="public" static="no" mutable="no">
+        <type><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref> *</type>
+        <definition>rasqal_literal* rasqal_expression_s::literal</definition>
+        <argsstring></argsstring>
+        <name>literal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="839" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="839" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1aa4fd3e86612ac783e6a14fe69af5c7b7" prot="public" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* rasqal_expression_s::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="840" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="840" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a8bfae4602ea79570f81bcb6e67cee247" prot="public" static="no" mutable="no">
+        <type>raptor_uri *</type>
+        <definition>raptor_uri* rasqal_expression_s::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="842" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="842" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1ae9f94af71a73505e9b45e768177077cd" prot="public" static="no" mutable="no">
+        <type>raptor_sequence *</type>
+        <definition>raptor_sequence* rasqal_expression_s::args</definition>
+        <argsstring></argsstring>
+        <name>args</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="843" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="843" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1a0114f97b279fb168343400e0cf86f145" prot="public" static="no" mutable="no">
+        <type>raptor_sequence *</type>
+        <definition>raptor_sequence* rasqal_expression_s::params</definition>
+        <argsstring></argsstring>
+        <name>params</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="845" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="845" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1ab622e172fce55359446bf6fe2579be6d" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int rasqal_expression_s::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="846" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="846" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__expression__s_1aa8823bae3685843f33b62e6250e8b997" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression_s</ref> *</type>
+        <definition>struct rasqal_expression_s* rasqal_expression_s::arg4</definition>
+        <argsstring></argsstring>
+        <name>arg4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="847" column="30" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="847" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>rasqal_variable</label>
+        <link refid="structrasqal__variable"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>expression</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>rasqal_literal_s</label>
+        <link refid="structrasqal__literal__s"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>variable</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>date</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>datetime</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>rasqal_xsd_datetime</label>
+        <link refid="structrasqal__xsd__datetime"/>
+      </node>
+      <node id="1">
+        <label>rasqal_expression_s</label>
+        <link refid="structrasqal__expression__s"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>arg1</edgelabel>
+          <edgelabel>arg2</edgelabel>
+          <edgelabel>arg3</edgelabel>
+          <edgelabel>arg4</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>literal</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>rasqal_xsd_date</label>
+        <link refid="structrasqal__xsd__date"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="829" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="829" bodyend="848"/>
+    <listofallmembers>
+      <member refid="structrasqal__expression__s_1a5f074e15bb7de3f1f8033d459b229e0d" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>arg1</name></member>
+      <member refid="structrasqal__expression__s_1a97f410d43fed2a151c62de75c9799d8b" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>arg2</name></member>
+      <member refid="structrasqal__expression__s_1a150f5d454f829bb61dd21ea98dd08f7e" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>arg3</name></member>
+      <member refid="structrasqal__expression__s_1aa8823bae3685843f33b62e6250e8b997" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>arg4</name></member>
+      <member refid="structrasqal__expression__s_1ae9f94af71a73505e9b45e768177077cd" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>args</name></member>
+      <member refid="structrasqal__expression__s_1ab622e172fce55359446bf6fe2579be6d" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>flags</name></member>
+      <member refid="structrasqal__expression__s_1ad0031d060b889e43233259855e5000be" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>literal</name></member>
+      <member refid="structrasqal__expression__s_1a8bfae4602ea79570f81bcb6e67cee247" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>name</name></member>
+      <member refid="structrasqal__expression__s_1a212497f75b4ab9cf0c07d96853a38ec3" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>op</name></member>
+      <member refid="structrasqal__expression__s_1a0114f97b279fb168343400e0cf86f145" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>params</name></member>
+      <member refid="structrasqal__expression__s_1a002bd58b69b65586b7f51b380e5dbdb9" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>usage</name></member>
+      <member refid="structrasqal__expression__s_1aa4fd3e86612ac783e6a14fe69af5c7b7" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>value</name></member>
+      <member refid="structrasqal__expression__s_1af76f93e7520629d39a36f37e90012670" prot="public" virt="non-virtual"><scope>rasqal_expression_s</scope><name>world</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -9,13 +9,6 @@ A biological complex is a functional unit composed of multiple parts. To annotat
 a complex you can neglect the `identity` and instead use an arbitrary number of `hasPart` predicates. In this example
 we model the binding of `Sos`, `Grb2` and `Shc`.
 
-We use an SBML file located at `models/ComplexBinding.sbml` relative to our current working directory which contains the following SBML source code:
-
-.. literalinclude:: models/ComplexBinding.sbml
-    :linenos:
-    :language: xml
-    :caption: SBML source code for
-
 .. note::
 
     You can create this model using the following `tellurium` code:
@@ -72,7 +65,7 @@ We use an SBML file located at `models/ComplexBinding.sbml` relative to our curr
 
     .. tab:: C
 
-        .. literalinclude:: create_single_annotation_c.cpp
+        .. literalinclude:: annotating_a_biological_complex_c.cpp
             :linenos:
             :language: C
             :caption: Annotating a biological complex in C

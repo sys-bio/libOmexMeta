@@ -199,9 +199,15 @@ if (${BUILD_SHARED_LIBS})
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
 
-
+include(CMakeDependentOption)
 option(BUILD_DOCS "Build libomexmeta documentation" OFF)
-option(BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" OFF)
+
+# Defaults to off when BUILD_DOCS=OFF and ON when BUILD_DOCS=ON
+cmake_dependent_option(
+        BUILD_DOCS_EXAMPLES "Build the examples in the documentation. BUILD_DOCS must be ON to have an effect" ON
+        "BUILD_DOCS" OFF
+)
+
 option(BUILD_PACKAGING "Package libOmexMeta with CPack" OFF)
 option(BUILD_PYTHON "Build the Python pip package" OFF)
 option(GENERATE_DEPENDENCY_GRAPH "Get CMake to generate the dependency graph" ON)

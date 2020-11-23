@@ -18,14 +18,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfSerializer.h" line="25" column="18"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="25" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/LibrdfSerializer.h" line="24" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.h" bodystart="24" bodyend="26"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="24" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="24" bodyend="26"/>
     <listofallmembers>
       <member refid="structredland_1_1LibrdfSerializer_1_1deleter_1aa6f790013fd57683c7293bb45b84f1ae" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer::deleter</scope><name>operator()</name></member>
     </listofallmembers>

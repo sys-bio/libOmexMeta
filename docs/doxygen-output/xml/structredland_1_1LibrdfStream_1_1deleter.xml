@@ -18,14 +18,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStream.h" line="18" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfStream.cpp" bodystart="5" bodyend="8"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" line="18" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfStream.cpp" bodystart="5" bodyend="8"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/LibrdfStream.h" line="17" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStream.h" bodystart="17" bodyend="19"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" line="17" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" bodystart="17" bodyend="19"/>
     <listofallmembers>
       <member refid="structredland_1_1LibrdfStream_1_1deleter_1a8bad0aa99f4ed9de92ba2fd386f98a06" prot="public" virt="non-virtual"><scope>redland::LibrdfStream::deleter</scope><name>operator()</name></member>
     </listofallmembers>

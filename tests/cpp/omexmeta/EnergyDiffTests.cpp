@@ -192,7 +192,7 @@ TEST_F(EnergyDiffTests, TestRemoveEnergyDiff) {
 
     EnergyDiff physicalForce = editor.newEnergyDiff();
     physicalForce
-            .about("#OmexMetaId0002")
+            .about("species0001")
             .addSource("PhysicalEntity1", LOCAL_URI)
             .addSink("PhysicalEntity2", LOCAL_URI)
             .hasProperty("OPB:OPB1234");

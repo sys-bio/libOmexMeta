@@ -1,0 +1,63 @@
+\hypertarget{structrasqal__literal__s}{}\doxysection{rasqal\+\_\+literal\+\_\+s Struct Reference}
+\label{structrasqal__literal__s}\index{rasqal\_literal\_s@{rasqal\_literal\_s}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_ad8ea49b1bf71aa0b3a4e25cfc568394c}\label{structrasqal__literal__s_ad8ea49b1bf71aa0b3a4e25cfc568394c}} 
+rasqal\+\_\+world $\ast$ {\bfseries world}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_aedcb1ae66d1e9d4983ffc8bde7f7a44a}\label{structrasqal__literal__s_aedcb1ae66d1e9d4983ffc8bde7f7a44a}} 
+int {\bfseries usage}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_aaa5d08ce33fa20277d5767493410015a}\label{structrasqal__literal__s_aaa5d08ce33fa20277d5767493410015a}} 
+rasqal\+\_\+literal\+\_\+type {\bfseries type}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_ac1bd36b91b3965cc7a5f52b3e426b07c}\label{structrasqal__literal__s_ac1bd36b91b3965cc7a5f52b3e426b07c}} 
+const unsigned char $\ast$ {\bfseries string}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_a0127bfc3db85836d818ebdd68b6954a5}\label{structrasqal__literal__s_a0127bfc3db85836d818ebdd68b6954a5}} 
+unsigned int {\bfseries string\+\_\+len}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_a534d57cd42dcfb3abe82221e5193ba96}\label{structrasqal__literal__s_a534d57cd42dcfb3abe82221e5193ba96}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>int {\bfseries integer}\\
+\>double {\bfseries floating}\\
+\>raptor\_uri $\ast$ {\bfseries uri}\\
+\>\mbox{\hyperlink{structrasqal__variable}{rasqal\_variable}} $\ast$ {\bfseries variable}\\
+\>rasqal\_xsd\_decimal $\ast$ {\bfseries decimal}\\
+\>\mbox{\hyperlink{structrasqal__xsd__datetime}{rasqal\_xsd\_datetime}} $\ast$ {\bfseries datetime}\\
+\>\mbox{\hyperlink{structrasqal__xsd__date}{rasqal\_xsd\_date}} $\ast$ {\bfseries date}\\
+\} {\bfseries value}\\
+
+\end{tabbing}\item 
+\mbox{\Hypertarget{structrasqal__literal__s_ac804f6b14280b487a5d27f0c63182c16}\label{structrasqal__literal__s_ac804f6b14280b487a5d27f0c63182c16}} 
+char $\ast$ {\bfseries language}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_adb976a5448269829d3c39e8788cb1511}\label{structrasqal__literal__s_adb976a5448269829d3c39e8788cb1511}} 
+raptor\+\_\+uri $\ast$ {\bfseries datatype}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_a38df8669ffe8cb8181f2900b97d9eed3}\label{structrasqal__literal__s_a38df8669ffe8cb8181f2900b97d9eed3}} 
+const unsigned char $\ast$ {\bfseries flags}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_ad27b8a341391c89d128f4e2b104b7582}\label{structrasqal__literal__s_ad27b8a341391c89d128f4e2b104b7582}} 
+rasqal\+\_\+literal\+\_\+type {\bfseries parent\+\_\+type}
+\item 
+\mbox{\Hypertarget{structrasqal__literal__s_ac94abbecb9ac46221118301b55d1696a}\label{structrasqal__literal__s_ac94abbecb9ac46221118301b55d1696a}} 
+int {\bfseries valid}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+rasqal\+\_\+literal\+: @world\+: world object pointer @usage\+: Usage count. @type\+: Type of literal. @string\+: String form of literal for literal types U\+T\+F-\/8 string, pattern, qname, blank, double, float, decimal, datetime. @string\+\_\+len\+: Length of @string. @value\+: Alternate value content. @language\+: Language for string literal type. @datatype\+: Datatype for string literal type. @flags\+: Flags for literal types @parent\+\_\+type\+: parent X\+SD type if any or R\+A\+S\+Q\+A\+L\+\_\+\+L\+I\+T\+E\+R\+A\+L\+\_\+\+U\+N\+K\+N\+O\+WN @valid\+: $>$0 if literal format is a valid lexical form for this datatype. 0 if not valid. $<$0 if this has not been checked yet
+
+Rasqal literal class. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

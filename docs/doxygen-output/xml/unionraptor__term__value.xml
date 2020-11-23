@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="unionraptor__term__value" kind="union" language="C++" prot="public">
+    <compoundname>raptor_term_value</compoundname>
+    <includes refid="raptor2_8h" local="no">raptor2.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionraptor__term__value_1a21e5ae38e8bc45823ba97b4e2eb184f5" prot="public" static="no" mutable="no">
+        <type>raptor_uri *</type>
+        <definition>raptor_uri* raptor_term_value::uri</definition>
+        <argsstring></argsstring>
+        <name>uri</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="603" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="603" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionraptor__term__value_1ae3abc3c1c58fb1e464f3a9aa4096005d" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__term__literal__value" kindref="compound">raptor_term_literal_value</ref></type>
+        <definition>raptor_term_literal_value raptor_term_value::literal</definition>
+        <argsstring></argsstring>
+        <name>literal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="605" column="31" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="605" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionraptor__term__value_1a6dd718091693ee4f164f88a588bc903f" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__term__blank__value" kindref="compound">raptor_term_blank_value</ref></type>
+        <definition>raptor_term_blank_value raptor_term_value::blank</definition>
+        <argsstring></argsstring>
+        <name>blank</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="607" column="29" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="607" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="unionraptor__term__value" kindref="compound">raptor_term_value</ref>: @uri: uri value when term type is #RAPTOR_TERM_TYPE_URI @literal: literal value when term type is #RAPTOR_TERM_TYPE_LITERAL @blank: blank value when term type is #RAPTOR_TERM_TYPE_BLANK</para>
+<para>Term value - this typedef exists solely for use in <ref refid="structraptor__term" kindref="compound">raptor_term</ref> </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>raptor_term_literal_value</label>
+        <link refid="structraptor__term__literal__value"/>
+      </node>
+      <node id="3">
+        <label>raptor_term_blank_value</label>
+        <link refid="structraptor__term__blank__value"/>
+      </node>
+      <node id="1">
+        <label>raptor_term_value</label>
+        <link refid="unionraptor__term__value"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>literal</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>blank</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="602" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="602" bodyend="608"/>
+    <listofallmembers>
+      <member refid="unionraptor__term__value_1a6dd718091693ee4f164f88a588bc903f" prot="public" virt="non-virtual"><scope>raptor_term_value</scope><name>blank</name></member>
+      <member refid="unionraptor__term__value_1ae3abc3c1c58fb1e464f3a9aa4096005d" prot="public" virt="non-virtual"><scope>raptor_term_value</scope><name>literal</name></member>
+      <member refid="unionraptor__term__value_1a21e5ae38e8bc45823ba97b4e2eb184f5" prot="public" virt="non-virtual"><scope>raptor_term_value</scope><name>uri</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

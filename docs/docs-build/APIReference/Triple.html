@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
 
   
   
@@ -84,12 +88,14 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
@@ -182,10 +188,183 @@
             
   <div class="section" id="triple">
 <h1>Triple<a class="headerlink" href="#triple" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “omexmeta::Triple” in doxygen xml output for project “libomexmeta” from directory: D:/libOmexMeta/docs/doxygen-output/xml</p>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta6TripleE">
+<span id="_CPPv3N8omexmeta6TripleE"></span><span id="_CPPv2N8omexmeta6TripleE"></span><span id="omexmeta::Triple"></span><span class="target" id="classomexmeta_1_1Triple"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Triple</code> : <em class="property">public</em> redland::LibrdfStatement<a class="headerlink" href="#_CPPv4N8omexmeta6TripleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple6TripleEv">
+<span id="_CPPv3N8omexmeta6Triple6TripleEv"></span><span id="_CPPv2N8omexmeta6Triple6TripleEv"></span><span id="omexmeta::Triple::Triple"></span><span class="target" id="classomexmeta_1_1Triple_1a07e967036bbc29feb13ef8a0ece2d8b8"></span><code class="sig-name descname">Triple</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta6Triple6TripleEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple6TripleERK7SubjectRK12PredicatePtrRK8Resource">
+<span id="_CPPv3N8omexmeta6Triple6TripleERK7SubjectRK12PredicatePtrRK8Resource"></span><span id="_CPPv2N8omexmeta6Triple6TripleERK7SubjectRK12PredicatePtrRK8Resource"></span><span id="omexmeta::Triple::Triple__SubjectCR.PredicatePtrCR.ResourceCR"></span><span class="target" id="classomexmeta_1_1Triple_1aaed857f9356dc3a7414f06f393a75ba0"></span><code class="sig-name descname">Triple</code><span class="sig-paren">(</span><em class="property">const</em> Subject &amp;<em>subject</em>, <em class="property">const</em> PredicatePtr &amp;<em>predicate_ptr</em>, <em class="property">const</em> <a class="reference internal" href="Resource.html#_CPPv4N8omexmeta8ResourceE" title="omexmeta::Resource">Resource</a> &amp;<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple6TripleERK7SubjectRK12PredicatePtrRK8Resource" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple6TripleEP11librdf_nodeP11librdf_nodeP11librdf_node">
+<span id="_CPPv3N8omexmeta6Triple6TripleEP11librdf_nodeP11librdf_nodeP11librdf_node"></span><span id="_CPPv2N8omexmeta6Triple6TripleEP11librdf_nodeP11librdf_nodeP11librdf_node"></span><span id="omexmeta::Triple::Triple__librdf_nodeP.librdf_nodeP.librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Triple_1adc457c78ec059eb71602e7ea4f763582"></span><code class="sig-name descname">Triple</code><span class="sig-paren">(</span>librdf_node *<em>subject</em>, librdf_node *<em>predicate</em>, librdf_node *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple6TripleEP11librdf_nodeP11librdf_nodeP11librdf_node" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Triple11getLocalUriEv">
+<span id="_CPPv3NK8omexmeta6Triple11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta6Triple11getLocalUriEv"></span><span id="omexmeta::Triple::getLocalUriC"></span><span class="target" id="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Triple11getLocalUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple11setLocalUriENSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple11setLocalUriENSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple11setLocalUriENSt6stringE"></span><span id="omexmeta::Triple::setLocalUri__ss"></span><span class="target" id="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc"></span>void <code class="sig-name descname">setLocalUri</code><span class="sig-paren">(</span>std::string <em>localUri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple11setLocalUriENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set the local_uri_ attribute for this triple </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple11setModelUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple11setModelUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple11setModelUriERKNSt6stringE"></span><span id="omexmeta::Triple::setModelUri__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1afd918ecccfa23079d9cb70f2e1a3e9b0"></span>void <code class="sig-name descname">setModelUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>model_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple11setModelUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set the model_uri_ attribute for this triple </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Triple3strERKNSt6stringERKNSt6stringENSt6stringENSt6stringE">
+<span id="_CPPv3NK8omexmeta6Triple3strERKNSt6stringERKNSt6stringENSt6stringENSt6stringE"></span><span id="_CPPv2NK8omexmeta6Triple3strERKNSt6stringERKNSt6stringENSt6stringENSt6stringE"></span><span id="omexmeta::Triple::str__ssCR.ssCR.ss.ssC"></span><span class="target" id="classomexmeta_1_1Triple_1a2cabbc7a28348a9472bd50f059469183"></span>std::string <code class="sig-name descname">str</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, <em class="property">const</em> std::string &amp;<em>base</em> = (std::filesystem::current_path() /= &quot;annotations.rdf&quot;).string(), std::string <em>omex_name</em> = &quot;NewOmex.omex/&quot;, std::string <em>model_name</em> = &quot;NewModel.xml&quot;<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Triple3strERKNSt6stringERKNSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>serialize the triple using a &#64;format serializer. </p>
+<p>Creates an isolated serializer that does not get added to the users annotations. This method is for visualizing a triple only. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple10freeTripleEv">
+<span id="_CPPv3N8omexmeta6Triple10freeTripleEv"></span><span id="_CPPv2N8omexmeta6Triple10freeTripleEv"></span><span id="omexmeta::Triple::freeTriple"></span><span class="target" id="classomexmeta_1_1Triple_1a3f3868622349d3a3e14ed3e4b21d49a9"></span>void <code class="sig-name descname">freeTriple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple10freeTripleEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple5aboutENSt6stringERKNSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple5aboutENSt6stringERKNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple5aboutENSt6stringERKNSt6stringENSt6stringE"></span><span id="omexmeta::Triple::about__ss.ssCR.ss"></span><span class="target" id="classomexmeta_1_1Triple_1ac1110c3092b148b4da2264186b613a93"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">about</code><span class="sig-paren">(</span>std::string <em>omex_name</em>, <em class="property">const</em> std::string &amp;<em>model_name</em>, std::string <em>metaid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple5aboutENSt6stringERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple5aboutENSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple5aboutENSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple5aboutENSt6stringE"></span><span id="omexmeta::Triple::about__ss"></span><span class="target" id="classomexmeta_1_1Triple_1a0c8371a282b8f2a59ebaa87abf7a8758"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">about</code><span class="sig-paren">(</span>std::string <em>metaid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple5aboutENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Triple8getAboutEv">
+<span id="_CPPv3NK8omexmeta6Triple8getAboutEv"></span><span id="_CPPv2NK8omexmeta6Triple8getAboutEv"></span><span id="omexmeta::Triple::getAboutC"></span><span class="target" id="classomexmeta_1_1Triple_1a69df88d19e2f9077fccfa9543dadd15f"></span>std::string <code class="sig-name descname">getAbout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Triple8getAboutEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Triple12getStatementEv">
+<span id="_CPPv3NK8omexmeta6Triple12getStatementEv"></span><span id="_CPPv2NK8omexmeta6Triple12getStatementEv"></span><span id="omexmeta::Triple::getStatementC"></span><span class="target" id="classomexmeta_1_1Triple_1a886240fe50becaaa47ca171f2d454ba4"></span>librdf_statement *<code class="sig-name descname">getStatement</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Triple12getStatementEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple12setPredicateERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple12setPredicateERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple12setPredicateERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::Triple::setPredicate__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a57b4521321178af38415e76cd483207e"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">setPredicate</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>namespace_</em>, <em class="property">const</em> std::string &amp;<em>term</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple12setPredicateERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple9predicateERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple9predicateERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple9predicateERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::Triple::predicate__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a27637af321ba7d7eeb2596bac93feb54"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">predicate</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>namespace_</em>, <em class="property">const</em> std::string &amp;<em>term</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple9predicateERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>alias for setPredicate </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple18setResourceLiteralERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple18setResourceLiteralERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple18setResourceLiteralERKNSt6stringE"></span><span id="omexmeta::Triple::setResourceLiteral__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a7358812badc8d0d5589a0165af4ad375"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">setResourceLiteral</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>literal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple18setResourceLiteralERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple14setResourceUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple14setResourceUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple14setResourceUriERKNSt6stringE"></span><span id="omexmeta::Triple::setResourceUri__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1ae6836c6e9d06a310a120345aa95a4daa"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">setResourceUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>identifiers_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple14setResourceUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple16setResourceBlankERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple16setResourceBlankERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple16setResourceBlankERKNSt6stringE"></span><span id="omexmeta::Triple::setResourceBlank__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a90ffe9b74d354cc3fe3132a07546f6d1"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">setResourceBlank</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>blank_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple16setResourceBlankERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple7isEmptyEv">
+<span id="_CPPv3N8omexmeta6Triple7isEmptyEv"></span><span id="_CPPv2N8omexmeta6Triple7isEmptyEv"></span><span id="omexmeta::Triple::isEmpty"></span><span class="target" id="classomexmeta_1_1Triple_1a34832780748d58b0fddea6f6f079217a"></span>bool <code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple7isEmptyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple12setPredicateERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple12setPredicateERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple12setPredicateERKNSt6stringE"></span><span id="omexmeta::Triple::setPredicate__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a1a99a566a9d1883c6329a023f4dbc056"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">setPredicate</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple12setPredicateERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple9predicateERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple9predicateERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple9predicateERKNSt6stringE"></span><span id="omexmeta::Triple::predicate__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a2cb9ba4a57bd6f85c7a9b49b93245fea"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">predicate</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple9predicateERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple17freeTripleAndUrisEv">
+<span id="_CPPv3N8omexmeta6Triple17freeTripleAndUrisEv"></span><span id="_CPPv2N8omexmeta6Triple17freeTripleAndUrisEv"></span><span id="omexmeta::Triple::freeTripleAndUris"></span><span class="target" id="classomexmeta_1_1Triple_1ab89993902b551b98d9e17e4fe5ebed6b"></span>void <code class="sig-name descname">freeTripleAndUris</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple17freeTripleAndUrisEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta6Triple11getModelUriEv">
+<span id="_CPPv3NK8omexmeta6Triple11getModelUriEv"></span><span id="_CPPv2NK8omexmeta6Triple11getModelUriEv"></span><span id="omexmeta::Triple::getModelUriC"></span><span class="target" id="classomexmeta_1_1Triple_1ac379e5410a41c1946e91d581f023c7f5"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6Triple11getModelUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple23setResourceWithModelUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple23setResourceWithModelUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple23setResourceWithModelUriERKNSt6stringE"></span><span id="omexmeta::Triple::setResourceWithModelUri__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a44d31389b0056ab4f1d8689521a25032"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">setResourceWithModelUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>metaid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple23setResourceWithModelUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple20resourceWithModelUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple20resourceWithModelUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple20resourceWithModelUriERKNSt6stringE"></span><span id="omexmeta::Triple::resourceWithModelUri__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a1659736747ab322116f5b75069efc398"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">resourceWithModelUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>metaid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple20resourceWithModelUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple15resourceLiteralERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple15resourceLiteralERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple15resourceLiteralERKNSt6stringE"></span><span id="omexmeta::Triple::resourceLiteral__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a60b0bd14eb91bab42ea894ec50843eb3"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">resourceLiteral</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>literal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple15resourceLiteralERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple11resourceUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple11resourceUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple11resourceUriERKNSt6stringE"></span><span id="omexmeta::Triple::resourceUri__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1a27f52f5d96e0fcbd17291bb88f39617f"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">resourceUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>identifiers_uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple11resourceUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple13resourceBlankERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Triple13resourceBlankERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Triple13resourceBlankERKNSt6stringE"></span><span id="omexmeta::Triple::resourceBlank__ssCR"></span><span class="target" id="classomexmeta_1_1Triple_1ac19ea0eaa8bfe1a7c481da4312cdf1b9"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<code class="sig-name descname">resourceBlank</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>blank_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple13resourceBlankERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple19fromRawStatementPtrEP16librdf_statement">
+<span id="_CPPv3N8omexmeta6Triple19fromRawStatementPtrEP16librdf_statement"></span><span id="_CPPv2N8omexmeta6Triple19fromRawStatementPtrEP16librdf_statement"></span><span id="omexmeta::Triple::fromRawStatementPtr__librdf_statementP"></span><span class="target" id="classomexmeta_1_1Triple_1af03c0ce3392c0ff30f13772209ac873c"></span><a class="reference internal" href="#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> <code class="sig-name descname">fromRawStatementPtr</code><span class="sig-paren">(</span>librdf_statement *<em>statement</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple19fromRawStatementPtrEP16librdf_statement" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Triple6TripleEP16librdf_statement">
+<span id="_CPPv3N8omexmeta6Triple6TripleEP16librdf_statement"></span><span id="_CPPv2N8omexmeta6Triple6TripleEP16librdf_statement"></span><span id="omexmeta::Triple::Triple__librdf_statementP"></span><span class="target" id="classomexmeta_1_1Triple_1ae87525e0bb65c6ce86022b0786d3bd5c"></span><code class="sig-name descname">Triple</code><span class="sig-paren">(</span>librdf_statement *<em>statement</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Triple6TripleEP16librdf_statement" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Triple10local_uri_E">
+<span id="_CPPv3N8omexmeta6Triple10local_uri_E"></span><span id="_CPPv2N8omexmeta6Triple10local_uri_E"></span><span id="omexmeta::Triple::local_uri___ss"></span><span class="target" id="classomexmeta_1_1Triple_1ac73ca3aad0e993e1ff26bea1b5f531a1"></span>std::string <code class="sig-name descname">local_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Triple10local_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Triple10model_uri_E">
+<span id="_CPPv3N8omexmeta6Triple10model_uri_E"></span><span id="_CPPv2N8omexmeta6Triple10model_uri_E"></span><span id="omexmeta::Triple::model_uri___ss"></span><span class="target" id="classomexmeta_1_1Triple_1af43736e46ee06c5236149c3cabe89dfe"></span>std::string <code class="sig-name descname">model_uri_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Triple10model_uri_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 </div>
 
 

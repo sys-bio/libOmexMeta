@@ -1,4 +1,4 @@
-from pyomexmeta import RDF
+from pyomexmeta import RDF, eUriType
 
 turtle_string = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .

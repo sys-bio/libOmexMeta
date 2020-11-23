@@ -9,9 +9,8 @@ Inheritance diagram for omexmeta\+::Omex\+Meta\+Xml\+Assistant\+:\begin{figure}[
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXmlAssistant_a69bb3ac99f1585b6f567b80e88f52642}\label{classomexmeta_1_1OmexMetaXmlAssistant_a69bb3ac99f1585b6f567b80e88f52642}} 
-const std\+::string \& {\bfseries get\+Metaid\+Base} () const
-\item 
+const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistant_a69bb3ac99f1585b6f567b80e88f52642}{get\+Metaid\+Base}} () const
+\begin{DoxyCompactList}\small\item\em get the base for the metaid used by the current xml type. \mbox{\hyperlink{classThis}{This}} base is used as a precursor string for generating new metaids if requested by the user by setting generate\+\_\+new\+\_\+metaids=true. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXmlAssistant_a4c9759afd4af42595a4f0a4feb913524}\label{classomexmeta_1_1OmexMetaXmlAssistant_a4c9759afd4af42595a4f0a4feb913524}} 
 int {\bfseries get\+Metaid\+Num\+Digits} () const
 \item 
@@ -29,10 +28,26 @@ virtual std\+::vector$<$ std\+::string $>$ {\bfseries get\+Valid\+Elements} () c
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXmlAssistant_adbfc8d96f2adffa35ee01726a97dbcce}\label{classomexmeta_1_1OmexMetaXmlAssistant_adbfc8d96f2adffa35ee01726a97dbcce}} 
 virtual std\+::string {\bfseries meta\+Id\+Tag\+Name} () const
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXmlAssistant_a9d178086ee6fe1d74e683476783ed933}\label{classomexmeta_1_1OmexMetaXmlAssistant_a9d178086ee6fe1d74e683476783ed933}} 
+virtual std\+::string {\bfseries meta\+Id\+Namespace} () const
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXmlAssistant_a69bb3ac99f1585b6f567b80e88f52642}\label{classomexmeta_1_1OmexMetaXmlAssistant_a69bb3ac99f1585b6f567b80e88f52642}} 
+\index{omexmeta::OmexMetaXmlAssistant@{omexmeta::OmexMetaXmlAssistant}!getMetaidBase@{getMetaidBase}}
+\index{getMetaidBase@{getMetaidBase}!omexmeta::OmexMetaXmlAssistant@{omexmeta::OmexMetaXmlAssistant}}
+\doxysubsubsection{\texorpdfstring{getMetaidBase()}{getMetaidBase()}}
+{\footnotesize\ttfamily const std\+::string \& omexmeta\+::\+Omex\+Meta\+Xml\+Assistant\+::get\+Metaid\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the base for the metaid used by the current xml type. \mbox{\hyperlink{classThis}{This}} base is used as a precursor string for generating new metaids if requested by the user by setting generate\+\_\+new\+\_\+metaids=true. 
+
+the base is given as argument to the \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistant}{Omex\+Meta\+Xml\+Assistant}} on instantiation. If base is \char`\"{}metaid\char`\"{} then ids generated will be metaid\+\_\+0000 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/omexmeta/Omex\+Meta\+Xml\+Assistant.\+h\item 
+src/omexmeta/include/omexmeta/Omex\+Meta\+Xml\+Assistant.\+h\item 
 src/omexmeta/Omex\+Meta\+Xml\+Assistant.\+cpp\end{DoxyCompactItemize}

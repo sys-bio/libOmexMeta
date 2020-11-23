@@ -51,9 +51,9 @@ namespace omexmeta {
         metaids_ = xml_and_metaids.second;
         if (getType() == OMEXMETA_TYPE_SBML && sbml_semantic_extraction) {
             // with sbml models we extract some information directly from the sbml
-        SBMLSemanticExtraction extraction(this);
-        extraction.extractSpeciesCompartmentSemantics();
-        extraction.extractProcessesFromReactions();
+            SBMLSemanticExtraction extraction(this);
+            extraction.extractSpeciesCompartmentSemantics();
+            extraction.extractProcessesFromReactions();
         }
     }
 
@@ -75,11 +75,24 @@ namespace omexmeta {
 
     librdf_model *Editor::getModel() const { return model_.get(); }
 
-    void Editor::checkValidMetaid(const std::string &metaid) {
+    void Editor::checkValidMetaid( std::string metaid) {
+        // metaid's containing local uri's are valid metaids.
+        if (OmexMetaUtils::startsWith(metaid, getLocalUri())){
+            std::cout << "l" << std::endl;
+            return;
+        }
+
+        // if metaid is an empty string, a local ui will be generated automatically
+        if (metaid.empty()){
+            std::cout << "d" << std::endl;
+            return;
+        }
+
         // Check is metaid is a substring of one of the metaids.
         // throw error if not
         bool found = false;
         for (auto &it : metaids_) {
+//            std::cout << "metaid: " << metaid << "; it: " << it << std::endl;
             if (metaid.find(it) != std::string::npos) {
                 found = true;
                 break;
@@ -208,18 +221,18 @@ namespace omexmeta {
         triples.freeTriples();
     }
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
-        //        checkValidMetaid(physicalEntity.getAbout());
+        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PropertyBearer *) &physicalEntity);
     }
 
     void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
-        //        checkValidMetaid(physicalEntity.getAbout());
+        checkValidMetaid(physicalProcess.getAbout());
         addCompositeAnnotation((PropertyBearer *) &physicalProcess);
     }
 
-    void Editor::addEnergyDiff(EnergyDiff &physicalForce) {
-        //        checkValidMetaid(physicalEntity.getAbout());
-        addCompositeAnnotation((PropertyBearer *) &physicalForce);
+    void Editor::addEnergyDiff(EnergyDiff &ediff) {
+        checkValidMetaid(ediff.getAbout());
+        addCompositeAnnotation((PropertyBearer *) &ediff);
     }
 
     void Editor::addPersonalInformation(PersonalInformation *personalInformation) {
@@ -279,8 +292,8 @@ namespace omexmeta {
         return PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
     }
 
-    PhysicalProperty* Editor::newPhysicalPropertyPtr() {
-        auto* property = new PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+    PhysicalProperty *Editor::newPhysicalPropertyPtr() {
+        auto *property = new PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
         return property;
     }
 

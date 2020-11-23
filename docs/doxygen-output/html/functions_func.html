@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -67,13 +67,13 @@ $(function() {
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>about()
-: <a class="el" href="classomexmeta_1_1PhysicalEntity.html#a6edbf68a1473211edc3dcc9c7a15d03c">omexmeta::PhysicalEntity</a>
-, <a class="el" href="classomexmeta_1_1EnergyDiff.html#aa7c920c063c432ed198e467bb00147d6">omexmeta::EnergyDiff</a>
-, <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html#afc8269da5c85c549c73c0431992d2658">omexmeta::PhysicalPhenomenon</a>
-, <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a5d4e730b52c01ceea8868fb6e2372ef5">omexmeta::PhysicalProcess</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a16d55b4c4094dad5ac7b770f3913ca15">omexmeta::EnergyDiff</a>
+, <a class="el" href="classomexmeta_1_1PhysicalEntity.html#a6edbf68a1473211edc3dcc9c7a15d03c">omexmeta::PhysicalEntity</a>
+, <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a6c4fa05087330d859f813a94543b9fbd">omexmeta::PhysicalProcess</a>
+, <a class="el" href="classomexmeta_1_1PropertyBearer.html#a374759ec870893444272ff0489be538f">omexmeta::PropertyBearer</a>
 </li>
 <li>addCompositeAnnotation()
-: <a class="el" href="classomexmeta_1_1Editor.html#a146ae84fb44991d9c6135e98f03fa972">omexmeta::Editor</a>
+: <a class="el" href="classomexmeta_1_1Editor.html#a81e9e3e81a86ac079f81239a47f18092">omexmeta::Editor</a>
 </li>
 <li>addCreator()
 : <a class="el" href="classomexmeta_1_1Editor.html#a1926b789086e29102e33808169a5af0c">omexmeta::Editor</a>
@@ -86,6 +86,9 @@ $(function() {
 </li>
 <li>addDescription()
 : <a class="el" href="classomexmeta_1_1Editor.html#a58db6f81ad362189bed21780be5f3611">omexmeta::Editor</a>
+</li>
+<li>addEnergyDiff()
+: <a class="el" href="classomexmeta_1_1Editor.html#a0e7eb192448ba81b1ca7f91b15785030">omexmeta::Editor</a>
 </li>
 <li>addFromFile()
 : <a class="el" href="classomexmeta_1_1RDF.html#ac88eeb1a0f6911a2c1e4c43cef1b9047">omexmeta::RDF</a>
@@ -100,7 +103,7 @@ $(function() {
 : <a class="el" href="classomexmeta_1_1PhysicalEntity.html#a82e77be3327c537b2426b571afaa5045">omexmeta::PhysicalEntity</a>
 </li>
 <li>addMediator()
-: <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a2bdf8dde5ffa6b38d5042db49fd211d1">omexmeta::PhysicalProcess</a>
+: <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a5a4ee2c911331eb5196e25168b41ee31">omexmeta::PhysicalProcess</a>
 </li>
 <li>addNamespace()
 : <a class="el" href="classomexmeta_1_1Editor.html#a052a725cee8b8e577c55e977eee81ace">omexmeta::Editor</a>
@@ -117,11 +120,11 @@ $(function() {
 <li>addPhysicalEntity()
 : <a class="el" href="classomexmeta_1_1Editor.html#a0740831baafe244374ad7a324d51a87e">omexmeta::Editor</a>
 </li>
-<li>addEnergyDiff()
-: <a class="el" href="classomexmeta_1_1Editor.html#a7833e03995f6323109c2db8d59104f6c">omexmeta::Editor</a>
-</li>
 <li>addPhysicalProcess()
 : <a class="el" href="classomexmeta_1_1Editor.html#ae4a608ecbe64f05c1b64efbeeb1fdeb1">omexmeta::Editor</a>
+</li>
+<li>addPhysicalProperty()
+: <a class="el" href="classomexmeta_1_1Editor.html#a4600654719f3f66935ea96a4567a9086">omexmeta::Editor</a>
 </li>
 <li>addPubmed()
 : <a class="el" href="classomexmeta_1_1Editor.html#a9eeaa4cfeeb9bae8b5d5f7705e170de4">omexmeta::Editor</a>
@@ -136,15 +139,21 @@ $(function() {
 : <a class="el" href="classomexmeta_1_1Editor.html#a8fb3a19e8f64aeff2ac9b78c483843de">omexmeta::Editor</a>
 </li>
 <li>addSink()
-: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a8ec5e262b82526ac914d8c7f10b6c2f1">omexmeta::EnergyDiff</a>
-, <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a403ffc7d7d29702f2ff4e56084a1d714">omexmeta::PhysicalProcess</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a4525a9f6eb11712f775f5dc62e64a9e7">omexmeta::EnergyDiff</a>
+, <a class="el" href="classomexmeta_1_1PhysicalProcess.html#aa55335a92b7558262f512f836fae8c4f">omexmeta::PhysicalProcess</a>
 </li>
 <li>addSource()
-: <a class="el" href="classomexmeta_1_1EnergyDiff.html#ace7d3703d7e4bdb9a256208f456f2c4f">omexmeta::EnergyDiff</a>
-, <a class="el" href="classomexmeta_1_1PhysicalProcess.html#ab83f58b7df77fdee131c22c71da22f39">omexmeta::PhysicalProcess</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a89b71ee99e45544f84ce7995db575f0a">omexmeta::EnergyDiff</a>
+, <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a4cae1a5cecfc2107f2667a2e5c0480cc">omexmeta::PhysicalProcess</a>
 </li>
 <li>addTaxon()
 : <a class="el" href="classomexmeta_1_1Editor.html#a4da72139f63090ab5682bf51c96d7886">omexmeta::Editor</a>
+</li>
+<li>addTriple()
+: <a class="el" href="classomexmeta_1_1RDF.html#a9ecf58f64ea449a01457bfc28bb53e17">omexmeta::RDF</a>
+</li>
+<li>addTriples()
+: <a class="el" href="classomexmeta_1_1RDF.html#a7a6ad7d96f3104da8356f02ac6705941">omexmeta::RDF</a>
 </li>
 <li>assertRegexMatchSplitByNewLine()
 : <a class="el" href="classomexmeta_1_1OmexMetaUtils.html#a4ec81c80bf33d232331ea9ef0b94da61">omexmeta::OmexMetaUtils</a>

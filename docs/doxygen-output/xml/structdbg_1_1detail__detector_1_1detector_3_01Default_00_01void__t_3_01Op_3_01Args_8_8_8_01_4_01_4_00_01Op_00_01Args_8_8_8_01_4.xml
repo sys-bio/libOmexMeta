@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="275" column="3" bodyfile="src/omexmeta/dbg.h" bodystart="275" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="275" column="3" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structdbg_1_1detail__detector_1_1detector_3_01Default_00_01void__t_3_01Op_3_01Args_8_8_8_01_4_01_4_00_01Op_00_01Args_8_8_8_01_4_1a2119ba35e684b8292286546a1cea10d1" prot="public" static="no">
         <type>Op&lt; Args... &gt;</type>
@@ -42,14 +42,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="276" column="3" bodyfile="src/omexmeta/dbg.h" bodystart="276" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="276" column="3" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="276" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="274" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="274" bodyend="277"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="274" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="274" bodyend="277"/>
     <listofallmembers>
       <member refid="structdbg_1_1detail__detector_1_1detector_3_01Default_00_01void__t_3_01Op_3_01Args_8_8_8_01_4_01_4_00_01Op_00_01Args_8_8_8_01_4_1a2119ba35e684b8292286546a1cea10d1" prot="public" virt="non-virtual"><scope>dbg::detail_detector::detector&lt; Default, void_t&lt; Op&lt; Args... &gt; &gt;, Op, Args... &gt;</scope><name>type</name></member>
       <member refid="structdbg_1_1detail__detector_1_1detector_3_01Default_00_01void__t_3_01Op_3_01Args_8_8_8_01_4_01_4_00_01Op_00_01Args_8_8_8_01_4_1ab9dc20c0565be267d2d98b0e0f4a565b" prot="public" virt="non-virtual"><scope>dbg::detail_detector::detector&lt; Default, void_t&lt; Op&lt; Args... &gt; &gt;, Op, Args... &gt;</scope><name>value_t</name></member>

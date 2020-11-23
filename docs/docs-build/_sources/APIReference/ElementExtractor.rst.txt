@@ -1,7 +1,7 @@
 ElementExtractor
 =================
 
-.. doxygenclass:: omexmeta::RDF
+.. doxygenclass:: omexmeta::ElementExtractor
    :members:
    :protected-members:
    :private-members:

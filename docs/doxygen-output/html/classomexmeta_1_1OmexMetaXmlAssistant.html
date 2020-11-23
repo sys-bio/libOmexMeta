@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -87,8 +87,8 @@ Inheritance diagram for omexmeta::OmexMetaXmlAssistant:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a69bb3ac99f1585b6f567b80e88f52642"><td class="memItemLeft" align="right" valign="top"><a id="a69bb3ac99f1585b6f567b80e88f52642"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getMetaidBase</b> () const</td></tr>
+<tr class="memitem:a69bb3ac99f1585b6f567b80e88f52642"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html#a69bb3ac99f1585b6f567b80e88f52642">getMetaidBase</a> () const</td></tr>
+<tr class="memdesc:a69bb3ac99f1585b6f567b80e88f52642"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the base for the metaid used by the current xml type. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> base is used as a precursor string for generating new metaids if requested by the user by setting generate_new_metaids=true.  <a href="classomexmeta_1_1OmexMetaXmlAssistant.html#a69bb3ac99f1585b6f567b80e88f52642">More...</a><br /></td></tr>
 <tr class="separator:a69bb3ac99f1585b6f567b80e88f52642"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9759afd4af42595a4f0a4feb913524"><td class="memItemLeft" align="right" valign="top"><a id="a4c9759afd4af42595a4f0a4feb913524"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getMetaidNumDigits</b> () const</td></tr>
@@ -108,9 +108,33 @@ virtual std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" vali
 <tr class="memitem:adbfc8d96f2adffa35ee01726a97dbcce"><td class="memItemLeft" align="right" valign="top"><a id="adbfc8d96f2adffa35ee01726a97dbcce"></a>
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaIdTagName</b> () const</td></tr>
 <tr class="separator:adbfc8d96f2adffa35ee01726a97dbcce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d178086ee6fe1d74e683476783ed933"><td class="memItemLeft" align="right" valign="top"><a id="a9d178086ee6fe1d74e683476783ed933"></a>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaIdNamespace</b> () const</td></tr>
+<tr class="separator:a9d178086ee6fe1d74e683476783ed933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a69bb3ac99f1585b6f567b80e88f52642"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69bb3ac99f1585b6f567b80e88f52642">&#9670;&nbsp;</a></span>getMetaidBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; omexmeta::OmexMetaXmlAssistant::getMetaidBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the base for the metaid used by the current xml type. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> base is used as a precursor string for generating new metaids if requested by the user by setting generate_new_metaids=true. </p>
+<p>the base is given as argument to the <a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a> on instantiation. If base is "metaid" then ids generated will be metaid_0000 </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/omexmeta/<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXmlAssistant.h</a></li>
+<li>src/omexmeta/include/omexmeta/<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXmlAssistant.h</a></li>
 <li>src/omexmeta/OmexMetaXmlAssistant.cpp</li>
 </ul>
 </div><!-- contents -->

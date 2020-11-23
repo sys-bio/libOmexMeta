@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -113,17 +113,14 @@ librdf_model *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () 
 <tr class="memitem:a3067eb5bae1353ab5c86f135c4b401ad"><td class="memItemLeft" align="right" valign="top"><a id="a3067eb5bae1353ab5c86f135c4b401ad"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const</td></tr>
 <tr class="separator:a3067eb5bae1353ab5c86f135c4b401ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b565a7d705e24d6163c068a40040087"><td class="memItemLeft" align="right" valign="top"><a id="a2b565a7d705e24d6163c068a40040087"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addStatement</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) const</td></tr>
-<tr class="separator:a2b565a7d705e24d6163c068a40040087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643c3e3d3363f4f06330ede73dc19514"><td class="memItemLeft" align="right" valign="top"><a id="a643c3e3d3363f4f06330ede73dc19514"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addStatement</b> (librdf_statement *statement) const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addStatement</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement) const</td></tr>
 <tr class="separator:a643c3e3d3363f4f06330ede73dc19514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad145b8f46be49434bb8bd0b90a904770"><td class="memItemLeft" align="right" valign="top"><a id="ad145b8f46be49434bb8bd0b90a904770"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freeModel</b> ()</td></tr>
 <tr class="separator:ad145b8f46be49434bb8bd0b90a904770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a807784594a1515e5633ec7d08858dd57"><td class="memItemLeft" align="right" valign="top"><a id="a807784594a1515e5633ec7d08858dd57"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeStatement</b> (librdf_statement *statement) const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>removeStatement</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement) const</td></tr>
 <tr class="separator:a807784594a1515e5633ec7d08858dd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cd4394b2c4fee69ce557eafd585c243"><td class="memItemLeft" align="right" valign="top"><a id="a2cd4394b2c4fee69ce557eafd585c243"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeStatement</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) const</td></tr>
@@ -146,15 +143,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>startTransactionWithHa
 <tr class="memitem:abf9471d407147d24bbbda8c200d92791"><td class="memItemLeft" align="right" valign="top"><a id="abf9471d407147d24bbbda8c200d92791"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getTransactionRollback</b> () const</td></tr>
 <tr class="separator:abf9471d407147d24bbbda8c200d92791"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3699be0e707d05cfabd88e31240707c4"><td class="memItemLeft" align="right" valign="top"><a id="a3699be0e707d05cfabd88e31240707c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addStatement</b> (const librdf_statement &amp;statement) const</td></tr>
-<tr class="separator:a3699be0e707d05cfabd88e31240707c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64915c9b196d061d1547f9a659177ea9"><td class="memItemLeft" align="right" valign="top"><a id="a64915c9b196d061d1547f9a659177ea9"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>supportsContexts</b> () const</td></tr>
 <tr class="separator:a64915c9b196d061d1547f9a659177ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1738d844fc31d5ae2ef581d8bcf4cd4"><td class="memItemLeft" align="right" valign="top"><a id="ad1738d844fc31d5ae2ef581d8bcf4cd4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>containsStatement</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement) const</td></tr>
+<tr class="separator:ad1738d844fc31d5ae2ef581d8bcf4cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b565a7d705e24d6163c068a40040087"><td class="memItemLeft" align="right" valign="top"><a id="a2b565a7d705e24d6163c068a40040087"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addStatement</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) const</td></tr>
+<tr class="separator:a2b565a7d705e24d6163c068a40040087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/redland/RedlandWrapper/src/<a class="el" href="LibrdfModel_8h_source.html">LibrdfModel.h</a></li>
+<li>src/redland/RedlandWrapper/src/include/redland/<a class="el" href="LibrdfModel_8h_source.html">LibrdfModel.h</a></li>
 <li>src/redland/RedlandWrapper/src/LibrdfModel.cpp</li>
 </ul>
 </div><!-- contents -->

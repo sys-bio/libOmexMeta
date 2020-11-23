@@ -1,0 +1,41 @@
+\hypertarget{structrasqal__triples__source__s}{}\doxysection{rasqal\+\_\+triples\+\_\+source\+\_\+s Struct Reference}
+\label{structrasqal__triples__source__s}\index{rasqal\_triples\_source\_s@{rasqal\_triples\_source\_s}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_a3f5b016431eac2e7994eb30d613b1107}\label{structrasqal__triples__source__s_a3f5b016431eac2e7994eb30d613b1107}} 
+int {\bfseries version}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_a9f4d2cb1483cae2e841fd0e1cc1fd90f}\label{structrasqal__triples__source__s_a9f4d2cb1483cae2e841fd0e1cc1fd90f}} 
+rasqal\+\_\+query $\ast$ {\bfseries query}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_a1bfbcec2e9ce669d0327c61017c812b8}\label{structrasqal__triples__source__s_a1bfbcec2e9ce669d0327c61017c812b8}} 
+void $\ast$ {\bfseries user\+\_\+data}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_a2d2c300252d5b10b1e8cda1ebeedaa70}\label{structrasqal__triples__source__s_a2d2c300252d5b10b1e8cda1ebeedaa70}} 
+int($\ast$ {\bfseries init\+\_\+triples\+\_\+match} )(\mbox{\hyperlink{structrasqal__triples__match__s}{rasqal\+\_\+triples\+\_\+match}} $\ast$rtm, struct \mbox{\hyperlink{structrasqal__triples__source__s}{rasqal\+\_\+triples\+\_\+source\+\_\+s}} $\ast$rts, void $\ast$user\+\_\+data, \mbox{\hyperlink{structrasqal__triple__meta}{rasqal\+\_\+triple\+\_\+meta}} $\ast$m, \mbox{\hyperlink{structrasqal__triple}{rasqal\+\_\+triple}} $\ast$t)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_afe07bdb01e18852c1444b627787ada62}\label{structrasqal__triples__source__s_afe07bdb01e18852c1444b627787ada62}} 
+int($\ast$ {\bfseries triple\+\_\+present} )(struct \mbox{\hyperlink{structrasqal__triples__source__s}{rasqal\+\_\+triples\+\_\+source\+\_\+s}} $\ast$rts, void $\ast$user\+\_\+data, \mbox{\hyperlink{structrasqal__triple}{rasqal\+\_\+triple}} $\ast$t)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_ad8b264bef1277338c3427caf8bca47d9}\label{structrasqal__triples__source__s_ad8b264bef1277338c3427caf8bca47d9}} 
+void($\ast$ {\bfseries free\+\_\+triples\+\_\+source} )(void $\ast$user\+\_\+data)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__source__s_a2c9faaac3dab8d529169f75dc90cb501}\label{structrasqal__triples__source__s_a2c9faaac3dab8d529169f75dc90cb501}} 
+int($\ast$ {\bfseries support\+\_\+feature} )(void $\ast$user\+\_\+data, rasqal\+\_\+triples\+\_\+source\+\_\+feature feature)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+rasqal\+\_\+triples\+\_\+source\+: \begin{DoxyVersion}{Version}
+\+: A\+PI version -\/ only V1 is defined for now @query\+: Source for this query. @user\+\_\+data\+: Context user data passed into the factory methods. @init\+\_\+triples\+\_\+match\+: Factory method to initalise a new \#rasqal\+\_\+triples\+\_\+match. @triple\+\_\+present\+: Factory method to return presence or absence of a complete triple. @free\+\_\+triples\+\_\+source\+: Factory method to deallocate resources. @support\+\_\+feature\+: Factory method to test support for a feature, returning non-\/0 if supported
+\end{DoxyVersion}
+Triples source as initialised by a \mbox{\hyperlink{structrasqal__triples__source__factory}{rasqal\+\_\+triples\+\_\+source\+\_\+factory}}. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

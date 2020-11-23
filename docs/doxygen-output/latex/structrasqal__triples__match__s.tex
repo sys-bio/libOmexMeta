@@ -1,0 +1,43 @@
+\hypertarget{structrasqal__triples__match__s}{}\doxysection{rasqal\+\_\+triples\+\_\+match\+\_\+s Struct Reference}
+\label{structrasqal__triples__match__s}\index{rasqal\_triples\_match\_s@{rasqal\_triples\_match\_s}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_a2a9bc29e4db95e24b7d8fc795a3a3632}\label{structrasqal__triples__match__s_a2a9bc29e4db95e24b7d8fc795a3a3632}} 
+rasqal\+\_\+world $\ast$ {\bfseries world}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_aca66faa7eb227ef56e8672e9b8ef78e8}\label{structrasqal__triples__match__s_aca66faa7eb227ef56e8672e9b8ef78e8}} 
+void $\ast$ {\bfseries user\+\_\+data}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_aa3d1dbae893d114a354c71a4aa31ed00}\label{structrasqal__triples__match__s_aa3d1dbae893d114a354c71a4aa31ed00}} 
+rasqal\+\_\+triple\+\_\+parts($\ast$ {\bfseries bind\+\_\+match} )(struct \mbox{\hyperlink{structrasqal__triples__match__s}{rasqal\+\_\+triples\+\_\+match\+\_\+s}} $\ast$rtm, void $\ast$user\+\_\+data, \mbox{\hyperlink{structrasqal__variable}{rasqal\+\_\+variable}} $\ast$bindings\mbox{[}4\mbox{]}, rasqal\+\_\+triple\+\_\+parts parts)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_a3884b75b11baaa00cc6a447e70736601}\label{structrasqal__triples__match__s_a3884b75b11baaa00cc6a447e70736601}} 
+void($\ast$ {\bfseries next\+\_\+match} )(struct \mbox{\hyperlink{structrasqal__triples__match__s}{rasqal\+\_\+triples\+\_\+match\+\_\+s}} $\ast$rtm, void $\ast$user\+\_\+data)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_a69ba3b28587f9e79df6e30db795fb16f}\label{structrasqal__triples__match__s_a69ba3b28587f9e79df6e30db795fb16f}} 
+int($\ast$ {\bfseries is\+\_\+end} )(struct \mbox{\hyperlink{structrasqal__triples__match__s}{rasqal\+\_\+triples\+\_\+match\+\_\+s}} $\ast$rtm, void $\ast$user\+\_\+data)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_a27d9c1ccfb0005bab6ea1f6f3aa7a88e}\label{structrasqal__triples__match__s_a27d9c1ccfb0005bab6ea1f6f3aa7a88e}} 
+void($\ast$ {\bfseries finish} )(struct \mbox{\hyperlink{structrasqal__triples__match__s}{rasqal\+\_\+triples\+\_\+match\+\_\+s}} $\ast$rtm, void $\ast$user\+\_\+data)
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_a3bdc1be3bb2d5dcdbb5a46bf91ca31ac}\label{structrasqal__triples__match__s_a3bdc1be3bb2d5dcdbb5a46bf91ca31ac}} 
+int {\bfseries is\+\_\+exact}
+\item 
+\mbox{\Hypertarget{structrasqal__triples__match__s_a6ecd3c1a9491291dd34db0c737f55cf0}\label{structrasqal__triples__match__s_a6ecd3c1a9491291dd34db0c737f55cf0}} 
+int {\bfseries finished}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+rasqal\+\_\+triples\+\_\+match\+: @world\+: rasqal\+\_\+world object @user\+\_\+data\+: User data pointer for factory methods. @bind\+\_\+match\+: The \mbox{[}4\mbox{]}array (s,p,o,origin) bindings against the current triple match only touching triple parts given. Returns parts that were bound or 0 on failure. @next\+\_\+match\+: Move to next match. @is\+\_\+end\+: Check for end of triple match -\/ return non-\/0 if is end. @finish\+: Finish triples match and destroy any allocated memory. @is\+\_\+exact\+: non-\/0 if triple to match is all literal constants @finished\+: $>$0 if the match has finished
+
+Triples match structure as initialised by \#rasqal\+\_\+triples\+\_\+source method init\+\_\+triples\+\_\+match. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

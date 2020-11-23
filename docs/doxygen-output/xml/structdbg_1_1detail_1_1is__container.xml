@@ -26,14 +26,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="315" column="25" bodyfile="src/omexmeta/dbg.h" bodystart="315" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="315" column="25" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="315" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="314" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="314" bodyend="322"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="314" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="314" bodyend="322"/>
     <listofallmembers>
       <member refid="structdbg_1_1detail_1_1is__container_1aa9a4594488352384b65b36198ac414f8" prot="public" virt="non-virtual"><scope>dbg::detail::is_container</scope><name>value</name></member>
     </listofallmembers>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/omexmeta/Triples.h Source File</title>
+<title>libomexmeta: src/omexmeta/include/omexmeta/Triples.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_805176f2c4714c569bc16cfd6a26a0cb.html">omexmeta</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_805176f2c4714c569bc16cfd6a26a0cb.html">omexmeta</a></li><li class="navelem"><a class="el" href="dir_0ff2839f0436a7bd3ba130866134b3e9.html">include</a></li><li class="navelem"><a class="el" href="dir_a8576c3dd404f1f37c9018ff7dd15568.html">omexmeta</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -137,7 +137,7 @@ $(function() {
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordtype">void</span> emplace_back(<a class="code" href="classomexmeta_1_1Subject.html">Subject</a> subject, <a class="code" href="classomexmeta_1_1SemSim.html">SemSim</a> predicate, <span class="keyword">const</span> <a class="code" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordtype">void</span> emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordtype">void</span> emplace_back(<a class="code" href="structraptor__term.html">librdf_node</a> *subject, <a class="code" href="structraptor__term.html">librdf_node</a> *predicate, <a class="code" href="structraptor__term.html">librdf_node</a> *resource);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        std::vector&lt;std::string&gt; getSubjectsStr();</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
@@ -175,13 +175,14 @@ $(function() {
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_TRIPLES_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassomexmeta_1_1Resource_html"><div class="ttname"><a href="classomexmeta_1_1Resource.html">omexmeta::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:20</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Resource_html"><div class="ttname"><a href="classomexmeta_1_1Resource.html">omexmeta::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:21</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Triple_html"><div class="ttname"><a href="classomexmeta_1_1Triple.html">omexmeta::Triple</a></div><div class="ttdef"><b>Definition:</b> Triple.h:35</div></div>
 <div class="ttc" id="aclassomexmeta_1_1SemSim_html"><div class="ttname"><a href="classomexmeta_1_1SemSim.html">omexmeta::SemSim</a></div><div class="ttdef"><b>Definition:</b> Predicate.h:307</div></div>
 <div class="ttc" id="aclassomexmeta_1_1DCTerm_html"><div class="ttname"><a href="classomexmeta_1_1DCTerm.html">omexmeta::DCTerm</a></div><div class="ttdef"><b>Definition:</b> Predicate.h:270</div></div>
 <div class="ttc" id="aclassomexmeta_1_1BiomodelsBiologyQualifier_html"><div class="ttname"><a href="classomexmeta_1_1BiomodelsBiologyQualifier.html">omexmeta::BiomodelsBiologyQualifier</a></div><div class="ttdef"><b>Definition:</b> Predicate.h:193</div></div>
-<div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> AnnotationType.h:12</div></div>
+<div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Triples_html"><div class="ttname"><a href="classomexmeta_1_1Triples.html">omexmeta::Triples</a></div><div class="ttdef"><b>Definition:</b> Triples.h:37</div></div>
+<div class="ttc" id="astructraptor__term_html"><div class="ttname"><a href="structraptor__term.html">raptor_term</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:621</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Predicate_html"><div class="ttname"><a href="classomexmeta_1_1Predicate.html">omexmeta::Predicate</a></div><div class="ttdef"><b>Definition:</b> Predicate.h:29</div></div>
 <div class="ttc" id="aclassomexmeta_1_1BiomodelsModelQualifier_html"><div class="ttname"><a href="classomexmeta_1_1BiomodelsModelQualifier.html">omexmeta::BiomodelsModelQualifier</a></div><div class="ttdef"><b>Definition:</b> Predicate.h:236</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Subject_html"><div class="ttname"><a href="classomexmeta_1_1Subject.html">omexmeta::Subject</a></div><div class="ttdef"><b>Definition:</b> Subject.h:21</div></div>

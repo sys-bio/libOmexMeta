@@ -278,7 +278,7 @@ public:
 
     PhysicalEntityMemory() {
         physicalEntity
-                .about("ookm")
+                .about("species0000")
                 .identity("uniprot/PD12345")
                 .isPartOf("fma:1234")
                 .hasProperty("opb:opb_1234");

@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="305" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="305" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="305" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="305" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="dbg_8h_1ab462e0c9e2d1686d323d638613692839" prot="public" static="no">
         <templateparamlist>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="308" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="308" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="308" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="308" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="dbg_8h_1a19adefcfcaddecb9f32e810ebcae4856" prot="public" static="no">
         <templateparamlist>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="311" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="311" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="311" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="311" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="dbg_8h_1a2c6a2bc0c8581b3b0d285d1d2971e44d" prot="public" static="no">
         <templateparamlist>
@@ -75,13 +75,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="325" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="326" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="325" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="326" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="285" column="1"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="285" column="1"/>
   </compounddef>
 </doxygen>

@@ -19,14 +19,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/logger.h" line="20" column="8" bodyfile="src/omexmeta/logger.h" bodystart="20" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/logger.h" line="20" column="8" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/logger.h" line="19" column="1" bodyfile="src/omexmeta/logger.h" bodystart="19" bodyend="21"/>
+    <location file="src/omexmeta/include/omexmeta/logger.h" line="19" column="1" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="19" bodyend="21"/>
     <listofallmembers>
       <member refid="structLogData_1added55423a3b24a6ef757e8f749795ea" prot="public" virt="non-virtual"><scope>LogData</scope><name>list</name></member>
     </listofallmembers>

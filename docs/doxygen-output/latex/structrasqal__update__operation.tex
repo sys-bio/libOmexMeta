@@ -1,0 +1,47 @@
+\hypertarget{structrasqal__update__operation}{}\doxysection{rasqal\+\_\+update\+\_\+operation Struct Reference}
+\label{structrasqal__update__operation}\index{rasqal\_update\_operation@{rasqal\_update\_operation}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_a72271959f6d41c6706fde91be93054f7}\label{structrasqal__update__operation_a72271959f6d41c6706fde91be93054f7}} 
+rasqal\+\_\+update\+\_\+type {\bfseries type}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_af87c12ad390bd66d3d1051c9135098ff}\label{structrasqal__update__operation_af87c12ad390bd66d3d1051c9135098ff}} 
+raptor\+\_\+uri $\ast$ {\bfseries graph\+\_\+uri}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_ab82442412c780a171fd41b292945005a}\label{structrasqal__update__operation_ab82442412c780a171fd41b292945005a}} 
+raptor\+\_\+uri $\ast$ {\bfseries document\+\_\+uri}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_a9173ee8f16d07db07928992bdddab692}\label{structrasqal__update__operation_a9173ee8f16d07db07928992bdddab692}} 
+raptor\+\_\+sequence $\ast$ {\bfseries insert\+\_\+templates}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_a63eaede64f2c0f3a2d3014207b3a0cad}\label{structrasqal__update__operation_a63eaede64f2c0f3a2d3014207b3a0cad}} 
+raptor\+\_\+sequence $\ast$ {\bfseries delete\+\_\+templates}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_ad318d6b521bccbe7f3afd99fb6b31edb}\label{structrasqal__update__operation_ad318d6b521bccbe7f3afd99fb6b31edb}} 
+rasqal\+\_\+graph\+\_\+pattern $\ast$ {\bfseries where}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_a7bb4c90e10377a2de31429952e4a104c}\label{structrasqal__update__operation_a7bb4c90e10377a2de31429952e4a104c}} 
+int {\bfseries flags}
+\item 
+\mbox{\Hypertarget{structrasqal__update__operation_ac4ad56cc24be010a98ef42d5012d6387}\label{structrasqal__update__operation_ac4ad56cc24be010a98ef42d5012d6387}} 
+rasqal\+\_\+update\+\_\+graph\+\_\+applies {\bfseries applies}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structrasqal__update__operation}{rasqal\+\_\+update\+\_\+operation}}\+: @type\+: type of update @graph\+\_\+uri\+: optional graph U\+RI (clear, drop, load, with ... delete, insert); source graph (add, move, copy) @document\+\_\+uri\+: optional document U\+RI (load); destination graph (add, move, copy) @insert\+\_\+templates\+: optional sequence of \mbox{\hyperlink{structrasqal__triple}{rasqal\+\_\+triple}} to insert. Data triples if @flags is \#\+R\+A\+S\+Q\+A\+L\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+F\+L\+A\+G\+S\+\_\+\+D\+A\+TA set, templates otherwise. @delete\+\_\+templates\+: optional sequence of \mbox{\hyperlink{structrasqal__triple}{rasqal\+\_\+triple}} templates to delete @where\+: optional where template (insert/delete) @flags\+: update flags -\/ bit-\/or of flags defined in \#rasqal\+\_\+update\+\_\+flags @applies\+: the graph(s) that the update operation applies to, or @graph\+\_\+uri if \#\+R\+A\+S\+Q\+A\+L\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+R\+A\+P\+H\+\_\+\+O\+NE
+
+Update operation -\/ changing the dataset
+
+For L\+O\+AD and C\+L\+E\+AR if @applies is set (not 0) then the operation applies to just those graph(), otherwise it applies to the @graph\+\_\+uri.
+
+For A\+DD, M\+O\+VE and C\+O\+PY the source graph is stored in @graph\+\_\+uri field and the destination graph in the @document\+\_\+uri field. The field names have no meaning in this case since both values are always present, always graphs and a N\+U\+LL value signifies the default graph. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

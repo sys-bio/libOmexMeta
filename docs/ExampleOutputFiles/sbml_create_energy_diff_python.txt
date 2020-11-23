@@ -1,0 +1,29 @@
+it: SimpleRegulation
+it: compartment0000
+it: SpeciesA
+it: SpeciesB
+it: SpeciesC
+it: SpeciesD
+it: R1
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:SinkParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:SourceParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
+
+local:k1
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R1> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#R1>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structraptor__statement" kind="struct" language="C++" prot="public">
+    <compoundname>raptor_statement</compoundname>
+    <includes refid="raptor2_8h" local="no">raptor2.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structraptor__statement_1af7939465312b94e2154eca8f0031f2d0" prot="public" static="no" mutable="no">
+        <type>raptor_world *</type>
+        <definition>raptor_world* raptor_statement::world</definition>
+        <argsstring></argsstring>
+        <name>world</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="648" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="648" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__statement_1ac3dc7e07de3414f2b9986dfcefbcb09d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int raptor_statement::usage</definition>
+        <argsstring></argsstring>
+        <name>usage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="649" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="649" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__statement_1a043d4aa00ac090b675bb410f0a81990e" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__term" kindref="compound">raptor_term</ref> *</type>
+        <definition>raptor_term* raptor_statement::subject</definition>
+        <argsstring></argsstring>
+        <name>subject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="650" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="650" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__statement_1a930c3d8c46a4e15b0c46a1af90298e5c" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__term" kindref="compound">raptor_term</ref> *</type>
+        <definition>raptor_term* raptor_statement::predicate</definition>
+        <argsstring></argsstring>
+        <name>predicate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="651" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="651" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__statement_1ada752063be46c7a7e1ef4640d27b9a8f" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__term" kindref="compound">raptor_term</ref> *</type>
+        <definition>raptor_term* raptor_statement::object</definition>
+        <argsstring></argsstring>
+        <name>object</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="652" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="652" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__statement_1a9d6b2fe2decc77579bbf746c98f3b2bd" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__term" kindref="compound">raptor_term</ref> *</type>
+        <definition>raptor_term* raptor_statement::graph</definition>
+        <argsstring></argsstring>
+        <name>graph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="653" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="653" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structraptor__statement" kindref="compound">raptor_statement</ref>: @world: world pointer @usage: usage count @subject: statement subject @predicate: statement predicate @object: statement object @graph: statement graph name (or NULL if not present)</para>
+<para>An RDF triple with optional graph name (quad)</para>
+<para>See <ref refid="structraptor__term" kindref="compound">raptor_term</ref> for a description of how the fields may be used. As returned by a parser statement_handler. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>raptor_term_literal_value</label>
+        <link refid="structraptor__term__literal__value"/>
+      </node>
+      <node id="1">
+        <label>raptor_statement</label>
+        <link refid="structraptor__statement"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>graph</edgelabel>
+          <edgelabel>object</edgelabel>
+          <edgelabel>predicate</edgelabel>
+          <edgelabel>subject</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>raptor_term_blank_value</label>
+        <link refid="structraptor__term__blank__value"/>
+      </node>
+      <node id="2">
+        <label>raptor_term</label>
+        <link refid="structraptor__term"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>raptor_term_value</label>
+        <link refid="unionraptor__term__value"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>literal</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>blank</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="647" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="647" bodyend="654"/>
+    <listofallmembers>
+      <member refid="structraptor__statement_1a9d6b2fe2decc77579bbf746c98f3b2bd" prot="public" virt="non-virtual"><scope>raptor_statement</scope><name>graph</name></member>
+      <member refid="structraptor__statement_1ada752063be46c7a7e1ef4640d27b9a8f" prot="public" virt="non-virtual"><scope>raptor_statement</scope><name>object</name></member>
+      <member refid="structraptor__statement_1a930c3d8c46a4e15b0c46a1af90298e5c" prot="public" virt="non-virtual"><scope>raptor_statement</scope><name>predicate</name></member>
+      <member refid="structraptor__statement_1a043d4aa00ac090b675bb410f0a81990e" prot="public" virt="non-virtual"><scope>raptor_statement</scope><name>subject</name></member>
+      <member refid="structraptor__statement_1ac3dc7e07de3414f2b9986dfcefbcb09d" prot="public" virt="non-virtual"><scope>raptor_statement</scope><name>usage</name></member>
+      <member refid="structraptor__statement_1af7939465312b94e2154eca8f0031f2d0" prot="public" virt="non-virtual"><scope>raptor_statement</scope><name>world</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

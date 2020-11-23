@@ -1,0 +1,39 @@
+\hypertarget{structrasqal__xsd__date}{}\doxysection{rasqal\+\_\+xsd\+\_\+date Struct Reference}
+\label{structrasqal__xsd__date}\index{rasqal\_xsd\_date@{rasqal\_xsd\_date}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__date_a1b1e174e61e99f412af9f522d208004b}\label{structrasqal__xsd__date_a1b1e174e61e99f412af9f522d208004b}} 
+signed int {\bfseries year}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__date_ae254bef883964dd854847384cd4528db}\label{structrasqal__xsd__date_ae254bef883964dd854847384cd4528db}} 
+unsigned char {\bfseries month}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__date_a5ff6ae24a001a06946bd44840d41b273}\label{structrasqal__xsd__date_a5ff6ae24a001a06946bd44840d41b273}} 
+unsigned char {\bfseries day}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__date_a8f2c2fd04c55ac3775c18d08c958f836}\label{structrasqal__xsd__date_a8f2c2fd04c55ac3775c18d08c958f836}} 
+signed short {\bfseries timezone\+\_\+minutes}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__date_a93913607d9b77fbe3ecd9de60a8d79eb}\label{structrasqal__xsd__date_a93913607d9b77fbe3ecd9de60a8d79eb}} 
+time\+\_\+t {\bfseries time\+\_\+on\+\_\+timeline}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__date_ab63eb39fcebcdd51eeed15872d71c4ce}\label{structrasqal__xsd__date_ab63eb39fcebcdd51eeed15872d71c4ce}} 
+char {\bfseries have\+\_\+tz}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structrasqal__xsd__date}{rasqal\+\_\+xsd\+\_\+date}}\+: @year\+: year @month\+: month 1-\/12 @day\+: 1-\/31 @timezone\+\_\+minutes\+: minutes +/-\/ against U\+TC or R\+A\+S\+Q\+A\+L\+\_\+\+X\+S\+D\+\_\+\+D\+A\+T\+E\+T\+I\+M\+E\+\_\+\+N\+O\+\_\+\+TZ if there is no timezone in the date\+Time. @time\+\_\+on\+\_\+timeline\+: time on timeline of first instant of date in timezone @have\+\_\+tz\+: timezone flag\+: \textquotesingle{}Z\textquotesingle{} if Zulu, \textquotesingle{}Y\textquotesingle{} if has other timezone offset in @timezone\+\_\+minutes, \textquotesingle{}N\textquotesingle{} if there is no timezone
+
+X\+ML schema date datatype (xsd\+:date)
+
+Examples of timezone fields\+: \char`\"{}2010-\/01-\/02\char`\"{} \+: timezone\+\_\+minutes R\+A\+S\+Q\+A\+L\+\_\+\+X\+S\+D\+\_\+\+D\+A\+T\+E\+T\+I\+M\+E\+\_\+\+N\+O\+\_\+\+TZ, have\+\_\+tz \textquotesingle{}N\textquotesingle{} \char`\"{}2010-\/01-\/02\+Z\char`\"{} \+: timezone\+\_\+minutes 0, have\+\_\+tz \textquotesingle{}Z\textquotesingle{} \char`\"{}2010-\/01-\/02+00\+:00\char`\"{} \+: timezone\+\_\+minutes 0, have\+\_\+tz \textquotesingle{}Y\textquotesingle{} \char`\"{}2010-\/01-\/02-\/01\+:00\char`\"{} \+: timezone\+\_\+minutes -\/60, have\+\_\+tz \textquotesingle{}Y\textquotesingle{} 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

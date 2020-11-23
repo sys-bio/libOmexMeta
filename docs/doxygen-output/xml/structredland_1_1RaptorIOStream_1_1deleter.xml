@@ -18,14 +18,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/RaptorIOStream.h" line="19" column="18" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="19" column="18" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/RaptorIOStream.h" line="18" column="9" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.h" bodystart="18" bodyend="20"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="18" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" bodystart="18" bodyend="20"/>
     <listofallmembers>
       <member refid="structredland_1_1RaptorIOStream_1_1deleter_1aee1bffa3eb2e372cf056e8fdef420616" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream::deleter</scope><name>operator()</name></member>
     </listofallmembers>

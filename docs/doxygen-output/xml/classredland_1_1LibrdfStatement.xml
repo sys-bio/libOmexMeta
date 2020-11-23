@@ -5,7 +5,7 @@
     <derivedcompoundref refid="classomexmeta_1_1Triple" prot="public" virt="non-virtual">omexmeta::Triple</derivedcompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classredland_1_1LibrdfStatement_1acd1e53cd114c6744cf808174a9333ce5" prot="protected" static="no" mutable="no">
-        <type>librdf_statement *</type>
+        <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
         <definition>librdf_statement* redland::LibrdfStatement::statement_</definition>
         <argsstring></argsstring>
         <name>statement_</name>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="22" column="26" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.h" bodystart="22" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="22" column="26" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="29" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="107" bodyend="115"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="29" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="112" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a4cbbbf99d094cea4569324a8c67789fb" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -39,7 +39,7 @@
         <argsstring>(librdf_statement *statement)</argsstring>
         <name>LibrdfStatement</name>
         <param>
-          <type>librdf_statement *</type>
+          <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
           <declname>statement</declname>
         </param>
         <briefdescription>
@@ -48,23 +48,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="37" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="11" bodyend="14"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="33" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="11" bodyend="14"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfStatement_1ac1b38e67ff0b90ac54b27c4f5f5d9e12" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfStatement_1ac1b38e67ff0b90ac54b27c4f5f5d9e12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>redland::LibrdfStatement::LibrdfStatement</definition>
         <argsstring>(librdf_node *subject, librdf_node *predicate, librdf_node *resource)</argsstring>
         <name>LibrdfStatement</name>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>subject</declname>
         </param>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>predicate</declname>
         </param>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>resource</declname>
         </param>
         <briefdescription>
@@ -73,10 +75,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="39" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="16" bodyend="21"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="37" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="16" bodyend="20"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1ada81e9bfb312e25daf20d6dda10eeb2e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool redland::LibrdfStatement::operator==</definition>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="32" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="228" bodyend="230"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="39" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="276" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1ad3d6c126b90c0d93413a08353c496f8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="34" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="232" bodyend="234"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="41" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="280" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1afc571bdf0e13d00ff7aa684aecc2987a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="43" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="45" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1ae7f7e27b7a502070195103268407243a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="45" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="23" bodyend="28"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="47" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="22" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a344ec4a937a1d67589ebc7247b3f08c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="51" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="53" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1aea171565ffb3ecc8d9c1db5439314306" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="53" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="156" bodyend="165"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="55" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="160" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a7aeb5ac71f5583b5a56b4aad7d904381" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref> &amp;</type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="55" column="25"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="57" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a6cebbcea1400ba2983b25096f3db3b3c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref> &amp;</type>
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="57" column="25" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="167" bodyend="179"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="59" column="25" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="171" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a6bf6a6b02efc9d7eef2ca368cf0a36b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="59" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="61" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1aa51bc647bc938a07bd6c16b4d6ce07b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -241,10 +241,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="61" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="181" bodyend="187"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="63" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="185" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>librdf_statement *</type>
+        <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
         <definition>librdf_statement * redland::LibrdfStatement::get</definition>
         <argsstring>() const</argsstring>
         <name>get</name>
@@ -254,10 +254,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="63" column="27" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="49" bodyend="51"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="65" column="27" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>librdf_node *</type>
+        <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
         <definition>librdf_node * redland::LibrdfStatement::getSubject</definition>
         <argsstring>() const</argsstring>
         <name>getSubject</name>
@@ -267,10 +267,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="65" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="53" bodyend="55"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="67" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>librdf_node *</type>
+        <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
         <definition>librdf_node * redland::LibrdfStatement::getPredicate</definition>
         <argsstring>() const</argsstring>
         <name>getPredicate</name>
@@ -280,10 +280,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="67" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="57" bodyend="59"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="69" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>librdf_node *</type>
+        <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
         <definition>librdf_node * redland::LibrdfStatement::getResource</definition>
         <argsstring>() const</argsstring>
         <name>getResource</name>
@@ -293,20 +293,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="69" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="73" bodyend="75"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="71" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string redland::LibrdfStatement::getAbout</definition>
+        <definition>std::string redland::LibrdfStatement::getSubjectStr</definition>
         <argsstring>() const</argsstring>
-        <name>getAbout</name>
+        <name>getSubjectStr</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="71" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="84" bodyend="89"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="73" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="82" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -319,20 +319,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="73" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="91" bodyend="96"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="75" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="89" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string redland::LibrdfStatement::getIsVersionOfValue</definition>
+        <definition>std::string redland::LibrdfStatement::getResourceStr</definition>
         <argsstring>() const</argsstring>
-        <name>getIsVersionOfValue</name>
+        <name>getResourceStr</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="75" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="77" bodyend="82"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="77" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="75" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a700219b2fed175a96fecfbd905d20ab1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -345,15 +345,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="77" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="31" bodyend="47"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="79" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="29" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a5fa27f77859a4673e991b9e86f84d889" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void redland::LibrdfStatement::about</definition>
+        <definition>void redland::LibrdfStatement::setSubject</definition>
         <argsstring>(librdf_node *node)</argsstring>
-        <name>about</name>
+        <name>setSubject</name>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>node</declname>
         </param>
         <briefdescription>
@@ -362,15 +362,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="79" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="61" bodyend="63"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="81" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="59" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a8b8fd2999e80bd2912af2430503a557a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void redland::LibrdfStatement::isVersionOf</definition>
+        <definition>void redland::LibrdfStatement::setResource</definition>
         <argsstring>(librdf_node *node)</argsstring>
-        <name>isVersionOf</name>
+        <name>setResource</name>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>node</declname>
         </param>
         <briefdescription>
@@ -379,7 +379,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="81" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="65" bodyend="67"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="83" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a3306876fb080f3d19fca806142f93f87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -387,7 +387,7 @@
         <argsstring>(librdf_node *node)</argsstring>
         <name>setPredicate</name>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>node</declname>
         </param>
         <briefdescription>
@@ -396,7 +396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="83" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="69" bodyend="71"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="85" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a84a6fae7f1879c2f033001a9927627b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -409,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="85" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="224" bodyend="226"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="87" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="227" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1af8417e75a1ddb953c64c36b6028d3448" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unordered_map&lt; std::string, int &gt;</type>
@@ -422,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="87" column="28" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="236" bodyend="248"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="89" column="28" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="284" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a1881b122993ff4a24f560b7b31ea3176" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -435,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="89" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="250" bodyend="255"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="91" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="298" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a104a61ca5a7568728273c071269e1882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -448,17 +448,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="91" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="189" bodyend="222"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="93" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="192" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfStatement_1af52b7e72cb067548d97f48b4a77a44ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string redland::LibrdfStatement::getPredicateNamespaceStr</definition>
+        <argsstring>() const</argsstring>
+        <name>getPredicateNamespaceStr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="95" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="96" bodyend="101"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a2013f7fa1ce77c0659d504c2f54d6e45" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::LibrdfStatement::equals</definition>
+        <argsstring>(librdf_statement *first, librdf_statement *second)</argsstring>
+        <name>equals</name>
+        <param>
+          <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="43" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="231" bodyend="274"/>
+      </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a9fb66c801d731ffce13e4d1381c49c29" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref></type>
         <definition>LibrdfStatement redland::LibrdfStatement::fromRawStatementPtr</definition>
         <argsstring>(librdf_statement *statement)</argsstring>
         <name>fromRawStatementPtr</name>
         <param>
-          <type>librdf_statement *</type>
+          <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
           <declname>statement</declname>
         </param>
         <briefdescription>
@@ -467,7 +501,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="47" column="32" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="98" bodyend="100"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="49" column="32" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="103" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a4eceaebc10deea27f4c75f7c8b4cccaf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref></type>
@@ -475,15 +509,15 @@
         <argsstring>(librdf_node *subject, librdf_node *predicate, librdf_node *resource)</argsstring>
         <name>fromRawNodePtrs</name>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>subject</declname>
         </param>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>predicate</declname>
         </param>
         <param>
-          <type>librdf_node *</type>
+          <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
           <declname>resource</declname>
         </param>
         <briefdescription>
@@ -492,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="49" column="32" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="103" bodyend="105"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="51" column="32" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.cpp" bodystart="108" bodyend="110"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -511,24 +545,70 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/redland/RedlandWrapper/src/LibrdfStatement.h" line="17" column="5" bodyfile="src/redland/RedlandWrapper/src/LibrdfStatement.h" bodystart="17" bodyend="92"/>
+    <collaborationgraph>
+      <node id="1">
+        <label>redland::LibrdfStatement</label>
+        <link refid="classredland_1_1LibrdfStatement"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statement_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>raptor_term_literal_value</label>
+        <link refid="structraptor__term__literal__value"/>
+      </node>
+      <node id="2">
+        <label>raptor_statement</label>
+        <link refid="structraptor__statement"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>graph</edgelabel>
+          <edgelabel>object</edgelabel>
+          <edgelabel>predicate</edgelabel>
+          <edgelabel>subject</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>raptor_term_blank_value</label>
+        <link refid="structraptor__term__blank__value"/>
+      </node>
+      <node id="3">
+        <label>raptor_term</label>
+        <link refid="structraptor__term"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>raptor_term_value</label>
+        <link refid="unionraptor__term__value"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>literal</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>blank</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="17" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" bodystart="17" bodyend="96"/>
     <listofallmembers>
       <member refid="classredland_1_1LibrdfStatement_1a700219b2fed175a96fecfbd905d20ab1" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>checkForNull</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a2013f7fa1ce77c0659d504c2f54d6e45" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>equals</name></member>
       <member refid="classredland_1_1LibrdfStatement_1aa51bc647bc938a07bd6c16b4d6ce07b4" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>freeStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a104a61ca5a7568728273c071269e1882" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>freeStatementAndUris</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a4eceaebc10deea27f4c75f7c8b4cccaf" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>fromRawNodePtrs</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a9fb66c801d731ffce13e4d1381c49c29" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>fromRawStatementPtr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>get</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicate</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1af52b7e72cb067548d97f48b4a77a44ff" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicateNamespaceStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicateStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResource</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getIsVersionOfValue</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResourceStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubject</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getAbout</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubjectStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1af8417e75a1ddb953c64c36b6028d3448" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getUsages</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a84a6fae7f1879c2f033001a9927627b0" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>isComplete</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a4cbbbf99d094cea4569324a8c67789fb" prot="protected" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1ac1b38e67ff0b90ac54b27c4f5f5d9e12" prot="protected" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1ac1b38e67ff0b90ac54b27c4f5f5d9e12" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1afc571bdf0e13d00ff7aa684aecc2987a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1ae7f7e27b7a502070195103268407243a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a344ec4a937a1d67589ebc7247b3f08c6" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>
@@ -540,8 +620,8 @@
       <member refid="classredland_1_1LibrdfStatement_1a1881b122993ff4a24f560b7b31ea3176" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>printUsages</name></member>
       <member refid="classredland_1_1LibrdfStatement_1afd63d6425b2130dbe4e76fdee4d7218b" prot="protected" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>refreshStatement</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a3306876fb080f3d19fca806142f93f87" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>setPredicate</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1a8b8fd2999e80bd2912af2430503a557a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>isVersionOf</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1a5fa27f77859a4673e991b9e86f84d889" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>about</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a8b8fd2999e80bd2912af2430503a557a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>setResource</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a5fa27f77859a4673e991b9e86f84d889" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>setSubject</name></member>
       <member refid="classredland_1_1LibrdfStatement_1acd1e53cd114c6744cf808174a9333ce5" prot="protected" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>statement_</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6bf6a6b02efc9d7eef2ca368cf0a36b1" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>~LibrdfStatement</name></member>
     </listofallmembers>

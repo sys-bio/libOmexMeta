@@ -2,6 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="namespaceredland" kind="namespace" language="C++">
     <compoundname>redland</compoundname>
+    <innerclass refid="classredland_1_1LibrdfModel" prot="public">redland::LibrdfModel</innerclass>
+    <innerclass refid="classredland_1_1LibrdfNode" prot="public">redland::LibrdfNode</innerclass>
+    <innerclass refid="classredland_1_1LibrdfParser" prot="public">redland::LibrdfParser</innerclass>
+    <innerclass refid="classredland_1_1LibrdfQuery" prot="public">redland::LibrdfQuery</innerclass>
+    <innerclass refid="classredland_1_1LibrdfQueryResults" prot="public">redland::LibrdfQueryResults</innerclass>
+    <innerclass refid="classredland_1_1LibrdfSerializer" prot="public">redland::LibrdfSerializer</innerclass>
+    <innerclass refid="classredland_1_1LibrdfStatement" prot="public">redland::LibrdfStatement</innerclass>
+    <innerclass refid="classredland_1_1LibrdfStorage" prot="public">redland::LibrdfStorage</innerclass>
+    <innerclass refid="classredland_1_1LibrdfStream" prot="public">redland::LibrdfStream</innerclass>
+    <innerclass refid="classredland_1_1LibrdfUri" prot="public">redland::LibrdfUri</innerclass>
+    <innerclass refid="classredland_1_1RaptorIOStream" prot="public">redland::RaptorIOStream</innerclass>
+    <innerclass refid="classredland_1_1World" prot="public">redland::World</innerclass>
       <sectiondef kind="func">
       <memberdef kind="function" id="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -9,15 +21,15 @@
         <argsstring>(const LibrdfUri &amp;uri, const LibrdfModel *model, const RaptorIOStream &amp;stream)</argsstring>
         <name>toIOStream</name>
         <param>
-          <type>const LibrdfUri &amp;</type>
+          <type>const <ref refid="classredland_1_1LibrdfUri" kindref="compound">LibrdfUri</ref> &amp;</type>
           <declname>uri</declname>
         </param>
         <param>
-          <type>const LibrdfModel *</type>
+          <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> *</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const RaptorIOStream &amp;</type>
+          <type>const <ref refid="classredland_1_1RaptorIOStream" kindref="compound">RaptorIOStream</ref> &amp;</type>
           <declname>stream</declname>
         </param>
         <briefdescription>

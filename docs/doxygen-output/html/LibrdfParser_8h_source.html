@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/redland/RedlandWrapper/src/LibrdfParser.h Source File</title>
+<title>libomexmeta: src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2c8ecc5605cd25eaa6ecdbd929ab620.html">redland</a></li><li class="navelem"><a class="el" href="dir_b65acc6ced5d737b2c7790d05db72194.html">RedlandWrapper</a></li><li class="navelem"><a class="el" href="dir_e793c0dc4ccd224149063390ee134027.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2c8ecc5605cd25eaa6ecdbd929ab620.html">redland</a></li><li class="navelem"><a class="el" href="dir_b65acc6ced5d737b2c7790d05db72194.html">RedlandWrapper</a></li><li class="navelem"><a class="el" href="dir_e793c0dc4ccd224149063390ee134027.html">src</a></li><li class="navelem"><a class="el" href="dir_a8b1a2e1698ec3f4d0b5a380075ccb82.html">include</a></li><li class="navelem"><a class="el" href="dir_419af6de8ce819e65a26954f0ff6d1a6.html">redland</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -170,7 +170,7 @@ $(function() {
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        librdf_parser *makeParser();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> setFeature(librdf_parser *parser, <span class="keyword">const</span> std::string &amp;feature_uri, librdf_node *node);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> setFeature(librdf_parser *parser, <span class="keyword">const</span> std::string &amp;feature_uri, <a class="code" href="structraptor__term.html">librdf_node</a> *node);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> setOption(librdf_parser *parser, <span class="keyword">const</span> std::string &amp;option, <span class="keyword">const</span> std::string &amp;value);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
@@ -185,6 +185,7 @@ $(function() {
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_LIBRDFPARSER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructraptor__term_html"><div class="ttname"><a href="structraptor__term.html">raptor_term</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:621</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfModel_html"><div class="ttname"><a href="classredland_1_1LibrdfModel.html">redland::LibrdfModel</a></div><div class="ttdef"><b>Definition:</b> LibrdfModel.h:22</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfParser_html"><div class="ttname"><a href="classredland_1_1LibrdfParser.html">redland::LibrdfParser</a></div><div class="ttdef"><b>Definition:</b> LibrdfParser.h:19</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfUri_html"><div class="ttname"><a href="classredland_1_1LibrdfUri.html">redland::LibrdfUri</a></div><div class="ttdef"><b>Definition:</b> LibrdfUri.h:16</div></div>

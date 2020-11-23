@@ -1,4 +1,4 @@
-from pyomexmeta import RDF
+from pyomexmeta import RDF, eUriType
 
 # collect the link from "https://www.ebi.ac.uk/biomodels/BIOMD0000000308#Files"
 tyson2003 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml"

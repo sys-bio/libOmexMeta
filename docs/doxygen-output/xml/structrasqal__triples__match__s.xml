@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__triples__match__s" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_triples_match_s</compoundname>
+    <includes refid="rasqal_8h" local="no">rasqal.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1a2a9bc29e4db95e24b7d8fc795a3a3632" prot="public" static="no" mutable="no">
+        <type>rasqal_world *</type>
+        <definition>rasqal_world* rasqal_triples_match_s::world</definition>
+        <argsstring></argsstring>
+        <name>world</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1956" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1956" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1aca66faa7eb227ef56e8672e9b8ef78e8" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* rasqal_triples_match_s::user_data</definition>
+        <argsstring></argsstring>
+        <name>user_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1958" column="10" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1958" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1aa3d1dbae893d114a354c71a4aa31ed00" prot="public" static="no" mutable="no">
+        <type>rasqal_triple_parts(*</type>
+        <definition>rasqal_triple_parts(* rasqal_triples_match_s::bind_match) (struct rasqal_triples_match_s *rtm, void *user_data, rasqal_variable *bindings[4], rasqal_triple_parts parts)</definition>
+        <argsstring>)(struct rasqal_triples_match_s *rtm, void *user_data, rasqal_variable *bindings[4], rasqal_triple_parts parts)</argsstring>
+        <name>bind_match</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1960" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1960" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1a3884b75b11baaa00cc6a447e70736601" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* rasqal_triples_match_s::next_match) (struct rasqal_triples_match_s *rtm, void *user_data)</definition>
+        <argsstring>)(struct rasqal_triples_match_s *rtm, void *user_data)</argsstring>
+        <name>next_match</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1963" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1963" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1a69ba3b28587f9e79df6e30db795fb16f" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* rasqal_triples_match_s::is_end) (struct rasqal_triples_match_s *rtm, void *user_data)</definition>
+        <argsstring>)(struct rasqal_triples_match_s *rtm, void *user_data)</argsstring>
+        <name>is_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1965" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1965" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1a27d9c1ccfb0005bab6ea1f6f3aa7a88e" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* rasqal_triples_match_s::finish) (struct rasqal_triples_match_s *rtm, void *user_data)</definition>
+        <argsstring>)(struct rasqal_triples_match_s *rtm, void *user_data)</argsstring>
+        <name>finish</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1967" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1967" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1a3bdc1be3bb2d5dcdbb5a46bf91ca31ac" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_triples_match_s::is_exact</definition>
+        <argsstring></argsstring>
+        <name>is_exact</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1969" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1969" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__match__s_1a6ecd3c1a9491291dd34db0c737f55cf0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_triples_match_s::finished</definition>
+        <argsstring></argsstring>
+        <name>finished</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1971" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1971" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>rasqal_triples_match: @world: rasqal_world object @user_data: User data pointer for factory methods. @bind_match: The [4]array (s,p,o,origin) bindings against the current triple match only touching triple parts given. Returns parts that were bound or 0 on failure. @next_match: Move to next match. @is_end: Check for end of triple match - return non-0 if is end. @finish: Finish triples match and destroy any allocated memory. @is_exact: non-0 if triple to match is all literal constants @finished: &gt;0 if the match has finished</para>
+<para>Triples match structure as initialised by #rasqal_triples_source method init_triples_match. </para>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1955" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1955" bodyend="1972"/>
+    <listofallmembers>
+      <member refid="structrasqal__triples__match__s_1aa3d1dbae893d114a354c71a4aa31ed00" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>bind_match</name></member>
+      <member refid="structrasqal__triples__match__s_1a27d9c1ccfb0005bab6ea1f6f3aa7a88e" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>finish</name></member>
+      <member refid="structrasqal__triples__match__s_1a6ecd3c1a9491291dd34db0c737f55cf0" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>finished</name></member>
+      <member refid="structrasqal__triples__match__s_1a69ba3b28587f9e79df6e30db795fb16f" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>is_end</name></member>
+      <member refid="structrasqal__triples__match__s_1a3bdc1be3bb2d5dcdbb5a46bf91ca31ac" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>is_exact</name></member>
+      <member refid="structrasqal__triples__match__s_1a3884b75b11baaa00cc6a447e70736601" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>next_match</name></member>
+      <member refid="structrasqal__triples__match__s_1aca66faa7eb227ef56e8672e9b8ef78e8" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>user_data</name></member>
+      <member refid="structrasqal__triples__match__s_1a2a9bc29e4db95e24b7d8fc795a3a3632" prot="public" virt="non-virtual"><scope>rasqal_triples_match_s</scope><name>world</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

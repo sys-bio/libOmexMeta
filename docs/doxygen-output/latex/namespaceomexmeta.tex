@@ -19,6 +19,8 @@ class \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}
 \begin{DoxyCompactList}\small\item\em Add or change annotations in xml. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1ElementExtractor}{Element\+Extractor}}
 \begin{DoxyCompactList}\small\item\em extract all elements from a document with name and put into a list \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}}
+\item 
 class \mbox{\hyperlink{classomexmeta_1_1Exception}{Exception}}
 \begin{DoxyCompactList}\small\item\em \href{https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception}{\texttt{ https\+://stackoverflow.\+com/questions/8152720/correct-\/way-\/to-\/inherit-\/from-\/stdexception}} \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1Foaf}{Foaf}}
@@ -41,21 +43,21 @@ class \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils}{Omex\+Meta\+Utils}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistant}{Omex\+Meta\+Xml\+Assistant}}
 \item 
+class \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistantFactory}{Omex\+Meta\+Xml\+Assistant\+Factory}}
+\item 
 class \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}}
 \begin{DoxyCompactList}\small\item\em add personal information to the model as a composite annotation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}
 \item 
-class \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}}
-\item 
-class \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}}
-\item 
 class \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}}
+\item 
+class \mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1Query}{Query}}
 \item 
@@ -69,8 +71,6 @@ class \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction}{S\+B\+M\+L\+Sema
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1SemSim}{Sem\+Sim}}
 \item 
-class \mbox{\hyperlink{classomexmeta_1_1SemsimXmlAssistantFactory}{Semsim\+Xml\+Assistant\+Factory}}
-\item 
 class \mbox{\hyperlink{classomexmeta_1_1SinkParticipant}{Sink\+Participant}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1SourceParticipant}{Source\+Participant}}
@@ -80,6 +80,8 @@ class \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}
 class \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}
+\item 
+class \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1ValueException}{Value\+Exception}}
 \end{DoxyCompactItemize}
@@ -104,9 +106,6 @@ typedef std\+::vector$<$ \mbox{\hyperlink{classomexmeta_1_1MediatorParticipant}{
 \mbox{\Hypertarget{namespaceomexmeta_a57d60796797e34581e3c1780985f0b59}\label{namespaceomexmeta_a57d60796797e34581e3c1780985f0b59}} 
 typedef std\+::vector$<$ \mbox{\hyperlink{classomexmeta_1_1SinkParticipant}{Sink\+Participant}} $>$ {\bfseries Sinks}
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aeb3054fca8bdfaeeae91c2f3e1bd8c27}\label{namespaceomexmeta_aeb3054fca8bdfaeeae91c2f3e1bd8c27}} 
-typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1PhysicalPhenomenon}{Physical\+Phenomenon}} $>$ {\bfseries Physical\+Phenomenon\+Ptr}
-\item 
 \mbox{\Hypertarget{namespaceomexmeta_a2edd0078a7f3b226df6fb3382d76471a}\label{namespaceomexmeta_a2edd0078a7f3b226df6fb3382d76471a}} 
 typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} $>$ {\bfseries Predicate\+Ptr}
 \item 
@@ -115,6 +114,9 @@ typedef std\+::vector$<$ \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a84ba746aac1e9ee5c7256a2f2f393a41}\label{namespaceomexmeta_a84ba746aac1e9ee5c7256a2f2f393a41}} 
 typedef std\+::vector$<$ Predicate\+Ptr $>$ {\bfseries Predicate\+Ptrs}
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a35b9e2daff126f8b3073338fc53ee31a}\label{namespaceomexmeta_a35b9e2daff126f8b3073338fc53ee31a}} 
+typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}} $>$ {\bfseries Physical\+Phenomenon\+Ptr}
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a08a1cea39a93f919e8c481f1307e9d64}\label{namespaceomexmeta_a08a1cea39a93f919e8c481f1307e9d64}} 
 typedef std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ {\bfseries Results\+Map}
@@ -140,7 +142,7 @@ typedef std\+::vector$<$ \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} $>$ 
 enum \mbox{\hyperlink{namespaceomexmeta_a1129ebb8a92218ebb27b9c76ac8462f7}{Annotation\+Type}} \{ \newline
 {\bfseries P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+E\+N\+T\+I\+TY}, 
 {\bfseries P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+P\+R\+O\+C\+E\+SS}, 
-{\bfseries P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+F\+O\+R\+CE}, 
+{\bfseries energy\+\_\+diff}, 
 {\bfseries S\+I\+N\+G\+U\+L\+AR}, 
 \newline
 {\bfseries U\+N\+K\+N\+O\+WN}
@@ -152,275 +154,334 @@ enum {\bfseries Omex\+Meta\+Xml\+Type} \{ {\bfseries O\+M\+E\+X\+M\+E\+T\+A\+\_\
 {\bfseries O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+K\+N\+O\+WN}, 
 {\bfseries O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+O\+T\+S\+ET}
  \}
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a8da31fe59b4fd33d53d24aa3e7dd605c}\label{namespaceomexmeta_a8da31fe59b4fd33d53d24aa3e7dd605c}} 
+enum {\bfseries e\+Uri\+Type} \{ {\bfseries N\+O\+NE}, 
+{\bfseries L\+O\+C\+A\+L\+\_\+\+U\+RI}, 
+{\bfseries M\+O\+D\+E\+L\+\_\+\+U\+RI}, 
+{\bfseries I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+S\+\_\+\+U\+RI}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_abd7043e0483a7393bd76a7469580d555}\label{namespaceomexmeta_abd7043e0483a7393bd76a7469580d555}} 
+\mbox{\Hypertarget{namespaceomexmeta_afa1aa630059180eafbb1ebf543c56216}\label{namespaceomexmeta_afa1aa630059180eafbb1ebf543c56216}} 
 int {\bfseries free\+\_\+c\+\_\+char\+\_\+star} (char $\ast$c)
 \item 
-char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a1d7bca5e4a24d7482048bd28d901e502}{\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str}} ()
+char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a5bcb86d9365fd275b3ca0823b2146651}{\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str}} ()
 \item 
-\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_ad25c02c4a271f0b7c5585d0cb241f102}{R\+D\+F\+\_\+new}} (const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
+\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}{R\+D\+F\+\_\+new}} (const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aa9f83a736bf28d204b9f485f09e59c59}\label{namespaceomexmeta_aa9f83a736bf28d204b9f485f09e59c59}} 
+\mbox{\Hypertarget{namespaceomexmeta_a0cd028836b6f77062a1e55e187641cd4}\label{namespaceomexmeta_a0cd028836b6f77062a1e55e187641cd4}} 
 void {\bfseries R\+D\+F\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a3df47da280fd76301f4db3ff70225457}\label{namespaceomexmeta_a3df47da280fd76301f4db3ff70225457}} 
+\mbox{\Hypertarget{namespaceomexmeta_ae3b91910008873609af530fe830b2752}\label{namespaceomexmeta_ae3b91910008873609af530fe830b2752}} 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ {\bfseries R\+D\+F\+\_\+from\+String} (const char $\ast$str, const char $\ast$format, const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a81b2c4407acfd8c80be70cb0ab34c8dc}\label{namespaceomexmeta_a81b2c4407acfd8c80be70cb0ab34c8dc}} 
+\mbox{\Hypertarget{namespaceomexmeta_a6f178f983440c5d14e4beb2e4c312fea}\label{namespaceomexmeta_a6f178f983440c5d14e4beb2e4c312fea}} 
 int {\bfseries R\+D\+F\+\_\+add\+From\+String} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$str, const char $\ast$format)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_abb12dce1dc0ca915b778843360ff6844}\label{namespaceomexmeta_abb12dce1dc0ca915b778843360ff6844}} 
+\mbox{\Hypertarget{namespaceomexmeta_aae27bcbed1c4f83f2802e7efae531e76}\label{namespaceomexmeta_aae27bcbed1c4f83f2802e7efae531e76}} 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ {\bfseries R\+D\+F\+\_\+from\+Uri} (const char $\ast$uri\+\_\+string, const char $\ast$format, const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_adec4d2ab4b51525933fe7afde29b42d3}\label{namespaceomexmeta_adec4d2ab4b51525933fe7afde29b42d3}} 
+\mbox{\Hypertarget{namespaceomexmeta_a98dbf600312668c38fb90ac878e96cb9}\label{namespaceomexmeta_a98dbf600312668c38fb90ac878e96cb9}} 
 int {\bfseries R\+D\+F\+\_\+add\+From\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$uri\+\_\+string, const char $\ast$format)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a6c414c3b4ae513bca35a9608a9fd752d}\label{namespaceomexmeta_a6c414c3b4ae513bca35a9608a9fd752d}} 
+\mbox{\Hypertarget{namespaceomexmeta_aa0a5c31900b86a0d1e183b98381a37e5}\label{namespaceomexmeta_aa0a5c31900b86a0d1e183b98381a37e5}} 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ {\bfseries R\+D\+F\+\_\+from\+File} (const char $\ast$filename, const char $\ast$format, const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad9bcbd4e6b1f93d5d4c8645a37a823cd}\label{namespaceomexmeta_ad9bcbd4e6b1f93d5d4c8645a37a823cd}} 
+\mbox{\Hypertarget{namespaceomexmeta_a1a55eedd94b2a91610f6646b8de2fac5}\label{namespaceomexmeta_a1a55eedd94b2a91610f6646b8de2fac5}} 
 int {\bfseries R\+D\+F\+\_\+add\+From\+File} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$uri\+\_\+string, const char $\ast$format)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a32f9114a274297acbc44bac3c3ee52a8}\label{namespaceomexmeta_a32f9114a274297acbc44bac3c3ee52a8}} 
+\mbox{\Hypertarget{namespaceomexmeta_adab6df75dccfd89a14f401c66f1bf98f}\label{namespaceomexmeta_adab6df75dccfd89a14f401c66f1bf98f}} 
 char $\ast$ {\bfseries R\+D\+F\+\_\+to\+String} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$format)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a7d21ddd436c1a145123bdfeaeaa40663}\label{namespaceomexmeta_a7d21ddd436c1a145123bdfeaeaa40663}} 
+\mbox{\Hypertarget{namespaceomexmeta_a7d6969824c986313680325bbdd8ab23e}\label{namespaceomexmeta_a7d6969824c986313680325bbdd8ab23e}} 
 int {\bfseries R\+D\+F\+\_\+to\+File} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$format, const char $\ast$filename)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad8f80e096c07f028d5c4a281a3e8f093}\label{namespaceomexmeta_ad8f80e096c07f028d5c4a281a3e8f093}} 
+\mbox{\Hypertarget{namespaceomexmeta_a662050c4f97651516374d8202c9a151e}\label{namespaceomexmeta_a662050c4f97651516374d8202c9a151e}} 
 char $\ast$ {\bfseries R\+D\+F\+\_\+query} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$query\+\_\+str, const char $\ast$results\+\_\+format)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_acbf6fdf01b402172f7434fa7ec9e057b}\label{namespaceomexmeta_acbf6fdf01b402172f7434fa7ec9e057b}} 
+\mbox{\Hypertarget{namespaceomexmeta_a967e800ddd20443000bdda84ee8c08dc}\label{namespaceomexmeta_a967e800ddd20443000bdda84ee8c08dc}} 
 int {\bfseries R\+D\+F\+\_\+size} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a934e6c245b9ad896f10e177865095c3f}\label{namespaceomexmeta_a934e6c245b9ad896f10e177865095c3f}} 
+\mbox{\Hypertarget{namespaceomexmeta_a34f2cd25e68df0cf0a3660af9456a344}\label{namespaceomexmeta_a34f2cd25e68df0cf0a3660af9456a344}} 
 int {\bfseries R\+D\+F\+\_\+set\+Repository\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$repository\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a9c1dcbcf82b851e5998f24b10a08566a}\label{namespaceomexmeta_a9c1dcbcf82b851e5998f24b10a08566a}} 
+\mbox{\Hypertarget{namespaceomexmeta_a3c766c3258d07b7318a11a3c49d1bee0}\label{namespaceomexmeta_a3c766c3258d07b7318a11a3c49d1bee0}} 
 int {\bfseries R\+D\+F\+\_\+set\+Archive\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$archive\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ae4867650bb4affd1a0ece773b85f125b}\label{namespaceomexmeta_ae4867650bb4affd1a0ece773b85f125b}} 
+\mbox{\Hypertarget{namespaceomexmeta_a58acadf8b603b25e1e2a90fc2d6009d1}\label{namespaceomexmeta_a58acadf8b603b25e1e2a90fc2d6009d1}} 
 int {\bfseries R\+D\+F\+\_\+set\+Model\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$model\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad459c70147e6e1f0264b1c24b516fd0f}\label{namespaceomexmeta_ad459c70147e6e1f0264b1c24b516fd0f}} 
+\mbox{\Hypertarget{namespaceomexmeta_ae7bfdd220c9cbcaba60d4409ecd4a441}\label{namespaceomexmeta_ae7bfdd220c9cbcaba60d4409ecd4a441}} 
 char $\ast$ {\bfseries R\+D\+F\+\_\+get\+Repository\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ae273ee890977b35fa8b4fdea9ccd1297}\label{namespaceomexmeta_ae273ee890977b35fa8b4fdea9ccd1297}} 
+\mbox{\Hypertarget{namespaceomexmeta_a5b5329943434433e159fba88df8779da}\label{namespaceomexmeta_a5b5329943434433e159fba88df8779da}} 
 char $\ast$ {\bfseries R\+D\+F\+\_\+get\+Archive\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad92ca3d3ae83ad7d46027a6a399d21e9}\label{namespaceomexmeta_ad92ca3d3ae83ad7d46027a6a399d21e9}} 
+\mbox{\Hypertarget{namespaceomexmeta_a9a9ed2edfc0f1086171a1fee84f85924}\label{namespaceomexmeta_a9a9ed2edfc0f1086171a1fee84f85924}} 
 char $\ast$ {\bfseries R\+D\+F\+\_\+get\+Model\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_adc76b37982d7d44b3e48f3686064a966}\label{namespaceomexmeta_adc76b37982d7d44b3e48f3686064a966}} 
+\mbox{\Hypertarget{namespaceomexmeta_ae8e96ffbbc5b63d413101f408a6c47bd}\label{namespaceomexmeta_ae8e96ffbbc5b63d413101f408a6c47bd}} 
 char $\ast$ {\bfseries R\+D\+F\+\_\+get\+Local\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a32e6dbf136ae77858262cab19093a6a1}\label{namespaceomexmeta_a32e6dbf136ae77858262cab19093a6a1}} 
+\mbox{\Hypertarget{namespaceomexmeta_a348c5592f89d9daa42bd3b2630346ad7}\label{namespaceomexmeta_a348c5592f89d9daa42bd3b2630346ad7}} 
+bool {\bfseries R\+D\+F\+\_\+equals\+\_\+rdf\+\_\+vs\+\_\+string} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$serialized\+\_\+rdf, const char $\ast$format)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a28be955d5e2992efc37b443a08c354c8}\label{namespaceomexmeta_a28be955d5e2992efc37b443a08c354c8}} 
+bool {\bfseries R\+D\+F\+\_\+equals\+\_\+rdf\+\_\+vs\+\_\+rdf} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr1, \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr2, const char $\ast$format)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a963528f63c05205cda77ccc622cd4c59}\label{namespaceomexmeta_a963528f63c05205cda77ccc622cd4c59}} 
+bool {\bfseries R\+D\+F\+\_\+equals\+\_\+string\+\_\+vs\+\_\+string} (const char $\ast$first\+\_\+rdf\+\_\+graph, const char $\ast$second\+\_\+rdf\+\_\+graph, const char $\ast$format)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a8695ed72dce3e00da869e7262c1544b7}\label{namespaceomexmeta_a8695ed72dce3e00da869e7262c1544b7}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries R\+D\+F\+\_\+to\+Editor} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$xml, bool generate\+\_\+new\+\_\+metaids, bool sbml\+\_\+semantic\+\_\+extraction)
 \item 
-int \mbox{\hyperlink{namespaceomexmeta_a3c05babeced84a464bcf29fb618230b4}{Editor\+\_\+add\+Namespace}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$namespace\+\_\+, const char $\ast$prefix)
+\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a30d98a9eb2bc11c67f7ca13a68aa1a73}{Editor\+\_\+new\+Singular\+Annotation}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a5eb4a4857c135a1aa5bd5c0a7eff6432}\label{namespaceomexmeta_a5eb4a4857c135a1aa5bd5c0a7eff6432}} 
+\mbox{\Hypertarget{namespaceomexmeta_a2edfc336f79ca0b7d9240128926c4c81}\label{namespaceomexmeta_a2edfc336f79ca0b7d9240128926c4c81}} 
+\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Editor\+\_\+new\+Personal\+Information} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\item 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a11a77dd69a30da66d2e7bbddaa15c15c}{Editor\+\_\+new\+Physical\+Entity}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a63fe76dc662afad3e59bf2b322fa75c9}\label{namespaceomexmeta_a63fe76dc662afad3e59bf2b322fa75c9}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Editor\+\_\+new\+Energy\+Diff} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_ab9e4c135d3724c2d0347c5964c479e2d}\label{namespaceomexmeta_ab9e4c135d3724c2d0347c5964c479e2d}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Editor\+\_\+new\+Physical\+Process} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a4fc6d203a3c689d4e7f5f2048a9c6077}\label{namespaceomexmeta_a4fc6d203a3c689d4e7f5f2048a9c6077}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$ {\bfseries Editor\+\_\+new\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a860a6f3e3335b724badd432d2adfabfb}\label{namespaceomexmeta_a860a6f3e3335b724badd432d2adfabfb}} 
+int {\bfseries Editor\+\_\+add\+Namespace} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$namespace\+\_\+, const char $\ast$prefix)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_aa7656f52bdd3a815928fc8d989fea1a3}\label{namespaceomexmeta_aa7656f52bdd3a815928fc8d989fea1a3}} 
 int {\bfseries Editor\+\_\+add\+Single\+Annotation} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+Annotation)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ac76722abeb1ceac922b1493a65c8de1c}\label{namespaceomexmeta_ac76722abeb1ceac922b1493a65c8de1c}} 
+\mbox{\Hypertarget{namespaceomexmeta_a1eb060bd1d7b9247a1bf6c2056595dff}\label{namespaceomexmeta_a1eb060bd1d7b9247a1bf6c2056595dff}} 
 int {\bfseries Editor\+\_\+add\+Physical\+Entity} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+Entity)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a26a63ff240f5400dc1f05c2c449f6e51}\label{namespaceomexmeta_a26a63ff240f5400dc1f05c2c449f6e51}} 
+\mbox{\Hypertarget{namespaceomexmeta_a4be70cb7901e0151dc4678482eb9d1dc}\label{namespaceomexmeta_a4be70cb7901e0151dc4678482eb9d1dc}} 
 int {\bfseries Editor\+\_\+add\+Physical\+Process} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a25c470e9dd1cd508e103c687d08fea07}\label{namespaceomexmeta_a25c470e9dd1cd508e103c687d08fea07}} 
-int {\bfseries Editor\+\_\+add\+Physical\+Force} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
+\mbox{\Hypertarget{namespaceomexmeta_a59d229f10d78555fc344e8c8acd99f5e}\label{namespaceomexmeta_a59d229f10d78555fc344e8c8acd99f5e}} 
+int {\bfseries Editor\+\_\+add\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$physical\+Property)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a5da4e46f21b19e38fad07c06ad668efd}\label{namespaceomexmeta_a5da4e46f21b19e38fad07c06ad668efd}} 
+\mbox{\Hypertarget{namespaceomexmeta_a51872ad77a54054397c094f0a3329aa4}\label{namespaceomexmeta_a51872ad77a54054397c094f0a3329aa4}} 
+int {\bfseries Editor\+\_\+add\+Energy\+Diff} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$physical\+Force)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a5cf923399ad5d4039590495ae317ca0e}\label{namespaceomexmeta_a5cf923399ad5d4039590495ae317ca0e}} 
 int {\bfseries Editor\+\_\+add\+Personal\+Information} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$personal\+Information)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a9cd0c78c5bf996caa79555b81bbfef1b}\label{namespaceomexmeta_a9cd0c78c5bf996caa79555b81bbfef1b}} 
+\mbox{\Hypertarget{namespaceomexmeta_a8750f7b07704c50f6bed02b6f7d45ff2}\label{namespaceomexmeta_a8750f7b07704c50f6bed02b6f7d45ff2}} 
 int {\bfseries Editor\+\_\+remove\+Single\+Annotation} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+Annotation)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad83a65f14c1035b46cd81f0a963da6e4}\label{namespaceomexmeta_ad83a65f14c1035b46cd81f0a963da6e4}} 
+\mbox{\Hypertarget{namespaceomexmeta_a56c9b33c44f2fe8661813d9dd53abe35}\label{namespaceomexmeta_a56c9b33c44f2fe8661813d9dd53abe35}} 
 int {\bfseries Editor\+\_\+remove\+Physical\+Entity} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+Entity)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a8b8f9382a445fca997eb8db8963cce4e}\label{namespaceomexmeta_a8b8f9382a445fca997eb8db8963cce4e}} 
+\mbox{\Hypertarget{namespaceomexmeta_a43c5f91dbad93a8daf4c2a2164226975}\label{namespaceomexmeta_a43c5f91dbad93a8daf4c2a2164226975}} 
 int {\bfseries Editor\+\_\+remove\+Physical\+Process} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a5d9f7c0c294472359ce3d70db5cb1035}\label{namespaceomexmeta_a5d9f7c0c294472359ce3d70db5cb1035}} 
-int {\bfseries Editor\+\_\+remove\+Physical\+Force} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
+\mbox{\Hypertarget{namespaceomexmeta_a5bb5c0d919aa0fe72e145e06b53e964f}\label{namespaceomexmeta_a5bb5c0d919aa0fe72e145e06b53e964f}} 
+int {\bfseries Editor\+\_\+remove\+Energy\+Diff} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$physical\+Force)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aac121eb946b9380ca162061ab725dad0}\label{namespaceomexmeta_aac121eb946b9380ca162061ab725dad0}} 
+\mbox{\Hypertarget{namespaceomexmeta_a13b3a9945787209d6e91fc429e2fed42}\label{namespaceomexmeta_a13b3a9945787209d6e91fc429e2fed42}} 
 int {\bfseries Editor\+\_\+remove\+Personal\+Information} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a8127880005ca59e64ae81fe57cd824fa}\label{namespaceomexmeta_a8127880005ca59e64ae81fe57cd824fa}} 
+\mbox{\Hypertarget{namespaceomexmeta_a91dad21451092b373d827e0fcafd3085}\label{namespaceomexmeta_a91dad21451092b373d827e0fcafd3085}} 
 int {\bfseries Editor\+\_\+check\+Valid\+Metaid} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$id)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aec2f4973721ccc82ae54980e951f7565}\label{namespaceomexmeta_aec2f4973721ccc82ae54980e951f7565}} 
+\mbox{\Hypertarget{namespaceomexmeta_a0f709cb04e749958e3a2c9cef9854f5d}\label{namespaceomexmeta_a0f709cb04e749958e3a2c9cef9854f5d}} 
 char $\ast$ {\bfseries Editor\+\_\+get\+Meta\+Id} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, int index)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a6a97e52deef1b7abde9b4491de14f68b}\label{namespaceomexmeta_a6a97e52deef1b7abde9b4491de14f68b}} 
+\mbox{\Hypertarget{namespaceomexmeta_afa7a55e6c5bfd4ae69d5f9ae328e640c}\label{namespaceomexmeta_afa7a55e6c5bfd4ae69d5f9ae328e640c}} 
 int {\bfseries Editor\+\_\+get\+Num\+Meta\+Ids} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}{Editor\+\_\+get\+Xml}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}{Editor\+\_\+get\+Xml}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ade855a67befd16925ed583d228606d43}\label{namespaceomexmeta_ade855a67befd16925ed583d228606d43}} 
+\mbox{\Hypertarget{namespaceomexmeta_a8bbcc1dda00608452bf06707985421bd}\label{namespaceomexmeta_a8bbcc1dda00608452bf06707985421bd}} 
 int {\bfseries Editor\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad0a68ce47a12363204bde49b838cd5d0}\label{namespaceomexmeta_ad0a68ce47a12363204bde49b838cd5d0}} 
+\mbox{\Hypertarget{namespaceomexmeta_ada8b0ede24b5d881c6a06104f21cc57c}\label{namespaceomexmeta_ada8b0ede24b5d881c6a06104f21cc57c}} 
 char $\ast$ {\bfseries Editor\+\_\+get\+Archive\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a28c678eeb0c4457bbbd671eb2dac73d0}\label{namespaceomexmeta_a28c678eeb0c4457bbbd671eb2dac73d0}} 
+\mbox{\Hypertarget{namespaceomexmeta_a79e407f581556f6ef1bed113e738636a}\label{namespaceomexmeta_a79e407f581556f6ef1bed113e738636a}} 
 char $\ast$ {\bfseries Editor\+\_\+get\+Local\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aaddb4c2e6bc636650b20c2eb526ff691}\label{namespaceomexmeta_aaddb4c2e6bc636650b20c2eb526ff691}} 
+\mbox{\Hypertarget{namespaceomexmeta_ad8066c794ca234b1a54575c2642bef4a}\label{namespaceomexmeta_ad8066c794ca234b1a54575c2642bef4a}} 
 char $\ast$ {\bfseries Editor\+\_\+get\+Model\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_afc5399a7743a7ddbb79a903ca5676170}\label{namespaceomexmeta_afc5399a7743a7ddbb79a903ca5676170}} 
+\mbox{\Hypertarget{namespaceomexmeta_a8ee43bb384d91cdd2f9709bbbcb40e45}\label{namespaceomexmeta_a8ee43bb384d91cdd2f9709bbbcb40e45}} 
 char $\ast$ {\bfseries Editor\+\_\+get\+Repository\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a50920280fdbfed97fdceaab3351c8110}\label{namespaceomexmeta_a50920280fdbfed97fdceaab3351c8110}} 
+\mbox{\Hypertarget{namespaceomexmeta_a8d5c2ca0fc85c34655773735b68db9af}\label{namespaceomexmeta_a8d5c2ca0fc85c34655773735b68db9af}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Creator} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$orcid\+\_\+id)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_adef5bacd6082d8c7a31bac8512beb88e}\label{namespaceomexmeta_adef5bacd6082d8c7a31bac8512beb88e}} 
+\mbox{\Hypertarget{namespaceomexmeta_a776f05da2b18bedbbd262368787e8263}\label{namespaceomexmeta_a776f05da2b18bedbbd262368787e8263}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Curator} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$orcid\+\_\+id)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a5c4e1428342257b2ee39c365a7f3088f}\label{namespaceomexmeta_a5c4e1428342257b2ee39c365a7f3088f}} 
+\mbox{\Hypertarget{namespaceomexmeta_a77fe370e4e25069aed5ca78d49e7f320}\label{namespaceomexmeta_a77fe370e4e25069aed5ca78d49e7f320}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Taxon} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$taxon\+\_\+id)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a6c0234656aeb84aaeda92a1480f98c47}\label{namespaceomexmeta_a6c0234656aeb84aaeda92a1480f98c47}} 
+\mbox{\Hypertarget{namespaceomexmeta_aad15c06d5442ef8153a123f07a06687a}\label{namespaceomexmeta_aad15c06d5442ef8153a123f07a06687a}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Pubmed} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$pubmedid)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a0a71078ff0984cd1c67a3844c7f065d0}\label{namespaceomexmeta_a0a71078ff0984cd1c67a3844c7f065d0}} 
+\mbox{\Hypertarget{namespaceomexmeta_af27e22df149490815e7f07f7fe6193c0}\label{namespaceomexmeta_af27e22df149490815e7f07f7fe6193c0}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Description} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$date)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aa85a2336d491e1137a9ba7238d2a62ce}\label{namespaceomexmeta_aa85a2336d491e1137a9ba7238d2a62ce}} 
+\mbox{\Hypertarget{namespaceomexmeta_a27a3eec567f41bb22f9b46209141673b}\label{namespaceomexmeta_a27a3eec567f41bb22f9b46209141673b}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Date\+Created} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$date)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a6b2b5bad57a439b356acc85f42fd9047}\label{namespaceomexmeta_a6b2b5bad57a439b356acc85f42fd9047}} 
+\mbox{\Hypertarget{namespaceomexmeta_ad57daad673e39cf41098902d2d4bf33b}\label{namespaceomexmeta_ad57daad673e39cf41098902d2d4bf33b}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Parent\+Model} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$biomod\+\_\+id)
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a56234965820e6e731cb377af949585a3}{Singular\+Annotation\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a6c1d37ce851c1853f83a3622a5bd00bc}\label{namespaceomexmeta_a6c1d37ce851c1853f83a3622a5bd00bc}} 
-int {\bfseries Singular\+Annotation\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+Annotation)
+int \mbox{\hyperlink{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}{Singular\+Annotation\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+Annotation)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_ad8b1a3d657ffffadcef2d723044c18e9}\label{namespaceomexmeta_ad8b1a3d657ffffadcef2d723044c18e9}} 
 int {\bfseries free\+\_\+singular\+\_\+annotation} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+Annotation\+Ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_af4fa662929706d46da1b22dc9ee9d2a5}\label{namespaceomexmeta_af4fa662929706d46da1b22dc9ee9d2a5}} 
+\mbox{\Hypertarget{namespaceomexmeta_ad33ae04d8a525ee7d6e5303a27de0703}\label{namespaceomexmeta_ad33ae04d8a525ee7d6e5303a27de0703}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$about)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aeedfc49054398f038e3e5dc431463ccd}\label{namespaceomexmeta_aeedfc49054398f038e3e5dc431463ccd}} 
+\mbox{\Hypertarget{namespaceomexmeta_a04581f55ac73cf93673675e6bc04c3e2}\label{namespaceomexmeta_a04581f55ac73cf93673675e6bc04c3e2}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+set\+Predicate} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$namespace\+\_\+, const char $\ast$term)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a7edb71901218a0e207e3e1d1efd1c446}\label{namespaceomexmeta_a7edb71901218a0e207e3e1d1efd1c446}} 
+\mbox{\Hypertarget{namespaceomexmeta_a79292d1fabe6eac8e281ba535deee9fc}\label{namespaceomexmeta_a79292d1fabe6eac8e281ba535deee9fc}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+predicate} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$namespace\+\_\+, const char $\ast$term)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_abea6cebaf66d178b8cca6dd636bd47d0}\label{namespaceomexmeta_abea6cebaf66d178b8cca6dd636bd47d0}} 
+\mbox{\Hypertarget{namespaceomexmeta_a6fd75056f06288fd6af18c5cafca1469}\label{namespaceomexmeta_a6fd75056f06288fd6af18c5cafca1469}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+set\+Predicate\+From\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ac83d324f08bf60d17d18d06bbf963e63}\label{namespaceomexmeta_ac83d324f08bf60d17d18d06bbf963e63}} 
+\mbox{\Hypertarget{namespaceomexmeta_a71d097ec3d8c67539f064aba2902b03b}\label{namespaceomexmeta_a71d097ec3d8c67539f064aba2902b03b}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+predicate\+From\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a6b829135446cd1744f20a1ce3e8e4215}\label{namespaceomexmeta_a6b829135446cd1744f20a1ce3e8e4215}} 
+\mbox{\Hypertarget{namespaceomexmeta_aec70f405ca37c588276fe9952d1740b3}\label{namespaceomexmeta_aec70f405ca37c588276fe9952d1740b3}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+set\+Resource\+Literal} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$literal)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a47f2cd38ca25bbf4a53bba4fc99e3749}\label{namespaceomexmeta_a47f2cd38ca25bbf4a53bba4fc99e3749}} 
+\mbox{\Hypertarget{namespaceomexmeta_ad5b0441c5491e290c8364da4f8d89655}\label{namespaceomexmeta_ad5b0441c5491e290c8364da4f8d89655}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+resource\+Literal} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$literal)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ab3fbe78f87d3275c23f10712b1a77f87}\label{namespaceomexmeta_ab3fbe78f87d3275c23f10712b1a77f87}} 
+\mbox{\Hypertarget{namespaceomexmeta_a74d3ae86a7c73e736df5282b54f254cb}\label{namespaceomexmeta_a74d3ae86a7c73e736df5282b54f254cb}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+set\+Resource\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$identifiers\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a71c48e337f4ba3f3767e02e424e78d48}\label{namespaceomexmeta_a71c48e337f4ba3f3767e02e424e78d48}} 
+\mbox{\Hypertarget{namespaceomexmeta_aebe513747d647b160930e5fa1663e2b0}\label{namespaceomexmeta_aebe513747d647b160930e5fa1663e2b0}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+resource\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$identifiers\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a72ef479adb05bad7b91b332fbbc3c886}\label{namespaceomexmeta_a72ef479adb05bad7b91b332fbbc3c886}} 
+\mbox{\Hypertarget{namespaceomexmeta_a0f5d6d42b7c68e7a432f2a482b8bcc30}\label{namespaceomexmeta_a0f5d6d42b7c68e7a432f2a482b8bcc30}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+set\+Resource\+Blank} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$blank\+\_\+id)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aa8e15303f04e9d2afc9b2efb025bd420}\label{namespaceomexmeta_aa8e15303f04e9d2afc9b2efb025bd420}} 
+\mbox{\Hypertarget{namespaceomexmeta_acafa171dc0cef352026e3da7c931b702}\label{namespaceomexmeta_acafa171dc0cef352026e3da7c931b702}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ {\bfseries Singular\+Annotation\+\_\+resource\+Blank} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$blank\+\_\+id)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aa2be46b784b2c7840ae58087bfeccd68}\label{namespaceomexmeta_aa2be46b784b2c7840ae58087bfeccd68}} 
+\mbox{\Hypertarget{namespaceomexmeta_a8fdfc5f7d64e12b04dca480da03fa413}\label{namespaceomexmeta_a8fdfc5f7d64e12b04dca480da03fa413}} 
 char $\ast$ {\bfseries Singular\+Annotation\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_af1fb5e2e7cad553b230addfb56a8bdbf}\label{namespaceomexmeta_af1fb5e2e7cad553b230addfb56a8bdbf}} 
+\mbox{\Hypertarget{namespaceomexmeta_adc959543185d522aeed4659aced8c96e}\label{namespaceomexmeta_adc959543185d522aeed4659aced8c96e}} 
 char $\ast$ {\bfseries Singular\+Annotation\+\_\+get\+Predicate} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a886b19fc7c95cebd0a82ae2c9f36ab68}\label{namespaceomexmeta_a886b19fc7c95cebd0a82ae2c9f36ab68}} 
+\mbox{\Hypertarget{namespaceomexmeta_a76253abd9ff8ae24164de48086c348c5}\label{namespaceomexmeta_a76253abd9ff8ae24164de48086c348c5}} 
 char $\ast$ {\bfseries Singular\+Annotation\+\_\+get\+Resource} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ab75e894bdc1440c5e9af28156c1083be}\label{namespaceomexmeta_ab75e894bdc1440c5e9af28156c1083be}} 
+\mbox{\Hypertarget{namespaceomexmeta_a49d1107f0ea55c318a266727bea089d9}\label{namespaceomexmeta_a49d1107f0ea55c318a266727bea089d9}} 
 char $\ast$ {\bfseries Singular\+Annotation\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$format)
 \item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a3a7a18de6e1b6c264c3ee22cd289d243}{Physical\+Entity\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}{Physical\+Property\+\_\+get\+About}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a2468442b832806a57f5891c792c293d1}\label{namespaceomexmeta_a2468442b832806a57f5891c792c293d1}} 
-int {\bfseries Physical\+Entity\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
+\mbox{\Hypertarget{namespaceomexmeta_ad7fa194ecac46238ce148e64dd2a1283}\label{namespaceomexmeta_ad7fa194ecac46238ce148e64dd2a1283}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$ {\bfseries Physical\+Property\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property, const char $\ast$about, e\+Uri\+Type type)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a1003038196d64626a43affdaae4f10c7}\label{namespaceomexmeta_a1003038196d64626a43affdaae4f10c7}} 
+\mbox{\Hypertarget{namespaceomexmeta_aae09e22b4270783dfd96b799bbbe81d4}\label{namespaceomexmeta_aae09e22b4270783dfd96b799bbbe81d4}} 
+char $\ast$ {\bfseries Physical\+Property\+\_\+get\+Is\+Version\+Of\+Value} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a0ce70a20731896bc914e493512921999}\label{namespaceomexmeta_a0ce70a20731896bc914e493512921999}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$ {\bfseries Physical\+Property\+\_\+is\+Property\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property, const char $\ast$is\+\_\+property\+\_\+of, e\+Uri\+Type type)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a2dc619ed00755db2953e8b411b418331}\label{namespaceomexmeta_a2dc619ed00755db2953e8b411b418331}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$ {\bfseries Physical\+Property\+\_\+is\+Version\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property, const char $\ast$is\+\_\+version\+\_\+of)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a07fe1277bd2ca11d4dda95caabbec6fe}\label{namespaceomexmeta_a07fe1277bd2ca11d4dda95caabbec6fe}} 
+char $\ast$ {\bfseries Physical\+Property\+\_\+get\+Is\+Property\+Of\+Value} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a14b74eafc872341f11c0a3aa870ffb5b}\label{namespaceomexmeta_a14b74eafc872341f11c0a3aa870ffb5b}} 
+int {\bfseries Physical\+Property\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
+\item 
+int \mbox{\hyperlink{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}{Physical\+Entity\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_af6b8432376992c29b894c5a01047c83f}\label{namespaceomexmeta_af6b8432376992c29b894c5a01047c83f}} 
 int {\bfseries Physical\+Entity\+\_\+free\+All} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a37974ee43bc12c63dc5b1e7f451b6e9c}\label{namespaceomexmeta_a37974ee43bc12c63dc5b1e7f451b6e9c}} 
+\mbox{\Hypertarget{namespaceomexmeta_a8b872dbd7a83ff65d12a1f22c07f56c4}\label{namespaceomexmeta_a8b872dbd7a83ff65d12a1f22c07f56c4}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ac44f68863532b3aa719a2cb9f0a1f73f}\label{namespaceomexmeta_ac44f68863532b3aa719a2cb9f0a1f73f}} 
+\mbox{\Hypertarget{namespaceomexmeta_ac779475adef057691d193052dff09de7}\label{namespaceomexmeta_ac779475adef057691d193052dff09de7}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+set\+Identity} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$identity\+\_\+resource)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a4520eb759e1fe4330dc7c66eae588ef2}\label{namespaceomexmeta_a4520eb759e1fe4330dc7c66eae588ef2}} 
+\mbox{\Hypertarget{namespaceomexmeta_a2f3f105a84638f3533b4b88a36df13d0}\label{namespaceomexmeta_a2f3f105a84638f3533b4b88a36df13d0}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+identity} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$identity\+\_\+resource)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_abba48577926517d7d484b6b3b67fffb2}\label{namespaceomexmeta_abba48577926517d7d484b6b3b67fffb2}} 
+\mbox{\Hypertarget{namespaceomexmeta_a597b9e024adde3e396d1c991c60fc988}\label{namespaceomexmeta_a597b9e024adde3e396d1c991c60fc988}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+add\+Location} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$location\+\_\+resource)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a7f59e7b6f143fc61441cfb435262e1cb}\label{namespaceomexmeta_a7f59e7b6f143fc61441cfb435262e1cb}} 
+\mbox{\Hypertarget{namespaceomexmeta_a3bf7eca197f627c34e6c9f866805aa48}\label{namespaceomexmeta_a3bf7eca197f627c34e6c9f866805aa48}} 
 char $\ast$ {\bfseries Physical\+Entity\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aaa3ea01b3791ca3f7eb417457b07db6b}\label{namespaceomexmeta_aaa3ea01b3791ca3f7eb417457b07db6b}} 
+\mbox{\Hypertarget{namespaceomexmeta_a4b2cd6ac20c433b9913a70b202b3b11f}\label{namespaceomexmeta_a4b2cd6ac20c433b9913a70b202b3b11f}} 
 char $\ast$ {\bfseries Physical\+Entity\+\_\+get\+Identity} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_acc3cb121e83fea6627185101e64db8e9}\label{namespaceomexmeta_acc3cb121e83fea6627185101e64db8e9}} 
+\mbox{\Hypertarget{namespaceomexmeta_a5c3035659e87532dfe378bc22c15c526}\label{namespaceomexmeta_a5c3035659e87532dfe378bc22c15c526}} 
 int {\bfseries Physical\+Entity\+\_\+get\+Num\+Locations} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+Entity)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a63e0d41567ae512005d7c9e50037e44e}\label{namespaceomexmeta_a63e0d41567ae512005d7c9e50037e44e}} 
+\mbox{\Hypertarget{namespaceomexmeta_a5fa7d564d4b1f2250129308bf062dad4}\label{namespaceomexmeta_a5fa7d564d4b1f2250129308bf062dad4}} 
 char $\ast$ {\bfseries Physical\+Entity\+\_\+get\+Location} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, int index)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a2ca2e5f41e156dc785bb858f82a088d4}\label{namespaceomexmeta_a2ca2e5f41e156dc785bb858f82a088d4}} 
+\mbox{\Hypertarget{namespaceomexmeta_a3e35c640721a9bb5b4d0af676bd9b1c0}\label{namespaceomexmeta_a3e35c640721a9bb5b4d0af676bd9b1c0}} 
 char $\ast$ {\bfseries Physical\+Entity\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$format, const char $\ast$base\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aa2a75afdf11776f56e4f192886e7beaf}\label{namespaceomexmeta_aa2a75afdf11776f56e4f192886e7beaf}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$property)
+\mbox{\Hypertarget{namespaceomexmeta_a6e95c07d09117f202830352c7cdf4fea}\label{namespaceomexmeta_a6e95c07d09117f202830352c7cdf4fea}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad16c74638e4679527511519745b2826c}\label{namespaceomexmeta_ad16c74638e4679527511519745b2826c}} 
+\mbox{\Hypertarget{namespaceomexmeta_ab2001820dafe8b68bf0705150345585a}\label{namespaceomexmeta_ab2001820dafe8b68bf0705150345585a}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Propertyis\+Version\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$is\+Version\+Of)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_abe700f93f6a4e2767d81296d106271b1}\label{namespaceomexmeta_abe700f93f6a4e2767d81296d106271b1}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Property\+Full} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$property\+\_\+about, e\+Uri\+Type about\+\_\+uri\+\_\+type, const char $\ast$is\+\_\+version\+\_\+of)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_add82adfd4d494225157d239814c377b4}\label{namespaceomexmeta_add82adfd4d494225157d239814c377b4}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+is\+Part\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$is\+\_\+part\+\_\+of)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_af19e92e167364a63e1640beb59bbe819}\label{namespaceomexmeta_af19e92e167364a63e1640beb59bbe819}} 
+\mbox{\Hypertarget{namespaceomexmeta_ac18e38cd359cdf5b596de850b7cecb0e}\label{namespaceomexmeta_ac18e38cd359cdf5b596de850b7cecb0e}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Part} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$part)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aace4dd04badaa0e3cbfa977a1d8d7016}\label{namespaceomexmeta_aace4dd04badaa0e3cbfa977a1d8d7016}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$about)
+\mbox{\Hypertarget{namespaceomexmeta_abea59573a22604c01fcc64f9a735ce50}\label{namespaceomexmeta_abea59573a22604c01fcc64f9a735ce50}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$about, e\+Uri\+Type type)
 \item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a4b7cef4fcdbd4502c94b18da2f85470f}{Physical\+Process\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+int \mbox{\hyperlink{namespaceomexmeta_a8f35bfdeddd4366704c681fac1b8112e}{Physical\+Process\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a97146d9b855c53650e54c471f053a4dc}\label{namespaceomexmeta_a97146d9b855c53650e54c471f053a4dc}} 
-int {\bfseries Physical\+Process\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a3ccca8297fc991baf57065570938ed84}\label{namespaceomexmeta_a3ccca8297fc991baf57065570938ed84}} 
+\mbox{\Hypertarget{namespaceomexmeta_a6591a8c615162ed0f28401b3a5d0c6c0}\label{namespaceomexmeta_a6591a8c615162ed0f28401b3a5d0c6c0}} 
 int {\bfseries Physical\+Process\+\_\+free\+All} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ae0e715da1275124448d22005f2848722}\label{namespaceomexmeta_ae0e715da1275124448d22005f2848722}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
+\mbox{\Hypertarget{namespaceomexmeta_a2d8dc96f97627f820f665c364b0f0dc1}\label{namespaceomexmeta_a2d8dc96f97627f820f665c364b0f0dc1}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+add\+Source} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type, int multiplier)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a08408524a5a4f75ae4b0c1c8cad6c28e}\label{namespaceomexmeta_a08408524a5a4f75ae4b0c1c8cad6c28e}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+add\+Source} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
+\mbox{\Hypertarget{namespaceomexmeta_a6aec4041f1495f2cbe47dc17b80b1915}\label{namespaceomexmeta_a6aec4041f1495f2cbe47dc17b80b1915}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+add\+Sink} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type, int multiplier)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a68d8b919e923231d8a17e3506dca393b}\label{namespaceomexmeta_a68d8b919e923231d8a17e3506dca393b}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+add\+Sink} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
+\mbox{\Hypertarget{namespaceomexmeta_a71d1fd24049dae1b02b2dcb626f10ec0}\label{namespaceomexmeta_a71d1fd24049dae1b02b2dcb626f10ec0}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+add\+Mediator} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a1554e14b6f4401341fa0e7f23f6d4c90}\label{namespaceomexmeta_a1554e14b6f4401341fa0e7f23f6d4c90}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+add\+Mediator} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$physical\+\_\+entity\+\_\+reference)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_ae79e87b864da4b401488f522bb6734e7}\label{namespaceomexmeta_ae79e87b864da4b401488f522bb6734e7}} 
+\mbox{\Hypertarget{namespaceomexmeta_ac65d28dc0f988bb2eeb21c0a74abadc8}\label{namespaceomexmeta_ac65d28dc0f988bb2eeb21c0a74abadc8}} 
 char $\ast$ {\bfseries Physical\+Process\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$format, const char $\ast$base\+\_\+uri)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a7fe71bd4245dccd8033660fbe0606896}\label{namespaceomexmeta_a7fe71bd4245dccd8033660fbe0606896}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_afc6ddf5fa416514b3febf49a80c8faee}\label{namespaceomexmeta_afc6ddf5fa416514b3febf49a80c8faee}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+has\+Propertyis\+Version\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$is\+Version\+Of)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a51d31f63cb0e7ea14a4a87caf28b03ac}\label{namespaceomexmeta_a51d31f63cb0e7ea14a4a87caf28b03ac}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+has\+Property\+Full} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$property\+\_\+about, e\+Uri\+Type about\+\_\+uri\+\_\+type, const char $\ast$is\+\_\+version\+\_\+of)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a738e9d39898919fb01bd9a7ed5af3687}\label{namespaceomexmeta_a738e9d39898919fb01bd9a7ed5af3687}} 
 char $\ast$ {\bfseries Physical\+Process\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr)
@@ -434,114 +495,110 @@ int {\bfseries Physical\+Process\+\_\+get\+Num\+Sinks} (\mbox{\hyperlink{classom
 \mbox{\Hypertarget{namespaceomexmeta_a7ad65f0ec2f5c8433ebc126c75779520}\label{namespaceomexmeta_a7ad65f0ec2f5c8433ebc126c75779520}} 
 int {\bfseries Physical\+Process\+\_\+get\+Num\+Mediators} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+Process)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a0b2b4520d250dc6415ac97f20898610d}\label{namespaceomexmeta_a0b2b4520d250dc6415ac97f20898610d}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$property)
+\mbox{\Hypertarget{namespaceomexmeta_af0e0106577bdbdc6a0b5b280effee221}\label{namespaceomexmeta_af0e0106577bdbdc6a0b5b280effee221}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$about, e\+Uri\+Type type)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aaf75d87c8438611395c5b7a40e117d9e}\label{namespaceomexmeta_aaf75d87c8438611395c5b7a40e117d9e}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+is\+Version\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$version)
+\mbox{\Hypertarget{namespaceomexmeta_a69b135f8705d9c854218a6f6e8af6434}\label{namespaceomexmeta_a69b135f8705d9c854218a6f6e8af6434}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+is\+Version\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$version, e\+Uri\+Type type)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a26a3610a8028b795ffdaf9e54b6ee2c0}\label{namespaceomexmeta_a26a3610a8028b795ffdaf9e54b6ee2c0}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process\+\_\+ptr, const char $\ast$about)
+int \mbox{\hyperlink{namespaceomexmeta_ade152f2f88f1394cfd5341d504384532}{Energy\+Diff\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$physical\+Force)
 \item 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}{Physical\+Force\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+int \mbox{\hyperlink{namespaceomexmeta_ac4ee432e12f736c29692417b0302f5f0}{Energy\+Diff\+\_\+free\+All}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr)
 \item 
-int \mbox{\hyperlink{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}{Physical\+Force\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
+\mbox{\Hypertarget{namespaceomexmeta_a858b1b50c3090774a6ad3888e203db1d}\label{namespaceomexmeta_a858b1b50c3090774a6ad3888e203db1d}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+add\+Source} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type)
 \item 
-int \mbox{\hyperlink{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}{Physical\+Force\+\_\+free\+All}} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr)
+\mbox{\Hypertarget{namespaceomexmeta_a36c3e6a6c18802b28bc428abaee4f375}\label{namespaceomexmeta_a36c3e6a6c18802b28bc428abaee4f375}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+add\+Sink} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ae66097c6bfe2f6370bcb614a3d384a41}\label{namespaceomexmeta_ae66097c6bfe2f6370bcb614a3d384a41}} 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Source} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
+\mbox{\Hypertarget{namespaceomexmeta_a762123263dff6284e859468c7cbcd673}\label{namespaceomexmeta_a762123263dff6284e859468c7cbcd673}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a75abc8bc74d8bacefd65935f49210343}\label{namespaceomexmeta_a75abc8bc74d8bacefd65935f49210343}} 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+add\+Sink} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, int multiplier, const char $\ast$physical\+\_\+entity\+\_\+reference)
+\mbox{\Hypertarget{namespaceomexmeta_afb832dfb0941da83b04ff3836ec5a30c}\label{namespaceomexmeta_afb832dfb0941da83b04ff3836ec5a30c}} 
+int {\bfseries Energy\+Diff\+\_\+get\+Num\+Sources} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$physical\+Force)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a3942ac5b5d7393eea5f0644c2f31cbc5}\label{namespaceomexmeta_a3942ac5b5d7393eea5f0644c2f31cbc5}} 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
+\mbox{\Hypertarget{namespaceomexmeta_a755f3004700e85f530702bec868c4f22}\label{namespaceomexmeta_a755f3004700e85f530702bec868c4f22}} 
+int {\bfseries Energy\+Diff\+\_\+get\+Num\+Sinks} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$physical\+Force)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aae66100eb98adbc738a6476dcb018e8f}\label{namespaceomexmeta_aae66100eb98adbc738a6476dcb018e8f}} 
-int {\bfseries Physical\+Force\+\_\+get\+Num\+Sources} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
+\mbox{\Hypertarget{namespaceomexmeta_a650ebb05df693cbe948004a0d4e22612}\label{namespaceomexmeta_a650ebb05df693cbe948004a0d4e22612}} 
+char $\ast$ {\bfseries Energy\+Diff\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$format, const char $\ast$base\+\_\+uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a1bec2b6579c0eba8a719f68d39b09c2e}\label{namespaceomexmeta_a1bec2b6579c0eba8a719f68d39b09c2e}} 
-int {\bfseries Physical\+Force\+\_\+get\+Num\+Sinks} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+Force)
+\mbox{\Hypertarget{namespaceomexmeta_aa4b7fcd062c765cb602dc02c6e37f9b8}\label{namespaceomexmeta_aa4b7fcd062c765cb602dc02c6e37f9b8}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a8a3f3cf23e3c5253f0a92f6374a2059b}\label{namespaceomexmeta_a8a3f3cf23e3c5253f0a92f6374a2059b}} 
-char $\ast$ {\bfseries Physical\+Force\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$format, const char $\ast$base\+\_\+uri)
+\mbox{\Hypertarget{namespaceomexmeta_a80d168fd1e28693a079e2d1400917800}\label{namespaceomexmeta_a80d168fd1e28693a079e2d1400917800}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+has\+Propertyis\+Version\+Of} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$is\+Version\+Of)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a4428467ced5ab11c48a3b16284048a36}\label{namespaceomexmeta_a4428467ced5ab11c48a3b16284048a36}} 
-char $\ast$ {\bfseries Physical\+Force\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr)
+\mbox{\Hypertarget{namespaceomexmeta_afb70747e74699ce201f8f3fbd711bb38}\label{namespaceomexmeta_afb70747e74699ce201f8f3fbd711bb38}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+has\+Property\+Full} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$property\+\_\+about, e\+Uri\+Type about\+\_\+uri\+\_\+type, const char $\ast$is\+\_\+version\+\_\+of)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a016cac89803483ca6afdf30a111839c8}\label{namespaceomexmeta_a016cac89803483ca6afdf30a111839c8}} 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+has\+Property} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$property)
+\mbox{\Hypertarget{namespaceomexmeta_af34ff5de4b51c4733b6581ad665cd8e8}\label{namespaceomexmeta_af34ff5de4b51c4733b6581ad665cd8e8}} 
+char $\ast$ {\bfseries Energy\+Diff\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a046f8a2e1bf9b4374f012480ad026445}\label{namespaceomexmeta_a046f8a2e1bf9b4374f012480ad026445}} 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ {\bfseries Physical\+Force\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$physical\+\_\+force\+\_\+ptr, const char $\ast$about)
+\mbox{\Hypertarget{namespaceomexmeta_a0922f558b2bcf687cdc354fefc786e08}\label{namespaceomexmeta_a0922f558b2bcf687cdc354fefc786e08}} 
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$ {\bfseries Energy\+Diff\+\_\+about} (\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$energy\+\_\+diff\+\_\+ptr, const char $\ast$about, e\+Uri\+Type type)
 \item 
-\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a119fbc0317a5af631e7f68caece8c70b}{Personal\+Information\+\_\+new}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+int \mbox{\hyperlink{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}{Personal\+Information\+\_\+delete}} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a5dcd490456bde3f95069f91e65c2b042}\label{namespaceomexmeta_a5dcd490456bde3f95069f91e65c2b042}} 
-int {\bfseries Personal\+Information\+\_\+delete} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a9db9c9c591926b3e9061b2ca7cb4541f}\label{namespaceomexmeta_a9db9c9c591926b3e9061b2ca7cb4541f}} 
+\mbox{\Hypertarget{namespaceomexmeta_af7470fd783ea97e6b432ad24639f9ca3}\label{namespaceomexmeta_af7470fd783ea97e6b432ad24639f9ca3}} 
 char $\ast$ {\bfseries Personal\+Information\+\_\+get\+Local\+Uri} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_af1ed67bfbe5c55b04c5164030f9f5fef}\label{namespaceomexmeta_af1ed67bfbe5c55b04c5164030f9f5fef}} 
+\mbox{\Hypertarget{namespaceomexmeta_a850c8084bb794d47eab2790283a343c0}\label{namespaceomexmeta_a850c8084bb794d47eab2790283a343c0}} 
 int {\bfseries Personal\+Information\+\_\+set\+Local\+Uri} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$local\+Uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a46f59a8d3104d824826d5dd104d55393}\label{namespaceomexmeta_a46f59a8d3104d824826d5dd104d55393}} 
+\mbox{\Hypertarget{namespaceomexmeta_a63269eb1edec559bf109af8fda0381db}\label{namespaceomexmeta_a63269eb1edec559bf109af8fda0381db}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Creator} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_af1ab848f3e3f81ab4dbc822c84aab92e}\label{namespaceomexmeta_af1ab848f3e3f81ab4dbc822c84aab92e}} 
+\mbox{\Hypertarget{namespaceomexmeta_ae0a51e16a01aa55c165594e555991d54}\label{namespaceomexmeta_ae0a51e16a01aa55c165594e555991d54}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Name} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a30bf0fbfd78a23a0e2d87e1cb981cc8a}\label{namespaceomexmeta_a30bf0fbfd78a23a0e2d87e1cb981cc8a}} 
+\mbox{\Hypertarget{namespaceomexmeta_acae05a2e4439588e3fe1334b51246513}\label{namespaceomexmeta_acae05a2e4439588e3fe1334b51246513}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Mbox} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a75306b1329c755b124ad9b40f147abdc}\label{namespaceomexmeta_a75306b1329c755b124ad9b40f147abdc}} 
+\mbox{\Hypertarget{namespaceomexmeta_a83c5a039b59f8d9faf01fe507bf0612c}\label{namespaceomexmeta_a83c5a039b59f8d9faf01fe507bf0612c}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Account\+Name} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ad597791b54c6f08a3572033aab6487dd}\label{namespaceomexmeta_ad597791b54c6f08a3572033aab6487dd}} 
+\mbox{\Hypertarget{namespaceomexmeta_a93547da26fc240d82921179dd14294b4}\label{namespaceomexmeta_a93547da26fc240d82921179dd14294b4}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Account\+Service\+Homepage} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ac131d8bd8df53e89fa1256a0be45358d}\label{namespaceomexmeta_ac131d8bd8df53e89fa1256a0be45358d}} 
+\mbox{\Hypertarget{namespaceomexmeta_a21b1165e2f0919282a0a6aeed8b7c633}\label{namespaceomexmeta_a21b1165e2f0919282a0a6aeed8b7c633}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Foaf\+Blank} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$predicate, const char $\ast$blank\+\_\+value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a31ecc9357011658fa6785451886a0b64}\label{namespaceomexmeta_a31ecc9357011658fa6785451886a0b64}} 
+\mbox{\Hypertarget{namespaceomexmeta_a4b299993e487ba21d53cae4e0fbbfc74}\label{namespaceomexmeta_a4b299993e487ba21d53cae4e0fbbfc74}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Foaf\+Uri} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$predicate, const char $\ast$uri\+\_\+value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a692328b7caa5527bf1f5ff86e7077637}\label{namespaceomexmeta_a692328b7caa5527bf1f5ff86e7077637}} 
+\mbox{\Hypertarget{namespaceomexmeta_aa3af888cdc87eed1c6c1405dd13bd197}\label{namespaceomexmeta_aa3af888cdc87eed1c6c1405dd13bd197}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Foaf\+Literal} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$predicate, const char $\ast$literal\+\_\+value)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a6edcf0c8af06246bb3344ff3f4ea7a21}\label{namespaceomexmeta_a6edcf0c8af06246bb3344ff3f4ea7a21}} 
+\mbox{\Hypertarget{namespaceomexmeta_a2c506a7c5bc41b06e8163f09e1dcc661}\label{namespaceomexmeta_a2c506a7c5bc41b06e8163f09e1dcc661}} 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ {\bfseries Personal\+Information\+\_\+add\+Foaf} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&value\+\_\+node)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_aba8bceb7297f33061319f06af29d14ec}\label{namespaceomexmeta_aba8bceb7297f33061319f06af29d14ec}} 
+\mbox{\Hypertarget{namespaceomexmeta_a96087cb8a2fffd948b296d795a7f5f1f}\label{namespaceomexmeta_a96087cb8a2fffd948b296d795a7f5f1f}} 
 char $\ast$ {\bfseries Personal\+Information\+\_\+get\+Metaid} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ac71f84e1edff4f5023e02a607e9809f4}\label{namespaceomexmeta_ac71f84e1edff4f5023e02a607e9809f4}} 
+\mbox{\Hypertarget{namespaceomexmeta_a2636ff0b1d5f71c616f93a9f0caab74e}\label{namespaceomexmeta_a2636ff0b1d5f71c616f93a9f0caab74e}} 
 int {\bfseries Personal\+Information\+\_\+set\+Metaid} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$metaid)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a7a1a593f975f9b4c81a6f4b762eacb97}\label{namespaceomexmeta_a7a1a593f975f9b4c81a6f4b762eacb97}} 
+\mbox{\Hypertarget{namespaceomexmeta_aef84e089df357a1ecb63aefd16a3478b}\label{namespaceomexmeta_aef84e089df357a1ecb63aefd16a3478b}} 
 char $\ast$ {\bfseries Personal\+Information\+\_\+get\+Model\+Uri} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_af1b8bfaffdb6766ddaf1f52785436980}\label{namespaceomexmeta_af1b8bfaffdb6766ddaf1f52785436980}} 
+\mbox{\Hypertarget{namespaceomexmeta_a9129b86c0d03f176dd0cc0bc3f23a2f5}\label{namespaceomexmeta_a9129b86c0d03f176dd0cc0bc3f23a2f5}} 
 int {\bfseries Personal\+Information\+\_\+set\+Model\+Uri} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$model\+Uri)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_ae46820e98812e5f7e15fba6c2fa5ea55}\label{namespaceomexmeta_ae46820e98812e5f7e15fba6c2fa5ea55}} 
-O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int {\bfseries free\+\_\+c\+\_\+char\+\_\+star\+\_\+star} (char $\ast$$\ast$c, int size)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_ada1c39e1f5456668968eabe1a0ff33ec}\label{namespaceomexmeta_ada1c39e1f5456668968eabe1a0ff33ec}} 
-O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$$\ast$ {\bfseries \+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+char\+\_\+star\+\_\+star} ()
-\item 
-O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int \mbox{\hyperlink{namespaceomexmeta_ab666d5ff29f6e475cd802828097498cf}{free\+\_\+world}} (librdf\+\_\+world $\ast$world)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a5d07b1a3b03615813dbb9efb62efda45}\label{namespaceomexmeta_a5d07b1a3b03615813dbb9efb62efda45}} 
-O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ {\bfseries R\+D\+F\+\_\+get\+Base\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a64ae848c4570f1efb4d47e795b76adcd}\label{namespaceomexmeta_a64ae848c4570f1efb4d47e795b76adcd}} 
-O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int {\bfseries R\+D\+F\+\_\+set\+Base\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$uri)
-\item 
 Predicate\+Ptr \mbox{\hyperlink{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}{Predicate\+Factory}} (std\+::string namespace\+\_\+, const std\+::string \&term)
-\begin{DoxyCompactList}\small\item\em Convenience function for creation of objects in the predicate hierachy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Convenience function for creation of objects in the predicate hierachy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceomexmeta_a902ae2b86ac75376d9d826aecbd99b43}\label{namespaceomexmeta_a902ae2b86ac75376d9d826aecbd99b43}} 
+O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ {\bfseries R\+D\+F\+\_\+get\+Base\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_ac1d5cf2bf56180edb2f88a9282715873}\label{namespaceomexmeta_ac1d5cf2bf56180edb2f88a9282715873}} 
+O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int {\bfseries R\+D\+F\+\_\+set\+Base\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$uri)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a81d062026034e37ec5f03426e17e9a27}\label{namespaceomexmeta_a81d062026034e37ec5f03426e17e9a27}} 
+O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ {\bfseries Physical\+Property\+\_\+get\+Property\+Metaid\+Base} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a8e15562e61908ce32240bc46b044feb0}\label{namespaceomexmeta_a8e15562e61908ce32240bc46b044feb0}} 
+O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -577,29 +634,17 @@ should inherit from librdf\+\_\+statement?
 Denotes the type of composite annotation in use. 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespaceomexmeta_a1d7bca5e4a24d7482048bd28d901e502}\label{namespaceomexmeta_a1d7bca5e4a24d7482048bd28d901e502}} 
+\mbox{\Hypertarget{namespaceomexmeta_a5bcb86d9365fd275b3ca0823b2146651}\label{namespaceomexmeta_a5bcb86d9365fd275b3ca0823b2146651}} 
 \index{omexmeta@{omexmeta}!\_func\_that\_returns\_dynamic\_alloc\_str@{\_func\_that\_returns\_dynamic\_alloc\_str}}
 \index{\_func\_that\_returns\_dynamic\_alloc\_str@{\_func\_that\_returns\_dynamic\_alloc\_str}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{\_func\_that\_returns\_dynamic\_alloc\_str()}{\_func\_that\_returns\_dynamic\_alloc\_str()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ omexmeta\+::\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char$\ast$ omexmeta\+::\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-For testing. \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a3c05babeced84a464bcf29fb618230b4}\label{namespaceomexmeta_a3c05babeced84a464bcf29fb618230b4}} 
-\index{omexmeta@{omexmeta}!Editor\_addNamespace@{Editor\_addNamespace}}
-\index{Editor\_addNamespace@{Editor\_addNamespace}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{Editor\_addNamespace()}{Editor\_addNamespace()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Editor\+\_\+add\+Namespace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr,  }\item[{const char $\ast$}]{namespace\+\_\+,  }\item[{const char $\ast$}]{prefix }\end{DoxyParamCaption})}
-
-\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class methods \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}\label{namespaceomexmeta_a96e4c18dc172184811a0bd6468d00b35}} 
+For testing. \mbox{\Hypertarget{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}\label{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}} 
 \index{omexmeta@{omexmeta}!Editor\_getXml@{Editor\_getXml}}
 \index{Editor\_getXml@{Editor\_getXml}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{Editor\_getXml()}{Editor\_getXml()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ omexmeta\+::\+Editor\+\_\+get\+Xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ omexmeta\+::\+Editor\+\_\+get\+Xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}@brief get the xml from the editor
 \end{DoxyVerb}
@@ -607,76 +652,83 @@ For testing. \begin{Desc}
 
 The returned string is owned by the caller. \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_ab666d5ff29f6e475cd802828097498cf}\label{namespaceomexmeta_ab666d5ff29f6e475cd802828097498cf}} 
-\index{omexmeta@{omexmeta}!free\_world@{free\_world}}
-\index{free\_world@{free\_world}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{free\_world()}{free\_world()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::free\+\_\+world (\begin{DoxyParamCaption}\item[{librdf\+\_\+world $\ast$}]{world }\end{DoxyParamCaption})}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a11a77dd69a30da66d2e7bbddaa15c15c}\label{namespaceomexmeta_a11a77dd69a30da66d2e7bbddaa15c15c}} 
+\index{omexmeta@{omexmeta}!Editor\_newPhysicalEntity@{Editor\_newPhysicalEntity}}
+\index{Editor\_newPhysicalEntity@{Editor\_newPhysicalEntity}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{Editor\_newPhysicalEntity()}{Editor\_newPhysicalEntity()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ omexmeta\+::\+Editor\+\_\+new\+Physical\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
 
-librdf\+\_\+world methods
-
-note\+: Really I do not want users to have to deal with this todo take steps to ensure users do not need to interact with the librdf\+\_\+world$\ast$ \begin{Desc}
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a119fbc0317a5af631e7f68caece8c70b}\label{namespaceomexmeta_a119fbc0317a5af631e7f68caece8c70b}} 
-\index{omexmeta@{omexmeta}!PersonalInformation\_new@{PersonalInformation\_new}}
-\index{PersonalInformation\_new@{PersonalInformation\_new}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{PersonalInformation\_new()}{PersonalInformation\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$ omexmeta\+::\+Personal\+Information\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a30d98a9eb2bc11c67f7ca13a68aa1a73}\label{namespaceomexmeta_a30d98a9eb2bc11c67f7ca13a68aa1a73}} 
+\index{omexmeta@{omexmeta}!Editor\_newSingularAnnotation@{Editor\_newSingularAnnotation}}
+\index{Editor\_newSingularAnnotation@{Editor\_newSingularAnnotation}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{Editor\_newSingularAnnotation()}{Editor\_newSingularAnnotation()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ omexmeta\+::\+Editor\+\_\+new\+Singular\+Annotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
 
-\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class methods \begin{Desc}
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a3a7a18de6e1b6c264c3ee22cd289d243}\label{namespaceomexmeta_a3a7a18de6e1b6c264c3ee22cd289d243}} 
-\index{omexmeta@{omexmeta}!PhysicalEntity\_new@{PhysicalEntity\_new}}
-\index{PhysicalEntity\_new@{PhysicalEntity\_new}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{PhysicalEntity\_new()}{PhysicalEntity\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ omexmeta\+::\+Physical\+Entity\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
-
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} class methods \begin{Desc}
-\item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}\label{namespaceomexmeta_aad5757f8832cf5fcaf546cec1f97af82}} 
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_ade152f2f88f1394cfd5341d504384532}\label{namespaceomexmeta_ade152f2f88f1394cfd5341d504384532}} 
 \index{omexmeta@{omexmeta}!EnergyDiff\_delete@{EnergyDiff\_delete}}
 \index{EnergyDiff\_delete@{EnergyDiff\_delete}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{EnergyDiff\_delete()}{EnergyDiff\_delete()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Force\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$}]{physical\+Force }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Energy\+Diff\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$}]{physical\+Force }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief deletes energy differential excluding all
+\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} class methods \begin{DoxyVerb}@brief deletes energy differential excluding all
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}\label{namespaceomexmeta_ac9903c88bb127f778476bdffe075ed8a}} 
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_ac4ee432e12f736c29692417b0302f5f0}\label{namespaceomexmeta_ac4ee432e12f736c29692417b0302f5f0}} 
 \index{omexmeta@{omexmeta}!EnergyDiff\_freeAll@{EnergyDiff\_freeAll}}
 \index{EnergyDiff\_freeAll@{EnergyDiff\_freeAll}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{EnergyDiff\_freeAll()}{EnergyDiff\_freeAll()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Force\+\_\+free\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$}]{physical\+\_\+force\+\_\+ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Energy\+Diff\+\_\+free\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}} $\ast$}]{energy\+\_\+diff\+\_\+ptr }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}@brief deletes energy differential including all
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}\label{namespaceomexmeta_a20e720c23e2368bf19c316971ebeafd7}} 
-\index{omexmeta@{omexmeta}!EnergyDiff\_new@{EnergyDiff\_new}}
-\index{EnergyDiff\_new@{EnergyDiff\_new}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{EnergyDiff\_new()}{EnergyDiff\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} $\ast$ omexmeta\+::\+Physical\+Force\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}\label{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}} 
+\index{omexmeta@{omexmeta}!PersonalInformation\_delete@{PersonalInformation\_delete}}
+\index{PersonalInformation\_delete@{PersonalInformation\_delete}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{PersonalInformation\_delete()}{PersonalInformation\_delete()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Personal\+Information\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$}]{information }\end{DoxyParamCaption})}
 
-\mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Physical\+Force}} class methods \begin{Desc}
+\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a4b7cef4fcdbd4502c94b18da2f85470f}\label{namespaceomexmeta_a4b7cef4fcdbd4502c94b18da2f85470f}} 
-\index{omexmeta@{omexmeta}!PhysicalProcess\_new@{PhysicalProcess\_new}}
-\index{PhysicalProcess\_new@{PhysicalProcess\_new}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{PhysicalProcess\_new()}{PhysicalProcess\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ omexmeta\+::\+Physical\+Process\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}\label{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}} 
+\index{omexmeta@{omexmeta}!PhysicalEntity\_delete@{PhysicalEntity\_delete}}
+\index{PhysicalEntity\_delete@{PhysicalEntity\_delete}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{PhysicalEntity\_delete()}{PhysicalEntity\_delete()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Entity\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$}]{physical\+\_\+entity\+\_\+ptr }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} class methods \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a8f35bfdeddd4366704c681fac1b8112e}\label{namespaceomexmeta_a8f35bfdeddd4366704c681fac1b8112e}} 
+\index{omexmeta@{omexmeta}!PhysicalProcess\_delete@{PhysicalProcess\_delete}}
+\index{PhysicalProcess\_delete@{PhysicalProcess\_delete}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{PhysicalProcess\_delete()}{PhysicalProcess\_delete()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Physical\+Process\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$}]{physical\+Process }\end{DoxyParamCaption})}
 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}\label{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}} 
+\index{omexmeta@{omexmeta}!PhysicalProperty\_getAbout@{PhysicalProperty\_getAbout}}
+\index{PhysicalProperty\_getAbout@{PhysicalProperty\_getAbout}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{PhysicalProperty\_getAbout()}{PhysicalProperty\_getAbout()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ omexmeta\+::\+Physical\+Property\+\_\+get\+About (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$}]{property }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} class methods \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}\label{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}} 
 \index{omexmeta@{omexmeta}!PredicateFactory@{PredicateFactory}}
 \index{PredicateFactory@{PredicateFactory}!omexmeta@{omexmeta}}
@@ -707,23 +759,23 @@ namespace\+\_\+ argument is\+:
 \begin{DoxyReturn}{Returns}
 a shared\+\_\+ptr to a object from the predicate heirachy. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespaceomexmeta_ad25c02c4a271f0b7c5585d0cb241f102}\label{namespaceomexmeta_ad25c02c4a271f0b7c5585d0cb241f102}} 
+\mbox{\Hypertarget{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}\label{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}} 
 \index{omexmeta@{omexmeta}!RDF\_new@{RDF\_new}}
 \index{RDF\_new@{RDF\_new}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{RDF\_new()}{RDF\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ omexmeta\+::\+R\+D\+F\+\_\+new (\begin{DoxyParamCaption}\item[{const char $\ast$}]{storage\+\_\+type,  }\item[{const char $\ast$}]{storage\+\_\+name,  }\item[{const char $\ast$}]{storage\+\_\+options,  }\item[{const char $\ast$}]{model\+\_\+options }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ omexmeta\+::\+R\+D\+F\+\_\+new (\begin{DoxyParamCaption}\item[{const char $\ast$}]{storage\+\_\+type,  }\item[{const char $\ast$}]{storage\+\_\+name,  }\item[{const char $\ast$}]{storage\+\_\+options,  }\item[{const char $\ast$}]{model\+\_\+options }\end{DoxyParamCaption})}
 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} methods
 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
-\mbox{\Hypertarget{namespaceomexmeta_a56234965820e6e731cb377af949585a3}\label{namespaceomexmeta_a56234965820e6e731cb377af949585a3}} 
-\index{omexmeta@{omexmeta}!SingularAnnotation\_new@{SingularAnnotation\_new}}
-\index{SingularAnnotation\_new@{SingularAnnotation\_new}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{SingularAnnotation\_new()}{SingularAnnotation\_new()}}
-{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$ omexmeta\+::\+Singular\+Annotation\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor\+\_\+ptr }\end{DoxyParamCaption})}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}\label{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}} 
+\index{omexmeta@{omexmeta}!SingularAnnotation\_delete@{SingularAnnotation\_delete}}
+\index{SingularAnnotation\_delete@{SingularAnnotation\_delete}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{SingularAnnotation\_delete()}{SingularAnnotation\_delete()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT int omexmeta\+::\+Singular\+Annotation\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$}]{singular\+Annotation }\end{DoxyParamCaption})}
 
 Singular\+Annotation class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}

@@ -2,16 +2,186 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="RaptorIOStream_8cpp" kind="file" language="C++">
     <compoundname>RaptorIOStream.cpp</compoundname>
-    <includes local="yes">redland/RaptorIOStream.h</includes>
+    <includes refid="RaptorIOStream_8h" local="yes">redland/RaptorIOStream.h</includes>
     <incdepgraph>
+      <node id="7">
+        <label>stdarg.h</label>
+      </node>
+      <node id="27">
+        <label>World.h</label>
+        <link refid="World_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>rdf_init.h</label>
+      </node>
+      <node id="24">
+        <label>rdf_stream.h</label>
+      </node>
+      <node id="16">
+        <label>rdf_node.h</label>
+      </node>
+      <node id="20">
+        <label>rdf_storage.h</label>
+      </node>
       <node id="1">
         <label>src/redland/RedlandWrapper/src/RaptorIOStream.cpp</label>
         <link refid="RaptorIOStream_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="25">
+        <label>rdf_query.h</label>
+      </node>
+      <node id="14">
+        <label>rdf_iterator.h</label>
+      </node>
+      <node id="29">
+        <label>regex</label>
+      </node>
+      <node id="32">
+        <label>exception</label>
+      </node>
+      <node id="22">
+        <label>rdf_raptor.h</label>
+      </node>
+      <node id="21">
+        <label>rdf_parser.h</label>
+      </node>
+      <node id="5">
+        <label>raptor2.h</label>
+        <link refid="raptor2_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>redland_export.h</label>
+      </node>
+      <node id="19">
+        <label>rdf_model.h</label>
+      </node>
+      <node id="17">
+        <label>rdf_concepts.h</label>
+      </node>
+      <node id="31">
+        <label>LibrdfException.h</label>
+        <link refid="LibrdfException_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>utility</label>
+      </node>
+      <node id="9">
+        <label>rasqal.h</label>
+        <link refid="rasqal_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>rdf_hash.h</label>
+      </node>
+      <node id="15">
+        <label>rdf_uri.h</label>
+      </node>
+      <node id="28">
+        <label>iostream</label>
+      </node>
+      <node id="10">
+        <label>rdf_log.h</label>
+      </node>
+      <node id="4">
+        <label>librdf.h</label>
+        <link refid="librdf_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>rdf_statement.h</label>
+      </node>
+      <node id="23">
+        <label>rdf_serializer.h</label>
+      </node>
       <node id="2">
         <label>redland/RaptorIOStream.h</label>
+        <link refid="RaptorIOStream_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>rdf_utf8.h</label>
+      </node>
+      <node id="6">
+        <label>stdio.h</label>
+      </node>
+      <node id="11">
+        <label>rdf_digest.h</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceredland">redland</innernamespace>
@@ -49,7 +219,7 @@
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>World::getRaptor(),<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**)<sp/>&amp;buffer_to_hold_string,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>malloc)</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ios.get())</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>RedlandNullPointerException(</highlight><highlight class="stringliteral">&quot;Writer::toString():<sp/>raptor_iostream&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classRedlandNullPointerException" kindref="compound">RedlandNullPointerException</ref>(</highlight><highlight class="stringliteral">&quot;Writer::toString():<sp/>raptor_iostream&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pair&lt;RaptorIOStream,<sp/>void<sp/>*&gt;<sp/>pair(std::move(ios),<sp/>buffer_to_hold_string);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pair;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

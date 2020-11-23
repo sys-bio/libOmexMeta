@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['operator_3d_438',['operator=',['../classomexmeta_1_1PersonalInformation.html#a11a759dd5f065ba6a48f0bc3b4c48438',1,'omexmeta::PersonalInformation::operator=(const PersonalInformation &amp;information)=delete'],['../classomexmeta_1_1PersonalInformation.html#a048a3377b27d4b87681e4f8c24dd8c4f',1,'omexmeta::PersonalInformation::operator=(PersonalInformation &amp;&amp;information) noexcept'],['../classomexmeta_1_1PhysicalPhenomenon.html#aac3920bfe9bf16e071ebdd8ed4fabe2f',1,'omexmeta::PhysicalPhenomenon::operator=(const PhysicalPhenomenon &amp;phenomenon)=delete'],['../classomexmeta_1_1PhysicalPhenomenon.html#af15355b4c2a361b4b02dca02d3877aed',1,'omexmeta::PhysicalPhenomenon::operator=(PhysicalPhenomenon &amp;&amp;phenomenon) noexcept'],['../classomexmeta_1_1Query.html#a818772558b490e25b2ee1bc2417e1282',1,'omexmeta::Query::operator=()'],['../classomexmeta_1_1RDF.html#a9d1b20d798969d3c1dac412c621247b9',1,'omexmeta::RDF::operator=(const RDF &amp;rdf)=delete'],['../classomexmeta_1_1RDF.html#ae3739bda3be0986547c31559381f3df4',1,'omexmeta::RDF::operator=(RDF &amp;&amp;rdf) noexcept']]],
-  ['operator_5b_5d_439',['operator[]',['../classomexmeta_1_1Triples.html#a43d540423a436986d9f72d7cf0f02d72',1,'omexmeta::Triples']]]
+  ['namespaceknown_502',['namespaceKnown',['../classomexmeta_1_1Predicate.html#a8381c8b0c7bbaa27de29608cbff08bf5',1,'omexmeta::Predicate']]],
+  ['namespacemap_503',['namespaceMap',['../classomexmeta_1_1Predicate.html#a1291e3cd9727871f568e864e0f5af3f0',1,'omexmeta::Predicate']]],
+  ['newenergydiff_504',['newEnergyDiff',['../classomexmeta_1_1Editor.html#a4faf7d0c71afca8ded828ac7bdb857f5',1,'omexmeta::Editor']]],
+  ['newpersonalinformation_505',['newPersonalInformation',['../classomexmeta_1_1Editor.html#a1943079ddbc4a4c6d896f51f360a11df',1,'omexmeta::Editor']]],
+  ['newphysicalentity_506',['newPhysicalEntity',['../classomexmeta_1_1Editor.html#a245b2105c175892d1fddaf693fa9d636',1,'omexmeta::Editor']]],
+  ['newphysicalprocess_507',['newPhysicalProcess',['../classomexmeta_1_1Editor.html#a2815d918736ee17d07306c5cf07c8ebf',1,'omexmeta::Editor']]],
+  ['newphysicalproperty_508',['newPhysicalProperty',['../classomexmeta_1_1Editor.html#aeae47fb60d955f506de2f16a54c0679a',1,'omexmeta::Editor']]],
+  ['newphysicalpropertyptr_509',['newPhysicalPropertyPtr',['../classomexmeta_1_1Editor.html#ab36fc15581a0aa0af434af60d4f910ac',1,'omexmeta::Editor']]],
+  ['newsingularannotation_510',['newSingularAnnotation',['../classomexmeta_1_1Editor.html#a50674b2591d2fed572954ac8490ee21c',1,'omexmeta::Editor::newSingularAnnotation(std::string metaid) const'],['../classomexmeta_1_1Editor.html#a6142da2b89068e9638410c3c903e3b64',1,'omexmeta::Editor::newSingularAnnotation() const']]]
 ];

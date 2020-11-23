@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/CurlGet.h" line="24" column="23" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="8" bodyend="11"/>
+        <location file="src/omexmeta/include/omexmeta/CurlGet.h" line="24" column="23" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="8" bodyend="11"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/CurlGet.h" line="27" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/CurlGet.h" line="27" column="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/CurlGet.h" line="35" column="20" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="13" bodyend="62"/>
+        <location file="src/omexmeta/include/omexmeta/CurlGet.h" line="35" column="20" bodyfile="src/omexmeta/CurlGet.cpp" bodystart="13" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -99,7 +99,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/CurlGet.h" line="18" column="6" bodyfile="src/omexmeta/CurlGet.h" bodystart="18" bodyend="36"/>
+    <location file="src/omexmeta/include/omexmeta/CurlGet.h" line="18" column="6" bodyfile="src/omexmeta/include/omexmeta/CurlGet.h" bodystart="18" bodyend="36"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1CurlGet_1ab7170b3c78cd45d7112da1a436017201" prot="public" virt="non-virtual"><scope>omexmeta::CurlGet</scope><name>CurlGet</name></member>
       <member refid="classomexmeta_1_1CurlGet_1a32357d9722cbedf644ae66f5b8e26876" prot="private" virt="non-virtual"><scope>omexmeta::CurlGet</scope><name>curlWriteCallback</name></member>
