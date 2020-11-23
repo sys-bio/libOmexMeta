@@ -344,6 +344,7 @@ stages:
             ParallelCount: 8
   - stage:
     # collect wheels for pip
+    displayName: Collect Pip Wheels
     dependsOn: BuildInstallAndTest
     jobs:
       - job: CollectPipWheels
