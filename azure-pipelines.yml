@@ -12,6 +12,7 @@ pr:
 - develop
 
 jobs:
+  # linux
   - job: BuildLinux
     timeoutInMinutes: "0"
     pool:
@@ -115,11 +116,9 @@ jobs:
       - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: libOmexMeta$(Agent.OS)
+          artifactName: libOmexMeta-x64Windows
           Parallel: true
           ParallelCount: 8
-
-
 
   # macos
   - job: BuildMacOS
@@ -221,7 +220,7 @@ jobs:
       - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: libOmexMeta$(Agent.OS)
+          artifactName: libOmexMeta-x64Mac
           Parallel: true
           ParallelCount: 8
 
@@ -337,6 +336,33 @@ jobs:
       - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: libOmexMeta$(Agent.OS)
+          artifactName: libOmexMeta-x64Mac
           Parallel: true
           ParallelCount: 8
+
+  # collect wheels for pip
+  - job: CollectPipWheels
+    timeoutInMinutes: 0
+    variables:
+      INSTALLED_ROOT: $(System.ArtifactStagingDirectory)
+      PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
+      WINDOWS: $(INSTALLED_ROOT)/libOmexMeta-x64Windows/dist
+      LINUX: $(INSTALLED_ROOT)/libOmexMeta-x64Ubuntu/dist
+      MAC: $(INSTALLED_ROOT)/libOmexMeta-x64Mac/dist
+
+    steps:
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(WINDOWS)
+          contents: '*.whl'
+          targetFolder: $(PIP_WHEELS)
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(LINUX)
+          contents: '*.whl'
+          targetFolder: $(PIP_WHEELS)
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(MAC)
+          contents: '*.whl'
+          targetFolder: $(PIP_WHEELS)
