@@ -1,6 +1,6 @@
 import os
 import matplotlib.pyplot as plt
-from pyomexmeta import RDF
+from pyomexmeta import RDF, eUriType
 
 # get the link to teusink2000
 teusink_biomod_link = r"https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"

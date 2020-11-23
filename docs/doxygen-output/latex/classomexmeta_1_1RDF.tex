@@ -5,16 +5,22 @@
 \item 
 Omex\+Meta\+Xml\+Type \mbox{\hyperlink{classomexmeta_1_1RDF_a6979e6ca2688cf5cae1e9e1cf3a7309a}{get\+Xml\+Type}} () const
 \begin{DoxyCompactList}\small\item\em getter for xml\+Type attribue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_add69d33d544dc31789b2ff0a71182a84}\label{classomexmeta_1_1RDF_add69d33d544dc31789b2ff0a71182a84}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&rhs) const
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_ac652b39964477c8ea69e5218f2203013}\label{classomexmeta_1_1RDF_ac652b39964477c8ea69e5218f2203013}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&rhs) const
+\item 
 void \mbox{\hyperlink{classomexmeta_1_1RDF_a8fc7b226619580fac47afce0a7ec2628}{set\+Xml\+Type}} (Omex\+Meta\+Xml\+Type xml\+Type)
 \begin{DoxyCompactList}\small\item\em set the xml type for the current graph. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a60b4a0a8c0c4f30a9cc71f9899bffabc}\label{classomexmeta_1_1RDF_a60b4a0a8c0c4f30a9cc71f9899bffabc}} 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1RDF_a60b4a0a8c0c4f30a9cc71f9899bffabc}{get\+Repository\+Uri}} () const
 \begin{DoxyCompactList}\small\item\em getter for repository uri which defaults to \char`\"{}http\+://omex-\/library.\+org/\char`\"{} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1RDF_a9e8669ac5cf5dbcaf235f535f7482a7a}{set\+Repository\+Uri}} (std\+::string repository\+Name)
+void \mbox{\hyperlink{classomexmeta_1_1RDF_ab1542acaf8d67ce96ace2825600ac600}{set\+Repository\+Uri}} (const std\+::string \&repository\+Name)
 \begin{DoxyCompactList}\small\item\em setter for the repository uri which defaults to \char`\"{}http\+://omex-\/library.\+org/\char`\"{}. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1RDF_a1b3bd1292e77c1d87720f854ec5a04bd}{get\+Archive\+Uri}} () const
 \begin{DoxyCompactList}\small\item\em getter for archive\+Uri attribute. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1RDF_a77ba0cbdb6070ac78f14044197d79cd8}{set\+Archive\+Uri}} (std\+::string archive\+Name)
+void \mbox{\hyperlink{classomexmeta_1_1RDF_a1670aa8c6379324aa414d0c56cfa7e4a}{set\+Archive\+Uri}} (const std\+::string \&archive\+Name)
 \begin{DoxyCompactList}\small\item\em setter for archive\+Uri attribute. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1RDF_ac579ac8b79eb7d374a9077114837d2ef}{get\+Model\+Uri}} () const
 \begin{DoxyCompactList}\small\item\em getter for model uri. \end{DoxyCompactList}\item 
@@ -83,7 +89,13 @@ int {\bfseries get\+Transaction\+Rollback} () const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ab168be2c14d53c3fc94024121dc88ba6}\label{classomexmeta_1_1RDF_ab168be2c14d53c3fc94024121dc88ba6}} 
 std\+::string {\bfseries query} (const std\+::string \&query\+\_\+str, const std\+::string \&results\+\_\+format) const
-\end{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a9ecf58f64ea449a01457bfc28bb53e17}\label{classomexmeta_1_1RDF_a9ecf58f64ea449a01457bfc28bb53e17}} 
+void \mbox{\hyperlink{classomexmeta_1_1RDF_a9ecf58f64ea449a01457bfc28bb53e17}{add\+Triple}} (const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&triple)
+\begin{DoxyCompactList}\small\item\em add a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} to the current model \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a7a6ad7d96f3104da8356f02ac6705941}\label{classomexmeta_1_1RDF_a7a6ad7d96f3104da8356f02ac6705941}} 
+void \mbox{\hyperlink{classomexmeta_1_1RDF_a7a6ad7d96f3104da8356f02ac6705941}{add\+Triples}} (const \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&triples)
+\begin{DoxyCompactList}\small\item\em add a set of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} to the current model \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -97,7 +109,17 @@ static void \mbox{\hyperlink{classomexmeta_1_1RDF_ab2dadc7ff1cf25edbb401b2c879a2
 \begin{DoxyCompactList}\small\item\em non static version of \mbox{\hyperlink{classomexmeta_1_1RDF_a9d91b3134cdcc6dfef6d62b7b09d8da2}{R\+D\+F\+::from\+String}} that takes a $\ast$ \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} pointer object and modifies in place. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ae01ed260e02eda2141ffe1288f78c177}\label{classomexmeta_1_1RDF_ae01ed260e02eda2141ffe1288f78c177}} 
 static std\+::ostringstream {\bfseries list\+Options} ()
-\end{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classomexmeta_1_1RDF_aecf658fb2442857994104693b3ad0e32}{equals}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$actual, const std\+::string \&expected, const std\+::string \&format=\char`\"{}turtle\char`\"{})
+\begin{DoxyCompactList}\small\item\em test for equality between \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classomexmeta_1_1RDF_acfa31de8762c1ddbf53eda0c3e1af30a}{equals}} (const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&actual, const std\+::string \&expected, const std\+::string \&format=\char`\"{}turtle\char`\"{})
+\begin{DoxyCompactList}\small\item\em test for equality between \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classomexmeta_1_1RDF_a8101930655e94114599d48f4a973d51f}{equals}} (const \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&actual, const std\+::string \&expected, const std\+::string \&format=\char`\"{}turtle\char`\"{})
+\begin{DoxyCompactList}\small\item\em test for equality between \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classomexmeta_1_1RDF_a686595f16edca5d2fa834056ba43bc09}{equals}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$actual, \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$expected, const std\+::string \&format=\char`\"{}turtle\char`\"{})
+\begin{DoxyCompactList}\small\item\em test for equality between \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classomexmeta_1_1RDF_aa26e7c1636fc5d0fc45691db6a97c1ac}{equals}} (const std\+::string \&first, const std\+::string \&second, const std\+::string \&first\+\_\+format=\char`\"{}turtle\char`\"{}, const std\+::string \&second\+\_\+format=\char`\"{}turtle\char`\"{})
+\begin{DoxyCompactList}\small\item\em test for equality between \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -109,9 +131,6 @@ std\+::vector$<$ std\+::string $>$ {\bfseries seen\+\_\+namespaces\+\_\+}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}\label{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}} 
 const std\+::string {\bfseries O\+M\+E\+Xlib\+\_\+} = \char`\"{}http\+://O\+M\+E\+Xlibrary.\+org/\char`\"{}
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a5b1184955f2401c30116c7473be1ca1d}\label{classomexmeta_1_1RDF_a5b1184955f2401c30116c7473be1ca1d}} 
-Namespace\+Map {\bfseries default\+\_\+namespaces\+\_\+} = \mbox{\hyperlink{classomexmeta_1_1Predicate_a1291e3cd9727871f568e864e0f5af3f0}{Predicate\+::namespace\+Map}}()
 \end{DoxyCompactItemize}
 
 
@@ -191,6 +210,91 @@ indicator for whether the \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} graph i
 \begin{DoxyReturn}{Returns}
 true if \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} graph has no triples, false otherwise. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1RDF_aa26e7c1636fc5d0fc45691db6a97c1ac}\label{classomexmeta_1_1RDF_aa26e7c1636fc5d0fc45691db6a97c1ac}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!equals@{equals}}
+\index{equals@{equals}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily bool omexmeta\+::\+R\+D\+F\+::equals (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{first,  }\item[{const std\+::string \&}]{second,  }\item[{const std\+::string \&}]{first\+\_\+format = {\ttfamily \char`\"{}turtle\char`\"{}},  }\item[{const std\+::string \&}]{second\+\_\+format = {\ttfamily \char`\"{}turtle\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test for equality between 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & and\\
+\hline
+{\em second} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1RDF_acfa31de8762c1ddbf53eda0c3e1af30a}\label{classomexmeta_1_1RDF_acfa31de8762c1ddbf53eda0c3e1af30a}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!equals@{equals}}
+\index{equals@{equals}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily bool omexmeta\+::\+R\+D\+F\+::equals (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&}]{actual,  }\item[{const std\+::string \&}]{expected,  }\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test for equality between 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual} & and\\
+\hline
+{\em expected} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a8101930655e94114599d48f4a973d51f}\label{classomexmeta_1_1RDF_a8101930655e94114599d48f4a973d51f}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!equals@{equals}}
+\index{equals@{equals}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily bool omexmeta\+::\+R\+D\+F\+::equals (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&}]{actual,  }\item[{const std\+::string \&}]{expected,  }\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test for equality between 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual} & and\\
+\hline
+{\em expected} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1RDF_aecf658fb2442857994104693b3ad0e32}\label{classomexmeta_1_1RDF_aecf658fb2442857994104693b3ad0e32}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!equals@{equals}}
+\index{equals@{equals}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily bool omexmeta\+::\+R\+D\+F\+::equals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$}]{actual,  }\item[{const std\+::string \&}]{expected,  }\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test for equality between 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual} & and\\
+\hline
+{\em expected} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a686595f16edca5d2fa834056ba43bc09}\label{classomexmeta_1_1RDF_a686595f16edca5d2fa834056ba43bc09}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!equals@{equals}}
+\index{equals@{equals}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily bool omexmeta\+::\+R\+D\+F\+::equals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$}]{actual,  }\item[{\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$}]{expected,  }\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+test for equality between 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual} & and\\
+\hline
+{\em expected} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a98a1da84161a7935bf38ec5e5d34e91f}\label{classomexmeta_1_1RDF_a98a1da84161a7935bf38ec5e5d34e91f}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!fromFile@{fromFile}}
 \index{fromFile@{fromFile}!omexmeta::RDF@{omexmeta::RDF}}
@@ -288,7 +392,7 @@ defaults to \href{http://omex-library.org/NewOmex.omex/NewModel.rdf\#}{\texttt{ 
 
 getter for model uri. 
 
-defaults to \href{http://omex-library.org/NewOmex.omex/NewModel.xml\#}{\texttt{ http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+xml\#}} \mbox{\Hypertarget{classomexmeta_1_1RDF_a6979e6ca2688cf5cae1e9e1cf3a7309a}\label{classomexmeta_1_1RDF_a6979e6ca2688cf5cae1e9e1cf3a7309a}} 
+defaults to \href{http://omex-library.org/NewOmex.omex/NewModel.xml}{\texttt{ http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+xml}} \mbox{\Hypertarget{classomexmeta_1_1RDF_a6979e6ca2688cf5cae1e9e1cf3a7309a}\label{classomexmeta_1_1RDF_a6979e6ca2688cf5cae1e9e1cf3a7309a}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!getXmlType@{getXmlType}}
 \index{getXmlType@{getXmlType}!omexmeta::RDF@{omexmeta::RDF}}
 \doxysubsubsection{\texorpdfstring{getXmlType()}{getXmlType()}}
@@ -323,11 +427,11 @@ compared namespaces seen with namespaces known and ensures models that use a kno
 {\em seen\+\_\+namespaces} & a vector of strings of namespaces the parser has seen before. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a77ba0cbdb6070ac78f14044197d79cd8}\label{classomexmeta_1_1RDF_a77ba0cbdb6070ac78f14044197d79cd8}} 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a1670aa8c6379324aa414d0c56cfa7e4a}\label{classomexmeta_1_1RDF_a1670aa8c6379324aa414d0c56cfa7e4a}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!setArchiveUri@{setArchiveUri}}
 \index{setArchiveUri@{setArchiveUri}!omexmeta::RDF@{omexmeta::RDF}}
 \doxysubsubsection{\texorpdfstring{setArchiveUri()}{setArchiveUri()}}
-{\footnotesize\ttfamily void omexmeta\+::\+R\+D\+F\+::set\+Archive\+Uri (\begin{DoxyParamCaption}\item[{std\+::string}]{archive\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+R\+D\+F\+::set\+Archive\+Uri (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{archive\+Name }\end{DoxyParamCaption})}
 
 
 
@@ -350,14 +454,14 @@ setter for model uri.
 
 
 \begin{DoxyParams}{Parameters}
-{\em model\+Name} & string for new model uri.  defaults to \href{http://omex-library.org/NewOmex.omex/NewModel.xml\#}{\texttt{ http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+xml\#}} \\
+{\em model\+Name} & string for new model uri.  defaults to \href{http://omex-library.org/NewOmex.omex/NewModel.xml}{\texttt{ http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+xml}} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a9e8669ac5cf5dbcaf235f535f7482a7a}\label{classomexmeta_1_1RDF_a9e8669ac5cf5dbcaf235f535f7482a7a}} 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_ab1542acaf8d67ce96ace2825600ac600}\label{classomexmeta_1_1RDF_ab1542acaf8d67ce96ace2825600ac600}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!setRepositoryUri@{setRepositoryUri}}
 \index{setRepositoryUri@{setRepositoryUri}!omexmeta::RDF@{omexmeta::RDF}}
 \doxysubsubsection{\texorpdfstring{setRepositoryUri()}{setRepositoryUri()}}
-{\footnotesize\ttfamily void omexmeta\+::\+R\+D\+F\+::set\+Repository\+Uri (\begin{DoxyParamCaption}\item[{std\+::string}]{repository\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+R\+D\+F\+::set\+Repository\+Uri (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{repository\+Name }\end{DoxyParamCaption})}
 
 
 
@@ -437,5 +541,5 @@ serialize \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} graph to string
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/omexmeta/R\+D\+F.\+h\item 
+src/omexmeta/include/omexmeta/R\+D\+F.\+h\item 
 src/omexmeta/R\+D\+F.\+cpp\end{DoxyCompactItemize}

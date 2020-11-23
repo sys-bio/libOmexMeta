@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
 
   
   
@@ -84,12 +88,14 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="developers_index.html">Developers Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="RedlandWrapper/redland_wrapper_index.html">Redland Wrapper</a></li>
@@ -182,7 +188,7 @@ by setting the default symbol visibility to hidden on all platforms. Then,
 we have a set of CMake definitions that need some attention. For
 full details of these definitions please see <a class="reference external" href="https://cmake.org/cmake/help/v3.0/module/GenerateExportHeader.html">the cmake documentation</a>.</p>
 <p>To compile any of the static targets in libomexmeta
-you should have <a href="#id1"><span class="problematic" id="id2">*</span></a>_STATIC_DEFINE compile definition defined. For instance
+you should have <em>_STATIC_DEFINE</em> compile definition defined. For instance
 when compiling the redland-combined-static target you need to have something
 like this in your cmake script:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_target</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span> <span class="s">STATIC</span> <span class="o">${</span><span class="nv">target_sources</span><span class="o">}</span><span class="p">)</span>

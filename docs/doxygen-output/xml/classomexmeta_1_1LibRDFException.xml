@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Error.h" line="60" column="9" bodyfile="src/omexmeta/Error.h" bodystart="17" bodyend="19"/>
+        <location file="src/omexmeta/include/omexmeta/Error.h" line="60" column="9" bodyfile="src/omexmeta/include/omexmeta/Error.h" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1LibRDFException_1ac50b0a25504303cc1a4a1a20de0127eb" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Error.h" line="60" column="9" bodyfile="src/omexmeta/Error.h" bodystart="24" bodyend="25"/>
+        <location file="src/omexmeta/include/omexmeta/Error.h" line="60" column="9" bodyfile="src/omexmeta/include/omexmeta/Error.h" bodystart="24" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -64,14 +64,14 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
-        <label>exception</label>
-      </node>
       <node id="1">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
       </node>
       <node id="2">
         <label>omexmeta::Exception</label>
@@ -81,14 +81,14 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3">
-        <label>exception</label>
-      </node>
       <node id="1">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
       </node>
       <node id="2">
         <label>omexmeta::Exception</label>
@@ -97,7 +97,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/Error.h" line="59" column="5" bodyfile="src/omexmeta/Error.h" bodystart="59" bodyend="61"/>
+    <location file="src/omexmeta/include/omexmeta/Error.h" line="59" column="5" bodyfile="src/omexmeta/include/omexmeta/Error.h" bodystart="59" bodyend="61"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1LibRDFException_1ad09e2a190a245199974678e2790e81ff" prot="private" virt="non-virtual"><scope>omexmeta::LibRDFException</scope><name>Exception</name></member>
       <member refid="classomexmeta_1_1LibRDFException_1ac50b0a25504303cc1a4a1a20de0127eb" prot="private" virt="non-virtual"><scope>omexmeta::LibRDFException</scope><name>Exception</name></member>

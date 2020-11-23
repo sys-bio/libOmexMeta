@@ -19,8 +19,10 @@ EXCLUSION_LIST = [
 
 if sys.platform == "win32":
     ext = ".exe"
-elif sys.platform == "unix":
+elif sys.platform == "unix" :
     ext = ".a"
+elif sys.platform == "darwin":
+    ext = ''
 else:
     raise ValueError("No platform")
 
@@ -28,15 +30,13 @@ EXCLUSION_LIST = [i + ext for i in EXCLUSION_LIST]
 
 # USER SUPPLIED
 INSTALL_BIN_FOLDER = os.path.join(args.install_folder, "bin")
+print("INSTALL_BIN_FOLDER", INSTALL_BIN_FOLDER)
 
 BINARY_FILES = glob.glob(os.path.join(INSTALL_BIN_FOLDER, "*"+ext))
 
 for exclusion in EXCLUSION_LIST:
     BINARY_FILES = [i for i in BINARY_FILES if exclusion not in i]
-
-if "CreatePhysicalEntityCpp" not in [os.path.splitext(os.path.split(i)[1])[0] for i in BINARY_FILES]:
-    raise ValueError("Program CreatePhysicalEntityCpp not listed in your binary files. There is probably a problem.")
-
+print("Binary files: ", BINARY_FILES)
 # we must prepend this to any python file that gets executed.
 path_code = f"""
 import sys

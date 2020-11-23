@@ -13,7 +13,7 @@ Inheritance diagram for omexmeta\+::Triple\+:\begin{figure}[H]
 {\bfseries Triple} (const \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} \&subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_adc457c78ec059eb71602e7ea4f763582}\label{classomexmeta_1_1Triple_adc457c78ec059eb71602e7ea4f763582}} 
-{\bfseries Triple} (librdf\+\_\+node $\ast$subject, librdf\+\_\+node $\ast$\mbox{\hyperlink{classomexmeta_1_1Triple_a27637af321ba7d7eeb2596bac93feb54}{predicate}}, librdf\+\_\+node $\ast$resource)
+{\bfseries Triple} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$\mbox{\hyperlink{classomexmeta_1_1Triple_a27637af321ba7d7eeb2596bac93feb54}{predicate}}, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a1cb45dd3a5778f0e0e92e4a185da9400}\label{classomexmeta_1_1Triple_a1cb45dd3a5778f0e0e92e4a185da9400}} 
 const std\+::string \& {\bfseries get\+Local\+Uri} () const
@@ -24,7 +24,7 @@ void \mbox{\hyperlink{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}
 \mbox{\Hypertarget{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}\label{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}} 
 void \mbox{\hyperlink{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}{set\+Model\+Uri}} (const std\+::string \&model\+\_\+uri)
 \begin{DoxyCompactList}\small\item\em set the model\+\_\+uri\+\_\+ attribute for this triple \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}{str}} (const std\+::string \&format=\char`\"{}turtle\char`\"{}, const std\+::string \&base=(std\+::filesystem\+::current\+\_\+path()/=\char`\"{}annotations.\+rdf\char`\"{}).string(), std\+::string omex\+\_\+name=\char`\"{}New\+Omex.\+omex/\char`\"{}, std\+::string model\+\_\+name=\char`\"{}New\+Model.\+xml\#\char`\"{}) const
+std\+::string \mbox{\hyperlink{classomexmeta_1_1Triple_a2cabbc7a28348a9472bd50f059469183}{str}} (const std\+::string \&format=\char`\"{}turtle\char`\"{}, const std\+::string \&base=(std\+::filesystem\+::current\+\_\+path()/=\char`\"{}annotations.\+rdf\char`\"{}).string(), std\+::string omex\+\_\+name=\char`\"{}New\+Omex.\+omex/\char`\"{}, std\+::string model\+\_\+name=\char`\"{}New\+Model.\+xml\char`\"{}) const
 \begin{DoxyCompactList}\small\item\em serialize the triple using a @format serializer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a3f3868622349d3a3e14ed3e4b21d49a9}\label{classomexmeta_1_1Triple_a3f3868622349d3a3e14ed3e4b21d49a9}} 
 void {\bfseries free\+Triple} ()
@@ -39,7 +39,7 @@ void {\bfseries free\+Triple} ()
 std\+::string {\bfseries get\+About} () const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a886240fe50becaaa47ca171f2d454ba4}\label{classomexmeta_1_1Triple_a886240fe50becaaa47ca171f2d454ba4}} 
-librdf\+\_\+statement $\ast$ {\bfseries get\+Statement} () const
+\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ {\bfseries get\+Statement} () const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a57b4521321178af38415e76cd483207e}\label{classomexmeta_1_1Triple_a57b4521321178af38415e76cd483207e}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& {\bfseries set\+Predicate} (const std\+::string \&namespace\+\_\+, const std\+::string \&term)
@@ -90,17 +90,17 @@ const std\+::string \& {\bfseries get\+Model\+Uri} () const
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_af03c0ce3392c0ff30f13772209ac873c}\label{classomexmeta_1_1Triple_af03c0ce3392c0ff30f13772209ac873c}} 
-static \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} {\bfseries from\+Raw\+Statement\+Ptr} (librdf\+\_\+statement $\ast$statement)
+static \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} {\bfseries from\+Raw\+Statement\+Ptr} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}\label{classomexmeta_1_1Triple_aabfef726172656b6c61c602b4d8d33e5}} 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_a2cabbc7a28348a9472bd50f059469183}\label{classomexmeta_1_1Triple_a2cabbc7a28348a9472bd50f059469183}} 
 \index{omexmeta::Triple@{omexmeta::Triple}!str@{str}}
 \index{str@{str}!omexmeta::Triple@{omexmeta::Triple}}
 \doxysubsubsection{\texorpdfstring{str()}{str()}}
-{\footnotesize\ttfamily std\+::string omexmeta\+::\+Triple\+::str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}},  }\item[{const std\+::string \&}]{base = {\ttfamily (std\+:\+:filesystem\+:\+:current\+\_\+path()~/=~~\char`\"{}annotations.rdf\char`\"{}).string()},  }\item[{std\+::string}]{omex\+\_\+name = {\ttfamily \char`\"{}NewOmex.omex/\char`\"{}},  }\item[{std\+::string}]{model\+\_\+name = {\ttfamily \char`\"{}NewModel.xml\#\char`\"{}} }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Triple\+::str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}},  }\item[{const std\+::string \&}]{base = {\ttfamily (std\+:\+:filesystem\+:\+:current\+\_\+path()~/=~~\char`\"{}annotations.rdf\char`\"{}).string()},  }\item[{std\+::string}]{omex\+\_\+name = {\ttfamily \char`\"{}NewOmex.omex/\char`\"{}},  }\item[{std\+::string}]{model\+\_\+name = {\ttfamily \char`\"{}NewModel.xml\char`\"{}} }\end{DoxyParamCaption}) const}
 
 
 
@@ -110,5 +110,5 @@ Creates an isolated serializer that does not get added to the users annotations.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/omexmeta/Triple.\+h\item 
+src/omexmeta/include/omexmeta/Triple.\+h\item 
 src/omexmeta/Triple.\+cpp\end{DoxyCompactItemize}

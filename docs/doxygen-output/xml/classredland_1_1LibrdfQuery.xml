@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="22" column="25" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.h" bodystart="22" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="22" column="25" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="24" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="24" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfQuery_1aacca5302206092fbd8908934d2236021" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="26" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="10" bodyend="11"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="26" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="10" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfQuery_1a63a49930cc3c54938203683eab2c96fb" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="28" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="13" bodyend="26"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="28" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="13" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfQuery_1a0302f24051ae2050bc2e802a59364554" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_query *</type>
@@ -92,14 +92,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="33" column="23" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="28" bodyend="30"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="33" column="23" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="28" bodyend="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="16" column="5" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.h" bodystart="16" bodyend="35"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="16" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" bodystart="16" bodyend="35"/>
     <listofallmembers>
       <member refid="classredland_1_1LibrdfQuery_1a0302f24051ae2050bc2e802a59364554" prot="public" virt="non-virtual"><scope>redland::LibrdfQuery</scope><name>get</name></member>
       <member refid="classredland_1_1LibrdfQuery_1ae2e2f6b0e18590195bd89663085ff5f1" prot="public" virt="non-virtual"><scope>redland::LibrdfQuery</scope><name>LibrdfQuery</name></member>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -70,10 +70,13 @@ $(function() {
 : <a class="el" href="classomexmeta_1_1MetaID.html#a95e709df9b0ee47473bc40012738cdc8">omexmeta::MetaID</a>
 </li>
 <li>generateUniqueMetaid()
-: <a class="el" href="classomexmeta_1_1OmexMetaUtils.html#a4700231d455a5f65f7cc290d98d2b0ec">omexmeta::OmexMetaUtils</a>
+: <a class="el" href="classomexmeta_1_1OmexMetaUtils.html#a596094a1ce72a362238682c8a864f616">omexmeta::OmexMetaUtils</a>
 </li>
 <li>getAbout()
-: <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html#a8be912d1256d6b913c4965f96f1b730b">omexmeta::PhysicalPhenomenon</a>
+: <a class="el" href="classomexmeta_1_1PropertyBearer.html#a5171a92883795c1ba3981443ecd21864">omexmeta::PropertyBearer</a>
+</li>
+<li>getArchive()
+: <a class="el" href="classomexmeta_1_1UriHandler.html#a97718b9b1e91fe2efec0b3f17d63665d">omexmeta::UriHandler</a>
 </li>
 <li>getArchiveUri()
 : <a class="el" href="classomexmeta_1_1Editor.html#a736e49794c5a358f06d13d41c3657fe2">omexmeta::Editor</a>
@@ -84,6 +87,9 @@ $(function() {
 </li>
 <li>getIdentityResource()
 : <a class="el" href="classomexmeta_1_1PhysicalEntity.html#ae4b3374e9ebb817eb63f9105b491e958">omexmeta::PhysicalEntity</a>
+</li>
+<li>getLocal()
+: <a class="el" href="classomexmeta_1_1UriHandler.html#a14e40e77ef67711ba1afca4e15428c02">omexmeta::UriHandler</a>
 </li>
 <li>getLocalParticipantMetaid()
 : <a class="el" href="classomexmeta_1_1Participant.html#a8a6626e17aca48b76465d66928eee78f">omexmeta::Participant</a>
@@ -101,12 +107,14 @@ $(function() {
 </li>
 <li>getMetaidBase()
 : <a class="el" href="classomexmeta_1_1Editor.html#af987e450e4bf9d75391ad3f5ac6233f6">omexmeta::Editor</a>
+, <a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html#a69bb3ac99f1585b6f567b80e88f52642">omexmeta::OmexMetaXmlAssistant</a>
 </li>
 <li>getMetaids()
 : <a class="el" href="classomexmeta_1_1Editor.html#a242c86222e1aeff337d3af22641db1de">omexmeta::Editor</a>
 </li>
 <li>getModel()
 : <a class="el" href="classomexmeta_1_1Editor.html#a4b2610fb802eb306349d69ae6fde60c0">omexmeta::Editor</a>
+, <a class="el" href="classomexmeta_1_1UriHandler.html#a67f7dfa35576a487940dd5072ea625d2">omexmeta::UriHandler</a>
 </li>
 <li>getModelUri()
 : <a class="el" href="classomexmeta_1_1Editor.html#a0020d3b9c3e91fb37c134ba8b211c13e">omexmeta::Editor</a>
@@ -114,10 +122,11 @@ $(function() {
 , <a class="el" href="classomexmeta_1_1RDF.html#ac579ac8b79eb7d374a9077114837d2ef">omexmeta::RDF</a>
 </li>
 <li>getMultiplier()
-: <a class="el" href="classomexmeta_1_1Participant.html#ac7121064734a05141a57f39dce10e71a">omexmeta::Participant</a>
+: <a class="el" href="classomexmeta_1_1Participant.html#a79b467cfc699483fdfe5e7686cc5447e">omexmeta::Participant</a>
 </li>
 <li>getNamespace()
 : <a class="el" href="classomexmeta_1_1Predicate.html#add4ab1cd86f83de3512279bbfdad947c">omexmeta::Predicate</a>
+, <a class="el" href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">redland::LibrdfNode</a>
 </li>
 <li>getNamespaceFromUri()
 : <a class="el" href="classomexmeta_1_1OmexMetaUtils.html#a0956bde073b212596d8e4b2ffc983e47">omexmeta::OmexMetaUtils</a>
@@ -126,7 +135,7 @@ $(function() {
 : <a class="el" href="classomexmeta_1_1Editor.html#a514443fe99a6e52154d1fe4f7ec94618">omexmeta::Editor</a>
 </li>
 <li>getNewMetaidExclusionList()
-: <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html#a54d90cf6db78e98bd091f478dc5bd74a">omexmeta::PhysicalPhenomenon</a>
+: <a class="el" href="classomexmeta_1_1PropertyBearer.html#ad5385daa0deb6a484d16a190d46fa0e7">omexmeta::PropertyBearer</a>
 </li>
 <li>getNode()
 : <a class="el" href="classomexmeta_1_1Predicate.html#a144efc75a923b9d85b9f8eaccf0400bb">omexmeta::Predicate</a>
@@ -138,18 +147,18 @@ $(function() {
 : <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a717a352ce3bb956201174002f904cd26">omexmeta::PhysicalProcess</a>
 </li>
 <li>getNumSinks()
-: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a1135c75705b59afa7037bab313009534">omexmeta::EnergyDiff</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#afbc21847dde7dfe371f01c009e522f95">omexmeta::EnergyDiff</a>
 , <a class="el" href="classomexmeta_1_1PhysicalProcess.html#ac8b79af15d4d19042ee34abca25f679f">omexmeta::PhysicalProcess</a>
 </li>
 <li>getNumSources()
-: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a9910c8edac57daf70faa1f1e2e0208d1">omexmeta::EnergyDiff</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#ae73876722556ca27d21e43b0c7823618">omexmeta::EnergyDiff</a>
 , <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a56459d9f0087a3f92b0aca5d148b65f5">omexmeta::PhysicalProcess</a>
 </li>
 <li>getPhysicalEntityReference()
 : <a class="el" href="classomexmeta_1_1Participant.html#a40a5858db6aaae7ec7095b320de838d1">omexmeta::Participant</a>
 </li>
 <li>getPhysicalProperty()
-: <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html#ac741cab1f6df58b0de484fc1771ef839">omexmeta::PhysicalPhenomenon</a>
+: <a class="el" href="classomexmeta_1_1PropertyBearer.html#a38414e467fca285fa84e82184e4e26c3">omexmeta::PropertyBearer</a>
 </li>
 <li>getPredicate()
 : <a class="el" href="classomexmeta_1_1Participant.html#aa09f8c5736dd172b03d7898519d9478d">omexmeta::Participant</a>
@@ -160,6 +169,9 @@ $(function() {
 <li>getPrefix()
 : <a class="el" href="classomexmeta_1_1Predicate.html#a0147e977f71604db05763815ae6b553f">omexmeta::Predicate</a>
 </li>
+<li>getRepository()
+: <a class="el" href="classomexmeta_1_1UriHandler.html#aebddd11d7594e355d8b60153e380144f">omexmeta::UriHandler</a>
+</li>
 <li>getRepositoryUri()
 : <a class="el" href="classomexmeta_1_1Editor.html#a2264cbd2efae17d1d72c3f402d8721bf">omexmeta::Editor</a>
 , <a class="el" href="classomexmeta_1_1RDF.html#a60b4a0a8c0c4f30a9cc71f9899bffabc">omexmeta::RDF</a>
@@ -168,11 +180,11 @@ $(function() {
 : <a class="el" href="classomexmeta_1_1Triples.html#aa875120a73cb1618be9e699e8bfb08c4">omexmeta::Triples</a>
 </li>
 <li>getSinks()
-: <a class="el" href="classomexmeta_1_1EnergyDiff.html#ab37bbe3a0f762066fdb43e5c2ce608eb">omexmeta::EnergyDiff</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#ab8530b24901f539967c5b51d57b2ed98">omexmeta::EnergyDiff</a>
 , <a class="el" href="classomexmeta_1_1PhysicalProcess.html#a069e7caa05f346f90f413f650f081535">omexmeta::PhysicalProcess</a>
 </li>
 <li>getSources()
-: <a class="el" href="classomexmeta_1_1EnergyDiff.html#aa42b8e04573d2ae88f952c76b146d5ac">omexmeta::EnergyDiff</a>
+: <a class="el" href="classomexmeta_1_1EnergyDiff.html#a233d2ccf116a4ddcd87f853faabe0824">omexmeta::EnergyDiff</a>
 , <a class="el" href="classomexmeta_1_1PhysicalProcess.html#ab5f3100febc21173775a2090bb57a0fb">omexmeta::PhysicalProcess</a>
 </li>
 <li>getSubject()
@@ -186,7 +198,7 @@ $(function() {
 </li>
 <li>getType()
 : <a class="el" href="classomexmeta_1_1Editor.html#a68ade6a293061a98243a3b2853e55a4b">omexmeta::Editor</a>
-, <a class="el" href="classomexmeta_1_1PhysicalPhenomenon.html#a9676a1dcc458247a19d19cda16d640f4">omexmeta::PhysicalPhenomenon</a>
+, <a class="el" href="classomexmeta_1_1PropertyBearer.html#a1a7ffce435c889b4e3f26fcbb66b6cc3">omexmeta::PropertyBearer</a>
 </li>
 <li>getUri()
 : <a class="el" href="classomexmeta_1_1Predicate.html#a27fa7d62ad9a5182f3dd642bc61c8d9f">omexmeta::Predicate</a>

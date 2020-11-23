@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/redland/RedlandWrapper/src/LibrdfNode.h Source File</title>
+<title>libomexmeta: src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2c8ecc5605cd25eaa6ecdbd929ab620.html">redland</a></li><li class="navelem"><a class="el" href="dir_b65acc6ced5d737b2c7790d05db72194.html">RedlandWrapper</a></li><li class="navelem"><a class="el" href="dir_e793c0dc4ccd224149063390ee134027.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2c8ecc5605cd25eaa6ecdbd929ab620.html">redland</a></li><li class="navelem"><a class="el" href="dir_b65acc6ced5d737b2c7790d05db72194.html">RedlandWrapper</a></li><li class="navelem"><a class="el" href="dir_e793c0dc4ccd224149063390ee134027.html">src</a></li><li class="navelem"><a class="el" href="dir_a8b1a2e1698ec3f4d0b5a380075ccb82.html">include</a></li><li class="navelem"><a class="el" href="dir_419af6de8ce819e65a26954f0ff6d1a6.html">redland</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -123,7 +123,7 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        librdf_node *node_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="structraptor__term.html">librdf_node</a> *node_ = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">public</span>:</div>
@@ -133,7 +133,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;rhs) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> freeNode(librdf_node *node);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> freeNode(<a class="code" href="structraptor__term.html">librdf_node</a> *node);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> freeNode();</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
@@ -145,9 +145,9 @@ $(function() {
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;operator=(<a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&amp;node) noexcept;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>(librdf_node *node);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>(<a class="code" href="structraptor__term.html">librdf_node</a> *node);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        [[nodiscard]] librdf_node *get() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        [[nodiscard]] <a class="code" href="structraptor__term.html">librdf_node</a> *get() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromUriString(<span class="keyword">const</span> std::string &amp;uri_string);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
@@ -160,7 +160,7 @@ $(function() {
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        raptor_term_type getRaptorTermType();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">static</span> std::string str(librdf_node *node);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">static</span> std::string str(<a class="code" href="structraptor__term.html">librdf_node</a> *node);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        std::string str() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
@@ -188,13 +188,19 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromRelativeUri(<span class="keyword">const</span> std::string &amp;uri_string, <span class="keyword">const</span> std::string &amp;base_uri);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromUriString(<span class="keyword">const</span> std::string &amp;uri_string, <span class="keyword">const</span> std::string &amp;local_prefix);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    };</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_LIBRDFNODE_H</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;         std::string <a class="code" href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">getNamespace</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keyword">static</span> std::vector&lt;std::string&gt; splitStringBy(<span class="keyword">const</span> std::string &amp;str, <span class="keywordtype">char</span> delimiter);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    };</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_LIBRDFNODE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassredland_1_1LibrdfNode_html"><div class="ttname"><a href="classredland_1_1LibrdfNode.html">redland::LibrdfNode</a></div><div class="ttdef"><b>Definition:</b> LibrdfNode.h:49</div></div>
+<div class="ttc" id="astructraptor__term_html"><div class="ttname"><a href="structraptor__term.html">raptor_term</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:621</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a43ba1bed3f1cc6ed654a16c570598565"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">redland::LibrdfNode::getNamespace</a></div><div class="ttdeci">std::string getNamespace() const</div><div class="ttdoc">get namespace portion of the node. I.e. all but last section of the uri</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:331</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfUri_html"><div class="ttname"><a href="classredland_1_1LibrdfUri.html">redland::LibrdfUri</a></div><div class="ttdef"><b>Definition:</b> LibrdfUri.h:16</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

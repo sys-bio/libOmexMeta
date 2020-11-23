@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -107,7 +107,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <tr class="memitem:a9d51ebf565f39fb4d6d4f58c1b030edf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a9d51ebf565f39fb4d6d4f58c1b030edf">str</a> ()</td></tr>
 <tr class="memdesc:a9d51ebf565f39fb4d6d4f58c1b030edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the predicate as a full string  <a href="classomexmeta_1_1Predicate.html#a9d51ebf565f39fb4d6d4f58c1b030edf">More...</a><br /></td></tr>
 <tr class="separator:a9d51ebf565f39fb4d6d4f58c1b030edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a144efc75a923b9d85b9f8eaccf0400bb"><td class="memItemLeft" align="right" valign="top">librdf_node *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a144efc75a923b9d85b9f8eaccf0400bb">getNode</a> () const</td></tr>
+<tr class="memitem:a144efc75a923b9d85b9f8eaccf0400bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a144efc75a923b9d85b9f8eaccf0400bb">getNode</a> () const</td></tr>
 <tr class="memdesc:a144efc75a923b9d85b9f8eaccf0400bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for the node contained by the <a class="el" href="classomexmeta_1_1Predicate.html">Predicate</a> object  <a href="classomexmeta_1_1Predicate.html#a144efc75a923b9d85b9f8eaccf0400bb">More...</a><br /></td></tr>
 <tr class="separator:a144efc75a923b9d85b9f8eaccf0400bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee19b8fc8b21f8e5ffd5b64691e1e530"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#aee19b8fc8b21f8e5ffd5b64691e1e530">getValidTerms</a> () const</td></tr>
@@ -128,7 +128,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <tr class="memitem:a718a37ff90ac0f2d7cc129e8351a2c7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a718a37ff90ac0f2d7cc129e8351a2c7b">freeNode</a> ()</td></tr>
 <tr class="memdesc:a718a37ff90ac0f2d7cc129e8351a2c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">release resources associated with this <a class="el" href="classomexmeta_1_1Predicate.html">Predicate</a>.  <a href="classomexmeta_1_1Predicate.html#a718a37ff90ac0f2d7cc129e8351a2c7b">More...</a><br /></td></tr>
 <tr class="separator:a718a37ff90ac0f2d7cc129e8351a2c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf6030510247a6999d81cada92c1e51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a0bf6030510247a6999d81cada92c1e51">setNode</a> (librdf_node *node)</td></tr>
+<tr class="memitem:a0bf6030510247a6999d81cada92c1e51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a0bf6030510247a6999d81cada92c1e51">setNode</a> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="memdesc:a0bf6030510247a6999d81cada92c1e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace the current librdf_node assicated with this <a class="el" href="classomexmeta_1_1Predicate.html">Predicate</a> with node  <a href="classomexmeta_1_1Predicate.html#a0bf6030510247a6999d81cada92c1e51">More...</a><br /></td></tr>
 <tr class="separator:a0bf6030510247a6999d81cada92c1e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -144,14 +144,14 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a8381c8b0c7bbaa27de29608cbff08bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if we have "know" a namespace. Known namespaces are returned by <a class="el" href="classomexmeta_1_1Predicate.html#a1291e3cd9727871f568e864e0f5af3f0" title="get a map namespaces and prefixes">Predicate::namespaceMap()</a>.  <a href="classomexmeta_1_1Predicate.html#a8381c8b0c7bbaa27de29608cbff08bf5">More...</a><br /></td></tr>
 <tr class="separator:a8381c8b0c7bbaa27de29608cbff08bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cda551beb4e1354ac56d692f0eb78cd"><td class="memItemLeft" align="right" valign="top"><a id="a4cda551beb4e1354ac56d692f0eb78cd"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a4cda551beb4e1354ac56d692f0eb78cd">addSeenNamespaceToSerializer</a> (librdf_world *world, librdf_serializer *serializer, librdf_node *predicate)</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a4cda551beb4e1354ac56d692f0eb78cd">addSeenNamespaceToSerializer</a> (librdf_world *world, librdf_serializer *serializer, <a class="el" href="structraptor__term.html">librdf_node</a> *predicate)</td></tr>
 <tr class="memdesc:a4cda551beb4e1354ac56d692f0eb78cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility for checking whether the uri in @parameter predicate has a namespace that we already know. If found, the namespace is added to @parameter serializer <br /></td></tr>
 <tr class="separator:a4cda551beb4e1354ac56d692f0eb78cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a157c4e95f9869d4f22cd07332ff7621a"><td class="memItemLeft" align="right" valign="top"><a id="a157c4e95f9869d4f22cd07332ff7621a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Predicate</b> (librdf_node *node)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Predicate</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:a157c4e95f9869d4f22cd07332ff7621a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -169,7 +169,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>prefix_</b></t
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>uri_</b></td></tr>
 <tr class="separator:a4fe359b93a9dea9b60f7bc28c1aa913b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0548a6d31dbc6f32734032b1540e58f"><td class="memItemLeft" align="right" valign="top"><a id="ad0548a6d31dbc6f32734032b1540e58f"></a>
-librdf_node *&#160;</td><td class="memItemRight" valign="bottom"><b>node_</b> = nullptr</td></tr>
+<a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>node_</b> = nullptr</td></tr>
 <tr class="separator:ad0548a6d31dbc6f32734032b1540e58f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14ae7768fbd3aaf444bcde8650910c0b"><td class="memItemLeft" align="right" valign="top"><a id="a14ae7768fbd3aaf444bcde8650910c0b"></a>
 std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Predicate.html#a14ae7768fbd3aaf444bcde8650910c0b">valid_terms_</a> {&quot;All&quot;}</td></tr>
@@ -281,7 +281,7 @@ Predicate instances.
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">librdf_node * omexmeta::Predicate::getNode </td>
+          <td class="memname"><a class="el" href="structraptor__term.html">librdf_node</a> * omexmeta::Predicate::getNode </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -447,7 +447,7 @@ Predicate instances.
         <tr>
           <td class="memname">void omexmeta::Predicate::setNode </td>
           <td>(</td>
-          <td class="paramtype">librdf_node *&#160;</td>
+          <td class="paramtype"><a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
           <td></td>
         </tr>
@@ -531,7 +531,7 @@ Predicate instances.
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/omexmeta/<a class="el" href="Predicate_8h_source.html">Predicate.h</a></li>
+<li>src/omexmeta/include/omexmeta/<a class="el" href="Predicate_8h_source.html">Predicate.h</a></li>
 <li>src/omexmeta/Predicate.cpp</li>
 </ul>
 </div><!-- contents -->

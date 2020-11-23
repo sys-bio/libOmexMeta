@@ -22,13 +22,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="261" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="261" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="261" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="251" column="1"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="251" column="1"/>
   </compounddef>
 </doxygen>

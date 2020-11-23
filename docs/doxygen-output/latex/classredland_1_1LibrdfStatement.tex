@@ -9,6 +9,9 @@ Inheritance diagram for redland\+::Librdf\+Statement\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}\label{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}} 
+{\bfseries Librdf\+Statement} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
+\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_ada81e9bfb312e25daf20d6dda10eeb2e}\label{classredland_1_1LibrdfStatement_ada81e9bfb312e25daf20d6dda10eeb2e}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&rhs) const
 \item 
@@ -34,16 +37,16 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfStatem
 void {\bfseries free\+Statement} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}\label{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}} 
-librdf\+\_\+statement $\ast$ {\bfseries get} () const
+\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ {\bfseries get} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_abcf022b8e24a74282e1d059fdf54d3fe}\label{classredland_1_1LibrdfStatement_abcf022b8e24a74282e1d059fdf54d3fe}} 
-librdf\+\_\+node $\ast$ {\bfseries get\+Subject} () const
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get\+Subject} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a5aae51ac0994552a13f2c9b90bec63d0}\label{classredland_1_1LibrdfStatement_a5aae51ac0994552a13f2c9b90bec63d0}} 
-librdf\+\_\+node $\ast$ {\bfseries get\+Predicate} () const
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get\+Predicate} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_aa763688f20b712ddc655afe405d7691a}\label{classredland_1_1LibrdfStatement_aa763688f20b712ddc655afe405d7691a}} 
-librdf\+\_\+node $\ast$ {\bfseries get\+Resource} () const
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get\+Resource} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a6feed51cdebe7c4f2430fcba0ae17f37}\label{classredland_1_1LibrdfStatement_a6feed51cdebe7c4f2430fcba0ae17f37}} 
 std\+::string {\bfseries get\+Subject\+Str} () const
@@ -58,13 +61,13 @@ std\+::string {\bfseries get\+Resource\+Str} () const
 void {\bfseries check\+For\+Null} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a5fa27f77859a4673e991b9e86f84d889}\label{classredland_1_1LibrdfStatement_a5fa27f77859a4673e991b9e86f84d889}} 
-void {\bfseries set\+Subject} (librdf\+\_\+node $\ast$node)
+void {\bfseries set\+Subject} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a8b8fd2999e80bd2912af2430503a557a}\label{classredland_1_1LibrdfStatement_a8b8fd2999e80bd2912af2430503a557a}} 
-void {\bfseries set\+Resource} (librdf\+\_\+node $\ast$node)
+void {\bfseries set\+Resource} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a3306876fb080f3d19fca806142f93f87}\label{classredland_1_1LibrdfStatement_a3306876fb080f3d19fca806142f93f87}} 
-void {\bfseries set\+Predicate} (librdf\+\_\+node $\ast$node)
+void {\bfseries set\+Predicate} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a84a6fae7f1879c2f033001a9927627b0}\label{classredland_1_1LibrdfStatement_a84a6fae7f1879c2f033001a9927627b0}} 
 bool {\bfseries is\+Complete} ()
@@ -77,15 +80,21 @@ void {\bfseries print\+Usages} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a104a61ca5a7568728273c071269e1882}\label{classredland_1_1LibrdfStatement_a104a61ca5a7568728273c071269e1882}} 
 void {\bfseries free\+Statement\+And\+Uris} ()
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_af52b7e72cb067548d97f48b4a77a44ff}\label{classredland_1_1LibrdfStatement_af52b7e72cb067548d97f48b4a77a44ff}} 
+std\+::string {\bfseries get\+Predicate\+Namespace\+Str} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a2013f7fa1ce77c0659d504c2f54d6e45}\label{classredland_1_1LibrdfStatement_a2013f7fa1ce77c0659d504c2f54d6e45}} 
+static bool {\bfseries equals} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$first, \mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$second)
+\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a9fb66c801d731ffce13e4d1381c49c29}\label{classredland_1_1LibrdfStatement_a9fb66c801d731ffce13e4d1381c49c29}} 
-static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\bfseries from\+Raw\+Statement\+Ptr} (librdf\+\_\+statement $\ast$statement)
+static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\bfseries from\+Raw\+Statement\+Ptr} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4eceaebc10deea27f4c75f7c8b4cccaf}\label{classredland_1_1LibrdfStatement_a4eceaebc10deea27f4c75f7c8b4cccaf}} 
-static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\bfseries from\+Raw\+Node\+Ptrs} (librdf\+\_\+node $\ast$subject, librdf\+\_\+node $\ast$predicate, librdf\+\_\+node $\ast$resource)
+static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\bfseries from\+Raw\+Node\+Ptrs} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -94,20 +103,17 @@ static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\b
 void {\bfseries refresh\+Statement} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}\label{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}} 
-{\bfseries Librdf\+Statement} (librdf\+\_\+statement $\ast$statement)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}\label{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}} 
-{\bfseries Librdf\+Statement} (librdf\+\_\+node $\ast$subject, librdf\+\_\+node $\ast$predicate, librdf\+\_\+node $\ast$resource)
+{\bfseries Librdf\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_acd1e53cd114c6744cf808174a9333ce5}\label{classredland_1_1LibrdfStatement_acd1e53cd114c6744cf808174a9333ce5}} 
-librdf\+\_\+statement $\ast$ {\bfseries statement\+\_\+} = librdf\+\_\+new\+\_\+statement(World\+::get\+World())
+\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ {\bfseries statement\+\_\+} = librdf\+\_\+new\+\_\+statement(World\+::get\+World())
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/redland/\+Redland\+Wrapper/src/Librdf\+Statement.\+h\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/Librdf\+Statement.\+h\item 
 src/redland/\+Redland\+Wrapper/src/Librdf\+Statement.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__triple" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_triple</compoundname>
+    <includes refid="rasqal_8h" local="no">rasqal.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__triple_1ae27bde21d3794d2088e2d9d9eeb3a23a" prot="public" static="no" mutable="no">
+        <type><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref> *</type>
+        <definition>rasqal_literal* rasqal_triple::subject</definition>
+        <argsstring></argsstring>
+        <name>subject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="866" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="866" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triple_1a27ad1c090e31add3aa895a9bc3a4a141" prot="public" static="no" mutable="no">
+        <type><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref> *</type>
+        <definition>rasqal_literal* rasqal_triple::predicate</definition>
+        <argsstring></argsstring>
+        <name>predicate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="867" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="867" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triple_1a7c38c64ee145c75ac5870dcfe6fa2f1f" prot="public" static="no" mutable="no">
+        <type><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref> *</type>
+        <definition>rasqal_literal* rasqal_triple::object</definition>
+        <argsstring></argsstring>
+        <name>object</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="868" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="868" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triple_1a92bc5073165499c0f9472c8d665e3cfd" prot="public" static="no" mutable="no">
+        <type><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref> *</type>
+        <definition>rasqal_literal* rasqal_triple::origin</definition>
+        <argsstring></argsstring>
+        <name>origin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="869" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="869" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triple_1ada0413adcc679d73c8ecb6f73f25e441" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int rasqal_triple::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="870" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="870" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structrasqal__triple" kindref="compound">rasqal_triple</ref>: @subject: _Triple subject. @predicate: _Triple predicate. @object: _Triple object. @origin: _Triple origin. @flags: Or of enum #rasqal_triple_flags bits.</para>
+<para>A triple pattern or RDF triple.</para>
+<para><ref refid="classThis" kindref="compound">This</ref> is used as a triple pattern in queries and an RDF triple when generating RDF triples such as with SPARQL CONSTRUCT. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>rasqal_variable</label>
+        <link refid="structrasqal__variable"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>expression</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>rasqal_literal_s</label>
+        <link refid="structrasqal__literal__s"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>variable</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>date</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>datetime</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>rasqal_triple</label>
+        <link refid="structrasqal__triple"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>object</edgelabel>
+          <edgelabel>origin</edgelabel>
+          <edgelabel>predicate</edgelabel>
+          <edgelabel>subject</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>rasqal_xsd_datetime</label>
+        <link refid="structrasqal__xsd__datetime"/>
+      </node>
+      <node id="4">
+        <label>rasqal_expression_s</label>
+        <link refid="structrasqal__expression__s"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>arg1</edgelabel>
+          <edgelabel>arg2</edgelabel>
+          <edgelabel>arg3</edgelabel>
+          <edgelabel>arg4</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>literal</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>rasqal_xsd_date</label>
+        <link refid="structrasqal__xsd__date"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="865" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="865" bodyend="871"/>
+    <listofallmembers>
+      <member refid="structrasqal__triple_1ada0413adcc679d73c8ecb6f73f25e441" prot="public" virt="non-virtual"><scope>rasqal_triple</scope><name>flags</name></member>
+      <member refid="structrasqal__triple_1a7c38c64ee145c75ac5870dcfe6fa2f1f" prot="public" virt="non-virtual"><scope>rasqal_triple</scope><name>object</name></member>
+      <member refid="structrasqal__triple_1a92bc5073165499c0f9472c8d665e3cfd" prot="public" virt="non-virtual"><scope>rasqal_triple</scope><name>origin</name></member>
+      <member refid="structrasqal__triple_1a27ad1c090e31add3aa895a9bc3a4a141" prot="public" virt="non-virtual"><scope>rasqal_triple</scope><name>predicate</name></member>
+      <member refid="structrasqal__triple_1ae27bde21d3794d2088e2d9d9eeb3a23a" prot="public" virt="non-virtual"><scope>rasqal_triple</scope><name>subject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

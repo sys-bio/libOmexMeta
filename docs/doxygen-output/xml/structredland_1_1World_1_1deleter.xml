@@ -18,14 +18,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/World.h" line="52" column="18" bodyfile="src/redland/RedlandWrapper/src/World.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/World.h" line="52" column="18" bodyfile="src/redland/RedlandWrapper/src/World.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/World.h" line="51" column="9" bodyfile="src/redland/RedlandWrapper/src/World.h" bodystart="51" bodyend="53"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/World.h" line="51" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/World.h" bodystart="51" bodyend="53"/>
     <listofallmembers>
       <member refid="structredland_1_1World_1_1deleter_1a65ccd95d5ad0420bde2a5ed2abca0043" prot="public" virt="non-virtual"><scope>redland::World::deleter</scope><name>operator()</name></member>
     </listofallmembers>

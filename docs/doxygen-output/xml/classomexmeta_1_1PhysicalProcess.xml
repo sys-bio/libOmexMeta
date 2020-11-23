@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PhysicalProcess" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalProcess</compoundname>
-    <basecompoundref refid="classomexmeta_1_1PhysicalPhenomenon" prot="public" virt="non-virtual">omexmeta::PhysicalPhenomenon</basecompoundref>
+    <basecompoundref refid="classomexmeta_1_1PropertyBearer" prot="public" virt="non-virtual">omexmeta::PropertyBearer</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProcess_1a078e2a2f6554f2144ce69d817d9b23b9" prot="private" static="no" mutable="no">
         <type>Sources</type>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="26" column="17" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="26" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="24" column="17" bodyfile="src/omexmeta/include/omexmeta/PhysicalProcess.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProcess_1a2e32cf60245f3d3d55caba72165fe3fd" prot="private" static="no" mutable="no">
         <type>Sinks</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="27" column="15" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="27" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="25" column="15" bodyfile="src/omexmeta/include/omexmeta/PhysicalProcess.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProcess_1a127844f0eb3350b2d2335ccd26438b7d" prot="private" static="no" mutable="no">
         <type>Mediators</type>
@@ -41,20 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="28" column="19" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="28" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1PhysicalProcess_1a01f2b974c79564bbb325dbe981f34ec9" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalProcess::physical_process_property_id_</definition>
-        <argsstring></argsstring>
-        <name>physical_process_property_id_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="29" column="21" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="29" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="26" column="19" bodyfile="src/omexmeta/include/omexmeta/PhysicalProcess.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProcess_1a53e690a73469f891d5b6c3ab92fe31ff" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -67,7 +54,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="30" column="21" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="30" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="27" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProcess.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PhysicalProcess_1a2646c7350a226acde1a81a35aa92b71b" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string omexmeta::PhysicalProcess::property_metaid_base_</definition>
+        <argsstring></argsstring>
+        <name>property_metaid_base_</name>
+        <initializer>= &quot;ProcessProperty&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="28" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProcess.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -84,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="41" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="39" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a20821628486c64885ca2523067a71eb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -97,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="43" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="41" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a37f99033da4635ff1af2b9f19c1b84ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -133,7 +134,7 @@
           <declname>mediators</declname>
         </param>
         <briefdescription>
-<para>Constructor for <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> object. <ref refid="classSubclass" kindref="compound">Subclass</ref> of <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>. </para>
+<para>Constructor for <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> object. <ref refid="classSubclass" kindref="compound">Subclass</ref> of PhysicalPhenomenon. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -181,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="55" column="9" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="9" bodyend="14"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="53" column="9" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="9" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a8dfcffe80f264ad24e70de9d7b71c73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -196,10 +197,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="67" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="95" bodyend="105"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="65" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="88" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a2b694395a318335e81c884ed76b5f4dd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
-        <type></type>
+        <type>OMEXMETA_DEPRECATED</type>
         <definition>omexmeta::PhysicalProcess::PhysicalProcess</definition>
         <argsstring>(librdf_model *model)</argsstring>
         <name>PhysicalProcess</name>
@@ -224,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="73" column="18" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="16" bodyend="16"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="71" column="38" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="16" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a974e2717dbf4b690b95b07e9c026fd2a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -268,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="80" column="18" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="18" bodyend="19"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="78" column="18" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="18" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Sources &amp;</type>
@@ -285,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="86" column="24" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="21" bodyend="23"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="84" column="24" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="21" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Sinks &amp;</type>
@@ -302,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="92" column="22" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="25" bodyend="27"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="90" column="22" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="25" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a349b76ad1831d2510904510583f0d7f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Mediators &amp;</type>
@@ -319,14 +320,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="98" column="26" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="29" bodyend="31"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="96" column="26" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="29" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
         <definition>Triples omexmeta::PhysicalProcess::toTriples</definition>
         <argsstring>() override</argsstring>
         <name>toTriples</name>
-        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a30617e685bd8b155a76d38ab5a9db273">toTriples</reimplements>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1adccf527f59eaebc1baf88dfce3ae9664">toTriples</reimplements>
         <briefdescription>
 <para>convert a <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> into a set of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> </para>
         </briefdescription>
@@ -337,10 +338,10 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="108" column="17" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="120" bodyend="159"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="106" column="17" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="113" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::setPhysicalProperty</definition>
         <argsstring>(std::string subject_metaid, const std::string &amp;physicalProperty)</argsstring>
         <name>setPhysicalProperty</name>
@@ -362,10 +363,10 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="114" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="41" bodyend="45"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="112" column="45" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="41" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac49bf4a1c21c6590a9d2af7ae93e13a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::setPhysicalProperty</definition>
         <argsstring>(PhysicalProperty physicalProperty)</argsstring>
         <name>setPhysicalProperty</name>
@@ -383,20 +384,25 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="123" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="33" bodyend="36"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="121" column="45" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="33" bodyend="36"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ab83f58b7df77fdee131c22c71da22f39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a4cae1a5cecfc2107f2667a2e5c0480cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::addSource</definition>
-        <argsstring>(int multiplier, std::string physical_entity_reference)</argsstring>
+        <argsstring>(std::string physical_entity_reference, eUriType type, double multiplier=1.0)</argsstring>
         <name>addSource</name>
-        <param>
-          <type>int</type>
-          <declname>multiplier</declname>
-        </param>
         <param>
           <type>std::string</type>
           <declname>physical_entity_reference</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+          <defval>1.0</defval>
         </param>
         <briefdescription>
 <para>add a source to the list of Source object associated with a <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> </para>
@@ -408,20 +414,25 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="129" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="47" bodyend="57"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="127" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="47" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a403ffc7d7d29702f2ff4e56084a1d714" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1aa55335a92b7558262f512f836fae8c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::addSink</definition>
-        <argsstring>(int multiplier, std::string physical_entity_reference)</argsstring>
+        <argsstring>(std::string physical_entity_reference, eUriType type, double multiplier=1.0)</argsstring>
         <name>addSink</name>
-        <param>
-          <type>int</type>
-          <declname>multiplier</declname>
-        </param>
         <param>
           <type>std::string</type>
           <declname>physical_entity_reference</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+          <defval>1.0</defval>
         </param>
         <briefdescription>
 <para>add a sink to the list of Source object associated with a <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> </para>
@@ -433,16 +444,20 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="135" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="59" bodyend="69"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="133" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="56" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a5a4ee2c911331eb5196e25168b41ee31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::addMediator</definition>
-        <argsstring>(std::string physical_entity_reference)</argsstring>
+        <argsstring>(std::string physical_entity_reference, eUriType type)</argsstring>
         <name>addMediator</name>
         <param>
           <type>std::string</type>
           <declname>physical_entity_reference</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>type</declname>
         </param>
         <briefdescription>
 <para>add a mediator to the list of Source object associated with a <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> </para>
@@ -454,7 +469,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="141" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="71" bodyend="81"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="139" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="66" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a56459d9f0087a3f92b0aca5d148b65f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -471,7 +486,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="147" column="13" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="83" bodyend="85"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="145" column="13" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac8b79af15d4d19042ee34abca25f679f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -488,7 +503,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="153" column="13" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="87" bodyend="89"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="151" column="13" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -505,7 +520,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="159" column="13" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="91" bodyend="93"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="157" column="13" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a65585bf5cd473d509f6f66c96757ff8d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -522,7 +537,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="161" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="107" bodyend="113"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="159" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="100" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -539,45 +554,21 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="163" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="115" bodyend="117"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="161" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="108" bodyend="110"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac09599ba82cb3cb9d58b0c171090ba44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
-        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::isVersionOf</definition>
-        <argsstring>(const std::string &amp;property)</argsstring>
-        <name>isVersionOf</name>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>property</declname>
-        </param>
-        <briefdescription>
-<para>set the isVersionOf portion of the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> composite annotation </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>is_version_of</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>the string to be used as the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_12345 or OPB/OPB_12345.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Resource" kindref="compound">Resource</ref> is_version_of_value_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="172" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="162" bodyend="165"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a5d4e730b52c01ceea8868fb6e2372ef5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a6c4fa05087330d859f813a94543b9fbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
         <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::about</definition>
-        <argsstring>(const std::string &amp;about) override</argsstring>
+        <argsstring>(const std::string &amp;about, eUriType type) override</argsstring>
         <name>about</name>
-        <reimplements refid="classomexmeta_1_1PhysicalPhenomenon_1a3e180b556420ba210fb6bde06c931014">about</reimplements>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1ab115d41cefd58183ebfe429af7be69dc">about</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>about</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>type</declname>
         </param>
         <briefdescription>
 <para>set the subject (rdf:about) portion of the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> composite annotation </para>
@@ -588,7 +579,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used as the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> is_property_of_value_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
+<para>the string to be used as the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  <ref refid="classThis" kindref="compound">This</ref> method will set the <ref refid="classomexmeta_1_1Subject" kindref="compound">Subject</ref> subject_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -596,25 +587,158 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="181" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="167" bodyend="170"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="170" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="155" bodyend="158"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a79d2b794d0a10a180a05d32cd04ac353" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a5d4e730b52c01ceea8868fb6e2372ef5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
-        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::isVersionOf</definition>
-        <argsstring>(const std::string &amp;version)</argsstring>
-        <name>isVersionOf</name>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::about</definition>
+        <argsstring>(const std::string &amp;about) override</argsstring>
+        <name>about</name>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1a374759ec870893444272ff0489be538f">about</reimplements>
         <param>
           <type>const std::string &amp;</type>
-          <declname>version</declname>
+          <declname>about</declname>
         </param>
         <briefdescription>
-<para>optionally add the isVersionOf predicate to the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> you are creating. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Since we can&apos;t have default arguments on a virutal member function we instead have an overload where the absent eUriType parameter is assumed to be the default value of NONE. Note, it may be prudent to figure out which of LOCAL or MODEL uri would be a better default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="172" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="160" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a7b4408351b5226de0069459fc6de166b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; omexmeta::PhysicalProcess::getPropertyMetaidBase</definition>
+        <argsstring>() const override</argsstring>
+        <name>getPropertyMetaidBase</name>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1a8f819ed67e63c84aecff651cca4b945c">getPropertyMetaidBase</reimplements>
+        <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/PhysicalProcess.h" line="187" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="171" bodyend="174"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="175" column="28" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a5a36f6efe4cfec19a68e4f16444ea049" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::isVersionOf</definition>
+        <argsstring>(const std::string &amp;is_version_of, eUriType type=NONE)</argsstring>
+        <name>isVersionOf</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>is_version_of</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>type</declname>
+          <defval>NONE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="177" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="189" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a31fbd32cd2ccdd5d45417c963836bcf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::hasProperty</definition>
+        <argsstring>(const PhysicalProperty &amp;property) override</argsstring>
+        <name>hasProperty</name>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1ab70ef1dec50691f1731de28462ca3012">hasProperty</reimplements>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+          <declname>property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="179" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="169" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a35e816fb08c8a4e1cb16caea2fef8f2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::hasProperty</definition>
+        <argsstring>(const std::string &amp;property_about, eUriType about_uri_type, const std::string &amp;is_version_of, const std::string &amp;is_property_of, eUriType is_property_of_uri_type) override</argsstring>
+        <name>hasProperty</name>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1a6b21c3a4e722fbc37540203d8bc72a5c">hasProperty</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>property_about</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>about_uri_type</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>is_version_of</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>is_property_of</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>is_property_of_uri_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="181" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ac351358203dce7f5c693620b989c0752" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::hasProperty</definition>
+        <argsstring>(const std::string &amp;is_version_of) override</argsstring>
+        <name>hasProperty</name>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1a042230eb589010b3acbb8d6b329c45cd">hasProperty</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>is_version_of</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="183" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1ab66666911b82dd5966f16765290553cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> &amp;</type>
+        <definition>PhysicalProcess &amp; omexmeta::PhysicalProcess::hasProperty</definition>
+        <argsstring>(const std::string &amp;property_about, eUriType about_uri_type, const std::string &amp;is_version_of) override</argsstring>
+        <name>hasProperty</name>
+        <reimplements refid="classomexmeta_1_1PropertyBearer_1aa2bc856917f03659ac84ac7b2e0a2c7d">hasProperty</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>property_about</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>about_uri_type</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>is_version_of</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="185" column="25" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="184" bodyend="187"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -629,8 +753,8 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </childnode>
       </node>
       <node id="2">
-        <label>omexmeta::PhysicalPhenomenon</label>
-        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
+        <label>omexmeta::PropertyBearer</label>
+        <link refid="classomexmeta_1_1PropertyBearer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -645,74 +769,82 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
         </childnode>
       </node>
       <node id="2">
-        <label>omexmeta::PhysicalPhenomenon</label>
-        <link refid="classomexmeta_1_1PhysicalPhenomenon"/>
+        <label>omexmeta::PropertyBearer</label>
+        <link refid="classomexmeta_1_1PropertyBearer"/>
         <childnode refid="3" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/PhysicalProcess.h" line="24" column="5" bodyfile="src/omexmeta/PhysicalProcess.h" bodystart="24" bodyend="189"/>
+    <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="22" column="5" bodyfile="src/omexmeta/include/omexmeta/PhysicalProcess.h" bodystart="22" bodyend="187"/>
     <listofallmembers>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a6c4fa05087330d859f813a94543b9fbd" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a5d4e730b52c01ceea8868fb6e2372ef5" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>about</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1afc8269da5c85c549c73c0431992d2658" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalProcess</scope><name>about</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a2bdf8dde5ffa6b38d5042db49fd211d1" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addMediator</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a403ffc7d7d29702f2ff4e56084a1d714" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addSink</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1ab83f58b7df77fdee131c22c71da22f39" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addSource</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a930900eac7a51e075aa0a455c63e753c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>about_uri_type_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a9cd9e2ce5b8007edd315eb545e15f69f" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>about_value_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a5a4ee2c911331eb5196e25168b41ee31" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addMediator</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1aa55335a92b7558262f512f836fae8c4f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addSink</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a4cae1a5cecfc2107f2667a2e5c0480cc" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>addSource</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a8dfcffe80f264ad24e70de9d7b71c73b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>free</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1afe71a5c6399b992922eb6eeda6de49bd" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>generateMetaId</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a8be912d1256d6b913c4965f96f1b730b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a2d59ebbc920a40348d102af31ed6661a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a78328bba4ba48b3bfdcfebd8256d6add" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>generateMetaId</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAbout</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1ad53dffe87d395860708c4bcfc8a76478" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAboutUriType</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a349b76ad1831d2510904510583f0d7f2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getMediators</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5528b12e5dbc702c0c270328662e7031" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getModelUri</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a54d90cf6db78e98bd091f478dc5bd74a" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNewMetaidExclusionList</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getModelUri</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNewMetaidExclusionList</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNumMediators</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ac8b79af15d4d19042ee34abca25f679f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNumSinks</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a56459d9f0087a3f92b0aca5d148b65f5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNumSources</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1ac741cab1f6df58b0de484fc1771ef839" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getPhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aca53e0f8ce8139a919f48372b254a5d0" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getPhysicalPropertyId</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getPhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a7b4408351b5226de0069459fc6de166b" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>getPropertyMetaidBase</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSinks</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSources</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1ae99e667cbceff2da0c4c0f5c64a8ba8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAbout</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9676a1dcc458247a19d19cda16d640f4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getType</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1ac09599ba82cb3cb9d58b0c171090ba44" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>isVersionOf</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSubjectStr</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getType</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a31fbd32cd2ccdd5d45417c963836bcf5" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a35e816fb08c8a4e1cb16caea2fef8f2b" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1ac351358203dce7f5c693620b989c0752" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1ab66666911b82dd5966f16765290553cc" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a53e690a73469f891d5b6c3ab92fe31ff" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>is_version_of_</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a79d2b794d0a10a180a05d32cd04ac353" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>isVersionOf</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a114864dfae1f79ce4e3f430b7711516c" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a5a36f6efe4cfec19a68e4f16444ea049" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>isVersionOf</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1aa5c08869538a59266cfd785d92f12539" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a127844f0eb3350b2d2335ccd26438b7d" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>mediators_</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9de43fc3fd94d3463c7fb9b8f684e78b" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>model_</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a696cbc4f6490dd55d6bd41c7711cd0ec" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>model_uri_</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a710756d611350395539dfa9f7fbf764e" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>new_metaid_exclusion_list_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a9be0613d73e71b972ec908eff77378fd" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>model_uri_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator!=</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a2c726263714e31c7c19d6e73c2c593f8" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalProcess</scope><name>operator!=</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aac3920bfe9bf16e071ebdd8ed4fabe2f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator=</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1af15355b4c2a361b4b02dca02d3877aed" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator=</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::PhysicalProcess</scope><name>operator!=</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a0783dd90438e82bed7ea635fb4ab5301" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator=</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1aae644b45fb2151fe9f10c5d3547964be" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator=</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a65585bf5cd473d509f6f66c96757ff8d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator==</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a1c3322453b3c6831668ffa98d9f4b6af" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalProcess</scope><name>operator==</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a01f2b974c79564bbb325dbe981f34ec9" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>physical_process_property_id_</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a9e17807d60d9e3f797d6c02ef85cdfc6" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>physical_property_</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1af5416111e5358d3582ff598ad51d62a9" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1ad823dad75504adb78975c810e5f1ff94" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aeb95aedf1756ded154ec6753108a691e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa140516da97b03960175f9bc04ecf865" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a5c831ca76c36121b0fbc7b122b5539ac" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalPhenomenon</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a93bf263f7fdb65bd3e8de97983a7186b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a354440c37a048f6d85e1b8613735a0b7" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::PhysicalProcess</scope><name>operator==</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1abdaa4997f02b9ef36cda61037399eb86" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>physical_property_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1acf4c42d10d6dbdd3aa4285bed7bd823b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a37f99033da4635ff1af2b9f19c1b84ce" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a2b694395a318335e81c884ed76b5f4dd" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a974e2717dbf4b690b95b07e9c026fd2a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a84cae9aa96ca00df45b0f81dd8d3ffd4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setLocalUri</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1aa1fd9929fb2e07fa20081b1a4c00c9d2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setModelUri</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a2646c7350a226acde1a81a35aa92b71b" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>property_metaid_base_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a8ae678b4a1cc528b20ff969b7d728bd6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1ae20593473538babfb4cb6d3428a07fbb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1aebdf1dc3d7022a7745b1041d03a35be6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a9d489c71505341bfa11526c843f03e9e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a45bb47fe169c2312ecfa0a40bd761fb6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a9ccbcbf0c5a022c4c8dd4c111098c556" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setAboutUriType</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1af17cb8f631359fdba8c000f7694fc7a6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setLocalUri</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a9759a5f2d759295e913f5f89f8e18fd8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ac49bf4a1c21c6590a9d2af7ae93e13a7" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setPhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1afad41dbf096b22ab9b64441cb25e9db9" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PhysicalPhenomenon::"><scope>omexmeta::PhysicalProcess</scope><name>setPhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a4c27a0b0e430df95b3cffaf268973eec" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setType</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::PhysicalProcess</scope><name>setPhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setType</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a2e32cf60245f3d3d55caba72165fe3fd" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>sinks_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a078e2a2f6554f2144ce69d817d9b23b9" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>sources_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>toTriples</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a74e88adb2099099e411b55cb9aa460a0" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>type_</name></member>
-      <member refid="classomexmeta_1_1PhysicalPhenomenon_1a215daebc00eed1cf7d9eddeaed0d1603" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>~PhysicalPhenomenon</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a98d1be3285eaeaa15c3c888a87190f55" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>type_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a20821628486c64885ca2523067a71eb8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>~PhysicalProcess</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a9c492b5dde77979fedf04444c0316732" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>~PropertyBearer</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

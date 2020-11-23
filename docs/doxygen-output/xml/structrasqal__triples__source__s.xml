@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__triples__source__s" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_triples_source_s</compoundname>
+    <includes refid="rasqal_8h" local="no">rasqal.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1a3f5b016431eac2e7994eb30d613b1107" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_triples_source_s::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2044" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2044" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1a9f4d2cb1483cae2e841fd0e1cc1fd90f" prot="public" static="no" mutable="no">
+        <type>rasqal_query *</type>
+        <definition>rasqal_query* rasqal_triples_source_s::query</definition>
+        <argsstring></argsstring>
+        <name>query</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2046" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2046" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1a1bfbcec2e9ce669d0327c61017c812b8" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* rasqal_triples_source_s::user_data</definition>
+        <argsstring></argsstring>
+        <name>user_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2048" column="10" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2048" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1a2d2c300252d5b10b1e8cda1ebeedaa70" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* rasqal_triples_source_s::init_triples_match) (rasqal_triples_match *rtm, struct rasqal_triples_source_s *rts, void *user_data, rasqal_triple_meta *m, rasqal_triple *t)</definition>
+        <argsstring>)(rasqal_triples_match *rtm, struct rasqal_triples_source_s *rts, void *user_data, rasqal_triple_meta *m, rasqal_triple *t)</argsstring>
+        <name>init_triples_match</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2051" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2051" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1afe07bdb01e18852c1444b627787ada62" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* rasqal_triples_source_s::triple_present) (struct rasqal_triples_source_s *rts, void *user_data, rasqal_triple *t)</definition>
+        <argsstring>)(struct rasqal_triples_source_s *rts, void *user_data, rasqal_triple *t)</argsstring>
+        <name>triple_present</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2054" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2054" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1ad8b264bef1277338c3427caf8bca47d9" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* rasqal_triples_source_s::free_triples_source) (void *user_data)</definition>
+        <argsstring>)(void *user_data)</argsstring>
+        <name>free_triples_source</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2056" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2056" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__triples__source__s_1a2c9faaac3dab8d529169f75dc90cb501" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* rasqal_triples_source_s::support_feature) (void *user_data, rasqal_triples_source_feature feature)</definition>
+        <argsstring>)(void *user_data, rasqal_triples_source_feature feature)</argsstring>
+        <name>support_feature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2059" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2059" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>rasqal_triples_source: <simplesect kind="version"><para>: API version - only V1 is defined for now @query: Source for this query. @user_data: Context user data passed into the factory methods. @init_triples_match: Factory method to initalise a new #rasqal_triples_match. @triple_present: Factory method to return presence or absence of a complete triple. @free_triples_source: Factory method to deallocate resources. @support_feature: Factory method to test support for a feature, returning non-0 if supported</para>
+</simplesect>
+Triples source as initialised by a <ref refid="structrasqal__triples__source__factory" kindref="compound">rasqal_triples_source_factory</ref>. </para>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="2043" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="2043" bodyend="2060"/>
+    <listofallmembers>
+      <member refid="structrasqal__triples__source__s_1ad8b264bef1277338c3427caf8bca47d9" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>free_triples_source</name></member>
+      <member refid="structrasqal__triples__source__s_1a2d2c300252d5b10b1e8cda1ebeedaa70" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>init_triples_match</name></member>
+      <member refid="structrasqal__triples__source__s_1a9f4d2cb1483cae2e841fd0e1cc1fd90f" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>query</name></member>
+      <member refid="structrasqal__triples__source__s_1a2c9faaac3dab8d529169f75dc90cb501" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>support_feature</name></member>
+      <member refid="structrasqal__triples__source__s_1afe07bdb01e18852c1444b627787ada62" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>triple_present</name></member>
+      <member refid="structrasqal__triples__source__s_1a1bfbcec2e9ce669d0327c61017c812b8" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>user_data</name></member>
+      <member refid="structrasqal__triples__source__s_1a3f5b016431eac2e7994eb30d613b1107" prot="public" virt="non-virtual"><scope>rasqal_triples_source_s</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

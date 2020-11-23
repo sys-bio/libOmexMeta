@@ -1,0 +1,53 @@
+\hypertarget{structrasqal__xsd__datetime}{}\doxysection{rasqal\+\_\+xsd\+\_\+datetime Struct Reference}
+\label{structrasqal__xsd__datetime}\index{rasqal\_xsd\_datetime@{rasqal\_xsd\_datetime}}
+
+
+{\ttfamily \#include $<$rasqal.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_ac58abad8d1a762a9dfedb5ba6c65c25a}\label{structrasqal__xsd__datetime_ac58abad8d1a762a9dfedb5ba6c65c25a}} 
+signed int {\bfseries year}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_ada63c541aefc4cd94ccbedf2f0270329}\label{structrasqal__xsd__datetime_ada63c541aefc4cd94ccbedf2f0270329}} 
+unsigned char {\bfseries month}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_a9e33b3e9d2eb14a8f890d2dfecbd6e37}\label{structrasqal__xsd__datetime_a9e33b3e9d2eb14a8f890d2dfecbd6e37}} 
+unsigned char {\bfseries day}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_a1e21194e6f04a1b2167fbdbaf0f1f317}\label{structrasqal__xsd__datetime_a1e21194e6f04a1b2167fbdbaf0f1f317}} 
+signed char {\bfseries hour}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_ac539ef088d068567557720de357830cb}\label{structrasqal__xsd__datetime_ac539ef088d068567557720de357830cb}} 
+signed char {\bfseries minute}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_a6d887e3f8ae542a4fc5a70efaa7cd4ff}\label{structrasqal__xsd__datetime_a6d887e3f8ae542a4fc5a70efaa7cd4ff}} 
+signed char {\bfseries second}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_aa5231fdd1228e14f13f19a54efd8d4a3}\label{structrasqal__xsd__datetime_aa5231fdd1228e14f13f19a54efd8d4a3}} 
+signed int {\bfseries microseconds}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_a63f674016ebd2ff6b8a8f4f56d46324d}\label{structrasqal__xsd__datetime_a63f674016ebd2ff6b8a8f4f56d46324d}} 
+signed short {\bfseries timezone\+\_\+minutes}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_afe32f1da880d04e03015653005f59470}\label{structrasqal__xsd__datetime_afe32f1da880d04e03015653005f59470}} 
+time\+\_\+t {\bfseries time\+\_\+on\+\_\+timeline}
+\item 
+\mbox{\Hypertarget{structrasqal__xsd__datetime_a2fd4b146de5847a40fb925303d9e97a4}\label{structrasqal__xsd__datetime_a2fd4b146de5847a40fb925303d9e97a4}} 
+char {\bfseries have\+\_\+tz}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structrasqal__xsd__datetime}{rasqal\+\_\+xsd\+\_\+datetime}}\+: @year\+: year @month\+: month 1-\/12 @day\+: 1-\/31 @hour\+: hour 0-\/23 @minute\+: minute 0-\/59 @second\+: second 0-\/60 (yes 60 is allowed for leap seconds) @microseconds\+: microseconds @timezone\+\_\+minutes\+: minutes +/-\/ against U\+TC or R\+A\+S\+Q\+A\+L\+\_\+\+X\+S\+D\+\_\+\+D\+A\+T\+E\+T\+I\+M\+E\+\_\+\+N\+O\+\_\+\+TZ if there is no timezone in the date\+Time. @time\+\_\+on\+\_\+timeline\+: time on timeline @have\+\_\+tz\+: timezone flag\+: \textquotesingle{}Z\textquotesingle{} if Zulu, \textquotesingle{}Y\textquotesingle{} if has other timezone offset in @timezone\+\_\+minutes, \textquotesingle{}N\textquotesingle{} if there is no timezone
+
+X\+ML Schema date\+Time datatype (xsd\+:date\+Time)
+
+Signed types are required for normalization process where a value can be negative temporarily.
+
+Examples of timezone fields\+: \char`\"{}2010-\/01-\/02\+T01\+:02\+:03\char`\"{} \+: timezone\+\_\+minutes R\+A\+S\+Q\+A\+L\+\_\+\+X\+S\+D\+\_\+\+D\+A\+T\+E\+T\+I\+M\+E\+\_\+\+N\+O\+\_\+\+TZ, have\+\_\+tz \textquotesingle{}N\textquotesingle{} \char`\"{}2010-\/01-\/02\+T01\+:02\+:03\+Z\char`\"{} \+: timezone\+\_\+minutes 0, have\+\_\+tz \textquotesingle{}Z\textquotesingle{} \char`\"{}2010-\/01-\/02\+T01\+:02\+:03+00\+:00\char`\"{} \+: timezone\+\_\+minutes 0, have\+\_\+tz \textquotesingle{}Y\textquotesingle{} \char`\"{}2010-\/01-\/02\+T01\+:02\+:03-\/01\+:00\char`\"{} \+: timezone\+\_\+minutes -\/60, have\+\_\+tz \textquotesingle{}Y\textquotesingle{} 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/rasqal.\+h\end{DoxyCompactItemize}

@@ -563,7 +563,7 @@ local:EntityProperty
             physical_entity.about("species", eUriType.MODEL_URI) \
                 .identity("uniprot:PD12345") \
                 .is_part_of("fma:1234") \
-                .has_property(is_version_of="opb:OPB_12345")
+                .has_property("opb:OPB_12345")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -867,7 +867,7 @@ local:EnergyDiffProperty0000
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_energy_diff_cellml1(self):
-        editor = self.rdf.to_editor(TestStrings.sbml, True, False)
+        editor = self.rdf.to_editor(TestStrings.cellml, True, False)
         with editor.new_energy_diff() as energy_diff:
             energy_diff.about("main.MembraneVoltage", eUriType.MODEL_URI) \
                 .add_source("entity1", eUriType.LOCAL_URI) \
@@ -897,7 +897,7 @@ local:SourceParticipant0000
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_energy_diff_cellml2(self):
-        editor = self.rdf.to_editor(TestStrings.sbml, True, False)
+        editor = self.rdf.to_editor(TestStrings.cellml, True, False)
         with editor.new_energy_diff() as energy_diff:
             energy_diff.about("main.MembraneVoltage", eUriType.MODEL_URI) \
                 .add_source("entity1", eUriType.LOCAL_URI) \
@@ -1080,53 +1080,69 @@ class AnnotateAModelTest(unittest.TestCase):
                 .add_sink("OmexMetaId0003", eUriType.MODEL_URI, 1)
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:OmexMetaId0002
-    bqbiol:isPropertyOf local:EntityProperty0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
-
-local:OmexMetaId0003
-    bqbiol:isPropertyOf local:EntityProperty0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00340> .
-
-local:OmexMetaId0004
-    bqbiol:isPropertyOf local:ProcessProperty0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00237> .
-
-local:OmexMetaId0005
-    bqbiol:isPropertyOf local:ProcessProperty0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/OPB/OPB_00237> .
-
 local:EntityProperty0000
-    bqbiol:is <https://identifiers.org/uniprot/P84022> ;
-    bqbiol:isPartOf <https://identifiers.org/obo/FMA_264020>, <https://identifiers.org/obo/FMA_63840>, <https://identifiers.org/obo/FMA_63877>, <https://identifiers.org/obo/FMA_7163> .
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
 
-local:ProcessProperty0000
+local:Process0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
-local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/SBMLSchema#double> ;
-    semsim:hasPhysicalEntityReference local:OmexMetaId0002, local:OmexMetaId0003 .
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00237> .
 
-local:SmadNuclearTransport
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/SBMLSchema#double> ;
-    semsim:hasPhysicalEntityReference local:OmexMetaId0002, local:OmexMetaId0003 .
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
+    bqbiol:is <https://identifiers.org/uniprot:P84022> ;
+    bqbiol:isPartOf <https://identifiers.org/obo/FMA_264020>, <https://identifiers.org/obo/FMA_7163> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
+    bqbiol:is <https://identifiers.org/uniprot:P84022> ;
+    bqbiol:isPartOf <https://identifiers.org/obo/FMA_63840>, <https://identifiers.org/obo/FMA_63877>, <https://identifiers.org/obo/FMA_7163> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
+    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
+    bqbiol:isPropertyOf local:Process0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
+    bqbiol:isPropertyOf local:Process0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
 
 """
 
-        actual = str(rdf)
-        print(actual)
-        for i in actual.split("\n"):
-            self.assertTrue(i.strip() in actual)
+        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
+
 
     def test_to_editor_with_sbml_extraction(self):
         rdf = RDF()
@@ -1194,7 +1210,7 @@ local:SourceParticipant0000
     <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
 
 """
-        self.assertTrue(RDF.equals_rdf_vs_string(rdf, actual))
+        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
 
     def test_personal_information(self):
         rdf = RDF()
@@ -1348,42 +1364,11 @@ class DrawTests(unittest.TestCase):
                 s.about("species0000") \
                     .predicate("bqbiol", "is") \
                     .resource_uri("fma/FMA_66835")
-        fname = os.path.join(os.path.realpath("."), "test_draw.png")
+        fname = os.path.join(os.path.realpath("."), "test_draw")
         rdf.draw(fname)
         self.assertTrue(os.path.isfile(fname))
-        os.remove(fname)
+        os.remove(fname + ".pdf")
 
-
-
-"""
-The test below takes too long to run. It works. 
-"""
-# class TestHorrendouslyLargeRDFFile(unittest.TestCase):
-#
-#     def setUp(self) -> None:
-#         self.zip_fname = os.path.join(
-#             os.path.dirname(__file__), "BrendaParameters.zip"
-#         )
-#         if not os.path.isfile(self.zip_fname):
-#             raise FileNotFoundError(self.zip_fname)
-#
-#         with zipfile.ZipFile(self.zip_fname, 'r') as zip_ref:
-#             zip_ref.extractall(os.path.dirname(self.zip_fname))
-#
-#         self.fname = os.path.join(os.path.dirname(__file__), "brenda_parameters_1.xml")
-#         if not os.path.isfile(self.fname):
-#             raise FileNotFoundError(self.fname)
-#
-#     def test_sqlite(self):
-#         db_file = os.path.join(os.path.dirname(__file__), "BrendaAnnotDatabaseSQLite.db")
-#         rdf = RDF("sqlite", db_file, "new='yes'")
-#         rdf.add_from_file(self.fname, "rdfxml")
-#         print(len(rdf))
-#
-#     def test_bdb(self):
-#         rdf = RDF("hashes", "BrendaAnnotDatabaseBDB.db", "hash-type='bdb',dir='{}'".format(os.path.dirname(__file__)))
-#         rdf.add_from_file(self.fname, "rdfxml")
-#         print(len(rdf))
 
 
 if __name__ == "__main__":

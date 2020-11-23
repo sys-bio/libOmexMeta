@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="46" column="21" bodyfile="src/omexmeta/Editor.h" bodystart="46" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="45" column="21" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="47" column="21" bodyfile="src/omexmeta/Editor.h" bodystart="47" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="46" column="21" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" static="no" mutable="no">
         <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="48" column="27" bodyfile="src/omexmeta/Editor.h" bodystart="48" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="47" column="27" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="49" column="14" bodyfile="src/omexmeta/Editor.h" bodystart="49" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="48" column="14" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, std::string &gt; &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="50" column="28" bodyfile="src/omexmeta/Editor.h" bodystart="50" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="49" column="28" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="51" column="14" bodyfile="src/omexmeta/Editor.h" bodystart="51" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="50" column="14" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1ac4bbccf4ad683eaa744a5b9e81e688f8" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="52" column="14" bodyfile="src/omexmeta/Editor.h" bodystart="52" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="51" column="14" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a3c4514ca9177b9bc157e9e52af23bc82" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="53" column="21" bodyfile="src/omexmeta/Editor.h" bodystart="53" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="52" column="21" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a2676967741d009a5e9115d031b018318" prot="private" static="no" mutable="no">
         <type>OmexMetaXmlType</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="54" column="25" bodyfile="src/omexmeta/Editor.h" bodystart="54" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="53" column="25" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="55" column="27" bodyfile="src/omexmeta/Editor.h" bodystart="55" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="54" column="27" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="56" column="27" bodyfile="src/omexmeta/Editor.h" bodystart="56" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="55" column="27" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="57" column="27" bodyfile="src/omexmeta/Editor.h" bodystart="57" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="56" column="27" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" static="no" mutable="no">
         <type>const std::string &amp;</type>
@@ -173,17 +173,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="58" column="27" bodyfile="src/omexmeta/Editor.h" bodystart="58" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="57" column="27" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1ad0bb5d79378fa2b18305780e93858959" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1ae9f90708ec42906075e38c1d26a62be6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::Editor::extractNamespacesFromTriplesVector</definition>
-        <argsstring>(PhysicalPhenomenon *pp)</argsstring>
+        <argsstring>(PropertyBearer *pp)</argsstring>
         <name>extractNamespacesFromTriplesVector</name>
         <param>
-          <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> *</type>
+          <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> *</type>
           <declname>pp</declname>
         </param>
         <briefdescription>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="60" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="105" bodyend="117"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="59" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="114" bodyend="126"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -329,7 +329,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="82" column="18" bodyfile="src/omexmeta/Editor.cpp" bodystart="11" bodyend="62"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="81" column="18" bodyfile="src/omexmeta/Editor.cpp" bodystart="11" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -343,7 +343,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="94" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="93" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -356,7 +356,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="96" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="64" bodyend="64"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="95" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const NamespaceMap &amp;</type>
@@ -373,7 +373,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="103" column="29" bodyfile="src/omexmeta/Editor.cpp" bodystart="71" bodyend="73"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="102" column="29" bodyfile="src/omexmeta/Editor.cpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_model *</type>
@@ -390,7 +390,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="109" column="23" bodyfile="src/omexmeta/Editor.cpp" bodystart="80" bodyend="80"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="108" column="23" bodyfile="src/omexmeta/Editor.cpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a83836e19bb1de9c7df69d36e8b61b2b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -408,7 +408,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="114" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="75" bodyend="78"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="113" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -425,7 +425,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="120" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="66" bodyend="66"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="119" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -442,7 +442,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="127" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="68" bodyend="68"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="126" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a052a725cee8b8e577c55e977eee81ace" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -482,7 +482,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="134" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="119" bodyend="121"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="133" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -534,7 +534,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="142" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="123" bodyend="137"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="141" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="132" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ae46835f3f35425d8087b80d08666aaa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -562,7 +562,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="148" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="139" bodyend="143"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="147" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="148" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -590,15 +590,15 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="154" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="270" bodyend="274"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="153" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="255" bodyend="259"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1a146ae84fb44991d9c6135e98f03fa972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a81e9e3e81a86ac079f81239a47f18092" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::Editor::addCompositeAnnotation</definition>
-        <argsstring>(PhysicalPhenomenon *phenomenonPtr)</argsstring>
+        <argsstring>(PropertyBearer *phenomenonPtr)</argsstring>
         <name>addCompositeAnnotation</name>
         <param>
-          <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> *</type>
+          <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> *</type>
           <declname>phenomenonPtr</declname>
         </param>
         <briefdescription>
@@ -610,7 +610,7 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
 <parametername>phenomenonPtr</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A pointer to an object of type <ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref>, the superclass of the composite annotations.</para>
+<para>A pointer to an object of type PhysicalPhenomenon, the superclass of the composite annotations.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -620,7 +620,25 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         <inbodydescription>
 <para>Implementation note: <ref refid="classThis" kindref="compound">This</ref> method generates triples on the fly and then frees. <ref refid="classThis" kindref="compound">This</ref> was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the <ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> class.</para>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="168" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="159" bodyend="177"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="167" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="172" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a4600654719f3f66935ea96a4567a9086" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::Editor::addPhysicalProperty</definition>
+        <argsstring>(PhysicalProperty &amp;physicalProperty)</argsstring>
+        <name>addPhysicalProperty</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+<para>add a physical process to the rdf graph </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="172" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="214" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -648,7 +666,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="174" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="197" bodyend="214"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="178" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="223" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -676,7 +694,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="180" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="285" bodyend="287"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="184" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="270" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -704,7 +722,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="186" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="289" bodyend="296"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="190" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="274" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -731,9 +749,8 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>Because we now want to use @prefix Omex for the about section, we need to inject it here, if not already formatted properly.</para>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="192" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="216" bodyend="233"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="196" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="228" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -761,16 +778,16 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="198" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="302" bodyend="304"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="202" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="287" bodyend="289"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a0e7eb192448ba81b1ca7f91b15785030" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::Editor::addEnergyDiff</definition>
-        <argsstring>(EnergyDiff &amp;physicalForce)</argsstring>
+        <argsstring>(EnergyDiff &amp;ediff)</argsstring>
         <name>addEnergyDiff</name>
         <param>
           <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> &amp;</type>
-          <declname>physicalForce</declname>
+          <declname>ediff</declname>
         </param>
         <briefdescription>
 <para>add a composite annotation of type <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> to the rdf graph </para>
@@ -778,7 +795,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>physicalForce</parametername>
+<parametername>ediff</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>An instance of a <ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> objec to add to the rdf graph. </para>
@@ -789,7 +806,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="204" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="235" bodyend="252"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="208" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="233" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -817,9 +834,9 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="210" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="254" bodyend="268"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="214" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="238" bodyend="253"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a237078857cd0d8c31ebe5c7200538ffc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::Editor::removeEnergyDiff</definition>
         <argsstring>(EnergyDiff &amp;physicalForce) const</argsstring>
@@ -845,15 +862,15 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="216" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="298" bodyend="300"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="220" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="283" bodyend="285"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a525c4c69db889790e13b10851ced80fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::Editor::checkValidMetaid</definition>
-        <argsstring>(const std::string &amp;metaid)</argsstring>
+        <argsstring>(std::string metaid)</argsstring>
         <name>checkValidMetaid</name>
         <param>
-          <type>const std::string &amp;</type>
+          <type>std::string</type>
           <declname>metaid</declname>
         </param>
         <briefdescription>
@@ -863,7 +880,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="222" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="82" bodyend="103"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="226" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="78" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -881,7 +898,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="228" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="151" bodyend="157"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="232" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="160" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1af987e450e4bf9d75391ad3f5ac6233f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -898,7 +915,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="235" column="27" bodyfile="src/omexmeta/Editor.cpp" bodystart="436" bodyend="436"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="239" column="27" bodyfile="src/omexmeta/Editor.cpp" bodystart="445" bodyend="445"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a206feee18473abbeda5e4e55906e73eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -928,7 +945,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="245" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="438" bodyend="440"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="249" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="447" bodyend="449"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a68ade6a293061a98243a3b2853e55a4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>OmexMetaXmlType</type>
@@ -945,7 +962,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="252" column="26" bodyfile="src/omexmeta/Editor.cpp" bodystart="442" bodyend="442"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="256" column="26" bodyfile="src/omexmeta/Editor.cpp" bodystart="451" bodyend="451"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a3e2c493ed5034a15e6915b7b649b58a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -966,7 +983,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="259" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="444" bodyend="444"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="263" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="453" bodyend="453"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a245b2105c175892d1fddaf693fa9d636" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref></type>
@@ -981,9 +998,9 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="267" column="24" bodyfile="src/omexmeta/Editor.cpp" bodystart="306" bodyend="308"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="271" column="24" bodyfile="src/omexmeta/Editor.cpp" bodystart="300" bodyend="302"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a4faf7d0c71afca8ded828ac7bdb857f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref></type>
         <definition>EnergyDiff omexmeta::Editor::newEnergyDiff</definition>
         <argsstring>()</argsstring>
@@ -996,7 +1013,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="275" column="23" bodyfile="src/omexmeta/Editor.cpp" bodystart="310" bodyend="312"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="279" column="20" bodyfile="src/omexmeta/Editor.cpp" bodystart="304" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref></type>
@@ -1011,7 +1028,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="283" column="26" bodyfile="src/omexmeta/Editor.cpp" bodystart="314" bodyend="316"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="287" column="26" bodyfile="src/omexmeta/Editor.cpp" bodystart="308" bodyend="310"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a1943079ddbc4a4c6d896f51f360a11df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref></type>
@@ -1026,7 +1043,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="291" column="29" bodyfile="src/omexmeta/Editor.cpp" bodystart="318" bodyend="321"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="295" column="29" bodyfile="src/omexmeta/Editor.cpp" bodystart="312" bodyend="315"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8fb3a19e8f64aeff2ac9b78c483843de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1044,15 +1061,15 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="296" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="145" bodyend="149"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="300" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="154" bodyend="158"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1ad05d04a31263f9c7cb8105e29fd9d158" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1a415aa94ed30686392c65f99b4318aa84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>OMEXMETA_DEPRECATED void</type>
         <definition>void omexmeta::Editor::addCompositeAnnotation2</definition>
-        <argsstring>(PhysicalPhenomenon *phenomenonPtr)</argsstring>
+        <argsstring>(PropertyBearer *phenomenonPtr)</argsstring>
         <name>addCompositeAnnotation2</name>
         <param>
-          <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> *</type>
+          <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> *</type>
           <declname>phenomenonPtr</declname>
         </param>
         <briefdescription>
@@ -1061,7 +1078,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="298" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="179" bodyend="187"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="302" column="34" bodyfile="src/omexmeta/Editor.cpp" bodystart="196" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ace8ee873498fa72b63c0747775b729f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1078,15 +1095,15 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="300" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="189" bodyend="195"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="304" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="206" bodyend="212"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Editor_1af00f00108238acbf2b2974cedc07b454" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::Editor::removePhysicalPhenomenon</definition>
-        <argsstring>(PhysicalPhenomenon *physicalPhenomenon) const</argsstring>
+        <argsstring>(PropertyBearer *physicalPhenomenon) const</argsstring>
         <name>removePhysicalPhenomenon</name>
         <param>
-          <type><ref refid="classomexmeta_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> *</type>
+          <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> *</type>
           <declname>physicalPhenomenon</declname>
         </param>
         <briefdescription>
@@ -1095,7 +1112,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="302" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="276" bodyend="283"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="306" column="14" bodyfile="src/omexmeta/Editor.cpp" bodystart="261" bodyend="268"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1109,7 +1126,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="307" column="22" bodyfile="src/omexmeta/Editor.cpp" bodystart="398" bodyend="398"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="311" column="22" bodyfile="src/omexmeta/Editor.cpp" bodystart="407" bodyend="407"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1123,7 +1140,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="312" column="21" bodyfile="src/omexmeta/Editor.cpp" bodystart="394" bodyend="394"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="316" column="21" bodyfile="src/omexmeta/Editor.cpp" bodystart="403" bodyend="403"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1137,7 +1154,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="317" column="22" bodyfile="src/omexmeta/Editor.cpp" bodystart="396" bodyend="396"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="321" column="22" bodyfile="src/omexmeta/Editor.cpp" bodystart="405" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1151,7 +1168,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="322" column="22" bodyfile="src/omexmeta/Editor.cpp" bodystart="400" bodyend="400"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="326" column="22" bodyfile="src/omexmeta/Editor.cpp" bodystart="409" bodyend="409"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref></type>
@@ -1169,7 +1186,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="328" column="21" bodyfile="src/omexmeta/Editor.cpp" bodystart="402" bodyend="419"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="332" column="21" bodyfile="src/omexmeta/Editor.cpp" bodystart="411" bodyend="428"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1197,7 +1214,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="334" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="323" bodyend="334"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="338" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="317" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1225,7 +1242,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="340" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="336" bodyend="347"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="344" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="331" bodyend="343"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a4da72139f63090ab5682bf51c96d7886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1253,7 +1270,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="346" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="385" bodyend="392"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="350" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="391" bodyend="401"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a9eeaa4cfeeb9bae8b5d5f7705e170de4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1281,7 +1298,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="352" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="367" bodyend="374"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="356" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="369" bodyend="378"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a58db6f81ad362189bed21780be5f3611" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1309,7 +1326,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="358" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="358" bodyend="365"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="362" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="359" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ace652a3364ba755330179e2aeb630761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1337,7 +1354,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="364" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="349" bodyend="356"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="368" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="345" bodyend="357"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref></type>
@@ -1367,7 +1384,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="371" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="428" bodyend="434"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="375" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="437" bodyend="443"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a904a1beb0ba56ccfc1aca70d512030ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
@@ -1395,7 +1412,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="377" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="376" bodyend="383"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="381" column="16" bodyfile="src/omexmeta/Editor.cpp" bodystart="380" bodyend="389"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref></type>
@@ -1412,7 +1429,36 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Editor.h" line="384" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="421" bodyend="426"/>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="388" column="28" bodyfile="src/omexmeta/Editor.cpp" bodystart="430" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1aeae47fb60d955f506de2f16a54c0679a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref></type>
+        <definition>PhysicalProperty omexmeta::Editor::newPhysicalProperty</definition>
+        <argsstring>()</argsstring>
+        <name>newPhysicalProperty</name>
+        <briefdescription>
+<para>instantiate a new <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> instance and return </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="393" column="26" bodyfile="src/omexmeta/Editor.cpp" bodystart="291" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Editor_1ab36fc15581a0aa0af434af60d4f910ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> *</type>
+        <definition>PhysicalProperty * omexmeta::Editor::newPhysicalPropertyPtr</definition>
+        <argsstring>()</argsstring>
+        <name>newPhysicalPropertyPtr</name>
+        <briefdescription>
+<para>instantiate a pointer to a new <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> instance and return </para>
+        </briefdescription>
+        <detaileddescription>
+<para>the caller is responsible for deleting the returned <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> using deletePhysicalProperty </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Editor.h" line="400" column="26" bodyfile="src/omexmeta/Editor.cpp" bodystart="295" bodyend="298"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1420,21 +1466,22 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/Editor.h" line="44" column="5" bodyfile="src/omexmeta/Editor.h" bodystart="44" bodyend="385"/>
+    <location file="src/omexmeta/include/omexmeta/Editor.h" line="43" column="5" bodyfile="src/omexmeta/include/omexmeta/Editor.h" bodystart="43" bodyend="403"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1Editor_1a146ae84fb44991d9c6135e98f03fa972" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation</name></member>
-      <member refid="classomexmeta_1_1Editor_1ad05d04a31263f9c7cb8105e29fd9d158" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation2</name></member>
+      <member refid="classomexmeta_1_1Editor_1a81e9e3e81a86ac079f81239a47f18092" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation</name></member>
+      <member refid="classomexmeta_1_1Editor_1a415aa94ed30686392c65f99b4318aa84" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation2</name></member>
       <member refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCreator</name></member>
       <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCurator</name></member>
       <member refid="classomexmeta_1_1Editor_1ace652a3364ba755330179e2aeb630761" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addDateCreated</name></member>
       <member refid="classomexmeta_1_1Editor_1a58db6f81ad362189bed21780be5f3611" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addDescription</name></member>
+      <member refid="classomexmeta_1_1Editor_1a0e7eb192448ba81b1ca7f91b15785030" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1a052a725cee8b8e577c55e977eee81ace" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addNamespace</name></member>
       <member refid="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addNamespaceFromAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a904a1beb0ba56ccfc1aca70d512030ed" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addParentModel</name></member>
       <member refid="classomexmeta_1_1Editor_1a1b2e0f5859fe2e2784ecff2a78f7f1f8" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1a7833e03995f6323109c2db8d59104f6c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalProcess</name></member>
+      <member refid="classomexmeta_1_1Editor_1a4600654719f3f66935ea96a4567a9086" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1Editor_1a9eeaa4cfeeb9bae8b5d5f7705e170de4" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addPubmed</name></member>
       <member refid="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addSingleAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1ae46835f3f35425d8087b80d08666aaa4" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addSingleAnnotation</name></member>
@@ -1442,11 +1489,11 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1a4da72139f63090ab5682bf51c96d7886" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addTaxon</name></member>
       <member refid="classomexmeta_1_1Editor_1ace8ee873498fa72b63c0747775b729f5" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addTriples</name></member>
       <member refid="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>archive_uri_</name></member>
-      <member refid="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>checkValidMetaid</name></member>
+      <member refid="classomexmeta_1_1Editor_1a525c4c69db889790e13b10851ced80fb" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>checkValidMetaid</name></member>
       <member refid="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>create_ids_</name></member>
       <member refid="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>createNodeWithModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a6be7468055f21d94e72e15f7daa5da5c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>Editor</name></member>
-      <member refid="classomexmeta_1_1Editor_1ad0bb5d79378fa2b18305780e93858959" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>extractNamespacesFromTriplesVector</name></member>
+      <member refid="classomexmeta_1_1Editor_1ae9f90708ec42906075e38c1d26a62be6" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>extractNamespacesFromTriplesVector</name></member>
       <member refid="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>generate_new_metaids_</name></member>
       <member refid="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getArchiveUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getLocalUri</name></member>
@@ -1464,16 +1511,18 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>namespaces_</name></member>
+      <member refid="classomexmeta_1_1Editor_1a4faf7d0c71afca8ded828ac7bdb857f5" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1a1943079ddbc4a4c6d896f51f360a11df" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a245b2105c175892d1fddaf693fa9d636" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1a58d21ef09f3dc5a6a66dbafe34150695" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalProcess</name></member>
+      <member refid="classomexmeta_1_1Editor_1aeae47fb60d955f506de2f16a54c0679a" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1Editor_1ab36fc15581a0aa0af434af60d4f910ac" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newPhysicalPropertyPtr</name></member>
       <member refid="classomexmeta_1_1Editor_1a50674b2591d2fed572954ac8490ee21c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newSingularAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newSingularAnnotation</name></member>
+      <member refid="classomexmeta_1_1Editor_1a237078857cd0d8c31ebe5c7200538ffc" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1ad99187ec52bef1af440af5d9560f32c5" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeEnergyDiff</name></member>
-      <member refid="classomexmeta_1_1Editor_1af00f00108238acbf2b2974cedc07b454" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalPhenomenon</name></member>
+      <member refid="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalPhenomenon</name></member>
       <member refid="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalProcess</name></member>
       <member refid="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeSingleAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>repository_uri_</name></member>

@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__evaluation__context" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_evaluation_context</compoundname>
+    <includes refid="rasqal_8h" local="no">rasqal.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__evaluation__context_1a9c0566f732957a0d8373c724c1fdbb72" prot="public" static="no" mutable="no">
+        <type>rasqal_world *</type>
+        <definition>rasqal_world* rasqal_evaluation_context::world</definition>
+        <argsstring></argsstring>
+        <name>world</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1549" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1549" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__evaluation__context_1a1357d7bb7fc23375e23d6926d05d735f" prot="public" static="no" mutable="no">
+        <type>raptor_uri *</type>
+        <definition>raptor_uri* rasqal_evaluation_context::base_uri</definition>
+        <argsstring></argsstring>
+        <name>base_uri</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1550" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1550" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__evaluation__context_1a4c6f210b799850316767113d2cb8fed1" prot="public" static="no" mutable="no">
+        <type><ref refid="structraptor__locator" kindref="compound">raptor_locator</ref> *</type>
+        <definition>raptor_locator* rasqal_evaluation_context::locator</definition>
+        <argsstring></argsstring>
+        <name>locator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1551" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1551" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__evaluation__context_1aacd25482d5f035e0c38c4891a095dc7b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_evaluation_context::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1552" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1552" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__evaluation__context_1a54ad60898dabf031ce29dbcb7a0d861b" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int rasqal_evaluation_context::seed</definition>
+        <argsstring></argsstring>
+        <name>seed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1553" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1553" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__evaluation__context_1a5b51ae3d10b50e61f0f8bf5f3618a0a1" prot="public" static="no" mutable="no">
+        <type>rasqal_random *</type>
+        <definition>rasqal_random* rasqal_evaluation_context::random</definition>
+        <argsstring></argsstring>
+        <name>random</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1554" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1554" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structrasqal__evaluation__context" kindref="compound">rasqal_evaluation_context</ref>: @world: rasqal world @base_uri: base URI of expression context (or NULL) @locator: locator or NULL @flags: expression comparison flags @seed: random seeed @random: random number generator object</para>
+<para>A context for evaluating an expression such as with rasqal_expression_evaluate2() </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>rasqal_evaluation_context</label>
+        <link refid="structrasqal__evaluation__context"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>locator</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>raptor_locator</label>
+        <link refid="structraptor__locator"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1548" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1548" bodyend="1555"/>
+    <listofallmembers>
+      <member refid="structrasqal__evaluation__context_1a1357d7bb7fc23375e23d6926d05d735f" prot="public" virt="non-virtual"><scope>rasqal_evaluation_context</scope><name>base_uri</name></member>
+      <member refid="structrasqal__evaluation__context_1aacd25482d5f035e0c38c4891a095dc7b" prot="public" virt="non-virtual"><scope>rasqal_evaluation_context</scope><name>flags</name></member>
+      <member refid="structrasqal__evaluation__context_1a4c6f210b799850316767113d2cb8fed1" prot="public" virt="non-virtual"><scope>rasqal_evaluation_context</scope><name>locator</name></member>
+      <member refid="structrasqal__evaluation__context_1a5b51ae3d10b50e61f0f8bf5f3618a0a1" prot="public" virt="non-virtual"><scope>rasqal_evaluation_context</scope><name>random</name></member>
+      <member refid="structrasqal__evaluation__context_1a54ad60898dabf031ce29dbcb7a0d861b" prot="public" virt="non-virtual"><scope>rasqal_evaluation_context</scope><name>seed</name></member>
+      <member refid="structrasqal__evaluation__context_1a9c0566f732957a0d8373c724c1fdbb72" prot="public" virt="non-virtual"><scope>rasqal_evaluation_context</scope><name>world</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

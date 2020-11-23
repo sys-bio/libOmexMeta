@@ -1,0 +1,60 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:EntityProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#Grb2>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc_Sos_Grb2>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Sos> ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
+
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#Binding>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Unbinding> ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc_Sos_Grb2> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Grb2> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Sos> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc_Sos_Grb2> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Grb2> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Sos> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Binding>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001, local:SourceParticipant0002 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Grb2>
+    bqbiol:is <https://identifiers.org/uniprot/P62993> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Shc>
+    bqbiol:is <https://identifiers.org/uniprot/P29353> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Shc_Sos_Grb2>
+    bqbiol:isPartOf <https://identifiers.org/uniprot/P29353>, <https://identifiers.org/uniprot/P62993>, <https://identifiers.org/uniprot/Q07889> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Sos>
+    bqbiol:is <https://identifiers.org/uniprot/Q07889> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Unbinding>
+    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0001, local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+

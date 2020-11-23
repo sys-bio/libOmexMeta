@@ -569,15 +569,15 @@ class PyOmexMetaAPI:
 
     # PhysicalProcess *
     # PhysicalProcess_addSource(PhysicalProcess *physical_process,
-    #                          const char *physical_entity_reference, eUriType type, int multiplier)
+    #                          const char *physical_entity_reference, eUriType type, double multiplier)
     physical_process_add_source = utils.load_func("PhysicalProcess_addSource",
-                                                  [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+                                                  [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_double], ct.c_int64)
 
     # PhysicalProcess *
     # PhysicalProcess_addSink(PhysicalProcess *physical_process,
-    #                        const char *physical_entity_reference, eUriType type, int multiplier)
+    #                        const char *physical_entity_reference, eUriType type, double multiplier)
     physical_process_add_sink = utils.load_func("PhysicalProcess_addSink",
-                                                [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_int64], ct.c_int64)
+                                                [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_double], ct.c_int64)
 
     #     PhysicalProcess *
     #     PhysicalProcess_addMediator(PhysicalProcess *physical_process,

@@ -31,14 +31,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="432" column="15" bodyfile="src/omexmeta/dbg.h" bodystart="432" bodyend="434"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="432" column="15" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="432" bodyend="434"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="430" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="430" bodyend="435"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="430" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="430" bodyend="435"/>
     <listofallmembers>
       <member refid="structdbg_1_1pretty__print__tuple_3_010_01_4_1a9961147d35a3bcc6b89af9610c68ad39" prot="public" virt="non-virtual"><scope>dbg::pretty_print_tuple&lt; 0 &gt;</scope><name>print</name></member>
     </listofallmembers>

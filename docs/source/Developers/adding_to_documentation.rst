@@ -24,10 +24,10 @@ Then do:
 When you build the target called `libomexmeta-docs-sphinx` several things will happen:
 
     #. Cmake will build all C/C++ examples that we give it. See docs/CMakeList.txt. It is
-the job of the developer to add a new executable when new examples are added and to add the
-name of this executable to the cmake list called `EXAMPLE_EXECUTABLES_TARGETS`.
+       the job of the developer to add a new executable when new examples are added and to add the
+       name of this executable to the cmake list called `EXAMPLE_EXECUTABLES_TARGETS`.
     #. Cmake will call out and run the Python script called build_doc_examples at the top level of the docs directory. This
-will run all programs it finds, including C++/C/Python
+       will run all programs it finds, including C++/C/Python
     #. Doxygen will generate documentation from c++ strings
     #. Sphinx and breathe will generate sphinx documentation from rst files, pulling in the source code and program output into sphinx.
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/redland/RedlandWrapper/src/LibrdfModel.h Source File</title>
+<title>libomexmeta: src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2c8ecc5605cd25eaa6ecdbd929ab620.html">redland</a></li><li class="navelem"><a class="el" href="dir_b65acc6ced5d737b2c7790d05db72194.html">RedlandWrapper</a></li><li class="navelem"><a class="el" href="dir_e793c0dc4ccd224149063390ee134027.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2c8ecc5605cd25eaa6ecdbd929ab620.html">redland</a></li><li class="navelem"><a class="el" href="dir_b65acc6ced5d737b2c7790d05db72194.html">RedlandWrapper</a></li><li class="navelem"><a class="el" href="dir_e793c0dc4ccd224149063390ee134027.html">src</a></li><li class="navelem"><a class="el" href="dir_a8b1a2e1698ec3f4d0b5a380075ccb82.html">include</a></li><li class="navelem"><a class="el" href="dir_419af6de8ce819e65a26954f0ff6d1a6.html">redland</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -130,37 +130,38 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> size() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> addStatement(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> addStatement(<a class="code" href="structraptor__statement.html">librdf_statement</a> *statement) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> addStatement(librdf_statement *statement) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> freeModel();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> freeModel();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> removeStatement(<a class="code" href="structraptor__statement.html">librdf_statement</a> *statement) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> removeStatement(librdf_statement *statement) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> removeStatement(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">void</span> removeStatement(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        librdf_storage* getStorage() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        librdf_storage* getStorage() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">int</span> commitTransaction() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">int</span> commitTransaction() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">int</span> startTransaction() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">int</span> startTransaction() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> *getTransactionHandle() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span> *getTransactionHandle() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">int</span> startTransactionWithHandle(<span class="keywordtype">void</span> *handle) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">int</span> startTransactionWithHandle(<span class="keywordtype">void</span> *handle) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">int</span> getTransactionRollback() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">int</span> getTransactionRollback() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">int</span> supportsContexts() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">void</span> addStatement(<span class="keyword">const</span> librdf_statement &amp;statement) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">bool</span> containsStatement(<a class="code" href="structraptor__statement.html">librdf_statement</a>* statement) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">int</span> supportsContexts() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> addStatement(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    };</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_LIBRDFMODEL_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassredland_1_1LibrdfStream_html"><div class="ttname"><a href="classredland_1_1LibrdfStream.html">redland::LibrdfStream</a></div><div class="ttdef"><b>Definition:</b> LibrdfStream.h:16</div></div>
+<div class="ttc" id="astructraptor__statement_html"><div class="ttname"><a href="structraptor__statement.html">raptor_statement</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:647</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfStatement_html"><div class="ttname"><a href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></div><div class="ttdef"><b>Definition:</b> LibrdfStatement.h:17</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQuery_html"><div class="ttname"><a href="classredland_1_1LibrdfQuery.html">redland::LibrdfQuery</a></div><div class="ttdef"><b>Definition:</b> LibrdfQuery.h:16</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html">redland::LibrdfQueryResults</a></div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.h:16</div></div>

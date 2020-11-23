@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valueexception_318',['ValueException',['../classomexmeta_1_1ValueException.html',1,'omexmeta']]]
+  ['urihandler_377',['UriHandler',['../classomexmeta_1_1UriHandler.html',1,'omexmeta']]]
 ];

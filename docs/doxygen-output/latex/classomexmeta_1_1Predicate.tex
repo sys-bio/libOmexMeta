@@ -23,7 +23,7 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1Predicate}{
 \item 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1Predicate_a9d51ebf565f39fb4d6d4f58c1b030edf}{str}} ()
 \begin{DoxyCompactList}\small\item\em get the predicate as a full string \end{DoxyCompactList}\item 
-librdf\+\_\+node $\ast$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a144efc75a923b9d85b9f8eaccf0400bb}{get\+Node}} () const
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a144efc75a923b9d85b9f8eaccf0400bb}{get\+Node}} () const
 \begin{DoxyCompactList}\small\item\em getter for the node contained by the \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} object \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}{get\+Valid\+Terms}} () const
 \begin{DoxyCompactList}\small\item\em stores the valid terms that are allowed in a particular predicate subclass \end{DoxyCompactList}\item 
@@ -37,7 +37,7 @@ const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Predicate_a27fa7d62ad9a
 \begin{DoxyCompactList}\small\item\em getter for uri \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Predicate_a718a37ff90ac0f2d7cc129e8351a2c7b}{free\+Node}} ()
 \begin{DoxyCompactList}\small\item\em release resources associated with this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Predicate_a0bf6030510247a6999d81cada92c1e51}{set\+Node}} (librdf\+\_\+node $\ast$node)
+void \mbox{\hyperlink{classomexmeta_1_1Predicate_a0bf6030510247a6999d81cada92c1e51}{set\+Node}} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \begin{DoxyCompactList}\small\item\em replace the current librdf\+\_\+node assicated with this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} with node \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -49,13 +49,13 @@ static void \mbox{\hyperlink{classomexmeta_1_1Predicate_a1e7e59b8a48c9f89eeec73f
 static bool \mbox{\hyperlink{classomexmeta_1_1Predicate_a8381c8b0c7bbaa27de29608cbff08bf5}{namespace\+Known}} (const std\+::string \&ns)
 \begin{DoxyCompactList}\small\item\em check if we have \char`\"{}know\char`\"{} a namespace. Known namespaces are returned by \mbox{\hyperlink{classomexmeta_1_1Predicate_a1291e3cd9727871f568e864e0f5af3f0}{Predicate\+::namespace\+Map()}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}\label{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}} 
-static void \mbox{\hyperlink{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}{add\+Seen\+Namespace\+To\+Serializer}} (librdf\+\_\+world $\ast$world, librdf\+\_\+serializer $\ast$serializer, librdf\+\_\+node $\ast$predicate)
+static void \mbox{\hyperlink{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}{add\+Seen\+Namespace\+To\+Serializer}} (librdf\+\_\+world $\ast$world, librdf\+\_\+serializer $\ast$serializer, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate)
 \begin{DoxyCompactList}\small\item\em utility for checking whether the uri in @parameter predicate has a namespace that we already know. If found, the namespace is added to @parameter serializer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a157c4e95f9869d4f22cd07332ff7621a}\label{classomexmeta_1_1Predicate_a157c4e95f9869d4f22cd07332ff7621a}} 
-{\bfseries Predicate} (librdf\+\_\+node $\ast$node)
+{\bfseries Predicate} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -73,7 +73,7 @@ std\+::string {\bfseries prefix\+\_\+}
 std\+::string {\bfseries uri\+\_\+}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_ad0548a6d31dbc6f32734032b1540e58f}\label{classomexmeta_1_1Predicate_ad0548a6d31dbc6f32734032b1540e58f}} 
-librdf\+\_\+node $\ast$ {\bfseries node\+\_\+} = nullptr
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries node\+\_\+} = nullptr
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a14ae7768fbd3aaf444bcde8650910c0b}\label{classomexmeta_1_1Predicate_a14ae7768fbd3aaf444bcde8650910c0b}} 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a14ae7768fbd3aaf444bcde8650910c0b}{valid\+\_\+terms\+\_\+}} \{\char`\"{}All\char`\"{}\}
@@ -146,7 +146,7 @@ the string representing the namespace of the current \mbox{\hyperlink{classomexm
 \index{omexmeta::Predicate@{omexmeta::Predicate}!getNode@{getNode}}
 \index{getNode@{getNode}!omexmeta::Predicate@{omexmeta::Predicate}}
 \doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
-{\footnotesize\ttfamily librdf\+\_\+node $\ast$ omexmeta\+::\+Predicate\+::get\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ omexmeta\+::\+Predicate\+::get\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -241,7 +241,7 @@ a unordered\+\_\+map with namespaces as keys and prefixes as values
 \index{omexmeta::Predicate@{omexmeta::Predicate}!setNode@{setNode}}
 \index{setNode@{setNode}!omexmeta::Predicate@{omexmeta::Predicate}}
 \doxysubsubsection{\texorpdfstring{setNode()}{setNode()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Predicate\+::set\+Node (\begin{DoxyParamCaption}\item[{librdf\+\_\+node $\ast$}]{node }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Predicate\+::set\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{node }\end{DoxyParamCaption})}
 
 
 
@@ -286,5 +286,5 @@ Throws an error when term is not in valid\+\_\+terms. Used by subclasses to veri
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/omexmeta/Predicate.\+h\item 
+src/omexmeta/include/omexmeta/Predicate.\+h\item 
 src/omexmeta/Predicate.\+cpp\end{DoxyCompactItemize}

@@ -26,6 +26,8 @@ stages:
         BUILD_DIRECTORY: $(System.DefaultWorkingDirectory)/build
         SOURCE_DIRECTORY: $(System.DefaultWorkingDirectory)
         INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
+        PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
+        LINUX_WHEEL: $(INSTALLED_ROOT)/libOmexMeta-x64Ubuntu/dist
       steps:
   #      - bash: |
   #          sudo apt-get install ccache -y
@@ -115,11 +117,16 @@ stages:
             sourceFolder: '$(INSTALL_DIRECTORY)'
             contents: '**'
             targetFolder: '$(Build.ArtifactStagingDirectory)'
-          displayName: Copy install to artifact staging area
+        - task: CopyFiles@2
+          inputs:
+            sourceFolder: '$(LINUX_WHEEL)'
+            contents: '*.whl'
+            targetFolder: '$(PIP_WHEELS)'
+          displayName: copy linux wheel to artfact staging area
         - task: PublishBuildArtifacts@1
           inputs:
             pathToPublish: '$(Build.ArtifactStagingDirectory)'
-            artifactName: libOmexMeta-x64Windows
+            artifactName: libOmexMeta-x64Linux
             Parallel: true
             ParallelCount: 8
 
@@ -134,7 +141,8 @@ stages:
         BUILD_DIRECTORY: $(System.DefaultWorkingDirectory)/build
         SOURCE_DIRECTORY: $(System.DefaultWorkingDirectory)
         INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
-
+        PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
+        MAC_WHEEL: $(INSTALLED_ROOT)/libOmexMeta-x64Mac/dist
       steps:
   #      - bash: |
   #          sudo apt-get install ccache -y
@@ -220,6 +228,12 @@ stages:
             contents: '**'
             targetFolder: '$(Build.ArtifactStagingDirectory)'
           displayName: Copy install to artifact staging area
+        - task: CopyFiles@2
+          inputs:
+            sourceFolder: '$(MAC_WHEEL)'
+            contents: '*.whl'
+            targetFolder: '$(PIP_WHEELS)'
+          displayName: copy mac wheel to artfact staging area
         - task: PublishBuildArtifacts@1
           inputs:
             pathToPublish: '$(Build.ArtifactStagingDirectory)'
@@ -241,7 +255,8 @@ stages:
         CONDA_ACTIVATE: C:\Miniconda\bin\activate.exe
         PYTHON: C:\Miniconda\python.exe
         PIP: C:\Miniconda\Scripts\pip.exe
-
+        PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
+        WINDOWS_WHEEL: $(INSTALLED_ROOT)/libOmexMeta-x64Windows/dist
       steps:
   #      - bash: |
   #          sudo apt-get install ccache -y
@@ -336,39 +351,48 @@ stages:
             contents: '**'
             targetFolder: '$(Build.ArtifactStagingDirectory)'
           displayName: Copy install to artifact staging area
+        - task: CopyFiles@2
+          inputs:
+            sourceFolder: '$(WINDOWS_WHEEL)'
+            contents: '*.whl'
+            targetFolder: '$(PIP_WHEELS)'
+          displayName: copy windows wheel to artfact staging area
         - task: PublishBuildArtifacts@1
           inputs:
             pathToPublish: '$(Build.ArtifactStagingDirectory)'
             artifactName: libOmexMeta-x64Mac
             Parallel: true
             ParallelCount: 8
-  - stage:
-    # collect wheels for pip
-    displayName: Collect Pip Wheels
-    dependsOn: BuildInstallAndTest
-    jobs:
-      - job: CollectPipWheels
-        timeoutInMinutes: 0
-        variables:
-          INSTALLED_ROOT: $(System.ArtifactStagingDirectory)
-          PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
-          WINDOWS: $(INSTALLED_ROOT)/libOmexMeta-x64Windows/dist
-          LINUX: $(INSTALLED_ROOT)/libOmexMeta-x64Ubuntu/dist
-          MAC: $(INSTALLED_ROOT)/libOmexMeta-x64Mac/dist
-
-        steps:
-          - task: CopyFiles@2
-            inputs:
-              sourceFolder: $(WINDOWS)
-              contents: '*.whl'
-              targetFolder: $(PIP_WHEELS)
-          - task: CopyFiles@2
-            inputs:
-              sourceFolder: $(LINUX)
-              contents: '*.whl'
-              targetFolder: $(PIP_WHEELS)
-          - task: CopyFiles@2
-            inputs:
-              sourceFolder: $(MAC)
-              contents: '*.whl'
-              targetFolder: $(PIP_WHEELS)
+#  - stage:
+#    # collect wheels for pip
+#    displayName: Collect Pip Wheels
+#    dependsOn: BuildInstallAndTest
+#    jobs:
+#      - job: CollectPipWheels
+#        timeoutInMinutes: 0
+#
+#        # do I need to download the data?
+#
+#        variables:
+#          INSTALLED_ROOT: $(System.ArtifactStagingDirectory)
+#          PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
+#          WINDOWS: $(INSTALLED_ROOT)/libOmexMeta-x64Windows/dist
+#          LINUX: $(INSTALLED_ROOT)/libOmexMeta-x64Ubuntu/dist
+#          MAC: $(INSTALLED_ROOT)/libOmexMeta-x64Mac/dist
+#
+#        steps:
+#          - task: CopyFiles@2
+#            inputs:
+#              sourceFolder: $(WINDOWS)
+#              contents: '*.whl'
+#              targetFolder: $(PIP_WHEELS)
+#          - task: CopyFiles@2
+#            inputs:
+#              sourceFolder: $(LINUX)
+#              contents: '*.whl'
+#              targetFolder: $(PIP_WHEELS)
+#          - task: CopyFiles@2
+#            inputs:
+#              sourceFolder: $(MAC)
+#              contents: '*.whl'
+#              targetFolder: $(PIP_WHEELS)

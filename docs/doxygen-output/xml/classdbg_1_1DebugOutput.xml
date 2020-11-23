@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="643" column="3" bodyfile="src/omexmeta/dbg.h" bodystart="643" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="643" column="3" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="643" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="710" column="14" bodyfile="src/omexmeta/dbg.h" bodystart="710" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="710" column="14" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="710" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1a5129a41dd8c87a9cdb009c3bdc3250f1" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="712" column="15" bodyfile="src/omexmeta/dbg.h" bodystart="712" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="712" column="15" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="712" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="714" column="32" bodyfile="src/omexmeta/dbg.h" bodystart="714" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="714" column="32" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="714" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1a7e7b548e7a03faade2349485ec7a7ade" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="716" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="716" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="716" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="716" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1a6c396ee72fac81dcdd1f3384ece77317" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="717" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="717" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="717" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="717" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1a4a66118a0bad86d45003eadb778ced73" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="718" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="718" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="718" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="718" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1a5b609e5d823487dc431c67b034ad531f" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="719" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="719" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="719" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="719" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1ad49f5d4e25793317f6203140e3a695ff" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="720" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="720" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="720" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="720" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1add9fbcebdb024f3c05f9e5b4ad7bfde7" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -142,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="721" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="721" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="721" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="721" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classdbg_1_1DebugOutput_1ab8f5e6f9a6d1c6f3e7217c59231f5ddb" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *const</type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="722" column="37" bodyfile="src/omexmeta/dbg.h" bodystart="722" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="722" column="37" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="722" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="645" column="3" bodyfile="src/omexmeta/dbg.h" bodystart="645" bodyend="656"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="645" column="3" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="645" bodyend="656"/>
       </memberdef>
       <memberdef kind="function" id="classdbg_1_1DebugOutput_1aa135787802db4a6b0b4eb185185e13ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="659" column="8" bodyfile="src/omexmeta/dbg.h" bodystart="659" bodyend="669"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="659" column="8" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="659" bodyend="669"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="673" column="5" bodyfile="src/omexmeta/dbg.h" bodystart="673" bodyend="691"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="673" column="5" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="673" bodyend="691"/>
       </memberdef>
       <memberdef kind="function" id="classdbg_1_1DebugOutput_1a2bcceba90497630c8a5944d8d8e50c5f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -286,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="694" column="8" bodyfile="src/omexmeta/dbg.h" bodystart="694" bodyend="700"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="694" column="8" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="694" bodyend="700"/>
       </memberdef>
       <memberdef kind="function" id="classdbg_1_1DebugOutput_1a34a7f003d727fa30f9a523fde7058ba2" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -303,14 +303,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/dbg.h" line="702" column="14" bodyfile="src/omexmeta/dbg.h" bodystart="702" bodyend="708"/>
+        <location file="src/omexmeta/include/omexmeta/dbg.h" line="702" column="14" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="702" bodyend="708"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="640" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="640" bodyend="723"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="640" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="640" bodyend="723"/>
     <listofallmembers>
       <member refid="classdbg_1_1DebugOutput_1a34a7f003d727fa30f9a523fde7058ba2" prot="private" virt="non-virtual"><scope>dbg::DebugOutput</scope><name>ansi</name></member>
       <member refid="classdbg_1_1DebugOutput_1a6c396ee72fac81dcdd1f3384ece77317" prot="private" virt="non-virtual"><scope>dbg::DebugOutput</scope><name>ANSI_DEBUG</name></member>

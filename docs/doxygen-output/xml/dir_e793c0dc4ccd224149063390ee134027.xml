@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="dir_e793c0dc4ccd224149063390ee134027" kind="dir">
     <compoundname>src/redland/RedlandWrapper/src</compoundname>
+    <innerdir refid="dir_a8b1a2e1698ec3f4d0b5a380075ccb82">src/redland/RedlandWrapper/src/include</innerdir>
     <innerfile refid="LibrdfModel_8cpp">LibrdfModel.cpp</innerfile>
     <innerfile refid="LibrdfNode_8cpp">LibrdfNode.cpp</innerfile>
     <innerfile refid="LibrdfParser_8cpp">LibrdfParser.cpp</innerfile>

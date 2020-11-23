@@ -1,5 +1,5 @@
 import os
-from pyomexmeta import RDF
+from pyomexmeta import RDF, eUriType
 
 # get the link to teusink2000
 rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .

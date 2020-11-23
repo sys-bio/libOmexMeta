@@ -10,7 +10,7 @@ we have a set of CMake definitions that need some attention. For
 full details of these definitions please see `the cmake documentation <https://cmake.org/cmake/help/v3.0/module/GenerateExportHeader.html>`_.
 
 To compile any of the static targets in libomexmeta
-you should have *_STATIC_DEFINE compile definition defined. For instance
+you should have *_STATIC_DEFINE* compile definition defined. For instance
 when compiling the redland-combined-static target you need to have something
 like this in your cmake script:
 

@@ -1,7 +1,7 @@
 SBMLSemanticExtraction
 ======================
 
-.. doxygenclass:: omexmeta::RDF
+.. doxygenclass:: omexmeta::SBMLSemanticExtraction
    :members:
    :protected-members:
    :private-members:

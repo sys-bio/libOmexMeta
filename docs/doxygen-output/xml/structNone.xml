@@ -6,7 +6,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/logger.h" line="10" column="1" bodyfile="src/omexmeta/logger.h" bodystart="10" bodyend="10"/>
+    <location file="src/omexmeta/include/omexmeta/logger.h" line="10" column="1" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="10" bodyend="10"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

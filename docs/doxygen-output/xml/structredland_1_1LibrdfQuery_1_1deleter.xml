@@ -18,14 +18,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="19" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="5" bodyend="8"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="19" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.cpp" bodystart="5" bodyend="8"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/LibrdfQuery.h" line="18" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfQuery.h" bodystart="18" bodyend="20"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="18" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" bodystart="18" bodyend="20"/>
     <listofallmembers>
       <member refid="structredland_1_1LibrdfQuery_1_1deleter_1a5ada7fd745a89b425a5f693faeaa6a31" prot="public" virt="non-virtual"><scope>redland::LibrdfQuery::deleter</scope><name>operator()</name></member>
     </listofallmembers>

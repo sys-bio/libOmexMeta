@@ -39,17 +39,14 @@ librdf\+\_\+model $\ast$ {\bfseries get} () const
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a3067eb5bae1353ab5c86f135c4b401ad}\label{classredland_1_1LibrdfModel_a3067eb5bae1353ab5c86f135c4b401ad}} 
 int {\bfseries size} () const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}\label{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}} 
-void {\bfseries add\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
-\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a643c3e3d3363f4f06330ede73dc19514}\label{classredland_1_1LibrdfModel_a643c3e3d3363f4f06330ede73dc19514}} 
-void {\bfseries add\+Statement} (librdf\+\_\+statement $\ast$statement) const
+void {\bfseries add\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_ad145b8f46be49434bb8bd0b90a904770}\label{classredland_1_1LibrdfModel_ad145b8f46be49434bb8bd0b90a904770}} 
 void {\bfseries free\+Model} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a807784594a1515e5633ec7d08858dd57}\label{classredland_1_1LibrdfModel_a807784594a1515e5633ec7d08858dd57}} 
-void {\bfseries remove\+Statement} (librdf\+\_\+statement $\ast$statement) const
+void {\bfseries remove\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a2cd4394b2c4fee69ce557eafd585c243}\label{classredland_1_1LibrdfModel_a2cd4394b2c4fee69ce557eafd585c243}} 
 void {\bfseries remove\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
@@ -72,15 +69,18 @@ int {\bfseries start\+Transaction\+With\+Handle} (void $\ast$handle) const
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_abf9471d407147d24bbbda8c200d92791}\label{classredland_1_1LibrdfModel_abf9471d407147d24bbbda8c200d92791}} 
 int {\bfseries get\+Transaction\+Rollback} () const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a3699be0e707d05cfabd88e31240707c4}\label{classredland_1_1LibrdfModel_a3699be0e707d05cfabd88e31240707c4}} 
-void {\bfseries add\+Statement} (const librdf\+\_\+statement \&statement) const
-\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a64915c9b196d061d1547f9a659177ea9}\label{classredland_1_1LibrdfModel_a64915c9b196d061d1547f9a659177ea9}} 
 int {\bfseries supports\+Contexts} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_ad1738d844fc31d5ae2ef581d8bcf4cd4}\label{classredland_1_1LibrdfModel_ad1738d844fc31d5ae2ef581d8bcf4cd4}} 
+bool {\bfseries contains\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}\label{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}} 
+void {\bfseries add\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/redland/\+Redland\+Wrapper/src/Librdf\+Model.\+h\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/Librdf\+Model.\+h\item 
 src/redland/\+Redland\+Wrapper/src/Librdf\+Model.\+cpp\end{DoxyCompactItemize}

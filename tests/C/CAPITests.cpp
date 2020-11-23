@@ -483,7 +483,7 @@ TEST_F(CAPITests, TestPhysicalEntityCellML1) {
     entity_property = PhysicalProperty_isPropertyOf(entity_property, "entity0", LOCAL_URI);
 
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
-    entity = PhysicalEntity_about(entity, "entity0");
+    entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
     entity = PhysicalEntity_isPartOf(entity, "fma:18228");
     entity = PhysicalEntity_hasProperty(entity, entity_property);
@@ -804,7 +804,7 @@ TEST_F(CAPITests, TestEnergyDiffSBML1) {
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
     EnergyDiff *energy_diff_ptr = Editor_newEnergyDiff(editor_ptr);
 
-    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "EnergyDiff_0", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "main.MembraneVoltage", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "source_23", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "sink_12", MODEL_URI);
     energy_diff_ptr  = EnergyDiff_hasPropertyFull(energy_diff_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058");
@@ -825,10 +825,10 @@ TEST_F(CAPITests, TestEnergyDiffSBML1) {
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .\n"
                            "\n"
                            "local:parameter_metaid_0\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
@@ -844,7 +844,7 @@ TEST_F(CAPITests, TestEnergyDiffSBML2) {
                                       CellMLFactory::getCellML(CELLML_TOY_EXTENDED).c_str(), true, false);
     EnergyDiff *energy_diff_ptr = Editor_newEnergyDiff(editor_ptr);
 
-    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "EnergyDiff_0", MODEL_URI);
+    energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "main.MembraneVoltage", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "source_23", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "sink_12", MODEL_URI);
     energy_diff_ptr  = EnergyDiff_hasPropertyisVersionOf(energy_diff_ptr, "opb:OPB_01058");
@@ -859,7 +859,7 @@ TEST_F(CAPITests, TestEnergyDiffSBML2) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:EnergyDiffProperty0000\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage> ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
@@ -868,7 +868,7 @@ TEST_F(CAPITests, TestEnergyDiffSBML2) {
                            "local:SourceParticipant0000\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));

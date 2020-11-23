@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Error.h" line="48" column="9" bodyfile="src/omexmeta/Error.h" bodystart="17" bodyend="19"/>
+        <location file="src/omexmeta/include/omexmeta/Error.h" line="48" column="9" bodyfile="src/omexmeta/include/omexmeta/Error.h" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1NullPointerException_1ac50b0a25504303cc1a4a1a20de0127eb" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Error.h" line="48" column="9" bodyfile="src/omexmeta/Error.h" bodystart="24" bodyend="25"/>
+        <location file="src/omexmeta/include/omexmeta/Error.h" line="48" column="9" bodyfile="src/omexmeta/include/omexmeta/Error.h" bodystart="24" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -71,7 +71,7 @@
         </childnode>
       </node>
       <node id="3">
-        <label>exception</label>
+        <label>std::exception</label>
       </node>
       <node id="2">
         <label>omexmeta::Exception</label>
@@ -88,7 +88,7 @@
         </childnode>
       </node>
       <node id="3">
-        <label>exception</label>
+        <label>std::exception</label>
       </node>
       <node id="2">
         <label>omexmeta::Exception</label>
@@ -97,7 +97,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/Error.h" line="47" column="5" bodyfile="src/omexmeta/Error.h" bodystart="47" bodyend="49"/>
+    <location file="src/omexmeta/include/omexmeta/Error.h" line="47" column="5" bodyfile="src/omexmeta/include/omexmeta/Error.h" bodystart="47" bodyend="49"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1NullPointerException_1ad09e2a190a245199974678e2790e81ff" prot="private" virt="non-virtual"><scope>omexmeta::NullPointerException</scope><name>Exception</name></member>
       <member refid="classomexmeta_1_1NullPointerException_1ac50b0a25504303cc1a4a1a20de0127eb" prot="private" virt="non-virtual"><scope>omexmeta::NullPointerException</scope><name>Exception</name></member>

@@ -62,9 +62,8 @@ except ImportError as e:
 '''
 # Breathe Configuration
 breathe_default_project = "libomexmeta"
-# "D:\libOmexMeta\docs\source\conf.py"
 breathe_projects = {
-    "libomexmeta": r"D:\libOmexMeta\docs\doxygen-output\xml"
+    "libomexmeta": r"@DOXYGEN_XML_DIR@"
 }
 
 

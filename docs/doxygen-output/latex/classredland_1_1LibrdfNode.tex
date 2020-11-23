@@ -25,10 +25,10 @@ void {\bfseries free\+Node} ()
 \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&\&node) noexcept
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a200c7a67088e66d6fc73f52bdb51d2e9}\label{classredland_1_1LibrdfNode_a200c7a67088e66d6fc73f52bdb51d2e9}} 
-{\bfseries Librdf\+Node} (librdf\+\_\+node $\ast$node)
+{\bfseries Librdf\+Node} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}\label{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}} 
-librdf\+\_\+node $\ast$ {\bfseries get} () const
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a83ec604f27e71cea80ac49569a06ddfe}\label{classredland_1_1LibrdfNode_a83ec604f27e71cea80ac49569a06ddfe}} 
 raptor\+\_\+term\+\_\+type {\bfseries get\+Raptor\+Term\+Type} ()
@@ -59,12 +59,15 @@ void {\bfseries set\+Blank\+Identifier} (const std\+::string \&identifier)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a8ac1d280707f4405dc8865465028ae33}\label{classredland_1_1LibrdfNode_a8ac1d280707f4405dc8865465028ae33}} 
 \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries from\+Uri\+String} (const std\+::string \&uri\+\_\+string, const std\+::string \&local\+\_\+prefix)
-\end{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_a43ba1bed3f1cc6ed654a16c570598565}\label{classredland_1_1LibrdfNode_a43ba1bed3f1cc6ed654a16c570598565}} 
+std\+::string \mbox{\hyperlink{classredland_1_1LibrdfNode_a43ba1bed3f1cc6ed654a16c570598565}{get\+Namespace}} () const
+\begin{DoxyCompactList}\small\item\em get namespace portion of the node. I.\+e. all but last section of the uri \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a5c971e6daeca94c4eabddfa5f6e4c456}\label{classredland_1_1LibrdfNode_a5c971e6daeca94c4eabddfa5f6e4c456}} 
-static void {\bfseries free\+Node} (librdf\+\_\+node $\ast$node)
+static void {\bfseries free\+Node} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_aacf853ee60f9d706bc7e95fb426166bd}\label{classredland_1_1LibrdfNode_aacf853ee60f9d706bc7e95fb426166bd}} 
 static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries from\+Uri\+String} (const std\+::string \&uri\+\_\+string)
@@ -79,7 +82,7 @@ static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries fr
 static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries new\+Empty\+Node} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_aa6bf7e25e68e473f2f39cb7b4cb5f39b}\label{classredland_1_1LibrdfNode_aa6bf7e25e68e473f2f39cb7b4cb5f39b}} 
-static std\+::string {\bfseries str} (librdf\+\_\+node $\ast$node)
+static std\+::string {\bfseries str} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a3242e29edb736ba0aa8ac42fd6b3ae58}\label{classredland_1_1LibrdfNode_a3242e29edb736ba0aa8ac42fd6b3ae58}} 
 static std\+::string {\bfseries validate\+Literal\+Datatype} (const std\+::string \&literal\+\_\+datatype\+\_\+uri)
@@ -89,10 +92,13 @@ static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries co
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a872032a7516dd140f93a9f4af3e0abd9}\label{classredland_1_1LibrdfNode_a872032a7516dd140f93a9f4af3e0abd9}} 
 static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries from\+Relative\+Uri} (const std\+::string \&uri\+\_\+string, const std\+::string \&base\+\_\+uri)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_a56623e9b231d824ad34d43d9a3994df7}\label{classredland_1_1LibrdfNode_a56623e9b231d824ad34d43d9a3994df7}} 
+static std\+::vector$<$ std\+::string $>$ {\bfseries split\+String\+By} (const std\+::string \&str, char delimiter)
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/redland/\+Redland\+Wrapper/src/Librdf\+Node.\+h\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/Librdf\+Node.\+h\item 
 src/redland/\+Redland\+Wrapper/src/Librdf\+Node.\+cpp\end{DoxyCompactItemize}

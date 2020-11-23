@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="46" column="17" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="46" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="46" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="19" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="19" bodyend="21"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="19" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classException_1a0b1693d4d5007815322070c907ee5cc2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="26" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="26" bodyend="27"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="26" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="26" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classException_1ab834fdbc275748cf287b994503521ada" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="32" column="5"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="32" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="39" column="17" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="39" bodyend="41"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="39" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="39" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -124,28 +124,28 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>exception</label>
+      </node>
       <node id="1">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="2">
+        <label>exception</label>
+      </node>
       <node id="1">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
-        <label>std::exception</label>
-      </node>
     </collaborationgraph>
-    <location file="src/redland/RedlandWrapper/src/LibrdfException.h" line="11" column="1" bodyfile="src/redland/RedlandWrapper/src/LibrdfException.h" bodystart="11" bodyend="47"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="11" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="11" bodyend="47"/>
     <listofallmembers>
       <member refid="classException_1ac541ead5c20548813d7dea73c28c7fab" prot="public" virt="non-virtual"><scope>Exception</scope><name>Exception</name></member>
       <member refid="classException_1a0b1693d4d5007815322070c907ee5cc2" prot="public" virt="non-virtual"><scope>Exception</scope><name>Exception</name></member>

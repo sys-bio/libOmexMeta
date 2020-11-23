@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_tabs/tabs.css" type="text/css" />
 
   
   
@@ -83,12 +87,14 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background to Semantic Annotations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
@@ -158,6 +164,8 @@
             
   <div class="section" id="libomexmeta-documentation">
 <h1>libOmexMeta documentation!<a class="headerlink" href="#libomexmeta-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>LibOMEXmeta is a library aimed at providing developer-level support for
 reading, writing, editing and managing semantic annotations for biosimulation
 models.  The <a class="reference external" href="http://co.mbine.org/">COMBINE modeling community</a>  has developed
@@ -172,7 +180,7 @@ semantics of biosimulation models. By using standard knowledge resources about b
 and biological processes (such as CheBI, Uniprot, and ontologies of anatomy), we can
 make the models more understandable, reusable and reproducible. More information can
 be found at the <a class="reference external" href="http://co.mbine.org/standards/omex-metadata">OMEX Metadata Specification web page</a>.</p>
-<p>Libsemsim is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). Libsemsim uses <a class="reference external" href="https://www.w3.org/RDF/">RDF</a>
+<p>LibOmexMeta is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). libOmexMeta uses <a class="reference external" href="https://www.w3.org/RDF/">RDF</a>
 as a framework for representing these annotations. At the core of libOmexMeta are the <a class="reference external" href="http://librdf.org/">Redland libraries</a>:</p>
 <blockquote>
 <div><ul class="simple">
@@ -187,7 +195,7 @@ as a framework for representing these annotations. At the core of libOmexMeta ar
 <h3><a class="reference external" href="http://librdf.org/raptor/api-1.4/raptor-parsers.html">Parsers</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess</p></li>
+<li><p>rdfxml, ntriples, turtle, guess, rdfa, nquads</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -195,7 +203,7 @@ as a framework for representing these annotations. At the core of libOmexMeta ar
 <h3><a class="reference external" href="http://librdf.org/raptor/api-1.4/raptor-serializers.html">Serializers</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, rss-1.0, atom, dot, json-triples, json, nquads, html</p></li>
+<li><p>ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, dot, json-triples, json, nquads, html</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -204,7 +212,7 @@ as a framework for representing these annotations. At the core of libOmexMeta ar
 <blockquote>
 <div><ul class="simple">
 <li><p>Languages
-* <a class="reference external" href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, <a class="reference external" href="https://www.dajobe.org/2007/04/laqrs/">LAQRS</a></p></li>
+* <a class="reference external" href="https://www.w3.org/TR/sparql11-query/">SPARQL</a></p></li>
 <li><p>Query result formats:
 * xml, json, table, csv, mkr, tsv, html, turtle, rdfxml,</p></li>
 </ul>
@@ -214,7 +222,7 @@ as a framework for representing these annotations. At the core of libOmexMeta ar
 <h3><a class="reference external" href="http://librdf.org/docs/api/redland-storage-modules.html">Storages modules</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>hashes, memory, file, mysql, sqlite, uri, tstore (may be supported on request), postgresql (supported but not tested), virtuoso (may be supported on request)</p></li>
+<li><p>hashes, memory, file, sqlite, uri, tstore (may be supported on request), postgresql (may be uspported on request), virtuoso (may be supported on request)</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -224,32 +232,137 @@ as a framework for representing these annotations. At the core of libOmexMeta ar
 <blockquote>
 <div><ul class="simple">
 <li><p>Windows</p></li>
-<li><p>Linux Ubuntu 18.04, untested on other flavours.</p></li>
+<li><p>Linux Ubuntu 18.04 / 20.04, untested on other flavours.</p></li>
+<li><p>MacOS</p></li>
 </ul>
 </div></blockquote>
-<p>libOmexMeta has not been tested on a Mac.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>documentation is in the process of being written. If you have any questions on how to do something,
-post a github issue and I will write you a new example.</p>
-</div>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="python">
-<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>On linux, grab some dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libxml2 libxml2-dev libxslt1-dev libpq-dev
+<div class="section" id="pyomexmeta-the-python-front-end">
+<h3>pyomexmeta - the python front end<a class="headerlink" href="#pyomexmeta-the-python-front-end" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="build-from-source">
+<h2>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this headline">¶</a></h2>
+<p>The procedure is the same on all platforms.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may look at the libOmexMeta <a class="reference external" href="https://github.com/sys-bio/libOmexMeta/blob/master/azure-pipelines.yml">azure-pipelines</a>
+which is actively used to build libOmexMeta in the cloud on all platforms.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>libOmexMeta was built with gcc-10 on linux. It is highly likely to work with
+other versions but untested.
+Use the following commands to use g++-10:</p>
+</div>
+<ol class="arabic simple">
+<li><p>Get vcpkg, which provides some of the dependencies</p></li>
+</ol>
+<ol class="arabic">
+<li><p>Clone libOmexMeta</p>
+<blockquote>
+<div><p>LIBOMEXMETA_DIRECTORY=/full/path/to/where/you/want/libomexmeta
+git clone <a class="reference external" href="https://github.com/sys-bio/libOmexMeta.git">https://github.com/sys-bio/libOmexMeta.git</a> –recurse-submodules $(LIBOMEXMETA_DIRECTORY)</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is easy to forget the <cite>–recurse-submodules</cite> flag. If you do the
+<cite>third_party/zlib</cite> (etc.) folders containing the submodules will be empty.
+You can get them by running <cite>git submodule update –init –recursive</cite>
+from the libOmexMeta root.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Build libOmexMeta</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like all cmake options passed at the command line, they should be prepended
+with <cite>-D</cite> and followed by <cite>=value</cite>. i.e. <cite>-DBUILD_OPTION=VALUE</cite></p>
+</div>
+<p>The following build options may be passed to the cmake configure command:</p>
+<blockquote>
+<div><ul>
+<li><p>BUILD_TESTS=ON: Build the C++, C tests and include the Python tests when BUILD_PYTHON=ON</p></li>
+<li><p>BUILD_PYTHON=ON: Installs pyomexmeta under the site-packages directory in the install tree and includes the Python tests in ctest when BUILD_TESTS=ON</p></li>
+<li><p>BUILD_DOCS=ON: Build and install the documentation</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Python_ROOT_DIR=/path/to/python/distribution/to/use: Manually specify the Python distribution to use</p></li>
+<li><p>SPHINX_EXECUTABLE/path/to/sphinx/executable   : Manually specify the sphinx executable to use</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic">
+<li><p>[Optional] Build the pip wheel</p>
+<blockquote>
+<div><p>pip install breathe sphinx-tabs requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+# get root of currently active Python
+python_dir=$(dirname $(which python))
+cd $(BUILD_DIRECTORY)
+cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=”$(INSTALL_DIRECTORY)” -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..</p>
+<p># [optional] run the tests
+cmake –build $(BUILD_DIRECTORY) –target run-ctest –config Release</p>
+<p># install
+cmake –build . –target install –config Release -j 12</p>
+</div></blockquote>
+</li>
+</ol>
+<p>This time there will be a <cite>site-packages/pyomexmeta</cite> directory and a <cite>site-packages/setup.py</cite> file. To
+build a pip wheel run:</p>
+<blockquote>
+<div><p>python setup.py bdist_wheel</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>[Optional] Run the tests</p></li>
+</ol>
+<p>From the build tree (<cite>$(BUILD_DIRECTORY)</cite>) you can build the <cite>run-ctest</cite> target. When</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake --build <span class="k">$(</span>BUILD_DIRECTORY<span class="k">)</span> --target run-ctest --config Release
 </pre></div>
 </div>
-<p>Windows is self-contained.</p>
-<p>Now use pip.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pyomexmeta
-<span class="c1"># verify its worked</span>
-$ ipython -c <span class="s2">&quot;import pyomexmeta&quot;</span>
+<p>Behind the scenes, this will use te following <cite>ctest</cite> command, which you may also use manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="k">$(</span>BUILD_DIRECTORY<span class="k">)</span>
+<span class="c1"># without any arguments</span>
+ctest .
+<span class="c1"># or with verbose output</span>
+ctest --verbose --extra-verbose --progress .
 </pre></div>
 </div>
-<p>Python 3 only - if you’re not using Python 3, I recommend you upgrade.</p>
+<ol class="arabic simple">
+<li><p>[Optional] Running Python tests</p></li>
+</ol>
+<p>When <cite>-DBUILD_PYTHON=ON</cite> the Python tests will also be executed by ctest. You may also
+use <cite>pytest</cite> or <cite>nosetests</cite> (for example) in the usual way</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ensure you have pytest/nose</span>
+pip install pytest nose
+<span class="nb">cd</span> <span class="k">$(</span>INSTALL_DIRECTORY<span class="k">)</span>/site-packages/pyomexmeta
+
+<span class="c1"># pytest will discover and run the tests</span>
+pytest .
+
+<span class="c1"># nosetests will discover and run the tests</span>
+nosetests .
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>[For Developers] Running Python tests from the source tree</p></li>
+</ol>
+<p>When you run the cmake configure command, a file in <cite>src/pyomexmeta</cite> will be created called
+<cite>ExtraSearchDirectories.txt</cite>. Inside this file is an (extendable) list of additional search
+directories that Python can use to locate the OmexMetaCAPI. By default these point to the current
+install tree. Therefore, to work on the pyomexmeta code the best course of action is to first build
+and install libomexmeta without the -DBUILD_PYTHON=ON argument (as per above) and then reconfigure
+with the <cite>-DBUILD_PYTHON=ON</cite> option. Now you can develop pyomexmeta from the source tree and you will
+be using binaries in the install tree.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Any changes you make in the C/C++ code base will not propagate to Python until you have
+reinstalled libOmexMeta <cite>cmake –build $(BUILD_DIRECTORY) –target install –config Release -j 12</cite></p>
 </div>
 <div class="section" id="docker">
 <h3>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h3>
@@ -265,70 +378,6 @@ Conda is preconfigured and pyomexmeta is installed.</p>
 <div class="section" id="downloading-binaries">
 <h2>Downloading Binaries<a class="headerlink" href="#downloading-binaries" title="Permalink to this headline">¶</a></h2>
 <p>You can download binaries from the <a class="reference external" href="https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10">releases tab</a></p>
-</div>
-<div class="section" id="building-from-source">
-<h2>Building from source<a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
-<p>See above for docker image which does this for you already on linux builds. The build process is similar on both windows and linux, but linux has some additional dependencies installed via <cite>apt-get</cite>.</p>
-<div class="section" id="on-linux-only">
-<h3>On Linux only<a class="headerlink" href="#on-linux-only" title="Permalink to this headline">¶</a></h3>
-<p>Install some dependencies using apt.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The build process is not yet fully optimized for linux and will be improved</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev <span class="se">\</span>
-                   libxslt1-dev postgresql postgresql-contrib  libdb-dev <span class="se">\</span>
-                   libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx<span class="se">\</span>
-                   libpthread-stubs0-dev libltdl-dev git
-</pre></div>
-</div>
-<p>Switch default gcc to version 10.1:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  <span class="m">100</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="on-both-linux-and-windows">
-<h3>On both Linux and Windows<a class="headerlink" href="#on-both-linux-and-windows" title="Permalink to this headline">¶</a></h3>
-<p>Get <cite>vcpkg</cite></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/microsoft/vcpkg.git
-$ <span class="nb">cd</span> vcpkg
-</pre></div>
-</div>
-</div>
-<div class="section" id="configure-vcpkg-and-install-dependencies-on-linux">
-<h3>Configure vcpkg and install dependencies on Linux<a class="headerlink" href="#configure-vcpkg-and-install-dependencies-on-linux" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./bootstrap-vcpkg.sh
-$ vcpkg integrate install
-$ vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is where the linux build is not optimized.</p>
-</div>
-</div>
-<div class="section" id="configure-vcpkg-and-install-dependencies-on-windows">
-<h3>Configure vcpkg and install dependencies on Windows<a class="headerlink" href="#configure-vcpkg-and-install-dependencies-on-windows" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">bootstrap-vcpkg.bat</span>
-<span class="go">vcpkg integrate install</span>
-<span class="go">vcpkg install libxml2:x64-windows curl:x64-windows libiconv:x64-windows pcre:x64-windows openssl:x64-windows yajl:x64-windows libpq:x64-windows sqlite3:x64-windows</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="build-libomexmeta">
-<h3>Build libOmexMeta<a class="headerlink" href="#build-libomexmeta" title="Permalink to this headline">¶</a></h3>
-<p>Use <a class="reference external" href="https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz">CMake &gt; 15.7</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/sys-bio/libOmexMeta.git
-<span class="nb">cd</span> libOmexMeta
-mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-cmake -DVCPKG_ROOT<span class="o">=</span>/vcpkg -DCMAKE_INSTALL_PREFIX<span class="o">=</span>../install-linux -DBUILD_TESTS<span class="o">=</span>ON -DBUILD_SHARED_LIBS<span class="o">=</span>ON -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
-make -j <span class="m">8</span>
-make install <span class="c1"># or sudo if installing to default location (i.e. omit the `-DCMAKE_INSTALL_PREFIX`)</span>
-</pre></div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>

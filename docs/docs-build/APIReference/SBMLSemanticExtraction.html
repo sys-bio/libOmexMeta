@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
 
   
   
@@ -84,12 +88,14 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../editing_rdf/editing_rdf.html">Editing Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_reference_index.html">libOmexMeta API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="RDF.html">RDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Editor.html">Editor</a></li>
@@ -182,10 +188,42 @@
             
   <div class="section" id="sbmlsemanticextraction">
 <h1>SBMLSemanticExtraction<a class="headerlink" href="#sbmlsemanticextraction" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “omexmeta::RDF” in doxygen xml output for project “libomexmeta” from directory: D:/libOmexMeta/docs/doxygen-output/xml</p>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtractionE">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtractionE"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtractionE"></span><span id="omexmeta::SBMLSemanticExtraction"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">SBMLSemanticExtraction</code><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtractionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor"></span><span id="omexmeta::SBMLSemanticExtraction::SBMLSemanticExtraction__EditorP"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a3c55dab129bd47c753f19317fade1f18"></span><code class="sig-name descname">SBMLSemanticExtraction</code><span class="sig-paren">(</span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> *<em>editor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv"></span><span id="omexmeta::SBMLSemanticExtraction::extractSpeciesCompartmentSemantics"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522"></span>void <code class="sig-name descname">extractSpeciesCompartmentSemantics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv"></span><span id="omexmeta::SBMLSemanticExtraction::extractProcessesFromReactions"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441"></span>void <code class="sig-name descname">extractProcessesFromReactions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction7editor_E">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtraction7editor_E"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction7editor_E"></span><span id="omexmeta::SBMLSemanticExtraction::editor___EditorP"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a6ffc358e6fa4d4c214cdb667b5c8c313"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> *<code class="sig-name descname">editor_</code> = nullptr<a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction7editor_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction12sbml_string_E">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtraction12sbml_string_E"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction12sbml_string_E"></span><span id="omexmeta::SBMLSemanticExtraction::sbml_string___ss"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1ae526056397a4adf40ba39589911eced1"></span>std::string <code class="sig-name descname">sbml_string_</code><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction12sbml_string_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 </div>
 
 

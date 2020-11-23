@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -91,7 +91,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (const <a class="el" href="classomexmeta_1_1Subject.html">Subject</a> &amp;subject, const PredicatePtr &amp;predicate_ptr, const <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource)</td></tr>
 <tr class="separator:aaed857f9356dc3a7414f06f393a75ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc457c78ec059eb71602e7ea4f763582"><td class="memItemLeft" align="right" valign="top"><a id="adc457c78ec059eb71602e7ea4f763582"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (librdf_node *subject, librdf_node *<a class="el" href="classomexmeta_1_1Triple.html#a27637af321ba7d7eeb2596bac93feb54">predicate</a>, librdf_node *resource)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *<a class="el" href="classomexmeta_1_1Triple.html#a27637af321ba7d7eeb2596bac93feb54">predicate</a>, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
 <tr class="separator:adc457c78ec059eb71602e7ea4f763582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cb45dd3a5778f0e0e92e4a185da9400"><td class="memItemLeft" align="right" valign="top"><a id="a1cb45dd3a5778f0e0e92e4a185da9400"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
@@ -104,9 +104,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#afd918ecccfa23079d9cb70f2e1a3e9b0">setModelUri</a> (const std::string &amp;model_uri)</td></tr>
 <tr class="memdesc:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the model_uri_ attribute for this triple <br /></td></tr>
 <tr class="separator:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabfef726172656b6c61c602b4d8d33e5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#aabfef726172656b6c61c602b4d8d33e5">str</a> (const std::string &amp;format=&quot;turtle&quot;, const std::string &amp;base=(std::filesystem::current_path()/=&quot;annotations.rdf&quot;).string(), std::string omex_name=&quot;NewOmex.omex/&quot;, std::string model_name=&quot;NewModel.xml#&quot;) const</td></tr>
-<tr class="memdesc:aabfef726172656b6c61c602b4d8d33e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">serialize the triple using a @format serializer.  <a href="classomexmeta_1_1Triple.html#aabfef726172656b6c61c602b4d8d33e5">More...</a><br /></td></tr>
-<tr class="separator:aabfef726172656b6c61c602b4d8d33e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cabbc7a28348a9472bd50f059469183"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#a2cabbc7a28348a9472bd50f059469183">str</a> (const std::string &amp;format=&quot;turtle&quot;, const std::string &amp;base=(std::filesystem::current_path()/=&quot;annotations.rdf&quot;).string(), std::string omex_name=&quot;NewOmex.omex/&quot;, std::string model_name=&quot;NewModel.xml&quot;) const</td></tr>
+<tr class="memdesc:a2cabbc7a28348a9472bd50f059469183"><td class="mdescLeft">&#160;</td><td class="mdescRight">serialize the triple using a @format serializer.  <a href="classomexmeta_1_1Triple.html#a2cabbc7a28348a9472bd50f059469183">More...</a><br /></td></tr>
+<tr class="separator:a2cabbc7a28348a9472bd50f059469183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f3868622349d3a3e14ed3e4b21d49a9"><td class="memItemLeft" align="right" valign="top"><a id="a3f3868622349d3a3e14ed3e4b21d49a9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freeTriple</b> ()</td></tr>
 <tr class="separator:a3f3868622349d3a3e14ed3e4b21d49a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,7 +120,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>freeTriple</b> ()</td
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getAbout</b> () const</td></tr>
 <tr class="separator:a69df88d19e2f9077fccfa9543dadd15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a886240fe50becaaa47ca171f2d454ba4"><td class="memItemLeft" align="right" valign="top"><a id="a886240fe50becaaa47ca171f2d454ba4"></a>
-librdf_statement *&#160;</td><td class="memItemRight" valign="bottom"><b>getStatement</b> () const</td></tr>
+<a class="el" href="structraptor__statement.html">librdf_statement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getStatement</b> () const</td></tr>
 <tr class="separator:a886240fe50becaaa47ca171f2d454ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57b4521321178af38415e76cd483207e"><td class="memItemLeft" align="right" valign="top"><a id="a57b4521321178af38415e76cd483207e"></a>
 <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>setPredicate</b> (const std::string &amp;namespace_, const std::string &amp;term)</td></tr>
@@ -169,6 +169,9 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>resourceBlank</b> (const std::string &amp;blank_id)</td></tr>
 <tr class="separator:ac19ea0eaa8bfe1a7c481da4312cdf1b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classredland_1_1LibrdfStatement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classredland_1_1LibrdfStatement')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></td></tr>
+<tr class="memitem:ac1b38e67ff0b90ac54b27c4f5f5d9e12 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ac1b38e67ff0b90ac54b27c4f5f5d9e12"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *predicate, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
+<tr class="separator:ac1b38e67ff0b90ac54b27c4f5f5d9e12 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada81e9bfb312e25daf20d6dda10eeb2e inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ada81e9bfb312e25daf20d6dda10eeb2e"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;rhs) const</td></tr>
 <tr class="separator:ada81e9bfb312e25daf20d6dda10eeb2e inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,37 +197,37 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freeStatement</b> ()</td></tr>
 <tr class="separator:aa51bc647bc938a07bd6c16b4d6ce07b4 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b655a56f37dbe95fec840a0a1f0ed53 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a6b655a56f37dbe95fec840a0a1f0ed53"></a>
-librdf_statement *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
+<a class="el" href="structraptor__statement.html">librdf_statement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
 <tr class="separator:a6b655a56f37dbe95fec840a0a1f0ed53 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcf022b8e24a74282e1d059fdf54d3fe inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="abcf022b8e24a74282e1d059fdf54d3fe"></a>
-librdf_node *&#160;</td><td class="memItemRight" valign="bottom"><b>getSubject</b> () const</td></tr>
+<a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getSubject</b> () const</td></tr>
 <tr class="separator:abcf022b8e24a74282e1d059fdf54d3fe inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aae51ac0994552a13f2c9b90bec63d0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a5aae51ac0994552a13f2c9b90bec63d0"></a>
-librdf_node *&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicate</b> () const</td></tr>
+<a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicate</b> () const</td></tr>
 <tr class="separator:a5aae51ac0994552a13f2c9b90bec63d0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa763688f20b712ddc655afe405d7691a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="aa763688f20b712ddc655afe405d7691a"></a>
-librdf_node *&#160;</td><td class="memItemRight" valign="bottom"><b>getResource</b> () const</td></tr>
+<a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getResource</b> () const</td></tr>
 <tr class="separator:aa763688f20b712ddc655afe405d7691a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6feed51cdebe7c4f2430fcba0ae17f37 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a6feed51cdebe7c4f2430fcba0ae17f37"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getAbout</b> () const</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getSubjectStr</b> () const</td></tr>
 <tr class="separator:a6feed51cdebe7c4f2430fcba0ae17f37 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dd0d6a2e9fe1bfcf5254aa7928cdfaf inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a5dd0d6a2e9fe1bfcf5254aa7928cdfaf"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicateStr</b> () const</td></tr>
 <tr class="separator:a5dd0d6a2e9fe1bfcf5254aa7928cdfaf inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc21321df7ccf186c262e83a4438e993 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="adc21321df7ccf186c262e83a4438e993"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getIsVersionOfValue</b> () const</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getResourceStr</b> () const</td></tr>
 <tr class="separator:adc21321df7ccf186c262e83a4438e993 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a700219b2fed175a96fecfbd905d20ab1 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a700219b2fed175a96fecfbd905d20ab1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkForNull</b> ()</td></tr>
 <tr class="separator:a700219b2fed175a96fecfbd905d20ab1 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fa27f77859a4673e991b9e86f84d889 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a5fa27f77859a4673e991b9e86f84d889"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>about</b> (librdf_node *node)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSubject</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:a5fa27f77859a4673e991b9e86f84d889 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b8fd2999e80bd2912af2430503a557a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a8b8fd2999e80bd2912af2430503a557a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>isVersionOf</b> (librdf_node *node)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setResource</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:a8b8fd2999e80bd2912af2430503a557a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3306876fb080f3d19fca806142f93f87 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a3306876fb080f3d19fca806142f93f87"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPredicate</b> (librdf_node *node)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setPredicate</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:a3306876fb080f3d19fca806142f93f87 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a6fae7f1879c2f033001a9927627b0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a84a6fae7f1879c2f033001a9927627b0"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isComplete</b> ()</td></tr>
@@ -238,18 +241,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printUsages</b> ()</t
 <tr class="memitem:a104a61ca5a7568728273c071269e1882 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a104a61ca5a7568728273c071269e1882"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freeStatementAndUris</b> ()</td></tr>
 <tr class="separator:a104a61ca5a7568728273c071269e1882 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af52b7e72cb067548d97f48b4a77a44ff inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="af52b7e72cb067548d97f48b4a77a44ff"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicateNamespaceStr</b> () const</td></tr>
+<tr class="separator:af52b7e72cb067548d97f48b4a77a44ff inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af03c0ce3392c0ff30f13772209ac873c"><td class="memItemLeft" align="right" valign="top"><a id="af03c0ce3392c0ff30f13772209ac873c"></a>
-static <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawStatementPtr</b> (librdf_statement *statement)</td></tr>
+static <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawStatementPtr</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement)</td></tr>
 <tr class="separator:af03c0ce3392c0ff30f13772209ac873c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classredland_1_1LibrdfStatement"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classredland_1_1LibrdfStatement')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></td></tr>
+<tr class="memitem:a2013f7fa1ce77c0659d504c2f54d6e45 inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a2013f7fa1ce77c0659d504c2f54d6e45"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>equals</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *first, <a class="el" href="structraptor__statement.html">librdf_statement</a> *second)</td></tr>
+<tr class="separator:a2013f7fa1ce77c0659d504c2f54d6e45 inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb66c801d731ffce13e4d1381c49c29 inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a9fb66c801d731ffce13e4d1381c49c29"></a>
-static <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawStatementPtr</b> (librdf_statement *statement)</td></tr>
+static <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawStatementPtr</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement)</td></tr>
 <tr class="separator:a9fb66c801d731ffce13e4d1381c49c29 inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eceaebc10deea27f4c75f7c8b4cccaf inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a4eceaebc10deea27f4c75f7c8b4cccaf"></a>
-static <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawNodePtrs</b> (librdf_node *subject, librdf_node *predicate, librdf_node *resource)</td></tr>
+static <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawNodePtrs</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *predicate, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
 <tr class="separator:a4eceaebc10deea27f4c75f7c8b4cccaf inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -259,19 +268,16 @@ Additional Inherited Members</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>refreshStatement</b> ()</td></tr>
 <tr class="separator:afd63d6425b2130dbe4e76fdee4d7218b inherit pro_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cbbbf99d094cea4569324a8c67789fb inherit pro_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a4cbbbf99d094cea4569324a8c67789fb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (librdf_statement *statement)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement)</td></tr>
 <tr class="separator:a4cbbbf99d094cea4569324a8c67789fb inherit pro_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1b38e67ff0b90ac54b27c4f5f5d9e12 inherit pro_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ac1b38e67ff0b90ac54b27c4f5f5d9e12"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (librdf_node *subject, librdf_node *predicate, librdf_node *resource)</td></tr>
-<tr class="separator:ac1b38e67ff0b90ac54b27c4f5f5d9e12 inherit pro_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classredland_1_1LibrdfStatement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classredland_1_1LibrdfStatement')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></td></tr>
 <tr class="memitem:acd1e53cd114c6744cf808174a9333ce5 inherit pro_attribs_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="acd1e53cd114c6744cf808174a9333ce5"></a>
-librdf_statement *&#160;</td><td class="memItemRight" valign="bottom"><b>statement_</b> = librdf_new_statement(World::getWorld())</td></tr>
+<a class="el" href="structraptor__statement.html">librdf_statement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>statement_</b> = librdf_new_statement(World::getWorld())</td></tr>
 <tr class="separator:acd1e53cd114c6744cf808174a9333ce5 inherit pro_attribs_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aabfef726172656b6c61c602b4d8d33e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabfef726172656b6c61c602b4d8d33e5">&#9670;&nbsp;</a></span>str()</h2>
+<a id="a2cabbc7a28348a9472bd50f059469183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cabbc7a28348a9472bd50f059469183">&#9670;&nbsp;</a></span>str()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,7 +304,7 @@ librdf_statement *&#160;</td><td class="memItemRight" valign="bottom"><b>stateme
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>model_name</em> = <code>&quot;NewModel.xml#&quot;</code>&#160;</td>
+          <td class="paramname"><em>model_name</em> = <code>&quot;NewModel.xml&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -314,7 +320,7 @@ librdf_statement *&#160;</td><td class="memItemRight" valign="bottom"><b>stateme
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/omexmeta/<a class="el" href="Triple_8h_source.html">Triple.h</a></li>
+<li>src/omexmeta/include/omexmeta/<a class="el" href="Triple_8h_source.html">Triple.h</a></li>
 <li>src/omexmeta/Triple.cpp</li>
 </ul>
 </div><!-- contents -->

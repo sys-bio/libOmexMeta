@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__prefix" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_prefix</compoundname>
+    <includes refid="rasqal_8h" local="no">rasqal.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__prefix_1af549e5c515631dfb42b591119a0b422e" prot="public" static="no" mutable="no">
+        <type>rasqal_world *</type>
+        <definition>rasqal_world* rasqal_prefix::world</definition>
+        <argsstring></argsstring>
+        <name>world</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="260" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__prefix_1ace1c4140923872202c8542ce70749e04" prot="public" static="no" mutable="no">
+        <type>const unsigned char *</type>
+        <definition>const unsigned char* rasqal_prefix::prefix</definition>
+        <argsstring></argsstring>
+        <name>prefix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="261" column="25" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__prefix_1ab1d582bf50eaf4e80ef8b4808057f38d" prot="public" static="no" mutable="no">
+        <type>raptor_uri *</type>
+        <definition>raptor_uri* rasqal_prefix::uri</definition>
+        <argsstring></argsstring>
+        <name>uri</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="262" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__prefix_1a8058e6936dd7fba55a40478fb8f66fa8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_prefix::declared</definition>
+        <argsstring></argsstring>
+        <name>declared</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="263" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__prefix_1a24fdef59cc36a0c2ea8b55af744592e9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int rasqal_prefix::depth</definition>
+        <argsstring></argsstring>
+        <name>depth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="264" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structrasqal__prefix" kindref="compound">rasqal_prefix</ref>: @world: rasqal_world object @prefix: short prefix string @uri: URI associated with the prefix. @declared: Internal flag. @depth: Internal flag.</para>
+<para>Namespace (prefix, uri) pair.</para>
+<para>Includes internal flags used for marking when prefixes are declared and at what XML element depth when used in XML formats. </para>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="259" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="259" bodyend="265"/>
+    <listofallmembers>
+      <member refid="structrasqal__prefix_1a8058e6936dd7fba55a40478fb8f66fa8" prot="public" virt="non-virtual"><scope>rasqal_prefix</scope><name>declared</name></member>
+      <member refid="structrasqal__prefix_1a24fdef59cc36a0c2ea8b55af744592e9" prot="public" virt="non-virtual"><scope>rasqal_prefix</scope><name>depth</name></member>
+      <member refid="structrasqal__prefix_1ace1c4140923872202c8542ce70749e04" prot="public" virt="non-virtual"><scope>rasqal_prefix</scope><name>prefix</name></member>
+      <member refid="structrasqal__prefix_1ab1d582bf50eaf4e80ef8b4808057f38d" prot="public" virt="non-virtual"><scope>rasqal_prefix</scope><name>uri</name></member>
+      <member refid="structrasqal__prefix_1af549e5c515631dfb42b591119a0b422e" prot="public" virt="non-virtual"><scope>rasqal_prefix</scope><name>world</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

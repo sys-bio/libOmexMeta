@@ -4,6 +4,7 @@ import ctypes as ct
 import os
 from contextlib import contextmanager
 from typing import List
+from sys import executable as _python_interpretor
 
 try:
     # for use from outside the package, as a python package
@@ -202,9 +203,11 @@ class RDF:
         try:
             import graphviz
         except ImportError:
-            raise ImportError('"graphviz" not found. Install '
-                              'with "sudo apt install graphviz" and then '
-                              '"pip install graphviz"')
+            raise ImportError(f'"graphviz" not found. Install '
+                              f'with "sudo apt install graphviz" and then '
+                              f'"pip install graphviz". This may be an conda environment issue. Check that '
+                              f'you are using the correct python interpretor. The interpreter being used '
+                              f'now is \"{_python_interpretor}\"')
         dot = self.to_string("dot")
         src = graphviz.Source(dot)
         src.render(filename)
@@ -498,12 +501,6 @@ class _PropertyBearer:
             -  PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(
                     PhysicalEntity *physical_entity_ptr, const char* isVersionOf
                 ) ;
-        :param property_about:
-        :param about_uri_type:
-        :param is_version_of:
-        :param is_property_of:
-        :param is_property_of_uri_type:
-        :return:
         """
         _valid = ["physical_entity", "physical_process", "energy_diff"]
         if self.name not in _valid:
@@ -548,11 +545,15 @@ class _PropertyBearer:
                 self._obj, property_about.encode(), about_uri_type, is_version_of.encode())
             return self
 
-        # When the user only provices argument to is_version_of we use the  hasPropertyIsVersionOf version
-        if (is_version_of and not property_about
-                and not about_uri_type
-        ):
+        # When the user only provides argument to is_version_of we use the  hasPropertyIsVersionOf version
+        if (is_version_of and not property_about and not about_uri_type):
+
             has_property_is_version_of(self._obj, is_version_of.encode())
+            return self
+
+        # if user provides a single string, it is assumed to be the is_version_of string NOT the property_about
+        if property_about and not is_version_of and not about_uri_type and not property:
+            has_property_is_version_of(self._obj, property_about.encode())
             return self
 
         # if we get this far then the user has made an error
@@ -616,13 +617,13 @@ class PhysicalProcess(_PropertyBearer):
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalProcess:
+    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: float) -> PhysicalProcess:
         self._obj = _pyom.physical_process_add_source(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )
         return self
 
-    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: int) -> PhysicalProcess:
+    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: float) -> PhysicalProcess:
         self._obj = _pyom.physical_process_add_sink(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )
@@ -646,8 +647,8 @@ class PhysicalProcess(_PropertyBearer):
         self._obj = _pyom.physical_process_about(self.get_ptr(), about.encode(), uri_type)
         return self
 
-    def is_version_of(self, version: str) -> PhysicalProcess:
-        self._obj = _pyom.physical_process_is_version_of(self.get_ptr(), version.encode())
+    def is_version_of(self, version: str, uri_type: eUriType = eUriType.IDENTIFIERS_URI) -> PhysicalProcess:
+        self._obj = _pyom.physical_process_is_version_of(self.get_ptr(), version.encode(), uri_type)
         return self
 
 

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structraptor__term__blank__value" kind="struct" language="C++" prot="public">
+    <compoundname>raptor_term_blank_value</compoundname>
+    <includes refid="raptor2_8h" local="no">raptor2.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structraptor__term__blank__value_1acb4d203aeae3b04ea361326b2a1a3733" prot="public" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* raptor_term_blank_value::string</definition>
+        <argsstring></argsstring>
+        <name>string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="588" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="588" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__term__blank__value_1a368b921e2ba1858ddf05db831c309649" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int raptor_term_blank_value::string_len</definition>
+        <argsstring></argsstring>
+        <name>string_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="589" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="589" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structraptor__term__blank__value" kindref="compound">raptor_term_blank_value</ref>: @string: literal string @string_len: length of string</para>
+<para>Blank term value - this typedef exists solely for use in <ref refid="structraptor__term" kindref="compound">raptor_term</ref> </para>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="587" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="587" bodyend="590"/>
+    <listofallmembers>
+      <member refid="structraptor__term__blank__value_1acb4d203aeae3b04ea361326b2a1a3733" prot="public" virt="non-virtual"><scope>raptor_term_blank_value</scope><name>string</name></member>
+      <member refid="structraptor__term__blank__value_1a368b921e2ba1858ddf05db831c309649" prot="public" virt="non-virtual"><scope>raptor_term_blank_value</scope><name>string_len</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

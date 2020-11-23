@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structrasqal__xsd__datetime" kind="struct" language="C++" prot="public">
+    <compoundname>rasqal_xsd_datetime</compoundname>
+    <includes refid="rasqal_8h" local="no">rasqal.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1ac58abad8d1a762a9dfedb5ba6c65c25a" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int rasqal_xsd_datetime::year</definition>
+        <argsstring></argsstring>
+        <name>year</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="520" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="520" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1ada63c541aefc4cd94ccbedf2f0270329" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char rasqal_xsd_datetime::month</definition>
+        <argsstring></argsstring>
+        <name>month</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="521" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="521" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1a9e33b3e9d2eb14a8f890d2dfecbd6e37" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char rasqal_xsd_datetime::day</definition>
+        <argsstring></argsstring>
+        <name>day</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="522" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="522" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1a1e21194e6f04a1b2167fbdbaf0f1f317" prot="public" static="no" mutable="no">
+        <type>signed char</type>
+        <definition>signed char rasqal_xsd_datetime::hour</definition>
+        <argsstring></argsstring>
+        <name>hour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="524" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="524" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1ac539ef088d068567557720de357830cb" prot="public" static="no" mutable="no">
+        <type>signed char</type>
+        <definition>signed char rasqal_xsd_datetime::minute</definition>
+        <argsstring></argsstring>
+        <name>minute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="525" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="525" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1a6d887e3f8ae542a4fc5a70efaa7cd4ff" prot="public" static="no" mutable="no">
+        <type>signed char</type>
+        <definition>signed char rasqal_xsd_datetime::second</definition>
+        <argsstring></argsstring>
+        <name>second</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="526" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="526" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1aa5231fdd1228e14f13f19a54efd8d4a3" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int rasqal_xsd_datetime::microseconds</definition>
+        <argsstring></argsstring>
+        <name>microseconds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="527" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="527" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1a63f674016ebd2ff6b8a8f4f56d46324d" prot="public" static="no" mutable="no">
+        <type>signed short</type>
+        <definition>signed short rasqal_xsd_datetime::timezone_minutes</definition>
+        <argsstring></argsstring>
+        <name>timezone_minutes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="528" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="528" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1afe32f1da880d04e03015653005f59470" prot="public" static="no" mutable="no">
+        <type>time_t</type>
+        <definition>time_t rasqal_xsd_datetime::time_on_timeline</definition>
+        <argsstring></argsstring>
+        <name>time_on_timeline</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="529" column="12" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="529" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrasqal__xsd__datetime_1a2fd4b146de5847a40fb925303d9e97a4" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char rasqal_xsd_datetime::have_tz</definition>
+        <argsstring></argsstring>
+        <name>have_tz</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="530" column="10" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="530" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structrasqal__xsd__datetime" kindref="compound">rasqal_xsd_datetime</ref>: @year: year @month: month 1-12 @day: 1-31 @hour: hour 0-23 @minute: minute 0-59 @second: second 0-60 (yes 60 is allowed for leap seconds) @microseconds: microseconds @timezone_minutes: minutes +/- against UTC or RASQAL_XSD_DATETIME_NO_TZ if there is no timezone in the dateTime. @time_on_timeline: time on timeline @have_tz: timezone flag: &apos;Z&apos; if Zulu, &apos;Y&apos; if has other timezone offset in @timezone_minutes, &apos;N&apos; if there is no timezone</para>
+<para>XML Schema dateTime datatype (xsd:dateTime)</para>
+<para>Signed types are required for normalization process where a value can be negative temporarily.</para>
+<para>Examples of timezone fields: &quot;2010-01-02T01:02:03&quot; : timezone_minutes RASQAL_XSD_DATETIME_NO_TZ, have_tz &apos;N&apos; &quot;2010-01-02T01:02:03Z&quot; : timezone_minutes 0, have_tz &apos;Z&apos; &quot;2010-01-02T01:02:03+00:00&quot; : timezone_minutes 0, have_tz &apos;Y&apos; &quot;2010-01-02T01:02:03-01:00&quot; : timezone_minutes -60, have_tz &apos;Y&apos; </para>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="519" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="519" bodyend="531"/>
+    <listofallmembers>
+      <member refid="structrasqal__xsd__datetime_1a9e33b3e9d2eb14a8f890d2dfecbd6e37" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>day</name></member>
+      <member refid="structrasqal__xsd__datetime_1a2fd4b146de5847a40fb925303d9e97a4" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>have_tz</name></member>
+      <member refid="structrasqal__xsd__datetime_1a1e21194e6f04a1b2167fbdbaf0f1f317" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>hour</name></member>
+      <member refid="structrasqal__xsd__datetime_1aa5231fdd1228e14f13f19a54efd8d4a3" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>microseconds</name></member>
+      <member refid="structrasqal__xsd__datetime_1ac539ef088d068567557720de357830cb" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>minute</name></member>
+      <member refid="structrasqal__xsd__datetime_1ada63c541aefc4cd94ccbedf2f0270329" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>month</name></member>
+      <member refid="structrasqal__xsd__datetime_1a6d887e3f8ae542a4fc5a70efaa7cd4ff" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>second</name></member>
+      <member refid="structrasqal__xsd__datetime_1afe32f1da880d04e03015653005f59470" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>time_on_timeline</name></member>
+      <member refid="structrasqal__xsd__datetime_1a63f674016ebd2ff6b8a8f4f56d46324d" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>timezone_minutes</name></member>
+      <member refid="structrasqal__xsd__datetime_1ac58abad8d1a762a9dfedb5ba6c65c25a" prot="public" virt="non-virtual"><scope>rasqal_xsd_datetime</scope><name>year</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

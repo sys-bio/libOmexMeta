@@ -9,12 +9,13 @@ libOmexMeta documentation!
    :hidden:
 
    background.rst
-   annotating_models/annotating_models_index.rst
    reading_rdf/reading_rdf.rst
    writing_rdf/writing_rdf.rst
-   editing_rdf/editing_rdf.rst
+   singular_annotations/index.rst
+   composite_annotations/index.rst
    querying_rdf/querying_rdf.rst
    diagrams/diagrams_index.rst
+   annotating_models/annotating_models_index.rst
    APIReference/api_reference_index.rst
    Developers/developers_index.rst
 
@@ -95,7 +96,7 @@ The procedure is the same on all platforms.
 
 .. note::
 
-    You may look at the libOmexMeta `azure-pipelines <>https://github.com/sys-bio/libOmexMeta/blob/master/azure-pipelines.yml`_
+    You may look at the libOmexMeta `azure-pipelines <https://github.com/sys-bio/libOmexMeta/blob/master/azure-pipelines.yml>`_
     which is actively used to build libOmexMeta in the cloud on all platforms.
 
 

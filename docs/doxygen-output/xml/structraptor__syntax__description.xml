@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="structraptor__syntax__description" kind="struct" language="C++" prot="public">
+    <compoundname>raptor_syntax_description</compoundname>
+    <includes refid="raptor2_8h" local="no">raptor2.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structraptor__syntax__description_1ad1b6c0de72e5033bd37d3c5bcf64c0d3" prot="public" static="no" mutable="no">
+        <type>const char *const  *</type>
+        <definition>const char* const* raptor_syntax_description::names</definition>
+        <argsstring></argsstring>
+        <name>names</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="370" column="22" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1a770f11c91d68d5b8953d717abe571f15" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int raptor_syntax_description::names_count</definition>
+        <argsstring></argsstring>
+        <name>names_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="371" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1ac41cd0e3a1ec7f78415ec50668405a8b" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* raptor_syntax_description::label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="373" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="373" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1a928ff2bee23c237fc8c644275c4c9b19" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structraptor__type__q" kindref="compound">raptor_type_q</ref> *</type>
+        <definition>const raptor_type_q* raptor_syntax_description::mime_types</definition>
+        <argsstring></argsstring>
+        <name>mime_types</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="375" column="25" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1a86c6d6132a18a6cf065ecd837fba80cf" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int raptor_syntax_description::mime_types_count</definition>
+        <argsstring></argsstring>
+        <name>mime_types_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="376" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1a0c0498d5291d379c61b55ef0e763eaf4" prot="public" static="no" mutable="no">
+        <type>const char *const  *</type>
+        <definition>const char* const* raptor_syntax_description::uri_strings</definition>
+        <argsstring></argsstring>
+        <name>uri_strings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="378" column="22" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="378" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1a34aefb8fe50ee5c0bdd2f66182f2526b" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int raptor_syntax_description::uri_strings_count</definition>
+        <argsstring></argsstring>
+        <name>uri_strings_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="379" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="379" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structraptor__syntax__description_1a3ac78b169ff3ae30333f20ed776b917c" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int raptor_syntax_description::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="381" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="381" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="structraptor__syntax__description" kindref="compound">raptor_syntax_description</ref>: @names: array of syntax names - the first one (required) is the public name, the rest are aliases. The array is NULL terminated. @names_count: size of @names array @label: long descriptive label for syntax @mime_types: Array of (MIME type, Q) values associated with the syntax (or NULL). If present the array is NULL terminated. @mime_types_count: size of @mime_types array @uri_strings: array of URIs identifying the syntax (or NULL). The first one if present is the main URI, the rest are aliases. The array is NULL terminated. @uri_strings_count: size of @uri_strings array @flags: See #raptor_syntax_bitflags for the bits</para>
+<para>Description of a syntax or file format. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>raptor_syntax_description</label>
+        <link refid="structraptor__syntax__description"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>mime_types</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>raptor_type_q</label>
+        <link refid="structraptor__type__q"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="369" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="369" bodyend="382"/>
+    <listofallmembers>
+      <member refid="structraptor__syntax__description_1a3ac78b169ff3ae30333f20ed776b917c" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>flags</name></member>
+      <member refid="structraptor__syntax__description_1ac41cd0e3a1ec7f78415ec50668405a8b" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>label</name></member>
+      <member refid="structraptor__syntax__description_1a928ff2bee23c237fc8c644275c4c9b19" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>mime_types</name></member>
+      <member refid="structraptor__syntax__description_1a86c6d6132a18a6cf065ecd837fba80cf" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>mime_types_count</name></member>
+      <member refid="structraptor__syntax__description_1ad1b6c0de72e5033bd37d3c5bcf64c0d3" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>names</name></member>
+      <member refid="structraptor__syntax__description_1a770f11c91d68d5b8953d717abe571f15" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>names_count</name></member>
+      <member refid="structraptor__syntax__description_1a0c0498d5291d379c61b55ef0e763eaf4" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>uri_strings</name></member>
+      <member refid="structraptor__syntax__description_1a34aefb8fe50ee5c0bdd2f66182f2526b" prot="public" virt="non-virtual"><scope>raptor_syntax_description</scope><name>uri_strings_count</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

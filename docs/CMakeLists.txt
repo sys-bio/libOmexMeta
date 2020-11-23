@@ -21,6 +21,7 @@
 include(GoogleTest)
 
 #configure the sphinx conf file with correct version.
+set(DOXYGEN_XML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/doxygen-output/xml")
 configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/source/conf.py.in"
         "${CMAKE_CURRENT_SOURCE_DIR}/source/conf.py" @ONLY
@@ -65,7 +66,6 @@ macro(add_doc_example BINARY_NAME)
 
 endmacro()
 
-
 if (${BUILD_DOCS_EXAMPLES})
 
     # I've automated this as much as possible. The idea is that
@@ -93,36 +93,43 @@ if (${BUILD_DOCS_EXAMPLES})
     add_doc_example(FromUriCpp source/reading_rdf/from_uri_cpp.cpp)
     add_doc_example(FromFileC source/reading_rdf/from_file_c.cpp)
     add_doc_example(FromFileCpp source/reading_rdf/from_file_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationC source/editing_rdf/create_single_annotation_c.cpp)
-    add_doc_example(CreateSingleAnnotationCpp source/editing_rdf/create_single_annotation_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationNoCommitC source/editing_rdf/create_single_annotation_no_commit_c.cpp)
-    add_doc_example(CreateSingleAnnotationNoCommitCpp source/editing_rdf/create_single_annotation_no_commit_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationPredicateFromUriC source/editing_rdf/create_single_annotation_predicate_from_uri_c.cpp)
-    add_doc_example(CreateSingleAnnotationPredicateFromUriCpp source/editing_rdf/create_single_annotation_predicate_from_uri_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationResourceC source/editing_rdf/create_single_annotation_resource_c.cpp)
-    add_doc_example(CreateSingleAnnotationResourceCpp source/editing_rdf/create_single_annotation_resource_cpp.cpp)
-    add_doc_example(CreateSingleAnnotationWithMetaidsC source/editing_rdf/create_single_annotation_with_metaids_c.cpp)
-    add_doc_example(CreateSingleAnnotationWithMetaidsCpp source/editing_rdf/create_single_annotation_with_metaids_cpp.cpp)
-    add_doc_example(CreatePhysicalEntityC source/editing_rdf/create_physical_entity_c.cpp)
-    add_doc_example(CreatePhysicalEntityCpp source/editing_rdf/create_physical_entity_cpp.cpp)
-    add_doc_example(CreatePhysicalProcessC source/editing_rdf/create_physical_process_c.cpp)
-    add_doc_example(CreatePhysicalProcessCpp source/editing_rdf/create_physical_process_cpp.cpp)
-    add_doc_example(CreateEnergyDiffC source/editing_rdf/create_energy_diff_c.cpp)
-    add_doc_example(CreateEnergyDiffCpp source/editing_rdf/create_energy_diff_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationC source/singular_annotations/create_single_annotation_c.cpp)
+    add_doc_example(CreateSingleAnnotationCpp source/singular_annotations/create_single_annotation_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationNoCommitC source/singular_annotations/create_single_annotation_no_commit_c.cpp)
+    add_doc_example(CreateSingleAnnotationNoCommitCpp source/singular_annotations/create_single_annotation_no_commit_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationPredicateFromUriC source/singular_annotations/create_single_annotation_predicate_from_uri_c.cpp)
+    add_doc_example(CreateSingleAnnotationPredicateFromUriCpp source/singular_annotations/create_single_annotation_predicate_from_uri_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationResourceC source/singular_annotations/create_single_annotation_resource_c.cpp)
+    add_doc_example(CreateSingleAnnotationResourceCpp source/singular_annotations/create_single_annotation_resource_cpp.cpp)
+    add_doc_example(CreateSingleAnnotationWithMetaidsC source/singular_annotations/create_single_annotation_with_metaids_c.cpp)
+    add_doc_example(CreateSingleAnnotationWithMetaidsCpp source/singular_annotations/create_single_annotation_with_metaids_cpp.cpp)
+
+    # Composite annotation examples
+    add_doc_example(SBMLCreatePhysicalEntityC source/composite_annotations/sbml_create_physical_entity_c.cpp)
+    add_doc_example(CellMLCreatePhysicalEntityC source/composite_annotations/cellml_create_physical_entity_c.cpp)
+    add_doc_example(SBMLCreatePhysicalEntityCpp source/composite_annotations/sbml_create_physical_entity_cpp.cpp)
+    add_doc_example(CellMLCreatePhysicalEntityCpp source/composite_annotations/cellml_create_physical_entity_cpp.cpp)
+    add_doc_example(SBMLCreatePhysicalProcessC source/composite_annotations/sbml_create_physical_process_c.cpp)
+    add_doc_example(CellMLCreatePhysicalProcessC source/composite_annotations/cellml_create_physical_process_c.cpp)
+    add_doc_example(SBMLCreatePhysicalProcessCpp source/composite_annotations/sbml_create_physical_process_cpp.cpp)
+    add_doc_example(CellMLCreatePhysicalProcessCpp source/composite_annotations/cellml_create_physical_process_cpp.cpp)
+    add_doc_example(SBMLCreateEnergyDiffC source/composite_annotations/sbml_create_energy_diff_c.cpp)
+    add_doc_example(CellMLCreateEnergyDiffC source/composite_annotations/cellml_create_energy_diff_c.cpp)
+    add_doc_example(SBMLCreateEnergyDiffCpp source/composite_annotations/sbml_create_energy_diff_cpp.cpp)
+    add_doc_example(CellMLCreateEnergyDiffCpp source/composite_annotations/cellml_create_energy_diff_cpp.cpp)
+
+    # writing docs
     add_doc_example(WritingToStringC source/writing_rdf/writing_to_string_c.cpp)
     add_doc_example(WritingToStringCpp source/writing_rdf/writing_to_string_cpp.cpp)
     add_doc_example(WritingToFileC source/writing_rdf/writing_to_file_c.cpp)
     add_doc_example(WritingToFileCpp source/writing_rdf/writing_to_file_cpp.cpp)
+
+    # querying docs
     add_doc_example(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
     add_doc_example(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
 
-    add_doc_example(AnnotatingAComplexCpp source/annotating_models/annotating_a_biological_complex_cpp.cpp)
-    add_doc_example(AnnotatingAComplexC source/annotating_models/annotating_a_biological_complex_c.cpp)
-
-    set(XML_MODEL_FILES
-            "${CMAKE_CURRENT_SOURCE_DIR}/source/annotating_models/models/ComplexBinding.sbml"
-            )
-    file(COPY ${XML_MODEL_FILES} DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/models")
+    add_doc_example(AnnotatingABiologicalComplexCpp source/annotating_models/annotating_a_biological_complex_cpp.cpp)
+    add_doc_example(AnnotatingABiologicalComplexC source/annotating_models/annotating_a_biological_complex_c.cpp)
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
@@ -143,7 +150,7 @@ if (${BUILD_DOCS_EXAMPLES})
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
         add_custom_target(RunDocExamplesAndGenerateOutput
-                COMMAND ${PYTHON_EXECUTABLE} ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-package-dir ${PYOMEXMETA_DIR} --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
+                COMMAND Python::Interpreter ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-package-dir ${PYOMEXMETA_DIR} --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
                 DEPENDS AllDocExamples
                 )
 
@@ -159,8 +166,10 @@ endif ()
 # https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
 find_package(Doxygen REQUIRED)
 
-set(DOXYGEN_INPUT_DIR1 "${CMAKE_SOURCE_DIR}/src/omexmeta")
-set(DOXYGEN_INPUT_DIR2 "${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src")
+set(DOXYGEN_INPUT_OMEXMETA_IMPL_DIR "${CMAKE_SOURCE_DIR}/src/omexmeta")
+set(DOXYGEN_INPUT_OMEXMETA_HEADER_DIR "${CMAKE_SOURCE_DIR}/src/omexmeta/include/omexmeta")
+set(DOXYGEN_INPUT_REDLAND_IMPL_DIR "${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src")
+set(DOXYGEN_INPUT_REDLAND_HEADER_DIR "${CMAKE_SOURCE_DIR}/src/redland/RedlandWrapper/src/include/redland")
 set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/doxygen-output")
 set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.xml)
 set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
@@ -225,13 +234,13 @@ add_custom_command(
         COMMENT "Generating documentation with Sphinx")
 
 
-add_custom_target(libomexmeta-docs-sphinx DEPENDS ${SPHINX_INDEX_FILE})
+add_custom_target(libomexmeta-docs-sphinx DEPENDS ${SPHINX_INDEX_FILE} )
 
 # when were building the docs examples, we add the dependency so the
 # examples get built when we run build the libomexmeta-dpcs-sphinx target
-#if (BUILD_DOCS_EXAMPLES)
-#    add_dependencies(libomexmeta-docs-sphinx RunDocExamplesAndGenerateOutput)
-#endif ()
+if (BUILD_DOCS_EXAMPLES)
+    add_dependencies(libomexmeta-docs-sphinx RunDocExamplesAndGenerateOutput)
+endif ()
 
 # Add an install target to install the docs
 include(GNUInstallDirs)

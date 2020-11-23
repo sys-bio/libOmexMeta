@@ -7,7 +7,7 @@
     <detaileddescription>
 <para>specifically for predicates from the Foaf set of predicates. All predicates have the namespace <computeroutput><ulink url="http://www.bhi.washington.edu/semsim">http://www.bhi.washington.edu/semsim</ulink>#</computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix. </para>
     </detaileddescription>
-    <location file="src/omexmeta/Predicate.h" line="326" column="1"/>
+    <location file="src/omexmeta/include/omexmeta/Predicate.h" line="326" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

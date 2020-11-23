@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="24" column="19" bodyfile="src/omexmeta/ElementExtractor.h" bodystart="24" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="24" column="19" bodyfile="src/omexmeta/include/omexmeta/ElementExtractor.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1ElementExtractor_1afb15da1b4a3c22ffafefbc9ef1f67fff" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="26" column="21" bodyfile="src/omexmeta/ElementExtractor.h" bodystart="26" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="26" column="21" bodyfile="src/omexmeta/include/omexmeta/ElementExtractor.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1ElementExtractor_1a7d6326fd2a7de5b50527d5ef8fb6aff8" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="27" column="21" bodyfile="src/omexmeta/ElementExtractor.h" bodystart="27" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="27" column="21" bodyfile="src/omexmeta/include/omexmeta/ElementExtractor.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1ElementExtractor_1aea9b5fd3575ff6a92305a7503d951274" prot="private" static="no" mutable="no">
         <type>std::vector&lt; xmlNode * &gt;</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="29" column="21" bodyfile="src/omexmeta/ElementExtractor.h" bodystart="29" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="29" column="21" bodyfile="src/omexmeta/include/omexmeta/ElementExtractor.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="31" column="14" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="24" bodyend="35"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="31" column="14" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="24" bodyend="35"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="39" column="18" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="9" bodyend="14"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="39" column="18" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="9" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1ElementExtractor_1a686653cc9bf2d5e4551c029d0e86155c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="41" column="9" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="16" bodyend="18"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="41" column="9" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="16" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1ElementExtractor_1aedddcdb8149ac96e76f20ffd56980b0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; xmlNode * &gt; &amp;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/ElementExtractor.h" line="46" column="28" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="37" bodyend="39"/>
+        <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="46" column="28" bodyfile="src/omexmeta/ElementExtractor.cpp" bodystart="37" bodyend="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -152,7 +152,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/ElementExtractor.h" line="22" column="5" bodyfile="src/omexmeta/ElementExtractor.h" bodystart="22" bodyend="47"/>
+    <location file="src/omexmeta/include/omexmeta/ElementExtractor.h" line="22" column="5" bodyfile="src/omexmeta/include/omexmeta/ElementExtractor.h" bodystart="22" bodyend="47"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1ElementExtractor_1a29c0e98b5b6e2475ca3998cacd7451c6" prot="private" virt="non-virtual"><scope>omexmeta::ElementExtractor</scope><name>collectElements</name></member>
       <member refid="classomexmeta_1_1ElementExtractor_1a0a2c0bbf39f19a2595d79a5d78862427" prot="private" virt="non-virtual"><scope>omexmeta::ElementExtractor</scope><name>doc_</name></member>

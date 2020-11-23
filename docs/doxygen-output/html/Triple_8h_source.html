@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/omexmeta/Triple.h Source File</title>
+<title>libomexmeta: src/omexmeta/include/omexmeta/Triple.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_805176f2c4714c569bc16cfd6a26a0cb.html">omexmeta</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_805176f2c4714c569bc16cfd6a26a0cb.html">omexmeta</a></li><li class="navelem"><a class="el" href="dir_0ff2839f0436a7bd3ba130866134b3e9.html">include</a></li><li class="navelem"><a class="el" href="dir_a8576c3dd404f1f37c9018ff7dd15568.html">omexmeta</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -103,7 +103,7 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classomexmeta_1_1Triple.html">   35</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1Triple.html">Triple</a> : <span class="keyword">public</span> <a class="code" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a>(librdf_statement *statement);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a>(<a class="code" href="structraptor__statement.html">librdf_statement</a> *statement);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::string local_uri_; <span class="comment">// like http:/omex-library.org/omex-archive.omex/model.rdf</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::string model_uri_;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
@@ -116,9 +116,9 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a>(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1Subject.html">Subject</a> &amp;subject, <span class="keyword">const</span> PredicatePtr &amp;predicate_ptr, <span class="keyword">const</span> <a class="code" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a>(librdf_node *subject, librdf_node *predicate, librdf_node *resource);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a>(<a class="code" href="structraptor__term.html">librdf_node</a> *subject, <a class="code" href="structraptor__term.html">librdf_node</a> *predicate, <a class="code" href="structraptor__term.html">librdf_node</a> *resource);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">static</span> <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> fromRawStatementPtr(librdf_statement *statement);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">static</span> <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> fromRawStatementPtr(<a class="code" href="structraptor__statement.html">librdf_statement</a> *statement);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">const</span> std::string &amp;getLocalUri() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
@@ -129,7 +129,7 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::string str(<span class="keyword">const</span> std::string &amp;format = <span class="stringliteral">&quot;turtle&quot;</span>,</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keyword">const</span> std::string &amp;base = (std::filesystem::current_path() /=  <span class="stringliteral">&quot;annotations.rdf&quot;</span>).<span class="keywordtype">string</span>(),</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                std::string omex_name = <span class="stringliteral">&quot;NewOmex.omex/&quot;</span>,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                std::string model_name = <span class="stringliteral">&quot;NewModel.xml#&quot;</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                std::string model_name = <span class="stringliteral">&quot;NewModel.xml&quot;</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> freeTriple();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
@@ -139,7 +139,7 @@ $(function() {
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        std::string getAbout() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        librdf_statement *getStatement() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="structraptor__statement.html">librdf_statement</a> *getStatement() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> &amp;setPredicate(<span class="keyword">const</span> std::string &amp;namespace_, <span class="keyword">const</span> std::string &amp;term);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
@@ -172,17 +172,20 @@ $(function() {
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> &amp;resourceUri(<span class="keyword">const</span> std::string &amp;identifiers_uri);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> &amp;resourceBlank(<span class="keyword">const</span> std::string &amp;blank_id);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    };</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> <a class="code" href="classomexmeta_1_1Triple.html">SingularAnnotation</a>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_Triple22_H</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    };</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classomexmeta_1_1Triple.html">Triple</a> <a class="code" href="classomexmeta_1_1Triple.html">SingularAnnotation</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif //LIBOMEXMETA_Triple22_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassomexmeta_1_1Resource_html"><div class="ttname"><a href="classomexmeta_1_1Resource.html">omexmeta::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:20</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Resource_html"><div class="ttname"><a href="classomexmeta_1_1Resource.html">omexmeta::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:21</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Triple_html"><div class="ttname"><a href="classomexmeta_1_1Triple.html">omexmeta::Triple</a></div><div class="ttdef"><b>Definition:</b> Triple.h:35</div></div>
+<div class="ttc" id="astructraptor__statement_html"><div class="ttname"><a href="structraptor__statement.html">raptor_statement</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:647</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfStatement_html"><div class="ttname"><a href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></div><div class="ttdef"><b>Definition:</b> LibrdfStatement.h:17</div></div>
-<div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> AnnotationType.h:12</div></div>
+<div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
+<div class="ttc" id="astructraptor__term_html"><div class="ttname"><a href="structraptor__term.html">raptor_term</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:621</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Subject_html"><div class="ttname"><a href="classomexmeta_1_1Subject.html">omexmeta::Subject</a></div><div class="ttdef"><b>Definition:</b> Subject.h:21</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

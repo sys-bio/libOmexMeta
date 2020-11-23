@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.17</span>
+   &#160;<span id="projectnumber">1.1.18</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -100,10 +100,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>freeNode</b> ()</td><
 <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&amp;node) noexcept</td></tr>
 <tr class="separator:a9de3a69b00958b2bb50646dbf0aa8d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a200c7a67088e66d6fc73f52bdb51d2e9"><td class="memItemLeft" align="right" valign="top"><a id="a200c7a67088e66d6fc73f52bdb51d2e9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfNode</b> (librdf_node *node)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfNode</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:a200c7a67088e66d6fc73f52bdb51d2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33162ea36efe451c100325816cf8613f"><td class="memItemLeft" align="right" valign="top"><a id="a33162ea36efe451c100325816cf8613f"></a>
-librdf_node *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
+<a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
 <tr class="separator:a33162ea36efe451c100325816cf8613f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83ec604f27e71cea80ac49569a06ddfe"><td class="memItemLeft" align="right" valign="top"><a id="a83ec604f27e71cea80ac49569a06ddfe"></a>
 raptor_term_type&#160;</td><td class="memItemRight" valign="bottom"><b>getRaptorTermType</b> ()</td></tr>
@@ -135,11 +135,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlankIdentifier</b
 <tr class="memitem:a8ac1d280707f4405dc8865465028ae33"><td class="memItemLeft" align="right" valign="top"><a id="a8ac1d280707f4405dc8865465028ae33"></a>
 <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromUriString</b> (const std::string &amp;uri_string, const std::string &amp;local_prefix)</td></tr>
 <tr class="separator:a8ac1d280707f4405dc8865465028ae33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43ba1bed3f1cc6ed654a16c570598565"><td class="memItemLeft" align="right" valign="top"><a id="a43ba1bed3f1cc6ed654a16c570598565"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">getNamespace</a> () const</td></tr>
+<tr class="memdesc:a43ba1bed3f1cc6ed654a16c570598565"><td class="mdescLeft">&#160;</td><td class="mdescRight">get namespace portion of the node. I.e. all but last section of the uri <br /></td></tr>
+<tr class="separator:a43ba1bed3f1cc6ed654a16c570598565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5c971e6daeca94c4eabddfa5f6e4c456"><td class="memItemLeft" align="right" valign="top"><a id="a5c971e6daeca94c4eabddfa5f6e4c456"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>freeNode</b> (librdf_node *node)</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>freeNode</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:a5c971e6daeca94c4eabddfa5f6e4c456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacf853ee60f9d706bc7e95fb426166bd"><td class="memItemLeft" align="right" valign="top"><a id="aacf853ee60f9d706bc7e95fb426166bd"></a>
 static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromUriString</b> (const std::string &amp;uri_string)</td></tr>
@@ -154,7 +158,7 @@ static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;
 static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>newEmptyNode</b> ()</td></tr>
 <tr class="separator:aaeeeca26bafdaf7f118af3307a4768be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6bf7e25e68e473f2f39cb7b4cb5f39b"><td class="memItemLeft" align="right" valign="top"><a id="aa6bf7e25e68e473f2f39cb7b4cb5f39b"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>str</b> (librdf_node *node)</td></tr>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>str</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
 <tr class="separator:aa6bf7e25e68e473f2f39cb7b4cb5f39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3242e29edb736ba0aa8ac42fd6b3ae58"><td class="memItemLeft" align="right" valign="top"><a id="a3242e29edb736ba0aa8ac42fd6b3ae58"></a>
 static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>validateLiteralDatatype</b> (const std::string &amp;literal_datatype_uri)</td></tr>
@@ -165,9 +169,12 @@ static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;
 <tr class="memitem:a872032a7516dd140f93a9f4af3e0abd9"><td class="memItemLeft" align="right" valign="top"><a id="a872032a7516dd140f93a9f4af3e0abd9"></a>
 static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRelativeUri</b> (const std::string &amp;uri_string, const std::string &amp;base_uri)</td></tr>
 <tr class="separator:a872032a7516dd140f93a9f4af3e0abd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56623e9b231d824ad34d43d9a3994df7"><td class="memItemLeft" align="right" valign="top"><a id="a56623e9b231d824ad34d43d9a3994df7"></a>
+static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>splitStringBy</b> (const std::string &amp;str, char delimiter)</td></tr>
+<tr class="separator:a56623e9b231d824ad34d43d9a3994df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/redland/RedlandWrapper/src/<a class="el" href="LibrdfNode_8h_source.html">LibrdfNode.h</a></li>
+<li>src/redland/RedlandWrapper/src/include/redland/<a class="el" href="LibrdfNode_8h_source.html">LibrdfNode.h</a></li>
 <li>src/redland/RedlandWrapper/src/LibrdfNode.cpp</li>
 </ul>
 </div><!-- contents -->

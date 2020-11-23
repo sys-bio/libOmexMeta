@@ -203,9 +203,9 @@ namespace omexmeta {
 
         /**
          * @brief add a composite annotation of type EnergyDiff to the rdf graph
-         * @param physicalForce An instance of a EnergyDiff objec to add to the rdf graph.
+         * @param ediff An instance of a EnergyDiff objec to add to the rdf graph.
          */
-        void addEnergyDiff(EnergyDiff &physicalForce);
+        void addEnergyDiff(EnergyDiff &ediff);
 
         /**
          * @brief add a PersonalInformation class to the rdf model
@@ -223,7 +223,7 @@ namespace omexmeta {
          * @brief check that a metaid is valid by comparing
          * with the output from Editor::getMetaIds()
          */
-        void checkValidMetaid(const std::string &metaid);
+        void checkValidMetaid(std::string metaid);
 
         /**
          * @brief extract namespace part of uri from @parameter predicate_string

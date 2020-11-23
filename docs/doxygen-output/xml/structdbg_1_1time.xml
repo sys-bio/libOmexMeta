@@ -6,7 +6,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/dbg.h" line="77" column="1" bodyfile="src/omexmeta/dbg.h" bodystart="77" bodyend="77"/>
+    <location file="src/omexmeta/include/omexmeta/dbg.h" line="77" column="1" bodyfile="src/omexmeta/include/omexmeta/dbg.h" bodystart="77" bodyend="77"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>
