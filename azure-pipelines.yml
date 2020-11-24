@@ -90,7 +90,7 @@ stages:
               eval "$(conda shell.bash hook)"
               conda activate pyomexmeta
               cd $(INSTALL_DIRECTORY)
-              python setup.py bdist_wheel
+              python setup.py --universal bdist_wheel
               cd dist
               wheel=$(realpath $(ls))
               pip install $wheel
