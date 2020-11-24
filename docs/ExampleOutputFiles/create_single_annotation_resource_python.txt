@@ -1,17 +1,3 @@
-it: ToyModel
-it: ToyModel
-it: compartment0000
-it: species0000
-it: ToyModel
-it: compartment0000
-it: species0000
-it: species0001
-it: ToyModel
-it: compartment0000
-it: species0000
-it: ToyModel
-it: compartment0000
-it: species0000
 13
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .

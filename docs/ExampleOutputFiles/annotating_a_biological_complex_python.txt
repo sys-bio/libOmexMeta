@@ -1,34 +1,3 @@
-it: ComplexBinding
-it: compartment0000
-it: Shc
-it: ComplexBinding
-it: compartment0000
-it: Shc
-it: Sos
-it: ComplexBinding
-it: compartment0000
-it: Shc
-it: Sos
-it: Grb2
-it: ComplexBinding
-it: compartment0000
-it: Shc
-it: ComplexBinding
-it: compartment0000
-it: Shc
-it: Sos
-it: Grb2
-it: Shc_Sos_Grb2
-it: Binding
-it: ComplexBinding
-it: compartment0000
-it: Shc
-it: Sos
-it: Grb2
-it: Shc_Sos_Grb2
-it: Binding
-it: kineticLaw0000
-it: Unbinding
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -45,27 +14,27 @@ local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "-3.42029e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc_Sos_Grb2> .
 
 local:SinkParticipant0001
-    semsim:hasMultiplier "-3.42029e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Grb2> .
 
 local:SinkParticipant0002
-    semsim:hasMultiplier "-3.42029e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Sos> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "-3.42029e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc>, <http://omex-library.org/NewOmex.omex/NewModel.xml#Shc_Sos_Grb2> .
 
 local:SourceParticipant0001
-    semsim:hasMultiplier "-3.42029e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Grb2> .
 
 local:SourceParticipant0002
-    semsim:hasMultiplier "-3.42029e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Sos> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#Binding>

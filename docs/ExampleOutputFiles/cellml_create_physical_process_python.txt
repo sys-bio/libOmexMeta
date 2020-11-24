@@ -14,11 +14,11 @@ local:Process
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "-4.70332e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "-4.70332e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>

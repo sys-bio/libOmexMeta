@@ -21,13 +21,13 @@ stages:
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
-          VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
-          CCACHE_DIR: $(Pipeline.Workspace)/ccache
-          BUILD_DIRECTORY: $(System.DefaultWorkingDirectory)/build
-          SOURCE_DIRECTORY: $(System.DefaultWorkingDirectory)
-          INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
-          PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
-          LINUX_WHEEL: $(INSTALLED_ROOT)/libOmexMeta-x64Ubuntu/dist
+          VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
+          LINUX_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Ubuntu/dist'
+          PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
         steps:
     #      - bash: |
     #          sudo apt-get install ccache -y
@@ -136,13 +136,13 @@ stages:
         pool:
           vmImage: 'macOS-10.15'
         variables:
-          VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
-          CCACHE_DIR: $(Pipeline.Workspace)/ccache
-          BUILD_DIRECTORY: $(System.DefaultWorkingDirectory)/build
-          SOURCE_DIRECTORY: $(System.DefaultWorkingDirectory)
-          INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
-          PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
-          MAC_WHEEL: $(INSTALLED_ROOT)/libOmexMeta-x64Mac/dist
+          VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
+          MAC_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Mac/dist'
+          PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
         steps:
     #      - bash: |
     #          sudo apt-get install ccache -y
@@ -247,16 +247,17 @@ stages:
         pool:
           vmImage: 'windows-2019'
         variables:
-          VCPKG_INSTALL_PREFIX: $(Pipeline.Workspace)/vcpkg
-          CCACHE_DIR: $(Pipeline.Workspace)/ccache
-          BUILD_DIRECTORY: $(System.DefaultWorkingDirectory)/build
-          SOURCE_DIRECTORY: $(System.DefaultWorkingDirectory)
-          INSTALL_DIRECTORY: $(System.DefaultWorkingDirectory)/install-azure
-          CONDA_ACTIVATE: C:\Miniconda\bin\activate.exe
-          PYTHON: C:\Miniconda\python.exe
-          PIP: C:\Miniconda\Scripts\pip.exe
-          PIP_WHEELS: (Build.ArtifactStagingDirectory)/PipWheels
-          WINDOWS_WHEEL: $(INSTALLED_ROOT)/libOmexMeta-x64Windows/dist
+          VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
+          CONDA_ACTIVATE: 'C:\Miniconda\bin\activate.exe'
+          PYTHON: 'C:\Miniconda\python.exe'
+          PIP: 'C:\Miniconda\Scripts\pip.exe'
+          PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
+          WINDOWS_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Windows/dist'
+
         steps:
     #      - bash: |
     #          sudo apt-get install ccache -y

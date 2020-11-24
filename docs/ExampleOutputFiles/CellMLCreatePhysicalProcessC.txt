@@ -1,5 +1,3 @@
-l
-l
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -16,11 +14,9 @@ local:Process
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity2 .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference local:entity1 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>

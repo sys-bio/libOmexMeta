@@ -241,6 +241,9 @@ as a framework for representing these annotations. At the core of libOmexMeta ar
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pyomexmeta-the-python-front-end">
 <h3>pyomexmeta - the python front end<a class="headerlink" href="#pyomexmeta-the-python-front-end" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pyomexmeta
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="build-from-source">
@@ -256,18 +259,30 @@ which is actively used to build libOmexMeta in the cloud on all platforms.</p>
 <p>libOmexMeta was built with gcc-10 on linux. It is highly likely to work with
 other versions but untested.
 Use the following commands to use g++-10:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install -y gcc-10 g++-10
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10
+</pre></div>
+</div>
 </div>
 <ol class="arabic simple">
 <li><p>Get vcpkg, which provides some of the dependencies</p></li>
 </ol>
-<ol class="arabic">
-<li><p>Clone libOmexMeta</p>
-<blockquote>
-<div><p>LIBOMEXMETA_DIRECTORY=/full/path/to/where/you/want/libomexmeta
-git clone <a class="reference external" href="https://github.com/sys-bio/libOmexMeta.git">https://github.com/sys-bio/libOmexMeta.git</a> –recurse-submodules $(LIBOMEXMETA_DIRECTORY)</p>
-</div></blockquote>
-</li>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">VCPKG_INSTALL_PREFIX</span><span class="o">=</span>~/full/path/to/where/you/want/vcpkg
+git clone https://github.com/microsoft/vcpkg.git <span class="k">$(</span>VCPKG_INSTALL_PREFIX<span class="k">)</span>
+<span class="nb">cd</span> <span class="k">$(</span>VCPKG_INSTALL_PREFIX<span class="k">)</span>
+./bootstrap-vcpkg.sh
+vcpkg install curl pcre openssl yajl sqlite3 liblzma
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Clone libOmexMeta</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">LIBOMEXMETA_DIRECTORY</span><span class="o">=</span>/full/path/to/where/you/want/libomexmeta
+git clone https://github.com/sys-bio/libOmexMeta.git --recurse-submodules <span class="k">$(</span>LIBOMEXMETA_DIRECTORY<span class="k">)</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is easy to forget the <cite>–recurse-submodules</cite> flag. If you do the
@@ -278,6 +293,18 @@ from the libOmexMeta root.</p>
 <ol class="arabic simple">
 <li><p>Build libOmexMeta</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">BUILD_DIRECTORY</span><span class="o">=</span><span class="k">$(</span>LIBOMEXMETA_DIRECTORY<span class="k">)</span>/build
+<span class="nv">INSTALL_DIRECTORY</span><span class="o">=</span>/full/path/to/where/you/want/to/install/libomexmeta
+mkdir <span class="k">$(</span>BUILD_DIRECTORY<span class="k">)</span>
+<span class="nb">cd</span> <span class="k">$(</span>BUILD_DIRECTORY<span class="k">)</span>
+
+<span class="c1"># cmake configure command</span>
+cmake -DVCPKG_ROOT<span class="o">=</span><span class="k">$(</span>VCPKG_INSTALL_PREFIX<span class="k">)</span> -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>INSTALL_DIRECTORY<span class="k">)</span><span class="s2">&quot;</span> -DBUILD_TESTS<span class="o">=</span>ON -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
+
+<span class="c1"># cmake build command</span>
+cmake --build . --target install --config Release -j <span class="m">12</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Like all cmake options passed at the command line, they should be prepended
@@ -286,38 +313,39 @@ with <cite>-D</cite> and followed by <cite>=value</cite>. i.e. <cite>-DBUILD_OPT
 <p>The following build options may be passed to the cmake configure command:</p>
 <blockquote>
 <div><ul>
-<li><p>BUILD_TESTS=ON: Build the C++, C tests and include the Python tests when BUILD_PYTHON=ON</p></li>
-<li><p>BUILD_PYTHON=ON: Installs pyomexmeta under the site-packages directory in the install tree and includes the Python tests in ctest when BUILD_TESTS=ON</p></li>
-<li><p>BUILD_DOCS=ON: Build and install the documentation</p>
+<li><p><cite>BUILD_TESTS=ON</cite>: Build the C++, C tests and include the Python tests when BUILD_PYTHON=ON</p></li>
+<li><p><cite>BUILD_PYTHON=ON</cite>: Installs pyomexmeta under the site-packages directory in the install tree and includes the Python tests in ctest when BUILD_TESTS=ON</p></li>
+<li><p><cite>BUILD_DOCS=ON</cite>: Build and install the documentation</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Python_ROOT_DIR=/path/to/python/distribution/to/use: Manually specify the Python distribution to use</p></li>
-<li><p>SPHINX_EXECUTABLE/path/to/sphinx/executable   : Manually specify the sphinx executable to use</p></li>
+<li><p><cite>Python_ROOT_DIR=/path/to/python/distribution/to/use</cite>: Manually specify the Python distribution to use</p></li>
+<li><p><cite>SPHINX_EXECUTABLE/path/to/sphinx/executable</cite>: Manually specify the sphinx executable to use</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 </div></blockquote>
-<ol class="arabic">
-<li><p>[Optional] Build the pip wheel</p>
-<blockquote>
-<div><p>pip install breathe sphinx-tabs requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
-# get root of currently active Python
-python_dir=$(dirname $(which python))
-cd $(BUILD_DIRECTORY)
-cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=”$(INSTALL_DIRECTORY)” -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..</p>
-<p># [optional] run the tests
-cmake –build $(BUILD_DIRECTORY) –target run-ctest –config Release</p>
-<p># install
-cmake –build . –target install –config Release -j 12</p>
-</div></blockquote>
-</li>
+<ol class="arabic simple">
+<li><p>[Optional] Build the pip wheel</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install breathe sphinx-tabs requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+<span class="c1"># get root of currently active Python</span>
+<span class="nv">python_dir</span><span class="o">=</span><span class="k">$(</span>dirname <span class="k">$(</span>which python<span class="k">))</span>
+<span class="nb">cd</span> <span class="k">$(</span>BUILD_DIRECTORY<span class="k">)</span>
+cmake -DVCPKG_ROOT<span class="o">=</span><span class="k">$(</span>VCPKG_INSTALL_PREFIX<span class="k">)</span> -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>INSTALL_DIRECTORY<span class="k">)</span><span class="s2">&quot;</span> -DBUILD_TESTS<span class="o">=</span>ON -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DBUILD_PYTHON<span class="o">=</span>ON -DPython_ROOT_DIR<span class="o">=</span><span class="k">$(</span>python_dir<span class="k">)</span> ..
+
+<span class="c1"># [optional] run the tests</span>
+cmake --build <span class="k">$(</span>BUILD_DIRECTORY<span class="k">)</span> --target run-ctest --config Release
+
+<span class="c1"># install</span>
+cmake --build . --target install --config Release -j <span class="m">12</span>
+</pre></div>
+</div>
 <p>This time there will be a <cite>site-packages/pyomexmeta</cite> directory and a <cite>site-packages/setup.py</cite> file. To
 build a pip wheel run:</p>
-<blockquote>
-<div><p>python setup.py bdist_wheel</p>
-</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py bdist_wheel
+</pre></div>
+</div>
 <ol class="arabic simple">
 <li><p>[Optional] Run the tests</p></li>
 </ol>
@@ -377,7 +405,7 @@ Conda is preconfigured and pyomexmeta is installed.</p>
 </div>
 <div class="section" id="downloading-binaries">
 <h2>Downloading Binaries<a class="headerlink" href="#downloading-binaries" title="Permalink to this headline">¶</a></h2>
-<p>You can download binaries from the <a class="reference external" href="https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10">releases tab</a></p>
+<p>You can download binaries from the <a class="reference external" href="https://github.com/sys-bio/libOmexMeta/releases">releases tab</a></p>
 </div>
 <div class="section" id="indices-and-tables">
 <h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>

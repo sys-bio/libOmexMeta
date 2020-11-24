@@ -2519,10 +2519,10 @@
         </inbodydescription>
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1085" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1085" bodyend="1094" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="289" declcolumn="30"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a2d8dc96f97627f820f665c364b0f0dc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceomexmeta_1a8ab294c40c45244bf12f7ef7df9e6392" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
         <definition>OMEXMETA_CAPI_EXPORT PhysicalProcess * omexmeta::PhysicalProcess_addSource</definition>
-        <argsstring>(PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type, int multiplier)</argsstring>
+        <argsstring>(PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type, double multiplier)</argsstring>
         <name>PhysicalProcess_addSource</name>
         <param>
           <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2537,7 +2537,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>int</type>
+          <type>double</type>
           <declname>multiplier</declname>
         </param>
         <briefdescription>
@@ -2548,10 +2548,10 @@
         </inbodydescription>
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1097" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1097" bodyend="1106" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="294" declcolumn="42"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a6aec4041f1495f2cbe47dc17b80b1915" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceomexmeta_1a0a0d22748b0e4bdc5fccc5cc6f738579" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
         <definition>OMEXMETA_CAPI_EXPORT PhysicalProcess * omexmeta::PhysicalProcess_addSink</definition>
-        <argsstring>(PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type, int multiplier)</argsstring>
+        <argsstring>(PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type, double multiplier)</argsstring>
         <name>PhysicalProcess_addSink</name>
         <param>
           <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2566,7 +2566,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>int</type>
+          <type>double</type>
           <declname>multiplier</declname>
         </param>
         <briefdescription>

@@ -1,9 +1,3 @@
-it: SimpleRegulation
-it: A
-it: B
-it: C
-it: D
-it: R1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -19,11 +13,11 @@ local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00593> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "-3.21271e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "-3.21271e+08"^^rdf:double ;
+    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#R1>

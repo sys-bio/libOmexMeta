@@ -83,7 +83,7 @@ Installation
 pyomexmeta - the python front end
 -----------------------------------
 
-.. code-block: bash
+.. code-block:: bash
 
     pip install pyomexmeta
 
@@ -106,18 +106,18 @@ The procedure is the same on all platforms.
     other versions but untested.
     Use the following commands to use g++-10:
 
-    .. code:block bash
+    .. code-block:: bash
 
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt-get update
-        sudo apt-get install -y gcc-10 g++-10 graphviz
+        sudo apt-get install -y gcc-10 g++-10
         update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10
 
 
 #. Get vcpkg, which provides some of the dependencies
 
 
-.. code-block: bash
+.. code-block:: bash
 
     VCPKG_INSTALL_PREFIX=~/full/path/to/where/you/want/vcpkg
     git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
@@ -127,6 +127,8 @@ The procedure is the same on all platforms.
 
 
 #. Clone libOmexMeta
+
+.. code-block:: bash
 
     LIBOMEXMETA_DIRECTORY=/full/path/to/where/you/want/libomexmeta
     git clone https://github.com/sys-bio/libOmexMeta.git --recurse-submodules $(LIBOMEXMETA_DIRECTORY)
@@ -140,7 +142,7 @@ The procedure is the same on all platforms.
 
 #. Build libOmexMeta
 
-.. code-block: bash
+.. code-block:: bash
 
 
     BUILD_DIRECTORY=$(LIBOMEXMETA_DIRECTORY)/build
@@ -161,17 +163,19 @@ The procedure is the same on all platforms.
 
 The following build options may be passed to the cmake configure command:
 
-    * BUILD_TESTS=ON: Build the C++, C tests and include the Python tests when BUILD_PYTHON=ON
+    * `BUILD_TESTS=ON`: Build the C++, C tests and include the Python tests when BUILD_PYTHON=ON
 
-    * BUILD_PYTHON=ON: Installs pyomexmeta under the site-packages directory in the install tree and includes the Python tests in ctest when BUILD_TESTS=ON
+    * `BUILD_PYTHON=ON`: Installs pyomexmeta under the site-packages directory in the install tree and includes the Python tests in ctest when BUILD_TESTS=ON
 
-    * BUILD_DOCS=ON: Build and install the documentation
+    * `BUILD_DOCS=ON`: Build and install the documentation
 
-        - Python_ROOT_DIR=/path/to/python/distribution/to/use: Manually specify the Python distribution to use
-        - SPHINX_EXECUTABLE/path/to/sphinx/executable   : Manually specify the sphinx executable to use
+        - `Python_ROOT_DIR=/path/to/python/distribution/to/use`: Manually specify the Python distribution to use
+        - `SPHINX_EXECUTABLE/path/to/sphinx/executable`: Manually specify the sphinx executable to use
 
 
 #. [Optional] Build the pip wheel
+
+.. code-block:: bash
 
     pip install breathe sphinx-tabs requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
     # get root of currently active Python
@@ -187,6 +191,8 @@ The following build options may be passed to the cmake configure command:
 
 This time there will be a `site-packages/pyomexmeta` directory and a `site-packages/setup.py` file. To
 build a pip wheel run:
+
+.. code-block:: bash
 
     python setup.py bdist_wheel
 
@@ -262,7 +268,7 @@ Conda is preconfigured and pyomexmeta is installed.
 Downloading Binaries
 ====================
 
-You can download binaries from the `releases tab <https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10>`_
+You can download binaries from the `releases tab <https://github.com/sys-bio/libOmexMeta/releases>`_
 
 
 Indices and tables

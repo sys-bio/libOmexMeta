@@ -13,11 +13,9 @@ local:ProcessProperty0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
 
 local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#R1>

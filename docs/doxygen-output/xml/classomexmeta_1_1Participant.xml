@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="56" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="115" bodyend="117"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="56" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="116" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a415c1205762dff6943426d830d74edcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="62" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="119" bodyend="121"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="62" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="120" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a8a6626e17aca48b76465d66928eee78f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -179,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="70" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="123" bodyend="125"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="70" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="124" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a5e8f680950f55230587c0f85498c5047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="78" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="127" bodyend="129"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="78" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a6bf4c724ab5212d10f2a89893f369cd1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="83" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="131" bodyend="133"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="83" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="132" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a595323ae0681f42a7ba5981e2ee840f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -230,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="88" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="135" bodyend="137"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="88" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="136" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a395bc8d2561149a77371ed80e2ed1517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -363,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="117" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="101" bodyend="109"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="117" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="102" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1aa4baa62cb4ccffe8443262382490328d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -380,16 +380,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="119" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="111" bodyend="113"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="119" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="112" bodyend="114"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Participant_1a278a5e9eaf13f5a7e195e38104eb7b12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1Participant_1aabb81b9996c05ce9519c44f5d1d529db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
         <definition>Triples omexmeta::Participant::toTriples</definition>
-        <argsstring>(std::string subject_metaid, std::vector&lt; std::string &gt; &amp;metaid_exclusions)</argsstring>
+        <argsstring>(std::string about, std::vector&lt; std::string &gt; &amp;metaid_exclusions)</argsstring>
         <name>toTriples</name>
         <param>
           <type>std::string</type>
-          <declname>subject_metaid</declname>
+          <declname>about</declname>
         </param>
         <param>
           <type>std::vector&lt; std::string &gt; &amp;</type>
@@ -401,7 +401,7 @@
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>subject_metaid</parametername>
+<parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>the metaid for a process </para>
@@ -415,7 +415,7 @@ The same toTriples method is used for all participants. </para>
         <inbodydescription>
 <para>Since <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>&apos;s are added to the model as a unit, we need a way of keeping track of which metaids have been used in order to ensure unique metaid&apos;s when we have more than one Sink/Source/Mediate <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>. For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way local_uri&apos;s were added after the original design was in place. Future developers might want to look at this.</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="128" column="18" bodyfile="src/omexmeta/Participant.cpp" bodystart="30" bodyend="79"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="128" column="18" bodyfile="src/omexmeta/Participant.cpp" bodystart="31" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a03a1ffc7e9efaed5c0e94a62f7c72650" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -464,7 +464,7 @@ The same toTriples method is used for all participants. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="142" column="27" bodyfile="src/omexmeta/Participant.cpp" bodystart="81" bodyend="83"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="142" column="27" bodyfile="src/omexmeta/Participant.cpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a1188d6a2036514eb6b649ce1e08eca4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -492,7 +492,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="150" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="85" bodyend="87"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="150" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -509,7 +509,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="157" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="89" bodyend="91"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="157" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a79b467cfc699483fdfe5e7686cc5447e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -526,7 +526,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="163" column="17" bodyfile="src/omexmeta/Participant.cpp" bodystart="93" bodyend="95"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="163" column="17" bodyfile="src/omexmeta/Participant.cpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a40a5858db6aaae7ec7095b320de838d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -543,7 +543,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="169" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="97" bodyend="99"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="169" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1ae78613f8d39ccfc23fc3624deb960fb0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -557,7 +557,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="174" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="139" bodyend="141"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="174" column="28" bodyfile="src/omexmeta/Participant.cpp" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1abea74e8605f7314a51db8dc723961462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -575,7 +575,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="179" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="143" bodyend="145"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="179" column="14" bodyfile="src/omexmeta/Participant.cpp" bodystart="144" bodyend="146"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -634,7 +634,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
       <member refid="classomexmeta_1_1Participant_1a415c1205762dff6943426d830d74edcd" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>setPhysicalEntityReference</name></member>
       <member refid="classomexmeta_1_1Participant_1a1188d6a2036514eb6b649ce1e08eca4d" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>setPredicate</name></member>
       <member refid="classomexmeta_1_1Participant_1a5e8f680950f55230587c0f85498c5047" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>setUniqueParticipantMetaid</name></member>
-      <member refid="classomexmeta_1_1Participant_1a278a5e9eaf13f5a7e195e38104eb7b12" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>toTriples</name></member>
+      <member refid="classomexmeta_1_1Participant_1aabb81b9996c05ce9519c44f5d1d529db" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>toTriples</name></member>
       <member refid="classomexmeta_1_1Participant_1a375e3ece0c157e9e4cc6d3b05c53a21f" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>type_</name></member>
       <member refid="classomexmeta_1_1Participant_1a78529cee5b9d5b30d76f937af652d4f0" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>~Participant</name></member>
     </listofallmembers>

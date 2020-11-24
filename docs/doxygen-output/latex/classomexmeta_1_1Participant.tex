@@ -33,7 +33,7 @@ bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1Participant
 \mbox{\Hypertarget{classomexmeta_1_1Participant_aa4baa62cb4ccffe8443262382490328d}\label{classomexmeta_1_1Participant_aa4baa62cb4ccffe8443262382490328d}} 
 bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} \&rhs) const
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \mbox{\hyperlink{classomexmeta_1_1Participant_a278a5e9eaf13f5a7e195e38104eb7b12}{to\+Triples}} (std\+::string subject\+\_\+metaid, std\+::vector$<$ std\+::string $>$ \&metaid\+\_\+exclusions)
+\mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \mbox{\hyperlink{classomexmeta_1_1Participant_aabb81b9996c05ce9519c44f5d1d529db}{to\+Triples}} (std\+::string about, std\+::vector$<$ std\+::string $>$ \&metaid\+\_\+exclusions)
 \begin{DoxyCompactList}\small\item\em create a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object from the \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}}. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1Participant_a03a1ffc7e9efaed5c0e94a62f7c72650}{create\+Metaid}} (const std\+::string \&base, std\+::vector$<$ std\+::string $>$ \&metaid\+\_\+exclusions) const
 \begin{DoxyCompactList}\small\item\em create a new metaid use base \end{DoxyCompactList}\item 
@@ -212,11 +212,11 @@ i.\+e. \char`\"{}has\+Source\+Participant\char`\"{} not \char`\"{}http\+://www.\
 
 set the local participant metaid. 
 
-When \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} types are created they are done so with a metaid that is local to the annotation document not to the model. \mbox{\Hypertarget{classomexmeta_1_1Participant_a278a5e9eaf13f5a7e195e38104eb7b12}\label{classomexmeta_1_1Participant_a278a5e9eaf13f5a7e195e38104eb7b12}} 
+When \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} types are created they are done so with a metaid that is local to the annotation document not to the model. \mbox{\Hypertarget{classomexmeta_1_1Participant_aabb81b9996c05ce9519c44f5d1d529db}\label{classomexmeta_1_1Participant_aabb81b9996c05ce9519c44f5d1d529db}} 
 \index{omexmeta::Participant@{omexmeta::Participant}!toTriples@{toTriples}}
 \index{toTriples@{toTriples}!omexmeta::Participant@{omexmeta::Participant}}
 \doxysubsubsection{\texorpdfstring{toTriples()}{toTriples()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} omexmeta\+::\+Participant\+::to\+Triples (\begin{DoxyParamCaption}\item[{std\+::string}]{subject\+\_\+metaid,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{metaid\+\_\+exclusions }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} omexmeta\+::\+Participant\+::to\+Triples (\begin{DoxyParamCaption}\item[{std\+::string}]{about,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{metaid\+\_\+exclusions }\end{DoxyParamCaption})}
 
 
 
@@ -224,7 +224,7 @@ create a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object from the \m
 
 
 \begin{DoxyParams}{Parameters}
-{\em subject\+\_\+metaid} & the metaid for a process \\
+{\em about} & the metaid for a process \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
