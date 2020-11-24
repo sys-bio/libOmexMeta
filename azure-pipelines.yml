@@ -103,12 +103,6 @@ stages:
               sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
               targetFolder: '$(Build.ArtifactStagingDirectory)'
-          - task: CopyFiles@2
-            inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)/dist'
-              contents: '*.whl'
-              targetFolder: '$(Build.ArtifactStagingDirectory)/PipWheels'
-            displayName: copy linux wheel to artfact staging area
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
@@ -205,12 +199,6 @@ stages:
               contents: '**'
               targetFolder: '$(Build.ArtifactStagingDirectory)'
             displayName: Copy install to artifact staging area
-          - task: CopyFiles@2
-            inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)/dist'
-              contents: '*.whl'
-              targetFolder: '$(Build.ArtifactStagingDirectory)/PipWheels'
-            displayName: copy mac wheel to artfact staging area
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
@@ -317,12 +305,6 @@ stages:
               contents: '**'
               targetFolder: '$(Build.ArtifactStagingDirectory)'
             displayName: Copy install to artifact staging area
-          - task: CopyFiles@2
-            inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)/dist'
-              contents: '*.whl'
-              targetFolder: '$(Build.ArtifactStagingDirectory)/PipWheels'
-            displayName: copy windows wheel to artfact staging area
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
