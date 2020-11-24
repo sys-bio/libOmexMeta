@@ -293,11 +293,11 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSource(
             PhysicalProcess *physical_process,
-            const char *physical_entity_reference, eUriType type,int multiplier);
+            const char *physical_entity_reference, eUriType type,double multiplier);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSink(
             PhysicalProcess *physical_process,
-            const char *physical_entity_reference, eUriType type, int multiplier);
+            const char *physical_entity_reference, eUriType type, double multiplier);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addMediator(
             PhysicalProcess *physical_process, const char *physical_entity_reference, eUriType type);

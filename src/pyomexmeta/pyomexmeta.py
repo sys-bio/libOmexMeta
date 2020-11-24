@@ -188,7 +188,7 @@ class RDF:
             )
         )
 
-    def draw(self, filename: str):
+    def draw(self, filename: str, **kwargs):
         """
         render an graph of RDF and save to `filename`
 
@@ -209,7 +209,7 @@ class RDF:
                               f'you are using the correct python interpretor. The interpreter being used '
                               f'now is \"{_python_interpretor}\"')
         dot = self.to_string("dot")
-        src = graphviz.Source(dot)
+        src = graphviz.Source(dot, **kwargs)
         src.render(filename)
         print('RDF graph saved to "{}"'.format(filename))
         if not os.path.isfile(filename):
@@ -617,13 +617,13 @@ class PhysicalProcess(_PropertyBearer):
     def get_ptr(self) -> ct.c_int64:
         return self._obj
 
-    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: float) -> PhysicalProcess:
+    def add_source(self, physical_entity_reference: str, uri_type: eUriType, multiplier: float = 1.0) -> PhysicalProcess:
         self._obj = _pyom.physical_process_add_source(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )
         return self
 
-    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: float) -> PhysicalProcess:
+    def add_sink(self, physical_entity_reference: str, uri_type: eUriType, multiplier: float = 1.0) -> PhysicalProcess:
         self._obj = _pyom.physical_process_add_sink(
             self._obj, physical_entity_reference.encode(), uri_type, multiplier
         )

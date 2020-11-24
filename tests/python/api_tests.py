@@ -823,7 +823,7 @@ local:EntityProperty0000
         entity_property = self.pyom.physical_property_is_property_of(entity_property, "entity0".encode(), eUriType.LOCAL_URI)
 
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        physical_entity = self.pyom.physical_entity_about(physical_entity, "entity0".encode(), eUriType.MODEL_URI)
+        physical_entity = self.pyom.physical_entity_about(physical_entity, "entity0".encode(), eUriType.LOCAL_URI)
         physical_entity = self.pyom.physical_entity_identity(physical_entity, "fma:9670".encode())
         physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "fma:18228".encode())
         physical_entity = self.pyom.physical_entity_has_property(physical_entity, entity_property)
@@ -1041,30 +1041,30 @@ local:SourceParticipant0000
     def test_energy_diff_sbml1(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         energy_diff = self.pyom.editor_new_energy_diff(editor_ptr)
-        energy_diff = self.pyom.energy_diff_about(energy_diff, "EnergyDiff_0".encode(), eUriType.MODEL_URI)
-        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "source_23".encode(), eUriType.MODEL_URI)
-        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "sink_12".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_about(energy_diff, "reaction0000".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "species0001".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "species0002".encode(), eUriType.MODEL_URI)
         energy_diff = self.pyom.energy_diff_has_property_full(
             energy_diff, "parameter_metaid_0".encode(), eUriType.LOCAL_URI, "opb:OPB_01058".encode(), "EnergyDiff_0".encode(), eUriType.MODEL_URI)
         self.pyom.editor_add_energy_diff(editor_ptr, energy_diff)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0002> .
 
 local:SourceParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:parameter_metaid_0
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """.encode()
@@ -1075,31 +1075,31 @@ local:parameter_metaid_0
     def test_energy_diff_sbml2(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         energy_diff = self.pyom.editor_new_energy_diff(editor_ptr)
-        energy_diff = self.pyom.energy_diff_about(energy_diff, "EnergyDiff_0".encode(), eUriType.MODEL_URI)
-        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "source_23".encode(), eUriType.MODEL_URI)
-        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "sink_12".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_about(energy_diff, "reaction0000".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_source(energy_diff, "species0000".encode(), eUriType.MODEL_URI)
+        energy_diff = self.pyom.energy_diff_add_sink(energy_diff, "species0001".encode(), eUriType.MODEL_URI)
         energy_diff = self.pyom.energy_diff_has_property_is_version_of(
             energy_diff, "opb:OPB_01058".encode()
         )
         self.pyom.editor_add_energy_diff(editor_ptr, energy_diff)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EnergyDiffProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
 local:SinkParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """.encode()

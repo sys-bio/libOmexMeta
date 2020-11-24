@@ -75,16 +75,14 @@ namespace omexmeta {
 
     librdf_model *Editor::getModel() const { return model_.get(); }
 
-    void Editor::checkValidMetaid( std::string metaid) {
+    void Editor::checkValidMetaid( const std::string& metaid) {
         // metaid's containing local uri's are valid metaids.
         if (OmexMetaUtils::startsWith(metaid, getLocalUri())){
-            std::cout << "l" << std::endl;
             return;
         }
 
         // if metaid is an empty string, a local ui will be generated automatically
         if (metaid.empty()){
-            std::cout << "d" << std::endl;
             return;
         }
 
@@ -92,12 +90,12 @@ namespace omexmeta {
         // throw error if not
         bool found = false;
         for (auto &it : metaids_) {
-//            std::cout << "metaid: " << metaid << "; it: " << it << std::endl;
             if (metaid.find(it) != std::string::npos) {
                 found = true;
                 break;
             }
         }
+
         if (!found) {
             std::ostringstream err;
             err << "std::invalid_argument(): metaid \"" << metaid

@@ -1095,7 +1095,7 @@ namespace omexmeta {
 
     PhysicalProcess *
     PhysicalProcess_addSource(PhysicalProcess *physical_process,
-                              const char *physical_entity_reference, eUriType type, int multiplier) {
+                              const char *physical_entity_reference, eUriType type, double multiplier) {
         try {
             physical_process->addSource(physical_entity_reference, type, multiplier);
             return physical_process;
@@ -1107,7 +1107,7 @@ namespace omexmeta {
 
     PhysicalProcess *
     PhysicalProcess_addSink(PhysicalProcess *physical_process,
-                            const char *physical_entity_reference, eUriType type, int multiplier) {
+                            const char *physical_entity_reference, eUriType type, double multiplier) {
         try {
             physical_process->addSink(physical_entity_reference, type, multiplier);
             return physical_process;

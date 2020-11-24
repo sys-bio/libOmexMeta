@@ -200,6 +200,8 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washin
         rdf = RDF("sqlite", fname, "new='yes'")
         rdf.add_from_uri(self.sbml_uri, "rdfxml")
         self.assertTrue(os.path.isfile(fname))
+        if os.path.isfile(fname):
+            os.remove(fname)
 
 
 class EditorTests(unittest.TestCase):
@@ -537,7 +539,7 @@ local:EntityProperty
     def test_physical_entity_sbml2(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
         with editor.new_physical_entity() as physical_entity:
-            physical_entity.about("species", eUriType.MODEL_URI) \
+            physical_entity.about("species0000", eUriType.MODEL_URI) \
                 .identity("uniprot:PD12345") \
                 .is_part_of("fma:1234") \
                 .has_property("EntityProperty", eUriType.LOCAL_URI, "opb:OPB_12345")
@@ -548,10 +550,10 @@ local:EntityProperty
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EntityProperty
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#species>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot:PD12345> ;
     bqbiol:isPartOf <https://identifiers.org/fma:1234> .
 """
@@ -560,7 +562,7 @@ local:EntityProperty
     def test_physical_entity_sbml3(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
         with editor.new_physical_entity() as physical_entity:
-            physical_entity.about("species", eUriType.MODEL_URI) \
+            physical_entity.about("species0000", eUriType.MODEL_URI) \
                 .identity("uniprot:PD12345") \
                 .is_part_of("fma:1234") \
                 .has_property("opb:OPB_12345")
@@ -571,10 +573,10 @@ local:EntityProperty
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EntityProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#species>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot:PD12345> ;
     bqbiol:isPartOf <https://identifiers.org/fma:1234> .
 """
@@ -809,10 +811,10 @@ local:SourceParticipant0000
     def test_energy_diff_sbml1(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
         with editor.new_energy_diff() as energy_diff:
-            energy_diff.about("EnergyDiff_0", eUriType.MODEL_URI) \
-                .add_source("source_23", eUriType.MODEL_URI) \
-                .add_sink("sink_12", eUriType.MODEL_URI) \
-                .has_property("parameter_metaid_0", eUriType.LOCAL_URI, "opb:OPB_01058")
+            energy_diff.about("reaction0000", eUriType.MODEL_URI) \
+                .add_source("species0000", eUriType.MODEL_URI) \
+                .add_sink("species0001", eUriType.MODEL_URI) \
+                .has_property("localParameter0000", eUriType.LOCAL_URI, "opb:OPB_01058")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -821,27 +823,28 @@ local:SourceParticipant0000
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:SinkParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
-local:parameter_metaid_0
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;
+local:localParameter0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
+
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_energy_diff_sbml2(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
         with editor.new_energy_diff() as energy_diff:
-            energy_diff.about("EnergyDiff_0", eUriType.MODEL_URI) \
-                .add_source("source_23", eUriType.MODEL_URI) \
-                .add_sink("sink_12", eUriType.MODEL_URI) \
+            energy_diff.about("reaction0001", eUriType.MODEL_URI) \
+                .add_source("species0001", eUriType.MODEL_URI) \
+                .add_sink("species0000", eUriType.MODEL_URI) \
                 .has_property(is_version_of="opb:OPB_01058")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -850,17 +853,17 @@ local:parameter_metaid_0
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:SinkParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
-
-local:SourceParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
-
 local:EnergyDiffProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#EnergyDiff_0>
+local:SinkParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
+
+local:SourceParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """
@@ -1047,7 +1050,7 @@ class AnnotateAModelTest(unittest.TestCase):
         # annotate Smad3nuc
         with editor.new_physical_entity() as smad3nuc:
             smad3nuc \
-                .about("OmexMetaId0002", eUriType.MODEL_URI) \
+                .about("species0000", eUriType.MODEL_URI) \
                 .has_property(is_version_of="OPB:OPB_00340") \
                 .identity("uniprot:P84022") \
                 .is_part_of("obo/FMA_7163") \
@@ -1056,7 +1059,7 @@ class AnnotateAModelTest(unittest.TestCase):
         # annotate Smad3nuc
         with editor.new_physical_entity() as smad3nuc:
             smad3nuc \
-                .about("OmexMetaId0003", eUriType.MODEL_URI) \
+                .about("species0001", eUriType.MODEL_URI) \
                 .has_property(is_version_of="OPB:OPB_00340") \
                 .identity("uniprot:P84022") \
                 .is_part_of("obo/FMA_7163") \
@@ -1066,18 +1069,18 @@ class AnnotateAModelTest(unittest.TestCase):
         # annotate r1 (Smad3Nuc -> Smad3Cyt)
         with editor.new_physical_process() as export_reaction:
             export_reaction \
-                .about("OmexMetaId0004", eUriType.MODEL_URI) \
+                .about("reaction0000", eUriType.MODEL_URI) \
                 .has_property(is_version_of="OPB:OPB_00237") \
-                .add_source("OmexMetaId0003", eUriType.MODEL_URI, 1) \
-                .add_sink("OmexMetaId0002", eUriType.MODEL_URI, 1)
+                .add_source("species0000", eUriType.MODEL_URI, 1) \
+                .add_sink("species0001", eUriType.MODEL_URI, 1)
 
         # annotate r2 (Smad3Cyt -> Smad3Nuc)
         with editor.new_physical_process() as export_reaction:
             export_reaction \
-                .about("OmexMetaId0005", eUriType.MODEL_URI) \
+                .about("reaction0001", eUriType.MODEL_URI) \
                 .has_property(is_version_of="OPB:OPB_00237") \
-                .add_source("OmexMetaId0002", eUriType.MODEL_URI, 1) \
-                .add_sink("OmexMetaId0003", eUriType.MODEL_URI, 1)
+                .add_source("species0001", eUriType.MODEL_URI, 1) \
+                .add_sink("species0000", eUriType.MODEL_URI, 1)
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -1087,7 +1090,7 @@ class AnnotateAModelTest(unittest.TestCase):
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EntityProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
 
 local:Process0000
@@ -1095,49 +1098,39 @@ local:Process0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 local:ProcessProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00237> .
 
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>, <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
-    bqbiol:is <https://identifiers.org/uniprot:P84022> ;
-    bqbiol:isPartOf <https://identifiers.org/obo/FMA_264020>, <https://identifiers.org/obo/FMA_7163> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
-    bqbiol:is <https://identifiers.org/uniprot:P84022> ;
-    bqbiol:isPartOf <https://identifiers.org/obo/FMA_63840>, <https://identifiers.org/obo/FMA_63877>, <https://identifiers.org/obo/FMA_7163> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
     <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 ;
     bqbiol:isPropertyOf local:Process0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 ;
     bqbiol:isPropertyOf local:Process0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
+    bqbiol:is <https://identifiers.org/uniprot:P84022> ;
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>, <https://identifiers.org/obo/FMA_264020>, <https://identifiers.org/obo/FMA_7163> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
+    bqbiol:is <https://identifiers.org/uniprot:P84022> ;
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus>, <https://identifiers.org/obo/FMA_63840>, <https://identifiers.org/obo/FMA_63877>, <https://identifiers.org/obo/FMA_7163> .
 
 """
 
@@ -1353,9 +1346,14 @@ class DrawTests(unittest.TestCase):
                 end
                 """
         self.sbml = te.antimonyToSBML(ant)
+        self.output_filename = os.path.join(os.path.dirname(__file__), "test_draw")
 
     def tearDown(self) -> None:
-        pass
+        if os.path.isfile(self.output_filename + ".jpeg"):
+            os.remove(self.output_filename + ".jpeg")
+
+        if os.path.isfile(self.output_filename):
+            os.remove(self.output_filename)
 
     def test(self):
         rdf = RDF()
@@ -1364,10 +1362,8 @@ class DrawTests(unittest.TestCase):
                 s.about("species0000") \
                     .predicate("bqbiol", "is") \
                     .resource_uri("fma/FMA_66835")
-        fname = os.path.join(os.path.realpath("."), "test_draw")
-        rdf.draw(fname)
-        self.assertTrue(os.path.isfile(fname))
-        os.remove(fname + ".pdf")
+        rdf.draw(self.output_filename, format="jpeg")
+        self.assertTrue(os.path.isfile(self.output_filename))
 
 
 

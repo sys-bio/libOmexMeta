@@ -120,12 +120,12 @@ namespace omexmeta {
 
         /**
          * @brief create a Triples object from the Participant.
-         * @param subject_metaid the metaid for a process
+         * @param about the metaid for a process
          * @return A Triples container for the Triples associated with this Participant
          *
          * The same toTriples method is used for all participants.
          */
-        [[nodiscard]] Triples toTriples(std::string subject_metaid,
+        [[nodiscard]] Triples toTriples(std::string about,
                                         std::vector<std::string> &metaid_exclusions);
 
         /**

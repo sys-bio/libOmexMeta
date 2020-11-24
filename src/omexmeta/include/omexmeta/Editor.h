@@ -223,7 +223,7 @@ namespace omexmeta {
          * @brief check that a metaid is valid by comparing
          * with the output from Editor::getMetaIds()
          */
-        void checkValidMetaid(std::string metaid);
+        void checkValidMetaid(const std::string& metaid);
 
         /**
          * @brief extract namespace part of uri from @parameter predicate_string

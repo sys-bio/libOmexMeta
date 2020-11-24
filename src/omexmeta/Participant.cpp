@@ -27,18 +27,19 @@ namespace omexmeta {
         return OmexMetaUtils::generateUniqueMetaid(model_, base, metaid_exclusions);
     }
 
-    Triples Participant::toTriples(std::string subject_metaid, std::vector<std::string> &metaid_exclusions) {
-        subject_metaid = UriHandler::uriModifier<Participant>(*this, subject_metaid, type_);
+
+    Triples Participant::toTriples(std::string about, std::vector<std::string> &metaid_exclusions) {
+        about = UriHandler::uriModifier<Participant>(*this, about, type_);
         if (local_participant_metaid_.empty()) {
             local_participant_metaid_ = OmexMetaUtils::generateUniqueMetaid(
                     model_, metaid_template_str_, metaid_exclusions);
         }
 
-        if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
+        if (!OmexMetaUtils::startsWith(about, "http")) {
             throw std::invalid_argument("std::invalid_argument: Participant::toTriples(): "
                                         "Expected a full uri (i.e. starts with http) for subject_metaid argument "
                                         "but received \"" +
-                                        subject_metaid + "\" instead");
+                                        about + "\" instead");
         }
         /**
         * Since Triple's are added to the model as a unit, we need a way of keeping track of which metaids
@@ -52,7 +53,7 @@ namespace omexmeta {
 
         Triples triples;
         // have source participant triple
-        librdf_node *sub1 = LibrdfNode::fromUriString(subject_metaid).get();
+        librdf_node *sub1 = LibrdfNode::fromUriString(about).get();
         librdf_node *pred1 = SemSim(semsim_predicate_term_).getNode();//term is hasSourceParticipant etc.
         librdf_node *res1 = LibrdfNode::fromUriString(local_participant_metaid_).get();
         Triple triple1(sub1, pred1, res1);
