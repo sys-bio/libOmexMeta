@@ -321,7 +321,7 @@ stages:
             inputs:
               sourceFolder: '$(INSTALL_DIRECTORY)/dist'
               contents: '*.whl'
-              targetFolder: ''$(Build.ArtifactStagingDirectory)/PipWheels'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/PipWheels'
             displayName: copy windows wheel to artfact staging area
           - task: PublishBuildArtifacts@1
             inputs:
