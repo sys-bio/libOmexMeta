@@ -79,7 +79,7 @@ stages:
               eval "$(conda shell.bash hook)"
               conda create -y --name pyomexmeta python=3.8
               conda activate pyomexmeta
-              pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+              pip install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               python_dir=$(dirname $(which python))
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
@@ -90,9 +90,18 @@ stages:
               eval "$(conda shell.bash hook)"
               conda activate pyomexmeta
               cd $(INSTALL_DIRECTORY)
-              python setup.py bdist_wheel --universal
+              python setup.py bdist_wheel
               cd dist
               wheel=$(realpath $(ls))
+              echo "ls 1: "
+              ls
+              echo "running auditwheel"
+              auditwheel repair $wheel -w .
+              echo "ls 2 after autitwheel"
+              ls
+              rm $wheel 
+              wheel=$(realpath $ls))
+              echo "wheel is: $wheel"
               pip install $wheel
               ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
