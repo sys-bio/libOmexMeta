@@ -94,10 +94,7 @@ stages:
               cd dist
               wheel=$(realpath $(ls))
               echo "ls 1: "
-              ls
-              echo "running auditwheel"
-              auditwheel repair $wheel -w .
-              echo "ls 2 after autitwheel"
+              python -c "wheel=$wheel"
               ls
               rm $wheel 
               wheel=$(realpath $ls))
