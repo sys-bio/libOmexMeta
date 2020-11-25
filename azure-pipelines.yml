@@ -93,11 +93,6 @@ stages:
               python setup.py bdist_wheel
               cd dist
               wheel=$(realpath $(ls))
-              echo "ls 1: "
-              python -c "wheel=$wheel"
-              ls
-              rm $wheel 
-              wheel=$(realpath $ls))
               echo "wheel is: $wheel"
               pip install $wheel
               ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
