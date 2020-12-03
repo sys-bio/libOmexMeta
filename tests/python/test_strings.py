@@ -1,6 +1,6 @@
 class TestStrings:
     # deprecated. Use sbml
-    xml = """<?xml version="1.0" encoding="UTF-8"?>
+    xml = """<?xml version="1.1" encoding="UTF-8"?>
     <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
       <model id="TestModelNotAnnotated">
         <listOfUnitDefinitions>
@@ -56,7 +56,7 @@ class TestStrings:
       </model>
     </sbml>"""
 
-    singular_annotation2 = """<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+    singular_annotation2 = """<?xml version=\"1.1\" encoding=\"UTF-8\"?>
    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
             xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"
             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">
@@ -65,7 +65,7 @@ class TestStrings:
    </rdf:Description>
 </rdf:RDF>"""
 
-    cellml = '''<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+    cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
                 <model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">
                   <component name=\"main\">
                     <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />

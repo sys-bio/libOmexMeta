@@ -23,6 +23,8 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int free_c_char_star(char *c);
 
+    char* getLastError();
+
 /***************************************************
  * RDF class methods
  */

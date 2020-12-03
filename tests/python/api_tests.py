@@ -293,7 +293,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
             self.pyom.editor_get_xml(editor_ptr)
         )
         print(actual)
-        expected = """<?xml version="1.0" encoding="UTF-8"?>
+        expected = """<?xml version="1.1" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
       <model id="TestModelNotAnnotated" metaid="model0000">
         <listOfUnitDefinitions>
