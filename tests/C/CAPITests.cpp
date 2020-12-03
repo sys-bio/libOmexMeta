@@ -380,7 +380,7 @@ TEST_F(CAPITests, TestPhysicalEntitySBML1) {
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "species0001");
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD12345");
-    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234", IDENTIFIERS_URI);
     physical_entity_ptr = PhysicalEntity_hasProperty(physical_entity_ptr, entity_property);
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
 
@@ -414,7 +414,7 @@ TEST_F(CAPITests, TestPhysicalEntitySBML2) {
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "species0001", MODEL_URI);
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD12345");
-    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234", IDENTIFIERS_URI);
     physical_entity_ptr = PhysicalEntity_hasPropertyFull(physical_entity_ptr, "EntityProperty", LOCAL_URI, "opb:OPB_12345");
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
 
@@ -448,7 +448,7 @@ TEST_F(CAPITests, TestPhysicalEntitySBML3) {
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "species0001", MODEL_URI);
     physical_entity_ptr = PhysicalEntity_identity(physical_entity_ptr, "uniprot:PD12345");
-    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:1234", IDENTIFIERS_URI);
     physical_entity_ptr = PhysicalEntity_hasPropertyisVersionOf(physical_entity_ptr, "opb:OPB_12345");
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
 
@@ -485,7 +485,7 @@ TEST_F(CAPITests, TestPhysicalEntityCellML1) {
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
-    entity = PhysicalEntity_isPartOf(entity, "fma:18228");
+    entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
     entity = PhysicalEntity_hasProperty(entity, entity_property);
 
     Editor_addPhysicalEntity(editor_ptr, entity);
@@ -520,7 +520,7 @@ TEST_F(CAPITests, TestPhysicalEntityCellML2) {
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
-    entity = PhysicalEntity_isPartOf(entity, "fma:18228");
+    entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
     entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
 
     Editor_addPhysicalEntity(editor_ptr, entity);
@@ -554,7 +554,7 @@ TEST_F(CAPITests, TestPhysicalEntityCellML3) {
 
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_identity(entity, "fma:9670");
-    entity = PhysicalEntity_isPartOf(entity, "fma:18228");
+    entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
     entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
 
     Editor_addPhysicalEntity(editor_ptr, entity);
@@ -586,9 +586,9 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
     physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "EntityProperty0000", LOCAL_URI);
-    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8376");
-    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8377");
-    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8378");
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8376", IDENTIFIERS_URI);
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8377", IDENTIFIERS_URI);
+    physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8378", IDENTIFIERS_URI);
     Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"

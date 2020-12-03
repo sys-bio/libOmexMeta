@@ -736,8 +736,8 @@ class PhysicalEntity(_PropertyBearer):
         propagate_omexmeta_error(self._obj)
         return self
 
-    def is_part_of(self, is_part_of: str) -> PhysicalEntity:
-        self._obj = _pyom.physical_entity_is_part_of(self.get_ptr(), is_part_of.encode())
+    def is_part_of(self, is_part_of: str, type: eUriType = eUriType.IDENTIFIERS_URI) -> PhysicalEntity:
+        self._obj = _pyom.physical_entity_is_part_of(self.get_ptr(), is_part_of.encode(), type)
         propagate_omexmeta_error(self._obj)
         return self
 

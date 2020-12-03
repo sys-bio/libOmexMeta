@@ -1031,9 +1031,9 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of) {
+    PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of, eUriType type) {
         try {
-            physical_entity_ptr->isPartOf(is_part_of);
+            physical_entity_ptr->isPartOf(is_part_of, type);
             return physical_entity_ptr;
         } catch (std::exception &error) {
             setLastError(error.what());

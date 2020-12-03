@@ -552,8 +552,8 @@ class PyOmexMetaAPI:
     # PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type) {
     physical_entity_about = utils.load_func("PhysicalEntity_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
-    # PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
-    physical_entity_is_part_of = utils.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    # PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of, eUriType type);
+    physical_entity_is_part_of = utils.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
     physical_entity_has_part = utils.load_func("PhysicalEntity_hasPart", [ct.c_int64, ct.c_char_p], ct.c_int64)
