@@ -680,16 +680,6 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.pyom.editor_delete(editor_ptr)
         self.pyom.singular_annotation_delete(singular_annotation)
 
-    def test_physical_entity_set_identity(self):
-        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        self.pyom.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
-        ptr = self.pyom.physical_entity_get_identity(physical_entity)
-        actual = self.pyom.get_and_free_c_str(ptr)
-        expected = "https://identifiers.org/uniprot:P456"
-        self.assertEqual(expected, actual)
-        self.pyom.editor_delete(editor_ptr)
-        self.pyom.physical_entity_delete(physical_entity)
 
     def test_physical_entity_identity(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
@@ -705,19 +695,19 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_physical_entity_num_locations(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        self.pyom.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
-        self.pyom.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma:fma:3456".encode())
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma/fma:3457".encode())
         actual = self.pyom.physical_entity_get_num_locations(physical_entity)
         expected = 2
         self.assertEqual(expected, actual)
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
 
-    def test_physical_entity_add_location(self):
+    def test_physical_entity_is_part_of(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        self.pyom.physical_entity_add_location(physical_entity, "fma:3456".encode())
-        self.pyom.physical_entity_add_location(physical_entity, "fma:3457".encode())
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma:3456".encode())
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma:3457".encode())
         num_locations = self.pyom.physical_entity_get_num_locations(physical_entity)
         ptr = [self.pyom.physical_entity_get_location(physical_entity, i) for i in range(num_locations)]
         actual = [self.pyom.get_and_free_c_str(i) for i in ptr]

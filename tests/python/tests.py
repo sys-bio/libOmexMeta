@@ -127,6 +127,7 @@ class TestRDF(unittest.TestCase):
         self.assertEqual(277, len(rdf))
 
     def test_from_file(self):
+
         rdf = RDF.from_file(self.sbml_file, "rdfxml")
         self.assertEqual(6, len(rdf))
 
@@ -1041,7 +1042,6 @@ class AnnotateAModelTest(unittest.TestCase):
         print(actual)
         self.assertTrue(expected, actual)
 
-
     def test_annotate_model(self):
         """
         Tests the annotation of a model created in setup.
@@ -1217,15 +1217,21 @@ local:SourceParticipant0000
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
 
     def test_personal_information(self):
+        print(1)
         rdf = RDF()
+        print(2)
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
         with editor.new_personal_information() as personal_information:
+            print(4)
             personal_information.add_creator("1234-1234-1234-1234") \
                 .add_name("Ciaran") \
                 .add_mbox("cwelsh2@uw.edu") \
                 .add_account_name("1234-1234-1234-1234") \
                 .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+            print(5)
 
+        print(6)
+        # rdf.to_string()
         print(rdf)
 
     def test_model_level_annotation(self):
@@ -1233,10 +1239,10 @@ local:SourceParticipant0000
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
         with editor.new_personal_information() as personal_information:
             personal_information.add_creator("1234-1234-1234-1234")
-                # .add_name("Ciaran") \
-                # .add_mbox("cwelsh2@uw.edu") \
-                # .add_account_name("1234-1234-1234-1234") \
-                # .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+            # .add_name("Ciaran") \
+            # .add_mbox("cwelsh2@uw.edu") \
+            # .add_account_name("1234-1234-1234-1234") \
+            # .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
         #
         # print(rdf)
 
@@ -1383,11 +1389,9 @@ class ErrorTests(unittest.TestCase):
         from pyomexmeta import OmexMetaException
         rdf = RDF()
         editor = rdf.to_editor(TestStrings.sbml, False, False)
-        with editor.new_physical_entity() as pe:
-            print("nuhuhb")
-            # with self.assertRaises(OmexMetaException):
-            pe.about("sounygvretsmething", eUriType.MODEL_URI).identity("1234")
-
+        with self.assertRaises(OmexMetaException):
+            with editor.new_singular_annotation() as s:
+                s.about("something")
 
 
 if __name__ == "__main__":

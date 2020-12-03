@@ -9,7 +9,24 @@
 
 namespace omexmeta {
     
-    std::string _LAST_ERROR;
+    std::string LAST_ERROR;
+    
+    void setLastError(const char* err){
+        LAST_ERROR = err;
+    }
+    
+    char* getLastError(){
+        if (LAST_ERROR.empty()){
+            return nullptr;
+        }
+        char *cstr = (char *) malloc((LAST_ERROR.size() + 1) * sizeof(char *));
+        strcpy(cstr, LAST_ERROR.c_str());
+        return cstr;
+    }
+
+    void clearLastError(const std::string& err){
+        LAST_ERROR = "";
+    }
     
     int free_c_char_star(char *c) {
         try {
@@ -17,18 +34,9 @@ namespace omexmeta {
                 free(c);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
-    }
-
-    char* getLastError(){
-        if (_LAST_ERROR.empty()){
-            return nullptr;
-        }
-        char *cstr = (char *) malloc((_LAST_ERROR.size() + 1) * sizeof(char *));
-        strcpy(cstr, _LAST_ERROR.c_str());
-        return cstr;
     }
 
     /*************************************************************
@@ -41,7 +49,7 @@ namespace omexmeta {
             RDF *rdf_ptr = new RDF(storage_type, storage_name, storage_options, model_options);
             return rdf_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -58,7 +66,7 @@ namespace omexmeta {
             rdf->addFromString(str, format);
             return rdf;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -68,7 +76,7 @@ namespace omexmeta {
             rdf_ptr->addFromString(str, format);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -80,7 +88,7 @@ namespace omexmeta {
             rdf->addFromUri(uri_string, format);
             return rdf;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -90,7 +98,7 @@ namespace omexmeta {
             rdf_ptr->addFromUri(uri_string, format);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -102,7 +110,7 @@ namespace omexmeta {
             rdf->addFromFile(filename, format);
             return rdf;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -112,7 +120,7 @@ namespace omexmeta {
             rdf_ptr->addFromFile(uri_string, format);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -125,7 +133,7 @@ namespace omexmeta {
             strcpy(cstr, s.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -135,7 +143,7 @@ namespace omexmeta {
             rdf_ptr->toFile(filename, format);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -147,7 +155,7 @@ namespace omexmeta {
             strcpy(s, results.c_str());
             return s;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -156,37 +164,37 @@ namespace omexmeta {
         try {
             return rdf_ptr->size();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
 
     int RDF_setRepositoryUri(RDF *rdf_ptr, const char *repository_uri) {
         try {
-            rdf_ptr->setRepositoryUri(std::move(repository_uri));
+            rdf_ptr->setRepositoryUri(repository_uri);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
 
     int RDF_setArchiveUri(RDF *rdf_ptr, const char *archive_uri) {
         try {
-            rdf_ptr->setArchiveUri(std::move(archive_uri));
+            rdf_ptr->setArchiveUri(archive_uri);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
 
     int RDF_setModelUri(RDF *rdf_ptr, const char *model_uri) {
         try {
-            rdf_ptr->setModelUri(std::move(model_uri));
+            rdf_ptr->setModelUri(model_uri);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -198,7 +206,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -210,7 +218,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -222,7 +230,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -234,7 +242,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -244,7 +252,7 @@ namespace omexmeta {
         try {
             return RDF::equals(rdf_ptr, serialized_rdf, format);
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -253,7 +261,7 @@ namespace omexmeta {
         try {
             return RDF::equals(rdf_ptr1, rdf_ptr2, format);
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -262,7 +270,7 @@ namespace omexmeta {
         try {
             return RDF::equals(first_rdf_graph, second_rdf_graph, format);
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -271,7 +279,7 @@ namespace omexmeta {
         try {
             return rdf_ptr->toEditorPtr(xml, generate_new_metaids, sbml_semantic_extraction);
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -288,7 +296,7 @@ namespace omexmeta {
             singularAnnotation->setModelUri(editor_ptr->getModelUri());
             return singularAnnotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -298,7 +306,7 @@ namespace omexmeta {
             return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(),
                                            editor_ptr->getLocalUri());
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -307,7 +315,7 @@ namespace omexmeta {
         try {
             return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -316,7 +324,7 @@ namespace omexmeta {
         try {
             return new EnergyDiff(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -324,7 +332,7 @@ namespace omexmeta {
         try {
             return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -334,7 +342,7 @@ namespace omexmeta {
             auto* property = new PhysicalProperty(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
             return property;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -345,7 +353,7 @@ namespace omexmeta {
             editor_ptr->addNamespace(namespace_, prefix);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -355,7 +363,7 @@ namespace omexmeta {
             editor_ptr->addSingleAnnotation(*singularAnnotation);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -364,9 +372,8 @@ namespace omexmeta {
         try {
             editor_ptr->addPhysicalEntity(*physicalEntity);
             return 0;
-
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -376,7 +383,7 @@ namespace omexmeta {
             editor_ptr->addPhysicalProcess(*physicalProcess);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -386,7 +393,7 @@ namespace omexmeta {
             editor_ptr->addPhysicalProperty(*physicalProperty);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -397,7 +404,7 @@ namespace omexmeta {
             return 0;
 
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -407,7 +414,7 @@ namespace omexmeta {
             editor_ptr->addPersonalInformation(personalInformation);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -417,7 +424,7 @@ namespace omexmeta {
             editor_ptr->removeSingleAnnotation(*singularAnnotation);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -427,7 +434,7 @@ namespace omexmeta {
             editor_ptr->removePhysicalEntity(*physicalEntity);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -437,7 +444,7 @@ namespace omexmeta {
             editor_ptr->removePhysicalProcess(*physicalProcess);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -447,7 +454,7 @@ namespace omexmeta {
             editor_ptr->removeEnergyDiff(*physicalForce);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -457,7 +464,7 @@ namespace omexmeta {
             editor_ptr->removePersonalInformation(information);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -467,7 +474,7 @@ namespace omexmeta {
             editor_ptr->checkValidMetaid(id);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -479,7 +486,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -488,7 +495,7 @@ namespace omexmeta {
         try {
             return editor_ptr->getMetaids().size();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -505,7 +512,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -517,7 +524,7 @@ namespace omexmeta {
             delete editor_ptr;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -529,7 +536,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -541,7 +548,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -553,7 +560,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -565,7 +572,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -575,7 +582,7 @@ namespace omexmeta {
             editor_ptr->addCreator(orcid_id);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -585,7 +592,7 @@ namespace omexmeta {
             editor_ptr->addCurator(orcid_id);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -595,7 +602,7 @@ namespace omexmeta {
             editor_ptr->addTaxon(taxon_id);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -605,7 +612,7 @@ namespace omexmeta {
             editor_ptr->addPubmed(pubmedid);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -615,7 +622,7 @@ namespace omexmeta {
             editor_ptr->addDescription(date);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -625,7 +632,7 @@ namespace omexmeta {
             editor_ptr->addDateCreated(date);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -635,7 +642,7 @@ namespace omexmeta {
             editor_ptr->addParentModel(biomod_id);
             return editor_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -649,7 +656,7 @@ namespace omexmeta {
             }
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -660,7 +667,7 @@ namespace omexmeta {
             free(singularAnnotationPtr);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -671,7 +678,7 @@ namespace omexmeta {
             singular_annotation->about(about);
             return singular_annotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     };
@@ -682,7 +689,7 @@ namespace omexmeta {
             singular_annotation->setPredicate(namespace_, term);
             return singular_annotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -698,7 +705,7 @@ namespace omexmeta {
             singular_annotation->setPredicate(uri);
             return singular_annotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -714,7 +721,7 @@ namespace omexmeta {
             singular_annotation->setResourceLiteral(literal);
             return singular_annotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -730,7 +737,7 @@ namespace omexmeta {
             singular_annotation->setResourceUri(identifiers_uri);
             return singular_annotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -746,7 +753,7 @@ namespace omexmeta {
             singular_annotation->setResourceBlank(blank_id);
             return singular_annotation;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -762,7 +769,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -774,7 +781,7 @@ namespace omexmeta {
             strcpy(cstr, predicate_str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -786,7 +793,7 @@ namespace omexmeta {
             strcpy(cstr, resource.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -798,7 +805,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -813,7 +820,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -823,7 +830,7 @@ namespace omexmeta {
             property->about(about, type);
             return property;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -835,7 +842,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -845,7 +852,7 @@ namespace omexmeta {
             property->isPropertyOf(is_property_of, type);
             return property;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -855,7 +862,7 @@ namespace omexmeta {
             property->isVersionOf(is_version_of);
             return property;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -868,7 +875,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -878,7 +885,7 @@ namespace omexmeta {
             delete property;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -894,7 +901,7 @@ namespace omexmeta {
             delete physical_entity_ptr;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -905,7 +912,7 @@ namespace omexmeta {
             delete physical_entity_ptr;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -916,48 +923,30 @@ namespace omexmeta {
             physical_entity_ptr->setPhysicalProperty(subject_metaid, physical_property);
             return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
-            return nullptr;
-        }
-    }
-
-    PhysicalEntity *PhysicalEntity_setIdentity(PhysicalEntity *physical_entity_ptr, const char *identity_resource) {
-        try {
-            physical_entity_ptr->setIdentity(identity_resource);
-            return physical_entity_ptr;
-        } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
 
     PhysicalEntity *PhysicalEntity_identity(PhysicalEntity *physical_entity_ptr, const char *identity_resource) {
         try {
-            return PhysicalEntity_setIdentity(physical_entity_ptr, identity_resource);
+            physical_entity_ptr->identity(identity_resource);
+            return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
 
-    PhysicalEntity *PhysicalEntity_addLocation(PhysicalEntity *physical_entity_ptr, const char *location_resource) {
-        try {
-            physical_entity_ptr->addLocation(location_resource);
-            return physical_entity_ptr;
-        } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
-            return nullptr;
-        }
-    }
 
     char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr) {
         try {
-            std::string about = physical_entity_ptr->getAbout();
+            const std::string& about = physical_entity_ptr->getAbout();
             char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -969,7 +958,7 @@ namespace omexmeta {
             strcpy(cstr, identity.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -978,7 +967,7 @@ namespace omexmeta {
         try {
             return physicalEntity->getNumLocations();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -990,7 +979,7 @@ namespace omexmeta {
             strcpy(cstr, location.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1004,7 +993,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1015,7 +1004,7 @@ namespace omexmeta {
             physical_entity_ptr->hasProperty(*property);
             return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1026,7 +1015,7 @@ namespace omexmeta {
             physical_entity_ptr->hasProperty(isVersionOf);
             return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1037,7 +1026,7 @@ namespace omexmeta {
             physical_entity_ptr->hasProperty(property_about, about_uri_type, is_version_of);
             return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1047,7 +1036,7 @@ namespace omexmeta {
             physical_entity_ptr->isPartOf(is_part_of);
             return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1057,7 +1046,7 @@ namespace omexmeta {
             physical_entity_ptr->hasPart(part);
             return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1066,8 +1055,9 @@ namespace omexmeta {
         try {
             physical_entity_ptr->about(about, type);
             return physical_entity_ptr;
+            return physical_entity_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1078,7 +1068,7 @@ namespace omexmeta {
             delete physicalProcess;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1089,7 +1079,7 @@ namespace omexmeta {
             delete physicalProcess;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1101,7 +1091,7 @@ namespace omexmeta {
             physical_process->addSource(physical_entity_reference, type, multiplier);
             return physical_process;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1113,7 +1103,7 @@ namespace omexmeta {
             physical_process->addSink(physical_entity_reference, type, multiplier);
             return physical_process;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1125,7 +1115,7 @@ namespace omexmeta {
             physical_process->addMediator(physical_entity_reference, type);
             return physical_process;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1139,7 +1129,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1151,7 +1141,7 @@ namespace omexmeta {
             physical_process_ptr->hasProperty(*property);
             return physical_process_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1162,7 +1152,7 @@ namespace omexmeta {
             physical_process_ptr->hasProperty(isVersionOf);
             return physical_process_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1173,7 +1163,7 @@ namespace omexmeta {
             physical_process_ptr->hasProperty(property_about, about_uri_type, is_version_of);
             return physical_process_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1185,7 +1175,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1194,7 +1184,7 @@ namespace omexmeta {
         try {
             return physicalProcess->getNumSources();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1203,7 +1193,7 @@ namespace omexmeta {
         try {
             return physicalProcess->getNumSinks();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1212,7 +1202,7 @@ namespace omexmeta {
         try {
             return physicalProcess->getNumMediators();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1222,7 +1212,7 @@ namespace omexmeta {
             physical_process_ptr->about(about, type);
             return physical_process_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1232,7 +1222,7 @@ namespace omexmeta {
             physical_process_ptr->isVersionOf(version, type);
             return physical_process_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1242,7 +1232,7 @@ namespace omexmeta {
             delete physicalForce;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1253,7 +1243,7 @@ namespace omexmeta {
             delete energy_diff_ptr;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1265,7 +1255,7 @@ namespace omexmeta {
             energy_diff_ptr->addSource(physical_entity_reference, type);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1276,7 +1266,7 @@ namespace omexmeta {
             energy_diff_ptr->addSink(physical_entity_reference, type);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1287,7 +1277,7 @@ namespace omexmeta {
             energy_diff_ptr->setPhysicalProperty(subject_metaid, physical_property);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1296,7 +1286,7 @@ namespace omexmeta {
         try {
             return physicalForce->getNumSources();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1305,7 +1295,7 @@ namespace omexmeta {
         try {
             return physicalForce->getNumSinks();
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1319,7 +1309,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1331,7 +1321,7 @@ namespace omexmeta {
             energy_diff_ptr->hasProperty(*property);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1342,7 +1332,7 @@ namespace omexmeta {
             energy_diff_ptr->hasProperty(isVersionOf);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1353,7 +1343,7 @@ namespace omexmeta {
             energy_diff_ptr->hasProperty(property_about, about_uri_type, is_version_of);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1366,7 +1356,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1376,7 +1366,7 @@ namespace omexmeta {
             energy_diff_ptr->about(about, type);
             return energy_diff_ptr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1386,7 +1376,7 @@ namespace omexmeta {
             delete information;
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1398,7 +1388,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1408,7 +1398,7 @@ namespace omexmeta {
             information->setLocalUri(localUri);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1418,7 +1408,7 @@ namespace omexmeta {
             information->addCreator(value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1428,7 +1418,7 @@ namespace omexmeta {
             information->addName(value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1438,7 +1428,7 @@ namespace omexmeta {
             information->addMbox(value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1448,7 +1438,7 @@ namespace omexmeta {
             information->addAccountName(value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1459,7 +1449,7 @@ namespace omexmeta {
             information->addAccountServiceHomepage(value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1470,7 +1460,7 @@ namespace omexmeta {
             information->addFoafBlank(predicate, blank_value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1481,7 +1471,7 @@ namespace omexmeta {
             information->addFoafUri(predicate, uri_value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1493,7 +1483,7 @@ namespace omexmeta {
             information->addFoafLiteral(predicate, literal_value);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1504,7 +1494,7 @@ namespace omexmeta {
             information->addFoaf(predicate, value_node);
             return information;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1516,7 +1506,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1526,7 +1516,7 @@ namespace omexmeta {
             information->setMetaid(metaid);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }
@@ -1538,7 +1528,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return nullptr;
         }
     }
@@ -1548,7 +1538,7 @@ namespace omexmeta {
             information->setModelUri(modelUri);
             return 0;
         } catch (std::exception &error) {
-            _LAST_ERROR = error.what();
+            setLastError(error.what());
             return -1;
         }
     }

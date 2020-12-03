@@ -48,19 +48,28 @@ def propagate_omexmeta_error(func):
         def raise_error_if_necessary(*args, **kwargs):
             failed = func(*args, **kwargs)
             if failed is None:
-                raise OmexMetaException(_pyom.get_last_error())
+                err = _pyom.get_last_error()
+                _pyom.clear_last_error()
+                raise OmexMetaException(err)
             if isinstance(failed, int):
                 if failed < 0:
-                    raise OmexMetaException(_pyom.get_last_error())
+                    err = _pyom.get_last_error()
+                    _pyom.clear_last_error()
+                    raise OmexMetaException(err)
             return failed
 
         return raise_error_if_necessary
     else:
-        if func is None:
-            raise OmexMetaException(_pyom.get_last_error())
+        value = func
+        if value is None:
+            err = _pyom.get_last_error()
+            _pyom.clear_last_error()
+            raise OmexMetaException(err)
         if isinstance(func, int):
             if func < 0:
-                raise OmexMetaException(_pyom.get_last_error())
+                err = _pyom.get_last_error()
+                _pyom.clear_last_error()
+                raise OmexMetaException(err)
         return func
 
 
@@ -158,7 +167,6 @@ class RDF:
             None if not storage_options else model_options.encode()
         )
         propagate_omexmeta_error(rdf_ptr)
-
         rdf = RDF()
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
@@ -297,11 +305,13 @@ class Editor:
 
     @propagate_omexmeta_error
     def add_singular_annotation(self, singular_annotation: SingularAnnotation) -> None:
-        return _pyom.editor_add_single_annotation(self._obj, singular_annotation.get_ptr())
+        val = _pyom.editor_add_single_annotation(self._obj, singular_annotation.get_ptr())
+        return val
 
     @propagate_omexmeta_error
     def add_physical_entity(self, physical_entity: PhysicalEntity) -> None:
-        return _pyom.editor_add_physical_entity(self._obj, physical_entity.get_ptr())
+        err_code = _pyom.editor_add_physical_entity(self._obj, physical_entity.get_ptr())
+        return err_code
 
     @propagate_omexmeta_error
     def add_physical_process(self, physical_process: PhysicalProcess) -> None:
@@ -724,9 +734,6 @@ class PhysicalEntity(_PropertyBearer):
     def about(self, about: str, type: eUriType) -> PhysicalEntity:
         self._obj = _pyom.physical_entity_about(self.get_ptr(), about.encode(), type)
         propagate_omexmeta_error(self._obj)
-        print(_get_last_error())
-        print(self._obj)
-
         return self
 
     def is_part_of(self, is_part_of: str) -> PhysicalEntity:

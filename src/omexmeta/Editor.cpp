@@ -218,6 +218,7 @@ namespace omexmeta {
         }
         triples.freeTriples();
     }
+
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
         checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PropertyBearer *) &physicalEntity);

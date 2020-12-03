@@ -191,10 +191,7 @@ class PyOmexMetaAPI:
     def get_and_free_c_str(self, c_string_ptr: ct.c_int64) -> str:
         """Uses ctypes to transfer a C string to a python string and free the C string"""
         free_func = self.utils.load_func("free_c_char_star", [ct.c_void_p], None)
-        print("c_string_ptr", c_string_ptr)
         string = ct.cast(c_string_ptr, ct.c_char_p).value
-        # if string is None:
-        #     raise OmexMetaException(self.get_last_error())
         decoded_str = string.decode()
         free_func(c_string_ptr)  # free the data
         del c_string_ptr  # free the ptr
@@ -214,10 +211,9 @@ class PyOmexMetaAPI:
         error = _get_last_error()
         if error is None or error == 0:
             return None
-        print("get_last_error(): error is " , error)
         return self.get_and_free_c_str(error)
 
-
+    clear_last_error = utils.load_func("clearLastError", [], None)
     #################################################################
     # RDF methods
     #
@@ -227,7 +223,7 @@ class PyOmexMetaAPI:
     rdf_new = utils.load_func("RDF_new", [ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # int RDF_size(RDF *rdf_ptr);
-    rdf_size = utils.load_func("RDF_size", [ct.c_int64], ct.c_int64)
+    rdf_size = utils.load_func("RDF_size", [ct.c_int64], ct.c_int)
 
     # RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
     #                         const char *storage_type = "memory", const char *storage_name = "semsim_store",
@@ -238,7 +234,7 @@ class PyOmexMetaAPI:
 
     # int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
     rdf_add_from_string = utils.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p],
-                                          ct.c_int64)
+                                          ct.c_int)
 
     # RDF *RDF_fromUri(const char *uri_string, const char *format,
     #                  const char *storage_type = "memory", const char *storage_name = "semsim_store",
@@ -249,7 +245,7 @@ class PyOmexMetaAPI:
                                     ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # int RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
-    rdf_add_from_uri = utils.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_add_from_uri = utils.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int)
 
     # RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
     #                   const char *storage_name = "semsim_store",
@@ -259,29 +255,28 @@ class PyOmexMetaAPI:
                                                      ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # int RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
-    rdf_add_from_file = utils.load_func("RDF_addFromFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_add_from_file = utils.load_func("RDF_addFromFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int)
 
     # char *RDF_toString(RDF *rdf_ptr, const char *format);
     rdf_to_string = utils.load_func("RDF_toString", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int RDF_toFile(RDF *rdf_ptr, const char *format, const char *filename);
-    rdf_to_file = utils.load_func("RDF_toFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_to_file = utils.load_func("RDF_toFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int)
 
     # int RDF_delete(RDF *rdf_ptr);
-    rdf_delete = utils.load_func("RDF_delete", [ct.c_int64], ct.c_int64)
+    rdf_delete = utils.load_func("RDF_delete", [ct.c_int64], ct.c_int)
 
     # char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
-    rdf_query_results_as_str = utils.load_func("RDF_query", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                               ct.c_int64)
+    rdf_query_results_as_str = utils.load_func("RDF_query", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # int RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
-    rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], ct.c_int)
 
     # int RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
-    rdf_set_archive_uri = utils.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    rdf_set_archive_uri = utils.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_char_p], ct.c_int)
 
     # int RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
-    rdf_set_model_uri = utils.load_func("RDF_setModelUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    rdf_set_model_uri = utils.load_func("RDF_setModelUri", [ct.c_int64, ct.c_char_p], ct.c_int)
 
     # char* RDF_getRepositoryUri(RDF *rdf_ptr);
     rdf_get_repository_uri = utils.load_func("RDF_getRepositoryUri", [ct.c_int64], ct.c_int64)
@@ -289,11 +284,9 @@ class PyOmexMetaAPI:
     # char* RDF_getArchiveUri(RDF *rdf_ptr);
     rdf_get_archive_uri = utils.load_func("RDF_getArchiveUri", [ct.c_int64], ct.c_int64)
 
-    #
     # char* RDF_getModelUri(RDF *rdf_ptr);
     rdf_get_model_uri = utils.load_func("RDF_getModelUri", [ct.c_int64], ct.c_int64)
 
-    #
     # char* RDF_getLocalUri(RDF *rdf_ptr);
     rdf_get_local_uri = utils.load_func("RDF_getLocalUri", [ct.c_int64], ct.c_int64)
 
@@ -317,49 +310,46 @@ class PyOmexMetaAPI:
     #
 
     # int Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
-    editor_add_namespace = utils.load_func("Editor_addNamespace", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    editor_add_namespace = utils.load_func("Editor_addNamespace", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int)
 
     # int Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
     editor_add_single_annotation = utils.load_func("Editor_addSingleAnnotation",
-                                                   [ct.c_int64, ct.c_int64], ct.c_int64)
+                                                   [ct.c_int64, ct.c_int64], ct.c_int)
 
     # int Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
-    editor_add_physical_entity = utils.load_func("Editor_addPhysicalEntity", [ct.c_int64, ct.c_int64],
-                                                 ct.c_int64)
+    editor_add_physical_entity = utils.load_func("Editor_addPhysicalEntity", [ct.c_int64, ct.c_int64], ct.c_int)
 
     # int Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
-    editor_add_physical_process = utils.load_func("Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64],
-                                                  ct.c_int64)
+    editor_add_physical_process = utils.load_func("Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64], ct.c_int)
 
     # int Editor_addEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
-    editor_add_energy_diff = utils.load_func("Editor_addEnergyDiff", [ct.c_int64, ct.c_int64],
-                                                ct.c_int64)
+    editor_add_energy_diff = utils.load_func("Editor_addEnergyDiff", [ct.c_int64, ct.c_int64], ct.c_int)
 
     # int Editor_addPhysicalProperty(Editor *editor_ptr, PhysicalProperty *physicalProperty);
     editor_add_physical_property = utils.load_func("Editor_addPhysicalProperty", [ct.c_int64, ct.c_int64],
-                                                   ct.c_int64)
+                                                   ct.c_int)
 
     # int Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
     editor_check_valid_metaid = utils.load_func("Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
-                                                ct.c_int64)
+                                                ct.c_int)
 
     # int Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
-    editor_remove_single_annotation = utils.load_func("Editor_removeSingleAnnotation", [ct.c_int64], ct.c_int64)
+    editor_remove_single_annotation = utils.load_func("Editor_removeSingleAnnotation", [ct.c_int64], ct.c_int)
 
     # int Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
-    editor_remove_physical_entity = utils.load_func("Editor_removePhysicalEntity", [ct.c_int64], ct.c_int64)
+    editor_remove_physical_entity = utils.load_func("Editor_removePhysicalEntity", [ct.c_int64], ct.c_int)
 
     # int Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
-    editor_remove_physical_process = utils.load_func("Editor_removePhysicalProcess", [ct.c_int64], ct.c_int64)
+    editor_remove_physical_process = utils.load_func("Editor_removePhysicalProcess", [ct.c_int64], ct.c_int)
 
     # int Editor_removeEnergyDiff(Editor *editor_ptr, EnergyDiff *physicalForce);
-    editor_remove_energy_diff = utils.load_func("Editor_removeEnergyDiff", [ct.c_int64], ct.c_int64)
+    editor_remove_energy_diff = utils.load_func("Editor_removeEnergyDiff", [ct.c_int64], ct.c_int)
 
     # int Editor_removePersonalInformation(Editor *editor_ptr, PersonalInformation *information);
-    editor_remove_personal_information = utils.load_func("Editor_removePersonalInformation", [ct.c_int64], ct.c_int64)
+    editor_remove_personal_information = utils.load_func("Editor_removePersonalInformation", [ct.c_int64], ct.c_int)
 
     # int Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
-    editor_add_personal_information = utils.load_func("Editor_addPersonalInformation", [ct.c_int64, ct.c_int64], ct.c_int64)
+    editor_add_personal_information = utils.load_func("Editor_addPersonalInformation", [ct.c_int64, ct.c_int64], ct.c_int)
 
     # char *Editor_getMetaId(Editor *editor_ptr, int index);
     editor_get_metaid = utils.load_func("Editor_getMetaId", [ct.c_int64, ct.c_int64], ct.c_int64)
@@ -383,7 +373,7 @@ class PyOmexMetaAPI:
     editor_new_energy_diff = utils.load_func("Editor_newEnergyDiff", [ct.c_int64], ct.c_int64)
 
     # int Editor_delete(Editor *editor_ptr);
-    editor_delete = utils.load_func("Editor_delete", [ct.c_int64], ct.c_int64)
+    editor_delete = utils.load_func("Editor_delete", [ct.c_int64], ct.c_int)
 
     # char*Editor_getArchiveUri(Editor *editor_ptr);
     editor_get_archive_uri = utils.load_func("Editor_getArchiveUri", [ct.c_int64], ct.c_int64)
@@ -488,7 +478,7 @@ class PyOmexMetaAPI:
     singular_annotation_get_resource = utils.load_func("SingularAnnotation_getResource", [ct.c_int64], ct.c_int64)
 
     # int SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
-    singular_annotation_delete = utils.load_func("SingularAnnotation_delete", [ct.c_int64], ct.c_int64)
+    singular_annotation_delete = utils.load_func("SingularAnnotation_delete", [ct.c_int64], ct.c_int)
 
     #################################################################
     # PhysicalProperty methods
@@ -521,23 +511,15 @@ class PyOmexMetaAPI:
                                                                  ct.c_int64)
 
     # int PhysicalProperty_delete(PhysicalProperty* property);
-    physical_property_delete = utils.load_func("PhysicalProperty_delete", [ct.c_int64], ct.c_int64)
+    physical_property_delete = utils.load_func("PhysicalProperty_delete", [ct.c_int64], ct.c_int)
 
     #################################################################
     # PhysicalEntity methods
     #
 
-    # PhysicalEntity *PhysicalEntity_setIdentity(
-    #         PhysicalEntity *physical_entity_ptr, const char *identity_resource);
-    physical_entity_set_identity = utils.load_func("PhysicalEntity_setIdentity", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
     # PhysicalEntity *PhysicalEntity_identity(
     #        PhysicalEntity *physical_entity_ptr, const char *identity_resource);
     physical_entity_identity = utils.load_func("PhysicalEntity_identity", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
-    # PhysicalEntity *PhysicalEntity_addLocation(
-    #         PhysicalEntity *physical_entity_ptr, const char *location_resource);
-    physical_entity_add_location = utils.load_func("PhysicalEntity_addLocation", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
     physical_entity_get_identity = utils.load_func("PhysicalEntity_getIdentity", [ct.c_int64], ct.c_int64)
@@ -565,7 +547,7 @@ class PyOmexMetaAPI:
                                                         [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
-    physical_entity_delete = utils.load_func("PhysicalEntity_delete", [ct.c_int64], ct.c_int64)
+    physical_entity_delete = utils.load_func("PhysicalEntity_delete", [ct.c_int64], ct.c_int)
 
     # PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type) {
     physical_entity_about = utils.load_func("PhysicalEntity_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
@@ -618,7 +600,7 @@ class PyOmexMetaAPI:
                                                          [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int PhysicalProcess_delete(PhysicalProcess *physicalProcess);
-    physical_process_delete = utils.load_func("PhysicalProcess_delete", [ct.c_int64], ct.c_int64)
+    physical_process_delete = utils.load_func("PhysicalProcess_delete", [ct.c_int64], ct.c_int)
 
     # PhysicalProcess *PhysicalProcess_about(PhysicalProcess *physical_process_ptr, const char *about, eUriType type);
     physical_process_about = utils.load_func("PhysicalProcess_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
@@ -658,7 +640,7 @@ class PyOmexMetaAPI:
                                                        [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int EnergyDiff_delete(EnergyDiff *physicalForce);
-    energy_diff_delete = utils.load_func("EnergyDiff_delete", [ct.c_int64], ct.c_int64)
+    energy_diff_delete = utils.load_func("EnergyDiff_delete", [ct.c_int64], ct.c_int)
 
     # EnergyDiff *EnergyDiff_about(EnergyDiff *energy_diff_ptr, const char *about, eUriType type);
     energy_diff_about = utils.load_func("EnergyDiff_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
@@ -672,10 +654,6 @@ class PyOmexMetaAPI:
 
     # char *PersonalInformation_getLocalUri(PersonalInformation *information);
     personal_information_get_local_uri = utils.load_func("PersonalInformation_getLocalUri", [ct.c_int64], ct.c_int64)
-
-    # int PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri);
-    personal_information_set_local_uri = utils.load_func("PersonalInformation_setLocalUri", [ct.c_int64, ct.c_char_p],
-                                                         ct.c_int64)
 
     # PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const char *value);
     personal_information_add_creator = utils.load_func("PersonalInformation_addCreator", [ct.c_int64, ct.c_char_p],
@@ -715,14 +693,14 @@ class PyOmexMetaAPI:
     personal_information_get_metaid = utils.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
 
     # int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
-    personal_information_set_metaid = utils.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    personal_information_set_metaid = utils.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], ct.c_int)
 
     # char *PersonalInformation_getModelUri(PersonalInformation *information);
     personal_information_get_model_uri = utils.load_func("PersonalInformation_getModelUri", [ct.c_int64], ct.c_int64)
 
     # int PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
     personal_information_set_model_uri = utils.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p],
-                                                         ct.c_int64)
+                                                         ct.c_int)
 
     # int PersonalInformation_delete(PersonalInformation* information);
-    personal_information_delete = utils.load_func("PersonalInformation_delete", [ct.c_int64], ct.c_int64)
+    personal_information_delete = utils.load_func("PersonalInformation_delete", [ct.c_int64], ct.c_int)
