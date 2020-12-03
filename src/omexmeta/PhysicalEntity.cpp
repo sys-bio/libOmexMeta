@@ -184,10 +184,12 @@ namespace omexmeta {
         return setIdentity(is);
     }
 
-    PhysicalEntity &PhysicalEntity::isPartOf(const std::string &isPartOf) {
-        return addLocation(isPartOf);
+    PhysicalEntity &PhysicalEntity::isPartOf(std::string isPartOf, eUriType type) {
+        isPartOf = UriHandler::uriModifier<PhysicalEntity>(*this, isPartOf, type);
+        location_resources_.push_back(std::move(
+                Resource(LibrdfNode::fromUriString(isPartOf))));
+        return *this;
     }
-
 
     PhysicalEntity &PhysicalEntity::variableMetaId(const std::string &metaid) {
         physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(metaid, model_uri_);

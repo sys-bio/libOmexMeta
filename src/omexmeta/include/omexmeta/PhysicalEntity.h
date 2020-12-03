@@ -235,7 +235,7 @@ namespace omexmeta {
          * as an alternative. For developers, consider which (or both? )sets of methods to keep,
          * `addLocation` or `isPartOf`
          */
-        PhysicalEntity &isPartOf(const std::string &is);
+        PhysicalEntity &isPartOf(std::string isPartOf, eUriType type = NONE);
 
         /**
          * @brief Add item to an "hasPart" triple on the PhysicalEntity composite annotation.

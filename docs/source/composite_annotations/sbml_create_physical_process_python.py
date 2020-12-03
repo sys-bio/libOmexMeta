@@ -1,6 +1,6 @@
 from pyomexmeta import RDF, eUriType
 
-sbml = """<?xml version="1.0" encoding="UTF-8"?>
+sbml = """<?xml version="1.1" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model metaid="SimpleRegulation" id="SimpleRegulation">
     <listOfCompartments>

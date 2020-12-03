@@ -293,7 +293,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
             self.pyom.editor_get_xml(editor_ptr)
         )
         print(actual)
-        expected = """<?xml version="1.0" encoding="UTF-8"?>
+        expected = """<?xml version="1.1" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
       <model id="TestModelNotAnnotated" metaid="model0000">
         <listOfUnitDefinitions>
@@ -680,16 +680,6 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.pyom.editor_delete(editor_ptr)
         self.pyom.singular_annotation_delete(singular_annotation)
 
-    def test_physical_entity_set_identity(self):
-        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        self.pyom.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
-        ptr = self.pyom.physical_entity_get_identity(physical_entity)
-        actual = self.pyom.get_and_free_c_str(ptr)
-        expected = "https://identifiers.org/uniprot:P456"
-        self.assertEqual(expected, actual)
-        self.pyom.editor_delete(editor_ptr)
-        self.pyom.physical_entity_delete(physical_entity)
 
     def test_physical_entity_identity(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
@@ -705,19 +695,19 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_physical_entity_num_locations(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        self.pyom.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
-        self.pyom.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma:fma:3456".encode(), eUriType.IDENTIFIERS_URI)
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma/fma:3457".encode(), eUriType.IDENTIFIERS_URI)
         actual = self.pyom.physical_entity_get_num_locations(physical_entity)
         expected = 2
         self.assertEqual(expected, actual)
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
 
-    def test_physical_entity_add_location(self):
+    def test_physical_entity_is_part_of(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
-        self.pyom.physical_entity_add_location(physical_entity, "fma:3456".encode())
-        self.pyom.physical_entity_add_location(physical_entity, "fma:3457".encode())
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma:3456".encode(), eUriType.IDENTIFIERS_URI)
+        self.pyom.physical_entity_is_part_of(physical_entity, "fma:3457".encode(), eUriType.IDENTIFIERS_URI)
         num_locations = self.pyom.physical_entity_get_num_locations(physical_entity)
         ptr = [self.pyom.physical_entity_get_location(physical_entity, i) for i in range(num_locations)]
         actual = [self.pyom.get_and_free_c_str(i) for i in ptr]
@@ -736,7 +726,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
         physical_entity = self.pyom.physical_entity_about(physical_entity, "species0001".encode(), eUriType.LOCAL_URI)
         physical_entity = self.pyom.physical_entity_identity(physical_entity, "uniprot:PD12345".encode())
-        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "FMA:1234".encode())
+        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "FMA:1234".encode(), eUriType.IDENTIFIERS_URI)
         physical_entity = self.pyom.physical_entity_has_property(physical_entity, entity_property)
         self.pyom.editor_add_physical_entity(editor_ptr, physical_entity)
         expected =  """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -763,7 +753,7 @@ local:EntityProperty
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
         physical_entity = self.pyom.physical_entity_about(physical_entity, "species0001".encode(), eUriType.MODEL_URI)
         physical_entity = self.pyom.physical_entity_identity(physical_entity, "uniprot:PD12345".encode())
-        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "FMA:1234".encode())
+        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "FMA:1234".encode(), eUriType.IDENTIFIERS_URI)
         physical_entity = self.pyom.physical_entity_has_property_full(
             physical_entity, "EntityProperty".encode(),
             eUriType.LOCAL_URI, "opb:OPB_12345".encode(),
@@ -793,7 +783,7 @@ local:EntityProperty
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
         physical_entity = self.pyom.physical_entity_about(physical_entity, "species0001".encode(), eUriType.MODEL_URI)
         physical_entity = self.pyom.physical_entity_identity(physical_entity, "uniprot:PD12345".encode())
-        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "FMA:1234".encode())
+        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "FMA:1234".encode(), eUriType.IDENTIFIERS_URI)
         physical_entity = self.pyom.physical_entity_has_property_is_version_of(
             physical_entity, "opb:OPB_12345".encode())
 
@@ -825,7 +815,7 @@ local:EntityProperty0000
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
         physical_entity = self.pyom.physical_entity_about(physical_entity, "entity0".encode(), eUriType.LOCAL_URI)
         physical_entity = self.pyom.physical_entity_identity(physical_entity, "fma:9670".encode())
-        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "fma:18228".encode())
+        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "fma:18228".encode(), eUriType.IDENTIFIERS_URI)
         physical_entity = self.pyom.physical_entity_has_property(physical_entity, entity_property)
         self.pyom.editor_add_physical_entity(editor_ptr, physical_entity)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -852,7 +842,7 @@ local:entity0
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.cellml.encode(), True, False)
         physical_entity = self.pyom.editor_new_physical_entity(editor_ptr)
         physical_entity = self.pyom.physical_entity_identity(physical_entity, "fma:9670".encode())
-        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "fma:18228".encode())
+        physical_entity = self.pyom.physical_entity_is_part_of(physical_entity, "fma:18228".encode(), eUriType.IDENTIFIERS_URI)
         physical_entity = self.pyom.physical_entity_has_property_full(physical_entity,  "main.Volume".encode(), eUriType.MODEL_URI, "opb:OPB_00154".encode())
         self.pyom.editor_add_physical_entity(editor_ptr, physical_entity)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .

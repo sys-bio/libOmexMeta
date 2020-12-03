@@ -17,11 +17,18 @@
 
 namespace omexmeta {
 
+
 #ifdef __cplusplus
     extern "C" {
 #endif
 
     OMEXMETA_CAPI_EXPORT int free_c_char_star(char *c);
+
+    OMEXMETA_CAPI_EXPORT void setLastError(const char* msg);
+
+    OMEXMETA_CAPI_EXPORT char* getLastError();
+
+    OMEXMETA_CAPI_EXPORT void clearLastError(const std::string& err);
 
 /***************************************************
  * RDF class methods
@@ -246,17 +253,8 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
-    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-            PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property=nullptr);
-
-    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(
-            PhysicalEntity *physical_entity_ptr, const char *identity_resource);
-
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_identity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
-
-    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(
-            PhysicalEntity *physical_entity_ptr, const char *location_resource);
 
     OMEXMETA_CAPI_EXPORT char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
 
@@ -274,7 +272,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of);
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of, eUriType type);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
 

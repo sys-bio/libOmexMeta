@@ -120,7 +120,7 @@ message(STATUS "VCPKG_INCLUDE_DIR ${VCPKG_INCLUDE_DIR}")
 # install the export info
 install(
         EXPORT ${target}-static
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta"
         NAMESPACE OmexMeta::
         FILE OmexMetaStatic.cmake
 )
