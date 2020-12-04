@@ -72,7 +72,9 @@ namespace omexmeta {
     Triples PhysicalProperty::toTriples() {
         // in sbml the metaid for property needs to be generated
         if (OmexMetaUtils::isStringEmpty<PhysicalProperty>(*this, about_value_)) {
-            about(OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_), LOCAL_URI);
+            std::string new_about = OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_);
+            new_metaid_exclusion_list_.push_back(new_about);
+            about(new_about, LOCAL_URI);
         }
 
         if (!OmexMetaUtils::startsWith(about_value_, "http")) {
@@ -85,7 +87,6 @@ namespace omexmeta {
         Triples triples;
 
         if (is_property_of_value_.empty()) {
-            std::cout << __FILE__ << ":" << __LINE__ << "isPropertyOf value is empty so generating a new one" << std::endl;
             is_property_of_value_ = OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_);
         }
 
@@ -119,7 +120,6 @@ namespace omexmeta {
 
     PhysicalProperty &PhysicalProperty::about(const std::string &about, eUriType type) {
         if (OmexMetaUtils::startsWith(about, "http")){
-            std::cout << __FILE__<<":"<<__LINE__<<":"<<__FUNCTION__ <<": about argument starts with http: \"" << about <<"\" so not using uri modifier" << std::endl;
             about_value_ = about;
         } else {
             about_value_ = UriHandler::uriModifier<PhysicalProperty>(*this, about, type);

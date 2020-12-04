@@ -146,6 +146,108 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML3) {
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 }
 
+/**
+ * Here we test what happens when the user does not specify a property at all
+ */
+TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML4) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+
+    physicalEntity
+            .about("species0000", MODEL_URI)
+            .identity("uniprot:PD12345")
+            .isPartOf("fma:1234");
+    editor.addPhysicalEntity(physicalEntity);
+
+    PhysicalEntity physicalEntity2 = editor.newPhysicalEntity();
+
+    physicalEntity2
+            .about("species0001", MODEL_URI)
+            .identity("uniprot:PD12346")
+            .isPartOf("fma:1235");
+    editor.addPhysicalEntity(physicalEntity2);
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> ."
+                           "\n"
+                           "local:EntityProperty0001\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot:PD12346> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1235> .";
+
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
+}
+
+
+/**
+ * We add 4 "isPartOf" terms but no property in this test
+ */
+TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML5) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+
+    physicalEntity
+            .about("species0000", MODEL_URI)
+            .isPartOf("fma:1234", IDENTIFIERS_URI)
+            .isPartOf("fma:1235", IDENTIFIERS_URI)
+            .isPartOf("fma:1236", IDENTIFIERS_URI);
+    editor.addPhysicalEntity(physicalEntity);
+
+
+    PhysicalEntity physicalEntity2 = editor.newPhysicalEntity();
+    physicalEntity2
+            .about("ALocalID", LOCAL_URI)
+            .isPartOf("fma:1234", IDENTIFIERS_URI)
+            .isPartOf("fma:1235", IDENTIFIERS_URI)
+            .isPartOf("fma:1236", IDENTIFIERS_URI);
+    editor.addPhysicalEntity(physicalEntity2);
+
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> ;"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1235> ;"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1236> ."
+                           "\n"
+                           "\n"
+                           "local:EntityProperty0001\n"
+                           "    bqbiol:isPropertyOf local:ALocalID .\n"
+                           "\n"
+                           "local:ALocalID\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> ;"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1235> ;"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1236> ."
+                           "\n";
+
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
+}
+
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML1) {
 
@@ -808,7 +910,7 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtE
  * 4) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:1234> .
  */
     Triple triple(
-            LibrdfNode::fromUriString("species0000"),
+            LibrdfNode::fromUriString("https://uri.com#species0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234"));
     editor.addSingleAnnotation(triple);
@@ -817,7 +919,7 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtE
     ASSERT_EQ(0, rdf.size());
 
     Triple triple2(
-            LibrdfNode::fromUriString("https://species0000"),
+            LibrdfNode::fromUriString("https://uri.com#species0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("EntityProperty0001"));
     editor.addSingleAnnotation(triple2);
@@ -902,7 +1004,7 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
 TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
+            .about("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000")
             .hasProperty("opb:opb_1234")
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234");
@@ -916,7 +1018,7 @@ TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
 TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
+            .about("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000")
             .hasProperty("opb:opb_1234")
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234");

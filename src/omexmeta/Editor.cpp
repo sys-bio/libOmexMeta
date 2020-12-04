@@ -75,14 +75,14 @@ namespace omexmeta {
 
     librdf_model *Editor::getModel() const { return model_.get(); }
 
-    void Editor::checkValidMetaid( const std::string& metaid) {
+    void Editor::checkValidMetaid(const std::string &metaid) {
         // metaid's containing local uri's are valid metaids.
-        if (OmexMetaUtils::startsWith(metaid, getLocalUri())){
+        if (OmexMetaUtils::startsWith(metaid, getLocalUri())) {
             return;
         }
 
         // if metaid is an empty string, a local ui will be generated automatically
-        if (metaid.empty()){
+        if (metaid.empty()) {
             return;
         }
 
@@ -90,17 +90,43 @@ namespace omexmeta {
         // throw error if not
         bool found = false;
         for (auto &it : metaids_) {
-            if (metaid.find(it) != std::string::npos) {
-                found = true;
-                break;
+            if (OmexMetaUtils::startsWith(metaid, "http")) {
+                // if we are dealing with a full uri, split off the end (after fragment #)
+                if (!OmexMetaUtils::isSubString(metaid, "#")) {
+                    // if "#" is not in the metaid uri, raise error
+                    throw std::invalid_argument("Editor::checkValidMetaid: metaid "
+                                                "\"" +
+                                                metaid + "\" was given but it does not "
+                                                     "contain a fragment portion "
+                                                     "(i.e. the bit after \"#\"). ");
+                }
+                // now that we've checked we have a "#" in the uri, we can split on it
+                std::vector<std::string> split_string = OmexMetaUtils::splitStringBy(metaid, '#');
+
+                // this should always be true
+                assert(split_string.size() == 2);
+
+                // we now check that the fragment of the full uri == metaid
+                if (it == split_string[1]) {
+                    found = true;
+                    break;
+                }
+
+            }else {
+                // if we are not dealing with a full uri (starts with http)
+                // we can just compare against the metaid
+                if (metaid == it) {
+                    found = true;
+                    break;
+                }
             }
         }
 
         if (!found) {
             std::ostringstream err;
             err << "std::invalid_argument(): metaid \"" << metaid
-                << "\" is not equal to or a substring ";
-            err << "of any of your metaids. ";
+                << "\" is not  ";
+            err << "one of your metaids. ";
             err << "These are your available metaids: ";
             for (auto &it : metaids_) {
                 err << it << ", ";
