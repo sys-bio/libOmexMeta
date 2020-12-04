@@ -70,7 +70,6 @@ namespace omexmeta {
         std::vector<std::string> subjects = results_map["subject"];
 
         for (auto &i : exclusions) {
-            std::cout << "exclusion: " << i << std::endl;
             subjects.push_back(i);
         }
 
@@ -87,11 +86,6 @@ namespace omexmeta {
                 subjects[i] =  v[1];
             }
         }
-
-//        std::cout << "subject size: 2: " << subjects.size() << std::endl;
-//        for (auto &it : subjects) {
-//            std::cout << "subject i: 2: " << it << std::endl;
-//        }
 
         int count = 0;
         std::string metaid;

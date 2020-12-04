@@ -77,8 +77,6 @@ namespace omexmeta {
             about(new_about, LOCAL_URI);
         }
 
-        std::cout << "AboutValue: " << getAbout() << std::endl;
-
         if (!OmexMetaUtils::startsWith(about_value_, "http")) {
             throw std::invalid_argument("std::invalid_argument: PhysicalProperty::toTriples: "
                                         "Expected a full uri (i.e. begins with http) for property_metaid "

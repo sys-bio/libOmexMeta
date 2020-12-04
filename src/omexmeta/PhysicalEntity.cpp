@@ -98,8 +98,6 @@ namespace omexmeta {
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
 
-        std::cout << "physical_property_.getPropertyMetaidBase(): " << physical_property_.getPropertyMetaidBase() << std::endl;
-        std::cout << "physical_property_.getIsPropertyOfValue(): " << physical_property_.getIsPropertyOfValue() << std::endl;
 
         // preallocate for efficiency
         Triples triples((int) getLocationResources().size() + (int) part_resources_.size() + 3);
