@@ -146,6 +146,55 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML3) {
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 }
 
+/**
+ * Here we test what happens when the user does not specify a property at all
+ */
+TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML4) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+
+    physicalEntity
+            .about("species0000", MODEL_URI)
+            .identity("uniprot:PD12345")
+            .isPartOf("fma:1234");
+    editor.addPhysicalEntity(physicalEntity);
+
+    PhysicalEntity physicalEntity2 = editor.newPhysicalEntity();
+
+    physicalEntity2
+            .about("species0001", MODEL_URI)
+            .identity("uniprot:PD12346")
+            .isPartOf("fma:1235");
+    editor.addPhysicalEntity(physicalEntity2);
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> ."
+                           "\n"
+                           "local:EntityProperty0001\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot:PD12346> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1235> ."
+
+            ;
+
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
+}
+
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML1) {
 

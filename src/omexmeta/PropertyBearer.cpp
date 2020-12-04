@@ -193,6 +193,7 @@ namespace omexmeta {
         if (physical_property_.getIsPropertyOfValue().empty()){
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
+        new_metaid_exclusion_list_.push_back(about_value_);
         return *this;
     }
 

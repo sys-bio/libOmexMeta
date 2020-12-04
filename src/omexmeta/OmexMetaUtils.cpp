@@ -59,7 +59,7 @@ namespace omexmeta {
     }
 
     std::string OmexMetaUtils::generateUniqueMetaid(librdf_model *model, const std::string &metaid_base,
-                                                    const std::vector<std::string>& exclusions) {
+                                                    const std::vector<std::string> &exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
@@ -68,8 +68,9 @@ namespace omexmeta {
 
         query.freeQuery();
         std::vector<std::string> subjects = results_map["subject"];
-        // add other exclusions to subjects
+
         for (auto &i : exclusions) {
+            std::cout << "exclusion: " << i << std::endl;
             subjects.push_back(i);
         }
 
@@ -83,9 +84,14 @@ namespace omexmeta {
             if (OmexMetaUtils::startsWith(sub, "http")) {
                 auto v = OmexMetaUtils::splitStringBy(sub, '#');
                 assert(v.size() == 2);
-                subjects[i] = "#" + v[1];
+                subjects[i] =  v[1];
             }
         }
+
+//        std::cout << "subject size: 2: " << subjects.size() << std::endl;
+//        for (auto &it : subjects) {
+//            std::cout << "subject i: 2: " << it << std::endl;
+//        }
 
         int count = 0;
         std::string metaid;
@@ -369,12 +375,12 @@ namespace omexmeta {
         return v;
     }
     std::string OmexMetaUtils::readFromFile(const std::string &file) {
-        if ( file.find('<', 0) == 0) {
+        if (file.find('<', 0) == 0) {
             throw std::invalid_argument("OmexMetaUtils::readFromFile: invalid file begins with a \"<\" character. This file is probably xml");
         }
 
-        if (!std::filesystem::exists(file)){
-            throw std::invalid_argument("OmexMetaUtils::readFromFile: file \""+file+"\" does not exist");
+        if (!std::filesystem::exists(file)) {
+            throw std::invalid_argument("OmexMetaUtils::readFromFile: file \"" + file + "\" does not exist");
         }
         std::ifstream t(file);
         std::stringstream buffer;

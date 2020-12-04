@@ -190,6 +190,28 @@ TEST_F(OmexMetaUtilsTests, TestGenerateMetaidsUsingExclusionList) {
 
 }
 
+TEST_F(OmexMetaUtilsTests, TestGenerateMetaidsUsingExclusionListAndFullUri) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
+    std::vector<std::string> exclusion_list;
+
+    exclusion_list.emplace_back("http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000");
+
+    std::string metaid1 = OmexMetaUtils::generateUniqueMetaid(
+            rdf.getModel(),
+            "reaction", exclusion_list
+    );
+    exclusion_list.push_back(metaid1);
+
+    std::string metaid2 = OmexMetaUtils::generateUniqueMetaid(
+            rdf.getModel(),
+            "reaction",  exclusion_list
+    );
+    ASSERT_STREQ("reaction0001", metaid1.c_str());
+    ASSERT_STREQ("reaction0002", metaid2.c_str());
+
+}
+
 TEST_F(OmexMetaUtilsTests, TestReadFromFile) {
       std::ofstream myfile;
       myfile.open ("example.txt");

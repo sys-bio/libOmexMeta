@@ -86,7 +86,7 @@ namespace omexmeta {
         // new id but if its filled then we can generate Triples an arbitrary number
         // of times from the same PhysicalEntity instance and still get the same
         // Triples object. Note, this is important for deleting composites from the rdf model.
-        if (physical_property_.getIsPropertyOfValue().empty()) {
+        if (physical_property_.getIsPropertyOfValue().empty() || physical_property_.getPropertyMetaidBase() == "Property") {
             // we do not set the value of the PhysicalProperty objects subject portion of Triple
             // but instead change the base name for the PhysicalProperty and it'll generate
             // an appropriate id itself.
@@ -97,6 +97,9 @@ namespace omexmeta {
             about(OmexMetaUtils::generateUniqueMetaid(model_, "Entity", new_metaid_exclusion_list_), LOCAL_URI);
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
+
+        std::cout << "physical_property_.getPropertyMetaidBase(): " << physical_property_.getPropertyMetaidBase() << std::endl;
+        std::cout << "physical_property_.getIsPropertyOfValue(): " << physical_property_.getIsPropertyOfValue() << std::endl;
 
         // preallocate for efficiency
         Triples triples((int) getLocationResources().size() + (int) part_resources_.size() + 3);
