@@ -1095,45 +1095,81 @@ class AnnotateAModelTest(unittest.TestCase):
                 .add_sink("species0000", eUriType.MODEL_URI, 1)
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EntityProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
+
+local:EntityProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
 
 local:Process0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
+local:Process0001
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
 local:ProcessProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00237> .
+
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00237> .
 
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 local:SourceParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
     <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 ;
     bqbiol:isPropertyOf local:Process0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 ;
-    bqbiol:isPropertyOf local:Process0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 ;
+    bqbiol:isPropertyOf local:Process0001 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
@@ -1157,8 +1193,8 @@ local:SourceParticipant0000
                 .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
                 .resource_literal("Ciaran Welsh")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -1167,13 +1203,25 @@ local:Process0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
+local:Process0001
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>, <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
     <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
@@ -1183,16 +1231,14 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
-    bqbiol:isPropertyOf local:Process0000 ;
+    bqbiol:isPropertyOf local:Process0001 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
-
-"""
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> ."""
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
 
     def test_to_editor_without_sbml_extraction(self):

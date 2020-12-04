@@ -585,7 +585,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     PhysicalEntity *physical_entity_ptr = Editor_newPhysicalEntity(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "EntityProperty0000", LOCAL_URI);
+    physical_entity_ptr = PhysicalEntity_about(physical_entity_ptr, "ALocalID", LOCAL_URI);
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8376", IDENTIFIERS_URI);
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8377", IDENTIFIERS_URI);
     physical_entity_ptr = PhysicalEntity_isPartOf(physical_entity_ptr, "FMA:8378", IDENTIFIERS_URI);
@@ -596,11 +596,11 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "local:EntityProperty0000\n"
+                           "local:ALocalID\n"
                            "    bqbiol:isPartOf <https://identifiers.org/FMA:8376>, <https://identifiers.org/FMA:8377>, <https://identifiers.org/FMA:8378> .\n"
                            "\n"
-                           "local:Property0000\n"
-                           "    bqbiol:isPropertyOf local:EntityProperty0000 .";
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf local:ALocalID .";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
@@ -1548,19 +1548,31 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5> .\n"
                            "\n"
                            "local:Process0000\n"
-                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0001 .\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:Process0001\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0001 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002 .\n"
                            "\n"
                            "local:SinkParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1>, <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4> .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4> .\n"
                            "\n"
                            "local:SourceParticipant0000\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2>, <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3> .\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2> .\n"
                            "\n"
                            "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3> .\n"
+                           "\n"
+                           "local:SourceParticipant0002\n"
                            "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
                            "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1> .\n"
                            "\n"
@@ -1569,7 +1581,7 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#react2>\n"
-                           "    bqbiol:isPropertyOf local:Process0000 ;\n"
+                           "    bqbiol:isPropertyOf local:Process0001 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1>\n"
@@ -1586,7 +1598,6 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5>\n"
                            "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n";
-    printf("%s", actual);
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
