@@ -217,17 +217,12 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         self.pyom.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
         singular_annotation = self.pyom.editor_new_singular_annotation(editor_ptr)
-        singular_annotation = self.pyom.singular_annotation_about(singular_annotation,
-                                                                          "http://cytosol".encode())
+        singular_annotation = self.pyom.singular_annotation_about(singular_annotation, "cytosol".encode(), eUriType.MODEL_URI)
         singular_annotation = self.pyom.singular_annotation_set_predicate_from_uri(singular_annotation,
                                                                                        "https://predicate.com/from/uri".encode())
         singular_annotation = self.pyom.singular_annotation_set_resource_uri(singular_annotation,
-                                                                                 "http://uri.com".encode())
+                                                                                 "http://uri.com/resource".encode())
         self.pyom.editor_add_single_annotation(editor_ptr, singular_annotation)
-
-        actual = self.pyom.rdf_to_string(self.rdf, "rdfxml-abbrev".encode())
-        actual = self.pyom.get_and_free_c_str(actual)
-        print(actual)
 
         expected = r"""<?xml version="1.1" encoding="utf-8"?>
 <rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
@@ -235,13 +230,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
    xmlns:myOMEX="http://omex-library.org/NewOmex.omex/"
    xmlns:ns_="https://namespace.com"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="http://cytosol">
+  <rdf:Description rdf:about="http://uri.com#cytosol">
     <ns1:uri xmlns:ns1="https://predicate.com/from/"
-       rdf:resource="http://uri.com"/>
+       rdf:resource="http://uri.com/resource"/>
   </rdf:Description>
 </rdf:RDF>
 """
-        self.assertEqual(expected, actual)
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "rdfxml-abbrev".encode()))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.singular_annotation_delete(singular_annotation)
 
@@ -659,20 +654,19 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_editor_add_single_annotation(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = self.pyom.editor_new_singular_annotation(editor_ptr)
-        self.pyom.singular_annotation_about(singular_annotation, "https://cytosol".encode())
+        self.pyom.singular_annotation_about(singular_annotation, "https://uri.com#cytosol".encode())
         self.pyom.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         self.pyom.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         self.pyom.editor_add_single_annotation(editor_ptr, singular_annotation)
         ptr = self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         actual = self.pyom.get_and_free_c_str(ptr)
-        print(actual)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<https://cytosol>
+<https://uri.com#cytosol>
     bqbiol:is <https://identifiers.org/uniprot:PD12345> .
 
 """

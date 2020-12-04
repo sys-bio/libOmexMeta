@@ -146,9 +146,9 @@ class TestRDF(unittest.TestCase):
     def test_set_archive_uri(self):
         rdf = RDF()
         rdf.set_archive_uri("my-awesome-archive.omex")
-        # actual = rdf.get_archive_uri()
-        # expected = "http://omex-library.org/my-awesome-archive.omex/"
-        # self.assertEqual(expected, actual)
+        actual = rdf.get_archive_uri()
+        expected = "http://omex-library.org/my-awesome-archive.omex/"
+        self.assertEqual(expected, actual)
 
     def test_set_model_uri(self):
         rdf = RDF()
@@ -223,149 +223,93 @@ class EditorTests(unittest.TestCase):
                 .resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:MediatorParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
-local:MediatorParticipant0001
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
-
-local:ProcessProperty0000
+local:Process0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
-local:ProcessProperty0001
+local:Process0001
     semsim:hasSinkParticipant local:SinkParticipant0001 ;
     semsim:hasSourceParticipant local:SourceParticipant0001 .
 
-local:ProcessProperty0002
+local:Process0002
     semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
     semsim:hasSinkParticipant local:SinkParticipant0002 ;
     semsim:hasSourceParticipant local:SourceParticipant0002 .
 
-local:ProcessProperty0003
+local:Process0003
     semsim:hasSinkParticipant local:SinkParticipant0003 ;
     semsim:hasSourceParticipant local:SourceParticipant0003 .
 
-local:ProcessProperty0004
-    semsim:hasSinkParticipant local:SinkParticipant0004 ;
-    semsim:hasSourceParticipant local:SourceParticipant0004 .
-
-local:ProcessProperty0005
-    semsim:hasSinkParticipant local:SinkParticipant0005 ;
-    semsim:hasSourceParticipant local:SourceParticipant0005 .
-
-local:ProcessProperty0006
-    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;
-    semsim:hasSinkParticipant local:SinkParticipant0006 ;
-    semsim:hasSourceParticipant local:SourceParticipant0006 .
-
-local:ProcessProperty0007
-    semsim:hasSinkParticipant local:SinkParticipant0007 ;
-    semsim:hasSourceParticipant local:SourceParticipant0007 .
-
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SinkParticipant0001
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 local:SinkParticipant0002
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0003> .
 
 local:SinkParticipant0003
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
-
-local:SinkParticipant0004
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
-
-local:SinkParticipant0005
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
-
-local:SinkParticipant0006
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
-
-local:SinkParticipant0007
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 local:SourceParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 local:SourceParticipant0001
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 local:SourceParticipant0002
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0002> .
 
 local:SourceParticipant0003
     semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0003> .
 
-local:SourceParticipant0004
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
+    bqbiol:isPropertyOf local:Process0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:SourceParticipant0005
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
+    bqbiol:isPropertyOf local:Process0001 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:SourceParticipant0006
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0002>
+    bqbiol:isPropertyOf local:Process0002 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:SourceParticipant0007
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0003>
+    bqbiol:isPropertyOf local:Process0003 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
-    bqbiol:is <https://identifiers.org/uniprot/PD88776> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
+    bqbiol:is <https://identifiers.org/uniprot:PD88776> ;
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0002>
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0003>
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0006>
-    bqbiol:isPropertyOf local:ProcessProperty0000, local:ProcessProperty0004 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>
-    bqbiol:isPropertyOf local:ProcessProperty0001, local:ProcessProperty0005 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0010>
-    bqbiol:isPropertyOf local:ProcessProperty0002, local:ProcessProperty0006 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0012>
-    bqbiol:isPropertyOf local:ProcessProperty0003, local:ProcessProperty0007 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
 """
-        actual = str(self.rdf)
-        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, actual))
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_context_manager_single_annotation_without_sbml_extraction(self):
         editor = self.rdf.to_editor(SBML, generate_new_metaids=True, sbml_semantic_extraction=False)
@@ -376,97 +320,14 @@ local:SourceParticipant0007
                 .resource_uri("uniprot:PD88776")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:MediatorParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
-
-local:ProcessProperty0000
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
-
-local:ProcessProperty0001
-    semsim:hasSinkParticipant local:SinkParticipant0001 ;
-    semsim:hasSourceParticipant local:SourceParticipant0001 .
-
-local:ProcessProperty0002
-    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
-    semsim:hasSinkParticipant local:SinkParticipant0002 ;
-    semsim:hasSourceParticipant local:SourceParticipant0002 .
-
-local:ProcessProperty0003
-    semsim:hasSinkParticipant local:SinkParticipant0003 ;
-    semsim:hasSourceParticipant local:SourceParticipant0003 .
-
-local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
-
-local:SinkParticipant0001
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
-
-local:SinkParticipant0002
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
-
-local:SinkParticipant0003
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
-
-local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002> .
-
-local:SourceParticipant0001
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003> .
-
-local:SourceParticipant0002
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004> .
-
-local:SourceParticipant0003
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005> .
-
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
-    bqbiol:is <https://identifiers.org/uniprot/PD88776> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0002>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0003>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0004>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0005>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0006>
-    bqbiol:isPropertyOf local:ProcessProperty0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0008>
-    bqbiol:isPropertyOf local:ProcessProperty0001 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0010>
-    bqbiol:isPropertyOf local:ProcessProperty0002 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0012>
-    bqbiol:isPropertyOf local:ProcessProperty0003 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb/OPB_00592> .
-
+    bqbiol:is <https://identifiers.org/uniprot:PD88776> .
 """
-        actual = self.rdf.to_string()
-        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, actual))
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_context_manager_single_annotation_simple(self):
         editor = self.rdf.to_editor(SBML, generate_new_metaids=True, sbml_semantic_extraction=False)
@@ -474,50 +335,62 @@ local:SourceParticipant0003
             example01_singular_annotation.about("species0000") \
                 .predicate("bqbiol", "is") \
                 .resource_uri("CHEBI:16236")
-        actual = self.rdf.to_string()
-        expected = ""
-        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, actual))
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
+    bqbiol:is <https://identifiers.org/CHEBI:16236> .
+
+"""
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_context_manager_single_annotation_simple2(self):
         editor = self.rdf.to_editor(SBML, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_singular_annotation() as example01_singular_annotation:
             example01_singular_annotation.about("species0000")
             example01_singular_annotation.predicate("bqbiol", "is")
-            # example01_singular_annotation.resource_uri("CHEBI:16236")
-        # actual = self.rdf.to_string()
-        # expected = ""
-        # self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, actual))
-
-    def test_context_manager_personal_information(self):
-        with self.rdf.to_editor(SBML, True) as editor:
-            with editor.new_personal_information() as information:
-                information \
-                    .add_creator("1234-1234-1234-1234") \
-                    .add_mbox("annotations@uw.edu") \
-                    .add_name("Ciaran Welsh")
-
+            example01_singular_annotation.resource_uri("CHEBI:16236")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml#>
-    dcterms:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-    dcterms:creator <1234-1234-1234-1234> ;
-    foaf:mbox "annotations@uw.edu"^^rdf:string ;
-    foaf:name "Ciaran Welsh"^^rdf:string .
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
+    bqbiol:is <https://identifiers.org/CHEBI:16236> .
 
 """
-        actual = str(self.rdf)
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
-        print(actual)
+    def test_context_manager_personal_information(self):
+        editor  = self.rdf.to_editor(SBML, True, False)
+        with editor.new_personal_information() as information:
+            information \
+                .add_creator("1234-1234-1234-1234") \
+                .add_mbox("annotations@uw.edu") \
+                .add_name("Ciaran Welsh")
 
-        for i in actual.split("\n"):
-            self.assertTrue(i.strip() in actual)
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:mbox "annotations@uw.edu"^^rdf:string ;
+    foaf:name "Ciaran Welsh"^^rdf:string ;
+    dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
+
+"""
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
+
 
     def test_physical_entity_sbml1(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
@@ -1250,7 +1123,6 @@ local:SourceParticipant0001
                 .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
                 .resource_literal("Ciaran Welsh")
 
-        actual = rdf.to_string()
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1263,34 +1135,61 @@ local:SourceParticipant0001
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
 
     def test_personal_information(self):
-        print(1)
         rdf = RDF()
-        print(2)
-        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_personal_information() as personal_information:
-            print(4)
             personal_information.add_creator("1234-1234-1234-1234") \
                 .add_name("Ciaran") \
                 .add_mbox("cwelsh2@uw.edu") \
                 .add_account_name("1234-1234-1234-1234") \
                 .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
-            print(5)
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-        print(6)
-        # rdf.to_string()
-        print(rdf)
+<http://omex-library.org/NewOmex.omex/NewModel.xml>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;
+    foaf:accountServiceHomepage <https://github.com/sys-bio/libomexmeta> ;
+    foaf:mbox "cwelsh2@uw.edu"^^rdf:string ;
+    foaf:name "Ciaran"^^rdf:string ;
+    dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
+
+"""
+        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
 
     def test_model_level_annotation(self):
         rdf = RDF()
-        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_personal_information() as personal_information:
-            personal_information.add_creator("1234-1234-1234-1234")
-            # .add_name("Ciaran") \
-            # .add_mbox("cwelsh2@uw.edu") \
-            # .add_account_name("1234-1234-1234-1234") \
-            # .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
-        #
-        # print(rdf)
+            personal_information.add_creator("1234-1234-1234-1234")\
+                .add_name("Ciaran") \
+                .add_mbox("cwelsh2@uw.edu") \
+                .add_account_name("1234-1234-1234-1234") \
+                .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;
+    foaf:accountServiceHomepage <https://github.com/sys-bio/libomexmeta> ;
+    foaf:mbox "cwelsh2@uw.edu"^^rdf:string ;
+    foaf:name "Ciaran"^^rdf:string ;
+    dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
+"""
+        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
 
 
 class GoldStandardOmexArchiveTests(unittest.TestCase):

@@ -129,7 +129,7 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
     RDF rdf;
     Editor editor = rdf.toEditor("example.sbml", true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("Meta00001")),
+            Subject(editor.createNodeWithModelUri("species0001")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237")));
 
@@ -140,7 +140,7 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#Meta00001>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed:12991237> .";
     std::cout << actual << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));

@@ -193,6 +193,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySBML4) {
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 }
 
+
 /**
  * We add 4 "isPartOf" terms but no property in this test
  */
@@ -909,7 +910,7 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtE
  * 4) <EntityProperty0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma:1234> .
  */
     Triple triple(
-            LibrdfNode::fromUriString("species0000"),
+            LibrdfNode::fromUriString("https://uri.com#species0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234"));
     editor.addSingleAnnotation(triple);
@@ -918,7 +919,7 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtE
     ASSERT_EQ(0, rdf.size());
 
     Triple triple2(
-            LibrdfNode::fromUriString("https://species0000"),
+            LibrdfNode::fromUriString("https://uri.com#species0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("EntityProperty0001"));
     editor.addSingleAnnotation(triple2);
@@ -1003,7 +1004,7 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
 TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
+            .about("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000")
             .hasProperty("opb:opb_1234")
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234");
@@ -1017,7 +1018,7 @@ TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
 TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
+            .about("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000")
             .hasProperty("opb:opb_1234")
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234");

@@ -275,7 +275,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
 
     SingularAnnotation *singularAnnotation = Editor_newSingularAnnotation(editor_ptr);
-    SingularAnnotation_about(singularAnnotation, "cytosol");
+    SingularAnnotation_about(singularAnnotation, "species0000");
     SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
     SingularAnnotation_setResourceLiteral(singularAnnotation, "Cheese");
     Editor_addSingleAnnotation(editor_ptr, singularAnnotation);
@@ -287,7 +287,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
                            "    <http://predicate.com/from/uri> \"Cheese\"^^rdf:string .\n"
                            "\n";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
