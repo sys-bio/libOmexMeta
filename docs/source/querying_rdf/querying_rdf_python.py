@@ -1,5 +1,4 @@
 import os
-import matplotlib.pyplot as plt
 from pyomexmeta import RDF, eUriType
 
 # get the link to teusink2000

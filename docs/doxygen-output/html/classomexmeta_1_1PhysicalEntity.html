@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.18</span>
+   &#160;<span id="projectnumber">1.1.23</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -151,9 +151,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <tr class="memitem:a2498e9b0b11a00200e47332c4515b1f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#a2498e9b0b11a00200e47332c4515b1f1">is</a> (const std::string &amp;is)</td></tr>
 <tr class="memdesc:a2498e9b0b11a00200e47332c4515b1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <code>is</code> portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#a2498e9b0b11a00200e47332c4515b1f1">More...</a><br /></td></tr>
 <tr class="separator:a2498e9b0b11a00200e47332c4515b1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a68c098a063d5a8416b83ae219eddca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#a6a68c098a063d5a8416b83ae219eddca">isPartOf</a> (const std::string &amp;<a class="el" href="classomexmeta_1_1PhysicalEntity.html#a2498e9b0b11a00200e47332c4515b1f1">is</a>)</td></tr>
-<tr class="memdesc:a6a68c098a063d5a8416b83ae219eddca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the location (<code>isPartOf</code>) portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#a6a68c098a063d5a8416b83ae219eddca">More...</a><br /></td></tr>
-<tr class="separator:a6a68c098a063d5a8416b83ae219eddca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeba395f9474a7b6beb1b28a6095bb62d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#aeba395f9474a7b6beb1b28a6095bb62d">isPartOf</a> (std::string isPartOf, eUriType type=NONE)</td></tr>
+<tr class="memdesc:aeba395f9474a7b6beb1b28a6095bb62d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the location (<code>isPartOf</code>) portion of the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#aeba395f9474a7b6beb1b28a6095bb62d">More...</a><br /></td></tr>
+<tr class="separator:aeba395f9474a7b6beb1b28a6095bb62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a200859dbbda1b17c244ced477d21f06f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PhysicalEntity.html#a200859dbbda1b17c244ced477d21f06f">hasPart</a> (const std::string &amp;part)</td></tr>
 <tr class="memdesc:a200859dbbda1b17c244ced477d21f06f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add item to an "hasPart" triple on the <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> composite annotation.  <a href="classomexmeta_1_1PhysicalEntity.html#a200859dbbda1b17c244ced477d21f06f">More...</a><br /></td></tr>
 <tr class="separator:a200859dbbda1b17c244ced477d21f06f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -576,7 +576,7 @@ eUriType&#160;</td><td class="memItemRight" valign="bottom"><b>about_uri_type_</
 <dl class="section return"><dt>Returns</dt><dd>a reference to this Physical entity. Allows chaining together builder commands.</dd></dl>
 <p>The input string gets converted to a <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the "isPartOf" predicate. For example, a cytosolic TGFb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> ends up being cytosol&lt;isPartOf&gt;fibroblast&lt;isPartOf&gt;dermis&lt;isPartOf&gt;skin.</p>
 <p>See <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> documentation for more details of valid input strings.</p>
-<p>Deprecated in favour of <a class="el" href="classomexmeta_1_1PhysicalEntity.html#a6a68c098a063d5a8416b83ae219eddca" title="Set the location (isPartOf) portion of the PhysicalEntity composite annotation.">PhysicalEntity::isPartOf</a> </p>
+<p>Deprecated in favour of <a class="el" href="classomexmeta_1_1PhysicalEntity.html#aeba395f9474a7b6beb1b28a6095bb62d" title="Set the location (isPartOf) portion of the PhysicalEntity composite annotation.">PhysicalEntity::isPartOf</a> </p>
 
 </div>
 </div>
@@ -712,8 +712,8 @@ eUriType&#160;</td><td class="memItemRight" valign="bottom"><b>about_uri_type_</
 
 </div>
 </div>
-<a id="a6a68c098a063d5a8416b83ae219eddca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a68c098a063d5a8416b83ae219eddca">&#9670;&nbsp;</a></span>isPartOf()</h2>
+<a id="aeba395f9474a7b6beb1b28a6095bb62d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeba395f9474a7b6beb1b28a6095bb62d">&#9670;&nbsp;</a></span>isPartOf()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -721,9 +721,19 @@ eUriType&#160;</td><td class="memItemRight" valign="bottom"><b>about_uri_type_</
         <tr>
           <td class="memname"><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp; omexmeta::PhysicalEntity::isPartOf </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>is</em></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>isPartOf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">eUriType&#160;</td>
+          <td class="paramname"><em>type</em> = <code>NONE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

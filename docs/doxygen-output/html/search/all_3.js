@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['capacity_35',['capacity',['../classomexmeta_1_1Triples.html#a1f7ba9d5cd575ba5c63ed9dbbd1f279c',1,'omexmeta::Triples']]],
-  ['cellmlassistant_36',['CellMLAssistant',['../classomexmeta_1_1CellMLAssistant.html',1,'omexmeta']]],
-  ['checkvalidmetaid_37',['checkValidMetaid',['../classomexmeta_1_1Editor.html#a790458ef32f01ce0a6fd87bf14bed81a',1,'omexmeta::Editor']]],
-  ['concatmetaidanduri_38',['concatMetaIdAndUri',['../classomexmeta_1_1OmexMetaUtils.html#ae645af49ce57dac8bd0e0eba9e39a6c0',1,'omexmeta::OmexMetaUtils']]],
-  ['configureprefixstrings_39',['configurePrefixStrings',['../classomexmeta_1_1OmexMetaUtils.html#a744a0575136f1cc60b76a6560a5595e9',1,'omexmeta::OmexMetaUtils']]],
-  ['copy_40',['copy',['../classcopy.html',1,'copy'],['../classcopy.html',1,'copy']]],
-  ['countdigits_41',['countDigits',['../classomexmeta_1_1MetaID.html#ae4fe83a3512f64065e8e2997bc710be6',1,'omexmeta::MetaID']]],
-  ['createmetaid_42',['createMetaid',['../classomexmeta_1_1Participant.html#a03a1ffc7e9efaed5c0e94a62f7c72650',1,'omexmeta::Participant::createMetaid()'],['../classomexmeta_1_1EnergyDiff.html#a251676c05ab006aa282520e0e9464c4e',1,'omexmeta::EnergyDiff::createMetaId()']]],
-  ['createnodewithmodeluri_43',['createNodeWithModelUri',['../classomexmeta_1_1Editor.html#a5143e1f8db82393faed322810acf5e92',1,'omexmeta::Editor']]],
-  ['curlget_44',['CurlGet',['../classomexmeta_1_1CurlGet.html',1,'omexmeta']]]
+  ['dcterm_44',['DCTerm',['../classomexmeta_1_1DCTerm.html',1,'omexmeta']]],
+  ['debugoutput_45',['DebugOutput',['../classdbg_1_1DebugOutput.html',1,'dbg']]],
+  ['detector_46',['detector',['../structdbg_1_1detail__detector_1_1detector.html',1,'dbg::detail_detector']]],
+  ['detector_3c_20default_2c_20void_5ft_3c_20op_3c_20args_2e_2e_2e_20_3e_20_3e_2c_20op_2c_20args_2e_2e_2e_20_3e_47',['detector&lt; Default, void_t&lt; Op&lt; Args... &gt; &gt;, Op, Args... &gt;',['../structdbg_1_1detail__detector_1_1detector_3_01Default_00_01void__t_3_01Op_3_01Args_8_8_8_01_4_01_4_00_01Op_00_01Args_8_8_8_01_4.html',1,'dbg::detail_detector']]],
+  ['download_48',['download',['../classomexmeta_1_1CurlGet.html#a52eaa2b1179cf49ec298022011b2477c',1,'omexmeta::CurlGet::download()'],['../classomexmeta_1_1OmexMetaUtils.html#a046b603d6308242b70b55de6cb72325c',1,'omexmeta::OmexMetaUtils::download()']]]
 ];

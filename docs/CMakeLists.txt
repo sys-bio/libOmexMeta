@@ -197,19 +197,22 @@ add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 #   Sphinx
 #
 get_filename_component(PYTHON_ROOT ${PYTHON_EXECUTABLE} DIRECTORY)
+MESSAGE(STATUS "PYTHON_ROOT ${PYTHON_ROOT}")
+MESSAGE(STATUS "Python_ROOT_DIR ${Python_ROOT_DIR}")
 find_program(SPHINX_EXECUTABLE
         NAMES sphinx-build sphinx-build.exe
-        PATHS
-        "/home/ciaran/miniconda3/bin/sphinx-build"
-        "${PYTHON_ROOT}/Scripts/sphinx-build.exe"
-        "${PYTHON_ROOT}/Scripts/sphinx-build"
+        HINTS
+        "${Python_ROOT_DIR}/Scripts"
         REQUIRED
+        NO_DEFAULT_PATH
         COMMENT
         "absolute path to the sphinx-build executable. If you do not have sphinx-build
 you will need to install it. In your conda environment do: $conda activate <env>;
 pip install breathe sphinx sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme; which sphinx-build. Then copy the value of which sphinx-build into
--DSPHINX_EXECUTABLE"
+-DSPHINX_EXECUTABLE. Also, sometimes you should conda install sphinx. "
         )
+
+message(STATUS "SPHINX_EXECUTABLE ${SPHINX_EXECUTABLE}")
 
 set(SPHINX_SOURCE ${CMAKE_SOURCE_DIR}/docs/source)
 set(SPHINX_BUILD ${CMAKE_SOURCE_DIR}/docs/docs-build)

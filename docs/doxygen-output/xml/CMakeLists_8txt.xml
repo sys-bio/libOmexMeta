@@ -164,7 +164,7 @@
 <codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>install<sp/>the<sp/>export<sp/>info</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal">install(</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXPORT<sp/>${target}-</highlight><highlight class="keyword">static</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DESTINATION<sp/>${CMAKE_INSTALL_LIBDIR}/cmake/<ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DESTINATION<sp/></highlight><highlight class="stringliteral">&quot;${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NAMESPACE<sp/>OmexMeta::</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>OmexMetaStatic.cmake</highlight></codeline>
 <codeline lineno="126"><highlight class="normal">)</highlight></codeline>

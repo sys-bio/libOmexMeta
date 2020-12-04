@@ -1,17 +1,9 @@
 var searchData=
 [
-  ['last_129',['last',['../structdbg_1_1last.html',1,'dbg']]],
-  ['last_3c_20t_20_3e_130',['last&lt; T &gt;',['../structdbg_1_1last_3_01T_01_4.html',1,'dbg']]],
-  ['librdfexception_131',['LibRDFException',['../classomexmeta_1_1LibRDFException.html',1,'omexmeta']]],
-  ['librdfmodel_132',['LibrdfModel',['../classredland_1_1LibrdfModel.html',1,'redland']]],
-  ['librdfnode_133',['LibrdfNode',['../classredland_1_1LibrdfNode.html',1,'redland']]],
-  ['librdfparser_134',['LibrdfParser',['../classredland_1_1LibrdfParser.html',1,'redland']]],
-  ['librdfquery_135',['LibrdfQuery',['../classredland_1_1LibrdfQuery.html',1,'redland']]],
-  ['librdfqueryresults_136',['LibrdfQueryResults',['../classredland_1_1LibrdfQueryResults.html',1,'redland::LibrdfQueryResults'],['../classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44',1,'redland::LibrdfQueryResults::LibrdfQueryResults(const LibrdfQueryResults &amp;queryResults)=delete'],['../classredland_1_1LibrdfQueryResults.html#a2210255d8dd871b72279915712a612cd',1,'redland::LibrdfQueryResults::LibrdfQueryResults(LibrdfQueryResults &amp;&amp;queryResults) noexcept']]],
-  ['librdfserializer_137',['LibrdfSerializer',['../classredland_1_1LibrdfSerializer.html',1,'redland']]],
-  ['librdfstatement_138',['LibrdfStatement',['../classredland_1_1LibrdfStatement.html',1,'redland']]],
-  ['librdfstorage_139',['LibrdfStorage',['../classredland_1_1LibrdfStorage.html',1,'redland']]],
-  ['librdfstream_140',['LibrdfStream',['../classredland_1_1LibrdfStream.html',1,'redland']]],
-  ['librdfuri_141',['LibrdfUri',['../classredland_1_1LibrdfUri.html',1,'redland']]],
-  ['logdata_142',['LogData',['../structLogData.html',1,'']]]
+  ['markupidentifier_142',['MarkupIdentifier',['../classomexmeta_1_1MarkupIdentifier.html',1,'omexmeta::MarkupIdentifier'],['../classomexmeta_1_1MarkupIdentifier.html#a0bb73ce6d5c94efcd97471059a378058',1,'omexmeta::MarkupIdentifier::MarkupIdentifier()']]],
+  ['maxnumber_143',['maxNumber',['../classomexmeta_1_1MetaID.html#a343f4b48c9673f8943e03057370f01e4',1,'omexmeta::MetaID']]],
+  ['mediatorparticipant_144',['MediatorParticipant',['../classomexmeta_1_1MediatorParticipant.html',1,'omexmeta::MediatorParticipant'],['../classomexmeta_1_1MediatorParticipant.html#a80e7e91e7304647e1d35b1bb930ef049',1,'omexmeta::MediatorParticipant::MediatorParticipant()']]],
+  ['metaid_145',['MetaID',['../classomexmeta_1_1MetaID.html',1,'omexmeta::MetaID'],['../classomexmeta_1_1MetaID.html#af5cc076ccd6db8c411de98902d2a1218',1,'omexmeta::MetaID::MetaID()']]],
+  ['move_5fback_146',['move_back',['../classomexmeta_1_1Triples.html#a88dcf4b950f105acb621bd07f07a38a0',1,'omexmeta::Triples']]],
+  ['msg_5f_147',['msg_',['../classomexmeta_1_1Exception.html#a99067aa4ed7e38cf27b986cca3734512',1,'omexmeta::Exception::msg_()'],['../classException.html#a5d59cc46086c61391ed26773ce861780',1,'Exception::msg_()']]]
 ];

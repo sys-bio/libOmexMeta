@@ -59,7 +59,7 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalEnt
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}} (const std\+::string \&is)
 \begin{DoxyCompactList}\small\item\em Set the {\ttfamily is} portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}{is\+Part\+Of}} (const std\+::string \&\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}})
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}{is\+Part\+Of}} (std\+::string is\+Part\+Of, e\+Uri\+Type type=N\+O\+NE)
 \begin{DoxyCompactList}\small\item\em Set the location ({\ttfamily is\+Part\+Of}) portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a200859dbbda1b17c244ced477d21f06f}{has\+Part}} (const std\+::string \&part)
 \begin{DoxyCompactList}\small\item\em Add item to an \char`\"{}has\+Part\char`\"{} triple on the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} composite annotation. \end{DoxyCompactList}\item 
@@ -212,7 +212,7 @@ The input string gets converted to a \mbox{\hyperlink{classomexmeta_1_1Resource}
 
 See \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} documentation for more details of valid input strings.
 
-Deprecated in favour of \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}{Physical\+Entity\+::is\+Part\+Of}} \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}\label{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}} 
+Deprecated in favour of \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}{Physical\+Entity\+::is\+Part\+Of}} \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}\label{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!free@{free}}
 \index{free@{free}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{free()}{free()}}
@@ -291,11 +291,11 @@ Set the {\ttfamily is} portion of the \mbox{\hyperlink{classomexmeta_1_1Physical
 {\em is} & the string to be used for is. \mbox{\hyperlink{classThis}{This}} should be of the form O\+PB\+:O\+P\+B\+\_\+00134  \mbox{\hyperlink{classThis}{This}} function calls the {\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}{Physical\+Entity\+::set\+Identity}}} method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, {\ttfamily is} or {\ttfamily set\+Identity} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}\label{classomexmeta_1_1PhysicalEntity_a6a68c098a063d5a8416b83ae219eddca}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}\label{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!isPartOf@{isPartOf}}
 \index{isPartOf@{isPartOf}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{isPartOf()}{isPartOf()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& omexmeta\+::\+Physical\+Entity\+::is\+Part\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{is }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& omexmeta\+::\+Physical\+Entity\+::is\+Part\+Of (\begin{DoxyParamCaption}\item[{std\+::string}]{is\+Part\+Of,  }\item[{e\+Uri\+Type}]{type = {\ttfamily NONE} }\end{DoxyParamCaption})}
 
 
 

@@ -1,3 +1,1 @@
-Serializing to ntriples:
-RDF graph serialized to ""/Users/ciaranwelsh/Documents/libOmexMeta/cmake-build-release/docs/annotations.rdf""
-Counted "7" triples
+D:/libOmexMeta/docs/ExampleOutputFiles\WritingToFileCpp.txt

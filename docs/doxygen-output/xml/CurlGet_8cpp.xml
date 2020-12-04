@@ -10,6 +10,9 @@
       <node id="3">
         <label>string</label>
       </node>
+      <node id="4">
+        <label>curl/curl.h</label>
+      </node>
       <node id="2">
         <label>omexmeta/CurlGet.h</label>
         <link refid="CurlGet_8h_source"/>
@@ -25,9 +28,6 @@
         <link refid="CurlGet_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="4">
-        <label>curl/curl.h</label>
       </node>
     </incdepgraph>
     <briefdescription>

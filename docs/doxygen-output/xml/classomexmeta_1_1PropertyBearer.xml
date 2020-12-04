@@ -737,7 +737,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="163" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="186" bodyend="197"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="163" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="186" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a374759ec870893444272ff0489be538f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -758,7 +758,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="165" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="205" bodyend="217"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="165" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="206" bodyend="218"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
