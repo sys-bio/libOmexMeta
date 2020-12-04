@@ -380,7 +380,69 @@
         <location file="src/omexmeta/include/omexmeta/Triples.h" line="28" column="25" bodyfile="src/omexmeta/include/omexmeta/Triples.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceomexmeta_1a00405b6a215f728dfa31cc7966ec6688" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string omexmeta::LAST_ERROR</definition>
+        <argsstring></argsstring>
+        <name>LAST_ERROR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="12" column="17" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceomexmeta_1a00bd8db9f36c4c5b7ad5454a1f7ed996" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OMEXMETA_CAPI_EXPORT void omexmeta::setLastError</definition>
+        <argsstring>(const char *err)</argsstring>
+        <name>setLastError</name>
+        <param>
+          <type>const char *</type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="14" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="14" bodyend="16" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="27" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1af613a089be308bb0e3a332ee37ca893a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>OMEXMETA_CAPI_EXPORT char * omexmeta::getLastError</definition>
+        <argsstring>()</argsstring>
+        <name>getLastError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="18" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="18" bodyend="25" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="29" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1a34417ae96401d07e7d6f09679908970e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OMEXMETA_CAPI_EXPORT void omexmeta::clearLastError</definition>
+        <argsstring>(const std::string &amp;err)</argsstring>
+        <name>clearLastError</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="27" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="27" bodyend="29" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="31" declcolumn="31"/>
+      </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afa1aa630059180eafbb1ebf543c56216" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>OMEXMETA_CAPI_EXPORT int omexmeta::free_c_char_star</definition>
@@ -396,21 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="11" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="11" bodyend="20" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="24" declcolumn="30"/>
-      </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a5bcb86d9365fd275b3ca0823b2146651" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>char *</type>
-        <definition>char* omexmeta::_func_that_returns_dynamic_alloc_str</definition>
-        <argsstring>()</argsstring>
-        <name>_func_that_returns_dynamic_alloc_str</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>For testing. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="25" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="25" bodyend="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="31" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="31" bodyend="40" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="25" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a2f3a19ccb17e0be38e706861fa141fcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
@@ -441,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="37" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="37" bodyend="46" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="30" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="46" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="46" bodyend="55" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="37" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0cd028836b6f77062a1e55e187641cd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -458,7 +506,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="48" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="48" bodyend="50" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="33" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="57" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="57" bodyend="59" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="40" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ae3b91910008873609af530fe830b2752" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
@@ -495,7 +543,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="52" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="52" bodyend="63" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="55" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="61" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="61" bodyend="72" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="62" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a6f178f983440c5d14e4beb2e4c312fea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -520,7 +568,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="65" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="65" bodyend="73" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="59" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="74" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="74" bodyend="82" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="66" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aae27bcbed1c4f83f2802e7efae531e76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
@@ -557,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="75" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="75" bodyend="85" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="61" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="84" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="84" bodyend="94" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="68" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a98dbf600312668c38fb90ac878e96cb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -582,7 +630,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="87" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="87" bodyend="95" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="65" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="96" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="96" bodyend="104" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="72" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aa0a5c31900b86a0d1e183b98381a37e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
@@ -619,7 +667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="97" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="97" bodyend="107" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="67" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="106" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="106" bodyend="116" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="74" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a1a55eedd94b2a91610f6646b8de2fac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -644,7 +692,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="109" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="109" bodyend="117" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="71" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="118" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="118" bodyend="126" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="78" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1adab6df75dccfd89a14f401c66f1bf98f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -665,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="119" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="119" bodyend="130" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="39" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="128" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="128" bodyend="139" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="46" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a7d6969824c986313680325bbdd8ab23e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -690,7 +738,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="132" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="132" bodyend="140" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="41" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="141" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="141" bodyend="149" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="48" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a662050c4f97651516374d8202c9a151e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -715,7 +763,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="142" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="142" bodyend="152" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="73" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="151" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="151" bodyend="161" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="80" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a967e800ddd20443000bdda84ee8c08dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -732,7 +780,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="154" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="154" bodyend="161" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="75" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="163" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="163" bodyend="170" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="82" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a34f2cd25e68df0cf0a3660af9456a344" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -753,7 +801,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="163" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="163" bodyend="171" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="77" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="172" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="172" bodyend="180" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="84" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a3c766c3258d07b7318a11a3c49d1bee0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -774,7 +822,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="173" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="173" bodyend="181" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="79" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="182" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="182" bodyend="190" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="86" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a58acadf8b603b25e1e2a90fc2d6009d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -795,7 +843,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="183" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="183" bodyend="191" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="81" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="192" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="192" bodyend="200" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="88" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ae7bfdd220c9cbcaba60d4409ecd4a441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -812,7 +860,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="193" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="193" bodyend="203" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="83" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="202" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="202" bodyend="212" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="90" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a5b5329943434433e159fba88df8779da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -829,7 +877,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="205" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="205" bodyend="215" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="85" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="214" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="214" bodyend="224" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="92" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a9a9ed2edfc0f1086171a1fee84f85924" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -846,7 +894,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="217" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="217" bodyend="227" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="87" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="226" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="226" bodyend="236" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="94" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ae8e96ffbbc5b63d413101f408a6c47bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -863,7 +911,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="229" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="229" bodyend="239" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="89" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="238" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="238" bodyend="248" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="96" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a348c5592f89d9daa42bd3b2630346ad7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -888,7 +936,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="242" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="242" bodyend="249" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="91" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="251" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="251" bodyend="258" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="98" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a28be955d5e2992efc37b443a08c354c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -913,7 +961,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="251" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="251" bodyend="258" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="93" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="260" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="260" bodyend="267" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="100" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a963528f63c05205cda77ccc622cd4c59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -938,7 +986,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="260" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="260" bodyend="267" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="95" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="269" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="269" bodyend="276" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="102" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8695ed72dce3e00da869e7262c1544b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -967,7 +1015,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="269" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="269" bodyend="276" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="98" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="278" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="278" bodyend="285" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="105" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a30d98a9eb2bc11c67f7ca13a68aa1a73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -985,7 +1033,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="283" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="283" bodyend="293" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="110" declcolumn="45"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="292" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="292" bodyend="302" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="117" declcolumn="45"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a2edfc336f79ca0b7d9240128926c4c81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -1002,7 +1050,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="295" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="295" bodyend="303" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="106" declcolumn="46"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="304" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="304" bodyend="312" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="113" declcolumn="46"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a11a77dd69a30da66d2e7bbddaa15c15c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -1020,7 +1068,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="305" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="305" bodyend="312" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="104" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="314" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="314" bodyend="321" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="111" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a63fe76dc662afad3e59bf2b322fa75c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -1037,7 +1085,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="314" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="314" bodyend="321" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="108" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="323" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="323" bodyend="330" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="115" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ab9e4c135d3724c2d0347c5964c479e2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -1054,7 +1102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="322" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="322" bodyend="329" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="114" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="331" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="331" bodyend="338" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="121" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a4fc6d203a3c689d4e7f5f2048a9c6077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> *</type>
@@ -1071,7 +1119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="331" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="331" bodyend="339" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="112" declcolumn="43"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="340" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="340" bodyend="348" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="119" declcolumn="43"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a860a6f3e3335b724badd432d2adfabfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1096,7 +1144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="342" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="342" bodyend="350" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="117" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="351" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="351" bodyend="359" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="124" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aa7656f52bdd3a815928fc8d989fea1a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1117,7 +1165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="352" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="352" bodyend="360" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="119" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="361" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="361" bodyend="369" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="126" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a1eb060bd1d7b9247a1bf6c2056595dff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1138,7 +1186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="362" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="362" bodyend="371" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="121" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="371" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="371" bodyend="379" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="128" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a4be70cb7901e0151dc4678482eb9d1dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1159,7 +1207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="373" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="373" bodyend="381" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="123" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="381" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="381" bodyend="389" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="130" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a59d229f10d78555fc344e8c8acd99f5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1180,7 +1228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="383" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="383" bodyend="391" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="125" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="391" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="391" bodyend="399" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="132" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a51872ad77a54054397c094f0a3329aa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1201,7 +1249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="393" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="393" bodyend="402" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="127" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="401" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="401" bodyend="410" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="134" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a5cf923399ad5d4039590495ae317ca0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1222,7 +1270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="404" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="404" bodyend="412" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="129" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="412" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="412" bodyend="420" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="136" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8750f7b07704c50f6bed02b6f7d45ff2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1243,7 +1291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="414" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="414" bodyend="422" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="131" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="422" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="422" bodyend="430" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="138" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a56c9b33c44f2fe8661813d9dd53abe35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1264,7 +1312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="424" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="424" bodyend="432" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="133" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="432" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="432" bodyend="440" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="140" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a43c5f91dbad93a8daf4c2a2164226975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1285,7 +1333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="434" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="434" bodyend="442" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="135" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="442" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="442" bodyend="450" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="142" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a5bb5c0d919aa0fe72e145e06b53e964f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1306,7 +1354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="444" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="444" bodyend="452" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="137" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="452" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="452" bodyend="460" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="144" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a13b3a9945787209d6e91fc429e2fed42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1327,7 +1375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="454" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="454" bodyend="462" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="139" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="462" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="462" bodyend="470" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="146" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a91dad21451092b373d827e0fcafd3085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1348,7 +1396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="464" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="464" bodyend="472" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="141" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="472" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="472" bodyend="480" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="148" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0f709cb04e749958e3a2c9cef9854f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1369,7 +1417,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="474" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="474" bodyend="484" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="143" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="482" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="482" bodyend="492" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="150" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afa7a55e6c5bfd4ae69d5f9ae328e640c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1386,7 +1434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="486" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="486" bodyend="493" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="147" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="494" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="494" bodyend="501" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="154" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a27067bfb4290fcb7251845281520767f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1406,7 +1454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="500" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="500" bodyend="510" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="145" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="508" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="508" bodyend="518" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="152" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8bbcc1dda00608452bf06707985421bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1423,7 +1471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="512" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="512" bodyend="522" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="149" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="520" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="520" bodyend="530" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="156" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ada8b0ede24b5d881c6a06104f21cc57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1440,7 +1488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="524" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="524" bodyend="534" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="151" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="532" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="532" bodyend="542" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="158" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a79e407f581556f6ef1bed113e738636a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1457,7 +1505,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="536" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="536" bodyend="546" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="153" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="544" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="544" bodyend="554" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="160" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ad8066c794ca234b1a54575c2642bef4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1474,7 +1522,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="548" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="548" bodyend="558" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="155" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="556" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="556" bodyend="566" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="162" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8ee43bb384d91cdd2f9709bbbcb40e45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1491,7 +1539,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="560" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="560" bodyend="570" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="157" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="568" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="568" bodyend="578" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="164" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8d5c2ca0fc85c34655773735b68db9af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1512,7 +1560,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="572" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="572" bodyend="580" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="159" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="580" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="580" bodyend="588" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="166" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a776f05da2b18bedbbd262368787e8263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1533,7 +1581,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="582" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="582" bodyend="590" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="161" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="590" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="590" bodyend="598" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="168" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a77fe370e4e25069aed5ca78d49e7f320" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1554,7 +1602,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="592" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="592" bodyend="600" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="163" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="600" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="600" bodyend="608" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="170" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aad15c06d5442ef8153a123f07a06687a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1575,7 +1623,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="602" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="602" bodyend="610" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="165" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="610" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="610" bodyend="618" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="172" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1af27e22df149490815e7f07f7fe6193c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1596,7 +1644,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="612" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="612" bodyend="620" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="167" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="620" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="620" bodyend="628" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="174" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a27a3eec567f41bb22f9b46209141673b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1617,7 +1665,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="622" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="622" bodyend="630" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="169" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="630" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="630" bodyend="638" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="176" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ad57daad673e39cf41098902d2d4bf33b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -1638,7 +1686,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="632" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="632" bodyend="640" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="171" declcolumn="33"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="640" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="640" bodyend="648" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="178" declcolumn="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a86245ea959cf5a3e8f389941cca41f1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1656,7 +1704,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="643" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="643" bodyend="654" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="177" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="651" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="651" bodyend="662" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="184" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ad8b1a3d657ffffadcef2d723044c18e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1673,7 +1721,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="657" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="657" bodyend="665"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="665" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="665" bodyend="673"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ad33ae04d8a525ee7d6e5303a27de0703" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1694,7 +1742,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="668" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="668" bodyend="676" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="180" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="676" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="676" bodyend="684" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="187" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a04581f55ac73cf93673675e6bc04c3e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1719,7 +1767,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="678" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="678" bodyend="687" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="183" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="686" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="686" bodyend="695" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="190" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a79292d1fabe6eac8e281ba535deee9fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1744,7 +1792,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="689" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="689" bodyend="692" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="186" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="697" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="697" bodyend="700" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="193" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a6fd75056f06288fd6af18c5cafca1469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1765,7 +1813,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="694" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="694" bodyend="703" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="188" declcolumn="45"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="702" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="702" bodyend="711" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="195" declcolumn="45"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a71d097ec3d8c67539f064aba2902b03b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1786,7 +1834,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="705" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="705" bodyend="708" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="191" declcolumn="45"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="713" column="24" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="713" bodyend="716" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="198" declcolumn="45"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aec70f405ca37c588276fe9952d1740b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1807,7 +1855,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="711" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="711" bodyend="719" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="194" declcolumn="45"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="719" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="719" bodyend="727" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="201" declcolumn="45"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ad5b0441c5491e290c8364da4f8d89655" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1828,7 +1876,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="722" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="722" bodyend="724" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="197" declcolumn="45"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="730" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="730" bodyend="732" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="204" declcolumn="45"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a74d3ae86a7c73e736df5282b54f254cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1849,7 +1897,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="727" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="727" bodyend="735" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="201" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="735" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="735" bodyend="743" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="208" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aebe513747d647b160930e5fa1663e2b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1870,7 +1918,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="738" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="738" bodyend="740" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="204" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="746" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="746" bodyend="748" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="211" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0f5d6d42b7c68e7a432f2a482b8bcc30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1891,7 +1939,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="743" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="743" bodyend="751" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="207" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="751" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="751" bodyend="759" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="214" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1acafa171dc0cef352026e3da7c931b702" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
@@ -1912,7 +1960,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="753" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="753" bodyend="755" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="210" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="761" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="761" bodyend="763" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="217" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8fdfc5f7d64e12b04dca480da03fa413" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1929,7 +1977,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="757" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="757" bodyend="767" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="212" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="765" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="765" bodyend="775" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="219" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1adc959543185d522aeed4659aced8c96e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1946,7 +1994,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="769" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="769" bodyend="779" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="217" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="777" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="777" bodyend="787" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="224" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a76253abd9ff8ae24164de48086c348c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1963,7 +2011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="781" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="781" bodyend="791" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="219" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="789" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="789" bodyend="799" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="226" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a49d1107f0ea55c318a266727bea089d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -1984,7 +2032,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="793" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="793" bodyend="803" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="215" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="801" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="801" bodyend="811" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="222" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a386a15d5d186e00467ffdbb15dc9b2e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2002,7 +2050,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="808" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="808" bodyend="818" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="225" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="816" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="816" bodyend="826" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="232" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ad7fa194ecac46238ce148e64dd2a1283" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> *</type>
@@ -2027,7 +2075,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="820" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="820" bodyend="828" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="227" declcolumn="43"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="828" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="828" bodyend="836" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="234" declcolumn="43"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aae09e22b4270783dfd96b799bbbe81d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2044,7 +2092,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="830" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="830" bodyend="840" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="229" declcolumn="32"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="838" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="838" bodyend="848" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="236" declcolumn="32"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0ce70a20731896bc914e493512921999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> *</type>
@@ -2069,7 +2117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="842" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="842" bodyend="850" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="231" declcolumn="43"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="850" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="850" bodyend="858" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="238" declcolumn="43"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a2dc619ed00755db2953e8b411b418331" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> *</type>
@@ -2090,7 +2138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="852" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="852" bodyend="860" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="233" declcolumn="43"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="860" column="22" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="860" bodyend="868" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="240" declcolumn="43"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a07fe1277bd2ca11d4dda95caabbec6fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2107,7 +2155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="863" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="863" bodyend="873" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="235" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="871" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="871" bodyend="881" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="242" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a14b74eafc872341f11c0a3aa870ffb5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2124,7 +2172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="875" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="875" bodyend="883" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="239" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="883" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="883" bodyend="891" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="246" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afbe0ad46666e43033c32182a23fba6d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2142,7 +2190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="891" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="891" bodyend="899" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="245" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="899" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="899" bodyend="907" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="252" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1af6b8432376992c29b894c5a01047c83f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2159,11 +2207,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="901" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="901" bodyend="910" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="247" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="909" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="909" bodyend="918" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="254" declcolumn="30"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a8b872dbd7a83ff65d12a1f22c07f56c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceomexmeta_1a98a14aa5194e75689780e61464379506" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
-        <definition>OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity * omexmeta::PhysicalEntity_setPhysicalProperty</definition>
+        <definition>PhysicalEntity* omexmeta::PhysicalEntity_setPhysicalProperty</definition>
         <argsstring>(PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property)</argsstring>
         <name>PhysicalEntity_setPhysicalProperty</name>
         <param>
@@ -2184,28 +2232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="912" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="912" bodyend="921" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="249" declcolumn="66"/>
-      </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1ac779475adef057691d193052dff09de7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
-        <definition>OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity * omexmeta::PhysicalEntity_setIdentity</definition>
-        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *identity_resource)</argsstring>
-        <name>PhysicalEntity_setIdentity</name>
-        <param>
-          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
-          <declname>physical_entity_ptr</declname>
-        </param>
-        <param>
-          <type>const char *</type>
-          <declname>identity_resource</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="923" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="923" bodyend="931" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="252" declcolumn="66"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="920" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="920" bodyend="929"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a2f3f105a84638f3533b4b88a36df13d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2226,28 +2253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="933" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="933" bodyend="940" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="255" declcolumn="41"/>
-      </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a597b9e024adde3e396d1c991c60fc988" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
-        <definition>OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity * omexmeta::PhysicalEntity_addLocation</definition>
-        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *location_resource)</argsstring>
-        <name>PhysicalEntity_addLocation</name>
-        <param>
-          <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
-          <declname>physical_entity_ptr</declname>
-        </param>
-        <param>
-          <type>const char *</type>
-          <declname>location_resource</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="942" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="942" bodyend="950" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="258" declcolumn="66"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="931" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="931" bodyend="939" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="256" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a3bf7eca197f627c34e6c9f866805aa48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2264,7 +2270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="952" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="952" bodyend="962" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="261" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="942" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="942" bodyend="952" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="259" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a4b2cd6ac20c433b9913a70b202b3b11f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2281,7 +2287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="964" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="964" bodyend="974" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="263" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="954" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="954" bodyend="964" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="261" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a5c3035659e87532dfe378bc22c15c526" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2298,7 +2304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="976" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="976" bodyend="983" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="265" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="966" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="966" bodyend="973" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="263" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a5fa7d564d4b1f2250129308bf062dad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2319,7 +2325,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="985" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="985" bodyend="995" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="267" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="975" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="975" bodyend="985" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="265" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a3e35c640721a9bb5b4d0af676bd9b1c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2344,7 +2350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="997" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="997" bodyend="1009" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="269" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="987" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="987" bodyend="999" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="267" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a6e95c07d09117f202830352c7cdf4fea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2365,7 +2371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1011" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1011" bodyend="1020" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="271" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1001" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1001" bodyend="1010" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="269" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ab2001820dafe8b68bf0705150345585a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2386,7 +2392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1022" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1022" bodyend="1031" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="273" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1012" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1012" bodyend="1021" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="271" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1abe700f93f6a4e2767d81296d106271b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2415,12 +2421,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1033" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1033" bodyend="1042" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="275" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1023" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1023" bodyend="1032" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="273" declcolumn="41"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1add82adfd4d494225157d239814c377b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceomexmeta_1a2eaf08200eba97200cf96d5035beae96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
         <definition>OMEXMETA_CAPI_EXPORT PhysicalEntity * omexmeta::PhysicalEntity_isPartOf</definition>
-        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *is_part_of)</argsstring>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *is_part_of, eUriType type)</argsstring>
         <name>PhysicalEntity_isPartOf</name>
         <param>
           <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2430,13 +2436,17 @@
           <type>const char *</type>
           <declname>is_part_of</declname>
         </param>
+        <param>
+          <type>eUriType</type>
+          <declname>type</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1044" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1044" bodyend="1052" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="277" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1034" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1034" bodyend="1042" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="275" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ac18e38cd359cdf5b596de850b7cecb0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2457,7 +2467,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1054" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1054" bodyend="1062" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="279" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1044" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1044" bodyend="1052" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="277" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1abea59573a22604c01fcc64f9a735ce50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
@@ -2482,7 +2492,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1064" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1064" bodyend="1072" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="281" declcolumn="41"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1054" column="20" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1054" bodyend="1063" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="279" declcolumn="41"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8f35bfdeddd4366704c681fac1b8112e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2500,7 +2510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1075" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1075" bodyend="1083" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="287" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1066" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1066" bodyend="1074" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="285" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a6591a8c615162ed0f28401b3a5d0c6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2517,7 +2527,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1085" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1085" bodyend="1094" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="289" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1076" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1076" bodyend="1085" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="287" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8ab294c40c45244bf12f7ef7df9e6392" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2546,7 +2556,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1097" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1097" bodyend="1106" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="294" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1088" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1088" bodyend="1097" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="292" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0a0d22748b0e4bdc5fccc5cc6f738579" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2575,7 +2585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1109" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1109" bodyend="1118" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="298" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1100" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1100" bodyend="1109" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="296" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a71d1fd24049dae1b02b2dcb626f10ec0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2600,7 +2610,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1121" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1121" bodyend="1130" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="302" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1112" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1112" bodyend="1121" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="300" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ac65d28dc0f988bb2eeb21c0a74abadc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2625,7 +2635,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1132" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1132" bodyend="1144" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="306" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1123" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1123" bodyend="1135" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="304" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a7fe71bd4245dccd8033660fbe0606896" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2646,7 +2656,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1147" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1147" bodyend="1156" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="312" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1138" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1138" bodyend="1147" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="310" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afc6ddf5fa416514b3febf49a80c8faee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2667,7 +2677,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1158" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1158" bodyend="1167" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="314" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1149" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1149" bodyend="1158" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="312" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a51d31f63cb0e7ea14a4a87caf28b03ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2696,7 +2706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1169" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1169" bodyend="1178" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="316" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1160" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1160" bodyend="1169" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="314" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a738e9d39898919fb01bd9a7ed5af3687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2713,7 +2723,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1180" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1180" bodyend="1190"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1171" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1171" bodyend="1181"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aa7371fdf91f4c6c120e4559b23ad3585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2730,7 +2740,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1192" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1192" bodyend="1199"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1183" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1183" bodyend="1190"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aaf4162aa78c2c7f73449705a3e0fc951" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2747,7 +2757,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1201" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1201" bodyend="1208"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1192" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1192" bodyend="1199"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a7ad65f0ec2f5c8433ebc126c75779520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2764,7 +2774,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1210" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1210" bodyend="1217"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1201" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1201" bodyend="1208"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1af0e0106577bdbdc6a0b5b280effee221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2789,7 +2799,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1219" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1219" bodyend="1227" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="308" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1210" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1210" bodyend="1218" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="306" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a69b135f8705d9c854218a6f6e8af6434" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -2814,7 +2824,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1229" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1229" bodyend="1237" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="310" declcolumn="42"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1220" column="21" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1220" bodyend="1228" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="308" declcolumn="42"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ade152f2f88f1394cfd5341d504384532" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2833,7 +2843,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1239" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1239" bodyend="1247" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="328" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1230" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1230" bodyend="1238" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="326" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ac4ee432e12f736c29692417b0302f5f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2852,7 +2862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1249" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1249" bodyend="1258" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="334" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1240" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1240" bodyend="1249" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="332" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a858b1b50c3090774a6ad3888e203db1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -2877,7 +2887,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1261" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1261" bodyend="1270" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="336" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1252" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1252" bodyend="1261" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="334" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a36c3e6a6c18802b28bc428abaee4f375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -2902,7 +2912,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1272" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1272" bodyend="1281" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="340" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1263" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1263" bodyend="1272" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="338" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a762123263dff6284e859468c7cbcd673" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -2927,7 +2937,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1283" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1283" bodyend="1292" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="344" declcolumn="57"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1274" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1274" bodyend="1283" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="342" declcolumn="57"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afb832dfb0941da83b04ff3836ec5a30c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2944,7 +2954,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1294" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1294" bodyend="1301" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="347" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1285" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1285" bodyend="1292" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="345" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a755f3004700e85f530702bec868c4f22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -2961,7 +2971,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1303" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1303" bodyend="1310" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="349" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1294" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1294" bodyend="1301" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="347" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a650ebb05df693cbe948004a0d4e22612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -2986,7 +2996,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1312" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1312" bodyend="1324" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="351" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1303" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1303" bodyend="1315" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="349" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aa4b7fcd062c765cb602dc02c6e37f9b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -3007,7 +3017,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1327" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1327" bodyend="1336" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="357" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1318" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1318" bodyend="1327" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="355" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a80d168fd1e28693a079e2d1400917800" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -3028,7 +3038,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1338" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1338" bodyend="1347" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="359" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1329" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1329" bodyend="1338" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="357" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1afb70747e74699ce201f8f3fbd711bb38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -3057,7 +3067,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1349" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1349" bodyend="1358" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="361" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1340" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1340" bodyend="1349" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="359" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1af34ff5de4b51c4733b6581ad665cd8e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -3074,7 +3084,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1361" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1361" bodyend="1371" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="353" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1352" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1352" bodyend="1362" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="351" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0922f558b2bcf687cdc354fefc786e08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref> *</type>
@@ -3099,7 +3109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1373" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1373" bodyend="1381" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="355" declcolumn="37"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1364" column="16" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1364" bodyend="1372" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="353" declcolumn="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0b43aced94ae55c938cc788111586fc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -3117,7 +3127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1383" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1383" bodyend="1391" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="369" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1374" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1374" bodyend="1382" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="367" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1af7470fd783ea97e6b432ad24639f9ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -3134,7 +3144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1393" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1393" bodyend="1403" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="371" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1384" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1384" bodyend="1394" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="369" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a850c8084bb794d47eab2790283a343c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -3155,7 +3165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1405" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1405" bodyend="1413" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="373" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1396" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1396" bodyend="1404" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="371" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a63269eb1edec559bf109af8fda0381db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3176,7 +3186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1415" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1415" bodyend="1423" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="375" declcolumn="46"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1406" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1406" bodyend="1414" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="373" declcolumn="46"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ae0a51e16a01aa55c165594e555991d54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3197,7 +3207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1425" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1425" bodyend="1433" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="377" declcolumn="46"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1416" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1416" bodyend="1424" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="375" declcolumn="46"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1acae05a2e4439588e3fe1334b51246513" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3218,7 +3228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1435" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1435" bodyend="1443" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="379" declcolumn="46"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1426" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1426" bodyend="1434" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="377" declcolumn="46"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a83c5a039b59f8d9faf01fe507bf0612c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3239,7 +3249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1445" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1445" bodyend="1453" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="382" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1436" column="25" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1436" bodyend="1444" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="380" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a93547da26fc240d82921179dd14294b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3260,7 +3270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1456" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1456" bodyend="1464" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="385" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1447" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1447" bodyend="1455" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="383" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a21b1165e2f0919282a0a6aeed8b7c633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3285,7 +3295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1467" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1467" bodyend="1475" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="388" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1458" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1458" bodyend="1466" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="386" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a4b299993e487ba21d53cae4e0fbbfc74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3310,7 +3320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1478" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1478" bodyend="1486" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="391" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1469" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1469" bodyend="1477" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="389" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aa3af888cdc87eed1c6c1405dd13bd197" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3335,7 +3345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1489" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1489" bodyend="1498" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="394" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1480" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1480" bodyend="1489" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="392" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a2c506a7c5bc41b06e8163f09e1dcc661" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref> *</type>
@@ -3360,7 +3370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1501" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1501" bodyend="1509" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="398" declcolumn="5"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1492" column="5" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1492" bodyend="1500" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="396" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a96087cb8a2fffd948b296d795a7f5f1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -3377,7 +3387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1511" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1511" bodyend="1521" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="400" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1502" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1502" bodyend="1512" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="398" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a2636ff0b1d5f71c616f93a9f0caab74e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -3398,7 +3408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1523" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1523" bodyend="1531" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="402" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1514" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1514" bodyend="1522" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="400" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1aef84e089df357a1ecb63aefd16a3478b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -3415,7 +3425,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1533" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1533" bodyend="1543" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="404" declcolumn="31"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1524" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1524" bodyend="1534" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="402" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a9129b86c0d03f176dd0cc0bc3f23a2f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -3436,7 +3446,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1545" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1545" bodyend="1553" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="406" declcolumn="30"/>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1536" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1536" bodyend="1544" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="404" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>PredicatePtr</type>
@@ -3503,7 +3513,7 @@ namespace_ argument is:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="35" column="31" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="35" declcolumn="31"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="42" column="31" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="42" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1ac1d5cf2bf56180edb2f88a9282715873" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_CAPI_EXPORT int</type>
@@ -3524,7 +3534,7 @@ namespace_ argument is:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="37" column="30" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="37" declcolumn="30"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="44" column="30" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="44" declcolumn="30"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a81d062026034e37ec5f03426e17e9a27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_CAPI_EXPORT char *</type>
@@ -3541,7 +3551,7 @@ namespace_ argument is:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="237" column="31" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="237" declcolumn="31"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="244" column="31" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="244" declcolumn="31"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a8e15562e61908ce32240bc46b044feb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_CAPI_EXPORT <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
@@ -3566,7 +3576,7 @@ namespace_ argument is:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="291" column="42" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="291" declcolumn="42"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h" line="289" column="42" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="289" declcolumn="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

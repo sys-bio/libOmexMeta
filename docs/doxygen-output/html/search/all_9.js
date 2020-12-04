@@ -1,14 +1,17 @@
 var searchData=
 [
-  ['identity_118',['identity',['../classomexmeta_1_1PhysicalEntity.html#a6f51117462876bda1eb743244437104a',1,'omexmeta::PhysicalEntity']]],
-  ['inappropriateresourceexception_119',['InappropriateResourceException',['../classomexmeta_1_1InappropriateResourceException.html',1,'omexmeta']]],
-  ['is_120',['is',['../classomexmeta_1_1PhysicalEntity.html#a2498e9b0b11a00200e47332c4515b1f1',1,'omexmeta::PhysicalEntity']]],
-  ['is_5fcontainer_121',['is_container',['../structdbg_1_1detail_1_1is__container.html',1,'dbg::detail']]],
-  ['iscellml_122',['isCellML',['../classomexmeta_1_1MarkupIdentifier.html#a2fd631a49a8a3d06e668cdbf130d5cb3',1,'omexmeta::MarkupIdentifier']]],
-  ['isempty_123',['isEmpty',['../classomexmeta_1_1Triples.html#a48ab93d0e38e3cfcb4eac9264b047f0a',1,'omexmeta::Triples']]],
-  ['isformatteduri_124',['isFormattedUri',['../classomexmeta_1_1OmexMetaUtils.html#af663724f2efb0324a64c6a57e8491c13',1,'omexmeta::OmexMetaUtils']]],
-  ['ispartof_125',['isPartOf',['../classomexmeta_1_1PhysicalEntity.html#a6a68c098a063d5a8416b83ae219eddca',1,'omexmeta::PhysicalEntity']]],
-  ['issbml_126',['isSBML',['../classomexmeta_1_1MarkupIdentifier.html#a541ffd197ce109e20112923d7fc0641b',1,'omexmeta::MarkupIdentifier']]],
-  ['isstringempty_127',['isStringEmpty',['../classomexmeta_1_1OmexMetaUtils.html#a2493ba8fb1c95d05faa9f206be566ba2',1,'omexmeta::OmexMetaUtils']]],
-  ['isversionof_128',['isVersionOf',['../classomexmeta_1_1EnergyDiff.html#a01637dda292ce8ca2bab22f20c874c5d',1,'omexmeta::EnergyDiff']]]
+  ['last_128',['last',['../structdbg_1_1last.html',1,'dbg']]],
+  ['last_3c_20t_20_3e_129',['last&lt; T &gt;',['../structdbg_1_1last_3_01T_01_4.html',1,'dbg']]],
+  ['librdfexception_130',['LibRDFException',['../classomexmeta_1_1LibRDFException.html',1,'omexmeta']]],
+  ['librdfmodel_131',['LibrdfModel',['../classredland_1_1LibrdfModel.html',1,'redland']]],
+  ['librdfnode_132',['LibrdfNode',['../classredland_1_1LibrdfNode.html',1,'redland']]],
+  ['librdfparser_133',['LibrdfParser',['../classredland_1_1LibrdfParser.html',1,'redland']]],
+  ['librdfquery_134',['LibrdfQuery',['../classredland_1_1LibrdfQuery.html',1,'redland']]],
+  ['librdfqueryresults_135',['LibrdfQueryResults',['../classredland_1_1LibrdfQueryResults.html',1,'redland::LibrdfQueryResults'],['../classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44',1,'redland::LibrdfQueryResults::LibrdfQueryResults(const LibrdfQueryResults &amp;queryResults)=delete'],['../classredland_1_1LibrdfQueryResults.html#a2210255d8dd871b72279915712a612cd',1,'redland::LibrdfQueryResults::LibrdfQueryResults(LibrdfQueryResults &amp;&amp;queryResults) noexcept']]],
+  ['librdfserializer_136',['LibrdfSerializer',['../classredland_1_1LibrdfSerializer.html',1,'redland']]],
+  ['librdfstatement_137',['LibrdfStatement',['../classredland_1_1LibrdfStatement.html',1,'redland']]],
+  ['librdfstorage_138',['LibrdfStorage',['../classredland_1_1LibrdfStorage.html',1,'redland']]],
+  ['librdfstream_139',['LibrdfStream',['../classredland_1_1LibrdfStream.html',1,'redland']]],
+  ['librdfuri_140',['LibrdfUri',['../classredland_1_1LibrdfUri.html',1,'redland']]],
+  ['logdata_141',['LogData',['../structLogData.html',1,'']]]
 ];

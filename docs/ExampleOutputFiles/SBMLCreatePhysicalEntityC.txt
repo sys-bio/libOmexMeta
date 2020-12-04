@@ -1,15 +1,1 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-local:EntityProperty
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA>
-    bqbiol:is <https://identifiers.org/uniprot/PD12345> ;
-    bqbiol:isPartOf <https://identifiers.org/fma:1234> .
-
-
+D:/libOmexMeta/docs/ExampleOutputFiles\SBMLCreatePhysicalEntityC.txt

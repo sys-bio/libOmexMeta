@@ -1,1 +1,1 @@
-1 triples read from file
+D:/libOmexMeta/docs/ExampleOutputFiles\FromFileCpp.txt

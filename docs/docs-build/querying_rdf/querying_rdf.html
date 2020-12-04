@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Querying RDF &mdash; libomexmeta 1.1.18 documentation</title>
+  <title>Querying RDF &mdash; libomexmeta 1.1.23 documentation</title>
   
 
   
@@ -224,9 +224,7 @@
 33
 34
 35
-36
-37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
 
 <span class="c1"># get the link to teusink2000</span>
@@ -461,11 +459,11 @@
   &lt;/head&gt;
   &lt;results&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1606215284r67762r21&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1r21624r21&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1606215284r67762r43&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1r21624r43&lt;/bnode&gt;&lt;/binding&gt;
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
   &lt;/results&gt;
@@ -484,11 +482,11 @@ Sparql results format: json
     &quot;distinct&quot; : false,
     &quot;bindings&quot; : [
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1606215284r67762r21&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1r21624r21&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       },
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1606215284r67762r43&quot; },
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1r21624r43&quot; },
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       }
     ]
@@ -499,20 +497,20 @@ Sparql results format: json
 
 
 Sparql results format: table
------------------------------------------------------------------------------------
+--------------------------------------------------------------------------
 |
-===================================================================================
-| blank r1606215284r67762r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1606215284r67762r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
------------------------------------------------------------------------------------
+==========================================================================
+| blank r1r21624r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1r21624r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+--------------------------------------------------------------------------
 
 
 
 
 Sparql results format: csv
 x,y
-_:r1606215284r67762r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1606215284r67762r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1r21624r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1r21624r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
 
 
 
@@ -521,8 +519,8 @@ Sparql results format: mkr
 result is relation with format = csv;
 begin relation result;
 x,y;
-_:r1606215284r67762r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1606215284r67762r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1r21624r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1r21624r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
 end relation result;
 
 
@@ -530,8 +528,8 @@ end relation result;
 
 Sparql results format: tsv
 ?x	?y
-_:r1606215284r67762r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1606215284r67762r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1r21624r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1r21624r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
 
 
 
@@ -551,11 +549,11 @@ Sparql results format: html
       &lt;th&gt;?y&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1606215284r67762r21&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1r21624r21&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1606215284r67762r43&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1r21624r43&lt;/span&gt;&lt;/td&gt;
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/table&gt;
@@ -575,14 +573,14 @@ Sparql results format: turtle
       rs:resultVariable  &quot;x&quot; ;
       rs:resultVariable  &quot;y&quot; ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1606215284r67762r21
+                                      rs:value      _:r1r21624r21
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
                                     ] 
       ] ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1606215284r67762r43
+                                      rs:value      _:r1r21624r43
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
                                       rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
@@ -604,7 +602,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1606215284r67762r21&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1r21624r21&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -620,7 +618,7 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1606215284r67762r43&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1r21624r43&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -719,359 +717,7 @@ Sparql results format: rdfxml
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Sparql results format: xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot;&gt;
-  &lt;head&gt;
-    &lt;variable name=&quot;x&quot;/&gt;
-    &lt;variable name=&quot;y&quot;/&gt;
-  &lt;/head&gt;
-  &lt;results&gt;
-    &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1606215287r67813r21&lt;/bnode&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
-    &lt;/result&gt;
-    &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1606215287r67813r43&lt;/bnode&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
-    &lt;/result&gt;
-  &lt;/results&gt;
-&lt;/sparql&gt;
-
-
-
-Sparql results format: json
-{
-  &quot;head&quot;: {
-    &quot;vars&quot;: [ &quot;x&quot;, &quot;y&quot; ]
-  },
-  &quot;results&quot;: {
-    &quot;ordered&quot; : false,
-    &quot;distinct&quot; : false,
-    &quot;bindings&quot; : [
-      {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1606215287r67813r21&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
-      },
-      {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1606215287r67813r43&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
-      }
-    ]
-  }
-}
-
-
-
-Sparql results format: table
------------------------------------------------------------------------------------
-|
-===================================================================================
-| blank r1606215287r67813r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1606215287r67813r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
------------------------------------------------------------------------------------
-
-
-
-Sparql results format: csv
-x,y
-_:r1606215287r67813r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1606215287r67813r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-
-
-
-Sparql results format: mkr
-result is relation with format = csv;
-begin relation result;
-x,y;
-_:r1606215287r67813r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1606215287r67813r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-end relation result;
-
-
-
-Sparql results format: tsv
-?x	?y
-_:r1606215287r67813r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1606215287r67813r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-
-
-
-Sparql results format: html
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
-        &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-  &lt;title&gt;SPARQL Query Results&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;table id=&quot;results&quot; border=&quot;1&quot;&gt;
-    &lt;tr&gt;
-      &lt;th&gt;?x&lt;/th&gt;
-      &lt;th&gt;?y&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1606215287r67813r21&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1606215287r67813r43&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-  &lt;p&gt;Total number of rows: &lt;span class=&quot;count&quot;&gt;2&lt;/span&gt;.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-Sparql results format: turtle
-@prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix rs:      &lt;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&gt; .
-@prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-
-[]    rdf:type      rs:ResultSet ;
-      rs:resultVariable  &quot;x&quot; ;
-      rs:resultVariable  &quot;y&quot; ;
-      rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1606215287r67813r21
-                                    ] ; 
-                      rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-                                    ] 
-      ] ;
-      rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1606215287r67813r43
-                                    ] ; 
-                      rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-                                    ] 
-      ] .
-
-
-
-Sparql results format: rdfxml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
-   xmlns:rs=&quot;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&quot;
-   xml:base=&quot;file://query_results&quot;&gt;
-  &lt;rs:ResultSet&gt;
-    &lt;rs:resultVariable&gt;x&lt;/rs:resultVariable&gt;
-    &lt;rs:resultVariable&gt;y&lt;/rs:resultVariable&gt;
-    &lt;rs:solution&gt;
-      &lt;rdf:Description&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1606215287r67813r21&quot;/&gt;
-            &lt;rs:variable&gt;x&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
-            &lt;rs:variable&gt;y&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-      &lt;/rdf:Description&gt;
-    &lt;/rs:solution&gt;
-    &lt;rs:solution&gt;
-      &lt;rdf:Description&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1606215287r67813r43&quot;/&gt;
-            &lt;rs:variable&gt;x&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
-            &lt;rs:variable&gt;y&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-      &lt;/rdf:Description&gt;
-    &lt;/rs:solution&gt;
-  &lt;/rs:ResultSet&gt;
-&lt;/rdf:RDF&gt;
-
-
-
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">QueryingRdfGraphCpp</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1159,341 +805,7 @@ Sparql results format: rdfxml
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Sparql results format: xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot;&gt;
-  &lt;head&gt;
-    &lt;variable name=&quot;x&quot;/&gt;
-    &lt;variable name=&quot;y&quot;/&gt;
-  &lt;/head&gt;
-  &lt;results&gt;
-    &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1606215287r67804r21&lt;/bnode&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
-    &lt;/result&gt;
-    &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1606215287r67804r43&lt;/bnode&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
-    &lt;/result&gt;
-  &lt;/results&gt;
-&lt;/sparql&gt;
-
-
-Sparql results format: json
-{
-  &quot;head&quot;: {
-    &quot;vars&quot;: [ &quot;x&quot;, &quot;y&quot; ]
-  },
-  &quot;results&quot;: {
-    &quot;ordered&quot; : false,
-    &quot;distinct&quot; : false,
-    &quot;bindings&quot; : [
-      {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1606215287r67804r21&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
-      },
-      {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1606215287r67804r43&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
-      }
-    ]
-  }
-}
-
-
-Sparql results format: table
------------------------------------------------------------------------------------
-|
-===================================================================================
-| blank r1606215287r67804r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1606215287r67804r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
------------------------------------------------------------------------------------
-
-
-Sparql results format: csv
-x,y
-_:r1606215287r67804r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1606215287r67804r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-
-
-Sparql results format: mkr
-result is relation with format = csv;
-begin relation result;
-x,y;
-_:r1606215287r67804r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1606215287r67804r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-end relation result;
-
-
-Sparql results format: tsv
-?x	?y
-_:r1606215287r67804r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1606215287r67804r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-
-
-Sparql results format: html
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
-        &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-  &lt;title&gt;SPARQL Query Results&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;table id=&quot;results&quot; border=&quot;1&quot;&gt;
-    &lt;tr&gt;
-      &lt;th&gt;?x&lt;/th&gt;
-      &lt;th&gt;?y&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1606215287r67804r21&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1606215287r67804r43&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-  &lt;p&gt;Total number of rows: &lt;span class=&quot;count&quot;&gt;2&lt;/span&gt;.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-Sparql results format: turtle
-@prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix rs:      &lt;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&gt; .
-@prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-
-[]    rdf:type      rs:ResultSet ;
-      rs:resultVariable  &quot;x&quot; ;
-      rs:resultVariable  &quot;y&quot; ;
-      rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1606215287r67804r21
-                                    ] ; 
-                      rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-                                    ] 
-      ] ;
-      rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1606215287r67804r43
-                                    ] ; 
-                      rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-                                    ] 
-      ] .
-
-
-Sparql results format: rdfxml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
-   xmlns:rs=&quot;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&quot;
-   xml:base=&quot;file://query_results&quot;&gt;
-  &lt;rs:ResultSet&gt;
-    &lt;rs:resultVariable&gt;x&lt;/rs:resultVariable&gt;
-    &lt;rs:resultVariable&gt;y&lt;/rs:resultVariable&gt;
-    &lt;rs:solution&gt;
-      &lt;rdf:Description&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1606215287r67804r21&quot;/&gt;
-            &lt;rs:variable&gt;x&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
-            &lt;rs:variable&gt;y&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-      &lt;/rdf:Description&gt;
-    &lt;/rs:solution&gt;
-    &lt;rs:solution&gt;
-      &lt;rdf:Description&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1606215287r67804r43&quot;/&gt;
-            &lt;rs:variable&gt;x&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-        &lt;rs:binding&gt;
-          &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
-            &lt;rs:variable&gt;y&lt;/rs:variable&gt;
-          &lt;/rdf:Description&gt;
-        &lt;/rs:binding&gt;
-      &lt;/rdf:Description&gt;
-    &lt;/rs:solution&gt;
-  &lt;/rs:ResultSet&gt;
-&lt;/rdf:RDF&gt;
-
-
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">QueryingRdfGraphC</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>

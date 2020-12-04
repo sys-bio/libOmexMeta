@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building Diagrams &mdash; libomexmeta 1.1.18 documentation</title>
+  <title>Building Diagrams &mdash; libomexmeta 1.1.23 documentation</title>
   
 
   
@@ -218,7 +218,6 @@ of the Teusink annotations.</p>
 22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
 
-<span class="c1"># get the link to teusink2000</span>
 <span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
 <span class="s2">@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
 <span class="s2">@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
@@ -231,17 +230,18 @@ of the Teusink annotations.</p>
 <span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
 <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
 
-<span class="c1"># draw a diagram</span>
+<span class="c1"># pick a filename (this can be anywhere on your system)</span>
 <span class="n">docs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>
 <span class="n">diagrams_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;diagrams&quot;</span><span class="p">)</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">diagrams_dir</span><span class="p">,</span> <span class="s2">&quot;TeusinkDiagram.png&quot;</span><span class="p">)</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">diagrams_dir</span><span class="p">,</span> <span class="s2">&quot;Diagram&quot;</span><span class="p">)</span>
+<span class="c1"># draw a diagram</span>
 <span class="n">rdf</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file saved to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file saved to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 </div>
 <p>Output:</p>
-<a class="reference internal image-reference" href="../_images/TeusinkDiagram.png"><img alt="../_images/TeusinkDiagram.png" src="../_images/TeusinkDiagram.png" style="width: 400px;" /></a>
+<object data="docs-build/_images/Diagram.pdf" type="application/pdf"></object><a class="reference internal image-reference" href="../_images/Diagram.pdf"><img alt="../_images/Diagram.pdf" src="../_images/Diagram.pdf" style="width: 400px;" /></a>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
 <p>This feature is not yet supported in C++</p>

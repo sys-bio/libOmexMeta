@@ -1,4 +1,12 @@
 var searchData=
 [
-  ['haspart_486',['hasPart',['../classomexmeta_1_1PhysicalEntity.html#a200859dbbda1b17c244ced477d21f06f',1,'omexmeta::PhysicalEntity']]]
+  ['identity_485',['identity',['../classomexmeta_1_1PhysicalEntity.html#a6f51117462876bda1eb743244437104a',1,'omexmeta::PhysicalEntity']]],
+  ['is_486',['is',['../classomexmeta_1_1PhysicalEntity.html#a2498e9b0b11a00200e47332c4515b1f1',1,'omexmeta::PhysicalEntity']]],
+  ['iscellml_487',['isCellML',['../classomexmeta_1_1MarkupIdentifier.html#a2fd631a49a8a3d06e668cdbf130d5cb3',1,'omexmeta::MarkupIdentifier']]],
+  ['isempty_488',['isEmpty',['../classomexmeta_1_1Triples.html#a48ab93d0e38e3cfcb4eac9264b047f0a',1,'omexmeta::Triples']]],
+  ['isformatteduri_489',['isFormattedUri',['../classomexmeta_1_1OmexMetaUtils.html#af663724f2efb0324a64c6a57e8491c13',1,'omexmeta::OmexMetaUtils']]],
+  ['ispartof_490',['isPartOf',['../classomexmeta_1_1PhysicalEntity.html#aeba395f9474a7b6beb1b28a6095bb62d',1,'omexmeta::PhysicalEntity']]],
+  ['issbml_491',['isSBML',['../classomexmeta_1_1MarkupIdentifier.html#a541ffd197ce109e20112923d7fc0641b',1,'omexmeta::MarkupIdentifier']]],
+  ['isstringempty_492',['isStringEmpty',['../classomexmeta_1_1OmexMetaUtils.html#a2493ba8fb1c95d05faa9f206be566ba2',1,'omexmeta::OmexMetaUtils']]],
+  ['isversionof_493',['isVersionOf',['../classomexmeta_1_1EnergyDiff.html#a01637dda292ce8ca2bab22f20c874c5d',1,'omexmeta::EnergyDiff']]]
 ];

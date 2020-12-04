@@ -22,7 +22,7 @@ int main(){
     PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
-    entity = PhysicalEntity_isPartOf(entity, "fma:18228");
+    entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
     entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
 
     Editor_addPhysicalEntity(editor_ptr, entity);

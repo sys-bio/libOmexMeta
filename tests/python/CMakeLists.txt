@@ -1,5 +1,4 @@
 find_package(Python COMPONENTS Interpreter REQUIRED)
-get_filename_component(OMEXMETA_SOURCE_DIR ${PYOMEXMETA_DIR} DIRECTORY)
 
 message(STATUS "Found Python:
 Python_VERSION      ${Python_VERSION}
@@ -7,7 +6,7 @@ Python_EXECUTABLE   ${Python_EXECUTABLE}
 Python_ROOT_DIR     ${Python_ROOT_DIR}
 ")
 
-if (NOT ${Python_ROOT_DIR})
+if (NOT Python_ROOT_DIR)
     message(WARNING "-DPython_ROOT_DIR variable is empty. Is is possible that you
 are using a version of Python that you are not intending to use. Please set Python_ROOT_DIR
 as per the docs: https://cmake.org/cmake/help/git-stage/module/FindPython.html")

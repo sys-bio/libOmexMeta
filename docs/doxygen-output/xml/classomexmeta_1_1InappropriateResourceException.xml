@@ -65,7 +65,7 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="3">
-        <label>std::exception</label>
+        <label>exception</label>
       </node>
       <node id="1">
         <label>omexmeta::InappropriateResourceException</label>
@@ -82,7 +82,7 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="3">
-        <label>std::exception</label>
+        <label>exception</label>
       </node>
       <node id="1">
         <label>omexmeta::InappropriateResourceException</label>

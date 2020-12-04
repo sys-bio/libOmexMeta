@@ -645,7 +645,7 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kind="function"><name>about</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" kind="function"><name>about</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kind="function"><name>is</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a6a68c098a063d5a8416b83ae219eddca" kind="function"><name>isPartOf</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kind="function"><name>isPartOf</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f" kind="function"><name>hasPart</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a6aff4d003c2e39aad8bd00ab536ec00e" kind="function"><name>variableMetaId</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1ac77ef003e4111cbdaf4c9c7f0c5fb680" kind="function"><name>getPropertyMetaidBase</name></member>
@@ -1355,8 +1355,11 @@
     <member refid="namespaceomexmeta_1a7fc6fa4ba32424705fe4953ee297a795" kind="typedef"><name>SingularAnnotation</name></member>
     <member refid="namespaceomexmeta_1a866d550d1c1d6bdadd778a73fef571bb" kind="typedef"><name>SharedTripleVector</name></member>
     <member refid="namespaceomexmeta_1a0591b044477ac1101740fd7db67088bc" kind="typedef"><name>TripleVector</name></member>
+    <member refid="namespaceomexmeta_1a00405b6a215f728dfa31cc7966ec6688" kind="variable"><name>LAST_ERROR</name></member>
+    <member refid="namespaceomexmeta_1a00bd8db9f36c4c5b7ad5454a1f7ed996" kind="function"><name>setLastError</name></member>
+    <member refid="namespaceomexmeta_1af613a089be308bb0e3a332ee37ca893a" kind="function"><name>getLastError</name></member>
+    <member refid="namespaceomexmeta_1a34417ae96401d07e7d6f09679908970e" kind="function"><name>clearLastError</name></member>
     <member refid="namespaceomexmeta_1afa1aa630059180eafbb1ebf543c56216" kind="function"><name>free_c_char_star</name></member>
-    <member refid="namespaceomexmeta_1a5bcb86d9365fd275b3ca0823b2146651" kind="function"><name>_func_that_returns_dynamic_alloc_str</name></member>
     <member refid="namespaceomexmeta_1a2f3a19ccb17e0be38e706861fa141fcc" kind="function"><name>RDF_new</name></member>
     <member refid="namespaceomexmeta_1a0cd028836b6f77062a1e55e187641cd4" kind="function"><name>RDF_delete</name></member>
     <member refid="namespaceomexmeta_1ae3b91910008873609af530fe830b2752" kind="function"><name>RDF_fromString</name></member>
@@ -1440,10 +1443,8 @@
     <member refid="namespaceomexmeta_1a14b74eafc872341f11c0a3aa870ffb5b" kind="function"><name>PhysicalProperty_delete</name></member>
     <member refid="namespaceomexmeta_1afbe0ad46666e43033c32182a23fba6d7" kind="function"><name>PhysicalEntity_delete</name></member>
     <member refid="namespaceomexmeta_1af6b8432376992c29b894c5a01047c83f" kind="function"><name>PhysicalEntity_freeAll</name></member>
-    <member refid="namespaceomexmeta_1a8b872dbd7a83ff65d12a1f22c07f56c4" kind="function"><name>PhysicalEntity_setPhysicalProperty</name></member>
-    <member refid="namespaceomexmeta_1ac779475adef057691d193052dff09de7" kind="function"><name>PhysicalEntity_setIdentity</name></member>
+    <member refid="namespaceomexmeta_1a98a14aa5194e75689780e61464379506" kind="function"><name>PhysicalEntity_setPhysicalProperty</name></member>
     <member refid="namespaceomexmeta_1a2f3f105a84638f3533b4b88a36df13d0" kind="function"><name>PhysicalEntity_identity</name></member>
-    <member refid="namespaceomexmeta_1a597b9e024adde3e396d1c991c60fc988" kind="function"><name>PhysicalEntity_addLocation</name></member>
     <member refid="namespaceomexmeta_1a3bf7eca197f627c34e6c9f866805aa48" kind="function"><name>PhysicalEntity_getAbout</name></member>
     <member refid="namespaceomexmeta_1a4b2cd6ac20c433b9913a70b202b3b11f" kind="function"><name>PhysicalEntity_getIdentity</name></member>
     <member refid="namespaceomexmeta_1a5c3035659e87532dfe378bc22c15c526" kind="function"><name>PhysicalEntity_getNumLocations</name></member>
@@ -1452,7 +1453,7 @@
     <member refid="namespaceomexmeta_1a6e95c07d09117f202830352c7cdf4fea" kind="function"><name>PhysicalEntity_hasProperty</name></member>
     <member refid="namespaceomexmeta_1ab2001820dafe8b68bf0705150345585a" kind="function"><name>PhysicalEntity_hasPropertyisVersionOf</name></member>
     <member refid="namespaceomexmeta_1abe700f93f6a4e2767d81296d106271b1" kind="function"><name>PhysicalEntity_hasPropertyFull</name></member>
-    <member refid="namespaceomexmeta_1add82adfd4d494225157d239814c377b4" kind="function"><name>PhysicalEntity_isPartOf</name></member>
+    <member refid="namespaceomexmeta_1a2eaf08200eba97200cf96d5035beae96" kind="function"><name>PhysicalEntity_isPartOf</name></member>
     <member refid="namespaceomexmeta_1ac18e38cd359cdf5b596de850b7cecb0e" kind="function"><name>PhysicalEntity_hasPart</name></member>
     <member refid="namespaceomexmeta_1abea59573a22604c01fcc64f9a735ce50" kind="function"><name>PhysicalEntity_about</name></member>
     <member refid="namespaceomexmeta_1a8f35bfdeddd4366704c681fac1b8112e" kind="function"><name>PhysicalProcess_delete</name></member>
@@ -2423,8 +2424,8 @@
   </compound>
   <compound refid="dir_e793c0dc4ccd224149063390ee134027" kind="dir"><name>src/redland/RedlandWrapper/src</name>
   </compound>
-  <compound refid="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</name>
   </compound>
-  <compound refid="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example" kind="example"><name>/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/Predicate.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/include/omexmeta/Predicate.h</name>
   </compound>
 </doxygenindex>

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['what_580',['what',['../classomexmeta_1_1Exception.html#af9c3f258e4715dd2102f5c2db5fbe260',1,'omexmeta::Exception::what()'],['../classException.html#ae7ba8334eb35e001b4b0c6df9339c0dc',1,'Exception::what()']]]
+  ['_7eeditor_579',['~Editor',['../classomexmeta_1_1Editor.html#aa11380bb7e2ca7859937c3f5907b6240',1,'omexmeta::Editor']]],
+  ['_7eexception_580',['~Exception',['../classomexmeta_1_1Exception.html#aaa08b2467c40a3e28586c0da5da45736',1,'omexmeta::Exception::~Exception()'],['../classException.html#ab834fdbc275748cf287b994503521ada',1,'Exception::~Exception()']]],
+  ['_7erdf_581',['~RDF',['../classomexmeta_1_1RDF.html#a87b1eb7fe49f4928e61c399edf49e09c',1,'omexmeta::RDF']]]
 ];

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.18</span>
+   &#160;<span id="projectnumber">1.1.23</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -67,7 +67,8 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">omexmeta Namespace Reference</div>  </div>
 </div><!--header-->
@@ -243,11 +244,18 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a00bd8db9f36c4c5b7ad5454a1f7ed996"><td class="memItemLeft" align="right" valign="top"><a id="a00bd8db9f36c4c5b7ad5454a1f7ed996"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setLastError</b> (const char *err)</td></tr>
+<tr class="separator:a00bd8db9f36c4c5b7ad5454a1f7ed996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af613a089be308bb0e3a332ee37ca893a"><td class="memItemLeft" align="right" valign="top"><a id="af613a089be308bb0e3a332ee37ca893a"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>getLastError</b> ()</td></tr>
+<tr class="separator:af613a089be308bb0e3a332ee37ca893a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34417ae96401d07e7d6f09679908970e"><td class="memItemLeft" align="right" valign="top"><a id="a34417ae96401d07e7d6f09679908970e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearLastError</b> (const std::string &amp;err)</td></tr>
+<tr class="separator:a34417ae96401d07e7d6f09679908970e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa1aa630059180eafbb1ebf543c56216"><td class="memItemLeft" align="right" valign="top"><a id="afa1aa630059180eafbb1ebf543c56216"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>free_c_char_star</b> (char *c)</td></tr>
 <tr class="separator:afa1aa630059180eafbb1ebf543c56216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bcb86d9365fd275b3ca0823b2146651"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a5bcb86d9365fd275b3ca0823b2146651">_func_that_returns_dynamic_alloc_str</a> ()</td></tr>
-<tr class="separator:a5bcb86d9365fd275b3ca0823b2146651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f3a19ccb17e0be38e706861fa141fcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">RDF_new</a> (const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</td></tr>
 <tr class="separator:a2f3a19ccb17e0be38e706861fa141fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cd028836b6f77062a1e55e187641cd4"><td class="memItemLeft" align="right" valign="top"><a id="a0cd028836b6f77062a1e55e187641cd4"></a>
@@ -490,18 +498,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProperty_delet
 <tr class="memitem:af6b8432376992c29b894c5a01047c83f"><td class="memItemLeft" align="right" valign="top"><a id="af6b8432376992c29b894c5a01047c83f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_freeAll</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr)</td></tr>
 <tr class="separator:af6b8432376992c29b894c5a01047c83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b872dbd7a83ff65d12a1f22c07f56c4"><td class="memItemLeft" align="right" valign="top"><a id="a8b872dbd7a83ff65d12a1f22c07f56c4"></a>
+<tr class="memitem:a98a14aa5194e75689780e61464379506"><td class="memItemLeft" align="right" valign="top"><a id="a98a14aa5194e75689780e61464379506"></a>
 <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_setPhysicalProperty</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *subject_metaid, const char *physical_property)</td></tr>
-<tr class="separator:a8b872dbd7a83ff65d12a1f22c07f56c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac779475adef057691d193052dff09de7"><td class="memItemLeft" align="right" valign="top"><a id="ac779475adef057691d193052dff09de7"></a>
-<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_setIdentity</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *identity_resource)</td></tr>
-<tr class="separator:ac779475adef057691d193052dff09de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a98a14aa5194e75689780e61464379506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f3f105a84638f3533b4b88a36df13d0"><td class="memItemLeft" align="right" valign="top"><a id="a2f3f105a84638f3533b4b88a36df13d0"></a>
 <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_identity</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *identity_resource)</td></tr>
 <tr class="separator:a2f3f105a84638f3533b4b88a36df13d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a597b9e024adde3e396d1c991c60fc988"><td class="memItemLeft" align="right" valign="top"><a id="a597b9e024adde3e396d1c991c60fc988"></a>
-<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_addLocation</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *location_resource)</td></tr>
-<tr class="separator:a597b9e024adde3e396d1c991c60fc988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bf7eca197f627c34e6c9f866805aa48"><td class="memItemLeft" align="right" valign="top"><a id="a3bf7eca197f627c34e6c9f866805aa48"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_getAbout</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr)</td></tr>
 <tr class="separator:a3bf7eca197f627c34e6c9f866805aa48"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -526,9 +528,9 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_str<
 <tr class="memitem:abe700f93f6a4e2767d81296d106271b1"><td class="memItemLeft" align="right" valign="top"><a id="abe700f93f6a4e2767d81296d106271b1"></a>
 <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_hasPropertyFull</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of)</td></tr>
 <tr class="separator:abe700f93f6a4e2767d81296d106271b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add82adfd4d494225157d239814c377b4"><td class="memItemLeft" align="right" valign="top"><a id="add82adfd4d494225157d239814c377b4"></a>
-<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_isPartOf</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *is_part_of)</td></tr>
-<tr class="separator:add82adfd4d494225157d239814c377b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eaf08200eba97200cf96d5035beae96"><td class="memItemLeft" align="right" valign="top"><a id="a2eaf08200eba97200cf96d5035beae96"></a>
+<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_isPartOf</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *is_part_of, eUriType type)</td></tr>
+<tr class="separator:a2eaf08200eba97200cf96d5035beae96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac18e38cd359cdf5b596de850b7cecb0e"><td class="memItemLeft" align="right" valign="top"><a id="ac18e38cd359cdf5b596de850b7cecb0e"></a>
 <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalEntity_hasPart</b> (<a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> *physical_entity_ptr, const char *part)</td></tr>
 <tr class="separator:ac18e38cd359cdf5b596de850b7cecb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -678,6 +680,12 @@ OMEXMETA_CAPI_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><
 <tr class="memitem:a8e15562e61908ce32240bc46b044feb0"><td class="memItemLeft" align="right" valign="top"><a id="a8e15562e61908ce32240bc46b044feb0"></a>
 OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalProcess_setPhysicalProperty</b> (<a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> *physical_process, const char *subject_metaid, const char *physical_property)</td></tr>
 <tr class="separator:a8e15562e61908ce32240bc46b044feb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a00405b6a215f728dfa31cc7966ec6688"><td class="memItemLeft" align="right" valign="top"><a id="a00405b6a215f728dfa31cc7966ec6688"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b></td></tr>
+<tr class="separator:a00405b6a215f728dfa31cc7966ec6688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">AnnotationType enum for indicating the type of annotation.
@@ -707,24 +715,6 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a5bcb86d9365fd275b3ca0823b2146651"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bcb86d9365fd275b3ca0823b2146651">&#9670;&nbsp;</a></span>_func_that_returns_dynamic_alloc_str()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* omexmeta::_func_that_returns_dynamic_alloc_str </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>For testing. </p>
-
-</div>
-</div>
 <a id="a27067bfb4290fcb7251845281520767f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27067bfb4290fcb7251845281520767f">&#9670;&nbsp;</a></span>Editor_getXml()</h2>
 
@@ -742,7 +732,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
 </div><div class="memdoc">
 <pre class="fragment">@brief get the xml from the editor
 </pre><p>The returned string is owned by the caller. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a3">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a3">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -763,7 +753,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a1">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a1">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -784,7 +774,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a2">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a2">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -806,7 +796,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> class methods </p><pre class="fragment">@brief deletes energy differential excluding all
 </pre><p> nodes associated with it. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a8">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a8">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -828,7 +818,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
 </div><div class="memdoc">
 <pre class="fragment">@brief deletes energy differential including all
 </pre><p> nodes associated with it. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a9">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a9">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -849,7 +839,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PersonalInformation.html" title="add personal information to the model as a composite annotation.">PersonalInformation</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a10">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a10">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -870,7 +860,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a6">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a6">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -891,7 +881,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a7">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a7">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -912,7 +902,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a5">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a5">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -1001,7 +991,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> methods</p>
 <p><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a0">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a0">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -1022,7 +1012,7 @@ OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1PhysicalProcess.html">
       </table>
 </div><div class="memdoc">
 <p>SingularAnnotation class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a4">/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a4">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>

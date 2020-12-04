@@ -13,14 +13,18 @@ of the Teusink annotations.
 
     .. tab:: Python
 
-        .. literalinclude:: draw_teusink2000.py
+        .. literalinclude:: draw.py
             :linenos:
             :language: python
             :caption: Example of drawing a diagram of the RDF graph using graphviz in Python
 
         Output:
 
-        .. image:: TeusinkDiagram.png
+        .. raw:: html
+
+            <object data="docs-build/_images/Diagram.pdf" type="application/pdf"></object>
+
+        .. image:: Diagram.pdf
             :width: 400
 
     .. tab:: C++

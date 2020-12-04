@@ -51,7 +51,7 @@ def run_python_files():
             python_code = f.read()
         python_code = path_code + python_code
 
-        tmp = os.path.join(os.path.dirname(__file__), "tmp.py")
+        tmp = os.path.join(os.path.dirname(__file__), "tmp{}.py")
         with open(tmp, "w") as f:
             f.write(python_code)
 
@@ -83,7 +83,7 @@ def run_binary_files():
         output_filename = os.path.join(args.output_location, output_filename + ".txt")
         with open(output_filename, "wb") as f:
             try:
-                f.write(output)
+                f.write(output_filename.encode())
             except UnicodeDecodeError: # for python programs that produce diagrams
                 continue
 

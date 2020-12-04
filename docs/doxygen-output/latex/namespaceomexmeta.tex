@@ -165,10 +165,17 @@ enum {\bfseries e\+Uri\+Type} \{ {\bfseries N\+O\+NE},
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{namespaceomexmeta_a00bd8db9f36c4c5b7ad5454a1f7ed996}\label{namespaceomexmeta_a00bd8db9f36c4c5b7ad5454a1f7ed996}} 
+void {\bfseries set\+Last\+Error} (const char $\ast$err)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_af613a089be308bb0e3a332ee37ca893a}\label{namespaceomexmeta_af613a089be308bb0e3a332ee37ca893a}} 
+char $\ast$ {\bfseries get\+Last\+Error} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a34417ae96401d07e7d6f09679908970e}\label{namespaceomexmeta_a34417ae96401d07e7d6f09679908970e}} 
+void {\bfseries clear\+Last\+Error} (const std\+::string \&err)
+\item 
 \mbox{\Hypertarget{namespaceomexmeta_afa1aa630059180eafbb1ebf543c56216}\label{namespaceomexmeta_afa1aa630059180eafbb1ebf543c56216}} 
 int {\bfseries free\+\_\+c\+\_\+char\+\_\+star} (char $\ast$c)
-\item 
-char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a5bcb86d9365fd275b3ca0823b2146651}{\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str}} ()
 \item 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}{R\+D\+F\+\_\+new}} (const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
 \item 
@@ -412,17 +419,11 @@ int \mbox{\hyperlink{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}{Physic
 \mbox{\Hypertarget{namespaceomexmeta_af6b8432376992c29b894c5a01047c83f}\label{namespaceomexmeta_af6b8432376992c29b894c5a01047c83f}} 
 int {\bfseries Physical\+Entity\+\_\+free\+All} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a8b872dbd7a83ff65d12a1f22c07f56c4}\label{namespaceomexmeta_a8b872dbd7a83ff65d12a1f22c07f56c4}} 
+\mbox{\Hypertarget{namespaceomexmeta_a98a14aa5194e75689780e61464379506}\label{namespaceomexmeta_a98a14aa5194e75689780e61464379506}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_ac779475adef057691d193052dff09de7}\label{namespaceomexmeta_ac779475adef057691d193052dff09de7}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+set\+Identity} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$identity\+\_\+resource)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a2f3f105a84638f3533b4b88a36df13d0}\label{namespaceomexmeta_a2f3f105a84638f3533b4b88a36df13d0}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+identity} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$identity\+\_\+resource)
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a597b9e024adde3e396d1c991c60fc988}\label{namespaceomexmeta_a597b9e024adde3e396d1c991c60fc988}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+add\+Location} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$location\+\_\+resource)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a3bf7eca197f627c34e6c9f866805aa48}\label{namespaceomexmeta_a3bf7eca197f627c34e6c9f866805aa48}} 
 char $\ast$ {\bfseries Physical\+Entity\+\_\+get\+About} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr)
@@ -448,8 +449,8 @@ char $\ast$ {\bfseries Physical\+Entity\+\_\+str} (\mbox{\hyperlink{classomexmet
 \mbox{\Hypertarget{namespaceomexmeta_abe700f93f6a4e2767d81296d106271b1}\label{namespaceomexmeta_abe700f93f6a4e2767d81296d106271b1}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Property\+Full} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$property\+\_\+about, e\+Uri\+Type about\+\_\+uri\+\_\+type, const char $\ast$is\+\_\+version\+\_\+of)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_add82adfd4d494225157d239814c377b4}\label{namespaceomexmeta_add82adfd4d494225157d239814c377b4}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+is\+Part\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$is\+\_\+part\+\_\+of)
+\mbox{\Hypertarget{namespaceomexmeta_a2eaf08200eba97200cf96d5035beae96}\label{namespaceomexmeta_a2eaf08200eba97200cf96d5035beae96}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+is\+Part\+Of} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$is\+\_\+part\+\_\+of, e\+Uri\+Type type)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_ac18e38cd359cdf5b596de850b7cecb0e}\label{namespaceomexmeta_ac18e38cd359cdf5b596de850b7cecb0e}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$ {\bfseries Physical\+Entity\+\_\+has\+Part} (\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} $\ast$physical\+\_\+entity\+\_\+ptr, const char $\ast$part)
@@ -599,6 +600,12 @@ O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT char $\ast$ {\bfs
 \mbox{\Hypertarget{namespaceomexmeta_a8e15562e61908ce32240bc46b044feb0}\label{namespaceomexmeta_a8e15562e61908ce32240bc46b044feb0}} 
 O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$ {\bfseries Physical\+Process\+\_\+set\+Physical\+Property} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} $\ast$physical\+\_\+process, const char $\ast$subject\+\_\+metaid, const char $\ast$physical\+\_\+property)
 \end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a00405b6a215f728dfa31cc7966ec6688}\label{namespaceomexmeta_a00405b6a215f728dfa31cc7966ec6688}} 
+std\+::string {\bfseries L\+A\+S\+T\+\_\+\+E\+R\+R\+OR}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -634,13 +641,7 @@ should inherit from librdf\+\_\+statement?
 Denotes the type of composite annotation in use. 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespaceomexmeta_a5bcb86d9365fd275b3ca0823b2146651}\label{namespaceomexmeta_a5bcb86d9365fd275b3ca0823b2146651}} 
-\index{omexmeta@{omexmeta}!\_func\_that\_returns\_dynamic\_alloc\_str@{\_func\_that\_returns\_dynamic\_alloc\_str}}
-\index{\_func\_that\_returns\_dynamic\_alloc\_str@{\_func\_that\_returns\_dynamic\_alloc\_str}!omexmeta@{omexmeta}}
-\doxysubsubsection{\texorpdfstring{\_func\_that\_returns\_dynamic\_alloc\_str()}{\_func\_that\_returns\_dynamic\_alloc\_str()}}
-{\footnotesize\ttfamily char$\ast$ omexmeta\+::\+\_\+func\+\_\+that\+\_\+returns\+\_\+dynamic\+\_\+alloc\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-For testing. \mbox{\Hypertarget{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}\label{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}} 
+\mbox{\Hypertarget{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}\label{namespaceomexmeta_a27067bfb4290fcb7251845281520767f}} 
 \index{omexmeta@{omexmeta}!Editor\_getXml@{Editor\_getXml}}
 \index{Editor\_getXml@{Editor\_getXml}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{Editor\_getXml()}{Editor\_getXml()}}
@@ -652,7 +653,7 @@ For testing. \mbox{\Hypertarget{namespaceomexmeta_a27067bfb4290fcb72518452815207
 
 The returned string is owned by the caller. \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a11a77dd69a30da66d2e7bbddaa15c15c}\label{namespaceomexmeta_a11a77dd69a30da66d2e7bbddaa15c15c}} 
 \index{omexmeta@{omexmeta}!Editor\_newPhysicalEntity@{Editor\_newPhysicalEntity}}
 \index{Editor\_newPhysicalEntity@{Editor\_newPhysicalEntity}!omexmeta@{omexmeta}}
@@ -661,7 +662,7 @@ The returned string is owned by the caller. \begin{Desc}
 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a30d98a9eb2bc11c67f7ca13a68aa1a73}\label{namespaceomexmeta_a30d98a9eb2bc11c67f7ca13a68aa1a73}} 
 \index{omexmeta@{omexmeta}!Editor\_newSingularAnnotation@{Editor\_newSingularAnnotation}}
 \index{Editor\_newSingularAnnotation@{Editor\_newSingularAnnotation}!omexmeta@{omexmeta}}
@@ -670,7 +671,7 @@ The returned string is owned by the caller. \begin{Desc}
 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_ade152f2f88f1394cfd5341d504384532}\label{namespaceomexmeta_ade152f2f88f1394cfd5341d504384532}} 
 \index{omexmeta@{omexmeta}!EnergyDiff\_delete@{EnergyDiff\_delete}}
 \index{EnergyDiff\_delete@{EnergyDiff\_delete}!omexmeta@{omexmeta}}
@@ -681,7 +682,7 @@ The returned string is owned by the caller. \begin{Desc}
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_ac4ee432e12f736c29692417b0302f5f0}\label{namespaceomexmeta_ac4ee432e12f736c29692417b0302f5f0}} 
 \index{omexmeta@{omexmeta}!EnergyDiff\_freeAll@{EnergyDiff\_freeAll}}
 \index{EnergyDiff\_freeAll@{EnergyDiff\_freeAll}!omexmeta@{omexmeta}}
@@ -692,7 +693,7 @@ The returned string is owned by the caller. \begin{Desc}
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}\label{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}} 
 \index{omexmeta@{omexmeta}!PersonalInformation\_delete@{PersonalInformation\_delete}}
 \index{PersonalInformation\_delete@{PersonalInformation\_delete}!omexmeta@{omexmeta}}
@@ -701,7 +702,7 @@ The returned string is owned by the caller. \begin{Desc}
 
 \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}\label{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}} 
 \index{omexmeta@{omexmeta}!PhysicalEntity\_delete@{PhysicalEntity\_delete}}
 \index{PhysicalEntity\_delete@{PhysicalEntity\_delete}!omexmeta@{omexmeta}}
@@ -710,7 +711,7 @@ The returned string is owned by the caller. \begin{Desc}
 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a8f35bfdeddd4366704c681fac1b8112e}\label{namespaceomexmeta_a8f35bfdeddd4366704c681fac1b8112e}} 
 \index{omexmeta@{omexmeta}!PhysicalProcess\_delete@{PhysicalProcess\_delete}}
 \index{PhysicalProcess\_delete@{PhysicalProcess\_delete}!omexmeta@{omexmeta}}
@@ -719,7 +720,7 @@ The returned string is owned by the caller. \begin{Desc}
 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}\label{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}} 
 \index{omexmeta@{omexmeta}!PhysicalProperty\_getAbout@{PhysicalProperty\_getAbout}}
 \index{PhysicalProperty\_getAbout@{PhysicalProperty\_getAbout}!omexmeta@{omexmeta}}
@@ -728,7 +729,7 @@ The returned string is owned by the caller. \begin{Desc}
 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}\label{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}} 
 \index{omexmeta@{omexmeta}!PredicateFactory@{PredicateFactory}}
 \index{PredicateFactory@{PredicateFactory}!omexmeta@{omexmeta}}
@@ -769,7 +770,7 @@ a shared\+\_\+ptr to a object from the predicate heirachy.
 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}\label{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}} 
 \index{omexmeta@{omexmeta}!SingularAnnotation\_delete@{SingularAnnotation\_delete}}
 \index{SingularAnnotation\_delete@{SingularAnnotation\_delete}!omexmeta@{omexmeta}}
@@ -778,4 +779,4 @@ a shared\+\_\+ptr to a object from the predicate heirachy.
 
 Singular\+Annotation class methods \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}

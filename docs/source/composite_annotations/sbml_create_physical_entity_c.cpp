@@ -108,7 +108,7 @@ int main(){
     PhysicalEntity* physicalEntity = Editor_newPhysicalEntity(editor);
     PhysicalEntity_about(physicalEntity,"SpeciesA", MODEL_URI);
     PhysicalEntity_identity(physicalEntity, "uniprot/PD12345");
-    PhysicalEntity_isPartOf(physicalEntity, "fma:1234");
+    PhysicalEntity_isPartOf(physicalEntity, "fma:1234", IDENTIFIERS_URI);
 
     // the full signature of has property (no function overloading in C)
     PhysicalEntity_hasPropertyFull(physicalEntity, "EntityProperty", LOCAL_URI, "opb:OPB_12345");

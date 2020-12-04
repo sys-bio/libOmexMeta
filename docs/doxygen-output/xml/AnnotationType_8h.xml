@@ -4,6 +4,24 @@
     <compoundname>AnnotationType.h</compoundname>
     <includedby refid="PropertyBearer_8h" local="yes">src/omexmeta/include/omexmeta/PropertyBearer.h</includedby>
     <invincdepgraph>
+      <node id="6">
+        <label>src/omexmeta/include/omexmeta/RDF.h</label>
+        <link refid="RDF_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="9">
         <label>src/omexmeta/include/omexmeta/PhysicalEntity.h</label>
         <link refid="PhysicalEntity_8h_source"/>
@@ -14,12 +32,14 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h</label>
-        <link refid="SBMLSemanticExtraction_8h_source"/>
+      <node id="8">
+        <label>src/omexmeta/include/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -40,6 +60,10 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>src/omexmeta/include/omexmeta/OmexMeta.h</label>
+        <link refid="OmexMeta_8h_source"/>
+      </node>
       <node id="3">
         <label>src/omexmeta/include/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
@@ -56,33 +80,9 @@
         <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
-      <node id="6">
-        <label>src/omexmeta/include/omexmeta/RDF.h</label>
-        <link refid="RDF_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="10">
         <label>src/omexmeta/include/omexmeta/PhysicalProcess.h</label>
         <link refid="PhysicalProcess_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>src/omexmeta/include/omexmeta/OmexMeta.h</label>
-        <link refid="OmexMeta_8h_source"/>
-      </node>
-      <node id="8">
-        <label>src/omexmeta/include/omexmeta/EnergyDiff.h</label>
-        <link refid="EnergyDiff_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
