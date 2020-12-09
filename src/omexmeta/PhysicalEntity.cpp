@@ -102,15 +102,21 @@ namespace omexmeta {
         // preallocate for efficiency
         Triples triples((int) getLocationResources().size() + (int) part_resources_.size() + 3);
 
+        /**
+         * Patch around physical property triples generation.
+         * This can be made more concise but for now we just use patch.
+         * When there is no physical property we do not add property related
+         * triples
+         */
+         if (physical_property_.isSet() ) {
+            Triples physical_property_triples = physical_property_.toTriples();
 
-        Triples physical_property_triples = physical_property_.toTriples();
-
-        for (auto &it : physical_property_triples) {
-            triples.move_back(it);// moves the statement
+            for (auto &it : physical_property_triples) {
+                triples.move_back(it);// moves the statement
+            }
+            physical_property_triples.freeTriples();
+            assert(physical_property_triples.size() == 0);
         }
-        physical_property_triples.freeTriples();
-        assert(physical_property_triples.size() == 0);
-
 
         // the "what" part of physical entity triple
 

@@ -8,7 +8,7 @@
 namespace omexmeta {
 
     PropertyBearer::PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri,
-                                           PhysicalProperty propertyResource, AnnotationType type)
+                                   PhysicalProperty propertyResource, AnnotationType type)
         : model_(model), physical_property_(std::move(propertyResource)), type_(type),
           model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
 
@@ -152,20 +152,23 @@ namespace omexmeta {
          */
         // option 2
         physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
-            .isVersionOf(is_version_of)
-            .isPropertyOf(getAbout(), getAboutUriType());
+                                     .isVersionOf(is_version_of)
+                                     .isPropertyOf(getAbout(), getAboutUriType());
         physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
+        physical_property_.setIsSet(true);
 
         return *this;
     }
 
     PropertyBearer &PropertyBearer::hasProperty(const PhysicalProperty &property) {
         physical_property_ = property;
-        if (OmexMetaUtils::isStringEmpty<PropertyBearer>(*this, physical_property_.getIsPropertyOfValue())){
+        if (OmexMetaUtils::isStringEmpty<PropertyBearer>(*this, physical_property_.getIsPropertyOfValue())) {
             // physical property takes care of generating ids, we just set the base polymorphically.
             // subclasses override the getPropertyMetaidBase method to return their own version of base.
             physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
         }
+        physical_property_.setIsSet(true);
+
         return *this;
     }
 
@@ -180,6 +183,7 @@ namespace omexmeta {
                                      .about(property_about, about_uri_type)
                                      .isVersionOf(is_version_of)
                                      .isPropertyOf(getAbout(), getAboutUriType());
+        physical_property_.setIsSet(true);
         return *this;
     }
 
@@ -190,7 +194,7 @@ namespace omexmeta {
         } else {
             about_value_ = UriHandler::uriModifier<PropertyBearer>(*this, about, type);
         }
-        if (physical_property_.getIsPropertyOfValue().empty()){
+        if (physical_property_.getIsPropertyOfValue().empty()) {
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
         new_metaid_exclusion_list_.push_back(about_value_);
@@ -211,7 +215,7 @@ namespace omexmeta {
         } else {
             about_value_ = UriHandler::uriModifier<PropertyBearer>(*this, about, NONE);
         }
-        if (physical_property_.getIsPropertyOfValue().empty()){
+        if (physical_property_.getIsPropertyOfValue().empty()) {
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
         return *this;

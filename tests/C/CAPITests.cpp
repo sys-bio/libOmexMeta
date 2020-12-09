@@ -597,10 +597,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:ALocalID\n"
-                           "    bqbiol:isPartOf <https://identifiers.org/FMA:8376>, <https://identifiers.org/FMA:8377>, <https://identifiers.org/FMA:8378> .\n"
-                           "\n"
-                           "local:EntityProperty0000\n"
-                           "    bqbiol:isPropertyOf local:ALocalID .";
+                           "    bqbiol:isPartOf <https://identifiers.org/FMA:8376>, <https://identifiers.org/FMA:8377>, <https://identifiers.org/FMA:8378> .\n";
     ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);

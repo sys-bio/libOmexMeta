@@ -166,7 +166,12 @@ namespace omexmeta {
     void PhysicalProperty::setPropertyBearerBase(const std::string &propertyBearerBase) {
         property_bearer_base_ = propertyBearerBase;
     }
-
+    bool PhysicalProperty::isSet() const {
+        return is_set_;
+    }
+    void PhysicalProperty::setIsSet(bool isSet) {
+        is_set_ = isSet;
+    }
 
 
 }// namespace omexmeta
