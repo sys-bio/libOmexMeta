@@ -36,6 +36,7 @@ namespace omexmeta {
         std::string about_value_;
         eUriType about_uri_type_ = NONE;
 
+
     public:
         eUriType getAboutUriType() const;
         void setAboutUriType(eUriType aboutUriType);

@@ -465,6 +465,24 @@ local:EntityProperty0000
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
+    def test_physical_entity_sbml4(self):
+        editor = self.rdf.to_editor(TestStrings.sbml, True, False)
+        with editor.new_physical_entity() as physical_entity:
+            physical_entity.about("species0000", eUriType.MODEL_URI) \
+                .identity("uniprot:PD12345") \
+                .is_part_of("fma:1234")
+        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
+    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:1234> .
+"""
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
+
     def test_physical_entity_cellml1(self):
         editor = self.rdf.to_editor(TestStrings.cellml, True, False)
         property = editor.new_physical_property()
