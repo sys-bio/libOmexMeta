@@ -7,8 +7,8 @@ cmake_minimum_required(VERSION 3.15)
 
 # Set version.
 set(VERSION_MAJOR 1)
-set(VERSION_MINOR 1)
-set(VERSION_MICRO 24)
+set(VERSION_MINOR 2)
+set(VERSION_MICRO 0)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file(VERSION.txt.in VERSION.txt)

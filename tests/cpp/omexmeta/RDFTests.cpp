@@ -263,13 +263,6 @@ TEST_F(RDFTests, TestRepositoryPrefix){
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }
 
-TEST_F(RDFTests, TestOmexPrefix){
-    RDF rdf = RDF::fromString(samples.singular_annotation1);
-    std::string turtle_string = rdf.toString("turtle");
-    std::string arg = "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .";
-    ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
-}
-
 TEST_F(RDFTests, TestLocalPrefix){
     RDF rdf = RDF::fromString(samples.singular_annotation1);
     std::string turtle_string = rdf.toString("turtle");
