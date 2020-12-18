@@ -41,13 +41,7 @@ Note: documentation is being written presently
 # Installation
 ## Python
 
-On linux, grab some dependencies:
-
-    $ sudo apt install libxml2 libxml2-dev libxslt1-dev libpq-dev
-
-Windows is self-contained.
-
-Now use pip. 
+Use pip. 
 
     $ pip install pyomexmeta
     # verify its worked
@@ -64,57 +58,29 @@ This is an Ubuntu 18.04 based container that has libOmexMeta prebuilt and instal
 Conda is preconfigured and pyomexmeta is installed. 
 
 ## Downloading Binaries
-You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10)
+You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/release)
 
 ## Building from source
-See above for docker image which does this for you already on linux builds. The build process is similar on both windows and linux, but linux has some additional dependencies installed via `apt-get`. 
+See the azure-pipelines.yml file to see how we build libOmexMeta on Azure Pipelines. 
 
-### On Linux only, install some dependencies using apt
-Note, the build process is not yet fully optimized for linux and will be improved
+We use vcpkg for acquiring the dependencies that we need on all platforms. Therefore, the following works on windows, linux and macOS. Note that on linux you need gcc-9 or greater. libOmexMeta was developed with gcc-10.2.
 
-Pick up some dependencies
 ```
-$ sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
-                      libxslt1-dev postgresql postgresql-contrib  libdb-dev \
-                      libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
-                      libpthread-stubs0-dev libltdl-dev git
-                      
-```
-Switch default gcc to version 10.1: 
-```
-update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
-```
+# set variable to hold vcpkg location: 
+VCPKG_INSTALL_PREFIX="/full/path/to/vcpkg"
+git clone https://github.com/microsoft/vcpkg.git $VCPKG_INSTALL_PREFIX
+cd $VCPKG_INSTALL_PREFIX
+./bootstrap-vcpkg.sh
+vcpkg integrate install
+vcpkg install curl pcre openssl yajl sqlite3 liblzma
+```             
 
-### On both Linux and Windows
-Get `vcpkg`
+Now build libOmexMeta
 ```
-$ git clone https://github.com/microsoft/vcpkg.git 
-$ cd vcpkg 
+git clone https://github.com/sys-bio/libOmexMeta.git
+cd libOmexMeta
+mkdir build
+cd build
+cmake -DVCPKG_ROOT=$VCPKG_INSTALL_PREFIX -DCMAKE_INSTALL_PREFIX="/full/path/to/where/you/want/to/install/libomexmeta" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON ..
+cmake --build . --target install --config Release -j 12
 ```
-#### Configure vcpkg and install dependencies on Linux
-```
-$ ./bootstrap-vcpkg.sh 
-$ vcpkg integrate install 
-$ vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
-```
-Note: this is where the linux build is not optimized. 
-#### Configure vcpkg and install dependencies on Windows
-```
-> bootstrap-vcpkg.bat 
-> vcpkg integrate install 
-> vcpkg install libxml2:x64-windows curl:x64-windows libiconv:x64-windows pcre:x64-windows openssl:x64-windows yajl:x64-windows libpq:x64-windows sqlite3:x64-windows libxslt:x64-windows
-```
-### Build `libOmexMeta`
-Use [CMake > 15.7](https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz)
-```
-git clone https://github.com/sys-bio/libOmexMeta.git 
-cd libOmexMeta 
-mkdir build && cd build 
-cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=../install-linux -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
-make -j 8 
-make install # or sudo if installing to default location (i.e. omit the `-DCMAKE_INSTALL_PREFIX`)
-```
-
-
-## ToDo
-- Change the date attribute to use a blank node. 
