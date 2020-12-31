@@ -393,6 +393,7 @@ public:
                                             "  </rdf:Description>\n"
                                             "</rdf:RDF>";
 
+
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
             omexmeta::OmexMetaUtils::removeIfExists(file);

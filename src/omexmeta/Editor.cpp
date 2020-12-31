@@ -81,12 +81,12 @@ namespace omexmeta {
             return;
         }
 
-        // if metaid is an empty string, a local ui will be generated automatically
+        // if metaid is an empty string, a local uri will be generated automatically
         if (metaid.empty()) {
             return;
         }
 
-        // Check is metaid is a substring of one of the metaids.
+        // Check if metaid is a substring of one of the metaids.
         // throw error if not
         bool found = false;
         for (auto &it : metaids_) {

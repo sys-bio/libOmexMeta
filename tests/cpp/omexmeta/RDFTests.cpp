@@ -271,6 +271,7 @@ TEST_F(RDFTests, TestLocalPrefix){
 }
 
 
+
 class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {
 public:
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
@@ -308,6 +309,7 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
     remove(fname.string().c_str());
 
 }
+
 
 
 

@@ -673,7 +673,6 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 }
 
 
-
 TEST_F(EditorTests, TestRemovePersonalInformation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -837,4 +836,20 @@ TEST_F(EditorTests, TestaddTaxon) {
                            "    bqbiol:hasTaxon NCBI_Taxon:9696 .";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+}
+
+/**
+ * Check that we can access the metaid of a parameter in sbml for the about
+ * section of a composite annotation. All parameters metaid from listOfParameters in sbml
+ * should be accessible.
+ */
+TEST_F(EditorTests, LocalParameterAvailable) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NERNST_POTENTIAL), false, false);
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation.about("NernstPotential", MODEL_URI)
+        .predicate("bqbiol", "isPropertyOf")
+        .resourceUri("stuff");
+    editor.addSingleAnnotation(singularAnnotation);
+    std::cout << rdf.toString()<<std::endl;
 }

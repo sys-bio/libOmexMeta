@@ -15,6 +15,7 @@
 #include "omexmeta/Subject.h"
 #include "omexmeta/Resource.h"
 #include "omexmeta/Triple.h"
+#include "omexmeta/UriHandler.h"
 
 #include <ostream>
 #include <utility>
@@ -81,6 +82,8 @@ namespace omexmeta {
 
         Triple &about(std::string metaid);
 
+        Triple &about(std::string metaid, eUriType uri_type);
+
         std::string getAbout() const;
 
         librdf_statement *getStatement() const;
@@ -119,7 +122,6 @@ namespace omexmeta {
         Triple &resourceUri(const std::string &identifiers_uri);
 
         Triple &resourceBlank(const std::string &blank_id);
-
     };
 
     typedef Triple SingularAnnotation;

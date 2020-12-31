@@ -607,7 +607,7 @@ class _PropertyBearer:
         """
         Create a PhysicalProperty associated with a PhysicalEntity, EnergyDiff or PhysicalProcess.
 
-        This method has 4 signatures which can be used in different circumstances.
+        This method has 3 signatures which can be used in different circumstances.
         In the full signature the user provides all the information needed
 
             -  PhysicalEntity *PhysicalEntity_hasPropertyFull(
