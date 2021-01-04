@@ -278,7 +278,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     def test_editor_get_num_metaids(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         actual = self.pyom.editor_get_num_metaids(editor_ptr)
-        expected = 13
+        expected = 11
         self.pyom.editor_delete(editor_ptr)
         self.assertEqual(expected, actual)
 
@@ -321,8 +321,8 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
                 </apply>
               </math>
               <listOfLocalParameters>
-                <localParameter id="kx2y" value="1" metaid="localParameter0000"/>
-                <localParameter id="ky2z" value="1" metaid="localParameter0001"/>
+                <localParameter id="kx2y" value="1"/>
+                <localParameter id="ky2z" value="1"/>
               </listOfLocalParameters>
             </kineticLaw>
           </reaction>

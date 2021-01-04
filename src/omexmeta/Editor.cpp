@@ -269,8 +269,6 @@ namespace omexmeta {
             addNamespaceFromAnnotation(triple.getPredicateStr());
             // add to the model
             model_.addStatement(triple.getStatement());
-            //             remember to free it.
-            //            triple.freeStatement();
         }
         // give the triples object back so we can reuse it in a potential call to
         // delete

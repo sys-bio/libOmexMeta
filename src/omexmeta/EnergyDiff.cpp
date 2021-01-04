@@ -28,13 +28,15 @@ namespace omexmeta {
     }
 
     Triples EnergyDiff::toTriples() {
+
         if (OmexMetaUtils::isStringEmpty<EnergyDiff>(*this, getAbout())) {
             std::string new_energy_diff_about_value = generateMetaId("EnergyDiff");
             about(new_energy_diff_about_value, LOCAL_URI);
         }
 
         if (OmexMetaUtils::isStringEmpty<EnergyDiff>(*this, physical_property_.getAbout())) {
-            // the PhysicalProperty will autogenerate its own about metaid. We set this base to something more approprioate for a PhysicalProcess
+            // When about field is empty, the PhysicalProperty will autogenerate its own about metaid.
+            // We set this base to something more appropriate for a EnergyDiff
             physical_property_.setPropertyMetaidBase("EnergyDiffProperty");
         }
 
@@ -122,47 +124,6 @@ namespace omexmeta {
         physical_property_.isVersionOf(property);
         return *this;
     }
-
-
-//    EnergyDiff &EnergyDiff::about(const std::string &about, eUriType type) {
-//        if (OmexMetaUtils::startsWith(about, "http")) {
-//            about_value_ = UriHandler::uriModifier<EnergyDiff>(*this, about, NONE);
-//        } else {
-//            about_value_ = UriHandler::uriModifier<EnergyDiff>(*this, about, type);
-//        }
-//        if (physical_property_.getIsPropertyOfValue().empty()) {
-//            physical_property_.isPropertyOf(about_value_, LOCAL_URI);
-//        }
-//        return *this;
-//    }
-
-//
-//    EnergyDiff &EnergyDiff::hasProperty(const PhysicalProperty &property) {
-//        physical_property_ = property;
-//        if (OmexMetaUtils::isStringEmpty<EnergyDiff>(*this, physical_property_.getIsPropertyOfValue())) {
-//            // physical property takes care of generating ids
-//            physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());
-//        }
-//        return *this;
-//    }
-//
-//    EnergyDiff &EnergyDiff::hasProperty(const std::string &property_about, eUriType about_uri_type) {
-//        /*
-//         * Two scenarios:
-//         *  1) User wants to provide their own strings to use for the property about section.
-//         *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
-//         */
-//        if (property_about.empty()) {
-//            // option 2
-//            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
-//            physical_property_.setPropertyMetaidBase("EnergyDiffProperty");
-//
-//        } else {
-//            // option 1
-//            physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_).about(property_about, about_uri_type);
-//        }
-//        return *this;
-//    }
 
     EnergyDiff &EnergyDiff::isPropertyOf(const std::string &is_property_of, eUriType type) {
         physical_property_.isPropertyOf(is_property_of, type);
