@@ -44,10 +44,7 @@ TEST_F(EditorTests, TestMetaIds) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = {"model0000", "unit0000", "unit0001", "#cytosol", "#Meta00001",
-                                         "species0000", "species0001", "reaction0000", "kineticLaw0000",
-                                         "localParameter0000", "localParameter0001", "reaction0001",
-                                         "kineticLaw0001"};
+    std::vector<std::string> expected = {"model0000", "unit0000", "unit0001", "#cytosol", "#Meta00001", "species0000", "species0001", "reaction0000", "kineticLaw0000", "reaction0001", "kineticLaw0001"};
     ASSERT_EQ(expected, metaids);
 }
 
@@ -836,20 +833,4 @@ TEST_F(EditorTests, TestaddTaxon) {
                            "    bqbiol:hasTaxon NCBI_Taxon:9696 .";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
-}
-
-/**
- * Check that we can access the metaid of a parameter in sbml for the about
- * section of a composite annotation. All parameters metaid from listOfParameters in sbml
- * should be accessible.
- */
-TEST_F(EditorTests, LocalParameterAvailable) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NERNST_POTENTIAL), false, false);
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
-    singularAnnotation.about("NernstPotential", MODEL_URI)
-        .predicate("bqbiol", "isPropertyOf")
-        .resourceUri("stuff");
-    editor.addSingleAnnotation(singularAnnotation);
-    std::cout << rdf.toString()<<std::endl;
 }

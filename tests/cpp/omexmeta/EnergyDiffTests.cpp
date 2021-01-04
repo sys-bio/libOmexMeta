@@ -208,3 +208,38 @@ TEST_F(EnergyDiffTests, TestRemoveEnergyDiff) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
+
+TEST_F(EnergyDiffTests, NernstExample) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NERNST_POTENTIAL), false, false);
+
+    EnergyDiff physicalForce = editor.newEnergyDiff();
+    physicalForce
+            .about("NernstPotential", MODEL_URI)
+            .addSource("Ca_ex", MODEL_URI)
+            .addSink("Ca_cty", MODEL_URI)
+            .hasProperty("OPB:OPB1234");
+    editor.addEnergyDiff(physicalForce);
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EnergyDiffProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#NernstPotential> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB1234> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Ca_cty> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Ca_ex> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#NernstPotential>\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+}

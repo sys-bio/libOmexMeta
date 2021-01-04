@@ -2,15 +2,14 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#include "gtest/gtest.h"
+#include "CellMLFactory.h"
 #include "SBMLFactory.h"
 #include "omexmeta/OmexMetaXmlAssistant.h"
+#include "gtest/gtest.h"
 #include <thread>
-#include "CellMLFactory.h"
 using namespace omexmeta;
 
 class xmlAssistantTests : public ::testing::Test {
-
 };
 
 TEST_F(xmlAssistantTests, TestValidElements) {
@@ -36,7 +35,7 @@ TEST_F(xmlAssistantTests, TestValidElementsSBML) {
             "species",
             "reaction",
             "kineticLaw",
-            "localParameter",
+            "parameter",
     };
     ASSERT_EQ(expected, actual);
 }
@@ -146,8 +145,8 @@ TEST_F(xmlAssistantTests, TestMetaIdsSBML) {
                            "            </apply>\n"
                            "          </math>\n"
                            "          <listOfLocalParameters>\n"
-                           "            <localParameter id=\"kx2y\" value=\"1\" metaid=\"localParameter0000\"/>\n"
-                           "            <localParameter id=\"ky2z\" value=\"1\" metaid=\"localParameter0001\"/>\n"
+                           "            <localParameter id=\"kx2y\" value=\"1\"/>\n"
+                           "            <localParameter id=\"ky2z\" value=\"1\"/>\n"
                            "          </listOfLocalParameters>\n"
                            "        </kineticLaw>\n"
                            "      </reaction>\n"
@@ -195,11 +194,11 @@ TEST_F(xmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaid) {
     auto sbml_and_meta_ids = sbmlAssistant.addMetaIds();
     std::cout << sbml_and_meta_ids.second.size();
     std::vector<std::string> metaids = sbml_and_meta_ids.second;
-    for (auto &it: metaids) {
+    for (auto &it : metaids) {
         std::cout << it << std::endl;
     }
-    std::vector<std::string> expected =  { "model0000", "unit0000", "unit0001", "#cytosol",
-                                         "#glucose", "reaction0000", "kineticLaw0000", "localParameter0000" };
+    std::vector<std::string> expected = {"model0000", "unit0000", "unit0001", "#cytosol",
+                                         "#glucose", "reaction0000", "kineticLaw0000"};
     ASSERT_EQ(expected, metaids);
 }
 
@@ -211,7 +210,7 @@ TEST_F(xmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseCellML) {
     std::string cellml = CellMLFactory::getCellML(CELLML_TOY);
     CellMLAssistant cellMlAssistant(cellml, "#OmexMetaId", 4, false);
     auto cellml_metaids = cellMlAssistant.addMetaIds();
-    std::vector<std::string> expected = { "annExamples", "main.Volume", "main.MembraneVoltage", "main.ReactionRate" };
+    std::vector<std::string> expected = {"annExamples", "main.Volume", "main.MembraneVoltage", "main.ReactionRate"};
     ASSERT_EQ(expected, cellml_metaids.second);
 }
 
@@ -225,10 +224,10 @@ TEST_F(xmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaidCellML) {
     auto cellml_and_meta_ids = cellMlAssistant.addMetaIds();
     std::cout << cellml_and_meta_ids.second.size();
     std::vector<std::string> metaids = cellml_and_meta_ids.second;
-    for (auto &it: metaids) {
+    for (auto &it : metaids) {
         std::cout << it << std::endl;
     }
-    std::vector<std::string> expected =  { "annExamples", "component0000", "variable0000", "variable0001", "variable0002" };
+    std::vector<std::string> expected = {"annExamples", "component0000", "variable0000", "variable0001", "variable0002"};
     ASSERT_EQ(expected, metaids);
 }
 
@@ -236,22 +235,4 @@ TEST_F(xmlAssistantTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaidCellML) {
 TEST_F(xmlAssistantTests, TestXmlAssistantFactory) {
     std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
     auto x = OmexMetaXmlAssistantFactory::generate(sbml, OMEXMETA_TYPE_SBML);
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
