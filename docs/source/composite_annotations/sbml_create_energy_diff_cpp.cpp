@@ -2,98 +2,57 @@
 
 using namespace omexmeta;
 
-int main(){
+int main() {
 
     std::string sbml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-                       "<!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. -->\n"
                        "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
-                       "  <model metaid=\"SimpleRegulation\" id=\"SimpleRegulation\">\n"
+                       "  <model metaid=\"EnergyDiff\" id=\"EnergyDiff\">\n"
                        "    <listOfCompartments>\n"
-                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"#OmexMetaId0000\"/>\n"
+                       "      <compartment id=\"cytoplasm\" metaid=\"cytoplasm\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+                       "      <compartment id=\"extracellular\" metaid=\"extracellular\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
                        "    </listOfCompartments>\n"
                        "    <listOfSpecies>\n"
-                       "      <species id=\"A\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SpeciesA\"/>\n"
-                       "      <species id=\"B\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SpeciesB\"/>\n"
-                       "      <species id=\"C\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SpeciesC\"/>\n"
-                       "      <species id=\"D\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SpeciesD\"/>\n"
+                       "      <species id=\"Ca_ex\" metaid=\"Ca_ex\" compartment=\"extracellular\" initialConcentration=\"1\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                       "      <species id=\"Ca_cyt\" metaid=\"Ca_cyt\" compartment=\"cytoplasm\" initialConcentration=\"0.3\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
                        "    </listOfSpecies>\n"
                        "    <listOfParameters>\n"
-                       "      <parameter id=\"S\" metaid=\"S\" value=\"0\" constant=\"true\"/>\n"
                        "      <parameter id=\"k1\" metaid=\"k1\" value=\"0.1\" constant=\"true\"/>\n"
                        "      <parameter id=\"k2\" metaid=\"k2\" value=\"0.1\" constant=\"true\"/>\n"
-                       "      <parameter id=\"k3\" metaid=\"k4\" value=\"0.1\" constant=\"true\"/>\n"
-                       "      <parameter id=\"k4\" value=\"0.1\" constant=\"true\"/>\n"
+                       "      <parameter id=\"N_Ca\" metaid=\"NernstPotential\"/>\n"
                        "    </listOfParameters>\n"
                        "    <listOfReactions>\n"
-                       "      <reaction id=\"R1\" reversible=\"false\" fast=\"false\" metaid=\"Reaction1\">\n"
+                       "      <reaction id=\"NernstReversalPotential_in\" metaid=\"NernstReversalPotential_in\" reversible=\"false\" fast=\"false\">\n"
                        "        <listOfReactants>\n"
-                       "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                       "          <speciesReference species=\"Ca_ex\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
                        "        <listOfProducts>\n"
-                       "          <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                       "          <speciesReference species=\"Ca_cyt\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"KineticLawForReaction1\">\n"
+                       "        <kineticLaw>\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
+                       "              <ci> cytoplasm </ci>\n"
                        "              <ci> k1 </ci>\n"
-                       "              <ci> A </ci>\n"
-                       "              <ci> S </ci>\n"
+                       "              <ci> Ca_ex </ci>\n"
                        "            </apply>\n"
                        "          </math>\n"
                        "        </kineticLaw>\n"
                        "      </reaction>\n"
-                       "      <reaction id=\"R2\" reversible=\"false\" fast=\"false\" metaid=\"Reaction2\">\n"
+                       "      <reaction id=\"NernstReversalPotential_out\" metaid=\"NernstReversalPotential_out\" reversible=\"false\" fast=\"false\">\n"
                        "        <listOfReactants>\n"
-                       "          <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                       "          <speciesReference species=\"Ca_cyt\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
                        "        <listOfProducts>\n"
-                       "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                       "          <speciesReference species=\"Ca_ex\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"KineticLawForReaction2\">\n"
+                       "        <kineticLaw>\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
+                       "              <ci> extracellular </ci>\n"
                        "              <ci> k2 </ci>\n"
-                       "              <ci> B </ci>\n"
-                       "            </apply>\n"
-                       "          </math>\n"
-                       "        </kineticLaw>\n"
-                       "      </reaction>\n"
-                       "      <reaction id=\"R3\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0009\">\n"
-                       "        <listOfReactants>\n"
-                       "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
-                       "        </listOfReactants>\n"
-                       "        <listOfProducts>\n"
-                       "          <speciesReference species=\"D\" stoichiometry=\"1\" constant=\"true\"/>\n"
-                       "        </listOfProducts>\n"
-                       "        <listOfModifiers>\n"
-                       "          <modifierSpeciesReference species=\"B\"/>\n"
-                       "        </listOfModifiers>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0010\">\n"
-                       "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
-                       "            <apply>\n"
-                       "              <times/>\n"
-                       "              <ci> k3 </ci>\n"
-                       "              <ci> C </ci>\n"
-                       "              <ci> B </ci>\n"
-                       "            </apply>\n"
-                       "          </math>\n"
-                       "        </kineticLaw>\n"
-                       "      </reaction>\n"
-                       "      <reaction id=\"R4\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0011\">\n"
-                       "        <listOfReactants>\n"
-                       "          <speciesReference species=\"D\" stoichiometry=\"1\" constant=\"true\"/>\n"
-                       "        </listOfReactants>\n"
-                       "        <listOfProducts>\n"
-                       "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
-                       "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0012\">\n"
-                       "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
-                       "            <apply>\n"
-                       "              <times/>\n"
-                       "              <ci> k4 </ci>\n"
-                       "              <ci> D </ci>\n"
+                       "              <ci> Ca_cyt </ci>\n"
                        "            </apply>\n"
                        "          </math>\n"
                        "        </kineticLaw>\n"
@@ -102,20 +61,26 @@ int main(){
                        "  </model>\n"
                        "</sbml>";
 
-    RDF rdf = RDF();
 
-    Editor editor = rdf.toEditor(sbml, true);
+    RDF rdf;
+    Editor editor = rdf.toEditor(sbml, false, false);
 
-    EnergyDiff energy_diff = editor.newEnergyDiff();
-    energy_diff.about("R1")
-            .addSink("SpeciesA", MODEL_URI)
-            .addSource("SpeciesB", MODEL_URI)
-            .hasProperty("k1", LOCAL_URI, "opb:OPB_01058");
+    EnergyDiff energyDiff = editor.newEnergyDiff();
+    energyDiff
+            // this could be named anything provided it is unique to the rdf graph because it is a LOCAL_URI
+            .about("MembranePotential", LOCAL_URI)
+            .addSource("Ca_ex", MODEL_URI)
+            .addSink("Ca_cyt", MODEL_URI)
+            // for energy differentials we use the full signature of hasProperty.
+            // The arguments are as follows:
+            //  - NernstPotential: the "about" value that is used for the property associated with the energy differential
+            //  - MODEL_URI: the uri type for the previous argument. In SBML this is a <parameter> and therefore a MODEL_URI
+            //      while in CellML this is a construct local to the rdf document (so LOCAL_URI)
+            //  - OPB:OPB_01581: the OPB term associated with the property (isVersionOf)
+            .hasProperty("NernstPotential", MODEL_URI, "OPB:OPB_01581");
+    editor.addEnergyDiff(energyDiff);
 
-
-    editor.addEnergyDiff(energy_diff);
-
-    std::cout << rdf.toString() << std::endl; // turtle default
+    std::cout << rdf.toString() << std::endl;
 
     return 0;
 }

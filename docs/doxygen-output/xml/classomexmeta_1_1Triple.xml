@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="38" column="21" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="38" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="39" column="21" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Triple_1af43736e46ee06c5236149c3cabe89dfe" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="39" column="21" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="39" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="40" column="21" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="37" column="9" bodyfile="src/omexmeta/Triple.cpp" bodystart="23" bodyend="23"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="38" column="9" bodyfile="src/omexmeta/Triple.cpp" bodystart="24" bodyend="24"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="46" column="18"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="47" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1aaed857f9356dc3a7414f06f393a75ba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="48" column="9" bodyfile="src/omexmeta/Triple.cpp" bodystart="10" bodyend="14"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="49" column="9" bodyfile="src/omexmeta/Triple.cpp" bodystart="11" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1adc457c78ec059eb71602e7ea4f763582" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="50" column="9" bodyfile="src/omexmeta/Triple.cpp" bodystart="16" bodyend="17"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="51" column="9" bodyfile="src/omexmeta/Triple.cpp" bodystart="17" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="54" column="27" bodyfile="src/omexmeta/Triple.cpp" bodystart="236" bodyend="238"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="55" column="27" bodyfile="src/omexmeta/Triple.cpp" bodystart="243" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="59" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="244" bodyend="248"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="60" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="251" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1afd918ecccfa23079d9cb70f2e1a3e9b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="64" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="250" bodyend="254"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="65" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="257" bodyend="261"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a2cabbc7a28348a9472bd50f059469183" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="73" column="21" bodyfile="src/omexmeta/Triple.cpp" bodystart="25" bodyend="91"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="74" column="21" bodyfile="src/omexmeta/Triple.cpp" bodystart="26" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a3f3868622349d3a3e14ed3e4b21d49a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -209,7 +209,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="78" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="228" bodyend="230"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="79" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="235" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1ac1110c3092b148b4da2264186b613a93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="80" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="93" bodyend="114"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="81" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="94" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a0c8371a282b8f2a59ebaa87abf7a8758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -251,7 +251,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="82" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="116" bodyend="140"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="83" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="117" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Triple_1a0a8d8795d7015d13d888ed77cbfb4220" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>Triple &amp; omexmeta::Triple::about</definition>
+        <argsstring>(std::string metaid, eUriType uri_type)</argsstring>
+        <name>about</name>
+        <param>
+          <type>std::string</type>
+          <declname>metaid</declname>
+        </param>
+        <param>
+          <type>eUriType</type>
+          <declname>uri_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="85" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="143" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a69df88d19e2f9077fccfa9543dadd15f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -264,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="84" column="21" bodyfile="src/omexmeta/Triple.cpp" bodystart="216" bodyend="218"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="87" column="21" bodyfile="src/omexmeta/Triple.cpp" bodystart="223" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a886240fe50becaaa47ca171f2d454ba4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *</type>
@@ -277,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="86" column="26" bodyfile="src/omexmeta/Triple.cpp" bodystart="224" bodyend="226"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="89" column="26" bodyfile="src/omexmeta/Triple.cpp" bodystart="231" bodyend="233"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a57b4521321178af38415e76cd483207e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -298,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="88" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="142" bodyend="150"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="91" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="149" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a27637af321ba7d7eeb2596bac93feb54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -320,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="93" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="152" bodyend="154"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="96" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="159" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a7358812badc8d0d5589a0165af4ad375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -337,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="95" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="172" bodyend="178"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="98" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="179" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1ae6836c6e9d06a310a120345aa95a4daa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -354,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="97" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="180" bodyend="185"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="100" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="187" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a90ffe9b74d354cc3fe3132a07546f6d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -371,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="99" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="187" bodyend="192"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="102" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="194" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a34832780748d58b0fddea6f6f079217a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -384,7 +405,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="101" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="220" bodyend="222"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="104" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="227" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a1a99a566a9d1883c6329a023f4dbc056" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -401,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="103" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="158" bodyend="165"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="106" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="165" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a2cb9ba4a57bd6f85c7a9b49b93245fea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -418,7 +439,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="105" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="168" bodyend="170"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="108" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="175" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1ab89993902b551b98d9e17e4fe5ebed6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -431,7 +452,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="107" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="232" bodyend="234"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="110" column="14" bodyfile="src/omexmeta/Triple.cpp" bodystart="239" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1ac379e5410a41c1946e91d581f023c7f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -444,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="111" column="27" bodyfile="src/omexmeta/Triple.cpp" bodystart="240" bodyend="242"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="114" column="27" bodyfile="src/omexmeta/Triple.cpp" bodystart="247" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a44d31389b0056ab4f1d8689521a25032" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -461,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="113" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="205" bodyend="210"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="116" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="212" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a1659736747ab322116f5b75069efc398" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -478,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="115" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="212" bodyend="214"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="118" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="219" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a60b0bd14eb91bab42ea894ec50843eb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -495,7 +516,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="117" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="193" bodyend="195"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="120" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="200" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1a27f52f5d96e0fcbd17291bb88f39617f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -512,7 +533,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="119" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="197" bodyend="199"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="122" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="204" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triple_1ac19ea0eaa8bfe1a7c481da4312cdf1b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
@@ -529,7 +550,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="121" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="201" bodyend="203"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="124" column="16" bodyfile="src/omexmeta/Triple.cpp" bodystart="208" bodyend="210"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -548,7 +569,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="52" column="23" bodyfile="src/omexmeta/Triple.cpp" bodystart="19" bodyend="21"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="53" column="23" bodyfile="src/omexmeta/Triple.cpp" bodystart="20" bodyend="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -617,10 +638,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/include/omexmeta/Triple.h" line="35" column="5" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="35" bodyend="123"/>
+    <location file="src/omexmeta/include/omexmeta/Triple.h" line="36" column="5" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="36" bodyend="125"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Triple_1ac1110c3092b148b4da2264186b613a93" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>about</name></member>
       <member refid="classomexmeta_1_1Triple_1a0c8371a282b8f2a59ebaa87abf7a8758" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>about</name></member>
+      <member refid="classomexmeta_1_1Triple_1a0a8d8795d7015d13d888ed77cbfb4220" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>about</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a700219b2fed175a96fecfbd905d20ab1" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>checkForNull</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a2013f7fa1ce77c0659d504c2f54d6e45" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>equals</name></member>
       <member refid="classredland_1_1LibrdfStatement_1aa51bc647bc938a07bd6c16b4d6ce07b4" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>freeStatement</name></member>

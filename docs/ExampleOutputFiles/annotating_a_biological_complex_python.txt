@@ -2,7 +2,6 @@
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EntityProperty0000

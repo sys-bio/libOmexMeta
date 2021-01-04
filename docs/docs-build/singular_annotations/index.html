@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Singular Annotations &mdash; libomexmeta 1.1.23 documentation</title>
+  <title>Singular Annotations &mdash; libomexmeta 1.2.1 documentation</title>
   
 
   
@@ -408,14 +408,12 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
 25
 26
 27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">,</span> <span class="s1">&#39;compartment0000&#39;</span><span class="p">,</span> <span class="s1">&#39;species0000&#39;</span><span class="p">,</span> <span class="s1">&#39;species0001&#39;</span><span class="p">,</span> <span class="s1">&#39;reaction0000&#39;</span><span class="p">,</span> <span class="s1">&#39;kineticLaw0000&#39;</span><span class="p">]</span>
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">,</span> <span class="s1">&#39;compartment0000&#39;</span><span class="p">,</span> <span class="s1">&#39;species0000&#39;</span><span class="p">,</span> <span class="s1">&#39;species0001&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter0000&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter0001&#39;</span><span class="p">,</span> <span class="s1">&#39;reaction0000&#39;</span><span class="p">,</span> <span class="s1">&#39;kineticLaw0000&#39;</span><span class="p">]</span>
 <span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">dc</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dublincore</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">specifications</span><span class="o">/</span><span class="n">dublin</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">dcmi</span><span class="o">-</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">Process0000</span>
@@ -971,8 +969,7 @@ create metaids</p>
 60
 61
 62
-63
-64</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
+63</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;
 &lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
   &lt;model metaid=&quot;ToyModel&quot; id=&quot;ToyModel&quot;&gt;
@@ -984,8 +981,8 @@ create metaids</p>
       &lt;species id=&quot;B&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot; metaid=&quot;species0001&quot;/&gt;
     &lt;/listOfSpecies&gt;
     &lt;listOfParameters&gt;
-      &lt;parameter id=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
-      &lt;parameter id=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+      &lt;parameter id=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot; metaid=&quot;parameter0000&quot;/&gt;
+      &lt;parameter id=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot; metaid=&quot;parameter0001&quot;/&gt;
     &lt;/listOfParameters&gt;
     &lt;listOfReactions&gt;
       &lt;reaction id=&quot;r1&quot; reversible=&quot;false&quot; fast=&quot;false&quot; metaid=&quot;reaction0000&quot;&gt;
@@ -1013,7 +1010,6 @@ create metaids</p>
 @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
 @prefix semsim: &lt;http://bime.uw.edu/semsim/&gt; .
 @prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:Process0000
@@ -2214,12 +2210,10 @@ this is a different method call - see below.</p>
 23
 24
 25
-26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">Process0000</span>
@@ -2748,14 +2742,12 @@ that demonstrate the various usages of Resource.</p>
 32
 33
 34
-35
-36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="mi">13</span>
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="mi">13</span>
 <span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">dc</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dublincore</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">specifications</span><span class="o">/</span><span class="n">dublin</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">dcmi</span><span class="o">-</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">Process0000</span>

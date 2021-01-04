@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Composite Annotations: SBML Examples &mdash; libomexmeta 1.1.23 documentation</title>
+  <title>Composite Annotations: SBML Examples &mdash; libomexmeta 1.2.1 documentation</title>
   
 
   
@@ -568,8 +568,7 @@ add more locations.</p>
 109
 110
 111
-112
-113</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
+112</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;
 &lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
   &lt;model metaid=&quot;SimpleRegulation&quot; id=&quot;SimpleRegulation&quot;&gt;
@@ -670,7 +669,6 @@ add more locations.</p>
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
 @prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:EntityProperty
@@ -1504,12 +1502,10 @@ local:EntityProperty
 25
 26
 27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
@@ -2093,213 +2089,137 @@ local:EntityProperty
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
 <div class="literal-block-wrapper docutils container" id="id17">
 <div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a energy differential composite annotation in Python</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
 
-<span class="n">sbml</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="s2">&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span>
-<span class="s2">&lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;</span>
-<span class="s2">  &lt;model metaid=&quot;SimpleRegulation&quot; id=&quot;SimpleRegulation&quot;&gt;</span>
+<span class="n">sbml</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2"> encoding=</span><span class="se">\&quot;</span><span class="s2">UTF-8</span><span class="se">\&quot;</span><span class="s2">?&gt;</span>
+<span class="s2">&lt;sbml xmlns=</span><span class="se">\&quot;</span><span class="s2">http://www.sbml.org/sbml/level3/version1/core</span><span class="se">\&quot;</span><span class="s2"> level=</span><span class="se">\&quot;</span><span class="s2">3</span><span class="se">\&quot;</span><span class="s2"> version=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
+<span class="s2">  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s2">EnergyDiff</span><span class="se">\&quot;</span><span class="s2"> id=</span><span class="se">\&quot;</span><span class="s2">EnergyDiff</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
 <span class="s2">    &lt;listOfCompartments&gt;</span>
-<span class="s2">      &lt;compartment id=&quot;cell&quot; spatialDimensions=&quot;3&quot; size=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s2">cytoplasm</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">cytoplasm</span><span class="se">\&quot;</span><span class="s2"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s2">3</span><span class="se">\&quot;</span><span class="s2"> size=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
+<span class="s2">      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s2">extracellular</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">extracellular</span><span class="se">\&quot;</span><span class="s2"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s2">3</span><span class="se">\&quot;</span><span class="s2"> size=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">    &lt;/listOfCompartments&gt;</span>
 <span class="s2">    &lt;listOfSpecies&gt;</span>
-<span class="s2">      &lt;species id=&quot;A&quot; metaid=&quot;SpeciesA&quot; compartment=&quot;cell&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;</span>
-<span class="s2">      &lt;species id=&quot;B&quot; metaid=&quot;SpeciesB&quot; compartment=&quot;cell&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;</span>
-<span class="s2">      &lt;species id=&quot;C&quot; metaid=&quot;SpeciesC&quot; compartment=&quot;cell&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;</span>
-<span class="s2">      &lt;species id=&quot;D&quot; metaid=&quot;SpeciesD&quot; compartment=&quot;cell&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;</span>
+<span class="s2">      &lt;species id=</span><span class="se">\&quot;</span><span class="s2">Ca_ex</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">Ca_ex</span><span class="se">\&quot;</span><span class="s2"> compartment=</span><span class="se">\&quot;</span><span class="s2">extracellular</span><span class="se">\&quot;</span><span class="s2"> initialConcentration=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
+<span class="s2">      &lt;species id=</span><span class="se">\&quot;</span><span class="s2">Ca_cyt</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">Ca_cyt</span><span class="se">\&quot;</span><span class="s2"> compartment=</span><span class="se">\&quot;</span><span class="s2">cytoplasm</span><span class="se">\&quot;</span><span class="s2"> initialConcentration=</span><span class="se">\&quot;</span><span class="s2">0.3</span><span class="se">\&quot;</span><span class="s2"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">    &lt;/listOfSpecies&gt;</span>
 <span class="s2">    &lt;listOfParameters&gt;</span>
-<span class="s2">      &lt;parameter id=&quot;S&quot;  metaid=&quot;S&quot; value=&quot;0&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">      &lt;parameter id=&quot;k1&quot; metaid=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">      &lt;parameter id=&quot;k2&quot; metaid=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">      &lt;parameter id=&quot;k3&quot; metaid=&quot;k3&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">      &lt;parameter id=&quot;k4&quot; metaid=&quot;k4&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s2">k1</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">k1</span><span class="se">\&quot;</span><span class="s2"> value=</span><span class="se">\&quot;</span><span class="s2">0.1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
+<span class="s2">      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s2">k2</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">k2</span><span class="se">\&quot;</span><span class="s2"> value=</span><span class="se">\&quot;</span><span class="s2">0.1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
+<span class="s2">      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s2">N_Ca</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">NernstPotential</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">    &lt;/listOfParameters&gt;</span>
 <span class="s2">    &lt;listOfReactions&gt;</span>
-<span class="s2">      &lt;reaction id=&quot;R1&quot; metaid=&quot;R1&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;</span>
+<span class="s2">      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s2">NernstReversalPotential_in</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">NernstReversalPotential_in</span><span class="se">\&quot;</span><span class="s2"> reversible=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2"> fast=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
 <span class="s2">        &lt;listOfReactants&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s2">Ca_ex</span><span class="se">\&quot;</span><span class="s2"> stoichiometry=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">        &lt;/listOfReactants&gt;</span>
 <span class="s2">        &lt;listOfProducts&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s2">Ca_cyt</span><span class="se">\&quot;</span><span class="s2"> stoichiometry=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">        &lt;/listOfProducts&gt;</span>
-<span class="s2">        &lt;kineticLaw metaid=&quot;KineticLawForReaction1&quot;&gt;</span>
-<span class="s2">          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;</span>
+<span class="s2">        &lt;kineticLaw&gt;</span>
+<span class="s2">          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s2">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
 <span class="s2">            &lt;apply&gt;</span>
 <span class="s2">              &lt;times/&gt;</span>
+<span class="s2">              &lt;ci&gt; cytoplasm &lt;/ci&gt;</span>
 <span class="s2">              &lt;ci&gt; k1 &lt;/ci&gt;</span>
-<span class="s2">              &lt;ci&gt; A &lt;/ci&gt;</span>
-<span class="s2">              &lt;ci&gt; S &lt;/ci&gt;</span>
+<span class="s2">              &lt;ci&gt; Ca_ex &lt;/ci&gt;</span>
 <span class="s2">            &lt;/apply&gt;</span>
 <span class="s2">          &lt;/math&gt;</span>
 <span class="s2">        &lt;/kineticLaw&gt;</span>
 <span class="s2">      &lt;/reaction&gt;</span>
-<span class="s2">      &lt;reaction id=&quot;R2&quot; metaid=&quot;R2&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;</span>
+<span class="s2">      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s2">NernstReversalPotential_out</span><span class="se">\&quot;</span><span class="s2"> metaid=</span><span class="se">\&quot;</span><span class="s2">NernstReversalPotential_out</span><span class="se">\&quot;</span><span class="s2"> reversible=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2"> fast=</span><span class="se">\&quot;</span><span class="s2">false</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
 <span class="s2">        &lt;listOfReactants&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s2">Ca_cyt</span><span class="se">\&quot;</span><span class="s2"> stoichiometry=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">        &lt;/listOfReactants&gt;</span>
 <span class="s2">        &lt;listOfProducts&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
+<span class="s2">          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s2">Ca_ex</span><span class="se">\&quot;</span><span class="s2"> stoichiometry=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> constant=</span><span class="se">\&quot;</span><span class="s2">true</span><span class="se">\&quot;</span><span class="s2">/&gt;</span>
 <span class="s2">        &lt;/listOfProducts&gt;</span>
-<span class="s2">        &lt;kineticLaw metaid=&quot;KineticLawForReaction2&quot;&gt;</span>
-<span class="s2">          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;</span>
+<span class="s2">        &lt;kineticLaw&gt;</span>
+<span class="s2">          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s2">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
 <span class="s2">            &lt;apply&gt;</span>
 <span class="s2">              &lt;times/&gt;</span>
+<span class="s2">              &lt;ci&gt; extracellular &lt;/ci&gt;</span>
 <span class="s2">              &lt;ci&gt; k2 &lt;/ci&gt;</span>
-<span class="s2">              &lt;ci&gt; B &lt;/ci&gt;</span>
-<span class="s2">            &lt;/apply&gt;</span>
-<span class="s2">          &lt;/math&gt;</span>
-<span class="s2">        &lt;/kineticLaw&gt;</span>
-<span class="s2">      &lt;/reaction&gt;</span>
-<span class="s2">      &lt;reaction id=&quot;R3&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;</span>
-<span class="s2">        &lt;listOfReactants&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;C&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">        &lt;/listOfReactants&gt;</span>
-<span class="s2">        &lt;listOfProducts&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;D&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">        &lt;/listOfProducts&gt;</span>
-<span class="s2">        &lt;listOfModifiers&gt;</span>
-<span class="s2">          &lt;modifierSpeciesReference species=&quot;B&quot;/&gt;</span>
-<span class="s2">        &lt;/listOfModifiers&gt;</span>
-<span class="s2">        &lt;kineticLaw&gt;</span>
-<span class="s2">          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;</span>
-<span class="s2">            &lt;apply&gt;</span>
-<span class="s2">              &lt;times/&gt;</span>
-<span class="s2">              &lt;ci&gt; k3 &lt;/ci&gt;</span>
-<span class="s2">              &lt;ci&gt; C &lt;/ci&gt;</span>
-<span class="s2">              &lt;ci&gt; B &lt;/ci&gt;</span>
-<span class="s2">            &lt;/apply&gt;</span>
-<span class="s2">          &lt;/math&gt;</span>
-<span class="s2">        &lt;/kineticLaw&gt;</span>
-<span class="s2">      &lt;/reaction&gt;</span>
-<span class="s2">      &lt;reaction id=&quot;R4&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;</span>
-<span class="s2">        &lt;listOfReactants&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;D&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">        &lt;/listOfReactants&gt;</span>
-<span class="s2">        &lt;listOfProducts&gt;</span>
-<span class="s2">          &lt;speciesReference species=&quot;C&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;</span>
-<span class="s2">        &lt;/listOfProducts&gt;</span>
-<span class="s2">        &lt;kineticLaw&gt;</span>
-<span class="s2">          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;</span>
-<span class="s2">            &lt;apply&gt;</span>
-<span class="s2">              &lt;times/&gt;</span>
-<span class="s2">              &lt;ci&gt; k4 &lt;/ci&gt;</span>
-<span class="s2">              &lt;ci&gt; D &lt;/ci&gt;</span>
+<span class="s2">              &lt;ci&gt; Ca_cyt &lt;/ci&gt;</span>
 <span class="s2">            &lt;/apply&gt;</span>
 <span class="s2">          &lt;/math&gt;</span>
 <span class="s2">        &lt;/kineticLaw&gt;</span>
@@ -2308,6 +2228,7 @@ local:EntityProperty
 <span class="s2">  &lt;/model&gt;</span>
 <span class="s2">&lt;/sbml&gt;</span>
 <span class="s2">&quot;&quot;&quot;</span>
+
 <span class="c1"># create an empty RDF object</span>
 <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
 
@@ -2315,12 +2236,17 @@ local:EntityProperty
 
 <span class="c1"># Property: Osmotic Pressure</span>
 <span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_energy_diff</span><span class="p">()</span> <span class="k">as</span> <span class="n">energy_diff</span><span class="p">:</span>
-    <span class="n">energy_diff</span> \
-        <span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">physical_entity_reference</span><span class="o">=</span><span class="s2">&quot;SpeciesA&quot;</span><span class="p">,</span> <span class="n">uri_type</span><span class="o">=</span><span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">add_sink</span><span class="p">(</span><span class="n">physical_entity_reference</span><span class="o">=</span><span class="s2">&quot;SpeciesB&quot;</span><span class="p">,</span> <span class="n">uri_type</span><span class="o">=</span><span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">has_property</span><span class="p">(</span> <span class="n">property_about</span><span class="o">=</span><span class="s2">&quot;k1&quot;</span><span class="p">,</span> <span class="n">about_uri_type</span><span class="o">=</span><span class="n">eUriType</span><span class="o">.</span><span class="n">LOCAL_URI</span><span class="p">,</span> <span class="n">is_version_of</span><span class="o">=</span><span class="s2">&quot;opb:OPB_01058&quot;</span><span class="p">)</span>
-
+    <span class="c1"># about(): this could be named anything provided it is unique to the rdf graph because it is a LOCAL_URI</span>
+    <span class="n">energy_diff</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="n">about</span><span class="o">=</span><span class="s2">&quot;MembranePotential&quot;</span><span class="p">,</span> <span class="n">uri_type</span><span class="o">=</span><span class="n">eUriType</span><span class="o">.</span><span class="n">LOCAL_URI</span><span class="p">)</span>
+    <span class="n">energy_diff</span><span class="o">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">physical_entity_reference</span><span class="o">=</span><span class="s2">&quot;Ca_ex&quot;</span><span class="p">,</span> <span class="n">uri_type</span><span class="o">=</span><span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span>
+    <span class="n">energy_diff</span><span class="o">.</span><span class="n">add_sink</span><span class="p">(</span><span class="n">physical_entity_reference</span><span class="o">=</span><span class="s2">&quot;Ca_cyt&quot;</span><span class="p">,</span><span class="n">uri_type</span><span class="o">=</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span>
+    <span class="c1"># for energy differentials we use the full signature of hasProperty.</span>
+    <span class="c1"># The arguments are as follows:</span>
+    <span class="c1">#  - NernstPotential: the &quot;about&quot; value that is used for the property associated with the energy differential</span>
+    <span class="c1">#  - MODEL_URI: the uri type for the previous argument. In SBML this is a &lt;parameter&gt; and therefore a MODEL_URI</span>
+    <span class="c1">#      while in CellML this is a construct local to the rdf document (so LOCAL_URI)</span>
+    <span class="c1">#  - OPB:OPB_01581: the OPB term associated with the property (isVersionOf)</span>
+    <span class="n">energy_diff</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">property_about</span><span class="o">=</span><span class="s2">&quot;NernstPotential&quot;</span><span class="p">,</span> <span class="n">about_uri_type</span><span class="o">=</span><span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">,</span> <span class="n">is_version_of</span><span class="o">=</span><span class="s2">&quot;OPB:OPB_01581&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span>
 
@@ -2349,27 +2275,25 @@ local:EntityProperty
 18
 19
 20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
-<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
-    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesB&gt; .</span>
-
-<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
-    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesA&gt; .</span>
-
-<span class="n">local</span><span class="p">:</span><span class="n">k1</span>
-    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#R1&gt; ;</span>
-    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="p">:</span><span class="n">OPB_01058</span><span class="o">&gt;</span> <span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#R1&gt;</span>
+<span class="n">local</span><span class="p">:</span><span class="n">MembranePotential</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
     <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#Ca_cyt&gt; .</span>
+
+<span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#Ca_ex&gt; .</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#NernstPotential&gt;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">MembranePotential</span> <span class="p">;</span>
+    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="p">:</span><span class="n">OPB_01581</span><span class="o">&gt;</span> <span class="o">.</span>
 
 
 </pre></div>
@@ -2379,222 +2303,146 @@ local:EntityProperty
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
 <div class="literal-block-wrapper docutils container" id="id19">
 <div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a energy differential composite annotation in C++</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
-<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sbml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.0</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;&lt;sbml xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.sbml.org/sbml/level3/version1/core</span><span class="se">\&quot;</span><span class="s"> level=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> version=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s">SimpleRegulation</span><span class="se">\&quot;</span><span class="s"> id=</span><span class="se">\&quot;</span><span class="s">SimpleRegulation</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s">EnergyDiff</span><span class="se">\&quot;</span><span class="s"> id=</span><span class="se">\&quot;</span><span class="s">EnergyDiff</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0000</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">cytoplasm</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">cytoplasm</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">extracellular</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">extracellular</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;/listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">10</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesA</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesB</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">C</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">10</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesC</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">D</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesD</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">extracellular</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cytoplasm</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0.3</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;/listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">S</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">S</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k1</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">k1</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k2</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">k2</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k3</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">k4</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k4</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">N_Ca</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">NernstPotential</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;/listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfReactions&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R1</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Reaction1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_in</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_in</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">KineticLawForReaction1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; cytoplasm &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;ci&gt; k1 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; A &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; S &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; Ca_ex &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R2</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Reaction2</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_out</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_out</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">KineticLawForReaction2</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; extracellular &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;ci&gt; k2 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; B &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R3</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0009</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">C</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">D</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfModifiers&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;modifierSpeciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfModifiers&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0010</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; k3 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; C &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; B &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R4</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0011</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">D</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">C</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0012</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; k4 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; D &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; Ca_cyt &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -2603,20 +2451,26 @@ local:EntityProperty
                        <span class="s">&quot;  &lt;/model&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;&lt;/sbml&gt;&quot;</span><span class="p">;</span>
 
-    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">();</span>
 
-    <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toEditor</span><span class="p">(</span><span class="n">sbml</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+    <span class="n">RDF</span> <span class="n">rdf</span><span class="p">;</span>
+    <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toEditor</span><span class="p">(</span><span class="n">sbml</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
 
-    <span class="n">EnergyDiff</span> <span class="n">energy_diff</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newEnergyDiff</span><span class="p">();</span>
-    <span class="n">energy_diff</span><span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;R1&quot;</span><span class="p">)</span>
-            <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="s">&quot;SpeciesA&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">)</span>
-            <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="s">&quot;SpeciesB&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">)</span>
-            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;k1&quot;</span><span class="p">,</span> <span class="n">LOCAL_URI</span><span class="p">,</span> <span class="s">&quot;opb:OPB_01058&quot;</span><span class="p">);</span>
+    <span class="n">EnergyDiff</span> <span class="n">energyDiff</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newEnergyDiff</span><span class="p">();</span>
+    <span class="n">energyDiff</span>
+            <span class="c1">// this could be named anything provided it is unique to the rdf graph because it is a LOCAL_URI</span>
+            <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;MembranePotential&quot;</span><span class="p">,</span> <span class="n">LOCAL_URI</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSource</span><span class="p">(</span><span class="s">&quot;Ca_ex&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">addSink</span><span class="p">(</span><span class="s">&quot;Ca_cyt&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">)</span>
+            <span class="c1">// for energy differentials we use the full signature of hasProperty.</span>
+            <span class="c1">// The arguments are as follows:</span>
+            <span class="c1">//  - NernstPotential: the &quot;about&quot; value that is used for the property associated with the energy differential</span>
+            <span class="c1">//  - MODEL_URI: the uri type for the previous argument. In SBML this is a &lt;parameter&gt; and therefore a MODEL_URI</span>
+            <span class="c1">//      while in CellML this is a construct local to the rdf document (so LOCAL_URI)</span>
+            <span class="c1">//  - OPB:OPB_01581: the OPB term associated with the property (isVersionOf)</span>
+            <span class="p">.</span><span class="n">hasProperty</span><span class="p">(</span><span class="s">&quot;NernstPotential&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">,</span> <span class="s">&quot;OPB:OPB_01581&quot;</span><span class="p">);</span>
+    <span class="n">editor</span><span class="p">.</span><span class="n">addEnergyDiff</span><span class="p">(</span><span class="n">energyDiff</span><span class="p">);</span>
 
-
-    <span class="n">editor</span><span class="p">.</span><span class="n">addEnergyDiff</span><span class="p">(</span><span class="n">energy_diff</span><span class="p">);</span>
-
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// turtle default</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -2633,228 +2487,147 @@ local:EntityProperty
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id21">
 <div class="code-block-caption"><span class="caption-text">Demonstrate the creation of a energy differential composite annotation in C</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
-<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
 
 <span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">sbml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.0</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;&lt;sbml xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.sbml.org/sbml/level3/version1/core</span><span class="se">\&quot;</span><span class="s"> level=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> version=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s">SimpleRegulation</span><span class="se">\&quot;</span><span class="s"> id=</span><span class="se">\&quot;</span><span class="s">SimpleRegulation</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;  &lt;model metaid=</span><span class="se">\&quot;</span><span class="s">EnergyDiff</span><span class="se">\&quot;</span><span class="s"> id=</span><span class="se">\&quot;</span><span class="s">EnergyDiff</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0000</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">cytoplasm</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">cytoplasm</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;compartment id=</span><span class="se">\&quot;</span><span class="s">extracellular</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">extracellular</span><span class="se">\&quot;</span><span class="s"> spatialDimensions=</span><span class="se">\&quot;</span><span class="s">3</span><span class="se">\&quot;</span><span class="s"> size=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;/listOfCompartments&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">10</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesA</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesB</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">C</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">10</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesC</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">D</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cell</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">SpeciesD</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">extracellular</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;species id=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> compartment=</span><span class="se">\&quot;</span><span class="s">cytoplasm</span><span class="se">\&quot;</span><span class="s"> initialConcentration=</span><span class="se">\&quot;</span><span class="s">0.3</span><span class="se">\&quot;</span><span class="s"> hasOnlySubstanceUnits=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> boundaryCondition=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;/listOfSpecies&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">S</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">S</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k1</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">k1</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k2</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">k2</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k3</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">k4</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">k4</span><span class="se">\&quot;</span><span class="s"> value=</span><span class="se">\&quot;</span><span class="s">0.1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;parameter id=</span><span class="se">\&quot;</span><span class="s">N_Ca</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">NernstPotential</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;/listOfParameters&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;    &lt;listOfReactions&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R1</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Reaction1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_in</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_in</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">KineticLawForReaction1</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; cytoplasm &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;ci&gt; k1 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; A &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; S &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; Ca_ex &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R2</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">Reaction2</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_out</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">NernstReversalPotential_out</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_cyt</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">A</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">Ca_ex</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">KineticLawForReaction2</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;        &lt;kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; extracellular &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;              &lt;ci&gt; k2 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; B &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R3</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0009</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">C</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">D</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfModifiers&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;modifierSpeciesReference species=</span><span class="se">\&quot;</span><span class="s">B</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfModifiers&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0010</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; k3 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; C &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; B &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;/reaction&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;      &lt;reaction id=</span><span class="se">\&quot;</span><span class="s">R4</span><span class="se">\&quot;</span><span class="s"> reversible=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> fast=</span><span class="se">\&quot;</span><span class="s">false</span><span class="se">\&quot;</span><span class="s"> metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0011</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">D</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfReactants&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;speciesReference species=</span><span class="se">\&quot;</span><span class="s">C</span><span class="se">\&quot;</span><span class="s"> stoichiometry=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> constant=</span><span class="se">\&quot;</span><span class="s">true</span><span class="se">\&quot;</span><span class="s">/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;/listOfProducts&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;        &lt;kineticLaw metaid=</span><span class="se">\&quot;</span><span class="s">#OmexMetaId0012</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;          &lt;math xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1998/Math/MathML</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;            &lt;apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;times/&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; k4 &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                       <span class="s">&quot;              &lt;ci&gt; D &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                       <span class="s">&quot;              &lt;ci&gt; Ca_cyt &lt;/ci&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;            &lt;/apply&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;          &lt;/math&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;        &lt;/kineticLaw&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -2863,27 +2636,28 @@ local:EntityProperty
                        <span class="s">&quot;  &lt;/model&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
                        <span class="s">&quot;&lt;/sbml&gt;&quot;</span><span class="p">;</span>
 
+
     <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF_new</span><span class="p">();</span>
+    <span class="n">Editor</span><span class="o">*</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">RDF_toEditor</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">sbml</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
 
-    <span class="n">Editor</span><span class="o">*</span> <span class="n">editor_ptr</span> <span class="o">=</span> <span class="n">RDF_toEditor</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">sbml</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+    <span class="n">EnergyDiff</span><span class="o">*</span> <span class="n">energyDiff</span> <span class="o">=</span> <span class="n">Editor_newEnergyDiff</span><span class="p">(</span><span class="n">editor</span><span class="p">);</span>
+    <span class="c1">// this could be named anything provided it is unique to the rdf graph because it is a LOCAL_URI</span>
+    <span class="n">EnergyDiff_about</span><span class="p">(</span><span class="n">energyDiff</span><span class="p">,</span> <span class="s">&quot;MembranePotential&quot;</span><span class="p">,</span> <span class="n">LOCAL_URI</span><span class="p">);</span>
+    <span class="n">EnergyDiff_addSource</span><span class="p">(</span><span class="n">energyDiff</span><span class="p">,</span> <span class="s">&quot;Ca_ex&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">);</span>
+    <span class="n">EnergyDiff_addSink</span><span class="p">(</span><span class="n">energyDiff</span><span class="p">,</span><span class="s">&quot;Ca_cyt&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">);</span>
 
-    <span class="n">EnergyDiff</span><span class="o">*</span> <span class="n">energy_diff_ptr</span> <span class="o">=</span> <span class="n">Editor_newEnergyDiff</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
+    <span class="c1">// for energy differentials we use the full signature of hasProperty.</span>
+    <span class="c1">// The arguments are as follows:</span>
+    <span class="c1">//  - NernstPotential: the &quot;about&quot; value that is used for the property associated with the energy differential</span>
+    <span class="c1">//  - MODEL_URI: the uri type for the previous argument. In SBML this is a &lt;parameter&gt; and therefore a MODEL_URI</span>
+    <span class="c1">//      while in CellML this is a construct local to the rdf document (so LOCAL_URI)</span>
+    <span class="c1">//  - OPB:OPB_01581: the OPB term associated with the property (isVersionOf)</span>
+    <span class="n">EnergyDiff_hasPropertyFull</span><span class="p">(</span><span class="n">energyDiff</span><span class="p">,</span> <span class="s">&quot;NernstPotential&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">,</span> <span class="s">&quot;OPB:OPB_01581&quot;</span><span class="p">);</span>
 
-    <span class="n">energy_diff_ptr</span> <span class="o">=</span> <span class="n">EnergyDiff_about</span><span class="p">(</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="s">&quot;R1&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">);</span>
-    <span class="n">energy_diff_ptr</span> <span class="o">=</span> <span class="n">EnergyDiff_addSource</span><span class="p">(</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="s">&quot;SpeciesA&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">);</span>
-    <span class="n">energy_diff_ptr</span> <span class="o">=</span> <span class="n">EnergyDiff_addSink</span><span class="p">(</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="s">&quot;SpeciesB&quot;</span><span class="p">,</span> <span class="n">MODEL_URI</span><span class="p">);</span>
-    <span class="n">energy_diff_ptr</span>  <span class="o">=</span> <span class="n">EnergyDiff_hasPropertyFull</span><span class="p">(</span><span class="n">energy_diff_ptr</span><span class="p">,</span> <span class="s">&quot;k1&quot;</span><span class="p">,</span> <span class="n">LOCAL_URI</span><span class="p">,</span> <span class="s">&quot;opb:OPB_01058&quot;</span><span class="p">);</span>
+    <span class="n">Editor_addEnergyDiff</span><span class="p">(</span><span class="n">editor</span><span class="p">,</span> <span class="n">energyDiff</span><span class="p">);</span>
 
-    <span class="n">Editor_addEnergyDiff</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">energy_diff_ptr</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="o">-&gt;</span><span class="n">toString</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
-    <span class="n">Editor_addEnergyDiff</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">,</span> <span class="n">energy_diff_ptr</span><span class="p">);</span>
-    <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_string</span> <span class="o">=</span> <span class="n">RDF_toString</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">rdf_string</span><span class="p">);</span>
-
-    <span class="n">free</span><span class="p">(</span><span class="n">rdf_string</span><span class="p">);</span>
-    <span class="n">EnergyDiff_delete</span><span class="p">(</span><span class="n">energy_diff_ptr</span><span class="p">);</span>
-    <span class="n">Editor_delete</span><span class="p">(</span><span class="n">editor_ptr</span><span class="p">);</span>
-    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf</span><span class="p">);</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -3021,8 +2795,7 @@ local:EntityProperty
 23
 24
 25
-26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;model xmlns=&quot;http://www.cellml.org/cellml/1.1#&quot; xmlns:cmeta=&quot;http://www.cellml.org/metadata/1.0#&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:bqs=&quot;http://www.cellml.org/bqs/1.0#&quot; xmlns:semsim=&quot;http://bime.uw.edu/semsim/#&quot; xmlns:dc=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot; xmlns:vCard=&quot;http://www.w3.org/2001/vcard-rdf/3.0#&quot; name=&quot;annotation_examples&quot; cmeta:id=&quot;annExamples&quot;&gt;
   &lt;component name=&quot;main&quot; cmeta:id=&quot;component0000&quot;&gt;
     &lt;variable cmeta:id=&quot;main.Volume&quot; initial_value=&quot;100&quot; name=&quot;Volume&quot; units=&quot;dimensionless&quot;/&gt;
@@ -3037,7 +2810,6 @@ local:EntityProperty
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
 @prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:entity0
@@ -3338,12 +3110,10 @@ local:entity0
 24
 25
 26
-27
-28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
@@ -3657,11 +3427,9 @@ local:entity0
 11
 12
 13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="nd">@prefix</span> <span class="n">myOMEX</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
 
 <span class="n">local</span><span class="p">:</span><span class="n">entity0</span>

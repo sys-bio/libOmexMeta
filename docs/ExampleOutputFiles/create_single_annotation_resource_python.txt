@@ -4,7 +4,6 @@
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:Process0000
