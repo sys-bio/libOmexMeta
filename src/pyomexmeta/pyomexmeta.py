@@ -276,7 +276,7 @@ class RDF:
             import graphviz
         except ImportError:
             raise ImportError(f'"graphviz" not found. Install '
-                              f'with "sudo apt install graphviz" and then '
+                              f'with "[sudo apt][choco][brew] install graphviz" and then '
                               f'"pip install graphviz". This may be an conda environment issue. Check that '
                               f'you are using the correct python interpretor. The interpreter being used '
                               f'now is \"{_python_interpretor}\"')

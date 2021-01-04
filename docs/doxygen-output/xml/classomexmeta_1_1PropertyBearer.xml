@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="40" column="18" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="57" bodyend="59"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="41" column="18" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="41" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="60" bodyend="62"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="42" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a8f819ed67e63c84aecff651cca4b945c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::string &amp;</type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="57" column="36" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="129" bodyend="131"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="58" column="36" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a8ae678b4a1cc528b20ff969b7d728bd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="59" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="60" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a354440c37a048f6d85e1b8613735a0b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="61" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="83" bodyend="85"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="62" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="63" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="87" bodyend="89"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="64" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="87" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a9c492b5dde77979fedf04444c0316732" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -232,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="65" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="66" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="67" column="28" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="112" bodyend="119"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="68" column="28" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="112" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1af17cb8f631359fdba8c000f7694fc7a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="69" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="121" bodyend="123"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="70" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1ae20593473538babfb4cb6d3428a07fbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -280,7 +280,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="74" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="75" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1aebdf1dc3d7022a7745b1041d03a35be6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -298,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="79" column="9" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="64" bodyend="70"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="80" column="9" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="64" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a0783dd90438e82bed7ea635fb4ab5301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="84" column="24"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="85" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1aae644b45fb2151fe9f10c5d3547964be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="89" column="24" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="72" bodyend="81"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="90" column="24" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="72" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a9d489c71505341bfa11526c843f03e9e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED</type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="96" column="39" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="22" bodyend="23"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="97" column="39" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="22" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a45bb47fe169c2312ecfa0a40bd761fb6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -380,7 +380,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="103" column="19" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="25" bodyend="28"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="104" column="19" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="25" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a9ccbcbf0c5a022c4c8dd4c111098c556" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -448,7 +448,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="112" column="9" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="113" column="9" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -461,7 +461,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="115" column="28" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="99" bodyend="106"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="116" column="28" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="99" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a9759a5f2d759295e913f5f89f8e18fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -478,7 +478,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="117" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="108" bodyend="110"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="118" column="14" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="108" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -495,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="123" column="28" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="52" bodyend="55"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="124" column="28" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" kindref="member">AnnotationType</ref></type>
@@ -512,7 +512,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="129" column="25" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="34" bodyend="36"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="130" column="25" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="34" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref></type>
@@ -529,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="135" column="27" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="42" bodyend="44"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="136" column="27" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="42" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1adccf527f59eaebc1baf88dfce3ae9664" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
@@ -549,7 +549,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="145" column="26" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="46" bodyend="49"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="146" column="26" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED const std::string &amp;</type>
@@ -562,7 +562,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="147" column="48" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="30" bodyend="32"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="148" column="48" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="30" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED void</type>
@@ -579,7 +579,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="149" column="34" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="91" bodyend="93"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="150" column="34" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED void</type>
@@ -596,7 +596,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="151" column="34" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="95" bodyend="97"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="152" column="34" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_model *</type>
@@ -609,7 +609,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="153" column="23" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="15" bodyend="17"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="154" column="23" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="15" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1ab70ef1dec50691f1731de28462ca3012" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -629,7 +629,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="155" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="162" bodyend="170"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="156" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="163" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a6b21c3a4e722fbc37540203d8bc72a5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -665,7 +665,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="157" column="52" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="133" bodyend="145"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="158" column="52" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="133" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a042230eb589010b3acbb8d6b329c45cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -685,7 +685,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="159" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="147" bodyend="160"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="160" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="147" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1aa2bc856917f03659ac84ac7b2e0a2c7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -713,7 +713,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="161" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="172" bodyend="184"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="162" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="175" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1ab115d41cefd58183ebfe429af7be69dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -737,7 +737,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="163" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="186" bodyend="198"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="164" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="190" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a374759ec870893444272ff0489be538f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &amp;</type>
@@ -758,7 +758,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="165" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="206" bodyend="218"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="166" column="32" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="210" bodyend="222"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -775,7 +775,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="51" column="22" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="125" bodyend="127"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="52" column="22" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a78328bba4ba48b3bfdcfebd8256d6add" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -792,7 +792,7 @@ Refer to subclasses for more documentation. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="54" column="22" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="38" bodyend="40"/>
+        <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="55" column="22" bodyfile="src/omexmeta/PropertyBearer.cpp" bodystart="38" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -836,7 +836,7 @@ Refer to subclasses for more documentation. </para>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="23" column="5" bodyfile="src/omexmeta/include/omexmeta/PropertyBearer.h" bodystart="23" bodyend="167"/>
+    <location file="src/omexmeta/include/omexmeta/PropertyBearer.h" line="23" column="5" bodyfile="src/omexmeta/include/omexmeta/PropertyBearer.h" bodystart="23" bodyend="168"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PropertyBearer_1ab115d41cefd58183ebfe429af7be69dc" prot="public" virt="virtual"><scope>omexmeta::PropertyBearer</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a374759ec870893444272ff0489be538f" prot="public" virt="virtual"><scope>omexmeta::PropertyBearer</scope><name>about</name></member>

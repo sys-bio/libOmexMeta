@@ -699,7 +699,10 @@
     <member refid="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a7816274c77919713b49b7f91d4355339" kind="variable"><name>is_set_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" kind="function"><name>validate</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a13a9ec404ea9c6d7ddea6c7398b67328" kind="function"><name>isSet</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a46f5436faa6f1c977088544bec31d125" kind="function"><name>setIsSet</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" kind="function"><name>PhysicalProperty</name></member>
@@ -1187,6 +1190,7 @@
     <member refid="classomexmeta_1_1Triple_1a3f3868622349d3a3e14ed3e4b21d49a9" kind="function"><name>freeTriple</name></member>
     <member refid="classomexmeta_1_1Triple_1ac1110c3092b148b4da2264186b613a93" kind="function"><name>about</name></member>
     <member refid="classomexmeta_1_1Triple_1a0c8371a282b8f2a59ebaa87abf7a8758" kind="function"><name>about</name></member>
+    <member refid="classomexmeta_1_1Triple_1a0a8d8795d7015d13d888ed77cbfb4220" kind="function"><name>about</name></member>
     <member refid="classomexmeta_1_1Triple_1a69df88d19e2f9077fccfa9543dadd15f" kind="function"><name>getAbout</name></member>
     <member refid="classomexmeta_1_1Triple_1a886240fe50becaaa47ca171f2d454ba4" kind="function"><name>getStatement</name></member>
     <member refid="classomexmeta_1_1Triple_1a57b4521321178af38415e76cd483207e" kind="function"><name>setPredicate</name></member>

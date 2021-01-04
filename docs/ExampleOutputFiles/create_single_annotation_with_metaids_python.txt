@@ -10,8 +10,8 @@
       <species id="B" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="species0001"/>
     </listOfSpecies>
     <listOfParameters>
-      <parameter id="k1" value="0.1" constant="true"/>
-      <parameter id="k2" value="0.1" constant="true"/>
+      <parameter id="k1" value="0.1" constant="true" metaid="parameter0000"/>
+      <parameter id="k2" value="0.1" constant="true" metaid="parameter0001"/>
     </listOfParameters>
     <listOfReactions>
       <reaction id="r1" reversible="false" fast="false" metaid="reaction0000">
@@ -39,7 +39,6 @@
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:Process0000

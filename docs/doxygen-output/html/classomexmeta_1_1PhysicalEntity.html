@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.23</span>
+   &#160;<span id="projectnumber">1.2.1</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -895,6 +895,7 @@ eUriType&#160;</td><td class="memItemRight" valign="bottom"><b>about_uri_type_</
 <p>convert <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> to a <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object, which can then be passed to a model via the <a class="el" href="classomexmeta_1_1Editor.html#a0740831baafe244374ad7a324d51a87e" title="add a composite annotation of type PhysicalEntity to the rdf graph">Editor::addPhysicalEntity</a> method. </p>
 <dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> objects containing the <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> objects associated with this <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a></dd></dl>
 <p>When using "toTriples" you are giving ownership of the nodes used by <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> to the returned <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object, which automatically cleans up after itself in its destructor. If you instantiate a <a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> and do not call toTriples (which will not be often), then the caller is responsible for calling <a class="el" href="classomexmeta_1_1PhysicalEntity.html#a6fd4acd7255a01322c4a53d3e84df0ba" title="free resources uses by PhysicalEntity">PhysicalEntity::free</a> when finished. </p>
+<p>Patch around physical property triples generation. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> can be made more concise but for now we just use patch. When there is no physical property we do not add property related triples</p>
 
 <p>Reimplemented from <a class="el" href="classomexmeta_1_1PropertyBearer.html#adccf527f59eaebc1baf88dfce3ae9664">omexmeta::PropertyBearer</a>.</p>
 
