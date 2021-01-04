@@ -4,6 +4,7 @@
 
 #include "omexmeta/Triple.h"
 #include "omexmeta_export.h"
+#include <omexmeta/UriHandler.h>
 
 namespace omexmeta {
 
@@ -136,6 +137,12 @@ namespace omexmeta {
 
         setSubject(LibrdfNode::fromUriString(metaid).get());
 
+        return *this;
+    }
+
+    Triple &Triple::about(std::string metaid, eUriType uri_type) {
+        metaid = UriHandler::uriModifier<Triple>(*this, metaid, uri_type);
+        setSubject(LibrdfNode::fromUriString(metaid).get());
         return *this;
     }
 

@@ -206,7 +206,7 @@ TEST_F(CAPITests, TestGetNumMetaIDs) {
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     int actual = Editor_getNumMetaIds(editor_ptr);
     std::cout << actual << std::endl;
-    int expected = 13;
+    int expected = 11;
     ASSERT_EQ(expected, actual);
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);

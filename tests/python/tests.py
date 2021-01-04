@@ -1,10 +1,9 @@
+import libcombine
 import os
+import requests
 import sys
 import typing
 import unittest
-
-import libcombine
-import requests
 
 # add the source directory to path so we can import code we are testing
 _PYTHON_TESTS_DIR = os.path.dirname(__file__)
@@ -366,7 +365,7 @@ local:SourceParticipant0003
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_context_manager_personal_information(self):
-        editor  = self.rdf.to_editor(SBML, True, False)
+        editor = self.rdf.to_editor(SBML, True, False)
         with editor.new_personal_information() as information:
             information \
                 .add_creator("1234-1234-1234-1234") \
@@ -390,7 +389,6 @@ local:SourceParticipant0003
 
 """
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
-
 
     def test_physical_entity_sbml1(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
@@ -862,6 +860,8 @@ class AnnotateAModelTest(unittest.TestCase):
                     'compartment0001',
                     'species0000',
                     'species0001',
+                    'parameter0000',
+                    'parameter0001',
                     'reaction0000',
                     'kineticLaw0000',
                     'reaction0001',
@@ -1185,7 +1185,7 @@ local:SourceParticipant0001
         rdf = RDF()
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True, sbml_semantic_extraction=False)
         with editor.new_personal_information() as personal_information:
-            personal_information.add_creator("1234-1234-1234-1234")\
+            personal_information.add_creator("1234-1234-1234-1234") \
                 .add_name("Ciaran") \
                 .add_mbox("cwelsh2@uw.edu") \
                 .add_account_name("1234-1234-1234-1234") \
