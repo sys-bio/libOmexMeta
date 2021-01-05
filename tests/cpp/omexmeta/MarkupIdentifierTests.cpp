@@ -45,7 +45,21 @@ public:
                         "</model>\n"
                         "</sbml>\n";
 
-    std::string sbml2 = "";
+    std::string sbml2 = "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+                        "  <model metaid=\"NernstExample\" id=\"NernstExample\">\n"
+                        "    <listOfCompartments>\n"
+                        "      <compartment id=\"cytoplasm\" metaid=\"cytoplasm\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+                        "      <compartment id=\"extracellular\" metaid=\"extracellular\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+                        "    </listOfCompartments>\n"
+                        "    <listOfSpecies>\n"
+                        "      <species id=\"Ca_ex\" metaid=\"Ca_ex\" compartment=\"extracellular\" initialConcentration=\"2\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                        "      <species id=\"Ca_cyt\" metaid=\"Ca_cyt\" compartment=\"cytoplasm\" initialConcentration=\"0.07\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                        "    </listOfSpecies>\n"
+                        "    <listOfParameters>\n"
+                        "      <parameter id=\"NP\" metaid=\"NernstPotential\" value=\"137.04\" constant=\"true\"/>\n"
+                        "    </listOfParameters>\n"
+                        "    </model>\n"
+                        "</sbml>";
 
     std::string cellml1 = "<model xmlns=\"http://www.cellml.org/cellml/1.0#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:cellml=\"http://www.cellml.org/cellml/1.0#\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" cmeta:id=\"Calzone_Thieffry_Tyson_Novak_2007_version01\" name=\"Calzone_Thieffry_Tyson_Novak_2007_version01\">\n"
                           "<documentation xmlns=\"http://cellml.org/tmp-documentation\">\n"
@@ -2208,9 +2222,14 @@ TEST_F(MarkupIdentifierTests, ElementNames){
     ASSERT_EQ(expected, element_names);
 }
 
-
 TEST_F(MarkupIdentifierTests, isSBMLTest){
     MarkupIdentifier mi(sbml1);
+    ASSERT_TRUE(mi.isSBML());
+    ASSERT_FALSE(mi.isCellML());
+}
+
+TEST_F(MarkupIdentifierTests, isSBMLTestWhenSomeElementsAreMissing){
+    MarkupIdentifier mi(sbml2);
     ASSERT_TRUE(mi.isSBML());
     ASSERT_FALSE(mi.isCellML());
 }

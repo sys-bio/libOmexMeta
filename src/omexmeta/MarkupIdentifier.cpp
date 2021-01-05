@@ -54,27 +54,35 @@ namespace omexmeta {
                 "listOfProducts",
                 "sbml",
         };
-        bool is_sbml = true;
-        // if all sbml_hallmarks in element_names_ we have sbml.
-        for (auto &hallmark: sbml_hallmarks) {
-            if (!OmexMetaUtils::stringInVector(getElementNames(), hallmark)){
-                is_sbml = false;
-            }
+        bool is_sbml = false;
+        // Note: previously this was configured so that if *all* sbml_hallmarks in element_names_ we have sbml.
+        // This doesn't work because you can have valid sbml without all these elements.
+        // Therefore, if any sbml_hallmarks in element_names_ we have sbml.
+        for (const auto& element : getElementNames()){
+            is_sbml = std::any_of(sbml_hallmarks.begin(), sbml_hallmarks.end(),
+                                  [element](const std::string & s) {return s == element;});
+            // if we find 1 match, we do not continue
+            if (is_sbml)
+                break;
         }
         return is_sbml;
     }
 
     bool MarkupIdentifier::isCellML() {
+        // note: do not include "model" in this list as it causes sbml and cellml to not
+        // be distinguished correctly (its compensated by the other hallmarks anyway).
         std::vector<std::string> cellml_hallmarks = {
                 "component",
-                "variable"
+                "variable",
         };
-        bool is_cellml = true;
-        // if all cellml_hallmarks in element_names_ we have sbml.
-        for (auto &hallmark: cellml_hallmarks) {
-            if (!OmexMetaUtils::stringInVector(getElementNames(), hallmark)){
-                is_cellml = false;
-            }
+        bool is_cellml = false;
+
+        for (const auto& element : getElementNames()){
+            is_cellml = std::any_of(cellml_hallmarks.begin(), cellml_hallmarks.end(),
+                                  [element](const std::string & s) {return s == element;});
+            // if we find 1 match, we do not continue
+            if (is_cellml)
+                break;
         }
         return is_cellml;
     }

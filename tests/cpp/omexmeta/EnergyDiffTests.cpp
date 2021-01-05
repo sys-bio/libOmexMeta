@@ -243,3 +243,38 @@ TEST_F(EnergyDiffTests, NernstExample) {
                            "   semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Ca_cyt> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
+
+TEST_F(EnergyDiffTests, NernstExampleWithDifferentSBML) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NERNST_POTENTIAL2), false, false);
+
+    EnergyDiff physicalForce = editor.newEnergyDiff();
+    physicalForce
+            .about("EnergyDiff", LOCAL_URI)
+            .addSource("Ca_ex", MODEL_URI)
+            .addSink("Ca_cyt", MODEL_URI)
+            .hasProperty("NernstPotential", MODEL_URI, "OPB:OPB_01581");
+    editor.addEnergyDiff(physicalForce);
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EnergyDiff\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Ca_cyt> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#Ca_ex> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#NernstPotential>\n"
+                           "    bqbiol:isPropertyOf local:EnergyDiff ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_01581> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+}

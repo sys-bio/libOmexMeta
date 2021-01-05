@@ -18,7 +18,8 @@ enum ModelType {
     SBML_BIOMD204,
     SBML_BIOMD366,
     SBML_ADHMODEL,
-    SBML_NERNST_POTENTIAL
+    SBML_NERNST_POTENTIAL,
+    SBML_NERNST_POTENTIAL2,
 };
 
 /*
@@ -1094,6 +1095,7 @@ public:
                "</sbml>";
     }
 };
+
 class ADHModel : SBMLModel {
 public:
     ADHModel() = default;
@@ -1147,6 +1149,7 @@ public:
                "</sbml>";
     }
 };
+
 class NernstPotential : SBMLModel {
 public:
     NernstPotential() = default;
@@ -1207,6 +1210,31 @@ public:
                "      </reaction>\n"
                "    </listOfReactions>\n"
                "  </model>\n"
+               "</sbml>";
+    }
+};
+
+class NernstPotential2 : SBMLModel {
+public:
+    NernstPotential2() = default;
+
+    std::string str() override {
+        return "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+               "  <model metaid=\"NernstExample\" id=\"NernstExample\">\n"
+               "    <listOfCompartments>\n"
+               "      <compartment id=\"cytoplasm\" metaid=\"cytoplasm\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+               "      <compartment id=\"extracellular\" metaid=\"extracellular\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+               "    </listOfCompartments>\n"
+               "    <listOfSpecies>\n"
+               "      <species id=\"Ca_ex\" metaid=\"Ca_ex\" compartment=\"extracellular\" initialConcentration=\"2\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "      <species id=\"Ca_cyt\" metaid=\"Ca_cyt\" compartment=\"cytoplasm\" initialConcentration=\"0.07\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "    </listOfSpecies>\n"
+               "    <listOfReactions>"
+               "    </listOfReactions>"
+               "    <listOfParameters>\n"
+               "      <parameter id=\"NP\" metaid=\"NernstPotential\" value=\"137.04\" constant=\"true\"/>\n"
+               "    </listOfParameters>\n"
+               "    </model>\n"
                "</sbml>";
     }
 };
@@ -1714,6 +1742,8 @@ public:
             return ADHModel().str();
         else if (modelType == SBML_NERNST_POTENTIAL)
             return NernstPotential().str();
+        else if (modelType == SBML_NERNST_POTENTIAL2)
+            return NernstPotential2().str();
         else {
             throw std::invalid_argument("SBMLFactory error: ModelType is not a valid argument.");
         }
