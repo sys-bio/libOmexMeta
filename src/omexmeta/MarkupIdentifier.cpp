@@ -69,10 +69,11 @@ namespace omexmeta {
     }
 
     bool MarkupIdentifier::isCellML() {
+        // note: do not include "model" in this list as it causes sbml and cellml to not
+        // be distinguished correctly (its compensated by the other hallmarks anyway).
         std::vector<std::string> cellml_hallmarks = {
                 "component",
                 "variable",
-                "model"
         };
         bool is_cellml = false;
 
