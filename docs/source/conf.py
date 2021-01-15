@@ -22,7 +22,7 @@ copyright = '2020, Ciaran Welsh'
 author = 'Ciaran Welsh'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.1'
+release = '1.2.2'
 
 
 # -- General configuration ---------------------------------------------------
@@ -63,7 +63,7 @@ except ImportError as e:
 # Breathe Configuration
 breathe_default_project = "libomexmeta"
 breathe_projects = {
-    "libomexmeta": r"D:/libOmexMeta/docs/doxygen-output/xml"
+    "libomexmeta": r"/Users/ciaranwelsh/Documents/libOmexMeta/docs/doxygen-output/xml"
 }
 
 
