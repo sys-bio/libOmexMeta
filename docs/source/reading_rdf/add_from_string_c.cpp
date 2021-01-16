@@ -12,7 +12,7 @@ int main(){
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "      dc:creator <https://orchid.org/1234-1234-1234-1234> .\n";
+                           "      dc:creator <https://orcid.org/1234-1234-1234-1234> .\n";
 
 
     const char* rdf_str2 = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"

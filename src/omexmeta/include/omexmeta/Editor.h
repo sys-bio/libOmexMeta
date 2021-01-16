@@ -333,13 +333,13 @@ namespace omexmeta {
 
         /**
          * @brief add the "creator" model level annotation
-         * @param an orchid_id as string
+         * @param an orcid_id as string
          */
         Editor& addCreator(std::string orcid_id);
 
         /**
          * @brief add the "curator" model level annotation
-         * @param an orchid_id as string
+         * @param an orcid_id as string
          */
         Editor& addCurator(std::string orcid_id);
 

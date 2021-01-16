@@ -338,7 +338,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addCreator(std::string orcid_id) {
-        std::string orcid_namespace = "https://orchid.org/";
+        std::string orcid_namespace = "https://orcid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }
@@ -352,7 +352,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addCurator(std::string orcid_id) {
-        std::string orcid_namespace = "https://orchid.org/";
+        std::string orcid_namespace = "https://orcid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }

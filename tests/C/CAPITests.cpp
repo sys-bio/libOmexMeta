@@ -1111,7 +1111,7 @@ TEST_F(CAPITests, EditoraddCreator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1133,7 +1133,7 @@ TEST_F(CAPITests, EditoraddCurator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");

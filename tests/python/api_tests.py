@@ -397,7 +397,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml>
-    dc:creator <https://orchid.org/1234-1234-1234-1234> .
+    dc:creator <https://orcid.org/1234-1234-1234-1234> .
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
         self.pyom.editor_delete(editor_ptr)
@@ -415,7 +415,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#>
-    dc:creator <https://orchid.org/1234-1234-1234-1234> .
+    dc:creator <https://orcid.org/1234-1234-1234-1234> .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))

@@ -1206,7 +1206,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 <parametername>an</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>orchid_id as string </para>
+<para>orcid_id as string </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1234,7 +1234,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
 <parametername>an</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>orchid_id as string </para>
+<para>orcid_id as string </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
