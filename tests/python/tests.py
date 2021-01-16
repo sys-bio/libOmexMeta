@@ -106,7 +106,7 @@ class TestRDF(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-<https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/1234-1234-1234-1234> .
+<https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .
 """
         rdf = RDF.from_string(rdf_str, format="turtle")
         self.assertEqual(1, len(rdf))

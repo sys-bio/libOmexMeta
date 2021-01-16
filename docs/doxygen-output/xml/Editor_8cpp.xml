@@ -1269,7 +1269,7 @@
 <codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="339"><highlight class="normal"></highlight></codeline>
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref><sp/>&amp;<ref refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" kindref="member">Editor::addCreator</ref>(std::string<sp/>orcid_id)<sp/>{</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>orcid_namespace<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://orchid.org/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>orcid_namespace<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://orcid.org/&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(orcid_id.rfind(orcid_namespace,<sp/>0)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>orcid_id<sp/>=<sp/>orcid_namespace<sp/>+<sp/>orcid_id;</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1283,7 +1283,7 @@
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"></highlight></codeline>
 <codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref><sp/>&amp;<ref refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" kindref="member">Editor::addCurator</ref>(std::string<sp/>orcid_id)<sp/>{</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>orcid_namespace<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://orchid.org/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>orcid_namespace<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://orcid.org/&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(orcid_id.rfind(orcid_namespace,<sp/>0)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>orcid_id<sp/>=<sp/>orcid_namespace<sp/>+<sp/>orcid_id;</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

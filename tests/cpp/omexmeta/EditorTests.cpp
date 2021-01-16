@@ -495,7 +495,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/0000-1111-2222-3333> .\n"
                            "\n"
                            "";
     std::string actual = rdf.toString("turtle");
@@ -516,7 +516,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/0000-1111-2222-3333> .\n"
                            "\n"
                            "";
     std::string actual = rdf.toString("turtle");
@@ -730,7 +730,7 @@ TEST_F(EditorTests, TestaddCreator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    dc:creator <https://orchid.org/1234-1234-1234-1234> .";
+                           "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
 }
@@ -745,7 +745,7 @@ TEST_F(EditorTests, TestaddCurator) {
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    dc:creator <https://orchid.org/1234-1234-1234-1234> .";
+                           "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
 }
