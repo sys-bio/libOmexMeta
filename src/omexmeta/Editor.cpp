@@ -255,6 +255,7 @@ namespace omexmeta {
         addCompositeAnnotation((PropertyBearer *) &physicalProcess);
     }
 
+
     void Editor::addEnergyDiff(EnergyDiff &ediff) {
         checkValidMetaid(ediff.getAbout());
         addCompositeAnnotation((PropertyBearer *) &ediff);
