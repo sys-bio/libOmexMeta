@@ -7,7 +7,7 @@ LibOMEXmeta is a library aimed at providing developer-level support for reading,
 
 The goal of semantic annotations are to make explicit the biology that underlies the semantics of biosimulation models. By using standard knowledge resources about biology and biological processes (such as CheBI, Uniprot, and ontologies of anatomy), we can make the models more understandable, reusable and reproducible. More information can be found at the [OMEX Metadata Specification web page](http://co.mbine.org/standards/omex-metadata). 
 
-Libsemsim is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). Libsemsim uses [RDF](https://www.w3.org/RDF/) as a framework for representing these annotations. At the core of libOmexMeta are the [Redland libraries](http://librdf.org/):
+LibOMEXmeta is a C++ library with a C interface that is used to build a Python front end (pyomexmeta). LibOMEXmeta uses [RDF](https://www.w3.org/RDF/) as a framework for representing these annotations. At the core of libOmexMeta are the [Redland libraries](http://librdf.org/):
     - [raptor2](http://librdf.org/raptor/) for parsing RDF syntax into RDF graphs and serializing the output
     - [rasqal](http://librdf.org/rasqal/) for querying RDF graphs
     - [librdf](http://librdf.org/) as a front end to raptor2 and rasqal and for triple stores. 
