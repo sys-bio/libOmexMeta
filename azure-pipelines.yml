@@ -99,7 +99,7 @@ stages:
               $(CondaExecutable) activate pyomexmeta
               $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DPython_EXECUTABLE=$(PythonExecutable) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
@@ -219,7 +219,7 @@ stages:
               $(PipExecutable) install ipython
               $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DPython_EXECUTABLE=$(PythonExecutable) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target run-ctest --config Release
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
@@ -336,7 +336,7 @@ stages:
               $conda_main_python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
               $python_dir = '$conda_main_python_dir/envs/$(PythonName)'
               cd build
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DPython_EXECUTABLE=$(PythonExecutable) ..
+              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target run-ctest --config Release -j 12
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
