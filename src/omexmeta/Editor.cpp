@@ -255,6 +255,7 @@ namespace omexmeta {
         addCompositeAnnotation((PropertyBearer *) &physicalProcess);
     }
 
+
     void Editor::addEnergyDiff(EnergyDiff &ediff) {
         checkValidMetaid(ediff.getAbout());
         addCompositeAnnotation((PropertyBearer *) &ediff);
@@ -352,7 +353,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addCurator(std::string orcid_id) {
-        std::string orcid_namespace = "https://orchid.org/";
+        std::string orcid_namespace = "https://orcid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }

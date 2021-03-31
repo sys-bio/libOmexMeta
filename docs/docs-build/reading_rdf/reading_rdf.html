@@ -233,7 +233,7 @@ formats are:</p>
 <span class="s2">             @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 
 <span class="s2">             &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span>
-<span class="s2">                 &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
+<span class="s2">                 &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orcid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
 
 <span class="c1"># read the annotations into RDF graph</span>
 <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
@@ -265,7 +265,7 @@ formats are:</p>
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
     &lt;ns1:creator xmlns:ns1=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
-       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+       rdf:resource=&quot;https://orcid.org/1234-1234-1234-1234&quot;/&gt;
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;
 
@@ -312,7 +312,7 @@ formats are:</p>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;    &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+                          <span class="s">&quot;    &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orcid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
 
     <span class="c1">// read the turtle string into RDF graph</span>
     <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
@@ -373,7 +373,7 @@ formats are:</p>
                           <span class="s">&quot;@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                           <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="s">&quot;    &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+                          <span class="s">&quot;    &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orcid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="c1">// uses dynamic memory</span>
     <span class="n">RDF</span> <span class="o">*</span><span class="n">rdf_ptr</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
 
@@ -457,7 +457,7 @@ formats are:</p>
 <span class="s2">              @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
 <span class="s2"> </span>
 <span class="s2">              &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#&gt;</span>
-<span class="s2">                  &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orchid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
+<span class="s2">                  &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orcid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
 
 
 <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
@@ -506,7 +506,7 @@ formats are:</p>
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
     &lt;ns1:creator xmlns:ns1=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
-       rdf:resource=&quot;https://orchid.org/1234-1234-1234-1234&quot;/&gt;
+       rdf:resource=&quot;https://orcid.org/1234-1234-1234-1234&quot;/&gt;
   &lt;/rdf:Description&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
@@ -571,7 +571,7 @@ formats are:</p>
                            <span class="s">&quot;@prefix dc: &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;      dc:creator &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+                           <span class="s">&quot;      dc:creator &lt;https://orcid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -662,7 +662,7 @@ formats are:</p>
                            <span class="s">&quot;@prefix dc: &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
                            <span class="s">&quot;&lt;http://omex-library.org/NewOmex.omex/NewModel.xml&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
-                           <span class="s">&quot;      dc:creator &lt;https://orchid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+                           <span class="s">&quot;      dc:creator &lt;https://orcid.org/1234-1234-1234-1234&gt; .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
 
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rdf_str2</span> <span class="o">=</span> <span class="s">&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span><span class="se">\n</span><span class="s">&quot;</span>

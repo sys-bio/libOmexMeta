@@ -144,7 +144,7 @@ namespace omexmeta {
     }
 
     PersonalInformation &PersonalInformation::addAccountName(const std::string& value) {
-        addFoafUri("accountName", "https://orcid.org/" + value); // orchid id
+        addFoafUri("accountName", "https://orcid.org/" + value); // orcid id
         namespaces_.push_back(Predicate::namespaceMap()["orcid"]);
         return *this;
     }
