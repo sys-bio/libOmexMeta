@@ -16,9 +16,6 @@ stages:
         timeoutInMinutes: "0"
         strategy:
           matrix:
-            py36:
-              PythonVersion: 3.6
-              PythonName: py36
             py37:
               PythonVersion: 3.7
               PythonName: py37
@@ -108,14 +105,13 @@ stages:
           - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate pyomexmeta
-              $(PipExecutable) install ipython
               cd $(INSTALL_DIRECTORY)
               $(PythonExecutable) setup.py bdist_wheel
               cd dist
               wheel=$(realpath $(ls))
               echo "wheel is: $wheel"
               $(PipExecutable) install $wheel
-              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
@@ -136,9 +132,6 @@ stages:
         timeoutInMinutes: "0"
         strategy:
           matrix:
-            py36:
-              PythonVersion: 3.6
-              PythonName: py36
             py37:
               PythonVersion: 3.7
               PythonName: py37
@@ -234,7 +227,7 @@ stages:
               cd dist
               wheel=$(realpath $(ls))
               $(PipExecutable) install $wheel
-              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
@@ -254,9 +247,6 @@ stages:
         timeoutInMinutes: "0"
         strategy:
           matrix:
-            py36:
-              PythonVersion: 3.6
-              PythonName: py36
             py37:
               PythonVersion: 3.7
               PythonName: py37
