@@ -32,9 +32,11 @@ stages:
           vmImage: 'ubuntu-18.04'
         variables:
           MinicondaRoot: '/usr/share/miniconda'
+          CondaExecutable: '$(MinicondaRoot)/bin/conda'
           PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
           PythonLibDir: '$(PythonRoot)/lib'
           PythonExecutable: '$(PythonRoot)/bin/python'
+          PipExecutable: '$(PythonRoot)/bin/pip'
           VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
