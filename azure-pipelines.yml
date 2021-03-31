@@ -14,6 +14,20 @@ stages:
       # linux
       - job: BuildLinux
         timeoutInMinutes: "0"
+        strategy:
+          matrix:
+            py36:
+              PythonVersion: 3.6
+              PythonName: py36
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
@@ -77,7 +91,7 @@ stages:
             displayName: RunLibOmexMetaTests
           - script: |
               eval "$(conda shell.bash hook)"
-              conda create -y --name pyomexmeta python=3.8
+              conda create -y --name $(PythonName) python=$(PythonVersion)
               conda activate pyomexmeta
               pip install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               python_dir=$(dirname $(which python))
@@ -114,6 +128,20 @@ stages:
       # macos
       - job: BuildMacOS
         timeoutInMinutes: "0"
+        strategy:
+          matrix:
+            py36:
+              PythonVersion: 3.6
+              PythonName: py36
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
           vmImage: 'macos-10.15'
         variables:
@@ -175,7 +203,7 @@ stages:
             displayName: RunLibOmexMetaTests
           - script: |
               eval "$(conda shell.bash hook)"
-              conda create -y --name pyomexmeta python=3.8
+              conda create -y --name $(PythonName) python=$(PythonVersion)
               conda activate pyomexmeta
               pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               python_dir=$(dirname $(which python))
@@ -210,6 +238,20 @@ stages:
       # windows
       - job: BuildWindows
         timeoutInMinutes: "0"
+        strategy:
+          matrix:
+            py36:
+              PythonVersion: 3.6
+              PythonName: py36
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
           vmImage: 'windows-2019'
         variables:
@@ -271,6 +313,7 @@ stages:
               echo "Where.exe pip: "
               where.exe pip
               conda shell.powershell hook
+              conda create --name $(PythonName) python=$(PythonVersion)
               $(PIP) install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
               $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
               cd build
