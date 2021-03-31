@@ -114,14 +114,8 @@ stages:
       # macos
       - job: BuildMacOS
         timeoutInMinutes: "0"
-        strategy:
-          matrix:
-            osx-10.14:
-              macImage: 'macOS-10.14'
-            osx-10.15:
-              macImage: 'macos-10.15'
         pool:
-          vmImage: $(macImage)
+          vmImage: 'macos-10.15'
         variables:
           VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
