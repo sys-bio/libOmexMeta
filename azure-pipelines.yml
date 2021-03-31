@@ -345,7 +345,7 @@ stages:
               ls
               echo "where.exe"
               where.exe python
-              $(PipExecutable) install wheel
+              $(PipExecutable) install wheel pywin32
               echo "running setup.py bdist_wheel"
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
