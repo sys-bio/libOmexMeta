@@ -115,13 +115,13 @@ stages:
 
           - task: CopyFiles@2
             inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)'
+              sourceFolder: '$(INSTALL_DIRECTORY)/libOmexMeta-$(PythonName)'
               contents: '**'
               targetFolder: '$(Build.ArtifactStagingDirectory)'
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
-              artifactName: libOmexMeta-x64Linux
+              artifactName: libOmexMeta-x64Linux-$(PythonName)
               Parallel: true
               ParallelCount: 8
 
@@ -224,14 +224,14 @@ stages:
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)'
+              sourceFolder: '$(INSTALL_DIRECTORY)/libOmexMeta-$(PythonName)'
               contents: '**'
               targetFolder: '$(Build.ArtifactStagingDirectory)'
             displayName: Copy install to artifact staging area
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
-              artifactName: libOmexMeta-x64Mac
+              artifactName: libOmexMeta-x64Mac-$(PythonName)
               Parallel: true
               ParallelCount: 8
 
@@ -347,12 +347,12 @@ stages:
             inputs:
               sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
-              targetFolder: '$(Build.ArtifactStagingDirectory)'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
             displayName: Copy install to artifact staging area
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
-              artifactName: libOmexMeta-x64Windows
+              artifactName: libOmexMeta-x64Windows-$(PythonName)
               Parallel: true
               ParallelCount: 8
 
