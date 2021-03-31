@@ -275,7 +275,7 @@ stages:
           PythonLibDir: '$(PythonRoot)\Lib'
           PythonScriptsDir: '$(PythonRoot)\Scripts'
           PythonExecutable: '$(PythonRoot)\python.exe'
-          PipExecutable: '$(PythonScriptsDir)\pip.exe'
+          PipExecutable: '$(PythonRoot)\bin\pip.exe'
 
         steps:
           - checkout: self
@@ -345,9 +345,9 @@ stages:
               ls
               echo "where.exe"
               where.exe python
-              $(PipExecutable) install wheel pywin32 pypiwin32
-              conda install -y pywin32 pypiwin32
-              $(CondaExecutable) install -y pywin32 pypiwin32
+              $(PipExecutable) install wheel pywin32
+              conda install -y pywin32
+              $(CondaExecutable) install -y pywin32
               echo "running setup.py bdist_wheel"
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
