@@ -115,12 +115,12 @@ stages:
 
           - task: CopyFiles@2
             inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)/libOmexMeta-$(PythonName)'
+              sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
-              targetFolder: '$(Build.ArtifactStagingDirectory)'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
           - task: PublishBuildArtifacts@1
             inputs:
-              pathToPublish: '$(Build.ArtifactStagingDirectory)'
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
               artifactName: libOmexMeta-x64Linux-$(PythonName)
               Parallel: true
               ParallelCount: 8
@@ -224,13 +224,13 @@ stages:
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
-              sourceFolder: '$(INSTALL_DIRECTORY)/libOmexMeta-$(PythonName)'
+              sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
-              targetFolder: '$(Build.ArtifactStagingDirectory)'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
             displayName: Copy install to artifact staging area
           - task: PublishBuildArtifacts@1
             inputs:
-              pathToPublish: '$(Build.ArtifactStagingDirectory)'
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
               artifactName: libOmexMeta-x64Mac-$(PythonName)
               Parallel: true
               ParallelCount: 8
@@ -351,7 +351,7 @@ stages:
             displayName: Copy install to artifact staging area
           - task: PublishBuildArtifacts@1
             inputs:
-              pathToPublish: '$(Build.ArtifactStagingDirectory)'
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
               artifactName: libOmexMeta-x64Windows-$(PythonName)
               Parallel: true
               ParallelCount: 8
