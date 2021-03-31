@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.1.18</span>
+   &#160;<span id="projectnumber">1.2.3</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -96,11 +96,18 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
 <div class="line"> </div>
+<div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line">    <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> free_c_char_star(<span class="keywordtype">char</span> *c);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> setLastError(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span>* getLastError();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> clearLastError(<span class="keyword">const</span> std::string&amp; err);</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT RDF *<a name="a0"></a><a class="code" href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">RDF_new</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *storage_type = <span class="stringliteral">&quot;memory&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *storage_name = <span class="stringliteral">&quot;semsim_store&quot;</span>,</div>
@@ -298,17 +305,8 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setPhysicalProperty(</div>
-<div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *subject_metaid, <span class="keyword">const</span> <span class="keywordtype">char</span> *physical_property=<span class="keyword">nullptr</span>);</div>
-<div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_setIdentity(</div>
-<div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *identity_resource);</div>
-<div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_identity(</div>
 <div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *identity_resource);</div>
-<div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_DEPRECATED OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_addLocation(</div>
-<div class="line">            PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *location_resource);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);</div>
 <div class="line"> </div>
@@ -326,7 +324,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span>* property_about, eUriType about_uri_type, <span class="keyword">const</span> <span class="keywordtype">char</span>* is_version_of) ;</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *is_part_of);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *is_part_of, eUriType type);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *part);</div>
 <div class="line"> </div>
@@ -471,18 +469,18 @@ $(function() {
 <div class="line"> </div>
 <div class="line"> </div>
 </div><!-- fragment --> </div><!-- contents -->
-<div class="ttc" id="anamespaceomexmeta_html_ac4ee432e12f736c29692417b0302f5f0"><div class="ttname"><a href="namespaceomexmeta.html#ac4ee432e12f736c29692417b0302f5f0">omexmeta::EnergyDiff_freeAll</a></div><div class="ttdeci">int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1249</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_afbe0ad46666e43033c32182a23fba6d7"><div class="ttname"><a href="namespaceomexmeta.html#afbe0ad46666e43033c32182a23fba6d7">omexmeta::PhysicalEntity_delete</a></div><div class="ttdeci">int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:891</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a8f35bfdeddd4366704c681fac1b8112e"><div class="ttname"><a href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">omexmeta::PhysicalProcess_delete</a></div><div class="ttdeci">int PhysicalProcess_delete(PhysicalProcess *physicalProcess)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1075</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a2f3a19ccb17e0be38e706861fa141fcc"><div class="ttname"><a href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:37</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_ac4ee432e12f736c29692417b0302f5f0"><div class="ttname"><a href="namespaceomexmeta.html#ac4ee432e12f736c29692417b0302f5f0">omexmeta::EnergyDiff_freeAll</a></div><div class="ttdeci">int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1240</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_afbe0ad46666e43033c32182a23fba6d7"><div class="ttname"><a href="namespaceomexmeta.html#afbe0ad46666e43033c32182a23fba6d7">omexmeta::PhysicalEntity_delete</a></div><div class="ttdeci">int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:899</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a8f35bfdeddd4366704c681fac1b8112e"><div class="ttname"><a href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">omexmeta::PhysicalProcess_delete</a></div><div class="ttdeci">int PhysicalProcess_delete(PhysicalProcess *physicalProcess)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1066</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a2f3a19ccb17e0be38e706861fa141fcc"><div class="ttname"><a href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:46</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a0b43aced94ae55c938cc788111586fc8"><div class="ttname"><a href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">omexmeta::PersonalInformation_delete</a></div><div class="ttdeci">int PersonalInformation_delete(PersonalInformation *information)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1383</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a86245ea959cf5a3e8f389941cca41f1a"><div class="ttname"><a href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">omexmeta::SingularAnnotation_delete</a></div><div class="ttdeci">int SingularAnnotation_delete(SingularAnnotation *singularAnnotation)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:643</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a11a77dd69a30da66d2e7bbddaa15c15c"><div class="ttname"><a href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">omexmeta::Editor_newPhysicalEntity</a></div><div class="ttdeci">PhysicalEntity * Editor_newPhysicalEntity(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:305</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a30d98a9eb2bc11c67f7ca13a68aa1a73"><div class="ttname"><a href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">omexmeta::Editor_newSingularAnnotation</a></div><div class="ttdeci">SingularAnnotation * Editor_newSingularAnnotation(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:283</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_ade152f2f88f1394cfd5341d504384532"><div class="ttname"><a href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">omexmeta::EnergyDiff_delete</a></div><div class="ttdeci">int EnergyDiff_delete(EnergyDiff *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1239</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a27067bfb4290fcb7251845281520767f"><div class="ttname"><a href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">omexmeta::Editor_getXml</a></div><div class="ttdeci">char * Editor_getXml(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:500</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a386a15d5d186e00467ffdbb15dc9b2e3"><div class="ttname"><a href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">omexmeta::PhysicalProperty_getAbout</a></div><div class="ttdeci">char * PhysicalProperty_getAbout(PhysicalProperty *property)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:808</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a0b43aced94ae55c938cc788111586fc8"><div class="ttname"><a href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">omexmeta::PersonalInformation_delete</a></div><div class="ttdeci">int PersonalInformation_delete(PersonalInformation *information)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1374</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a86245ea959cf5a3e8f389941cca41f1a"><div class="ttname"><a href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">omexmeta::SingularAnnotation_delete</a></div><div class="ttdeci">int SingularAnnotation_delete(SingularAnnotation *singularAnnotation)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:651</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a11a77dd69a30da66d2e7bbddaa15c15c"><div class="ttname"><a href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">omexmeta::Editor_newPhysicalEntity</a></div><div class="ttdeci">PhysicalEntity * Editor_newPhysicalEntity(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:314</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a30d98a9eb2bc11c67f7ca13a68aa1a73"><div class="ttname"><a href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">omexmeta::Editor_newSingularAnnotation</a></div><div class="ttdeci">SingularAnnotation * Editor_newSingularAnnotation(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:292</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_ade152f2f88f1394cfd5341d504384532"><div class="ttname"><a href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">omexmeta::EnergyDiff_delete</a></div><div class="ttdeci">int EnergyDiff_delete(EnergyDiff *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1230</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a27067bfb4290fcb7251845281520767f"><div class="ttname"><a href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">omexmeta::Editor_getXml</a></div><div class="ttdeci">char * Editor_getXml(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:508</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a386a15d5d186e00467ffdbb15dc9b2e3"><div class="ttname"><a href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">omexmeta::PhysicalProperty_getAbout</a></div><div class="ttdeci">char * PhysicalProperty_getAbout(PhysicalProperty *property)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:816</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

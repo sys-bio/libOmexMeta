@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 2)
-set(VERSION_MICRO 2)
+set(VERSION_MICRO 3)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file(VERSION.txt.in VERSION.txt)
@@ -102,8 +102,7 @@ include(ConfigurationSummary)
 include(CheckIncludeFiles)
 include(CheckIncludeFile)
 
-# standard install locations
-include(GNUInstallDirs)
+
 
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
@@ -186,6 +185,7 @@ set(CMAKE_INSTALL_RPATH ${base} ${base}/${INSTALL_RPATH_DIRECTORIES})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
+#set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 
 ####################################################################
 # User options
