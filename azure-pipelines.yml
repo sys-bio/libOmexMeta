@@ -31,6 +31,10 @@ stages:
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
+          MinicondaRoot: '/usr/share/miniconda'
+          PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
+          PythonLibDir: '$(PythonRoot)/lib'
+          PythonExecutable: '$(PythonRoot)/bin/python'
           VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
@@ -96,7 +100,7 @@ stages:
               pip install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               python_dir=$(dirname $(which python))
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
@@ -152,6 +156,13 @@ stages:
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
           MAC_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Mac/dist'
           PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
+
+          MinicondaRoot: '/usr/local/miniconda'
+          PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
+          PythonLibDir: '$(PythonRoot)/lib'
+          PythonExecutable: '$(PythonRoot)/bin/python'
+          CondaExecutable: '$(MinicondaRoot)/condabin/conda'
+          PipExecutable: '$(PythonRoot)/bin/pip'
         steps:
 
           - checkout: self
@@ -208,7 +219,7 @@ stages:
               pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               python_dir=$(dirname $(which python))
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
               cmake --build . --target run-ctest --config Release
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
@@ -266,6 +277,13 @@ stages:
           PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
           WINDOWS_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Windows/dist'
 
+          MinicondaRoot: 'C:\Miniconda'
+          PythonRoot: '$(MinicondaRoot)\envs\$(PythonName)'
+          PythonLibDir: '$(PythonRoot)\Lib'
+          PythonScriptsDir: '$(PythonRoot)\Scripts'
+          PythonExecutable: '$(PythonRoot)\python.exe'
+          PipExecutable: '$(PythonScriptsDir)\pip.exe'
+
         steps:
           - checkout: self
             submodules: recursive
@@ -318,7 +336,7 @@ stages:
               $conda_main_python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
               $python_dir = '$conda_main_python_dir/envs/$(PythonName)'
               cd build
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$python_dir ..
+              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
               cmake --build . --target run-ctest --config Release -j 12
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
@@ -434,7 +452,7 @@ stages:
 #              pip install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
 #              python_dir=$(dirname $(which python))
 #              cd $(BUILD_DIRECTORY)
-#              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
+#              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
 #              cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
 #              cmake --build . --target install --config Release -j 12
 #            displayName: Run Tests With Python
