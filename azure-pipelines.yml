@@ -95,7 +95,7 @@ stages:
           - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
-              $(CondaExecutable) activate pyomexmeta
+              $(CondaExecutable) activate $(PythonName)
               $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
@@ -104,7 +104,7 @@ stages:
             displayName: Run Tests With Python
           - script: |
               eval "$(conda shell.bash hook)"
-              $(CondaExecutable) activate pyomexmeta
+              $(CondaExecutable) activate $(PythonName)
               cd $(INSTALL_DIRECTORY)
               $(PythonExecutable) setup.py bdist_wheel
               cd dist
@@ -210,7 +210,7 @@ stages:
           - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
-              $(CondaExecutable) activate pyomexmeta
+              $(CondaExecutable) activate $(PythonName)
               $(PipExecutable) install ipython
               $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
@@ -220,7 +220,7 @@ stages:
             displayName: Run Tests With Python
           - script: |
               eval "$(conda shell.bash hook)"
-              conda activate pyomexmeta
+              conda activate $(PythonName)
               $(PipExecutable) install ipython
               cd $(INSTALL_DIRECTORY)
               $(PythonExecutable) setup.py bdist_wheel
