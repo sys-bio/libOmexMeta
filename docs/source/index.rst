@@ -16,6 +16,7 @@ libOmexMeta documentation!
    querying_rdf/querying_rdf.rst
    diagrams/diagrams_index.rst
    annotating_models/annotating_models_index.rst
+   download_biomodels/download_biomodels.rst
    APIReference/api_reference_index.rst
    Developers/developers_index.rst
 
