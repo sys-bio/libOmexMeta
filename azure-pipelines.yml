@@ -270,12 +270,12 @@ stages:
           WINDOWS_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Windows/dist'
 
           MinicondaRoot: 'C:\Miniconda'
-          CondaExecutable: 'C:\Miniconda\Scripts\conda.exe'
           PythonRoot: '$(MinicondaRoot)\envs\$(PythonName)'
+          PythonExecutable: '$(PythonRoot)\python.exe'
           PythonLibDir: '$(PythonRoot)\Lib'
           PythonScriptsDir: '$(PythonRoot)\Scripts'
-          PythonExecutable: '$(PythonRoot)\python.exe'
-          PipExecutable: '$(PythonRoot)\bin\pip.exe'
+          PipExecutable: '$(PythonScriptsDir)\pip.exe'
+          CondaExecutable: '$(PythonScriptsDir)\conda.exe'
 
         steps:
           - checkout: self
