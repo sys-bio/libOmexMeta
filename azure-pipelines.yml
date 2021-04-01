@@ -352,7 +352,7 @@ stages:
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              echo "running pip install wheel"
+              echo "running $(PipExecutable) install wheel"
               $(PipExecutable) install $wheel
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
