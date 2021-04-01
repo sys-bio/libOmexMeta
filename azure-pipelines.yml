@@ -345,15 +345,12 @@ stages:
               ls
               echo "where.exe"
               where.exe python
-              $(PipExecutable) install wheel pywin32
-              conda install -y pywin32
-              $(CondaExecutable) install -y pywin32
               echo "running setup.py bdist_wheel"
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              echo "running $(PipExecutable) install wheel"
-              $(PipExecutable) install $wheel
+              echo "running $(PipExecutable) install wheel ipython"
+              $(PipExecutable) install $wheel ipython
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
