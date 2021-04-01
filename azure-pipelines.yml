@@ -293,6 +293,14 @@ stages:
               echo "Agent.OS $(Agent.OS)"
               echo "gcc $(gcc --version)"
               echo "g++ $(g++ --version)"
+              echo "MinicondaRoot            $(MinicondaRoot)"
+              echo "PythonRoot               $(PythonRoot)"
+              echo "PythonScriptsDir         $(PythonScriptsDir)"
+              echo "CondaExecutable          $(CondaExecutable)"
+              echo "PythonExecutable         $(PythonExecutable)"
+              echo "IPythonExecutable        $(IPythonExecutable)"
+              echo "PythonLibDir             $(PythonLibDir)"
+              echo "PipExecutable            $(PipExecutable)"
             displayName: PrintAzureVariables
 
           - task: Cache@2
@@ -350,8 +358,9 @@ stages:
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              echo "running $(PipExecutable) install wheel ipython"
-              $(PipExecutable) install $wheel ipython
+              echo "running $(PipExecutable) install wheel ipython python-libcombine"
+              $(PipExecutable) install $wheel ipython python-libcombine
+              echo "Running $(IPythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
               $(IPythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
