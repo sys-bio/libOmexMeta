@@ -33,11 +33,18 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceomexmeta}{omexmeta}} \{}
 \DoxyCodeLine{}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
 \DoxyCodeLine{    \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} free\_c\_char\_star(\textcolor{keywordtype}{char} *c);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} setLastError(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* msg);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}* getLastError();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} clearLastError(\textcolor{keyword}{const} std::string\& err);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT RDF *\mbox{\hyperlink{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}{RDF\_new}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
@@ -235,17 +242,8 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalEntity\_freeAll(PhysicalEntity *physical\_entity\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_DEPRECATED OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setPhysicalProperty(}
-\DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *subject\_metaid, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_property=\textcolor{keyword}{nullptr});}
-\DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_DEPRECATED OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_setIdentity(}
-\DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identity\_resource);}
-\DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_identity(}
 \DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identity\_resource);}
-\DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_DEPRECATED OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_addLocation(}
-\DoxyCodeLine{            PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *location\_resource);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_getAbout(PhysicalEntity *physical\_entity\_ptr);}
 \DoxyCodeLine{}
@@ -263,7 +261,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasPropertyFull(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* is\_version\_of) ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isPartOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_part\_of);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isPartOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_part\_of, eUriType type);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasPart(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *part);}
 \DoxyCodeLine{}
