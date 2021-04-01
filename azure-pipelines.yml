@@ -351,7 +351,12 @@ stages:
               echo "Wheel is: $wheel"
               echo "running $(PipExecutable) install wheel ipython"
               $(PipExecutable) install $wheel ipython
-              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
+              echo "pip freeze: $(PipExecutable) freeze"
+              $(PipExecutable) freeze
+              echo "where.exe ipython"
+              where.exe ipython
+              echo "$(IPythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              $(IPythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
