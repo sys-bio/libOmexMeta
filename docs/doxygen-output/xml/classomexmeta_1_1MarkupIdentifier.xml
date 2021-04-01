@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="50" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="49" bodyend="65"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="50" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="49" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1a2fd631a49a8a3d06e668cdbf130d5cb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="56" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="67" bodyend="80"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="56" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="71" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1ab1736abf0d275bcb6eefcb7f08dcbd4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="58" column="28" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="83" bodyend="85"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="58" column="28" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="91" bodyend="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
