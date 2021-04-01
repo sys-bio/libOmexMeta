@@ -1,7 +1,7 @@
 from bioservices import BioModels
 import os
 import json
-
+import zipfile as z
 
 thisDir = os.path.dirname(os.path.abspath(__file__))
 
@@ -32,6 +32,8 @@ def download_biomodels(directory: str, num_per_download = 100):
     """
     if num_per_download > 100 :
         raise ValueError("Maximum number of models that can be downloaded at a time is 100")
+
+    # do index math.
     total_models = get_number_of_curated_models()
     num_downloads = int(total_models / num_per_download)
     remainder = total_models % num_per_download
@@ -43,7 +45,7 @@ def download_biomodels(directory: str, num_per_download = 100):
     start = 1
     for download_number in range(1, num_downloads + 1):
         if download_number == num_downloads:
-            # handle last
+            # handle last, which may have remainder
             end = total_models + 1 # account for 0 indexed python, 1 indexed biomodels
         else:
             end = (download_number * num_per_download) + 1 # account for 0 indexed python, 1 indexed biomodels
@@ -62,6 +64,25 @@ def download_biomodels(directory: str, num_per_download = 100):
 
         start = end
 
+    # consolidate zips
+    with z.ZipFile(filenames[0], 'a') as z1:
+        for fname in filenames[1:]:
+            zf = z.ZipFile(fname, 'r')
+            for n in zf.namelist():
+                z1.writestr(n, zf.open(n).read())
+
+    # rename first zip
+    biomodels_zip = os.path.join(directory, "biomodels.zip")
+    if not os.path.isfile(biomodels_zip):
+        os.rename(filenames[0], biomodels_zip)
+
+    # try to get rid of the rest. Windows likes to hang on to them though so might fail
+    for i in range(1, len(filenames)):
+        try:
+            os.remove(filenames[i])
+        except Exception:
+            continue
+
     return filenames
 
 
@@ -69,56 +90,3 @@ def download_biomodels(directory: str, num_per_download = 100):
 if __name__ == "__main__":
 
     download_biomodels(os.path.join(os.path.dirname(__file__)))
-
-
-
-_TEST = False
-
-if _TEST:
-
-    import unittest
-
-
-    class TestBiomodelsDownload(unittest.TestCase):
-
-        def setUp(self) -> None:
-            pass
-
-        def tearDown(self) -> None:
-            pass
-
-        def replica_of_download_strategy(self, num_per_download, total_models):
-            num_downloads = int(total_models / num_per_download)
-            remainder = total_models % num_per_download
-            if remainder > 0:
-                num_downloads += 1
-
-            results = []
-
-            start = 0
-            for download_number in range(1, num_downloads + 1):
-                if download_number == num_downloads:
-                    # handle last
-                    end = total_models
-                else:
-                    end = download_number * num_per_download
-                # do something ...
-                results.append((start, end))
-
-                start = end
-            return results
-
-
-        def test_easy_numbers(self):
-            actual = self.replica_of_download_strategy(100, 1000)
-            expected = [(0, 100), (100, 200), (200, 300), (300, 400), (400, 500), (500, 600), (600, 700), (700, 800), (800, 900), (900, 1000)]
-            self.assertListEqual(expected, actual)
-
-
-        def test_with_remainder(self):
-            actual = self.replica_of_download_strategy(100, 1005)
-            expected = [(0, 100), (100, 200), (200, 300), (300, 400), (400, 500), (500, 600), (600, 700), (700, 800), (800, 900), (900, 1000), (1000, 1005)]
-            self.assertListEqual(expected, actual)
-
-
-
