@@ -332,7 +332,6 @@ stages:
               where.exe conda
               echo "Where.exe pip: "
               where.exe pip
-
               $(CondaExecutable) shell.powershell hook
               $(CondaExecutable) activate $(PythonName)
               $(CondaExecutable) create --name $(PythonName) python=$(PythonVersion)
