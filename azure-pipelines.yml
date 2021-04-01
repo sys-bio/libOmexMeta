@@ -271,11 +271,11 @@ stages:
 
           MinicondaRoot: 'C:\Miniconda'
           PythonRoot: '$(MinicondaRoot)\envs\$(PythonName)'
+          PythonScriptsDir: '$(PythonRoot)\Scripts'
+          CondaExecutable: '$(MinicondaRoot)\Scripts\conda.exe'
           PythonExecutable: '$(PythonRoot)\python.exe'
           PythonLibDir: '$(PythonRoot)\Lib'
-          PythonScriptsDir: '$(PythonRoot)\Scripts'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
-          CondaExecutable: '$(PythonScriptsDir)\conda.exe'
 
         steps:
           - checkout: self
