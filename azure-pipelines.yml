@@ -335,11 +335,12 @@ stages:
               $(CondaExecutable) shell.powershell hook
               $(CondaExecutable) activate $(PythonName)
               $(CondaExecutable) create --name $(PythonName) python=$(PythonVersion)
-              $(CondaExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+              $(CondaExecutable) install -y pytest ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
               cd build
               cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
-              cmake --build . --target run-ctest --config Release -j 12
               cmake --build . --target install --config Release -j 12
+              ctest
+
             displayName: Run Tests With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
