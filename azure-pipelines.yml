@@ -351,7 +351,7 @@ stages:
               echo "Wheel is: $wheel"
               echo "running $(PipExecutable) install wheel ipython"
               $(PipExecutable) install $wheel ipython
-              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
