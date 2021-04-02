@@ -276,6 +276,7 @@ stages:
           PythonExecutable: '$(PythonRoot)\python.exe'
           IPythonExecutable: '$(PythonRoot)\Scripts\ipython.exe'
           PythonLibDir: '$(PythonRoot)\Lib'
+          PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
 
         steps:
@@ -337,7 +338,9 @@ stages:
               $(CondaExecutable) activate $(PythonName)
               $(CondaExecutable) create --name $(PythonName) python=$(PythonVersion)
               $(PipExecutable) install -y pytest ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               cd build
+              # Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
               cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
               ctest -C Release --verbose --extra-verbose
@@ -346,6 +349,7 @@ stages:
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
           - powershell: |
+              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               echo "Where.exe conda: "
               where.exe conda
               echo "Where.exe pip: "
