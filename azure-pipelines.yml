@@ -334,24 +334,31 @@ stages:
               where.exe conda
               echo "Where.exe pip: "
               where.exe pip
+
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
+
               $packages = 'pytest ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel'
+
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) $packages"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) $packages
+
               echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
+
               ehco "$(PipExecutable) install -y $packages"
               $(PipExecutable) install -y $packages
+
               echo "$ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+
               echo "$(CondaExecutable) env list"
               $(CondaExecutable) env list
               echo "ipython -c \"import pytest\""
               ipython -c "import pytest"
               cd build
-              # Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              # Saved for later if needed:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
               ctest -C Release --verbose --extra-verbose
 
