@@ -255,6 +255,16 @@ TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 
 }
+TEST_F(RDFTests, TestReadSBMLModelWithBag) {
+    std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
+    // first create a file containing annotations
+    RDF rdf = RDF::fromString(sbml, "rdfxml");
+////    std::string expected = "";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+////    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+}
 
 TEST_F(RDFTests, TestRepositoryPrefix){
     RDF rdf = RDF::fromString(samples.singular_annotation1);

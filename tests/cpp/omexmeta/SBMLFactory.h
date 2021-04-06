@@ -20,6 +20,7 @@ enum ModelType {
     SBML_ADHMODEL,
     SBML_NERNST_POTENTIAL,
     SBML_NERNST_POTENTIAL2,
+    SBML_WITH_BAG
 };
 
 /*
@@ -1722,6 +1723,64 @@ public:
     }
 };
 
+class SBMLWithBag : SBMLModel {
+public:
+    SBMLWithBag() = default;
+
+    std::string str() override {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+               "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+               "    <model metaid=\"__main\" id=\"__main\">\n"
+               "        <listOfCompartments>\n"
+               "            <compartment sboTerm=\"SBO:0000410\" id=\"default_compartment\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+               "        </listOfCompartments>\n"
+               "        <listOfSpecies>\n"
+               "            <species id=\"S1\" metaid=\"S1\" compartment=\"default_compartment\" initialConcentration=\"1\" hasOnlySubstanceUnits=\"false\"\n"
+               "                     boundaryCondition=\"false\" constant=\"false\">\n"
+               "                <annotation>\n"
+               "                    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+               "                             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+               "                        <rdf:Description rdf:about=\"#S1\">\n"
+               "                            <bqbiol:isVersionOf>\n"
+               "                                <rdf:Bag>\n"
+               "                                    <rdf:li rdf:resource=\"http://identifiers.org/obo.chebi/CHEBI:16526\"/>\n"
+               "                                </rdf:Bag>\n"
+               "                            </bqbiol:isVersionOf>\n"
+               "                        </rdf:Description>\n"
+               "                    </rdf:RDF>\n"
+               "                </annotation>\n"
+               "            </species>\n"
+               "            <species id=\"S2\" compartment=\"default_compartment\" initialConcentration=\"3\" hasOnlySubstanceUnits=\"false\"\n"
+               "                     boundaryCondition=\"false\" constant=\"false\"/>\n"
+               "        </listOfSpecies>\n"
+               "        <listOfParameters>\n"
+               "            <parameter id=\"k1\" value=\"0.1\" constant=\"true\"/>\n"
+               "        </listOfParameters>\n"
+               "        <listOfReactions>\n"
+               "            <reaction id=\"_J0\" reversible=\"false\" fast=\"false\">\n"
+               "                <listOfReactants>\n"
+               "                    <speciesReference species=\"S1\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "                </listOfReactants>\n"
+               "                <listOfProducts>\n"
+               "                    <speciesReference species=\"S2\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "                </listOfProducts>\n"
+               "                <kineticLaw>\n"
+               "                    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "                        <apply>\n"
+               "                            <times/>\n"
+               "                            <ci>k1</ci>\n"
+               "                            <ci>S1</ci>\n"
+               "                        </apply>\n"
+               "                    </math>\n"
+               "                </kineticLaw>\n"
+               "            </reaction>\n"
+               "        </listOfReactions>\n"
+               "    </model>\n"
+               "</sbml>";
+    }
+
+};
+
 
 class SBMLFactory {
 public:
@@ -1738,6 +1797,8 @@ public:
             return BIOMD204().str();
         else if (modelType == SBML_BIOMD366)
             return BIOMD366().str();
+        else if (modelType == SBML_WITH_BAG)
+            return SBMLWithBag().str();
         else if (modelType == SBML_ADHMODEL)
             return ADHModel().str();
         else if (modelType == SBML_NERNST_POTENTIAL)
