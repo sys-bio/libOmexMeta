@@ -341,7 +341,7 @@ stages:
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) $packages
               echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
-              ehco "$(PipExecutable) install -y $packages"
+              echo "$(PipExecutable) install -y $packages"
               $(PipExecutable) install -y $packages
               echo "$ENV:PATH=\"$ENV:PATH;$(PythonScriptsDir)\""
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
