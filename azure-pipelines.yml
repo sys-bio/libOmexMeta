@@ -343,34 +343,34 @@ stages:
               $(CondaExecutable) activate $(PythonName)
               echo "$(PipExecutable) install -y $packages"
 
-              #$(PipExecutable) install -y $packages
-              echo "$ENV:PATH=\"$ENV:PATH;$(PythonScriptsDir)\""
-              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
-              echo "$(CondaExecutable) env list"
-              $(CondaExecutable) env list
-              #echo "ipython -c import pytest"
-              #ipython -c "import pytest"
-              cd build
-              # Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
-              cmake --build . --target install --config Release -j 12
-              ctest -C Release --verbose --extra-verbose
+              ##$(PipExecutable) install -y $packages
+              #echo "$ENV:PATH=\"$ENV:PATH;$(PythonScriptsDir)\""
+              #$ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+              #echo "$(CondaExecutable) env list"
+              #$(CondaExecutable) env list
+              ##echo "ipython -c import pytest"
+              ##ipython -c "import pytest"
+              #cd build
+              ## Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
+              #cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              #cmake --build . --target install --config Release -j 12
+              #ctest -C Release --verbose --extra-verbose
 
             displayName: Run Tests With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
           - powershell: |
-              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
-              echo "Where.exe conda: "
-              where.exe conda
-              echo "Where.exe pip: "
-              where.exe pip
-              echo "Cding to install directory $INSTALL_DIRECTORY"
-              cd $(INSTALL_DIRECTORY)
-              echo "ls ing"
-              ls
-              echo "where.exe"
-              where.exe python
+              #$ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+              #echo "Where.exe conda: "
+              #where.exe conda
+              #echo "Where.exe pip: "
+              #where.exe pip
+              #echo "Cding to install directory $INSTALL_DIRECTORY"
+              #cd $(INSTALL_DIRECTORY)
+              #echo "ls ing"
+              #ls
+              #echo "where.exe"
+              #where.exe python
               #echo "running setup.py bdist_wheel"
               #$(PythonExecutable) setup.py bdist_wheel
               #$wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
