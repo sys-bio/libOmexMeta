@@ -338,11 +338,12 @@ stages:
               $(CondaExecutable) shell.powershell hook
               $packages = 'pytest ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel'
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) $packages"
-              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) $packages
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) '$packages'
               echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
               echo "$(PipExecutable) install -y $packages"
-              $(PipExecutable) install -y $packages
+
+              #$(PipExecutable) install -y $packages
               echo "$ENV:PATH=\"$ENV:PATH;$(PythonScriptsDir)\""
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               echo "$(CondaExecutable) env list"
