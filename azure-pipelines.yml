@@ -347,7 +347,7 @@ stages:
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               echo "$(CondaExecutable) env list"
               $(CondaExecutable) env list
-              echo "ipython -c \"import pytest\""
+              echo "ipython -c import pytest"
               ipython -c "import pytest"
               cd build
               # Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
