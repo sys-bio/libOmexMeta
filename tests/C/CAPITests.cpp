@@ -101,22 +101,25 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, RDF_fromUri) {
-    RDF *rdf_ptr = RDF_fromUri(samples.sbml_url1.c_str(), "rdfxml");
-    int expected = 277;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
-}
-
-TEST_F(CAPITests, RDF_addFromUri) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
-    int expected = 277;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
-}
+/**
+ * From uri isn't something that we want support for, so we can drop the tests
+ */
+//TEST_F(CAPITests, RDF_fromUri) {
+//    RDF *rdf_ptr = RDF_fromUri(samples.sbml_url1.c_str(), "rdfxml");
+//    int expected = 277;
+//    int actual = RDF_size(rdf_ptr);
+//    ASSERT_EQ(expected, actual);
+//    RDF_delete(rdf_ptr);
+//}
+//
+//TEST_F(CAPITests, RDF_addFromUri) {
+//    RDF *rdf_ptr = RDF_new();
+//    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
+//    int expected = 277;
+//    int actual = RDF_size(rdf_ptr);
+//    ASSERT_EQ(expected, actual);
+//    RDF_delete(rdf_ptr);
+//}
 
 TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
     std::filesystem::path fname = std::filesystem::current_path() += "SqliteStorageTest.db";
