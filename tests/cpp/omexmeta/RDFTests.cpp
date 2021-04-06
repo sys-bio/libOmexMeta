@@ -255,14 +255,33 @@ TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 
 }
-TEST_F(RDFTests, TestReadSBMLModelWithBag) {
+
+TEST_F(RDFTests, TestReadSBMLModelWithBagFromString) {
+    RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
     std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
-    // first create a file containing annotations
-    RDF rdf = RDF::fromString(sbml, "rdfxml");
-////    std::string expected = "";
-    std::string actual = rdf.toString("turtle");
-    std::cout << actual << std::endl;
-////    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    RDF actualRdf = RDF::fromString(sbml, "rdfxml");
+    ASSERT_EQ(expectedRdf, actualRdf);
+}
+
+TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
+    std::filesystem::path fname = std::filesystem::current_path() /+ "sbml.xml";
+    RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
+
+    // get sbml as string
+    std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
+
+    // write it to file
+    std::ofstream f;
+    f.open(fname);
+    f << sbml;
+    f.close();
+
+    RDF actualRdf = RDF::fromFile(fname.string(), "rdfxml");
+    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle"));
+
+    // clean up file
+    remove(fname);
+
 
 }
 
