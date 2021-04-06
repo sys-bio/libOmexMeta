@@ -1,9 +1,11 @@
-find_package(Python COMPONENTS Interpreter REQUIRED)
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
 
 message(STATUS "Found Python:
 Python_VERSION      ${Python_VERSION}
 Python_EXECUTABLE   ${Python_EXECUTABLE}
 Python_ROOT_DIR     ${Python_ROOT_DIR}
+Python_INCLUDE_DIR  ${Python_INCLUDE_DIR}
+Python_LIBRARY      ${Python_LIBRARY}
 ")
 
 if (NOT Python_ROOT_DIR)
