@@ -351,7 +351,7 @@ stages:
               ipython -c "import pytest"
               cd build
               # Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
               ctest -C Release --verbose --extra-verbose
 
