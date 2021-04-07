@@ -291,7 +291,7 @@ stages:
           PythonLibDir: '$(PythonRoot)\Lib'
           PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
-          PyWin32Path: '$(PythonLibDir)/site-packages/pywin32_system32' # needs to be added to path for win32api
+          PyWin32Path: '$(PythonLibDir)\site-packages\pywin32_system32' # needs to be added to path for win32api
 
         steps:
           - checkout: self
@@ -393,6 +393,18 @@ stages:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
 
           - powershell: |
+              echo "cd D:\a\1\s\build\
+              cd D:\a\1\s\build\
+              ls
+
+              echo "cd D:\a\1\s\build\site-packages"
+              cd D:\a\1\s\build\site-packages\
+              ls
+
+              echo "cd D:\a\1\s\build\site-packages\pyomexmeta"
+              cd D:\a\1\s\build\site-packages\pyomexmeta
+              ls
+
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               echo "Where.exe conda: "
