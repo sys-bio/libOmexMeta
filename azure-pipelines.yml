@@ -449,7 +449,7 @@ stages:
               PythonName: py39
         pool:
           vmImage: 'ubuntu-18.04'
-        container: ciaranwelsh/manylinux2014
+        container: ciaranwelsh/manylinux2014:latest
         # variables:
         steps:
           - checkout: self
