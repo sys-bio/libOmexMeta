@@ -382,7 +382,6 @@ stages:
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
               ctest -C Release --verbose --extra-verbose
-
             displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
@@ -404,10 +403,10 @@ stages:
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              echo "running $(PipExecutable) install wheel ipython python-libcombine"
-              $(PipExecutable) install $wheel ipython python-libcombine
-              echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
-              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              # echo "running $(PipExecutable) install wheel ipython python-libcombine"
+              # $(PipExecutable) install $wheel ipython python-libcombine
+              # echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              # $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
