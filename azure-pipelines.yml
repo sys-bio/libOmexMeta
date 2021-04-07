@@ -250,12 +250,12 @@ stages:
             py37:
               PythonVersion: 3.7
               PythonName: py37
-#            py38:
-#              PythonVersion: 3.8
-#              PythonName: py38
-#            py39:
-#              PythonVersion: 3.9
-#              PythonName: py39
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
           vmImage: 'windows-2019'
         variables:
@@ -316,18 +316,18 @@ stages:
               vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajl:x64-windows-static sqlite3:x64-windows-static liblzma:x64-windows-static
 
             displayName: InstallDependencies
-#
-#          - script: |
-#              echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
-#              mkdir "$(BUILD_DIRECTORY)"
-#              cd "$(BUILD_DIRECTORY)"
-#              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
-#              cmake --build . --target install --config Release -j 12
-#            displayName: BuildLibOmexMeta
-#          - script: |
-#              cd "$(BUILD_DIRECTORY)"
-#              cmake --build . --target run-ctest --config Release -j 12
-#            displayName: RunLibOmexMetaTests
+
+          - script: |
+              echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
+              mkdir "$(BUILD_DIRECTORY)"
+              cd "$(BUILD_DIRECTORY)"
+              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
+              cmake --build . --target install --config Release -j 12
+            displayName: BuildLibOmexMeta
+          - script: |
+              cd "$(BUILD_DIRECTORY)"
+              cmake --build . --target run-ctest --config Release -j 12
+            displayName: RunLibOmexMetaTests
 
           - powershell: |
               echo "Where.exe conda: "
@@ -338,8 +338,6 @@ stages:
 
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
-
-
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
 
@@ -363,11 +361,15 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
-              ctest --verbose --extra-verbose
+              # ctest -C Release --verbose --extra-verbose
 
             displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
+          - script: |
+              cd "$(BUILD_DIRECTORY)"
+              cmake --build . --target run-ctest --config Release -j 12
+            displayName: Run Tests With Python
           - powershell: |
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               echo "Where.exe conda: "
@@ -401,7 +403,6 @@ stages:
               artifactName: libOmexMeta-x64Windows-$(PythonName)
               Parallel: true
               ParallelCount: 8
-
 
 
 #  - stage: GenerateManyLinuxPipWheel
