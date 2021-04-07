@@ -130,14 +130,14 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
-        <label>exception</label>
-      </node>
       <node id="5">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
       </node>
       <node id="8">
         <label>omexmeta::ValueException</label>
@@ -166,7 +166,7 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
-        <label>exception</label>
+        <label>std::exception</label>
       </node>
       <node id="1">
         <label>omexmeta::Exception</label>

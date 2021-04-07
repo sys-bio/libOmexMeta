@@ -7,20 +7,6 @@
       <node id="6">
         <label>stdarg.h</label>
       </node>
-      <node id="8">
-        <label>rasqal.h</label>
-        <link refid="rasqal_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>rdf_init.h</label>
-      </node>
-      <node id="23">
-        <label>rdf_stream.h</label>
-      </node>
       <node id="2">
         <label>redland/World.h</label>
         <link refid="World_8h_source"/>
@@ -32,6 +18,12 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+      </node>
+      <node id="12">
+        <label>rdf_init.h</label>
+      </node>
+      <node id="23">
+        <label>rdf_stream.h</label>
       </node>
       <node id="15">
         <label>rdf_node.h</label>
@@ -54,21 +46,6 @@
       <node id="20">
         <label>rdf_parser.h</label>
       </node>
-      <node id="7">
-        <label>redland_export.h</label>
-      </node>
-      <node id="18">
-        <label>rdf_model.h</label>
-      </node>
-      <node id="16">
-        <label>rdf_concepts.h</label>
-      </node>
-      <node id="11">
-        <label>rdf_hash.h</label>
-      </node>
-      <node id="14">
-        <label>rdf_uri.h</label>
-      </node>
       <node id="4">
         <label>raptor2.h</label>
         <link refid="raptor2_8h_source"/>
@@ -79,29 +56,34 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
+      <node id="7">
+        <label>redland_export.h</label>
+      </node>
+      <node id="18">
+        <label>rdf_model.h</label>
+      </node>
+      <node id="16">
+        <label>rdf_concepts.h</label>
+      </node>
+      <node id="8">
+        <label>rasqal.h</label>
+        <link refid="rasqal_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>rdf_hash.h</label>
+      </node>
+      <node id="14">
+        <label>rdf_uri.h</label>
+      </node>
       <node id="26">
         <label>iostream</label>
       </node>
       <node id="9">
         <label>rdf_log.h</label>
-      </node>
-      <node id="17">
-        <label>rdf_statement.h</label>
-      </node>
-      <node id="22">
-        <label>rdf_serializer.h</label>
-      </node>
-      <node id="1">
-        <label>src/redland/RedlandWrapper/src/World.cpp</label>
-        <link refid="World_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>rdf_utf8.h</label>
-      </node>
-      <node id="5">
-        <label>stdio.h</label>
       </node>
       <node id="3">
         <label>librdf.h</label>
@@ -149,11 +131,29 @@
         <childnode refid="25" relation="include">
         </childnode>
       </node>
+      <node id="17">
+        <label>rdf_statement.h</label>
+      </node>
+      <node id="22">
+        <label>rdf_serializer.h</label>
+      </node>
+      <node id="25">
+        <label>rdf_utf8.h</label>
+      </node>
+      <node id="5">
+        <label>stdio.h</label>
+      </node>
       <node id="10">
         <label>rdf_digest.h</label>
       </node>
       <node id="27">
         <label>memory</label>
+      </node>
+      <node id="1">
+        <label>src/redland/RedlandWrapper/src/World.cpp</label>
+        <link refid="World_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceredland">redland</innernamespace>

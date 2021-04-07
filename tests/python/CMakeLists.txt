@@ -1,9 +1,11 @@
-find_package(Python COMPONENTS Interpreter REQUIRED)
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
 
 message(STATUS "Found Python:
 Python_VERSION      ${Python_VERSION}
 Python_EXECUTABLE   ${Python_EXECUTABLE}
 Python_ROOT_DIR     ${Python_ROOT_DIR}
+Python_INCLUDE_DIR  ${Python_INCLUDE_DIR}
+Python_LIBRARY      ${Python_LIBRARY}
 ")
 
 if (NOT Python_ROOT_DIR)
@@ -22,17 +24,18 @@ add_test(NAME
 add_test(NAME
         pyomexmeta-tests
         COMMAND
-        Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/tests.py
+        Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/pyomexmeta_tests.py
         WORKING_DIRECTORY
         "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta"
         )
+set_tests_properties(pyomexmeta-api-tests pyomexmeta-tests PROPERTIES ENVIRONMENT "PYTHONPATH=${CMAKE_BINARY_DIR}/site-packages:$ENV{PYTHONPATH}")
 
 set(PYOMEXMETA_API_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/api_tests.py")
-set(PYOMEXMETA_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/tests.py")
+set(PYOMEXMETA_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/pyomexmeta_tests.py")
 set(PYOMEXMETA_TEST_STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/test_strings.py")
 
 configure_file(${PYOMEXMETA_API_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/api_tests.py COPYONLY)
-configure_file(${PYOMEXMETA_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/tests.py COPYONLY)
+configure_file(${PYOMEXMETA_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/pyomexmeta_tests.py COPYONLY)
 configure_file(${PYOMEXMETA_TEST_STRINGS} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/test_strings.py COPYONLY)
 
 

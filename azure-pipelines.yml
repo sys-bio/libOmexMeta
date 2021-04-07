@@ -8,15 +8,33 @@ pr:
 - develop
 
 stages:
-  - stage: BuildInstallAndTest
-    displayName: Build, test and install
-    jobs:
       # linux
-      - job: BuildLinux
+  - stage: BuildUbuntu
+    dependsOn: []
+    displayName: Build Ubuntu
+    jobs:
+      - job: BuildUbuntu
         timeoutInMinutes: "0"
+        strategy:
+          matrix:
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
+          MinicondaRoot: '/usr/share/miniconda'
+          CondaExecutable: '$(MinicondaRoot)/bin/conda'
+          PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
+          PythonLibDir: '$(PythonRoot)/lib'
+          PythonExecutable: '$(PythonRoot)/bin/python'
+          PipExecutable: '$(PythonRoot)/bin/pip'
           VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
@@ -77,25 +95,24 @@ stages:
             displayName: RunLibOmexMetaTests
           - script: |
               eval "$(conda shell.bash hook)"
-              conda create -y --name pyomexmeta python=3.8
-              conda activate pyomexmeta
-              pip install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
-              python_dir=$(dirname $(which python))
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+              $(CondaExecutable) activate $(PythonName)
+              $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
           - script: |
               eval "$(conda shell.bash hook)"
-              conda activate pyomexmeta
+              $(CondaExecutable) activate $(PythonName)
               cd $(INSTALL_DIRECTORY)
-              python setup.py bdist_wheel
+              $(PythonExecutable) setup.py bdist_wheel
               cd dist
               wheel=$(realpath $(ls))
               echo "wheel is: $wheel"
-              pip install $wheel
-              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
+              $(PipExecutable) install $wheel
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
@@ -103,19 +120,34 @@ stages:
             inputs:
               sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
-              targetFolder: '$(Build.ArtifactStagingDirectory)'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
           - task: PublishBuildArtifacts@1
             inputs:
-              pathToPublish: '$(Build.ArtifactStagingDirectory)'
-              artifactName: libOmexMeta-x64Linux
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+              artifactName: libOmexMeta-x64Linux-$(PythonName)
               Parallel: true
               ParallelCount: 8
 
       # macos
-      - job: BuildMacOS
+  - stage: MacOS
+    dependsOn: []
+    displayName: MacOs
+    jobs:
+      - job: BuildMacOs
         timeoutInMinutes: "0"
+        strategy:
+          matrix:
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
-          vmImage: 'macOS-10.15'
+          vmImage: 'macos-10.15'
         variables:
           VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
@@ -124,6 +156,13 @@ stages:
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
           MAC_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Mac/dist'
           PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
+
+          MinicondaRoot: '/usr/local/miniconda'
+          PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
+          PythonLibDir: '$(PythonRoot)/lib'
+          PythonExecutable: '$(PythonRoot)/bin/python'
+          CondaExecutable: '$(MinicondaRoot)/condabin/conda'
+          PipExecutable: '$(PythonRoot)/bin/pip'
         steps:
 
           - checkout: self
@@ -175,41 +214,57 @@ stages:
             displayName: RunLibOmexMetaTests
           - script: |
               eval "$(conda shell.bash hook)"
-              conda create -y --name pyomexmeta python=3.8
-              conda activate pyomexmeta
-              pip install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
-              python_dir=$(dirname $(which python))
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+              $(CondaExecutable) activate $(PythonName)
+              $(PipExecutable) install ipython
+              $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target run-ctest --config Release
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
           - script: |
               eval "$(conda shell.bash hook)"
-              conda activate pyomexmeta
+              conda activate $(PythonName)
+              $(PipExecutable) install ipython
               cd $(INSTALL_DIRECTORY)
-              python setup.py bdist_wheel
+              $(PythonExecutable) setup.py bdist_wheel
               cd dist
               wheel=$(realpath $(ls))
-              pip install $wheel
-              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
+              $(PipExecutable) install $wheel
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
               sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
-              targetFolder: '$(Build.ArtifactStagingDirectory)'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
             displayName: Copy install to artifact staging area
           - task: PublishBuildArtifacts@1
             inputs:
-              pathToPublish: '$(Build.ArtifactStagingDirectory)'
-              artifactName: libOmexMeta-x64Mac
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+              artifactName: libOmexMeta-x64Mac-$(PythonName)
               Parallel: true
               ParallelCount: 8
 
       # windows
+  - stage: Windows
+    dependsOn: []
+    displayName: Windows
+    jobs:
       - job: BuildWindows
         timeoutInMinutes: "0"
+        strategy:
+          matrix:
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
         pool:
           vmImage: 'windows-2019'
         variables:
@@ -219,10 +274,20 @@ stages:
           SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
           CONDA_ACTIVATE: 'C:\Miniconda\bin\activate.exe'
-          PYTHON: 'C:\Miniconda\python.exe'
           PIP: 'C:\Miniconda\Scripts\pip.exe'
           PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
           WINDOWS_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Windows/dist'
+
+          MinicondaRoot: 'C:\Miniconda'
+          PythonRoot: '$(MinicondaRoot)\envs\$(PythonName)'
+          PythonScriptsDir: '$(PythonRoot)\Scripts'
+          CondaExecutable: '$(MinicondaRoot)\Scripts\conda.exe'
+          PythonExecutable: '$(PythonRoot)\python.exe'
+          IPythonExecutable: '$(PythonRoot)\Scripts\ipython.exe'
+          PythonLibDir: '$(PythonRoot)\Lib'
+          PythonIncludeDir: '$(PythonRoot)\include'
+          PipExecutable: '$(PythonScriptsDir)\pip.exe'
+          PyWin32Path: '$(PythonLibDir)\site-packages\pywin32_system32' # needs to be added to path for win32api
 
         steps:
           - checkout: self
@@ -239,6 +304,14 @@ stages:
               echo "Agent.OS $(Agent.OS)"
               echo "gcc $(gcc --version)"
               echo "g++ $(g++ --version)"
+              echo "MinicondaRoot            $(MinicondaRoot)"
+              echo "PythonRoot               $(PythonRoot)"
+              echo "PythonScriptsDir         $(PythonScriptsDir)"
+              echo "CondaExecutable          $(CondaExecutable)"
+              echo "PythonExecutable         $(PythonExecutable)"
+              echo "IPythonExecutable        $(IPythonExecutable)"
+              echo "PythonLibDir             $(PythonLibDir)"
+              echo "PipExecutable            $(PipExecutable)"
             displayName: PrintAzureVariables
 
           - task: Cache@2
@@ -262,25 +335,80 @@ stages:
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
+              # https://stackoverflow.com/a/63102942/3059024
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               cd "$(BUILD_DIRECTORY)"
               cmake --build . --target run-ctest --config Release -j 12
             displayName: RunLibOmexMetaTests
+
           - powershell: |
+
+              echo "cd D:\a\1\s\build\"
+              cd D:\a\1\s\build\
+              ls
+
               echo "Where.exe conda: "
               where.exe conda
+
               echo "Where.exe pip: "
               where.exe pip
-              conda shell.powershell hook
-              $(PIP) install breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 wheel
-              $python_dir = (Resolve-Path -LiteralPath (get-item (where.exe python | Select-Object -first 1)).Directory)
-              cd build
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$python_dir ..
-              cmake --build . --target run-ctest --config Release -j 12
+
+              echo "$(CondaExecutable) shell.powershell hook"
+              $(CondaExecutable) shell.powershell hook
+
+              echo "installing pywin32 on base python"
+              $(MinicondaRoot)/Scripts/pip.exe install pywin32
+
+
+              echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+
+              echo "$(CondaExecutable) activate $(PythonName)"
+              $(CondaExecutable) activate $(PythonName)
+
+              echo "$Env:LD_LIBRARY_PATH = $(PythonLibDir)"
+              $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
+
+              echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
+              $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+
+              echo "$(CondaExecutable) env list"
+              $(CondaExecutable) env list
+              #echo "python -c import pytest"
+              $(PythonExecutable) -c "import pytest"
+
+              #echo "python -c import win32api"
+              $(PythonExecutable) -c "import win32api"
+
+              If(!(test-path $(BUILD_DIRECTORY))) {
+                mkdir $(BUILD_DIRECTORY)
+              }
+              cd $(BUILD_DIRECTORY)
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
-            displayName: Run Tests With Python
+
+              echo "cd D:\a\1\s\build\"
+              cd D:\a\1\s\build\
+              ls
+
+              echo "cd D:\a\1\s\build\site-packages"
+              cd D:\a\1\s\build\site-packages\
+              ls
+
+              echo "cd D:\a\1\s\build\site-packages\pyomexmeta"
+              cd D:\a\1\s\build\site-packages\pyomexmeta
+              ls
+
+              ctest -C Release --verbose --extra-verbose --output-on-failure
+            displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
+
           - powershell: |
+
+
+              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+              $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               echo "Where.exe conda: "
               where.exe conda
               echo "Where.exe pip: "
@@ -291,130 +419,108 @@ stages:
               ls
               echo "where.exe"
               where.exe python
-              $(PIP) install wheel
               echo "running setup.py bdist_wheel"
-              $(PYTHON) setup.py bdist_wheel
+              $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              echo "running pip install wheel"
-              $(PIP) install $wheel
-              $(PYTHON) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              # echo "running $(PipExecutable) install wheel ipython python-libcombine"
+              # $(PipExecutable) install $wheel ipython python-libcombine
+              # echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              # $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
               sourceFolder: '$(INSTALL_DIRECTORY)'
               contents: '**'
-              targetFolder: '$(Build.ArtifactStagingDirectory)'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
             displayName: Copy install to artifact staging area
           - task: PublishBuildArtifacts@1
             inputs:
-              pathToPublish: '$(Build.ArtifactStagingDirectory)'
-              artifactName: libOmexMeta-x64Windows
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+              artifactName: libOmexMeta-x64Windows-$(PythonName)
               Parallel: true
               ParallelCount: 8
 
 
+  - stage: GenerateManyLinuxPipWheel
+    displayName: GenerateManyLinuxPipWheel
+    dependsOn: []
+    jobs:
+      - job:
+        strategy:
+          matrix:
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
+        pool:
+          vmImage: 'ubuntu-18.04'
+        container: ciaranwelsh/manylinux2014:latest
+        variables:
+          VCPKG_INSTALL_PREFIX: '/vcpkg'
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
 
-#  - stage: GenerateManyLinuxPipWheel
-#    displayName: GenerateManyLinuxPipWheel
-#    jobs:
-#      - job:
-#        pool:
-#          vmImage: 'ubuntu-18.04'
-#        container: dockcross/manylinux-x64
-#        variables:
-#          VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
-#          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
-#          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
-#          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
-#          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
-#          LINUX_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Ubuntu/dist'
-#          PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
-#        steps:
-#          - checkout: self
-#            submodules: recursive
-#
-#          - script: printenv
-#
-#          - bash: echo "##vso[task.prependpath]$CONDA/bin"
-#            displayName: Add conda to PATH
-#
-#          - script: |
-#              echo "Default directory: $(pwd)"
-#              echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
-#              echo "Pipeline.Workspace $(Pipeline.Workspace)"
-#              echo "System.DefaultWorkingDirectory $(System.DefaultWorkingDirectory)"
-#              echo "VCPKG_INSTALL_PREFIX $(VCPKG_INSTALL_PREFIX)"
-#              echo "SOURCE_DIRECORY $(SOURCE_DIRECORY)"
-#              echo "BUILD_DIRECTORY $(BUILD_DIRECTORY)"
-#              echo "Agent.OS $(Agent.OS)"
-#              echo "gcc $(gcc --version)"
-#              echo "g++ $(g++ --version)"
-#
-#            displayName: PrintAzureVariables
-#          - task: Cache@2
-#            inputs:
-#              key: 'vcpkg_cache | "$(Agent.Os)"'
-#              path: '$(VCPKG_INSTALL_PREFIX)'
-#          - script: |
-#              git clone https://github.com/microsoft/vcpkg.git $(VCPKG_INSTALL_PREFIX)
-#              cd $(VCPKG_INSTALL_PREFIX)
-#              ./bootstrap-vcpkg.sh
-#              vcpkg integrate install
-#              vcpkg install curl pcre openssl yajl sqlite3 liblzma
-#            displayName: InstallDependencies
-#
-#          - script: |
-#              echo "gcc $(gcc --version)"
-#              echo "g++ $(g++ --version)"
-#              sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-#              sudo apt-get update
-#              sudo apt-get install -y gcc-10 g++-10 graphviz
-#              update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10
-#              export CC=/usr/bin/gcc-10
-#              export CXX=/usr/bin/g++-10
-#              export C=/usr/bin/gcc-10
-#              mkdir $(BUILD_DIRECTORY)
-#              cd $(BUILD_DIRECTORY)
-#              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
-#              cmake --build . --target install --config Release -j 12
-#            displayName: BuildLibOmexMeta
-#          - script: |
-#              cd $(System.DefaultWorkingDirectory)/build
-#              cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release -j 12
-#            displayName: RunLibOmexMetaTests
-#          - script: |
-#              eval "$(conda shell.bash hook)"
-#              conda create -y --name pyomexmeta python=3.8
-#              conda activate pyomexmeta
-#              pip install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
-#              python_dir=$(dirname $(which python))
-#              cd $(BUILD_DIRECTORY)
-#              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(python_dir) ..
-#              cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
-#              cmake --build . --target install --config Release -j 12
-#            displayName: Run Tests With Python
-#          - script: |
-#              eval "$(conda shell.bash hook)"
-#              conda activate pyomexmeta
-#              cd $(INSTALL_DIRECTORY)
-#              python setup.py bdist_wheel
-#              cd dist
-#              wheel=$(realpath $(ls))
-#              echo "wheel is: $wheel"
-#              pip install $wheel
-#              ipython -c "import pyomexmeta;pyomexmeta.run_tests()"
-#            displayName: Build and install pip wheel then run tests from within Python
-#          - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
-#
-#          - task: CopyFiles@2
-#            inputs:
-#              sourceFolder: '$(INSTALL_DIRECTORY)'
-#              contents: '**'
-#              targetFolder: '$(Build.ArtifactStagingDirectory)'
-#          - task: PublishBuildArtifacts@1
-#            inputs:
-#              pathToPublish: '$(Build.ArtifactStagingDirectory)'
-#              artifactName: libOmexMeta-x64Linux
-#              Parallel: true
-#              ParallelCount: 8
+          MinicondaRoot: '/Miniconda3'
+          PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
+          CondaExecutable: '$(MinicondaRoot)/bin/conda'
+          PythonExecutable: '$(PythonRoot)/bin/python'
+          IPythonExecutable: '$(PythonRoot)/bin/ipython'
+          PythonLibDir: '$(PythonRoot)/Lib'
+          PythonIncludeDir: '$(PythonRoot)/include'
+          PipExecutable: '$(PythonRoot)/bin/pip'
+
+        steps:
+          - checkout: self
+            submodules: recursive
+
+          - script: |
+              eval "$(conda shell.bash hook)"
+              $(CondaExecutable) activate $(PythonName)
+
+              echo "mkdir $(BUILD_DIRECTORY)"
+              mkdir $(BUILD_DIRECTORY)
+
+              echo "cd $(BUILD_DIRECTORY)"
+              cd $(BUILD_DIRECTORY)
+
+              $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
+
+              yum install -y graphviz
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              cmake --build . --target install --config Release -j 12
+              ctest --verbose --extra-verbose --output-on-failure
+
+            displayName: Build With Python
+
+          - script: |
+              eval "$(conda shell.bash hook)"
+              $(CondaExecutable) activate $(PythonName)
+              cd $(INSTALL_DIRECTORY)
+              $(PythonExecutable) setup.py bdist_wheel
+              cd dist
+              wheel=$(realpath $(ls))
+              echo "wheel is: $wheel"
+              $(PipExecutable) install $wheel
+              # $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+
+            displayName: Build Pip Wheel
+          - task: CopyFiles@2
+            inputs:
+              sourceFolder: '$(INSTALL_DIRECTORY)'
+              contents: '**'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+            displayName: Copy install to artifact staging area
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+              artifactName: libOmexMeta-ManyLinux2014-$(PythonName)
+              Parallel: true
+              ParallelCount: 8
