@@ -8,16 +8,6 @@ import shutil
 import sys
 from typing import List
 
-print("------------------Doing python checks")
-print("sys.version")
-print(sys.version)
-print("sys.version_info")
-print(sys.version_info)
-print("sys.executable")
-print(sys.executable)
-print("help(modules)")
-print(help("modules"))
-
 _THIS_DIR = os.path.dirname(__file__)
 
 _EXTRA_SEARCH_DIR_FILE = os.path.join(_THIS_DIR, "ExtraSearchDirectories.txt")
