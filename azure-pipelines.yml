@@ -367,6 +367,9 @@ stages:
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
           - script: |
+              echo "pip ($(PipExecutable)) freeze"
+              $(PipExecutable) freeze
+              $(PipExecutable) install pywin32
               cd "$(BUILD_DIRECTORY)"
               cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
