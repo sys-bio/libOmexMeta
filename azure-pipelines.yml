@@ -343,13 +343,13 @@ stages:
               $(CondaExecutable) activate $(PythonName)
 
               echo "$(PipExecutable) install -y $packages"
-              $(PipExecutable) install -y $packages
+              $(PipExecutable) install $packages
               #echo "$ENV:PATH=\"$ENV:PATH;$(PythonScriptsDir)\""
               #$ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
-              #echo "$(CondaExecutable) env list"
-              #$(CondaExecutable) env list
+              echo "$(CondaExecutable) env list"
+              $(CondaExecutable) env list
               ##echo "ipython -c import pytest"
-              ##ipython -c "import pytest"
+              ipython -c "import pytest"
               #cd build
               ## Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
               #cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
