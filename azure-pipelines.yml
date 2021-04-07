@@ -291,6 +291,7 @@ stages:
           PythonLibDir: '$(PythonRoot)\Lib'
           PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
+          PyWin32Path: '$(PythonLibDir)/site-packages/pywin32_system32' # needs to be added to path for win32api
 
         steps:
           - checkout: self
@@ -338,6 +339,8 @@ stages:
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
+              # https://stackoverflow.com/a/63102942/3059024
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               cd "$(BUILD_DIRECTORY)"
               cmake --build . --target run-ctest --config Release -j 12
             displayName: RunLibOmexMetaTests

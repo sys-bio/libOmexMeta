@@ -53,7 +53,8 @@ __version__ = get_version()
 if sys.platform == "win32":
     try:
         import win32api
-    except ImportError:
+    except ImportError as e:
+        print(str(e))
         s = f"sys.path: {sys.path}\n"
         s += f"sys.platform: {sys.platform}\n"
         s += f"sys.executable: {sys.executable}\n"
