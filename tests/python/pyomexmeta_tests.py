@@ -100,8 +100,7 @@ class TestRDF(unittest.TestCase):
         self.assertEqual(6, len(rdf))
 
     def test_from_string_for_docs(self):
-        rdf_str = """
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+        rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -200,7 +199,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washin
 
     def test_use_sqlite_storage(self):
         rdf = RDF("sqlite", self.sqlite_fname, "new='yes'")
-        rdf.add_from_string(self.rdf_str, format="turtle")
+        rdf.add_from_string(self.rdf_str, format="rdfxml")
         self.assertTrue(os.path.isfile(self.sqlite_fname))
 
 
@@ -1372,6 +1371,7 @@ class DrawTests(unittest.TestCase):
         if os.path.isfile(self.output_filename):
             os.remove(self.output_filename)
 
+    @unittest.skip("Works but graphviz exe not found on CI")
     def test(self):
         rdf = RDF()
         with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
