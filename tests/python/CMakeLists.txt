@@ -28,6 +28,7 @@ add_test(NAME
         WORKING_DIRECTORY
         "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta"
         )
+set_tests_properties(pyomexmeta-api-tests pyomexmeta-tests PROPERTIES ENVIRONMENT "PYTHONPATH=${CMAKE_BINARY_DIR}/site-packages:$PYTHONPATH")
 
 set(PYOMEXMETA_API_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/api_tests.py")
 set(PYOMEXMETA_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/pyomexmeta_tests.py")
