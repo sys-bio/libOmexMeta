@@ -351,14 +351,6 @@ stages:
               cd D:\a\1\s\build\
               ls
 
-              echo "cd D:\a\1\s\build\site-packages"
-              cd D:\a\1\s\build\site-packages\
-              ls
-
-              echo "cd D:\a\1\s\build\site-packages\pyomexmeta"
-              cd D:\a\1\s\build\site-packages\pyomexmeta
-              ls
-
               echo "Where.exe conda: "
               where.exe conda
 

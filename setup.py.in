@@ -9,11 +9,14 @@ import os
 PYOMEXMETA_DIR = "@PYOMEXMETA_DIR@"
 
 
-"""
-Install with 
-    pip install --index-url https://test.pypi.org/simple pyomexmeta
-for now. 
-"""
+# See https://github.com/google/or-tools/issues/616
+from setuptools.command.install import install
+class InstallPlatlib(install):
+    def finalize_options(self):
+        install.finalize_options(self)
+        if self.distribution.has_ext_modules():
+            self.install_lib = self.install_platlib
+
 
 CLASSIFIERS = """\
 Development Status :: 3 - Alpha
@@ -36,6 +39,7 @@ Operating System :: Unix
 """
 
 
+# Todo this is dead now - libraries are statically linked so we don't need to deal with all this.
 binaries = [
     os.path.join(PYOMEXMETA_DIR, "concrt140.dll"),
     os.path.join(PYOMEXMETA_DIR, "api-ms-win-core-wow64-l1-1-0.dll"),
