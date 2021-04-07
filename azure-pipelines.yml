@@ -364,25 +364,25 @@ stages:
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
           - powershell: |
-              #$ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
-              #echo "Where.exe conda: "
-              #where.exe conda
-              #echo "Where.exe pip: "
-              #where.exe pip
-              #echo "Cding to install directory $INSTALL_DIRECTORY"
-              #cd $(INSTALL_DIRECTORY)
-              #echo "ls ing"
-              #ls
-              #echo "where.exe"
-              #where.exe python
-              #echo "running setup.py bdist_wheel"
-              #$(PythonExecutable) setup.py bdist_wheel
-              #$wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
-              #echo "Wheel is: $wheel"
-              #echo "running $(PipExecutable) install wheel ipython python-libcombine"
-              #$(PipExecutable) install $wheel ipython python-libcombine
-              #echo "Running $(IPythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
-              #$(IPythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+              echo "Where.exe conda: "
+              where.exe conda
+              echo "Where.exe pip: "
+              where.exe pip
+              echo "Cding to install directory $INSTALL_DIRECTORY"
+              cd $(INSTALL_DIRECTORY)
+              echo "ls ing"
+              ls
+              echo "where.exe"
+              where.exe python
+              echo "running setup.py bdist_wheel"
+              $(PythonExecutable) setup.py bdist_wheel
+              $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
+              echo "Wheel is: $wheel"
+              echo "running $(PipExecutable) install wheel ipython python-libcombine"
+              $(PipExecutable) install $wheel ipython python-libcombine
+              echo "Running $(IPythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              $(IPythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
