@@ -339,12 +339,11 @@ stages:
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
 
-
               echo "installing pywin32 on base python"
               $(MinicondaRoot)/Scripts/pip.exe install pywin32
 
-              echo "export LD_LIBRARY_PATH=$(PythonLibDir)"
-              export LD_LIBRARY_PATH=$(PythonLibDir)
+              echo "$Env:LD_LIBRARY_PATH = $(PythonLibDir)"
+              $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
 
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
@@ -381,7 +380,7 @@ stages:
               cd "$(BUILD_DIRECTORY)"
 
               # on windows, this is a must! otherwise we use the base miniconda3 python
-              export LD_LIBRARY_PATH=$(PythonLibDir)
+              $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
           - powershell: |
@@ -419,14 +418,25 @@ stages:
               ParallelCount: 8
 
 
-#  - stage: GenerateManyLinuxPipWheel
-#    displayName: GenerateManyLinuxPipWheel
-#    jobs:
-#      - job:
-#        pool:
-#          vmImage: 'ubuntu-18.04'
-#        container: dockcross/manylinux-x64
-#        variables:
+  - stage: GenerateManyLinuxPipWheel
+    displayName: GenerateManyLinuxPipWheel
+    jobs:
+      - job:
+        strategy:
+          matrix:
+            py37:
+              PythonVersion: 3.7
+              PythonName: py37
+            py38:
+              PythonVersion: 3.8
+              PythonName: py38
+            py39:
+              PythonVersion: 3.9
+              PythonName: py39
+        pool:
+          vmImage: 'ubuntu-18.04'
+        container: ciaranwelsh/manylinux2014
+        variables:
 #          VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
 #          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
 #          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
@@ -434,12 +444,13 @@ stages:
 #          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
 #          LINUX_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Ubuntu/dist'
 #          PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
-#        steps:
-#          - checkout: self
-#            submodules: recursive
-#
-#          - script: printenv
-#
+        steps:
+          - checkout: self
+            submodules: recursive
+
+          - script: |
+            ls /
+
 #          - bash: echo "##vso[task.prependpath]$CONDA/bin"
 #            displayName: Add conda to PATH
 #
