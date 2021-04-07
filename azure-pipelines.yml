@@ -384,8 +384,6 @@ stages:
               echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
               $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
 
-              #echo "$ENV:PATH=$ENV:PATH;$(PythonScriptsDir)"
-              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               echo "$(CondaExecutable) env list"
               $(CondaExecutable) env list
               #echo "python -c import pytest"
