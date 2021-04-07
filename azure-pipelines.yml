@@ -338,6 +338,14 @@ stages:
 
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
+
+
+              echo "installing pywin32 on base python"
+              $(MinicondaRoot)/Scripts/pip.exe install pywin32
+
+              echo "export LD_LIBRARY_PATH=$(PythonLibDir)"
+              export LD_LIBRARY_PATH=$(PythonLibDir)
+
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
 
@@ -371,6 +379,8 @@ stages:
               $(PipExecutable) freeze
               $(PipExecutable) install pywin32
               cd "$(BUILD_DIRECTORY)"
+
+              # on windows, this is a must! otherwise we use the base miniconda3 python
               export LD_LIBRARY_PATH=$(PythonLibDir)
               cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
