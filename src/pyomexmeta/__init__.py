@@ -17,7 +17,7 @@ def run_tests():
         "pyomexmeta_tests",
     ]
 
-    for t in other_test_modules:
+    for t in test_modules:
         unittest.main(module=t)
 
 
