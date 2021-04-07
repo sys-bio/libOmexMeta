@@ -339,6 +339,7 @@ stages:
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
 
+
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
 
@@ -363,7 +364,7 @@ stages:
               cmake --build . --target install --config Release -j 12
               ctest -C Release --verbose --extra-verbose
 
-            displayName: Run Tests With Python
+            displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
           - powershell: |
