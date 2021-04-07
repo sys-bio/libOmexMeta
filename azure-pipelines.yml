@@ -371,6 +371,7 @@ stages:
               $(PipExecutable) freeze
               $(PipExecutable) install pywin32
               cd "$(BUILD_DIRECTORY)"
+              export LD_LIBRARY_PATH=$(PythonLibDir)
               cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
           - powershell: |
