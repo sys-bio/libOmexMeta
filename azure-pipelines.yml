@@ -11,8 +11,13 @@ stages:
   - stage: BuildInstallAndTest
     displayName: Build, test and install
     jobs:
-#      # linux
-#      - job: BuildLinux
+
+      # linux
+#  - stage: BuildUbuntu
+#    dependsOn: []
+#    displayName: Build Ubuntu
+#    jobs:
+#      - job: BuildUbuntu
 #        timeoutInMinutes: "0"
 #        strategy:
 #          matrix:
@@ -128,7 +133,11 @@ stages:
 #              ParallelCount: 8
 #
 #      # macos
-#      - job: BuildMacOS
+#  - stage: MacOS
+#    dependsOn: []
+#    displayName: MacOs
+#    jobs:
+#      - job: BuildMacOs
 #        timeoutInMinutes: "0"
 #        strategy:
 #          matrix:
@@ -243,6 +252,10 @@ stages:
 #              ParallelCount: 8
 
       # windows
+  - stage: Windows
+    dependsOn: []
+    displayName: Windows
+    jobs:
       - job: BuildWindows
         timeoutInMinutes: "0"
         strategy:
@@ -420,6 +433,7 @@ stages:
 
   - stage: GenerateManyLinuxPipWheel
     displayName: GenerateManyLinuxPipWheel
+    dependsOn: []
     jobs:
       - job:
         strategy:
