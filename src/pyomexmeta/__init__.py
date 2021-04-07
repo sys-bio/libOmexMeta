@@ -12,8 +12,12 @@ __version__ = get_version()
 def run_tests():
     import os
     import unittest
-    loader = unittest.TestLoader()
-    start_dir = os.path.abspath(os.path.dirname(__file__))
-    suite = loader.discover(start_dir)
-    runner = unittest.TextTestRunner()
-    runner.run(suite)
+    test_modules = [
+        "api_tests",
+        "pyomexmeta_tests",
+    ]
+
+    for t in other_test_modules:
+        unittest.main(module=t)
+
+

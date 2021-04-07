@@ -24,17 +24,17 @@ add_test(NAME
 add_test(NAME
         pyomexmeta-tests
         COMMAND
-        Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/tests.py
+        Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/pyomexmeta_tests.py
         WORKING_DIRECTORY
         "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta"
         )
 
 set(PYOMEXMETA_API_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/api_tests.py")
-set(PYOMEXMETA_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/tests.py")
+set(PYOMEXMETA_TESTS_PY "${CMAKE_CURRENT_SOURCE_DIR}/pyomexmeta_tests.py")
 set(PYOMEXMETA_TEST_STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/test_strings.py")
 
 configure_file(${PYOMEXMETA_API_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/api_tests.py COPYONLY)
-configure_file(${PYOMEXMETA_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/tests.py COPYONLY)
+configure_file(${PYOMEXMETA_TESTS_PY} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/pyomexmeta_tests.py COPYONLY)
 configure_file(${PYOMEXMETA_TEST_STRINGS} ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/test_strings.py COPYONLY)
 
 
