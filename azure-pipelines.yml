@@ -369,13 +369,15 @@ stages:
               $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
 
               #echo "$ENV:PATH=\"$ENV:PATH;$(PythonScriptsDir)\""
-              #$ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               echo "$(CondaExecutable) env list"
               $(CondaExecutable) env list
-              ##echo "ipython -c import pytest"
-              $(IPythonExecutable) -c "import pytest"
+              #echo "python -c import pytest"
+              $(PythonExecutable) -c "import pytest"
 
-              ## Saved for lateR:  -DPython_EXECUTABLE=$(PythonExecutable) -DPython_LIBRARY=$(PythonLibDir) -DPython_INCLUDE_DIR=$(PythonIncludeDir)
+              #echo "python -c import win32api"
+              $(PythonExecutable) -c "import win32api"
+
               If(!(test-path $(BUILD_DIRECTORY))) {
                 mkdir $(BUILD_DIRECTORY)
               }
@@ -474,6 +476,7 @@ stages:
 
               $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
+              yum install -y graphviz
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
               ctest --verbose --extra-verbose --output-on-failure

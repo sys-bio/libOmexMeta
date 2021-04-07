@@ -54,7 +54,13 @@ if sys.platform == "win32":
     try:
         import win32api
     except ImportError:
-        raise ImportError("win32api not found. Please run `pip install pywin32`")
+        s = f"sys.path: {sys.path}\n"
+        s += f"sys.platform: {sys.platform}\n"
+        s += f"sys.executable: {sys.executable}\n"
+        s += f"sys.version_info: {sys.version_info}\n"
+        s += f"sys.version: {sys.version}\n"
+        raise ImportError(f"win32api not found. Please run `pip install pywin32`"
+                          f"System information: \n {s}")
     import win32con
 
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
