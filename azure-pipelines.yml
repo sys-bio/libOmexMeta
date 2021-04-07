@@ -393,11 +393,13 @@ stages:
               cd "$(BUILD_DIRECTORY)"
 
               # on windows, this is a must! otherwise we use the base miniconda3 python
+              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
           - powershell: |
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
+              $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               echo "Where.exe conda: "
               where.exe conda
               echo "Where.exe pip: "
@@ -471,15 +473,33 @@ stages:
             submodules: recursive
 
           - script: |
+              eval "$(conda shell.bash hook)"
+              $(CondaExecutable) activate $(PythonName)
+
               echo "mkdir $(BUILD_DIRECTORY)"
               mkdir $(BUILD_DIRECTORY)
 
               echo "cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
 
+              pip install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
+
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
-              ctest -C Release --verbose --extra-verbose
+              ctest --verbose --extra-verbose
 
             displayName: Build With Python
+
+          - script: |
+              eval "$(conda shell.bash hook)"
+              $(CondaExecutable) activate $(PythonName)
+              cd $(INSTALL_DIRECTORY)
+              $(PythonExecutable) setup.py bdist_wheel
+              cd dist
+              wheel=$(realpath $(ls))
+              echo "wheel is: $wheel"
+              $(PipExecutable) install $wheel
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+
+            displayName: Build Pip Wheel
 
