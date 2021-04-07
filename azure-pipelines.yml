@@ -8,9 +8,9 @@ pr:
 - develop
 
 stages:
-  - stage: BuildInstallAndTest
-    displayName: Build, test and install
-    jobs:
+#  - stage: BuildInstallAndTest
+#    displayName: Build, test and install
+#    jobs:
 
       # linux
 #  - stage: BuildUbuntu
