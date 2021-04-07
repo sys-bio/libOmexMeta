@@ -436,20 +436,13 @@ stages:
         pool:
           vmImage: 'ubuntu-18.04'
         container: ciaranwelsh/manylinux2014
-        variables:
-#          VCPKG_INSTALL_PREFIX: '$(Pipeline.Workspace)/vcpkg'
-#          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
-#          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
-#          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
-#          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
-#          LINUX_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Ubuntu/dist'
-#          PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
+        # variables:
         steps:
           - checkout: self
             submodules: recursive
 
           - script: |
-            ls /
+              ls /
 
 #          - bash: echo "##vso[task.prependpath]$CONDA/bin"
 #            displayName: Add conda to PATH
