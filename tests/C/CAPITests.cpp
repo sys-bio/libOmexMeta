@@ -124,10 +124,18 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
 TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
     std::filesystem::path fname = std::filesystem::current_path() += "SqliteStorageTest.db";
     RDF *rdf_ptr = RDF_new("sqlite", fname.string().c_str(), "new='yes'");
-    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
-    int expected = 277;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_1>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
+                           "\n"
+                           "";
+    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
     ASSERT_TRUE(std::filesystem::exists(fname));
     RDF_delete(rdf_ptr);
     std::filesystem::remove(fname);
