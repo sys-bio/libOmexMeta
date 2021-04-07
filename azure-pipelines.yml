@@ -381,7 +381,6 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
-              # ctest -C Release --verbose --extra-verbose
 
             displayName: Build With Python
             # publish python packages in azure:
@@ -395,7 +394,7 @@ stages:
               # on windows, this is a must! otherwise we use the base miniconda3 python
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
-              cmake --build . --target run-ctest --config Release -j 12
+              # cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
           - powershell: |
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
