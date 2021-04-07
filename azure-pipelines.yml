@@ -385,7 +385,9 @@ stages:
             displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
-          - script: |
+
+
+          - powershell: |
               echo "pip ($(PipExecutable)) freeze"
               $(PipExecutable) freeze
               $(PipExecutable) install pywin32
@@ -396,6 +398,8 @@ stages:
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               # cmake --build . --target run-ctest --config Release -j 12
             displayName: Run Tests With Python
+
+
           - powershell: |
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
@@ -461,7 +465,7 @@ stages:
           MinicondaRoot: '/Miniconda3'
           PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
           CondaExecutable: '$(MinicondaRoot)/bin/conda'
-          PythonExecutable: '$(PythonRoot)/python'
+          PythonExecutable: '$(PythonRoot)/bin/python'
           IPythonExecutable: '$(PythonRoot)/bin/ipython'
           PythonLibDir: '$(PythonRoot)/Lib'
           PythonIncludeDir: '$(PythonRoot)/include'
