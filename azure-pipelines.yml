@@ -386,20 +386,6 @@ stages:
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
 
-
-          - powershell: |
-              echo "pip ($(PipExecutable)) freeze"
-              $(PipExecutable) freeze
-              $(PipExecutable) install pywin32
-              cd "$(BUILD_DIRECTORY)"
-
-              # on windows, this is a must! otherwise we use the base miniconda3 python
-              $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
-              $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
-              # cmake --build . --target run-ctest --config Release -j 12
-            displayName: Run Tests With Python
-
-
           - powershell: |
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
@@ -419,8 +405,8 @@ stages:
               echo "Wheel is: $wheel"
               echo "running $(PipExecutable) install wheel ipython python-libcombine"
               $(PipExecutable) install $wheel ipython python-libcombine
-              echo "Running $(IPythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
-              $(IPythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
@@ -505,4 +491,15 @@ stages:
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
 
             displayName: Build Pip Wheel
-
+          - task: CopyFiles@2
+            inputs:
+              sourceFolder: '$(INSTALL_DIRECTORY)'
+              contents: '**'
+              targetFolder: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+            displayName: Copy install to artifact staging area
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
+              artifactName: libOmexMeta-ManyLinux2014-$(PythonName)
+              Parallel: true
+              ParallelCount: 8
