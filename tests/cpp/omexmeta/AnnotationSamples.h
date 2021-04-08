@@ -399,9 +399,9 @@ public:
                                                     "@prefix OMEXlib: <http://omex-library.org/> .\n"
                                                     "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                                                     "\n"
-                                                    "local:Process0000\n"
-                                                    "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
-                                                    "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                                                    "local:ProcessProperty0000\n"
+                                                    "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;\n"
+                                                    "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
                                                     "\n"
                                                     "local:SinkParticipant0000\n"
                                                     "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
@@ -418,8 +418,8 @@ public:
                                                     "    ] .\n"
                                                     "\n"
                                                     "<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>\n"
-                                                    "    bqbiol:isPropertyOf local:Process0000 ;\n"
-                                                    "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n";
+                                                    "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                                                    "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
 
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
