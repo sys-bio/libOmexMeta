@@ -62,6 +62,7 @@ class TestAPI(unittest.TestCase):
         actual = self.pyom.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
 
+    @unittest.skip("url broken")
     def test_rdf_from_uri(self):
         sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 
@@ -74,6 +75,7 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual)
         self.pyom.rdf_delete(rdf)
 
+    @unittest.skip("url broken")
     def test_rdf_add_from_uri(self):
         sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 

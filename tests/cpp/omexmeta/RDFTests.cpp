@@ -256,6 +256,35 @@ TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
 
 }
 
+TEST_F(RDFTests, TestReadSBMLModelWithBagFromString) {
+    RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
+    std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
+    RDF actualRdf = RDF::fromString(sbml, "rdfxml");
+    ASSERT_EQ(expectedRdf, actualRdf);
+}
+
+TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
+    std::filesystem::path fname = std::filesystem::current_path() /+ "sbml.xml";
+    RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
+
+    // get sbml as string
+    std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
+
+    // write it to file
+    std::ofstream f;
+    f.open(fname);
+    f << sbml;
+    f.close();
+
+    RDF actualRdf = RDF::fromFile(fname.string(), "rdfxml");
+    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle"));
+
+    // clean up file
+    remove(fname);
+
+
+}
+
 TEST_F(RDFTests, TestRepositoryPrefix){
     RDF rdf = RDF::fromString(samples.singular_annotation1);
     std::string turtle_string = rdf.toString("turtle");

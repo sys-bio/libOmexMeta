@@ -53,7 +53,7 @@ namespace omexmeta {
     RDF RDF::fromString(const std::string &str, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
-        LibrdfUri u(rdf.getLocalUri());
+        LibrdfUri u(rdf.getModelUri());
         parser.parseString(str, rdf.model_, u);
         u.freeUri();
 
@@ -100,7 +100,7 @@ namespace omexmeta {
 
         LibrdfParser parser(format);
 
-        LibrdfUri u = LibrdfUri::fromFilename(getLocalUri());
+        LibrdfUri u = LibrdfUri::fromFilename(getModelUri());
         parser.parseString(str, model_, u);
         u.freeUri();
 
@@ -163,7 +163,7 @@ namespace omexmeta {
     RDF RDF::fromFile(const std::string &filename, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
-        parser.parseFile(filename, rdf.model_, rdf.getLocalUri());
+        parser.parseFile(filename, rdf.model_, rdf.getModelUri());
         rdf.classifyXmlTypeFromFile(filename, format);
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
@@ -178,7 +178,7 @@ namespace omexmeta {
 
     void RDF::addFromFile(const std::string &filename, const std::string &format) {
         LibrdfParser parser(format);
-        parser.parseFile(filename, model_, getLocalUri());
+        parser.parseFile(filename, model_, getModelUri());
         classifyXmlTypeFromFile(filename, format);
         // update the list of "seen" namespaces
         seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);

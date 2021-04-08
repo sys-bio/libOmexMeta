@@ -393,6 +393,33 @@ public:
                                             "  </rdf:Description>\n"
                                             "</rdf:RDF>";
 
+    std::string annotationFromSBMLModelWithRDFBag = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                                    "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                                                    "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                                                    "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                                                    "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                                    "\n"
+                                                    "local:Process0000\n"
+                                                    "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
+                                                    "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
+                                                    "\n"
+                                                    "local:SinkParticipant0000\n"
+                                                    "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                                                    "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .\n"
+                                                    "\n"
+                                                    "local:SourceParticipant0000\n"
+                                                    "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                                                    "    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#S1> .\n"
+                                                    "\n"
+                                                    "<http://omex-library.org/NewOmex.omex/NewModel.xml#S1>\n"
+                                                    "    bqbiol:isVersionOf [\n"
+                                                    "        rdf:_1 <http://identifiers.org/obo.chebi/CHEBI:16526> ;\n"
+                                                    "        a rdf:Bag\n"
+                                                    "    ] .\n"
+                                                    "\n"
+                                                    "<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>\n"
+                                                    "    bqbiol:isPropertyOf local:Process0000 ;\n"
+                                                    "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n";
 
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
