@@ -21,7 +21,6 @@ using namespace omexmeta;
 class PhysicalProcessTests : public ::testing::Test {
 };
 
-// todo think about returning *this from physical entity when modifying a physical property.
 
 /**
  * Test creation of PhysicalProcess type of composite annotation.
