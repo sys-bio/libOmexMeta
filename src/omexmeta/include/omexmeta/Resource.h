@@ -18,7 +18,7 @@
 using namespace redland;
 
 namespace omexmeta {
-    class Resource {
+    class [[deprecated("Use redland::LibRDFNode directly instead. i.e. LibRDFNode::fromUriString(...).get()")]] Resource {
 
         explicit Resource(librdf_node *node);
 

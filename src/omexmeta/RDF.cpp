@@ -332,7 +332,7 @@ namespace omexmeta {
         return uriHandler_.getRepository();
     }
 
-    void RDF::setRepositoryUri(const std::string& repositoryName) {
+    void RDF::setRepositoryUri(const std::string &repositoryName) {
         uriHandler_.setRepository(repositoryName);
     }
 
@@ -340,7 +340,7 @@ namespace omexmeta {
         return uriHandler_.getArchive();
     }
 
-    void RDF::setArchiveUri(const std::string& archiveName) {
+    void RDF::setArchiveUri(const std::string &archiveName) {
         uriHandler_.setArchive(archiveName);
     }
 
@@ -348,7 +348,7 @@ namespace omexmeta {
         return uriHandler_.getModel();
     }
 
-    void RDF::setModelUri(std::string modelName){
+    void RDF::setModelUri(std::string modelName) {
         uriHandler_.setModel(std::move(modelName));
     }
 
@@ -509,6 +509,74 @@ namespace omexmeta {
             std::cout << second_rdf.toString("turtle") << std::endl;
         }
         return equal;
+    }
+
+
+    void RDF::purgeRDFBag() {
+        std::string q = "SELECT  ?blank ?subject ?predicate ?rdfTypePredicateRemoveMe ?removeMePredicate2 ?resource   \n"
+                        "WHERE {\n"
+                        "?subject ?predicate ?blank . \n"
+                        "?blank ?rdfTypePredicateRemoveMe <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .\n"
+                        "?blank ?removeMePredicate2 ?resource\n"
+                        "}\n";
+
+        Query query(model_.get(), q);
+        auto results = query.resultsAsMap();
+
+        for (int i = 0; i < results["subject"].size(); i++) {
+            const std::string &rdfTypePredicateRemoveMe = results["rdfTypePredicateRemoveMe"][i];
+            const std::string &subject = results["subject"][i];
+            const std::string &predicate = results["predicate"][i];
+            const std::string &removeMePredicate2 = results["removeMePredicate2"][i];
+            const std::string &resource = results["resource"][i];
+            const std::string &blank = results["blank"][i];
+
+            Triple tripleToRemove(
+                    LibrdfNode::fromBlank(blank).get(),
+                    LibrdfNode::fromUriString(rdfTypePredicateRemoveMe).get(),
+                    LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag").get());
+            librdf_model_remove_statement(model_.get(), tripleToRemove.getStatement());
+            tripleToRemove.freeTriple();
+
+            tripleToRemove = Triple(
+                    LibrdfNode::fromUriString(subject).get(),
+                    LibrdfNode::fromUriString(predicate).get(),
+                    LibrdfNode::fromBlank(blank).get());
+            librdf_model_remove_statement(model_.get(), tripleToRemove.getStatement());
+            tripleToRemove.freeTriple();
+
+            if (resource != "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag") {
+                // We first need to construct the triple we want to remove
+                // so that we can actually remove it
+
+                tripleToRemove = Triple(
+                        LibrdfNode::fromBlank(blank).get(),
+                        LibrdfNode::fromUriString(removeMePredicate2).get(),
+                        LibrdfNode::fromUriString(resource).get());
+                librdf_model_remove_statement(model_.get(), tripleToRemove.getStatement());
+                tripleToRemove.freeTriple();
+
+                // Now construct the triple extracted from the rdf:Bag
+                // and add to the model
+                Triple triple(
+                        LibrdfNode::fromUriString(subject).get(),
+                        LibrdfNode::fromUriString(predicate).get(),
+                        LibrdfNode::fromUriString(resource).get());
+                librdf_model_add_statement(model_.get(), triple.getStatement());
+                triple.freeTriple();
+            }
+        }
+
+        //        for (auto [variableName, resultList] :results){
+        //            std::cout << variableName << std::endl;
+        //            for (auto i: resultList){
+        //                std::cout << "\t" << i << std::endl;
+        //            }
+        //        }
+        //
+        //        for (auto [first, second] : results) {
+        //            std::cout << first << ";  ";// << second << std::endl;
+        //        }
     }
 
 

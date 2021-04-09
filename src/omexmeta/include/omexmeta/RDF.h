@@ -365,6 +365,11 @@ namespace omexmeta {
          */
         static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle");
 
+        /**
+         * @brief Remove rdf:bag from graph without loosing information
+         */
+        void purgeRDFBag();
+
     };
 }
 

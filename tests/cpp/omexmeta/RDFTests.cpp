@@ -301,6 +301,215 @@ TEST_F(RDFTests, TestLocalPrefix){
 }
 
 
+TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
+    std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+//    std::cout << model_string << std::endl;
+    RDF rdf;
+    rdf.setArchiveUri("AnAwesomeOmex.omex");
+    rdf.setModelUri("Model1.xml");
+    Editor editor = rdf.toEditor(model_string, true);
+    SBMLSemanticExtraction extraction(&editor);
+    extraction.extractProcessesFromReactions();
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/AnAwesomeOmex.omex/Model1.rdf#> .\n"
+                           "\n"
+                           "local:MediatorParticipant0000\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
+                           "\n"
+                           "local:MediatorParticipant0001\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
+                           "\n"
+                           "local:ProcessProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
+                           "\n"
+                           "local:ProcessProperty0001\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
+                           "\n"
+                           "local:ProcessProperty0002\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
+                           "\n"
+                           "local:ProcessProperty0003\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
+                           "\n"
+                           "local:SinkParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
+                           "\n"
+                           "local:SinkParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4> .\n"
+                           "\n"
+                           "local:SinkParticipant0002\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
+                           "\n"
+                           "local:SinkParticipant0003\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4> .\n"
+                           "\n"
+                           "local:SourceParticipant0000\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2> .\n"
+                           "\n"
+                           "local:SourceParticipant0001\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3> .\n"
+                           "\n"
+                           "local:SourceParticipant0002\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
+                           "\n"
+                           "local:SourceParticipant0003\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2> .\n"
+                           "\n"
+                           "local:SourceParticipant0004\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3> .\n"
+                           "\n"
+                           "local:SourceParticipant0005\n"
+                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
+                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1>\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0002 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0003 .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2>\n"
+                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000, local:MediatorParticipant0001 ;\n"
+                           "    semsim:hasSinkParticipant local:SinkParticipant0001, local:SinkParticipant0003 ;\n"
+                           "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002, local:SourceParticipant0004, local:SourceParticipant0005 .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#extraCell> .\n"
+                           "\n"
+                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5>\n"
+                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    OmexMetaTestUtils::equals(&rdf, expected);
+}
+
+
+TEST_F(RDFTests, TestBagConversionSimple) {
+    RDF rdf = RDF::fromString(samples.simpleRDFBag, "turtle");
+    rdf.purgeRDFBag();
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#S1>\n"
+                           "    bqbiol:isVersionOf <http://identifiers.org/obo.chebi/CHEBI:16526>, <http://identifiers.org/obo.chebi/CHEBI:16527>, <http://identifiers.org/obo.chebi/CHEBI:16528> .";
+
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
+
+}
+
+TEST_F(RDFTests, TestBagConversionWithVCardInTheMix) {
+    std::string input = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                        "                 xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
+                        "                 xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                        "                 xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+                        "            <rdf:Description rdf:about=\"#_272044\">\n"
+                        "                <dc:creator>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:parseType=\"Resource\">\n"
+                        "                            <vCard:N rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Family>Chelliah</vCard:Family>\n"
+                        "                                <vCard:Given>Vijayalakshmi</vCard:Given>\n"
+                        "                            </vCard:N>\n"
+                        "                            <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>\n"
+                        "                            <vCard:ORG rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Orgname>EMBL-EBI</vCard:Orgname>\n"
+                        "                            </vCard:ORG>\n"
+                        "                        </rdf:li>\n"
+                        "                        <rdf:li rdf:parseType=\"Resource\">\n"
+                        "                            <vCard:N rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Family>Nikoloski</vCard:Family>\n"
+                        "                                <vCard:Given>Zoran</vCard:Given>\n"
+                        "                            </vCard:N>\n"
+                        "                            <vCard:EMAIL>nikoloski@mpimp-golm.mpg.de</vCard:EMAIL>\n"
+                        "                            <vCard:ORG rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Orgname>Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                        "                                    Potsdam, Germany\n"
+                        "                                </vCard:Orgname>\n"
+                        "                            </vCard:ORG>\n"
+                        "                        </rdf:li>\n"
+                        "                        <rdf:li rdf:parseType=\"Resource\">\n"
+                        "                            <vCard:N rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Family>Arnold</vCard:Family>\n"
+                        "                                <vCard:Given>Anne</vCard:Given>\n"
+                        "                            </vCard:N>\n"
+                        "                            <vCard:EMAIL>arnold@mpimp-golm.mpg.de</vCard:EMAIL>\n"
+                        "                            <vCard:ORG rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Orgname>Max-Planck-Institute of Molecular Plant Physiology</vCard:Orgname>\n"
+                        "                            </vCard:ORG>\n"
+                        "                        </rdf:li>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </dc:creator>\n"
+                        "                <dcterms:created rdf:parseType=\"Resource\">\n"
+                        "                    <dcterms:W3CDTF>2011-10-19T14:51:13Z</dcterms:W3CDTF>\n"
+                        "                </dcterms:created>\n"
+                        "                <dcterms:modified rdf:parseType=\"Resource\">\n"
+                        "                    <dcterms:W3CDTF>2012-04-20T19:52:45Z</dcterms:W3CDTF>\n"
+                        "                </dcterms:modified>\n"
+                        "                <bqmodel:is>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/biomodels.db/MODEL1109270001\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:is>\n"
+                        "                <bqmodel:is>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/biomodels.db/BIOMD0000000385\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:is>\n"
+                        "                <bqmodel:isDescribedBy>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/pubmed/22001849\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:isDescribedBy>\n"
+                        "                <bqmodel:is>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/obo.go/GO:0019253\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:is>\n"
+                        "                <bqbiol:hasTaxon>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/taxonomy/33090\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqbiol:hasTaxon>\n"
+                        "            </rdf:Description>\n"
+                        "        </rdf:RDF>";
+    RDF rdf = RDF::fromString(input, "rdfxml");
+    rdf.purgeRDFBag();
+
+    std::string expected = "This test can only be completed after we know how to convert "
+                           "VCard information from rdf:Bag";
+
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
+
+}
+
+
 
 class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {
 public:

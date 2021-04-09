@@ -399,7 +399,6 @@ namespace omexmeta {
          */
         PhysicalProperty* newPhysicalPropertyPtr();
 
-
     };
 
 }

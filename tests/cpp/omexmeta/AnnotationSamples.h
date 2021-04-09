@@ -6,12 +6,11 @@
 #define LIBSEMGEN_ANNOTATIONSAMPLES_H
 
 
-#include <string>
 #include "omexmeta/OmexMetaUtils.h"
+#include <string>
 
 class AnnotationSamples {
 public:
-
     // urls and filepaths for some sbml samples
     std::string sbml_url1 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
     std::string sbml_filename1 = "./sbml_file1.sbml";
@@ -421,15 +420,26 @@ public:
                                                     "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                                                     "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
 
+    std::string simpleRDFBag = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                               "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                               "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
+                               "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                               "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                               "\n"
+                               "<http://omex-library.org/NewOmex.omex/NewModel.xml#S1>\n"
+                               "    bqbiol:isVersionOf [\n"
+                               "        rdf:_1 <http://identifiers.org/obo.chebi/CHEBI:16526> ;\n"
+                               "        rdf:_2 <http://identifiers.org/obo.chebi/CHEBI:16527> ;\n"
+                               "        rdf:_2 <http://identifiers.org/obo.chebi/CHEBI:16528> ;\n"
+                               "        a rdf:Bag\n"
+                               "    ] .";
+
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
             omexmeta::OmexMetaUtils::removeIfExists(file);
         }
     }
-
 };
 
 
-#endif //LIBSEMGEN_ANNOTATIONSAMPLES_H
-
-
+#endif//LIBSEMGEN_ANNOTATIONSAMPLES_H

@@ -18,7 +18,10 @@ using namespace redland;
 
 namespace omexmeta {
 
-    class Subject {
+    /*
+     *
+     */
+    class [[deprecated("Use redland::LibRDFNode directly instead. i.e. LibRDFNode::fromUriString(...).get()")]] Subject {
     private:
         librdf_node *node_ = nullptr;
 

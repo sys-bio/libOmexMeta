@@ -97,8 +97,8 @@ namespace omexmeta {
                     throw std::invalid_argument("Editor::checkValidMetaid: metaid "
                                                 "\"" +
                                                 metaid + "\" was given but it does not "
-                                                     "contain a fragment portion "
-                                                     "(i.e. the bit after \"#\"). ");
+                                                         "contain a fragment portion "
+                                                         "(i.e. the bit after \"#\"). ");
                 }
                 // now that we've checked we have a "#" in the uri, we can split on it
                 std::vector<std::string> split_string = OmexMetaUtils::splitStringBy(metaid, '#');
@@ -112,7 +112,7 @@ namespace omexmeta {
                     break;
                 }
 
-            }else {
+            } else {
                 // if we are not dealing with a full uri (starts with http)
                 // we can just compare against the metaid
                 if (metaid == it) {
@@ -475,6 +475,7 @@ namespace omexmeta {
     OmexMetaXmlType Editor::getType() const { return type_; }
 
     void Editor::setType(OmexMetaXmlType type) { type_ = type; }
+
 
 
 }// namespace omexmeta
