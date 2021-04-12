@@ -9,16 +9,12 @@
 namespace omexmeta {
 
     Editor::Editor(std::string xml_or_file, bool create_ids,
-                   const LibrdfModel &model, NamespaceMap &ns_map,
-                   bool generate_new_metaids, bool sbml_semantic_extraction,
-                   const std::string &repository_uri,
-                   const std::string &archive_uri, const std::string &model_uri,
-                   const std::string &local_uri)
+                   const LibrdfModel &model, NamespaceMap &ns_map, UriHandler& uriHandler,
+                   bool generate_new_metaids, bool sbml_semantic_extraction)
         : xml_(std::move(xml_or_file)), create_ids_(create_ids), model_(model), namespaces_(ns_map),
           generate_new_metaids_(generate_new_metaids),
           sbml_semantic_extraction_(sbml_semantic_extraction),
-          repository_uri_(repository_uri), archive_uri_(archive_uri),
-          model_uri_(model_uri), local_uri_(local_uri) {
+          uriHandler_ (uriHandler){
         // sometimes in the python api users can accidentally start the sbml
         // string with a new line character. Catch this and error.
         if (OmexMetaUtils::startsWith(xml_, "\n")) {
@@ -63,8 +59,7 @@ namespace omexmeta {
 
     const std::vector<std::string> &Editor::getMetaids() const { return metaids_; }
 
-    const std::unordered_map<std::string, std::string> &
-    Editor::getNamespaces() const {
+    const std::unordered_map<std::string, std::string> &Editor::getNamespaces() const {
         return namespaces_;
     }
 
@@ -97,8 +92,8 @@ namespace omexmeta {
                     throw std::invalid_argument("Editor::checkValidMetaid: metaid "
                                                 "\"" +
                                                 metaid + "\" was given but it does not "
-                                                     "contain a fragment portion "
-                                                     "(i.e. the bit after \"#\"). ");
+                                                         "contain a fragment portion "
+                                                         "(i.e. the bit after \"#\"). ");
                 }
                 // now that we've checked we have a "#" in the uri, we can split on it
                 std::vector<std::string> split_string = OmexMetaUtils::splitStringBy(metaid, '#');
@@ -112,7 +107,7 @@ namespace omexmeta {
                     break;
                 }
 
-            }else {
+            } else {
                 // if we are not dealing with a full uri (starts with http)
                 // we can just compare against the metaid
                 if (metaid == it) {
@@ -424,13 +419,13 @@ namespace omexmeta {
         return *this;
     }
 
-    std::string Editor::getLocalUri() const { return local_uri_; }
+    std::string Editor::getLocalUri() const { return uriHandler_.getLocal(); }
 
-    std::string Editor::getModelUri() const { return model_uri_; }
+    std::string Editor::getModelUri() const { return uriHandler_.getModel(); }
 
-    std::string Editor::getArchiveUri() const { return archive_uri_; }
+    std::string Editor::getArchiveUri() const { return uriHandler_.getArchive(); }
 
-    std::string Editor::getRepositoryUri() const { return repository_uri_; }
+    std::string Editor::getRepositoryUri() const { return uriHandler_.getRepository(); }
 
     LibrdfNode Editor::createNodeWithModelUri(const std::string &string) const {
         if (getModelUri().empty()) {

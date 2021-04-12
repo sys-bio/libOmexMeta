@@ -254,13 +254,11 @@ namespace omexmeta {
     }
 
     Editor RDF::toEditor(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
-        return Editor(xml, false, model_, namespaces_, generate_new_metaids, sbml_semantic_extraction,
-                      getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
+        return Editor(xml, false, model_, namespaces_, uriHandler_, generate_new_metaids, sbml_semantic_extraction);
     }
 
     Editor *RDF::toEditorPtr(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
-        auto *editor = new Editor(xml, false, model_, namespaces_, generate_new_metaids, sbml_semantic_extraction,
-                                  getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
+        auto *editor = new Editor(xml, false, model_, namespaces_, uriHandler_, generate_new_metaids, sbml_semantic_extraction);
         return editor;
     }
 

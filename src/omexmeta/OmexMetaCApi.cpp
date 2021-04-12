@@ -253,7 +253,7 @@ namespace omexmeta {
             return RDF::equals(rdf_ptr, serialized_rdf, format);
         } catch (std::exception &error) {
             setLastError(error.what());
-            return -1;
+            return false;
         }
     }
 
@@ -262,7 +262,7 @@ namespace omexmeta {
             return RDF::equals(rdf_ptr1, rdf_ptr2, format);
         } catch (std::exception &error) {
             setLastError(error.what());
-            return -1;
+            return false;
         }
     }
 
@@ -271,7 +271,7 @@ namespace omexmeta {
             return RDF::equals(first_rdf_graph, second_rdf_graph, format);
         } catch (std::exception &error) {
             setLastError(error.what());
-            return -1;
+            return false;
         }
     }
 
@@ -286,8 +286,8 @@ namespace omexmeta {
 
 
     /*********************************************************************
- * Editor class methods
- */
+     * Editor class methods
+     */
 
     SingularAnnotation *Editor_newSingularAnnotation(Editor *editor_ptr) {
         try {
