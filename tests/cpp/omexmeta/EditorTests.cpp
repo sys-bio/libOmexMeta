@@ -411,14 +411,14 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("#species0001")
+            .about("species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
     editor.removeSingleAnnotation(singularAnnotation);
 
-    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("#species0001");
+    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("species0001");
     singularAnnotation2
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02636");
@@ -449,7 +449,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#species0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("species0001");
     singularAnnotation
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
@@ -470,7 +470,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("#species0001")
+            .about("species0001")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
@@ -653,7 +653,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#species0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("species0001");
     singularAnnotation
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");

@@ -19,7 +19,6 @@ class PhysicalEntityTests : public ::testing::Test {
 
 public:
     PhysicalEntityTests() = default;
-    ;
 
     ~PhysicalEntityTests() override = default;
 };

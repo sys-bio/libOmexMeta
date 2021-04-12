@@ -15,6 +15,14 @@ namespace omexmeta {
           sources_(std::move(sources)), sinks_(std::move(sinks)) {
     }
 
+    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler,
+                                 PhysicalProperty physicalProperty,
+                                 Sources sources,
+                                 Sinks sinks)
+        : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_PROCESS),
+          sources_(std::move(sources)), sinks_(std::move(sinks)) {
+    }
+
     const std::vector<SourceParticipant> &EnergyDiff::getSources() const {
         return sources_;
     }
@@ -75,13 +83,13 @@ namespace omexmeta {
     EnergyDiff &EnergyDiff::addSource(const std::string &physical_entity_reference, eUriType type) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_, 0.0, physical_entity_reference, type, getModelUri(), getLocalUri())));
+                        model_, 0.0, physical_entity_reference, type, uriHandler_)));
         return (*this);
     }
 
     EnergyDiff &EnergyDiff::addSink(const std::string &physical_entity_reference, eUriType type) {
         sinks_.push_back(
-                SinkParticipant(model_, 0.0, physical_entity_reference, type, getModelUri(), getLocalUri()));
+                SinkParticipant(model_, 0.0, physical_entity_reference, type, uriHandler_));
         return (*this);
     }
 
@@ -90,6 +98,9 @@ namespace omexmeta {
 
     EnergyDiff::EnergyDiff(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
         : PropertyBearer(model, model_uri, local_uri) {}
+
+    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler)
+        : PropertyBearer(model, uriHandler) {}
 
     int EnergyDiff::getNumSources() {
         return sources_.size();

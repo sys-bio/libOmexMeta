@@ -16,8 +16,9 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
-    std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
-    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+//    std::string model_uri = "http://omex-library.org/NewOmex.omex/NewModel.xml#";
+//    std::string local_uri = "http://omex-library.org/NewOmex.omex/NewModel.rdf#";
+    UriHandler uriHandler;
     std::vector<std::string> exclusions;
 
     ParticipantTests() {
@@ -35,7 +36,7 @@ public:
  */
 TEST_F(ParticipantTests, TestCreateParticipant) {
     Participant participant(
-            model.get(), "MetaId0014", model_uri,  local_uri, "hasSourceParticipant",
+            model.get(), "MetaId0014", uriHandler, "hasSourceParticipant",
             1.0, "MetaId0015", MODEL_URI
     );
     std::cout << participant.getPredicate() <<std::endl;
@@ -49,7 +50,7 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipant1) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     // SemSim predicate is made on the fly now.
     SemSim ss(sink.getPredicate());
     std::string actual = ss.str();
@@ -61,7 +62,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     std::string actual = sink.createMetaid("SinkParticipant", exclusions);
     std::cout << actual << std::endl;
     std::string expected = "SinkParticipant0000";
@@ -70,21 +71,21 @@ TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     std::string actual = sink.getLocalUri();
     std::cout << actual << std::endl;
-    std::string expected = local_uri;
+    std::string expected = uriHandler.getLocal();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
 }
 
 
 TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triple triple(
-            LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
+            LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getSubject(), sink.getLocalUri())).get(),
             SemSim(sink.getPredicate()).getNode(),
-            LibrdfNode::fromUriString(sink.getModelUri() + sink.getPhysicalEntityReference()).get()
+            LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getPhysicalEntityReference(), sink.getModelUri())).get()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -104,31 +105,30 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
 }
 
 TEST_F(ParticipantTests, TestCreateTripleVector) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triple triple(
-            LibrdfNode::fromUriString(sink.getLocalUri() + sink.getSubject()).get(),
+            LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getSubject(), sink.getLocalUri())).get(),
             SemSim(sink.getPredicate()).getNode(),
-            LibrdfNode::fromUriString(sink.getModelUri() + sink.getPhysicalEntityReference()).get()
+            LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getPhysicalEntityReference(), sink.getModelUri())).get()
     );
     Triples triples;
     triples.move_back(triple);
+
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "local:SinkParticipant\n"
                            "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
-                           "\n"
-                           "";
+                           "\n";
     ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
     triples.freeTriples();
 }
 
 TEST_F(ParticipantTests, TestToTriples1) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     std::ostringstream os;
     Triples triples = sink.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
@@ -151,7 +151,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
 }
 
 TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
-    SinkParticipant sink(model.get(), 0.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 0.0, "MetaId0015", MODEL_URI, uriHandler);
     std::ostringstream os;
     Triples triples = sink.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
@@ -174,7 +174,7 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
 }
 
 TEST_F(ParticipantTests, TestToTriplesMediator) {
-    MediatorParticipant mediator(model.get(), "MetaId0015", MODEL_URI, model_uri, local_uri);
+    MediatorParticipant mediator(model.get(), "MetaId0015", MODEL_URI, uriHandler);
     std::ostringstream os;
     Triples triples = mediator.toTriples("https://metaid", exclusions);
     std::string actual = triples.str();
@@ -202,8 +202,7 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    std::string model_uri = "http://omex-library/myomex.omex/mymodel.xml#";
-    std::string local_uri = "http://omex-library/myomex.omex/mymodel.rdf#";
+    UriHandler uriHandler;
     std::vector<std::string> exclusions;
     ParticipantTestsToTriplesTwice() {
         model = LibrdfModel(storage.get());
@@ -219,7 +218,7 @@ public:
  * First check the numbers of references in a single triple
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triples triples1 = sink.toTriples("https://Process1", exclusions);
 
     // Sinks have 3 triples
@@ -252,7 +251,7 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
  * Now throw another triple in the mix
  */
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triples triples1 = sink.toTriples("https://Process1", exclusions);
     Triples triples2 = sink.toTriples("https://Process1", exclusions);
 
@@ -307,7 +306,7 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
 }
 
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triples triples1 = sink.toTriples("https://Process1", exclusions);
     Triples triples2 = sink.toTriples("https://Process1", exclusions);
 
@@ -334,11 +333,11 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
 
 
 TEST_F(ParticipantTests, TestParticipantVecToTriples) {
-    MediatorParticipant mediator(model.get(), "MetaId0015", MODEL_URI, model_uri, local_uri);
+    MediatorParticipant mediator(model.get(), "MetaId0015", MODEL_URI, uriHandler);
 
-    SourceParticipant source(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SourceParticipant source(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
 
-    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, model_uri, local_uri);
+    SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
 
     std::vector<Participant *> participants = {
             &source,

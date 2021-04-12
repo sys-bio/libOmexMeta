@@ -12,6 +12,11 @@ namespace omexmeta {
         : PropertyBearer(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
           identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
+    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty,
+                                   Resource is, Resources is_part_of)
+        : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_ENTITY),
+          identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
+
     void PhysicalEntity::free() {
         if (identity_resource_.getNode() != nullptr) {
             identity_resource_.free();
@@ -38,8 +43,8 @@ namespace omexmeta {
 
     PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
+        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, uriHandler_.getModel());
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, uriHandler_.getModel());
         return *this;
     }
 

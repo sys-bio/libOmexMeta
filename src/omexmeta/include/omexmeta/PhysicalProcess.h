@@ -20,13 +20,6 @@ using namespace redland;
 
 namespace omexmeta {
     class OMEXMETA_EXPORT PhysicalProcess : public PropertyBearer {
-    private:
-        Sources sources_;
-        Sinks sinks_;
-        Mediators mediators_;
-        std::string is_version_of_;// optional class level attribute to store the isVErsionOf under the process ID.
-        std::string property_metaid_base_ = "ProcessProperty";
-
     public:
         /**
          * @brief default constructor for PhysicalProcess
@@ -50,9 +43,14 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri, const PhysicalProperty &physicalProperty,
+        [[deprecated("PhysicalProcess(librdf_model *model, UriHandler uriHandler,\n"
+                     "                                     const PhysicalProperty &physicalProperty,\n"
+                     "                                     Sources sources, Sinks sinks, Mediators mediators);")]]PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri, const PhysicalProperty &physicalProperty,
                         Sources sources, Sinks sinks, Mediators mediators);
 
+        PhysicalProcess(librdf_model *model, UriHandler uriHandler,
+                                     const PhysicalProperty &physicalProperty,
+                                     Sources sources, Sinks sinks, Mediators mediators);
         /**
          * @brief free the node resources used by PhysicalProcess.
          *
@@ -75,7 +73,9 @@ namespace omexmeta {
          * @param model the currently active RDF model.
          * @param model_uri the local uri in current use.
          */
-        explicit PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri);
+        [[deprecated("explicit PhysicalProcess(librdf_model *model, UriHandler uriHandler);")]]explicit PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri);
+
+        explicit PhysicalProcess(librdf_model *model, UriHandler uriHandler);
 
         /**
          * @brief getter for sources
@@ -183,7 +183,12 @@ namespace omexmeta {
         PhysicalProcess &hasProperty(const std::string &is_version_of) override;
 
         PhysicalProcess &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
-
+    private:
+        Sources sources_;
+        Sinks sinks_;
+        Mediators mediators_;
+        std::string is_version_of_;// optional class level attribute to store the isVErsionOf under the process ID.
+        std::string property_metaid_base_ = "ProcessProperty";
     };
 }// namespace omexmeta
 

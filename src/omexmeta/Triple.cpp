@@ -9,13 +9,12 @@
 namespace omexmeta {
 
     Triple::Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource)
-            : LibrdfStatement(subject.getNode(),
-                              predicate_ptr->getNode(),
-                              resource.getNode()) {
+        : LibrdfStatement(subject.getNode(),
+                          predicate_ptr->getNode(),
+                          resource.getNode()) {
     }
 
-    Triple::Triple(librdf_node *subject, librdf_node *predicate, librdf_node *resource) :
-            LibrdfStatement(subject, predicate, resource) {}
+    Triple::Triple(librdf_node *subject, librdf_node *predicate, librdf_node *resource) : LibrdfStatement(subject, predicate, resource) {}
 
     Triple Triple::fromRawStatementPtr(librdf_statement *statement) {
         return Triple(statement);
@@ -88,7 +87,6 @@ namespace omexmeta {
         librdf_free_storage(storage);
         librdf_free_world(world);
         return str;
-
     }
 
     Triple &Triple::about(std::string omex_name, const std::string &model_name, std::string metaid) {
@@ -99,7 +97,8 @@ namespace omexmeta {
                                         "begin with \"http\" which suggests that it is not properly "
                                         "formatted. Metaid's should look like: "
                                         "\"http://omex-library.org/myomex.omex/mymodel.rdf#MetaId0000\" but yours "
-                                        "is: " + omex_name);
+                                        "is: " +
+                                        omex_name);
         }
         if (!OmexMetaUtils::endsWith(omex_name, "/")) {
             omex_name = omex_name + "/";
@@ -109,8 +108,8 @@ namespace omexmeta {
             metaid.erase(metaid.begin());
 
         setSubject(LibrdfNode::fromUriString(
-                omex_name + model_name + "#" + metaid
-        ).get());
+                           omex_name + model_name + "#" + metaid)
+                           .get());
         return *this;
     }
 
@@ -128,7 +127,7 @@ namespace omexmeta {
                                        "using setLocalUri() before calling about().");
             }
             std::string model_uri = getModelUri();
-            if (OmexMetaUtils::endsWith(model_uri, "#")){
+            if (OmexMetaUtils::endsWith(model_uri, "#")) {
                 // has to be -1 from the end, otherwise we remove the string terminator
                 model_uri.erase(model_uri.end() - 1);
             }
@@ -146,7 +145,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Triple& Triple::setPredicate(const std::string &namespace_, const std::string &term) {
+    Triple &Triple::setPredicate(const std::string &namespace_, const std::string &term) {
         if (getPredicate() != nullptr)
             LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
@@ -156,7 +155,7 @@ namespace omexmeta {
         return *this;
     }
 
-    Triple& Triple::predicate(const std::string &namespace_, const std::string &term) {
+    Triple &Triple::predicate(const std::string &namespace_, const std::string &term) {
         return setPredicate(namespace_, term);
     }
 
@@ -241,25 +240,28 @@ namespace omexmeta {
     }
 
     const std::string &Triple::getLocalUri() const {
-        return local_uri_;
+        return uriHandler_.getLocal();
     }
 
     const std::string &Triple::getModelUri() const {
-        return model_uri_;
+        return uriHandler_.getModel();
     }
 
     void Triple::setLocalUri(std::string localUri) {
-        if (!OmexMetaUtils::endsWith(localUri, "#"))
-            localUri += "#";
-        local_uri_ = localUri;
+        // we cannot set localUri directly. Instead
+        // the modelUri and localUri are bound together
+        // such that they change together. (prevents orphaning
+        // rdf files) .
+        uriHandler_.setModel(localUri);
     }
 
-    void Triple::setModelUri(const std::string& model_uri) {
-        if (!OmexMetaUtils::endsWith(model_uri, "#"))
-            model_uri_ += "#";
-        model_uri_ = model_uri;
+    void Triple::setModelUri(const std::string &model_uri) {
+        uriHandler_.setModel(model_uri);
     }
 
+    void Triple::setUriHandler(UriHandler uriHandler) {
+        uriHandler_ = uriHandler;
+    };
 
-}
 
+}// namespace omexmeta

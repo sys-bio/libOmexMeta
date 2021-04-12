@@ -42,7 +42,11 @@ namespace omexmeta {
         ~EnergyDiff() = default;
 
 
-        EnergyDiff(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
+        [[deprecated("EnergyDiff(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty, Sources sources,\n"
+                     "                      Sinks sinks);")]] EnergyDiff(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
+                      Sinks sinks);
+
+        EnergyDiff(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
 
         /**
@@ -80,7 +84,9 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        explicit EnergyDiff(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
+        [[deprecated("EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler")]] explicit EnergyDiff(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
+
+        explicit EnergyDiff(librdf_model *model, UriHandler uriHandler);
 
         /**
          * @brief create a metaid for the energy differential annotation

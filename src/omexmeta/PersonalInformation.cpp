@@ -13,6 +13,12 @@ namespace omexmeta {
         createSubject();
     }
 
+    PersonalInformation::PersonalInformation(librdf_model *model, UriHandler uriHandler)
+            : model_(model), uriHandler_(uriHandler) {
+        metaid_ = generateMetaId();
+        createSubject();
+    }
+
     PersonalInformation::~PersonalInformation(){
         freeTriples();
     }
@@ -26,6 +32,7 @@ namespace omexmeta {
         local_uri_ = information.local_uri_;
         triples_ = std::move(information.triples_);
         model_uri_ = information.model_uri_;
+        uriHandler_ = information.uriHandler_;
     }
 
     /**
@@ -38,6 +45,7 @@ namespace omexmeta {
             local_uri_ = information.local_uri_;
             triples_ = std::move(information.triples_);
             model_uri_ = information.model_uri_;
+            uriHandler_ = information.uriHandler_;
         }
         return *this;
     }
@@ -164,20 +172,20 @@ namespace omexmeta {
     }
 
     const std::string &PersonalInformation::getLocalUri() const {
-        return local_uri_;
+        return uriHandler_.getLocal();
     }
 
-    void PersonalInformation::setLocalUri(const std::string &localUri) {
-        local_uri_ = localUri;
-    }
+//    void PersonalInformation::setLocalUri(const std::string &localUri) {
+//        local_uri_ = localUri;
+//    }
 
     void PersonalInformation::createSubject() {
-        if (model_uri_.empty()) {
+        if (uriHandler_.getModel().empty()) {
             throw std::invalid_argument("std::invalid_argument: PersonalInformation::createSubject:"
                                         "Trying to create a PersonalInformation composite annotation triples without"
                                         "a `model_uri`. Please use setModelUri() and try again.");
         }
-        LibrdfNode n = LibrdfNode::fromUriString(model_uri_);
+        LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModel());
         DCTerm creator("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
         Triple triple(n.get(), creator.getNode(), r.get());
@@ -198,11 +206,11 @@ namespace omexmeta {
     }
 
     const std::string &PersonalInformation::getModelUri() const {
-        return model_uri_;
+        return uriHandler_.getModel();
     }
 
     void PersonalInformation::setModelUri(const std::string &modelUri) {
-        model_uri_ = modelUri;
+        uriHandler_.setModel(modelUri);
     }
 
     void PersonalInformation::freeTriples() {

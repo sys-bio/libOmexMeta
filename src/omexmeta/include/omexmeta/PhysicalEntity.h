@@ -63,7 +63,11 @@ namespace omexmeta {
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * Resource objects. It can be as long as needed.
          */
-        PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
+        [[deprecated("PhysicalEntity(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty,\n"
+                     "                       Resource is, Resources is_part_of);")]] PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
+                       Resource is, Resources is_part_of);
+
+        PhysicalEntity(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty,
                        Resource is, Resources is_part_of);
 
         ~PhysicalEntity() = default;

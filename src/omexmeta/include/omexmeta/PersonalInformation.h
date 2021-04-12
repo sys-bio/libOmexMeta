@@ -28,17 +28,6 @@ namespace omexmeta {
      */
     class OMEXMETA_EXPORT PersonalInformation {
 
-        librdf_model *model_;
-        Triples triples_;
-        std::string local_uri_;
-        std::string metaid_;
-        std::string model_uri_;
-        std::vector<std::string> namespaces_;
-
-    private:
-        [[nodiscard]] std::string generateMetaId() const;
-
-        void createSubject();
 
     public:
         const std::vector<std::string> &getNamespaces() const;
@@ -46,7 +35,9 @@ namespace omexmeta {
 
         ~PersonalInformation();
 
-        PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri);
+        [[deprecated("PersonalInformation(librdf_model *model,UriHandler uriHandler);")]] PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri);
+
+        PersonalInformation(librdf_model *model,UriHandler uriHandler);
 
         /**
          * @brief Copy constructor for PersonalInformation
@@ -70,7 +61,7 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getLocalUri() const;
 
-        void setLocalUri(const std::string &localUri);
+//        void setLocalUri(const std::string &localUri);
 
         bool operator==(const PersonalInformation &rhs) const;
 
@@ -117,6 +108,19 @@ namespace omexmeta {
         void freeTriples();
 
         void setTriples(Triples triples);
+
+    private:
+        librdf_model *model_;
+        Triples triples_;
+        std::string metaid_;
+        std::vector<std::string> namespaces_;
+        [[nodiscard]] std::string generateMetaId() const;
+        std::string local_uri_;
+        std::string model_uri_;
+        UriHandler uriHandler_;
+
+        void createSubject();
+
     };
 }
 

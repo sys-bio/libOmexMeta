@@ -15,8 +15,9 @@ namespace omexmeta {
           model_uri_(std::move(model_uri)) {
         //        validate();
     }
+
     const std::string &PhysicalProperty::getLocalUri() const {
-        return local_uri_;
+        return uriHandler_.getLocal();
     }
 
     PhysicalProperty::PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri, librdf_model *model)
@@ -27,14 +28,18 @@ namespace omexmeta {
         //        validate();
     }
 
-    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string model_uri)
-        : is_property_of_value_(std::move(subject_str)),
-          model_uri_(std::move(model_uri)) {
+//    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string model_uri)
+//        : is_property_of_value_(std::move(subject_str)),
+//          model_uri_(std::move(model_uri)) {
         //        validate();
-    }
+//    }
 
     PhysicalProperty::PhysicalProperty(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
         : model_(model), model_uri_(model_uri), local_uri_(local_uri) {}
+
+    PhysicalProperty::PhysicalProperty(librdf_model *model, UriHandler uriHandler)
+        : model_(model), uriHandler_(uriHandler){}
+
 
     void PhysicalProperty::validate() {
         std::string expected_prefix1 = "https://identifiers.org/OPB";
@@ -56,15 +61,15 @@ namespace omexmeta {
 
         // ensure subject_uri_ has the model_uri associated with it
         if (OmexMetaUtils::startsWith(is_property_of_value_, "http")) {
-            if (!OmexMetaUtils::startsWith(is_property_of_value_, getModelUri())) {
+            if (!OmexMetaUtils::startsWith(is_property_of_value_, uriHandler_.getModel())) {
                 throw std::invalid_argument("std::invalid_argument: PhysicalProperty::validate() "
                                             "The subject argument to PhysicalProperty is already a URI"
                                             "but is it not the uri associated with the model you are annotating "
                                             "(" +
-                                            getModelUri() + ") but instead \"" + is_property_of_value_ + "\"");
+                                            uriHandler_.getModel() + ") but instead \"" + is_property_of_value_ + "\"");
             }
         } else {
-            is_property_of_value_ = OmexMetaUtils::concatMetaIdAndUri(is_property_of_value_, getModelUri());
+            is_property_of_value_ = OmexMetaUtils::concatMetaIdAndUri(is_property_of_value_, uriHandler_.getModel());
         }
     }
 
@@ -142,7 +147,7 @@ namespace omexmeta {
     }
 
     const std::string &PhysicalProperty::getModelUri() const {
-        return model_uri_;
+        return uriHandler_.getModel();
     }
 
     PhysicalProperty &PhysicalProperty::isVersionOf(const std::string &is_version_of) {

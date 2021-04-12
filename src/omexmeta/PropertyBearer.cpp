@@ -12,6 +12,11 @@ namespace omexmeta {
         : model_(model), physical_property_(std::move(propertyResource)), type_(type),
           model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
 
+    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler uriHandler,
+                                   PhysicalProperty propertyResource, AnnotationType type)
+        : model_(model), physical_property_(std::move(propertyResource)), type_(type),
+          uriHandler_(uriHandler) {}
+
     librdf_model *PropertyBearer::getModel() const {
         return model_;
     }
@@ -24,6 +29,11 @@ namespace omexmeta {
 
     PropertyBearer::PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri)
         : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {
+        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
+    }
+
+    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler uriHandler)
+        : model_(model), uriHandler_(uriHandler) {
         physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
     }
 
@@ -61,21 +71,23 @@ namespace omexmeta {
         about_uri_type_ = aboutUriType;
     }
 
-    PropertyBearer::PropertyBearer(PropertyBearer &&phenomenon) noexcept {
-        model_ = phenomenon.model_;
-        phenomenon.model_ = nullptr;// not sure if this is right.
-        physical_property_ = std::move(phenomenon.physical_property_);
-        type_ = phenomenon.type_;
-        model_uri_ = phenomenon.model_uri_;
+    PropertyBearer::PropertyBearer(PropertyBearer &&propertyBearer) noexcept {
+        model_ = propertyBearer.model_;
+        propertyBearer.model_ = nullptr;// not sure if this is right.
+        physical_property_ = std::move(propertyBearer.physical_property_);
+        type_ = propertyBearer.type_;
+        model_uri_ = propertyBearer.model_uri_;
+        uriHandler_ = propertyBearer.uriHandler_;
     }
 
-    PropertyBearer &PropertyBearer::operator=(PropertyBearer &&phenomenon) noexcept {
-        if (this != &phenomenon) {
-            model_ = phenomenon.model_;
-            phenomenon.model_ = nullptr;// not sure if this is right.
-            physical_property_ = std::move(phenomenon.physical_property_);
-            type_ = phenomenon.type_;
-            model_uri_ = phenomenon.model_uri_;
+    PropertyBearer &PropertyBearer::operator=(PropertyBearer &&propertyBearer) noexcept {
+        if (this != &propertyBearer) {
+            model_ = propertyBearer.model_;
+            propertyBearer.model_ = nullptr;// not sure if this is right.
+            physical_property_ = std::move(propertyBearer.physical_property_);
+            type_ = propertyBearer.type_;
+            model_uri_ = propertyBearer.model_uri_;
+            uriHandler_ = propertyBearer.uriHandler_;
         }
         return *this;
     }
@@ -105,22 +117,21 @@ namespace omexmeta {
         return model_uri_;
     }
 
-    void PropertyBearer::setModelUri(const std::string &modelUri) {
-        model_uri_ = modelUri;
-    }
+//    void PropertyBearer::setModelUri(const std::string &modelUri) {
+//        uriHandler_.setModel(modelUri);
+//    }
 
     const std::string &PropertyBearer::getLocalUri() const {
-        if (local_uri_.empty()) {
+        if (uriHandler_.getLocal().empty()) {
             throw std::invalid_argument("std::invalid_argument: local_uri_ is empty. "
-                                        "Please use setLocalUri or pass to the constructor a "
-                                        "local uri. ");
+                                        "Please use RDF::setModelUri");
         }
-        return local_uri_;
+        return uriHandler_.getLocal();
     }
 
-    void PropertyBearer::setLocalUri(const std::string &localUri) {
-        local_uri_ = localUri;
-    }
+//    void PropertyBearer::setLocalUri(const std::string &localUri) {
+//        local_uri_ = localUri;
+//    }
 
     std::vector<std::string> PropertyBearer::getNewMetaidExclusionList() {
         return new_metaid_exclusion_list_;
@@ -137,7 +148,7 @@ namespace omexmeta {
          *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
          */
         // option 1
-        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
+        physical_property_ = PhysicalProperty(model_, uriHandler_)
                                      .about(property_about, about_uri_type)
                                      .isVersionOf(is_version_of)
                                      .isPropertyOf(is_property_of, is_property_of_uri_type);
@@ -151,7 +162,7 @@ namespace omexmeta {
          *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
          */
         // option 2
-        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
+        physical_property_ = PhysicalProperty(model_, uriHandler_)
                                      .isVersionOf(is_version_of)
                                      .isPropertyOf(getAbout(), getAboutUriType());
         physical_property_.setPropertyMetaidBase(getPropertyMetaidBase());

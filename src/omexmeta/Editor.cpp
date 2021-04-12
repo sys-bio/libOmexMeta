@@ -9,12 +9,12 @@
 namespace omexmeta {
 
     Editor::Editor(std::string xml_or_file, bool create_ids,
-                   const LibrdfModel &model, NamespaceMap &ns_map, UriHandler& uriHandler,
+                   const LibrdfModel &model, NamespaceMap &ns_map, UriHandler &uriHandler,
                    bool generate_new_metaids, bool sbml_semantic_extraction)
         : xml_(std::move(xml_or_file)), create_ids_(create_ids), model_(model), namespaces_(ns_map),
           generate_new_metaids_(generate_new_metaids),
           sbml_semantic_extraction_(sbml_semantic_extraction),
-          uriHandler_ (uriHandler){
+          uriHandler_(uriHandler) {
         // sometimes in the python api users can accidentally start the sbml
         // string with a new line character. Catch this and error.
         if (OmexMetaUtils::startsWith(xml_, "\n")) {
@@ -448,16 +448,15 @@ namespace omexmeta {
 
     SingularAnnotation Editor::newSingularAnnotation() const {
         SingularAnnotation singularAnnotation;
-        singularAnnotation.setModelUri(getModelUri());
-        singularAnnotation.setLocalUri(getLocalUri());
+        singularAnnotation.setUriHandler(uriHandler_);
         return singularAnnotation;
     }
 
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
         SingularAnnotation singularAnnotation;
-        singularAnnotation.setModelUri(getModelUri());
+        singularAnnotation.setUriHandler(uriHandler_);
         singularAnnotation.about(
-                OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
+                OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), uriHandler_.getModel()));
         return singularAnnotation;
     }
 

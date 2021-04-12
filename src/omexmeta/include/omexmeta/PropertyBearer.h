@@ -5,14 +5,14 @@
 #ifndef LIBOMEXMETA_PhysicalPhenomenon_H
 #define LIBOMEXMETA_PhysicalPhenomenon_H
 
-#include "omexmeta/Subject.h"
-#include "omexmeta/PhysicalProperty.h"
 #include "omexmeta/AnnotationType.h"
+#include "omexmeta/Error.h"
+#include "omexmeta/MetaID.h"
+#include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/Query.h"
+#include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
-#include "omexmeta/MetaID.h"
-#include "omexmeta/Error.h"
-#include "omexmeta/Query.h"
 #include "redland/RedlandAPI.h"
 
 #include <utility>
@@ -22,39 +22,11 @@ using namespace redland;
 namespace omexmeta {
     class PropertyBearer {
 
-    protected:
-
-        librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
-        PhysicalProperty physical_property_;
-        AnnotationType type_ = AnnotationType::UNKNOWN;
-
-        // todo replace model_uri_ and local_uri_ with instnce if UriHandler
-        std::string model_uri_;
-        std::string local_uri_;
-        std::vector<std::string> new_metaid_exclusion_list_;
-        std::string property_metaid_base_; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
-        std::string about_value_;
-        eUriType about_uri_type_ = NONE;
-
-
     public:
         eUriType getAboutUriType() const;
+
         void setAboutUriType(eUriType aboutUriType);
-    protected:
-        /**
-         * @brief getter for a vector of strings that keeps track of used metaids.
-         * @details this mechanism is necessary in order to ensure unique metaids in
-         * the case of adding multiple instances of a type to the PhysicalPhenomenon
-         * before commiting to the model. For instance, you can have arbitrary
-         * sink participants, which would all be given the SinkParticipant0000 metaid
-         * if not for this mechanism.
-         */
-        [[nodiscard]] std::vector<std::string> getNewMetaidExclusionList();
 
-
-        [[nodiscard]] std::string generateMetaId(const std::string& id_base);
-
-    public:
         [[nodiscard]] virtual const std::string &getPropertyMetaidBase() const;
 
         PropertyBearer() = default;
@@ -77,7 +49,7 @@ namespace omexmeta {
         /**
          * @brief Move constructor for PhysicalPhenomenon
          */
-        PropertyBearer(PropertyBearer &&phenomenon) noexcept;
+        PropertyBearer(PropertyBearer &&propertyBearer) noexcept;
 
         /**
          * @brief assignment operator for PhysicalPhenomenon
@@ -87,7 +59,7 @@ namespace omexmeta {
         /**
          * @brief move assignment operator for PhysicalPhenomenon
          */
-        PropertyBearer &operator=(PropertyBearer &&phenomenon) noexcept;
+        PropertyBearer &operator=(PropertyBearer &&propertyBearer) noexcept;
 
         /**
          * @brief Constructor for builder interface.
@@ -101,7 +73,9 @@ namespace omexmeta {
          *
          * Shouldn't be needed by users directly.
          */
-        [[maybe_unused]] explicit PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri);
+        [[deprecated("Use \"PropertyBearer(librdf_model *model, UriHandler uriHandler)\"")]] explicit PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri);
+
+        PropertyBearer(librdf_model *model, UriHandler uriHandler);
 
         /**
          * @brief constructor for PhysicalPhenomenon object.
@@ -110,8 +84,18 @@ namespace omexmeta {
          * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri,
-                           PhysicalProperty propertyResource, AnnotationType type);
+        [[deprecated("PropertyBearer(librdf_model *model, UriHandler uriHandler, PhysicalProperty propertyResource, AnnotationType type);")]]PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri,
+                       PhysicalProperty propertyResource, AnnotationType type);
+
+        /**
+         * @brief constructor for PhysicalPhenomenon object.
+         * @param model a librdf_model object assicated with RDF graph.
+         * @param about The subject for the PhysicalPhenomenon. This is the metaid.
+         * @param propertyResource The PhysicalProperty assocaited with a composite annotation
+         * @param type An AnnotationType to distinguish composite annotations.
+         */
+        PropertyBearer(librdf_model *model, UriHandler uriHandler,
+                       PhysicalProperty propertyResource, AnnotationType type);
 
         [[nodiscard]] const std::string &getModelUri() const;
 
@@ -121,7 +105,7 @@ namespace omexmeta {
          * @brief get the subject portion of the PhysicalPhenomenon
          * @return the string associated with the subject node
          */
-        [[nodiscard]] const std::string& getAbout() const;
+        [[nodiscard]] const std::string &getAbout() const;
 
         /**
          * @brief getter for Type argument
@@ -155,7 +139,7 @@ namespace omexmeta {
 
         virtual PropertyBearer &hasProperty(const PhysicalProperty &property);
 
-        OMEXMETA_DEPRECATED virtual PropertyBearer &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type);
+        OMEXMETA_DEPRECATED virtual PropertyBearer &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type);
 
         virtual PropertyBearer &hasProperty(const std::string &is_version_of);
 
@@ -165,11 +149,36 @@ namespace omexmeta {
 
         virtual PropertyBearer &about(const std::string &about);
 
+    protected:
+        /**
+         * @brief getter for a vector of strings that keeps track of used metaids.
+         * @details this mechanism is necessary in order to ensure unique metaids in
+         * the case of adding multiple instances of a type to the PhysicalPhenomenon
+         * before commiting to the model. For instance, you can have arbitrary
+         * sink participants, which would all be given the SinkParticipant0000 metaid
+         * if not for this mechanism.
+         */
+        [[nodiscard]] std::vector<std::string> getNewMetaidExclusionList();
+
+        [[nodiscard]] std::string generateMetaId(const std::string &id_base);
+
+        librdf_model *model_ = nullptr;// should be cleaned up by the LibrdfModel inside RDF.
+        PhysicalProperty physical_property_;
+        AnnotationType type_ = AnnotationType::UNKNOWN;
+
+        // todo replace model_uri_ and local_uri_ with instnce if UriHandler
+        std::string model_uri_;
+        std::string local_uri_;
+        std::vector<std::string> new_metaid_exclusion_list_;
+        std::string property_metaid_base_;// Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
+        std::string about_value_;
+        eUriType about_uri_type_ = NONE;
+        UriHandler uriHandler_;
     };
 
     typedef std::shared_ptr<PropertyBearer> PhysicalPhenomenonPtr;
 
 
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_PhysicalPhenomenon_H
+#endif//LIBOMEXMETA_PhysicalPhenomenon_H

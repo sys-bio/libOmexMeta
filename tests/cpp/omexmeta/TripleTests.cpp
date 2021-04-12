@@ -151,9 +151,9 @@ TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
 
 TEST(TripleTestsNoFixture, TestAboutOneArgumentWithSetLocal) {
     Triple triple;
-    triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
+    triple.setModelUri("model.xml");
     triple.about("metaid2");
-    std::string expected = "http://omex-library.org/omex.omex/model.xml#metaid2";
+    std::string expected = "http://omex-library.org/NewOmex.omex/model.xml#metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
@@ -162,9 +162,9 @@ TEST(TripleTestsNoFixture, TestAboutOneArgumentWithSetLocal) {
 TEST(TripleTestsNoFixture, TestAboutAgain2) {
     Triple triple;
 
-    triple.setModelUri("http://omex-library.org/omex.omex/model.xml");
+    triple.setModelUri("model.xml");
     triple.about("#metaid3");
-    std::string expected = "http://omex-library.org/omex.omex/model.xml#metaid3";
+    std::string expected = "http://omex-library.org/NewOmex.omex/model.xml#metaid3";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
@@ -224,23 +224,15 @@ TEST_F(TripleTests, TestStatementSubject) {
 TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple;
     //    triple.setLocalUri("http://omex-library.org/NewOmex.omex/NewModel.rdf");
-    triple.setModelUri("http://omex-library.org/NewOmex.omex/NewModel.xml");
-    triple.about("#metaid1")
+    triple.setModelUri("NewModel.xml");
+    triple.about("metaid1")
             .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
 
-    std::string actual = triple.str();
-    std::cout << actual << std::endl;
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1>\n"
-                           "    bqbiol:is <https://identifiers.org/uniprot/PD4034> .\n"
-                           "\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_STREQ(triple.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
+    ASSERT_STREQ(triple.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple.getResourceStr().c_str(), "https://identifiers.org/uniprot/PD4034");
+
     triple.freeStatement();
 
     // Aaand free the excess nodes
@@ -251,13 +243,11 @@ TEST_F(TripleTests, TestBuilderPattern1) {
 
 TEST_F(TripleTests, TestBuilderPattern2) {
     Triple triple;
-    triple.setModelUri("http://omex-library.org/omex.omex/model.xml#");
+    triple.setModelUri("model.xml");
     triple.about("#metaid00001")
             .setPredicate("bqbiol", "is")
             .setResourceBlank("Blank");
 
-    std::string actual = triple.str();
-    std::cout << actual << std::endl;
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -268,7 +258,10 @@ TEST_F(TripleTests, TestBuilderPattern2) {
                            "    bqbiol:is _:Blank .\n"
                            "\n"
                            "";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    ASSERT_STREQ(triple.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/model.xml#metaid00001");
+    ASSERT_STREQ(triple.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple.getResourceStr().c_str(), "Blank");
     triple.freeStatement();
 
     // Aaand free the excess nodes
