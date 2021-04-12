@@ -1065,7 +1065,7 @@ TEST_F(CAPITests, EditorsetArchiveUri) {
 TEST_F(CAPITests, RDFsetModelUri) {
     RDF *rdf_ptr = RDF_new();
     RDF_setModelUri(rdf_ptr, "newModelName");
-    const char *expected = "http://omex-library.org/NewOmex.omex/newModelName.xml#";
+    const char *expected = "http://omex-library.org/NewOmex.omex/newModelName.xml";
     char *actual = RDF_getModelUri(rdf_ptr);
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);

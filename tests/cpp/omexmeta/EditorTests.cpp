@@ -89,7 +89,7 @@ TEST_F(EditorTests, TestSetModelName) {
     rdf.setArchiveUri("MyOmexArchive.omex");
     rdf.setModelUri("smad.sbml");
 
-    std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.sbml#";
+    std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.sbml";
     ASSERT_STREQ(expected.c_str(), editor.getModelUri().c_str());
 }
 

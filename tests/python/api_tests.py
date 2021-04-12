@@ -210,7 +210,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         actual_local = self.pyom.get_and_free_c_str(
             self.pyom.rdf_get_local_uri(self.rdf)
         )
-        expected_model = "http://omex-library.org/NewOmex.omex/my-awesome-model.sbml#"
+        expected_model = "http://omex-library.org/NewOmex.omex/my-awesome-model.sbml"
         expected_local = "http://omex-library.org/NewOmex.omex/my-awesome-model.rdf#"
         self.assertEqual(expected_model, actual_model)
         self.assertEqual(expected_local, actual_local)

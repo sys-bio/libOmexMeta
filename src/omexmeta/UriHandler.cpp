@@ -70,15 +70,12 @@ namespace omexmeta {
                                         "Specified \"modelName\" argument \"" +
                                         modelName + "\" begins with \"http\". Since the model url is built "
                                                     "using the repositoryName argument, please only specify "
-                                                    "the name of the model. Like \"NewModel.sbml\"");
+                                                    "the name of the model. For example \"NewModel.sbml\"");
         }
         // first we make sure the suffix ends with a "#"
-        if (!OmexMetaUtils::endsWith(modelName, "#")) {
-            modelName += "#";
-        }
 
         // Now we check for file extension
-        std::vector<std::string> suffexes = {".xml#", ".sbml#", ".cellml#"};
+        std::vector<std::string> suffexes = {".xml", ".sbml", ".cellml"};
         bool good = false;
         for (auto &it : suffexes) {
             if (OmexMetaUtils::endsWith(modelName, it)) {
@@ -88,8 +85,7 @@ namespace omexmeta {
         // automatically add .xml if one of the above suffixes was not detected
         if (!good) {
             // remember to remove the trailing "#"
-            modelName.pop_back();
-            modelName += ".xml#";
+            modelName += ".xml";
         }
 
         // concatonate archive and model, being sensitive to ending "/"

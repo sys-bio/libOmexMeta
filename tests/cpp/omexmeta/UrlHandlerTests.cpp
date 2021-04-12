@@ -67,7 +67,7 @@ TEST_F(UriHandlerTests, SetModel) {
 
     ASSERT_STREQ("http://omex-library.org/", repository.c_str());
     ASSERT_STREQ("http://omex-library.org/NewOmex.omex/", archive.c_str());
-    ASSERT_STREQ("http://omex-library.org/NewOmex.omex/MyAwesomeModel.xml#", model.c_str());
+    ASSERT_STREQ("http://omex-library.org/NewOmex.omex/MyAwesomeModel.xml", model.c_str());
     ASSERT_STREQ("http://omex-library.org/NewOmex.omex/MyAwesomeModel.rdf#", local.c_str());
 }
 /*
@@ -77,10 +77,10 @@ TEST_F(UriHandlerTests, SetModel) {
 class Cls {
 public:
     std::string getLocalUri() {
-        return "http://my-new-omex-library.org/NewOmex.omex/NewModel.rdf#";
+        return "http://my-new-omex-library.org/NewOmex.omex/NewModel.rdf";
     }
     std::string getModelUri() {
-        return "http://my-new-omex-library.org/NewOmex.omex/NewModel.xml#";
+        return "http://my-new-omex-library.org/NewOmex.omex/NewModel.xml";
     }
 };
 

@@ -59,7 +59,7 @@ namespace omexmeta {
         /**
          * @brief setter for model uri.
          * @details default is"NewModel.xml" and produces
-         * the full uri "http://omex-library.org/NewOmex.omex/NewModel.xml#"
+         * the full uri "http://omex-library.org/NewOmex.omex/NewModel.xml"
          * when assembled
          */
         UriHandler &setModel(std::string model);
