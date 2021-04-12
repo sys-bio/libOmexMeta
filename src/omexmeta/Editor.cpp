@@ -308,29 +308,29 @@ namespace omexmeta {
     }
 
     PhysicalProperty Editor::newPhysicalProperty() {
-        return PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+        return PhysicalProperty(model_.get(), uriHandler_);
     }
 
     PhysicalProperty *Editor::newPhysicalPropertyPtr() {
-        auto *property = new PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+        auto *property = new PhysicalProperty(model_.get(), uriHandler_);
         return property;
     }
 
     PhysicalEntity Editor::newPhysicalEntity() {
-        return PhysicalEntity(model_.get(), getModelUri(), getLocalUri());
+        return PhysicalEntity(model_.get(), uriHandler_);
     }
 
     EnergyDiff Editor::newEnergyDiff() {
-        return EnergyDiff(model_.get(), getModelUri(), getLocalUri());
+        return EnergyDiff(model_.get(), uriHandler_);
     }
 
     PhysicalProcess Editor::newPhysicalProcess() {
-        return PhysicalProcess(model_.get(), getModelUri(), getLocalUri());
+        return PhysicalProcess(model_.get(), uriHandler_);
     }
 
     PersonalInformation Editor::newPersonalInformation() {
         // todo consider whether local_uri argument is needed
-        return PersonalInformation(model_.get(), getModelUri(), getLocalUri());
+        return PersonalInformation(model_.get(), uriHandler_);
     }
 
     Editor &Editor::addCreator(std::string orcid_id) {

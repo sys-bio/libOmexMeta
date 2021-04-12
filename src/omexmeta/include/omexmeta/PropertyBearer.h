@@ -39,8 +39,6 @@ namespace omexmeta {
 
         [[nodiscard]] const std::string &getLocalUri() const;
 
-        void setLocalUri(const std::string &localUri);
-
         /**
          * @brief Copy constructor for PhysicalPhenomenon
          */
@@ -64,28 +62,9 @@ namespace omexmeta {
         /**
          * @brief Constructor for builder interface.
          *
-         * Shouldn't be needed by users.
-         */
-        [[maybe_unused]] OMEXMETA_DEPRECATED explicit PropertyBearer(librdf_model *model);
-
-        /**
-         * @brief Constructor for builder interface.
-         *
          * Shouldn't be needed by users directly.
          */
-        [[deprecated("Use \"PropertyBearer(librdf_model *model, UriHandler uriHandler)\"")]] explicit PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri);
-
         PropertyBearer(librdf_model *model, UriHandler uriHandler);
-
-        /**
-         * @brief constructor for PhysicalPhenomenon object.
-         * @param model a librdf_model object assicated with RDF graph.
-         * @param about The subject for the PhysicalPhenomenon. This is the metaid.
-         * @param propertyResource The PhysicalProperty assocaited with a composite annotation
-         * @param type An AnnotationType to distinguish composite annotations.
-         */
-        [[deprecated("PropertyBearer(librdf_model *model, UriHandler uriHandler, PhysicalProperty propertyResource, AnnotationType type);")]]PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri,
-                       PhysicalProperty propertyResource, AnnotationType type);
 
         /**
          * @brief constructor for PhysicalPhenomenon object.
@@ -98,8 +77,6 @@ namespace omexmeta {
                        PhysicalProperty propertyResource, AnnotationType type);
 
         [[nodiscard]] const std::string &getModelUri() const;
-
-        void setModelUri(const std::string &modelUri);
 
         /**
          * @brief get the subject portion of the PhysicalPhenomenon
@@ -167,8 +144,6 @@ namespace omexmeta {
         AnnotationType type_ = AnnotationType::UNKNOWN;
 
         // todo replace model_uri_ and local_uri_ with instnce if UriHandler
-        std::string model_uri_;
-        std::string local_uri_;
         std::vector<std::string> new_metaid_exclusion_list_;
         std::string property_metaid_base_;// Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
         std::string about_value_;

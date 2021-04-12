@@ -5,8 +5,10 @@
 #ifndef LIBOMEXMETA_URIHANDLER_H
 #define LIBOMEXMETA_URIHANDLER_H
 
-#include <iostream>
 #include "OmexMetaUtils.h"
+#include <iostream>
+#include "omexmeta/Error.h"
+#include <exception>
 
 namespace omexmeta {
     enum eUriType {
@@ -77,20 +79,19 @@ namespace omexmeta {
         [[nodiscard]] std::string uriModifier(std::string uri_to_modify, eUriType type) const;
 
         template<class T>
-        static std::string uriModifier(T& cls, std::string uri_to_modify, eUriType type) {
+        static std::string uriModifier(T &cls, std::string uri_to_modify, eUriType type) {
             // When uri_to_modify equals model or local uri, we throw.
             if (
                     uri_to_modify == cls.getLocalUri() ||
-                    uri_to_modify == cls.getLocalUri() +"#" ||
+                    uri_to_modify == cls.getLocalUri() + "#" ||
                     uri_to_modify == cls.getModelUri() ||
-                    uri_to_modify == cls.getModelUri() +"#"
-                ){
-                throw std::logic_error("std::string uriModifier: Cannot modify input string: \""+uri_to_modify+"\"");
+                    uri_to_modify == cls.getModelUri() + "#") {
+                throw std::logic_error("std::string uriModifier: Cannot modify input string: \"" + uri_to_modify + "\"");
             }
             // When we already have a uri that is not local or model uri, we just return
-            if(OmexMetaUtils::startsWith(uri_to_modify, "http")) {
+            if (OmexMetaUtils::startsWith(uri_to_modify, "http")) {
                 return uri_to_modify;
-                }
+            }
             switch (type) {
                 case NONE: {
                     return uri_to_modify;
@@ -109,8 +110,14 @@ namespace omexmeta {
                 case IDENTIFIERS_URI: {
                     return "https://identifiers.org/" + uri_to_modify;
                 }
+                default: {
+                    throw std::invalid_argument("std::string uriModifier: Unrecognized eUriType");
+                }
             }
         }
+        bool operator==(const UriHandler &rhs) const;
+
+        bool operator!=(const UriHandler &rhs) const;
 
 
     private:

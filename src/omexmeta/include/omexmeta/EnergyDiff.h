@@ -23,10 +23,6 @@ using namespace redland;
 namespace omexmeta {
     class OMEXMETA_EXPORT EnergyDiff : public PropertyBearer {
 
-        Sources sources_;
-        Sinks sinks_;
-        std::string property_metaid_base_ = "EnergyDiffProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
-
     public:
 
         /**
@@ -40,11 +36,6 @@ namespace omexmeta {
         EnergyDiff() = delete;
 
         ~EnergyDiff() = default;
-
-
-        [[deprecated("EnergyDiff(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty, Sources sources,\n"
-                     "                      Sinks sinks);")]] EnergyDiff(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
-                      Sinks sinks);
 
         EnergyDiff(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
@@ -66,17 +57,6 @@ namespace omexmeta {
         /**
          * @brief constructor for instantiating a EnergyDiff type composite annotation
          * @param model. A librdf_model pass down by Editor.
-         *
-         * Users do not need to instantiate EnergyDiff manually, since it is done
-         * by Editor. This constructor instantiates an empty EnergyDiff
-         * object which is filled by
-         *
-         */
-        OMEXMETA_DEPRECATED explicit EnergyDiff(librdf_model *model);
-
-        /**
-         * @brief constructor for instantiating a EnergyDiff type composite annotation
-         * @param model. A librdf_model pass down by Editor.
          * @param model_uri. String passed down by Editor. The local uri to use for metaids
          *
          * Users do not need to instantiate EnergyDiff manually, since it is done
@@ -84,8 +64,6 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        [[deprecated("EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler")]] explicit EnergyDiff(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
-
         explicit EnergyDiff(librdf_model *model, UriHandler uriHandler);
 
         /**
@@ -212,6 +190,10 @@ namespace omexmeta {
         EnergyDiff &hasProperty(const std::string &is_version_of) override;
 
         EnergyDiff &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+    private:
+        Sources sources_;
+        Sinks sinks_;
+        std::string property_metaid_base_ = "EnergyDiffProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
 
     };
 }

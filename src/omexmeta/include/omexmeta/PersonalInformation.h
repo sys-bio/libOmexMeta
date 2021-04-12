@@ -35,8 +35,6 @@ namespace omexmeta {
 
         ~PersonalInformation();
 
-        [[deprecated("PersonalInformation(librdf_model *model,UriHandler uriHandler);")]] PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri);
-
         PersonalInformation(librdf_model *model,UriHandler uriHandler);
 
         /**
@@ -115,8 +113,6 @@ namespace omexmeta {
         std::string metaid_;
         std::vector<std::string> namespaces_;
         [[nodiscard]] std::string generateMetaId() const;
-        std::string local_uri_;
-        std::string model_uri_;
         UriHandler uriHandler_;
 
         void createSubject();

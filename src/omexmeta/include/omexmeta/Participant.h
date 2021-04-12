@@ -90,13 +90,6 @@ namespace omexmeta {
          * code duplication in the subclasses.
          *
          */
-        [[deprecated("Participant(librdf_model *model, std::string base_metaid, UriHandler uriHandler,\n"
-                     "                    std::string semsim_predicate_term, double multiplier,\n"
-                     "                    std::string physicalEntityReference, eUriType type);")]] Participant(librdf_model *model, std::string base_metaid, const std::string &model_uri,
-                                                                                                               const std::string &local_uri,
-                                                                                                               std::string semsim_predicate_term, double multiplier,
-                                                                                                               std::string physicalEntityReference, eUriType type);
-
         Participant(librdf_model *model, std::string base_metaid, UriHandler uriHandler,
                     std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference, eUriType type);
@@ -178,10 +171,7 @@ namespace omexmeta {
         // set of triples returned.
         std::string local_participant_metaid_;
 
-        std::string model_uri_;
-        std::string local_uri_;
         UriHandler uriHandler_;
-
 
         eUriType type_;
     };

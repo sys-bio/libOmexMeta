@@ -7,14 +7,6 @@
 
 namespace omexmeta {
 
-    EnergyDiff::EnergyDiff(librdf_model *model, std::string model_uri, std::string local_uri,
-                                 PhysicalProperty physicalProperty,
-                                 Sources sources,
-                                 Sinks sinks)
-        : PropertyBearer(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
-          sources_(std::move(sources)), sinks_(std::move(sinks)) {
-    }
-
     EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler,
                                  PhysicalProperty physicalProperty,
                                  Sources sources,
@@ -76,7 +68,9 @@ namespace omexmeta {
         if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
             subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
         }
-        physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getModelUri());
+        physical_property_ = PhysicalProperty(model_, uriHandler_);
+        physical_property_.about(subject_metaid)
+                .isVersionOf(physical_property);
         return *this;
     }
 
@@ -92,12 +86,6 @@ namespace omexmeta {
                 SinkParticipant(model_, 0.0, physical_entity_reference, type, uriHandler_));
         return (*this);
     }
-
-    EnergyDiff::EnergyDiff(librdf_model *model)
-        : PropertyBearer(model) {}
-
-    EnergyDiff::EnergyDiff(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
-        : PropertyBearer(model, model_uri, local_uri) {}
 
     EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler)
         : PropertyBearer(model, uriHandler) {}

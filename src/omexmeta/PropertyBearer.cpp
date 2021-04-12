@@ -7,11 +7,6 @@
 
 namespace omexmeta {
 
-    PropertyBearer::PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri,
-                                   PhysicalProperty propertyResource, AnnotationType type)
-        : model_(model), physical_property_(std::move(propertyResource)), type_(type),
-          model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {}
-
     PropertyBearer::PropertyBearer(librdf_model *model, UriHandler uriHandler,
                                    PhysicalProperty propertyResource, AnnotationType type)
         : model_(model), physical_property_(std::move(propertyResource)), type_(type),
@@ -24,17 +19,9 @@ namespace omexmeta {
     PropertyBearer::~PropertyBearer() = default;
 
 
-    PropertyBearer::PropertyBearer(librdf_model *model)
-        : model_(model) {}
-
-    PropertyBearer::PropertyBearer(librdf_model *model, std::string model_uri, std::string local_uri)
-        : model_(model), model_uri_(std::move(model_uri)), local_uri_(std::move(local_uri)) {
-        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
-    }
-
     PropertyBearer::PropertyBearer(librdf_model *model, UriHandler uriHandler)
         : model_(model), uriHandler_(uriHandler) {
-        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_);
+        physical_property_ = PhysicalProperty(model_, uriHandler);
     }
 
     const std::string &PropertyBearer::getSubjectStr() const {
@@ -76,7 +63,6 @@ namespace omexmeta {
         propertyBearer.model_ = nullptr;// not sure if this is right.
         physical_property_ = std::move(propertyBearer.physical_property_);
         type_ = propertyBearer.type_;
-        model_uri_ = propertyBearer.model_uri_;
         uriHandler_ = propertyBearer.uriHandler_;
     }
 
@@ -86,7 +72,6 @@ namespace omexmeta {
             propertyBearer.model_ = nullptr;// not sure if this is right.
             physical_property_ = std::move(propertyBearer.physical_property_);
             type_ = propertyBearer.type_;
-            model_uri_ = propertyBearer.model_uri_;
             uriHandler_ = propertyBearer.uriHandler_;
         }
         return *this;
@@ -109,17 +94,13 @@ namespace omexmeta {
     }
 
     const std::string &PropertyBearer::getModelUri() const {
-        if (model_uri_.empty()) {
+        if (uriHandler_.getModel().empty()) {
             throw std::invalid_argument("std::invalid_argument: model_uri_ is empty. "
                                         "Please use setModelUri or pass to the constructor a "
                                         "model uri. ");
         }
-        return model_uri_;
+        return uriHandler_.getModel();
     }
-
-//    void PropertyBearer::setModelUri(const std::string &modelUri) {
-//        uriHandler_.setModel(modelUri);
-//    }
 
     const std::string &PropertyBearer::getLocalUri() const {
         if (uriHandler_.getLocal().empty()) {
@@ -128,10 +109,6 @@ namespace omexmeta {
         }
         return uriHandler_.getLocal();
     }
-
-//    void PropertyBearer::setLocalUri(const std::string &localUri) {
-//        local_uri_ = localUri;
-//    }
 
     std::vector<std::string> PropertyBearer::getNewMetaidExclusionList() {
         return new_metaid_exclusion_list_;
@@ -190,7 +167,7 @@ namespace omexmeta {
          *  2) the user wants the library to autogenerate a property metaid, which will be local to rdf document
          */
         // option 1
-        physical_property_ = PhysicalProperty(model_, model_uri_, local_uri_)
+        physical_property_ = PhysicalProperty(model_, uriHandler_)
                                      .about(property_about, about_uri_type)
                                      .isVersionOf(is_version_of)
                                      .isPropertyOf(getAbout(), getAboutUriType());

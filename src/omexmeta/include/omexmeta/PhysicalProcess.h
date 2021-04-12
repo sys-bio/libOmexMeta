@@ -43,11 +43,6 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        [[deprecated("PhysicalProcess(librdf_model *model, UriHandler uriHandler,\n"
-                     "                                     const PhysicalProperty &physicalProperty,\n"
-                     "                                     Sources sources, Sinks sinks, Mediators mediators);")]]PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri, const PhysicalProperty &physicalProperty,
-                        Sources sources, Sinks sinks, Mediators mediators);
-
         PhysicalProcess(librdf_model *model, UriHandler uriHandler,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators);
@@ -65,16 +60,8 @@ namespace omexmeta {
         /**
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
-         */
-        OMEXMETA_DEPRECATED explicit PhysicalProcess(librdf_model *model);
-
-        /**
-         * @brief constructor for the builder interface of PhysicalProcess instantiation
-         * @param model the currently active RDF model.
          * @param model_uri the local uri in current use.
          */
-        [[deprecated("explicit PhysicalProcess(librdf_model *model, UriHandler uriHandler);")]]explicit PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri);
-
         explicit PhysicalProcess(librdf_model *model, UriHandler uriHandler);
 
         /**
@@ -104,21 +91,6 @@ namespace omexmeta {
          * Otherwise the caller is responsible for freeing resources.
          */
         Triples toTriples() override;
-
-        /**
-         * @brief setter for the physical property portion of the PhysicalProcess.
-         * @return a reference to this PhysicalProcess to enable chaining setter commands
-         */
-        OMEXMETA_DEPRECATED PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
-
-        /**
-         * @brief setter for the physical property portion of the PhysicalProcess.
-         * @return a reference to this PhysicalProcess to enable chaining setter commands
-         *
-         * Developers. Consider removing this method in favour of the
-         * setPhysicalProperty version that only takes a string as argument
-         */
-        OMEXMETA_DEPRECATED PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /**
          * @brief add a source to the list of Source object associated with a PhysicalProcess

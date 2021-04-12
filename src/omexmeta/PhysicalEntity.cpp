@@ -7,11 +7,6 @@
 
 namespace omexmeta {
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
-                                   Resource is, Resources is_part_of)
-        : PropertyBearer(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
-          identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
-
     PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty,
                                    Resource is, Resources is_part_of)
         : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_ENTITY),
@@ -31,10 +26,8 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model) : PropertyBearer(model) {}
-
-    PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
-        : PropertyBearer(model, model_uri, local_uri) {}
+    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler uriHandler)
+        : PropertyBearer(model, uriHandler) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -44,7 +37,9 @@ namespace omexmeta {
     PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
         subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, uriHandler_.getModel());
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, uriHandler_.getModel());
+        physical_property_ = PhysicalProperty(model_, uriHandler_);
+        physical_property_.about(subject_metaid)
+                .isVersionOf(physicalProperty);
         return *this;
     }
 
@@ -204,7 +199,7 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::variableMetaId(const std::string &metaid) {
-        physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(metaid, model_uri_);
+        physical_entity_property_id_ = OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri());
         return *this;
     }
 
@@ -215,10 +210,10 @@ namespace omexmeta {
         PropertyBearer::hasProperty(property);
         return *this;
     }
-    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
-        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
-        return *this;
-    }
+//    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+//        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+//        return *this;
+//    }
     PhysicalEntity &PhysicalEntity::hasProperty(const std::string &is_version_of) {
         PropertyBearer::hasProperty(is_version_of);
         return *this;

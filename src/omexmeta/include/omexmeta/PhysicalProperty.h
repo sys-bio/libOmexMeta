@@ -34,35 +34,13 @@ namespace omexmeta {
 
         PhysicalProperty() = default;
 
-        /**
-         * @brief constructor for PhysicalProperty
-         * @param physical_property_string is used to create a URI node representing the physical property
-         * @details overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead
-         */
-        [[deprecated]] PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri);
-
         void setPropertyMetaidBase(const std::string &propertyMetaidBase);
 
         [[nodiscard]] const std::string &getPropertyBearerBase() const;
 
         void setPropertyBearerBase(const std::string &propertyBearerBase);
-        /**
-         * @brief constructor for PhysicalProperty
-         * @param physical_property_string is used to create a URI node representing the physical property
-         * @details overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead
-         */
-        [[deprecated]] PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri, librdf_model *model);
-
-        [[deprecated("PhysicalProperty(librdf_model *model, UriHandler uriHandler;")]]
-        PhysicalProperty(librdf_model *model, const std::string &model_uri, const std::string &local_uri);
 
         PhysicalProperty(librdf_model *model, UriHandler uriHandler);
-
-//        /**
-//         * @brief constructor for PhysicalProperty
-//         * @param physical_property_string is used to create a URI node representing the physical property
-//         */
-//        PhysicalProperty(std::string subject_str, std::string model_uri);
 
         [[nodiscard]] const std::string &getModelUri() const;
 
@@ -96,8 +74,6 @@ namespace omexmeta {
         std::string property_bearer_base_ = "Entity";  // which string to use for the thing that has the property.
         std::string about_value_;
 
-        std::string model_uri_;
-        std::string local_uri_;
         librdf_model *model_ = nullptr;
 
         UriHandler uriHandler_;
@@ -108,8 +84,6 @@ namespace omexmeta {
          * by calling the hasProperty() method.
          */
         bool is_set_ = false;
-
-        OMEXMETA_DEPRECATED void validate();
 
     };
 

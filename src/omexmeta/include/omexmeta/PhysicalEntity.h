@@ -27,16 +27,6 @@ namespace omexmeta {
      * The PhysicalEntity type of PhysicalPhenomenon
      */
     class PhysicalEntity : public PropertyBearer {
-    private:
-        Resource identity_resource_;
-        Resources location_resources_;
-        Resources part_resources_;
-        std::string physical_entity_property_id_;
-
-        // When autogenerating metaid for property of a physical entity
-        // this is used as metaid base.
-        std::string property_metaid_base_ = "EntityProperty";
-
 
     public:
 
@@ -106,7 +96,7 @@ namespace omexmeta {
          * from the user. The PhysicalEntity also needs access to the model_uri, which we pass
          * here.
          */
-        explicit PhysicalEntity(librdf_model *model, const std::string &model_uri, const std::string &local_uri);
+        explicit PhysicalEntity(librdf_model *model, UriHandler uriHandler);
 
 
         /**
@@ -257,11 +247,19 @@ namespace omexmeta {
 
         PhysicalEntity &hasProperty(const PhysicalProperty &property) override;
 
-        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
-
         PhysicalEntity &hasProperty(const std::string &is_version_of) override;
 
         PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+    private:
+        Resource identity_resource_;
+        Resources location_resources_;
+        Resources part_resources_;
+        std::string physical_entity_property_id_;
+
+        // When autogenerating metaid for property of a physical entity
+        // this is used as metaid base.
+        std::string property_metaid_base_ = "EntityProperty";
+
 
     };
 }// namespace omexmeta

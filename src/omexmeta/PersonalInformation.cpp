@@ -7,12 +7,6 @@
 
 namespace omexmeta {
 
-    PersonalInformation::PersonalInformation(librdf_model *model, std::string model_uri, std::string local_uri)
-            : model_(model), local_uri_(local_uri), model_uri_(model_uri) {
-        metaid_ = generateMetaId();
-        createSubject();
-    }
-
     PersonalInformation::PersonalInformation(librdf_model *model, UriHandler uriHandler)
             : model_(model), uriHandler_(uriHandler) {
         metaid_ = generateMetaId();
@@ -29,9 +23,7 @@ namespace omexmeta {
     PersonalInformation::PersonalInformation(PersonalInformation &&information) noexcept {
         model_ = information.model_;
         information.model_ = nullptr;
-        local_uri_ = information.local_uri_;
         triples_ = std::move(information.triples_);
-        model_uri_ = information.model_uri_;
         uriHandler_ = information.uriHandler_;
     }
 
@@ -42,9 +34,7 @@ namespace omexmeta {
         if (this != &information) {
             model_ = information.model_;
             information.model_ = nullptr;
-            local_uri_ = information.local_uri_;
             triples_ = std::move(information.triples_);
-            model_uri_ = information.model_uri_;
             uriHandler_ = information.uriHandler_;
         }
         return *this;
@@ -174,10 +164,6 @@ namespace omexmeta {
     const std::string &PersonalInformation::getLocalUri() const {
         return uriHandler_.getLocal();
     }
-
-//    void PersonalInformation::setLocalUri(const std::string &localUri) {
-//        local_uri_ = localUri;
-//    }
 
     void PersonalInformation::createSubject() {
         if (uriHandler_.getModel().empty()) {

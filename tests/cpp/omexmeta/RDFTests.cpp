@@ -235,7 +235,7 @@ TEST_F(RDFTests, TestWriteToFile) {
     ASSERT_EQ(expected, actual);
     rdf.toFile(fname, "turtle");
 
-    std::filesystem::exists(fname);
+    ASSERT_TRUE(std::filesystem::exists(fname));
 
     // clear up file we wrote
     std::remove(fname.c_str());

@@ -6,24 +6,12 @@
 
 namespace omexmeta {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri,
-                                     const PhysicalProperty &physicalProperty,
-                                     Sources sources, Sinks sinks, Mediators mediators)
-        : PropertyBearer(model, model_uri, local_uri, physicalProperty, PHYSICAL_PROCESS),
-          sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
-    }
-
     PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler uriHandler,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators)
         : PropertyBearer(model, uriHandler, physicalProperty, PHYSICAL_PROCESS),
           sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
     }
-
-    PhysicalProcess::PhysicalProcess(librdf_model *model) : PropertyBearer(model) {}
-
-    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri)
-        : PropertyBearer(model, model_uri, local_uri) {}
 
     PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler uriHandler)
         : PropertyBearer(model, uriHandler) {}
@@ -40,20 +28,6 @@ namespace omexmeta {
         return mediators_;
     }
 
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalProperty physicalProperty) {
-        physical_property_ = std::move(physicalProperty);
-        return (*this);
-    }
-
-    //todo turn this into a factory whereby user enters string of PhysicalProperty
-    //  and we automatically pick out the correct OPB identifier
-    PhysicalProcess &
-    PhysicalProcess::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, uriHandler_.getModel());
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, uriHandler_.getModel());
-        return (*this);
-    }
-
     PhysicalProcess &PhysicalProcess::addSource(std::string physical_entity_reference, eUriType type, double multiplier) {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
@@ -61,7 +35,7 @@ namespace omexmeta {
                                             std::move(physical_entity_reference), type,
                                             uriHandler_
                                             )));
-        return (*this);
+        return *this;
     }
 
     PhysicalProcess &PhysicalProcess::addSink(std::string physical_entity_reference, eUriType type, double multiplier) {

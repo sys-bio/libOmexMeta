@@ -8,20 +8,6 @@ namespace omexmeta {
 
 
     Participant::Participant(librdf_model *model, std::string base_metaid,
-                             const std::string &model_uri, const std::string &local_uri,
-                             std::string semsim_predicate_term,
-                             double multiplier,
-                             std::string physicalEntityReference, eUriType type)
-        : model_(model),
-          metaid_template_str_(std::move(base_metaid)),
-          model_uri_(model_uri),
-          local_uri_(local_uri),
-          semsim_predicate_term_(std::move(semsim_predicate_term)),
-          multiplier_(multiplier),
-          physicalEntityReference_(std::move(physicalEntityReference)),
-          type_(type) {}
-
-    Participant::Participant(librdf_model *model, std::string base_metaid,
                              UriHandler uriHandler,
                              std::string semsim_predicate_term,
                              double multiplier,
@@ -118,8 +104,8 @@ namespace omexmeta {
                multiplier_ == rhs.multiplier_ &&
                physicalEntityReference_ == rhs.physicalEntityReference_ &&
                local_participant_metaid_ == rhs.local_participant_metaid_ &&
-               local_uri_ == rhs.local_uri_ &&
-               model_uri_ == rhs.model_uri_;
+               getLocalUri() == rhs.getLocalUri() &&
+               getModelUri() == rhs.getModelUri();
     }
 
     bool Participant::operator!=(const Participant &rhs) const {

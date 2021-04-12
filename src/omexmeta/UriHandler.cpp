@@ -138,9 +138,18 @@ namespace omexmeta {
             case IDENTIFIERS_URI:
                 return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, "https://identifiers.org/");
         }
+        throw std::logic_error("UriHandler::uriModifier: unrecognized eUriType");
     }
 
-
+    bool UriHandler::operator==(const UriHandler &rhs) const {
+        return repository_ == rhs.repository_ &&
+               archive_ == rhs.archive_ &&
+               model_ == rhs.model_ &&
+               local_ == rhs.local_;
+    }
+    bool UriHandler::operator!=(const UriHandler &rhs) const {
+        return !(rhs == *this);
+    }
 
 
 }// namespace omexmeta
