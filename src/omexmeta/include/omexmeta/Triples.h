@@ -154,7 +154,7 @@ namespace omexmeta {
          * @brief get the number of triples in the Triples object
          * @returns the integer number of triples in the Triples object
          */
-        int size() const;
+        [[nodiscard]] int size() const;
 
         /**
          * @brief the begin iterator for a Triples object
@@ -221,7 +221,7 @@ namespace omexmeta {
          * @return a Triple from position 0 in Triples
          * @details caller is responsible for Triple resources
          */
-        Triple popFront();
+//        [[deprecated("Slow algorithm so do not use")]] Triple popFront();
 
         /**
          * @brief forwarded on to std::vector::capacity

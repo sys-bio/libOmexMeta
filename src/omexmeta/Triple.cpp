@@ -11,8 +11,16 @@ namespace omexmeta {
         : uriHandler_(uriHandler) {}
 
     Triple::Triple(Triple &&triple) noexcept
-        : uriHandler_(triple.uriHandler_),
-          LibrdfStatement(triple.statement_) {}
+        : uriHandler_(triple.uriHandler_){
+            if (triple.statement_ != nullptr) {
+                if (statement_ != nullptr) {
+                    librdf_free_statement(statement_);
+                    statement_ = nullptr;
+                }
+                statement_ = triple.statement_;
+                triple.statement_ = nullptr;
+            }
+        }
 
     Triple &Triple::operator=(Triple &&triple) noexcept {
         if (*this != triple) {

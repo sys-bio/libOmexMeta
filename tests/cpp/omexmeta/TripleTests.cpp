@@ -19,7 +19,7 @@ public:
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
     std::string resource_namespace = "uniprot";
     std::string resource_id = "P0DP23";
-    
+
     UriHandler uriHandler;
 
     Subject subject;
@@ -265,6 +265,10 @@ TEST_F(TripleTests, TestMoveATriple) {
             .setResourceUri("uniprot/PD4034");
     Triple triple2 = std::move(triple1);
 
+    ASSERT_STREQ(triple2.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
+    ASSERT_STREQ(triple2.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple2.getResourceStr().c_str(), "https://identifiers.org/uniprot/PD4034");
+
     triple2.freeTriple();
     predicate.freeNode();
     subject.free();
@@ -279,8 +283,13 @@ TEST_F(TripleTests, TestMoveAssignmentOperator) {
     Triple triple2(uriHandler);
     triple2.about("metaid2")
             .setPredicate("bqbiol", "is")
-            .setResourceUri("uniprot/PD4035");;
+            .setResourceUri("uniprot/PD4035");
     triple2 = std::move(triple1);
+
+    ASSERT_STREQ(triple2.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
+    ASSERT_STREQ(triple2.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple2.getResourceStr().c_str(), "https://identifiers.org/uniprot/PD4034");
+
 
     triple2.freeTriple();
     predicate.freeNode();
@@ -358,6 +367,20 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     vec[0].freeStatement();
 }
+TEST_F(TripleTestsVector, t) {
+    std::string d = "asdfasdf";
+    std::vector<std::string> y({d});
+    ASSERT_EQ(1, y.size());
+    std::string b = std::move(y[0]);
+    ASSERT_EQ(0, y.size());
+
+
+//    Triple triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
+//    std::vector<Triple> vec;
+//    vec.push_back(std::move(triple));
+//    ASSERT_EQ(1, vec.size());
+//
+}
 
 
 class TestTripleTwice : public ::testing::Test {
@@ -368,7 +391,7 @@ public:
      * PhysicalEntity and free them both. Here I try to
      * reproduce the problem by process of elimination.
      */
-    TestTripleTwice()= default;
+    TestTripleTwice() = default;
 };
 
 /*

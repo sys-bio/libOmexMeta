@@ -24,7 +24,6 @@ namespace redland {
         /*
          * @brief update the contained statement with current
          * values of subject, predicate and resource.
-         *
          */
         void refreshStatement();
 
