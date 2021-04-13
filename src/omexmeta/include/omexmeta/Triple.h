@@ -65,7 +65,7 @@ namespace omexmeta {
          * to the users annotations. This method is for visualizing
          * a triple only.
          */
-        std::string str(const std::string &format = "turtle",
+        [[deprecated("Use main RDF class to serialize triple objects")]] std::string str(const std::string &format = "turtle",
                         const std::string &base = (std::filesystem::current_path() /= "annotations.rdf").string(),
                         std::string omex_name = "NewOmex.omex/",
                         std::string model_name = "NewModel.xml") const;
@@ -121,9 +121,18 @@ namespace omexmeta {
 
     private:
         Triple(librdf_statement *statement);
-        // std::string local_uri_;// like http:/omex-library.org/omex-archive.omex/model.rdf
-        // std::string model_uri_;
-        UriHandler& uriHandler_;
+
+        /**
+         * Developers note: This *should* really be a reference. However, in order
+         * to construct a Triple with a UriHandler reference we need to inject
+         * the UriHandler instance into the constructor. This in turn probably
+         * necessitates a "newTriple" method in RDF for creating the Triple object
+         * which would pass the UriHandler reference to the Triple behind the scenes.
+         * At present, we just use setUriHandler to give this Triple the correct
+         * UriHandler when needed, which is a worse solution because of the need to
+         * remember to call setUriHandler. However, its already implemented and working ...
+         */
+        UriHandler uriHandler_;
     };
 
     typedef Triple SingularAnnotation;

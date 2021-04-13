@@ -24,23 +24,24 @@ namespace omexmeta {
     class PhysicalProperty {
 
     public:
+        PhysicalProperty(UriHandler &uriHandler);
+        ~PhysicalProperty() = default;
+        PhysicalProperty(const PhysicalProperty &physicalProperty)  = default;
+        PhysicalProperty(PhysicalProperty &&physicalProperty) noexcept = default;
+        PhysicalProperty &operator=(const PhysicalProperty &physicalProperty)  ;
+        PhysicalProperty &operator=(PhysicalProperty &&physicalProperty) noexcept;
+
         bool isSet() const;
 
         void setIsSet(bool isSet);
 
-        bool operator==(const PhysicalProperty &rhs) const;
-
-        bool operator!=(const PhysicalProperty &rhs) const;
-
-        PhysicalProperty() = default;
-
-        void setPropertyMetaidBase(const std::string &propertyMetaidBase);
+                void setPropertyMetaidBase(const std::string &propertyMetaidBase);
 
         [[nodiscard]] const std::string &getPropertyBearerBase() const;
 
         void setPropertyBearerBase(const std::string &propertyBearerBase);
 
-        PhysicalProperty(librdf_model *model, UriHandler& uriHandler);
+        PhysicalProperty(librdf_model *model, UriHandler &uriHandler);
 
         [[nodiscard]] const std::string &getModelUri() const;
 
@@ -65,6 +66,8 @@ namespace omexmeta {
         [[nodiscard]] const std::string &getIsPropertyOfValue() const;
 
         [[nodiscard]] const std::string &getPropertyMetaidBase() const;
+        bool operator==(const PhysicalProperty &rhs) const;
+        bool operator!=(const PhysicalProperty &rhs) const;
 
     private:
         std::vector<std::string> new_metaid_exclusion_list_;
@@ -76,7 +79,7 @@ namespace omexmeta {
 
         librdf_model *model_ = nullptr;
 
-        UriHandler& uriHandler_;
+        UriHandler &uriHandler_;
 
         /**
          * Indicator to let classes which use the PhysicalProperty
@@ -84,7 +87,6 @@ namespace omexmeta {
          * by calling the hasProperty() method.
          */
         bool is_set_ = false;
-
     };
 
 
