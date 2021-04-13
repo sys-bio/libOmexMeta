@@ -240,11 +240,11 @@ namespace omexmeta {
     }
 
     const std::string &Triple::getLocalUri() const {
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     const std::string &Triple::getModelUri() const {
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     void Triple::setLocalUri(std::string localUri) {
@@ -252,11 +252,11 @@ namespace omexmeta {
         // the modelUri and localUri are bound together
         // such that they change together. (prevents orphaning
         // rdf files) .
-        uriHandler_.setModel(localUri);
+        uriHandler_.setModelUri(localUri);
     }
 
     void Triple::setModelUri(const std::string &model_uri) {
-        uriHandler_.setModel(model_uri);
+        uriHandler_.setModelUri(model_uri);
     }
 
     void Triple::setUriHandler(UriHandler& uriHandler) {

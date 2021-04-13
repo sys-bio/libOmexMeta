@@ -419,13 +419,13 @@ namespace omexmeta {
         return *this;
     }
 
-    std::string Editor::getLocalUri() const { return uriHandler_.getLocal(); }
+    std::string Editor::getLocalUri() const { return uriHandler_.getLocalUri(); }
 
-    std::string Editor::getModelUri() const { return uriHandler_.getModel(); }
+    std::string Editor::getModelUri() const { return uriHandler_.getModelUri(); }
 
-    std::string Editor::getArchiveUri() const { return uriHandler_.getArchive(); }
+    std::string Editor::getArchiveUri() const { return uriHandler_.getArchiveUri(); }
 
-    std::string Editor::getRepositoryUri() const { return uriHandler_.getRepository(); }
+    std::string Editor::getRepositoryUri() const { return uriHandler_.getRepositoryUri(); }
 
     LibrdfNode Editor::createNodeWithModelUri(const std::string &string) const {
         if (getModelUri().empty()) {
@@ -456,7 +456,7 @@ namespace omexmeta {
         SingularAnnotation singularAnnotation;
         singularAnnotation.setUriHandler(uriHandler_);
         singularAnnotation.about(
-                OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), uriHandler_.getModel()));
+                OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), uriHandler_.getModelUri()));
         return singularAnnotation;
     }
 
@@ -469,6 +469,9 @@ namespace omexmeta {
     OmexMetaXmlType Editor::getType() const { return type_; }
 
     void Editor::setType(OmexMetaXmlType type) { type_ = type; }
+    UriHandler &Editor::getUriHandler() const {
+        return uriHandler_;
+    }
 
 
 }// namespace omexmeta

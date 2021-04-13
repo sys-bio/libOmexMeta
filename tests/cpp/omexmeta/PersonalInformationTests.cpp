@@ -27,7 +27,7 @@ public:
 };
 
 TEST_F(PersonalInformationTests, TestAddFoaf) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     LibrdfNode value = LibrdfNode::fromLiteral("Joe Blogs");
     information.addFoaf("name", value);
@@ -49,7 +49,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf) {
 }
 
 TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     information.addFoafLiteral("name", "Ciaran Welsh");
     Triples triples = information.getTriples();
@@ -70,9 +70,9 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
 
 
 TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
-    uriHandler.setModel("TestModel.sbml");
-    ASSERT_STREQ(uriHandler.getModel().c_str(), "http://omex-library.org/NewOmex.omex/TestModel.sbml");
-    ASSERT_STREQ(uriHandler.getLocal().c_str(), "http://omex-library.org/NewOmex.omex/TestModel.rdf#");
+    uriHandler.setModelUri("TestModel.sbml");
+    ASSERT_STREQ(uriHandler.getModelUri().c_str(), "http://omex-library.org/NewOmex.omex/TestModel.sbml");
+    ASSERT_STREQ(uriHandler.getLocalUri().c_str(), "http://omex-library.org/NewOmex.omex/TestModel.rdf#");
     PersonalInformation information(model.get(), uriHandler);
     information.addFoafUri("accountName", "https://orcid.org/0000-0001-8254-4957");
     Triples triples = information.getTriples();
@@ -91,7 +91,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
     triples.freeTriples();
 }
 TEST_F(PersonalInformationTests, TestAddName) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     information.addName("Ciaran Welsh");
     Triples triples = information.getTriples();
@@ -112,7 +112,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
 }
 
 TEST_F(PersonalInformationTests, TestMBox) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     information.addMbox("annotations@uw.edu");
     Triples triples = information.getTriples();
@@ -133,7 +133,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
 }
 
 TEST_F(PersonalInformationTests, TestAccountName) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     information.addAccountName("0000-0001-9876-3928");
     Triples triples = information.getTriples();
@@ -154,7 +154,7 @@ TEST_F(PersonalInformationTests, TestAccountName) {
 }
 
 TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     information.addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta");
     Triples triples = information.getTriples();
@@ -175,7 +175,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
 }
 
 TEST_F(PersonalInformationTests, TestMultipleEntries) {
-    uriHandler.setModel("TestModel.sbml");
+    uriHandler.setModelUri("TestModel.sbml");
     PersonalInformation information(model.get(), uriHandler);
     information.addName("Ciaran Welsh")
             .addAccountName("0000-1111-2222-3333")

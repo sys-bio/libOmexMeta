@@ -111,7 +111,7 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classomexmeta_1_1RDF.html">   39</a></span>&#160;    <span class="keyword">class </span>OMEXMETA_EXPORT <a class="code" href="classomexmeta_1_1RDF.html">RDF</a> {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classredland_1_1LibrdfStorage.html">LibrdfStorage</a> storage_;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> model_;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> model_uri_;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -209,7 +209,7 @@ $(function() {
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> *toEditorPtr(<span class="keyword">const</span> std::string &amp;xml, <span class="keywordtype">bool</span> generate_new_metaids = <span class="keyword">false</span>, <span class="keywordtype">bool</span> sbml_semantic_extraction = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        librdf_model *getModel() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        librdf_model *getModelUri() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        librdf_storage *getStorage() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>

@@ -74,7 +74,7 @@ TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     std::string actual = sink.getLocalUri();
     std::cout << actual << std::endl;
-    std::string expected = uriHandler.getLocal();
+    std::string expected = uriHandler.getLocalUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
 }

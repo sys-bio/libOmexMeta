@@ -302,8 +302,7 @@ namespace omexmeta {
 
     PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr) {
         try {
-            return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getModelUri(),
-                                           editor_ptr->getLocalUri());
+            return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getUriHandler());
         } catch (std::exception &error) {
             setLastError(error.what());
             return nullptr;
@@ -312,7 +311,7 @@ namespace omexmeta {
 
     PhysicalEntity *Editor_newPhysicalEntity(Editor *editor_ptr) {
         try {
-            return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getUriHandler());
         } catch (std::exception &error) {
             setLastError(error.what());
             return nullptr;
@@ -321,7 +320,7 @@ namespace omexmeta {
 
     EnergyDiff *Editor_newEnergyDiff(Editor *editor_ptr) {
         try {
-            return new EnergyDiff(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            return new EnergyDiff(editor_ptr->getModel(), editor_ptr->getUriHandler());
         } catch (std::exception &error) {
             setLastError(error.what());
             return nullptr;
@@ -329,7 +328,7 @@ namespace omexmeta {
     }
     PhysicalProcess *Editor_newPhysicalProcess(Editor *editor_ptr) {
         try {
-            return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getUriHandler());
         } catch (std::exception &error) {
             setLastError(error.what());
             return nullptr;
@@ -338,7 +337,7 @@ namespace omexmeta {
 
     PhysicalProperty *Editor_newPhysicalProperty(Editor *editor_ptr) {
         try {
-            auto* property = new PhysicalProperty(editor_ptr->getModel(), editor_ptr->getModelUri(), editor_ptr->getLocalUri());
+            auto* property = new PhysicalProperty(editor_ptr->getModel(), editor_ptr->getUriHandler());
             return property;
         } catch (std::exception &error) {
             setLastError(error.what());
@@ -1389,16 +1388,6 @@ namespace omexmeta {
         } catch (std::exception &error) {
             setLastError(error.what());
             return nullptr;
-        }
-    }
-
-    int PersonalInformation_setLocalUri(PersonalInformation *information, const char *localUri) {
-        try {
-            information->setLocalUri(localUri);
-            return 0;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return -1;
         }
     }
 

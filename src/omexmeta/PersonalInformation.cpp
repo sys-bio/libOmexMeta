@@ -162,16 +162,16 @@ namespace omexmeta {
     }
 
     const std::string &PersonalInformation::getLocalUri() const {
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     void PersonalInformation::createSubject() {
-        if (uriHandler_.getModel().empty()) {
+        if (uriHandler_.getModelUri().empty()) {
             throw std::invalid_argument("std::invalid_argument: PersonalInformation::createSubject:"
                                         "Trying to create a PersonalInformation composite annotation triples without"
                                         "a `model_uri`. Please use setModelUri() and try again.");
         }
-        LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModel());
+        LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModelUri());
         DCTerm creator("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
         Triple triple(n.get(), creator.getNode(), r.get());
@@ -192,11 +192,11 @@ namespace omexmeta {
     }
 
     const std::string &PersonalInformation::getModelUri() const {
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     void PersonalInformation::setModelUri(const std::string &modelUri) {
-        uriHandler_.setModel(modelUri);
+        uriHandler_.setModelUri(modelUri);
     }
 
     void PersonalInformation::freeTriples() {

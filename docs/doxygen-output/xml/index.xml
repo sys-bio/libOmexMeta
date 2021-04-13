@@ -84,7 +84,7 @@
   <compound refid="classomexmeta_1_1Editor" kind="class"><name>omexmeta::Editor</name>
     <member refid="classomexmeta_1_1Editor_1a36eecb635c6384ad186f0e750602b58e" kind="variable"><name>xml_</name></member>
     <member refid="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c" kind="variable"><name>metaids_</name></member>
-    <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1Editor_1a79d5dd5430ec0b292ea162fdf7ba4a61" kind="variable"><name>create_ids_</name></member>
     <member refid="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e" kind="variable"><name>namespaces_</name></member>
     <member refid="classomexmeta_1_1Editor_1a1d731b45a2d26d5118c7483d4f3033a3" kind="variable"><name>generate_new_metaids_</name></member>
@@ -100,7 +100,7 @@
     <member refid="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240" kind="function"><name>~Editor</name></member>
     <member refid="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05" kind="function"><name>size</name></member>
     <member refid="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" kind="function"><name>getNamespaces</name></member>
-    <member refid="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" kind="function"><name>getModel</name></member>
+    <member refid="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a83836e19bb1de9c7df69d36e8b61b2b2" kind="function"><name>setNamespaces</name></member>
     <member refid="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3" kind="function"><name>getXml</name></member>
     <member refid="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" kind="function"><name>getMetaids</name></member>
@@ -232,7 +232,7 @@
     <member refid="classomexmeta_1_1LibRDFException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfModel" kind="class"><name>redland::LibrdfModel</name>
-    <member refid="classredland_1_1LibrdfModel_1a909fe2f497040585a33d6789aa6d3f20" kind="variable"><name>model_</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a909fe2f497040585a33d6789aa6d3f20" kind="variable"><name>model_uri_</name></member>
     <member refid="classredland_1_1LibrdfModel_1a1a8a3f9aad0520d6788aa2816ffb318e" kind="function"><name>operator==</name></member>
     <member refid="classredland_1_1LibrdfModel_1a8cdaab0ea4c70808f015bfb6846b20bb" kind="function"><name>operator!=</name></member>
     <member refid="classredland_1_1LibrdfModel_1a5a35c032585e38b1d41bc18f057128c1" kind="function"><name>LibrdfModel</name></member>
@@ -545,7 +545,7 @@
     <member refid="structPair_1a86b9ae89026109ed31635f6c938b5b57" kind="variable"><name>second</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Participant" kind="class"><name>omexmeta::Participant</name>
-    <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1Participant_1aa947afd3fb5d53a7bd2029261f5be45e" kind="variable"><name>metaid_template_str_</name></member>
     <member refid="classomexmeta_1_1Participant_1acc6eb18feca176230dfd107f94a7b0db" kind="variable"><name>semsim_predicate_term_</name></member>
     <member refid="classomexmeta_1_1Participant_1aba352cbcc6db3a2df58c08d544c8e3bd" kind="variable"><name>multiplier_</name></member>
@@ -576,7 +576,7 @@
     <member refid="classomexmeta_1_1Participant_1abea74e8605f7314a51db8dc723961462" kind="function"><name>setModelUri</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PersonalInformation" kind="class"><name>omexmeta::PersonalInformation</name>
-    <member refid="classomexmeta_1_1PersonalInformation_1aa7926298a95c2e0418e360afaa9036d7" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1PersonalInformation_1aa7926298a95c2e0418e360afaa9036d7" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1ac4708b8e04dba32b67bc67a68f7c7fc7" kind="variable"><name>triples_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" kind="variable"><name>metaid_</name></member>
@@ -698,7 +698,7 @@
     <member refid="classomexmeta_1_1PhysicalProperty_1acdec5ae85563d2b3f92a9ea15e2bf060" kind="variable"><name>about_value_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" kind="variable"><name>local_uri_</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a7816274c77919713b49b7f91d4355339" kind="variable"><name>is_set_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" kind="function"><name>validate</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a13a9ec404ea9c6d7ddea6c7398b67328" kind="function"><name>isSet</name></member>
@@ -766,7 +766,7 @@
   <compound refid="structdbg_1_1print__type" kind="struct"><name>dbg::print_type</name>
   </compound>
   <compound refid="classomexmeta_1_1PropertyBearer" kind="class"><name>omexmeta::PropertyBearer</name>
-    <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1abdaa4997f02b9ef36cda61037399eb86" kind="variable"><name>physical_property_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a98d1be3285eaeaa15c3c888a87190f55" kind="variable"><name>type_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a9be0613d73e71b972ec908eff77378fd" kind="variable"><name>model_uri_</name></member>
@@ -800,7 +800,7 @@
     <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" kind="function"><name>getSubjectStr</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035" kind="function"><name>setType</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" kind="function"><name>getModel</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1ab70ef1dec50691f1731de28462ca3012" kind="function"><name>hasProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a6b21c3a4e722fbc37540203d8bc72a5c" kind="function"><name>hasProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a042230eb589010b3acbb8d6b329c45cd" kind="function"><name>hasProperty</name></member>
@@ -823,7 +823,7 @@
     <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kind="function"><name>resultsAsMap</name></member>
     <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" kind="function"><name>resultsAsStr</name></member>
     <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" kind="function"><name>runQuery</name></member>
-    <member refid="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd" kind="variable"><name>query_results_</name></member>
     <member refid="classomexmeta_1_1Query_1a42588f89a2f1c0bbb006c665c243fbe7" kind="variable"><name>q_</name></member>
     <member refid="classomexmeta_1_1Query_1aa27e0b22999457c71ab690cf1650e26a" kind="variable"><name>query_</name></member>
@@ -1041,7 +1041,7 @@
   <compound refid="classomexmeta_1_1RDF" kind="class"><name>omexmeta::RDF</name>
     <member refid="classomexmeta_1_1RDF_1ad31e5bb632eeaa00a3ac0e69c5e4f89c" kind="typedef"><name>NamespaceMap</name></member>
     <member refid="classomexmeta_1_1RDF_1a345bcba83c6928f750ba732b6e6c748b" kind="variable"><name>storage_</name></member>
-    <member refid="classomexmeta_1_1RDF_1a88a09d66eb9d6881fd77e9ef6133b4e6" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1RDF_1a88a09d66eb9d6881fd77e9ef6133b4e6" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1RDF_1ac7eaa8a5c0fdf7b563ba56550fede82a" kind="variable"><name>xmlType</name></member>
     <member refid="classomexmeta_1_1RDF_1a54d08d61cfd6eab43c2034e115150a59" kind="variable"><name>uriHandler_</name></member>
     <member refid="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f" kind="variable"><name>namespaces_</name></member>
@@ -1078,7 +1078,7 @@
     <member refid="classomexmeta_1_1RDF_1a42a7be2a6261f03dc275b24a152dcaae" kind="function"><name>toFile</name></member>
     <member refid="classomexmeta_1_1RDF_1ac09044c8a4c1af4f9536dbf29b4c3f3c" kind="function"><name>toEditor</name></member>
     <member refid="classomexmeta_1_1RDF_1a80c6ad0b9c9daddd5e2150ababcc7476" kind="function"><name>toEditorPtr</name></member>
-    <member refid="classomexmeta_1_1RDF_1a8007b0ce5729c7dd3f8cab86d42216f5" kind="function"><name>getModel</name></member>
+    <member refid="classomexmeta_1_1RDF_1a8007b0ce5729c7dd3f8cab86d42216f5" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a71b0e5f3b85a87c2231e7700d86060c3" kind="function"><name>getStorage</name></member>
     <member refid="classomexmeta_1_1RDF_1a711f228bb86c5cbf9740f64b8633d04c" kind="function"><name>commitTransaction</name></member>
     <member refid="classomexmeta_1_1RDF_1afa2b148ecb235b3ac9497fa3b528d2ed" kind="function"><name>startTransaction</name></member>
@@ -1243,18 +1243,18 @@
   <compound refid="structdbg_1_1type__tag" kind="struct"><name>dbg::type_tag</name>
   </compound>
   <compound refid="classomexmeta_1_1UriHandler" kind="class"><name>omexmeta::UriHandler</name>
-    <member refid="classomexmeta_1_1UriHandler_1a7314e819a6df8473af060e8386c5ca28" kind="variable"><name>repository_</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1acba5cabedaa526c1c750f8e483c7462d" kind="variable"><name>archive_</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1ac7572c260f85d710c0f70a1f1ceeefed" kind="variable"><name>model_</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1abf8134e01008621ea4d5ef840853c82c" kind="variable"><name>local_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a7314e819a6df8473af060e8386c5ca28" kind="variable"><name>repository_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1acba5cabedaa526c1c750f8e483c7462d" kind="variable"><name>archive_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1ac7572c260f85d710c0f70a1f1ceeefed" kind="variable"><name>model_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1abf8134e01008621ea4d5ef840853c82c" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a3fc8f7022dc611dbbed4d9994a937de7" kind="function"><name>UriHandler</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1aebddd11d7594e355d8b60153e380144f" kind="function"><name>getRepository</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1af31f643e5ef458a3031112f2854f2f1d" kind="function"><name>setRepository</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a97718b9b1e91fe2efec0b3f17d63665d" kind="function"><name>getArchive</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1abaa9bf90c2d8c7daf9d8f8fad6188a4e" kind="function"><name>setArchive</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a67f7dfa35576a487940dd5072ea625d2" kind="function"><name>getModel</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a6bb9006061d7ce7480700987ed9e1918" kind="function"><name>setModel</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a14e40e77ef67711ba1afca4e15428c02" kind="function"><name>getLocal</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1aebddd11d7594e355d8b60153e380144f" kind="function"><name>getRepositoryUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1af31f643e5ef458a3031112f2854f2f1d" kind="function"><name>setRepositoryUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a97718b9b1e91fe2efec0b3f17d63665d" kind="function"><name>getArchiveUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1abaa9bf90c2d8c7daf9d8f8fad6188a4e" kind="function"><name>setArchiveUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a67f7dfa35576a487940dd5072ea625d2" kind="function"><name>getModelUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a6bb9006061d7ce7480700987ed9e1918" kind="function"><name>setModelUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a14e40e77ef67711ba1afca4e15428c02" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1UriHandler_1ad30de26a22a4e9bfd0417cc19c7c67cc" kind="function"><name>uriModifier</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a9cde7e91ac8c45800decd9263a853f74" kind="function"><name>uriModifier</name></member>
   </compound>

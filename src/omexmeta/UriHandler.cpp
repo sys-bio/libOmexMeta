@@ -8,67 +8,67 @@
 
 namespace omexmeta {
 
-    const std::string &UriHandler::getRepository() const {
-        return repository_;
+    const std::string &UriHandler::getRepositoryUri() const {
+        return repository_uri_;
     }
 
-    UriHandler &UriHandler::setRepository(const std::string &repository) {
+    UriHandler &UriHandler::setRepositoryUri(const std::string &repository) {
 
         // we need to remember to update the strings that depend on repository_
 
         if (OmexMetaUtils::endsWith(repository, "/")) {
-            model_ = OmexMetaUtils::stringReplace(model_, repository_, repository);
-            archive_ = OmexMetaUtils::stringReplace(archive_, repository_, repository);
-            local_ = OmexMetaUtils::stringReplace(local_, repository_, repository);
-            repository_ = repository;
+            model_uri_ = OmexMetaUtils::stringReplace(model_uri_, repository_uri_, repository);
+            archive_uri_ = OmexMetaUtils::stringReplace(archive_uri_, repository_uri_, repository);
+            local_uri_ = OmexMetaUtils::stringReplace(local_uri_, repository_uri_, repository);
+            repository_uri_ = repository;
         } else {
-            model_ = OmexMetaUtils::stringReplace(model_, repository_, repository + "/");
-            archive_ = OmexMetaUtils::stringReplace(archive_, repository_, repository + "/");
-            local_ = OmexMetaUtils::stringReplace(local_, repository_, repository + "/");
-            repository_ = repository + "/";
+            model_uri_ = OmexMetaUtils::stringReplace(model_uri_, repository_uri_, repository + "/");
+            archive_uri_ = OmexMetaUtils::stringReplace(archive_uri_, repository_uri_, repository + "/");
+            local_uri_ = OmexMetaUtils::stringReplace(local_uri_, repository_uri_, repository + "/");
+            repository_uri_ = repository + "/";
         }
         return *this;
     }
 
-    const std::string &UriHandler::getArchive() const {
-        return archive_;
+    const std::string &UriHandler::getArchiveUri() const {
+        return archive_uri_;
     }
-    UriHandler &UriHandler::setArchive(const std::string &archiveName) {
-        if (OmexMetaUtils::startsWith(archiveName, "http")) {
+    UriHandler &UriHandler::setArchiveUri(const std::string &archive) {
+        if (OmexMetaUtils::startsWith(archive, "http")) {
             throw std::invalid_argument("std::invalid_argument: RDF::setArchiveUri: "
                                         "Specified \"archiveName\" argument \"" +
-                                        archiveName + "\" begins with \"http\". Since the archive url is built "
+                                        archive + "\" begins with \"http\". Since the archive url is built "
                                                       "using the repositoryName argument, please only specify "
                                                       "the name of the omex archive. Like \"myOmexFile.omex\"");
         }
 
         // remove the repository uri section from archive uri
-        std::string archive_without_repository = OmexMetaUtils::stringReplace(archive_, repository_, "");
+        std::string archive_without_repository = OmexMetaUtils::stringReplace(archive_uri_, repository_uri_, "");
 
         // now we replace the archive minus repository name part of model and local
-        if (OmexMetaUtils::endsWith(archiveName, "/")) {
-            model_ = OmexMetaUtils::stringReplace(model_, archive_without_repository, archiveName);
-            local_ = OmexMetaUtils::stringReplace(local_, archive_without_repository, archiveName);
-            archive_ = repository_ + archiveName + "/";
+        if (OmexMetaUtils::endsWith(archive, "/")) {
+            model_uri_ = OmexMetaUtils::stringReplace(model_uri_, archive_without_repository, archive);
+            local_uri_ = OmexMetaUtils::stringReplace(local_uri_, archive_without_repository, archive);
+            archive_uri_ = repository_uri_ + archive + "/";
         } else {
-            model_ = OmexMetaUtils::stringReplace(model_, archive_without_repository, archiveName + "/");
-            local_ = OmexMetaUtils::stringReplace(local_, archive_without_repository, archiveName + "/");
-            archive_ = repository_ + archiveName + "/";
+            model_uri_ = OmexMetaUtils::stringReplace(model_uri_, archive_without_repository, archive + "/");
+            local_uri_ = OmexMetaUtils::stringReplace(local_uri_, archive_without_repository, archive + "/");
+            archive_uri_ = repository_uri_ + archive + "/";
 
         }
 
         return *this;
     }
 
-    const std::string &UriHandler::getModel() const {
-        return model_;
+    const std::string &UriHandler::getModelUri() const {
+        return model_uri_;
     }
 
-    UriHandler &UriHandler::setModel(std::string modelName) {
-        if (OmexMetaUtils::startsWith(modelName, "http")) {
+    UriHandler &UriHandler::setModelUri(std::string model) {
+        if (OmexMetaUtils::startsWith(model, "http")) {
             throw std::invalid_argument("std::invalid_argument: RDF::setModelUri: "
                                         "Specified \"modelName\" argument \"" +
-                                        modelName + "\" begins with \"http\". Since the model url is built "
+                                        model + "\" begins with \"http\". Since the model url is built "
                                                     "using the repositoryName argument, please only specify "
                                                     "the name of the model. For example \"NewModel.sbml\"");
         }
@@ -78,21 +78,21 @@ namespace omexmeta {
         std::vector<std::string> suffexes = {".xml", ".sbml", ".cellml"};
         bool good = false;
         for (auto &it : suffexes) {
-            if (OmexMetaUtils::endsWith(modelName, it)) {
+            if (OmexMetaUtils::endsWith(model, it)) {
                 good = true;
             }
         }
         // automatically add .xml if one of the above suffixes was not detected
         if (!good) {
             // remember to remove the trailing "#"
-            modelName += ".xml";
+            model += ".xml";
         }
 
         // concatonate archive and model, being sensitive to ending "/"
-        if (OmexMetaUtils::endsWith(getArchive(), "/")) {
-            model_ = getArchive() + modelName;
+        if (OmexMetaUtils::endsWith(getArchiveUri(), "/")) {
+            model_uri_ = getArchiveUri() + model;
         } else {
-            model_ = getArchive() + "/" + modelName;
+            model_uri_ = getArchiveUri() + "/" + model;
         }
 
         // Since the model name is also used for the local name we
@@ -100,7 +100,7 @@ namespace omexmeta {
         // a suffux like .xml.
         // we need to remove it so we can add .rdf.
         // We do this in a way that enables multiple "." in a model_name
-        std::vector<std::string> split = OmexMetaUtils::splitStringBy(modelName, '.');
+        std::vector<std::string> split = OmexMetaUtils::splitStringBy(model, '.');
         if (split.size() <= 1) {
             throw std::logic_error("std::logic_error: RDF::setModelUri: You should never get a "
                                    "a value less than 2 here because you are splitting a string. "
@@ -116,25 +116,25 @@ namespace omexmeta {
             os << it << ".";
         }
         // Now we can docs-build up the local string
-        if (OmexMetaUtils::endsWith(getArchive(), "/")) {
-            local_ = getArchive() + os.str() + "rdf#";
+        if (OmexMetaUtils::endsWith(getArchiveUri(), "/")) {
+            local_uri_ = getArchiveUri() + os.str() + "rdf#";
         } else {
-            local_ = getArchive() + "/" + os.str() + "rdf#";
+            local_uri_ = getArchiveUri() + "/" + os.str() + "rdf#";
         }
         return *this;
     }
 
-    const std::string &UriHandler::getLocal() const {
-        return local_;
+    const std::string &UriHandler::getLocalUri() const {
+        return local_uri_;
     }
     std::string UriHandler::uriModifier(std::string uri_to_modify, eUriType type) const {
         switch (type) {
             case NONE:
                 return uri_to_modify;
             case LOCAL_URI:
-                return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, getLocal());
+                return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, getLocalUri());
             case MODEL_URI:
-                return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, getModel());
+                return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, getModelUri());
             case IDENTIFIERS_URI:
                 return OmexMetaUtils::concatMetaIdAndUri(uri_to_modify, "https://identifiers.org/");
         }
@@ -142,10 +142,10 @@ namespace omexmeta {
     }
 
     bool UriHandler::operator==(const UriHandler &rhs) const {
-        return repository_ == rhs.repository_ &&
-               archive_ == rhs.archive_ &&
-               model_ == rhs.model_ &&
-               local_ == rhs.local_;
+        return repository_uri_ == rhs.repository_uri_ &&
+               archive_uri_ == rhs.archive_uri_ &&
+               model_uri_ == rhs.model_uri_ &&
+               local_uri_ == rhs.local_uri_;
     }
     bool UriHandler::operator!=(const UriHandler &rhs) const {
         return !(rhs == *this);

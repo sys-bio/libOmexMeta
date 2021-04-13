@@ -780,7 +780,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ad53dffe87d395860708c4bcfc8a76478" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getAboutUriType</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getLocalUri</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getNewMetaidExclusionList</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1afbc21847dde7dfe371f01c009e522f95" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getNumSinks</name></member>
@@ -798,7 +798,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1EnergyDiff_1a93f81d7b9419c1eb3a42ef8286686911" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>isPropertyOf</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a01637dda292ce8ca2bab22f20c874c5d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1aa5c08869538a59266cfd785d92f12539" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>local_uri_</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a9be0613d73e71b972ec908eff77378fd" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a0d5f37b499b9204fe425af2ceb26832d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>operator!=</name></member>

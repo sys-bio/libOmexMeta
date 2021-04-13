@@ -32,9 +32,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" static="no" mutable="no">
         <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
-        <definition>const LibrdfModel&amp; omexmeta::Editor::model_</definition>
+        <definition>const LibrdfModel&amp; omexmeta::Editor::model_uri_</definition>
         <argsstring></argsstring>
-        <name>model_</name>
+        <name>model_uri_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -377,9 +377,9 @@ The <ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> is usua
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_model *</type>
-        <definition>librdf_model * omexmeta::Editor::getModel</definition>
+        <definition>librdf_model * omexmeta::Editor::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getModel</name>
+        <name>getModelUri</name>
         <briefdescription>
 <para>return the underlying librdf_model* pointer </para>
         </briefdescription>
@@ -1499,7 +1499,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getLocalUri</name></member>
       <member refid="classomexmeta_1_1Editor_1af987e450e4bf9d75391ad3f5ac6233f6" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getMetaidBase</name></member>
       <member refid="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getMetaids</name></member>
-      <member refid="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1Editor_1a4b2610fb802eb306349d69ae6fde60c0" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getNamespaces</name></member>
       <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>getRepositoryUri</name></member>
@@ -1508,7 +1508,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1a3c4514ca9177b9bc157e9e52af23bc82" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>metaid_base_</name></member>
       <member refid="classomexmeta_1_1Editor_1ad3c91f02707459e06f4487f9a10fb53c" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>metaids_</name></member>
-      <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1Editor_1afacd0a226659547d6242a8f75d46ef33" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Editor_1adf7c779ffdad4784bf1f0a831b75b83e" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>namespaces_</name></member>
       <member refid="classomexmeta_1_1Editor_1a4faf7d0c71afca8ded828ac7bdb857f5" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>newEnergyDiff</name></member>

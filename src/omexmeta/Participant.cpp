@@ -129,11 +129,11 @@ namespace omexmeta {
     }
 
     const std::string &Participant::getLocalUri() const {
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     const std::string &Participant::getModelUri() const {
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,

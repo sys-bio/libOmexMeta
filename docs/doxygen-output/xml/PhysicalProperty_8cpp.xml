@@ -662,7 +662,7 @@
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>is_property_of_value_(std::move(is_version_of)),</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_version_of_value_(std::move(is_version_of_value)),</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_(std::move(model_uri)),</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_(model)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_(model)<sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>validate();</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
@@ -673,7 +673,7 @@
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalProperty::PhysicalProperty(librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;model_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;local_uri)</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>model_(model),<sp/>model_uri_(model_uri),<sp/>local_uri_(local_uri)<sp/>{}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>model_uri_(model),<sp/>model_uri_(model_uri),<sp/>local_uri_(local_uri)<sp/>{}</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PhysicalProperty::validate()<sp/>{</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>expected_prefix1<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://identifiers.org/OPB&quot;</highlight><highlight class="normal">;</highlight></codeline>
@@ -711,7 +711,7 @@
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/><ref refid="classomexmeta_1_1PhysicalProperty_1af2e63778f1281f871a99e216bfcbaf88" kindref="member">PhysicalProperty::toTriples</ref>()<sp/>{</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>sbml<sp/>the<sp/>metaid<sp/>for<sp/>property<sp/>needs<sp/>to<sp/>be<sp/>generated</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(OmexMetaUtils::isStringEmpty&lt;PhysicalProperty&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>about_value_))<sp/>{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>new_about<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_,<sp/>property_metaid_base_,<sp/>new_metaid_exclusion_list_);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>new_about<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_uri_,<sp/>property_metaid_base_,<sp/>new_metaid_exclusion_list_);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_metaid_exclusion_list_.push_back(new_about);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>about(new_about,<sp/>LOCAL_URI);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -726,7 +726,7 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(is_property_of_value_.empty())<sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_property_of_value_<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_,<sp/>property_metaid_base_,<sp/>new_metaid_exclusion_list_);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_property_of_value_<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_uri_,<sp/>property_metaid_base_,<sp/>new_metaid_exclusion_list_);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>is_property_of_triple(</highlight></codeline>

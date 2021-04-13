@@ -8,9 +8,9 @@
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" prot="private" static="no" mutable="no">
         <type>librdf_model *</type>
-        <definition>librdf_model* omexmeta::Participant::model_</definition>
+        <definition>librdf_model* omexmeta::Participant::model_uri_</definition>
         <argsstring></argsstring>
-        <name>model_</name>
+        <name>model_uri_</name>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -620,7 +620,7 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
       <member refid="classomexmeta_1_1Participant_1a2d1b200f736249f791559b5b65afea2d" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>local_participant_metaid_</name></member>
       <member refid="classomexmeta_1_1Participant_1a3c5e24de1d42e00ebf0b9d05fda0bdab" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1Participant_1aa947afd3fb5d53a7bd2029261f5be45e" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>metaid_template_str_</name></member>
-      <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Participant_1adc7f331875342471ca28c8b0ccc9f625" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1Participant_1aba352cbcc6db3a2df58c08d544c8e3bd" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>multiplier_</name></member>
       <member refid="classomexmeta_1_1Participant_1aa4baa62cb4ccffe8443262382490328d" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>operator!=</name></member>

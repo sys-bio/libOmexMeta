@@ -36,7 +36,7 @@ namespace omexmeta {
 
     PhysicalEntity &
     PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, uriHandler_.getModel());
+        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, uriHandler_.getModelUri());
         physical_property_ = PhysicalProperty(model_, uriHandler_);
         physical_property_.about(subject_metaid)
                 .isVersionOf(physicalProperty);

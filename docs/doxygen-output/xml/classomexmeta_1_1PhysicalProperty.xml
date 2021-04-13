@@ -111,9 +111,9 @@
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" prot="private" static="no" mutable="no">
         <type>librdf_model *</type>
-        <definition>librdf_model* omexmeta::PhysicalProperty::model_</definition>
+        <definition>librdf_model* omexmeta::PhysicalProperty::model_uri_</definition>
         <argsstring></argsstring>
-        <name>model_</name>
+        <name>model_uri_</name>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -590,7 +590,7 @@
       <member refid="classomexmeta_1_1PhysicalProperty_1a13a9ec404ea9c6d7ddea6c7398b67328" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isSet</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a30ca01ca75b8ccb6293f515439b00e06" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>local_uri_</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a6ae73e803b715d79b6900cf8b8867a8a" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator!=</name></member>

@@ -56,7 +56,7 @@ namespace omexmeta {
     }
 
     const std::string &PhysicalProperty::getLocalUri() const {
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     PhysicalProperty::PhysicalProperty(librdf_model *model, UriHandler &uriHandler)
@@ -124,7 +124,7 @@ namespace omexmeta {
     }
 
     const std::string &PhysicalProperty::getModelUri() const {
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     PhysicalProperty &PhysicalProperty::isVersionOf(const std::string &is_version_of) {

@@ -59,7 +59,7 @@ namespace omexmeta {
          * are used. If the type is unknown, then all elements are given metaids.
          */
         explicit Editor(std::string xml_or_file, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
-                        UriHandler& uriHandler, bool generate_new_metaids = false, bool sbml_semantic_extraction = true);
+                        UriHandler &uriHandler, bool generate_new_metaids = false, bool sbml_semantic_extraction = true);
 
         /**
          * We no longer required to free the
@@ -376,6 +376,11 @@ namespace omexmeta {
          */
         PhysicalProperty *newPhysicalPropertyPtr();
 
+        /**
+         * @brief get a reference to the current UriHandler
+         */
+        UriHandler &getUriHandler() const;
+
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
@@ -387,6 +392,7 @@ namespace omexmeta {
         std::string metaid_base_ = "#OmexMetaId";
         OmexMetaXmlType type_;
 
+    private:
         UriHandler &uriHandler_;
 
         void extractNamespacesFromTriplesVector(PropertyBearer *pp);

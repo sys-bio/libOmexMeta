@@ -327,31 +327,31 @@ namespace omexmeta {
     }
 
     const std::string &RDF::getRepositoryUri() const {
-        return uriHandler_.getRepository();
+        return uriHandler_.getRepositoryUri();
     }
 
     void RDF::setRepositoryUri(const std::string& repositoryName) {
-        uriHandler_.setRepository(repositoryName);
+        uriHandler_.setRepositoryUri(repositoryName);
     }
 
     const std::string &RDF::getArchiveUri() const {
-        return uriHandler_.getArchive();
+        return uriHandler_.getArchiveUri();
     }
 
     void RDF::setArchiveUri(const std::string& archiveName) {
-        uriHandler_.setArchive(archiveName);
+        uriHandler_.setArchiveUri(archiveName);
     }
 
     const std::string &RDF::getModelUri() const {
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     void RDF::setModelUri(std::string modelName){
-        uriHandler_.setModel(std::move(modelName));
+        uriHandler_.setModelUri(std::move(modelName));
     }
 
     const std::string &RDF::getLocalUri() const {
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     OmexMetaXmlType RDF::getXmlType() const {

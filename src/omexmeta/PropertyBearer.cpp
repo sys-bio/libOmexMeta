@@ -94,20 +94,20 @@ namespace omexmeta {
     }
 
     const std::string &PropertyBearer::getModelUri() const {
-        if (uriHandler_.getModel().empty()) {
+        if (uriHandler_.getModelUri().empty()) {
             throw std::invalid_argument("std::invalid_argument: model_uri_ is empty. "
                                         "Please use setModelUri or pass to the constructor a "
                                         "model uri. ");
         }
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     const std::string &PropertyBearer::getLocalUri() const {
-        if (uriHandler_.getLocal().empty()) {
+        if (uriHandler_.getLocalUri().empty()) {
             throw std::invalid_argument("std::invalid_argument: local_uri_ is empty. "
                                         "Please use RDF::setModelUri");
         }
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     std::vector<std::string> PropertyBearer::getNewMetaidExclusionList() {
