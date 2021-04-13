@@ -117,13 +117,13 @@ namespace omexmeta {
 
         Triple &resourceBlank(const std::string &blank_id);
 
-        void setUriHandler(UriHandler uriHandler);
+        void setUriHandler(UriHandler& uriHandler);
 
     private:
         Triple(librdf_statement *statement);
         // std::string local_uri_;// like http:/omex-library.org/omex-archive.omex/model.rdf
         // std::string model_uri_;
-        UriHandler uriHandler_;
+        UriHandler& uriHandler_;
     };
 
     typedef Triple SingularAnnotation;

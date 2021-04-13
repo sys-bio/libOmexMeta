@@ -13,7 +13,7 @@ namespace omexmeta {
         return uriHandler_.getLocal();
     }
 
-    PhysicalProperty::PhysicalProperty(librdf_model *model, UriHandler uriHandler)
+    PhysicalProperty::PhysicalProperty(librdf_model *model, UriHandler& uriHandler)
         : model_(model), uriHandler_(uriHandler){}
 
 

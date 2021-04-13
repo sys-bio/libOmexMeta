@@ -8,20 +8,20 @@
 #include "redland/RedlandAPI.h"
 
 
-#include "omexmeta_export.h"
 #include "omexmeta/OmexMetaXmlType.h"
+#include "omexmeta_export.h"
 
+#include <fstream>
 #include <streambuf>
 #include <unordered_map>
 #include <utility>
-#include <fstream>
 
 #include "omexmeta/Editor.h"
 #include "omexmeta/MarkupIdentifier.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
-#include "omexmeta/logger.h"
 #include "omexmeta/UriHandler.h"
+#include "omexmeta/logger.h"
 
 
 using namespace redland;
@@ -37,42 +37,6 @@ namespace omexmeta {
 
 
     class OMEXMETA_EXPORT RDF {
-        LibrdfStorage storage_;
-        LibrdfModel model_;
-
-        OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
-
-        typedef std::unordered_map<std::string, std::string> NamespaceMap;
-
-        UriHandler uriHandler_;
-
-//        std::string repository_uri_ = "http://omex-library.org/";
-//        std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
-//        std::string model_uri_ = archive_uri_ + "NewModel.xml";
-//        std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
-
-        /**
-         * @brief autoset the xmlType variable based on xml content.
-         */
-        void classifyXmlType(const std::string& xml, const std::string& input_format);
-
-        /**
-         * @brief reads xml from file before calling classifyXmlType
-         */
-        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format);
-
-        /**
-         * @brief pull semantic information out of the sbml
-         *  int the RDF graph
-         */
-        void extractSemanticInformationFromSBML(const std::string& sbml);
-
-        /**
-         * @brief release memory consumed by RDF.
-         * @details Memory consumed by RDF is destructed using RAII
-         * so users normally do not need this function.
-         */
-        void freeRDF();
 
     public:
         NamespaceMap namespaces_;
@@ -107,7 +71,7 @@ namespace omexmeta {
          * defaults to "http://omex-library.org/".
          * @param repositoryName the repository uri.
          */
-        void setRepositoryUri(const std::string& repositoryName);
+        void setRepositoryUri(const std::string &repositoryName);
 
         /**
          * @brief getter for archiveUri attribute.
@@ -120,7 +84,7 @@ namespace omexmeta {
          * @param archiveName the new name for archive uri attribute
          * @details default to http://omex-library.org/NewOmex.omex/
          */
-        void setArchiveUri(const std::string& archiveName);
+        void setArchiveUri(const std::string &archiveName);
 
         /**
          * @brief getter for model uri.
@@ -140,10 +104,6 @@ namespace omexmeta {
          * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.rdf#
          */
         const std::string &getLocalUri() const;
-//
-//        // todo remove this field and replace with the one
-//        //  in Predicate. Should be a simple swap.
-//        NamespaceMap default_namespaces_ = Predicate::namespaceMap();
 
         /**
          * @brief constructor for RDF class
@@ -177,7 +137,8 @@ namespace omexmeta {
         /**
          * @brief move constructor for RDF class
          */
-        RDF(RDF &&rdf) noexcept;
+        RDF(RDF &&rdf)
+        noexcept;
 
         /**
          * @brief copy assignment constructor for RDF ojects
@@ -338,7 +299,7 @@ namespace omexmeta {
         /**
          * @brief add a set of Triples to the current model
          */
-        void addTriples(const Triples &triples) ;
+        void addTriples(const Triples &triples);
 
         /**
          * @brief test for equality between @param actual and @param expected
@@ -365,7 +326,39 @@ namespace omexmeta {
          */
         static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle");
 
-    };
-}
+    private:
+        LibrdfStorage storage_;
+        LibrdfModel model_;
 
-#endif //LIBOMEXMETA_RDF_H
+        OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
+
+        typedef std::unordered_map<std::string, std::string> NamespaceMap;
+
+        UriHandler uriHandler_;
+
+        /**
+         * @brief autoset the xmlType variable based on xml content.
+         */
+        void classifyXmlType(const std::string &xml, const std::string &input_format);
+
+        /**
+         * @brief reads xml from file before calling classifyXmlType
+         */
+        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format);
+
+        /**
+         * @brief pull semantic information out of the sbml
+         *  int the RDF graph
+         */
+        void extractSemanticInformationFromSBML(const std::string &sbml);
+
+        /**
+         * @brief release memory consumed by RDF.
+         * @details Memory consumed by RDF is destructed using RAII
+         * so users normally do not need this function.
+         */
+        void freeRDF();
+    };
+}// namespace omexmeta
+
+#endif//LIBOMEXMETA_RDF_H

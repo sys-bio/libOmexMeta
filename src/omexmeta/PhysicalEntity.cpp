@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty,
+    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty,
                                    Resource is, Resources is_part_of)
         : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_ENTITY),
           identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
@@ -26,7 +26,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler uriHandler)
+    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler& uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {

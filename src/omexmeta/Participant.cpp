@@ -8,7 +8,7 @@ namespace omexmeta {
 
 
     Participant::Participant(librdf_model *model, std::string base_metaid,
-                             UriHandler uriHandler,
+                             const UriHandler& uriHandler,
                              std::string semsim_predicate_term,
                              double multiplier,
                              std::string physicalEntityReference, eUriType type)
@@ -132,32 +132,24 @@ namespace omexmeta {
         return uriHandler_.getLocal();
     }
 
-//    void Participant::setLocalUri(const std::string &localUri) {
-//        local_uri_ = localUri;
-//    }
-
     const std::string &Participant::getModelUri() const {
         return uriHandler_.getModel();
     }
 
-    void Participant::setModelUri(const std::string &model_uri) {
-        uriHandler_.setModel(model_uri);
-    }
-
     SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
-                                         UriHandler uriHandler)
+                                         const UriHandler& uriHandler)
         : Participant(model, "SourceParticipant", uriHandler, "hasSourceParticipant",
                       multiplier, std::move(physicalEntityReference), type) {}
 
     SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
-                                     std::string physicalEntityReference, eUriType type, UriHandler uriHandler)
+                                     std::string physicalEntityReference, eUriType type, const UriHandler& uriHandler)
         : Participant(model, "SinkParticipant", uriHandler,
                       "hasSinkParticipant",
                       multiplier,
                       std::move(physicalEntityReference), type) {}
 
     MediatorParticipant::MediatorParticipant(
-            librdf_model *model, std::string physicalEntityReference, eUriType type, UriHandler uriHandler)
+            librdf_model *model, std::string physicalEntityReference, eUriType type, const UriHandler& uriHandler)
         : Participant(model, "MediatorParticipant", uriHandler,
                       "hasMediatorParticipant",
                       0, std::move(physicalEntityReference), type) {}

@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler,
+    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler& uriHandler,
                                  PhysicalProperty physicalProperty,
                                  Sources sources,
                                  Sinks sinks)
@@ -64,7 +64,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    EnergyDiff &EnergyDiff::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
+    EnergyDiff &EnergyDiff::setPhysicalProperty(std::string subject_metaid, const std::string& physical_property) {
         if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
             subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
         }
@@ -87,7 +87,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler uriHandler)
+    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler& uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     int EnergyDiff::getNumSources() {

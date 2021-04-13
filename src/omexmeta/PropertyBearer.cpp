@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler uriHandler,
+    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler& uriHandler,
                                    PhysicalProperty propertyResource, AnnotationType type)
         : model_(model), physical_property_(std::move(propertyResource)), type_(type),
           uriHandler_(uriHandler) {}
@@ -19,7 +19,7 @@ namespace omexmeta {
     PropertyBearer::~PropertyBearer() = default;
 
 
-    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler uriHandler)
+    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler& uriHandler)
         : model_(model), uriHandler_(uriHandler) {
         physical_property_ = PhysicalProperty(model_, uriHandler);
     }

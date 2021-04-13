@@ -37,7 +37,7 @@ namespace omexmeta {
 
         ~EnergyDiff() = default;
 
-        EnergyDiff(librdf_model *model, UriHandler uriHandler, PhysicalProperty physicalProperty, Sources sources,
+        EnergyDiff(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
 
         /**
@@ -64,7 +64,7 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        explicit EnergyDiff(librdf_model *model, UriHandler uriHandler);
+        explicit EnergyDiff(librdf_model *model, UriHandler& uriHandler);
 
         /**
          * @brief create a metaid for the energy differential annotation
@@ -112,7 +112,7 @@ namespace omexmeta {
          * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this EnergyDiff to enable the builder interface.
          */
-        OMEXMETA_DEPRECATED EnergyDiff &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
+        OMEXMETA_DEPRECATED EnergyDiff &setPhysicalProperty(std::string subject_metaid, const std::string& physical_property);
 
         /**
          * @brief add a SourceParticipant to the EnergyDiff.

@@ -259,7 +259,7 @@ namespace omexmeta {
         uriHandler_.setModel(model_uri);
     }
 
-    void Triple::setUriHandler(UriHandler uriHandler) {
+    void Triple::setUriHandler(UriHandler& uriHandler) {
         uriHandler_ = uriHandler;
     };
 

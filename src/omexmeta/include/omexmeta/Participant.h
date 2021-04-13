@@ -26,14 +26,6 @@ namespace omexmeta {
 
     public:
         /**
-         * @brief return the vector of strings that keeps track of
-         * newly generated metaids. This mechanism ensures unique metaids
-         * in the situation where the user has added >1 participant of a
-         * certain type i.e. sink.
-         */
-        //        [[nodiscard]] const std::vector<std::string> &getMetaidExclusionList() ;
-
-        /**
          * @brief setter for the multiplier field of Participant types
          */
         void setMultiplier(double multiplier);
@@ -68,7 +60,7 @@ namespace omexmeta {
         /**
          * @brief setter for local uri attribute
          */
-//        void setLocalUri(const std::string &localUri);
+        //        void setLocalUri(const std::string &localUri);
 
         /**
          * @biref currently more of a placeholder so as to not break the tests.
@@ -90,7 +82,7 @@ namespace omexmeta {
          * code duplication in the subclasses.
          *
          */
-        Participant(librdf_model *model, std::string base_metaid, UriHandler uriHandler,
+        Participant(librdf_model *model, std::string base_metaid, const UriHandler &uriHandler,
                     std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference, eUriType type);
 
@@ -155,11 +147,6 @@ namespace omexmeta {
          */
         [[nodiscard]] const std::string &getModelUri() const;
 
-        /**
-         * @brief setter for model_uri_ attribute
-         */
-        void setModelUri(const std::string &model_uri);
-
     private:
         librdf_model *model_ = nullptr;
         std::string metaid_template_str_;///like SourceParticipant in SourceParticipant0000
@@ -171,7 +158,7 @@ namespace omexmeta {
         // set of triples returned.
         std::string local_participant_metaid_;
 
-        UriHandler uriHandler_;
+        const UriHandler &uriHandler_;
 
         eUriType type_;
     };
@@ -180,7 +167,7 @@ namespace omexmeta {
     typedef std::shared_ptr<Participant> ParticipantPtr;
 
     /**
-         * Subclass of Participant. See Participants for arguments.
+     * Subclass of Participant. See Participants for arguments.
      */
     class SourceParticipant : public Participant {
     public:
@@ -188,11 +175,11 @@ namespace omexmeta {
          * @brief A class representing process/force energetic source.
          */
         SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
-                          UriHandler uriHandler);
+                          const UriHandler &uriHandler);
     };
 
     /**
-         * Subclass of Participant. See Participants for arguments.
+     * Subclass of Participant. See Participants for arguments.
      */
     class SinkParticipant : public Participant {
     public:
@@ -200,18 +187,19 @@ namespace omexmeta {
          * @brief A class representing process/force energetic sinks.
          */
         SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
-                        UriHandler uriHandler);
+                        const UriHandler &uriHandler);
     };
 
     /**
-         * Subclass of Participant. See Participants for arguments.
+     * Subclass of Participant. See Participants for arguments.
      */
     class MediatorParticipant : public Participant {
     public:
         /**
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, eUriType type, UriHandler uriHandler);
+        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, eUriType type, const UriHandler &uriHandler);
+
     private:
         double multiplier_ = 0;
     };

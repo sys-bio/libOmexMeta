@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    PersonalInformation::PersonalInformation(librdf_model *model, UriHandler uriHandler)
+    PersonalInformation::PersonalInformation(librdf_model *model, UriHandler& uriHandler)
             : model_(model), uriHandler_(uriHandler) {
         metaid_ = generateMetaId();
         createSubject();
@@ -18,13 +18,13 @@ namespace omexmeta {
     }
 
     /**
-         * @brief move constructor
+     * @brief move constructor
      */
-    PersonalInformation::PersonalInformation(PersonalInformation &&information) noexcept {
+    PersonalInformation::PersonalInformation(PersonalInformation &&information) noexcept
+        : uriHandler_(information.uriHandler_){
         model_ = information.model_;
         information.model_ = nullptr;
         triples_ = std::move(information.triples_);
-        uriHandler_ = information.uriHandler_;
     }
 
     /**

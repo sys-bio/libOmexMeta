@@ -35,7 +35,7 @@ namespace omexmeta {
 
         ~PersonalInformation();
 
-        PersonalInformation(librdf_model *model,UriHandler uriHandler);
+        PersonalInformation(librdf_model *model, UriHandler& uriHandler);
 
         /**
          * @brief Copy constructor for PersonalInformation
@@ -113,7 +113,7 @@ namespace omexmeta {
         std::string metaid_;
         std::vector<std::string> namespaces_;
         [[nodiscard]] std::string generateMetaId() const;
-        UriHandler uriHandler_;
+        UriHandler& uriHandler_;
 
         void createSubject();
 

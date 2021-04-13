@@ -40,7 +40,7 @@ namespace omexmeta {
 
         void setPropertyBearerBase(const std::string &propertyBearerBase);
 
-        PhysicalProperty(librdf_model *model, UriHandler uriHandler);
+        PhysicalProperty(librdf_model *model, UriHandler& uriHandler);
 
         [[nodiscard]] const std::string &getModelUri() const;
 
@@ -76,7 +76,7 @@ namespace omexmeta {
 
         librdf_model *model_ = nullptr;
 
-        UriHandler uriHandler_;
+        UriHandler& uriHandler_;
 
         /**
          * Indicator to let classes which use the PhysicalProperty

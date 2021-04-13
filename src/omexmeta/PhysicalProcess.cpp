@@ -6,14 +6,14 @@
 
 namespace omexmeta {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler uriHandler,
+    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler& uriHandler,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators)
         : PropertyBearer(model, uriHandler, physicalProperty, PHYSICAL_PROCESS),
           sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
     }
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler uriHandler)
+    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler& uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {

@@ -64,7 +64,7 @@ namespace omexmeta {
          *
          * Shouldn't be needed by users directly.
          */
-        PropertyBearer(librdf_model *model, UriHandler uriHandler);
+        PropertyBearer(librdf_model *model, UriHandler& uriHandler);
 
         /**
          * @brief constructor for PhysicalPhenomenon object.
@@ -73,7 +73,7 @@ namespace omexmeta {
          * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PropertyBearer(librdf_model *model, UriHandler uriHandler,
+        PropertyBearer(librdf_model *model, UriHandler& uriHandler,
                        PhysicalProperty propertyResource, AnnotationType type);
 
         [[nodiscard]] const std::string &getModelUri() const;
@@ -148,7 +148,7 @@ namespace omexmeta {
         std::string property_metaid_base_;// Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
         std::string about_value_;
         eUriType about_uri_type_ = NONE;
-        UriHandler uriHandler_;
+        UriHandler& uriHandler_;
     };
 
     typedef std::shared_ptr<PropertyBearer> PhysicalPhenomenonPtr;
