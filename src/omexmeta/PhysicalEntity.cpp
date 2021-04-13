@@ -119,7 +119,6 @@ namespace omexmeta {
         }
 
         // the "what" part of physical entity triple
-
         if (identity_resource_.isSet()) {
             triples.emplace_back(
                     uriHandler_,

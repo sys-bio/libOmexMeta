@@ -28,7 +28,7 @@ bool OmexMetaTestUtils::equals(RDF* actual, const std::string& expected_string, 
     return equal;
 }
 
-bool OmexMetaTestUtils::equals(const Triple& actual, const std::string& expected_string, const std::string& format) {
+bool OmexMetaTestUtils::equals(Triple& actual, const std::string& expected_string, const std::string& format) {
     RDF actual_rdf;
     actual_rdf.addTriple(actual);
 
@@ -44,7 +44,7 @@ bool OmexMetaTestUtils::equals(const Triple& actual, const std::string& expected
     return equal;
 }
 
-bool OmexMetaTestUtils::equals(const Triples& actual, const std::string& expected_string, const std::string& format) {
+bool OmexMetaTestUtils::equals(Triples& actual, const std::string& expected_string, const std::string& format) {
     RDF actual_rdf;
     actual_rdf.addTriples(actual);
 

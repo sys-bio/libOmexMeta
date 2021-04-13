@@ -302,7 +302,7 @@ namespace omexmeta {
         /**
          * @brief add a set of Triples to the current model
          */
-        void addTriples(const Triples &triples);
+        void addTriples(Triples &triples);
 
         /**
          * @brief test for equality between @param actual and @param expected
@@ -317,7 +317,7 @@ namespace omexmeta {
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(const Triples &actual, const std::string &expected, const std::string &format = "turtle");
+        static bool equals(Triples &actual, const std::string &expected, const std::string &format = "turtle");
 
         /**
          * @brief test for equality between @param actual and @param expected

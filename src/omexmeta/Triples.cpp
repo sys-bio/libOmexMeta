@@ -180,7 +180,7 @@ namespace omexmeta {
         // return by move so no copies are made.
         return std::move(triple);
     }
-//
+
 //    Triple Triples::popFront() {
 //        // get reference to front of triples_ vector
 //        // move should remove it from the triples_ vector
@@ -194,13 +194,17 @@ namespace omexmeta {
 //    }
 
     void Triples::freeTriples() {
-        while (!triples_.empty()) {
-            pop().freeTriple();
+        for (auto& triple: triples_){
+            triple.freeTriple();
         }
     }
 
     bool Triples::isEmpty() {
         return triples_.empty();
+    }
+
+    Triple &Triples::operator[](int index) {
+        return triples_[index];
     }
 
     const Triple &Triples::operator[](int index) const {

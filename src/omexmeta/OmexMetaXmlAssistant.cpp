@@ -83,7 +83,7 @@ namespace omexmeta {
                                     if (cellml_metaid_namespace == candidate)
                                         break; // ns will point to the namespace we want
                                     ns = ns->next;
-//                                    xmlFree(ns);
+                                    // xmlFree(ns);
                                 }
                                 // if ns is nullptr it means we traversed the previous
                                 // while loop and reached the end. Therefore the ns we want

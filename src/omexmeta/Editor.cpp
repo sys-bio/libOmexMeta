@@ -137,8 +137,7 @@ namespace omexmeta {
         // as argument because that would take copies and
         // mess with cleaning up the triples later.
         Triples triples = pp->toTriples();
-        while (!triples.isEmpty()) {
-            Triple triple = triples.popFront();
+        for (auto& triple: triples){
             addNamespaceFromAnnotation(triple.getPredicateStr());
             triple.freeStatement();
         }
@@ -196,9 +195,7 @@ namespace omexmeta {
         * that in the PersonalInformation class.
         */
         Triples triples = phenomenonPtr->toTriples();
-        while (!triples.isEmpty()) {
-            // remove a Triple off the front of triples
-            Triple triple = triples.popFront();
+        for (auto& triple: triples){
 
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
@@ -279,11 +276,10 @@ namespace omexmeta {
 
     void Editor::removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const {
         Triples triples = physicalPhenomenon->toTriples();
-        while (!triples.isEmpty()) {
-            Triple triple = triples.pop();
+        for (auto& triple: triples){
             model_.removeStatement(triple.getStatement());
+            // triples.freeTriples(); // no!!! removeStatement does this for us
         }
-        //        triples.freeTriples();
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) const {
@@ -292,8 +288,7 @@ namespace omexmeta {
 
     void Editor::removePersonalInformation(PersonalInformation *information) const {
         Triples triples = information->getTriples();
-        while (!triples.isEmpty()) {
-            Triple triple = triples.pop();
+        for (auto& triple: triples){
             model_.removeStatement(triple.getStatement());
             triple.freeTriple();
         }

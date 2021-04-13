@@ -367,20 +367,13 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     vec[0].freeStatement();
 }
-TEST_F(TripleTestsVector, t) {
-    std::string d = "asdfasdf";
-    std::vector<std::string> y({d});
-    ASSERT_EQ(1, y.size());
-    std::string b = std::move(y[0]);
-    ASSERT_EQ(0, y.size());
-
-
+//TEST_F(TripleTestsVector, t) {
 //    Triple triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
 //    std::vector<Triple> vec;
 //    vec.push_back(std::move(triple));
 //    ASSERT_EQ(1, vec.size());
 //
-}
+//}
 
 
 class TestTripleTwice : public ::testing::Test {

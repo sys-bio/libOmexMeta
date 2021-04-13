@@ -59,16 +59,6 @@ TEST_F(TriplesTests, TestCreateMoveOnInstantiation) {
     ASSERT_EQ(1, triples.size());
     triples.freeTriples();
 }
-TEST_F(TriplesTests, TestPopFront) {
-    Triple triple1 = Triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
-    Triples triples(triple1);
-    ASSERT_EQ(1, triples.size());
-    Triple triple1_again = triples.popFront();
-    ASSERT_EQ(0, triples.size());
-    triples.freeTriples(); // but is 0 so no freeing necessary
-    triple1_again.freeTriple(); // makes valgrind happy
-}
-
 
 TEST_F(TriplesTests, TestEmplaceBack) {
     Triples triples;
@@ -340,37 +330,37 @@ TEST(TriplesTestsNoFixture, TestUsagesEnergyDiff) {
             LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_1").get()
     );
 
-    Triple triple1 = triples1.popFront();
+    Triple& triple1 = triples1[0];
     auto m1 = triple1.getUsages();
     ASSERT_EQ(2, m1["subject_uri"]);
     ASSERT_EQ(1, m1["predicate_uri"]);
     ASSERT_EQ(3, m1["resource_uri"]);
 
-    Triple triple2 = triples1.popFront();
+    Triple& triple2 = triples1[1];
     auto m2 = triple2.getUsages();
     ASSERT_EQ(2, m2["subject_uri"]);
     ASSERT_EQ(1, m2["predicate_uri"]);
     ASSERT_EQ(1, m2["resource_uri"]);
 
-    Triple triple3 = triples1.popFront();
+    Triple& triple3 = triples1[2];
     auto m3 = triple3.getUsages();
     ASSERT_EQ(3, m3["subject_uri"]);
     ASSERT_EQ(1, m3["predicate_uri"]);
     ASSERT_EQ(2, m3["resource_uri"]);
 
-    Triple triple4 = triples1.popFront();
+    Triple& triple4 = triples1[3];
     auto m4 = triple4.getUsages();
     ASSERT_EQ(3, m4["subject_uri"]);
     ASSERT_EQ(1, m4["predicate_uri"]);
     ASSERT_EQ(2, m4["resource_uri"]);
 
-    Triple triple5 = triples1.popFront();
+    Triple& triple5 = triples1[4];
     auto m5 = triple5.getUsages();
     ASSERT_EQ(2, m5["subject_uri"]);
     ASSERT_EQ(2, m5["predicate_uri"]);
     ASSERT_EQ(1, m5["resource_uri"]);
 
-    Triple triple6 = triples1.popFront();
+    Triple& triple6 = triples1[5];
     auto m6 = triple6.getUsages();
     ASSERT_EQ(2, m6["subject_uri"]);
     ASSERT_EQ(2, m6["predicate_uri"]);

@@ -428,9 +428,8 @@ namespace omexmeta {
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
     }
 
-    void RDF::addTriples(const Triples &triples) {
-        for (int i = 0; i < triples.size(); i++) {
-            const Triple &triple = triples[i];
+    void RDF::addTriples(Triples &triples) {
+        for (auto& triple: triples) {
             model_.addStatement(triple.getStatement());
             const std::string &ns = LibrdfNode(triple.getPredicate()).getNamespace();
             seen_namespaces_.push_back(triple.getPredicateNamespaceStr());
@@ -479,7 +478,7 @@ namespace omexmeta {
         return equal;
     }
 
-    bool RDF::equals(const Triples &actual, const std::string &expected_string, const std::string &format) {
+    bool RDF::equals(Triples &actual, const std::string &expected_string, const std::string &format) {
         RDF actual_rdf;
         actual_rdf.addTriples(actual);
 

@@ -205,6 +205,8 @@ namespace omexmeta {
          * that iterating over a Triples object and making copies
          * will cause complications with freeing the objects.
          */
+        Triple &operator[](int index);
+
         const Triple &operator[](int index) const;
 
         /**

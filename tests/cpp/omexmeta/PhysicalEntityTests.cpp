@@ -1006,13 +1006,13 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
     }
     ASSERT_EQ(4, rdf.size());
     triples.freeTriples();
-
     Triples triples2 = physicalEntity.toTriples();
     for (auto &it : triples2) {
         editor.removeSingleAnnotation(it);
+//        it.freeTriple();
     }
     ASSERT_EQ(0, rdf.size());
-    //    triples2.freeTriples();
+     triples2.freeTriples(); // no
 }
 
 TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
@@ -1047,7 +1047,7 @@ TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
 
     Triples triples = physicalEntity.toTriples();
     std::cout << triples.str("ntriples", "base") << std::endl;
-    Triple triple = triples.popFront();
+    Triple triple = triples.pop();
 
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(3, rdf.size());
