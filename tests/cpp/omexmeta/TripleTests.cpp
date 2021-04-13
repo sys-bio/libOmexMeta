@@ -258,6 +258,37 @@ TEST_F(TripleTests, TestBuilderPattern1) {
     resource.free();
 }
 
+TEST_F(TripleTests, TestMoveATriple) {
+    Triple triple1(uriHandler);
+    triple1.about("metaid1")
+            .setPredicate("bqbiol", "is")
+            .setResourceUri("uniprot/PD4034");
+    Triple triple2 = std::move(triple1);
+
+    triple2.freeTriple();
+    predicate.freeNode();
+    subject.free();
+    resource.free();
+}
+
+TEST_F(TripleTests, TestMoveAssignmentOperator) {
+    Triple triple1(uriHandler);
+    triple1.about("metaid1")
+            .setPredicate("bqbiol", "is")
+            .setResourceUri("uniprot/PD4034");
+    Triple triple2(uriHandler);
+    triple2.about("metaid2")
+            .setPredicate("bqbiol", "is")
+            .setResourceUri("uniprot/PD4035");;
+    triple2 = std::move(triple1);
+
+    triple2.freeTriple();
+    predicate.freeNode();
+    subject.free();
+    resource.free();
+}
+
+
 TEST_F(TripleTests, TestBuilderPattern2) {
     UriHandler uriHandler;
     Triple triple(uriHandler);

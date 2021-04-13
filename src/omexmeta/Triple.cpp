@@ -8,7 +8,7 @@
 
 namespace omexmeta {
     Triple::Triple(UriHandler &uriHandler)
-        : uriHandler_(uriHandler){}
+        : uriHandler_(uriHandler) {}
 
     Triple::Triple(Triple &&triple) noexcept
         : uriHandler_(triple.uriHandler_),
@@ -16,20 +16,8 @@ namespace omexmeta {
 
     Triple &Triple::operator=(Triple &&triple) noexcept {
         if (*this != triple) {
-            // This part is the move assignment operator for base class
-            // LibrdfStatement
-            if (triple.statement_ != nullptr) {
-                if (statement_ != nullptr) {
-                    librdf_free_statement(statement_);
-                    statement_ = nullptr;
-                }
-                statement_ = triple.statement_;
-                triple.statement_ = nullptr;
-            }
-
-            // this part is extra requirement of specialization
-            // Triple class
             uriHandler_ = triple.uriHandler_;
+            LibrdfStatement::operator=(std::move(triple));
         }
         return *this;
     };

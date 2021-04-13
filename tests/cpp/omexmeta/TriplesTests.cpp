@@ -61,13 +61,12 @@ TEST_F(TriplesTests, TestCreateMoveOnInstantiation) {
 }
 TEST_F(TriplesTests, TestPopFront) {
     Triple triple1 = Triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
-    Triple triple2 = Triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
     Triples triples(triple1);
-//    triples.moveBack(triple2);
-//    ASSERT_EQ(2, triples.size());
-//    Triple triple1_again = triples.popFront();
-//    ASSERT_EQ(1, triples.size());
-    triples.freeTriples();
+    ASSERT_EQ(1, triples.size());
+    Triple triple1_again = triples.popFront();
+    ASSERT_EQ(0, triples.size());
+    triples.freeTriples(); // but is 0 so no freeing necessary
+    triple1_again.freeTriple(); // makes valgrind happy
 }
 
 
@@ -138,7 +137,6 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
     predicate.freeNode();
     triples.freeTriples();
 }
-
 
 
 TEST(TriplesTestsNoFixture, TestPop) {
