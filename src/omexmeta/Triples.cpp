@@ -10,12 +10,12 @@ namespace omexmeta {
     Triples::Triples() = default;
 
     Triples::Triples(Triple &triple) {
-        move_back(triple);
+        moveBack(triple);
     }
 
     Triples::Triples(std::vector<Triple> triples) {
         for (auto &triple: triples) {
-            move_back(triple);
+            moveBack(triple);
         }
     }
 
@@ -27,46 +27,46 @@ namespace omexmeta {
      * slot. Therefore, ownership of the triple passes to
      * the Triples object who is reposible for freeing the Triple.
      */
-    void Triples::move_back(Triple &triple) {
+    void Triples::moveBack(Triple &triple) {
         // This move calls Triple destrubtor?
         triples_.push_back(std::move(triple));
     }
 
-    void Triples::emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
-        Triple triple(subject, predicate, resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+        Triple triple(uriHandler, subject, predicate, resource);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource) {
-        Triple triple(subject, predicatePtr, resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, const PredicatePtr &predicatePtr, const Resource &resource) {
+        Triple triple(uriHandler, subject, predicatePtr, resource);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, const Predicate &predicate, const Resource &resource) {
-        Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, const Predicate &predicate, const Resource &resource) {
+        Triple triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
+    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       resource);
-        move_back(triple);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
+    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, BiomodelsModelQualifier predicate, const Resource &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       resource);
-        move_back(triple);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, DCTerm predicate, const Resource &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, SemSim predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, SemSim predicate, const Resource &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<SemSim>(std::move(predicate)), resource);
+        moveBack(triple);
     }
 
     std::vector<std::string> Triples::getSubjectsStr() {
@@ -181,7 +181,7 @@ namespace omexmeta {
         return std::move(triple);
     }
 
-    Triple Triples::pop_front() {
+    Triple Triples::popFront() {
         // get reference to front of triples_ vector
         // move should remove it from the triples_ vector
         Triple triple = std::move(triples_.front());

@@ -83,6 +83,7 @@ TEST_F(ParticipantTests, TestSinkParticipantGetLocalUri) {
 TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triple triple(
+            uriHandler,
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getSubject(), sink.getLocalUri())).get(),
             SemSim(sink.getPredicate()).getNode(),
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getPhysicalEntityReference(), sink.getModelUri())).get()
@@ -107,12 +108,13 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
 TEST_F(ParticipantTests, TestCreateTripleVector) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015", MODEL_URI, uriHandler);
     Triple triple(
+            uriHandler,
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getSubject(), sink.getLocalUri())).get(),
             SemSim(sink.getPredicate()).getNode(),
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getPhysicalEntityReference(), sink.getModelUri())).get()
     );
     Triples triples;
-    triples.move_back(triple);
+    triples.moveBack(triple);
 
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -348,7 +350,7 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     Triples triples;
     for (auto &i: participants) {
         for (auto &j: i->toTriples("http://metaid", exclusions)) {
-            triples.move_back(j);
+            triples.moveBack(j);
         }
     }
     ASSERT_EQ(8, triples.size());

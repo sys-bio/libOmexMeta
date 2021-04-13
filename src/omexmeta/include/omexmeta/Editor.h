@@ -32,7 +32,6 @@ using namespace redland;
 
 namespace omexmeta {
 
-    typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
     /**
      * @brief Add or change annotations in xml.

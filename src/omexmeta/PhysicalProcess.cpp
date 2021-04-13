@@ -112,24 +112,25 @@ namespace omexmeta {
 
         if (!is_version_of_.empty()) {
             SingularAnnotation singularAnnotation(
+                    uriHandler_,
                     LibrdfNode::fromUriString(getAbout()).get(),
                     PredicateFactory("bqbiol", "isVersionOf")->getNode(),
                     LibrdfNode::fromUriString(is_version_of_).get());
-            triples.move_back(singularAnnotation);
+            triples.moveBack(singularAnnotation);
         }
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         for (auto &mediator : mediators_) {
             for (auto &triple : mediator.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         return triples;

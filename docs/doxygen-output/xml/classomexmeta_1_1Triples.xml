@@ -142,9 +142,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::Triples::move_back</definition>
+        <definition>void omexmeta::Triples::moveBack</definition>
         <argsstring>(Triple &amp;triple)</argsstring>
-        <name>move_back</name>
+        <name>moveBack</name>
         <param>
           <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
           <declname>triple</declname>
@@ -610,9 +610,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref></type>
-        <definition>Triple omexmeta::Triples::pop_front</definition>
+        <definition>Triple omexmeta::Triples::popFront</definition>
         <argsstring>()</argsstring>
-        <name>pop_front</name>
+        <name>popFront</name>
         <briefdescription>
 <para>move the from <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object out of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>
         </briefdescription>
@@ -666,12 +666,12 @@
       <member refid="classomexmeta_1_1Triples_1aa875120a73cb1618be9e699e8bfb08c4" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>getResources</name></member>
       <member refid="classomexmeta_1_1Triples_1a5234882414a2aaaca603eacd805df3d6" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>getSubjectsStr</name></member>
       <member refid="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>isEmpty</name></member>
-      <member refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>move_back</name></member>
+      <member refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>moveBack</name></member>
       <member refid="classomexmeta_1_1Triples_1a8c9df0d37572179d682127cb7368dd82" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1Triples_1a8c6e00fe9e694d9c52e1fa37a82ae489" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>operator==</name></member>
       <member refid="classomexmeta_1_1Triples_1a43d540423a436986d9f72d7cf0f02d72" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>operator[]</name></member>
       <member refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>pop</name></member>
-      <member refid="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>pop_front</name></member>
+      <member refid="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>popFront</name></member>
       <member refid="classomexmeta_1_1Triples_1adc86427b3563d04849336a8da7566451" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>size</name></member>
       <member refid="classomexmeta_1_1Triples_1ad2510c5b335b0266b05507c53bcc64af" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>str</name></member>
       <member refid="classomexmeta_1_1Triples_1a4976c39ce5f0c652ef8b366fcdd92a58" prot="public" virt="non-virtual"><scope>omexmeta::Triples</scope><name>Triples</name></member>

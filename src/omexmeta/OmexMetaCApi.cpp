@@ -290,9 +290,7 @@ namespace omexmeta {
 
     SingularAnnotation *Editor_newSingularAnnotation(Editor *editor_ptr) {
         try {
-            auto *singularAnnotation = new SingularAnnotation();
-            singularAnnotation->setLocalUri(editor_ptr->getLocalUri());
-            singularAnnotation->setModelUri(editor_ptr->getModelUri());
+            auto *singularAnnotation = new SingularAnnotation(editor_ptr->getUriHandler());
             return singularAnnotation;
         } catch (std::exception &error) {
             setLastError(error.what());

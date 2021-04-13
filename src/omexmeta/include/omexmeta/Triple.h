@@ -38,20 +38,20 @@ namespace omexmeta {
         using LibrdfStatement::LibrdfStatement;
         using LibrdfStatement::operator=;
 
-        explicit Triple() = default;
+        explicit Triple(UriHandler& uriHandler);
 
-        Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
+        Triple(Triple &&triple) noexcept;
+        Triple &operator=(Triple &&triple) noexcept;
+        Triple(const Triple &triple) = delete; // as base class
+        Triple &operator=(const Triple &triple) = delete; // as base class
 
-        Triple(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        Triple(UriHandler &uriHandler, const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
 
-        static Triple fromRawStatementPtr(librdf_statement *statement);
+        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+
+        static Triple fromRawStatementPtr(UriHandler &uriHandler, librdf_statement *statement);
 
         const std::string &getLocalUri() const;
-
-        /**
-         * @brief set the local_uri_ attribute for this triple
-         */
-        void setLocalUri(std::string localUri);
 
         /**
          * @brief set the model_uri_ attribute for this triple
@@ -66,9 +66,9 @@ namespace omexmeta {
          * a triple only.
          */
         [[deprecated("Use main RDF class to serialize triple objects")]] std::string str(const std::string &format = "turtle",
-                        const std::string &base = (std::filesystem::current_path() /= "annotations.rdf").string(),
-                        std::string omex_name = "NewOmex.omex/",
-                        std::string model_name = "NewModel.xml") const;
+                                                                                         const std::string &base = (std::filesystem::current_path() /= "annotations.rdf").string(),
+                                                                                         std::string omex_name = "NewOmex.omex/",
+                                                                                         std::string model_name = "NewModel.xml") const;
 
         void freeTriple();
 
@@ -103,8 +103,6 @@ namespace omexmeta {
 
         void freeTripleAndUris();
 
-        //        Triple &about(const std::string &metaid);
-
         const std::string &getModelUri() const;
 
         Triple &setResourceWithModelUri(const std::string &metaid);
@@ -117,22 +115,10 @@ namespace omexmeta {
 
         Triple &resourceBlank(const std::string &blank_id);
 
-        void setUriHandler(UriHandler& uriHandler);
-
     private:
-        Triple(librdf_statement *statement);
+        Triple(UriHandler &uriHandler, librdf_statement *statement);
 
-        /**
-         * Developers note: This *should* really be a reference. However, in order
-         * to construct a Triple with a UriHandler reference we need to inject
-         * the UriHandler instance into the constructor. This in turn probably
-         * necessitates a "newTriple" method in RDF for creating the Triple object
-         * which would pass the UriHandler reference to the Triple behind the scenes.
-         * At present, we just use setUriHandler to give this Triple the correct
-         * UriHandler when needed, which is a worse solution because of the need to
-         * remember to call setUriHandler. However, its already implemented and working ...
-         */
-        UriHandler uriHandler_;
+        UriHandler &uriHandler_;
     };
 
     typedef Triple SingularAnnotation;

@@ -8,7 +8,7 @@ namespace omexmeta {
 
 
     Participant::Participant(librdf_model *model, std::string base_metaid,
-                             const UriHandler& uriHandler,
+                             UriHandler& uriHandler,
                              std::string semsim_predicate_term,
                              double multiplier,
                              std::string physicalEntityReference, eUriType type)
@@ -55,15 +55,15 @@ namespace omexmeta {
         librdf_node *sub1 = LibrdfNode::fromUriString(about).get();
         librdf_node *pred1 = SemSim(semsim_predicate_term_).getNode();//term is hasSourceParticipant etc.
         librdf_node *res1 = LibrdfNode::fromUriString(local_participant_metaid_).get();
-        Triple triple1(sub1, pred1, res1);
-        triples.move_back(triple1);
+        Triple triple1(uriHandler_, sub1, pred1, res1);
+        triples.moveBack(triple1);
 
         librdf_node *sub2 = LibrdfNode::fromUriString(local_participant_metaid_).get();
         librdf_node *pred2 = SemSim("hasPhysicalEntityReference").getNode();
         librdf_node *res2 = LibrdfNode::fromUriString(
                                     UriHandler::uriModifier<Participant>(*this, physicalEntityReference_, type_)).get();
-        Triple triple2(sub2, pred2, res2);
-        triples.move_back(triple2);
+        Triple triple2(uriHandler_, sub2, pred2, res2);
+        triples.moveBack(triple2);
         if (multiplier_ != 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
@@ -73,7 +73,7 @@ namespace omexmeta {
                                         multiplier_os.str(),
                                         "double")
                                         .get();
-            triples.emplace_back(sub3, pred3, res3);
+            triples.emplace_back(uriHandler_, sub3, pred3, res3);
         }
         return triples;
     }
@@ -137,19 +137,19 @@ namespace omexmeta {
     }
 
     SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
-                                         const UriHandler& uriHandler)
+                                         UriHandler& uriHandler)
         : Participant(model, "SourceParticipant", uriHandler, "hasSourceParticipant",
                       multiplier, std::move(physicalEntityReference), type) {}
 
     SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
-                                     std::string physicalEntityReference, eUriType type, const UriHandler& uriHandler)
+                                     std::string physicalEntityReference, eUriType type, UriHandler& uriHandler)
         : Participant(model, "SinkParticipant", uriHandler,
                       "hasSinkParticipant",
                       multiplier,
                       std::move(physicalEntityReference), type) {}
 
     MediatorParticipant::MediatorParticipant(
-            librdf_model *model, std::string physicalEntityReference, eUriType type, const UriHandler& uriHandler)
+            librdf_model *model, std::string physicalEntityReference, eUriType type, UriHandler& uriHandler)
         : Participant(model, "MediatorParticipant", uriHandler,
                       "hasMediatorParticipant",
                       0, std::move(physicalEntityReference), type) {}

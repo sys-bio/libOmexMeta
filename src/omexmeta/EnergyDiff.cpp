@@ -48,12 +48,12 @@ namespace omexmeta {
         Triples triples = physical_property_.toTriples();
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         return triples;

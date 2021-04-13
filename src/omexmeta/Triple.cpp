@@ -7,20 +7,47 @@
 #include <omexmeta/UriHandler.h>
 
 namespace omexmeta {
+    Triple::Triple(UriHandler &uriHandler)
+        : uriHandler_(uriHandler){}
 
-    Triple::Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource)
-        : LibrdfStatement(subject.getNode(),
-                          predicate_ptr->getNode(),
-                          resource.getNode()) {
+    Triple::Triple(Triple &&triple) noexcept
+        : uriHandler_(triple.uriHandler_),
+          LibrdfStatement(triple.statement_) {}
+
+    Triple &Triple::operator=(Triple &&triple) noexcept {
+        if (*this != triple) {
+            // This part is the move assignment operator for base class
+            // LibrdfStatement
+            if (triple.statement_ != nullptr) {
+                if (statement_ != nullptr) {
+                    librdf_free_statement(statement_);
+                    statement_ = nullptr;
+                }
+                statement_ = triple.statement_;
+                triple.statement_ = nullptr;
+            }
+
+            // this part is extra requirement of specialization
+            // Triple class
+            uriHandler_ = triple.uriHandler_;
+        }
+        return *this;
+    };
+
+    Triple::Triple(UriHandler &uriHandler, const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource)
+        : uriHandler_(uriHandler), LibrdfStatement(subject.getNode(),
+                                                   predicate_ptr->getNode(),
+                                                   resource.getNode()) {}
+
+    Triple::Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource)
+        : uriHandler_(uriHandler), LibrdfStatement(subject, predicate, resource) {}
+
+    Triple Triple::fromRawStatementPtr(UriHandler &uriHandler, librdf_statement *statement) {
+        return Triple(uriHandler, statement);
     }
 
-    Triple::Triple(librdf_node *subject, librdf_node *predicate, librdf_node *resource) : LibrdfStatement(subject, predicate, resource) {}
-
-    Triple Triple::fromRawStatementPtr(librdf_statement *statement) {
-        return Triple(statement);
-    }
-
-    Triple::Triple(librdf_statement *statement) : LibrdfStatement(statement) {}
+    Triple::Triple(UriHandler &uriHandler, librdf_statement *statement)
+        : uriHandler_(uriHandler), LibrdfStatement(statement) {}
 
     std::string Triple::str(const std::string &format, const std::string &base, std::string omex_name,
                             std::string model_name) const {
@@ -247,21 +274,9 @@ namespace omexmeta {
         return uriHandler_.getModelUri();
     }
 
-    void Triple::setLocalUri(std::string localUri) {
-        // we cannot set localUri directly. Instead
-        // the modelUri and localUri are bound together
-        // such that they change together. (prevents orphaning
-        // rdf files) .
-        uriHandler_.setModelUri(localUri);
-    }
-
     void Triple::setModelUri(const std::string &model_uri) {
         uriHandler_.setModelUri(model_uri);
     }
-
-    void Triple::setUriHandler(UriHandler& uriHandler) {
-        uriHandler_ = uriHandler;
-    };
 
 
 }// namespace omexmeta

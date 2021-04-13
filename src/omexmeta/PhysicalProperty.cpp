@@ -85,17 +85,19 @@ namespace omexmeta {
         }
 
         Triple is_property_of_triple(
+                uriHandler_,
                 LibrdfNode::fromUriString(about_value_).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
                 LibrdfNode::fromUriString(is_property_of_value_).get());
-        triples.move_back(is_property_of_triple);
+        triples.moveBack(is_property_of_triple);
 
         if (!is_version_of_value_.empty()) {
             Triple is_version_of_triple(
+                    uriHandler_,
                     LibrdfNode::fromUriString(about_value_).get(),
                     BiomodelsBiologyQualifier("isVersionOf").getNode(),
                     Resource(LibrdfNode::fromUriString(is_version_of_value_)).getNode());
-            triples.move_back(is_version_of_triple);
+            triples.moveBack(is_version_of_triple);
         }
         return triples;
     }

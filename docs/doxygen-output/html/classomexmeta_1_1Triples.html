@@ -95,7 +95,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 <tr class="memitem:a8c9df0d37572179d682127cb7368dd82"><td class="memItemLeft" align="right" valign="top"><a id="a8c9df0d37572179d682127cb7368dd82"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> &amp;rhs) const</td></tr>
 <tr class="separator:a8c9df0d37572179d682127cb7368dd82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88dcf4b950f105acb621bd07f07a38a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#a88dcf4b950f105acb621bd07f07a38a0">move_back</a> (<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;triple)</td></tr>
+<tr class="memitem:a88dcf4b950f105acb621bd07f07a38a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#a88dcf4b950f105acb621bd07f07a38a0">moveBack</a> (<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;triple)</td></tr>
 <tr class="memdesc:a88dcf4b950f105acb621bd07f07a38a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">move a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> to the back of the <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object. Analogous to push back but with move semantics.  <a href="classomexmeta_1_1Triples.html#a88dcf4b950f105acb621bd07f07a38a0">More...</a><br /></td></tr>
 <tr class="separator:a88dcf4b950f105acb621bd07f07a38a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9882f6f582e8d2e34e09d2f7076a0e2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#a9882f6f582e8d2e34e09d2f7076a0e2e">emplace_back</a> (<a class="el" href="classomexmeta_1_1Subject.html">Subject</a> subject, const PredicatePtr &amp;predicatePtr, const <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource)</td></tr>
@@ -152,7 +152,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>freeTriples</b> ()</t
 <tr class="memitem:a48ab93d0e38e3cfcb4eac9264b047f0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#a48ab93d0e38e3cfcb4eac9264b047f0a">isEmpty</a> ()</td></tr>
 <tr class="memdesc:a48ab93d0e38e3cfcb4eac9264b047f0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicates whether <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object is empty.  <a href="classomexmeta_1_1Triples.html#a48ab93d0e38e3cfcb4eac9264b047f0a">More...</a><br /></td></tr>
 <tr class="separator:a48ab93d0e38e3cfcb4eac9264b047f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb333b83c7a8ed1f210816ef88c8d3a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#abb333b83c7a8ed1f210816ef88c8d3a0">pop_front</a> ()</td></tr>
+<tr class="memitem:abb333b83c7a8ed1f210816ef88c8d3a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#abb333b83c7a8ed1f210816ef88c8d3a0">popFront</a> ()</td></tr>
 <tr class="memdesc:abb333b83c7a8ed1f210816ef88c8d3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">move the from <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> object out of the <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object  <a href="classomexmeta_1_1Triples.html#abb333b83c7a8ed1f210816ef88c8d3a0">More...</a><br /></td></tr>
 <tr class="separator:abb333b83c7a8ed1f210816ef88c8d3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f7ba9d5cd575ba5c63ed9dbbd1f279c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triples.html#a1f7ba9d5cd575ba5c63ed9dbbd1f279c">capacity</a> ()</td></tr>
@@ -632,13 +632,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>freeTriples</b> ()</t
 </div>
 </div>
 <a id="a88dcf4b950f105acb621bd07f07a38a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88dcf4b950f105acb621bd07f07a38a0">&#9670;&nbsp;</a></span>move_back()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a88dcf4b950f105acb621bd07f07a38a0">&#9670;&nbsp;</a></span>moveBack()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void omexmeta::Triples::move_back </td>
+          <td class="memname">void omexmeta::Triples::moveBack </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&#160;</td>
           <td class="paramname"><em>triple</em></td><td>)</td>
@@ -701,13 +701,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>freeTriples</b> ()</t
 </div>
 </div>
 <a id="abb333b83c7a8ed1f210816ef88c8d3a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb333b83c7a8ed1f210816ef88c8d3a0">&#9670;&nbsp;</a></span>pop_front()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abb333b83c7a8ed1f210816ef88c8d3a0">&#9670;&nbsp;</a></span>popFront()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a> omexmeta::Triples::pop_front </td>
+          <td class="memname"><a class="el" href="classomexmeta_1_1Triple.html">Triple</a> omexmeta::Triples::popFront </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty,
+    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler &uriHandler, PhysicalProperty physicalProperty,
                                    Resource is, Resources is_part_of)
         : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_ENTITY),
           identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
@@ -26,7 +26,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler& uriHandler)
+    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler &uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
@@ -93,7 +93,7 @@ namespace omexmeta {
             physical_property_.setPropertyMetaidBase("EntityProperty");
         }
 
-        if (OmexMetaUtils::isStringEmpty<PhysicalEntity>(*this, about_value_)){
+        if (OmexMetaUtils::isStringEmpty<PhysicalEntity>(*this, about_value_)) {
             about(OmexMetaUtils::generateUniqueMetaid(model_, "Entity", new_metaid_exclusion_list_), LOCAL_URI);
             physical_property_.isPropertyOf(about_value_, LOCAL_URI);
         }
@@ -108,11 +108,11 @@ namespace omexmeta {
          * When there is no physical property we do not add property related
          * triples
          */
-         if (physical_property_.isSet() ) {
+        if (physical_property_.isSet()) {
             Triples physical_property_triples = physical_property_.toTriples();
 
             for (auto &it : physical_property_triples) {
-                triples.move_back(it);// moves the statement
+                triples.moveBack(it);// moves the statement
             }
             physical_property_triples.freeTriples();
             assert(physical_property_triples.size() == 0);
@@ -122,6 +122,7 @@ namespace omexmeta {
 
         if (identity_resource_.isSet()) {
             triples.emplace_back(
+                    uriHandler_,
                     LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                     BiomodelsBiologyQualifier("is").getNode(),
                     identity_resource_.getNode());
@@ -132,6 +133,7 @@ namespace omexmeta {
             // the "where" part of the physical entity
             for (auto &locationResource : location_resources_) {
                 triples.emplace_back(
+                        uriHandler_,
                         LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                         BiomodelsBiologyQualifier("isPartOf").getNode(),
                         locationResource.getNode());
@@ -142,6 +144,7 @@ namespace omexmeta {
             // the "where" part of the physical entity
             for (auto &locationResource : part_resources_) {
                 triples.emplace_back(
+                        uriHandler_,
                         LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                         BiomodelsBiologyQualifier("hasPart").getNode(),
                         locationResource.getNode());
@@ -210,10 +213,10 @@ namespace omexmeta {
         PropertyBearer::hasProperty(property);
         return *this;
     }
-//    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
-//        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
-//        return *this;
-//    }
+    //    PhysicalEntity &PhysicalEntity::hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of, const std::string &is_property_of, eUriType is_property_of_uri_type) {
+    //        PropertyBearer::hasProperty(property_about, about_uri_type, is_version_of, is_property_of, is_property_of_uri_type);
+    //        return *this;
+    //    }
     PhysicalEntity &PhysicalEntity::hasProperty(const std::string &is_version_of) {
         PropertyBearer::hasProperty(is_version_of);
         return *this;

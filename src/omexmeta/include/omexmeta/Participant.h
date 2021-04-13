@@ -26,6 +26,24 @@ namespace omexmeta {
 
     public:
         /**
+         * @brief Superclass of participant types
+         * @param model pointer to the librdf_model* in use. Passed down from RDF.
+         * @param base_metaid the content of the participant base_metaid. A valid metaid.
+         * @param semsim_predicate_term a string from the SemSim vocabulary.
+         * @param multiplier Specifies the stoiciometry for the Participant in the process
+         * @param physicalEntityReference the ID of the physicalEntity assicated with the Participant
+         *
+         * This class should not be used directly - the subclasses should be preferred.
+         *
+         * For developers - This superclass is implemented in order to substantially reduce
+         * code duplication in the subclasses.
+         *
+         */
+        Participant(librdf_model *model, std::string base_metaid, UriHandler &uriHandler,
+                    std::string semsim_predicate_term, double multiplier,
+                    std::string physicalEntityReference, eUriType type);
+
+        /**
          * @brief setter for the multiplier field of Participant types
          */
         void setMultiplier(double multiplier);
@@ -57,34 +75,12 @@ namespace omexmeta {
          */
         [[nodiscard]] const std::string &getLocalUri() const;
 
-        /**
-         * @brief setter for local uri attribute
-         */
-        //        void setLocalUri(const std::string &localUri);
 
         /**
          * @biref currently more of a placeholder so as to not break the tests.
          * todo remove this method, Triple objects deal with memory for Participants.
          */
         [[maybe_unused]] void free();
-
-        /**
-         * @brief Superclass of participant types
-         * @param model pointer to the librdf_model* in use. Passed down from RDF.
-         * @param base_metaid the content of the participant base_metaid. A valid metaid.
-         * @param semsim_predicate_term a string from the SemSim vocabulary.
-         * @param multiplier Specifies the stoiciometry for the Participant in the process
-         * @param physicalEntityReference the ID of the physicalEntity assicated with the Participant
-         *
-         * This class should not be used directly - the subclasses should be preferred.
-         *
-         * For developers - This superclass is implemented in order to substantially reduce
-         * code duplication in the subclasses.
-         *
-         */
-        Participant(librdf_model *model, std::string base_metaid, const UriHandler &uriHandler,
-                    std::string semsim_predicate_term, double multiplier,
-                    std::string physicalEntityReference, eUriType type);
 
         ~Participant() = default;
 
@@ -158,7 +154,7 @@ namespace omexmeta {
         // set of triples returned.
         std::string local_participant_metaid_;
 
-        const UriHandler &uriHandler_;
+        UriHandler &uriHandler_;
 
         eUriType type_;
     };
@@ -175,7 +171,7 @@ namespace omexmeta {
          * @brief A class representing process/force energetic source.
          */
         SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
-                          const UriHandler &uriHandler);
+                          UriHandler &uriHandler);
     };
 
     /**
@@ -187,7 +183,7 @@ namespace omexmeta {
          * @brief A class representing process/force energetic sinks.
          */
         SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
-                        const UriHandler &uriHandler);
+                        UriHandler &uriHandler);
     };
 
     /**
@@ -198,7 +194,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, eUriType type, const UriHandler &uriHandler);
+        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, eUriType type, UriHandler &uriHandler);
 
     private:
         double multiplier_ = 0;

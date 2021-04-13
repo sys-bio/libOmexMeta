@@ -1218,7 +1218,7 @@
     <member refid="classomexmeta_1_1Triples_1a71a3ff7b185a5420eabd9bf4e9637196" kind="function"><name>Triples</name></member>
     <member refid="classomexmeta_1_1Triples_1a8c6e00fe9e694d9c52e1fa37a82ae489" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1Triples_1a8c9df0d37572179d682127cb7368dd82" kind="function"><name>operator!=</name></member>
-    <member refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kind="function"><name>move_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kind="function"><name>moveBack</name></member>
     <member refid="classomexmeta_1_1Triples_1a9882f6f582e8d2e34e09d2f7076a0e2e" kind="function"><name>emplace_back</name></member>
     <member refid="classomexmeta_1_1Triples_1acab4513889a9a42c77b3044aac941728" kind="function"><name>emplace_back</name></member>
     <member refid="classomexmeta_1_1Triples_1a862d672c0ac9d877261947cf5a7061db" kind="function"><name>emplace_back</name></member>
@@ -1237,7 +1237,7 @@
     <member refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" kind="function"><name>pop</name></member>
     <member refid="classomexmeta_1_1Triples_1a43d540423a436986d9f72d7cf0f02d72" kind="function"><name>operator[]</name></member>
     <member refid="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a" kind="function"><name>isEmpty</name></member>
-    <member refid="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0" kind="function"><name>pop_front</name></member>
+    <member refid="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0" kind="function"><name>popFront</name></member>
     <member refid="classomexmeta_1_1Triples_1a1f7ba9d5cd575ba5c63ed9dbbd1f279c" kind="function"><name>capacity</name></member>
   </compound>
   <compound refid="structdbg_1_1type__tag" kind="struct"><name>dbg::type_tag</name>

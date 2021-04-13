@@ -28,6 +28,9 @@ using namespace redland;
 
 namespace omexmeta {
 
+    typedef std::unordered_map<std::string, std::string> NamespaceMap;
+
+
     // forward declarations
     class Editor;
     class MarkupIdentifier;
@@ -331,8 +334,6 @@ namespace omexmeta {
         LibrdfModel model_;
 
         OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
-
-        typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
         UriHandler uriHandler_;
 
