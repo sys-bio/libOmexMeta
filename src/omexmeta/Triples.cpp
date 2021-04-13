@@ -197,6 +197,7 @@ namespace omexmeta {
         for (auto& triple: triples_){
             triple.freeTriple();
         }
+        triples_ = std::vector<Triple>();
     }
 
     bool Triples::isEmpty() {
