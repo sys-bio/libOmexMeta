@@ -84,6 +84,16 @@ namespace redland {
          */
         [[nodiscard]] librdf_uri *get() const;
 
+        /**
+         * @brief get the underlying librdf_uri*
+         * @details do not increment the shared pointer reference
+         * counter.
+         * @warning this method assumes you know what you are doing
+         * with regards to the librdf reference counting system
+         * @see LibrdfUri::get()
+         */
+        [[nodiscard]] librdf_uri *getWithoutIncrement() const;
+
         [[nodiscard]] bool isEmpty() const;
 
         void freeUri();

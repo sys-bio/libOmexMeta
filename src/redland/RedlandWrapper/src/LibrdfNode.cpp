@@ -143,6 +143,8 @@ namespace redland {
                 xml_language_,
                 literal_datatype_uri_);
         librdf_free_uri(literal_datatype_uri_);
+        // todo do i need to increment the ref counter here?
+        //  1 for the underlying node, one for the LibrdfNode???
         return LibrdfNode(n);
     }
 
@@ -187,9 +189,15 @@ namespace redland {
         return node_;
     }
 
+    librdf_node *LibrdfNode::getWithoutIncrement() const {
+        return node_;
+    }
+
 
     LibrdfUri LibrdfNode::getLiteralDatatype() {
-        return LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_));
+        LibrdfUri uri = LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_));
+        uri.incrementUsage();
+        return uri;
     }
 
     std::string LibrdfNode::getLiteralLanguage() {
@@ -272,17 +280,17 @@ namespace redland {
                 (const unsigned char *) identifier.c_str());
     }
 
-    void LibrdfNode::freeNode(librdf_node *node) {
-        if (!node) {
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfNode::free: trying to free null node");
-        }
-        librdf_free_node(node);
-    }
 
     void LibrdfNode::freeNode() {
-        LibrdfNode::freeNode(node_);
-        node_ = nullptr;
+        if (!node_)
+            return;
+        unsigned int count = getUsage();
+        librdf_free_node(node_);
+        // only set to nullptr if we're sure the pointer
+        // is not still in use
+        if (count == 0){
+            node_ = nullptr;
+        }
     }
 
     std::string LibrdfNode::str() const {

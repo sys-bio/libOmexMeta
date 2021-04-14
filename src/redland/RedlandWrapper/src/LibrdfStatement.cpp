@@ -8,6 +8,10 @@
 
 namespace redland {
 
+    LibrdfStatement::~LibrdfStatement(){
+        freeStatement();
+    }
+
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
         : statement_(statement) {
         checkForNull();
@@ -144,8 +148,11 @@ namespace redland {
     }
 
     void LibrdfStatement::freeStatement() {
-        if (statement_ != nullptr) {
-            librdf_free_statement(statement_);
+        if (!statement_)
+            return;
+        int usageCount = getUsage();
+        librdf_free_statement(statement_);
+        if (usageCount == 0){
             statement_ = nullptr;
         }
     }

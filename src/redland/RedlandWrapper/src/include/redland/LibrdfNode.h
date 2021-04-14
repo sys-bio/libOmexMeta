@@ -83,6 +83,16 @@ namespace redland {
          */
         [[nodiscard]] librdf_node *get() const;
 
+        /**
+         * @brief get the underlying librdf_node*
+         * @details do not increment the shared pointer reference
+         * counter.
+         * @warning this method assumes you know what you are doing
+         * with regards to the librdf reference counting system
+         * @see LibrdfNode::get()
+         */
+        [[nodiscard]] librdf_node *getWithoutIncrement() const;
+
         static LibrdfNode fromUriString(const std::string &uri_string);
 
         static LibrdfNode fromBlank(const std::string &blank);

@@ -46,6 +46,10 @@ namespace redland {
         return uri_;
     }
 
+    librdf_uri *LibrdfUri::getWithoutIncrement() const {
+        return uri_;
+    }
+
     bool LibrdfUri::isEmpty() const {
         if (!uri_)
             throw RedlandNullPointerException(

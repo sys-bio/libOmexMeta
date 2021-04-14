@@ -37,7 +37,6 @@ TEST_F(LibrdfNodeTests, TestMoveConstructor) {
     LibrdfNode node2 = std::move(node);
     std::string actual = node2.str();
     ASSERT_STREQ(expected1.c_str(), actual.c_str());
-    node2.freeNode();
 }
 
 //TEST_F(LibrdfNodeTests, TestAssignmentOperator) {
@@ -59,7 +58,6 @@ TEST_F(LibrdfNodeTests, TestMoveAssignmentOperator) {
     node1 = std::move(node2);
     std::string actual = node1.str();
     ASSERT_STREQ(expected2.c_str(), actual.c_str());
-    node1.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestLiteral1) {
@@ -74,7 +72,9 @@ TEST_F(LibrdfNodeTests, TestLiteral1) {
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
-    unsigned char *actual = librdf_node_get_literal_value(node.get());
+    librdf_node* n = node.get();
+    unsigned char *actual = librdf_node_get_literal_value(n);
+    librdf_free_node(n);
     ASSERT_STREQ("TypedLiteral", (const char *) actual);
 }
 
@@ -94,7 +94,7 @@ TEST_F(LibrdfNodeTests, TestTypedLiteral3) {
 TEST_F(LibrdfNodeTests, TestBlank) {
     // http://www.w3.org/2001/XMLSchema#string
     LibrdfNode node = LibrdfNode::fromBlank("Blanky");
-    unsigned char *actual = librdf_node_get_blank_identifier(node.get());
+    unsigned char *actual = librdf_node_get_blank_identifier(node.getWithoutIncrement());
     ASSERT_STREQ("Blanky", (const char *) actual);
 }
 
@@ -228,18 +228,12 @@ TEST_F(LibrdfNodeTests, TestEquality) {
     LibrdfNode subject1 = LibrdfNode::fromUriString("subject");
     LibrdfNode subject2 = LibrdfNode::fromUriString("subject");
     ASSERT_EQ(subject1, subject2);
-
-    subject1.freeNode();
-    subject2.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestEqualityBlank) {
     LibrdfNode subject1 = LibrdfNode::fromBlank("subject");
     LibrdfNode subject2 = LibrdfNode::fromBlank("subject");
     ASSERT_EQ(subject1, subject2);
-
-    subject1.freeNode();
-    subject2.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestInequality) {
@@ -247,13 +241,6 @@ TEST_F(LibrdfNodeTests, TestInequality) {
     LibrdfNode subject2 = LibrdfNode::fromUriString("subject2");
     ASSERT_NE(subject1, subject2);
 
-    /*
-     * Both nodes refer to the same block of memory. But
-     * librdf_node has a reference counter. Each time we free the node,
-     * the ref count reduces until it gets to 1. Then it is freed.
-     */
-    subject1.freeNode();// ref count to 1
-    subject2.freeNode();// ref count to 0
 }
 
 TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
@@ -261,9 +248,6 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getUri(), subject2.getUri());
-
-    subject1.freeNode();// ref count to 1
-    subject2.freeNode();// ref count to 0
 }
 
 /*
@@ -288,9 +272,6 @@ TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getLiteralDatatype(), subject2.getLiteralDatatype());
-
-    subject1.freeNode();// ref count to 1
-    subject2.freeNode();// ref count to 0
 }
 
 TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
@@ -304,7 +285,7 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
     ASSERT_EQ(1, librdf_uri_get_usage(n2->value.uri));
     librdf_free_node(n1);
     librdf_free_node(n2);
-}
+;}
 
 TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingRaptor) {
     // n1 and n2 are different nodes but they share the same uri
@@ -323,20 +304,18 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingRaptor) {
 }
 
 
-TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingMyCode) {
-    // n1 and n2 are two different nodes
-    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
-    LibrdfNode n2 = LibrdfNode::fromUriString("node2");
-
-    ASSERT_EQ(1, n1.getUsage());
-    ASSERT_EQ(1, n2.getUsage());
-    ASSERT_EQ(1, librdf_uri_get_usage(n1.get()->value.uri));
-    ASSERT_EQ(1, librdf_uri_get_usage(n2.get()->value.uri));
-
-
-    n2.freeNode();
-}
-
+//TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingMyCode) {
+//    // n1 and n2 are two different nodes
+//    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+//    LibrdfNode n2 = LibrdfNode::fromUriString("node2");
+//
+//    ASSERT_EQ(1, n1.getUsage());
+//    ASSERT_EQ(1, n2.getUsage());
+//    LibrdfUri uri1 = n1.getUri();
+//    LibrdfUri uri2 = n2.getUri();
+//    ASSERT_EQ(2, uri1.getUsage());
+//    ASSERT_EQ(2, uri2.getUsage());
+//}
 
 TEST_F(LibrdfNodeTests, GetNamespace1) {
     // n1 and n2 are two different nodes
@@ -360,6 +339,7 @@ TEST_F(LibrdfNodeTests, TestRefCounterOneNode) {
     LibrdfNode n1 = LibrdfNode::fromUriString("node1");
     ASSERT_EQ(1, n1.getUsage());
 }
+
 TEST_F(LibrdfNodeTests, TestRefCounterOneNodesUri) {
     LibrdfNode n1 = LibrdfNode::fromUriString("node1");
     ASSERT_EQ(1, n1.getUsage());
@@ -372,4 +352,3 @@ TEST_F(LibrdfNodeTests, TestRefCounterOneNodesUri) {
 
     // remaining pointers are cleaned up by destructors
 }
-

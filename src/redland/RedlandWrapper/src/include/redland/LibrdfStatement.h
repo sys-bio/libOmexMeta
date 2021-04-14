@@ -40,7 +40,7 @@ namespace redland {
 
         LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
 
-        ~LibrdfStatement() = default;
+        ~LibrdfStatement();
 
         void freeStatement();
 
