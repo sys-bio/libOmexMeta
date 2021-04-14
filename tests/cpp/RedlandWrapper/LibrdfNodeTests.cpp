@@ -352,3 +352,40 @@ TEST_F(LibrdfNodeTests, TestRefCounterOneNodesUri) {
 
     // remaining pointers are cleaned up by destructors
 }
+
+
+TEST_F(LibrdfNodeTests, CopyConstruct) {
+    LibrdfNode node = LibrdfNode::fromUriString("node");
+    ASSERT_EQ(1, node.getUsage());
+    LibrdfNode nodeCopy = node;
+    ASSERT_EQ(2, node.getUsage());
+    ASSERT_EQ(2, nodeCopy.getUsage());
+}
+
+TEST_F(LibrdfNodeTests, CopyAssignment) {
+    LibrdfNode node1 = LibrdfNode::fromUriString("https://node1.com");
+    ASSERT_EQ(1, node1.getUsage());
+    LibrdfNode node2 = LibrdfNode::fromUriString("https://node2.com");
+    ASSERT_EQ(1, node2.getUsage());
+
+    node1 = node2;
+    ASSERT_STREQ("https://node2.com", node1.str().c_str());
+    ASSERT_STREQ("https://node2.com", node2.str().c_str());
+    ASSERT_EQ(2, node1.getUsage());
+    ASSERT_EQ(2, node2.getUsage());
+    ASSERT_EQ(node1, node2);
+}
+
+TEST_F(LibrdfNodeTests, MoveConstruct) {
+    LibrdfNode node = LibrdfNode::fromUriString("https://node.com");
+    ASSERT_EQ(1, node.getUsage());
+    LibrdfNode nodeMoved = std::move(node);
+    ASSERT_EQ(1, nodeMoved.getUsage());
+}
+
+TEST_F(LibrdfNodeTests, MoveAssignment) {
+    LibrdfNode node1 = LibrdfNode::fromUriString("https://node1.com");
+    ASSERT_EQ(1, node1.getUsage());
+    LibrdfNode node2 = std::move(node1);
+    ASSERT_EQ(1, node2.getUsage());
+}

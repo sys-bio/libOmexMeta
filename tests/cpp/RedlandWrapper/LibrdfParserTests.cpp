@@ -139,7 +139,7 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
     librdf_stream *stream = librdf_model_as_stream(model.get());
     LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
-    auto s = LibrdfNode(stmt.getSubject());
+    auto s = LibrdfNode(stmt.getSubjectAsRawNode());
     std::string actual = s.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 

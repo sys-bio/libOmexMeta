@@ -451,9 +451,9 @@ The same toTriples method is used for all participants. </para>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::basic_string&lt; char &gt;</type>
-        <definition>std::basic_string&lt; char &gt; omexmeta::Participant::getPredicate</definition>
+        <definition>std::basic_string&lt; char &gt; omexmeta::Participant::getPredicateAsRawNode</definition>
         <argsstring>()</argsstring>
-        <name>getPredicate</name>
+        <name>getPredicateAsRawNode</name>
         <briefdescription>
 <para>get the predicate currently in use by the participant </para>
         </briefdescription>
@@ -496,9 +496,9 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::Participant::getSubject</definition>
+        <definition>const std::string &amp; omexmeta::Participant::getSubjectAsRawNode</definition>
         <argsstring>() const</argsstring>
-        <name>getSubject</name>
+        <name>getSubjectAsRawNode</name>
         <briefdescription>
 <para>get the subject portion of the <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref>, which is the </para>
         </briefdescription>
@@ -615,8 +615,8 @@ i.e. &quot;hasSourceParticipant&quot; not &quot;http://www.bhi.washington.edu/se
       <member refid="classomexmeta_1_1Participant_1ae78613f8d39ccfc23fc3624deb960fb0" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1Participant_1a79b467cfc699483fdfe5e7686cc5447e" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getMultiplier</name></member>
       <member refid="classomexmeta_1_1Participant_1a40a5858db6aaae7ec7095b320de838d1" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getPhysicalEntityReference</name></member>
-      <member refid="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getPredicate</name></member>
-      <member refid="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getSubject</name></member>
+      <member refid="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getPredicateAsRawNode</name></member>
+      <member refid="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" virt="non-virtual"><scope>omexmeta::Participant</scope><name>getSubjectAsRawNode</name></member>
       <member refid="classomexmeta_1_1Participant_1a2d1b200f736249f791559b5b65afea2d" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>local_participant_metaid_</name></member>
       <member refid="classomexmeta_1_1Participant_1a3c5e24de1d42e00ebf0b9d05fda0bdab" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1Participant_1aa947afd3fb5d53a7bd2029261f5be45e" prot="private" virt="non-virtual"><scope>omexmeta::Participant</scope><name>metaid_template_str_</name></member>

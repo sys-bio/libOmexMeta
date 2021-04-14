@@ -8,7 +8,7 @@
 
 namespace redland {
 
-    LibrdfStatement::~LibrdfStatement(){
+    LibrdfStatement::~LibrdfStatement() {
         freeStatement();
     }
 
@@ -31,15 +31,15 @@ namespace redland {
 
 
     void LibrdfStatement::checkForNull() {
-        if (!getSubject())
+        if (!getSubjectAsRawNode())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): subject_ node is null");
 
-        if (!getPredicate())//todo another check on underlying pointer if possible (so far checking for null causes seg fault)
+        if (!getPredicateAsRawNode())//todo another check on underlying pointer if possible (so far checking for null causes seg fault)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): predicate_ node is null");
 
-        if (!getResource())
+        if (!getResourceAsRawNode())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): resource_ node is null");
 
@@ -49,6 +49,7 @@ namespace redland {
     }
 
     librdf_statement *LibrdfStatement::get() const {
+        incrementUsage();
         return statement_;
     }
 
@@ -56,12 +57,34 @@ namespace redland {
         return statement_;
     }
 
-    librdf_node *LibrdfStatement::getSubject() const {
+    librdf_node *LibrdfStatement::getSubjectAsRawNode() const {
         return librdf_statement_get_subject(statement_);
     }
 
-    librdf_node *LibrdfStatement::getPredicate() const {
+    librdf_node *LibrdfStatement::getPredicateAsRawNode() const {
         return librdf_statement_get_predicate(statement_);
+    }
+
+    librdf_node *LibrdfStatement::getResourceAsRawNode() const {
+        return librdf_statement_get_object(statement_);
+    }
+
+    LibrdfNode LibrdfStatement::getSubjectNode() const {
+        LibrdfNode node(librdf_statement_get_subject(statement_));
+        node.incrementUsageCount();
+        return node;
+    }
+
+    LibrdfNode LibrdfStatement::getPredicateNode() const {
+        LibrdfNode node = LibrdfNode(librdf_statement_get_predicate(statement_));
+        node.incrementUsageCount();
+        return node;
+    }
+
+    LibrdfNode LibrdfStatement::getResourceNode() const {
+        LibrdfNode node = LibrdfNode(librdf_statement_get_object(statement_));
+        node.incrementUsageCount();
+        return node;
     }
 
     void LibrdfStatement::setSubject(librdf_node *node) {
@@ -76,36 +99,32 @@ namespace redland {
         librdf_statement_set_predicate(statement_, node);
     }
 
-    librdf_node *LibrdfStatement::getResource() const {
-        return librdf_statement_get_object(statement_);
-    }
-
     std::string LibrdfStatement::getResourceStr() const {
-        if (!getResource())
+        if (!getResourceAsRawNode())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::getIsVersionOfValue(): resource_ is nullptr");
-        return LibrdfNode::str(getResource());
+        return LibrdfNode::str(getResourceAsRawNode());
     }
 
     std::string LibrdfStatement::getSubjectStr() const {
-        if (getSubject() == nullptr)
+        if (getSubjectAsRawNode() == nullptr)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::getAbout(): subject_ is nullptr");
-        return LibrdfNode::str(getSubject());
+        return LibrdfNode::str(getSubjectAsRawNode());
     }
 
     std::string LibrdfStatement::getPredicateStr() const {
-        if (!getPredicate())
+        if (!getPredicateAsRawNode())
             throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfStatement::getPredicate(): predicate_ is nullptr");
-        return LibrdfNode::str(getPredicate());
+                    "RedlandNullPointerException: LibrdfStatement::getPredicateAsRawNode(): predicate_ is nullptr");
+        return LibrdfNode::str(getPredicateAsRawNode());
     }
 
     std::string LibrdfStatement::getPredicateNamespaceStr() const {
-        if (!getPredicate())
+        if (!getPredicateAsRawNode())
             throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfStatement::getPredicate(): predicate_ is nullptr");
-        return LibrdfNode(getPredicate()).getNamespace();
+                    "RedlandNullPointerException: LibrdfStatement::getPredicateAsRawNode(): predicate_ is nullptr");
+        return LibrdfNode(getPredicateAsRawNode()).getNamespace();
     }
 
     LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement *statement) {
@@ -118,45 +137,61 @@ namespace redland {
     }
 
     void LibrdfStatement::refreshStatement() {
-        if (getSubject() != nullptr &&
-            getPredicate() != nullptr &&
-            getResource() != nullptr) {
+        if (getSubjectAsRawNode() != nullptr &&
+            getPredicateAsRawNode() != nullptr &&
+            getResourceAsRawNode() != nullptr) {
             statement_ = librdf_new_statement_from_nodes(
-                    World::getWorld(), getSubject(), getPredicate(), getResource());
+                    World::getWorld(), getSubjectAsRawNode(), getPredicateAsRawNode(), getResourceAsRawNode());
         }
     }
 
     LibrdfStatement::LibrdfStatement(LibrdfStatement &&statement) noexcept {
-        if (statement.statement_ != nullptr) {
-            if (statement_ != nullptr) {
-                librdf_free_statement(statement_);
-                statement_ = nullptr;
-            }
-            statement_ = statement.statement_;
-            statement.statement_ = nullptr;
+        if (statement_) {
+            librdf_free_statement(statement_);
+            statement_ = nullptr;
         }
+        statement_ = statement.getWithoutIncrement();
+        statement.statement_ = nullptr;
     }
 
     LibrdfStatement &LibrdfStatement::operator=(LibrdfStatement &&statement) noexcept {
-        if (this != &statement) {
-            if (statement.statement_ != nullptr) {
-                if (statement_ != nullptr) {
-                    librdf_free_statement(statement_);
-                    statement_ = nullptr;
-                }
-                statement_ = statement.statement_;
-                statement.statement_ = nullptr;
+        if (*this != statement) {
+            if (statement_) {
+                librdf_free_statement(statement_);
+                statement_ = nullptr;
             }
+            statement_ = statement.getWithoutIncrement();
+            statement.statement_ = nullptr;
         }
         return *this;
     }
+
+    LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
+        if (statement_) {
+            librdf_free_statement(statement_);
+            statement_ = nullptr;
+        }
+        statement_ = statement.get();// handles reference count automatically
+    }
+
+    LibrdfStatement &LibrdfStatement::operator=(const LibrdfStatement &statement) {
+        if (*this != statement) {
+            if (statement_) {
+                librdf_free_statement(statement_);
+                statement_ = nullptr;
+            }
+            statement_ = statement.get();// handles reference count automatically
+        }
+        return *this;
+    }
+
 
     void LibrdfStatement::freeStatement() {
         if (!statement_)
             return;
         int usageCount = getUsage();
         librdf_free_statement(statement_);
-        if (usageCount == 0){
+        if (usageCount == 0) {
             statement_ = nullptr;
         }
     }
@@ -167,7 +202,7 @@ namespace redland {
          * So we do it here
          */
         if (statement_ != nullptr) {
-            librdf_node *subject = getSubject();
+            librdf_node *subject = getSubjectAsRawNode();
             if (subject != nullptr) {
                 if (subject->type == RAPTOR_TERM_TYPE_URI && subject->value.uri != nullptr) {
                     librdf_free_uri(subject->value.uri);
@@ -175,7 +210,7 @@ namespace redland {
                     librdf_free_uri(subject->value.literal.datatype);
                 }
             }
-            librdf_node *predicate = getPredicate();
+            librdf_node *predicate = getPredicateAsRawNode();
             if (predicate != nullptr) {
                 if (predicate->type == RAPTOR_TERM_TYPE_URI && predicate->value.uri != nullptr) {
                     librdf_free_uri(predicate->value.uri);
@@ -183,7 +218,7 @@ namespace redland {
                     librdf_free_uri(predicate->value.literal.datatype);
                 }
             }
-            librdf_node *resource = getResource();
+            librdf_node *resource = getResourceAsRawNode();
             if (resource != nullptr) {
                 if (resource->type == RAPTOR_TERM_TYPE_URI && resource->value.uri != nullptr) {
                     librdf_free_uri(resource->value.uri);
@@ -201,52 +236,56 @@ namespace redland {
     }
 
     bool LibrdfStatement::equals(librdf_statement *first, librdf_statement *second) {
-        if (!first) {
-            throw std::logic_error("LibrdfStatement::equals:: first statement is null");
-        }
-        if (!second) {
-            throw std::logic_error("LibrdfStatement::equals:: second statement is null");
-        }
-        librdf_node *this_subject = librdf_statement_get_subject(first);
-        if (!this_subject) {
-            throw std::logic_error("LibrdfStatement::equals:: this_subject is null");
-        }
-        librdf_node *this_predicate = librdf_statement_get_predicate(first);
-        if (!this_predicate) {
-            throw std::logic_error("LibrdfStatement::equals:: this_predicate is null");
-        }
-        librdf_node *this_resource = librdf_statement_get_object(first);
-        if (!this_resource) {
-            throw std::logic_error("LibrdfStatement::equals:: this_resource is null");
-        }
+        return librdf_statement_equals(first, second);
 
-        librdf_node *that_subject = librdf_statement_get_subject(second);
-        if (!that_subject) {
-            throw std::logic_error("LibrdfStatement::equals:: that_subject is null");
-        }
-        librdf_node *that_predicate = librdf_statement_get_predicate(second);
-        if (!that_predicate) {
-            throw std::logic_error("LibrdfStatement::equals:: that_predicate is null");
-        }
-        librdf_node *that_resource = librdf_statement_get_object(second);
-        if (!that_resource) {
-            throw std::logic_error("LibrdfStatement::equals:: that_resource is null");
-        }
-        bool subjects_equal = true;
-        bool resources_equal = true;
-        // we bypass comparing blank nodes.
-        if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)) {
-            subjects_equal = librdf_node_equals(this_subject, that_subject);
-        }
-        if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)) {
-            resources_equal = librdf_node_equals(this_resource, that_resource);
-        }
-        bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
-        return subjects_equal && predicates_equal && resources_equal;
+        // can't figure out why I didn't use librdf_statement_equals the first time around
+        // leave this commented out until you're sure it wont be needed
+//        if (!first) {
+//            return false;
+//        }
+//        if (!second) {
+//            return false;
+//        }
+//        librdf_node *this_subject = librdf_statement_get_subject(first);
+//        if (!this_subject) {
+//            return false;
+//        }
+//        librdf_node *this_predicate = librdf_statement_get_predicate(first);
+//        if (!this_predicate) {
+//            return false;
+//        }
+//        librdf_node *this_resource = librdf_statement_get_object(first);
+//        if (!this_resource) {
+//            return false;
+//        }
+//
+//        librdf_node *that_subject = librdf_statement_get_subject(second);
+//        if (!that_subject) {
+//            return false;
+//        }
+//        librdf_node *that_predicate = librdf_statement_get_predicate(second);
+//        if (!that_predicate) {
+//            return false;
+//        }
+//        librdf_node *that_resource = librdf_statement_get_object(second);
+//        if (!that_resource) {
+//            return false;
+//        }
+//        bool subjects_equal = true;
+//        bool resources_equal = true;
+//        // we bypass comparing blank nodes.
+//        if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)) {
+//            subjects_equal = librdf_node_equals(this_subject, that_subject);
+//        }
+//        if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)) {
+//            resources_equal = librdf_node_equals(this_resource, that_resource);
+//        }
+//        bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
+//        return subjects_equal && predicates_equal && resources_equal;
     }
 
     bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {
-        return equals(statement_, rhs.get());
+        return equals(statement_, rhs.getWithoutIncrement());
     }
 
     bool LibrdfStatement::operator!=(const LibrdfStatement &rhs) const {
@@ -256,5 +295,10 @@ namespace redland {
     int LibrdfStatement::getUsage() const {
         return statement_->usage;
     }
+
+    void LibrdfStatement::incrementUsage() const {
+        statement_->usage++;
+    }
+
 
 }// namespace redland

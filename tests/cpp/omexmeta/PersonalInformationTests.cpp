@@ -7,6 +7,8 @@
 #include "redland/RedlandAPI.h"
 #include "gtest/gtest.h"
 
+#include "PersonalInformation.h"
+
 using namespace omexmeta;
 
 class PersonalInformationTests : public ::testing::Test {

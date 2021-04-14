@@ -1,8 +1,8 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include "librdf.h"
 #include "redland/LibrdfUri.h"
+#include "librdf.h"
 #include "redland/World.h"
 
 /*
@@ -15,7 +15,47 @@
 
 namespace redland {
 
-    LibrdfUri::~LibrdfUri(){
+    LibrdfUri::LibrdfUri(const LibrdfUri &librdfUri) {
+        if (uri_) {
+            librdf_free_uri(uri_);
+            uri_ = nullptr;
+        }
+        uri_ = librdfUri.get();// automatically increments the ref count for us
+    }
+
+    LibrdfUri::LibrdfUri(LibrdfUri &&librdfUri) noexcept {
+        if (*this != librdfUri) {
+            if (uri_) {
+                librdf_free_uri(uri_);
+                uri_ = nullptr;
+            }
+            uri_ = librdfUri.getWithoutIncrement();
+            librdfUri.uri_ = nullptr;
+        }
+    }
+
+    LibrdfUri &LibrdfUri::operator=(const LibrdfUri &librdfUri) {
+        if (uri_) {
+            librdf_free_uri(uri_);
+            uri_ = nullptr;
+        }
+        uri_ = librdfUri.get();// automatically increments the ref count for us
+        return *this;
+    }
+
+    LibrdfUri &LibrdfUri::operator=(LibrdfUri &&librdfUri) noexcept {
+        if (*this != librdfUri) {
+            if (uri_) {
+                librdf_free_uri(uri_);
+                uri_ = nullptr;
+            }
+            uri_ = librdfUri.getWithoutIncrement();
+            librdfUri.uri_ = nullptr;
+        }
+        return *this;
+    }
+
+    LibrdfUri::~LibrdfUri() {
         freeUri();
     }
 
@@ -25,10 +65,10 @@ namespace redland {
     }
 
     LibrdfUri::LibrdfUri(librdf_uri *uri)
-            : uri_(uri) {}
+        : uri_(uri) {}
 
     LibrdfUri::LibrdfUri(const std::string &uri)
-            : uri_(librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str())) {
+        : uri_(librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str())) {
     }
 
     std::string LibrdfUri::str() const {
@@ -67,7 +107,7 @@ namespace redland {
         librdf_free_uri(uri_);
 
         // set to null if uri was freed and not decremented
-        if (usageCount == 0){
+        if (usageCount == 0) {
             uri_ = nullptr;
         }
     }
@@ -90,7 +130,6 @@ namespace redland {
 
     bool LibrdfUri::isFileUri() const {
         return librdf_uri_is_file_uri(uri_);
-
     }
 
     std::string LibrdfUri::toFilenameString() const {
@@ -104,7 +143,10 @@ namespace redland {
     }
 
     bool LibrdfUri::operator==(const LibrdfUri &rhs) const {
-        return librdf_uri_equals(uri_, rhs.get());
+        if (!uri_ || !rhs.getWithoutIncrement()) {
+            return false;
+        }
+        return librdf_uri_equals(uri_, rhs.getWithoutIncrement());
     }
 
     bool LibrdfUri::operator!=(const LibrdfUri &rhs) const {
@@ -115,26 +157,9 @@ namespace redland {
         return librdf_uri_get_usage(uri_);
     }
 
-    void LibrdfUri::incrementUsage() const{
+    void LibrdfUri::incrementUsage() const {
         librdf_uri_increment_usage(uri_);
     }
 
 
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}// namespace redland

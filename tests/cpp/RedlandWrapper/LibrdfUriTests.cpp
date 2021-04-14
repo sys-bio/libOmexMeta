@@ -180,3 +180,39 @@ TEST_F(LibrdfUriTests, TestUriInANode2) {
     // destructors take care of the memory
 }
 
+TEST_F(LibrdfUriTests, CopyConstruct) {
+    LibrdfUri uri("https://uri.com");
+    ASSERT_EQ(1, uri.getUsage());
+    LibrdfUri uriCopy = uri;
+    ASSERT_EQ(2, uri.getUsage());
+}
+
+TEST_F(LibrdfUriTests, CopyAssignment) {
+    LibrdfUri uri1("https://uri1.com");
+    ASSERT_EQ(1, uri1.getUsage());
+    LibrdfUri uri2("https://uri2.com");
+    ASSERT_EQ(1, uri2.getUsage());
+
+    uri1 = uri2;
+    ASSERT_STREQ("https://uri2.com", uri1.str().c_str());
+    ASSERT_STREQ("https://uri2.com", uri2.str().c_str());
+    ASSERT_EQ(2, uri1.getUsage());
+    ASSERT_EQ(2, uri2.getUsage());
+    ASSERT_EQ(uri1, uri2);
+
+}
+
+TEST_F(LibrdfUriTests, MoveConstruct) {
+    LibrdfUri uri("https://uri.com");
+    ASSERT_EQ(1, uri.getUsage());
+    LibrdfUri uriMoved = std::move(uri);
+    ASSERT_EQ(1, uriMoved.getUsage());
+}
+
+TEST_F(LibrdfUriTests, MoveAssignment) {
+    LibrdfUri uri1("https://uri1.com");
+    ASSERT_EQ(1, uri1.getUsage());
+    LibrdfUri uri2 = std::move(uri1);
+    ASSERT_EQ(1, uri2.getUsage());
+}
+

@@ -232,20 +232,20 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
     ASSERT_EQ(1, triples1[2].getStatement()->usage);
 
     // check usage of subjects
-    ASSERT_EQ(1, triples1[0].getSubject()->usage);
-    ASSERT_EQ(1, triples1[1].getSubject()->usage);
-    ASSERT_EQ(1, triples1[2].getSubject()->usage);
+    ASSERT_EQ(1, triples1[0].getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[1].getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[2].getSubjectAsRawNode()->usage);
 
     // check usage of predicates
-    ASSERT_EQ(1, triples1[0].getPredicate()->usage);
-    ASSERT_EQ(1, triples1[1].getPredicate()->usage);
-    ASSERT_EQ(1, triples1[2].getPredicate()->usage);
+    ASSERT_EQ(1, triples1[0].getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[1].getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[2].getPredicateAsRawNode()->usage);
 
 
     // check usage of resources
-    ASSERT_EQ(1, triples1[0].getResource()->usage);
-    ASSERT_EQ(1, triples1[1].getResource()->usage);
-    ASSERT_EQ(1, triples1[2].getResource()->usage);
+    ASSERT_EQ(1, triples1[0].getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[1].getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[2].getResourceAsRawNode()->usage);
     triples1.freeTriples();
 }
 
@@ -271,32 +271,32 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
     ASSERT_EQ(1, triples2[2].getStatement()->usage);
 
     // check usage of subjects
-    ASSERT_EQ(1, triples1[0].getSubject()->usage);
-    ASSERT_EQ(1, triples1[1].getSubject()->usage);
-    ASSERT_EQ(1, triples1[2].getSubject()->usage);
+    ASSERT_EQ(1, triples1[0].getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[1].getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[2].getSubjectAsRawNode()->usage);
 
-    ASSERT_EQ(1, triples2[0].getSubject()->usage);
-    ASSERT_EQ(1, triples2[1].getSubject()->usage);
-    ASSERT_EQ(1, triples2[2].getSubject()->usage);
+    ASSERT_EQ(1, triples2[0].getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triples2[1].getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triples2[2].getSubjectAsRawNode()->usage);
 
     // check usage of predicates
-    ASSERT_EQ(1, triples1[0].getPredicate()->usage);
-    ASSERT_EQ(1, triples1[1].getPredicate()->usage);
-    ASSERT_EQ(1, triples1[2].getPredicate()->usage);
+    ASSERT_EQ(1, triples1[0].getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[1].getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[2].getPredicateAsRawNode()->usage);
 
-    ASSERT_EQ(1, triples2[0].getPredicate()->usage);
-    ASSERT_EQ(1, triples2[1].getPredicate()->usage);
-    ASSERT_EQ(1, triples2[2].getPredicate()->usage);
+    ASSERT_EQ(1, triples2[0].getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triples2[1].getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triples2[2].getPredicateAsRawNode()->usage);
 
 
     // check usage of Resource
-    ASSERT_EQ(1, triples1[0].getResource()->usage);
-    ASSERT_EQ(1, triples1[1].getResource()->usage);
-    ASSERT_EQ(1, triples1[2].getResource()->usage);
+    ASSERT_EQ(1, triples1[0].getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[1].getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triples1[2].getResourceAsRawNode()->usage);
 
-    ASSERT_EQ(1, triples2[0].getResource()->usage);
-    ASSERT_EQ(1, triples2[1].getResource()->usage);
-    ASSERT_EQ(1, triples2[2].getResource()->usage);
+    ASSERT_EQ(1, triples2[0].getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triples2[1].getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triples2[2].getResourceAsRawNode()->usage);
 
     /*
      * The nodes are all used once
@@ -325,9 +325,9 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
      * metaid14                     6                               6
      * metaid15                     2                               2
      */
-    ASSERT_EQ(triples1[0].getSubject()->value.uri, triples2[0].getSubject()->value.uri);
-    ASSERT_EQ(triples1[0].getResource()->value.uri, triples2[0].getResource()->value.uri);
-    ASSERT_EQ(triples1[0].getPredicate()->value.uri, triples2[0].getPredicate()->value.uri);
+    ASSERT_EQ(triples1[0].getSubjectAsRawNode()->value.uri, triples2[0].getSubjectAsRawNode()->value.uri);
+    ASSERT_EQ(triples1[0].getResourceAsRawNode()->value.uri, triples2[0].getResourceAsRawNode()->value.uri);
+    ASSERT_EQ(triples1[0].getPredicateAsRawNode()->value.uri, triples2[0].getPredicateAsRawNode()->value.uri);
 
     triples1.freeTriples();
     triples2.freeTriples();

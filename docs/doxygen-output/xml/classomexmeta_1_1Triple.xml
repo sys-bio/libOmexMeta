@@ -655,13 +655,13 @@
       <member refid="classomexmeta_1_1Triple_1a69df88d19e2f9077fccfa9543dadd15f" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getLocalUri</name></member>
       <member refid="classomexmeta_1_1Triple_1ac379e5410a41c1946e91d581f023c7f5" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getModelUri</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getPredicate</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getPredicateAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1af52b7e72cb067548d97f48b4a77a44ff" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getPredicateNamespaceStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getPredicateStr</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getResource</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getResourceAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getResourceStr</name></member>
       <member refid="classomexmeta_1_1Triple_1a886240fe50becaaa47ca171f2d454ba4" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getStatement</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getSubject</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getSubjectAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getSubjectStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1af8417e75a1ddb953c64c36b6028d3448" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>getUsages</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a84a6fae7f1879c2f033001a9927627b0" prot="public" virt="non-virtual"><scope>omexmeta::Triple</scope><name>isComplete</name></member>

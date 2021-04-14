@@ -53,21 +53,20 @@ namespace redland {
 
         ~LibrdfNode();
 
+        LibrdfNode(const LibrdfNode &node);
+
+        LibrdfNode(LibrdfNode &&node) noexcept;
+
+        LibrdfNode &operator=(const LibrdfNode &node);
+
+        LibrdfNode &operator=(LibrdfNode &&node) noexcept;
+
         bool operator==(const LibrdfNode &rhs) const;
 
         bool operator!=(const LibrdfNode &rhs) const;
 
-        static void freeNode(librdf_node *node);
-
         void freeNode();
 
-        LibrdfNode(const LibrdfNode &node) = delete;
-
-        LibrdfNode(LibrdfNode &&node) noexcept;
-
-        LibrdfNode &operator=(const LibrdfNode &node) = delete;
-
-        LibrdfNode &operator=(LibrdfNode &&node) noexcept;
 
         explicit LibrdfNode(librdf_node *node);
 
@@ -142,6 +141,9 @@ namespace redland {
          * @brief returns the usage of the underlying librdf_node pointer
          */
          unsigned int getUsage();
+
+         void incrementUsageCount();
+
 
     private:
         librdf_node *node_ = nullptr;

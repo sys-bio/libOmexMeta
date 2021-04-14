@@ -5,7 +5,6 @@
 #ifndef LIBOMEXMETA_OMEXMETATESTUTILS_H
 #define LIBOMEXMETA_OMEXMETATESTUTILS_H
 
-
 #include "omexmeta/RDF.h"
 
 using namespace omexmeta;

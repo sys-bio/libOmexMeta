@@ -16,7 +16,17 @@ namespace redland {
 
     class LibrdfStatement {
     public:
+        ~LibrdfStatement();
+
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+
+        LibrdfStatement(const LibrdfStatement &statement) ;
+
+        LibrdfStatement(LibrdfStatement &&statement) noexcept;
+
+        LibrdfStatement &operator=(const LibrdfStatement &statement) ;
+
+        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
 
         bool operator==(const LibrdfStatement &rhs) const;
 
@@ -31,16 +41,6 @@ namespace redland {
         static LibrdfStatement fromRawStatementPtr(librdf_statement *statement);
 
         static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
-
-        LibrdfStatement(const LibrdfStatement &statement) = delete;
-
-        LibrdfStatement(LibrdfStatement &&statement) noexcept;
-
-        LibrdfStatement &operator=(const LibrdfStatement &statement) = delete;
-
-        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
-
-        ~LibrdfStatement();
 
         void freeStatement();
 
@@ -64,11 +64,17 @@ namespace redland {
          */
         [[nodiscard]] librdf_statement *getWithoutIncrement() const;
 
-        [[nodiscard]] librdf_node *getSubject() const;
+        [[nodiscard]] librdf_node *getSubjectAsRawNode() const;
 
-        [[nodiscard]] librdf_node *getPredicate() const;
+        [[nodiscard]] librdf_node *getPredicateAsRawNode() const;
 
-        [[nodiscard]] librdf_node *getResource() const;
+        [[nodiscard]] librdf_node *getResourceAsRawNode() const;
+
+        [[nodiscard]] LibrdfNode getSubjectNode() const;
+
+        [[nodiscard]] LibrdfNode getPredicateNode() const;
+
+        [[nodiscard]] LibrdfNode getResourceNode() const;
 
         [[nodiscard]] std::string getSubjectStr() const;
 
@@ -91,6 +97,8 @@ namespace redland {
         [[nodiscard]] std::string getPredicateNamespaceStr() const;
 
         [[nodiscard]] int getUsage() const;
+
+        void incrementUsage() const;
 
     protected:
         // starts as empty statement

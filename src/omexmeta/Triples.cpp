@@ -117,20 +117,20 @@ namespace omexmeta {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
         for (auto &it : triples_) {
             // ensure we have three nodes and a statement
-            if (!it.getSubject()) {
+            if (!it.getSubjectAsRawNode()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: subject is null");
             }
-            if (!it.getPredicate()) {
+            if (!it.getPredicateAsRawNode()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: predicate is null");
             }
-            if (!it.getResource()) {
+            if (!it.getResourceAsRawNode()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: resource is null");
             }
             if (!it.getStatement()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: statement is null");
             }
             librdf_model_add_statement(model, it.getStatement());
-            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicate());
+            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicateAsRawNode());
         }
 
         // turn off base uri

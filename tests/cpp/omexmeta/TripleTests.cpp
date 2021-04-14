@@ -59,7 +59,7 @@ TEST_F(TripleTests, TestInstantiation2) {
 TEST_F(TripleTests, TestSubjectString) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
     std::string &expected = subject_str;
-    librdf_node *node = triple.getSubject();
+    librdf_node *node = triple.getSubjectAsRawNode();
     librdf_uri *uri = librdf_node_get_uri(node);
     const char *actual = (const char *) librdf_uri_as_string(uri);
     ASSERT_STREQ(expected.c_str(), actual);

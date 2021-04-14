@@ -2,11 +2,11 @@
 // Created by Ciaran on 5/17/2020.
 //
 
+#include "redland/LibrdfModel.h"
 #include "redland/LibrdfStatement.h"
+#include "redland/LibrdfStorage.h"
 #include "redland/World.h"
 #include "gtest/gtest.h"
-#include "redland/LibrdfModel.h"
-#include "redland/LibrdfStorage.h"
 
 using namespace redland;
 
@@ -26,7 +26,7 @@ TEST_F(LibrdfStatementTests, TestCreate) {
             predicate,
             resource);
 
-    ASSERT_NE(statement.get(), nullptr);
+    ASSERT_NE(statement.getWithoutIncrement(), nullptr);
 }
 
 TEST_F(LibrdfStatementTests, TestMoveConstructor) {
@@ -131,8 +131,7 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality3) {
     LibrdfStatement statement1(
             LibrdfNode::fromUriString("http://omex-library.org/NewOmex.omex/NewModel.xml").get(),
             LibrdfNode::fromUriString("https://dublincore.org/specifications/dublin-core/dcmi-terms/created").get(),
-            LibrdfNode::fromBlank("").get()
-            );
+            LibrdfNode::fromBlank("").get());
     model1.addStatement(statement1);
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
 
@@ -156,4 +155,106 @@ TEST_F(LibrdfStatementTests, TestPartial1) {
     std::string actual = statement.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfStatementTests, TestGetSubjectNode) {
+    LibrdfStatement statement = LibrdfStatement(subject, predicate, resource);
+    ASSERT_EQ(1, statement.getUsage());
+
+    ASSERT_EQ(2, subject.getUsage());
+    ASSERT_EQ(2, predicate.getUsage());
+    ASSERT_EQ(2, resource.getUsage());
+
+    LibrdfNode s = statement.getSubjectNode();
+    ASSERT_EQ(3, s.getUsage());
+}
+
+TEST_F(LibrdfStatementTests, TestGetPredicateNode) {
+    LibrdfStatement statement = LibrdfStatement(subject, predicate, resource);
+    ASSERT_EQ(1, statement.getUsage());
+
+    ASSERT_EQ(2, subject.getUsage());
+    ASSERT_EQ(2, predicate.getUsage());
+    ASSERT_EQ(2, resource.getUsage());
+
+    LibrdfNode s = statement.getPredicateNode();
+    ASSERT_EQ(3, s.getUsage());
+}
+
+TEST_F(LibrdfStatementTests, TestGetResourceNode) {
+    LibrdfStatement statement = LibrdfStatement(subject, predicate, resource);
+    ASSERT_EQ(1, statement.getUsage());
+
+    ASSERT_EQ(2, subject.getUsage());
+    ASSERT_EQ(2, predicate.getUsage());
+    ASSERT_EQ(2, resource.getUsage());
+
+    LibrdfNode s = statement.getResourceNode();
+    ASSERT_EQ(3, s.getUsage());
+}
+
+
+TEST_F(LibrdfStatementTests, CopyConstruct) {
+    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+    LibrdfNode n2 = LibrdfNode::fromUriString("node2");
+    LibrdfNode n3 = LibrdfNode::fromUriString("node3");
+    ASSERT_EQ(1, n1.getUsage());
+    ASSERT_EQ(1, n2.getUsage());
+    ASSERT_EQ(1, n3.getUsage());
+
+    LibrdfStatement statement(n1, n2, n3);
+    ASSERT_EQ(1, statement.getUsage());
+    ASSERT_EQ(2, n1.getUsage());
+    ASSERT_EQ(2, n2.getUsage());
+    ASSERT_EQ(2, n3.getUsage());
+    LibrdfStatement copy = statement;
+    ASSERT_EQ(2, n1.getUsage());
+    ASSERT_EQ(2, n2.getUsage());
+    ASSERT_EQ(2, n3.getUsage());
+
+    ASSERT_EQ(2, statement.getUsage());
+    ASSERT_EQ(2, copy.getUsage());
+}
+
+TEST_F(LibrdfStatementTests, CopyAssignment) {
+    LibrdfNode s1n1 = LibrdfNode::fromUriString("s1node1");
+    LibrdfNode s1n2 = LibrdfNode::fromUriString("s1node2");
+    LibrdfNode s1n3 = LibrdfNode::fromUriString("s1node3");
+    LibrdfStatement s1(s1n1, s1n2, s1n3);
+    ASSERT_EQ(1, s1.getUsage());
+
+    LibrdfNode s2n1 = LibrdfNode::fromUriString("s2node1");
+    LibrdfNode s2n2 = LibrdfNode::fromUriString("s2node2");
+    LibrdfNode s2n3 = LibrdfNode::fromUriString("s2node3");
+    LibrdfStatement s2(s2n1, s2n2, s2n3);
+    ASSERT_EQ(1, s2.getUsage());
+    ASSERT_EQ(s1.getSubjectNode().str(), "s1node1");
+    s1 = s2;
+    ASSERT_EQ(s1.getSubjectNode().str(), "s2node1");
+
+    // they now both point to the same
+    ASSERT_EQ(2, s1.getUsage());
+    ASSERT_EQ(2, s2.getUsage());
+
+}
+
+TEST_F(LibrdfStatementTests, MoveConstruct) {
+    LibrdfNode s1n1 = LibrdfNode::fromUriString("s1node1");
+    LibrdfNode s1n2 = LibrdfNode::fromUriString("s1node2");
+    LibrdfNode s1n3 = LibrdfNode::fromUriString("s1node3");
+    LibrdfStatement s1(s1n1, s1n2, s1n3);
+    ASSERT_EQ(1, s1.getUsage());
+    LibrdfStatement s2 = std::move(s1);
+    ASSERT_EQ(1, s2.getUsage());
+}
+
+TEST_F(LibrdfStatementTests, MoveAssignment) {
+    LibrdfNode s1n1 = LibrdfNode::fromUriString("s1node1");
+    LibrdfNode s1n2 = LibrdfNode::fromUriString("s1node2");
+    LibrdfNode s1n3 = LibrdfNode::fromUriString("s1node3");
+    LibrdfStatement s1(s1n1, s1n2, s1n3);
+    ASSERT_EQ(1, s1.getUsage());
+    LibrdfStatement s2;
+    s2 = std::move(s1);
+    ASSERT_EQ(1, s2.getUsage());
 }

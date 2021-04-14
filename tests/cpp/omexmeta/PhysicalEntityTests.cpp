@@ -457,20 +457,20 @@ TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForTerms) {
     // make sure we've emptied the triples object
     ASSERT_EQ(0, triples.size());
 
-    ASSERT_EQ(1, triple1.getSubject()->usage);
-    ASSERT_EQ(1, triple2.getSubject()->usage);
-    ASSERT_EQ(1, triple3.getSubject()->usage);
-    ASSERT_EQ(1, triple4.getSubject()->usage);
+    ASSERT_EQ(1, triple1.getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triple2.getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triple3.getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1, triple4.getSubjectAsRawNode()->usage);
 
-    ASSERT_EQ(1, triple1.getPredicate()->usage);
-    ASSERT_EQ(1, triple2.getPredicate()->usage);
-    ASSERT_EQ(1, triple3.getPredicate()->usage);
-    ASSERT_EQ(1, triple4.getPredicate()->usage);
+    ASSERT_EQ(1, triple1.getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triple2.getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triple3.getPredicateAsRawNode()->usage);
+    ASSERT_EQ(1, triple4.getPredicateAsRawNode()->usage);
 
-    ASSERT_EQ(1, triple1.getResource()->usage);
-    ASSERT_EQ(1, triple2.getResource()->usage);
-    ASSERT_EQ(1, triple3.getResource()->usage);
-    ASSERT_EQ(1, triple4.getResource()->usage);
+    ASSERT_EQ(1, triple1.getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triple2.getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triple3.getResourceAsRawNode()->usage);
+    ASSERT_EQ(1, triple4.getResourceAsRawNode()->usage);
 
     triple4.freeStatement();
     triple3.freeStatement();

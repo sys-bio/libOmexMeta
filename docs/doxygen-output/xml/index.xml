@@ -386,9 +386,9 @@
     <member refid="classredland_1_1LibrdfStatement_1a6bf6a6b02efc9d7eef2ca368cf0a36b1" kind="function"><name>~LibrdfStatement</name></member>
     <member refid="classredland_1_1LibrdfStatement_1aa51bc647bc938a07bd6c16b4d6ce07b4" kind="function"><name>freeStatement</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" kind="function"><name>get</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" kind="function"><name>getSubject</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" kind="function"><name>getPredicate</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" kind="function"><name>getResource</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" kind="function"><name>getSubjectAsRawNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" kind="function"><name>getPredicateAsRawNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" kind="function"><name>getResourceAsRawNode</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" kind="function"><name>getSubjectStr</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" kind="function"><name>getPredicateStr</name></member>
     <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" kind="function"><name>getResourceStr</name></member>
@@ -567,9 +567,9 @@
     <member refid="classomexmeta_1_1Participant_1aa4baa62cb4ccffe8443262382490328d" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1Participant_1aabb81b9996c05ce9519c44f5d1d529db" kind="function"><name>toTriples</name></member>
     <member refid="classomexmeta_1_1Participant_1a03a1ffc7e9efaed5c0e94a62f7c72650" kind="function"><name>createMetaid</name></member>
-    <member refid="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" kind="function"><name>getPredicate</name></member>
+    <member refid="classomexmeta_1_1Participant_1aa09f8c5736dd172b03d7898519d9478d" kind="function"><name>getPredicateAsRawNode</name></member>
     <member refid="classomexmeta_1_1Participant_1a1188d6a2036514eb6b649ce1e08eca4d" kind="function"><name>setPredicate</name></member>
-    <member refid="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" kind="function"><name>getSubject</name></member>
+    <member refid="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" kind="function"><name>getSubjectAsRawNode</name></member>
     <member refid="classomexmeta_1_1Participant_1a79b467cfc699483fdfe5e7686cc5447e" kind="function"><name>getMultiplier</name></member>
     <member refid="classomexmeta_1_1Participant_1a40a5858db6aaae7ec7095b320de838d1" kind="function"><name>getPhysicalEntityReference</name></member>
     <member refid="classomexmeta_1_1Participant_1ae78613f8d39ccfc23fc3624deb960fb0" kind="function"><name>getModelUri</name></member>

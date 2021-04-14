@@ -20,6 +20,14 @@ namespace redland {
 
         ~LibrdfUri();
 
+        LibrdfUri(const LibrdfUri &librdfUri);
+
+        LibrdfUri(LibrdfUri &&librdfUri) noexcept;
+
+        LibrdfUri &operator=(const LibrdfUri &librdfUri);
+
+        LibrdfUri &operator=(LibrdfUri &&librdfUri) noexcept;
+
         /*
          * @brief create a LibrdfUri object from a raw librdf_uri* pointer
          * @param uri pointer to a librdf_uri object. Created with librdf_new_* methods from librdf

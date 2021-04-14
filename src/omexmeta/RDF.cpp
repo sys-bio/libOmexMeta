@@ -431,7 +431,7 @@ namespace omexmeta {
     void RDF::addTriples(Triples &triples) {
         for (auto& triple: triples) {
             model_.addStatement(triple.getStatement());
-            const std::string &ns = LibrdfNode(triple.getPredicate()).getNamespace();
+            const std::string &ns = LibrdfNode(triple.getPredicateAsRawNode()).getNamespace();
             seen_namespaces_.push_back(triple.getPredicateNamespaceStr());
             namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
         }

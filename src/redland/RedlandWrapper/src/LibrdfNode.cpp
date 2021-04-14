@@ -18,11 +18,53 @@ namespace redland {
         }
     }
 
+    LibrdfNode::LibrdfNode(const LibrdfNode &node) {
+        if (node_) {
+            librdf_free_node(node_);
+            node_ = nullptr;
+        }
+        node_ = node.get();// does the necessary reference increment for us
+    }
+
+    LibrdfNode &LibrdfNode::operator=(const LibrdfNode &node) {
+        if (*this != node) {
+            if (node_) {
+                librdf_free_node(node_);
+                node_ = nullptr;
+            }
+            node_ = node.get();// increment done for us
+        }
+        return *this;
+    }
+
+    LibrdfNode::LibrdfNode(LibrdfNode &&node) noexcept {
+        if (node_) {
+            librdf_free_node(node_);
+            node_ = nullptr;
+        }
+        node_ = node.getWithoutIncrement();
+        node.node_ = nullptr;
+    }
+
+
+    LibrdfNode &LibrdfNode::operator=(LibrdfNode &&node) noexcept {
+        if (this != &node) {
+            if (node_) {
+                librdf_free_node(node_);
+                node_ = nullptr;
+            }
+            node_ = node.getWithoutIncrement();
+            node.node_ = nullptr;
+        }
+        return *this;
+    }
+
+
     LibrdfNode::LibrdfNode(librdf_node *node)
         : node_(node) {}
 
-    LibrdfNode::LibrdfNode(const LibrdfUri& uri)
-        :node_(LibrdfNode::fromUriString(uri.str()).get()) {};
+    LibrdfNode::LibrdfNode(const LibrdfUri &uri)
+        : node_(LibrdfNode::fromUriString(uri.str()).get()){};
 
 
     //todo the content of thos method really belongs somewhere else
@@ -288,7 +330,7 @@ namespace redland {
         librdf_free_node(node_);
         // only set to nullptr if we're sure the pointer
         // is not still in use
-        if (count == 0){
+        if (count == 0) {
             node_ = nullptr;
         }
     }
@@ -297,33 +339,8 @@ namespace redland {
         return LibrdfNode::str(node_);
     }
 
-    LibrdfNode::LibrdfNode(LibrdfNode &&node) noexcept {
-        if (node.node_ != nullptr) {
-            if (node_ != nullptr) {
-                librdf_free_node(node_);
-                node_ = nullptr;
-            }
-            node_ = node.node_;
-            node.node_ = nullptr;
-        }
-    }
-
-    LibrdfNode &LibrdfNode::operator=(LibrdfNode &&node) noexcept {
-        if (this != &node) {
-            if (node.node_ != nullptr) {
-                if (node_ != nullptr) {
-                    librdf_free_node(node_);
-                    node_ = nullptr;
-                }
-                node_ = node.node_;
-                node.node_ = nullptr;
-            }
-        }
-        return *this;
-    }
-
     bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
-        return librdf_node_equals(node_, rhs.node_);
+        return librdf_node_equals(node_, rhs.getWithoutIncrement());
     }
 
     bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
@@ -379,6 +396,10 @@ namespace redland {
     unsigned int LibrdfNode::getUsage() {
         return node_->usage;
     };
+
+    void LibrdfNode::incrementUsageCount() {
+        node_->usage++;
+    }
 
 
 }// namespace redland

@@ -258,9 +258,9 @@
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
-        <definition>librdf_node * redland::LibrdfStatement::getSubject</definition>
+        <definition>librdf_node * redland::LibrdfStatement::getSubjectAsRawNode</definition>
         <argsstring>() const</argsstring>
-        <name>getSubject</name>
+        <name>getSubjectAsRawNode</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -271,9 +271,9 @@
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
-        <definition>librdf_node * redland::LibrdfStatement::getPredicate</definition>
+        <definition>librdf_node * redland::LibrdfStatement::getPredicateAsRawNode</definition>
         <argsstring>() const</argsstring>
-        <name>getPredicate</name>
+        <name>getPredicateAsRawNode</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -284,9 +284,9 @@
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
-        <definition>librdf_node * redland::LibrdfStatement::getResource</definition>
+        <definition>librdf_node * redland::LibrdfStatement::getResourceAsRawNode</definition>
         <argsstring>() const</argsstring>
-        <name>getResource</name>
+        <name>getResourceAsRawNode</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -598,12 +598,12 @@
       <member refid="classredland_1_1LibrdfStatement_1a4eceaebc10deea27f4c75f7c8b4cccaf" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>fromRawNodePtrs</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a9fb66c801d731ffce13e4d1381c49c29" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>fromRawStatementPtr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>get</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicate</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicateAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1af52b7e72cb067548d97f48b4a77a44ff" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicateNamespaceStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getPredicateStr</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResource</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResourceAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResourceStr</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubject</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubjectAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubjectStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1af8417e75a1ddb953c64c36b6028d3448" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getUsages</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a84a6fae7f1879c2f033001a9927627b0" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>isComplete</name></member>
