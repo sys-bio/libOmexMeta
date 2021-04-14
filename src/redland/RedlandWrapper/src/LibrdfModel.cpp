@@ -69,12 +69,8 @@ namespace redland {
         return librdf_model_size(model_);
     }
 
-    LibrdfStream LibrdfModel::toStream() {
-        LibrdfStream stream(librdf_model_as_stream(model_));
-        if (!stream.get()) {
-            throw RedlandNullPointerException("NullPointerException: LibrdfModel::toStream(): stream object null");
-        }
-        return stream;
+    librdf_stream* LibrdfModel::toStream() {
+        return librdf_model_as_stream(model_);
     }
 
     /*

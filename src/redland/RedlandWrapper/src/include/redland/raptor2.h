@@ -1371,8 +1371,6 @@ REDLAND_EXPORT
 int raptor_uri_escaped_write(raptor_uri *uri, raptor_uri *base_uri, unsigned int flags, raptor_iostream *iostr);
 REDLAND_EXPORT
 int raptor_uri_get_usage_count(raptor_uri *uri);
-REDLAND_EXPORT
-void raptor_uri_increment_usage_count(raptor_uri *uri);
 
 /* XML utility functions */
 REDLAND_EXPORT

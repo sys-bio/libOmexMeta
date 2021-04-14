@@ -375,10 +375,8 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfSerializer.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfStatement.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfStorage.cpp
-        ${WRAPPER_SOURCE_DIR}/LibrdfStream.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfUri.cpp
         ${WRAPPER_SOURCE_DIR}/World.cpp
-        ${WRAPPER_SOURCE_DIR}/RaptorIOStream.cpp
         ${WRAPPER_INCLUDE_DIR}/redland/RedlandAPI.h
         ${WRAPPER_INCLUDE_DIR}/redland/World.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfModel.h
@@ -389,9 +387,7 @@ set(WRAPPER_SOURCES
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfSerializer.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStatement.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStorage.h
-        ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStream.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfUri.h
-        ${WRAPPER_INCLUDE_DIR}/redland/RaptorIOStream.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfException.h
         )
 

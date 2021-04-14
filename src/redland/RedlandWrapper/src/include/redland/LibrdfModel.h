@@ -53,7 +53,7 @@ namespace redland {
 //        LibrdfQueryResults query(LibrdfQuery query);
         [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
 
-        LibrdfStream toStream();
+        librdf_stream* toStream();
 
         int size() const;
 
