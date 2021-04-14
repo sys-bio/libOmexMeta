@@ -131,7 +131,7 @@
     <member refid="classomexmeta_1_1Editor_1a8fb3a19e8f64aeff2ac9b78c483843de" kind="function"><name>addSingleAnnotationNoValidation</name></member>
     <member refid="classomexmeta_1_1Editor_1a415aa94ed30686392c65f99b4318aa84" kind="function"><name>addCompositeAnnotation2</name></member>
     <member refid="classomexmeta_1_1Editor_1ace8ee873498fa72b63c0747775b729f5" kind="function"><name>addTriples</name></member>
-    <member refid="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" kind="function"><name>removePhysicalPhenomenon</name></member>
+    <member refid="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" kind="function"><name>removePropertyBearer</name></member>
     <member refid="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" kind="function"><name>getArchiveUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" kind="function"><name>getModelUri</name></member>

@@ -1120,7 +1120,7 @@
 <codeline lineno="303"><highlight class="normal"></highlight></codeline>
 <codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addTriples(<ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref><sp/>&amp;triples);</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removePhysicalPhenomenon(<ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref><sp/>*physicalPhenomenon)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removePropertyBearer(<ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref><sp/>*physicalPhenomenon)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"></highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/>getArchiveUri()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"></highlight></codeline>

@@ -279,7 +279,7 @@ namespace omexmeta {
 
         void addTriples(Triples &triples);
 
-        void removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const;
+        void removePropertyBearer(PropertyBearer *physicalPhenomenon) const;
 
         /**
          * @brief get the current value of archive_uri_

@@ -1213,7 +1213,7 @@
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_.removeStatement(stmt);</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"></highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Editor::removePhysicalPhenomenon(<ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref><sp/>*physicalPhenomenon)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Editor::removePropertyBearer(<ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref><sp/>*physicalPhenomenon)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref><sp/>triples<sp/>=<sp/>physicalPhenomenon-&gt;<ref refid="classomexmeta_1_1PropertyBearer_1adccf527f59eaebc1baf88dfce3ae9664" kindref="member">toTriples</ref>();</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!triples.<ref refid="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a" kindref="member">isEmpty</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref><sp/>triple<sp/>=<sp/>triples.<ref refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" kindref="member">pop</ref>();</highlight></codeline>
@@ -1223,7 +1223,7 @@
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="293"><highlight class="normal"></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" kindref="member">Editor::removePhysicalEntity</ref>(<ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref><sp/>&amp;physicalEntity)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePhysicalPhenomenon(&amp;physicalEntity);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePropertyBearer(&amp;physicalEntity);</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc" kindref="member">Editor::removePersonalInformation</ref>(<ref refid="classomexmeta_1_1PersonalInformation" kindref="compound">PersonalInformation</ref><sp/>*information)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -1236,11 +1236,11 @@
 <codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor_1a237078857cd0d8c31ebe5c7200538ffc" kindref="member">Editor::removeEnergyDiff</ref>(<ref refid="classomexmeta_1_1EnergyDiff" kindref="compound">EnergyDiff</ref><sp/>&amp;physicalForce)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePhysicalPhenomenon(&amp;physicalForce);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePropertyBearer(&amp;physicalForce);</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="310"><highlight class="normal"></highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" kindref="member">Editor::removePhysicalProcess</ref>(<ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref><sp/>&amp;physicalProcess)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePhysicalPhenomenon(&amp;physicalProcess);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removePropertyBearer(&amp;physicalProcess);</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"></highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref><sp/><ref refid="classomexmeta_1_1Editor_1aeae47fb60d955f506de2f16a54c0679a" kindref="member">Editor::newPhysicalProperty</ref>()<sp/>{</highlight></codeline>

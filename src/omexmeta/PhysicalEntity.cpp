@@ -113,7 +113,7 @@ namespace omexmeta {
             // we do not need to freeTriples here
             // since the move gives ownership to triples object
             //
-            // physical_property_triples.freeTriples();
+//             physical_property_triples.freeTriples();
         }
 
         // the "what" part of physical entity triple

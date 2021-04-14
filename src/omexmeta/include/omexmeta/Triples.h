@@ -45,6 +45,8 @@ namespace omexmeta {
          */
         explicit Triples(int size);
 
+
+
         /**
          * @brief construct a Triples object from a single triple
          * @param triple The triple to put into triples

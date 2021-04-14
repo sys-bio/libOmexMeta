@@ -1099,9 +1099,9 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::Editor::removePhysicalPhenomenon</definition>
+        <definition>void omexmeta::Editor::removePropertyBearer</definition>
         <argsstring>(PropertyBearer *physicalPhenomenon) const</argsstring>
-        <name>removePhysicalPhenomenon</name>
+        <name>removePropertyBearer</name>
         <param>
           <type><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> *</type>
           <declname>physicalPhenomenon</declname>
@@ -1522,7 +1522,7 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       <member refid="classomexmeta_1_1Editor_1a237078857cd0d8c31ebe5c7200538ffc" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeEnergyDiff</name></member>
       <member refid="classomexmeta_1_1Editor_1a8be7fa01bef49ff1c93965781797c9bc" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePersonalInformation</name></member>
       <member refid="classomexmeta_1_1Editor_1a0acf94314252b70a4db89f83e6047e8f" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalPhenomenon</name></member>
+      <member refid="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePropertyBearer</name></member>
       <member refid="classomexmeta_1_1Editor_1a42640d74c6afe780738c906bdf346a78" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removePhysicalProcess</name></member>
       <member refid="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>removeSingleAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa" prot="private" virt="non-virtual"><scope>omexmeta::Editor</scope><name>repository_uri_</name></member>

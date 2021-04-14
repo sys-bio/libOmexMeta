@@ -137,7 +137,7 @@ namespace omexmeta {
         // as argument because that would take copies and
         // mess with cleaning up the triples later.
         Triples triples = pp->toTriples();
-        for (auto& triple: triples){
+        for (auto &triple : triples) {
             addNamespaceFromAnnotation(triple.getPredicateStr());
             triple.freeStatement();
         }
@@ -195,7 +195,7 @@ namespace omexmeta {
         * that in the PersonalInformation class.
         */
         Triples triples = phenomenonPtr->toTriples();
-        for (auto& triple: triples){
+        for (auto &triple : triples) {
 
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
@@ -272,35 +272,34 @@ namespace omexmeta {
             const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
         model_.removeStatement(stmt);
-
     }
 
-    void Editor::removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const {
+    void Editor::removePropertyBearer(PropertyBearer *physicalPhenomenon) const {
         Triples triples = physicalPhenomenon->toTriples();
-        for (auto& triple: triples){
+        for (auto &triple : triples) {
             model_.removeStatement(triple.getStatement());
-            // triples.freeTriples(); // no!!! removeStatement does this for us
+            triple.freeTriple();
         }
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) const {
-        removePhysicalPhenomenon(&physicalEntity);
+        removePropertyBearer(&physicalEntity);
     }
 
     void Editor::removePersonalInformation(PersonalInformation *information) const {
         Triples triples = information->getTriples();
-        for (auto& triple: triples){
+        for (auto &triple : triples) {
             model_.removeStatement(triple.getStatement());
             triple.freeTriple();
         }
     }
 
     void Editor::removeEnergyDiff(EnergyDiff &physicalForce) const {
-        removePhysicalPhenomenon(&physicalForce);
+        removePropertyBearer(&physicalForce);
     }
 
     void Editor::removePhysicalProcess(PhysicalProcess &physicalProcess) const {
-        removePhysicalPhenomenon(&physicalProcess);
+        removePropertyBearer(&physicalProcess);
     }
 
     PhysicalProperty Editor::newPhysicalProperty() {
