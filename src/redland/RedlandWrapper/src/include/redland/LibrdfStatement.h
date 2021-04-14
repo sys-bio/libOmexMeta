@@ -44,7 +44,25 @@ namespace redland {
 
         void freeStatement();
 
+        /**
+         * @brief returns a librdf_statement pointer and increments the
+         * usage count. The caller is responsible for calling
+         * @see freeUri to decrement the librdf_statement* again.
+         * @note when @see getUsage() is 1 the destructor
+         * will take care of freeing memory associated with
+         * librdf_statement object.
+         */
         [[nodiscard]] librdf_statement *get() const;
+
+        /**
+         * @brief get the underlying librdf_statement*
+         * @details do not increment the shared pointer reference
+         * counter.
+         * @warning this method assumes you know what you are doing
+         * with regards to the librdf reference counting system
+         * @see LibrdfStatement::get()
+         */
+        [[nodiscard]] librdf_statement *getWithoutIncrement() const;
 
         [[nodiscard]] librdf_node *getSubject() const;
 

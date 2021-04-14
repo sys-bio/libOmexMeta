@@ -27,7 +27,6 @@ TEST_F(LibrdfStatementTests, TestCreate) {
             resource);
 
     ASSERT_NE(statement.get(), nullptr);
-    statement.freeStatement();
 }
 
 TEST_F(LibrdfStatementTests, TestMoveConstructor) {
@@ -36,7 +35,6 @@ TEST_F(LibrdfStatementTests, TestMoveConstructor) {
     std::string expected = "subject";
     std::string actual = statement2.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement2.freeStatement();
 }
 
 
@@ -47,7 +45,6 @@ TEST_F(LibrdfStatementTests, TestMoveAssignment) {
     std::string actual = statement2.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement2.freeStatement();
 }
 
 
@@ -57,7 +54,6 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
     std::string expected = "predicate";
     std::string actual = statement1.getPredicateStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement1.freeStatement();
 }
 
 TEST_F(LibrdfStatementTests, TestGetPredicateStr2) {
@@ -66,7 +62,6 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr2) {
     std::string expected = "predicate";
     std::string actual = statement1.getPredicateStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement1.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestInequality) {
@@ -79,8 +74,6 @@ TEST(LibrdfStatementTestsNoFixture, TestInequality) {
             LibrdfNode::fromUriString("predicate2"),
             LibrdfNode::fromUriString("resource2"));
     ASSERT_NE(statement1, statement2);
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestEquality) {
@@ -93,8 +86,6 @@ TEST(LibrdfStatementTestsNoFixture, TestEquality) {
             LibrdfNode::fromUriString("predicate"),
             LibrdfNode::fromUriString("resource"));
     ASSERT_EQ(statement1, statement2);
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestBlankEquality) {
@@ -107,8 +98,6 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankEquality) {
             LibrdfNode::fromUriString("predicate"),
             LibrdfNode::fromUriString("resource"));
     ASSERT_EQ(statement1, statement2);
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestBlankEquality2) {
@@ -121,8 +110,6 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankEquality2) {
             LibrdfNode::fromUriString("predicate"),
             LibrdfNode::fromUriString("resource"));
     ASSERT_EQ(statement1, statement2);
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality2) {
@@ -135,8 +122,6 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality2) {
             LibrdfNode::fromUriString("predicate"),
             LibrdfNode::fromUriString("resource"));
     ASSERT_NE(statement1, statement2);
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality3) {
@@ -151,7 +136,6 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality3) {
     model1.addStatement(statement1);
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
 
-    statement1.freeStatement();
     model1.freeModel();
     storage1.freeStorage();
 }
@@ -163,7 +147,6 @@ TEST_F(LibrdfStatementTests, TestToStatementSubject) {
     std::string actual = statement.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement.freeStatement();
 }
 
 
@@ -173,7 +156,4 @@ TEST_F(LibrdfStatementTests, TestPartial1) {
     std::string actual = statement.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
-    resource.freeNode();
-    statement.freeStatement();
 }

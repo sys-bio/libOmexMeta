@@ -52,6 +52,10 @@ namespace redland {
         return statement_;
     }
 
+    librdf_statement *LibrdfStatement::getWithoutIncrement() const {
+        return statement_;
+    }
+
     librdf_node *LibrdfStatement::getSubject() const {
         return librdf_statement_get_subject(statement_);
     }
