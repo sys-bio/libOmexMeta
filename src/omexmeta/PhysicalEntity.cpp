@@ -8,22 +8,22 @@
 namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler &uriHandler, PhysicalProperty physicalProperty,
-                                   Resource is, Resources is_part_of)
+                                   std::string is, std::vector<std::string> is_part_of)
         : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_ENTITY),
           identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
     void PhysicalEntity::free() {
-        if (identity_resource_.getNode() != nullptr) {
-            identity_resource_.free();
-            identity_resource_.setNode(nullptr);
-        }
-
-        for (auto &i : location_resources_) {
-            if (i.getNode() != nullptr) {
-                i.free();
-                i.setNode(nullptr);
-            }
-        }
+//        if (identity_resource_.getNode() != nullptr) {
+//            identity_resource_.free();
+//            identity_resource_.setNode(nullptr);
+//        }
+//
+//        for (auto &i : location_resources_) {
+//            if (i.getNode() != nullptr) {
+//                i.free();
+//                i.setNode(nullptr);
+//            }
+//        }
     }
 
     PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler &uriHandler)
@@ -44,10 +44,8 @@ namespace omexmeta {
     }
 
 
-    PhysicalEntity &PhysicalEntity::setIdentity(const std::string &resource) {
-        // todo implement second argument which defaults to RDFUriNode
-        //  and controls whether we use literal/blank/uri node
-        identity_resource_ = Resource(LibrdfNode::fromUriString(resource));
+    PhysicalEntity &PhysicalEntity::setIdentity(std::string resource) {
+        identity_resource_ = std::move(resource);
         return *this;
     }
 
@@ -56,22 +54,20 @@ namespace omexmeta {
     }
 
     PhysicalEntity &PhysicalEntity::addLocation(const std::string &where) {
-        location_resources_.push_back(std::move(
-                Resource(LibrdfNode::fromUriString(where))));
+        location_resources_.push_back(std::move(where));
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::hasPart(const std::string &where) {
-        part_resources_.push_back(std::move(
-                Resource(LibrdfNode::fromUriString(where))));
+        part_resources_.push_back(std::move(where));
         return *this;
     }
 
-    const Resource &PhysicalEntity::getIdentityResource() const {
+    const std::string &PhysicalEntity::getIdentityResource() const {
         return identity_resource_;
     }
 
-    const Resources &PhysicalEntity::getLocationResources() const {
+    const std::vector<std::string> &PhysicalEntity::getLocationResources() const {
         return location_resources_;
     }
 
@@ -121,12 +117,12 @@ namespace omexmeta {
         }
 
         // the "what" part of physical entity triple
-        if (identity_resource_.isSet()) {
+        if (!identity_resource_.empty()) {
             triples.emplace_back(
                     uriHandler_,
                     LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                     BiomodelsBiologyQualifier("is").getNode(),
-                    identity_resource_.getNode()
+                    LibrdfNode::fromUriString(identity_resource_).get()
                     );
         }
 
@@ -138,7 +134,7 @@ namespace omexmeta {
                         uriHandler_,
                         LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                         BiomodelsBiologyQualifier("isPartOf").getNode(),
-                        locationResource.getNode());
+                        LibrdfNode::fromUriString(locationResource).get());
             }
         }
         // make it explicit that hasPart resources is optional
@@ -149,7 +145,7 @@ namespace omexmeta {
                         uriHandler_,
                         LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                         BiomodelsBiologyQualifier("hasPart").getNode(),
-                        locationResource.getNode());
+                        LibrdfNode::fromUriString(locationResource).get());
             }
         }
         return std::move(triples);
@@ -198,8 +194,7 @@ namespace omexmeta {
 
     PhysicalEntity &PhysicalEntity::isPartOf(std::string isPartOf, eUriType type) {
         isPartOf = UriHandler::uriModifier<PhysicalEntity>(*this, isPartOf, type);
-        location_resources_.push_back(std::move(
-                Resource(LibrdfNode::fromUriString(isPartOf))));
+        location_resources_.push_back(std::move(isPartOf));
         return *this;
     }
 

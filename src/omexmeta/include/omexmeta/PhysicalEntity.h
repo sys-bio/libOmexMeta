@@ -53,12 +53,8 @@ namespace omexmeta {
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * Resource objects. It can be as long as needed.
          */
-        [[deprecated("PhysicalEntity(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty,\n"
-                     "                       Resource is, Resources is_part_of);")]] PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
-                       Resource is, Resources is_part_of);
-
         PhysicalEntity(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty,
-                       Resource is, Resources is_part_of);
+                       std::string is, std::vector<std::string> is_part_of);
 
         ~PhysicalEntity() = default;
 
@@ -117,14 +113,14 @@ namespace omexmeta {
          * portion of the PhysicalEntity
          * @return the identity Resource
          */
-        [[nodiscard]] const Resource &getIdentityResource() const;
+        [[nodiscard]] const std::string &getIdentityResource() const;
 
         /**
          * @brief return a vector of resources representing the
          * "where" part of the PhysicalEntity
          * @return vector of Resource objects representing anatomical location of physical entity
          */
-        [[nodiscard]] const Resources &getLocationResources() const;
+        [[nodiscard]] const std::vector<std::string> &getLocationResources() const;
 
         /**
          * @brief sets the physical property for a PhysicalEntity instance.
@@ -156,7 +152,7 @@ namespace omexmeta {
          *
          * See Resource documentation for more details of valid input strings.
          */
-        PhysicalEntity &setIdentity(const std::string &resource);
+        PhysicalEntity &setIdentity(std::string resource);
 
         /**
          * @brief alias for setIdentity
@@ -252,9 +248,9 @@ namespace omexmeta {
         PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
     private:
         // todo store as strings and pass to LibrdfNode not Resource to construct a librdf_node
-        Resource identity_resource_;
-        Resources location_resources_;
-        Resources part_resources_;
+        std::string identity_resource_;
+        std::vector<std::string> location_resources_;
+        std::vector<std::string> part_resources_;
         std::string physical_entity_property_id_;
 
         // When autogenerating metaid for property of a physical entity
