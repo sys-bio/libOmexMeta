@@ -128,9 +128,9 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
     RDF rdf;
     Editor editor = rdf.toEditor("example.sbml", true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("species0001")),
+            editor.createNodeWithModelUri("species0001"),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed:12991237")));
+            LibrdfNode::fromUriString("pubmed:12991237"));
 
     std::string actual = rdf.toString();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -154,9 +154,9 @@ TEST_F(EditorTests, TestAddAnnotation) {
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("species0000")),
+            LibrdfNode::fromUriString("species0000"),
             predicatePtr,
-            Resource(LibrdfNode::fromUriString("uniprot/P0DP23")));
+            LibrdfNode::fromUriString("uniprot/P0DP23"));
     ASSERT_EQ(1, editor.size());
     //    triples.freeTriples();
 }
@@ -166,8 +166,8 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     Triple triple(uriHandler, LibrdfNode::fromUriString("species0001").get(),
-                  BiomodelsBiologyQualifier("is").getNode(),
-                  Resource(LibrdfNode::fromUriString("uniprot/P0DP23")).getNode());
+                  BiomodelsBiologyQualifier("is").get(),
+                  LibrdfNode::fromUriString("uniprot/P0DP23").get());
     editor.addSingleAnnotation(triple);
     int expected = 1;
     int actual = editor.size();
@@ -194,10 +194,10 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED),
             true,
             false);
-    Subject subject = Subject(editor.createNodeWithModelUri("species0001"));
+    LibrdfNode subject = editor.createNodeWithModelUri("species0001");
     BiomodelsBiologyQualifier predicate("is");
-    Resource resource = Resource(LibrdfNode::fromUriString("uniprot/P0DP23"));
-    Triple triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
+    LibrdfNode resource = LibrdfNode::fromUriString("uniprot/P0DP23");
+    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
 
     editor.addSingleAnnotation(triple);
 
@@ -221,9 +221,9 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("unit0000")),
+            editor.createNodeWithModelUri("unit0000"),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed/12991237")));
+            LibrdfNode::fromUriString("pubmed/12991237"));
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -245,9 +245,9 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("species0001")),
+            editor.createNodeWithModelUri("species0001"),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed/12991237")));
+            LibrdfNode::fromUriString("pubmed/12991237"));
 
     std::string actual = rdf.toString();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -267,9 +267,9 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("species0001")),
+            editor.createNodeWithModelUri("species0001"),
             std::make_unique<Predicate>(DCTerm("description")),
-            Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration")));
+            LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"));
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"

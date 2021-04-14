@@ -18,8 +18,8 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    Subject subject;
-    Resource resource;
+    LibrdfNode subject;
+    LibrdfNode resource;
     BiomodelsBiologyQualifier predicate;
     
     UriHandler uriHandler;
@@ -28,9 +28,9 @@ public:
     //todo subject could pass the world to the node
     TriplesTests() {
         model = LibrdfModel(storage.get());
-        this->subject = Subject::fromRawPtr(LibrdfNode::fromUriString("subby").get());
-        this->resource = Resource::fromRawPtr(LibrdfNode::fromUriString(("space/id")).get());
-        this->predicate = BiomodelsBiologyQualifier("is");
+        subject =  LibrdfNode::fromUriString("subby");
+        resource = LibrdfNode::fromUriString(("space/id"));
+        predicate = BiomodelsBiologyQualifier("is");
     }
 
     ~TriplesTests() override {
@@ -43,7 +43,7 @@ public:
  * We can create an empty vector and *move* a triple into it.
  */
 TEST_F(TriplesTests, TestCreateMoveAfterInstantiation) {
-    Triple triple1 = Triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
+    Triple triple1 = Triple(uriHandler, subject.get(), predicate.get(), resource.get());
     Triples triples;
     triples.moveBack(triple1);
     ASSERT_EQ(1, triples.size());
@@ -54,7 +54,7 @@ TEST_F(TriplesTests, TestCreateMoveAfterInstantiation) {
  * We can also move the triple into it on instantiation.
  */
 TEST_F(TriplesTests, TestCreateMoveOnInstantiation) {
-    Triple triple1 = Triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
+    Triple triple1 = Triple(uriHandler, subject.get(), predicate.get(), resource.get());
     Triples triples(triple1);
     ASSERT_EQ(1, triples.size());
     triples.freeTriples();
@@ -63,9 +63,9 @@ TEST_F(TriplesTests, TestCreateMoveOnInstantiation) {
 TEST_F(TriplesTests, TestEmplaceBack) {
     Triples triples;
     triples.emplace_back(uriHandler,
-                         subject,
+                         std::move(subject),
                          std::make_unique<Predicate>(std::move(predicate)),
-                         resource);
+                         std::move(resource));
     ASSERT_EQ(1, triples.size());
     triples.freeTriples();
 }
@@ -78,18 +78,18 @@ TEST_F(TriplesTests, TestEmplaceBack) {
  */
 TEST_F(TriplesTests, TestEmplaceBack2) {
     Triples triples;
-    triples.emplace_back(uriHandler, subject,
+    triples.emplace_back(uriHandler, std::move(subject),
                          std::make_unique<Predicate>(std::move(predicate)),
-                         resource);
+                         std::move(resource));
     ASSERT_EQ(1, triples.size());
     triples.freeTriples();
 }
 
 TEST_F(TriplesTests, TestEmplaceBack3) {
     Triples triples;
-    triples.emplace_back(uriHandler, subject,
+    triples.emplace_back(uriHandler, std::move(subject),
                          BiomodelsModelQualifier("isDerivedFrom"),
-                         resource);
+                         std::move(resource));
     ASSERT_EQ(1, triples.size());
     // When you give a subject/predicate/resource to Triple/Triples they
     // are given ownership of the node pointer inside the subject/predicate/resource/
@@ -100,9 +100,9 @@ TEST_F(TriplesTests, TestEmplaceBack3) {
 
 TEST_F(TriplesTests, TestEmplaceBack4) {
     Triples triples;
-    triples.emplace_back(uriHandler, subject,
+    triples.emplace_back(uriHandler, std::move(subject),
                          BiomodelsBiologyQualifier("is"),
-                         resource);
+                         std::move(resource));
     ASSERT_EQ(1, triples.size());
     predicate.freeNode();
     triples.freeTriples();
@@ -110,9 +110,9 @@ TEST_F(TriplesTests, TestEmplaceBack4) {
 
 TEST_F(TriplesTests, TestEmplaceBack5) {
     Triples triples;
-    triples.emplace_back(uriHandler, subject,
+    triples.emplace_back(uriHandler, std::move(subject),
                          DCTerm("description"),
-                         resource);
+                         std::move(resource));
     ASSERT_EQ(1, triples.size());
     predicate.freeNode();
     triples.freeTriples();
@@ -120,9 +120,9 @@ TEST_F(TriplesTests, TestEmplaceBack5) {
 
 TEST_F(TriplesTests, TestEmplaceBack6) {
     Triples triples;
-    triples.emplace_back(uriHandler, subject,
+    triples.emplace_back(uriHandler, std::move(subject),
                          SemSim("hasSourceParticipant"),
-                         resource);
+                         std::move(resource));
     ASSERT_EQ(1, triples.size());
     predicate.freeNode();
     triples.freeTriples();
@@ -134,11 +134,11 @@ TEST(TriplesTestsNoFixture, TestPop) {
     Triples triples;
     triples.emplace_back(uriHandler,
                          LibrdfNode::fromUriString("subject1").get(),
-                         SemSim("hasSinkParticipant").getNode(),
+                         SemSim("hasSinkParticipant").get(),
                          LibrdfNode::fromLiteral("literal node1").get());
     triples.emplace_back(uriHandler,
                          LibrdfNode::fromUriString("subject2").get(),
-                         SemSim("hasSourceParticipant").getNode(),
+                         SemSim("hasSourceParticipant").get(),
                          LibrdfNode::fromLiteral("literal node2").get());
     // make sure we have 2 triples
     ASSERT_EQ(2, triples.size());
@@ -171,10 +171,10 @@ TEST(TriplesTestsNoFixture, TestPreallocate) {
     ASSERT_EQ(2, triples.capacity());
 
     triples.emplace_back(uriHandler,LibrdfNode::fromUriString("subject1").get(),
-                         SemSim("hasSinkParticipant").getNode(),
+                         SemSim("hasSinkParticipant").get(),
                          LibrdfNode::fromLiteral("literal node1").get());
     triples.emplace_back(uriHandler,LibrdfNode::fromUriString("subject2").get(),
-                         SemSim("hasSourceParticipant").getNode(),
+                         SemSim("hasSourceParticipant").get(),
                          LibrdfNode::fromLiteral("literal node2").get());
     // make sure we have 2 triples
     ASSERT_EQ(2, triples.size());

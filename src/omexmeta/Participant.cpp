@@ -53,13 +53,13 @@ namespace omexmeta {
         Triples triples;
         // have source participant triple
         librdf_node *sub1 = LibrdfNode::fromUriString(about).get();
-        librdf_node *pred1 = SemSim(semsim_predicate_term_).getNode();//term is hasSourceParticipant etc.
+        librdf_node *pred1 = SemSim(semsim_predicate_term_).get();//term is hasSourceParticipant etc.
         librdf_node *res1 = LibrdfNode::fromUriString(local_participant_metaid_).get();
         Triple triple1(uriHandler_, sub1, pred1, res1);
         triples.moveBack(triple1);
 
         librdf_node *sub2 = LibrdfNode::fromUriString(local_participant_metaid_).get();
-        librdf_node *pred2 = SemSim("hasPhysicalEntityReference").getNode();
+        librdf_node *pred2 = SemSim("hasPhysicalEntityReference").get();
         librdf_node *res2 = LibrdfNode::fromUriString(
                                     UriHandler::uriModifier<Participant>(*this, physicalEntityReference_, type_)).get();
         Triple triple2(uriHandler_, sub2, pred2, res2);
@@ -68,7 +68,7 @@ namespace omexmeta {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
             librdf_node *sub3 = LibrdfNode::fromUriString(local_participant_metaid_).get();
-            librdf_node *pred3 = SemSim("hasMultiplier").getNode();
+            librdf_node *pred3 = SemSim("hasMultiplier").get();
             librdf_node *res3 = LibrdfNode::fromLiteral(
                                         multiplier_os.str(),
                                         "double")

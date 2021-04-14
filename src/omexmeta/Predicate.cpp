@@ -140,7 +140,7 @@ namespace omexmeta {
         }
     }
 
-    librdf_node *Predicate::getNode() const {
+    librdf_node *Predicate::get() const {
         return node_;
     }
 

@@ -9,8 +9,6 @@
 #include "redland/librdf.h"
 
 #include "UriHandler.h"
-#include "omexmeta/Resource.h"
-#include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
 

@@ -12,8 +12,6 @@
 #include "redland/LibrdfStatement.h"
 
 #include "omexmeta/Predicate.h"
-#include "omexmeta/Resource.h"
-#include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/UriHandler.h"
 
@@ -45,7 +43,8 @@ namespace omexmeta {
         Triple(const Triple &triple) = delete; // as base class
         Triple &operator=(const Triple &triple) = delete; // as base class
 
-        Triple(UriHandler &uriHandler, const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
+
+        Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
 
         Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 

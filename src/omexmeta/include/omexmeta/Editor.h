@@ -17,7 +17,6 @@
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/Predicate.h"
 #include "omexmeta/PropertyBearer.h"
-#include "omexmeta/Resource.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/UriHandler.h"
@@ -114,7 +113,7 @@ namespace omexmeta {
          * @param pointer to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls.
          * @param resource the resource portion of the triple
          */
-        void addSingleAnnotation(Subject subject, const PredicatePtr &predicate_ptr, const Resource &resource);
+        void addSingleAnnotation(LibrdfNode subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
 
         /**
          * @brief Add a SingleAnnotation (aka Triple) to the rdf graph.

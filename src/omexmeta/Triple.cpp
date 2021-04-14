@@ -11,16 +11,16 @@ namespace omexmeta {
         : uriHandler_(uriHandler) {}
 
     Triple::Triple(Triple &&triple) noexcept
-        : uriHandler_(triple.uriHandler_){
-            if (triple.statement_ != nullptr) {
-                if (statement_ != nullptr) {
-                    librdf_free_statement(statement_);
-                    statement_ = nullptr;
-                }
-                statement_ = triple.statement_;
-                triple.statement_ = nullptr;
+        : uriHandler_(triple.uriHandler_) {
+        if (triple.statement_ != nullptr) {
+            if (statement_ != nullptr) {
+                librdf_free_statement(statement_);
+                statement_ = nullptr;
             }
+            statement_ = triple.statement_;
+            triple.statement_ = nullptr;
         }
+    }
 
     Triple &Triple::operator=(Triple &&triple) noexcept {
         if (*this != triple) {
@@ -30,10 +30,8 @@ namespace omexmeta {
         return *this;
     };
 
-    Triple::Triple(UriHandler &uriHandler, const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource)
-        : uriHandler_(uriHandler), LibrdfStatement(subject.getNode(),
-                                                   predicate_ptr->getNode(),
-                                                   resource.getNode()) {}
+    Triple::Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource)
+        : uriHandler_(uriHandler), LibrdfStatement(subject.get(), predicate_ptr->get(), resource.get()) {}
 
     Triple::Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource)
         : uriHandler_(uriHandler), LibrdfStatement(subject, predicate, resource) {}
@@ -173,7 +171,7 @@ namespace omexmeta {
             LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
         //  because I want them both to be called setPredicate.
-        librdf_node *node = PredicateFactory(namespace_, term)->getNode();
+        librdf_node *node = PredicateFactory(namespace_, term)->get();
         librdf_statement_set_predicate(statement_, node);
         return *this;
     }

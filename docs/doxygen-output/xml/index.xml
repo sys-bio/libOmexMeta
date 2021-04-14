@@ -737,7 +737,7 @@
     <member refid="classomexmeta_1_1Predicate_1a5db1e6150f8cfd7605e82996e2aebb50" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1Predicate_1a7bf4b8769eb9801eb26cc976723b56f2" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf" kind="function"><name>str</name></member>
-    <member refid="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" kind="function"><name>getNode</name></member>
+    <member refid="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" kind="function"><name>get</name></member>
     <member refid="classomexmeta_1_1Predicate_1aee19b8fc8b21f8e5ffd5b64691e1e530" kind="function"><name>getValidTerms</name></member>
     <member refid="classomexmeta_1_1Predicate_1add4ab1cd86f83de3512279bbfdad947c" kind="function"><name>getNamespace</name></member>
     <member refid="classomexmeta_1_1Predicate_1a54a15176bd697d37d00573bf86954630" kind="function"><name>getTerm</name></member>
@@ -1115,7 +1115,7 @@
     <member refid="classomexmeta_1_1Resource_1a6b70255d34f54c4adfa893a8ba54b0a2" kind="function"><name>Resource</name></member>
     <member refid="classomexmeta_1_1Resource_1a5c0035886f90fe34028ce3f6448c7610" kind="function"><name>Resource</name></member>
     <member refid="classomexmeta_1_1Resource_1a25be1a34d6a27565612a9c7b597befd8" kind="function"><name>setNode</name></member>
-    <member refid="classomexmeta_1_1Resource_1a7866b5bd47b319e39dec70eae8969d4f" kind="function"><name>getNode</name></member>
+    <member refid="classomexmeta_1_1Resource_1a7866b5bd47b319e39dec70eae8969d4f" kind="function"><name>get</name></member>
     <member refid="classomexmeta_1_1Resource_1aae0948ff89d537133fd5e99bb88aa96a" kind="function"><name>str</name></member>
     <member refid="classomexmeta_1_1Resource_1ad6a1a5009a2b8fdacf0f53899986735a" kind="function"><name>isSet</name></member>
     <member refid="classomexmeta_1_1Resource_1a87a7540d96d762dbd3f0b5160e575803" kind="function"><name>free</name></member>
@@ -1161,7 +1161,7 @@
     <member refid="classomexmeta_1_1Subject_1a6ea1f43fab08770a4e0b0e9679af1880" kind="function"><name>Subject</name></member>
     <member refid="classomexmeta_1_1Subject_1a4e80ab7745a8c2cf6628e8e93a95cdac" kind="function"><name>Subject</name></member>
     <member refid="classomexmeta_1_1Subject_1ac39b07acc615dbd6f7ef57668a315708" kind="function"><name>Subject</name></member>
-    <member refid="classomexmeta_1_1Subject_1a91ea148978a5320dfba19bdb1bdbdd90" kind="function"><name>getNode</name></member>
+    <member refid="classomexmeta_1_1Subject_1a91ea148978a5320dfba19bdb1bdbdd90" kind="function"><name>get</name></member>
     <member refid="classomexmeta_1_1Subject_1aa04b4e973bd7df44fffe588e31b8779f" kind="function"><name>setNode</name></member>
     <member refid="classomexmeta_1_1Subject_1a1b170dceee7bf297843da5b201e06693" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1Subject_1a3729c201061ff27fc50b1ae2412dab2b" kind="function"><name>operator!=</name></member>

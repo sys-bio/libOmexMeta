@@ -8,7 +8,6 @@
 #include "redland/RedlandAPI.h"
 
 #include "omexmeta/Error.h"
-#include "omexmeta/Resource.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
 #include "omexmeta/UriHandler.h"

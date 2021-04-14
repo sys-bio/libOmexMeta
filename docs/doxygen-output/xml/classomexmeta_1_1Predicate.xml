@@ -231,9 +231,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
-        <definition>librdf_node * omexmeta::Predicate::getNode</definition>
+        <definition>librdf_node * omexmeta::Predicate::get</definition>
         <argsstring>() const</argsstring>
-        <name>getNode</name>
+        <name>get</name>
         <briefdescription>
 <para>getter for the node contained by the <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> object </para>
         </briefdescription>
@@ -577,7 +577,7 @@ Throws an error when term is not in valid_terms. Used by subclasses to verify us
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>freeNode</name></member>
       <member refid="classomexmeta_1_1Predicate_1add4ab1cd86f83de3512279bbfdad947c" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>getNamespace</name></member>
-      <member refid="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>getNode</name></member>
+      <member refid="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>get</name></member>
       <member refid="classomexmeta_1_1Predicate_1a0147e977f71604db05763815ae6b553f" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>getPrefix</name></member>
       <member refid="classomexmeta_1_1Predicate_1a54a15176bd697d37d00573bf86954630" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>getTerm</name></member>
       <member refid="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f" prot="public" virt="non-virtual"><scope>omexmeta::Predicate</scope><name>getUri</name></member>

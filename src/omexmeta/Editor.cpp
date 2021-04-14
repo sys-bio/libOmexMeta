@@ -147,9 +147,9 @@ namespace omexmeta {
         namespaces_[ns] = std::move(prefix);
     }
 
-    void Editor::addSingleAnnotation(Subject subject,
+    void Editor::addSingleAnnotation(LibrdfNode subject,
                                      const PredicatePtr &predicate_ptr,
-                                     const Resource &resource) {
+                                     const LibrdfNode &resource) {
         if (!predicate_ptr) {
             std::ostringstream err;
             err << __FILE__ << ":" << __LINE__ << ":PredicatePtr argument is null"
@@ -334,7 +334,7 @@ namespace omexmeta {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("dc", "creator")->getNode(),
+                      PredicateFactory("dc", "creator")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
@@ -348,7 +348,7 @@ namespace omexmeta {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getLocalUri()).get(),
-                      PredicateFactory("dc", "creator")->getNode(),
+                      PredicateFactory("dc", "creator")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
@@ -359,10 +359,10 @@ namespace omexmeta {
     Editor &Editor::addDateCreated(const std::string &date) {
         LibrdfNode anon = LibrdfNode::fromBlank("");
         Triple triple1(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                       PredicateFactory("dc", "created")->getNode(),
+                       PredicateFactory("dc", "created")->get(),
                        anon.get());
         Triple triple2(uriHandler_, anon.get(),
-                       PredicateFactory("dc", "W3CDTF")->getNode(),
+                       PredicateFactory("dc", "W3CDTF")->get(),
                        LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple1);
         model_.addStatement(triple2);
@@ -372,7 +372,7 @@ namespace omexmeta {
 
     Editor &Editor::addDescription(const std::string &date) {
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("dc", "description")->getNode(),
+                      PredicateFactory("dc", "description")->get(),
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
@@ -382,7 +382,7 @@ namespace omexmeta {
 
     Editor &Editor::addPubmed(const std::string &pubmedid) {
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
+                      PredicateFactory("bqmodel", "isDescribedBy")->get(),
                       LibrdfNode::fromUriString("pubmed:" + pubmedid).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqmodel"], "bqmodel");
@@ -393,7 +393,7 @@ namespace omexmeta {
 
     Editor &Editor::addParentModel(const std::string &biomod_id) {
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
+                      PredicateFactory("bqmodel", "isDerivedFrom")->get(),
                       LibrdfNode::fromUriString("biomodels.db:" + biomod_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqmodel"], "bqmodel");
@@ -404,7 +404,7 @@ namespace omexmeta {
 
     Editor &Editor::addTaxon(const std::string &taxon_id) {
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqbiol", "hasTaxon")->getNode(),
+                      PredicateFactory("bqbiol", "hasTaxon")->get(),
                       LibrdfNode::fromUriString("taxonomy:" + taxon_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqbiol"], "bqbiol");

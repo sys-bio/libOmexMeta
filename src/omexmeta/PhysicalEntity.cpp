@@ -121,7 +121,7 @@ namespace omexmeta {
             triples.emplace_back(
                     uriHandler_,
                     LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
-                    BiomodelsBiologyQualifier("is").getNode(),
+                    BiomodelsBiologyQualifier("is").get(),
                     LibrdfNode::fromUriString(identity_resource_).get()
                     );
         }
@@ -133,7 +133,7 @@ namespace omexmeta {
                 triples.emplace_back(
                         uriHandler_,
                         LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
-                        BiomodelsBiologyQualifier("isPartOf").getNode(),
+                        BiomodelsBiologyQualifier("isPartOf").get(),
                         LibrdfNode::fromUriString(locationResource).get());
             }
         }
@@ -144,7 +144,7 @@ namespace omexmeta {
                 triples.emplace_back(
                         uriHandler_,
                         LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
-                        BiomodelsBiologyQualifier("hasPart").getNode(),
+                        BiomodelsBiologyQualifier("hasPart").get(),
                         LibrdfNode::fromUriString(locationResource).get());
             }
         }

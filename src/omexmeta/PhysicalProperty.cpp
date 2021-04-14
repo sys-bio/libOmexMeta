@@ -87,7 +87,7 @@ namespace omexmeta {
         Triple is_property_of_triple(
                 uriHandler_,
                 LibrdfNode::fromUriString(about_value_).get(),
-                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
+                BiomodelsBiologyQualifier("isPropertyOf").get(),
                 LibrdfNode::fromUriString(is_property_of_value_).get());
         triples.moveBack(is_property_of_triple);
 
@@ -95,8 +95,8 @@ namespace omexmeta {
             Triple is_version_of_triple(
                     uriHandler_,
                     LibrdfNode::fromUriString(about_value_).get(),
-                    BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                    Resource(LibrdfNode::fromUriString(is_version_of_value_)).getNode());
+                    BiomodelsBiologyQualifier("isVersionOf").get(),
+                    LibrdfNode::fromUriString(is_version_of_value_).get());
             triples.moveBack(is_version_of_triple);
         }
         return triples;

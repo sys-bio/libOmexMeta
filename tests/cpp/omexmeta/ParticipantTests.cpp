@@ -85,7 +85,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     Triple triple(
             uriHandler,
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getSubject(), sink.getLocalUri())).get(),
-            SemSim(sink.getPredicate()).getNode(),
+            SemSim(sink.getPredicate()).get(),
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getPhysicalEntityReference(), sink.getModelUri())).get()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
@@ -110,7 +110,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     Triple triple(
             uriHandler,
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getSubject(), sink.getLocalUri())).get(),
-            SemSim(sink.getPredicate()).getNode(),
+            SemSim(sink.getPredicate()).get(),
             LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(sink.getPhysicalEntityReference(), sink.getModelUri())).get()
     );
     Triples triples;

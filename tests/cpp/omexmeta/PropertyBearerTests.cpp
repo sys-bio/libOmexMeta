@@ -34,7 +34,7 @@ public:
 
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
+    LibrdfNode subject = LibrdfNode::fromUriString("metaid004");
     PhysicalProperty resource = PhysicalProperty(model.get(), uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
     PropertyBearer phenomenon(
             model.get(),
@@ -44,11 +44,11 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     std::string expected = "metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.free();
+    subject.freeNode();
 }
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
+    LibrdfNode subject = LibrdfNode::fromUriString("metaid004");
     PhysicalProperty resource = PhysicalProperty(model.get(), uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
     PropertyBearer phenomenon(
             model.get(),
@@ -58,5 +58,5 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     std::string expected = "metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.free();
+    subject.freeNode();
 }

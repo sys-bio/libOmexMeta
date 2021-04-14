@@ -59,7 +59,7 @@ namespace omexmeta {
     PersonalInformation::addFoaf(const std::string &predicate, const LibrdfNode& value_node) {
         LibrdfNode subject = LibrdfNode::fromUriString(metaid_);
         Foaf foaf(predicate);
-        Triple triple(uriHandler_, subject.get(), foaf.getNode(), value_node.get());
+        Triple triple(uriHandler_, subject.get(), foaf.get(), value_node.get());
         triples_.moveBack(triple);
         namespaces_.push_back(Predicate::namespaceMap()["foaf"]);
         return *this;
@@ -69,7 +69,7 @@ namespace omexmeta {
     PersonalInformation::addDC(const std::string &predicate, const LibrdfNode& value_node) {
         LibrdfNode subject = LibrdfNode::fromUriString(metaid_);
         DCTerm dc(predicate);
-        Triple triple(uriHandler_, subject.get(), dc.getNode(), value_node.get());
+        Triple triple(uriHandler_, subject.get(), dc.get(), value_node.get());
         triples_.moveBack(triple);
         namespaces_.push_back(Predicate::namespaceMap()["dc"]);
         return *this;
@@ -174,7 +174,7 @@ namespace omexmeta {
         LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModelUri());
         DCTerm creator("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
-        Triple triple(uriHandler_, n.get(), creator.getNode(), r.get());
+        Triple triple(uriHandler_, n.get(), creator.get(), r.get());
         namespaces_.push_back(Predicate::namespaceMap()["orcid"]);
         triples_.moveBack(triple);
     }

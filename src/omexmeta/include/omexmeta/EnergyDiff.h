@@ -158,18 +158,18 @@ namespace omexmeta {
 
         /**
          * @brief set the isVersionOf portion of the EnergyDiff composite annotation
-         * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
+         * @param is_version_of the string to be used as the LibrdfNode portion of the isVersionOf Triple. This
          * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
-         * @details This method will set the Resource resource_ attribute of the PhysicalProperty
+         * @details This method will set the LibrdfNode resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
         EnergyDiff &isVersionOf(const std::string &property);
 
         /**
          * @brief set the subject (rdf:about) portion of the EnergyDiff composite annotation
-         * @param about the string to be used as the Subject portion of the isVersionOf Triple. This
+         * @param about the string to be used as the LibrdfNode portion of the isVersionOf Triple. This
          * should be an existing metaid on the model you are annotating. Will error when metaid does not exist.
-         * @details This method will set the Subject subject_ attribute of the PhysicalProperty
+         * @details This method will set the LibrdfNode subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
         EnergyDiff &about(const std::string &about, eUriType type) override;

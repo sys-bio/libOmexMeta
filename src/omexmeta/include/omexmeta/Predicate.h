@@ -101,7 +101,7 @@ namespace omexmeta {
          * @return the librdf_node* pointer for the redland libraries under the hood
          *
          */
-        [[nodiscard]] librdf_node *getNode() const;
+        [[nodiscard]] librdf_node *get() const;
 
         /**
      * @brief stores the valid terms that are allowed in a particular predicate subclass

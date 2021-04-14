@@ -37,34 +37,34 @@ namespace omexmeta {
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, const PredicatePtr &predicatePtr, const Resource &resource) {
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, predicatePtr, resource);
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, const Predicate &predicate, const Resource &resource) {
-        Triple triple(uriHandler, subject.getNode(), predicate.getNode(), resource.getNode());
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource) {
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       resource);
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, BiomodelsModelQualifier predicate, const Resource &resource) {
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       resource);
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, DCTerm predicate, const Resource &resource) {
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, Subject subject, SemSim predicate, const Resource &resource) {
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, std::make_shared<SemSim>(std::move(predicate)), resource);
         moveBack(triple);
     }

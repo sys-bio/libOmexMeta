@@ -9,8 +9,6 @@ set(
         OmexMetaTestUtils.cpp # utilities used in tests
         SBMLFactory.h
         OmexMetaUtilsTests.cpp # tests for omexmeta utils class
-        SubjectTests.cpp
-        ResourceTests.cpp
         PredicateTests.cpp
         TripleTests.cpp
         TriplesTests.cpp

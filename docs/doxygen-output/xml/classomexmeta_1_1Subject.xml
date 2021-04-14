@@ -70,9 +70,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Subject_1a91ea148978a5320dfba19bdb1bdbdd90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structraptor__term" kindref="compound">librdf_node</ref> *</type>
-        <definition>librdf_node * omexmeta::Subject::getNode</definition>
+        <definition>librdf_node * omexmeta::Subject::get</definition>
         <argsstring>() const</argsstring>
-        <name>getNode</name>
+        <name>get</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -235,7 +235,7 @@
       <member refid="classomexmeta_1_1Subject_1a315d058097112f4081c4db7860346aef" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>fromBlank</name></member>
       <member refid="classomexmeta_1_1Subject_1a845dda888ce07265306d0eb6b46cd989" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>fromRawPtr</name></member>
       <member refid="classomexmeta_1_1Subject_1a346583235b81d5bd523818de09d7359e" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>fromUri</name></member>
-      <member refid="classomexmeta_1_1Subject_1a91ea148978a5320dfba19bdb1bdbdd90" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>getNode</name></member>
+      <member refid="classomexmeta_1_1Subject_1a91ea148978a5320dfba19bdb1bdbdd90" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>get</name></member>
       <member refid="classomexmeta_1_1Subject_1a1b4c539f6310fc0c834cc44afb275c32" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>isSet</name></member>
       <member refid="classomexmeta_1_1Subject_1ac6f8f8b58d81748ba000f05ed4f4eecb" prot="private" virt="non-virtual"><scope>omexmeta::Subject</scope><name>node_</name></member>
       <member refid="classomexmeta_1_1Subject_1a3729c201061ff27fc50b1ae2412dab2b" prot="public" virt="non-virtual"><scope>omexmeta::Subject</scope><name>operator!=</name></member>

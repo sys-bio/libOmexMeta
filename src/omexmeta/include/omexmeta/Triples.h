@@ -9,8 +9,6 @@
 
 #include "omexmeta/Triple.h"
 #include "omexmeta/Predicate.h"
-#include "omexmeta/Subject.h"
-#include "omexmeta/Resource.h"
 #include "omexmeta/Error.h"
 
 #include <vector>
@@ -45,8 +43,6 @@ namespace omexmeta {
          */
         explicit Triples(int size);
 
-
-
         /**
          * @brief construct a Triples object from a single triple
          * @param triple The triple to put into triples
@@ -79,7 +75,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(UriHandler& uriHandler, Subject subject, const PredicatePtr &predicatePtr, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource);
 
 
         /**
@@ -87,7 +83,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(UriHandler& uriHandler, Subject subject, const Predicate &predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource);
 
 
         /**
@@ -95,7 +91,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(UriHandler& uriHandler, Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource);
 
 
         /**
@@ -103,7 +99,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(UriHandler& uriHandler, Subject subject, BiomodelsModelQualifier predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource);
 
 
         /**
@@ -111,7 +107,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(UriHandler& uriHandler, Subject subject, DCTerm predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource);
 
 
         /**
@@ -119,7 +115,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(UriHandler& uriHandler, Subject subject, SemSim predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource);
 
         /**
          * @brief construct a Triple object from the necessary components and move it to the back of Triples
@@ -146,7 +142,7 @@ namespace omexmeta {
 
         /**
          * @brief get all resources as strings
-         * @details we do not return the Resource itself because Resource objects
+         * @details we do not return the LibrdfNode itself because LibrdfNode objects
          * cannot be copied.
          * @returns All resource uri's as strings in a std::vector
          */

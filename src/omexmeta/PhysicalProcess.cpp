@@ -114,7 +114,7 @@ namespace omexmeta {
             SingularAnnotation singularAnnotation(
                     uriHandler_,
                     LibrdfNode::fromUriString(getAbout()).get(),
-                    PredicateFactory("bqbiol", "isVersionOf")->getNode(),
+                    PredicateFactory("bqbiol", "isVersionOf")->get(),
                     LibrdfNode::fromUriString(is_version_of_).get());
             triples.moveBack(singularAnnotation);
         }

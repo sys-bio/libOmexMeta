@@ -10,7 +10,6 @@
 #include "omexmeta/MetaID.h"
 #include "omexmeta/PhysicalProperty.h"
 #include "omexmeta/Query.h"
-#include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
 #include "redland/RedlandAPI.h"

@@ -643,7 +643,7 @@
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Triples_1a9882f6f582e8d2e34e09d2f7076a0e2e" kindref="member">Triples::emplace_back</ref>(Subject<sp/>subject,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Predicate<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Resource<sp/>&amp;resource)<sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(subject.getNode(),<sp/>predicate.getNode(),<sp/>resource.getNode());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(subject.get(),<sp/>predicate.get(),<sp/>resource.get());</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kindref="member">moveBack</ref>(triple);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
