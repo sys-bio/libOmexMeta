@@ -6,13 +6,13 @@
 #define LIBOMEXMETA_LIBRDFNODE_H
 
 //
+#include "LibrdfException.h"
+#include "LibrdfUri.h"
+#include "World.h"
 #include "librdf.h"
 #include "raptor2.h"
 #include <memory>
 #include <sstream>
-#include "LibrdfUri.h"
-#include "World.h"
-#include "LibrdfException.h"
 
 
 /*
@@ -48,13 +48,10 @@ namespace redland {
 
     class LibrdfNode {
 
-
-    private:
-        librdf_node *node_ = nullptr;
-
-
     public:
         LibrdfNode() = default;
+
+        ~LibrdfNode();
 
         bool operator==(const LibrdfNode &rhs) const;
 
@@ -74,6 +71,16 @@ namespace redland {
 
         explicit LibrdfNode(librdf_node *node);
 
+        explicit LibrdfNode(const LibrdfUri& uri);
+
+        /**
+         * @brief return pointer to underlying librdf_node pointer
+         * @details using this method increments the librdf_node* usage count
+         * by 1. The caller is responsible for decrementing the usage count.
+         * @see getUsage()
+         * @note the librdf_statement takes shared ownership of a node when passed
+         * to librdf_new_statement.
+         */
         [[nodiscard]] librdf_node *get() const;
 
         static LibrdfNode fromUriString(const std::string &uri_string);
@@ -89,7 +96,7 @@ namespace redland {
 
         static std::string str(librdf_node *node);
 
-        std::string str() const;
+        [[nodiscard]] std::string str() const;
 
         LibrdfUri getLiteralDatatype();
 
@@ -114,16 +121,22 @@ namespace redland {
 
         static LibrdfNode fromRelativeUri(const std::string &uri_string, const std::string &base_uri);
 
-        LibrdfNode fromUriString(const std::string &uri_string, const std::string &local_prefix);
-
         /**
          * @brief get namespace portion of the node. I.e. all but last section of the uri
          */
-         std::string getNamespace() const;
+        std::string getNamespace() const;
 
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
+
+        /**
+         * @brief returns the usage of the underlying librdf_node pointer
+         */
+         unsigned int getUsage();
+
+    private:
+        librdf_node *node_ = nullptr;
     };
-}
+}// namespace redland
 
 
-#endif //LIBOMEXMETA_LIBRDFNODE_H
+#endif//LIBOMEXMETA_LIBRDFNODE_H

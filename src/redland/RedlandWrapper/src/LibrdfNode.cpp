@@ -12,8 +12,18 @@
 
 namespace redland {
 
+    LibrdfNode::~LibrdfNode() {
+        if (node_) {
+            freeNode();
+        }
+    }
+
     LibrdfNode::LibrdfNode(librdf_node *node)
         : node_(node) {}
+
+    LibrdfNode::LibrdfNode(const LibrdfUri& uri)
+        :node_(LibrdfNode::fromUriString(uri.str()).get()) {};
+
 
     //todo the content of thos method really belongs somewhere else
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
@@ -173,6 +183,7 @@ namespace redland {
     }
 
     librdf_node *LibrdfNode::get() const {
+        node_->usage++;
         return node_;
     }
 
@@ -193,7 +204,9 @@ namespace redland {
     }
 
     LibrdfUri LibrdfNode::getUri() {
-        return LibrdfUri::fromRawPtr(librdf_node_get_uri(node_));
+        LibrdfUri uri = LibrdfUri::fromRawPtr(librdf_node_get_uri(node_));
+        uri.incrementUsage();
+        return uri;
     }
 
     void LibrdfNode::setUri(const std::string &uri) {
@@ -269,6 +282,7 @@ namespace redland {
 
     void LibrdfNode::freeNode() {
         LibrdfNode::freeNode(node_);
+        node_ = nullptr;
     }
 
     std::string LibrdfNode::str() const {
@@ -353,5 +367,10 @@ namespace redland {
         }
         return ns.str();
     }
+
+    unsigned int LibrdfNode::getUsage() {
+        return node_->usage;
+    };
+
 
 }// namespace redland

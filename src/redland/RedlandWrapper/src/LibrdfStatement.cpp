@@ -226,10 +226,10 @@ namespace redland {
         // we bypass comparing blank nodes.
         if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)) {
             subjects_equal = librdf_node_equals(this_subject, that_subject);
-            }
+        }
         if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)) {
             resources_equal = librdf_node_equals(this_resource, that_resource);
-            }
+        }
         bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
         return subjects_equal && predicates_equal && resources_equal;
     }
@@ -242,24 +242,8 @@ namespace redland {
         return !(rhs == *this);
     }
 
-    std::unordered_map<std::string, int> LibrdfStatement::getUsages() {
-        std::unordered_map<std::string, int> map;
-        map["statement"] = statement_->usage;
-        map["subject"] = getSubject()->usage;
-        map["predicate"] = getPredicate()->usage;
-        map["resource"] = getResource()->usage;
-        map["subject_uri"] = librdf_uri_get_usage(getSubject()->value.uri);
-        map["predicate_uri"] = librdf_uri_get_usage(getPredicate()->value.uri);
-        map["resource_uri"] = librdf_uri_get_usage(getResource()->value.uri);
-        //        map["subject_literal_datatype"] = librdf_uri_get_usage(getResource()->value.literal.datatype);
-        //        map["resource_literal_datatype"] = librdf_uri_get_usage(getResource()->value.literal.datatype);
-        return map;
+    int LibrdfStatement::getUsage() const {
+        return statement_->usage;
     }
 
-    void LibrdfStatement::printUsages() {
-        auto usages = getUsages();
-        for (auto &it : usages) {
-            std::cout << it.first << ": " << it.second << std::endl;
-        }
-    }
 }// namespace redland

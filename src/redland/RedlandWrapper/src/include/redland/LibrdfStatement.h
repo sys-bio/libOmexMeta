@@ -6,32 +6,15 @@
 #define LIBOMEXMETA_LIBRDFSTATEMENT_H
 
 
-#include <memory>
-#include <iostream>
-#include "librdf.h"
-#include <unordered_map>
 #include "LibrdfNode.h"
+#include "librdf.h"
+#include <iostream>
+#include <memory>
+#include <unordered_map>
 
 namespace redland {
 
     class LibrdfStatement {
-
-    protected:
-
-        // starts as empty statement
-        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
-
-        /*
-         * @brief update the contained statement with current
-         * values of subject, predicate and resource.
-         */
-        void refreshStatement();
-
-
-    protected:
-        explicit LibrdfStatement(librdf_statement *statement);
-
-
     public:
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
@@ -39,7 +22,7 @@ namespace redland {
 
         bool operator!=(const LibrdfStatement &rhs) const;
 
-        static bool equals(librdf_statement* first, librdf_statement* second);
+        static bool equals(librdf_statement *first, librdf_statement *second);
 
         LibrdfStatement() = default;
 
@@ -85,14 +68,24 @@ namespace redland {
 
         bool isComplete();
 
-        std::unordered_map<std::string, int> getUsages();
-
-        void printUsages();
-
         void freeStatementAndUris();
 
-        std::string getPredicateNamespaceStr() const;
-    };
-}
+        [[nodiscard]] std::string getPredicateNamespaceStr() const;
 
-#endif //LIBOMEXMETA_LIBRDFSTATEMENT_H
+        [[nodiscard]] int getUsage() const;
+
+    protected:
+        // starts as empty statement
+        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
+
+        /*
+         * @brief update the contained statement with current
+         * values of subject, predicate and resource.
+         */
+        void refreshStatement();
+
+        explicit LibrdfStatement(librdf_statement *statement);
+    };
+}// namespace redland
+
+#endif//LIBOMEXMETA_LIBRDFSTATEMENT_H
