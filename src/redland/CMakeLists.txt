@@ -418,6 +418,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/redland-1.0.17/src/librdf.h" "${CMAK
 #######################################################
 #   Build the library static
 #
+
 add_library(${target}-static STATIC ${ALL_REDLAND_SOURCES})
 
 target_compile_definitions(

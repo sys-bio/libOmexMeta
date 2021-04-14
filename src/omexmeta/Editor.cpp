@@ -272,6 +272,7 @@ namespace omexmeta {
             const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
         model_.removeStatement(stmt);
+
     }
 
     void Editor::removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const {

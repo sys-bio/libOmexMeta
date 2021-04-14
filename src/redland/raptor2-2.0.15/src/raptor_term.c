@@ -453,6 +453,15 @@ void raptor_free_term(raptor_term *term) {
     if (!term)
         return;
 
+    // added by ciaran welsh 14/04/2021
+    // sometimes we try to free a term
+    // that has a count of 0. Technically this
+    // fix only sweeps the underlying problem
+    // under the rug - itd be nice to figure out
+    // the origin of the problem, but this works too
+    if (term->usage == 0)
+        return;
+
     if (--term->usage)
         return;
 

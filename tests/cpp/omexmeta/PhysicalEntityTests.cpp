@@ -354,6 +354,47 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityCellML3) {
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 }
 
+/**
+ * @brief A call to toTriples() generates a Triples object. This test
+ * makes sure that the exact same set of triples is generated each time
+ */
+TEST_F(PhysicalEntityTests, TestPhysicalEntitySameTriplesGeneratedEveryTime) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+
+
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
+    physicalEntity
+            .about("species0001", MODEL_URI)
+            .identity("uniprot:PD12345")
+            .isPartOf("fma:1234")
+            .hasProperty("obp:OBP_12345");
+
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "local:EntityProperty0000\n"
+                           "    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> ;\n"
+                           "    bqbiol:isVersionOf <https://identifiers.org/obp/OBP_12345> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
+                           "    bqbiol:isPartOf <https://identifiers.org/fma:1234> .";
+
+    Triples triples1 = physicalEntity.toTriples();
+    ASSERT_TRUE(RDF::equals(triples1, expected, "turtle"));
+
+    Triples triples2 = physicalEntity.toTriples();
+    ASSERT_TRUE(RDF::equals(triples2, expected, "turtle"));
+
+    triples1.freeTriples();
+    triples2.freeTriples();
+}
+
 
 /*****************************************************************
  * Test PhysicalEntity memory accountability
@@ -995,9 +1036,9 @@ TEST_F(DeletePhysicalEntity,
 TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("http://omex-library.org/NewOmex.omex/NewModel.xmlspecies0000")
+            .about("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000")
             .hasProperty("opb:opb_1234")
-            .identity("uniprot/PD12345")
+            .is("uniprot/PD12345")
             .isPartOf("fma:1234");
     Triples triples = physicalEntity.toTriples();
     for (auto &it : triples) {
@@ -1006,13 +1047,17 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
     }
     ASSERT_EQ(4, rdf.size());
     triples.freeTriples();
+
     Triples triples2 = physicalEntity.toTriples();
     for (auto &it : triples2) {
         editor.removeSingleAnnotation(it);
-//        it.freeTriple();
+        librdf_free_statement(it.getStatement());
     }
     ASSERT_EQ(0, rdf.size());
-     triples2.freeTriples(); // no
+    // there is a problem here whereby  removeSingleAnnotation implicitely calls
+    // librdf_free_Statemetn. redland does this, not me. However this doesn't
+    // free some triples in triples2. So why not?
+    // triples2.freeTriples(); // no. removeSingleAnnotation will free statements
 }
 
 TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {

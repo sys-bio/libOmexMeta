@@ -251,6 +251,7 @@ namespace omexmeta {
 
         PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
     private:
+        // todo store as strings and pass to LibrdfNode not Resource to construct a librdf_node
         Resource identity_resource_;
         Resources location_resources_;
         Resources part_resources_;

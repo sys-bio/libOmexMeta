@@ -114,8 +114,10 @@ namespace omexmeta {
             for (auto &it : physical_property_triples) {
                 triples.moveBack(it);// moves the statement
             }
-            physical_property_triples.freeTriples();
-            assert(physical_property_triples.size() == 0);
+            // we do not need to freeTriples here
+            // since the move gives ownership to triples object
+            //
+            // physical_property_triples.freeTriples();
         }
 
         // the "what" part of physical entity triple
@@ -124,7 +126,8 @@ namespace omexmeta {
                     uriHandler_,
                     LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
                     BiomodelsBiologyQualifier("is").getNode(),
-                    identity_resource_.getNode());
+                    identity_resource_.getNode()
+                    );
         }
 
         // make it explicit that location resources is optional
