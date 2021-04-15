@@ -611,6 +611,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
+    PhysicalEntity_delete(physical_entity_ptr);
 }
 
 TEST_F(CAPITests, TestPhysicalProcessSBML1) {
@@ -1237,26 +1238,6 @@ TEST_F(CAPITests, EditoraddDateCreated) {
                            "    dc:created [\n"
                            "        dc:W3CDTF \"14/01/1991\"^^rdf:string\n"
                            "    ] .";
-    char *actual = RDF_toString(rdf_ptr, "turtle");
-    std::cout << actual << std::endl;
-    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
-    Editor_delete(editor_ptr);
-    free_c_char_star(actual);
-    RDF_delete(rdf_ptr);
-}
-
-TEST_F(CAPITests, EditoraddPersonalInformation) {
-    RDF *rdf_ptr = RDF_new();
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
-                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-
-    //    Editor_addPersonalInformation(editor_ptr, p);
-    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));

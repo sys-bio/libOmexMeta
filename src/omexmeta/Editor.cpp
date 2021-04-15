@@ -203,7 +203,6 @@ namespace omexmeta {
 
             // add to the model
             model_.addStatement(triple.getStatement());
-            // remember to free it.
         }
     }
 

@@ -139,7 +139,6 @@ namespace redland {
     LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string &base_uri) {
         LibrdfUri uri(base_uri);
         librdf_uri *u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char *) uri_string.c_str());
-        uri.freeUri();
         librdf_node *n = librdf_new_node_from_uri(World::getWorld(), u);
         return LibrdfNode(n);
     }
@@ -329,8 +328,11 @@ namespace redland {
         unsigned int count = getUsage();
         librdf_free_node(node_);
         // only set to nullptr if we're sure the pointer
-        // is not still in use
-        if (count == 0) {
+        // is not still in use. librdf_free_node decrements the
+        // internal ref counter, but the node may become NULL.
+        // If this happens the count is inaccessible for checking.
+        // so we do it this way instead.
+        if (count - 1 == 0) {
             node_ = nullptr;
         }
     }

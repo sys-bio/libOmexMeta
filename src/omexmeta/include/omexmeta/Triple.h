@@ -36,6 +36,13 @@ namespace omexmeta {
         using LibrdfStatement::LibrdfStatement;
         using LibrdfStatement::operator=;
 
+        /**
+         * @brief only a default virtual destructor needed
+         * as call to base class destructor will clean up
+         * the underlying statement_ pointer.
+         */
+        ~Triple() override = default;
+
         explicit Triple(UriHandler &uriHandler);
 
         Triple(Triple &&triple) noexcept;
@@ -50,8 +57,7 @@ namespace omexmeta {
 
         Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
-        [[deprecated("Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]]
-        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        [[deprecated("Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]] Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         const std::string &getLocalUri() const;
 

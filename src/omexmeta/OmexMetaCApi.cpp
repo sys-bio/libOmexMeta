@@ -8,15 +8,15 @@
 
 
 namespace omexmeta {
-    
+
     std::string LAST_ERROR;
-    
-    void setLastError(const char* err){
+
+    void setLastError(const char *err) {
         LAST_ERROR = err;
     }
-    
-    char* getLastError(){
-        if (LAST_ERROR.empty()){
+
+    char *getLastError() {
+        if (LAST_ERROR.empty()) {
             return nullptr;
         }
         char *cstr = (char *) malloc((LAST_ERROR.size() + 1) * sizeof(char *));
@@ -24,10 +24,10 @@ namespace omexmeta {
         return cstr;
     }
 
-    void clearLastError(const std::string& err){
+    void clearLastError(const std::string &err) {
         LAST_ERROR = "";
     }
-    
+
     int free_c_char_star(char *c) {
         try {
             if (c != nullptr)
@@ -40,8 +40,8 @@ namespace omexmeta {
     }
 
     /*************************************************************
- *  RDF methods
- */
+     *  RDF methods
+     */
 
     RDF *RDF_new(const char *storage_type, const char *storage_name,
                  const char *storage_options, const char *model_options) {
@@ -335,7 +335,7 @@ namespace omexmeta {
 
     PhysicalProperty *Editor_newPhysicalProperty(Editor *editor_ptr) {
         try {
-            auto* property = new PhysicalProperty(editor_ptr->getModel(), editor_ptr->getUriHandler());
+            auto *property = new PhysicalProperty(editor_ptr->getModel(), editor_ptr->getUriHandler());
             return property;
         } catch (std::exception &error) {
             setLastError(error.what());
@@ -646,21 +646,7 @@ namespace omexmeta {
 
     int SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
         try {
-            if (singularAnnotation != nullptr) {
-                singularAnnotation->freeStatement();
-                delete singularAnnotation;
-            }
-            return 0;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return -1;
-        }
-    }
-
-
-    int free_singular_annotation(SingularAnnotation *singularAnnotationPtr) {
-        try {
-            free(singularAnnotationPtr);
+            delete singularAnnotation;
             return 0;
         } catch (std::exception &error) {
             setLastError(error.what());
@@ -806,12 +792,12 @@ namespace omexmeta {
         }
     }
 
-/*********************************************************************
+    /*********************************************************************
  * PhysicalProperty class methods
  */
-    char *PhysicalProperty_getAbout(PhysicalProperty *property){
+    char *PhysicalProperty_getAbout(PhysicalProperty *property) {
         try {
-            const std::string& str = property->getAbout();
+            const std::string &str = property->getAbout();
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
             strcpy(cstr, str.c_str());
             return cstr;
@@ -821,7 +807,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProperty *PhysicalProperty_about(PhysicalProperty *property, const char *about, eUriType type){
+    PhysicalProperty *PhysicalProperty_about(PhysicalProperty *property, const char *about, eUriType type) {
         try {
             property->about(about, type);
             return property;
@@ -831,9 +817,9 @@ namespace omexmeta {
         }
     }
 
-    char *PhysicalProperty_getIsVersionOfValue(PhysicalProperty *property){
+    char *PhysicalProperty_getIsVersionOfValue(PhysicalProperty *property) {
         try {
-            const std::string& str = property->getIsVersionOfValue();
+            const std::string &str = property->getIsVersionOfValue();
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
             strcpy(cstr, str.c_str());
             return cstr;
@@ -853,7 +839,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProperty *PhysicalProperty_isVersionOf(PhysicalProperty *property, const char *is_version_of){
+    PhysicalProperty *PhysicalProperty_isVersionOf(PhysicalProperty *property, const char *is_version_of) {
         try {
             property->isVersionOf(is_version_of);
             return property;
@@ -864,9 +850,9 @@ namespace omexmeta {
     }
 
 
-    char *PhysicalProperty_getIsPropertyOfValue(PhysicalProperty *property){
+    char *PhysicalProperty_getIsPropertyOfValue(PhysicalProperty *property) {
         try {
-            const std::string& str = property->getIsPropertyOfValue();
+            const std::string &str = property->getIsPropertyOfValue();
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
             strcpy(cstr, str.c_str());
             return cstr;
@@ -876,7 +862,7 @@ namespace omexmeta {
         }
     }
 
-    int PhysicalProperty_delete(PhysicalProperty* property){
+    int PhysicalProperty_delete(PhysicalProperty *property) {
         try {
             delete property;
             return 0;
@@ -887,24 +873,13 @@ namespace omexmeta {
     }
 
 
-/*********************************************************************
+    /*********************************************************************
  * PhysicalEntity class methods
  */
 
 
     int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr) {
         try {
-            delete physical_entity_ptr;
-            return 0;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return -1;
-        }
-    }
-
-    int PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr) {
-        try {
-            physical_entity_ptr->free();
             delete physical_entity_ptr;
             return 0;
         } catch (std::exception &error) {
@@ -937,7 +912,7 @@ namespace omexmeta {
 
     char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr) {
         try {
-            const std::string& about = physical_entity_ptr->getAbout();
+            const std::string &about = physical_entity_ptr->getAbout();
             char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
             strcpy(cstr, about.c_str());
             return cstr;
@@ -980,21 +955,7 @@ namespace omexmeta {
         }
     }
 
-    char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri) {
-        try {
-            Triples triples = physical_entity_ptr->toTriples();
-            std::string str = triples.str(format, base_uri);
-            triples.freeTriples();
-            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
-            strcpy(cstr, str.c_str());
-            return cstr;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
-        }
-    }
-
-    PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property) {
+    PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty *property) {
         try {
 
             physical_entity_ptr->hasProperty(*property);
@@ -1005,7 +966,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) {
+    PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char *isVersionOf) {
         try {
 
             physical_entity_ptr->hasProperty(isVersionOf);
@@ -1016,7 +977,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+    PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of) {
         try {
 
             physical_entity_ptr->hasProperty(property_about, about_uri_type, is_version_of);
@@ -1069,17 +1030,6 @@ namespace omexmeta {
         }
     }
 
-    int PhysicalProcess_freeAll(PhysicalProcess *physicalProcess) {
-        try {
-            physicalProcess->free();
-            delete physicalProcess;
-            return 0;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return -1;
-        }
-    }
-
     PhysicalProcess *
     PhysicalProcess_addSource(PhysicalProcess *physical_process,
                               const char *physical_entity_reference, eUriType type, double multiplier) {
@@ -1116,22 +1066,7 @@ namespace omexmeta {
         }
     }
 
-    char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri) {
-        try {
-            Triples triples = physical_process_ptr->toTriples();
-            std::string str = triples.str(format, base_uri);
-            triples.freeTriples();
-            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
-            strcpy(cstr, str.c_str());
-            return cstr;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
-        }
-    }
-
-
-    PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty* property) {
+    PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty *property) {
         try {
 
             physical_process_ptr->hasProperty(*property);
@@ -1142,7 +1077,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) {
+    PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char *isVersionOf) {
         try {
 
             physical_process_ptr->hasProperty(isVersionOf);
@@ -1153,7 +1088,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+    PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of) {
         try {
 
             physical_process_ptr->hasProperty(property_about, about_uri_type, is_version_of);
@@ -1213,7 +1148,7 @@ namespace omexmeta {
         }
     }
 
-    PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type){
+    PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type) {
         try {
             physical_process_ptr->isVersionOf(version, type);
             return physical_process_ptr;
@@ -1233,20 +1168,8 @@ namespace omexmeta {
         }
     }
 
-    int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr) {
-        try {
-            energy_diff_ptr->free();
-            delete energy_diff_ptr;
-            return 0;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return -1;
-        }
-    }
-
-
     EnergyDiff *EnergyDiff_addSource(EnergyDiff *energy_diff_ptr,
-                                           const char *physical_entity_reference, eUriType type) {
+                                     const char *physical_entity_reference, eUriType type) {
         try {
             energy_diff_ptr->addSource(physical_entity_reference, type);
             return energy_diff_ptr;
@@ -1257,7 +1180,7 @@ namespace omexmeta {
     }
 
     EnergyDiff *EnergyDiff_addSink(EnergyDiff *energy_diff_ptr,
-                                         const char *physical_entity_reference, eUriType type) {
+                                   const char *physical_entity_reference, eUriType type) {
         try {
             energy_diff_ptr->addSink(physical_entity_reference, type);
             return energy_diff_ptr;
@@ -1268,7 +1191,7 @@ namespace omexmeta {
     }
 
     EnergyDiff *EnergyDiff_setPhysicalProperty(EnergyDiff *energy_diff_ptr, const char *subject_metaid,
-                                                     const char *physical_property) {
+                                               const char *physical_property) {
         try {
             energy_diff_ptr->setPhysicalProperty(subject_metaid, physical_property);
             return energy_diff_ptr;
@@ -1296,22 +1219,7 @@ namespace omexmeta {
         }
     }
 
-    char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri) {
-        try {
-            Triples triples = energy_diff_ptr->toTriples();
-            std::string str = triples.str(format, base_uri);
-            triples.freeTriples();
-            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
-            strcpy(cstr, str.c_str());
-            return cstr;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
-        }
-    }
-
-
-    EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *energy_diff_ptr, PhysicalProperty* property) {
+    EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *energy_diff_ptr, PhysicalProperty *property) {
         try {
 
             energy_diff_ptr->hasProperty(*property);
@@ -1322,7 +1230,7 @@ namespace omexmeta {
         }
     }
 
-    EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *energy_diff_ptr, const char* isVersionOf) {
+    EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *energy_diff_ptr, const char *isVersionOf) {
         try {
 
             energy_diff_ptr->hasProperty(isVersionOf);
@@ -1333,7 +1241,7 @@ namespace omexmeta {
         }
     }
 
-    EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *energy_diff_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) {
+    EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *energy_diff_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of) {
         try {
 
             energy_diff_ptr->hasProperty(property_about, about_uri_type, is_version_of);
@@ -1347,7 +1255,7 @@ namespace omexmeta {
 
     char *EnergyDiff_getAbout(EnergyDiff *energy_diff_ptr) {
         try {
-            const std::string& about = energy_diff_ptr->getAbout();
+            const std::string &about = energy_diff_ptr->getAbout();
             char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
             strcpy(cstr, about.c_str());
             return cstr;
@@ -1528,7 +1436,6 @@ namespace omexmeta {
             return -1;
         }
     }
-
 
 
 }// namespace omexmeta

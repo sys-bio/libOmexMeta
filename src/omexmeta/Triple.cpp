@@ -7,6 +7,8 @@
 #include <omexmeta/UriHandler.h>
 
 namespace omexmeta {
+
+
     Triple::Triple(UriHandler &uriHandler)
         : uriHandler_(uriHandler) {}
 
@@ -263,10 +265,6 @@ namespace omexmeta {
 
     void Triple::freeTriple() {
         freeStatement();
-    }
-
-    void Triple::freeTripleAndUris() {
-        freeStatementAndUris();
     }
 
     const std::string &Triple::getLocalUri() const {

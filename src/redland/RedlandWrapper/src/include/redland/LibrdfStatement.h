@@ -16,7 +16,7 @@ namespace redland {
 
     class LibrdfStatement {
     public:
-        ~LibrdfStatement();
+        virtual ~LibrdfStatement();
 
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
@@ -91,8 +91,6 @@ namespace redland {
         void setPredicate(librdf_node *node);
 
         bool isComplete();
-
-        [[deprecated("do not use")]] void freeStatementAndUris();
 
         [[maybe_unused]] [[nodiscard]] std::string getPredicateNamespaceStr() const;
 

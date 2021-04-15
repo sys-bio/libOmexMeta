@@ -107,7 +107,7 @@ namespace redland {
         librdf_free_uri(uri_);
 
         // set to null if uri was freed and not decremented
-        if (usageCount == 0) {
+        if (usageCount - 1 == 0) {
             uri_ = nullptr;
         }
     }
