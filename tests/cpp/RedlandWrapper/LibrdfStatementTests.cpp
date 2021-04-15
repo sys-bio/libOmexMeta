@@ -33,7 +33,7 @@ TEST_F(LibrdfStatementTests, TestMoveConstructor) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
     redland::LibrdfStatement statement2 = std::move(statement1);
     std::string expected = "subject";
-    std::string actual = statement2.getSubjectStr();
+    std::string actual = statement2.getSubjectNode().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -42,7 +42,7 @@ TEST_F(LibrdfStatementTests, TestMoveAssignment) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
                                                           resource);
     redland::LibrdfStatement statement2 = std::move(statement1);
-    std::string actual = statement2.getSubjectStr();
+    std::string actual = statement2.getSubjectNode().str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -52,7 +52,7 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
                                                           resource);
     std::string expected = "predicate";
-    std::string actual = statement1.getPredicateStr();
+    std::string actual = statement1.getPredicateNode().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -60,7 +60,7 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr2) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
                                                           resource);
     std::string expected = "predicate";
-    std::string actual = statement1.getPredicateStr();
+    std::string actual = statement1.getPredicateNode().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -143,7 +143,7 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality3) {
 TEST_F(LibrdfStatementTests, TestToStatementSubject) {
     LibrdfStatement statement = LibrdfStatement(
             subject, predicate, resource);
-    std::string actual = statement.getSubjectStr();
+    std::string actual = statement.getSubjectNode().str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -152,7 +152,7 @@ TEST_F(LibrdfStatementTests, TestToStatementSubject) {
 TEST_F(LibrdfStatementTests, TestPartial1) {
     LibrdfStatement statement;
     statement.setSubject(subject.get());
-    std::string actual = statement.getSubjectStr();
+    std::string actual = statement.getSubjectNode().str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

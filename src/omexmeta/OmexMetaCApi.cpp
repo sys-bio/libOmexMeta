@@ -772,7 +772,7 @@ namespace omexmeta {
 
     char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation) {
         try {
-            std::string predicate_str = singular_annotation->getPredicateStr();
+            std::string predicate_str = singular_annotation->getPredicateNode().str();
             char *cstr = (char *) malloc((predicate_str.size() + 1) * sizeof(char));
             strcpy(cstr, predicate_str.c_str());
             return cstr;
@@ -784,7 +784,7 @@ namespace omexmeta {
 
     char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation) {
         try {
-            std::string resource = singular_annotation->getResourceStr();
+            std::string resource = singular_annotation->getResourceNode().str();
             char *cstr = (char *) malloc((resource.size() + 1) * sizeof(char));
             strcpy(cstr, resource.c_str());
             return cstr;
@@ -949,7 +949,7 @@ namespace omexmeta {
 
     char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr) {
         try {
-            std::string identity = physical_entity_ptr->getIdentityResource().str();
+            std::string identity = physical_entity_ptr->getIdentityResource();
             char *cstr = (char *) malloc((identity.size() + 1) * sizeof(char));
             strcpy(cstr, identity.c_str());
             return cstr;
@@ -970,7 +970,7 @@ namespace omexmeta {
 
     char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index) {
         try {
-            std::string location = physical_entity_ptr->getLocationResources()[index].str();
+            std::string location = physical_entity_ptr->getLocationResources()[index];
             char *cstr = (char *) malloc((location.size() + 1) * sizeof(char *));
             strcpy(cstr, location.c_str());
             return cstr;

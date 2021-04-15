@@ -6,7 +6,6 @@ set(target OmexMetaTests)
 
 set(
         TEST_SOURCES
-        OmexMetaTestUtils.cpp # utilities used in tests
         SBMLFactory.h
         OmexMetaUtilsTests.cpp # tests for omexmeta utils class
         PredicateTests.cpp
@@ -59,7 +58,6 @@ add_test_executable(ElementExtractorTests OmexMetaTests ElementExtractorTests.cp
 add_test_executable(EnergyDiffTests OmexMetaTests EnergyDiffTests.cpp)
 add_test_executable(MarkupIdentifierTests OmexMetaTests MarkupIdentifierTests.cpp)
 add_test_executable(MetaIDTests OmexMetaTests MetaIDTests.cpp)
-add_test_executable(OmexMetaTestUtils OmexMetaTests OmexMetaTestUtils.cpp)
 add_test_executable(ParticipantTests OmexMetaTests ParticipantTests.cpp)
 add_test_executable(PersonalInformationTests OmexMetaTests PersonalInformationTests.cpp)
 add_test_executable(PhysicalEntityTests OmexMetaTests PhysicalEntityTests.cpp)
@@ -70,7 +68,6 @@ add_test_executable(PredicateTests OmexMetaTests PredicateTests.cpp)
 add_test_executable(QueryTests OmexMetaTests QueryTests.cpp)
 add_test_executable(RDFTests OmexMetaTests RDFTests.cpp)
 add_test_executable(SBMLSemanticExtractionTests OmexMetaTests SBMLSemanticExtractionTests.cpp)
-add_test_executable(SemsimCombineArchiveTests OmexMetaTests SemsimCombineArchiveTests.cpp)
 add_test_executable(TripleTests OmexMetaTests TripleTests.cpp)
 add_test_executable(TriplesTests OmexMetaTests TriplesTests.cpp)
 add_test_executable(UrlHandlerTests OmexMetaTests UrlHandlerTests.cpp )

@@ -4,7 +4,6 @@
 
 #include "gtest/gtest.h"
 
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
 
@@ -86,7 +85,7 @@ TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5>\n"
                            "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n"
                            "\n";
-    OmexMetaTestUtils::equals(&rdf, expected);
+    RDF::equals(&rdf, expected);
 }
 
 TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
@@ -126,7 +125,7 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
                            "\n";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    OmexMetaTestUtils::equals(&rdf, expected);
+    RDF::equals(&rdf, expected);
 }
 
 TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
@@ -233,7 +232,7 @@ TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
                            "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    OmexMetaTestUtils::equals(&rdf, expected);
+    RDF::equals(&rdf, expected);
 }
 
 

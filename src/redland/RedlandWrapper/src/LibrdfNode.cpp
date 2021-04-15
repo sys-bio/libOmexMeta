@@ -393,7 +393,7 @@ namespace redland {
         return ns.str();
     }
 
-    unsigned int LibrdfNode::getUsage() {
+    unsigned int LibrdfNode::getUsage() const {
         return node_->usage;
     };
 

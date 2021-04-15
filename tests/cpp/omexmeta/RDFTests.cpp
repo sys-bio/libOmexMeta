@@ -3,7 +3,6 @@
 //
 
 #include "AnnotationSamples.h"
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "omexmeta/RDF.h"
 #include "gtest/gtest.h"
@@ -130,7 +129,7 @@ TEST_F(RDFTests, TestToString) {
                            "";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
@@ -341,7 +340,7 @@ public:
 
 TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes) {
     RDF rdf = RDF::fromString(input_string, "turtle");
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "rdfxml"));
 }
 
 TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes) {
@@ -354,6 +353,6 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes) {
     RDF rdf = RDF::fromFile(fname.string(), "turtle");
     std::string output = rdf.toString("rdfxml-abbrev");
 
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "rdfxml"));
     remove(fname.string().c_str());
 }

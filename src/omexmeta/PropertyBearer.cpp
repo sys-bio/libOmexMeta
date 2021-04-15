@@ -24,7 +24,7 @@ namespace omexmeta {
           physical_property_(PhysicalProperty(model_, uriHandler)) {
     }
 
-    const std::string &PropertyBearer::getSubjectStr() const {
+    const std::string &PropertyBearer::getPropertyAbout() const {
         return physical_property_.getAbout();
     }
 

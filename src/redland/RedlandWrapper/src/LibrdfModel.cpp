@@ -49,11 +49,11 @@ namespace redland {
 
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
-        librdf_model_add_statement(get(), statement);
+        librdf_model_add_statement(model_, statement);
     }
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
-        librdf_model_add_statement(get(), statement.get());
+        librdf_model_add_statement(model_, statement.getWithoutIncrement());
     }
 
     librdf_model *LibrdfModel::get() const {
@@ -79,7 +79,7 @@ namespace redland {
      * @return void
      */
     void LibrdfModel::removeStatement(const LibrdfStatement &statement) const {
-        librdf_model_remove_statement(model_, statement.get());
+        librdf_model_remove_statement(model_, statement.getWithoutIncrement());
     }
 
     /*
@@ -154,31 +154,31 @@ namespace redland {
     }
 
     librdf_storage *LibrdfModel::getStorage() const {
-        return librdf_model_get_storage(get());
+        return librdf_model_get_storage(model_);
     }
 
     int LibrdfModel::commitTransaction() const {
-        return librdf_model_transaction_commit(get());
+        return librdf_model_transaction_commit(model_);
     }
 
     int LibrdfModel::startTransaction() const {
-        return librdf_model_transaction_start(get());
+        return librdf_model_transaction_start(model_);
     }
 
     void *LibrdfModel::getTransactionHandle() const {
-        return librdf_model_transaction_get_handle(get());
+        return librdf_model_transaction_get_handle(model_);
     }
 
     int LibrdfModel::startTransactionWithHandle(void *handle) const {
-        return librdf_model_transaction_start_with_handle(get(), handle);
+        return librdf_model_transaction_start_with_handle(model_, handle);
     }
 
     int LibrdfModel::getTransactionRollback() const {
-        return librdf_model_transaction_rollback(get());
+        return librdf_model_transaction_rollback(model_);
     }
 
     int LibrdfModel::supportsContexts() const {
-        return librdf_model_supports_contexts(get());
+        return librdf_model_supports_contexts(model_);
     }
     bool LibrdfModel::containsStatement(librdf_statement *statement) const {
         bool contains_statement = false;

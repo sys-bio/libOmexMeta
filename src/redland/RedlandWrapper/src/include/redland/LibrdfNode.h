@@ -140,7 +140,7 @@ namespace redland {
         /**
          * @brief returns the usage of the underlying librdf_node pointer
          */
-         unsigned int getUsage();
+         unsigned int getUsage() const;
 
          void incrementUsageCount();
 

@@ -92,7 +92,7 @@ namespace redland {
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
         LibrdfNode node = LibrdfNode::fromLiteral(value);
         LibrdfUri u(feature_uri_base + option);
-        int failed = librdf_parser_set_feature(parser, u.get(), node.get());
+        int failed = librdf_parser_set_feature(parser, u.getWithoutIncrement(), node.getWithoutIncrement());
         if (failed < 0 ){
             throw std::invalid_argument("No such feature: " + feature_uri_base);
         }
@@ -100,8 +100,6 @@ namespace redland {
             throw std::invalid_argument(
                     "Trying to set parser option " + option + " to value " + value + "but couldn't");
         }
-        u.freeUri();
-        node.freeNode();
     }
 
     void LibrdfParser::setOptions(librdf_parser *parser) {
@@ -146,15 +144,13 @@ namespace redland {
         LibrdfUri u(base_uri);
         librdf_parser_parse_string_into_model(
                 parser_, (const unsigned char *) rdf_string.c_str(),
-                u.get(), model.get());
-        u.freeUri();
+                u.getWithoutIncrement(), model.get());
     }
 
     void LibrdfParser::parseUri(const std::string &uri_string, const LibrdfModel &model) const {
         LibrdfUri uri(uri_string);
         librdf_parser_parse_into_model(
-                parser_, uri.get(), uri.get(), model.get());
-        uri.freeUri();
+                parser_, uri.getWithoutIncrement(), uri.getWithoutIncrement(), model.get());
     }
 
     void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model) const {

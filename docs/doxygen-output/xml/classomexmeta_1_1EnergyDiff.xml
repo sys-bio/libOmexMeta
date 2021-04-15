@@ -789,7 +789,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1EnergyDiff_1aee6e2c39d0d8db5cf26b49cd34514716" prot="public" virt="virtual"><scope>omexmeta::EnergyDiff</scope><name>getPropertyMetaidBase</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1ab8530b24901f539967c5b51d57b2ed98" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getSinks</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a233d2ccf116a4ddcd87f853faabe0824" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getSources</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getSubjectStr</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getType</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a55a0a62c0bb16b47ea1ef5dbc0b0a817" prot="public" virt="virtual"><scope>omexmeta::EnergyDiff</scope><name>hasProperty</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1af92aa22ac718d0707c9245c9483a8bcc" prot="public" virt="virtual"><scope>omexmeta::EnergyDiff</scope><name>hasProperty</name></member>

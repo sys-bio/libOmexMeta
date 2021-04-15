@@ -3,7 +3,6 @@
 //
 
 #include "CellMLFactory.h"
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "librdf.h"
 #include "omexmeta/PhysicalEntity.h"
@@ -390,9 +389,6 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntitySameTriplesGeneratedEveryTime) {
 
     Triples triples2 = physicalEntity.toTriples();
     ASSERT_TRUE(RDF::equals(triples2, expected, "turtle"));
-
-    triples1.freeTriples();
-    triples2.freeTriples();
 }
 
 
@@ -438,44 +434,36 @@ TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForStatements) {
     ASSERT_EQ(1, triple2.getStatement()->usage);
     ASSERT_EQ(1, triple3.getStatement()->usage);
     ASSERT_EQ(1, triple4.getStatement()->usage);
-
-    triple4.freeStatement();
-    triple3.freeStatement();
-    triple2.freeStatement();
-    triple1.freeStatement();
 }
 
-TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForTerms) {
+TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForTermsAndUris) {
+
     Triples triples = physicalEntity.toTriples();
+    //    RDF rdf;
+    //    rdf.addTriples(triples);
+    //    std::cout << rdf.toString() << std::endl;
+    /**
+     * The act of calling Triples::operator[] copies the node reference
+     * incrementing the reference counter by 1 until the current scope
+     * ends, when the extra copy is deleted. A scope here is
+     * `triples[0].getSubjectNode().getUsage()` since its a temporary object
+     */
+    ASSERT_EQ(1 + 1, triples[0].getSubjectNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[0].getPredicateNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[0].getResourceNode().getUsage());
 
-    // unpack triples
-    Triple triple4 = triples.pop();
-    Triple triple3 = triples.pop();
-    Triple triple2 = triples.pop();
-    Triple triple1 = triples.pop();
+    ASSERT_EQ(1 + 1, triples[1].getSubjectNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[1].getPredicateNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[1].getResourceNode().getUsage());
 
-    // make sure we've emptied the triples object
-    ASSERT_EQ(0, triples.size());
+    ASSERT_EQ(1 + 1, triples[2].getSubjectNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[2].getPredicateNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[2].getResourceNode().getUsage());
 
-    ASSERT_EQ(1, triple1.getSubjectAsRawNode()->usage);
-    ASSERT_EQ(1, triple2.getSubjectAsRawNode()->usage);
-    ASSERT_EQ(1, triple3.getSubjectAsRawNode()->usage);
-    ASSERT_EQ(1, triple4.getSubjectAsRawNode()->usage);
+    ASSERT_EQ(1 + 1, triples[3].getSubjectNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[3].getPredicateNode().getUsage());
+    ASSERT_EQ(1 + 1, triples[3].getResourceNode().getUsage());
 
-    ASSERT_EQ(1, triple1.getPredicateAsRawNode()->usage);
-    ASSERT_EQ(1, triple2.getPredicateAsRawNode()->usage);
-    ASSERT_EQ(1, triple3.getPredicateAsRawNode()->usage);
-    ASSERT_EQ(1, triple4.getPredicateAsRawNode()->usage);
-
-    ASSERT_EQ(1, triple1.getResourceAsRawNode()->usage);
-    ASSERT_EQ(1, triple2.getResourceAsRawNode()->usage);
-    ASSERT_EQ(1, triple3.getResourceAsRawNode()->usage);
-    ASSERT_EQ(1, triple4.getResourceAsRawNode()->usage);
-
-    triple4.freeStatement();
-    triple3.freeStatement();
-    triple2.freeStatement();
-    triple1.freeStatement();
 }
 
 
@@ -516,14 +504,13 @@ TEST_F(DeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
 TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple1) {
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("species0000").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234").get());
+            LibrdfNode::fromUriString("species0000"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(0, rdf.size());
-    triple.freeTriple();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple2) {
@@ -535,14 +522,13 @@ TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple2) {
  */
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("species0000").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf").get(),
-            LibrdfNode::fromUriString("EntityProperty0001").get());
+            LibrdfNode::fromUriString("species0000"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
+            LibrdfNode::fromUriString("EntityProperty0001"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(0, rdf.size());
-    triple.freeTriple();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple3) {
@@ -554,14 +540,13 @@ TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple3) {
      */
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("#Meta00001").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345").get());
+            LibrdfNode::fromUriString("#Meta00001"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
+            LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(0, rdf.size());
-    triple.freeTriple();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple4) {
@@ -573,42 +558,39 @@ TEST_F(DeletePhysicalEntity, TestRemoveSingleTriple4) {
  */
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(0, rdf.size());
-    triple.freeTriple();
 }
 
-TEST_F(DeletePhysicalEntity, TestRemoveSingleTripleWithFreeInMiddle) {
+TEST_F(DeletePhysicalEntity, TestRemoveSingleTripleTwoTriples) {
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
-    triple.freeTriple();
 
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     editor.removeSingleAnnotation(triple2);
     ASSERT_EQ(0, rdf.size());
-    triple2.freeTriple();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveSingleTripleFromTriples) {
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples(1);
     triples.moveBack(triple);
@@ -621,15 +603,12 @@ TEST_F(DeletePhysicalEntity, TestRemoveSingleTripleFromTriples) {
     // check rdf size
     ASSERT_EQ(1, rdf.size());
 
-    // free triples
-    triples.freeTriples();
-
     // get the Triples again. Same content, different instance
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples2(1);
     triples2.moveBack(triple2);
@@ -641,22 +620,20 @@ TEST_F(DeletePhysicalEntity, TestRemoveSingleTripleFromTriples) {
     // should be no triples left now in rdf
     ASSERT_EQ(0, rdf.size());
 
-    // free
-    triples2.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesDifferentContent) {
     // Here these triples have different content. Next test they have same content.
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol1").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf1").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:12341").get());
+            LibrdfNode::fromUriString("cytosol1"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf1"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:12341"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol2").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf2").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:12342").get());
+            LibrdfNode::fromUriString("cytosol2"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf2"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:12342"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -678,21 +655,20 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesDifferentContent)
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameSubject) {
     // Here these triples have different content. Next test they have same content.
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf1").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:12341").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf1"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:12341"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf2").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:12342").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf2"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:12342"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -714,21 +690,20 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameSubject) {
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate) {
     // Here these triples have different content. Next test they have same content.
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:12341").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:12341"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:12342").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:12342"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -750,21 +725,20 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPre
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource) {
     // Here these triples have different content. Next test they have same content.
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf1").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf1"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf2").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf2"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -786,21 +760,20 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameSubjectAndRes
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource) {
     // Here these triples have different content. Next test they have same content.
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol1").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("cytosol1"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol2").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("cytosol2"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -822,7 +795,6 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSamePredicateAndR
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameEverything) {
@@ -832,15 +804,15 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameEverything) {
      */
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
 
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -867,20 +839,19 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameEverything) {
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle) {
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples(2);
     triples.moveBack(triple1);
@@ -896,18 +867,18 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle)
     ASSERT_EQ(1, rdf.size());
 
     // free triples
-    triples.freeTriples();
+
 
     Triple triple3(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     Triple triple4(
             uriHandler,
-            LibrdfNode::fromUriString("#cytosol").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/fma:1234").get());
+            LibrdfNode::fromUriString("#cytosol"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/fma:1234"));
     // put triple in Triples
     Triples triples2(2);
     triples2.moveBack(triple3);
@@ -921,7 +892,6 @@ TEST_F(DeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle)
     ASSERT_EQ(0, rdf.size());
 
     // free
-    triples2.freeTriples();
 }
 
 
@@ -934,25 +904,23 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2Sequential) {
  */
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("species0000").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234").get());
+            LibrdfNode::fromUriString("species0000"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(0, rdf.size());
-    triple.freeTriple();
 
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("species0000").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf").get(),
-            LibrdfNode::fromUriString("EntityProperty0001").get());
+            LibrdfNode::fromUriString("species0000"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
+            LibrdfNode::fromUriString("EntityProperty0001"));
     editor.addSingleAnnotation(triple2);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple2);
     ASSERT_EQ(0, rdf.size());
-    triple2.freeTriple();
 }
 
 TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd) {
@@ -964,9 +932,9 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtE
  */
     Triple triple(
             uriHandler,
-            LibrdfNode::fromUriString("https://uri.com#species0000").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf").get(),
-            LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234").get());
+            LibrdfNode::fromUriString("https://uri.com#species0000"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
+            LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234"));
     editor.addSingleAnnotation(triple);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple);
@@ -974,15 +942,13 @@ TEST_F(DeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtE
 
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("https://uri.com#species0000").get(),
-            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf").get(),
-            LibrdfNode::fromUriString("EntityProperty0001").get());
+            LibrdfNode::fromUriString("https://uri.com#species0000"),
+            LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
+            LibrdfNode::fromUriString("EntityProperty0001"));
     editor.addSingleAnnotation(triple2);
     ASSERT_EQ(1, rdf.size());
     editor.removeSingleAnnotation(triple2);
     ASSERT_EQ(0, rdf.size());
-    triple.freeTriple();
-    triple2.freeTriple();
 }
 
 TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntity) {
@@ -1008,7 +974,6 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
         editor.removeSingleAnnotation(it);
     }
     ASSERT_EQ(0, rdf.size());
-    triples.freeTriples();
 }
 
 TEST_F(DeletePhysicalEntity,
@@ -1023,42 +988,15 @@ TEST_F(DeletePhysicalEntity,
     std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
         editor.addSingleAnnotationNoValidation(it);
-        editor.addNamespaceFromAnnotation(it.getPredicateStr());
+        editor.addNamespaceFromAnnotation(it.getPredicateNode().str());
     }
     ASSERT_EQ(4, rdf.size());
     for (auto &it : triples) {
         editor.removeSingleAnnotation(it);
     }
     ASSERT_EQ(0, rdf.size());
-    triples.freeTriples();
 }
 
-TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle) {
-    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
-    physicalEntity
-            .about("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000")
-            .hasProperty("opb:opb_1234")
-            .is("uniprot/PD12345")
-            .isPartOf("fma:1234");
-    Triples triples = physicalEntity.toTriples();
-    for (auto &it : triples) {
-        editor.addSingleAnnotationNoValidation(it);
-        editor.addNamespaceFromAnnotation(it.getPredicateStr());
-    }
-    ASSERT_EQ(4, rdf.size());
-    triples.freeTriples();
-
-    Triples triples2 = physicalEntity.toTriples();
-    for (auto &it : triples2) {
-        editor.removeSingleAnnotation(it);
-        librdf_free_statement(it.getStatement());
-    }
-    ASSERT_EQ(0, rdf.size());
-    // there is a problem here whereby  removeSingleAnnotation implicitely calls
-    // librdf_free_Statemetn. redland does this, not me. However this doesn't
-    // free some triples in triples2. So why not?
-    // triples2.freeTriples(); // no. removeSingleAnnotation will free statements
-}
 
 TEST_F(DeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
@@ -1097,5 +1035,4 @@ TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
     editor.removeSingleAnnotation(triple);
     ASSERT_EQ(3, rdf.size());
 
-    triple.freeTriple();
 }

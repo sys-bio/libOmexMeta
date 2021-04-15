@@ -389,7 +389,7 @@
     <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" kind="function"><name>getSubjectAsRawNode</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" kind="function"><name>getPredicateAsRawNode</name></member>
     <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" kind="function"><name>getResourceAsRawNode</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" kind="function"><name>getSubjectStr</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" kind="function"><name>getAbout</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" kind="function"><name>getPredicateStr</name></member>
     <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" kind="function"><name>getResourceStr</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a700219b2fed175a96fecfbd905d20ab1" kind="function"><name>checkForNull</name></member>
@@ -797,7 +797,7 @@
     <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" kind="function"><name>getType</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3" kind="function"><name>getPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1adccf527f59eaebc1baf88dfce3ae9664" kind="function"><name>toTriples</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" kind="function"><name>getSubjectStr</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" kind="function"><name>getAbout</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035" kind="function"><name>setType</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" kind="function"><name>getModelUri</name></member>

@@ -110,10 +110,6 @@ namespace omexmeta {
             for (auto &it : physical_property_triples) {
                 triples.moveBack(it);// moves the statement
             }
-            // we do not need to freeTriples here
-            // since the move gives ownership to triples object
-            //
-//             physical_property_triples.freeTriples();
         }
 
         // the "what" part of physical entity triple

@@ -553,9 +553,9 @@ Refer to subclasses for more documentation. </para>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::PropertyBearer::getSubjectStr</definition>
+        <definition>const std::string &amp; omexmeta::PropertyBearer::getAbout</definition>
         <argsstring>() const</argsstring>
-        <name>getSubjectStr</name>
+        <name>getAbout</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -851,7 +851,7 @@ Refer to subclasses for more documentation. </para>
       <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" prot="protected" virt="non-virtual"><scope>omexmeta::PropertyBearer</scope><name>getNewMetaidExclusionList</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3" prot="public" virt="non-virtual"><scope>omexmeta::PropertyBearer</scope><name>getPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a8f819ed67e63c84aecff651cca4b945c" prot="public" virt="virtual"><scope>omexmeta::PropertyBearer</scope><name>getPropertyMetaidBase</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PropertyBearer</scope><name>getSubjectStr</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PropertyBearer</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" prot="public" virt="non-virtual"><scope>omexmeta::PropertyBearer</scope><name>getType</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ab70ef1dec50691f1731de28462ca3012" prot="public" virt="virtual"><scope>omexmeta::PropertyBearer</scope><name>hasProperty</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a6b21c3a4e722fbc37540203d8bc72a5c" prot="public" virt="virtual"><scope>omexmeta::PropertyBearer</scope><name>hasProperty</name></member>

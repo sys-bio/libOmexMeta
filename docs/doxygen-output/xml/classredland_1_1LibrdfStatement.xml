@@ -297,9 +297,9 @@
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string redland::LibrdfStatement::getSubjectStr</definition>
+        <definition>std::string redland::LibrdfStatement::getAbout</definition>
         <argsstring>() const</argsstring>
-        <name>getSubjectStr</name>
+        <name>getAbout</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -604,7 +604,7 @@
       <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResourceAsRawNode</name></member>
       <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getResourceStr</name></member>
       <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubjectAsRawNode</name></member>
-      <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getSubjectStr</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getAbout</name></member>
       <member refid="classredland_1_1LibrdfStatement_1af8417e75a1ddb953c64c36b6028d3448" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>getUsages</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a84a6fae7f1879c2f033001a9927627b0" prot="public" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>isComplete</name></member>
       <member refid="classredland_1_1LibrdfStatement_1a4cbbbf99d094cea4569324a8c67789fb" prot="protected" virt="non-virtual"><scope>redland::LibrdfStatement</scope><name>LibrdfStatement</name></member>

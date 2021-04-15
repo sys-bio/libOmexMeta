@@ -6,7 +6,6 @@
 #include "librdf.h"
 #include "omexmeta/RDF.h"
 #include "omexmeta/Participant.h"
-#include "OmexMetaTestUtils.h"
 
 using namespace omexmeta;
 
@@ -101,7 +100,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
                            "";
     std::string actual = triple.str();
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(triple, expected));
+    ASSERT_TRUE(RDF::equals(triple, expected));
     triple.freeStatement();
 }
 
@@ -125,8 +124,8 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
                            "local:SinkParticipant\n"
                            "    semsim:hasSinkParticipant <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .\n"
                            "\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
-    triples.freeTriples();
+    ASSERT_TRUE(RDF::equals(triples, expected));
+
 }
 
 TEST_F(ParticipantTests, TestToTriples1) {
@@ -148,8 +147,8 @@ TEST_F(ParticipantTests, TestToTriples1) {
                            "<https://metaid>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
                            "\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
-    triples.freeTriples();
+    ASSERT_TRUE(RDF::equals(triples, expected));
+
 }
 
 TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
@@ -171,8 +170,8 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
-    triples.freeTriples();
+    ASSERT_TRUE(RDF::equals(triples, expected));
+
 }
 
 TEST_F(ParticipantTests, TestToTriplesMediator) {
@@ -194,8 +193,8 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
                            "    semsim:hasMediatorParticipant local:MediatorParticipant0000 .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(triples, expected));
-    triples.freeTriples();
+    ASSERT_TRUE(RDF::equals(triples, expected));
+
 }
 
 class ParticipantTestsToTriplesTwice : public ::testing::Test {
@@ -246,7 +245,7 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesRefAccountability) {
     ASSERT_EQ(1, triples1[0].getResourceAsRawNode()->usage);
     ASSERT_EQ(1, triples1[1].getResourceAsRawNode()->usage);
     ASSERT_EQ(1, triples1[2].getResourceAsRawNode()->usage);
-    triples1.freeTriples();
+
 }
 
 /*
@@ -303,8 +302,8 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwice) {
      * But the Uri's can be shared
      */
 
-    triples1.freeTriples();
-    triples2.freeTriples();
+
+
 }
 
 TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
@@ -329,8 +328,8 @@ TEST_F(ParticipantTestsToTriplesTwice, TestToTriplesTwiceMemoryAddresses) {
     ASSERT_EQ(triples1[0].getResourceAsRawNode()->value.uri, triples2[0].getResourceAsRawNode()->value.uri);
     ASSERT_EQ(triples1[0].getPredicateAsRawNode()->value.uri, triples2[0].getPredicateAsRawNode()->value.uri);
 
-    triples1.freeTriples();
-    triples2.freeTriples();
+
+
 }
 
 
@@ -355,7 +354,7 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     }
     ASSERT_EQ(8, triples.size());
 
-    triples.freeTriples();
+
 
 }
 

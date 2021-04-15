@@ -7,7 +7,6 @@
 #include "omexmeta/Triple.h"
 #include "gtest/gtest.h"
 #include <omexmeta/RDF.h>
-#include "OmexMetaTestUtils.h"
 
 using namespace omexmeta;
 
@@ -37,7 +36,7 @@ TEST_F(PhysicalPropertyTests, TestPhysicalProperty) {
             .isVersionOf("opb/OPB_12345")
             .isPropertyOf("entity0", MODEL_URI);
     Triples triples = physicalProperty.toTriples();
-    triples.freeTriples();
+
     ASSERT_STREQ("http://omex-library.org/NewOmex.omex/NewModel.xml#species0000", physicalProperty.getAbout().c_str());
     ASSERT_STREQ("http://omex-library.org/NewOmex.omex/NewModel.xml#entity0", physicalProperty.getIsPropertyOfValue().c_str());
     ASSERT_STREQ("opb/OPB_12345", physicalProperty.getIsVersionOfValue().c_str());
@@ -50,7 +49,7 @@ TEST_F(PhysicalPropertyTests, TestPhysicalPropertyAutoGenerateAbout) {
 
     //the call to toTriples is the cue to do any autogeneration that is needed.
     Triples triples = physicalProperty.toTriples();
-    triples.freeTriples();
+
     ASSERT_STREQ("http://omex-library.org/NewOmex.omex/NewModel.rdf#Property0000", physicalProperty.getAbout().c_str());
     ASSERT_STREQ("http://omex-library.org/NewOmex.omex/NewModel.xml#entity0", physicalProperty.getIsPropertyOfValue().c_str());
     ASSERT_STREQ("opb/OPB_12345", physicalProperty.getIsVersionOfValue().c_str());
@@ -77,7 +76,7 @@ TEST_F(PhysicalPropertyTests, OptionalProperty) {
     physicalProperty.about("property_metaid_0", LOCAL_URI);
     Triples triples = physicalProperty.toTriples();
     ASSERT_EQ(1, triples.size());
-    triples.freeTriples();
+
 }
 
 

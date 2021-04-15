@@ -14,7 +14,7 @@
 
 using namespace omexmeta;
 
-class PhysicalPhenomenonTests : public ::testing::Test {
+class PhysicalPropertyBearerTests : public ::testing::Test {
 
 public:
     AnnotationSamples samples;
@@ -23,40 +23,40 @@ public:
     LibrdfModel model;
     UriHandler uriHandler;
 
-    PhysicalPhenomenonTests() {
+    PhysicalPropertyBearerTests() {
         model = LibrdfModel(storage.get());
     };
-    ~PhysicalPhenomenonTests() override {
+    ~PhysicalPropertyBearerTests() override {
         model.freeModel();
         storage.freeStorage();
     };
 };
 
 
-TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
+TEST_F(PhysicalPropertyBearerTests, TestSubjectStr) {
     LibrdfNode subject = LibrdfNode::fromUriString("metaid004");
     PhysicalProperty resource = PhysicalProperty(model.get(), uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
-    PropertyBearer phenomenon(
+    PropertyBearer propertyBearer(
             model.get(),
             uriHandler,
             resource,
             PHYSICAL_ENTITY);
     std::string expected = "metaid004";
-    std::string actual = phenomenon.getSubjectStr();
+    std::string actual = propertyBearer.getPropertyAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.freeNode();
 }
 
-TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
+TEST_F(PhysicalPropertyBearerTests, TestSubjectNodeToStr) {
     LibrdfNode subject = LibrdfNode::fromUriString("metaid004");
     PhysicalProperty resource = PhysicalProperty(model.get(), uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
-    PropertyBearer phenomenon(
+    PropertyBearer propertyBearer(
             model.get(),
             uriHandler,
             resource,
             PHYSICAL_ENTITY);
     std::string expected = "metaid004";
-    std::string actual = phenomenon.getSubjectStr();
+    std::string actual = propertyBearer.getPropertyAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.freeNode();
 }

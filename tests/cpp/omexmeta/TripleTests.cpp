@@ -3,7 +3,6 @@
 //
 
 #include "AnnotationSamples.h"
-#include "OmexMetaTestUtils.h"
 #include "omexmeta/Predicate.h"
 #include "omexmeta/Triple.h"
 #include "gtest/gtest.h"
@@ -35,8 +34,7 @@ public:
 
 TEST_F(TripleTests, TestInstantiation1) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
-    ASSERT_TRUE(true);// if we get this far the test has passed
-    triple.freeStatement();
+    // could fail with valgrind
 }
 
 TEST(TripleTestsNoFixture, TestInstantiationEmptyForBuilder) {
@@ -45,7 +43,6 @@ TEST(TripleTestsNoFixture, TestInstantiationEmptyForBuilder) {
     Triple triple(uriHandler);
     ASSERT_TRUE(triple.isEmpty());
     // remember to free the unused resources from test fixture
-    triple.freeStatement();
 }
 
 TEST_F(TripleTests, TestInstantiation2) {
@@ -53,52 +50,35 @@ TEST_F(TripleTests, TestInstantiation2) {
                   std::make_shared<Predicate>(predicate),
                   resource);
     ASSERT_TRUE(true);// if we get this far the test has passed
-    triple.freeStatement();
 }
 
-TEST_F(TripleTests, TestSubjectString) {
+TEST_F(TripleTests, TestSubjectStringUsingLibrdf) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
     std::string &expected = subject_str;
     librdf_node *node = triple.getSubjectAsRawNode();
     librdf_uri *uri = librdf_node_get_uri(node);
     const char *actual = (const char *) librdf_uri_as_string(uri);
     ASSERT_STREQ(expected.c_str(), actual);
-    triple.freeStatement();
+    librdf_free_node(node);
 }
 
 
-TEST_F(TripleTests, TestSubjectStr2) {
+TEST_F(TripleTests, TestSubjectStrUsingWrapper) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
     std::string &expected = subject_str;
-    ASSERT_STREQ(expected.c_str(), triple.getSubjectStr().c_str());
-    triple.freeStatement();
+    ASSERT_STREQ(expected.c_str(), triple.getSubjectNode().str().c_str());
 }
 
-TEST_F(TripleTests, TestPredicate1) {
+TEST_F(TripleTests, TestPredicate) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
     std::string expected = predicate_str;
-    ASSERT_STREQ(expected.c_str(), triple.getPredicateStr().c_str());
-    triple.freeStatement();
+    ASSERT_STREQ(expected.c_str(), triple.getPredicateNode().str().c_str());
 }
 
 
 TEST_F(TripleTests, TestResource) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
-    std::string actual = triple.getResourceStr();
-    std::string expected = resource_id;
-    ASSERT_STREQ(expected.c_str(), resource_id.c_str());
-    triple.freeStatement();
-}
-
-TEST_F(TripleTests, TestStatementPred) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
-    librdf_statement *statement = triple.get();
-    librdf_node *n = librdf_statement_get_predicate(statement);
-    librdf_uri *uri = librdf_node_get_uri(n);
-    unsigned char *s = librdf_uri_as_string(uri);
-    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    ASSERT_STREQ(expected.c_str(), (const char *) s);
-    triple.freeStatement();
+    ASSERT_STREQ(triple.getResourceNode().str().c_str(), "https://identifiers.org/uniprot/P0DP23");
 }
 
 TEST(TripleTestsNoFixture, TestEquality) {
@@ -114,8 +94,6 @@ TEST(TripleTestsNoFixture, TestEquality) {
             LibrdfNode::fromUriString("predicate").get(),
             LibrdfNode::fromUriString("resource").get());
     ASSERT_EQ(triple1, triple2);
-    triple2.freeStatement();
-    triple1.freeStatement();
 }
 
 TEST(TripleTestsNoFixture, TestInequality) {
@@ -131,8 +109,6 @@ TEST(TripleTestsNoFixture, TestInequality) {
             LibrdfNode::fromUriString("predicate2").get(),
             LibrdfNode::fromUriString("resource2").get());
     ASSERT_NE(triple1, triple2);
-    triple2.freeStatement();
-    triple1.freeStatement();
 }
 
 TEST_F(TripleTests, TestStatementResource) {
@@ -143,7 +119,7 @@ TEST_F(TripleTests, TestStatementResource) {
     unsigned char *s = librdf_uri_as_string(uri);
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
     ASSERT_STREQ(expected.c_str(), (const char *) s);
-    triple.freeStatement();
+    librdf_free_statement(statement);
 }
 
 
@@ -154,7 +130,6 @@ TEST(TripleTestsNoFixture, TestAboutTwoArguments) {
     std::string expected = "http://omex-library/myomex.omex/mymodel.xml#metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    triple.freeStatement();
 }
 
 TEST(TripleTestsNoFixture, TestAboutOneArgumentWithSetLocal) {
@@ -165,7 +140,6 @@ TEST(TripleTestsNoFixture, TestAboutOneArgumentWithSetLocal) {
     std::string expected = "http://omex-library.org/NewOmex.omex/model.xml#metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    triple.freeStatement();
 }
 
 TEST(TripleTestsNoFixture, TestAboutAgain2) {
@@ -177,7 +151,6 @@ TEST(TripleTestsNoFixture, TestAboutAgain2) {
     std::string expected = "http://omex-library.org/NewOmex.omex/model.xml#metaid3";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    triple.freeStatement();
 }
 
 
@@ -186,8 +159,7 @@ TEST(TripleTestsNoFixture, TestSetPredicate) {
     Triple triple(uriHandler);
     triple.setPredicate("bqbiol", "is");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    ASSERT_STREQ(expected.c_str(), triple.getPredicateStr().c_str());
-    triple.freeStatement();
+    ASSERT_STREQ(expected.c_str(), triple.getPredicateNode().str().c_str());
 }
 
 
@@ -196,9 +168,8 @@ TEST(TripleTestsNoFixture, TestResourceLiteral) {
     Triple triple(uriHandler);
     triple.setResourceLiteral("Annotating");
     std::string expected = "Annotating";
-    std::string actual = triple.getResourceStr();
+    std::string actual = triple.getResourceNode().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    triple.freeStatement();
 }
 
 TEST(TripleTestsNoFixture, TestResourceUri) {
@@ -206,8 +177,7 @@ TEST(TripleTestsNoFixture, TestResourceUri) {
     Triple triple(uriHandler);
     triple.setResourceUri("AnnotatingUri");
     std::string expected = "AnnotatingUri";
-    ASSERT_STREQ(expected.c_str(), triple.getResourceStr().c_str());
-    triple.freeStatement();
+    ASSERT_STREQ(expected.c_str(), triple.getResourceNode().str().c_str());
 }
 
 TEST(TripleTestsNoFixture, TestResourceBlank) {
@@ -215,26 +185,15 @@ TEST(TripleTestsNoFixture, TestResourceBlank) {
     Triple triple(uriHandler);
     triple.setResourceBlank("AnnotatingBlank");
     std::string expected = "AnnotatingBlank";
-    ASSERT_STREQ(expected.c_str(), triple.getResourceStr().c_str());
-    triple.freeStatement();
+    ASSERT_STREQ(expected.c_str(), triple.getResourceNode().str().c_str());
 }
 
 TEST_F(TripleTests, TestStatementSubject) {
     UriHandler uriHandler;
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
-    librdf_statement *statement = triple.get();
-    librdf_node *n = librdf_statement_get_subject(statement);
-    librdf_uri *uri = librdf_node_get_uri(n);
-    unsigned char *s = librdf_uri_as_string(uri);
     std::string expected = "./NewModel#metaid_0";
-    ASSERT_STREQ(expected.c_str(), (const char *) s);
-    triple.freeStatement();
+    ASSERT_STREQ(expected.c_str(), triple.getSubjectNode().str().c_str());
 }
-
-/*
- * does the statement only get built when all three nodes are not null??
- *
- */
 
 TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple(uriHandler);
@@ -244,16 +203,9 @@ TEST_F(TripleTests, TestBuilderPattern1) {
             .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
 
-    ASSERT_STREQ(triple.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
-    ASSERT_STREQ(triple.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
-    ASSERT_STREQ(triple.getResourceStr().c_str(), "https://identifiers.org/uniprot/PD4034");
-
-    triple.freeStatement();
-
-    // Aaand free the excess nodes
-    predicate.freeNode();
-    subject.freeNode();
-    resource.freeNode();
+    ASSERT_STREQ(triple.getSubjectNode().str().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
+    ASSERT_STREQ(triple.getPredicateNode().str().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple.getResourceNode().str().c_str(), "https://identifiers.org/uniprot/PD4034");
 }
 
 TEST_F(TripleTests, TestMoveATriple) {
@@ -261,16 +213,14 @@ TEST_F(TripleTests, TestMoveATriple) {
     triple1.about("metaid1")
             .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
+    ASSERT_EQ(1, triple1.getUsage());
     Triple triple2 = std::move(triple1);
+    ASSERT_EQ(1, triple2.getUsage());
 
-    ASSERT_STREQ(triple2.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
-    ASSERT_STREQ(triple2.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
-    ASSERT_STREQ(triple2.getResourceStr().c_str(), "https://identifiers.org/uniprot/PD4034");
+    ASSERT_STREQ(triple2.getSubjectNode().str().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
+    ASSERT_STREQ(triple2.getPredicateNode().str().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple2.getResourceNode().str().c_str(), "https://identifiers.org/uniprot/PD4034");
 
-    triple2.freeTriple();
-    predicate.freeNode();
-    subject.freeNode();
-    resource.freeNode();
 }
 
 TEST_F(TripleTests, TestMoveAssignmentOperator) {
@@ -284,15 +234,10 @@ TEST_F(TripleTests, TestMoveAssignmentOperator) {
             .setResourceUri("uniprot/PD4035");
     triple2 = std::move(triple1);
 
-    ASSERT_STREQ(triple2.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
-    ASSERT_STREQ(triple2.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
-    ASSERT_STREQ(triple2.getResourceStr().c_str(), "https://identifiers.org/uniprot/PD4034");
+    ASSERT_STREQ(triple2.getSubjectNode().str().c_str(), "http://omex-library.org/NewOmex.omex/NewModel.xml#metaid1");
+    ASSERT_STREQ(triple2.getPredicateNode().str().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple2.getResourceNode().str().c_str(), "https://identifiers.org/uniprot/PD4034");
 
-
-    triple2.freeTriple();
-    predicate.freeNode();
-    subject.freeNode();
-    resource.freeNode();
 }
 
 
@@ -315,15 +260,9 @@ TEST_F(TripleTests, TestBuilderPattern2) {
                            "\n"
                            "";
 
-    ASSERT_STREQ(triple.getSubjectStr().c_str(), "http://omex-library.org/NewOmex.omex/model.xml#metaid00001");
-    ASSERT_STREQ(triple.getPredicateStr().c_str(), "http://biomodels.net/biology-qualifiers/is");
-    ASSERT_STREQ(triple.getResourceStr().c_str(), "Blank");
-    triple.freeStatement();
-
-    // Aaand free the excess nodes
-    predicate.freeNode();
-    subject.freeNode();
-    resource.freeNode();
+    ASSERT_STREQ(triple.getSubjectNode().str().c_str(), "http://omex-library.org/NewOmex.omex/model.xml#metaid00001");
+    ASSERT_STREQ(triple.getPredicateNode().str().c_str(), "http://biomodels.net/biology-qualifiers/is");
+    ASSERT_STREQ(triple.getResourceNode().str().c_str(), "Blank");
 }
 
 
@@ -360,10 +299,9 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
     Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
     std::vector<Triple> vec;
     vec.push_back(std::move(triple));
-    std::string actual = vec[0].getResourceStr();
+    std::string actual = vec[0].getResourceNode().str();
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    vec[0].freeStatement();
 }
 //TEST_F(TripleTestsVector, t) {
 //    Triple triple(uriHandler, subject.get(), predicate.getNode(), resource.get());
@@ -401,8 +339,6 @@ TEST(TestTripleTwice, WithRawNodes) {
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
             LibrdfNode::fromUriString("resource").get());
-    triple1.freeStatement();
-    triple2.freeStatement();
 }
 
 /*
@@ -420,8 +356,6 @@ TEST(TestTripleTwice, WithSubjectPredAndRes) {
             LibrdfNode::fromUriString("subject").get(),
             Predicate("uniprot", "PD1234", "uni").get(),
             LibrdfNode::fromUriString("resource").get());
-    triple1.freeStatement();
-    triple2.freeStatement();
 }
 
 /*
@@ -439,8 +373,6 @@ TEST(TestTripleTwice, WithSubjectBiomodelModelQualifierAndRes) {
             LibrdfNode::fromUriString("subject").get(),
             Predicate("uniprot", "PD1234", "uni").get(),
             LibrdfNode::fromUriString("resource").get());
-    triple1.freeStatement();
-    triple2.freeStatement();
 }
 
 
@@ -457,90 +389,4 @@ TEST(TestTripleTwice, WithRawNodesWithMovingTheFirst) {
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
             LibrdfNode::fromUriString("resource").get());
-    triple2.freeStatement();
-    triple3.freeStatement();
-}
-
-TEST(TestTripleTwice, TestUsageSimple) {
-    UriHandler uriHandler;
-    Triple triple1(
-            uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
-
-    auto usage = triple1.getUsages();
-    ASSERT_EQ(1, usage["statement"]);
-    ASSERT_EQ(1, usage["subject"]);
-    ASSERT_EQ(1, usage["predicate"]);
-    ASSERT_EQ(1, usage["resource"]);
-    ASSERT_EQ(1, usage["subject_uri"]);
-    ASSERT_EQ(1, usage["predicate_uri"]);
-    ASSERT_EQ(1, usage["resource_uri"]);
-    //    for (auto &it: usage){
-    //        std::cout << it.first << ": " << it.second << std::endl;
-    //    }
-
-    triple1.freeTriple();
-}
-
-TEST(TestTripleTwice, TestUsageTwoUrisTheSame) {
-    UriHandler uriHandler;
-    Triple triple1(
-            uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("subject").get());
-
-    auto usage = triple1.getUsages();
-    ASSERT_EQ(1, usage["statement"]);
-    ASSERT_EQ(1, usage["subject"]);
-    ASSERT_EQ(1, usage["predicate"]);
-    ASSERT_EQ(1, usage["resource"]);
-    ASSERT_EQ(2, usage["subject_uri"]);
-    ASSERT_EQ(1, usage["predicate_uri"]);
-    ASSERT_EQ(2, usage["resource_uri"]);
-    triple1.freeTriple();
-}
-
-TEST(TestTripleTwice, TestUsageWhenTripleSimple) {
-    UriHandler uriHandler;
-    Triple triple1(
-            uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
-
-    Triple triple2 = std::move(triple1);
-
-    auto usage = triple2.getUsages();
-    ASSERT_EQ(1, usage["statement"]);
-    ASSERT_EQ(1, usage["subject"]);
-    ASSERT_EQ(1, usage["predicate"]);
-    ASSERT_EQ(1, usage["resource"]);
-    ASSERT_EQ(1, usage["subject_uri"]);
-    ASSERT_EQ(1, usage["predicate_uri"]);
-    ASSERT_EQ(1, usage["resource_uri"]);
-    triple2.freeTriple();
-}
-
-TEST(TestTripleTwice, TestUsageWhenTripleMoved) {
-    UriHandler uriHandler;
-    Triple triple1(
-            uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("subject").get());
-
-    Triple triple2 = std::move(triple1);
-
-    auto usage = triple2.getUsages();
-    ASSERT_EQ(1, usage["statement"]);
-    ASSERT_EQ(1, usage["subject"]);
-    ASSERT_EQ(1, usage["predicate"]);
-    ASSERT_EQ(1, usage["resource"]);
-    ASSERT_EQ(2, usage["subject_uri"]);
-    ASSERT_EQ(1, usage["predicate_uri"]);
-    ASSERT_EQ(2, usage["resource_uri"]);
-    triple2.freeTriple();
 }

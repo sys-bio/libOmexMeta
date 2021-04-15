@@ -69,7 +69,7 @@ namespace redland {
     }
 
     int LibrdfStorage::addStatement(const LibrdfStatement &statement) {
-        return librdf_storage_add_statement(storage_, statement.get());
+        return librdf_storage_add_statement(storage_, statement.getWithoutIncrement());
     }
 
     int LibrdfStorage::size() {

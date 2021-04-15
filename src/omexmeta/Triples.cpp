@@ -72,7 +72,7 @@ namespace omexmeta {
     std::vector<std::string> Triples::getSubjectsStr() {
         std::vector<std::string> vec;
         for (auto &triple : triples_) {
-            vec.push_back(triple.getSubjectStr());
+            vec.push_back(triple.getSubjectNode().str());
         }
         return vec;
     }
@@ -80,7 +80,7 @@ namespace omexmeta {
     std::vector<std::string> Triples::getPredicates() {
         std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            vec.push_back(triple.getPredicateStr());
+            vec.push_back(triple.getPredicateNode().str());
         }
         return vec;
     }
@@ -88,7 +88,7 @@ namespace omexmeta {
     std::vector<std::string> Triples::getResources() {
         std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            vec.push_back(triple.getResourceStr());
+            vec.push_back(triple.getResourceNode().str());
         }
         return vec;
     }
@@ -174,7 +174,7 @@ namespace omexmeta {
 
     Triple Triples::pop() {
         // get reference to back of triples_ vector
-        Triple &triple = triples_.back();
+        Triple triple = triples_.back();
         // then remove it from the triples_ vector
         triples_.pop_back();
         // return by move so no copies are made.

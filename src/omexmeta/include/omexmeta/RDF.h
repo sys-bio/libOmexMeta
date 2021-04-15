@@ -307,27 +307,27 @@ namespace omexmeta {
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(RDF *actual, const std::string &expected, const std::string &format = "turtle");
+        static bool equals(RDF *actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(const Triple &actual, const std::string &expected, const std::string &format = "turtle");
+        static bool equals(const Triple &actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(Triples &actual, const std::string &expected, const std::string &format = "turtle");
+        static bool equals(Triples &actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(RDF *actual, RDF *expected, const std::string &format = "turtle");
+        static bool equals(RDF *actual, RDF *expected, const std::string &format = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param first and @param second
          */
-        static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle");
+        static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle", bool verbose = false);
 
     private:
         LibrdfStorage storage_;

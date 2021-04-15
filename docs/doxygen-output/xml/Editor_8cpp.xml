@@ -1107,7 +1107,7 @@
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" kindref="member">Editor::addSingleAnnotation</ref>(<ref refid="classomexmeta_1_1Triple" kindref="compound">SingularAnnotation</ref><sp/>&amp;singularAnnotation)<sp/>{</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" kindref="member">checkValidMetaid</ref>(singularAnnotation.getSubjectStr());</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Editor_1a790458ef32f01ce0a6fd87bf14bed81a" kindref="member">checkValidMetaid</ref>(singularAnnotation.getAbout());</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Editor_1a3fef7f1c38949b50239a9a07cc327d67" kindref="member">addNamespaceFromAnnotation</ref>(singularAnnotation.getPredicateStr());</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_.addStatement(singularAnnotation);</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

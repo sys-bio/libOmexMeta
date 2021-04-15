@@ -11,16 +11,8 @@ namespace omexmeta {
         : uriHandler_(uriHandler) {}
 
     Triple::Triple(Triple &&triple) noexcept
-        : uriHandler_(triple.uriHandler_) {
-        if (triple.statement_ != nullptr) {
-            if (statement_ != nullptr) {
-                librdf_free_statement(statement_);
-                statement_ = nullptr;
-            }
-            statement_ = triple.statement_;
-            triple.statement_ = nullptr;
-        }
-    }
+        : uriHandler_(triple.uriHandler_),
+          LibrdfStatement(std::move(triple)){}
 
     Triple &Triple::operator=(Triple &&triple) noexcept {
         if (*this != triple) {
@@ -30,15 +22,26 @@ namespace omexmeta {
         return *this;
     };
 
+    Triple::Triple(const Triple &triple)
+        : uriHandler_(triple.uriHandler_),
+        LibrdfStatement(triple){}
+
+    Triple & Triple::operator=(const Triple &triple) {
+        if (*this != triple) {
+            uriHandler_ = triple.uriHandler_;
+            LibrdfStatement::operator=(triple);
+        }
+        return *this;
+    }
+
     Triple::Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource)
         : uriHandler_(uriHandler), LibrdfStatement(subject.get(), predicate_ptr->get(), resource.get()) {}
 
+    Triple::Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
+        : uriHandler_(uriHandler), LibrdfStatement(subject.get(), predicate.get(), resource.get()) {}
+
     Triple::Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource)
         : uriHandler_(uriHandler), LibrdfStatement(subject, predicate, resource) {}
-
-    Triple Triple::fromRawStatementPtr(UriHandler &uriHandler, librdf_statement *statement) {
-        return Triple(uriHandler, statement);
-    }
 
     Triple::Triple(UriHandler &uriHandler, librdf_statement *statement)
         : uriHandler_(uriHandler), LibrdfStatement(statement) {}
@@ -169,7 +172,7 @@ namespace omexmeta {
     Triple &Triple::setPredicate(const std::string &namespace_, const std::string &term) {
         if (getPredicateAsRawNode() != nullptr)
             getPredicateNode().freeNode();
-//            LibrdfNode::freeNode(getPredicateNode());
+        //            LibrdfNode::freeNode(getPredicateNode());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
         //  because I want them both to be called setPredicate.
         librdf_node *node = PredicateFactory(namespace_, term)->get();
@@ -186,7 +189,7 @@ namespace omexmeta {
     Triple::setPredicate(const std::string &uri) {
         if (getPredicateAsRawNode() != nullptr)
             getPredicateNode().freeNode();
-//            LibrdfNode::freeNode(getPredicateNode());
+        //            LibrdfNode::freeNode(getPredicateNode());
         LibrdfNode node = LibrdfNode::fromUriString(uri);
         // we pass ownership of node to the statement.
         librdf_statement_set_predicate(statement_, node.get());
@@ -202,7 +205,7 @@ namespace omexmeta {
         // if getResourceNode() node alredy exists, free before resetting
         if (getResourceAsRawNode() != nullptr)
             getResourceNode().freeNode();
-//            LibrdfNode::freeNode(getResourceNode());
+        //            LibrdfNode::freeNode(getResourceNode());
         setResource(LibrdfNode::fromLiteral(literal).get());
         return *this;
     }
@@ -210,7 +213,7 @@ namespace omexmeta {
     Triple &Triple::setResourceUri(const std::string &identifiers_uri) {
         if (getResourceAsRawNode() != nullptr)
             getResourceNode().freeNode();
-//            LibrdfNode::freeNode(getResourceNode());
+        //            LibrdfNode::freeNode(getResourceNode());
         setResource(LibrdfNode::fromUriString(identifiers_uri).get());
         return *this;
     }
@@ -218,7 +221,7 @@ namespace omexmeta {
     Triple &Triple::setResourceBlank(const std::string &blank_id) {
         if (getResourceAsRawNode() != nullptr)
             getResourceNode().freeNode();
-//            LibrdfNode::freeNode(getResourceNode());
+        //            LibrdfNode::freeNode(getResourceNode());
         setResource(LibrdfNode::fromBlank(blank_id).get());
         return *this;
     }

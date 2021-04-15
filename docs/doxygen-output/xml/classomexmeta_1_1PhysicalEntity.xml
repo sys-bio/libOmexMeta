@@ -902,7 +902,7 @@ The input string gets converted to a <ref refid="classomexmeta_1_1Resource" kind
       <member refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getNumLocations</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ac77ef003e4111cbdaf4c9c7f0c5fb680" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>getPropertyMetaidBase</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getSubjectStr</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getType</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>hasPart</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a9d8224786f634b20b32d5cbc2cccaa12" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>hasProperty</name></member>

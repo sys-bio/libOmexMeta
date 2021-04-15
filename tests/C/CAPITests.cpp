@@ -7,7 +7,6 @@
 #include "AnnotationSamples.h"
 #include "SBMLFactory.h"
 
-#include "OmexMetaTestUtils.h"
 #include "omexmeta/OmexMetaCApi.h"
 #include <CellMLFactory.h>
 #include <filesystem>
@@ -57,7 +56,7 @@ TEST_F(CAPITests, RDFToString) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "rdfxml"));
     RDF_delete(rdf_ptr);
 }
 
@@ -97,7 +96,7 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     RDF_delete(rdf_ptr);
 }
 
@@ -135,7 +134,7 @@ TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     ASSERT_TRUE(std::filesystem::exists(fname));
     RDF_delete(rdf_ptr);
     std::filesystem::remove(fname);
@@ -301,7 +300,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
                            "    <http://predicate.com/from/uri> \"Cheese\"^^rdf:string .\n"
                            "\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
@@ -442,7 +441,7 @@ TEST_F(CAPITests, TestPhysicalEntitySBML2) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
                            "    bqbiol:isPartOf <https://identifiers.org/FMA:1234> .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     RDF_delete(rdf_ptr);
@@ -476,7 +475,7 @@ TEST_F(CAPITests, TestPhysicalEntitySBML3) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot:PD12345> ;\n"
                            "    bqbiol:isPartOf <https://identifiers.org/FMA:1234> .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     RDF_delete(rdf_ptr);
@@ -609,7 +608,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                            "\n"
                            "local:ALocalID\n"
                            "    bqbiol:isPartOf <https://identifiers.org/FMA:8376>, <https://identifiers.org/FMA:8377>, <https://identifiers.org/FMA:8378> .\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
 }
@@ -655,7 +654,7 @@ TEST_F(CAPITests, TestPhysicalProcessSBML1) {
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     PhysicalProcess_delete(physical_process_ptr);
@@ -703,7 +702,7 @@ TEST_F(CAPITests, TestPhysicalProcessSBML2) {
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     PhysicalProcess_delete(physical_process_ptr);
@@ -751,7 +750,7 @@ TEST_F(CAPITests, TestPhysicalProcessCellML1) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
                            "    bqbiol:isPropertyOf local:Process ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     PhysicalProcess_delete(physical_process_ptr);
@@ -798,7 +797,7 @@ TEST_F(CAPITests, TestPhysicalProcessCellML2) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.ReactionRate>\n"
                            "    bqbiol:isPropertyOf local:Process0000 ;\n"
                            "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     PhysicalProcess_delete(physical_process_ptr);
@@ -839,7 +838,7 @@ TEST_F(CAPITests, TestEnergyDiffSBML1) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     EnergyDiff_delete(energy_diff_ptr);
@@ -879,7 +878,7 @@ TEST_F(CAPITests, TestEnergyDiffSBML2) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     EnergyDiff_delete(energy_diff_ptr);
@@ -920,7 +919,7 @@ TEST_F(CAPITests, TestEnergyDiffCellML1) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>\n"
                            "    semsim:hasSinkParticipant local:SinkParticipant0000 ;\n"
                            "    semsim:hasSourceParticipant local:SourceParticipant0000 .";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     EnergyDiff_delete(energy_diff_ptr);
@@ -1092,7 +1091,7 @@ TEST_F(CAPITests, RDFsetLocalUri) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/newModelName.rdf#> .";
     char *actual = RDF_getLocalUri(rdf_ptr);
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected));
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
 }
@@ -1127,7 +1126,7 @@ TEST_F(CAPITests, EditoraddCreator) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1149,7 +1148,7 @@ TEST_F(CAPITests, EditoraddCurator) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1173,7 +1172,7 @@ TEST_F(CAPITests, Editortaxon) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1195,7 +1194,7 @@ TEST_F(CAPITests, Editorpubmed) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1217,7 +1216,7 @@ TEST_F(CAPITests, EditoraddDescription) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1240,7 +1239,7 @@ TEST_F(CAPITests, EditoraddDateCreated) {
                            "    ] .";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1260,7 +1259,7 @@ TEST_F(CAPITests, EditoraddPersonalInformation) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1283,7 +1282,7 @@ TEST_F(CAPITests, EditoraddParentModel) {
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1310,7 +1309,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    dc:creator <https://identifiers.org/orcid/2134-1234-1234-1234> .";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1359,7 +1358,7 @@ TEST_F(CAPITests, PersonalInformationaddName) {
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1389,7 +1388,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1418,7 +1417,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
                            "    foaf:accountName <https://orcid.org/2134-1234-1234-1234> .\n"
                            "\n";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1448,7 +1447,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1478,7 +1477,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1507,7 +1506,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
                            "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
                            "\n";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1532,7 +1531,7 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     PersonalInformation_delete(information);
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1606,7 +1605,7 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5>\n"
                            "    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
@@ -1625,7 +1624,7 @@ TEST_F(CAPITests, RDFToEditorTestWithoutSemanticExtraction) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n";
     printf("%s", actual);
-    ASSERT_TRUE(OmexMetaTestUtils::equals(rdf_ptr, expected, "turtle"));
+    ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
     Editor_delete(editor_ptr);
     free_c_char_star(actual);

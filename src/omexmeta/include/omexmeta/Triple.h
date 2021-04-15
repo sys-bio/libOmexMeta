@@ -36,19 +36,22 @@ namespace omexmeta {
         using LibrdfStatement::LibrdfStatement;
         using LibrdfStatement::operator=;
 
-        explicit Triple(UriHandler& uriHandler);
+        explicit Triple(UriHandler &uriHandler);
 
         Triple(Triple &&triple) noexcept;
-        Triple &operator=(Triple &&triple) noexcept;
-        Triple(const Triple &triple) = delete; // as base class
-        Triple &operator=(const Triple &triple) = delete; // as base class
 
+        Triple &operator=(Triple &&triple) noexcept;
+
+        Triple(const Triple &triple);
+
+        Triple &operator=(const Triple &triple);
 
         Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
 
-        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
-        static Triple fromRawStatementPtr(UriHandler &uriHandler, librdf_statement *statement);
+        [[deprecated("Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]]
+        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         const std::string &getLocalUri() const;
 

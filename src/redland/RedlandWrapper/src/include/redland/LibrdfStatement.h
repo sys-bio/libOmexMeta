@@ -76,11 +76,11 @@ namespace redland {
 
         [[nodiscard]] LibrdfNode getResourceNode() const;
 
-        [[nodiscard]] std::string getSubjectStr() const;
-
-        [[nodiscard]] std::string getPredicateStr() const;
-
-        [[nodiscard]] std::string getResourceStr() const;
+//        [[nodiscard]] std::string getSubjectStr() const;
+//
+//        [[nodiscard]] std::string getPredicateStr() const;
+//
+//        [[nodiscard]] std::string getResourceStr() const;
 
         void checkForNull();
 
@@ -92,9 +92,9 @@ namespace redland {
 
         bool isComplete();
 
-        void freeStatementAndUris();
+        [[deprecated("do not use")]] void freeStatementAndUris();
 
-        [[nodiscard]] std::string getPredicateNamespaceStr() const;
+        [[maybe_unused]] [[nodiscard]] std::string getPredicateNamespaceStr() const;
 
         [[nodiscard]] int getUsage() const;
 
@@ -108,7 +108,7 @@ namespace redland {
          * @brief update the contained statement with current
          * values of subject, predicate and resource.
          */
-        void refreshStatement();
+        [[deprecated("Not needed")]] void refreshStatement();
 
         explicit LibrdfStatement(librdf_statement *statement);
     };

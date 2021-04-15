@@ -138,8 +138,7 @@ namespace omexmeta {
         // mess with cleaning up the triples later.
         Triples triples = pp->toTriples();
         for (auto &triple : triples) {
-            addNamespaceFromAnnotation(triple.getPredicateStr());
-            triple.freeStatement();
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
         }
     }
 
@@ -164,14 +163,14 @@ namespace omexmeta {
     }
 
     void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
-        checkValidMetaid(singularAnnotation.getSubjectStr());
-        addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
+        checkValidMetaid(singularAnnotation.getSubjectNode().str());
+        addNamespaceFromAnnotation(singularAnnotation.getPredicateNode().str());
         model_.addStatement(singularAnnotation);
     }
 
     void Editor::addSingleAnnotationNoValidation(
             SingularAnnotation &singularAnnotation) {
-        addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
+        addNamespaceFromAnnotation(singularAnnotation.getPredicateNode().str());
         model_.addStatement(singularAnnotation);
     }
 
@@ -198,14 +197,13 @@ namespace omexmeta {
         for (auto &triple : triples) {
 
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
 
             //todo consider whether to also call AddNamespaceFromAnnotation(triple.getResourseStr())
 
             // add to the model
             model_.addStatement(triple.getStatement());
             // remember to free it.
-            triple.freeStatement();
         }
     }
 
@@ -213,16 +211,15 @@ namespace omexmeta {
         Triples triples = phenomenonPtr->toTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             addSingleAnnotationNoValidation(triple);
         }
-        triples.freeTriples();
     }
 
     void Editor::addTriples(Triples &triples) {
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             addSingleAnnotationNoValidation(triple);
         }
     }
@@ -231,10 +228,9 @@ namespace omexmeta {
         Triples triples = physicalProperty.toTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             addSingleAnnotationNoValidation(triple);
         }
-        triples.freeTriples();
     }
 
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
@@ -259,7 +255,7 @@ namespace omexmeta {
         Triples triples = personalInformation->getTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             // add to the model
             model_.addStatement(triple.getStatement());
         }
@@ -278,7 +274,6 @@ namespace omexmeta {
         Triples triples = physicalPhenomenon->toTriples();
         for (auto &triple : triples) {
             model_.removeStatement(triple.getStatement());
-            triple.freeTriple();
         }
     }
 
@@ -290,7 +285,6 @@ namespace omexmeta {
         Triples triples = information->getTriples();
         for (auto &triple : triples) {
             model_.removeStatement(triple.getStatement());
-            triple.freeTriple();
         }
     }
 
@@ -338,7 +332,6 @@ namespace omexmeta {
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
-        triple.freeTriple();
         return *this;
     }
 
@@ -352,7 +345,6 @@ namespace omexmeta {
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
-        triple.freeTriple();
         return *this;
     }
 
@@ -376,7 +368,6 @@ namespace omexmeta {
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
-        triple.freeTriple();
         return *this;
     }
 
@@ -387,7 +378,6 @@ namespace omexmeta {
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqmodel"], "bqmodel");
         addNamespace(Predicate::namespaceMap()["pubmed"], "pubmed");
-        triple.freeTriple();
         return *this;
     }
 
@@ -398,7 +388,6 @@ namespace omexmeta {
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqmodel"], "bqmodel");
         addNamespace(Predicate::namespaceMap()["biomod"], "biomod");
-        triple.freeTriple();
         return *this;
     }
 
@@ -410,7 +399,6 @@ namespace omexmeta {
         addNamespace(Predicate::namespaceMap()["bqbiol"], "bqbiol");
         addNamespace(Predicate::namespaceMap()["NCBI_Taxon"], "NCBI_Taxon");
 
-        triple.freeTriple();
         return *this;
     }
 

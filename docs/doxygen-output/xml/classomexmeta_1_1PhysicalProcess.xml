@@ -801,7 +801,7 @@ Developers. Consider removing this method in favour of the setPhysicalProperty v
       <member refid="classomexmeta_1_1PhysicalProcess_1a7b4408351b5226de0069459fc6de166b" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>getPropertyMetaidBase</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSinks</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSources</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getSubjectStr</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getType</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a31fbd32cd2ccdd5d45417c963836bcf5" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a35e816fb08c8a4e1cb16caea2fef8f2b" prot="public" virt="virtual"><scope>omexmeta::PhysicalProcess</scope><name>hasProperty</name></member>
