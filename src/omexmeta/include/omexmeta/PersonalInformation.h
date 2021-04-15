@@ -31,7 +31,6 @@ namespace omexmeta {
 
     public:
         const std::vector<std::string> &getNamespaces() const;
-        PersonalInformation() = default;
 
         ~PersonalInformation();
 
@@ -58,8 +57,6 @@ namespace omexmeta {
         PersonalInformation &operator=(PersonalInformation &&information) noexcept;
 
         [[nodiscard]] const std::string &getLocalUri() const;
-
-//        void setLocalUri(const std::string &localUri);
 
         bool operator==(const PersonalInformation &rhs) const;
 
@@ -98,8 +95,6 @@ namespace omexmeta {
         void setMetaid(const std::string &metaid);
 
         const std::string &getModelUri() const;
-
-        void setModelUri(const std::string &modelUri);
 
         Triples getTriples();
 

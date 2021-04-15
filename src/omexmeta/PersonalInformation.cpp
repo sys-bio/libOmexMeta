@@ -191,10 +191,6 @@ namespace omexmeta {
         return uriHandler_.getModelUri();
     }
 
-    void PersonalInformation::setModelUri(const std::string &modelUri) {
-        uriHandler_.setModelUri(modelUri);
-    }
-
     void PersonalInformation::freeTriples() {
         triples_.freeTriples();
     }

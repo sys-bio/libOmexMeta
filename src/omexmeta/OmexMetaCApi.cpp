@@ -248,27 +248,27 @@ namespace omexmeta {
     }
 
 
-    bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
+    bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format, bool verbose) {
         try {
-            return RDF::equals(rdf_ptr, serialized_rdf, format);
+            return RDF::equals(rdf_ptr, serialized_rdf, format, verbose);
         } catch (std::exception &error) {
             setLastError(error.what());
             return false;
         }
     }
 
-    bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
+    bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format, bool verbose) {
         try {
-            return RDF::equals(rdf_ptr1, rdf_ptr2, format);
+            return RDF::equals(rdf_ptr1, rdf_ptr2, format, verbose);
         } catch (std::exception &error) {
             setLastError(error.what());
             return false;
         }
     }
 
-    bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
+    bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format, bool verbose) {
         try {
-            return RDF::equals(first_rdf_graph, second_rdf_graph, format);
+            return RDF::equals(first_rdf_graph, second_rdf_graph, format, format, verbose);
         } catch (std::exception &error) {
             setLastError(error.what());
             return false;
@@ -1408,28 +1408,6 @@ namespace omexmeta {
     int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid) {
         try {
             information->setMetaid(metaid);
-            return 0;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return -1;
-        }
-    }
-
-    char *PersonalInformation_getModelUri(PersonalInformation *information) {
-        try {
-            std::string about = information->getModelUri();
-            char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
-            strcpy(cstr, about.c_str());
-            return cstr;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
-        }
-    }
-
-    int PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri) {
-        try {
-            information->setModelUri(modelUri);
             return 0;
         } catch (std::exception &error) {
             setLastError(error.what());
