@@ -2,8 +2,6 @@
 #   Sources for tests
 #
 
-set(target OmexMetaTests)
-
 set(
         TEST_SOURCES
         SBMLFactory.h
@@ -41,17 +39,6 @@ set(
 #   Add test executables
 #
 #
-#add_executable(OmexMetaTests ${TEST_SOURCES})
-#
-#target_link_libraries(OmexMetaTests PRIVATE OmexMeta-static gtest gtest_main)
-#add_dependencies(OmexMetaTests OmexMeta-static gtest gtest_main)
-#target_include_directories(OmexMetaTests PRIVATE
-#        "${OMEXMETA_TEST_INCLUDE_DIR}"
-#        "${CMAKE_CURRENT_SOURCE_DIR}"
-#        "${GOOGLETEST_SOURCE_DIR}/googletest/include"
-#        )
-#gtest_discover_tests(OmexMetaTests)
-
 
 add_test_executable(EditorTests OmexMetaTests EditorTests.cpp)
 add_test_executable(ElementExtractorTests OmexMetaTests ElementExtractorTests.cpp)
