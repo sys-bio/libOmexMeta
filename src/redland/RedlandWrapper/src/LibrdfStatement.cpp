@@ -99,26 +99,26 @@ namespace redland {
         librdf_statement_set_predicate(statement_, node);
     }
 
-//    std::string LibrdfStatement::getResourceStr() const {
-//        if (!getResourceAsRawNode())
-//            throw RedlandNullPointerException(
-//                    "RedlandNullPointerException: LibrdfStatement::getIsVersionOfValue(): resource_ is nullptr");
-//        return LibrdfNode::str(getResourceAsRawNode());
-//    }
-//
-//    std::string LibrdfStatement::getSubjectStr() const {
-//        if (getSubjectAsRawNode() == nullptr)
-//            throw RedlandNullPointerException(
-//                    "RedlandNullPointerException: LibrdfStatement::getAbout(): subject_ is nullptr");
-//        return LibrdfNode::str(getSubjectAsRawNode());
-//    }
-//
-//    std::string LibrdfStatement::getPredicateStr() const {
-//        if (!getPredicateAsRawNode())
-//            throw RedlandNullPointerException(
-//                    "RedlandNullPointerException: LibrdfStatement::getPredicateAsRawNode(): predicate_ is nullptr");
-//        return LibrdfNode::str(getPredicateAsRawNode());
-//    }
+    //    std::string LibrdfStatement::getResourceStr() const {
+    //        if (!getResourceAsRawNode())
+    //            throw RedlandNullPointerException(
+    //                    "RedlandNullPointerException: LibrdfStatement::getIsVersionOfValue(): resource_ is nullptr");
+    //        return LibrdfNode::str(getResourceAsRawNode());
+    //    }
+    //
+    //    std::string LibrdfStatement::getSubjectStr() const {
+    //        if (getSubjectAsRawNode() == nullptr)
+    //            throw RedlandNullPointerException(
+    //                    "RedlandNullPointerException: LibrdfStatement::getAbout(): subject_ is nullptr");
+    //        return LibrdfNode::str(getSubjectAsRawNode());
+    //    }
+    //
+    //    std::string LibrdfStatement::getPredicateStr() const {
+    //        if (!getPredicateAsRawNode())
+    //            throw RedlandNullPointerException(
+    //                    "RedlandNullPointerException: LibrdfStatement::getPredicateAsRawNode(): predicate_ is nullptr");
+    //        return LibrdfNode::str(getPredicateAsRawNode());
+    //    }
 
     std::string LibrdfStatement::getPredicateNamespaceStr() const {
         if (!getPredicateAsRawNode())
@@ -236,7 +236,53 @@ namespace redland {
     }
 
     bool LibrdfStatement::equals(librdf_statement *first, librdf_statement *second) {
-        return librdf_statement_equals(first, second);
+        // note: The reason we do not use librdf_statement_equals
+        // is because librdf_statement_equals does not get equality
+        // correct when comparing blank nodes. We therefore roll our own equality
+        // operator.
+        // in the case of nullptr's, we just return false
+        if (!first) {
+            return false;
+        }
+        if (!second) {
+            return false;
+        }
+        librdf_node *this_subject = librdf_statement_get_subject(first);
+        if (!this_subject) {
+            return false;
+        }
+        librdf_node *this_predicate = librdf_statement_get_predicate(first);
+        if (!this_predicate) {
+            return false;
+        }
+        librdf_node *this_resource = librdf_statement_get_object(first);
+        if (!this_resource) {
+            return false;
+        }
+
+        librdf_node *that_subject = librdf_statement_get_subject(second);
+        if (!that_subject) {
+            return false;
+        }
+        librdf_node *that_predicate = librdf_statement_get_predicate(second);
+        if (!that_predicate) {
+            return false;
+        }
+        librdf_node *that_resource = librdf_statement_get_object(second);
+        if (!that_resource) {
+            return false;
+        }
+        bool subjects_equal = true;
+        bool resources_equal = true;
+        // we bypass comparing blank nodes.
+        if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)) {
+            subjects_equal = librdf_node_equals(this_subject, that_subject);
+            }
+        if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)) {
+            resources_equal = librdf_node_equals(this_resource, that_resource);
+            }
+        bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
+        return subjects_equal && predicates_equal && resources_equal;
     }
 
     bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {

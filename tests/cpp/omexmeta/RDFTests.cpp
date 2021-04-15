@@ -129,7 +129,8 @@ TEST_F(RDFTests, TestToString) {
                            "";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    bool truth = RDF::equals(&rdf, expected, "turtle", true);
+    ASSERT_TRUE(truth);
 }
 
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
