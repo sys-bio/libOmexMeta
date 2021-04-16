@@ -38,6 +38,7 @@ namespace redland {
             query_ = nullptr;
         }
         query_ = query.get(); // increments the internal ref counter for us
+        return *this;
     }
 
     LibrdfQuery &LibrdfQuery::operator=(LibrdfQuery &&query) noexcept {
